@@ -25,17 +25,42 @@ Come back whenever a part makes you wonder why.
 
 Each part does a job for the person. These are the jobs, as questions the part answers.
 
-<div class="odv-am-rolelist"><span class="odv-am-role big"><b>Containment</b> What holds this?</span><span class="odv-am-role big"><b>Layering</b> What sits on top?</span><span class="odv-am-role big"><b>Hierarchy</b> What do you read first?</span><span class="odv-am-role big"><b>Readability</b> Can you read it?</span><span class="odv-am-role big"><b>Emphasis</b> Where does the eye go?</span><span class="odv-am-role big"><b>Meaning</b> What state is it in?</span><span class="odv-am-role big"><b>Affordance</b> Can you act on it?</span><span class="odv-am-role big"><b>Feedback</b> Did it respond?</span><span class="odv-am-role big"><b>Focus</b> Where is the keyboard?</span><span class="odv-am-role big"><b>Grouping</b> What belongs together?</span><span class="odv-am-role big"><b>Reach</b> Can you hit it?</span></div>
+- **Containment** What holds this?
+- **Layering** What sits on top?
+- **Hierarchy** What do you read first?
+- **Readability** Can you read it?
+- **Emphasis** Where does the eye go?
+- **Meaning** What state is it in?
+- **Affordance** Can you act on it?
+- **Feedback** Did it respond?
+- **Focus** Where is the keyboard?
+- **Grouping** What belongs together?
+- **Reach** Can you hit it?
 
 ## The parts
 
-<div class="odv-am-parts"><figure class="odv-am-stage"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/accessible-first/collapsible/stage.png" alt="Collapsible, every part numbered" loading="lazy"/></span><figcaption>Accessible first, light, drawn in Figma from the scheme's tokens.</figcaption></figure><div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k"><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span> Its value changes by scheme. The part is the same in every scheme.</p><ul><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Trigger</b><span class="odv-am-need">required · shown by Button</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you act on it?">Affordance</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">1</i><span class="odv-am-glyph"></span><b>Content</b><span class="odv-am-need">state · no token yet</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span></span></li></ul></div></div>
+![Collapsible, every part numbered](/anatomy/accessible-first/collapsible/stage.png)
+
+*Accessible first, light, drawn in Figma from the scheme's tokens.*
+
+Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
+
+:label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
+
+- **Trigger** required · shown by Button :label[Affordance]
+- **1** **Content** state · no token yet :label[Readability]
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-<section class="odv-am-card" id="part-1"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/accessible-first/collapsible/card-1.png" alt="Content: 1" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">1</i><b>Content</b><span class="odv-am-role" title="Can you read it?">Readability</span></header><ul class="odv-am-tree"></ul></div></section>
+:::panel{id="part-1" title="Content" note="Parts 1"}
+![Content: 1](/anatomy/accessible-first/collapsible/card-1.png)
+
+:label[Readability]
+
+
+:::
 
 ## For agents
 

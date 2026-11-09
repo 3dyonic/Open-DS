@@ -25,25 +25,210 @@ Come back whenever a part makes you wonder why.
 
 Each part does a job for the person. These are the jobs, as questions the part answers.
 
-<div class="odv-am-rolelist"><span class="odv-am-role big"><b>Containment</b> What holds this?</span><span class="odv-am-role big"><b>Layering</b> What sits on top?</span><span class="odv-am-role big"><b>Hierarchy</b> What do you read first?</span><span class="odv-am-role big"><b>Readability</b> Can you read it?</span><span class="odv-am-role big"><b>Emphasis</b> Where does the eye go?</span><span class="odv-am-role big"><b>Meaning</b> What state is it in?</span><span class="odv-am-role big"><b>Affordance</b> Can you act on it?</span><span class="odv-am-role big"><b>Feedback</b> Did it respond?</span><span class="odv-am-role big"><b>Focus</b> Where is the keyboard?</span><span class="odv-am-role big"><b>Grouping</b> What belongs together?</span><span class="odv-am-role big"><b>Reach</b> Can you hit it?</span></div>
+- **Containment** What holds this?
+- **Layering** What sits on top?
+- **Hierarchy** What do you read first?
+- **Readability** Can you read it?
+- **Emphasis** Where does the eye go?
+- **Meaning** What state is it in?
+- **Affordance** Can you act on it?
+- **Feedback** Did it respond?
+- **Focus** Where is the keyboard?
+- **Grouping** What belongs together?
+- **Reach** Can you hit it?
 
 ## The parts
 
-<div class="odv-am-parts"><figure class="odv-am-stage"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/dense-data/alert/stage.png" alt="Alert, every part numbered" loading="lazy"/></span><figcaption>Dense data, light, drawn in Figma from the scheme's tokens.</figcaption></figure><div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k"><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span> Its value changes by scheme. The part is the same in every scheme.</p><ul><li class="odv-am-lrow d0"><i class="odv-am-n">1</i><span class="odv-am-glyph"></span><b>Panel</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What holds this?">Containment</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">2</i><span class="odv-am-glyph"></span><b>Icon</b><span class="odv-am-need">optional</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">3</i><span class="odv-am-glyph"></span><b>Title</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What do you read first?">Hierarchy</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">4</i><span class="odv-am-glyph"></span><b>Description</b><span class="odv-am-need">optional</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">5</i><span class="odv-am-glyph"></span><b>Destructive alert</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Where does the eye go?">Emphasis</span></span></li></ul></div></div>
+![Alert, every part numbered](/anatomy/dense-data/alert/stage.png)
+
+*Dense data, light, drawn in Figma from the scheme's tokens.*
+
+Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
+
+:label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
+
+- **1** **Panel** required :label[By scheme]{tone="info"} :label[Containment]
+- **2** **Icon** optional :label[By scheme]{tone="info"} :label[Meaning]
+- **3** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy]
+- **4** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
+- **5** **Destructive alert** state :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-<section class="odv-am-card" id="part-1"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/dense-data/alert/card-1.png" alt="Panel: 1" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">1</i><b>Panel</b><span class="odv-am-role" title="What holds this?">Containment</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Shape · What should control corners say? → Slightly rounded</div><div class="odv-am-why">Small corners keep dense rows straight.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Spacing · How dense is the layout? → Compact</div><div class="odv-am-why">Compact spacing shows more records.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Surface, text, action and status</div><div class="odv-am-why">Surface, text, action and status cover an operations tool.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a card on the page, use A hairline border, no shadow. Don't use a shadow.</div><div class="odv-am-why">On a busy grid, lines separate. Shadows blur the edges.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.default</code><span>→</span><code>default.background</code><span class="odv-am-val">#FFFFFF · dark #161B23</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The base fill for content.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.0: the base for content; body text reads 17.28:1 on it, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.50: the base for content; body text reads 16.26:1 on it, above the 4.5:1 floor.</div><div><b>Shares the step with</b> surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.border.default</code><span>→</span><code>border</code><span class="odv-am-val">#DDE2EA · dark #3D4655</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Quiet edges and dividers. Decorative, so it has no contrast minimum.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.</div><div><b>Dark</b> neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.</div><div><b>Shares the step with</b> disabled.border. Changing this pick moves only what reads color.border.default.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>border-width.default</code><span>→</span><code>border-width</code><span class="odv-am-val">1px</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> border-width.1</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>radius.container</code><span>→</span><code>radius</code><span class="odv-am-val">0.25rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> radius.4: Small corners keep dense rows straight.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>component-spacing-map.x3</code><span>→</span><code>padding-y</code><span class="odv-am-val">0.75rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> space.12</div></div></li></ul></div></section>
+:::panel{id="part-1" title="Panel" note="Parts 1"}
+![Panel: 1](/anatomy/dense-data/alert/card-1.png)
 
-<section class="odv-am-card" id="part-2"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/dense-data/alert/card-2.png" alt="Icon: 2" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">2</i><b>Icon</b><span class="odv-am-role" title="What state is it in?">Meaning</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Iconography · How big are icons next to text? → Match the text</div><div class="odv-am-why">Icons match the label so they do not outweigh it.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>size.icon</code><span>→</span><code>icon-size</code><span class="odv-am-val">1rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> size.16</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>component-spacing-map.x3</code><span>→</span><code>gap-x</code><span class="odv-am-val">0.75rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> space.12</div></div></li></ul></div></section>
+:label[Containment]
 
-<section class="odv-am-card" id="part-3"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/dense-data/alert/card-3.png" alt="Title: 3" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">3</i><b>Title</b><span class="odv-am-role" title="What do you read first?">Hierarchy</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Typography · Which text roles does it need? → Core and data</div><div class="odv-am-why">A data role keeps numbers in aligned columns.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a status, use Badge with a subtle fill, an icon and a word. Don't use a full-strength fill.</div><div class="odv-am-why">Subtle fills let many statuses share one table.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.label.font-weight</code><span>→</span><code>title.font-weight</code><span class="odv-am-val">500</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.weight.500</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.primary</code><span>→</span><code>default.label</code><span class="odv-am-val">#161B23 · dark #F7F8FA</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Body text and headings.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.</div><div><b>Shares the step with</b> surface.inverse. Changing this pick moves only what reads color.text.primary.</div></div></li></ul></div></section>
+- **Answer** Shape · What should control corners say? → Slightly rounded
 
-<section class="odv-am-card" id="part-4"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/dense-data/alert/card-4.png" alt="Description: 4" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">4</i><b>Description</b><span class="odv-am-role" title="Can you read it?">Readability</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Typography · Which text roles does it need? → Core and data</div><div class="odv-am-why">A data role keeps numbers in aligned columns.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Voice and tone · Where do the words matter most? → Errors and empty states</div><div class="odv-am-why">Errors and empty tables are where words decide the next action.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For paragraph or help text, use type.body. Don't use type.label.</div><div class="odv-am-why">Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.muted</code><span>→</span><code>description.label</code><span class="odv-am-val">#535D6D · dark #969FAD</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The quietest text.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.body.font-size</code><span>→</span><code>description.font-size</code><span class="odv-am-val">0.875rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.size.14</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.body.line-height</code><span>→</span><code>description.line-height</code><span class="odv-am-val">1.45</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.line-height.1_45</div></div></li></ul></div></section>
+  Small corners keep dense rows straight.
 
-<section class="odv-am-card" id="part-5"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/dense-data/alert/card-5.png" alt="Destructive alert: 5" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">5</i><b>Destructive alert</b><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Where does the eye go?">Emphasis</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Surface, text, action and status</div><div class="odv-am-why">Surface, text, action and status cover an operations tool.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">What is a costly mistake? → Acting on the wrong record</div><div class="odv-am-why">Acting on the wrong row is the costly error.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For an error message, use color.status.danger with an icon. Don't use color.status.warning.</div><div class="odv-am-why">Red always means fix this, and the icon says it without color.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For the words of an error, use Name the record, then the fix. Flat and specific.. Don't use &quot;Oops&quot; or a vague apology.</div><div class="odv-am-why">Experts act on the message; the record and the fix are all they need.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.status.danger</code><span>→</span><code>destructive.label</code><span class="odv-am-val">#C42B2B · dark #F28B8B</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.</div><div class="odv-am-lines"><div><b>Pick</b> red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.</div><div><b>Dark</b> red.dark.600: danger reads as text and icons, 7.28:1 on surface.default, above the 4.5:1 floor.</div><div><b>Shares the step with</b> action.danger. Changing this pick moves only what reads color.status.danger.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.status.danger</code><span>→</span><code>destructive.description.label</code><span class="odv-am-val">#C42B2B · dark #F28B8B</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.</div><div class="odv-am-lines"><div><b>Pick</b> red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.</div><div><b>Dark</b> red.dark.600: danger reads as text and icons, 7.28:1 on surface.default, above the 4.5:1 floor.</div><div><b>Shares the step with</b> action.danger. Changing this pick moves only what reads color.status.danger.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.default</code><span>→</span><code>destructive.background</code><span class="odv-am-val">#FFFFFF · dark #161B23</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The base fill for content.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.0: the base for content; body text reads 17.28:1 on it, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.50: the base for content; body text reads 16.26:1 on it, above the 4.5:1 floor.</div><div><b>Shares the step with</b> surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.</div></div></li></ul></div></section>
+- **Answer** Spacing · How dense is the layout? → Compact
+
+  Compact spacing shows more records.
+
+- **Answer** Color · Which color roles does it need? → Surface, text, action and status
+
+  Surface, text, action and status cover an operations tool.
+
+- **Rule** For a card on the page, use A hairline border, no shadow. Don't use a shadow.
+
+  On a busy grid, lines separate. Shadows blur the edges.
+
+- **Token** `color.surface.default` → `default.background` #FFFFFF · dark #161B23 :label[By scheme]{tone="info"}
+
+  The base fill for content.
+
+  - **Pick** neutral.0: the base for content; body text reads 17.28:1 on it, above the 4.5:1 floor.
+  - **Dark** neutral.50: the base for content; body text reads 16.26:1 on it, above the 4.5:1 floor.
+  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
+
+- **Token** `color.border.default` → `border` #DDE2EA · dark #3D4655 :label[By scheme]{tone="info"}
+
+  Quiet edges and dividers. Decorative, so it has no contrast minimum.
+
+  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.
+  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.
+  - **Shares the step with** disabled.border. Changing this pick moves only what reads color.border.default.
+
+- **Token** `border-width.default` → `border-width` 1px :label[By scheme]{tone="info"}
+
+  - **Pick** border-width.1
+
+- **Token** `radius.container` → `radius` 0.25rem :label[By scheme]{tone="info"}
+
+  - **Pick** radius.4: Small corners keep dense rows straight.
+
+- **Token** `component-spacing-map.x3` → `padding-y` 0.75rem :label[By scheme]{tone="info"}
+
+  - **Pick** space.12
+:::
+
+:::panel{id="part-2" title="Icon" note="Parts 2"}
+![Icon: 2](/anatomy/dense-data/alert/card-2.png)
+
+:label[Meaning]
+
+- **Answer** Iconography · How big are icons next to text? → Match the text
+
+  Icons match the label so they do not outweigh it.
+
+- **Token** `size.icon` → `icon-size` 1rem :label[By scheme]{tone="info"}
+
+  - **Pick** size.16
+
+- **Token** `component-spacing-map.x3` → `gap-x` 0.75rem :label[By scheme]{tone="info"}
+
+  - **Pick** space.12
+:::
+
+:::panel{id="part-3" title="Title" note="Parts 3"}
+![Title: 3](/anatomy/dense-data/alert/card-3.png)
+
+:label[Hierarchy]
+
+- **Answer** Typography · Which text roles does it need? → Core and data
+
+  A data role keeps numbers in aligned columns.
+
+- **Rule** For a status, use Badge with a subtle fill, an icon and a word. Don't use a full-strength fill.
+
+  Subtle fills let many statuses share one table.
+
+- **Token** `type.label.font-weight` → `title.font-weight` 500 :label[By scheme]{tone="info"}
+
+  - **Pick** font.weight.500
+
+- **Token** `color.text.primary` → `default.label` #161B23 · dark #F7F8FA :label[By scheme]{tone="info"}
+
+  Body text and headings.
+
+  - **Pick** neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.
+  - **Dark** neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.
+  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+:::
+
+:::panel{id="part-4" title="Description" note="Parts 4"}
+![Description: 4](/anatomy/dense-data/alert/card-4.png)
+
+:label[Readability]
+
+- **Answer** Typography · Which text roles does it need? → Core and data
+
+  A data role keeps numbers in aligned columns.
+
+- **Answer** Voice and tone · Where do the words matter most? → Errors and empty states
+
+  Errors and empty tables are where words decide the next action.
+
+- **Rule** For paragraph or help text, use type.body. Don't use type.label.
+
+  Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.
+
+- **Token** `color.text.muted` → `description.label` #535D6D · dark #969FAD :label[By scheme]{tone="info"}
+
+  The quietest text.
+
+  - **Pick** neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.
+  - **Dark** neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.
+
+- **Token** `type.body.font-size` → `description.font-size` 0.875rem :label[By scheme]{tone="info"}
+
+  - **Pick** font.size.14
+
+- **Token** `type.body.line-height` → `description.line-height` 1.45 :label[By scheme]{tone="info"}
+
+  - **Pick** font.line-height.1_45
+:::
+
+:::panel{id="part-5" title="Destructive alert" note="Parts 5"}
+![Destructive alert: 5](/anatomy/dense-data/alert/card-5.png)
+
+:label[Meaning] :label[Emphasis]
+
+- **Answer** Color · Which color roles does it need? → Surface, text, action and status
+
+  Surface, text, action and status cover an operations tool.
+
+- **Answer** What is a costly mistake? → Acting on the wrong record
+
+  Acting on the wrong row is the costly error.
+
+- **Rule** For an error message, use color.status.danger with an icon. Don't use color.status.warning.
+
+  Red always means fix this, and the icon says it without color.
+
+- **Rule** For the words of an error, use Name the record, then the fix. Flat and specific.. Don't use "Oops" or a vague apology.
+
+  Experts act on the message; the record and the fix are all they need.
+
+- **Token** `color.status.danger` → `destructive.label` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
+
+  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
+
+  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
+  - **Dark** red.dark.600: danger reads as text and icons, 7.28:1 on surface.default, above the 4.5:1 floor.
+  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+
+- **Token** `color.status.danger` → `destructive.description.label` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
+
+  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
+
+  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
+  - **Dark** red.dark.600: danger reads as text and icons, 7.28:1 on surface.default, above the 4.5:1 floor.
+  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+
+- **Token** `color.surface.default` → `destructive.background` #FFFFFF · dark #161B23 :label[By scheme]{tone="info"}
+
+  The base fill for content.
+
+  - **Pick** neutral.0: the base for content; body text reads 17.28:1 on it, above the 4.5:1 floor.
+  - **Dark** neutral.50: the base for content; body text reads 16.26:1 on it, above the 4.5:1 floor.
+  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
+:::
 
 ## For agents
 

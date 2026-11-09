@@ -25,23 +25,177 @@ Come back whenever a part makes you wonder why.
 
 Each part does a job for the person. These are the jobs, as questions the part answers.
 
-<div class="odv-am-rolelist"><span class="odv-am-role big"><b>Containment</b> What holds this?</span><span class="odv-am-role big"><b>Layering</b> What sits on top?</span><span class="odv-am-role big"><b>Hierarchy</b> What do you read first?</span><span class="odv-am-role big"><b>Readability</b> Can you read it?</span><span class="odv-am-role big"><b>Emphasis</b> Where does the eye go?</span><span class="odv-am-role big"><b>Meaning</b> What state is it in?</span><span class="odv-am-role big"><b>Affordance</b> Can you act on it?</span><span class="odv-am-role big"><b>Feedback</b> Did it respond?</span><span class="odv-am-role big"><b>Focus</b> Where is the keyboard?</span><span class="odv-am-role big"><b>Grouping</b> What belongs together?</span><span class="odv-am-role big"><b>Reach</b> Can you hit it?</span></div>
+- **Containment** What holds this?
+- **Layering** What sits on top?
+- **Hierarchy** What do you read first?
+- **Readability** Can you read it?
+- **Emphasis** Where does the eye go?
+- **Meaning** What state is it in?
+- **Affordance** Can you act on it?
+- **Feedback** Did it respond?
+- **Focus** Where is the keyboard?
+- **Grouping** What belongs together?
+- **Reach** Can you hit it?
 
 ## The parts
 
-<div class="odv-am-parts"><figure class="odv-am-stage"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/slider/stage.png" alt="Slider, every part numbered" loading="lazy"/></span><figcaption>Content first, light, drawn in Figma from the scheme's tokens.</figcaption></figure><div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k"><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span> Its value changes by scheme. The part is the same in every scheme.</p><ul><li class="odv-am-lrow d0"><i class="odv-am-n">1</i><span class="odv-am-glyph"></span><b>Track</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What holds this?">Containment</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">2</i><span class="odv-am-glyph"></span><b>Range</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">3</i><span class="odv-am-glyph"></span><b>Thumb</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you act on it?">Affordance</span><span class="odv-am-role" title="Can you hit it?">Reach</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">4</i><span class="odv-am-glyph"></span><b>Focus ring</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Where is the keyboard?">Focus</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">5</i><span class="odv-am-glyph"></span><b>Disabled slider</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Did it respond?">Feedback</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Label</b><span class="odv-am-need">required · shown by Label</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span></span></li></ul></div></div>
+![Slider, every part numbered](/anatomy/content-first/slider/stage.png)
+
+*Content first, light, drawn in Figma from the scheme's tokens.*
+
+Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
+
+:label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
+
+- **1** **Track** required :label[By scheme]{tone="info"} :label[Containment]
+- **2** **Range** required :label[By scheme]{tone="info"} :label[Meaning]
+- **3** **Thumb** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
+- **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+- **5** **Disabled slider** state :label[By scheme]{tone="info"} :label[Feedback]
+- **Label** required · shown by Label :label[Readability]
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-<section class="odv-am-card" id="part-1-2"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/slider/card-1.png" alt="Track and range: 1, 2" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">1</i><i class="odv-am-n">2</i><b>Track and range</b><span class="odv-am-role" title="What holds this?">Containment</span><span class="odv-am-role" title="What state is it in?">Meaning</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Surface, text, action and status</div><div class="odv-am-why">Reading needs few color roles.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Shape · What should control corners say? → Rounded</div><div class="odv-am-why">Rounded corners feel friendly.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.sunken</code><span>→</span><code>track.background</code><span class="odv-am-val">#F6F2EA · dark #2E2A24</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">A recessed fill, a step below content.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.</div><div><b>Dark</b> neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.</div><div><b>Shares the step with</b> surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>radius.round</code><span>→</span><code>track.radius</code><span class="odv-am-val">9999px</span></div><div class="odv-am-lines"><div><b>Pick</b> radius.full</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.action.primary</code><span>→</span><code>range.background</code><span class="odv-am-val">#1E3A5F · dark #8FA6C4</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The one main action in a view.</div><div class="odv-am-lines"><div><b>Pick</b> navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.</div><div><b>Dark</b> navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.</div><div><b>Shares the step with</b> border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.</div></div></li></ul></div></section>
+:::panel{id="part-1-2" title="Track and range" note="Parts 1, 2"}
+![Track and range: 1, 2](/anatomy/content-first/slider/card-1.png)
 
-<section class="odv-am-card" id="part-3"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/slider/card-2.png" alt="Thumb: 3" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">3</i><b>Thumb</b><span class="odv-am-role" title="Can you act on it?">Affordance</span><span class="odv-am-role" title="Can you hit it?">Reach</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Accessibility · What is the smallest target? → Touch size</div><div class="odv-am-why">Readers are often on phones.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Shape · What should control corners say? → Rounded</div><div class="odv-am-why">Rounded corners feel friendly.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Elevation · How soft are shadows? → Soft</div><div class="odv-am-why">Soft shadows suit warm paper.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.</div><div class="odv-am-why">Many readers are on phones.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>size.icon</code><span>→</span><code>thumb.icon-size</code><span class="odv-am-val">1rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> size.16</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>radius.round</code><span>→</span><code>thumb.radius</code><span class="odv-am-val">9999px</span></div><div class="odv-am-lines"><div><b>Pick</b> radius.full</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.action.primary</code><span>→</span><code>thumb.border</code><span class="odv-am-val">#1E3A5F · dark #8FA6C4</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The one main action in a view.</div><div class="odv-am-lines"><div><b>Pick</b> navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.</div><div><b>Dark</b> navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.</div><div><b>Shares the step with</b> border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.default</code><span>→</span><code>thumb.background</code><span class="odv-am-val">#FFFFFF · dark #1F1B16</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The base fill for content.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.</div><div><b>Shares the step with</b> surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>elevation.card</code><span>→</span><code>thumb.shadow</code><span class="odv-am-val">0px 0px 0px, #00000000</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> shadow.none: Only menus and dialogs float.</div></div></li></ul></div></section>
+:label[Containment] :label[Meaning]
 
-<section class="odv-am-card" id="part-4"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/slider/card-3.png" alt="Focus ring: 4" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">4</i><b>Focus ring</b><span class="odv-am-role" title="Where is the keyboard?">Focus</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Accessibility · What contrast floor do we hold? → AA</div><div class="odv-am-why">AA contrast, with large text helping further.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.</div><div class="odv-am-why">Keyboard users must always see where they are.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.border.focus</code><span>→</span><code>thumb.focus-ring-focus</code><span class="odv-am-val">#1E3A5F · dark #8FA6C4</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The focus ring.</div><div class="odv-am-lines"><div><b>Pick</b> navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.</div><div><b>Dark</b> navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.</div><div><b>Shares the step with</b> border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>border-width.focus</code><span>→</span><code>thumb.focus</code><span class="odv-am-val">2px</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> border-width.2</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>border-width.focus-offset</code><span>→</span><code>thumb.focus-offset</code><span class="odv-am-val">2px</span></div><div class="odv-am-lines"><div><b>Pick</b> border-width.2</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.canvas</code><span>→</span><code>thumb.focus-ring-offset-focus</code><span class="odv-am-val">#FFFDF8 · dark #14110D</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The page background behind everything.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.</div><div><b>Dark</b> neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.</div></div></li></ul></div></section>
+- **Answer** Color · Which color roles does it need? → Surface, text, action and status
 
-<section class="odv-am-card" id="part-5"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/slider/card-4.png" alt="Disabled slider: 5" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">5</i><b>Disabled slider</b><span class="odv-am-role" title="Did it respond?">Feedback</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Accessibility · Which states get their own visible value? → Those and pressed</div><div class="odv-am-why">Pressed gets its own value for touch.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>opacity.disabled</code><span>→</span><code>disabled-opacity-disabled</code><span class="odv-am-val">0.4</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> opacity.40</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>opacity.disabled</code><span>→</span><code>thumb.disabled-opacity-disabled</code><span class="odv-am-val">0.4</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> opacity.40</div></div></li></ul></div></section>
+  Reading needs few color roles.
+
+- **Answer** Shape · What should control corners say? → Rounded
+
+  Rounded corners feel friendly.
+
+- **Token** `color.surface.sunken` → `track.background` #F6F2EA · dark #2E2A24 :label[By scheme]{tone="info"}
+
+  A recessed fill, a step below content.
+
+  - **Pick** neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.
+  - **Dark** neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.
+  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
+
+- **Token** `radius.round` → `track.radius` 9999px
+
+  - **Pick** radius.full
+
+- **Token** `color.action.primary` → `range.background` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
+
+  The one main action in a view.
+
+  - **Pick** navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.
+  - **Dark** navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.
+  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
+:::
+
+:::panel{id="part-3" title="Thumb" note="Parts 3"}
+![Thumb: 3](/anatomy/content-first/slider/card-2.png)
+
+:label[Affordance] :label[Reach]
+
+- **Answer** Accessibility · What is the smallest target? → Touch size
+
+  Readers are often on phones.
+
+- **Answer** Shape · What should control corners say? → Rounded
+
+  Rounded corners feel friendly.
+
+- **Answer** Elevation · How soft are shadows? → Soft
+
+  Soft shadows suit warm paper.
+
+- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
+
+  Many readers are on phones.
+
+- **Token** `size.icon` → `thumb.icon-size` 1rem :label[By scheme]{tone="info"}
+
+  - **Pick** size.16
+
+- **Token** `radius.round` → `thumb.radius` 9999px
+
+  - **Pick** radius.full
+
+- **Token** `color.action.primary` → `thumb.border` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
+
+  The one main action in a view.
+
+  - **Pick** navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.
+  - **Dark** navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.
+  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
+
+- **Token** `color.surface.default` → `thumb.background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
+
+  The base fill for content.
+
+  - **Pick** neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.
+  - **Dark** neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.
+  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
+
+- **Token** `elevation.card` → `thumb.shadow` 0px 0px 0px, #00000000 :label[By scheme]{tone="info"}
+
+  - **Pick** shadow.none: Only menus and dialogs float.
+:::
+
+:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+![Focus ring: 4](/anatomy/content-first/slider/card-3.png)
+
+:label[Focus]
+
+- **Answer** Accessibility · What contrast floor do we hold? → AA
+
+  AA contrast, with large text helping further.
+
+- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
+
+  Keyboard users must always see where they are.
+
+- **Token** `color.border.focus` → `thumb.focus-ring-focus` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
+
+  The focus ring.
+
+  - **Pick** navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.
+  - **Dark** navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.
+  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
+
+- **Token** `border-width.focus` → `thumb.focus` 2px :label[By scheme]{tone="info"}
+
+  - **Pick** border-width.2
+
+- **Token** `border-width.focus-offset` → `thumb.focus-offset` 2px
+
+  - **Pick** border-width.2
+
+- **Token** `color.surface.canvas` → `thumb.focus-ring-offset-focus` #FFFDF8 · dark #14110D :label[By scheme]{tone="info"}
+
+  The page background behind everything.
+
+  - **Pick** neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.
+  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
+:::
+
+:::panel{id="part-5" title="Disabled slider" note="Parts 5"}
+![Disabled slider: 5](/anatomy/content-first/slider/card-4.png)
+
+:label[Feedback]
+
+- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
+
+  Pressed gets its own value for touch.
+
+- **Token** `opacity.disabled` → `disabled-opacity-disabled` 0.4 :label[By scheme]{tone="info"}
+
+  - **Pick** opacity.40
+
+- **Token** `opacity.disabled` → `thumb.disabled-opacity-disabled` 0.4 :label[By scheme]{tone="info"}
+
+  - **Pick** opacity.40
+:::
 
 ## For agents
 

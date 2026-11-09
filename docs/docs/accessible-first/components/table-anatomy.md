@@ -25,21 +25,166 @@ Come back whenever a part makes you wonder why.
 
 Each part does a job for the person. These are the jobs, as questions the part answers.
 
-<div class="odv-am-rolelist"><span class="odv-am-role big"><b>Containment</b> What holds this?</span><span class="odv-am-role big"><b>Layering</b> What sits on top?</span><span class="odv-am-role big"><b>Hierarchy</b> What do you read first?</span><span class="odv-am-role big"><b>Readability</b> Can you read it?</span><span class="odv-am-role big"><b>Emphasis</b> Where does the eye go?</span><span class="odv-am-role big"><b>Meaning</b> What state is it in?</span><span class="odv-am-role big"><b>Affordance</b> Can you act on it?</span><span class="odv-am-role big"><b>Feedback</b> Did it respond?</span><span class="odv-am-role big"><b>Focus</b> Where is the keyboard?</span><span class="odv-am-role big"><b>Grouping</b> What belongs together?</span><span class="odv-am-role big"><b>Reach</b> Can you hit it?</span></div>
+- **Containment** What holds this?
+- **Layering** What sits on top?
+- **Hierarchy** What do you read first?
+- **Readability** Can you read it?
+- **Emphasis** Where does the eye go?
+- **Meaning** What state is it in?
+- **Affordance** Can you act on it?
+- **Feedback** Did it respond?
+- **Focus** Where is the keyboard?
+- **Grouping** What belongs together?
+- **Reach** Can you hit it?
 
 ## The parts
 
-<div class="odv-am-parts"><figure class="odv-am-stage"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/accessible-first/table/stage.png" alt="Table, every part numbered" loading="lazy"/></span><figcaption>Accessible first, light, drawn in Figma from the scheme's tokens.</figcaption></figure><div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k"><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span> Its value changes by scheme. The part is the same in every scheme.</p><ul><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Header</b><span class="odv-am-need">required</span><span class="odv-am-roles"><span class="odv-am-role" title="What do you read first?">Hierarchy</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">1</i><span class="odv-am-glyph">├</span><b>Header row</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What do you read first?">Hierarchy</span><span class="odv-am-role" title="What belongs together?">Grouping</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">2</i><span class="odv-am-glyph">└</span><b>Header label</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What do you read first?">Hierarchy</span><span class="odv-am-role" title="Can you read it?">Readability</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Row</b><span class="odv-am-need">required</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="Can you hit it?">Reach</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">3</i><span class="odv-am-glyph">├</span><b>Row and its line</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you hit it?">Reach</span><span class="odv-am-role" title="What belongs together?">Grouping</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">4</i><span class="odv-am-glyph">├</span><b>Cell</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">5</i><span class="odv-am-glyph">└</span><b>Selected row</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Did it respond?">Feedback</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Status</b><span class="odv-am-need">optional · shown by Badge</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Row action</b><span class="odv-am-need">optional · shown by Button</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you act on it?">Affordance</span></span></li></ul></div></div>
+![Table, every part numbered](/anatomy/accessible-first/table/stage.png)
+
+*Accessible first, light, drawn in Figma from the scheme's tokens.*
+
+Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
+
+:label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
+
+- **Header** required :label[Hierarchy]
+  - **1** **Header row** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Grouping]
+  - **2** **Header label** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
+- **Row** required :label[Readability] :label[Reach]
+  - **3** **Row and its line** required :label[By scheme]{tone="info"} :label[Reach] :label[Grouping]
+  - **4** **Cell** required :label[By scheme]{tone="info"} :label[Readability]
+  - **5** **Selected row** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
+- **Status** optional · shown by Badge :label[Meaning]
+- **Row action** optional · shown by Button :label[Affordance]
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-<section class="odv-am-card" id="part-1-2"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/accessible-first/table/card-1.png" alt="Header: 1, 2" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">1</i><i class="odv-am-n">2</i><b>Header</b><span class="odv-am-role" title="What do you read first?">Hierarchy</span><span class="odv-am-role" title="What belongs together?">Grouping</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">What is the main content? → Forms and tasks</div><div class="odv-am-why">Most screens are forms and steps.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Typography · Which text roles does it need? → Core: heading, body, label</div><div class="odv-am-why">Few roles keep pages predictable.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For field label or column header, use type.label, above the field, always visible. Don't use a placeholder as the label.</div><div class="odv-am-why">Labels must stay visible while typing.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.sunken</code><span>→</span><code>header-background</code><span class="odv-am-val">#EDEDED · dark #222222</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">A recessed fill, a step below content.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.</div><div><b>Dark</b> neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.</div><div><b>Shares the step with</b> surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.secondary</code><span>→</span><code>head.label</code><span class="odv-am-val">#333333 · dark #D6D6D6</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Supporting text.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.</div><div><b>Dark</b> neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.label.font-weight</code><span>→</span><code>head.font-weight</code><span class="odv-am-val">700</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.weight.700</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>space.inset.cell-x</code><span>→</span><code>head.padding-x</code><span class="odv-am-val">1rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> space.16</div></div></li></ul></div></section>
+:::panel{id="part-1-2" title="Header" note="Parts 1, 2"}
+![Header: 1, 2](/anatomy/accessible-first/table/card-1.png)
 
-<section class="odv-am-card" id="part-3-4"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/accessible-first/table/card-2.png" alt="Row: 3, 4" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">3</i><i class="odv-am-n">4</i><b>Row</b><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="Can you hit it?">Reach</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">How much is on one screen? → One idea at a time</div><div class="odv-am-why">One question per screen lowers effort.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Spacing · How dense is the layout? → Spacious</div><div class="odv-am-why">Space lowers effort and mis-taps.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For table row height, use size.row (large). Don't use a compact row.</div><div class="odv-am-why">Large rows are easy to read and tap.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a number in a table, use type.body. Don't use a small or mono font.</div><div class="odv-am-why">Every number must be readable at large size.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>size.row</code><span>→</span><code>row-height</code><span class="odv-am-val">3.5rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> size.56</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.border.default</code><span>→</span><code>row-border</code><span class="odv-am-val">#D6D6D6 · dark #333333</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Quiet edges and dividers. Decorative, so it has no contrast minimum.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.</div><div><b>Dark</b> neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.</div><div><b>Shares the step with</b> surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.primary</code><span>→</span><code>label</code><span class="odv-am-val">#141414 · dark #F7F7F7</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Body text and headings.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.</div><div><b>Dark</b> neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.</div><div><b>Shares the step with</b> surface.inverse. Changing this pick moves only what reads color.text.primary.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.data.font-family</code><span>→</span><code>cell.font-family</code><span class="odv-am-val">&quot;Atkinson Hyperlegible&quot;, Verdana, sans-serif</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.</div></div></li></ul></div></section>
+:label[Hierarchy] :label[Grouping]
 
-<section class="odv-am-card" id="part-5"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/accessible-first/table/card-3.png" alt="Selected row: 5" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">5</i><b>Selected row</b><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Did it respond?">Feedback</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">What is the main task? → Complete a form</div><div class="odv-am-why">People must finish the form.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Accessibility · How many signals carry each meaning? → Three: color, icon and word</div><div class="odv-am-why">Never color alone.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a selected row or item, use color.surface.selected and a check icon. Don't use color alone.</div><div class="odv-am-why">Selection never relies on color alone.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.selected</code><span>→</span><code>row-selected</code><span class="odv-am-val">#E2EDFF · dark #102547</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The fill of a selected or current item, or a toggle that is on.</div><div class="odv-am-lines"><div><b>Pick</b> blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.</div><div><b>Dark</b> blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.</div><div><b>Shares the step with</b> category.1.subtle. Changing this pick moves only what reads color.surface.selected.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.border.selected</code><span>→</span><code>row-selected-edge</code><span class="odv-am-val">#0B4FC0 · dark #8AB4F8</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The edge that marks a selected item, beside its fill, so selection is never color alone.</div><div class="odv-am-lines"><div><b>Pick</b> blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.</div><div><b>Dark</b> blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.</div><div><b>Shares the step with</b> border.focus, action.primary, category.1. Changing this pick moves only what reads color.border.selected.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>border-width.focus</code><span>→</span><code>row.focus</code><span class="odv-am-val">3px</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> border-width.3</div></div></li></ul></div></section>
+- **Answer** What is the main content? → Forms and tasks
+
+  Most screens are forms and steps.
+
+- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
+
+  Few roles keep pages predictable.
+
+- **Rule** For field label or column header, use type.label, above the field, always visible. Don't use a placeholder as the label.
+
+  Labels must stay visible while typing.
+
+- **Token** `color.surface.sunken` → `header-background` #EDEDED · dark #222222 :label[By scheme]{tone="info"}
+
+  A recessed fill, a step below content.
+
+  - **Pick** neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.
+  - **Dark** neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.
+  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
+
+- **Token** `color.text.secondary` → `head.label` #333333 · dark #D6D6D6 :label[By scheme]{tone="info"}
+
+  Supporting text.
+
+  - **Pick** neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.
+  - **Dark** neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.
+
+- **Token** `type.label.font-weight` → `head.font-weight` 700 :label[By scheme]{tone="info"}
+
+  - **Pick** font.weight.700
+
+- **Token** `space.inset.cell-x` → `head.padding-x` 1rem :label[By scheme]{tone="info"}
+
+  - **Pick** space.16
+:::
+
+:::panel{id="part-3-4" title="Row" note="Parts 3, 4"}
+![Row: 3, 4](/anatomy/accessible-first/table/card-2.png)
+
+:label[Readability] :label[Reach]
+
+- **Answer** How much is on one screen? → One idea at a time
+
+  One question per screen lowers effort.
+
+- **Answer** Spacing · How dense is the layout? → Spacious
+
+  Space lowers effort and mis-taps.
+
+- **Rule** For table row height, use size.row (large). Don't use a compact row.
+
+  Large rows are easy to read and tap.
+
+- **Rule** For a number in a table, use type.body. Don't use a small or mono font.
+
+  Every number must be readable at large size.
+
+- **Token** `size.row` → `row-height` 3.5rem :label[By scheme]{tone="info"}
+
+  - **Pick** size.56
+
+- **Token** `color.border.default` → `row-border` #D6D6D6 · dark #333333 :label[By scheme]{tone="info"}
+
+  Quiet edges and dividers. Decorative, so it has no contrast minimum.
+
+  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.
+  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.
+  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+
+- **Token** `color.text.primary` → `label` #141414 · dark #F7F7F7 :label[By scheme]{tone="info"}
+
+  Body text and headings.
+
+  - **Pick** neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.
+  - **Dark** neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.
+  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+
+- **Token** `type.data.font-family` → `cell.font-family` "Atkinson Hyperlegible", Verdana, sans-serif :label[By scheme]{tone="info"}
+
+  - **Pick** atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.
+:::
+
+:::panel{id="part-5" title="Selected row" note="Parts 5"}
+![Selected row: 5](/anatomy/accessible-first/table/card-3.png)
+
+:label[Meaning] :label[Feedback]
+
+- **Answer** What is the main task? → Complete a form
+
+  People must finish the form.
+
+- **Answer** Accessibility · How many signals carry each meaning? → Three: color, icon and word
+
+  Never color alone.
+
+- **Rule** For a selected row or item, use color.surface.selected and a check icon. Don't use color alone.
+
+  Selection never relies on color alone.
+
+- **Token** `color.surface.selected` → `row-selected` #E2EDFF · dark #102547 :label[By scheme]{tone="info"}
+
+  The fill of a selected or current item, or a toggle that is on.
+
+  - **Pick** blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.
+  - **Dark** blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.
+  - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
+
+- **Token** `color.border.selected` → `row-selected-edge` #0B4FC0 · dark #8AB4F8 :label[By scheme]{tone="info"}
+
+  The edge that marks a selected item, beside its fill, so selection is never color alone.
+
+  - **Pick** blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.
+  - **Dark** blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.
+  - **Shares the step with** border.focus, action.primary, category.1. Changing this pick moves only what reads color.border.selected.
+
+- **Token** `border-width.focus` → `row.focus` 3px :label[By scheme]{tone="info"}
+
+  - **Pick** border-width.3
+:::
 
 ## For agents
 

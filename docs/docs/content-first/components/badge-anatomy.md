@@ -25,21 +25,162 @@ Come back whenever a part makes you wonder why.
 
 Each part does a job for the person. These are the jobs, as questions the part answers.
 
-<div class="odv-am-rolelist"><span class="odv-am-role big"><b>Containment</b> What holds this?</span><span class="odv-am-role big"><b>Layering</b> What sits on top?</span><span class="odv-am-role big"><b>Hierarchy</b> What do you read first?</span><span class="odv-am-role big"><b>Readability</b> Can you read it?</span><span class="odv-am-role big"><b>Emphasis</b> Where does the eye go?</span><span class="odv-am-role big"><b>Meaning</b> What state is it in?</span><span class="odv-am-role big"><b>Affordance</b> Can you act on it?</span><span class="odv-am-role big"><b>Feedback</b> Did it respond?</span><span class="odv-am-role big"><b>Focus</b> Where is the keyboard?</span><span class="odv-am-role big"><b>Grouping</b> What belongs together?</span><span class="odv-am-role big"><b>Reach</b> Can you hit it?</span></div>
+- **Containment** What holds this?
+- **Layering** What sits on top?
+- **Hierarchy** What do you read first?
+- **Readability** Can you read it?
+- **Emphasis** Where does the eye go?
+- **Meaning** What state is it in?
+- **Affordance** Can you act on it?
+- **Feedback** Did it respond?
+- **Focus** Where is the keyboard?
+- **Grouping** What belongs together?
+- **Reach** Can you hit it?
 
 ## The parts
 
-<div class="odv-am-parts"><figure class="odv-am-stage"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/badge/stage.png" alt="Badge, every part numbered" loading="lazy"/></span><figcaption>Content first, light, drawn in Figma from the scheme's tokens.</figcaption></figure><div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k"><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span> Its value changes by scheme. The part is the same in every scheme.</p><ul><li class="odv-am-lrow d0"><i class="odv-am-n">1</i><span class="odv-am-glyph"></span><b>Fill</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What holds this?">Containment</span><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">2</i><span class="odv-am-glyph"></span><b>Label</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">3</i><span class="odv-am-glyph"></span><b>Tone</b><span class="odv-am-need">optional</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Where does the eye go?">Emphasis</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Icon</b><span class="odv-am-need">optional · not in this example</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li></ul></div></div>
+![Badge, every part numbered](/anatomy/content-first/badge/stage.png)
+
+*Content first, light, drawn in Figma from the scheme's tokens.*
+
+Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
+
+:label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
+
+- **1** **Fill** required :label[By scheme]{tone="info"} :label[Containment] :label[Meaning]
+- **2** **Label** required :label[By scheme]{tone="info"} :label[Readability] :label[Meaning]
+- **3** **Tone** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
+- **Icon** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-<section class="odv-am-card" id="part-1"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/badge/card-1.png" alt="Fill: 1" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">1</i><b>Fill</b><span class="odv-am-role" title="What holds this?">Containment</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Shape · What should control corners say? → Rounded</div><div class="odv-am-why">Rounded corners feel friendly.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Spacing · How dense is the layout? → Spacious</div><div class="odv-am-why">Room around the text helps reading.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For shape of a status badge, use radius.badge (pill). Don't use a rectangle.</div><div class="odv-am-why">Pills sit softly next to text.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>radius.badge</code><span>→</span><code>radius</code><span class="odv-am-val">9999px</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> radius.999: Rounded corners feel friendly.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>space.gap.tight</code><span>→</span><code>padding-x</code><span class="odv-am-val">0.5rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> space.8</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>component-spacing-map.hairline</code><span>→</span><code>padding-y</code><span class="odv-am-val">0.125rem</span></div><div class="odv-am-lines"><div><b>Pick</b> space.2</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.sunken</code><span>→</span><code>neutral.background</code><span class="odv-am-val">#F6F2EA · dark #2E2A24</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">A recessed fill, a step below content.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.</div><div><b>Dark</b> neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.</div><div><b>Shares the step with</b> surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.</div></div></li></ul></div></section>
+:::panel{id="part-1" title="Fill" note="Parts 1"}
+![Fill: 1](/anatomy/content-first/badge/card-1.png)
 
-<section class="odv-am-card" id="part-2"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/badge/card-2.png" alt="Label: 2" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">2</i><b>Label</b><span class="odv-am-role" title="Can you read it?">Readability</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Typography · How large is body text? → Large</div><div class="odv-am-why">Large body text is easy on the eyes.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a status, use Badge pill with a word. Don't use an icon alone.</div><div class="odv-am-why">Status is rare, so readers never learn an icon for it. A word is clear the first time.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.caption.font-size</code><span>→</span><code>font-size</code><span class="odv-am-val">0.875rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.size.14</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.label.font-weight</code><span>→</span><code>font-weight</code><span class="odv-am-val">600</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.weight.600</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.caption.font-family</code><span>→</span><code>font-family</code><span class="odv-am-val">Inter, system-ui, sans-serif</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> inter for caption text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.secondary</code><span>→</span><code>neutral.label</code><span class="odv-am-val">#4A4339 · dark #CFC6B6</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Supporting text.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.</div></div></li></ul></div></section>
+:label[Containment]
 
-<section class="odv-am-card" id="part-3"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/content-first/badge/card-3.png" alt="Tone: 3" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">3</i><b>Tone</b><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Where does the eye go?">Emphasis</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Surface, text, action and status</div><div class="odv-am-why">Reading needs few color roles.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Accessibility · How many signals carry each meaning? → Two: color and word</div><div class="odv-am-why">Status is rare; color and a word are enough.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a status, use Badge pill with a word. Don't use an icon alone.</div><div class="odv-am-why">Status is rare, so readers never learn an icon for it. A word is clear the first time.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.status.info.subtle</code><span>→</span><code>info.background</code><span class="odv-am-val">#D3E4FF · dark #172C4F</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The fill behind info status.</div><div class="odv-am-lines"><div><b>Pick</b> blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.</div><div><b>Dark</b> blue.dark.100: a quiet tint behind info; its text, 10.8:1, above the 4.5:1 floor.</div><div><b>Shares the step with</b> category.2.subtle. Changing this pick moves only what reads color.status.info.subtle.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.status.success.subtle</code><span>→</span><code>success.background</code><span class="odv-am-val">#DBF7DF · dark #02351B</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The fill behind success status.</div><div class="odv-am-lines"><div><b>Pick</b> green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.</div><div><b>Dark</b> green.dark.100: a quiet tint behind success; its text, 12.03:1, above the 4.5:1 floor.</div><div><b>Shares the step with</b> category.3.subtle. Changing this pick moves only what reads color.status.success.subtle.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.status.warning.subtle</code><span>→</span><code>warning.background</code><span class="odv-am-val">#FEE8CF · dark #402B00</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The fill behind warning status.</div><div class="odv-am-lines"><div><b>Pick</b> amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.</div><div><b>Dark</b> amber.dark.100: a quiet tint behind warning; its text, 11.29:1, above the 4.5:1 floor.</div><div><b>Shares the step with</b> category.4.subtle. Changing this pick moves only what reads color.status.warning.subtle.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.status.danger.subtle</code><span>→</span><code>danger.background</code><span class="odv-am-val">#FFDBD8 · dark #4D181A</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The fill behind danger status.</div><div class="odv-am-lines"><div><b>Pick</b> red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.</div><div><b>Dark</b> red.dark.100: a quiet tint behind danger; its text, 11.21:1, above the 4.5:1 floor.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.warning-on-light</code><span>→</span><code>warning.label</code><span class="odv-am-val">#462A02</span></div><div class="odv-am-why">The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).</div><div class="odv-am-lines"><div><b>Pick</b> amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.</div></div></li></ul></div></section>
+- **Answer** Shape · What should control corners say? → Rounded
+
+  Rounded corners feel friendly.
+
+- **Answer** Spacing · How dense is the layout? → Spacious
+
+  Room around the text helps reading.
+
+- **Rule** For shape of a status badge, use radius.badge (pill). Don't use a rectangle.
+
+  Pills sit softly next to text.
+
+- **Token** `radius.badge` → `radius` 9999px :label[By scheme]{tone="info"}
+
+  - **Pick** radius.999: Rounded corners feel friendly.
+
+- **Token** `space.gap.tight` → `padding-x` 0.5rem :label[By scheme]{tone="info"}
+
+  - **Pick** space.8
+
+- **Token** `component-spacing-map.hairline` → `padding-y` 0.125rem
+
+  - **Pick** space.2
+
+- **Token** `color.surface.sunken` → `neutral.background` #F6F2EA · dark #2E2A24 :label[By scheme]{tone="info"}
+
+  A recessed fill, a step below content.
+
+  - **Pick** neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.
+  - **Dark** neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.
+  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
+:::
+
+:::panel{id="part-2" title="Label" note="Parts 2"}
+![Label: 2](/anatomy/content-first/badge/card-2.png)
+
+:label[Readability]
+
+- **Answer** Typography · How large is body text? → Large
+
+  Large body text is easy on the eyes.
+
+- **Rule** For a status, use Badge pill with a word. Don't use an icon alone.
+
+  Status is rare, so readers never learn an icon for it. A word is clear the first time.
+
+- **Token** `type.caption.font-size` → `font-size` 0.875rem :label[By scheme]{tone="info"}
+
+  - **Pick** font.size.14
+
+- **Token** `type.label.font-weight` → `font-weight` 600 :label[By scheme]{tone="info"}
+
+  - **Pick** font.weight.600
+
+- **Token** `type.caption.font-family` → `font-family` Inter, system-ui, sans-serif :label[By scheme]{tone="info"}
+
+  - **Pick** inter for caption text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.
+
+- **Token** `color.text.secondary` → `neutral.label` #4A4339 · dark #CFC6B6 :label[By scheme]{tone="info"}
+
+  Supporting text.
+
+  - **Pick** neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.
+  - **Dark** neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.
+:::
+
+:::panel{id="part-3" title="Tone" note="Parts 3"}
+![Tone: 3](/anatomy/content-first/badge/card-3.png)
+
+:label[Meaning] :label[Emphasis]
+
+- **Answer** Color · Which color roles does it need? → Surface, text, action and status
+
+  Reading needs few color roles.
+
+- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
+
+  Status is rare; color and a word are enough.
+
+- **Rule** For a status, use Badge pill with a word. Don't use an icon alone.
+
+  Status is rare, so readers never learn an icon for it. A word is clear the first time.
+
+- **Token** `color.status.info.subtle` → `info.background` #D3E4FF · dark #172C4F :label[By scheme]{tone="info"}
+
+  The fill behind info status.
+
+  - **Pick** blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.
+  - **Dark** blue.dark.100: a quiet tint behind info; its text, 10.8:1, above the 4.5:1 floor.
+  - **Shares the step with** category.2.subtle. Changing this pick moves only what reads color.status.info.subtle.
+
+- **Token** `color.status.success.subtle` → `success.background` #DBF7DF · dark #02351B :label[By scheme]{tone="info"}
+
+  The fill behind success status.
+
+  - **Pick** green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.
+  - **Dark** green.dark.100: a quiet tint behind success; its text, 12.03:1, above the 4.5:1 floor.
+  - **Shares the step with** category.3.subtle. Changing this pick moves only what reads color.status.success.subtle.
+
+- **Token** `color.status.warning.subtle` → `warning.background` #FEE8CF · dark #402B00 :label[By scheme]{tone="info"}
+
+  The fill behind warning status.
+
+  - **Pick** amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.
+  - **Dark** amber.dark.100: a quiet tint behind warning; its text, 11.29:1, above the 4.5:1 floor.
+  - **Shares the step with** category.4.subtle. Changing this pick moves only what reads color.status.warning.subtle.
+
+- **Token** `color.status.danger.subtle` → `danger.background` #FFDBD8 · dark #4D181A :label[By scheme]{tone="info"}
+
+  The fill behind danger status.
+
+  - **Pick** red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.
+  - **Dark** red.dark.100: a quiet tint behind danger; its text, 11.21:1, above the 4.5:1 floor.
+
+- **Token** `color.text.warning-on-light` → `warning.label` #462A02
+
+  The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).
+
+  - **Pick** amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.
+:::
 
 ## For agents
 

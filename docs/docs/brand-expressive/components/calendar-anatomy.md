@@ -25,31 +25,299 @@ Come back whenever a part makes you wonder why.
 
 Each part does a job for the person. These are the jobs, as questions the part answers.
 
-<div class="odv-am-rolelist"><span class="odv-am-role big"><b>Containment</b> What holds this?</span><span class="odv-am-role big"><b>Layering</b> What sits on top?</span><span class="odv-am-role big"><b>Hierarchy</b> What do you read first?</span><span class="odv-am-role big"><b>Readability</b> Can you read it?</span><span class="odv-am-role big"><b>Emphasis</b> Where does the eye go?</span><span class="odv-am-role big"><b>Meaning</b> What state is it in?</span><span class="odv-am-role big"><b>Affordance</b> Can you act on it?</span><span class="odv-am-role big"><b>Feedback</b> Did it respond?</span><span class="odv-am-role big"><b>Focus</b> Where is the keyboard?</span><span class="odv-am-role big"><b>Grouping</b> What belongs together?</span><span class="odv-am-role big"><b>Reach</b> Can you hit it?</span></div>
+- **Containment** What holds this?
+- **Layering** What sits on top?
+- **Hierarchy** What do you read first?
+- **Readability** Can you read it?
+- **Emphasis** Where does the eye go?
+- **Meaning** What state is it in?
+- **Affordance** Can you act on it?
+- **Feedback** Did it respond?
+- **Focus** Where is the keyboard?
+- **Grouping** What belongs together?
+- **Reach** Can you hit it?
 
 ## The parts
 
-<div class="odv-am-parts"><figure class="odv-am-stage"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/stage.png" alt="Calendar, every part numbered" loading="lazy"/></span><figcaption>Brand expressive, light, drawn in Figma from the scheme's tokens.</figcaption></figure><div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k"><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span> Its value changes by scheme. The part is the same in every scheme.</p><ul><li class="odv-am-lrow d0"><i class="odv-am-n">1</i><span class="odv-am-glyph"></span><b>Surface</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What holds this?">Containment</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">2</i><span class="odv-am-glyph"></span><b>Month caption</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What do you read first?">Hierarchy</span><span class="odv-am-role" title="Can you read it?">Readability</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Month buttons</b><span class="odv-am-need">required</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you act on it?">Affordance</span><span class="odv-am-role" title="Can you hit it?">Reach</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">3</i><span class="odv-am-glyph">├</span><b>Previous month</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you act on it?">Affordance</span><span class="odv-am-role" title="Can you hit it?">Reach</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">4</i><span class="odv-am-glyph">└</span><b>Next month</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you act on it?">Affordance</span><span class="odv-am-role" title="Can you hit it?">Reach</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">5</i><span class="odv-am-glyph"></span><b>Weekday</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="What do you read first?">Hierarchy</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Day</b><span class="odv-am-need">required</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you hit it?">Reach</span><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="Can you act on it?">Affordance</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">6</i><span class="odv-am-glyph">├</span><b>Day</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you hit it?">Reach</span><span class="odv-am-role" title="Can you read it?">Readability</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">7</i><span class="odv-am-glyph">├</span><b>Today</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">8</i><span class="odv-am-glyph">├</span><b>Selected day</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Where does the eye go?">Emphasis</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">9</i><span class="odv-am-glyph">├</span><b>Selected range</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="What belongs together?">Grouping</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">10</i><span class="odv-am-glyph">├</span><b>Day of another month</b><span class="odv-am-need">optional · no token yet</span><span class="odv-am-roles"><span class="odv-am-role" title="What do you read first?">Hierarchy</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">11</i><span class="odv-am-glyph">├</span><b>Day that cannot be picked</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Did it respond?">Feedback</span></span></li><li class="odv-am-lrow d1"><i class="odv-am-n">12</i><span class="odv-am-glyph">└</span><b>Focus ring</b><span class="odv-am-need">state</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Where is the keyboard?">Focus</span></span></li></ul></div></div>
+![Calendar, every part numbered](/anatomy/brand-expressive/calendar/stage.png)
+
+*Brand expressive, light, drawn in Figma from the scheme's tokens.*
+
+Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
+
+:label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
+
+- **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment]
+- **2** **Month caption** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
+- **Month buttons** required :label[Affordance] :label[Reach]
+  - **3** **Previous month** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
+  - **4** **Next month** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
+- **5** **Weekday** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
+- **Day** required :label[Reach] :label[Readability] :label[Affordance]
+  - **6** **Day** required :label[By scheme]{tone="info"} :label[Reach] :label[Readability]
+  - **7** **Today** state :label[By scheme]{tone="info"} :label[Meaning]
+  - **8** **Selected day** state :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
+  - **9** **Selected range** state :label[By scheme]{tone="info"} :label[Meaning] :label[Grouping]
+  - **10** **Day of another month** optional · no token yet :label[Hierarchy]
+  - **11** **Day that cannot be picked** state :label[By scheme]{tone="info"} :label[Feedback]
+  - **12** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-<section class="odv-am-card" id="part-1"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-1.png" alt="Surface: 1" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">1</i><b>Surface</b><span class="odv-am-role" title="What holds this?">Containment</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Those and brand accents</div><div class="odv-am-why">Brand accents are part of the message.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Spacing · How dense is the layout? → Spacious</div><div class="odv-am-why">Big space makes big moments.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.canvas</code><span>→</span><code>background</code><span class="odv-am-val">#FFF8F3 · dark #120B09</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The page background behind everything.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.</div><div><b>Dark</b> neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>component-spacing-map.x3</code><span>→</span><code>padding</code><span class="odv-am-val">1.5rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> space.24</div></div></li></ul></div></section>
+:::panel{id="part-1" title="Surface" note="Parts 1"}
+![Surface: 1](/anatomy/brand-expressive/calendar/card-1.png)
 
-<section class="odv-am-card" id="part-2-3-4"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-2.png" alt="Caption and month buttons: 2, 3, 4" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">2</i><i class="odv-am-n">3</i><i class="odv-am-n">4</i><b>Caption and month buttons</b><span class="odv-am-role" title="What do you read first?">Hierarchy</span><span class="odv-am-role" title="Can you act on it?">Affordance</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Typography · Which text roles does it need? → Core and expressive display</div><div class="odv-am-why">A big expressive display role carries the brand.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Iconography · How big are icons next to text? → Larger than the text</div><div class="odv-am-why">Larger icons hold their own next to big type.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For an icon with no label, use Not used: always add a word. Don't use an icon button with a hover hint.</div><div class="odv-am-why">On phones, hover hints never show; a word says what will happen.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.body.font-size</code><span>→</span><code>font-size</code><span class="odv-am-val">1.0625rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.size.17</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.label.font-weight</code><span>→</span><code>font-weight</code><span class="odv-am-val">700</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.weight.700</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>size.icon</code><span>→</span><code>icon-size</code><span class="odv-am-val">1.25rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> size.20</div></div></li></ul></div></section>
+:label[Containment]
 
-<section class="odv-am-card" id="part-5"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-3.png" alt="Weekdays: 5" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">5</i><b>Weekdays</b><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="What do you read first?">Hierarchy</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Typography · Which text roles does it need? → Core and expressive display</div><div class="odv-am-why">A big expressive display role carries the brand.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Those and brand accents</div><div class="odv-am-why">Brand accents are part of the message.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For field label or column header, use type.label. Don't use type.caption.</div><div class="odv-am-why">Labels stay readable on vivid color.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.muted</code><span>→</span><code>label</code><span class="odv-am-val">#6B544A · dark #B5988A</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The quietest text.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.body.font-weight</code><span>→</span><code>font-weight-2</code><span class="odv-am-val">400</span></div><div class="odv-am-lines"><div><b>Pick</b> font.weight.400</div></div></li></ul></div></section>
+- **Answer** Color · Which color roles does it need? → Those and brand accents
 
-<section class="odv-am-card" id="part-6"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-4.png" alt="Day: 6" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">6</i><b>Day</b><span class="odv-am-role" title="Can you hit it?">Reach</span><span class="odv-am-role" title="Can you read it?">Readability</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Shape · What should control corners say? → Pill</div><div class="odv-am-why">Pill controls feel playful.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Spacing · How dense is the layout? → Spacious</div><div class="odv-am-why">Big space makes big moments.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.</div><div class="odv-am-why">Most visitors arrive on phones, and a compact control is too small for a thumb.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For corners of buttons and inputs, use radius.control (pill). Don't use sharp corners.</div><div class="odv-am-why">Pills match the brand's round, playful shapes. Sharp corners would feel corporate.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>radius.control</code><span>→</span><code>radius</code><span class="odv-am-val">9999px</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> radius.999: Pill controls feel playful.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>component-spacing-map.x2</code><span>→</span><code>week.margin-top</code><span class="odv-am-val">0.5rem</span></div><div class="odv-am-lines"><div><b>Pick</b> space.8</div></div></li></ul></div></section>
+  Brand accents are part of the message.
 
-<section class="odv-am-card" id="part-7-8"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-5.png" alt="Today and the selected day: 7, 8" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">7</i><i class="odv-am-n">8</i><b>Today and the selected day</b><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="Where does the eye go?">Emphasis</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Those and brand accents</div><div class="odv-am-why">Brand accents are part of the message.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a selected row or item, use color.surface.selected (brand tint). Don't use grey.</div><div class="odv-am-why">Selection carries the brand.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.selected</code><span>→</span><code>day.today.background</code><span class="odv-am-val">#FFEAF0 · dark #451731</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The fill of a selected or current item, or a toggle that is on.</div><div class="odv-am-lines"><div><b>Pick</b> pink.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.</div><div><b>Dark</b> pink.dark.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.</div><div><b>Shares the step with</b> category.1.subtle. Changing this pick moves only what reads color.surface.selected.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.action.primary</code><span>→</span><code>day.selected.background</code><span class="odv-am-val">#D61F7A · dark #F59ACA</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The one main action in a view.</div><div class="odv-am-lines"><div><b>Pick</b> pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.</div><div><b>Dark</b> pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.</div><div><b>Shares the step with</b> border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.on-action</code><span>→</span><code>day.selected.label</code><span class="odv-am-val">#FFFFFF · dark #1F1411</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Text and icons on the main action's fill.</div><div class="odv-am-lines"><div><b>Pick</b> text.on-dark: the text its fill's tone picks, 4.84:1 on action.primary, above the 4.5:1 floor.</div><div><b>Dark</b> text.on-light: the text its fill's tone picks, 8.88:1 on action.primary, above the 4.5:1 floor.</div><div><b>Shares the step with</b> text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.</div></div></li></ul></div></section>
+- **Answer** Spacing · How dense is the layout? → Spacious
 
-<section class="odv-am-card" id="part-9"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-6.png" alt="Selected range: 9" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">9</i><b>Selected range</b><span class="odv-am-role" title="What state is it in?">Meaning</span><span class="odv-am-role" title="What belongs together?">Grouping</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Those and brand accents</div><div class="odv-am-why">Brand accents are part of the message.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Shape · What should control corners say? → Pill</div><div class="odv-am-why">Pill controls feel playful.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For a selected row or item, use color.surface.selected (brand tint). Don't use grey.</div><div class="odv-am-why">Selection carries the brand.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.selected</code><span>→</span><code>day.range.background</code><span class="odv-am-val">#FFEAF0 · dark #451731</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The fill of a selected or current item, or a toggle that is on.</div><div class="odv-am-lines"><div><b>Pick</b> pink.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.</div><div><b>Dark</b> pink.dark.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.</div><div><b>Shares the step with</b> category.1.subtle. Changing this pick moves only what reads color.surface.selected.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.primary</code><span>→</span><code>day.range.label</code><span class="odv-am-val">#1F1411 · dark #FFF8F3</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Body text and headings.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.</div><div><b>Shares the step with</b> surface.inverse. Changing this pick moves only what reads color.text.primary.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.action.primary</code><span>→</span><code>day.range-ends.background</code><span class="odv-am-val">#D61F7A · dark #F59ACA</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The one main action in a view.</div><div class="odv-am-lines"><div><b>Pick</b> pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.</div><div><b>Dark</b> pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.</div><div><b>Shares the step with</b> border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.on-action</code><span>→</span><code>day.range-ends.label</code><span class="odv-am-val">#FFFFFF · dark #1F1411</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Text and icons on the main action's fill.</div><div class="odv-am-lines"><div><b>Pick</b> text.on-dark: the text its fill's tone picks, 4.84:1 on action.primary, above the 4.5:1 floor.</div><div><b>Dark</b> text.on-light: the text its fill's tone picks, 8.88:1 on action.primary, above the 4.5:1 floor.</div><div><b>Shares the step with</b> text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.</div></div></li></ul></div></section>
+  Big space makes big moments.
 
-<section class="odv-am-card" id="part-11"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-7.png" alt="Day that cannot be picked: 11" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">11</i><b>Day that cannot be picked</b><span class="odv-am-role" title="Did it respond?">Feedback</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Accessibility · Which states get their own visible value? → Those and pressed</div><div class="odv-am-why">Pressed for touch.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>opacity.disabled</code><span>→</span><code>day.disabled-opacity</code><span class="odv-am-val">0.4</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> opacity.40</div></div></li></ul></div></section>
+- **Token** `color.surface.canvas` → `background` #FFF8F3 · dark #120B09 :label[By scheme]{tone="info"}
 
-<section class="odv-am-card" id="part-12"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/brand-expressive/calendar/card-8.png" alt="Focus ring: 12" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">12</i><b>Focus ring</b><span class="odv-am-role" title="Where is the keyboard?">Focus</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Accessibility · What contrast floor do we hold? → AA</div><div class="odv-am-why">AA, checked on every vivid color.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.</div><div class="odv-am-why">Focus must show on vivid color.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>border-width.focus</code><span>→</span><code>focus</code><span class="odv-am-val">3px</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> border-width.3</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.border.focus</code><span>→</span><code>focus-ring</code><span class="odv-am-val">#D61F7A · dark #F59ACA</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The focus ring.</div><div class="odv-am-lines"><div><b>Pick</b> pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.</div><div><b>Dark</b> pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.</div><div><b>Shares the step with</b> border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>border-width.focus-offset</code><span>→</span><code>focus-offset</code><span class="odv-am-val">2px</span></div><div class="odv-am-lines"><div><b>Pick</b> border-width.2</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.canvas</code><span>→</span><code>focus-ring-offset</code><span class="odv-am-val">#FFF8F3 · dark #120B09</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">The page background behind everything.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.</div><div><b>Dark</b> neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.</div></div></li></ul></div></section>
+  The page background behind everything.
+
+  - **Pick** neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.
+  - **Dark** neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.
+
+- **Token** `component-spacing-map.x3` → `padding` 1.5rem :label[By scheme]{tone="info"}
+
+  - **Pick** space.24
+:::
+
+:::panel{id="part-2-3-4" title="Caption and month buttons" note="Parts 2, 3, 4"}
+![Caption and month buttons: 2, 3, 4](/anatomy/brand-expressive/calendar/card-2.png)
+
+:label[Hierarchy] :label[Affordance]
+
+- **Answer** Typography · Which text roles does it need? → Core and expressive display
+
+  A big expressive display role carries the brand.
+
+- **Answer** Iconography · How big are icons next to text? → Larger than the text
+
+  Larger icons hold their own next to big type.
+
+- **Rule** For an icon with no label, use Not used: always add a word. Don't use an icon button with a hover hint.
+
+  On phones, hover hints never show; a word says what will happen.
+
+- **Token** `type.body.font-size` → `font-size` 1.0625rem :label[By scheme]{tone="info"}
+
+  - **Pick** font.size.17
+
+- **Token** `type.label.font-weight` → `font-weight` 700 :label[By scheme]{tone="info"}
+
+  - **Pick** font.weight.700
+
+- **Token** `size.icon` → `icon-size` 1.25rem :label[By scheme]{tone="info"}
+
+  - **Pick** size.20
+:::
+
+:::panel{id="part-5" title="Weekdays" note="Parts 5"}
+![Weekdays: 5](/anatomy/brand-expressive/calendar/card-3.png)
+
+:label[Readability] :label[Hierarchy]
+
+- **Answer** Typography · Which text roles does it need? → Core and expressive display
+
+  A big expressive display role carries the brand.
+
+- **Answer** Color · Which color roles does it need? → Those and brand accents
+
+  Brand accents are part of the message.
+
+- **Rule** For field label or column header, use type.label. Don't use type.caption.
+
+  Labels stay readable on vivid color.
+
+- **Token** `color.text.muted` → `label` #6B544A · dark #B5988A :label[By scheme]{tone="info"}
+
+  The quietest text.
+
+  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
+  - **Dark** neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.
+
+- **Token** `type.body.font-weight` → `font-weight-2` 400
+
+  - **Pick** font.weight.400
+:::
+
+:::panel{id="part-6" title="Day" note="Parts 6"}
+![Day: 6](/anatomy/brand-expressive/calendar/card-4.png)
+
+:label[Reach] :label[Readability]
+
+- **Answer** Shape · What should control corners say? → Pill
+
+  Pill controls feel playful.
+
+- **Answer** Spacing · How dense is the layout? → Spacious
+
+  Big space makes big moments.
+
+- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
+
+  Most visitors arrive on phones, and a compact control is too small for a thumb.
+
+- **Rule** For corners of buttons and inputs, use radius.control (pill). Don't use sharp corners.
+
+  Pills match the brand's round, playful shapes. Sharp corners would feel corporate.
+
+- **Token** `radius.control` → `radius` 9999px :label[By scheme]{tone="info"}
+
+  - **Pick** radius.999: Pill controls feel playful.
+
+- **Token** `component-spacing-map.x2` → `week.margin-top` 0.5rem
+
+  - **Pick** space.8
+:::
+
+:::panel{id="part-7-8" title="Today and the selected day" note="Parts 7, 8"}
+![Today and the selected day: 7, 8](/anatomy/brand-expressive/calendar/card-5.png)
+
+:label[Meaning] :label[Emphasis]
+
+- **Answer** Color · Which color roles does it need? → Those and brand accents
+
+  Brand accents are part of the message.
+
+- **Rule** For a selected row or item, use color.surface.selected (brand tint). Don't use grey.
+
+  Selection carries the brand.
+
+- **Token** `color.surface.selected` → `day.today.background` #FFEAF0 · dark #451731 :label[By scheme]{tone="info"}
+
+  The fill of a selected or current item, or a toggle that is on.
+
+  - **Pick** pink.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.
+  - **Dark** pink.dark.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.
+  - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
+
+- **Token** `color.action.primary` → `day.selected.background` #D61F7A · dark #F59ACA :label[By scheme]{tone="info"}
+
+  The one main action in a view.
+
+  - **Pick** pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.
+  - **Dark** pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.
+  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
+
+- **Token** `color.text.on-action` → `day.selected.label` #FFFFFF · dark #1F1411 :label[By scheme]{tone="info"}
+
+  Text and icons on the main action's fill.
+
+  - **Pick** text.on-dark: the text its fill's tone picks, 4.84:1 on action.primary, above the 4.5:1 floor.
+  - **Dark** text.on-light: the text its fill's tone picks, 8.88:1 on action.primary, above the 4.5:1 floor.
+  - **Shares the step with** text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.
+:::
+
+:::panel{id="part-9" title="Selected range" note="Parts 9"}
+![Selected range: 9](/anatomy/brand-expressive/calendar/card-6.png)
+
+:label[Meaning] :label[Grouping]
+
+- **Answer** Color · Which color roles does it need? → Those and brand accents
+
+  Brand accents are part of the message.
+
+- **Answer** Shape · What should control corners say? → Pill
+
+  Pill controls feel playful.
+
+- **Rule** For a selected row or item, use color.surface.selected (brand tint). Don't use grey.
+
+  Selection carries the brand.
+
+- **Token** `color.surface.selected` → `day.range.background` #FFEAF0 · dark #451731 :label[By scheme]{tone="info"}
+
+  The fill of a selected or current item, or a toggle that is on.
+
+  - **Pick** pink.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.
+  - **Dark** pink.dark.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.
+  - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
+
+- **Token** `color.text.primary` → `day.range.label` #1F1411 · dark #FFF8F3 :label[By scheme]{tone="info"}
+
+  Body text and headings.
+
+  - **Pick** neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.
+  - **Dark** neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.
+  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+
+- **Token** `color.action.primary` → `day.range-ends.background` #D61F7A · dark #F59ACA :label[By scheme]{tone="info"}
+
+  The one main action in a view.
+
+  - **Pick** pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.
+  - **Dark** pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.
+  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
+
+- **Token** `color.text.on-action` → `day.range-ends.label` #FFFFFF · dark #1F1411 :label[By scheme]{tone="info"}
+
+  Text and icons on the main action's fill.
+
+  - **Pick** text.on-dark: the text its fill's tone picks, 4.84:1 on action.primary, above the 4.5:1 floor.
+  - **Dark** text.on-light: the text its fill's tone picks, 8.88:1 on action.primary, above the 4.5:1 floor.
+  - **Shares the step with** text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.
+:::
+
+:::panel{id="part-11" title="Day that cannot be picked" note="Parts 11"}
+![Day that cannot be picked: 11](/anatomy/brand-expressive/calendar/card-7.png)
+
+:label[Feedback]
+
+- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
+
+  Pressed for touch.
+
+- **Token** `opacity.disabled` → `day.disabled-opacity` 0.4 :label[By scheme]{tone="info"}
+
+  - **Pick** opacity.40
+:::
+
+:::panel{id="part-12" title="Focus ring" note="Parts 12"}
+![Focus ring: 12](/anatomy/brand-expressive/calendar/card-8.png)
+
+:label[Focus]
+
+- **Answer** Accessibility · What contrast floor do we hold? → AA
+
+  AA, checked on every vivid color.
+
+- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
+
+  Focus must show on vivid color.
+
+- **Token** `border-width.focus` → `focus` 3px :label[By scheme]{tone="info"}
+
+  - **Pick** border-width.3
+
+- **Token** `color.border.focus` → `focus-ring` #D61F7A · dark #F59ACA :label[By scheme]{tone="info"}
+
+  The focus ring.
+
+  - **Pick** pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.
+  - **Dark** pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.
+  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
+
+- **Token** `border-width.focus-offset` → `focus-offset` 2px
+
+  - **Pick** border-width.2
+
+- **Token** `color.surface.canvas` → `focus-ring-offset` #FFF8F3 · dark #120B09 :label[By scheme]{tone="info"}
+
+  The page background behind everything.
+
+  - **Pick** neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.
+  - **Dark** neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.
+:::
 
 ## For agents
 

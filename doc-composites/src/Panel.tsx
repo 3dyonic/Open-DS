@@ -17,6 +17,8 @@ import {
 import Label, { type LabelProps } from "./Label";
 
 export type PanelProps = {
+  // A link target, such as part-1-2 on an Anatomy reference.
+  id?: string;
   title?: string;
   // A short word beside the title, such as the variant's axis.
   note?: string;
@@ -26,6 +28,7 @@ export type PanelProps = {
 };
 
 export default function Panel({
+  id,
   title,
   note,
   label,
@@ -33,7 +36,7 @@ export default function Panel({
   children,
 }: PanelProps) {
   return (
-    <div data-composite="panel" className="grid">
+    <div id={id} data-composite="panel" className="grid">
       <Card>
         {(title || label) && (
           <CardHeader>

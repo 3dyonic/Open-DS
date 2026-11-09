@@ -2478,9 +2478,7 @@ export function docsPages(
   // that get_component also returns. A part whose value changes between schemes carries a "By scheme"
   // tag; each token follows the decision to the value: the semantic's rule, the pick and its reason in
   // light and dark, what else picks the same step, and the answers it follows from.
-  const BRUSH =
-    '<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>';
-  const byTag = `<span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme.">${BRUSH}By scheme</span>`;
+  const byTag = `:label[By scheme]{tone="info"}`;
   const partName = (p) =>
     p === "root"
       ? "The component"
@@ -2530,12 +2528,13 @@ export function docsPages(
       tree && scheme.id !== FALLBACK && imgScheme("stage") === FALLBACK;
     const figmaLink = (node) =>
       node && spec.drawing.figma?.file
-        ? `<a class="odv-am-figma" href="https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")}">Open in Figma</a>`
+        ? `\n\n[Open in Figma](https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")})`
         : "";
+    // An exported drawing is a Markdown image, linked to its Figma frame (OD-284).
     const assetImg = (file, node, alt) =>
       tree && !exported(file)
-        ? `<span class="odv-am-assetbox odv-am-pending">Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.</span>`
-        : `<span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/${imgScheme(file) ?? scheme.id}/${name}/${file}.png" alt="${attr(alt)}" loading="lazy"/>${figmaLink(node)}</span>`;
+        ? `Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.`
+        : `![${esc(alt)}](/anatomy/${imgScheme(file) ?? scheme.id}/${name}/${file}.png)${figmaLink(node)}`;
     const roleOf = Object.fromEntries(
       (g.anatomy?.roles ?? []).map((r) => [r.id, r]),
     );
@@ -2546,93 +2545,36 @@ export function docsPages(
     const flat = (list) => list.flatMap((x) => [x, ...flat(x.children ?? [])]);
     const parts = flat(spec.parts);
     const changes = (part) => (part.tokens ?? []).some((t) => tr(t)?.by_scheme);
-    const num = (n, cls = "") => `<i class="odv-am-n${cls}">${n}</i>`;
-    const chip = (id) =>
-      `<span class="odv-am-role" title="${attr(roleOf[id]?.ask ?? "")}">${attr(roleOf[id]?.label ?? id)}</span>`;
-    const ICON = {
-      share:
-        '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>',
-      copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
-      clipboard:
-        '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
-      trash:
-        '<path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
-      chevron: '<path d="m9 18 6-6-6-6"/>',
-      filter: '<path d="M2 5h20"/><path d="M6 12h12"/><path d="M9 19h6"/>',
-      columns:
-        '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/>',
-      search: '<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
-      sort: '<path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/>',
-    };
-    const icon = (k) =>
-      `<svg class="odv-am-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k] ?? ""}</svg>`;
+    const chip = (id) => `:label[${esc(roleOf[id]?.label ?? id)}]`;
     // The drawing, from the scheme's own component variables: what you see is what the scheme decides.
-    const drawing = (rows, show, whole) => {
-      const m = (n) => (show.has(n) ? num(n) : "");
-      const body = rows
-        .map((r) => {
-          if (r.separator)
-            return `<div class="odv-am-sep">${r.marks?.row && show.has(r.marks.row) ? `<span class="odv-am-at sepn">${num(r.marks.row)}</span>` : ""}</div>`;
-          const k = r.marks ?? {};
-          const cls = [r.state && `is-${r.state}`, r.tone && `is-${r.tone}`]
-            .filter(Boolean)
-            .join(" ");
-          return `<div class="odv-am-row ${cls}">${k.focus && show.has(k.focus) ? `<span class="odv-am-at top">${m(k.focus)}</span>` : ""}${k.icon ? m(k.icon) : ""}${icon(r.icon)}<span class="odv-am-label">${attr(r.label)}${k.label ? m(k.label) : ""}</span><span class="odv-am-fill"></span>${r.shortcut ? `<span class="odv-am-key">${attr(r.shortcut)}${k.shortcut ? m(k.shortcut) : ""}</span>` : ""}${r.chevron ? `${k.chevron ? m(k.chevron) : ""}${icon("chevron")}` : ""}${k.row ? m(k.row) : ""}${k.separator && show.has(k.separator) ? `<span class="odv-am-at bottom">${m(k.separator)}</span>` : ""}</div>`;
-        })
-        .join("");
-      const corner = whole
-        ? `${spec.drawing.surface.map((n) => (show.has(n) ? `<span class="odv-am-at corner">${num(n)}</span>` : "")).join("")}${spec.drawing.shadow.map((n) => (show.has(n) ? `<span class="odv-am-at shadow">${num(n)}</span>` : "")).join("")}`
-        : "";
-      return `<div class="odv-am-menu${whole ? "" : " part"}">${body}${corner}</div>`;
+    // An AnatomyDrawing composite draws it from data beside the page (OD-284).
+    const drawn = (id, data) => {
+      (compositeData["anatomy-drawing"] ??= {})[`${name}/${id}`] = data;
+      return `::anatomy-drawing{id="${name}/${id}"}`;
     };
+    const drawing = (id, rows, show, whole) =>
+      drawn(id, {
+        kind: "menu",
+        rows,
+        show: [...show],
+        whole,
+        surface: spec.drawing.surface ?? [],
+        shadow: spec.drawing.shadow ?? [],
+      });
     // A table, from the table's and the data table's own variables: toolbar, frame, header, rows. The
     // empty state is the Empty component's, so it is not drawn here.
-    const tableDrawing = (sections, show) => {
+    const tableDrawing = (id, sections, show) => {
       const d = spec.drawing;
-      const m = (n) => (n && show.has(n) ? num(n) : "");
-      const out = [];
-      const bar = () =>
-        `<div class="odv-at-bar">${d.toolbar
-          .map((t) =>
-            t.kind === "search"
-              ? `<span class="odv-at-input">${icon("search")}<span>${attr(t.label)}</span></span>${m(t.n)}`
-              : t.kind === "button"
-                ? `<span class="odv-at-btn">${icon(t.icon)}${attr(t.label)}</span>${m(t.n)}`
-                : t.kind === "count"
-                  ? `<span class="odv-at-count">${attr(t.label)}</span>${m(t.n)}`
-                  : `<span class="odv-at-toggle">${t.options.map((o, k) => `<span${k ? "" : ' class="on"'}>${attr(o)}</span>`).join("")}</span>${m(t.n)}`,
-          )
-          .join("")}</div>`;
-      const box = (on) =>
-        `<span class="odv-at-box${on ? " on" : ""}">${on ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>' : ""}</span>`;
-      const head = () =>
-        `<tr class="odv-at-head"><th class="chk">${box(false)}${m(d.header.check)}</th>${d.columns
-          .map(
-            (c, k) =>
-              `<th class="${c.numeric ? "num" : ""}">${attr(c.label)}${k === 0 ? m(d.header.label) : ""}${c.sort ? icon("sort") : ""}${k === 0 && c.sort ? m(d.header.sort) : ""}</th>`,
-          )
-          .join("")}<th class="end">${m(d.header.row)}</th></tr>`;
-      // The select box is numbered on the header when the header is drawn, else on its own row.
-      const row = (r, withHead) =>
-        `<tr class="odv-at-row${r.state ? ` is-${r.state}` : ""}"><td class="chk">${box(r.checked)}${withHead ? "" : m(r.marks?.check)}</td>${r.cells
-          .map(
-            (c, k) =>
-              `<td class="${d.columns[k]?.numeric ? "num" : ""}">${attr(c)}${k === 0 ? m(r.marks?.cell) : ""}${d.columns[k]?.numeric ? m(r.marks?.number) : ""}</td>`,
-          )
-          .join("")}<td class="end">${m(r.marks?.row)}</td></tr>`;
-      const frame = (rows, withHead) =>
-        `<div class="odv-at-frame">${withHead === "corner" || sections.includes("frame") ? `<span class="odv-am-at corner">${m(d.frame)}</span>` : ""}<table class="odv-at-table">${withHead ? `<thead>${head()}</thead>` : ""}<tbody>${rows.map((r) => row(r, withHead)).join("")}</tbody></table></div>`;
-      for (const sec of sections) {
-        if (sec === "toolbar") out.push(bar());
-        else if (sec === "frame" || sec === "table")
-          out.push(frame(d.rows, sec === "table" ? "corner" : true));
-      }
-      const head2 = sections.includes("header");
-      const picked = sections
-        .filter((x) => x.startsWith("row:"))
-        .map((x) => d.rows[+x.split(":")[1]]);
-      if (head2 || picked.length) out.push(frame(picked, head2));
-      return `<div class="odv-at">${out.join("")}</div>`;
+      return drawn(id, {
+        kind: "table",
+        sections,
+        show: [...show],
+        toolbar: d.toolbar,
+        columns: d.columns,
+        header: d.header,
+        rows: d.rows,
+        frame: d.frame,
+      });
     };
     const allNums = new Set(parts.filter((p) => p.n).map((p) => p.n));
     const rowsFor = (nums) => {
@@ -2668,73 +2610,78 @@ export function docsPages(
     })();
     const D = tr("component.overlay.item-height");
     const caption = `${attr(scheme.name)}, light, drawn from the scheme's tokens: ${px(D?.light.value ?? "")} items, ${px(tr("component.dropdown-menu.item.padding-x")?.light.value ?? "")} side padding, ${px(tr("component.dropdown-menu.item.font-size")?.light.value ?? "")} text, a ${px(tr("component.overlay.radius")?.light.value ?? "")} corner and its shadow.`;
-    const legendRow = (p, depth, last) => {
-      const glyph = depth ? (last ? "└" : "├") : "";
+    // The legend (OD-284): a nested Markdown list, one item per part, with its number, what it needs,
+    // the "By scheme" tag and its roles as Labels.
+    const legendRow = (p, depth) => {
       const need = `${p.need}${p.note ? ` · ${p.note}` : ""}${p.n && !(p.tokens ?? []).length && p.need !== "required" ? " · no token yet" : ""}`;
-      return `<li class="odv-am-lrow d${depth}">${p.n ? num(p.n) : `<i class="odv-am-n none"></i>`}<span class="odv-am-glyph">${glyph}</span><b>${attr(p.label)}</b><span class="odv-am-need">${attr(need)}</span>${changes(p) ? byTag : ""}<span class="odv-am-roles">${(p.roles ?? []).map(chip).join("")}</span></li>`;
+      return `${"  ".repeat(depth)}- ${p.n ? `**${p.n}** ` : ""}**${esc(p.label)}** ${esc(need)}${changes(p) ? ` ${byTag}` : ""}${(p.roles ?? []).length ? ` ${p.roles.map(chip).join(" ")}` : ""}`;
     };
     const legend = (list, depth = 0) =>
       list
-        .map(
-          (p, k) =>
-            legendRow(p, depth, k === list.length - 1) +
-            (p.children ? legend(p.children, depth + 1) : ""),
-        )
-        .join("");
+        .flatMap((p) => [
+          legendRow(p, depth),
+          ...(p.children ? [legend(p.children, depth + 1)] : []),
+        ])
+        .join("\n");
+    // Each card's steps (OD-284): a Markdown list, from the answer through the rule to the token.
     const answerStep = (a) =>
-      `<li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">${attr(a.scope ? `${a.scope} · ` : "")}${attr(a.text)} → ${attr(a.answer)}</div><div class="odv-am-why">${attr(a.why)}</div></li>`;
+      `- **Answer** ${esc(a.scope ? `${a.scope} · ` : "")}${esc(a.text)} → ${esc(a.answer)}\n\n  ${esc(a.why)}`;
     const ruleStep = (u) =>
-      `<li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For ${attr(lower(u.title))}, use ${attr(u.use)}.${u.not ? ` Don't use ${attr(lower(u.not))}.` : ""}</div><div class="odv-am-why">${attr(u.why ?? "")}</div></li>`;
+      `- **Rule** For ${esc(lower(u.title))}, use ${esc(u.use)}.${u.not ? ` Don't use ${esc(lower(u.not))}.` : ""}${u.why ? `\n\n  ${esc(u.why)}` : ""}`;
     const tokenStep = (t) => {
       if (!t) return "";
-      const said = (x) => attr(x.why ?? x.pick);
+      const said = (x) => esc(x.why ?? x.pick);
       const dark =
-        t.dark.value !== t.light.value ? ` · dark ${attr(t.dark.value)}` : "";
+        t.dark.value !== t.light.value ? ` · dark ${esc(t.dark.value)}` : "";
       const lines = [
-        `<div><b>Pick</b> ${said(t.light)}</div>`,
+        `  - **Pick** ${said(t.light)}`,
         t.dark.value !== t.light.value || t.dark.why !== t.light.why
-          ? `<div><b>Dark</b> ${said(t.dark)}</div>`
+          ? `  - **Dark** ${said(t.dark)}`
           : "",
         t.shares.length
-          ? `<div><b>Shares the step with</b> ${t.shares.map((x) => attr(x.replace(/^color\./, ""))).join(", ")}. Changing this pick moves only what reads ${attr(t.semantic)}.</div>`
+          ? `  - **Shares the step with** ${t.shares.map((x) => esc(x.replace(/^color\./, ""))).join(", ")}. Changing this pick moves only what reads ${esc(t.semantic)}.`
           : "",
-      ].join("");
-      return `<li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>${attr(t.semantic)}</code>${t.key ? `<span>→</span><code>${attr(t.key.replace(`${name}.`, ""))}</code>` : `<span class="odv-am-nokey">no key of its own yet</span>`}<span class="odv-am-val">${attr(t.light.value)}${dark}</span>${t.by_scheme ? byTag : ""}</div>${t.rule ? `<div class="odv-am-why">${attr(t.rule)}</div>` : ""}<div class="odv-am-lines">${lines}</div></li>`;
+      ].filter(Boolean);
+      return (
+        `- **Token** \`${t.semantic}\` ${t.key ? `→ \`${t.key.replace(`${name}.`, "")}\`` : "no key of its own yet"} ${esc(t.light.value)}${dark}${t.by_scheme ? ` ${byTag}` : ""}` +
+        (t.rule ? `\n\n  ${esc(t.rule)}` : "") +
+        `\n\n${lines.join("\n")}`
+      );
     };
-    const card = (c) => {
+    // One Panel per card (OD-284): its drawing, its parts and roles, and its steps.
+    const card = (c, k) => {
       const nums = new Set(c.parts);
-      // A card can name its own image: one row, with the card's numbers placed on it.
-      if (asset || spec.drawing.kind === "table") {
-        const d = refCard[c.title];
-        const steps = [
-          ...d.answers.map(answerStep),
-          ...d.rules.map(ruleStep),
-          ...d.tokens.map(tokenStep),
-        ].filter(Boolean);
-        return h(
-          `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img wide">${asset ? assetImg(`card-${spec.cards.indexOf(c) + 1}`, c.figma?.[scheme.id], `${c.title}: ${c.parts.join(", ")}`) : tableDrawing(c.image?.sections ?? [], nums)}</div><div class="odv-am-body">`,
-          `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
-          `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
-        );
-      }
-      const own =
-        c.image && spec.drawing.rows.find((r) => r.label === c.image.row);
-      const { rows, whole } = own
-        ? {
-            rows: [{ ...own, state: undefined, marks: c.image.marks }],
-            whole: false,
-          }
-        : rowsFor(nums);
       const d = refCard[c.title];
       const steps = [
         ...d.answers.map(answerStep),
         ...d.rules.map(ruleStep),
         ...d.tokens.map(tokenStep),
       ].filter(Boolean);
-      return h(
-        `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img">${drawing(rows, nums, whole)}</div><div class="odv-am-body">`,
-        `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
-        `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
+      let image;
+      if (asset)
+        image = assetImg(
+          `card-${k + 1}`,
+          c.figma?.[scheme.id],
+          `${c.title}: ${c.parts.join(", ")}`,
+        );
+      else if (spec.drawing.kind === "table")
+        image = tableDrawing(`card-${k + 1}`, c.image?.sections ?? [], nums);
+      else {
+        const own =
+          c.image && spec.drawing.rows.find((r) => r.label === c.image.row);
+        const { rows, whole } = own
+          ? {
+              rows: [{ ...own, state: undefined, marks: c.image.marks }],
+              whole: false,
+            }
+          : rowsFor(nums);
+        image = drawing(`card-${k + 1}`, rows, nums, whole);
+      }
+      return (
+        `:::panel{id="part-${c.parts.join("-")}" title="${c.title.replaceAll('"', "'")}" note="Parts ${c.parts.join(", ")}"}\n` +
+        `${image}\n\n` +
+        (c.roles.length ? `${c.roles.map(chip).join(" ")}\n\n` : "") +
+        `${steps.join("\n\n")}\n:::`
       );
     };
     const intro =
@@ -2745,11 +2692,31 @@ export function docsPages(
       `- Want to know why a part looks the way it does? Its card follows the decision from the answer about the product, through the rule and the token, to what you see.\n` +
       `- Or start from a job, like Focus or Emphasis, and find every part that does it in the legend.\n\n` +
       `Come back whenever a part makes you wonder why.\n:::`;
-    const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
-    const partsBlock = h(
-      `<div class="odv-am-parts"><figure class="odv-am-stage">${asset ? assetImg("stage", spec.drawing.figma?.stage?.[scheme.id], `${T}, every part numbered`) : spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${asset ? (borrowed ? `Dense data's drawing, shown until ${attr(scheme.name)}'s own is exported; the parts and the decisions below are ${attr(scheme.name)}'s.` : `${attr(scheme.name)}, light, drawn in Figma from the scheme's tokens.`) : spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
-      `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
-    );
+    const roles = (g.anatomy?.roles ?? [])
+      .map((r) => `- **${esc(r.label)}** ${esc(r.ask)}`)
+      .join("\n");
+    // The drawing with every part numbered, its caption, then the legend (OD-284).
+    const stage = asset
+      ? assetImg(
+          "stage",
+          spec.drawing.figma?.stage?.[scheme.id],
+          `${T}, every part numbered`,
+        )
+      : spec.drawing.kind === "table"
+        ? tableDrawing("stage", ["toolbar", "table"], allNums)
+        : drawing("stage", spec.drawing.rows, allNums, true);
+    const stageCaption = asset
+      ? borrowed
+        ? `Dense data's drawing, shown until ${esc(scheme.name)}'s own is exported; the parts and the decisions below are ${esc(scheme.name)}'s.`
+        : `${esc(scheme.name)}, light, drawn in Figma from the scheme's tokens.`
+      : spec.drawing.kind === "table"
+        ? esc(tableCaption)
+        : esc(caption);
+    const partsBlock =
+      `${stage}\n\n*${stageCaption}*\n\n` +
+      `Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.\n\n` +
+      `${byTag} Its value changes by scheme. The part is the same in every scheme.\n\n` +
+      legend(spec.parts);
     return (
       fm({
         sidebar_position: i + 1.5,
@@ -2766,7 +2733,7 @@ export function docsPages(
         intro,
         `## Design roles\n\nEach part does a job for the person. These are the jobs, as questions the part answers.\n\n${roles}`,
         `## The parts\n\n${partsBlock}`,
-        `## How the decisions reach each part\n\nEach part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.\n\n${spec.cards.map(card).join("\n\n")}`,
+        `## How the decisions reach each part\n\nEach part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.\n\n${spec.cards.map((c, k) => card(c, k)).join("\n\n")}`,
         `## For agents\n\nAgents get this same anatomy: every part, its roles, whether it is required, the tokens it reads and the decisions behind them.\n\n- **From an AI agent:** call the \`get_anatomy\` tool on the Open DS MCP server, with this scheme and \`${name}\`.\n- **From a terminal:** \`npx open-ds anatomy ${scheme.id} ${name}\``,
       ].join("\n\n") +
       "\n"
@@ -3090,6 +3057,7 @@ export function docsPages(
     "card-grid": "id",
     preview: "id",
     specimen: "id",
+    "anatomy-drawing": "id",
   };
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;

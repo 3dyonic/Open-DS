@@ -25,21 +25,130 @@ Come back whenever a part makes you wonder why.
 
 Each part does a job for the person. These are the jobs, as questions the part answers.
 
-<div class="odv-am-rolelist"><span class="odv-am-role big"><b>Containment</b> What holds this?</span><span class="odv-am-role big"><b>Layering</b> What sits on top?</span><span class="odv-am-role big"><b>Hierarchy</b> What do you read first?</span><span class="odv-am-role big"><b>Readability</b> Can you read it?</span><span class="odv-am-role big"><b>Emphasis</b> Where does the eye go?</span><span class="odv-am-role big"><b>Meaning</b> What state is it in?</span><span class="odv-am-role big"><b>Affordance</b> Can you act on it?</span><span class="odv-am-role big"><b>Feedback</b> Did it respond?</span><span class="odv-am-role big"><b>Focus</b> Where is the keyboard?</span><span class="odv-am-role big"><b>Grouping</b> What belongs together?</span><span class="odv-am-role big"><b>Reach</b> Can you hit it?</span></div>
+- **Containment** What holds this?
+- **Layering** What sits on top?
+- **Hierarchy** What do you read first?
+- **Readability** Can you read it?
+- **Emphasis** Where does the eye go?
+- **Meaning** What state is it in?
+- **Affordance** Can you act on it?
+- **Feedback** Did it respond?
+- **Focus** Where is the keyboard?
+- **Grouping** What belongs together?
+- **Reach** Can you hit it?
 
 ## The parts
 
-<div class="odv-am-parts"><figure class="odv-am-stage"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/multi-brand/tooltip/stage.png" alt="Tooltip, every part numbered" loading="lazy"/></span><figcaption>Multi-brand, light, drawn in Figma from the scheme's tokens.</figcaption></figure><div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k"><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span> Its value changes by scheme. The part is the same in every scheme.</p><ul><li class="odv-am-lrow d0"><i class="odv-am-n none"></i><span class="odv-am-glyph"></span><b>Trigger</b><span class="odv-am-need">required · shown by Button</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you act on it?">Affordance</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">1</i><span class="odv-am-glyph"></span><b>Surface</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What holds this?">Containment</span><span class="odv-am-role" title="What sits on top?">Layering</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">2</i><span class="odv-am-glyph"></span><b>Hint</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="What state is it in?">Meaning</span></span></li><li class="odv-am-lrow d0"><i class="odv-am-n">3</i><span class="odv-am-glyph"></span><b>Offset</b><span class="odv-am-need">required</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span><span class="odv-am-roles"><span class="odv-am-role" title="What belongs together?">Grouping</span></span></li></ul></div></div>
+![Tooltip, every part numbered](/anatomy/multi-brand/tooltip/stage.png)
+
+*Multi-brand, light, drawn in Figma from the scheme's tokens.*
+
+Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
+
+:label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
+
+- **Trigger** required · shown by Button :label[Affordance]
+- **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
+- **2** **Hint** required :label[By scheme]{tone="info"} :label[Readability] :label[Meaning]
+- **3** **Offset** required :label[By scheme]{tone="info"} :label[Grouping]
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-<section class="odv-am-card" id="part-1"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/multi-brand/tooltip/card-1.png" alt="Surface: 1" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">1</i><b>Surface</b><span class="odv-am-role" title="What holds this?">Containment</span><span class="odv-am-role" title="What sits on top?">Layering</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Color · Which color roles does it need? → Those and brand accents</div><div class="odv-am-why">Each brand brings its own accent ramp.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Shape · What should control corners say? → Rounded</div><div class="odv-am-why">Rounded by default; each brand sets its own corner.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Spacing · How dense is the layout? → Comfortable</div><div class="odv-am-why">Comfortable spacing in every brand.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For shape of a status badge, use radius.badge (set by the brand). Don't use a hard-coded shape.</div><div class="odv-am-why">The brand sets the badge shape.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.surface.inverse</code><span>→</span><code>content.background</code><span class="odv-am-val">#0F172A · dark #F8FAFC</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">A reversed fill for small, short-lived messages.</div><div class="odv-am-lines"><div><b>Pick</b> neutral.900: the reverse of content for short messages; its text reads, 17.85:1 on surface.inverse, above the 4.5:1 floor.</div><div><b>Dark</b> neutral.900: the reverse of content for short messages; its text reads, 17.06:1 on surface.inverse, above the 4.5:1 floor.</div><div><b>Shares the step with</b> text.primary. Changing this pick moves only what reads color.surface.inverse.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>radius.badge</code><span>→</span><code>content.radius</code><span class="odv-am-val">0.25rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> radius.4: Rounded by default; each brand sets its own corner.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>component-spacing-map.x2</code><span>→</span><code>content.padding-x</code><span class="odv-am-val">0.5rem</span></div><div class="odv-am-lines"><div><b>Pick</b> space.8</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>component-spacing-map.x1</code><span>→</span><code>content.padding-y</code><span class="odv-am-val">0.25rem</span></div><div class="odv-am-lines"><div><b>Pick</b> space.4</div></div></li></ul></div></section>
+:::panel{id="part-1" title="Surface" note="Parts 1"}
+![Surface: 1](/anatomy/multi-brand/tooltip/card-1.png)
 
-<section class="odv-am-card" id="part-2"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/multi-brand/tooltip/card-2.png" alt="Hint: 2" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">2</i><b>Hint</b><span class="odv-am-role" title="Can you read it?">Readability</span><span class="odv-am-role" title="What state is it in?">Meaning</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Typography · How large is body text? → Regular</div><div class="odv-am-why">Regular body size suits all brands.</div></li><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Iconography · What do icons do? → Actions, status and navigation</div><div class="odv-am-why">Icons for actions, status and navigation.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For an icon with no label, use Not used: always add a word; a popover explains a fee. Don't use an icon button with a hover hint.</div><div class="odv-am-why">On touch screens hover hints never show; a word says what will happen.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>color.text.inverse</code><span>→</span><code>content.label</code><span class="odv-am-val">#FFFFFF · dark #0F172A</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-why">Text on an inverse fill.</div><div class="odv-am-lines"><div><b>Pick</b> text.on-dark: the text its fill's tone picks, 17.85:1 on surface.inverse, above the 4.5:1 floor.</div><div><b>Dark</b> text.on-light: the text its fill's tone picks, 17.06:1 on surface.inverse, above the 4.5:1 floor.</div><div><b>Shares the step with</b> text.on-action, text.on-danger. Changing this pick moves only what reads color.text.inverse.</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.caption.font-size</code><span>→</span><code>content.font-size</code><span class="odv-am-val">0.8125rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> font.size.13</div></div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>type.caption.font-family</code><span>→</span><code>content.font-family</code><span class="odv-am-val">Inter, system-ui, sans-serif</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> inter for caption text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.</div></div></li></ul></div></section>
+:label[Containment] :label[Layering]
 
-<section class="odv-am-card" id="part-3"><div class="odv-am-img wide"><span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/multi-brand/tooltip/card-3.png" alt="Offset: 3" loading="lazy"/></span></div><div class="odv-am-body"><header><i class="odv-am-n">3</i><b>Offset</b><span class="odv-am-role" title="What belongs together?">Grouping</span></header><ul class="odv-am-tree"><li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">Spacing · How dense is the layout? → Comfortable</div><div class="odv-am-why">Comfortable spacing in every brand.</div></li><li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For items that belong together, use space.gap.default. Don't use brand-specific spacing.</div><div class="odv-am-why">Spacing is shared across brands.</div></li><li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>space.gap.tight</code><span>→</span><code>overlay.offset</code><span class="odv-am-val">0.5rem</span><span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme."><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>By scheme</span></div><div class="odv-am-lines"><div><b>Pick</b> space.8</div></div></li></ul></div></section>
+- **Answer** Color · Which color roles does it need? → Those and brand accents
+
+  Each brand brings its own accent ramp.
+
+- **Answer** Shape · What should control corners say? → Rounded
+
+  Rounded by default; each brand sets its own corner.
+
+- **Answer** Spacing · How dense is the layout? → Comfortable
+
+  Comfortable spacing in every brand.
+
+- **Rule** For shape of a status badge, use radius.badge (set by the brand). Don't use a hard-coded shape.
+
+  The brand sets the badge shape.
+
+- **Token** `color.surface.inverse` → `content.background` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
+
+  A reversed fill for small, short-lived messages.
+
+  - **Pick** neutral.900: the reverse of content for short messages; its text reads, 17.85:1 on surface.inverse, above the 4.5:1 floor.
+  - **Dark** neutral.900: the reverse of content for short messages; its text reads, 17.06:1 on surface.inverse, above the 4.5:1 floor.
+  - **Shares the step with** text.primary. Changing this pick moves only what reads color.surface.inverse.
+
+- **Token** `radius.badge` → `content.radius` 0.25rem :label[By scheme]{tone="info"}
+
+  - **Pick** radius.4: Rounded by default; each brand sets its own corner.
+
+- **Token** `component-spacing-map.x2` → `content.padding-x` 0.5rem
+
+  - **Pick** space.8
+
+- **Token** `component-spacing-map.x1` → `content.padding-y` 0.25rem
+
+  - **Pick** space.4
+:::
+
+:::panel{id="part-2" title="Hint" note="Parts 2"}
+![Hint: 2](/anatomy/multi-brand/tooltip/card-2.png)
+
+:label[Readability] :label[Meaning]
+
+- **Answer** Typography · How large is body text? → Regular
+
+  Regular body size suits all brands.
+
+- **Answer** Iconography · What do icons do? → Actions, status and navigation
+
+  Icons for actions, status and navigation.
+
+- **Rule** For an icon with no label, use Not used: always add a word; a popover explains a fee. Don't use an icon button with a hover hint.
+
+  On touch screens hover hints never show; a word says what will happen.
+
+- **Token** `color.text.inverse` → `content.label` #FFFFFF · dark #0F172A :label[By scheme]{tone="info"}
+
+  Text on an inverse fill.
+
+  - **Pick** text.on-dark: the text its fill's tone picks, 17.85:1 on surface.inverse, above the 4.5:1 floor.
+  - **Dark** text.on-light: the text its fill's tone picks, 17.06:1 on surface.inverse, above the 4.5:1 floor.
+  - **Shares the step with** text.on-action, text.on-danger. Changing this pick moves only what reads color.text.inverse.
+
+- **Token** `type.caption.font-size` → `content.font-size` 0.8125rem :label[By scheme]{tone="info"}
+
+  - **Pick** font.size.13
+
+- **Token** `type.caption.font-family` → `content.font-family` Inter, system-ui, sans-serif :label[By scheme]{tone="info"}
+
+  - **Pick** inter for caption text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.
+:::
+
+:::panel{id="part-3" title="Offset" note="Parts 3"}
+![Offset: 3](/anatomy/multi-brand/tooltip/card-3.png)
+
+:label[Grouping]
+
+- **Answer** Spacing · How dense is the layout? → Comfortable
+
+  Comfortable spacing in every brand.
+
+- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
+
+  Spacing is shared across brands.
+
+- **Token** `space.gap.tight` → `overlay.offset` 0.5rem :label[By scheme]{tone="info"}
+
+  - **Pick** space.8
+:::
 
 ## For agents
 

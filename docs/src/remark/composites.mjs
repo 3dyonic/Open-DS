@@ -21,9 +21,17 @@ const COMPOSITES = {
   specimen: "Specimen",
   panel: "Panel",
   grid: "Grid",
+  "anatomy-drawing": "AnatomyDrawing",
 };
 // The attribute that names a composite's entry in _composites.json.
-const DATA_KEY = { "token-table": "component", "reason-chain": "id", "card-grid": "id", preview: "id", specimen: "id" };
+const DATA_KEY = {
+  "token-table": "component",
+  "reason-chain": "id",
+  "card-grid": "id",
+  preview: "id",
+  specimen: "id",
+  "anatomy-drawing": "id",
+};
 
 // One read per data file and version: a rebuild after the generator runs reads the new data.
 const loaded = new Map();

@@ -1,0 +1,655 @@
+{
+ "anatomy-drawing": {
+  "data-table/stage": {
+   "kind": "table",
+   "sections": [
+    "toolbar",
+    "table"
+   ],
+   "show": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "toolbar": [
+    {
+     "kind": "search",
+     "label": "Search records",
+     "n": 1
+    },
+    {
+     "kind": "button",
+     "icon": "filter",
+     "label": "Status",
+     "n": 2
+    },
+    {
+     "kind": "count",
+     "label": "1 selected",
+     "n": 3
+    },
+    {
+     "kind": "toggle",
+     "options": [
+      "Compact",
+      "Comfortable"
+     ],
+     "n": 4
+    },
+    {
+     "kind": "button",
+     "icon": "columns",
+     "label": "Columns",
+     "n": 5
+    }
+   ],
+   "columns": [
+    {
+     "label": "Record",
+     "sort": true
+    },
+    {
+     "label": "Status"
+    },
+    {
+     "label": "Amount",
+     "numeric": true,
+     "sort": true
+    }
+   ],
+   "header": {
+    "row": 6,
+    "label": 7,
+    "sort": 8,
+    "check": 13
+   },
+   "rows": [
+    {
+     "cells": [
+      "REC-1042",
+      "Open",
+      "1,240.00"
+     ],
+     "marks": {
+      "row": 9,
+      "cell": 10
+     }
+    },
+    {
+     "cells": [
+      "REC-1043",
+      "Late",
+      "86.50"
+     ],
+     "state": "highlight",
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "cells": [
+      "REC-1044",
+      "Paid",
+      "3,905.10"
+     ],
+     "state": "selected",
+     "checked": true,
+     "marks": {
+      "row": 12,
+      "check": 13
+     }
+    },
+    {
+     "cells": [
+      "REC-1045",
+      "Open",
+      "412.00"
+     ]
+    }
+   ]
+  },
+  "data-table/card-1": {
+   "kind": "table",
+   "sections": [
+    "toolbar"
+   ],
+   "show": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "toolbar": [
+    {
+     "kind": "search",
+     "label": "Search records",
+     "n": 1
+    },
+    {
+     "kind": "button",
+     "icon": "filter",
+     "label": "Status",
+     "n": 2
+    },
+    {
+     "kind": "count",
+     "label": "1 selected",
+     "n": 3
+    },
+    {
+     "kind": "toggle",
+     "options": [
+      "Compact",
+      "Comfortable"
+     ],
+     "n": 4
+    },
+    {
+     "kind": "button",
+     "icon": "columns",
+     "label": "Columns",
+     "n": 5
+    }
+   ],
+   "columns": [
+    {
+     "label": "Record",
+     "sort": true
+    },
+    {
+     "label": "Status"
+    },
+    {
+     "label": "Amount",
+     "numeric": true,
+     "sort": true
+    }
+   ],
+   "header": {
+    "row": 6,
+    "label": 7,
+    "sort": 8,
+    "check": 13
+   },
+   "rows": [
+    {
+     "cells": [
+      "REC-1042",
+      "Open",
+      "1,240.00"
+     ],
+     "marks": {
+      "row": 9,
+      "cell": 10
+     }
+    },
+    {
+     "cells": [
+      "REC-1043",
+      "Late",
+      "86.50"
+     ],
+     "state": "highlight",
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "cells": [
+      "REC-1044",
+      "Paid",
+      "3,905.10"
+     ],
+     "state": "selected",
+     "checked": true,
+     "marks": {
+      "row": 12,
+      "check": 13
+     }
+    },
+    {
+     "cells": [
+      "REC-1045",
+      "Open",
+      "412.00"
+     ]
+    }
+   ]
+  },
+  "data-table/card-2": {
+   "kind": "table",
+   "sections": [
+    "header"
+   ],
+   "show": [
+    6,
+    7,
+    8
+   ],
+   "toolbar": [
+    {
+     "kind": "search",
+     "label": "Search records",
+     "n": 1
+    },
+    {
+     "kind": "button",
+     "icon": "filter",
+     "label": "Status",
+     "n": 2
+    },
+    {
+     "kind": "count",
+     "label": "1 selected",
+     "n": 3
+    },
+    {
+     "kind": "toggle",
+     "options": [
+      "Compact",
+      "Comfortable"
+     ],
+     "n": 4
+    },
+    {
+     "kind": "button",
+     "icon": "columns",
+     "label": "Columns",
+     "n": 5
+    }
+   ],
+   "columns": [
+    {
+     "label": "Record",
+     "sort": true
+    },
+    {
+     "label": "Status"
+    },
+    {
+     "label": "Amount",
+     "numeric": true,
+     "sort": true
+    }
+   ],
+   "header": {
+    "row": 6,
+    "label": 7,
+    "sort": 8,
+    "check": 13
+   },
+   "rows": [
+    {
+     "cells": [
+      "REC-1042",
+      "Open",
+      "1,240.00"
+     ],
+     "marks": {
+      "row": 9,
+      "cell": 10
+     }
+    },
+    {
+     "cells": [
+      "REC-1043",
+      "Late",
+      "86.50"
+     ],
+     "state": "highlight",
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "cells": [
+      "REC-1044",
+      "Paid",
+      "3,905.10"
+     ],
+     "state": "selected",
+     "checked": true,
+     "marks": {
+      "row": 12,
+      "check": 13
+     }
+    },
+    {
+     "cells": [
+      "REC-1045",
+      "Open",
+      "412.00"
+     ]
+    }
+   ]
+  },
+  "data-table/card-3": {
+   "kind": "table",
+   "sections": [
+    "row:0"
+   ],
+   "show": [
+    9,
+    10
+   ],
+   "toolbar": [
+    {
+     "kind": "search",
+     "label": "Search records",
+     "n": 1
+    },
+    {
+     "kind": "button",
+     "icon": "filter",
+     "label": "Status",
+     "n": 2
+    },
+    {
+     "kind": "count",
+     "label": "1 selected",
+     "n": 3
+    },
+    {
+     "kind": "toggle",
+     "options": [
+      "Compact",
+      "Comfortable"
+     ],
+     "n": 4
+    },
+    {
+     "kind": "button",
+     "icon": "columns",
+     "label": "Columns",
+     "n": 5
+    }
+   ],
+   "columns": [
+    {
+     "label": "Record",
+     "sort": true
+    },
+    {
+     "label": "Status"
+    },
+    {
+     "label": "Amount",
+     "numeric": true,
+     "sort": true
+    }
+   ],
+   "header": {
+    "row": 6,
+    "label": 7,
+    "sort": 8,
+    "check": 13
+   },
+   "rows": [
+    {
+     "cells": [
+      "REC-1042",
+      "Open",
+      "1,240.00"
+     ],
+     "marks": {
+      "row": 9,
+      "cell": 10
+     }
+    },
+    {
+     "cells": [
+      "REC-1043",
+      "Late",
+      "86.50"
+     ],
+     "state": "highlight",
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "cells": [
+      "REC-1044",
+      "Paid",
+      "3,905.10"
+     ],
+     "state": "selected",
+     "checked": true,
+     "marks": {
+      "row": 12,
+      "check": 13
+     }
+    },
+    {
+     "cells": [
+      "REC-1045",
+      "Open",
+      "412.00"
+     ]
+    }
+   ]
+  },
+  "data-table/card-4": {
+   "kind": "table",
+   "sections": [
+    "row:1"
+   ],
+   "show": [
+    11
+   ],
+   "toolbar": [
+    {
+     "kind": "search",
+     "label": "Search records",
+     "n": 1
+    },
+    {
+     "kind": "button",
+     "icon": "filter",
+     "label": "Status",
+     "n": 2
+    },
+    {
+     "kind": "count",
+     "label": "1 selected",
+     "n": 3
+    },
+    {
+     "kind": "toggle",
+     "options": [
+      "Compact",
+      "Comfortable"
+     ],
+     "n": 4
+    },
+    {
+     "kind": "button",
+     "icon": "columns",
+     "label": "Columns",
+     "n": 5
+    }
+   ],
+   "columns": [
+    {
+     "label": "Record",
+     "sort": true
+    },
+    {
+     "label": "Status"
+    },
+    {
+     "label": "Amount",
+     "numeric": true,
+     "sort": true
+    }
+   ],
+   "header": {
+    "row": 6,
+    "label": 7,
+    "sort": 8,
+    "check": 13
+   },
+   "rows": [
+    {
+     "cells": [
+      "REC-1042",
+      "Open",
+      "1,240.00"
+     ],
+     "marks": {
+      "row": 9,
+      "cell": 10
+     }
+    },
+    {
+     "cells": [
+      "REC-1043",
+      "Late",
+      "86.50"
+     ],
+     "state": "highlight",
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "cells": [
+      "REC-1044",
+      "Paid",
+      "3,905.10"
+     ],
+     "state": "selected",
+     "checked": true,
+     "marks": {
+      "row": 12,
+      "check": 13
+     }
+    },
+    {
+     "cells": [
+      "REC-1045",
+      "Open",
+      "412.00"
+     ]
+    }
+   ]
+  },
+  "data-table/card-5": {
+   "kind": "table",
+   "sections": [
+    "row:2"
+   ],
+   "show": [
+    12,
+    13
+   ],
+   "toolbar": [
+    {
+     "kind": "search",
+     "label": "Search records",
+     "n": 1
+    },
+    {
+     "kind": "button",
+     "icon": "filter",
+     "label": "Status",
+     "n": 2
+    },
+    {
+     "kind": "count",
+     "label": "1 selected",
+     "n": 3
+    },
+    {
+     "kind": "toggle",
+     "options": [
+      "Compact",
+      "Comfortable"
+     ],
+     "n": 4
+    },
+    {
+     "kind": "button",
+     "icon": "columns",
+     "label": "Columns",
+     "n": 5
+    }
+   ],
+   "columns": [
+    {
+     "label": "Record",
+     "sort": true
+    },
+    {
+     "label": "Status"
+    },
+    {
+     "label": "Amount",
+     "numeric": true,
+     "sort": true
+    }
+   ],
+   "header": {
+    "row": 6,
+    "label": 7,
+    "sort": 8,
+    "check": 13
+   },
+   "rows": [
+    {
+     "cells": [
+      "REC-1042",
+      "Open",
+      "1,240.00"
+     ],
+     "marks": {
+      "row": 9,
+      "cell": 10
+     }
+    },
+    {
+     "cells": [
+      "REC-1043",
+      "Late",
+      "86.50"
+     ],
+     "state": "highlight",
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "cells": [
+      "REC-1044",
+      "Paid",
+      "3,905.10"
+     ],
+     "state": "selected",
+     "checked": true,
+     "marks": {
+      "row": 12,
+      "check": 13
+     }
+    },
+    {
+     "cells": [
+      "REC-1045",
+      "Open",
+      "412.00"
+     ]
+    }
+   ]
+  }
+ }
+}

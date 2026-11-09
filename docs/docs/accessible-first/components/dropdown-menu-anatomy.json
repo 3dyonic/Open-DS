@@ -1,0 +1,299 @@
+{
+ "anatomy-drawing": {
+  "dropdown-menu/stage": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Share with",
+     "icon": "share",
+     "chevron": true,
+     "state": "focus",
+     "marks": {
+      "focus": 8,
+      "label": 3,
+      "chevron": 6
+     }
+    },
+    {
+     "label": "Copy",
+     "icon": "copy",
+     "shortcut": "⌘C",
+     "state": "highlight",
+     "marks": {
+      "icon": 4,
+      "shortcut": 5,
+      "row": 7
+     }
+    },
+    {
+     "label": "Paste special",
+     "icon": "clipboard",
+     "shortcut": "⌘⇧V",
+     "state": "disabled",
+     "marks": {
+      "row": 9
+     }
+    },
+    {
+     "separator": true,
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "label": "Delete",
+     "icon": "trash",
+     "tone": "danger",
+     "marks": {
+      "row": 10
+     }
+    }
+   ],
+   "show": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "whole": true,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  },
+  "dropdown-menu/card-1": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Share with",
+     "icon": "share",
+     "chevron": true,
+     "state": "focus",
+     "marks": {
+      "focus": 8,
+      "label": 3,
+      "chevron": 6
+     }
+    },
+    {
+     "label": "Copy",
+     "icon": "copy",
+     "shortcut": "⌘C",
+     "state": "highlight",
+     "marks": {
+      "icon": 4,
+      "shortcut": 5,
+      "row": 7
+     }
+    },
+    {
+     "label": "Paste special",
+     "icon": "clipboard",
+     "shortcut": "⌘⇧V",
+     "state": "disabled",
+     "marks": {
+      "row": 9
+     }
+    },
+    {
+     "separator": true,
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "label": "Delete",
+     "icon": "trash",
+     "tone": "danger",
+     "marks": {
+      "row": 10
+     }
+    }
+   ],
+   "show": [
+    1,
+    2
+   ],
+   "whole": true,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  },
+  "dropdown-menu/card-2": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Copy",
+     "icon": "copy",
+     "shortcut": "⌘C",
+     "marks": {
+      "icon": 4,
+      "label": 3,
+      "shortcut": 5
+     }
+    }
+   ],
+   "show": [
+    3,
+    4,
+    5
+   ],
+   "whole": false,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  },
+  "dropdown-menu/card-3": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Copy",
+     "icon": "copy",
+     "shortcut": "⌘C",
+     "state": "highlight",
+     "marks": {
+      "icon": 4,
+      "shortcut": 5,
+      "row": 7
+     }
+    }
+   ],
+   "show": [
+    7
+   ],
+   "whole": false,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  },
+  "dropdown-menu/card-4": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Share with",
+     "icon": "share",
+     "chevron": true,
+     "state": "focus",
+     "marks": {
+      "focus": 8,
+      "label": 3,
+      "chevron": 6
+     }
+    }
+   ],
+   "show": [
+    8
+   ],
+   "whole": false,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  },
+  "dropdown-menu/card-5": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Paste special",
+     "icon": "clipboard",
+     "shortcut": "⌘⇧V",
+     "state": "disabled",
+     "marks": {
+      "row": 9
+     }
+    }
+   ],
+   "show": [
+    9
+   ],
+   "whole": false,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  },
+  "dropdown-menu/card-6": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Delete",
+     "icon": "trash",
+     "tone": "danger",
+     "marks": {
+      "row": 10
+     }
+    }
+   ],
+   "show": [
+    10
+   ],
+   "whole": false,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  },
+  "dropdown-menu/card-7": {
+   "kind": "menu",
+   "rows": [
+    {
+     "label": "Paste special",
+     "icon": "clipboard",
+     "shortcut": "⌘⇧V",
+     "state": "disabled",
+     "marks": {
+      "row": 9
+     }
+    },
+    {
+     "separator": true,
+     "marks": {
+      "row": 11
+     }
+    },
+    {
+     "label": "Delete",
+     "icon": "trash",
+     "tone": "danger",
+     "marks": {
+      "row": 10
+     }
+    }
+   ],
+   "show": [
+    11
+   ],
+   "whole": false,
+   "surface": [
+    1
+   ],
+   "shadow": [
+    2
+   ]
+  }
+ }
+}

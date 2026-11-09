@@ -2,6 +2,7 @@ import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import AnatomyDrawing from "@open-ds/doc-composites/AnatomyDrawing";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
 import Intro from "@open-ds/doc-composites/Intro";
 import Grid from "@open-ds/doc-composites/Grid";
@@ -34,13 +35,21 @@ function RobotIntro({ robot, ...props }: Omit<React.ComponentProps<typeof Intro>
   return <Intro {...props} robot={robot ? { day, night } : undefined} />;
 }
 
+// A panel with an id is a link target (#part-...): it registers its anchor too.
+function LinkedPanel(props: React.ComponentProps<typeof Panel> & { id?: string }) {
+  const links = useBrokenLinks();
+  if (props.id) links.collectAnchor(props.id);
+  return <Panel {...props} />;
+}
+
 // The composites the pages' directives name (src/remark/composites.mjs).
 export default {
   ...MDXComponents,
   section: Section,
+  AnatomyDrawing,
   CardGrid,
   Grid,
-  Panel,
+  Panel: LinkedPanel,
   Intro: RobotIntro,
   Label,
   Preview,
