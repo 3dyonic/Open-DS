@@ -31,8 +31,8 @@
   }
 }
 
-/* Inside a composite the Card spaces its contents, so paragraphs and lists add no margin. Outside a
-   layer, because the docs' own paragraph margins are outside one too. */
-[data-composite] :is(p, ul, ol) {
+/* Inside a composite the Card spaces its contents, so headings, paragraphs and lists add no margin.
+   Outside a layer, because the docs' own margins are outside one too. */
+[data-composite] :is(h1, h2, h3, h4, h5, h6, p, ul, ol) {
   margin: 0;
 }

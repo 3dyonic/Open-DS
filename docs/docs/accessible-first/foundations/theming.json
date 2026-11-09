@@ -7,67 +7,19 @@
     "commit": "Continue",
     "cancel": "Go back"
    },
-   "modes": [
+   "statuses": [
     {
-     "mode": "light",
-     "colors": {
-      "canvas": "#F7F7F7",
-      "surface": "#FFFFFF",
-      "border": "#D6D6D6",
-      "text": "#141414",
-      "secondary": "#333333",
-      "action": "#0B4FC0",
-      "onAction": "#FFFFFF",
-      "sunken": "#EDEDED"
-     },
-     "radius": {
-      "container": "0.5rem",
-      "badge": "0.25rem",
-      "control": "0.375rem"
-     },
-     "statuses": [
-      {
-       "label": "Completed",
-       "color": "#1F7A3A",
-       "fill": "#DBF7DF"
-      },
-      {
-       "label": "Check your answers",
-       "color": "#8A5600",
-       "fill": "#FEE8CF"
-      }
-     ]
+     "label": "Completed",
+     "meaning": "success"
     },
     {
-     "mode": "dark",
-     "colors": {
-      "canvas": "#0A0A0A",
-      "surface": "#141414",
-      "border": "#333333",
-      "text": "#F7F7F7",
-      "secondary": "#D6D6D6",
-      "action": "#8AB4F8",
-      "onAction": "#141414",
-      "sunken": "#222222"
-     },
-     "radius": {
-      "container": "0.5rem",
-      "badge": "0.25rem",
-      "control": "0.375rem"
-     },
-     "statuses": [
-      {
-       "label": "Completed",
-       "color": "#5CC283",
-       "fill": "#012E16"
-      },
-      {
-       "label": "Check your answers",
-       "color": "#F2B84B",
-       "fill": "#372500"
-      }
-     ]
+     "label": "Check your answers",
+     "meaning": "warning"
     }
+   ],
+   "modes": [
+    "light",
+    "dark"
    ]
   }
  },

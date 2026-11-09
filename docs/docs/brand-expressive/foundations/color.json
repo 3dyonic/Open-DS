@@ -85,23 +85,9 @@
  },
  "surface-stack": {
   "default": {
-   "themes": [
-    {
-     "theme": "light",
-     "canvas": "#FFF8F3",
-     "surface": "#FFFFFF",
-     "sunken": "#FCEFE6",
-     "text": "#1F1411",
-     "border": "#F2DCCF"
-    },
-    {
-     "theme": "dark",
-     "canvas": "#120B09",
-     "surface": "#1F1411",
-     "sunken": "#33241F",
-     "text": "#FFF8F3",
-     "border": "#4D3A33"
-    }
+   "modes": [
+    "light",
+    "dark"
    ]
   }
  },

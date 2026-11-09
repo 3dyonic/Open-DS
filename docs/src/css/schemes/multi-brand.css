@@ -2,7 +2,10 @@
 
 html[data-scheme="multi-brand"],
 html[data-scheme="multi-brand"][data-brand="aster"],
-html[data-scheme="multi-brand"] [data-brand="aster"] {
+html[data-scheme="multi-brand"] [data-brand="aster"],
+html[data-scheme="multi-brand"] [data-mode="light"][data-mode],
+html[data-scheme="multi-brand"] [data-mode="light"][data-mode][data-brand="aster"],
+html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aster"] {
   --space-gap-tight: 0.5rem; /** Between things that belong together. */
   --space-gap-default: 0.75rem; /** Between items in one group. */
   --space-gap-group: 1.5rem; /** Between groups. */
@@ -1817,7 +1820,11 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
 html[data-scheme="multi-brand"][data-theme="dark"],
 html[data-scheme="multi-brand"][data-theme="dark"][data-brand="aster"],
 html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
-[data-brand="aster"] html[data-scheme="multi-brand"][data-theme="dark"] {
+[data-brand="aster"] html[data-scheme="multi-brand"][data-theme="dark"],
+html[data-scheme="multi-brand"] [data-mode="dark"][data-mode],
+html[data-scheme="multi-brand"] [data-mode="dark"][data-mode][data-brand="aster"],
+html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster"],
+[data-brand="aster"] html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] {
   --space-gap-tight: 0.5rem; /** Between things that belong together. */
   --space-gap-default: 0.75rem; /** Between items in one group. */
   --space-gap-group: 1.5rem; /** Between groups. */
@@ -3630,7 +3637,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
 }
 
 html[data-scheme="multi-brand"][data-brand="birch"],
-html[data-scheme="multi-brand"] [data-brand="birch"] {
+html[data-scheme="multi-brand"] [data-brand="birch"],
+html[data-scheme="multi-brand"] [data-mode="light"][data-mode][data-brand="birch"],
+html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birch"] {
   --space-gap-tight: 0.5rem; /** Between things that belong together. */
   --space-gap-default: 0.75rem; /** Between items in one group. */
   --space-gap-group: 1.5rem; /** Between groups. */
@@ -5444,7 +5453,10 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
 
 html[data-scheme="multi-brand"][data-theme="dark"][data-brand="birch"],
 html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
-[data-brand="birch"] html[data-scheme="multi-brand"][data-theme="dark"] {
+[data-brand="birch"] html[data-scheme="multi-brand"][data-theme="dark"],
+html[data-scheme="multi-brand"] [data-mode="dark"][data-mode][data-brand="birch"],
+html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch"],
+[data-brand="birch"] html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] {
   --space-gap-tight: 0.5rem; /** Between things that belong together. */
   --space-gap-default: 0.75rem; /** Between items in one group. */
   --space-gap-group: 1.5rem; /** Between groups. */
@@ -7257,7 +7269,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
 }
 
 html[data-scheme="multi-brand"][data-brand="coral"],
-html[data-scheme="multi-brand"] [data-brand="coral"] {
+html[data-scheme="multi-brand"] [data-brand="coral"],
+html[data-scheme="multi-brand"] [data-mode="light"][data-mode][data-brand="coral"],
+html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="coral"] {
   --space-gap-tight: 0.5rem; /** Between things that belong together. */
   --space-gap-default: 0.75rem; /** Between items in one group. */
   --space-gap-group: 1.5rem; /** Between groups. */
@@ -9071,7 +9085,10 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
 
 html[data-scheme="multi-brand"][data-theme="dark"][data-brand="coral"],
 html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
-[data-brand="coral"] html[data-scheme="multi-brand"][data-theme="dark"] {
+[data-brand="coral"] html[data-scheme="multi-brand"][data-theme="dark"],
+html[data-scheme="multi-brand"] [data-mode="dark"][data-mode][data-brand="coral"],
+html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral"],
+[data-brand="coral"] html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] {
   --space-gap-tight: 0.5rem; /** Between things that belong together. */
   --space-gap-default: 0.75rem; /** Between items in one group. */
   --space-gap-group: 1.5rem; /** Between groups. */
@@ -10882,7 +10899,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --switch-canvas: var(--switch-focus-ring-offset); /** Deprecated: use component.switch.focus-ring-offset (OD-243). Canvas of the switch. */
   --toast-label-2: var(--toast-description-label); /** Deprecated: use component.toast.description.label (OD-243). Label 2 of the toast. */
 }
-html[data-scheme="multi-brand"] {
+html[data-scheme="multi-brand"],
+html[data-scheme="multi-brand"] [data-mode],
+html[data-scheme="multi-brand"] [data-mode] [data-brand] {
   --ifm-color-primary: var(--color-action-primary);
   --ifm-color-primary-dark: var(--color-action-primary-hover);
   --ifm-color-primary-darker: var(--color-action-primary-hover);

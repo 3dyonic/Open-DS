@@ -279,63 +279,24 @@
  },
  "surface-stack": {
   "aster": {
-   "themes": [
-    {
-     "theme": "aster-light",
-     "canvas": "#F8FAFC",
-     "surface": "#FFFFFF",
-     "sunken": "#F1F5F9",
-     "text": "#0F172A",
-     "border": "#E2E8F0"
-    },
-    {
-     "theme": "aster-dark",
-     "canvas": "#020617",
-     "surface": "#0F172A",
-     "sunken": "#1E293B",
-     "text": "#F8FAFC",
-     "border": "#334155"
-    }
+   "brand": "aster",
+   "modes": [
+    "light",
+    "dark"
    ]
   },
   "birch": {
-   "themes": [
-    {
-     "theme": "birch-light",
-     "canvas": "#F8FAFC",
-     "surface": "#FFFFFF",
-     "sunken": "#F1F5F9",
-     "text": "#0F172A",
-     "border": "#E2E8F0"
-    },
-    {
-     "theme": "birch-dark",
-     "canvas": "#020617",
-     "surface": "#0F172A",
-     "sunken": "#1E293B",
-     "text": "#F8FAFC",
-     "border": "#334155"
-    }
+   "brand": "birch",
+   "modes": [
+    "light",
+    "dark"
    ]
   },
   "coral": {
-   "themes": [
-    {
-     "theme": "coral-light",
-     "canvas": "#F8FAFC",
-     "surface": "#FFFFFF",
-     "sunken": "#F1F5F9",
-     "text": "#0F172A",
-     "border": "#E2E8F0"
-    },
-    {
-     "theme": "coral-dark",
-     "canvas": "#020617",
-     "surface": "#0F172A",
-     "sunken": "#1E293B",
-     "text": "#F8FAFC",
-     "border": "#334155"
-    }
+   "brand": "coral",
+   "modes": [
+    "light",
+    "dark"
    ]
   }
  },

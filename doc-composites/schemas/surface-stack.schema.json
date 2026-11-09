@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/surface-stack.schema.json",
+  "title": "Surface stack",
+  "description": "Which modes and brand to draw the scheme's surfaces in: the canvas, then color.surface.default, then color.surface.sunken, one inside the other. The colors come from the scheme's tokens, not from this data. Drawn by the SurfaceStack composite on Foundations › Color.",
+  "type": "object",
+  "required": ["modes"],
+  "additionalProperties": false,
+  "properties": {
+    "brand": {
+      "type": "string",
+      "description": "The brand's id in the tokens, when the scheme has more than one."
+    },
+    "modes": {
+      "type": "array",
+      "description": "The modes to draw, light first.",
+      "minItems": 1,
+      "items": { "type": "string", "enum": ["light", "dark"] }
+    }
+  }
+}

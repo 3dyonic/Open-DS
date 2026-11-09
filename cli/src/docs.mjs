@@ -1452,16 +1452,6 @@ export function docsPages(
     ];
     const hex = (th, p) =>
       String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
-    const stack = (th) => {
-      const [canvas, surface, sunken, text, border] = [
-        "color.surface.canvas",
-        "color.surface.default",
-        "color.surface.sunken",
-        "color.text.primary",
-        "color.border.default",
-      ].map((p) => hex(th, p));
-      return { theme: th.id, canvas, surface, sunken, text, border };
-    };
     const sts = (smp.statuses ?? []).filter(
       (x, j, all) =>
         STATUS_CLASS[x.meaning] &&
@@ -1480,7 +1470,8 @@ export function docsPages(
       perBrand((F, D) => {
         const id = F.brand ?? "all";
         (compositeData["surface-stack"] ??= {})[id] = {
-          themes: [F, D].filter(Boolean).map(stack),
+          ...(brandsOf.length > 1 && { brand: F.brand }),
+          modes: [F, D].filter(Boolean).map((th) => th.mode),
         };
         return `::surface-stack{id="${id}"}`;
       }) +
@@ -1526,35 +1517,6 @@ export function docsPages(
       .slice(0, 2);
     const commit = scheme.tokens.content?.action?.commit?.$value ?? "Save";
     const cancel = scheme.tokens.content?.action?.cancel?.$value ?? "Cancel";
-    // The mode previews (OD-284): each mode's colors and corners as data, drawn by ModePreview.
-    const plain = (v) => String(v).replace(/ \(.*\)$/, "");
-    const modeOf = (th) => {
-      const c = (p) => hexOf(th, p);
-      return {
-        mode: th.mode,
-        ...(brandIds.length > 1 && { brand: brandLabel(th.brand) }),
-        colors: {
-          canvas: c("color.surface.canvas"),
-          surface: c("color.surface.default"),
-          border: c("color.border.default"),
-          text: c("color.text.primary"),
-          secondary: c("color.text.secondary") || c("color.text.muted"),
-          action: c("color.action.primary"),
-          onAction: c("color.text.on-action"),
-          sunken: c("color.surface.sunken"),
-        },
-        radius: {
-          container: plain(radius(th, "container")),
-          badge: plain(radius(th, "badge")),
-          control: plain(radius(th, "control")),
-        },
-        statuses: sts.map((x) => ({
-          label: x.label,
-          color: c(`color.status.${x.meaning}`) || c("color.text.primary"),
-          fill: c(`color.status.${x.meaning}.subtle`),
-        })),
-      };
-    };
     const sameBlock = (b) => {
       const base = scheme.tokens.brands[b]?.theme?.base ?? {};
       const th = scheme.themes.find((t) => t.brand === b) ?? first;
@@ -1618,11 +1580,15 @@ export function docsPages(
         );
         return `${draw("dot", hx)} ${f.prim.replace(/^color\./, "")}${f.via ? ` · via ${f.via.replace(/^color\./, "")}` : ""}`;
       };
+      // The mode previews (OD-284): the scheme's own components, shown in each mode. The colors
+      // and corners come from the tokens, so the data holds only the content.
       (compositeData["mode-preview"] ??= {})[b] = {
         name: scheme.name,
         scenario: scheme.scenarios[0]?.text ?? scheme.summary,
         actions: { commit, cancel },
-        modes: ths.map(modeOf),
+        statuses: sts.map((x) => ({ label: x.label, meaning: x.meaning })),
+        ...(brandIds.length > 1 && { brand: { id: b, label: brandLabel(b) } }),
+        modes: ths.map((th) => th.mode),
       };
       // What a mode changes: one Markdown table per job group, every mode side by side.
       const tables = groups

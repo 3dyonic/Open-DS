@@ -1,103 +1,74 @@
 /**
- * ModePreview: a small screen in each mode of a brand, painted from that mode's own colors and
- * corners: a surface with the scheme's name and a scenario, two statuses, and the commit and cancel
- * actions. The docs generator writes the modes (<page>.json beside the page); the page holds one
- * line: ::mode-preview{id="aster"}
- *
- * This is a drawing of the theme, so it shows its values; its look comes from the docs' mode styles.
+ * ModePreview: a small screen built from the scheme's own Card, Badge and Button, shown once in each
+ * mode of a brand. Each copy sits in a mode scope (data-mode), so the scheme's tokens paint it; the
+ * data holds only the content. The data follows doc-composites/schemas/mode-preview.schema.json; the
+ * page holds one line: ::mode-preview{id="aster"}
  */
 import * as React from "react";
+import { Badge } from "@open-ds/ui/components/badge";
+import { Button } from "@open-ds/ui/components/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@open-ds/ui/components/card";
 
-export type ModeColors = {
-  canvas: string;
-  surface: string;
-  border: string;
-  text: string;
-  secondary: string;
-  action: string;
-  onAction: string;
-  sunken: string;
-};
-export type Mode = {
-  mode: string;
-  brand?: string;
-  colors: ModeColors;
-  radius: { container: string; badge: string; control: string };
-  statuses: { label: string; color: string; fill: string }[];
-};
 export type ModePreviewData = {
   name: string;
   scenario: string;
   actions: { commit: string; cancel: string };
-  modes: Mode[];
+  statuses: {
+    label: string;
+    meaning: "info" | "success" | "warning" | "danger";
+  }[];
+  brand?: { id: string; label: string };
+  modes: ("light" | "dark")[];
 };
 
 export default function ModePreview({ data }: { data: ModePreviewData }) {
   return (
-    <div data-composite="mode-preview" className="odv-modes">
-      {data.modes.map((m) => (
-        <div
-          key={m.mode}
-          className="odv-mode-prev"
-          style={{
-            background: m.colors.canvas,
-            color: m.colors.text,
-            borderColor: m.colors.border,
-          }}
-        >
-          <div className="odv-mode-head">
-            <span>{m.mode.charAt(0).toUpperCase() + m.mode.slice(1)}</span>
-            {m.brand && <span>{m.brand}</span>}
-          </div>
+    <div
+      data-composite="mode-preview"
+      className="grid gap-[var(--space-gap-group)] sm:grid-cols-2"
+    >
+      {data.modes.map((mode) => (
+        <div key={mode} data-mode={mode}>
           <div
-            className="odv-mode-surf"
-            style={{
-              background: m.colors.surface,
-              borderColor: m.colors.border,
-              borderRadius: m.radius.container,
-            }}
+            data-brand={data.brand?.id}
+            className="flex flex-col gap-[var(--space-gap-default)] rounded-[var(--radius-container)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] bg-[var(--color-surface-canvas)] p-[var(--space-inset-container)] text-[var(--color-text-primary)]"
           >
-            <b>{data.name}</b>
-            <span style={{ color: m.colors.secondary }}>{data.scenario}</span>
-            {m.statuses.length > 0 && (
-              <span className="odv-mode-row">
-                {m.statuses.map((s) => (
-                  <span
-                    key={s.label}
-                    className="odv-mode-pill"
-                    style={{
-                      background: s.fill,
-                      color: s.color,
-                      borderRadius: m.radius.badge,
-                    }}
-                  >
-                    {s.label}
-                  </span>
-                ))}
-              </span>
-            )}
-            <span className="odv-mode-row">
-              <span
-                className="odv-mode-btn"
-                style={{
-                  background: m.colors.action,
-                  color: m.colors.onAction,
-                  borderRadius: m.radius.control,
-                }}
-              >
-                {data.actions.commit}
-              </span>
-              <span
-                className="odv-mode-btn"
-                style={{
-                  background: m.colors.sunken,
-                  color: m.colors.text,
-                  borderRadius: m.radius.control,
-                }}
-              >
-                {data.actions.cancel}
-              </span>
-            </span>
+            <p className="flex justify-between text-[length:var(--type-caption-font-size)] text-[var(--color-text-secondary)]">
+              <span>{mode === "light" ? "Light" : "Dark"}</span>
+              {data.brand && <span>{data.brand.label}</span>}
+            </p>
+            <Card>
+              <CardHeader>
+                <CardTitle>{data.name}</CardTitle>
+                <CardDescription>{data.scenario}</CardDescription>
+              </CardHeader>
+              {data.statuses.length > 0 && (
+                <CardContent>
+                  <div className="flex flex-wrap gap-[var(--space-gap-tight)]">
+                    {data.statuses.map((s) => (
+                      <Badge key={s.label} tone={s.meaning}>
+                        {s.label}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              )}
+              <CardFooter>
+                <div className="flex flex-wrap gap-[var(--space-gap-tight)]">
+                  <Button tabIndex={-1}>{data.actions.commit}</Button>
+                  <Button variant="secondary" tabIndex={-1}>
+                    {data.actions.cancel}
+                  </Button>
+                </div>
+              </CardFooter>
+            </Card>
           </div>
         </div>
       ))}
