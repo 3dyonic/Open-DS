@@ -29,3 +29,8 @@ The exit code is 1 only when something fails.
 1. Add a function to `CHECKS` in `checks.mjs`. List what it needs in `requires`.
 2. Name it in a spec. A check no spec names still runs, under "Other checks".
 3. `pnpm --dir harness test` fails if a spec names a check that does not exist.
+
+## Counts that may only go down
+
+- `gaps-only-go-down`: the gap ledger's count per scheme and kind. After a fix, run `node scripts/gaps.mjs --baseline`.
+- `decisions-cover-values`: the semantic values per scheme that rest on no decision. A value is linked when its theme pick, or a usage rule that names it, cites an answer. After a fix, run `node scripts/coverage.mjs --baseline`.

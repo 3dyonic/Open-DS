@@ -1239,9 +1239,11 @@
     {
       "question": "color.definition",
       "option": "neutral-brand",
-      "why": "True neutrals and one strong blue, checked for contrast.",
+      "why": "True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
       "because": [
-        "people.q2"
+        "people.q2",
+        "people.q1",
+        "color.lands"
       ]
     },
     {
@@ -3661,12 +3663,13 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "blue.light.600: the primary action's fill; its label reads, 7.26:1, above the 7:1 floor.",
+                        "why": "blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
                         "because": [
                           "accessibility.definition",
-                          "color.count"
-                        ],
-                        "generated": true
+                          "color.count",
+                        "color.definition",
+                        "color.lands"
+                        ]
                       }
                     }
                   },
@@ -4546,12 +4549,13 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "blue.dark.600: the primary action's fill; its label reads, 8.74:1, above the 7:1 floor.",
+                        "why": "blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
                         "because": [
                           "accessibility.definition",
-                          "color.count"
-                        ],
-                        "generated": true
+                          "color.count",
+                        "color.definition",
+                        "color.lands"
+                        ]
                       }
                     }
                   },

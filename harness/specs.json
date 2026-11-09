@@ -561,6 +561,16 @@
         "every spacing a scheme decides sits on the 4px grid, at most 64px"
       ],
       "checks": ["spacing-map-generated", "spacing-on-grid", "components-own-api", "json-files-validate"]
+    },
+    {
+      "id": "OD-273",
+      "title": "Every semantic value rests on a decision",
+      "in": [
+        "a semantic is linked when its theme pick, or a usage rule that names it, cites an answer the grammar asks and the scheme gives",
+        "the owning scope's answers do not count as a link",
+        "the harness counts the values with no decision per scheme, and each count may only go down"
+      ],
+      "checks": ["decisions-cover-values"]
     }
   ]
 }
