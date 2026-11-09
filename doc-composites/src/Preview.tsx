@@ -22,6 +22,8 @@ export type PreviewData = {
   links?: { text: string; href: string }[];
 };
 
+// The frame shows only when its address answers. Where Storybook is not served (a local docs build
+// without it), the address answers with the docs' own 404 page; the reader sees what to start instead.
 function Frame({
   src,
   title,
@@ -31,19 +33,34 @@ function Frame({
   title: string;
   wait: string;
 }) {
-  return (
-    <div className="relative grid">
-      <span className="absolute inset-0 flex items-center justify-center text-[length:var(--type-caption-font-size)]">
-        {wait}
-      </span>
-      <iframe
-        src={src}
-        title={title}
-        loading="lazy"
-        className="relative aspect-video w-full border-0"
-      />
-    </div>
-  );
+  const [state, setState] = React.useState<"checking" | "live" | "missing">("checking");
+  React.useEffect(() => {
+    let on = true;
+    fetch(src, { method: "HEAD" })
+      .then((r) => on && setState(r.ok ? "live" : "missing"))
+      .catch(() => on && setState("missing"));
+    return () => {
+      on = false;
+    };
+  }, [src]);
+  if (state !== "live") {
+    const [lead, command] = wait.split(/:\s*/);
+    return (
+      <div className="flex aspect-video w-full items-center justify-center rounded-[var(--radius-container)] bg-[var(--color-surface-sunken)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)]">
+        {state === "missing" && (
+          <span>
+            {lead}
+            {command && (
+              <>
+                : <code>{command}</code>
+              </>
+            )}
+          </span>
+        )}
+      </div>
+    );
+  }
+  return <iframe src={src} title={title} loading="lazy" className="aspect-video w-full border-0" />;
 }
 
 export default function Preview({ data }: { data: PreviewData }) {
