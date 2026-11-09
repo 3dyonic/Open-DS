@@ -1,0 +1,4504 @@
+{
+ "pages": [
+  {
+   "page": "accessible-first/agents.md",
+   "total": 811,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/components/accordion-anatomy.md",
+   "total": 24705,
+   "html": 24012,
+   "share": 0.9719489981785063
+  },
+  {
+   "page": "accessible-first/components/accordion.md",
+   "total": 14849,
+   "html": 13084,
+   "share": 0.8811367768873325
+  },
+  {
+   "page": "accessible-first/components/alert-anatomy.md",
+   "total": 26311,
+   "html": 25626,
+   "share": 0.9739652616776253
+  },
+  {
+   "page": "accessible-first/components/alert-dialog-anatomy.md",
+   "total": 29724,
+   "html": 29025,
+   "share": 0.9764836495761001
+  },
+  {
+   "page": "accessible-first/components/alert-dialog.md",
+   "total": 18523,
+   "html": 16564,
+   "share": 0.8942395940182476
+  },
+  {
+   "page": "accessible-first/components/alert.md",
+   "total": 23211,
+   "html": 21007,
+   "share": 0.9050450217569256
+  },
+  {
+   "page": "accessible-first/components/aspect-ratio-anatomy.md",
+   "total": 4978,
+   "html": 4279,
+   "share": 0.8595821615106468
+  },
+  {
+   "page": "accessible-first/components/aspect-ratio.md",
+   "total": 2343,
+   "html": 999,
+   "share": 0.4263764404609475
+  },
+  {
+   "page": "accessible-first/components/attachment-anatomy.md",
+   "total": 25656,
+   "html": 24961,
+   "share": 0.9729108200810727
+  },
+  {
+   "page": "accessible-first/components/attachment.md",
+   "total": 17163,
+   "html": 15514,
+   "share": 0.9039212258929091
+  },
+  {
+   "page": "accessible-first/components/avatar-anatomy.md",
+   "total": 21315,
+   "html": 20628,
+   "share": 0.9677691766361717
+  },
+  {
+   "page": "accessible-first/components/avatar.md",
+   "total": 18318,
+   "html": 16675,
+   "share": 0.9103068020526258
+  },
+  {
+   "page": "accessible-first/components/badge-anatomy.md",
+   "total": 20577,
+   "html": 19892,
+   "share": 0.9667104048209165
+  },
+  {
+   "page": "accessible-first/components/badge.md",
+   "total": 26623,
+   "html": 24581,
+   "share": 0.9232994027720393
+  },
+  {
+   "page": "accessible-first/components/breadcrumb-anatomy.md",
+   "total": 24045,
+   "html": 23350,
+   "share": 0.9710958619255563
+  },
+  {
+   "page": "accessible-first/components/breadcrumb.md",
+   "total": 13493,
+   "html": 11870,
+   "share": 0.8797154079893278
+  },
+  {
+   "page": "accessible-first/components/bubble-anatomy.md",
+   "total": 21937,
+   "html": 21250,
+   "share": 0.968683046907052
+  },
+  {
+   "page": "accessible-first/components/bubble.md",
+   "total": 10541,
+   "html": 9052,
+   "share": 0.8587420548335073
+  },
+  {
+   "page": "accessible-first/components/button-anatomy.md",
+   "total": 30499,
+   "html": 29812,
+   "share": 0.9774746713006984
+  },
+  {
+   "page": "accessible-first/components/button-group-anatomy.md",
+   "total": 15649,
+   "html": 14950,
+   "share": 0.9553326091124034
+  },
+  {
+   "page": "accessible-first/components/button-group.md",
+   "total": 9994,
+   "html": 8306,
+   "share": 0.8310986591955173
+  },
+  {
+   "page": "accessible-first/components/button.md",
+   "total": 50723,
+   "html": 47537,
+   "share": 0.937188257792323
+  },
+  {
+   "page": "accessible-first/components/calendar-anatomy.md",
+   "total": 39330,
+   "html": 38639,
+   "share": 0.9824307144673278
+  },
+  {
+   "page": "accessible-first/components/calendar.md",
+   "total": 26862,
+   "html": 25050,
+   "share": 0.9325441143622962
+  },
+  {
+   "page": "accessible-first/components/card-anatomy.md",
+   "total": 25347,
+   "html": 24664,
+   "share": 0.9730540103365289
+  },
+  {
+   "page": "accessible-first/components/card.md",
+   "total": 13513,
+   "html": 11835,
+   "share": 0.8758232812846888
+  },
+  {
+   "page": "accessible-first/components/carousel-anatomy.md",
+   "total": 13386,
+   "html": 12695,
+   "share": 0.9483789033318393
+  },
+  {
+   "page": "accessible-first/components/carousel.md",
+   "total": 6444,
+   "html": 4791,
+   "share": 0.7434823091247672
+  },
+  {
+   "page": "accessible-first/components/chart-anatomy.md",
+   "total": 28871,
+   "html": 28186,
+   "share": 0.9762737695265145
+  },
+  {
+   "page": "accessible-first/components/chart.md",
+   "total": 18567,
+   "html": 16893,
+   "share": 0.909840038778478
+  },
+  {
+   "page": "accessible-first/components/checkbox-anatomy.md",
+   "total": 20437,
+   "html": 19746,
+   "share": 0.9661887752605568
+  },
+  {
+   "page": "accessible-first/components/checkbox.md",
+   "total": 11843,
+   "html": 10059,
+   "share": 0.8493624926116693
+  },
+  {
+   "page": "accessible-first/components/collapsible-anatomy.md",
+   "total": 4594,
+   "html": 3897,
+   "share": 0.848280365694384
+  },
+  {
+   "page": "accessible-first/components/collapsible.md",
+   "total": 2450,
+   "html": 992,
+   "share": 0.4048979591836735
+  },
+  {
+   "page": "accessible-first/components/combobox-anatomy.md",
+   "total": 35561,
+   "html": 34870,
+   "share": 0.9805686004330587
+  },
+  {
+   "page": "accessible-first/components/combobox.md",
+   "total": 46058,
+   "html": 44211,
+   "share": 0.959898388987798
+  },
+  {
+   "page": "accessible-first/components/command-anatomy.md",
+   "total": 35541,
+   "html": 34852,
+   "share": 0.9806139388312091
+  },
+  {
+   "page": "accessible-first/components/command.md",
+   "total": 29981,
+   "html": 28292,
+   "share": 0.9436643207364664
+  },
+  {
+   "page": "accessible-first/components/context-menu-anatomy.md",
+   "total": 33227,
+   "html": 32528,
+   "share": 0.9789628916242814
+  },
+  {
+   "page": "accessible-first/components/context-menu.md",
+   "total": 51229,
+   "html": 49628,
+   "share": 0.9687481699818462
+  },
+  {
+   "page": "accessible-first/components/data-table-anatomy.md",
+   "total": 40447,
+   "html": 39752,
+   "share": 0.9828170198036937
+  },
+  {
+   "page": "accessible-first/components/data-table.md",
+   "total": 13198,
+   "html": 11442,
+   "share": 0.8669495378087589
+  },
+  {
+   "page": "accessible-first/components/date-picker-anatomy.md",
+   "total": 14556,
+   "html": 13859,
+   "share": 0.9521159659247046
+  },
+  {
+   "page": "accessible-first/components/date-picker.md",
+   "total": 4557,
+   "html": 2884,
+   "share": 0.6328725038402457
+  },
+  {
+   "page": "accessible-first/components/dialog-anatomy.md",
+   "total": 35052,
+   "html": 34365,
+   "share": 0.9804005477576172
+  },
+  {
+   "page": "accessible-first/components/dialog.md",
+   "total": 20419,
+   "html": 18366,
+   "share": 0.8994563886576228
+  },
+  {
+   "page": "accessible-first/components/drawer-anatomy.md",
+   "total": 27016,
+   "html": 26329,
+   "share": 0.9745706248149245
+  },
+  {
+   "page": "accessible-first/components/drawer.md",
+   "total": 16589,
+   "html": 14946,
+   "share": 0.9009584664536742
+  },
+  {
+   "page": "accessible-first/components/dropdown-menu-anatomy.md",
+   "total": 36906,
+   "html": 36205,
+   "share": 0.9810057985151466
+  },
+  {
+   "page": "accessible-first/components/dropdown-menu.md",
+   "total": 16850,
+   "html": 15144,
+   "share": 0.898753709198813
+  },
+  {
+   "page": "accessible-first/components/empty-anatomy.md",
+   "total": 19202,
+   "html": 18517,
+   "share": 0.9643266326424331
+  },
+  {
+   "page": "accessible-first/components/empty.md",
+   "total": 19360,
+   "html": 17439,
+   "share": 0.9007747933884298
+  },
+  {
+   "page": "accessible-first/components/field-anatomy.md",
+   "total": 29195,
+   "html": 28510,
+   "share": 0.9765370782668266
+  },
+  {
+   "page": "accessible-first/components/field.md",
+   "total": 34305,
+   "html": 32338,
+   "share": 0.9426614196181314
+  },
+  {
+   "page": "accessible-first/components/form-anatomy.md",
+   "total": 18418,
+   "html": 17735,
+   "share": 0.9629167119122597
+  },
+  {
+   "page": "accessible-first/components/form.md",
+   "total": 8229,
+   "html": 6623,
+   "share": 0.8048365536517196
+  },
+  {
+   "page": "accessible-first/components/hover-card-anatomy.md",
+   "total": 18617,
+   "html": 17922,
+   "share": 0.9626685287640329
+  },
+  {
+   "page": "accessible-first/components/hover-card.md",
+   "total": 8882,
+   "html": 7454,
+   "share": 0.8392253996847557
+  },
+  {
+   "page": "accessible-first/components/input-anatomy.md",
+   "total": 24083,
+   "html": 23398,
+   "share": 0.9715566997467093
+  },
+  {
+   "page": "accessible-first/components/input-group-anatomy.md",
+   "total": 28103,
+   "html": 27406,
+   "share": 0.9751983773974309
+  },
+  {
+   "page": "accessible-first/components/input-group.md",
+   "total": 44543,
+   "html": 42542,
+   "share": 0.9550771164941741
+  },
+  {
+   "page": "accessible-first/components/input-otp-anatomy.md",
+   "total": 28751,
+   "html": 28058,
+   "share": 0.9758964905568502
+  },
+  {
+   "page": "accessible-first/components/input-otp.md",
+   "total": 19910,
+   "html": 18346,
+   "share": 0.9214465092918132
+  },
+  {
+   "page": "accessible-first/components/input.md",
+   "total": 17598,
+   "html": 16050,
+   "share": 0.912035458574838
+  },
+  {
+   "page": "accessible-first/components/inventory.md",
+   "total": 14262,
+   "html": 13623,
+   "share": 0.9551956247370635
+  },
+  {
+   "page": "accessible-first/components/item-anatomy.md",
+   "total": 26088,
+   "html": 25405,
+   "share": 0.973819380558111
+  },
+  {
+   "page": "accessible-first/components/item.md",
+   "total": 36433,
+   "html": 34569,
+   "share": 0.9488375922927017
+  },
+  {
+   "page": "accessible-first/components/kbd-anatomy.md",
+   "total": 15243,
+   "html": 14562,
+   "share": 0.9553237551663059
+  },
+  {
+   "page": "accessible-first/components/kbd.md",
+   "total": 9442,
+   "html": 8160,
+   "share": 0.8642236814234272
+  },
+  {
+   "page": "accessible-first/components/label-anatomy.md",
+   "total": 13542,
+   "html": 12857,
+   "share": 0.9494166297444986
+  },
+  {
+   "page": "accessible-first/components/label.md",
+   "total": 6634,
+   "html": 5170,
+   "share": 0.7793186614410612
+  },
+  {
+   "page": "accessible-first/components/marker-anatomy.md",
+   "total": 12252,
+   "html": 11565,
+   "share": 0.9439275220372184
+  },
+  {
+   "page": "accessible-first/components/marker.md",
+   "total": 6142,
+   "html": 4712,
+   "share": 0.7671768153695865
+  },
+  {
+   "page": "accessible-first/components/menubar-anatomy.md",
+   "total": 38427,
+   "html": 37738,
+   "share": 0.9820698987690947
+  },
+  {
+   "page": "accessible-first/components/menubar.md",
+   "total": 60563,
+   "html": 59008,
+   "share": 0.9743242573848719
+  },
+  {
+   "page": "accessible-first/components/message-anatomy.md",
+   "total": 16841,
+   "html": 16152,
+   "share": 0.9590879401460721
+  },
+  {
+   "page": "accessible-first/components/message-scroller-anatomy.md",
+   "total": 14350,
+   "html": 13643,
+   "share": 0.9507317073170731
+  },
+  {
+   "page": "accessible-first/components/message-scroller.md",
+   "total": 7145,
+   "html": 5523,
+   "share": 0.7729881035689293
+  },
+  {
+   "page": "accessible-first/components/message.md",
+   "total": 6835,
+   "html": 5407,
+   "share": 0.7910753474762253
+  },
+  {
+   "page": "accessible-first/components/native-select-anatomy.md",
+   "total": 33352,
+   "html": 32651,
+   "share": 0.9789817702086832
+  },
+  {
+   "page": "accessible-first/components/native-select.md",
+   "total": 24861,
+   "html": 23307,
+   "share": 0.9374924580668517
+  },
+  {
+   "page": "accessible-first/components/navigation-menu-anatomy.md",
+   "total": 37333,
+   "html": 36628,
+   "share": 0.9811159028205609
+  },
+  {
+   "page": "accessible-first/components/navigation-menu.md",
+   "total": 44726,
+   "html": 43083,
+   "share": 0.9632652148638375
+  },
+  {
+   "page": "accessible-first/components/pagination-anatomy.md",
+   "total": 19633,
+   "html": 18938,
+   "share": 0.964600417664137
+  },
+  {
+   "page": "accessible-first/components/pagination.md",
+   "total": 6175,
+   "html": 4634,
+   "share": 0.7504453441295547
+  },
+  {
+   "page": "accessible-first/components/popover-anatomy.md",
+   "total": 22372,
+   "html": 21683,
+   "share": 0.96920257464688
+  },
+  {
+   "page": "accessible-first/components/popover.md",
+   "total": 11544,
+   "html": 9910,
+   "share": 0.8584546084546084
+  },
+  {
+   "page": "accessible-first/components/progress-anatomy.md",
+   "total": 10379,
+   "html": 9688,
+   "share": 0.9334232585027459
+  },
+  {
+   "page": "accessible-first/components/progress.md",
+   "total": 5419,
+   "html": 3880,
+   "share": 0.715999261856431
+  },
+  {
+   "page": "accessible-first/components/radio-group-anatomy.md",
+   "total": 24884,
+   "html": 24187,
+   "share": 0.9719900337566307
+  },
+  {
+   "page": "accessible-first/components/radio-group.md",
+   "total": 14858,
+   "html": 13129,
+   "share": 0.8836317135549873
+  },
+  {
+   "page": "accessible-first/components/resizable-anatomy.md",
+   "total": 19027,
+   "html": 18334,
+   "share": 0.9635780732643087
+  },
+  {
+   "page": "accessible-first/components/resizable.md",
+   "total": 11010,
+   "html": 9521,
+   "share": 0.8647593097184377
+  },
+  {
+   "page": "accessible-first/components/scroll-area-anatomy.md",
+   "total": 13477,
+   "html": 12780,
+   "share": 0.9482822586629072
+  },
+  {
+   "page": "accessible-first/components/scroll-area.md",
+   "total": 8218,
+   "html": 6591,
+   "share": 0.8020199561937211
+  },
+  {
+   "page": "accessible-first/components/select-anatomy.md",
+   "total": 39184,
+   "html": 38497,
+   "share": 0.9824673336055533
+  },
+  {
+   "page": "accessible-first/components/select.md",
+   "total": 28510,
+   "html": 26806,
+   "share": 0.9402314977200982
+  },
+  {
+   "page": "accessible-first/components/separator-anatomy.md",
+   "total": 7375,
+   "html": 6682,
+   "share": 0.9060338983050847
+  },
+  {
+   "page": "accessible-first/components/separator.md",
+   "total": 4645,
+   "html": 3248,
+   "share": 0.6992465016146394
+  },
+  {
+   "page": "accessible-first/components/sheet-anatomy.md",
+   "total": 35885,
+   "html": 35200,
+   "share": 0.9809112442524732
+  },
+  {
+   "page": "accessible-first/components/sheet.md",
+   "total": 20719,
+   "html": 19112,
+   "share": 0.922438341618804
+  },
+  {
+   "page": "accessible-first/components/sidebar-anatomy.md",
+   "total": 32927,
+   "html": 32238,
+   "share": 0.9790749233152124
+  },
+  {
+   "page": "accessible-first/components/sidebar.md",
+   "total": 89523,
+   "html": 87804,
+   "share": 0.9807982306222982
+  },
+  {
+   "page": "accessible-first/components/skeleton-anatomy.md",
+   "total": 9462,
+   "html": 8771,
+   "share": 0.9269710420629887
+  },
+  {
+   "page": "accessible-first/components/skeleton.md",
+   "total": 4723,
+   "html": 3137,
+   "share": 0.6641964852847766
+  },
+  {
+   "page": "accessible-first/components/slider-anatomy.md",
+   "total": 22481,
+   "html": 21794,
+   "share": 0.9694408611716561
+  },
+  {
+   "page": "accessible-first/components/slider.md",
+   "total": 13645,
+   "html": 12012,
+   "share": 0.8803224624404544
+  },
+  {
+   "page": "accessible-first/components/spinner-anatomy.md",
+   "total": 7734,
+   "html": 7045,
+   "share": 0.9109128523403155
+  },
+  {
+   "page": "accessible-first/components/spinner.md",
+   "total": 3518,
+   "html": 1934,
+   "share": 0.5497441728254691
+  },
+  {
+   "page": "accessible-first/components/switch-anatomy.md",
+   "total": 22487,
+   "html": 21800,
+   "share": 0.9694490149864367
+  },
+  {
+   "page": "accessible-first/components/switch.md",
+   "total": 13901,
+   "html": 12313,
+   "share": 0.8857636141284799
+  },
+  {
+   "page": "accessible-first/components/table-anatomy.md",
+   "total": 22882,
+   "html": 22197,
+   "share": 0.9700638056113976
+  },
+  {
+   "page": "accessible-first/components/table.md",
+   "total": 13869,
+   "html": 12164,
+   "share": 0.8770639555843969
+  },
+  {
+   "page": "accessible-first/components/tabs-anatomy.md",
+   "total": 25584,
+   "html": 24901,
+   "share": 0.9733036272670419
+  },
+  {
+   "page": "accessible-first/components/tabs.md",
+   "total": 14294,
+   "html": 12538,
+   "share": 0.8771512522736813
+  },
+  {
+   "page": "accessible-first/components/textarea-anatomy.md",
+   "total": 26707,
+   "html": 26016,
+   "share": 0.9741266334668813
+  },
+  {
+   "page": "accessible-first/components/textarea.md",
+   "total": 18624,
+   "html": 17135,
+   "share": 0.9200493986254296
+  },
+  {
+   "page": "accessible-first/components/toast-anatomy.md",
+   "total": 23086,
+   "html": 22401,
+   "share": 0.9703283375205752
+  },
+  {
+   "page": "accessible-first/components/toast.md",
+   "total": 18883,
+   "html": 17102,
+   "share": 0.9056823597945242
+  },
+  {
+   "page": "accessible-first/components/toggle-anatomy.md",
+   "total": 24917,
+   "html": 24230,
+   "share": 0.972428462495485
+  },
+  {
+   "page": "accessible-first/components/toggle-group-anatomy.md",
+   "total": 12086,
+   "html": 11387,
+   "share": 0.942164487837167
+  },
+  {
+   "page": "accessible-first/components/toggle-group.md",
+   "total": 5862,
+   "html": 4062,
+   "share": 0.6929375639713409
+  },
+  {
+   "page": "accessible-first/components/toggle.md",
+   "total": 28704,
+   "html": 26619,
+   "share": 0.9273620401337793
+  },
+  {
+   "page": "accessible-first/components/tooltip-anatomy.md",
+   "total": 15226,
+   "html": 14537,
+   "share": 0.9547484565874162
+  },
+  {
+   "page": "accessible-first/components/tooltip.md",
+   "total": 9197,
+   "html": 7535,
+   "share": 0.8192888985538762
+  },
+  {
+   "page": "accessible-first/decision-reference.md",
+   "total": 234209,
+   "html": 234122,
+   "share": 0.9996285369050719
+  },
+  {
+   "page": "accessible-first/foundations/accessibility.md",
+   "total": 2367,
+   "html": 789,
+   "share": 0.3333333333333333
+  },
+  {
+   "page": "accessible-first/foundations/color.md",
+   "total": 81133,
+   "html": 47736,
+   "share": 0.5883672488383271
+  },
+  {
+   "page": "accessible-first/foundations/components.md",
+   "total": 1216,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/foundations/elevation.md",
+   "total": 1773,
+   "html": 330,
+   "share": 0.18612521150592218
+  },
+  {
+   "page": "accessible-first/foundations/iconography.md",
+   "total": 1293,
+   "html": 162,
+   "share": 0.12529002320185614
+  },
+  {
+   "page": "accessible-first/foundations/index.md",
+   "total": 8346,
+   "html": 8045,
+   "share": 0.963934819075006
+  },
+  {
+   "page": "accessible-first/foundations/motion.md",
+   "total": 1839,
+   "html": 624,
+   "share": 0.33931484502446985
+  },
+  {
+   "page": "accessible-first/foundations/naming.md",
+   "total": 825,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/foundations/shape.md",
+   "total": 2824,
+   "html": 1239,
+   "share": 0.43873937677053826
+  },
+  {
+   "page": "accessible-first/foundations/spacing.md",
+   "total": 4984,
+   "html": 1192,
+   "share": 0.2391653290529695
+  },
+  {
+   "page": "accessible-first/foundations/theming.md",
+   "total": 18235,
+   "html": 17395,
+   "share": 0.9539347408829175
+  },
+  {
+   "page": "accessible-first/foundations/typography.md",
+   "total": 6011,
+   "html": 2577,
+   "share": 0.42871402428880384
+  },
+  {
+   "page": "accessible-first/foundations/voice.md",
+   "total": 2298,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/index.md",
+   "total": 5859,
+   "html": 5009,
+   "share": 0.8549240484724355
+  },
+  {
+   "page": "accessible-first/primitives/color.md",
+   "total": 107672,
+   "html": 88268,
+   "share": 0.8197860167917379
+  },
+  {
+   "page": "accessible-first/primitives/effects.md",
+   "total": 603,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/primitives/index.md",
+   "total": 5874,
+   "html": 5358,
+   "share": 0.9121552604698672
+  },
+  {
+   "page": "accessible-first/primitives/motion.md",
+   "total": 652,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/primitives/shape.md",
+   "total": 1048,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/primitives/space-and-size.md",
+   "total": 2381,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/primitives/type.md",
+   "total": 3650,
+   "html": 877,
+   "share": 0.24027397260273972
+  },
+  {
+   "page": "accessible-first/themes.md",
+   "total": 2691,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "accessible-first/voice.md",
+   "total": 1699,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/agents.md",
+   "total": 811,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/components/accordion-anatomy.md",
+   "total": 24810,
+   "html": 24117,
+   "share": 0.9720677146311971
+  },
+  {
+   "page": "brand-expressive/components/accordion.md",
+   "total": 14658,
+   "html": 12821,
+   "share": 0.8746759448765179
+  },
+  {
+   "page": "brand-expressive/components/alert-anatomy.md",
+   "total": 26087,
+   "html": 25402,
+   "share": 0.9737417104304826
+  },
+  {
+   "page": "brand-expressive/components/alert-dialog-anatomy.md",
+   "total": 29631,
+   "html": 28932,
+   "share": 0.9764098410448516
+  },
+  {
+   "page": "brand-expressive/components/alert-dialog.md",
+   "total": 18659,
+   "html": 16585,
+   "share": 0.8888472051020955
+  },
+  {
+   "page": "brand-expressive/components/alert.md",
+   "total": 22588,
+   "html": 20355,
+   "share": 0.9011421993979104
+  },
+  {
+   "page": "brand-expressive/components/aspect-ratio-anatomy.md",
+   "total": 4978,
+   "html": 4279,
+   "share": 0.8595821615106468
+  },
+  {
+   "page": "brand-expressive/components/aspect-ratio.md",
+   "total": 2254,
+   "html": 999,
+   "share": 0.44321206743566993
+  },
+  {
+   "page": "brand-expressive/components/attachment-anatomy.md",
+   "total": 25453,
+   "html": 24758,
+   "share": 0.9726947707539386
+  },
+  {
+   "page": "brand-expressive/components/attachment.md",
+   "total": 17246,
+   "html": 15766,
+   "share": 0.9141829989562797
+  },
+  {
+   "page": "brand-expressive/components/avatar-anatomy.md",
+   "total": 21092,
+   "html": 20405,
+   "share": 0.967428408875403
+  },
+  {
+   "page": "brand-expressive/components/avatar.md",
+   "total": 18243,
+   "html": 16695,
+   "share": 0.9151455352738036
+  },
+  {
+   "page": "brand-expressive/components/badge-anatomy.md",
+   "total": 20505,
+   "html": 19820,
+   "share": 0.9665935137771275
+  },
+  {
+   "page": "brand-expressive/components/badge.md",
+   "total": 24991,
+   "html": 23049,
+   "share": 0.9222920251290465
+  },
+  {
+   "page": "brand-expressive/components/breadcrumb-anatomy.md",
+   "total": 24006,
+   "html": 23311,
+   "share": 0.9710489044405566
+  },
+  {
+   "page": "brand-expressive/components/breadcrumb.md",
+   "total": 13518,
+   "html": 11878,
+   "share": 0.8786802781476549
+  },
+  {
+   "page": "brand-expressive/components/bubble-anatomy.md",
+   "total": 21787,
+   "html": 21100,
+   "share": 0.9684674347087713
+  },
+  {
+   "page": "brand-expressive/components/bubble.md",
+   "total": 10661,
+   "html": 9323,
+   "share": 0.8744958259075134
+  },
+  {
+   "page": "brand-expressive/components/button-anatomy.md",
+   "total": 30435,
+   "html": 29748,
+   "share": 0.977427304090685
+  },
+  {
+   "page": "brand-expressive/components/button-group-anatomy.md",
+   "total": 15596,
+   "html": 14897,
+   "share": 0.955180815593742
+  },
+  {
+   "page": "brand-expressive/components/button-group.md",
+   "total": 9946,
+   "html": 8307,
+   "share": 0.8352101347275287
+  },
+  {
+   "page": "brand-expressive/components/button.md",
+   "total": 50508,
+   "html": 47361,
+   "share": 0.9376930387265384
+  },
+  {
+   "page": "brand-expressive/components/calendar-anatomy.md",
+   "total": 39141,
+   "html": 38450,
+   "share": 0.9823458777241256
+  },
+  {
+   "page": "brand-expressive/components/calendar.md",
+   "total": 27195,
+   "html": 25408,
+   "share": 0.9342893914322485
+  },
+  {
+   "page": "brand-expressive/components/card-anatomy.md",
+   "total": 25309,
+   "html": 24626,
+   "share": 0.9730135524912087
+  },
+  {
+   "page": "brand-expressive/components/card.md",
+   "total": 13801,
+   "html": 12165,
+   "share": 0.8814578653720745
+  },
+  {
+   "page": "brand-expressive/components/carousel-anatomy.md",
+   "total": 13457,
+   "html": 12766,
+   "share": 0.9486512595675113
+  },
+  {
+   "page": "brand-expressive/components/carousel.md",
+   "total": 6233,
+   "html": 4554,
+   "share": 0.7306273062730627
+  },
+  {
+   "page": "brand-expressive/components/chart-anatomy.md",
+   "total": 28808,
+   "html": 28123,
+   "share": 0.9762218828103305
+  },
+  {
+   "page": "brand-expressive/components/chart.md",
+   "total": 18964,
+   "html": 17323,
+   "share": 0.9134676228643746
+  },
+  {
+   "page": "brand-expressive/components/checkbox-anatomy.md",
+   "total": 20375,
+   "html": 19684,
+   "share": 0.9660858895705522
+  },
+  {
+   "page": "brand-expressive/components/checkbox.md",
+   "total": 11887,
+   "html": 10067,
+   "share": 0.8468915622108185
+  },
+  {
+   "page": "brand-expressive/components/collapsible-anatomy.md",
+   "total": 4594,
+   "html": 3897,
+   "share": 0.848280365694384
+  },
+  {
+   "page": "brand-expressive/components/collapsible.md",
+   "total": 2465,
+   "html": 992,
+   "share": 0.4024340770791075
+  },
+  {
+   "page": "brand-expressive/components/combobox-anatomy.md",
+   "total": 35245,
+   "html": 34554,
+   "share": 0.9803943821818698
+  },
+  {
+   "page": "brand-expressive/components/combobox.md",
+   "total": 46734,
+   "html": 44931,
+   "share": 0.9614199512132494
+  },
+  {
+   "page": "brand-expressive/components/command-anatomy.md",
+   "total": 35186,
+   "html": 34497,
+   "share": 0.9804183482066731
+  },
+  {
+   "page": "brand-expressive/components/command.md",
+   "total": 30055,
+   "html": 28395,
+   "share": 0.9447679254699717
+  },
+  {
+   "page": "brand-expressive/components/context-menu-anatomy.md",
+   "total": 33075,
+   "html": 32376,
+   "share": 0.9788662131519275
+  },
+  {
+   "page": "brand-expressive/components/context-menu.md",
+   "total": 52071,
+   "html": 50499,
+   "share": 0.969810451114824
+  },
+  {
+   "page": "brand-expressive/components/data-table-anatomy.md",
+   "total": 40413,
+   "html": 39718,
+   "share": 0.9828025635315368
+  },
+  {
+   "page": "brand-expressive/components/data-table.md",
+   "total": 13328,
+   "html": 11601,
+   "share": 0.8704231692677071
+  },
+  {
+   "page": "brand-expressive/components/date-picker-anatomy.md",
+   "total": 14403,
+   "html": 13706,
+   "share": 0.9516073040338818
+  },
+  {
+   "page": "brand-expressive/components/date-picker.md",
+   "total": 4536,
+   "html": 2886,
+   "share": 0.6362433862433863
+  },
+  {
+   "page": "brand-expressive/components/dialog-anatomy.md",
+   "total": 35070,
+   "html": 34383,
+   "share": 0.9804106073567151
+  },
+  {
+   "page": "brand-expressive/components/dialog.md",
+   "total": 20799,
+   "html": 18788,
+   "share": 0.9033126592624645
+  },
+  {
+   "page": "brand-expressive/components/drawer-anatomy.md",
+   "total": 26962,
+   "html": 26275,
+   "share": 0.9745196943846895
+  },
+  {
+   "page": "brand-expressive/components/drawer.md",
+   "total": 16677,
+   "html": 15018,
+   "share": 0.9005216765605325
+  },
+  {
+   "page": "brand-expressive/components/dropdown-menu-anatomy.md",
+   "total": 37039,
+   "html": 36338,
+   "share": 0.9810740030778369
+  },
+  {
+   "page": "brand-expressive/components/dropdown-menu.md",
+   "total": 17274,
+   "html": 15479,
+   "share": 0.8960866041449578
+  },
+  {
+   "page": "brand-expressive/components/empty-anatomy.md",
+   "total": 19042,
+   "html": 18357,
+   "share": 0.9640268879319399
+  },
+  {
+   "page": "brand-expressive/components/empty.md",
+   "total": 19491,
+   "html": 17580,
+   "share": 0.9019547483453901
+  },
+  {
+   "page": "brand-expressive/components/field-anatomy.md",
+   "total": 28870,
+   "html": 28185,
+   "share": 0.9762729476965708
+  },
+  {
+   "page": "brand-expressive/components/field.md",
+   "total": 32074,
+   "html": 30168,
+   "share": 0.9405749204963522
+  },
+  {
+   "page": "brand-expressive/components/form-anatomy.md",
+   "total": 18148,
+   "html": 17465,
+   "share": 0.9623649988979502
+  },
+  {
+   "page": "brand-expressive/components/form.md",
+   "total": 8154,
+   "html": 6580,
+   "share": 0.8069659063036546
+  },
+  {
+   "page": "brand-expressive/components/hover-card-anatomy.md",
+   "total": 18641,
+   "html": 17946,
+   "share": 0.9627165924574862
+  },
+  {
+   "page": "brand-expressive/components/hover-card.md",
+   "total": 9197,
+   "html": 7798,
+   "share": 0.8478851799499837
+  },
+  {
+   "page": "brand-expressive/components/input-anatomy.md",
+   "total": 23892,
+   "html": 23207,
+   "share": 0.9713293152519672
+  },
+  {
+   "page": "brand-expressive/components/input-group-anatomy.md",
+   "total": 27976,
+   "html": 27279,
+   "share": 0.9750857878181298
+  },
+  {
+   "page": "brand-expressive/components/input-group.md",
+   "total": 44367,
+   "html": 42394,
+   "share": 0.9555300110442446
+  },
+  {
+   "page": "brand-expressive/components/input-otp-anatomy.md",
+   "total": 28772,
+   "html": 28079,
+   "share": 0.9759140831363826
+  },
+  {
+   "page": "brand-expressive/components/input-otp.md",
+   "total": 19886,
+   "html": 18355,
+   "share": 0.9230111636327064
+  },
+  {
+   "page": "brand-expressive/components/input.md",
+   "total": 17515,
+   "html": 15991,
+   "share": 0.912988866685698
+  },
+  {
+   "page": "brand-expressive/components/inventory.md",
+   "total": 14286,
+   "html": 13588,
+   "share": 0.9511409771804564
+  },
+  {
+   "page": "brand-expressive/components/item-anatomy.md",
+   "total": 25980,
+   "html": 25297,
+   "share": 0.9737105465742879
+  },
+  {
+   "page": "brand-expressive/components/item.md",
+   "total": 35848,
+   "html": 34029,
+   "share": 0.9492579781298818
+  },
+  {
+   "page": "brand-expressive/components/kbd-anatomy.md",
+   "total": 15075,
+   "html": 14394,
+   "share": 0.9548258706467662
+  },
+  {
+   "page": "brand-expressive/components/kbd.md",
+   "total": 9420,
+   "html": 8167,
+   "share": 0.8669851380042463
+  },
+  {
+   "page": "brand-expressive/components/label-anatomy.md",
+   "total": 13435,
+   "html": 12750,
+   "share": 0.9490137700037217
+  },
+  {
+   "page": "brand-expressive/components/label.md",
+   "total": 6529,
+   "html": 5098,
+   "share": 0.7808240159289325
+  },
+  {
+   "page": "brand-expressive/components/marker-anatomy.md",
+   "total": 12138,
+   "html": 11451,
+   "share": 0.9434008897676718
+  },
+  {
+   "page": "brand-expressive/components/marker.md",
+   "total": 6269,
+   "html": 4977,
+   "share": 0.7939065241665337
+  },
+  {
+   "page": "brand-expressive/components/menubar-anatomy.md",
+   "total": 38406,
+   "html": 37717,
+   "share": 0.9820600947768577
+  },
+  {
+   "page": "brand-expressive/components/menubar.md",
+   "total": 61748,
+   "html": 60222,
+   "share": 0.9752866489602902
+  },
+  {
+   "page": "brand-expressive/components/message-anatomy.md",
+   "total": 16683,
+   "html": 15994,
+   "share": 0.9587004735359348
+  },
+  {
+   "page": "brand-expressive/components/message-scroller-anatomy.md",
+   "total": 14258,
+   "html": 13551,
+   "share": 0.9504138027773882
+  },
+  {
+   "page": "brand-expressive/components/message-scroller.md",
+   "total": 7211,
+   "html": 5756,
+   "share": 0.7982249341284149
+  },
+  {
+   "page": "brand-expressive/components/message.md",
+   "total": 6813,
+   "html": 5410,
+   "share": 0.7940701599882577
+  },
+  {
+   "page": "brand-expressive/components/native-select-anatomy.md",
+   "total": 33258,
+   "html": 32557,
+   "share": 0.9789223645438692
+  },
+  {
+   "page": "brand-expressive/components/native-select.md",
+   "total": 24883,
+   "html": 23329,
+   "share": 0.9375477233452558
+  },
+  {
+   "page": "brand-expressive/components/navigation-menu-anatomy.md",
+   "total": 37392,
+   "html": 36687,
+   "share": 0.9811456996148908
+  },
+  {
+   "page": "brand-expressive/components/navigation-menu.md",
+   "total": 45709,
+   "html": 44152,
+   "share": 0.9659366864293684
+  },
+  {
+   "page": "brand-expressive/components/pagination-anatomy.md",
+   "total": 19684,
+   "html": 18989,
+   "share": 0.9646921357447673
+  },
+  {
+   "page": "brand-expressive/components/pagination.md",
+   "total": 6116,
+   "html": 4627,
+   "share": 0.7565402223675605
+  },
+  {
+   "page": "brand-expressive/components/popover-anatomy.md",
+   "total": 22290,
+   "html": 21601,
+   "share": 0.9690892777030058
+  },
+  {
+   "page": "brand-expressive/components/popover.md",
+   "total": 11675,
+   "html": 10009,
+   "share": 0.8573019271948609
+  },
+  {
+   "page": "brand-expressive/components/progress-anatomy.md",
+   "total": 10454,
+   "html": 9763,
+   "share": 0.9339008991773484
+  },
+  {
+   "page": "brand-expressive/components/progress.md",
+   "total": 5434,
+   "html": 3882,
+   "share": 0.7143908722856092
+  },
+  {
+   "page": "brand-expressive/components/radio-group-anatomy.md",
+   "total": 24773,
+   "html": 24076,
+   "share": 0.9718645299317805
+  },
+  {
+   "page": "brand-expressive/components/radio-group.md",
+   "total": 15218,
+   "html": 13471,
+   "share": 0.8852017347877513
+  },
+  {
+   "page": "brand-expressive/components/resizable-anatomy.md",
+   "total": 19040,
+   "html": 18347,
+   "share": 0.9636029411764706
+  },
+  {
+   "page": "brand-expressive/components/resizable.md",
+   "total": 10997,
+   "html": 9537,
+   "share": 0.8672365190506501
+  },
+  {
+   "page": "brand-expressive/components/scroll-area-anatomy.md",
+   "total": 13471,
+   "html": 12774,
+   "share": 0.9482592235171851
+  },
+  {
+   "page": "brand-expressive/components/scroll-area.md",
+   "total": 8188,
+   "html": 6595,
+   "share": 0.8054469956033219
+  },
+  {
+   "page": "brand-expressive/components/select-anatomy.md",
+   "total": 39074,
+   "html": 38387,
+   "share": 0.9824179761478221
+  },
+  {
+   "page": "brand-expressive/components/select.md",
+   "total": 28849,
+   "html": 27174,
+   "share": 0.9419390620125481
+  },
+  {
+   "page": "brand-expressive/components/separator-anatomy.md",
+   "total": 7375,
+   "html": 6682,
+   "share": 0.9060338983050847
+  },
+  {
+   "page": "brand-expressive/components/separator.md",
+   "total": 4631,
+   "html": 3274,
+   "share": 0.7069747354782985
+  },
+  {
+   "page": "brand-expressive/components/sheet-anatomy.md",
+   "total": 35920,
+   "html": 35235,
+   "share": 0.9809298440979956
+  },
+  {
+   "page": "brand-expressive/components/sheet.md",
+   "total": 21072,
+   "html": 19494,
+   "share": 0.9251138952164009
+  },
+  {
+   "page": "brand-expressive/components/sidebar-anatomy.md",
+   "total": 32804,
+   "html": 32115,
+   "share": 0.9789964638458725
+  },
+  {
+   "page": "brand-expressive/components/sidebar.md",
+   "total": 90255,
+   "html": 88565,
+   "share": 0.9812752756079995
+  },
+  {
+   "page": "brand-expressive/components/skeleton-anatomy.md",
+   "total": 9624,
+   "html": 8933,
+   "share": 0.9282003325020781
+  },
+  {
+   "page": "brand-expressive/components/skeleton.md",
+   "total": 4505,
+   "html": 2900,
+   "share": 0.6437291897891232
+  },
+  {
+   "page": "brand-expressive/components/slider-anatomy.md",
+   "total": 22418,
+   "html": 21731,
+   "share": 0.9693549826032652
+  },
+  {
+   "page": "brand-expressive/components/slider.md",
+   "total": 13803,
+   "html": 12082,
+   "share": 0.8753169600811418
+  },
+  {
+   "page": "brand-expressive/components/spinner-anatomy.md",
+   "total": 7938,
+   "html": 7249,
+   "share": 0.9132023179642227
+  },
+  {
+   "page": "brand-expressive/components/spinner.md",
+   "total": 3550,
+   "html": 1934,
+   "share": 0.5447887323943662
+  },
+  {
+   "page": "brand-expressive/components/switch-anatomy.md",
+   "total": 22564,
+   "html": 21877,
+   "share": 0.969553270696685
+  },
+  {
+   "page": "brand-expressive/components/switch.md",
+   "total": 13786,
+   "html": 12091,
+   "share": 0.8770491803278688
+  },
+  {
+   "page": "brand-expressive/components/table-anatomy.md",
+   "total": 22957,
+   "html": 22272,
+   "share": 0.9701616064816831
+  },
+  {
+   "page": "brand-expressive/components/table.md",
+   "total": 13896,
+   "html": 12241,
+   "share": 0.8809009786989062
+  },
+  {
+   "page": "brand-expressive/components/tabs-anatomy.md",
+   "total": 25542,
+   "html": 24859,
+   "share": 0.9732597290736825
+  },
+  {
+   "page": "brand-expressive/components/tabs.md",
+   "total": 14249,
+   "html": 12518,
+   "share": 0.878517790722156
+  },
+  {
+   "page": "brand-expressive/components/textarea-anatomy.md",
+   "total": 26507,
+   "html": 25816,
+   "share": 0.973931414343381
+  },
+  {
+   "page": "brand-expressive/components/textarea.md",
+   "total": 18620,
+   "html": 17100,
+   "share": 0.9183673469387755
+  },
+  {
+   "page": "brand-expressive/components/toast-anatomy.md",
+   "total": 22979,
+   "html": 22294,
+   "share": 0.9701901736367988
+  },
+  {
+   "page": "brand-expressive/components/toast.md",
+   "total": 22581,
+   "html": 20564,
+   "share": 0.9106771179310039
+  },
+  {
+   "page": "brand-expressive/components/toggle-anatomy.md",
+   "total": 24994,
+   "html": 24307,
+   "share": 0.972513403216772
+  },
+  {
+   "page": "brand-expressive/components/toggle-group-anatomy.md",
+   "total": 12143,
+   "html": 11444,
+   "share": 0.9424359713415136
+  },
+  {
+   "page": "brand-expressive/components/toggle-group.md",
+   "total": 6151,
+   "html": 4398,
+   "share": 0.7150056901316859
+  },
+  {
+   "page": "brand-expressive/components/toggle.md",
+   "total": 30499,
+   "html": 28458,
+   "share": 0.933079773107315
+  },
+  {
+   "page": "brand-expressive/components/tooltip-anatomy.md",
+   "total": 15218,
+   "html": 14529,
+   "share": 0.9547246681561309
+  },
+  {
+   "page": "brand-expressive/components/tooltip.md",
+   "total": 9164,
+   "html": 7531,
+   "share": 0.8218027062418158
+  },
+  {
+   "page": "brand-expressive/decision-reference.md",
+   "total": 235459,
+   "html": 235372,
+   "share": 0.9996305089208737
+  },
+  {
+   "page": "brand-expressive/foundations/accessibility.md",
+   "total": 2368,
+   "html": 789,
+   "share": 0.33319256756756754
+  },
+  {
+   "page": "brand-expressive/foundations/color.md",
+   "total": 80787,
+   "html": 47529,
+   "share": 0.5883248542463515
+  },
+  {
+   "page": "brand-expressive/foundations/components.md",
+   "total": 1159,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/foundations/elevation.md",
+   "total": 1837,
+   "html": 330,
+   "share": 0.17964071856287425
+  },
+  {
+   "page": "brand-expressive/foundations/iconography.md",
+   "total": 1394,
+   "html": 162,
+   "share": 0.11621233859397417
+  },
+  {
+   "page": "brand-expressive/foundations/index.md",
+   "total": 8392,
+   "html": 8091,
+   "share": 0.9641325071496664
+  },
+  {
+   "page": "brand-expressive/foundations/motion.md",
+   "total": 2296,
+   "html": 816,
+   "share": 0.3554006968641115
+  },
+  {
+   "page": "brand-expressive/foundations/naming.md",
+   "total": 848,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/foundations/shape.md",
+   "total": 2862,
+   "html": 1239,
+   "share": 0.4329140461215933
+  },
+  {
+   "page": "brand-expressive/foundations/spacing.md",
+   "total": 5003,
+   "html": 1192,
+   "share": 0.23825704577253648
+  },
+  {
+   "page": "brand-expressive/foundations/theming.md",
+   "total": 18231,
+   "html": 17387,
+   "share": 0.9537052273599912
+  },
+  {
+   "page": "brand-expressive/foundations/typography.md",
+   "total": 5763,
+   "html": 2494,
+   "share": 0.4327607149054312
+  },
+  {
+   "page": "brand-expressive/foundations/voice.md",
+   "total": 2013,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/index.md",
+   "total": 5919,
+   "html": 5026,
+   "share": 0.849129920594695
+  },
+  {
+   "page": "brand-expressive/primitives/color.md",
+   "total": 107729,
+   "html": 88316,
+   "share": 0.8197978260264182
+  },
+  {
+   "page": "brand-expressive/primitives/effects.md",
+   "total": 995,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/primitives/index.md",
+   "total": 6225,
+   "html": 5709,
+   "share": 0.9171084337349398
+  },
+  {
+   "page": "brand-expressive/primitives/motion.md",
+   "total": 938,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/primitives/shape.md",
+   "total": 1044,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/primitives/space-and-size.md",
+   "total": 2143,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/primitives/type.md",
+   "total": 4549,
+   "html": 1425,
+   "share": 0.3132556605847439
+  },
+  {
+   "page": "brand-expressive/themes.md",
+   "total": 2706,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "brand-expressive/voice.md",
+   "total": 1407,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/agents.md",
+   "total": 805,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/components/accordion-anatomy.md",
+   "total": 24677,
+   "html": 23987,
+   "share": 0.9720387405276169
+  },
+  {
+   "page": "content-first/components/accordion.md",
+   "total": 14606,
+   "html": 12793,
+   "share": 0.875872928933315
+  },
+  {
+   "page": "content-first/components/alert-anatomy.md",
+   "total": 26200,
+   "html": 25518,
+   "share": 0.973969465648855
+  },
+  {
+   "page": "content-first/components/alert-dialog-anatomy.md",
+   "total": 29759,
+   "html": 29063,
+   "share": 0.9766121173426526
+  },
+  {
+   "page": "content-first/components/alert-dialog.md",
+   "total": 18657,
+   "html": 16589,
+   "share": 0.8891568848153508
+  },
+  {
+   "page": "content-first/components/alert.md",
+   "total": 20900,
+   "html": 18724,
+   "share": 0.8958851674641148
+  },
+  {
+   "page": "content-first/components/aspect-ratio-anatomy.md",
+   "total": 4963,
+   "html": 4267,
+   "share": 0.8597622405802942
+  },
+  {
+   "page": "content-first/components/aspect-ratio.md",
+   "total": 2256,
+   "html": 990,
+   "share": 0.43882978723404253
+  },
+  {
+   "page": "content-first/components/attachment-anatomy.md",
+   "total": 25425,
+   "html": 24733,
+   "share": 0.9727826941986234
+  },
+  {
+   "page": "content-first/components/attachment.md",
+   "total": 17234,
+   "html": 15731,
+   "share": 0.9127886735522803
+  },
+  {
+   "page": "content-first/components/avatar-anatomy.md",
+   "total": 21142,
+   "html": 20458,
+   "share": 0.9676473370542049
+  },
+  {
+   "page": "content-first/components/avatar.md",
+   "total": 18207,
+   "html": 16645,
+   "share": 0.9142088207832152
+  },
+  {
+   "page": "content-first/components/badge-anatomy.md",
+   "total": 20603,
+   "html": 19921,
+   "share": 0.9668980245595301
+  },
+  {
+   "page": "content-first/components/badge.md",
+   "total": 23374,
+   "html": 21417,
+   "share": 0.9162744930264396
+  },
+  {
+   "page": "content-first/components/breadcrumb-anatomy.md",
+   "total": 23929,
+   "html": 23237,
+   "share": 0.9710811149651051
+  },
+  {
+   "page": "content-first/components/breadcrumb.md",
+   "total": 13444,
+   "html": 11844,
+   "share": 0.880987801249628
+  },
+  {
+   "page": "content-first/components/bubble-anatomy.md",
+   "total": 21820,
+   "html": 21136,
+   "share": 0.9686526122823098
+  },
+  {
+   "page": "content-first/components/bubble.md",
+   "total": 10628,
+   "html": 9267,
+   "share": 0.8719420398946179
+  },
+  {
+   "page": "content-first/components/button-anatomy.md",
+   "total": 30513,
+   "html": 29829,
+   "share": 0.9775833251401043
+  },
+  {
+   "page": "content-first/components/button-group-anatomy.md",
+   "total": 15656,
+   "html": 14960,
+   "share": 0.9555442003065917
+  },
+  {
+   "page": "content-first/components/button-group.md",
+   "total": 10107,
+   "html": 8559,
+   "share": 0.8468388245770259
+  },
+  {
+   "page": "content-first/components/button.md",
+   "total": 51807,
+   "html": 48644,
+   "share": 0.9389464744146544
+  },
+  {
+   "page": "content-first/components/calendar-anatomy.md",
+   "total": 39096,
+   "html": 38408,
+   "share": 0.982402291794557
+  },
+  {
+   "page": "content-first/components/calendar.md",
+   "total": 26907,
+   "html": 25225,
+   "share": 0.9374883859218791
+  },
+  {
+   "page": "content-first/components/card-anatomy.md",
+   "total": 25237,
+   "html": 24557,
+   "share": 0.973055434481119
+  },
+  {
+   "page": "content-first/components/card.md",
+   "total": 13467,
+   "html": 11819,
+   "share": 0.877626791416054
+  },
+  {
+   "page": "content-first/components/carousel-anatomy.md",
+   "total": 13350,
+   "html": 12662,
+   "share": 0.9484644194756554
+  },
+  {
+   "page": "content-first/components/carousel.md",
+   "total": 6312,
+   "html": 4540,
+   "share": 0.7192648922686945
+  },
+  {
+   "page": "content-first/components/chart-anatomy.md",
+   "total": 28700,
+   "html": 28018,
+   "share": 0.9762369337979094
+  },
+  {
+   "page": "content-first/components/chart.md",
+   "total": 18939,
+   "html": 17295,
+   "share": 0.9131949944558847
+  },
+  {
+   "page": "content-first/components/checkbox-anatomy.md",
+   "total": 20369,
+   "html": 19681,
+   "share": 0.9662231822868084
+  },
+  {
+   "page": "content-first/components/checkbox.md",
+   "total": 11883,
+   "html": 10034,
+   "share": 0.8443995624000673
+  },
+  {
+   "page": "content-first/components/collapsible-anatomy.md",
+   "total": 4582,
+   "html": 3888,
+   "share": 0.8485377564382366
+  },
+  {
+   "page": "content-first/components/collapsible.md",
+   "total": 2433,
+   "html": 983,
+   "share": 0.40402794903411426
+  },
+  {
+   "page": "content-first/components/combobox-anatomy.md",
+   "total": 35113,
+   "html": 34425,
+   "share": 0.9804061173924188
+  },
+  {
+   "page": "content-first/components/combobox.md",
+   "total": 46474,
+   "html": 44767,
+   "share": 0.9632697852562723
+  },
+  {
+   "page": "content-first/components/command-anatomy.md",
+   "total": 35003,
+   "html": 34317,
+   "share": 0.9804016798560123
+  },
+  {
+   "page": "content-first/components/command.md",
+   "total": 29984,
+   "html": 28301,
+   "share": 0.9438700640341515
+  },
+  {
+   "page": "content-first/components/context-menu-anatomy.md",
+   "total": 32994,
+   "html": 32298,
+   "share": 0.9789052555010002
+  },
+  {
+   "page": "content-first/components/context-menu.md",
+   "total": 51927,
+   "html": 50332,
+   "share": 0.9692838022608662
+  },
+  {
+   "page": "content-first/components/data-table-anatomy.md",
+   "total": 40412,
+   "html": 39720,
+   "share": 0.9828763733544492
+  },
+  {
+   "page": "content-first/components/data-table.md",
+   "total": 13218,
+   "html": 11471,
+   "share": 0.8678317445907097
+  },
+  {
+   "page": "content-first/components/date-picker-anatomy.md",
+   "total": 14354,
+   "html": 13660,
+   "share": 0.9516511077051693
+  },
+  {
+   "page": "content-first/components/date-picker.md",
+   "total": 4660,
+   "html": 3104,
+   "share": 0.6660944206008583
+  },
+  {
+   "page": "content-first/components/dialog-anatomy.md",
+   "total": 35124,
+   "html": 34440,
+   "share": 0.9805261359754014
+  },
+  {
+   "page": "content-first/components/dialog.md",
+   "total": 20691,
+   "html": 18662,
+   "share": 0.9019380406940215
+  },
+  {
+   "page": "content-first/components/drawer-anatomy.md",
+   "total": 27023,
+   "html": 26339,
+   "share": 0.9746882285460534
+  },
+  {
+   "page": "content-first/components/drawer.md",
+   "total": 16866,
+   "html": 15229,
+   "share": 0.9029408277006996
+  },
+  {
+   "page": "content-first/components/dropdown-menu-anatomy.md",
+   "total": 36976,
+   "html": 36278,
+   "share": 0.9811228905235828
+  },
+  {
+   "page": "content-first/components/dropdown-menu.md",
+   "total": 17145,
+   "html": 15333,
+   "share": 0.8943132108486439
+  },
+  {
+   "page": "content-first/components/empty-anatomy.md",
+   "total": 19013,
+   "html": 18331,
+   "share": 0.9641298059222637
+  },
+  {
+   "page": "content-first/components/empty.md",
+   "total": 19478,
+   "html": 17577,
+   "share": 0.9024027107505904
+  },
+  {
+   "page": "content-first/components/field-anatomy.md",
+   "total": 28966,
+   "html": 28284,
+   "share": 0.9764551543188565
+  },
+  {
+   "page": "content-first/components/field.md",
+   "total": 33665,
+   "html": 31730,
+   "share": 0.9425219070251003
+  },
+  {
+   "page": "content-first/components/form-anatomy.md",
+   "total": 18304,
+   "html": 17624,
+   "share": 0.9628496503496503
+  },
+  {
+   "page": "content-first/components/form.md",
+   "total": 8183,
+   "html": 6584,
+   "share": 0.8045948918489552
+  },
+  {
+   "page": "content-first/components/hover-card-anatomy.md",
+   "total": 18629,
+   "html": 17937,
+   "share": 0.9628536153309356
+  },
+  {
+   "page": "content-first/components/hover-card.md",
+   "total": 9242,
+   "html": 7820,
+   "share": 0.846137199740316
+  },
+  {
+   "page": "content-first/components/input-anatomy.md",
+   "total": 23911,
+   "html": 23229,
+   "share": 0.9714775626280792
+  },
+  {
+   "page": "content-first/components/input-group-anatomy.md",
+   "total": 27960,
+   "html": 27266,
+   "share": 0.9751788268955651
+  },
+  {
+   "page": "content-first/components/input-group.md",
+   "total": 43041,
+   "html": 41049,
+   "share": 0.9537185474315187
+  },
+  {
+   "page": "content-first/components/input-otp-anatomy.md",
+   "total": 28742,
+   "html": 28052,
+   "share": 0.9759933198803146
+  },
+  {
+   "page": "content-first/components/input-otp.md",
+   "total": 19964,
+   "html": 18522,
+   "share": 0.9277699859747546
+  },
+  {
+   "page": "content-first/components/input.md",
+   "total": 17518,
+   "html": 15963,
+   "share": 0.9112341591505879
+  },
+  {
+   "page": "content-first/components/inventory.md",
+   "total": 14308,
+   "html": 13675,
+   "share": 0.9557590159351412
+  },
+  {
+   "page": "content-first/components/item-anatomy.md",
+   "total": 25988,
+   "html": 25308,
+   "share": 0.9738340772664307
+  },
+  {
+   "page": "content-first/components/item.md",
+   "total": 35802,
+   "html": 33959,
+   "share": 0.9485224289145858
+  },
+  {
+   "page": "content-first/components/kbd-anatomy.md",
+   "total": 15066,
+   "html": 14388,
+   "share": 0.9549980087614496
+  },
+  {
+   "page": "content-first/components/kbd.md",
+   "total": 9416,
+   "html": 8140,
+   "share": 0.8644859813084113
+  },
+  {
+   "page": "content-first/components/label-anatomy.md",
+   "total": 13437,
+   "html": 12755,
+   "share": 0.9492446230557416
+  },
+  {
+   "page": "content-first/components/label.md",
+   "total": 6528,
+   "html": 5078,
+   "share": 0.7778799019607843
+  },
+  {
+   "page": "content-first/components/marker-anatomy.md",
+   "total": 12160,
+   "html": 11476,
+   "share": 0.94375
+  },
+  {
+   "page": "content-first/components/marker.md",
+   "total": 6261,
+   "html": 4946,
+   "share": 0.7899696534099984
+  },
+  {
+   "page": "content-first/components/menubar-anatomy.md",
+   "total": 38297,
+   "html": 37611,
+   "share": 0.9820873697678669
+  },
+  {
+   "page": "content-first/components/menubar.md",
+   "total": 61307,
+   "html": 59758,
+   "share": 0.9747337171937952
+  },
+  {
+   "page": "content-first/components/message-anatomy.md",
+   "total": 16746,
+   "html": 16060,
+   "share": 0.9590349934312672
+  },
+  {
+   "page": "content-first/components/message-scroller-anatomy.md",
+   "total": 14299,
+   "html": 13595,
+   "share": 0.9507657878173299
+  },
+  {
+   "page": "content-first/components/message-scroller.md",
+   "total": 7213,
+   "html": 5735,
+   "share": 0.7950921946485512
+  },
+  {
+   "page": "content-first/components/message.md",
+   "total": 6980,
+   "html": 5679,
+   "share": 0.8136103151862464
+  },
+  {
+   "page": "content-first/components/native-select-anatomy.md",
+   "total": 33138,
+   "html": 32440,
+   "share": 0.9789365682901805
+  },
+  {
+   "page": "content-first/components/native-select.md",
+   "total": 24845,
+   "html": 23261,
+   "share": 0.9362447172469309
+  },
+  {
+   "page": "content-first/components/navigation-menu-anatomy.md",
+   "total": 37311,
+   "html": 36609,
+   "share": 0.9811851732732975
+  },
+  {
+   "page": "content-first/components/navigation-menu.md",
+   "total": 45627,
+   "html": 44050,
+   "share": 0.9654371315230017
+  },
+  {
+   "page": "content-first/components/pagination-anatomy.md",
+   "total": 19557,
+   "html": 18865,
+   "share": 0.9646162499360843
+  },
+  {
+   "page": "content-first/components/pagination.md",
+   "total": 6086,
+   "html": 4615,
+   "share": 0.7582977325008216
+  },
+  {
+   "page": "content-first/components/popover-anatomy.md",
+   "total": 22265,
+   "html": 21579,
+   "share": 0.969189310577139
+  },
+  {
+   "page": "content-first/components/popover.md",
+   "total": 11852,
+   "html": 10224,
+   "share": 0.8626392170097874
+  },
+  {
+   "page": "content-first/components/progress-anatomy.md",
+   "total": 10315,
+   "html": 9627,
+   "share": 0.933301017935046
+  },
+  {
+   "page": "content-first/components/progress.md",
+   "total": 5540,
+   "html": 4076,
+   "share": 0.7357400722021661
+  },
+  {
+   "page": "content-first/components/radio-group-anatomy.md",
+   "total": 24817,
+   "html": 24123,
+   "share": 0.9720352983841721
+  },
+  {
+   "page": "content-first/components/radio-group.md",
+   "total": 14875,
+   "html": 13094,
+   "share": 0.8802689075630252
+  },
+  {
+   "page": "content-first/components/resizable-anatomy.md",
+   "total": 19092,
+   "html": 18402,
+   "share": 0.9638592080452546
+  },
+  {
+   "page": "content-first/components/resizable.md",
+   "total": 10980,
+   "html": 9497,
+   "share": 0.8649362477231329
+  },
+  {
+   "page": "content-first/components/scroll-area-anatomy.md",
+   "total": 13473,
+   "html": 12779,
+   "share": 0.9484895717360647
+  },
+  {
+   "page": "content-first/components/scroll-area.md",
+   "total": 8207,
+   "html": 6574,
+   "share": 0.8010235165102961
+  },
+  {
+   "page": "content-first/components/select-anatomy.md",
+   "total": 38984,
+   "html": 38300,
+   "share": 0.9824543402421506
+  },
+  {
+   "page": "content-first/components/select.md",
+   "total": 28676,
+   "html": 26853,
+   "share": 0.9364276747105593
+  },
+  {
+   "page": "content-first/components/separator-anatomy.md",
+   "total": 7397,
+   "html": 6707,
+   "share": 0.9067189401108557
+  },
+  {
+   "page": "content-first/components/separator.md",
+   "total": 4635,
+   "html": 3254,
+   "share": 0.702049622437972
+  },
+  {
+   "page": "content-first/components/sheet-anatomy.md",
+   "total": 35923,
+   "html": 35241,
+   "share": 0.9810149486401469
+  },
+  {
+   "page": "content-first/components/sheet.md",
+   "total": 20762,
+   "html": 19122,
+   "share": 0.9210095366535016
+  },
+  {
+   "page": "content-first/components/sidebar-anatomy.md",
+   "total": 32925,
+   "html": 32239,
+   "share": 0.97916476841306
+  },
+  {
+   "page": "content-first/components/sidebar.md",
+   "total": 89401,
+   "html": 87691,
+   "share": 0.9808726971734097
+  },
+  {
+   "page": "content-first/components/skeleton-anatomy.md",
+   "total": 9491,
+   "html": 8803,
+   "share": 0.9275102728901065
+  },
+  {
+   "page": "content-first/components/skeleton.md",
+   "total": 4513,
+   "html": 2883,
+   "share": 0.6388211832483935
+  },
+  {
+   "page": "content-first/components/slider-anatomy.md",
+   "total": 22270,
+   "html": 21586,
+   "share": 0.9692860350246969
+  },
+  {
+   "page": "content-first/components/slider.md",
+   "total": 13563,
+   "html": 11936,
+   "share": 0.8800412888004129
+  },
+  {
+   "page": "content-first/components/spinner-anatomy.md",
+   "total": 7694,
+   "html": 7008,
+   "share": 0.9108396152846374
+  },
+  {
+   "page": "content-first/components/spinner.md",
+   "total": 3581,
+   "html": 1919,
+   "share": 0.5358838313320302
+  },
+  {
+   "page": "content-first/components/switch-anatomy.md",
+   "total": 22427,
+   "html": 21743,
+   "share": 0.9695010478441165
+  },
+  {
+   "page": "content-first/components/switch.md",
+   "total": 13762,
+   "html": 12051,
+   "share": 0.8756721406772271
+  },
+  {
+   "page": "content-first/components/table-anatomy.md",
+   "total": 22917,
+   "html": 22235,
+   "share": 0.970240432866431
+  },
+  {
+   "page": "content-first/components/table.md",
+   "total": 13824,
+   "html": 12138,
+   "share": 0.8780381944444444
+  },
+  {
+   "page": "content-first/components/tabs-anatomy.md",
+   "total": 25559,
+   "html": 24879,
+   "share": 0.9733948902539223
+  },
+  {
+   "page": "content-first/components/tabs.md",
+   "total": 14211,
+   "html": 12464,
+   "share": 0.8770670607276054
+  },
+  {
+   "page": "content-first/components/textarea-anatomy.md",
+   "total": 26525,
+   "html": 25837,
+   "share": 0.974062205466541
+  },
+  {
+   "page": "content-first/components/textarea.md",
+   "total": 18736,
+   "html": 17296,
+   "share": 0.9231426131511529
+  },
+  {
+   "page": "content-first/components/toast-anatomy.md",
+   "total": 23066,
+   "html": 22384,
+   "share": 0.9704326714644932
+  },
+  {
+   "page": "content-first/components/toast.md",
+   "total": 21789,
+   "html": 19766,
+   "share": 0.9071549864610583
+  },
+  {
+   "page": "content-first/components/toggle-anatomy.md",
+   "total": 24951,
+   "html": 24267,
+   "share": 0.9725862690874113
+  },
+  {
+   "page": "content-first/components/toggle-group-anatomy.md",
+   "total": 12101,
+   "html": 11405,
+   "share": 0.9424840922237832
+  },
+  {
+   "page": "content-first/components/toggle-group.md",
+   "total": 5951,
+   "html": 4284,
+   "share": 0.719879011930768
+  },
+  {
+   "page": "content-first/components/toggle.md",
+   "total": 22764,
+   "html": 21014,
+   "share": 0.9231242312423125
+  },
+  {
+   "page": "content-first/components/tooltip-anatomy.md",
+   "total": 15206,
+   "html": 14520,
+   "share": 0.9548862291200841
+  },
+  {
+   "page": "content-first/components/tooltip.md",
+   "total": 9107,
+   "html": 7454,
+   "share": 0.8184912704513012
+  },
+  {
+   "page": "content-first/decision-reference.md",
+   "total": 226050,
+   "html": 225963,
+   "share": 0.9996151293961513
+  },
+  {
+   "page": "content-first/foundations/accessibility.md",
+   "total": 2367,
+   "html": 789,
+   "share": 0.3333333333333333
+  },
+  {
+   "page": "content-first/foundations/color.md",
+   "total": 80479,
+   "html": 47521,
+   "share": 0.5904770188496378
+  },
+  {
+   "page": "content-first/foundations/components.md",
+   "total": 1089,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/foundations/elevation.md",
+   "total": 1809,
+   "html": 330,
+   "share": 0.1824212271973466
+  },
+  {
+   "page": "content-first/foundations/iconography.md",
+   "total": 1283,
+   "html": 162,
+   "share": 0.12626656274356976
+  },
+  {
+   "page": "content-first/foundations/index.md",
+   "total": 8326,
+   "html": 8025,
+   "share": 0.9638481864040356
+  },
+  {
+   "page": "content-first/foundations/motion.md",
+   "total": 1938,
+   "html": 624,
+   "share": 0.3219814241486068
+  },
+  {
+   "page": "content-first/foundations/naming.md",
+   "total": 817,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/foundations/shape.md",
+   "total": 2871,
+   "html": 1239,
+   "share": 0.4315569487983281
+  },
+  {
+   "page": "content-first/foundations/spacing.md",
+   "total": 4945,
+   "html": 1192,
+   "share": 0.241051567239636
+  },
+  {
+   "page": "content-first/foundations/theming.md",
+   "total": 18246,
+   "html": 17395,
+   "share": 0.9533596404691439
+  },
+  {
+   "page": "content-first/foundations/typography.md",
+   "total": 5904,
+   "html": 2505,
+   "share": 0.4242886178861789
+  },
+  {
+   "page": "content-first/foundations/voice.md",
+   "total": 2203,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/index.md",
+   "total": 5957,
+   "html": 5155,
+   "share": 0.8653684740641262
+  },
+  {
+   "page": "content-first/primitives/color.md",
+   "total": 107729,
+   "html": 88316,
+   "share": 0.8197978260264182
+  },
+  {
+   "page": "content-first/primitives/effects.md",
+   "total": 862,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/primitives/index.md",
+   "total": 6080,
+   "html": 5564,
+   "share": 0.9151315789473684
+  },
+  {
+   "page": "content-first/primitives/motion.md",
+   "total": 771,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/primitives/shape.md",
+   "total": 1042,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/primitives/space-and-size.md",
+   "total": 2050,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/primitives/type.md",
+   "total": 4392,
+   "html": 1398,
+   "share": 0.31830601092896177
+  },
+  {
+   "page": "content-first/themes.md",
+   "total": 2668,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "content-first/voice.md",
+   "total": 1609,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/agents.md",
+   "total": 799,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/components/accordion-anatomy.md",
+   "total": 24787,
+   "html": 24100,
+   "share": 0.9722838584742002
+  },
+  {
+   "page": "dense-data/components/accordion.md",
+   "total": 14691,
+   "html": 12766,
+   "share": 0.8689673950037438
+  },
+  {
+   "page": "dense-data/components/alert-anatomy.md",
+   "total": 26344,
+   "html": 25665,
+   "share": 0.9742256301245066
+  },
+  {
+   "page": "dense-data/components/alert-dialog-anatomy.md",
+   "total": 30019,
+   "html": 29326,
+   "share": 0.9769146207401979
+  },
+  {
+   "page": "dense-data/components/alert-dialog.md",
+   "total": 18593,
+   "html": 16572,
+   "share": 0.891303178615608
+  },
+  {
+   "page": "dense-data/components/alert.md",
+   "total": 22749,
+   "html": 20548,
+   "share": 0.903248494439316
+  },
+  {
+   "page": "dense-data/components/aspect-ratio-anatomy.md",
+   "total": 4948,
+   "html": 4255,
+   "share": 0.8599434114793856
+  },
+  {
+   "page": "dense-data/components/aspect-ratio.md",
+   "total": 2360,
+   "html": 981,
+   "share": 0.41567796610169494
+  },
+  {
+   "page": "dense-data/components/attachment-anatomy.md",
+   "total": 25450,
+   "html": 24761,
+   "share": 0.9729273084479372
+  },
+  {
+   "page": "dense-data/components/attachment.md",
+   "total": 17111,
+   "html": 15456,
+   "share": 0.9032785927181345
+  },
+  {
+   "page": "dense-data/components/avatar-anatomy.md",
+   "total": 21194,
+   "html": 20513,
+   "share": 0.9678682646031895
+  },
+  {
+   "page": "dense-data/components/avatar.md",
+   "total": 18299,
+   "html": 16609,
+   "share": 0.9076452265151101
+  },
+  {
+   "page": "dense-data/components/badge-anatomy.md",
+   "total": 20683,
+   "html": 20004,
+   "share": 0.9671711067059904
+  },
+  {
+   "page": "dense-data/components/badge.md",
+   "total": 24625,
+   "html": 22643,
+   "share": 0.9195126903553299
+  },
+  {
+   "page": "dense-data/components/breadcrumb-anatomy.md",
+   "total": 23953,
+   "html": 23264,
+   "share": 0.971235335866071
+  },
+  {
+   "page": "dense-data/components/breadcrumb.md",
+   "total": 13513,
+   "html": 11817,
+   "share": 0.8744912306667654
+  },
+  {
+   "page": "dense-data/components/bubble-anatomy.md",
+   "total": 21899,
+   "html": 21218,
+   "share": 0.9689026896205306
+  },
+  {
+   "page": "dense-data/components/bubble.md",
+   "total": 10533,
+   "html": 9013,
+   "share": 0.8556916358112598
+  },
+  {
+   "page": "dense-data/components/button-anatomy.md",
+   "total": 30645,
+   "html": 29964,
+   "share": 0.9777777777777777
+  },
+  {
+   "page": "dense-data/components/button-group-anatomy.md",
+   "total": 15600,
+   "html": 14907,
+   "share": 0.9555769230769231
+  },
+  {
+   "page": "dense-data/components/button-group.md",
+   "total": 9997,
+   "html": 8265,
+   "share": 0.8267480244073222
+  },
+  {
+   "page": "dense-data/components/button.md",
+   "total": 52142,
+   "html": 48964,
+   "share": 0.9390510528940201
+  },
+  {
+   "page": "dense-data/components/calendar-anatomy.md",
+   "total": 39290,
+   "html": 38605,
+   "share": 0.9825655383049122
+  },
+  {
+   "page": "dense-data/components/calendar.md",
+   "total": 26735,
+   "html": 24973,
+   "share": 0.9340938844211707
+  },
+  {
+   "page": "dense-data/components/card-anatomy.md",
+   "total": 25235,
+   "html": 24558,
+   "share": 0.9731721814939568
+  },
+  {
+   "page": "dense-data/components/card.md",
+   "total": 13472,
+   "html": 11792,
+   "share": 0.8752969121140143
+  },
+  {
+   "page": "dense-data/components/carousel-anatomy.md",
+   "total": 13419,
+   "html": 12734,
+   "share": 0.9489529771219912
+  },
+  {
+   "page": "dense-data/components/carousel.md",
+   "total": 6448,
+   "html": 4764,
+   "share": 0.738833746898263
+  },
+  {
+   "page": "dense-data/components/chart-anatomy.md",
+   "total": 28689,
+   "html": 28010,
+   "share": 0.976332392206072
+  },
+  {
+   "page": "dense-data/components/chart.md",
+   "total": 18802,
+   "html": 17186,
+   "share": 0.9140516966280183
+  },
+  {
+   "page": "dense-data/components/checkbox-anatomy.md",
+   "total": 20482,
+   "html": 19797,
+   "share": 0.9665560003905869
+  },
+  {
+   "page": "dense-data/components/checkbox.md",
+   "total": 11807,
+   "html": 10006,
+   "share": 0.84746336918777
+  },
+  {
+   "page": "dense-data/components/collapsible-anatomy.md",
+   "total": 4570,
+   "html": 3879,
+   "share": 0.8487964989059081
+  },
+  {
+   "page": "dense-data/components/collapsible.md",
+   "total": 2530,
+   "html": 974,
+   "share": 0.3849802371541502
+  },
+  {
+   "page": "dense-data/components/combobox-anatomy.md",
+   "total": 35249,
+   "html": 34564,
+   "share": 0.9805668245907685
+  },
+  {
+   "page": "dense-data/components/combobox.md",
+   "total": 46214,
+   "html": 44411,
+   "share": 0.9609858484441944
+  },
+  {
+   "page": "dense-data/components/command-anatomy.md",
+   "total": 35138,
+   "html": 34455,
+   "share": 0.980562354146508
+  },
+  {
+   "page": "dense-data/components/command.md",
+   "total": 29758,
+   "html": 27975,
+   "share": 0.9400833389340681
+  },
+  {
+   "page": "dense-data/components/context-menu-anatomy.md",
+   "total": 33136,
+   "html": 32443,
+   "share": 0.9790861902462579
+  },
+  {
+   "page": "dense-data/components/context-menu.md",
+   "total": 51679,
+   "html": 49994,
+   "share": 0.9673948799318872
+  },
+  {
+   "page": "dense-data/components/data-table-anatomy.md",
+   "total": 40425,
+   "html": 39736,
+   "share": 0.9829560915275201
+  },
+  {
+   "page": "dense-data/components/data-table.md",
+   "total": 13151,
+   "html": 11241,
+   "share": 0.8547638962816516
+  },
+  {
+   "page": "dense-data/components/date-picker-anatomy.md",
+   "total": 14432,
+   "html": 13741,
+   "share": 0.952120288248337
+  },
+  {
+   "page": "dense-data/components/date-picker.md",
+   "total": 4540,
+   "html": 2856,
+   "share": 0.6290748898678414
+  },
+  {
+   "page": "dense-data/components/dialog-anatomy.md",
+   "total": 35372,
+   "html": 34691,
+   "share": 0.9807474838855592
+  },
+  {
+   "page": "dense-data/components/dialog.md",
+   "total": 21141,
+   "html": 19072,
+   "share": 0.9021332954921716
+  },
+  {
+   "page": "dense-data/components/drawer-anatomy.md",
+   "total": 27200,
+   "html": 26519,
+   "share": 0.9749632352941177
+  },
+  {
+   "page": "dense-data/components/drawer.md",
+   "total": 16873,
+   "html": 15199,
+   "share": 0.9007882415693712
+  },
+  {
+   "page": "dense-data/components/dropdown-menu-anatomy.md",
+   "total": 37140,
+   "html": 36445,
+   "share": 0.9812870220786214
+  },
+  {
+   "page": "dense-data/components/dropdown-menu.md",
+   "total": 17127,
+   "html": 15365,
+   "share": 0.8971215040579202
+  },
+  {
+   "page": "dense-data/components/empty-anatomy.md",
+   "total": 19106,
+   "html": 18427,
+   "share": 0.9644614257301372
+  },
+  {
+   "page": "dense-data/components/empty.md",
+   "total": 19640,
+   "html": 17769,
+   "share": 0.904735234215886
+  },
+  {
+   "page": "dense-data/components/field-anatomy.md",
+   "total": 29210,
+   "html": 28531,
+   "share": 0.9767545361177679
+  },
+  {
+   "page": "dense-data/components/field.md",
+   "total": 33779,
+   "html": 31799,
+   "share": 0.9413836999319104
+  },
+  {
+   "page": "dense-data/components/form-anatomy.md",
+   "total": 18416,
+   "html": 17739,
+   "share": 0.9632384882710686
+  },
+  {
+   "page": "dense-data/components/form.md",
+   "total": 8206,
+   "html": 6621,
+   "share": 0.8068486473312211
+  },
+  {
+   "page": "dense-data/components/hover-card-anatomy.md",
+   "total": 18739,
+   "html": 18050,
+   "share": 0.9632317626340786
+  },
+  {
+   "page": "dense-data/components/hover-card.md",
+   "total": 9091,
+   "html": 7516,
+   "share": 0.8267517324826752
+  },
+  {
+   "page": "dense-data/components/input-anatomy.md",
+   "total": 23972,
+   "html": 23293,
+   "share": 0.9716752878358085
+  },
+  {
+   "page": "dense-data/components/input-group-anatomy.md",
+   "total": 28021,
+   "html": 27330,
+   "share": 0.975339923628707
+  },
+  {
+   "page": "dense-data/components/input-group.md",
+   "total": 42798,
+   "html": 40834,
+   "share": 0.9541100051404271
+  },
+  {
+   "page": "dense-data/components/input-otp-anatomy.md",
+   "total": 28769,
+   "html": 28082,
+   "share": 0.97612012930585
+  },
+  {
+   "page": "dense-data/components/input-otp.md",
+   "total": 19848,
+   "html": 18261,
+   "share": 0.9200423216444982
+  },
+  {
+   "page": "dense-data/components/input.md",
+   "total": 17531,
+   "html": 15954,
+   "share": 0.9100450630312019
+  },
+  {
+   "page": "dense-data/components/inventory.md",
+   "total": 14098,
+   "html": 13460,
+   "share": 0.954745353950915
+  },
+  {
+   "page": "dense-data/components/item-anatomy.md",
+   "total": 26068,
+   "html": 25391,
+   "share": 0.9740294614086236
+  },
+  {
+   "page": "dense-data/components/item.md",
+   "total": 37347,
+   "html": 35451,
+   "share": 0.949232870110049
+  },
+  {
+   "page": "dense-data/components/kbd-anatomy.md",
+   "total": 15137,
+   "html": 14462,
+   "share": 0.9554072801744071
+  },
+  {
+   "page": "dense-data/components/kbd.md",
+   "total": 9247,
+   "html": 7881,
+   "share": 0.8522764139720991
+  },
+  {
+   "page": "dense-data/components/label-anatomy.md",
+   "total": 13498,
+   "html": 12819,
+   "share": 0.9496962512964884
+  },
+  {
+   "page": "dense-data/components/label.md",
+   "total": 6600,
+   "html": 5117,
+   "share": 0.7753030303030303
+  },
+  {
+   "page": "dense-data/components/marker-anatomy.md",
+   "total": 12103,
+   "html": 11422,
+   "share": 0.9437329587705527
+  },
+  {
+   "page": "dense-data/components/marker.md",
+   "total": 6143,
+   "html": 4683,
+   "share": 0.7623311085788702
+  },
+  {
+   "page": "dense-data/components/menubar-anatomy.md",
+   "total": 38492,
+   "html": 37809,
+   "share": 0.982256053205861
+  },
+  {
+   "page": "dense-data/components/menubar.md",
+   "total": 61040,
+   "html": 59337,
+   "share": 0.9721002621231979
+  },
+  {
+   "page": "dense-data/components/message-anatomy.md",
+   "total": 16788,
+   "html": 16105,
+   "share": 0.9593161782225399
+  },
+  {
+   "page": "dense-data/components/message-scroller-anatomy.md",
+   "total": 14359,
+   "html": 13658,
+   "share": 0.9511804443206351
+  },
+  {
+   "page": "dense-data/components/message-scroller.md",
+   "total": 7117,
+   "html": 5495,
+   "share": 0.7720949838415062
+  },
+  {
+   "page": "dense-data/components/message.md",
+   "total": 6837,
+   "html": 5381,
+   "share": 0.787041099897616
+  },
+  {
+   "page": "dense-data/components/native-select-anatomy.md",
+   "total": 33285,
+   "html": 32590,
+   "share": 0.9791197235992188
+  },
+  {
+   "page": "dense-data/components/native-select.md",
+   "total": 24992,
+   "html": 23493,
+   "share": 0.9400208066581306
+  },
+  {
+   "page": "dense-data/components/navigation-menu-anatomy.md",
+   "total": 37484,
+   "html": 36785,
+   "share": 0.9813520435385764
+  },
+  {
+   "page": "dense-data/components/navigation-menu.md",
+   "total": 45788,
+   "html": 44214,
+   "share": 0.9656241810081244
+  },
+  {
+   "page": "dense-data/components/pagination-anatomy.md",
+   "total": 19808,
+   "html": 19119,
+   "share": 0.9652160743134087
+  },
+  {
+   "page": "dense-data/components/pagination.md",
+   "total": 6113,
+   "html": 4605,
+   "share": 0.7533126124652381
+  },
+  {
+   "page": "dense-data/components/popover-anatomy.md",
+   "total": 22341,
+   "html": 21658,
+   "share": 0.9694284051743431
+  },
+  {
+   "page": "dense-data/components/popover.md",
+   "total": 11662,
+   "html": 9951,
+   "share": 0.8532841708111816
+  },
+  {
+   "page": "dense-data/components/progress-anatomy.md",
+   "total": 10416,
+   "html": 9731,
+   "share": 0.9342357910906298
+  },
+  {
+   "page": "dense-data/components/progress.md",
+   "total": 5466,
+   "html": 3850,
+   "share": 0.7043541895353091
+  },
+  {
+   "page": "dense-data/components/radio-group-anatomy.md",
+   "total": 24975,
+   "html": 24284,
+   "share": 0.9723323323323323
+  },
+  {
+   "page": "dense-data/components/radio-group.md",
+   "total": 14845,
+   "html": 13074,
+   "share": 0.8807005725833614
+  },
+  {
+   "page": "dense-data/components/resizable-anatomy.md",
+   "total": 18976,
+   "html": 18289,
+   "share": 0.9637963743676222
+  },
+  {
+   "page": "dense-data/components/resizable.md",
+   "total": 10819,
+   "html": 9240,
+   "share": 0.8540530548109807
+  },
+  {
+   "page": "dense-data/components/scroll-area-anatomy.md",
+   "total": 13442,
+   "html": 12751,
+   "share": 0.9485939592322571
+  },
+  {
+   "page": "dense-data/components/scroll-area.md",
+   "total": 8144,
+   "html": 6557,
+   "share": 0.8051326129666012
+  },
+  {
+   "page": "dense-data/components/select-anatomy.md",
+   "total": 39107,
+   "html": 38426,
+   "share": 0.9825862377579462
+  },
+  {
+   "page": "dense-data/components/select.md",
+   "total": 28593,
+   "html": 26802,
+   "share": 0.9373622914699402
+  },
+  {
+   "page": "dense-data/components/separator-anatomy.md",
+   "total": 7371,
+   "html": 6684,
+   "share": 0.9067969067969068
+  },
+  {
+   "page": "dense-data/components/separator.md",
+   "total": 4663,
+   "html": 3259,
+   "share": 0.698906283508471
+  },
+  {
+   "page": "dense-data/components/sheet-anatomy.md",
+   "total": 36117,
+   "html": 35438,
+   "share": 0.981199988924883
+  },
+  {
+   "page": "dense-data/components/sheet.md",
+   "total": 20785,
+   "html": 19102,
+   "share": 0.9190281452970892
+  },
+  {
+   "page": "dense-data/components/sidebar-anatomy.md",
+   "total": 32974,
+   "html": 32291,
+   "share": 0.9792867107417965
+  },
+  {
+   "page": "dense-data/components/sidebar.md",
+   "total": 94663,
+   "html": 92648,
+   "share": 0.9787139642732641
+  },
+  {
+   "page": "dense-data/components/skeleton-anatomy.md",
+   "total": 9514,
+   "html": 8829,
+   "share": 0.928000840866092
+  },
+  {
+   "page": "dense-data/components/skeleton.md",
+   "total": 4533,
+   "html": 2872,
+   "share": 0.6335759982351643
+  },
+  {
+   "page": "dense-data/components/slider-anatomy.md",
+   "total": 22422,
+   "html": 21741,
+   "share": 0.9696280438854696
+  },
+  {
+   "page": "dense-data/components/slider.md",
+   "total": 13430,
+   "html": 11692,
+   "share": 0.8705882352941177
+  },
+  {
+   "page": "dense-data/components/spinner-anatomy.md",
+   "total": 7765,
+   "html": 7082,
+   "share": 0.912041210560206
+  },
+  {
+   "page": "dense-data/components/spinner.md",
+   "total": 3588,
+   "html": 1907,
+   "share": 0.5314938684503902
+  },
+  {
+   "page": "dense-data/components/switch-anatomy.md",
+   "total": 22559,
+   "html": 21878,
+   "share": 0.9698124916884614
+  },
+  {
+   "page": "dense-data/components/switch.md",
+   "total": 13694,
+   "html": 12028,
+   "share": 0.8783408792171754
+  },
+  {
+   "page": "dense-data/components/table-anatomy.md",
+   "total": 22938,
+   "html": 22259,
+   "share": 0.9703984654285465
+  },
+  {
+   "page": "dense-data/components/table.md",
+   "total": 13792,
+   "html": 12144,
+   "share": 0.8805104408352669
+  },
+  {
+   "page": "dense-data/components/tabs-anatomy.md",
+   "total": 25624,
+   "html": 24947,
+   "share": 0.9735794567592881
+  },
+  {
+   "page": "dense-data/components/tabs.md",
+   "total": 14191,
+   "html": 12479,
+   "share": 0.8793601578465224
+  },
+  {
+   "page": "dense-data/components/textarea-anatomy.md",
+   "total": 26586,
+   "html": 25901,
+   "share": 0.9742345595426164
+  },
+  {
+   "page": "dense-data/components/textarea.md",
+   "total": 18582,
+   "html": 17049,
+   "share": 0.9175008072328059
+  },
+  {
+   "page": "dense-data/components/toast-anatomy.md",
+   "total": 23146,
+   "html": 22467,
+   "share": 0.9706644776635271
+  },
+  {
+   "page": "dense-data/components/toast.md",
+   "total": 24028,
+   "html": 21978,
+   "share": 0.9146828699850175
+  },
+  {
+   "page": "dense-data/components/toggle-anatomy.md",
+   "total": 25012,
+   "html": 24331,
+   "share": 0.9727730689269151
+  },
+  {
+   "page": "dense-data/components/toggle-group-anatomy.md",
+   "total": 12115,
+   "html": 11422,
+   "share": 0.9427981840693356
+  },
+  {
+   "page": "dense-data/components/toggle-group.md",
+   "total": 5807,
+   "html": 4039,
+   "share": 0.6955398656793526
+  },
+  {
+   "page": "dense-data/components/toggle.md",
+   "total": 29014,
+   "html": 26898,
+   "share": 0.9270696904942441
+  },
+  {
+   "page": "dense-data/components/tooltip-anatomy.md",
+   "total": 15240,
+   "html": 14557,
+   "share": 0.9551837270341207
+  },
+  {
+   "page": "dense-data/components/tooltip.md",
+   "total": 8953,
+   "html": 7223,
+   "share": 0.8067686808890875
+  },
+  {
+   "page": "dense-data/decision-reference.md",
+   "total": 237038,
+   "html": 236951,
+   "share": 0.9996329702410583
+  },
+  {
+   "page": "dense-data/foundations/accessibility.md",
+   "total": 2450,
+   "html": 789,
+   "share": 0.3220408163265306
+  },
+  {
+   "page": "dense-data/foundations/color.md",
+   "total": 80789,
+   "html": 48168,
+   "share": 0.5962197823961183
+  },
+  {
+   "page": "dense-data/foundations/components.md",
+   "total": 1297,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/foundations/elevation.md",
+   "total": 1827,
+   "html": 330,
+   "share": 0.180623973727422
+  },
+  {
+   "page": "dense-data/foundations/iconography.md",
+   "total": 1372,
+   "html": 162,
+   "share": 0.11807580174927114
+  },
+  {
+   "page": "dense-data/foundations/index.md",
+   "total": 8460,
+   "html": 8159,
+   "share": 0.9644208037825059
+  },
+  {
+   "page": "dense-data/foundations/motion.md",
+   "total": 1912,
+   "html": 624,
+   "share": 0.3263598326359833
+  },
+  {
+   "page": "dense-data/foundations/naming.md",
+   "total": 829,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/foundations/shape.md",
+   "total": 2838,
+   "html": 1239,
+   "share": 0.4365750528541226
+  },
+  {
+   "page": "dense-data/foundations/spacing.md",
+   "total": 5063,
+   "html": 1192,
+   "share": 0.23543353742840215
+  },
+  {
+   "page": "dense-data/foundations/theming.md",
+   "total": 18385,
+   "html": 17489,
+   "share": 0.9512646178950231
+  },
+  {
+   "page": "dense-data/foundations/typography.md",
+   "total": 5938,
+   "html": 2507,
+   "share": 0.4221960255978444
+  },
+  {
+   "page": "dense-data/foundations/voice.md",
+   "total": 2248,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/index.md",
+   "total": 6176,
+   "html": 5198,
+   "share": 0.8416450777202072
+  },
+  {
+   "page": "dense-data/primitives/color.md",
+   "total": 107695,
+   "html": 88232,
+   "share": 0.8192766609406194
+  },
+  {
+   "page": "dense-data/primitives/effects.md",
+   "total": 858,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/primitives/index.md",
+   "total": 6174,
+   "html": 5658,
+   "share": 0.9164237123420796
+  },
+  {
+   "page": "dense-data/primitives/motion.md",
+   "total": 648,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/primitives/shape.md",
+   "total": 1044,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/primitives/space-and-size.md",
+   "total": 1892,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/primitives/type.md",
+   "total": 4448,
+   "html": 1439,
+   "share": 0.3235161870503597
+  },
+  {
+   "page": "dense-data/themes.md",
+   "total": 2671,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "dense-data/voice.md",
+   "total": 1684,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/agents.md",
+   "total": 801,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/components/accordion-anatomy.md",
+   "total": 24636,
+   "html": 23948,
+   "share": 0.9720733885371001
+  },
+  {
+   "page": "multi-brand/components/accordion.md",
+   "total": 20662,
+   "html": 18831,
+   "share": 0.911383215564805
+  },
+  {
+   "page": "multi-brand/components/alert-anatomy.md",
+   "total": 26073,
+   "html": 25393,
+   "share": 0.9739193802017413
+  },
+  {
+   "page": "multi-brand/components/alert-dialog-anatomy.md",
+   "total": 29715,
+   "html": 29021,
+   "share": 0.9766447921924953
+  },
+  {
+   "page": "multi-brand/components/alert-dialog.md",
+   "total": 28907,
+   "html": 26892,
+   "share": 0.9302937004877712
+  },
+  {
+   "page": "multi-brand/components/alert.md",
+   "total": 31261,
+   "html": 29077,
+   "share": 0.9301365919196443
+  },
+  {
+   "page": "multi-brand/components/aspect-ratio-anatomy.md",
+   "total": 4953,
+   "html": 4259,
+   "share": 0.859882899252978
+  },
+  {
+   "page": "multi-brand/components/aspect-ratio.md",
+   "total": 2390,
+   "html": 998,
+   "share": 0.4175732217573222
+  },
+  {
+   "page": "multi-brand/components/attachment-anatomy.md",
+   "total": 25417,
+   "html": 24727,
+   "share": 0.9728528150450486
+  },
+  {
+   "page": "multi-brand/components/attachment.md",
+   "total": 27492,
+   "html": 25956,
+   "share": 0.9441292012221737
+  },
+  {
+   "page": "multi-brand/components/avatar-anatomy.md",
+   "total": 21089,
+   "html": 20407,
+   "share": 0.9676608658542368
+  },
+  {
+   "page": "multi-brand/components/avatar.md",
+   "total": 26627,
+   "html": 25026,
+   "share": 0.939873061178503
+  },
+  {
+   "page": "multi-brand/components/badge-anatomy.md",
+   "total": 20450,
+   "html": 19770,
+   "share": 0.9667481662591687
+  },
+  {
+   "page": "multi-brand/components/badge.md",
+   "total": 32951,
+   "html": 30968,
+   "share": 0.9398197323298231
+  },
+  {
+   "page": "multi-brand/components/breadcrumb-anatomy.md",
+   "total": 23938,
+   "html": 23248,
+   "share": 0.9711755368034088
+  },
+  {
+   "page": "multi-brand/components/breadcrumb.md",
+   "total": 18152,
+   "html": 16508,
+   "share": 0.9094314676068753
+  },
+  {
+   "page": "multi-brand/components/bubble-anatomy.md",
+   "total": 21730,
+   "html": 21048,
+   "share": 0.9686148182236539
+  },
+  {
+   "page": "multi-brand/components/bubble.md",
+   "total": 16724,
+   "html": 15330,
+   "share": 0.916646735230806
+  },
+  {
+   "page": "multi-brand/components/button-anatomy.md",
+   "total": 30368,
+   "html": 29686,
+   "share": 0.9775421496311907
+  },
+  {
+   "page": "multi-brand/components/button-group-anatomy.md",
+   "total": 15589,
+   "html": 14895,
+   "share": 0.9554814292129066
+  },
+  {
+   "page": "multi-brand/components/button-group.md",
+   "total": 14213,
+   "html": 12496,
+   "share": 0.87919510307465
+  },
+  {
+   "page": "multi-brand/components/button.md",
+   "total": 68651,
+   "html": 65474,
+   "share": 0.9537224512388749
+  },
+  {
+   "page": "multi-brand/components/calendar-anatomy.md",
+   "total": 39109,
+   "html": 38423,
+   "share": 0.9824592804725255
+  },
+  {
+   "page": "multi-brand/components/calendar.md",
+   "total": 43045,
+   "html": 41204,
+   "share": 0.9572308049715414
+  },
+  {
+   "page": "multi-brand/components/card-anatomy.md",
+   "total": 25323,
+   "html": 24645,
+   "share": 0.9732259210993958
+  },
+  {
+   "page": "multi-brand/components/card.md",
+   "total": 20871,
+   "html": 19192,
+   "share": 0.9195534473671602
+  },
+  {
+   "page": "multi-brand/components/carousel-anatomy.md",
+   "total": 13453,
+   "html": 12767,
+   "share": 0.9490076562848435
+  },
+  {
+   "page": "multi-brand/components/carousel.md",
+   "total": 6410,
+   "html": 4586,
+   "share": 0.7154446177847114
+  },
+  {
+   "page": "multi-brand/components/chart-anatomy.md",
+   "total": 28702,
+   "html": 28022,
+   "share": 0.9763082712006131
+  },
+  {
+   "page": "multi-brand/components/chart.md",
+   "total": 29573,
+   "html": 28010,
+   "share": 0.9471477361106415
+  },
+  {
+   "page": "multi-brand/components/checkbox-anatomy.md",
+   "total": 20336,
+   "html": 19650,
+   "share": 0.9662667191188041
+  },
+  {
+   "page": "multi-brand/components/checkbox.md",
+   "total": 18761,
+   "html": 16972,
+   "share": 0.9046426096689942
+  },
+  {
+   "page": "multi-brand/components/collapsible-anatomy.md",
+   "total": 4574,
+   "html": 3882,
+   "share": 0.8487101005684302
+  },
+  {
+   "page": "multi-brand/components/collapsible.md",
+   "total": 2548,
+   "html": 991,
+   "share": 0.38893249607535324
+  },
+  {
+   "page": "multi-brand/components/combobox-anatomy.md",
+   "total": 35172,
+   "html": 34486,
+   "share": 0.9804958489707722
+  },
+  {
+   "page": "multi-brand/components/combobox.md",
+   "total": 72959,
+   "html": 71078,
+   "share": 0.9742183966337258
+  },
+  {
+   "page": "multi-brand/components/command-anatomy.md",
+   "total": 35076,
+   "html": 34392,
+   "share": 0.9804994868286008
+  },
+  {
+   "page": "multi-brand/components/command.md",
+   "total": 46327,
+   "html": 44611,
+   "share": 0.9629589656140048
+  },
+  {
+   "page": "multi-brand/components/context-menu-anatomy.md",
+   "total": 32994,
+   "html": 32300,
+   "share": 0.9789658725828939
+  },
+  {
+   "page": "multi-brand/components/context-menu.md",
+   "total": 83044,
+   "html": 81416,
+   "share": 0.9803959346852271
+  },
+  {
+   "page": "multi-brand/components/data-table-anatomy.md",
+   "total": 40348,
+   "html": 39658,
+   "share": 0.9828987806087043
+  },
+  {
+   "page": "multi-brand/components/data-table.md",
+   "total": 19792,
+   "html": 18014,
+   "share": 0.9101657235246564
+  },
+  {
+   "page": "multi-brand/components/date-picker-anatomy.md",
+   "total": 14348,
+   "html": 13656,
+   "share": 0.9517702815723446
+  },
+  {
+   "page": "multi-brand/components/date-picker.md",
+   "total": 5545,
+   "html": 3843,
+   "share": 0.6930568079350766
+  },
+  {
+   "page": "multi-brand/components/dialog-anatomy.md",
+   "total": 35171,
+   "html": 34489,
+   "share": 0.9806090244803958
+  },
+  {
+   "page": "multi-brand/components/dialog.md",
+   "total": 33835,
+   "html": 31796,
+   "share": 0.9397369587705039
+  },
+  {
+   "page": "multi-brand/components/drawer-anatomy.md",
+   "total": 27032,
+   "html": 26350,
+   "share": 0.9747706422018348
+  },
+  {
+   "page": "multi-brand/components/drawer.md",
+   "total": 25740,
+   "html": 23921,
+   "share": 0.9293317793317794
+  },
+  {
+   "page": "multi-brand/components/dropdown-menu-anatomy.md",
+   "total": 36946,
+   "html": 36250,
+   "share": 0.9811616954474097
+  },
+  {
+   "page": "multi-brand/components/dropdown-menu.md",
+   "total": 26174,
+   "html": 24409,
+   "share": 0.9325666692137236
+  },
+  {
+   "page": "multi-brand/components/empty-anatomy.md",
+   "total": 19001,
+   "html": 18321,
+   "share": 0.9642124098731646
+  },
+  {
+   "page": "multi-brand/components/empty.md",
+   "total": 25027,
+   "html": 23179,
+   "share": 0.9261597474727294
+  },
+  {
+   "page": "multi-brand/components/field-anatomy.md",
+   "total": 28886,
+   "html": 28206,
+   "share": 0.9764591843799765
+  },
+  {
+   "page": "multi-brand/components/field.md",
+   "total": 42520,
+   "html": 40551,
+   "share": 0.9536923800564441
+  },
+  {
+   "page": "multi-brand/components/form-anatomy.md",
+   "total": 18208,
+   "html": 17530,
+   "share": 0.9627636203866432
+  },
+  {
+   "page": "multi-brand/components/form.md",
+   "total": 10907,
+   "html": 9342,
+   "share": 0.8565141652149996
+  },
+  {
+   "page": "multi-brand/components/hover-card-anatomy.md",
+   "total": 18654,
+   "html": 17964,
+   "share": 0.9630106143454487
+  },
+  {
+   "page": "multi-brand/components/hover-card.md",
+   "total": 14097,
+   "html": 12642,
+   "share": 0.8967865503298574
+  },
+  {
+   "page": "multi-brand/components/input-anatomy.md",
+   "total": 23799,
+   "html": 23119,
+   "share": 0.9714273708979368
+  },
+  {
+   "page": "multi-brand/components/input-group-anatomy.md",
+   "total": 27861,
+   "html": 27169,
+   "share": 0.9751624134094253
+  },
+  {
+   "page": "multi-brand/components/input-group.md",
+   "total": 61014,
+   "html": 58986,
+   "share": 0.9667617268167962
+  },
+  {
+   "page": "multi-brand/components/input-otp-anatomy.md",
+   "total": 28650,
+   "html": 27962,
+   "share": 0.9759860383944153
+  },
+  {
+   "page": "multi-brand/components/input-otp.md",
+   "total": 31367,
+   "html": 29831,
+   "share": 0.9510313386680269
+  },
+  {
+   "page": "multi-brand/components/input.md",
+   "total": 29483,
+   "html": 27904,
+   "share": 0.9464437133263236
+  },
+  {
+   "page": "multi-brand/components/inventory.md",
+   "total": 14145,
+   "html": 13530,
+   "share": 0.9565217391304348
+  },
+  {
+   "page": "multi-brand/components/item-anatomy.md",
+   "total": 25902,
+   "html": 25224,
+   "share": 0.9738244151030808
+  },
+  {
+   "page": "multi-brand/components/item.md",
+   "total": 49765,
+   "html": 47882,
+   "share": 0.9621621621621622
+  },
+  {
+   "page": "multi-brand/components/kbd-anatomy.md",
+   "total": 15070,
+   "html": 14394,
+   "share": 0.9551426675514266
+  },
+  {
+   "page": "multi-brand/components/kbd.md",
+   "total": 14500,
+   "html": 13049,
+   "share": 0.8999310344827586
+  },
+  {
+   "page": "multi-brand/components/label-anatomy.md",
+   "total": 13401,
+   "html": 12721,
+   "share": 0.9492575180956645
+  },
+  {
+   "page": "multi-brand/components/label.md",
+   "total": 8844,
+   "html": 7363,
+   "share": 0.8325418362731796
+  },
+  {
+   "page": "multi-brand/components/marker-anatomy.md",
+   "total": 12163,
+   "html": 11481,
+   "share": 0.9439283071610622
+  },
+  {
+   "page": "multi-brand/components/marker.md",
+   "total": 8222,
+   "html": 6874,
+   "share": 0.8360496229627827
+  },
+  {
+   "page": "multi-brand/components/menubar-anatomy.md",
+   "total": 38267,
+   "html": 37583,
+   "share": 0.9821255912404944
+  },
+  {
+   "page": "multi-brand/components/menubar.md",
+   "total": 99790,
+   "html": 98208,
+   "share": 0.9841467080869827
+  },
+  {
+   "page": "multi-brand/components/message-anatomy.md",
+   "total": 16649,
+   "html": 15965,
+   "share": 0.9589164514385249
+  },
+  {
+   "page": "multi-brand/components/message-scroller-anatomy.md",
+   "total": 14300,
+   "html": 13598,
+   "share": 0.9509090909090909
+  },
+  {
+   "page": "multi-brand/components/message-scroller.md",
+   "total": 10519,
+   "html": 9008,
+   "share": 0.8563551668409545
+  },
+  {
+   "page": "multi-brand/components/message.md",
+   "total": 7966,
+   "html": 6632,
+   "share": 0.832538287722822
+  },
+  {
+   "page": "multi-brand/components/native-select-anatomy.md",
+   "total": 33071,
+   "html": 32375,
+   "share": 0.978954370898975
+  },
+  {
+   "page": "multi-brand/components/native-select.md",
+   "total": 40115,
+   "html": 38483,
+   "share": 0.9593169637292783
+  },
+  {
+   "page": "multi-brand/components/navigation-menu-anatomy.md",
+   "total": 37317,
+   "html": 36617,
+   "share": 0.981241793284562
+  },
+  {
+   "page": "multi-brand/components/navigation-menu.md",
+   "total": 78220,
+   "html": 76608,
+   "share": 0.9793914599846587
+  },
+  {
+   "page": "multi-brand/components/pagination-anatomy.md",
+   "total": 19587,
+   "html": 18897,
+   "share": 0.9647725532240772
+  },
+  {
+   "page": "multi-brand/components/pagination.md",
+   "total": 6244,
+   "html": 4655,
+   "share": 0.7455156950672646
+  },
+  {
+   "page": "multi-brand/components/popover-anatomy.md",
+   "total": 22277,
+   "html": 21593,
+   "share": 0.9692956861336804
+  },
+  {
+   "page": "multi-brand/components/popover.md",
+   "total": 17515,
+   "html": 15771,
+   "share": 0.9004282043962318
+  },
+  {
+   "page": "multi-brand/components/progress-anatomy.md",
+   "total": 10314,
+   "html": 9628,
+   "share": 0.9334884622842738
+  },
+  {
+   "page": "multi-brand/components/progress.md",
+   "total": 7383,
+   "html": 5742,
+   "share": 0.7777326290125965
+  },
+  {
+   "page": "multi-brand/components/radio-group-anatomy.md",
+   "total": 24748,
+   "html": 24056,
+   "share": 0.9720381444965249
+  },
+  {
+   "page": "multi-brand/components/radio-group.md",
+   "total": 23112,
+   "html": 21386,
+   "share": 0.9253201799930771
+  },
+  {
+   "page": "multi-brand/components/resizable-anatomy.md",
+   "total": 19104,
+   "html": 18416,
+   "share": 0.9639865996649917
+  },
+  {
+   "page": "multi-brand/components/resizable.md",
+   "total": 17093,
+   "html": 15577,
+   "share": 0.9113087228690107
+  },
+  {
+   "page": "multi-brand/components/scroll-area-anatomy.md",
+   "total": 13432,
+   "html": 12740,
+   "share": 0.9484812388326385
+  },
+  {
+   "page": "multi-brand/components/scroll-area.md",
+   "total": 11018,
+   "html": 9378,
+   "share": 0.8511526592848067
+  },
+  {
+   "page": "multi-brand/components/select-anatomy.md",
+   "total": 38906,
+   "html": 38224,
+   "share": 0.9824705700920167
+  },
+  {
+   "page": "multi-brand/components/select.md",
+   "total": 48694,
+   "html": 46918,
+   "share": 0.9635273339631166
+  },
+  {
+   "page": "multi-brand/components/separator-anatomy.md",
+   "total": 7430,
+   "html": 6742,
+   "share": 0.9074024226110363
+  },
+  {
+   "page": "multi-brand/components/separator.md",
+   "total": 5686,
+   "html": 4288,
+   "share": 0.7541329581428069
+  },
+  {
+   "page": "multi-brand/components/sheet-anatomy.md",
+   "total": 35965,
+   "html": 35285,
+   "share": 0.9810927290421243
+  },
+  {
+   "page": "multi-brand/components/sheet.md",
+   "total": 32566,
+   "html": 30897,
+   "share": 0.9487502303015415
+  },
+  {
+   "page": "multi-brand/components/sidebar-anatomy.md",
+   "total": 32811,
+   "html": 32127,
+   "share": 0.9791533327237817
+  },
+  {
+   "page": "multi-brand/components/sidebar.md",
+   "total": 145900,
+   "html": 143904,
+   "share": 0.9863193968471556
+  },
+  {
+   "page": "multi-brand/components/skeleton-anatomy.md",
+   "total": 9483,
+   "html": 8797,
+   "share": 0.9276600231994094
+  },
+  {
+   "page": "multi-brand/components/skeleton.md",
+   "total": 6897,
+   "html": 5231,
+   "share": 0.7584457010294331
+  },
+  {
+   "page": "multi-brand/components/slider-anatomy.md",
+   "total": 22346,
+   "html": 21664,
+   "share": 0.969479996419941
+  },
+  {
+   "page": "multi-brand/components/slider.md",
+   "total": 20039,
+   "html": 18234,
+   "share": 0.9099256449922651
+  },
+  {
+   "page": "multi-brand/components/spinner-anatomy.md",
+   "total": 7755,
+   "html": 7071,
+   "share": 0.9117988394584139
+  },
+  {
+   "page": "multi-brand/components/spinner.md",
+   "total": 3557,
+   "html": 1959,
+   "share": 0.5507450098397526
+  },
+  {
+   "page": "multi-brand/components/switch-anatomy.md",
+   "total": 22400,
+   "html": 21718,
+   "share": 0.9695535714285715
+  },
+  {
+   "page": "multi-brand/components/switch.md",
+   "total": 18339,
+   "html": 16687,
+   "share": 0.9099187523856263
+  },
+  {
+   "page": "multi-brand/components/table-anatomy.md",
+   "total": 22888,
+   "html": 22208,
+   "share": 0.9702901083537224
+  },
+  {
+   "page": "multi-brand/components/table.md",
+   "total": 21191,
+   "html": 19464,
+   "share": 0.9185031381246755
+  },
+  {
+   "page": "multi-brand/components/tabs-anatomy.md",
+   "total": 25516,
+   "html": 24838,
+   "share": 0.9734284370591002
+  },
+  {
+   "page": "multi-brand/components/tabs.md",
+   "total": 21054,
+   "html": 19341,
+   "share": 0.9186377885437447
+  },
+  {
+   "page": "multi-brand/components/textarea-anatomy.md",
+   "total": 26399,
+   "html": 25713,
+   "share": 0.9740141672033031
+  },
+  {
+   "page": "multi-brand/components/textarea.md",
+   "total": 30083,
+   "html": 28572,
+   "share": 0.9497722966459462
+  },
+  {
+   "page": "multi-brand/components/toast-anatomy.md",
+   "total": 23091,
+   "html": 22411,
+   "share": 0.9705512970421376
+  },
+  {
+   "page": "multi-brand/components/toast.md",
+   "total": 31969,
+   "html": 29920,
+   "share": 0.9359066595764647
+  },
+  {
+   "page": "multi-brand/components/toggle-anatomy.md",
+   "total": 24872,
+   "html": 24190,
+   "share": 0.9725796075908653
+  },
+  {
+   "page": "multi-brand/components/toggle-group-anatomy.md",
+   "total": 12136,
+   "html": 11442,
+   "share": 0.9428147659854977
+  },
+  {
+   "page": "multi-brand/components/toggle-group.md",
+   "total": 9559,
+   "html": 7814,
+   "share": 0.8174495240087876
+  },
+  {
+   "page": "multi-brand/components/toggle.md",
+   "total": 38661,
+   "html": 36534,
+   "share": 0.9449833165205246
+  },
+  {
+   "page": "multi-brand/components/tooltip-anatomy.md",
+   "total": 15341,
+   "html": 14657,
+   "share": 0.9554135975490515
+  },
+  {
+   "page": "multi-brand/components/tooltip.md",
+   "total": 13771,
+   "html": 12087,
+   "share": 0.877714036743882
+  },
+  {
+   "page": "multi-brand/decision-reference.md",
+   "total": 236606,
+   "html": 236519,
+   "share": 0.9996323001107326
+  },
+  {
+   "page": "multi-brand/foundations/accessibility.md",
+   "total": 3410,
+   "html": 1056,
+   "share": 0.3096774193548387
+  },
+  {
+   "page": "multi-brand/foundations/color.md",
+   "total": 194214,
+   "html": 134233,
+   "share": 0.6911602665101383
+  },
+  {
+   "page": "multi-brand/foundations/components.md",
+   "total": 1314,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/foundations/elevation.md",
+   "total": 2724,
+   "html": 597,
+   "share": 0.21916299559471367
+  },
+  {
+   "page": "multi-brand/foundations/iconography.md",
+   "total": 1708,
+   "html": 429,
+   "share": 0.25117096018735363
+  },
+  {
+   "page": "multi-brand/foundations/index.md",
+   "total": 8350,
+   "html": 8049,
+   "share": 0.9639520958083833
+  },
+  {
+   "page": "multi-brand/foundations/motion.md",
+   "total": 2579,
+   "html": 891,
+   "share": 0.3454827452500969
+  },
+  {
+   "page": "multi-brand/foundations/naming.md",
+   "total": 897,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/foundations/shape.md",
+   "total": 4071,
+   "html": 1506,
+   "share": 0.369933677229182
+  },
+  {
+   "page": "multi-brand/foundations/spacing.md",
+   "total": 6053,
+   "html": 1459,
+   "share": 0.2410375020650917
+  },
+  {
+   "page": "multi-brand/foundations/theming.md",
+   "total": 53565,
+   "html": 52597,
+   "share": 0.981928498086437
+  },
+  {
+   "page": "multi-brand/foundations/typography.md",
+   "total": 9434,
+   "html": 2764,
+   "share": 0.29298282806868775
+  },
+  {
+   "page": "multi-brand/foundations/voice.md",
+   "total": 3021,
+   "html": 267,
+   "share": 0.08838133068520357
+  },
+  {
+   "page": "multi-brand/index.md",
+   "total": 6689,
+   "html": 5582,
+   "share": 0.8345044102257437
+  },
+  {
+   "page": "multi-brand/primitives/color.md",
+   "total": 148212,
+   "html": 115054,
+   "share": 0.7762799233530349
+  },
+  {
+   "page": "multi-brand/primitives/effects.md",
+   "total": 1319,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/primitives/index.md",
+   "total": 6402,
+   "html": 5884,
+   "share": 0.9190877850671665
+  },
+  {
+   "page": "multi-brand/primitives/motion.md",
+   "total": 771,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/primitives/shape.md",
+   "total": 1672,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/primitives/space-and-size.md",
+   "total": 2139,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/primitives/type.md",
+   "total": 6657,
+   "html": 2664,
+   "share": 0.40018026137899954
+  },
+  {
+   "page": "multi-brand/themes.md",
+   "total": 6793,
+   "html": 0,
+   "share": 0
+  },
+  {
+   "page": "multi-brand/voice.md",
+   "total": 1926,
+   "html": 0,
+   "share": 0
+  }
+ ]
+}
