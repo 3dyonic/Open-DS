@@ -9,11 +9,9 @@ description: "Multi-brand: What moves, why and how fast."
 
 What moves, why and how fast.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
-<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-panels)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.panels</span></span>
-<span class="ods-item"><span class="ods-motion" style="--ods-e:var(--motion-easing-standard)" title="Hover to play"><span></span></span><span class="ods-label">motion.easing.standard</span></span>
-</div>
+- :sample{kind="duration" value="var(--motion-duration-feedback)"} `motion.duration.feedback`
+- :sample{kind="duration" value="var(--motion-duration-panels)"} `motion.duration.panels`
+- :sample{kind="easing" value="var(--motion-easing-standard)"} `motion.easing.standard`
 
 ## The five answers
 
@@ -29,41 +27,29 @@ What moves, why and how fast.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to |
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
 | `motion.duration.panels` | `duration.relaxed` |
 | `motion.easing.standard` | `easing.standard` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to |
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
 | `motion.duration.panels` | `duration.relaxed` |
 | `motion.easing.standard` | `easing.standard` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
 | `motion.duration.panels` | `duration.relaxed` |
 | `motion.easing.standard` | `easing.standard` |
-
-</div>
+::::
 
 The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 

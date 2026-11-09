@@ -221,47 +221,39 @@ const PRIMITIVE_PAGES = [
 
 // A line height, as the line box it makes (OD-221): one line of Ag at a fixed 16px on a band exactly
 // one line height tall, with that height in px.
+// A drawn value as an inline Sample composite (OD-284). Quotes in a value become single quotes, so the
+// directive's attribute stays whole.
+const draw = (kind, v, extra = "") =>
+  `:sample{kind="${kind}" value="${String(v).replace(/"/g, "'")}"${extra}}`;
 const leading = (v) => {
   const m = String(v).match(/^([\d.]+)(rem|px)?$/);
   const px = m ? Math.round(Number(m[1]) * (m[2] === "px" ? 1 : 16)) : "";
-  return `<span class="ods-leading" style="line-height:${v}" data-h="${px ? `${px}px` : ""}">Ag Ag Ag</span>`;
+  return draw("leading", v, px ? ` note="${px}px"` : "");
 };
 function sample(path, type, raw) {
   // Primitives are not CSS variables (only semantic tokens and component keys are), so a primitive's
   // sample draws its own value.
   const v = raw === undefined ? cssVar(path) : cssValue(raw);
-  if (type === "color")
-    return `<span class="ods-swatch" style="background:${v}"></span>`;
-  if (type === "fontFamily")
-    // single quotes inside: a family name in double quotes would close the attribute
-    return `<span class="ods-font" style="font-family:${String(v).replace(/"/g, "'")}">Aa 123</span>`;
+  if (type === "color") return draw("color", v);
+  if (type === "fontFamily") return draw("font", v);
   if (type === "fontWeight" || /font[.-]weight/.test(path))
-    return `<span class="ods-typesample" style="font-weight:${v}">Aa</span>`;
+    return draw("weight", v);
   if (/line-height/.test(path) && type !== "dimension") return leading(v);
-  if (/letter/.test(path) && type !== "dimension")
-    return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
-  if (type === "shadow")
-    return `<span class="ods-card" style="box-shadow:${v}"></span>`;
+  if (/letter/.test(path) && type !== "dimension") return draw("tracking", v);
+  if (type === "shadow") return draw("shadow", v);
   // Motion plays when you hover its row (OD-220): a duration at the standard easing, an easing at a
   // relaxed speed.
-  if (type === "duration")
-    return `<span class="ods-motion" style="--ods-d:${v}" title="Hover to play"><span></span></span>`;
-  if (type === "cubicBezier")
-    return `<span class="ods-motion" style="--ods-e:${v}" title="Hover to play"><span></span></span>`;
-  if (type === "number" && /opacity/.test(path))
-    return `<span class="ods-swatch" style="opacity:${v}"></span>`;
+  if (type === "duration") return draw("duration", v);
+  if (type === "cubicBezier") return draw("easing", v);
+  if (type === "number" && /opacity/.test(path)) return draw("opacity", v);
   if (type === "dimension") {
-    if (/radius/.test(path))
-      return `<span class="ods-tile" style="border-radius:${v}"></span>`;
-    if (/border-width/.test(path))
-      return `<span class="ods-line" style="height:${v}"></span>`;
+    if (/radius/.test(path)) return draw("radius", v);
+    if (/border-width/.test(path)) return draw("line", v);
     // A type size shows type at that size (OD-217), not a bar.
-    if (/font[.-]size/.test(path))
-      return `<span class="ods-typesample" style="font-size:${v}">Aa</span>`;
-    if (/letter/.test(path))
-      return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
+    if (/font[.-]size/.test(path)) return draw("size", v);
+    if (/letter/.test(path)) return draw("tracking", v);
     if (/line-height/.test(path)) return leading(v);
-    return `<span class="ods-bar" style="width:${v}"></span>`;
+    return draw("bar", v);
   }
   return "";
 }
@@ -284,13 +276,12 @@ function specimen(tokens, text, x = {}) {
         .filter(Boolean),
     ),
   ];
-  if (roles.length) {
+  // Each type role as a line set in its own tokens, with its values (OD-284: a Markdown list).
+  if (roles.length)
     return (
-      `<div class="ods-specimen">\n` +
       roles
         .map((r) => {
           const p = `type.${r}`;
-          const style = `font-family:${cssVar(`${p}.font-family`)};font-size:${cssVar(`${p}.font-size`)};line-height:${cssVar(`${p}.line-height`)};font-weight:${cssVar(`${p}.font-weight`)}`;
           const line = (x.smp && ROLE_TEXT[r]?.(x)) || text;
           const values = x.val
             ? [
@@ -301,27 +292,16 @@ function specimen(tokens, text, x = {}) {
                 .filter(Boolean)
                 .join(" · ")
             : "";
-          return `<div class="ods-type"><span class="ods-label"><b>${r}</b>${values ? `<span>${attr(values)}</span>` : ""}</span><span class="ods-typeline" style="${style}">${attr(line)}</span></div>`;
+          return `- **${r}**${values ? ` ${esc(values)}` : ""}\n\n  :sample[${esc(line).replace(/[[\]]/g, "")}]{kind="type" role="${r}"}`;
         })
-        .join("\n") +
-      `\n</div>\n\n`
+        .join("\n") + "\n\n"
     );
-  }
   const items = tokens
     .map((t) => ({ t, s: sample(t.path, t.type) }))
     .filter((x) => x.s)
     .slice(0, 40);
   if (!items.length) return "";
-  return (
-    `<div class="ods-specimen">\n` +
-    items
-      .map(
-        ({ t, s }) =>
-          `<span class="ods-item">${s}<span class="ods-label">${t.path}</span></span>`,
-      )
-      .join("\n") +
-    `\n</div>\n\n`
-  );
+  return items.map(({ t, s }) => `- ${s} \`${t.path}\``).join("\n") + "\n\n";
 }
 
 /** The header comment of a component file, as plain text. */
@@ -389,7 +369,7 @@ function themeColors(scheme, g) {
     const v = String(at(f.prim) ?? "")
       .slice(0, 9)
       .toUpperCase();
-    return `<span class="odv-tc"><i style="background:${v};color:${ink(v)}">Aa</i><span><code>${f.prim.replace(/^color\./, "")}</code><small>${f.via ? `via ${f.via.replace(/^color\./, "")} · ` : ""}${v}</small></span></span>`;
+    return `${draw("tone", v, ` ink="${ink(v)}"`)} \`${f.prim.replace(/^color\./, "")}\` ${f.via ? `via ${f.via.replace(/^color\./, "")} · ` : ""}${v}`;
   };
   return (
     `## Key colors in each theme\n\n${esc(kc.description)} Each shows the primitive it points at, then its value.\n\n` +
@@ -609,14 +589,14 @@ function colorGuidance(g) {
               .split(".")
               .pop()
               .replace(/^./, (c) => c.toUpperCase()),
-          )}** | ${esc(k.intent)} | ${esc((k.use_for ?? []).join(", "))} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
+          )}** | ${esc(k.intent)} | ${esc((k.use_for ?? []).join(", "))} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("; ") || "—"} |`,
       )
       .join("\n") +
     `\n\n## What each color is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
     keys
       .map(
         (k) =>
-          `| <span id="for-${cssId(k.id)}"></span>\`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
+          `| \`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("; ") || "—"} |`,
       )
       .join("\n") +
     "\n"
@@ -713,13 +693,16 @@ export function docsPages(
       scheme.themes.find((t) => t.brand === b && t.mode === "dark") ?? l,
     ];
   };
+  // One brand's set, in a scheme with several: a BrandSet around the page's own Markdown (OD-284).
+  const brandSet = (b, body) =>
+    `::::brand{id="${b}" name="${(scheme.tokens.brands[b]?.label ?? b).replaceAll('"', "'")}"}\n${body}\n::::`;
   const perBrand = (fn) =>
     brandsOf.length < 2
       ? fn(first, dark)
       : brandsOf
           .map((b) => {
             const [l, d] = pairOf(b);
-            return `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(l, d)}\n\n</div>`;
+            return brandSet(b, fn(l, d));
           })
           .join("\n\n");
   // OD-233: pairs and tones as pictures. For each brand and mode, every fill painted in its color with
@@ -745,12 +728,7 @@ export function docsPages(
   const forBrands = (fn) =>
     colorBrands.length === 1
       ? fn(colorBrands[0])
-      : colorBrands
-          .map(
-            (b) =>
-              `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(b)}\n\n</div>`,
-          )
-          .join("\n\n");
+      : colorBrands.map((b) => brandSet(b, fn(b))).join("\n\n");
   const panelStyle = (b, m) =>
     `background:${at(b, m, "color.surface.canvas")?.hex};color:${at(b, m, "color.text.primary")?.hex};--odv-muted:${at(b, m, "color.text.muted")?.hex};--odv-edge:${at(b, m, "color.border.default")?.hex}`;
   const tabs = (modes) =>
@@ -1585,19 +1563,34 @@ export function docsPages(
       .slice(0, 2);
     const commit = scheme.tokens.content?.action?.commit?.$value ?? "Save";
     const cancel = scheme.tokens.content?.action?.cancel?.$value ?? "Cancel";
-    const preview = (th) => {
+    // The mode previews (OD-284): each mode's colors and corners as data, drawn by ModePreview.
+    const plain = (v) => String(v).replace(/ \(.*\)$/, "");
+    const modeOf = (th) => {
       const c = (p) => hexOf(th, p);
-      return h(
-        `<div class="odv-mode-prev" style="background:${c("color.surface.canvas")};color:${c("color.text.primary")};border-color:${c("color.border.default")}">`,
-        `<div class="odv-mode-head"><span>${attr(cap(th.mode))}</span>${brandIds.length > 1 ? `<span>${attr(brandLabel(th.brand))}</span>` : ""}</div>`,
-        `<div class="odv-mode-surf" style="background:${c("color.surface.default")};border-color:${c("color.border.default")};border-radius:${radius(th, "container")}">`,
-        `<b>${attr(scheme.name)}</b><span style="color:${c("color.text.secondary") || c("color.text.muted")}">${attr(scheme.scenarios[0]?.text ?? scheme.summary)}</span>`,
-        sts.length
-          ? `<span class="odv-mode-row">${sts.map((x) => `<span class="odv-mode-pill" style="background:${c(`color.status.${x.meaning}.subtle`)};color:${c(`color.status.${x.meaning}`) || c("color.text.primary")};border-radius:${radius(th, "badge")}">${attr(x.label)}</span>`).join("")}</span>`
-          : "",
-        `<span class="odv-mode-row"><span class="odv-mode-btn" style="background:${c("color.action.primary")};color:${c("color.text.on-action")};border-radius:${radius(th, "control")}">${attr(commit)}</span><span class="odv-mode-btn" style="background:${c("color.surface.sunken")};color:${c("color.text.primary")};border-radius:${radius(th, "control")}">${attr(cancel)}</span></span>`,
-        `</div></div>`,
-      );
+      return {
+        mode: th.mode,
+        ...(brandIds.length > 1 && { brand: brandLabel(th.brand) }),
+        colors: {
+          canvas: c("color.surface.canvas"),
+          surface: c("color.surface.default"),
+          border: c("color.border.default"),
+          text: c("color.text.primary"),
+          secondary: c("color.text.secondary") || c("color.text.muted"),
+          action: c("color.action.primary"),
+          onAction: c("color.text.on-action"),
+          sunken: c("color.surface.sunken"),
+        },
+        radius: {
+          container: plain(radius(th, "container")),
+          badge: plain(radius(th, "badge")),
+          control: plain(radius(th, "control")),
+        },
+        statuses: sts.map((x) => ({
+          label: x.label,
+          color: c(`color.status.${x.meaning}`) || c("color.text.primary"),
+          fill: c(`color.status.${x.meaning}.subtle`),
+        })),
+      };
     };
     const sameBlock = (b) => {
       const base = scheme.tokens.brands[b]?.theme?.base ?? {};
@@ -1638,7 +1631,7 @@ export function docsPages(
           : "")
       );
     };
-    const brandSet = (b) => {
+    const themingSet = (b) => {
       const ths = scheme.themes.filter((t) => t.brand === b);
       const tree = scheme.tokens.brands[b]?.theme ?? {};
       // The neutral steps are the scale behind the jobs, not jobs: they show as "via" on the jobs.
@@ -1660,36 +1653,38 @@ export function docsPages(
           f.prim.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
             ?.$value ?? "",
         );
-        return `<span class="odv-tsw"><i style="background:${hx}" title="${attr(hx)}"></i><small>${attr(f.prim.replace(/^color\./, ""))}${f.via ? ` · via ${attr(f.via.replace(/^color\./, ""))}` : ""}</small></span>`;
+        return `${draw("dot", hx)} ${f.prim.replace(/^color\./, "")}${f.via ? ` · via ${f.via.replace(/^color\./, "")}` : ""}`;
       };
-      return h(
-        `<div class="odv-brandset" data-for-brand="${b}">`,
-        brandIds.length > 1 ? `<h3>${attr(brandLabel(b))}</h3>` : "",
-        `<div class="odv-modes">`,
-        ths.map(preview),
-        `</div>`,
-        `<h3>What a mode changes</h3>`,
-        h(
-          `<div class="odv-tscroll"><table class="odv-ttable"><thead><tr><th>Job</th>${ths.map((t) => `<th>${attr(cap(t.mode))}</th>`).join("")}</tr></thead><tbody>`,
-          groups.map((gr) => {
-            const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
-            return h(
-              `<tr class="odv-tgroup"><td colspan="${ths.length + 1}">${attr(cap(gr.split(".").pop()))} · ${list.length}</td></tr>`,
-              list.map(
+      (compositeData["mode-preview"] ??= {})[b] = {
+        name: scheme.name,
+        scenario: scheme.scenarios[0]?.text ?? scheme.summary,
+        actions: { commit, cancel },
+        modes: ths.map(modeOf),
+      };
+      // What a mode changes: one Markdown table per job group, every mode side by side.
+      const tables = groups
+        .map((gr) => {
+          const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
+          return (
+            `**${esc(cap(gr.split(".").pop()))} · ${list.length}**\n\n` +
+            `| Job | ${ths.map((t) => cap(t.mode)).join(" | ")} |\n| --- | ${ths.map(() => "---").join(" | ")} |\n` +
+            list
+              .map(
                 (p) =>
-                  `<tr><td><code>${attr(p.split(".").slice(1).join("."))}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`,
-              ),
-            );
-          }),
-          `</tbody></table></div>`,
-        ),
-        sameBlock(b),
-        `</div>`,
-      );
+                  `| \`${p.split(".").slice(1).join(".")}\` | ${ths.map((t) => cell(t, p)).join(" | ")} |`,
+              )
+              .join("\n")
+          );
+        })
+        .join("\n\n");
+      const body =
+        `::mode-preview{id="${b}"}\n\n### What a mode changes\n\n${tables}` +
+        sameBlock(b);
+      return brandIds.length > 1 ? brandSet(b, body) : body;
     };
     return (
       `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colors; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
-      h(`<div class="odv-theming">`, brandIds.map(brandSet), `</div>`) +
+      brandIds.map(themingSet).join("\n\n") +
       "\n\n"
     );
   };
@@ -1815,7 +1810,7 @@ export function docsPages(
     list
       .map((x) => {
         const u = usedBy[x.path] ?? [];
-        return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? primitiveType(x.path), x.ref)} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("<br />") : "Not used yet"} |`;
+        return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? primitiveType(x.path), x.ref)} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("; ") : "Not used yet"} |`;
       })
       .join("\n");
   // A small specimen per font family (above its table): a large Aa, the alphabet and figures, the
@@ -3115,6 +3110,7 @@ export function docsPages(
     specimen: "id",
     "anatomy-drawing": "id",
     "color-scale": "id",
+    "mode-preview": "id",
   };
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;

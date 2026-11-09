@@ -57,8 +57,18 @@ if (typeof window !== "undefined") {
 /** A row on the scale view links to its token's guidance: scroll to that row and mark it. */
 function arrive() {
   const id = new URLSearchParams(location.search).get("for");
-  const mark = id && document.getElementById(`for-${id}`);
-  const row = mark && mark.closest("tr");
+  // The row whose first cell names the token: its name, in the same form as the link's ?for=.
+  const key = (t: string) =>
+    t
+      .replaceAll(".@", "")
+      .replace(/[^a-z0-9-]+/gi, "-")
+      .toLowerCase();
+  const row =
+    id &&
+    [...document.querySelectorAll("tr")].find((r) => {
+      const code = r.querySelector("td:first-child code");
+      return code && key(code.textContent ?? "") === id;
+    });
   if (!row) return;
   row.scrollIntoView({ block: "center" });
   row.classList.add("odv-for");

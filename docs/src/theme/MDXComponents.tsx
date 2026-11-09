@@ -3,15 +3,18 @@ import MDXComponents from "@theme-original/MDXComponents";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import AnatomyDrawing from "@open-ds/doc-composites/AnatomyDrawing";
+import BrandSet from "@open-ds/doc-composites/BrandSet";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
 import Intro from "@open-ds/doc-composites/Intro";
 import ColorScale from "@open-ds/doc-composites/ColorScale";
 import Fold from "@open-ds/doc-composites/Fold";
 import Grid from "@open-ds/doc-composites/Grid";
 import Label from "@open-ds/doc-composites/Label";
+import ModePreview from "@open-ds/doc-composites/ModePreview";
 import Panel from "@open-ds/doc-composites/Panel";
 import Preview from "@open-ds/doc-composites/Preview";
 import ReasonChain from "@open-ds/doc-composites/ReasonChain";
+import Sample from "@open-ds/doc-composites/Sample";
 import Specimen from "@open-ds/doc-composites/Specimen";
 import TokenTable from "@open-ds/doc-composites/TokenTable";
 
@@ -55,7 +58,10 @@ export default {
   ...MDXComponents,
   section: Section,
   AnatomyDrawing,
+  BrandSet,
   CardGrid,
+  ModePreview,
+  Sample,
   ColorScale,
   Fold: LinkedFold,
   Grid,

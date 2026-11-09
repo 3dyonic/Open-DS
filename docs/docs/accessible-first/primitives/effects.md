@@ -13,10 +13,10 @@ description: "Effects primitives in Accessible first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `opacity.50` | 0.5 | <span class="ods-swatch" style="opacity:0.5"></span> | `opacity.disabled` (semantic) |
+| `opacity.50` | 0.5 | :sample{kind="opacity" value="0.5"} | `opacity.disabled` (semantic) |
 
 ## `shadow`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:0px 0px 0px 0px #00000000"></span> | `elevation.card` (light)<br />`elevation.overlay` (light)<br />`elevation.card` (dark)<br />`elevation.overlay` (dark) |
+| `shadow.none` | 0px 0px 0px 0px #00000000 | :sample{kind="shadow" value="0px 0px 0px 0px #00000000"} | `elevation.card` (light); `elevation.overlay` (light); `elevation.card` (dark); `elevation.overlay` (dark) |

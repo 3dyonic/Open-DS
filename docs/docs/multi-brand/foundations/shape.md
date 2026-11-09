@@ -9,16 +9,14 @@ description: "Multi-brand: Corners and borders."
 
 Corners and borders.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-control)"></span><span class="ods-label">radius.control</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-badge)"></span><span class="ods-label">radius.badge</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-option)"></span><span class="ods-label">radius.option</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-container)"></span><span class="ods-label">radius.container</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-round)"></span><span class="ods-label">radius.round</span></span>
-<span class="ods-item"><span class="ods-line" style="height:var(--border-width-default)"></span><span class="ods-label">border-width.default</span></span>
-<span class="ods-item"><span class="ods-line" style="height:var(--border-width-focus)"></span><span class="ods-label">border-width.focus</span></span>
-<span class="ods-item"><span class="ods-line" style="height:var(--border-width-focus-offset)"></span><span class="ods-label">border-width.focus-offset</span></span>
-</div>
+- :sample{kind="radius" value="var(--radius-control)"} `radius.control`
+- :sample{kind="radius" value="var(--radius-badge)"} `radius.badge`
+- :sample{kind="radius" value="var(--radius-option)"} `radius.option`
+- :sample{kind="radius" value="var(--radius-container)"} `radius.container`
+- :sample{kind="radius" value="var(--radius-round)"} `radius.round`
+- :sample{kind="line" value="var(--border-width-default)"} `border-width.default`
+- :sample{kind="line" value="var(--border-width-focus)"} `border-width.focus`
+- :sample{kind="line" value="var(--border-width-focus-offset)"} `border-width.focus-offset`
 
 ## The five answers
 
@@ -34,10 +32,7 @@ Corners and borders.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `aster.theme.base.radius.control` → `radius.4` |
@@ -48,13 +43,9 @@ Each token points to another token. Values live only on primitives, below.
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 | `border-width.focus-offset` | `border-width.2` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `birch.theme.base.radius.control` → `radius.12` |
@@ -65,13 +56,9 @@ Each token points to another token. Values live only on primitives, below.
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 | `border-width.focus-offset` | `border-width.2` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `coral.theme.base.radius.control` → `radius.999` |
@@ -82,8 +69,7 @@ Each token points to another token. Values live only on primitives, below.
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 | `border-width.focus-offset` | `border-width.2` |
-
-</div>
+::::
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 

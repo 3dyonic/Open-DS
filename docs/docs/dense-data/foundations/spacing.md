@@ -9,16 +9,14 @@ description: "Dense data: How space shows what belongs together."
 
 How space shows what belongs together.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-tight)"></span><span class="ods-label">space.gap.tight</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-default)"></span><span class="ods-label">space.gap.default</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-group)"></span><span class="ods-label">space.gap.group</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-section)"></span><span class="ods-label">space.gap.section</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-control-x)"></span><span class="ods-label">space.inset.control-x</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-container)"></span><span class="ods-label">space.inset.container</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-cell-x)"></span><span class="ods-label">space.inset.cell-x</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-row)"></span><span class="ods-label">size.row</span></span>
-</div>
+- :sample{kind="bar" value="var(--space-gap-tight)"} `space.gap.tight`
+- :sample{kind="bar" value="var(--space-gap-default)"} `space.gap.default`
+- :sample{kind="bar" value="var(--space-gap-group)"} `space.gap.group`
+- :sample{kind="bar" value="var(--space-gap-section)"} `space.gap.section`
+- :sample{kind="bar" value="var(--space-inset-control-x)"} `space.inset.control-x`
+- :sample{kind="bar" value="var(--space-inset-container)"} `space.inset.container`
+- :sample{kind="bar" value="var(--space-inset-cell-x)"} `space.inset.cell-x`
+- :sample{kind="bar" value="var(--size-row)"} `size.row`
 
 ## The five answers
 

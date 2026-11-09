@@ -9,10 +9,8 @@ description: "Accessible first: When something rises above the page, and what se
 
 When something rises above the page, and what separates groups.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-card" style="box-shadow:var(--elevation-card)"></span><span class="ods-label">elevation.card</span></span>
-<span class="ods-item"><span class="ods-card" style="box-shadow:var(--elevation-overlay)"></span><span class="ods-label">elevation.overlay</span></span>
-</div>
+- :sample{kind="shadow" value="var(--elevation-card)"} `elevation.card`
+- :sample{kind="shadow" value="var(--elevation-overlay)"} `elevation.overlay`
 
 ## The five answers
 

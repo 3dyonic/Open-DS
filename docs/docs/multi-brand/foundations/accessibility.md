@@ -9,13 +9,11 @@ description: "Multi-brand: Floors the system must hold."
 
 Floors the system must hold.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-default)"></span><span class="ods-label">size.control.default</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-compact)"></span><span class="ods-label">size.control.compact</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-large)"></span><span class="ods-label">size.control.large</span></span>
-<span class="ods-item"><span class="ods-swatch" style="opacity:var(--opacity-disabled)"></span><span class="ods-label">opacity.disabled</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-focus)"></span><span class="ods-label">color.border.focus</span></span>
-</div>
+- :sample{kind="bar" value="var(--size-control-default)"} `size.control.default`
+- :sample{kind="bar" value="var(--size-control-compact)"} `size.control.compact`
+- :sample{kind="bar" value="var(--size-control-large)"} `size.control.large`
+- :sample{kind="opacity" value="var(--opacity-disabled)"} `opacity.disabled`
+- :sample{kind="color" value="var(--color-border-focus)"} `color.border.focus`
 
 ## The five answers
 
@@ -31,10 +29,7 @@ Floors the system must hold.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `size.control.default` | `size.44` | `size.44` |
@@ -42,13 +37,9 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.large` | `size.44` | `size.44` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
 | `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `size.control.default` | `size.44` | `size.44` |
@@ -56,13 +47,9 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.large` | `size.44` | `size.44` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
 | `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `size.control.default` | `size.44` | `size.44` |
@@ -70,8 +57,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.large` | `size.44` | `size.44` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
 | `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
-
-</div>
+::::
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

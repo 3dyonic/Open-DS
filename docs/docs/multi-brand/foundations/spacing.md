@@ -9,16 +9,14 @@ description: "Multi-brand: How space shows what belongs together."
 
 How space shows what belongs together.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-tight)"></span><span class="ods-label">space.gap.tight</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-default)"></span><span class="ods-label">space.gap.default</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-group)"></span><span class="ods-label">space.gap.group</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-section)"></span><span class="ods-label">space.gap.section</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-control-x)"></span><span class="ods-label">space.inset.control-x</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-container)"></span><span class="ods-label">space.inset.container</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-cell-x)"></span><span class="ods-label">space.inset.cell-x</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-row)"></span><span class="ods-label">size.row</span></span>
-</div>
+- :sample{kind="bar" value="var(--space-gap-tight)"} `space.gap.tight`
+- :sample{kind="bar" value="var(--space-gap-default)"} `space.gap.default`
+- :sample{kind="bar" value="var(--space-gap-group)"} `space.gap.group`
+- :sample{kind="bar" value="var(--space-gap-section)"} `space.gap.section`
+- :sample{kind="bar" value="var(--space-inset-control-x)"} `space.inset.control-x`
+- :sample{kind="bar" value="var(--space-inset-container)"} `space.inset.container`
+- :sample{kind="bar" value="var(--space-inset-cell-x)"} `space.inset.cell-x`
+- :sample{kind="bar" value="var(--size-row)"} `size.row`
 
 ## The five answers
 
@@ -34,10 +32,7 @@ How space shows what belongs together.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to |
 | --- | --- |
 | `space.gap.tight` | `space.8` |
@@ -48,13 +43,9 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.container` | `space.24` |
 | `space.inset.cell-x` | `space.16` |
 | `size.row` | `size.48` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to |
 | --- | --- |
 | `space.gap.tight` | `space.8` |
@@ -65,13 +56,9 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.container` | `space.24` |
 | `space.inset.cell-x` | `space.16` |
 | `size.row` | `size.48` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
 | `space.gap.tight` | `space.8` |
@@ -82,8 +69,7 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.container` | `space.24` |
 | `space.inset.cell-x` | `space.16` |
 | `size.row` | `size.48` |
-
-</div>
+::::
 
 The raw values these tokens end at are on [Primitives › Space and size](../primitives/space-and-size).
 

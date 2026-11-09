@@ -13,14 +13,14 @@ description: "Shape primitives in Accessible first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> | `radius.badge` (every mode)<br />`radius.option` (every mode) |
-| `radius.6` | 0.375rem (6px) | <span class="ods-tile" style="border-radius:0.375rem"></span> | `radius.control` (every mode) |
-| `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> | `radius.container` (every mode) |
-| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> | `radius.round` (semantic) |
+| `radius.4` | 0.25rem (4px) | :sample{kind="radius" value="0.25rem"} | `radius.badge` (every mode); `radius.option` (every mode) |
+| `radius.6` | 0.375rem (6px) | :sample{kind="radius" value="0.375rem"} | `radius.control` (every mode) |
+| `radius.8` | 0.5rem (8px) | :sample{kind="radius" value="0.5rem"} | `radius.container` (every mode) |
+| `radius.full` | 9999px | :sample{kind="radius" value="9999px"} | `radius.round` (semantic) |
 
 ## `border-width`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> | `border-width.default` (semantic)<br />`border-width.focus-offset` (semantic) |
-| `border-width.3` | 3px | <span class="ods-line" style="height:3px"></span> | `border-width.focus` (semantic) |
+| `border-width.2` | 2px | :sample{kind="line" value="2px"} | `border-width.default` (semantic); `border-width.focus-offset` (semantic) |
+| `border-width.3` | 3px | :sample{kind="line" value="3px"} | `border-width.focus` (semantic) |

@@ -9,13 +9,11 @@ description: "Accessible first: Floors the system must hold."
 
 Floors the system must hold.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-default)"></span><span class="ods-label">size.control.default</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-compact)"></span><span class="ods-label">size.control.compact</span></span>
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-large)"></span><span class="ods-label">size.control.large</span></span>
-<span class="ods-item"><span class="ods-swatch" style="opacity:var(--opacity-disabled)"></span><span class="ods-label">opacity.disabled</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-focus)"></span><span class="ods-label">color.border.focus</span></span>
-</div>
+- :sample{kind="bar" value="var(--size-control-default)"} `size.control.default`
+- :sample{kind="bar" value="var(--size-control-compact)"} `size.control.compact`
+- :sample{kind="bar" value="var(--size-control-large)"} `size.control.large`
+- :sample{kind="opacity" value="var(--opacity-disabled)"} `opacity.disabled`
+- :sample{kind="color" value="var(--color-border-focus)"} `color.border.focus`
 
 ## The five answers
 

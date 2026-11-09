@@ -9,9 +9,7 @@ description: "Brand expressive: When icons appear and how they look."
 
 When icons appear and how they look.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-icon)"></span><span class="ods-label">size.icon</span></span>
-</div>
+- :sample{kind="bar" value="var(--size-icon)"} `size.icon`
 
 ## The five answers
 

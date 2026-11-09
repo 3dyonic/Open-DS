@@ -13,12 +13,12 @@ description: "Effects primitives in Dense data."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> | `opacity.disabled` (semantic) |
+| `opacity.40` | 0.4 | :sample{kind="opacity" value="0.4"} | `opacity.disabled` (semantic) |
 
 ## `shadow`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:0px 0px 0px 0px #00000000"></span> | `elevation.card` (light)<br />`elevation.card` (dark) |
-| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:0px 8px 24px 0px #0D111729"></span> | `elevation.overlay` (light) |
-| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 8px 24px 0px #00000080"></span> | `elevation.overlay` (dark) |
+| `shadow.none` | 0px 0px 0px 0px #00000000 | :sample{kind="shadow" value="0px 0px 0px 0px #00000000"} | `elevation.card` (light); `elevation.card` (dark) |
+| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | :sample{kind="shadow" value="0px 8px 24px 0px #0D111729"} | `elevation.overlay` (light) |
+| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | :sample{kind="shadow" value="0px 8px 24px 0px #00000080"} | `elevation.overlay` (dark) |

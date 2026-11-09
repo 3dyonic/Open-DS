@@ -23,10 +23,7 @@ How the product speaks: the words in every component.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to |
 | --- | --- |
 | `content.action.commit` |  |
@@ -34,13 +31,9 @@ Each token points to another token. Values live only on primitives, below.
 | `content.action.destroy` |  |
 | `content.action.retry` |  |
 | `content.action.empty-action` |  |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to |
 | --- | --- |
 | `content.action.commit` |  |
@@ -48,13 +41,9 @@ Each token points to another token. Values live only on primitives, below.
 | `content.action.destroy` |  |
 | `content.action.retry` |  |
 | `content.action.empty-action` |  |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
 | `content.action.commit` |  |
@@ -62,8 +51,7 @@ Each token points to another token. Values live only on primitives, below.
 | `content.action.destroy` |  |
 | `content.action.retry` |  |
 | `content.action.empty-action` |  |
-
-</div>
+::::
 
 ## When to use what
 

@@ -9,9 +9,7 @@ description: "Multi-brand: When icons appear and how they look."
 
 When icons appear and how they look.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-bar" style="width:var(--size-icon)"></span><span class="ods-label">size.icon</span></span>
-</div>
+- :sample{kind="bar" value="var(--size-icon)"} `size.icon`
 
 ## The five answers
 
@@ -27,35 +25,23 @@ When icons appear and how they look.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
-
-</div>
+::::
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

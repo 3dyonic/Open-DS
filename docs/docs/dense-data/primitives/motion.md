@@ -13,10 +13,10 @@ description: "Motion primitives in Dense data."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> | `motion.duration.feedback` (semantic)<br />`motion.duration.panels` (semantic) |
+| `duration.fast` | 120ms | :sample{kind="duration" value="120ms"} | `motion.duration.feedback` (semantic); `motion.duration.panels` (semantic) |
 
 ## `easing`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> | `motion.easing.standard` (semantic) |
+| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | :sample{kind="easing" value="cubic-bezier(0.2,0,0,1)"} | `motion.easing.standard` (semantic) |

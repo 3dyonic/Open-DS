@@ -9,15 +9,27 @@ description: "Multi-brand: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-<div class="ods-specimen">
-<div class="ods-type"><span class="ods-label"><b>display</b><span>32px · 1.8 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Your plan</span></div>
-<div class="ods-type"><span class="ods-label"><b>title</b><span>24px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Your plan</span></div>
-<div class="ods-type"><span class="ods-label"><b>heading</b><span>20px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Standard plan</span></div>
-<div class="ods-type"><span class="ods-label"><b>body</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label"><b>label</b><span>14px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Get started</span></div>
-<div class="ods-type"><span class="ods-label"><b>caption</b><span>13px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label"><b>data</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Plan Standard · Next payment 12.00 · Orders this year 9 · Member since 2024</span></div>
-</div>
+- **display** 32px · 1.8 · 700
+
+  :sample[Your plan]{kind="type" role="display"}
+- **title** 24px · 1.2 · 600
+
+  :sample[Your plan]{kind="type" role="title"}
+- **heading** 20px · 1.2 · 600
+
+  :sample[Standard plan]{kind="type" role="heading"}
+- **body** 16px · 1.5 · 400
+
+  :sample[A customer signs up for a plan on the Birch site, then manages it in the shared account area.]{kind="type" role="body"}
+- **label** 14px · 1.2 · 600
+
+  :sample[Get started]{kind="type" role="label"}
+- **caption** 13px · 1.5 · 400
+
+  :sample[A customer signs up for a plan on the Birch site, then manages it in the shared account area.]{kind="type" role="caption"}
+- **data** 16px · 1.5 · 400
+
+  :sample[Plan Standard · Next payment 12.00 · Orders this year 9 · Member since 2024]{kind="type" role="data"}
 
 ## The five answers
 
@@ -33,10 +45,7 @@ How text is set: roles, sizes and line height.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `aster.theme.base.type.display.font-family` → `font.family.inter` |
@@ -67,13 +76,9 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.font-size` | `font.size.16` |
 | `type.data.line-height` | `font.line-height.1_5` |
 | `type.data.font-weight` | `font.weight.400` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `birch.theme.base.type.display.font-family` → `font.family.plus-jakarta-sans` |
@@ -104,13 +109,9 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.font-size` | `font.size.16` |
 | `type.data.line-height` | `font.line-height.1_5` |
 | `type.data.font-weight` | `font.weight.400` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `coral.theme.base.type.display.font-family` → `font.family.poppins` |
@@ -141,8 +142,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.font-size` | `font.size.16` |
 | `type.data.line-height` | `font.line-height.1_5` |
 | `type.data.font-weight` | `font.weight.400` |
-
-</div>
+::::
 
 The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 

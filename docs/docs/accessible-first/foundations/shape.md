@@ -9,16 +9,14 @@ description: "Accessible first: Corners and borders."
 
 Corners and borders.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-control)"></span><span class="ods-label">radius.control</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-badge)"></span><span class="ods-label">radius.badge</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-option)"></span><span class="ods-label">radius.option</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-container)"></span><span class="ods-label">radius.container</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-round)"></span><span class="ods-label">radius.round</span></span>
-<span class="ods-item"><span class="ods-line" style="height:var(--border-width-default)"></span><span class="ods-label">border-width.default</span></span>
-<span class="ods-item"><span class="ods-line" style="height:var(--border-width-focus)"></span><span class="ods-label">border-width.focus</span></span>
-<span class="ods-item"><span class="ods-line" style="height:var(--border-width-focus-offset)"></span><span class="ods-label">border-width.focus-offset</span></span>
-</div>
+- :sample{kind="radius" value="var(--radius-control)"} `radius.control`
+- :sample{kind="radius" value="var(--radius-badge)"} `radius.badge`
+- :sample{kind="radius" value="var(--radius-option)"} `radius.option`
+- :sample{kind="radius" value="var(--radius-container)"} `radius.container`
+- :sample{kind="radius" value="var(--radius-round)"} `radius.round`
+- :sample{kind="line" value="var(--border-width-default)"} `border-width.default`
+- :sample{kind="line" value="var(--border-width-focus)"} `border-width.focus`
+- :sample{kind="line" value="var(--border-width-focus-offset)"} `border-width.focus-offset`
 
 ## The five answers
 

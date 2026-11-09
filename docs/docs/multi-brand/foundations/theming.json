@@ -1,4 +1,222 @@
 {
+ "mode-preview": {
+  "aster": {
+   "name": "Multi-brand",
+   "scenario": "A customer signs up for a plan on the Birch site, then manages it in the shared account area.",
+   "actions": {
+    "commit": "Save",
+    "cancel": "Cancel"
+   },
+   "modes": [
+    {
+     "mode": "light",
+     "brand": "Aster",
+     "colors": {
+      "canvas": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "border": "#E2E8F0",
+      "text": "#0F172A",
+      "secondary": "#334155",
+      "action": "#0F766E",
+      "onAction": "#FFFFFF",
+      "sunken": "#F1F5F9"
+     },
+     "radius": {
+      "container": "0.5rem",
+      "badge": "0.25rem",
+      "control": "0.25rem"
+     },
+     "statuses": [
+      {
+       "label": "Active",
+       "color": "#1F7A3A",
+       "fill": "#DBF7DF"
+      },
+      {
+       "label": "Renews in 3 days",
+       "color": "#083C93",
+       "fill": "#D3E4FF"
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "brand": "Aster",
+     "colors": {
+      "canvas": "#020617",
+      "surface": "#0F172A",
+      "border": "#334155",
+      "text": "#F8FAFC",
+      "secondary": "#CBD5E1",
+      "action": "#7FCFC6",
+      "onAction": "#0F172A",
+      "sunken": "#1E293B"
+     },
+     "radius": {
+      "container": "0.5rem",
+      "badge": "0.25rem",
+      "control": "0.25rem"
+     },
+     "statuses": [
+      {
+       "label": "Active",
+       "color": "#5CC283",
+       "fill": "#012A14"
+      },
+      {
+       "label": "Renews in 3 days",
+       "color": "#8AB4F8",
+       "fill": "#0D2244"
+      }
+     ]
+    }
+   ]
+  },
+  "birch": {
+   "name": "Multi-brand",
+   "scenario": "A customer signs up for a plan on the Birch site, then manages it in the shared account area.",
+   "actions": {
+    "commit": "Save",
+    "cancel": "Cancel"
+   },
+   "modes": [
+    {
+     "mode": "light",
+     "brand": "Birch",
+     "colors": {
+      "canvas": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "border": "#E2E8F0",
+      "text": "#0F172A",
+      "secondary": "#334155",
+      "action": "#6D28D9",
+      "onAction": "#FFFFFF",
+      "sunken": "#F1F5F9"
+     },
+     "radius": {
+      "container": "1rem",
+      "badge": "9999px",
+      "control": "0.75rem"
+     },
+     "statuses": [
+      {
+       "label": "Active",
+       "color": "#1F7A3A",
+       "fill": "#DBF7DF"
+      },
+      {
+       "label": "Renews in 3 days",
+       "color": "#083C93",
+       "fill": "#D3E4FF"
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "brand": "Birch",
+     "colors": {
+      "canvas": "#020617",
+      "surface": "#0F172A",
+      "border": "#334155",
+      "text": "#F8FAFC",
+      "secondary": "#CBD5E1",
+      "action": "#B79DF7",
+      "onAction": "#0F172A",
+      "sunken": "#1E293B"
+     },
+     "radius": {
+      "container": "1rem",
+      "badge": "9999px",
+      "control": "0.75rem"
+     },
+     "statuses": [
+      {
+       "label": "Active",
+       "color": "#5CC283",
+       "fill": "#012A14"
+      },
+      {
+       "label": "Renews in 3 days",
+       "color": "#8AB4F8",
+       "fill": "#0D2244"
+      }
+     ]
+    }
+   ]
+  },
+  "coral": {
+   "name": "Multi-brand",
+   "scenario": "A customer signs up for a plan on the Birch site, then manages it in the shared account area.",
+   "actions": {
+    "commit": "Save",
+    "cancel": "Cancel"
+   },
+   "modes": [
+    {
+     "mode": "light",
+     "brand": "Coral",
+     "colors": {
+      "canvas": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "border": "#E2E8F0",
+      "text": "#0F172A",
+      "secondary": "#334155",
+      "action": "#C2410C",
+      "onAction": "#FFFFFF",
+      "sunken": "#F1F5F9"
+     },
+     "radius": {
+      "container": "1.25rem",
+      "badge": "9999px",
+      "control": "9999px"
+     },
+     "statuses": [
+      {
+       "label": "Active",
+       "color": "#1F7A3A",
+       "fill": "#DBF7DF"
+      },
+      {
+       "label": "Renews in 3 days",
+       "color": "#083C93",
+       "fill": "#D3E4FF"
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "brand": "Coral",
+     "colors": {
+      "canvas": "#020617",
+      "surface": "#0F172A",
+      "border": "#334155",
+      "text": "#F8FAFC",
+      "secondary": "#CBD5E1",
+      "action": "#F7A67F",
+      "onAction": "#0F172A",
+      "sunken": "#1E293B"
+     },
+     "radius": {
+      "container": "1.25rem",
+      "badge": "9999px",
+      "control": "9999px"
+     },
+     "statuses": [
+      {
+       "label": "Active",
+       "color": "#5CC283",
+       "fill": "#012A14"
+      },
+      {
+       "label": "Renews in 3 days",
+       "color": "#8AB4F8",
+       "fill": "#0D2244"
+      }
+     ]
+    }
+   ]
+  }
+ },
  "specimen": {
   "theming/aster/corners": {
    "title": "Corners",

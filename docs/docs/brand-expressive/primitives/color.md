@@ -60,204 +60,204 @@ Each color is a whole scale in each theme. The lanes show what its tokens paint:
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.taupe.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> | `color.text.on-dark` (every mode)<br />`color.neutral.0` (light) |
-| `color.taupe.light.50` | #FFF8F3 | <span class="ods-swatch" style="background:#FFF8F3"></span> | `color.neutral.50` (light) |
-| `color.taupe.light.100` | #FCEFE6 | <span class="ods-swatch" style="background:#FCEFE6"></span> | `color.neutral.100` (light) |
-| `color.taupe.light.200` | #F2DCCF | <span class="ods-swatch" style="background:#F2DCCF"></span> | `color.neutral.200` (light) |
-| `color.taupe.light.300` | #E2C4B3 | <span class="ods-swatch" style="background:#E2C4B3"></span> | `color.neutral.300` (light) |
-| `color.taupe.light.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> | `color.neutral.400` (light) |
-| `color.taupe.light.500` | #8A6F63 | <span class="ods-swatch" style="background:#8A6F63"></span> | `color.neutral.500` (light) |
-| `color.taupe.light.600` | #6B544A | <span class="ods-swatch" style="background:#6B544A"></span> | `color.neutral.600` (light) |
-| `color.taupe.light.700` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> | `color.neutral.700` (light) |
-| `color.taupe.light.800` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> | `color.neutral.800` (light) |
-| `color.taupe.light.900` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> | `color.text.on-light` (every mode)<br />`color.neutral.900` (light) |
-| `color.taupe.light.950` | #120B09 | <span class="ods-swatch" style="background:#120B09"></span> | `color.neutral.950` (light) |
+| `color.taupe.light.0` | #FFFFFF | :sample{kind="color" value="#FFFFFF"} | `color.text.on-dark` (every mode); `color.neutral.0` (light) |
+| `color.taupe.light.50` | #FFF8F3 | :sample{kind="color" value="#FFF8F3"} | `color.neutral.50` (light) |
+| `color.taupe.light.100` | #FCEFE6 | :sample{kind="color" value="#FCEFE6"} | `color.neutral.100` (light) |
+| `color.taupe.light.200` | #F2DCCF | :sample{kind="color" value="#F2DCCF"} | `color.neutral.200` (light) |
+| `color.taupe.light.300` | #E2C4B3 | :sample{kind="color" value="#E2C4B3"} | `color.neutral.300` (light) |
+| `color.taupe.light.400` | #B5988A | :sample{kind="color" value="#B5988A"} | `color.neutral.400` (light) |
+| `color.taupe.light.500` | #8A6F63 | :sample{kind="color" value="#8A6F63"} | `color.neutral.500` (light) |
+| `color.taupe.light.600` | #6B544A | :sample{kind="color" value="#6B544A"} | `color.neutral.600` (light) |
+| `color.taupe.light.700` | #4D3A33 | :sample{kind="color" value="#4D3A33"} | `color.neutral.700` (light) |
+| `color.taupe.light.800` | #33241F | :sample{kind="color" value="#33241F"} | `color.neutral.800` (light) |
+| `color.taupe.light.900` | #1F1411 | :sample{kind="color" value="#1F1411"} | `color.text.on-light` (every mode); `color.neutral.900` (light) |
+| `color.taupe.light.950` | #120B09 | :sample{kind="color" value="#120B09"} | `color.neutral.950` (light) |
 
 ## `color.taupe.dark`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.taupe.dark.0` | #120B09 | <span class="ods-swatch" style="background:#120B09"></span> | `color.neutral.0` (dark) |
-| `color.taupe.dark.50` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> | `color.neutral.50` (dark) |
-| `color.taupe.dark.100` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> | `color.neutral.100` (dark) |
-| `color.taupe.dark.200` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> | `color.neutral.200` (dark) |
-| `color.taupe.dark.300` | #8A6F63 | <span class="ods-swatch" style="background:#8A6F63"></span> | `color.neutral.300` (dark) |
-| `color.taupe.dark.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> | `color.neutral.400` (dark) |
-| `color.taupe.dark.500` | #E2C4B3 | <span class="ods-swatch" style="background:#E2C4B3"></span> | `color.neutral.500` (dark) |
-| `color.taupe.dark.600` | #EAD0C1 | <span class="ods-swatch" style="background:#EAD0C1"></span> | `color.neutral.600` (dark) |
-| `color.taupe.dark.700` | #F2DCCF | <span class="ods-swatch" style="background:#F2DCCF"></span> | `color.neutral.700` (dark) |
-| `color.taupe.dark.800` | #FCEFE6 | <span class="ods-swatch" style="background:#FCEFE6"></span> | `color.neutral.800` (dark) |
-| `color.taupe.dark.900` | #FFF8F3 | <span class="ods-swatch" style="background:#FFF8F3"></span> | `color.neutral.900` (dark) |
-| `color.taupe.dark.950` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> | `color.neutral.950` (dark) |
+| `color.taupe.dark.0` | #120B09 | :sample{kind="color" value="#120B09"} | `color.neutral.0` (dark) |
+| `color.taupe.dark.50` | #1F1411 | :sample{kind="color" value="#1F1411"} | `color.neutral.50` (dark) |
+| `color.taupe.dark.100` | #33241F | :sample{kind="color" value="#33241F"} | `color.neutral.100` (dark) |
+| `color.taupe.dark.200` | #4D3A33 | :sample{kind="color" value="#4D3A33"} | `color.neutral.200` (dark) |
+| `color.taupe.dark.300` | #8A6F63 | :sample{kind="color" value="#8A6F63"} | `color.neutral.300` (dark) |
+| `color.taupe.dark.400` | #B5988A | :sample{kind="color" value="#B5988A"} | `color.neutral.400` (dark) |
+| `color.taupe.dark.500` | #E2C4B3 | :sample{kind="color" value="#E2C4B3"} | `color.neutral.500` (dark) |
+| `color.taupe.dark.600` | #EAD0C1 | :sample{kind="color" value="#EAD0C1"} | `color.neutral.600` (dark) |
+| `color.taupe.dark.700` | #F2DCCF | :sample{kind="color" value="#F2DCCF"} | `color.neutral.700` (dark) |
+| `color.taupe.dark.800` | #FCEFE6 | :sample{kind="color" value="#FCEFE6"} | `color.neutral.800` (dark) |
+| `color.taupe.dark.900` | #FFF8F3 | :sample{kind="color" value="#FFF8F3"} | `color.neutral.900` (dark) |
+| `color.taupe.dark.950` | #FFFFFF | :sample{kind="color" value="#FFFFFF"} | `color.neutral.950` (dark) |
 
 ## `color.pink.light`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.pink.light.50` | #FEF8FA | <span class="ods-swatch" style="background:#FEF8FA"></span> | Not used yet |
-| `color.pink.light.100` | #FFEAF0 | <span class="ods-swatch" style="background:#FFEAF0"></span> | `color.surface.selected` (light)<br />`color.category.1.subtle` (light) |
-| `color.pink.light.200` | #FED9E4 | <span class="ods-swatch" style="background:#FED9E4"></span> | Not used yet |
-| `color.pink.light.300` | #FFCBDB | <span class="ods-swatch" style="background:#FFCBDB"></span> | Not used yet |
-| `color.pink.light.400` | #FE8BB5 | <span class="ods-swatch" style="background:#FE8BB5"></span> | Not used yet |
-| `color.pink.light.500` | #E64A8D | <span class="ods-swatch" style="background:#E64A8D"></span> | Not used yet |
-| `color.pink.light.600` | #D61F7A | <span class="ods-swatch" style="background:#D61F7A"></span> | `color.border.focus` (light)<br />`color.border.selected` (light)<br />`color.action.primary` (light)<br />`color.category.1` (light) |
-| `color.pink.light.700` | #A6025B | <span class="ods-swatch" style="background:#A6025B"></span> | `color.text.link` (light)<br />`color.action.primary.hover` (light) |
-| `color.pink.light.800` | #73013E | <span class="ods-swatch" style="background:#73013E"></span> | Not used yet |
-| `color.pink.light.900` | #4A0025 | <span class="ods-swatch" style="background:#4A0025"></span> | Not used yet |
-| `color.pink.light.950` | #24000F | <span class="ods-swatch" style="background:#24000F"></span> | Not used yet |
+| `color.pink.light.50` | #FEF8FA | :sample{kind="color" value="#FEF8FA"} | Not used yet |
+| `color.pink.light.100` | #FFEAF0 | :sample{kind="color" value="#FFEAF0"} | `color.surface.selected` (light); `color.category.1.subtle` (light) |
+| `color.pink.light.200` | #FED9E4 | :sample{kind="color" value="#FED9E4"} | Not used yet |
+| `color.pink.light.300` | #FFCBDB | :sample{kind="color" value="#FFCBDB"} | Not used yet |
+| `color.pink.light.400` | #FE8BB5 | :sample{kind="color" value="#FE8BB5"} | Not used yet |
+| `color.pink.light.500` | #E64A8D | :sample{kind="color" value="#E64A8D"} | Not used yet |
+| `color.pink.light.600` | #D61F7A | :sample{kind="color" value="#D61F7A"} | `color.border.focus` (light); `color.border.selected` (light); `color.action.primary` (light); `color.category.1` (light) |
+| `color.pink.light.700` | #A6025B | :sample{kind="color" value="#A6025B"} | `color.text.link` (light); `color.action.primary.hover` (light) |
+| `color.pink.light.800` | #73013E | :sample{kind="color" value="#73013E"} | Not used yet |
+| `color.pink.light.900` | #4A0025 | :sample{kind="color" value="#4A0025"} | Not used yet |
+| `color.pink.light.950` | #24000F | :sample{kind="color" value="#24000F"} | Not used yet |
 
 ## `color.pink.dark`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.pink.dark.50` | #310821 | <span class="ods-swatch" style="background:#310821"></span> | Not used yet |
-| `color.pink.dark.100` | #451731 | <span class="ods-swatch" style="background:#451731"></span> | `color.surface.selected` (dark)<br />`color.category.1.subtle` (dark) |
-| `color.pink.dark.200` | #5F2A47 | <span class="ods-swatch" style="background:#5F2A47"></span> | Not used yet |
-| `color.pink.dark.300` | #7C4061 | <span class="ods-swatch" style="background:#7C4061"></span> | Not used yet |
-| `color.pink.dark.400` | #9F5A7F | <span class="ods-swatch" style="background:#9F5A7F"></span> | Not used yet |
-| `color.pink.dark.500` | #C676A1 | <span class="ods-swatch" style="background:#C676A1"></span> | Not used yet |
-| `color.pink.dark.600` | #F59ACA | <span class="ods-swatch" style="background:#F59ACA"></span> | `color.border.focus` (dark)<br />`color.border.selected` (dark)<br />`color.action.primary` (dark)<br />`color.category.1` (dark) |
-| `color.pink.dark.700` | #FBB4D8 | <span class="ods-swatch" style="background:#FBB4D8"></span> | `color.text.link` (dark)<br />`color.action.primary.hover` (dark) |
-| `color.pink.dark.800` | #FEC9E3 | <span class="ods-swatch" style="background:#FEC9E3"></span> | Not used yet |
-| `color.pink.dark.900` | #FFDDED | <span class="ods-swatch" style="background:#FFDDED"></span> | Not used yet |
-| `color.pink.dark.950` | #FEF1F7 | <span class="ods-swatch" style="background:#FEF1F7"></span> | Not used yet |
+| `color.pink.dark.50` | #310821 | :sample{kind="color" value="#310821"} | Not used yet |
+| `color.pink.dark.100` | #451731 | :sample{kind="color" value="#451731"} | `color.surface.selected` (dark); `color.category.1.subtle` (dark) |
+| `color.pink.dark.200` | #5F2A47 | :sample{kind="color" value="#5F2A47"} | Not used yet |
+| `color.pink.dark.300` | #7C4061 | :sample{kind="color" value="#7C4061"} | Not used yet |
+| `color.pink.dark.400` | #9F5A7F | :sample{kind="color" value="#9F5A7F"} | Not used yet |
+| `color.pink.dark.500` | #C676A1 | :sample{kind="color" value="#C676A1"} | Not used yet |
+| `color.pink.dark.600` | #F59ACA | :sample{kind="color" value="#F59ACA"} | `color.border.focus` (dark); `color.border.selected` (dark); `color.action.primary` (dark); `color.category.1` (dark) |
+| `color.pink.dark.700` | #FBB4D8 | :sample{kind="color" value="#FBB4D8"} | `color.text.link` (dark); `color.action.primary.hover` (dark) |
+| `color.pink.dark.800` | #FEC9E3 | :sample{kind="color" value="#FEC9E3"} | Not used yet |
+| `color.pink.dark.900` | #FFDDED | :sample{kind="color" value="#FFDDED"} | Not used yet |
+| `color.pink.dark.950` | #FEF1F7 | :sample{kind="color" value="#FEF1F7"} | Not used yet |
 
 ## `color.green.light`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> | Not used yet |
-| `color.green.light.100` | #DBF7DF | <span class="ods-swatch" style="background:#DBF7DF"></span> | `color.text.success-on-dark` (every mode)<br />`color.status.success.subtle` (light)<br />`color.category.3.subtle` (light) |
-| `color.green.light.200` | #CBE9CF | <span class="ods-swatch" style="background:#CBE9CF"></span> | Not used yet |
-| `color.green.light.300` | #BCE0C1 | <span class="ods-swatch" style="background:#BCE0C1"></span> | Not used yet |
-| `color.green.light.400` | #82BA8B | <span class="ods-swatch" style="background:#82BA8B"></span> | Not used yet |
-| `color.green.light.500` | #448F54 | <span class="ods-swatch" style="background:#448F54"></span> | Not used yet |
-| `color.green.light.600` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> | `color.status.success` (light)<br />`color.category.3` (light) |
-| `color.green.light.700` | #0B5C27 | <span class="ods-swatch" style="background:#0B5C27"></span> | Not used yet |
-| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> | `color.text.success-on-light` (every mode) |
-| `color.green.light.900` | #01260B | <span class="ods-swatch" style="background:#01260B"></span> | Not used yet |
-| `color.green.light.950` | #001003 | <span class="ods-swatch" style="background:#001003"></span> | Not used yet |
+| `color.green.light.50` | #F1FDF2 | :sample{kind="color" value="#F1FDF2"} | Not used yet |
+| `color.green.light.100` | #DBF7DF | :sample{kind="color" value="#DBF7DF"} | `color.text.success-on-dark` (every mode); `color.status.success.subtle` (light); `color.category.3.subtle` (light) |
+| `color.green.light.200` | #CBE9CF | :sample{kind="color" value="#CBE9CF"} | Not used yet |
+| `color.green.light.300` | #BCE0C1 | :sample{kind="color" value="#BCE0C1"} | Not used yet |
+| `color.green.light.400` | #82BA8B | :sample{kind="color" value="#82BA8B"} | Not used yet |
+| `color.green.light.500` | #448F54 | :sample{kind="color" value="#448F54"} | Not used yet |
+| `color.green.light.600` | #1F7A3A | :sample{kind="color" value="#1F7A3A"} | `color.status.success` (light); `color.category.3` (light) |
+| `color.green.light.700` | #0B5C27 | :sample{kind="color" value="#0B5C27"} | Not used yet |
+| `color.green.light.800` | #023E17 | :sample{kind="color" value="#023E17"} | `color.text.success-on-light` (every mode) |
+| `color.green.light.900` | #01260B | :sample{kind="color" value="#01260B"} | Not used yet |
+| `color.green.light.950` | #001003 | :sample{kind="color" value="#001003"} | Not used yet |
 
 ## `color.green.dark`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.green.dark.50` | #01210E | <span class="ods-swatch" style="background:#01210E"></span> | Not used yet |
-| `color.green.dark.100` | #013118 | <span class="ods-swatch" style="background:#013118"></span> | `color.status.success.subtle` (dark)<br />`color.category.3.subtle` (dark) |
-| `color.green.dark.200` | #014724 | <span class="ods-swatch" style="background:#014724"></span> | Not used yet |
-| `color.green.dark.300` | #0E5F35 | <span class="ods-swatch" style="background:#0E5F35"></span> | Not used yet |
-| `color.green.dark.400` | #287C4C | <span class="ods-swatch" style="background:#287C4C"></span> | Not used yet |
-| `color.green.dark.500` | #409B64 | <span class="ods-swatch" style="background:#409B64"></span> | Not used yet |
-| `color.green.dark.600` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> | `color.status.success` (dark)<br />`color.category.3` (dark) |
-| `color.green.dark.700` | #8AD3A2 | <span class="ods-swatch" style="background:#8AD3A2"></span> | Not used yet |
-| `color.green.dark.800` | #ADE2BD | <span class="ods-swatch" style="background:#ADE2BD"></span> | Not used yet |
-| `color.green.dark.900` | #CBEFD5 | <span class="ods-swatch" style="background:#CBEFD5"></span> | Not used yet |
-| `color.green.dark.950` | #E8FBED | <span class="ods-swatch" style="background:#E8FBED"></span> | Not used yet |
+| `color.green.dark.50` | #01210E | :sample{kind="color" value="#01210E"} | Not used yet |
+| `color.green.dark.100` | #013118 | :sample{kind="color" value="#013118"} | `color.status.success.subtle` (dark); `color.category.3.subtle` (dark) |
+| `color.green.dark.200` | #014724 | :sample{kind="color" value="#014724"} | Not used yet |
+| `color.green.dark.300` | #0E5F35 | :sample{kind="color" value="#0E5F35"} | Not used yet |
+| `color.green.dark.400` | #287C4C | :sample{kind="color" value="#287C4C"} | Not used yet |
+| `color.green.dark.500` | #409B64 | :sample{kind="color" value="#409B64"} | Not used yet |
+| `color.green.dark.600` | #5CC283 | :sample{kind="color" value="#5CC283"} | `color.status.success` (dark); `color.category.3` (dark) |
+| `color.green.dark.700` | #8AD3A2 | :sample{kind="color" value="#8AD3A2"} | Not used yet |
+| `color.green.dark.800` | #ADE2BD | :sample{kind="color" value="#ADE2BD"} | Not used yet |
+| `color.green.dark.900` | #CBEFD5 | :sample{kind="color" value="#CBEFD5"} | Not used yet |
+| `color.green.dark.950` | #E8FBED | :sample{kind="color" value="#E8FBED"} | Not used yet |
 
 ## `color.amber.light`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> | Not used yet |
-| `color.amber.light.100` | #FEE8CF | <span class="ods-swatch" style="background:#FEE8CF"></span> | `color.text.warning-on-dark` (every mode)<br />`color.status.warning.subtle` (light)<br />`color.category.4.subtle` (light) |
-| `color.amber.light.200` | #F1DBC3 | <span class="ods-swatch" style="background:#F1DBC3"></span> | Not used yet |
-| `color.amber.light.300` | #EACFB3 | <span class="ods-swatch" style="background:#EACFB3"></span> | Not used yet |
-| `color.amber.light.400` | #C7A074 | <span class="ods-swatch" style="background:#C7A074"></span> | Not used yet |
-| `color.amber.light.500` | #9E6E32 | <span class="ods-swatch" style="background:#9E6E32"></span> | Not used yet |
-| `color.amber.light.600` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> | `color.status.warning` (light)<br />`color.category.4` (light) |
-| `color.amber.light.700` | #673F01 | <span class="ods-swatch" style="background:#673F01"></span> | Not used yet |
-| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> | `color.text.warning-on-light` (every mode) |
-| `color.amber.light.900` | #2B1800 | <span class="ods-swatch" style="background:#2B1800"></span> | Not used yet |
-| `color.amber.light.950` | #130800 | <span class="ods-swatch" style="background:#130800"></span> | Not used yet |
+| `color.amber.light.50` | #FFF7EF | :sample{kind="color" value="#FFF7EF"} | Not used yet |
+| `color.amber.light.100` | #FEE8CF | :sample{kind="color" value="#FEE8CF"} | `color.text.warning-on-dark` (every mode); `color.status.warning.subtle` (light); `color.category.4.subtle` (light) |
+| `color.amber.light.200` | #F1DBC3 | :sample{kind="color" value="#F1DBC3"} | Not used yet |
+| `color.amber.light.300` | #EACFB3 | :sample{kind="color" value="#EACFB3"} | Not used yet |
+| `color.amber.light.400` | #C7A074 | :sample{kind="color" value="#C7A074"} | Not used yet |
+| `color.amber.light.500` | #9E6E32 | :sample{kind="color" value="#9E6E32"} | Not used yet |
+| `color.amber.light.600` | #8A5600 | :sample{kind="color" value="#8A5600"} | `color.status.warning` (light); `color.category.4` (light) |
+| `color.amber.light.700` | #673F01 | :sample{kind="color" value="#673F01"} | Not used yet |
+| `color.amber.light.800` | #462A02 | :sample{kind="color" value="#462A02"} | `color.text.warning-on-light` (every mode) |
+| `color.amber.light.900` | #2B1800 | :sample{kind="color" value="#2B1800"} | Not used yet |
+| `color.amber.light.950` | #130800 | :sample{kind="color" value="#130800"} | Not used yet |
 
 ## `color.amber.dark`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.amber.dark.50` | #261901 | <span class="ods-swatch" style="background:#261901"></span> | Not used yet |
-| `color.amber.dark.100` | #3B2701 | <span class="ods-swatch" style="background:#3B2701"></span> | `color.status.warning.subtle` (dark)<br />`color.category.4.subtle` (dark) |
-| `color.amber.dark.200` | #563C00 | <span class="ods-swatch" style="background:#563C00"></span> | Not used yet |
-| `color.amber.dark.300` | #765301 | <span class="ods-swatch" style="background:#765301"></span> | Not used yet |
-| `color.amber.dark.400` | #9C6F08 | <span class="ods-swatch" style="background:#9C6F08"></span> | Not used yet |
-| `color.amber.dark.500` | #C3902B | <span class="ods-swatch" style="background:#C3902B"></span> | Not used yet |
-| `color.amber.dark.600` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> | `color.status.warning` (dark)<br />`color.category.4` (dark) |
-| `color.amber.dark.700` | #F6CA7F | <span class="ods-swatch" style="background:#F6CA7F"></span> | Not used yet |
-| `color.amber.dark.800` | #FAD9A3 | <span class="ods-swatch" style="background:#FAD9A3"></span> | Not used yet |
-| `color.amber.dark.900` | #FDE7C3 | <span class="ods-swatch" style="background:#FDE7C3"></span> | Not used yet |
-| `color.amber.dark.950` | #FFF4E2 | <span class="ods-swatch" style="background:#FFF4E2"></span> | Not used yet |
+| `color.amber.dark.50` | #261901 | :sample{kind="color" value="#261901"} | Not used yet |
+| `color.amber.dark.100` | #3B2701 | :sample{kind="color" value="#3B2701"} | `color.status.warning.subtle` (dark); `color.category.4.subtle` (dark) |
+| `color.amber.dark.200` | #563C00 | :sample{kind="color" value="#563C00"} | Not used yet |
+| `color.amber.dark.300` | #765301 | :sample{kind="color" value="#765301"} | Not used yet |
+| `color.amber.dark.400` | #9C6F08 | :sample{kind="color" value="#9C6F08"} | Not used yet |
+| `color.amber.dark.500` | #C3902B | :sample{kind="color" value="#C3902B"} | Not used yet |
+| `color.amber.dark.600` | #F2B84B | :sample{kind="color" value="#F2B84B"} | `color.status.warning` (dark); `color.category.4` (dark) |
+| `color.amber.dark.700` | #F6CA7F | :sample{kind="color" value="#F6CA7F"} | Not used yet |
+| `color.amber.dark.800` | #FAD9A3 | :sample{kind="color" value="#FAD9A3"} | Not used yet |
+| `color.amber.dark.900` | #FDE7C3 | :sample{kind="color" value="#FDE7C3"} | Not used yet |
+| `color.amber.dark.950` | #FFF4E2 | :sample{kind="color" value="#FFF4E2"} | Not used yet |
 
 ## `color.red.light`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> | Not used yet |
-| `color.red.light.100` | #FFDBD8 | <span class="ods-swatch" style="background:#FFDBD8"></span> | `color.text.danger-on-dark` (every mode)<br />`color.status.danger.subtle` (light) |
-| `color.red.light.200` | #FED7D2 | <span class="ods-swatch" style="background:#FED7D2"></span> | Not used yet |
-| `color.red.light.300` | #FEC8C2 | <span class="ods-swatch" style="background:#FEC8C2"></span> | Not used yet |
-| `color.red.light.400` | #F68C82 | <span class="ods-swatch" style="background:#F68C82"></span> | Not used yet |
-| `color.red.light.500` | #D64F48 | <span class="ods-swatch" style="background:#D64F48"></span> | Not used yet |
-| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> | `color.action.danger` (light)<br />`color.status.danger` (light) |
-| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> | `color.action.danger.hover` (light) |
-| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> | `color.text.danger-on-light` (every mode) |
-| `color.red.light.900` | #450003 | <span class="ods-swatch" style="background:#450003"></span> | Not used yet |
-| `color.red.light.950` | #210001 | <span class="ods-swatch" style="background:#210001"></span> | Not used yet |
+| `color.red.light.50` | #FEF7F7 | :sample{kind="color" value="#FEF7F7"} | Not used yet |
+| `color.red.light.100` | #FFDBD8 | :sample{kind="color" value="#FFDBD8"} | `color.text.danger-on-dark` (every mode); `color.status.danger.subtle` (light) |
+| `color.red.light.200` | #FED7D2 | :sample{kind="color" value="#FED7D2"} | Not used yet |
+| `color.red.light.300` | #FEC8C2 | :sample{kind="color" value="#FEC8C2"} | Not used yet |
+| `color.red.light.400` | #F68C82 | :sample{kind="color" value="#F68C82"} | Not used yet |
+| `color.red.light.500` | #D64F48 | :sample{kind="color" value="#D64F48"} | Not used yet |
+| `color.red.light.600` | #C42B2B | :sample{kind="color" value="#C42B2B"} | `color.action.danger` (light); `color.status.danger` (light) |
+| `color.red.light.700` | #981519 | :sample{kind="color" value="#981519"} | `color.action.danger.hover` (light) |
+| `color.red.light.800` | #6D0008 | :sample{kind="color" value="#6D0008"} | `color.text.danger-on-light` (every mode) |
+| `color.red.light.900` | #450003 | :sample{kind="color" value="#450003"} | Not used yet |
+| `color.red.light.950` | #210001 | :sample{kind="color" value="#210001"} | Not used yet |
 
 ## `color.red.dark`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.red.dark.50` | #35060A | <span class="ods-swatch" style="background:#35060A"></span> | Not used yet |
-| `color.red.dark.100` | #481316 | <span class="ods-swatch" style="background:#481316"></span> | `color.status.danger.subtle` (dark) |
-| `color.red.dark.200` | #612527 | <span class="ods-swatch" style="background:#612527"></span> | Not used yet |
-| `color.red.dark.300` | #7D393A | <span class="ods-swatch" style="background:#7D393A"></span> | Not used yet |
-| `color.red.dark.400` | #9F5051 | <span class="ods-swatch" style="background:#9F5051"></span> | Not used yet |
-| `color.red.dark.500` | #C46B6B | <span class="ods-swatch" style="background:#C46B6B"></span> | Not used yet |
-| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> | `color.action.danger` (dark)<br />`color.status.danger` (dark) |
-| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> | `color.action.danger.hover` (dark) |
-| `color.red.dark.800` | #FEC3C1 | <span class="ods-swatch" style="background:#FEC3C1"></span> | Not used yet |
-| `color.red.dark.900` | #FEDBDA | <span class="ods-swatch" style="background:#FEDBDA"></span> | Not used yet |
-| `color.red.dark.950` | #FEF2F1 | <span class="ods-swatch" style="background:#FEF2F1"></span> | Not used yet |
+| `color.red.dark.50` | #35060A | :sample{kind="color" value="#35060A"} | Not used yet |
+| `color.red.dark.100` | #481316 | :sample{kind="color" value="#481316"} | `color.status.danger.subtle` (dark) |
+| `color.red.dark.200` | #612527 | :sample{kind="color" value="#612527"} | Not used yet |
+| `color.red.dark.300` | #7D393A | :sample{kind="color" value="#7D393A"} | Not used yet |
+| `color.red.dark.400` | #9F5051 | :sample{kind="color" value="#9F5051"} | Not used yet |
+| `color.red.dark.500` | #C46B6B | :sample{kind="color" value="#C46B6B"} | Not used yet |
+| `color.red.dark.600` | #F28B8B | :sample{kind="color" value="#F28B8B"} | `color.action.danger` (dark); `color.status.danger` (dark) |
+| `color.red.dark.700` | #FAA9A8 | :sample{kind="color" value="#FAA9A8"} | `color.action.danger.hover` (dark) |
+| `color.red.dark.800` | #FEC3C1 | :sample{kind="color" value="#FEC3C1"} | Not used yet |
+| `color.red.dark.900` | #FEDBDA | :sample{kind="color" value="#FEDBDA"} | Not used yet |
+| `color.red.dark.950` | #FEF2F1 | :sample{kind="color" value="#FEF2F1"} | Not used yet |
 
 ## `color.black.light`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> | `color.surface.scrim` (light) |
+| `color.black.light.scrim` | #0000008C | :sample{kind="color" value="#0000008C"} | `color.surface.scrim` (light) |
 
 ## `color.black.dark`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> | `color.surface.scrim` (dark) |
+| `color.black.dark.scrim` | #000000B3 | :sample{kind="color" value="#000000B3"} | `color.surface.scrim` (dark) |
 
 ## `color.blue.light`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.blue.light.50` | #F4F7FE | <span class="ods-swatch" style="background:#F4F7FE"></span> | Not used yet |
-| `color.blue.light.100` | #D3E4FF | <span class="ods-swatch" style="background:#D3E4FF"></span> | `color.text.info-on-dark` (every mode)<br />`color.status.info.subtle` (light)<br />`color.category.2.subtle` (light) |
-| `color.blue.light.200` | #C3D9FE | <span class="ods-swatch" style="background:#C3D9FE"></span> | Not used yet |
-| `color.blue.light.300` | #B2CCF8 | <span class="ods-swatch" style="background:#B2CCF8"></span> | Not used yet |
-| `color.blue.light.400` | #6F95D6 | <span class="ods-swatch" style="background:#6F95D6"></span> | Not used yet |
-| `color.blue.light.500` | #2C5AAA | <span class="ods-swatch" style="background:#2C5AAA"></span> | Not used yet |
-| `color.blue.light.600` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> | `color.status.info` (light)<br />`color.category.2` (light) |
-| `color.blue.light.700` | #012A72 | <span class="ods-swatch" style="background:#012A72"></span> | Not used yet |
-| `color.blue.light.800` | #001A4E | <span class="ods-swatch" style="background:#001A4E"></span> | `color.text.info-on-light` (every mode) |
-| `color.blue.light.900` | #000D31 | <span class="ods-swatch" style="background:#000D31"></span> | Not used yet |
-| `color.blue.light.950` | #000316 | <span class="ods-swatch" style="background:#000316"></span> | Not used yet |
+| `color.blue.light.50` | #F4F7FE | :sample{kind="color" value="#F4F7FE"} | Not used yet |
+| `color.blue.light.100` | #D3E4FF | :sample{kind="color" value="#D3E4FF"} | `color.text.info-on-dark` (every mode); `color.status.info.subtle` (light); `color.category.2.subtle` (light) |
+| `color.blue.light.200` | #C3D9FE | :sample{kind="color" value="#C3D9FE"} | Not used yet |
+| `color.blue.light.300` | #B2CCF8 | :sample{kind="color" value="#B2CCF8"} | Not used yet |
+| `color.blue.light.400` | #6F95D6 | :sample{kind="color" value="#6F95D6"} | Not used yet |
+| `color.blue.light.500` | #2C5AAA | :sample{kind="color" value="#2C5AAA"} | Not used yet |
+| `color.blue.light.600` | #083C93 | :sample{kind="color" value="#083C93"} | `color.status.info` (light); `color.category.2` (light) |
+| `color.blue.light.700` | #012A72 | :sample{kind="color" value="#012A72"} | Not used yet |
+| `color.blue.light.800` | #001A4E | :sample{kind="color" value="#001A4E"} | `color.text.info-on-light` (every mode) |
+| `color.blue.light.900` | #000D31 | :sample{kind="color" value="#000D31"} | Not used yet |
+| `color.blue.light.950` | #000316 | :sample{kind="color" value="#000316"} | Not used yet |
 
 ## `color.blue.dark`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `color.blue.dark.50` | #071938 | <span class="ods-swatch" style="background:#071938"></span> | Not used yet |
-| `color.blue.dark.100` | #13284B | <span class="ods-swatch" style="background:#13284B"></span> | `color.status.info.subtle` (dark)<br />`color.category.2.subtle` (dark) |
-| `color.blue.dark.200` | #243C64 | <span class="ods-swatch" style="background:#243C64"></span> | Not used yet |
-| `color.blue.dark.300` | #385481 | <span class="ods-swatch" style="background:#385481"></span> | Not used yet |
-| `color.blue.dark.400` | #4F6FA3 | <span class="ods-swatch" style="background:#4F6FA3"></span> | Not used yet |
-| `color.blue.dark.500` | #6A8EC9 | <span class="ods-swatch" style="background:#6A8EC9"></span> | Not used yet |
-| `color.blue.dark.600` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> | `color.status.info` (dark)<br />`color.category.2` (dark) |
-| `color.blue.dark.700` | #A7C8FC | <span class="ods-swatch" style="background:#A7C8FC"></span> | Not used yet |
-| `color.blue.dark.800` | #C1D8FE | <span class="ods-swatch" style="background:#C1D8FE"></span> | Not used yet |
-| `color.blue.dark.900` | #D9E7FE | <span class="ods-swatch" style="background:#D9E7FE"></span> | Not used yet |
-| `color.blue.dark.950` | #F0F6FF | <span class="ods-swatch" style="background:#F0F6FF"></span> | Not used yet |
+| `color.blue.dark.50` | #071938 | :sample{kind="color" value="#071938"} | Not used yet |
+| `color.blue.dark.100` | #13284B | :sample{kind="color" value="#13284B"} | `color.status.info.subtle` (dark); `color.category.2.subtle` (dark) |
+| `color.blue.dark.200` | #243C64 | :sample{kind="color" value="#243C64"} | Not used yet |
+| `color.blue.dark.300` | #385481 | :sample{kind="color" value="#385481"} | Not used yet |
+| `color.blue.dark.400` | #4F6FA3 | :sample{kind="color" value="#4F6FA3"} | Not used yet |
+| `color.blue.dark.500` | #6A8EC9 | :sample{kind="color" value="#6A8EC9"} | Not used yet |
+| `color.blue.dark.600` | #8AB4F8 | :sample{kind="color" value="#8AB4F8"} | `color.status.info` (dark); `color.category.2` (dark) |
+| `color.blue.dark.700` | #A7C8FC | :sample{kind="color" value="#A7C8FC"} | Not used yet |
+| `color.blue.dark.800` | #C1D8FE | :sample{kind="color" value="#C1D8FE"} | Not used yet |
+| `color.blue.dark.900` | #D9E7FE | :sample{kind="color" value="#D9E7FE"} | Not used yet |
+| `color.blue.dark.950` | #F0F6FF | :sample{kind="color" value="#F0F6FF"} | Not used yet |

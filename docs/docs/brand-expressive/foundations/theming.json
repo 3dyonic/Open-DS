@@ -1,4 +1,76 @@
 {
+ "mode-preview": {
+  "default": {
+   "name": "Brand expressive",
+   "scenario": "A visitor lands on a launch page from a social post and joins the waiting list.",
+   "actions": {
+    "commit": "Go",
+    "cancel": "Not now"
+   },
+   "modes": [
+    {
+     "mode": "light",
+     "colors": {
+      "canvas": "#FFF8F3",
+      "surface": "#FFFFFF",
+      "border": "#F2DCCF",
+      "text": "#1F1411",
+      "secondary": "#4D3A33",
+      "action": "#D61F7A",
+      "onAction": "#FFFFFF",
+      "sunken": "#FCEFE6"
+     },
+     "radius": {
+      "container": "1.5rem",
+      "badge": "9999px",
+      "control": "9999px"
+     },
+     "statuses": [
+      {
+       "label": "On the list",
+       "color": "#1F7A3A",
+       "fill": "#DBF7DF"
+      },
+      {
+       "label": "Almost gone",
+       "color": "#8A5600",
+       "fill": "#FEE8CF"
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "colors": {
+      "canvas": "#120B09",
+      "surface": "#1F1411",
+      "border": "#4D3A33",
+      "text": "#FFF8F3",
+      "secondary": "#E2C4B3",
+      "action": "#F59ACA",
+      "onAction": "#1F1411",
+      "sunken": "#33241F"
+     },
+     "radius": {
+      "container": "1.5rem",
+      "badge": "9999px",
+      "control": "9999px"
+     },
+     "statuses": [
+      {
+       "label": "On the list",
+       "color": "#5CC283",
+       "fill": "#013118"
+      },
+      {
+       "label": "Almost gone",
+       "color": "#F2B84B",
+       "fill": "#3B2701"
+      }
+     ]
+    }
+   ]
+  }
+ },
  "specimen": {
   "theming/default/corners": {
    "title": "Corners",

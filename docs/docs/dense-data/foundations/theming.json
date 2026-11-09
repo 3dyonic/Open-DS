@@ -1,4 +1,76 @@
 {
+ "mode-preview": {
+  "default": {
+   "name": "Dense data",
+   "scenario": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.",
+   "actions": {
+    "commit": "Save",
+    "cancel": "Cancel"
+   },
+   "modes": [
+    {
+     "mode": "light",
+     "colors": {
+      "canvas": "#F7F8FA",
+      "surface": "#FFFFFF",
+      "border": "#DDE2EA",
+      "text": "#161B23",
+      "secondary": "#3D4655",
+      "action": "#4B3FD9",
+      "onAction": "#FFFFFF",
+      "sunken": "#EEF1F5"
+     },
+     "radius": {
+      "container": "0.25rem",
+      "badge": "0rem",
+      "control": "0.125rem"
+     },
+     "statuses": [
+      {
+       "label": "Investigating",
+       "color": "#083C93",
+       "fill": "#D3E4FF"
+      },
+      {
+       "label": "Escalated",
+       "color": "#8A5600",
+       "fill": "#FEE8CF"
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "colors": {
+      "canvas": "#0D1117",
+      "surface": "#161B23",
+      "border": "#3D4655",
+      "text": "#F7F8FA",
+      "secondary": "#C4CBD6",
+      "action": "#A9A3F6",
+      "onAction": "#161B23",
+      "sunken": "#262D38"
+     },
+     "radius": {
+      "container": "0.25rem",
+      "badge": "0rem",
+      "control": "0.125rem"
+     },
+     "statuses": [
+      {
+       "label": "Investigating",
+       "color": "#8AB4F8",
+       "fill": "#162C4F"
+      },
+      {
+       "label": "Escalated",
+       "color": "#F2B84B",
+       "fill": "#3F2B02"
+      }
+     ]
+    }
+   ]
+  }
+ },
  "specimen": {
   "theming/default/corners": {
    "title": "Corners",

@@ -9,15 +9,27 @@ description: "Content first: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-<div class="ods-specimen">
-<div class="ods-type"><span class="ods-label"><b>display</b><span>44px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Your reading list</span></div>
-<div class="ods-type"><span class="ods-label"><b>title</b><span>36px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Your reading list</span></div>
-<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Planting a winter garden</span></div>
-<div class="ods-type"><span class="ods-label"><b>body</b><span>18px · 1.65 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label"><b>label</b><span>16px · 1.45 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Keep reading</span></div>
-<div class="ods-type"><span class="ods-label"><b>caption</b><span>14px · 1.45 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label"><b>data</b><span>18px · 1.65 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday</span></div>
-</div>
+- **display** 44px · 1.15 · 600
+
+  :sample[Your reading list]{kind="type" role="display"}
+- **title** 36px · 1.15 · 600
+
+  :sample[Your reading list]{kind="type" role="title"}
+- **heading** 28px · 1.15 · 600
+
+  :sample[Planting a winter garden]{kind="type" role="heading"}
+- **body** 18px · 1.65 · 400
+
+  :sample[A reader arrives from search on a phone and reads a long guide in one sitting.]{kind="type" role="body"}
+- **label** 16px · 1.45 · 600
+
+  :sample[Keep reading]{kind="type" role="label"}
+- **caption** 14px · 1.45 · 400
+
+  :sample[A reader arrives from search on a phone and reads a long guide in one sitting.]{kind="type" role="caption"}
+- **data** 18px · 1.65 · 400
+
+  :sample[Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday]{kind="type" role="data"}
 
 ## The five answers
 

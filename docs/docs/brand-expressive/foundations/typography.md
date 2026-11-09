@@ -9,15 +9,27 @@ description: "Brand expressive: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-<div class="ods-specimen">
-<div class="ods-type"><span class="ods-label"><b>display</b><span>56px · 1.8 · 800</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">The drop is coming</span></div>
-<div class="ods-type"><span class="ods-label"><b>title</b><span>40px · 1.1 · 800</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">The drop is coming</span></div>
-<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.1 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Night runner jacket</span></div>
-<div class="ods-type"><span class="ods-label"><b>body</b><span>17px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label"><b>label</b><span>15px · 1.1 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Join the drop</span></div>
-<div class="ods-type"><span class="ods-label"><b>caption</b><span>14px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label"><b>data</b><span>17px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Days to launch 6 · On the list 2,400 · Pieces in the drop 12 · Colors 4</span></div>
-</div>
+- **display** 56px · 1.8 · 800
+
+  :sample[The drop is coming]{kind="type" role="display"}
+- **title** 40px · 1.1 · 800
+
+  :sample[The drop is coming]{kind="type" role="title"}
+- **heading** 28px · 1.1 · 700
+
+  :sample[Night runner jacket]{kind="type" role="heading"}
+- **body** 17px · 1.55 · 400
+
+  :sample[A visitor lands on a launch page from a social post and joins the waiting list.]{kind="type" role="body"}
+- **label** 15px · 1.1 · 700
+
+  :sample[Join the drop]{kind="type" role="label"}
+- **caption** 14px · 1.55 · 400
+
+  :sample[A visitor lands on a launch page from a social post and joins the waiting list.]{kind="type" role="caption"}
+- **data** 17px · 1.55 · 400
+
+  :sample[Days to launch 6 · On the list 2,400 · Pieces in the drop 12 · Colors 4]{kind="type" role="data"}
 
 ## The five answers
 

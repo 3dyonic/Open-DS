@@ -9,11 +9,9 @@ description: "Content first: What moves, why and how fast."
 
 What moves, why and how fast.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
-<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-panels)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.panels</span></span>
-<span class="ods-item"><span class="ods-motion" style="--ods-e:var(--motion-easing-standard)" title="Hover to play"><span></span></span><span class="ods-label">motion.easing.standard</span></span>
-</div>
+- :sample{kind="duration" value="var(--motion-duration-feedback)"} `motion.duration.feedback`
+- :sample{kind="duration" value="var(--motion-duration-panels)"} `motion.duration.panels`
+- :sample{kind="easing" value="var(--motion-easing-standard)"} `motion.easing.standard`
 
 ## The five answers
 

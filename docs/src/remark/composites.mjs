@@ -22,6 +22,9 @@ const COMPOSITES = {
   panel: "Panel",
   grid: "Grid",
   fold: "Fold",
+  brand: "BrandSet",
+  sample: "Sample",
+  "mode-preview": "ModePreview",
   "color-scale": "ColorScale",
   "anatomy-drawing": "AnatomyDrawing",
 };
@@ -34,6 +37,7 @@ const DATA_KEY = {
   specimen: "id",
   "anatomy-drawing": "id",
   "color-scale": "id",
+  "mode-preview": "id",
 };
 
 // One read per data file and version: a rebuild after the generator runs reads the new data.

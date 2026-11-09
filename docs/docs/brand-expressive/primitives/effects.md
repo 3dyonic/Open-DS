@@ -13,13 +13,13 @@ description: "Effects primitives in Brand expressive."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> | `opacity.disabled` (semantic) |
+| `opacity.40` | 0.4 | :sample{kind="opacity" value="0.4"} | `opacity.disabled` (semantic) |
 
 ## `shadow`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `shadow.card` | 0px 12px 32px 0px #1F141124 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #1F141124"></span> | `elevation.card` (light) |
-| `shadow.overlay` | 0px 24px 48px 0px #1F141133 | <span class="ods-card" style="box-shadow:0px 24px 48px 0px #1F141133"></span> | `elevation.overlay` (light) |
-| `shadow.card-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> | `elevation.card` (dark) |
-| `shadow.overlay-dark` | 0px 24px 48px 0px #00000099 | <span class="ods-card" style="box-shadow:0px 24px 48px 0px #00000099"></span> | `elevation.overlay` (dark) |
+| `shadow.card` | 0px 12px 32px 0px #1F141124 | :sample{kind="shadow" value="0px 12px 32px 0px #1F141124"} | `elevation.card` (light) |
+| `shadow.overlay` | 0px 24px 48px 0px #1F141133 | :sample{kind="shadow" value="0px 24px 48px 0px #1F141133"} | `elevation.overlay` (light) |
+| `shadow.card-dark` | 0px 12px 32px 0px #00000080 | :sample{kind="shadow" value="0px 12px 32px 0px #00000080"} | `elevation.card` (dark) |
+| `shadow.overlay-dark` | 0px 24px 48px 0px #00000099 | :sample{kind="shadow" value="0px 24px 48px 0px #00000099"} | `elevation.overlay` (dark) |

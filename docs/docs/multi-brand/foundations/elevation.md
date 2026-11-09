@@ -9,10 +9,8 @@ description: "Multi-brand: When something rises above the page, and what separat
 
 When something rises above the page, and what separates groups.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-card" style="box-shadow:var(--elevation-card)"></span><span class="ods-label">elevation.card</span></span>
-<span class="ods-item"><span class="ods-card" style="box-shadow:var(--elevation-overlay)"></span><span class="ods-label">elevation.overlay</span></span>
-</div>
+- :sample{kind="shadow" value="var(--elevation-card)"} `elevation.card`
+- :sample{kind="shadow" value="var(--elevation-overlay)"} `elevation.overlay`
 
 ## The five answers
 
@@ -28,38 +26,26 @@ When something rises above the page, and what separates groups.
 
 Each token points to another token. Values live only on primitives, below.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
+::::brand{id="aster" name="Aster"}
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `elevation.card` | `aster.theme.light.elevation.card` → `shadow.card` | `aster.theme.dark.elevation.card` → `shadow.card-dark` |
 | `elevation.overlay` | `aster.theme.light.elevation.overlay` → `shadow.overlay` | `aster.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
+::::brand{id="birch" name="Birch"}
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `elevation.card` | `birch.theme.light.elevation.card` → `shadow.card` | `birch.theme.dark.elevation.card` → `shadow.card-dark` |
 | `elevation.overlay` | `birch.theme.light.elevation.overlay` → `shadow.overlay` | `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+::::
 
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
+::::brand{id="coral" name="Coral"}
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `elevation.card` | `coral.theme.light.elevation.card` → `shadow.card` | `coral.theme.dark.elevation.card` → `shadow.card-dark` |
 | `elevation.overlay` | `coral.theme.light.elevation.overlay` → `shadow.overlay` | `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
-
-</div>
+::::
 
 The raw values these tokens end at are on [Primitives › Effects](../primitives/effects).
 
