@@ -10,7 +10,7 @@ description: "Collapsible in Dense data."
 
 One section that opens and closes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
+:label[In Dense data]{tone="info"}
 
 ## See it live
 

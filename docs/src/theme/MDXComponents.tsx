@@ -1,6 +1,9 @@
 import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
+import Label from "@open-ds/doc-composites/Label";
+import ReasonChain from "@open-ds/doc-composites/ReasonChain";
+import TokenTable from "@open-ds/doc-composites/TokenTable";
 
 // The pages link to sections by id: a "Because" chip opens the answer card below it (#why-...).
 // Docusaurus only registers headings as link targets, so it reported those links as broken though
@@ -11,4 +14,11 @@ function Section(props: React.ComponentProps<"section">) {
   return <section {...props} />;
 }
 
-export default { ...MDXComponents, section: Section };
+// A reason chain is a link target too (#why-...): it registers its anchor the same way.
+function LinkedReasonChain(props: React.ComponentProps<typeof ReasonChain>) {
+  useBrokenLinks().collectAnchor(props.data.anchor);
+  return <ReasonChain {...props} />;
+}
+
+// The composites the pages' directives name (src/remark/composites.mjs).
+export default { ...MDXComponents, section: Section, Label, ReasonChain: LinkedReasonChain, TokenTable };

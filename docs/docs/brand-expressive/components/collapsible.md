@@ -10,7 +10,7 @@ description: "Collapsible in Brand expressive."
 
 One section that opens and closes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
+:label[In Brand expressive]{tone="info"}
 
 ## See it live
 

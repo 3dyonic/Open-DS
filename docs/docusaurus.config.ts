@@ -1,4 +1,5 @@
 import type { Config } from "@docusaurus/types";
+import composites from "./src/remark/composites.mjs";
 import type * as Preset from "@docusaurus/preset-classic";
 import { readFileSync } from "node:fs";
 import { themes as prismThemes } from "prism-react-renderer";
@@ -21,8 +22,18 @@ const BASE = process.env.DOCS_BASE_URL ?? "/";
 function rehypeBaseUrlImages({ base }: { base: string }) {
   const prefix = base.replace(/\/$/, "");
   const fix = (src: unknown) =>
-    typeof src === "string" && prefix && src.startsWith("/") && !src.startsWith("//") && !src.startsWith(`${prefix}/`) ? prefix + src : src;
-  type Node = { type: string; tagName?: string; name?: string; value?: string; properties?: Record<string, unknown>; attributes?: { name?: string; value?: unknown }[]; children?: Node[] };
+    typeof src === "string" && prefix && src.startsWith("/") && !src.startsWith("//") && !src.startsWith(`${prefix}/`)
+      ? prefix + src
+      : src;
+  type Node = {
+    type: string;
+    tagName?: string;
+    name?: string;
+    value?: string;
+    properties?: Record<string, unknown>;
+    attributes?: { name?: string; value?: unknown }[];
+    children?: Node[];
+  };
   return (tree: Node) => {
     const walk = (n: Node) => {
       if (n.type === "element" && n.tagName === "img" && n.properties) n.properties.src = fix(n.properties.src);
@@ -84,6 +95,16 @@ const config: Config = {
     "./src/clientModules/embed-mode.ts",
     "./src/clientModules/scales.ts",
   ],
+  // OD-284 step 0: Tailwind 4 for the design system components the docs render (no reset; see tailwind.css).
+  plugins: [
+    () => ({
+      name: "tailwind",
+      configurePostCss(options) {
+        options.plugins.push(require("@tailwindcss/postcss"));
+        return options;
+      },
+    }),
+  ],
   presets: [
     [
       "classic",
@@ -93,9 +114,10 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           sidebarItemsGenerator: decisionMenu(BASE),
           rehypePlugins: [[rehypeBaseUrlImages, { base: BASE }]],
+          remarkPlugins: [[composites, { docsDir: `${__dirname}/docs` }]],
         },
         blog: false,
-        theme: { customCss: "./src/css/custom.css" },
+        theme: { customCss: ["./src/css/tailwind.css", "./src/css/custom.css"] },
       } satisfies Preset.Options,
     ],
   ],

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A field-like button that opens a calendar for one date or a range.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Picking a date or range is not one of them. <span class="odv-instead">Use instead: <a href="./input">Input</a></span></p>
+:label[Left out of Content first]{tone="warning"} Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Picking a date or range is not one of them. Use instead: [Input](./input)
 
 ## See it live
 
@@ -64,4 +64,4 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 Date picker reads 2 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Date picker's tokens to change Date picker alone.
 
-<div class="odv-tlegend"><span class="odv-themed">Changes with theme</span><p>Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.</p></div><div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody><tr class="odv-vgroup"><td colspan="3">Date picker</td></tr><tr><td><b>Weight</b></td><td><span class="odv-api-tok"><span class="tok own">component.date-picker.font-weight</span><span class="odv-branch"><span class="tok">type.body.font-weight</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--date-picker-font-weight)</code></span></span></td><td><span class="odv-tsw"><small><span class="odv-ptok">font.weight.400</span><span class="odv-kvsep">:</span><span class="odv-raw">400</span></small></span></td></tr><tr><td><b>Text</b><br/><span class="odv-themed" title="Content first gives it a different value in each theme">Changes with theme</span></td><td><span class="odv-api-tok"><span class="tok own">component.date-picker.label</span><span class="odv-branch"><span class="tok">color.text.muted</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--date-picker-label)</code></span></span></td><td><span class="odv-vpair"><span><em>Light</em><span class="odv-tsw"><i style="background:#61594D"></i><small><span class="odv-ptok">stone.light.600</span><span class="odv-kvsep">:</span><span class="odv-raw">#61594D</span></small></span></span><span><em>Dark</em><span class="odv-tsw"><i style="background:#A39A8B"></i><small><span class="odv-ptok">stone.dark.400</span><span class="odv-kvsep">:</span><span class="odv-raw">#A39A8B</span></small></span></span></span></td></tr></tbody></table></div>
+::token-table{component="date-picker"}

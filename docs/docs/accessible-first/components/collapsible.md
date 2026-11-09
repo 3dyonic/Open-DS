@@ -10,7 +10,7 @@ description: "Collapsible in Accessible first."
 
 One section that opens and closes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
+:label[In Accessible first]{tone="info"}
 
 ## See it live
 

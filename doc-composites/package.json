@@ -1,0 +1,21 @@
+{
+  "name": "@open-ds/doc-composites",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The docs' visuals as composites of the scheme's own ui components, used through their props only. The docs and init --docs read them.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./*": "./src/*.tsx"
+  },
+  "peerDependencies": {
+    "react": "^19.1.1"
+  },
+  "dependencies": {
+    "@open-ds/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "react": "19.3.1"
+  }
+}

@@ -10,7 +10,7 @@ description: "Collapsible in Content first."
 
 One section that opens and closes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Content first</span></p>
+:label[In Content first]{tone="info"}
 
 ## See it live
 

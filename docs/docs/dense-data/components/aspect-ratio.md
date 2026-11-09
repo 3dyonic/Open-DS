@@ -10,7 +10,7 @@ description: "Aspect ratio in Dense data."
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
+:label[In Dense data]{tone="info"}
 
 ## See it live
 

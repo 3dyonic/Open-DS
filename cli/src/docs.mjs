@@ -2177,6 +2177,8 @@ export function docsPages(
     const ch = aliasChain(themeIx[t.id], row.path);
     return { raw: String(cssValue(ch.value) ?? ""), prim: ch.end };
   };
+  // One value cell as data for the TokenTable composite (OD-284): a swatch when the value has one,
+  // the primitive an own token ends at, and the value as text.
   const readCell = (row, t) => {
     const own = row.own ? ownEnd(row, t) : null;
     const raw = own ? own.raw : String(value(t, row.lookup, ""));
@@ -2184,21 +2186,23 @@ export function docsPages(
       (own ? own.prim : primitiveOf(t, row.lookup))?.replace(/^color\./, "") ??
       "";
     const hex = raw.match(/#[0-9a-f]{6,8}/i)?.[0];
-    // an own token's value: the primitive as a token, its raw value as plain text beside it (OD-234)
-    const shown = row.own
-      ? `${prim ? `<span class="odv-ptok">${attr(prim)}</span><span class="odv-kvsep">:</span>` : ""}<span class="odv-raw">${attr(raw)}</span>`
-      : `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(
-          / · $/,
-          "",
-        );
     if (row.part === "Shadow")
-      return `<span class="odv-tsw"><i class="odv-tlift" style="box-shadow:${attr(raw)}"></i><small>${attr(prim || raw)}</small></span>`;
-    if (row.part === "Corner")
-      return `<span class="odv-tsw"><i class="odv-tshape" style="border-radius:${attr(raw)}"></i><small>${shown}</small></span>`;
-    if (hex)
-      return `<span class="odv-tsw"><i style="background:${hex}"></i><small>${shown}</small></span>`;
-    return `<span class="odv-tsw"><small>${shown}</small></span>`;
+      return { swatch: { shadow: raw }, text: prim || raw };
+    const swatch =
+      row.part === "Corner"
+        ? { corner: raw }
+        : hex
+          ? { color: hex }
+          : undefined;
+    // an own token's value: the primitive as a token, its raw value as plain text beside it (OD-234)
+    if (row.own) return { swatch, token: prim || undefined, text: raw };
+    return {
+      swatch,
+      text: `${prim}${prim && raw ? " · " : ""}${raw}`.replace(/ · $/, ""),
+    };
   };
+  const sameCells = (cells) =>
+    cells.every((c) => JSON.stringify(c) === JSON.stringify(cells[0]));
   // own tokens in the order the component defines them, grouped by part; system reads after
   const compOrder = [...compByCss.values()].map((x) => x.path);
   const orderRows = (rows) => {
@@ -2224,6 +2228,8 @@ export function docsPages(
         .map((r) => ({ ...r, group: "From the system" })),
     ];
   };
+  // The data the page composites draw (OD-284), written to _composites.json beside the pages.
+  const compositeData = {};
   const tokensRead = (name) => {
     const rows = readsOf(name);
     if (!rows.length)
@@ -2236,8 +2242,16 @@ export function docsPages(
           ? `${title(name)} reads ${new Set(rows.filter((r) => r.own).map((r) => r.path)).size} tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of ${title(name)}'s tokens to change ${title(name)} alone.`
           : `${title(name)} reads ${tokens} of ${esc(scheme.name)}'s tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.`
       }\n\n` +
-      (rows.some((r) => r.own) ? ownTable(rows, ths) : classTable(rows, ths))
+      tokenTable(
+        name,
+        rows.some((r) => r.own) ? ownTable(rows, ths) : classTable(rows, ths),
+      )
     );
+  };
+  // Each table is data in _composites.json; the page holds one directive line (OD-284).
+  const tokenTable = (name, data) => {
+    (compositeData["token-table"] ??= {})[name] = data;
+    return `::token-table{component="${name}"}`;
   };
   // A component with its own tokens (OD-234): Part · its token → the semantic, with the CSS variable
   // under it · one Value column. Colors show each theme side by side; everything else has one value.
@@ -2251,51 +2265,61 @@ export function docsPages(
       brands > 1
         ? "between its brands and between light and dark"
         : "between light and dark";
-    return `<div class="odv-tlegend"><span class="odv-themed">Changes with theme</span><p>${esc(scheme.name)} decides what changes when you switch theme. Here a switch changes ${esc(lands)}, so the marked rows differ ${between}; everything else holds steady.</p></div>`;
+    return {
+      label: "Changes with theme",
+      text: `${scheme.name} decides what changes when you switch theme. Here a switch changes ${lands}, so the marked rows differ ${between}; everything else holds steady.`,
+      title: `${scheme.name} gives it a different value in each theme`,
+    };
   };
-  const ownTable = (rows, ths) =>
-    themeLegend() +
-    h(
-      `<div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody>`,
-      orderRows(rows).map((r, i, all) => {
-        const cells = ths.map((t) => readCell(r, t));
-        const same = cells.every((c) => c === cells[0]);
-        const head =
-          r.group && r.group !== all[i - 1]?.group
-            ? `<tr class="odv-vgroup"><td colspan="3">${attr(r.group)}</td></tr>`
-            : "";
-        const chain = r.own
-          ? `<span class="odv-api-tok"><span class="tok own">${attr(r.path.replace(/\.@$/, ""))}</span><span class="odv-branch"><span class="tok">${attr(r.alias.replace(/\.@$/, ""))}</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--${attr(r.variable)})</code></span></span>`
-          : `<span class="odv-chain"><span class="tok">${attr(r.path)}</span></span><br/><small class="odv-css">straight from the system, through <code>--${attr(r.variable)}</code></small>`;
-        const value = same
-          ? cells[0]
-          : `<span class="odv-vpair">${ths.map((t, j) => `<span><em>${attr(themeLabel(t))}</em>${cells[j]}</span>`).join("")}</span>`;
-        return (
-          head +
-          `<tr><td><b>${attr(r.part)}</b>${same ? "" : `<br/><span class="odv-themed" title="${attr(scheme.name)} gives it a different value in each theme">Changes with theme</span>`}${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td><td>${chain}</td><td>${value}</td></tr>`
-        );
-      }),
-      `</tbody></table></div>`,
-    );
+  const ownTable = (rows, ths) => ({
+    kind: "own",
+    legend: themeLegend(),
+    head: ["Part", "Its token and the semantic it aliases", "Value"],
+    rows: orderRows(rows).map((r) => {
+      const cells = ths.map((t) => readCell(r, t));
+      const same = sameCells(cells);
+      return {
+        group: r.group,
+        part: r.part,
+        when: r.when,
+        themed: !same,
+        chain: r.own
+          ? {
+              token: r.path.replace(/\.@$/, ""),
+              alias: r.alias.replace(/\.@$/, ""),
+              variable: r.variable,
+            }
+          : { system: r.path, variable: r.variable },
+        values: same
+          ? [cells[0]]
+          : ths.map((t, j) => ({ theme: themeLabel(t), ...cells[j] })),
+      };
+    }),
+  });
   // A component that reads system tokens straight through its classes: Part · class → variable → token ·
   // a column per theme.
-  const classTable = (rows, ths) =>
-    h(
-      `<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th>${ths.map((t) => `<th>${attr(themeLabel(t))}</th>`).join("")}</tr></thead><tbody>`,
-      rows.map((r) => {
-        const cells = ths.map((t) => readCell(r, t));
-        const same = cells.every((c) => c === cells[0]);
-        return (
-          `<tr><td><b>${attr(r.part)}</b>${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td>` +
-          `<td><span class="odv-chain"><span>${attr(r.cls)}</span><i>→</i><span>--${attr(r.variable)}</span><i>→</i><span class="tok">${attr(r.path)}</span></span></td>` +
-          (same && ths.length > 1
-            ? `<td colspan="${ths.length}">${cells[0].replace("</small>", ", every theme</small>")}</td>`
-            : cells.map((c) => `<td>${c}</td>`).join("")) +
-          `</tr>`
-        );
-      }),
-      `</tbody></table></div>`,
-    );
+  const classTable = (rows, ths) => ({
+    kind: "class",
+    head: ["Part", "From the class to the token", ...ths.map(themeLabel)],
+    rows: rows.map((r) => {
+      const cells = ths.map((t) => readCell(r, t));
+      return {
+        part: r.part,
+        when: r.when,
+        chain: { cls: r.cls, variable: r.variable, token: r.path },
+        values:
+          sameCells(cells) && ths.length > 1
+            ? [
+                {
+                  ...cells[0],
+                  text: `${cells[0].text}, every theme`,
+                  span: ths.length,
+                },
+              ]
+            : cells,
+      };
+    }),
+  });
 
   // Components
   pages["components/_category_.json"] =
@@ -2455,12 +2479,30 @@ export function docsPages(
     // and its frames are exported to the same place. Until they are, the page says so in their place.
     const tree = spec.drawing?.kind === "tree";
     const asset = spec.drawing?.kind === "asset" || tree;
-    const exportedIn = (id, file) => existsSync(join(roots.schemes, "..", "docs", "static", "anatomy", id, name, `${file}.png`));
+    const exportedIn = (id, file) =>
+      existsSync(
+        join(
+          roots.schemes,
+          "..",
+          "docs",
+          "static",
+          "anatomy",
+          id,
+          name,
+          `${file}.png`,
+        ),
+      );
     // Until a scheme's own drawings are exported, its page borrows Dense data's and says so.
     const FALLBACK = "dense-data";
-    const imgScheme = (file) => (exportedIn(scheme.id, file) ? scheme.id : tree && exportedIn(FALLBACK, file) ? FALLBACK : null);
+    const imgScheme = (file) =>
+      exportedIn(scheme.id, file)
+        ? scheme.id
+        : tree && exportedIn(FALLBACK, file)
+          ? FALLBACK
+          : null;
     const exported = (file) => imgScheme(file) !== null;
-    const borrowed = tree && scheme.id !== FALLBACK && imgScheme("stage") === FALLBACK;
+    const borrowed =
+      tree && scheme.id !== FALLBACK && imgScheme("stage") === FALLBACK;
     const figmaLink = (node) =>
       node && spec.drawing.figma?.file
         ? `<a class="odv-am-figma" href="https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")}">Open in Figma</a>`
@@ -2734,16 +2776,13 @@ export function docsPages(
       `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
         // Left out or in, the page is the same (OD-192, OD-211): a left-out component is designed in
         // the scheme's tokens like any other, and only adds its badge, its reason and what to use.
-        h(
-          `<p class="odv-compstatus">`,
-          leftOut(name)
-            ? `<span class="odv-pill odv-pill-out">Left out of ${attr(scheme.name)}</span> ${attr(out[name] ?? guide?.why ?? "")}` +
-                ((instead[name] ?? []).length
-                  ? ` <span class="odv-instead">Use instead: ${instead[name].map((x) => (names.includes(x) ? `<a href="./${x}">${title(x)}</a>` : title(x))).join(", ")}</span>`
-                  : "")
-            : `<span class="odv-pill">In ${attr(scheme.name)}</span>`,
-          `</p>`,
-        ),
+        // The status is a Label composite (OD-284): a directive in the Markdown, drawn by the scheme's Badge.
+        (leftOut(name)
+          ? `:label[Left out of ${esc(scheme.name)}]{tone="warning"} ${esc(out[name] ?? guide?.why ?? "")}` +
+            ((instead[name] ?? []).length
+              ? ` Use instead: ${instead[name].map((x) => (names.includes(x) ? `[${title(x)}](./${x})` : title(x))).join(", ")}`
+              : "")
+          : `:label[In ${esc(scheme.name)}]{tone="info"}`),
     );
     // The live component, from Storybook (OD-183). Docusaurus serves this page as Markdown, so the
     // embed is plain HTML; the link works where the embed cannot load.
@@ -2850,33 +2889,48 @@ export function docsPages(
                         .map(([vid]) => `${title(c.id)}: ${vid}`),
                     ),
               );
-              return h(
-                `<section class="odv-trail" id="why-${q.replace(/\./g, "-")}">`,
-                `<div class="odv-trail-head"><b>${attr(qText(q))}</b><code>${q}</code></div><div class="odv-steps">`,
-                `<div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">${attr(label(q))}</div><p>${attr(answer(q).why)}</p></div>`,
-                `<div class="odv-step-col"><h5><i>2</i>So ${title(name)}</h5><ul>`,
-                here.map(
-                  (v) =>
-                    `<li><span class="${v.here.not_used ? "n" : "y"}">${v.here.not_used ? "–" : "✓"}</span><span>${v.here.not_used ? `does not use <b>${v.id}</b>` : `uses <b>${v.id}</b>`}: ${attr(v.here.not_used ? v.here.why : v.here.use)}</span></li>`,
-                ),
-                `</ul>`,
-                also.length
-                  ? `<div class="odv-also"><small>It also shapes</small> ${also.map((x) => `<code>${attr(x)}</code>`).join(" ")}</div>`
-                  : "",
-                `</div>`,
-                `<div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">${reopen}</div><small>${title(name)} decision${reopen === 1 ? "" : "s"} would reopen</small>`,
-                `<p>${
-                  f.length
-                    ? `and ${f.length} answer${f.length === 1 ? "" : "s"} that follow from it: ${f
-                        .slice(0, 3)
-                        .map((x) => `<b>${attr(label(x))}</b>`)
-                        .join(
-                          ", ",
-                        )}${f.length > 3 ? `, and ${f.length - 3} more` : ""}.`
-                    : "No other answer follows from it."
-                }</p></div>`,
-                `</div></section>`,
-              );
+              const id = `${name}/${q}`;
+              (compositeData["reason-chain"] ??= {})[id] = {
+                anchor: `why-${q.replace(/\./g, "-")}`,
+                question: qText(q),
+                key: q,
+                steps: [
+                  {
+                    kind: "answer",
+                    title: "The answer",
+                    answer: label(q),
+                    why: answer(q).why,
+                  },
+                  {
+                    kind: "decided",
+                    title: `So ${title(name)}`,
+                    lines: here.map((v) => ({
+                      used: !v.here.not_used,
+                      verb: v.here.not_used ? "does not use" : "uses",
+                      subject: v.id,
+                      text: v.here.not_used ? v.here.why : v.here.use,
+                    })),
+                    ...(also.length && {
+                      also: { label: "It also shapes", items: also },
+                    }),
+                  },
+                  {
+                    kind: "change",
+                    title: "If it changed",
+                    count: reopen,
+                    caption: `${title(name)} decision${reopen === 1 ? "" : "s"} would reopen`,
+                    text: f.length
+                      ? `and ${f.length} answer${f.length === 1 ? "" : "s"} that follow from it: ${f
+                          .slice(0, 3)
+                          .map((x) => label(x))
+                          .join(
+                            ", ",
+                          )}${f.length > 3 ? `, and ${f.length - 3} more` : ""}.`
+                      : "No other answer follows from it.",
+                  },
+                ],
+              };
+              return `::reason-chain{id="${id}"}`;
             })
             .join("\n\n"),
       );
@@ -2972,6 +3026,7 @@ export function docsPages(
     `- **The full scheme** in \`.open-ds/scheme.json\`: every answer with its reason.\n` +
     `- **llms.txt** next to these docs: an index of these pages for agents.\n\n` +
     `Ask the open-ds CLI or MCP server:\n\n\`\`\`bash\nopen-ds why ${scheme.id} typography.definition\nopen-ds when ${scheme.id} "a number in a table"\n\`\`\`\n`;
+  pages["_composites.json"] = JSON.stringify(compositeData) + "\n";
   return pages;
 }
 

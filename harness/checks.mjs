@@ -2456,6 +2456,38 @@ export const CHECKS = {
         : ok("site links docs and Storybook; docs honour /docs/; Storybook ends each component page with a docs link");
     },
   },
+  // The docs' composites (OD-284) use the scheme's ui components through their props only, with
+  // scheme tokens for their own layout, so each scheme draws its docs in its own design system.
+  "doc-composites-props-only": {
+    requires: ["doc-composites/src"],
+    run: (c) => {
+      const dir = "doc-composites/src";
+      const gaps = [];
+      const files = readdirSync(c.p(dir)).filter((f) => f.endsWith(".tsx"));
+      for (const f of files) {
+        const text = c.read(`${dir}/${f}`);
+        const ui = [...text.matchAll(/import \{([^}]+)\} from "@open-ds\/ui\/components\/[\w-]+"/g)]
+          .flatMap((m) => m[1].split(","))
+          .map((n) =>
+            n
+              .trim()
+              .split(/\s+as\s+/)
+              .pop(),
+          )
+          .filter((n) => /^[A-Z]/.test(n));
+        for (const n of ui)
+          if (new RegExp(`<${n}\\b[^>]*\\bclassName=`).test(text))
+            gaps.push(`${f}: <${n}> gets a className; set it through its props`);
+        for (const m of text.matchAll(/className="([^"]*)"/g))
+          if (/#[0-9a-f]{3,8}\b|\[-?\d+(\.\d+)?(px|rem|em|%)\]/i.test(m[1]))
+            gaps.push(`${f}: a raw value in "${m[1]}"; use a scheme token`);
+      }
+      if (!files.length) return bad(`${dir} has no composites`);
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`${files.length} composites use the ui components through their props and the scheme's tokens`);
+    },
+  },
   "docs-docusaurus": {
     requires: ["docs/package.json"],
     run: (c) =>
@@ -2520,10 +2552,11 @@ export const CHECKS = {
           ["foundations/color.md", "odv-stack"],
           ["primitives/color.md", "odv-scale"],
           ["components/button.md", "odv-variant"],
-          ["components/button.md", "odv-trail"],
+          ["components/button.md", "::reason-chain{"],
+          ["components/button.md", "::token-table{"],
         ];
         for (const [pg, cls] of visual)
-          if (pages[pg] && !pages[pg].includes(cls)) gaps.push(`${id} ${pg}: no ${cls} block`);
+          if (pages[pg] && !pages[pg].includes(cls)) gaps.push(`${id} ${pg}: no ${cls.replace(/\{$/, "")} block`);
         // OD-184, OD-195: the Primitives section counts every primitive.
         const prim = pages["primitives/index.md"] ?? "";
         const count = (function n(x) {

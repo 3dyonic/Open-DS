@@ -10,7 +10,7 @@ description: "Aspect ratio in Multi-brand."
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
+:label[In Multi-brand]{tone="info"}
 
 ## See it live
 

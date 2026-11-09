@@ -10,7 +10,7 @@ description: "Skeleton in Content first."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-<p class="odv-compstatus"><span class="odv-pill">In Content first</span></p>
+:label[In Content first]{tone="info"}
 
 ## See it live
 
@@ -65,4 +65,4 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 Skeleton reads 2 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Skeleton's tokens to change Skeleton alone.
 
-<div class="odv-tlegend"><span class="odv-themed">Changes with theme</span><p>Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.</p></div><div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody><tr class="odv-vgroup"><td colspan="3">Skeleton</td></tr><tr><td><b>Corner</b></td><td><span class="odv-api-tok"><span class="tok own">component.skeleton.radius</span><span class="odv-branch"><span class="tok">radius.control</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--skeleton-radius)</code></span></span></td><td><span class="odv-tsw"><i class="odv-tshape" style="border-radius:0.5rem"></i><small><span class="odv-ptok">radius.8</span><span class="odv-kvsep">:</span><span class="odv-raw">0.5rem</span></small></span></td></tr><tr><td><b>Fill</b><br/><span class="odv-themed" title="Content first gives it a different value in each theme">Changes with theme</span></td><td><span class="odv-api-tok"><span class="tok own">component.skeleton.background</span><span class="odv-branch"><span class="tok">color.surface.sunken</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--skeleton-background)</code></span></span></td><td><span class="odv-vpair"><span><em>Light</em><span class="odv-tsw"><i style="background:#F6F2EA"></i><small><span class="odv-ptok">stone.light.100</span><span class="odv-kvsep">:</span><span class="odv-raw">#F6F2EA</span></small></span></span><span><em>Dark</em><span class="odv-tsw"><i style="background:#2E2A24"></i><small><span class="odv-ptok">stone.dark.100</span><span class="odv-kvsep">:</span><span class="odv-raw">#2E2A24</span></small></span></span></span></td></tr></tbody></table></div>
+::token-table{component="skeleton"}
