@@ -437,7 +437,8 @@ function spacingMap(scheme, g) {
   );
 }
 
-function colorScales(scheme, g, fams) {
+// put(id, data) stores a ColorScale composite's data and returns its directive (OD-284).
+function colorScales(scheme, g, fams, put) {
   const t = scheme.tokens;
   const brands = Object.keys(t.brands);
   const many = brands.length > 1;
@@ -475,18 +476,19 @@ function colorScales(scheme, g, fams) {
     return [...rows.values()];
   };
   const row = (r, lane) => {
-    const name = `<span class="odv-kv-k">${r.token}</span>`;
-    const tag =
-      many && r.brands.length < brands.length
-        ? `<span class="odv-kv-tag">${r.brands.join(", ")}</span>`
-        : "";
-    const val = `<span class="odv-kv-v"><b>${r.prim.replace(/^color\./, "")}</b>${r.via ? `<small>via ${r.via}</small>` : ""}<small>${hex(r.prim)}</small></span>`;
-    const inner = `<i class="odv-kv-sw" style="background:${hex(r.prim)}"></i><span>${name}${tag}</span>${val}`;
-    const link = lane ? ` data-link="${lane}-${r.step}"` : "";
     const id = `color.${r.token}`;
-    return guided.has(id)
-      ? `<a class="odv-kv"${link} href="../foundations/color?for=${cssId(id)}#what-each-color-is-for">${inner}</a>`
-      : `<div class="odv-kv"${link} tabindex="0">${inner}</div>`;
+    return {
+      token: r.token,
+      ...(many &&
+        r.brands.length < brands.length && { tag: r.brands.join(", ") }),
+      prim: r.prim.replace(/^color\./, ""),
+      ...(r.via && { via: r.via }),
+      hex: hex(r.prim),
+      ...(guided.has(id) && {
+        href: `../foundations/color?for=${cssId(id)}#what-each-color-is-for`,
+      }),
+      ...(lane && { link: `${lane}-${r.step}` }),
+    };
   };
   const hues = [
     ...new Set(
@@ -511,39 +513,70 @@ function colorScales(scheme, g, fams) {
         steps
           .map((st) => (on.has(st) ? "minmax(56px, 3fr)" : "minmax(30px, 1fr)"))
           .join(" ");
-      const slot = (st) =>
-        `<div class="odv-sl"><span class="n">${st}</span><i style="background:${hex(`color.${hue}.${m}.${st}`)}"></i></div>`;
-      const filled = {
-        fill: (st, v) =>
-          `<div class="odv-st" data-link="fill-${st}" style="background:${v};color:${ink(v)}"><span class="n">${st}</span><span class="x">${v}</span></div>`,
-        edge: (st, v) =>
-          `<div class="odv-st odv-st-bare" data-link="edge-${st}"><span class="n">${st}</span><span class="x">${v}</span><span class="mk"><i style="background:${v}"></i><b style="background:${v}"></b></span></div>`,
-        // text shows on the page, or on the page's text color when it is a label for dark fills
-        text: (st, v) =>
-          `<div class="odv-st odv-st-bare" data-link="text-${st}" style="color:${v}${contrast(v, canvas) < 3 ? `;background:${contrast(v, surf(m, "color.text.primary")) >= 3 ? surf(m, "color.text.primary") : surf(m, "color.surface.inverse")}` : ""}"><span class="n">${st}</span><span class="x">${v}</span><span class="aa">Aa</span></div>`,
+      // text shows on the page, or on the page's text color when it is a label for dark fills
+      const step = (st, kind, on) => {
+        const v = hex(`color.${hue}.${m}.${st}`);
+        if (!on) return { st, hex: v, on: false };
+        if (kind === "fill") return { st, hex: v, on: true, kind, ink: ink(v) };
+        if (kind === "text" && contrast(v, canvas) < 3)
+          return {
+            st,
+            hex: v,
+            on: true,
+            kind,
+            ground:
+              contrast(v, surf(m, "color.text.primary")) >= 3
+                ? surf(m, "color.text.primary")
+                : surf(m, "color.surface.inverse"),
+          };
+        return { st, hex: v, on: true, kind };
       };
       const lanes = LANES.map(({ id, title }) => {
         const list = own
           .filter((r) => laneOf(r.token) === id)
           .sort((a, b) => steps.indexOf(a.step) - steps.indexOf(b.step));
-        if (!list.length) return "";
+        if (!list.length) return null;
         const on = new Set(list.map((r) => r.step));
-        return `<div class="odv-lane"><p class="odv-lane-h">${title}</p><div class="odv-sts" style="grid-template-columns:${cols(steps, on)}">${steps.map((st) => (on.has(st) ? filled[id](st, hex(`color.${hue}.${m}.${st}`)) : slot(st))).join("")}</div><div class="odv-kvs">${list.map((r) => row(r, id)).join("")}</div></div>`;
-      }).join("");
-      const empty = own.length
-        ? ""
-        : `<div class="odv-lane"><p class="odv-lane-h">Not used yet in this theme</p><div class="odv-sts" style="grid-template-columns:${cols(steps, new Set())}">${steps.map(slot).join("")}</div></div>`;
+        return {
+          title,
+          cols: cols(steps, on),
+          steps: steps.map((st) => step(st, id, on.has(st))),
+          rows: list.map((r) => row(r, id)),
+        };
+      }).filter(Boolean);
+      if (!own.length)
+        lanes.push({
+          title: "Not used yet in this theme",
+          cols: cols(steps, new Set()),
+          steps: steps.map((st) => step(st, null, false)),
+          rows: [],
+        });
       const other = m === "light" ? "dark" : "light";
-      const fx = fixed.length
-        ? `<div class="odv-lane"><p class="odv-lane-h">From the ${other} scale, fixed colors</p><div class="odv-kvs">${fixed.map((r) => row(r, null)).join("")}</div></div>`
-        : "";
-      const style = `background:${surf(m, "color.surface.canvas")};color:${surf(m, "color.text.primary")};--odv-muted:${surf(m, "color.text.muted")};--odv-edge:${surf(m, "color.border.default")};--odv-ring:${surf(m, "color.text.primary")};--odv-dash:${surf(m, "color.border.placeholder") || surf(m, "color.border.default")}`;
-      return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${style}">${lanes}${empty}${fx}</div>`;
+      if (fixed.length)
+        lanes.push({
+          title: `From the ${other} scale, fixed colors`,
+          rows: fixed.map((r) => row(r, null)),
+        });
+      return {
+        mode: m,
+        label: `${title(m)} theme`,
+        style: {
+          background: surf(m, "color.surface.canvas"),
+          color: surf(m, "color.text.primary"),
+          "--odv-muted": surf(m, "color.text.muted"),
+          "--odv-edge": surf(m, "color.border.default"),
+          "--odv-ring": surf(m, "color.text.primary"),
+          "--odv-dash":
+            surf(m, "color.border.placeholder") ||
+            surf(m, "color.border.default"),
+        },
+        lanes,
+      };
     });
     const n = (m) => entries(hue, m, "own").length;
     out.push(
       `## ${title(hue)}\n\n${modes.map((m) => `${n(m)} tokens in ${m}`).join(", ")}.\n\n` +
-        `<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${title(m)} theme</button>`).join("")}</div>${panels.join("")}</div>`,
+        put(hue, { panels }),
     );
   }
   return (
@@ -2009,7 +2042,10 @@ export function docsPages(
       // Colors lead with each family as a ramp (OD-182): every step, its value, and how many tokens
       // use it. Hover a step for the list; the table under it has the detail.
       (k.id === "color"
-        ? colorScales(scheme, g, fams) + `\n\n## Every color\n\n`
+        ? colorScales(scheme, g, fams, (id, data) => {
+            (compositeData["color-scale"] ??= {})[id] = data;
+            return `::color-scale{id="${id}"}`;
+          }) + `\n\n## Every color\n\n`
         : "") +
       (fams.length > 1
         ? fams
@@ -3078,6 +3114,7 @@ export function docsPages(
     preview: "id",
     specimen: "id",
     "anatomy-drawing": "id",
+    "color-scale": "id",
   };
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;

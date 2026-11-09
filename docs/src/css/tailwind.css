@@ -18,9 +18,9 @@
 @source not inline("container");
 
 /* The ui components expect Tailwind's reset, which the docs leave out. Inside a composite only, the
-   few base rules they rely on put the browser's own button, paragraph and list spacing back to none. */
+   few base rules they rely on put the browser's own button (on the ui components' buttons only), paragraph and list spacing back to none. */
 @layer base {
-  [data-composite] button {
+  [data-composite] button[data-slot] {
     margin: 0;
     padding: 0;
     border: 0 solid;

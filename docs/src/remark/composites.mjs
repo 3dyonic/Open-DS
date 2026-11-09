@@ -22,6 +22,7 @@ const COMPOSITES = {
   panel: "Panel",
   grid: "Grid",
   fold: "Fold",
+  "color-scale": "ColorScale",
   "anatomy-drawing": "AnatomyDrawing",
 };
 // The attribute that names a composite's entry in _composites.json.
@@ -32,6 +33,7 @@ const DATA_KEY = {
   preview: "id",
   specimen: "id",
   "anatomy-drawing": "id",
+  "color-scale": "id",
 };
 
 // One read per data file and version: a rebuild after the generator runs reads the new data.

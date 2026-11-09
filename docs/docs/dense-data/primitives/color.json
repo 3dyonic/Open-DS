@@ -1,0 +1,3257 @@
+{
+ "color-scale": {
+  "slate": {
+   "panels": [
+    {
+     "mode": "light",
+     "label": "Light theme",
+     "style": {
+      "background": "#F7F8FA",
+      "color": "#161B23",
+      "--odv-muted": "#535D6D",
+      "--odv-edge": "#DDE2EA",
+      "--odv-ring": "#161B23",
+      "--odv-dash": "#DDE2EA"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "0",
+         "hex": "#FFFFFF",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "50",
+         "hex": "#F7F8FA",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "100",
+         "hex": "#EEF1F5",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "200",
+         "hex": "#DDE2EA",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#C4CBD6",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#969FAD",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#6B7585",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "600",
+         "hex": "#535D6D",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#3D4655",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#262D38",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#161B23",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "950",
+         "hex": "#0D1117",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "surface.default",
+         "prim": "slate.light.0",
+         "via": "neutral.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-surface-default#what-each-color-is-for",
+         "link": "fill-0"
+        },
+        {
+         "token": "surface.raised",
+         "prim": "slate.light.0",
+         "via": "neutral.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-surface-raised#what-each-color-is-for",
+         "link": "fill-0"
+        },
+        {
+         "token": "action.secondary",
+         "prim": "slate.light.0",
+         "via": "neutral.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-action-secondary#what-each-color-is-for",
+         "link": "fill-0"
+        },
+        {
+         "token": "surface.canvas",
+         "prim": "slate.light.50",
+         "via": "neutral.50",
+         "hex": "#F7F8FA",
+         "href": "../foundations/color?for=color-surface-canvas#what-each-color-is-for",
+         "link": "fill-50"
+        },
+        {
+         "token": "surface.sunken",
+         "prim": "slate.light.100",
+         "via": "neutral.100",
+         "hex": "#EEF1F5",
+         "href": "../foundations/color?for=color-surface-sunken#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "surface.highlight",
+         "prim": "slate.light.100",
+         "via": "neutral.100",
+         "hex": "#EEF1F5",
+         "href": "../foundations/color?for=color-surface-highlight#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "surface.pressed",
+         "prim": "slate.light.100",
+         "via": "neutral.100",
+         "hex": "#EEF1F5",
+         "href": "../foundations/color?for=color-surface-pressed#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "action.secondary.hover",
+         "prim": "slate.light.100",
+         "via": "neutral.100",
+         "hex": "#EEF1F5",
+         "href": "../foundations/color?for=color-action-secondary-hover#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.5.subtle",
+         "prim": "slate.light.100",
+         "via": "neutral.100",
+         "hex": "#EEF1F5",
+         "href": "../foundations/color?for=color-category-5-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "disabled.surface",
+         "prim": "slate.light.100",
+         "via": "neutral.100",
+         "hex": "#EEF1F5",
+         "href": "../foundations/color?for=color-disabled-surface#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.5",
+         "prim": "slate.light.500",
+         "via": "neutral.500",
+         "hex": "#6B7585",
+         "href": "../foundations/color?for=color-category-5#what-each-color-is-for",
+         "link": "fill-500"
+        },
+        {
+         "token": "surface.inverse",
+         "prim": "slate.light.900",
+         "via": "neutral.900",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-surface-inverse#what-each-color-is-for",
+         "link": "fill-900"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "0",
+         "hex": "#FFFFFF",
+         "on": false
+        },
+        {
+         "st": "50",
+         "hex": "#F7F8FA",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#EEF1F5",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#DDE2EA",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "300",
+         "hex": "#C4CBD6",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#969FAD",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#6B7585",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "600",
+         "hex": "#535D6D",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#3D4655",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#262D38",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#161B23",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#0D1117",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "border.default",
+         "prim": "slate.light.200",
+         "via": "neutral.200",
+         "hex": "#DDE2EA",
+         "href": "../foundations/color?for=color-border-default#what-each-color-is-for",
+         "link": "edge-200"
+        },
+        {
+         "token": "disabled.border",
+         "prim": "slate.light.200",
+         "via": "neutral.200",
+         "hex": "#DDE2EA",
+         "href": "../foundations/color?for=color-disabled-border#what-each-color-is-for",
+         "link": "edge-200"
+        },
+        {
+         "token": "border.strong",
+         "prim": "slate.light.500",
+         "via": "neutral.500",
+         "hex": "#6B7585",
+         "href": "../foundations/color?for=color-border-strong#what-each-color-is-for",
+         "link": "edge-500"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "0",
+         "hex": "#FFFFFF",
+         "on": true,
+         "kind": "text",
+         "ground": "#161B23"
+        },
+        {
+         "st": "50",
+         "hex": "#F7F8FA",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#EEF1F5",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#DDE2EA",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#C4CBD6",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#969FAD",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#6B7585",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "600",
+         "hex": "#535D6D",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "700",
+         "hex": "#3D4655",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "800",
+         "hex": "#262D38",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#161B23",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "950",
+         "hex": "#0D1117",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.inverse",
+         "prim": "slate.light.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-text-inverse#what-each-color-is-for",
+         "link": "text-0"
+        },
+        {
+         "token": "text.on-action",
+         "prim": "slate.light.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-text-on-action#what-each-color-is-for",
+         "link": "text-0"
+        },
+        {
+         "token": "text.on-danger",
+         "prim": "slate.light.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-text-on-danger#what-each-color-is-for",
+         "link": "text-0"
+        },
+        {
+         "token": "text.on-dark",
+         "prim": "slate.light.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-text-on-dark#what-each-color-is-for",
+         "link": "text-0"
+        },
+        {
+         "token": "disabled.text",
+         "prim": "slate.light.500",
+         "via": "neutral.500",
+         "hex": "#6B7585",
+         "href": "../foundations/color?for=color-disabled-text#what-each-color-is-for",
+         "link": "text-500"
+        },
+        {
+         "token": "text.muted",
+         "prim": "slate.light.600",
+         "via": "neutral.600",
+         "hex": "#535D6D",
+         "href": "../foundations/color?for=color-text-muted#what-each-color-is-for",
+         "link": "text-600"
+        },
+        {
+         "token": "text.secondary",
+         "prim": "slate.light.700",
+         "via": "neutral.700",
+         "hex": "#3D4655",
+         "href": "../foundations/color?for=color-text-secondary#what-each-color-is-for",
+         "link": "text-700"
+        },
+        {
+         "token": "text.primary",
+         "prim": "slate.light.900",
+         "via": "neutral.900",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-text-primary#what-each-color-is-for",
+         "link": "text-900"
+        },
+        {
+         "token": "text.on-light",
+         "prim": "slate.light.900",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-text-on-light#what-each-color-is-for",
+         "link": "text-900"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "label": "Dark theme",
+     "style": {
+      "background": "#0D1117",
+      "color": "#F7F8FA",
+      "--odv-muted": "#969FAD",
+      "--odv-edge": "#3D4655",
+      "--odv-ring": "#F7F8FA",
+      "--odv-dash": "#3D4655"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "0",
+         "hex": "#0D1117",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "50",
+         "hex": "#161B23",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "100",
+         "hex": "#262D38",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "200",
+         "hex": "#3D4655",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#6B7585",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#969FAD",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#C4CBD6",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#D0D6E0",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#DDE2EA",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "800",
+         "hex": "#EEF1F5",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#F7F8FA",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "950",
+         "hex": "#FFFFFF",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "surface.canvas",
+         "prim": "slate.dark.0",
+         "via": "neutral.0",
+         "hex": "#0D1117",
+         "href": "../foundations/color?for=color-surface-canvas#what-each-color-is-for",
+         "link": "fill-0"
+        },
+        {
+         "token": "surface.default",
+         "prim": "slate.dark.50",
+         "via": "neutral.50",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-surface-default#what-each-color-is-for",
+         "link": "fill-50"
+        },
+        {
+         "token": "surface.raised",
+         "prim": "slate.dark.50",
+         "via": "neutral.50",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-surface-raised#what-each-color-is-for",
+         "link": "fill-50"
+        },
+        {
+         "token": "action.secondary",
+         "prim": "slate.dark.50",
+         "via": "neutral.50",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-action-secondary#what-each-color-is-for",
+         "link": "fill-50"
+        },
+        {
+         "token": "surface.sunken",
+         "prim": "slate.dark.100",
+         "via": "neutral.100",
+         "hex": "#262D38",
+         "href": "../foundations/color?for=color-surface-sunken#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "surface.highlight",
+         "prim": "slate.dark.100",
+         "via": "neutral.100",
+         "hex": "#262D38",
+         "href": "../foundations/color?for=color-surface-highlight#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "surface.pressed",
+         "prim": "slate.dark.100",
+         "via": "neutral.100",
+         "hex": "#262D38",
+         "href": "../foundations/color?for=color-surface-pressed#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "action.secondary.hover",
+         "prim": "slate.dark.100",
+         "via": "neutral.100",
+         "hex": "#262D38",
+         "href": "../foundations/color?for=color-action-secondary-hover#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.5.subtle",
+         "prim": "slate.dark.100",
+         "via": "neutral.100",
+         "hex": "#262D38",
+         "href": "../foundations/color?for=color-category-5-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "disabled.surface",
+         "prim": "slate.dark.100",
+         "via": "neutral.100",
+         "hex": "#262D38",
+         "href": "../foundations/color?for=color-disabled-surface#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.5",
+         "prim": "slate.dark.700",
+         "via": "neutral.700",
+         "hex": "#DDE2EA",
+         "href": "../foundations/color?for=color-category-5#what-each-color-is-for",
+         "link": "fill-700"
+        },
+        {
+         "token": "surface.inverse",
+         "prim": "slate.dark.900",
+         "via": "neutral.900",
+         "hex": "#F7F8FA",
+         "href": "../foundations/color?for=color-surface-inverse#what-each-color-is-for",
+         "link": "fill-900"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "0",
+         "hex": "#0D1117",
+         "on": false
+        },
+        {
+         "st": "50",
+         "hex": "#161B23",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#262D38",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#3D4655",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "300",
+         "hex": "#6B7585",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#969FAD",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "500",
+         "hex": "#C4CBD6",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#D0D6E0",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#DDE2EA",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#EEF1F5",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#F7F8FA",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#FFFFFF",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "border.default",
+         "prim": "slate.dark.200",
+         "via": "neutral.200",
+         "hex": "#3D4655",
+         "href": "../foundations/color?for=color-border-default#what-each-color-is-for",
+         "link": "edge-200"
+        },
+        {
+         "token": "disabled.border",
+         "prim": "slate.dark.200",
+         "via": "neutral.200",
+         "hex": "#3D4655",
+         "href": "../foundations/color?for=color-disabled-border#what-each-color-is-for",
+         "link": "edge-200"
+        },
+        {
+         "token": "border.strong",
+         "prim": "slate.dark.400",
+         "via": "neutral.400",
+         "hex": "#969FAD",
+         "href": "../foundations/color?for=color-border-strong#what-each-color-is-for",
+         "link": "edge-400"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "0",
+         "hex": "#0D1117",
+         "on": false
+        },
+        {
+         "st": "50",
+         "hex": "#161B23",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#262D38",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#3D4655",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#6B7585",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#969FAD",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "500",
+         "hex": "#C4CBD6",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "600",
+         "hex": "#D0D6E0",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#DDE2EA",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#EEF1F5",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#F7F8FA",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "950",
+         "hex": "#FFFFFF",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.muted",
+         "prim": "slate.dark.400",
+         "via": "neutral.400",
+         "hex": "#969FAD",
+         "href": "../foundations/color?for=color-text-muted#what-each-color-is-for",
+         "link": "text-400"
+        },
+        {
+         "token": "text.secondary",
+         "prim": "slate.dark.500",
+         "via": "neutral.500",
+         "hex": "#C4CBD6",
+         "href": "../foundations/color?for=color-text-secondary#what-each-color-is-for",
+         "link": "text-500"
+        },
+        {
+         "token": "disabled.text",
+         "prim": "slate.dark.500",
+         "via": "neutral.500",
+         "hex": "#C4CBD6",
+         "href": "../foundations/color?for=color-disabled-text#what-each-color-is-for",
+         "link": "text-500"
+        },
+        {
+         "token": "text.primary",
+         "prim": "slate.dark.900",
+         "via": "neutral.900",
+         "hex": "#F7F8FA",
+         "href": "../foundations/color?for=color-text-primary#what-each-color-is-for",
+         "link": "text-900"
+        }
+       ]
+      },
+      {
+       "title": "From the light scale, fixed colors",
+       "rows": [
+        {
+         "token": "text.inverse",
+         "prim": "slate.light.900",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-text-inverse#what-each-color-is-for"
+        },
+        {
+         "token": "text.on-action",
+         "prim": "slate.light.900",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-text-on-action#what-each-color-is-for"
+        },
+        {
+         "token": "text.on-danger",
+         "prim": "slate.light.900",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-text-on-danger#what-each-color-is-for"
+        },
+        {
+         "token": "text.on-light",
+         "prim": "slate.light.900",
+         "hex": "#161B23",
+         "href": "../foundations/color?for=color-text-on-light#what-each-color-is-for"
+        },
+        {
+         "token": "text.on-dark",
+         "prim": "slate.light.0",
+         "hex": "#FFFFFF",
+         "href": "../foundations/color?for=color-text-on-dark#what-each-color-is-for"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "violet": {
+   "panels": [
+    {
+     "mode": "light",
+     "label": "Light theme",
+     "style": {
+      "background": "#F7F8FA",
+      "color": "#161B23",
+      "--odv-muted": "#535D6D",
+      "--odv-edge": "#DDE2EA",
+      "--odv-ring": "#161B23",
+      "--odv-dash": "#DDE2EA"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F7F8FE",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#E8ECFF",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "200",
+         "hex": "#D6DCFE",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#C8D0FF",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#919BFF",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#5F60E9",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#4B3FD9",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "700",
+         "hex": "#3729AA",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "800",
+         "hex": "#24147C",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#140455",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#06002C",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "surface.selected",
+         "prim": "violet.light.100",
+         "hex": "#E8ECFF",
+         "href": "../foundations/color?for=color-surface-selected#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.1.subtle",
+         "prim": "violet.light.100",
+         "hex": "#E8ECFF",
+         "href": "../foundations/color?for=color-category-1-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "action.primary",
+         "prim": "violet.light.600",
+         "hex": "#4B3FD9",
+         "href": "../foundations/color?for=color-action-primary#what-each-color-is-for",
+         "link": "fill-600"
+        },
+        {
+         "token": "category.1",
+         "prim": "violet.light.600",
+         "hex": "#4B3FD9",
+         "href": "../foundations/color?for=color-category-1#what-each-color-is-for",
+         "link": "fill-600"
+        },
+        {
+         "token": "action.primary.hover",
+         "prim": "violet.light.700",
+         "hex": "#3729AA",
+         "href": "../foundations/color?for=color-action-primary-hover#what-each-color-is-for",
+         "link": "fill-700"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F7F8FE",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#E8ECFF",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#D6DCFE",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#C8D0FF",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#919BFF",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#5F60E9",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#4B3FD9",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#3729AA",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#24147C",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#140455",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#06002C",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "border.focus",
+         "prim": "violet.light.600",
+         "hex": "#4B3FD9",
+         "href": "../foundations/color?for=color-border-focus#what-each-color-is-for",
+         "link": "edge-600"
+        },
+        {
+         "token": "border.selected",
+         "prim": "violet.light.600",
+         "hex": "#4B3FD9",
+         "href": "../foundations/color?for=color-border-selected#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F7F8FE",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#E8ECFF",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#D6DCFE",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#C8D0FF",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#919BFF",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#5F60E9",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#4B3FD9",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#3729AA",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "800",
+         "hex": "#24147C",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#140455",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#06002C",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.link",
+         "prim": "violet.light.700",
+         "hex": "#3729AA",
+         "href": "../foundations/color?for=color-text-link#what-each-color-is-for",
+         "link": "text-700"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "label": "Dark theme",
+     "style": {
+      "background": "#0D1117",
+      "color": "#F7F8FA",
+      "--odv-muted": "#969FAD",
+      "--odv-edge": "#3D4655",
+      "--odv-ring": "#F7F8FA",
+      "--odv-dash": "#3D4655"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#1C173D",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#2A244F",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "200",
+         "hex": "#3C3768",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#514C84",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#6A65A5",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#8681C9",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#A9A3F6",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "700",
+         "hex": "#BEBBFB",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "800",
+         "hex": "#D1CFFE",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#E3E2FE",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#F4F4FE",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "surface.selected",
+         "prim": "violet.dark.100",
+         "hex": "#2A244F",
+         "href": "../foundations/color?for=color-surface-selected#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.1.subtle",
+         "prim": "violet.dark.100",
+         "hex": "#2A244F",
+         "href": "../foundations/color?for=color-category-1-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "action.primary",
+         "prim": "violet.dark.600",
+         "hex": "#A9A3F6",
+         "href": "../foundations/color?for=color-action-primary#what-each-color-is-for",
+         "link": "fill-600"
+        },
+        {
+         "token": "category.1",
+         "prim": "violet.dark.600",
+         "hex": "#A9A3F6",
+         "href": "../foundations/color?for=color-category-1#what-each-color-is-for",
+         "link": "fill-600"
+        },
+        {
+         "token": "action.primary.hover",
+         "prim": "violet.dark.700",
+         "hex": "#BEBBFB",
+         "href": "../foundations/color?for=color-action-primary-hover#what-each-color-is-for",
+         "link": "fill-700"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#1C173D",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#2A244F",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#3C3768",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#514C84",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#6A65A5",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#8681C9",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#A9A3F6",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#BEBBFB",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#D1CFFE",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#E3E2FE",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#F4F4FE",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "border.focus",
+         "prim": "violet.dark.600",
+         "hex": "#A9A3F6",
+         "href": "../foundations/color?for=color-border-focus#what-each-color-is-for",
+         "link": "edge-600"
+        },
+        {
+         "token": "border.selected",
+         "prim": "violet.dark.600",
+         "hex": "#A9A3F6",
+         "href": "../foundations/color?for=color-border-selected#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#1C173D",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#2A244F",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#3C3768",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#514C84",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#6A65A5",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#8681C9",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#A9A3F6",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#BEBBFB",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "800",
+         "hex": "#D1CFFE",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#E3E2FE",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#F4F4FE",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.link",
+         "prim": "violet.dark.700",
+         "hex": "#BEBBFB",
+         "href": "../foundations/color?for=color-text-link#what-each-color-is-for",
+         "link": "text-700"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "green": {
+   "panels": [
+    {
+     "mode": "light",
+     "label": "Light theme",
+     "style": {
+      "background": "#F7F8FA",
+      "color": "#161B23",
+      "--odv-muted": "#535D6D",
+      "--odv-edge": "#DDE2EA",
+      "--odv-ring": "#161B23",
+      "--odv-dash": "#DDE2EA"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F1FDF2",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#DBF7DF",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "200",
+         "hex": "#CBE9CF",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#BCE0C1",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#82BA8B",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#448F54",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#1F7A3A",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "700",
+         "hex": "#0B5C27",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#023E17",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#01260B",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#001003",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.success.subtle",
+         "prim": "green.light.100",
+         "hex": "#DBF7DF",
+         "href": "../foundations/color?for=color-status-success-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.3.subtle",
+         "prim": "green.light.100",
+         "hex": "#DBF7DF",
+         "href": "../foundations/color?for=color-category-3-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.3",
+         "prim": "green.light.600",
+         "hex": "#1F7A3A",
+         "href": "../foundations/color?for=color-category-3#what-each-color-is-for",
+         "link": "fill-600"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F1FDF2",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#DBF7DF",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#CBE9CF",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#BCE0C1",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#82BA8B",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#448F54",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#1F7A3A",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#0B5C27",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#023E17",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#01260B",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#001003",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.success",
+         "prim": "green.light.600",
+         "hex": "#1F7A3A",
+         "href": "../foundations/color?for=color-status-success#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F1FDF2",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#DBF7DF",
+         "on": true,
+         "kind": "text",
+         "ground": "#161B23"
+        },
+        {
+         "st": "200",
+         "hex": "#CBE9CF",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#BCE0C1",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#82BA8B",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#448F54",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#1F7A3A",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#0B5C27",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#023E17",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "900",
+         "hex": "#01260B",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#001003",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.success-on-dark",
+         "prim": "green.light.100",
+         "hex": "#DBF7DF",
+         "href": "../foundations/color?for=color-text-success-on-dark#what-each-color-is-for",
+         "link": "text-100"
+        },
+        {
+         "token": "text.success-on-light",
+         "prim": "green.light.800",
+         "hex": "#023E17",
+         "href": "../foundations/color?for=color-text-success-on-light#what-each-color-is-for",
+         "link": "text-800"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "label": "Dark theme",
+     "style": {
+      "background": "#0D1117",
+      "color": "#F7F8FA",
+      "--odv-muted": "#969FAD",
+      "--odv-edge": "#3D4655",
+      "--odv-ring": "#F7F8FA",
+      "--odv-dash": "#3D4655"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#012510",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#01351A",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "200",
+         "hex": "#034A27",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#136238",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#2A7E4D",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#419C65",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#5CC283",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "700",
+         "hex": "#8AD3A2",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#ADE2BD",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#CBEFD5",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#E8FBED",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.success.subtle",
+         "prim": "green.dark.100",
+         "hex": "#01351A",
+         "href": "../foundations/color?for=color-status-success-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.3.subtle",
+         "prim": "green.dark.100",
+         "hex": "#01351A",
+         "href": "../foundations/color?for=color-category-3-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.3",
+         "prim": "green.dark.600",
+         "hex": "#5CC283",
+         "href": "../foundations/color?for=color-category-3#what-each-color-is-for",
+         "link": "fill-600"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#012510",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#01351A",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#034A27",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#136238",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#2A7E4D",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#419C65",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#5CC283",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#8AD3A2",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#ADE2BD",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#CBEFD5",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#E8FBED",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.success",
+         "prim": "green.dark.600",
+         "hex": "#5CC283",
+         "href": "../foundations/color?for=color-status-success#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "From the light scale, fixed colors",
+       "rows": [
+        {
+         "token": "text.success-on-light",
+         "prim": "green.light.800",
+         "hex": "#023E17",
+         "href": "../foundations/color?for=color-text-success-on-light#what-each-color-is-for"
+        },
+        {
+         "token": "text.success-on-dark",
+         "prim": "green.light.100",
+         "hex": "#DBF7DF",
+         "href": "../foundations/color?for=color-text-success-on-dark#what-each-color-is-for"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "amber": {
+   "panels": [
+    {
+     "mode": "light",
+     "label": "Light theme",
+     "style": {
+      "background": "#F7F8FA",
+      "color": "#161B23",
+      "--odv-muted": "#535D6D",
+      "--odv-edge": "#DDE2EA",
+      "--odv-ring": "#161B23",
+      "--odv-dash": "#DDE2EA"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#FFF7EF",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#FEE8CF",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "200",
+         "hex": "#F1DBC3",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#EACFB3",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#C7A074",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#9E6E32",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#8A5600",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "700",
+         "hex": "#673F01",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#462A02",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#2B1800",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#130800",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.warning.subtle",
+         "prim": "amber.light.100",
+         "hex": "#FEE8CF",
+         "href": "../foundations/color?for=color-status-warning-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.4.subtle",
+         "prim": "amber.light.100",
+         "hex": "#FEE8CF",
+         "href": "../foundations/color?for=color-category-4-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.4",
+         "prim": "amber.light.600",
+         "hex": "#8A5600",
+         "href": "../foundations/color?for=color-category-4#what-each-color-is-for",
+         "link": "fill-600"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#FFF7EF",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#FEE8CF",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#F1DBC3",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#EACFB3",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#C7A074",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#9E6E32",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#8A5600",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#673F01",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#462A02",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#2B1800",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#130800",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.warning",
+         "prim": "amber.light.600",
+         "hex": "#8A5600",
+         "href": "../foundations/color?for=color-status-warning#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#FFF7EF",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#FEE8CF",
+         "on": true,
+         "kind": "text",
+         "ground": "#161B23"
+        },
+        {
+         "st": "200",
+         "hex": "#F1DBC3",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#EACFB3",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#C7A074",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#9E6E32",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#8A5600",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#673F01",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#462A02",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "900",
+         "hex": "#2B1800",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#130800",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.warning-on-dark",
+         "prim": "amber.light.100",
+         "hex": "#FEE8CF",
+         "href": "../foundations/color?for=color-text-warning-on-dark#what-each-color-is-for",
+         "link": "text-100"
+        },
+        {
+         "token": "text.warning-on-light",
+         "prim": "amber.light.800",
+         "hex": "#462A02",
+         "href": "../foundations/color?for=color-text-warning-on-light#what-each-color-is-for",
+         "link": "text-800"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "label": "Dark theme",
+     "style": {
+      "background": "#0D1117",
+      "color": "#F7F8FA",
+      "--odv-muted": "#969FAD",
+      "--odv-edge": "#3D4655",
+      "--odv-ring": "#F7F8FA",
+      "--odv-dash": "#3D4655"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#2B1C00",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#3F2B02",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "200",
+         "hex": "#5A3F01",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#795501",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#9E710D",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#C4912C",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#F2B84B",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "700",
+         "hex": "#F6CA7F",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#FAD9A3",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#FDE7C3",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#FFF4E2",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.warning.subtle",
+         "prim": "amber.dark.100",
+         "hex": "#3F2B02",
+         "href": "../foundations/color?for=color-status-warning-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.4.subtle",
+         "prim": "amber.dark.100",
+         "hex": "#3F2B02",
+         "href": "../foundations/color?for=color-category-4-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.4",
+         "prim": "amber.dark.600",
+         "hex": "#F2B84B",
+         "href": "../foundations/color?for=color-category-4#what-each-color-is-for",
+         "link": "fill-600"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#2B1C00",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#3F2B02",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#5A3F01",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#795501",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#9E710D",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#C4912C",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#F2B84B",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#F6CA7F",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#FAD9A3",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#FDE7C3",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#FFF4E2",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.warning",
+         "prim": "amber.dark.600",
+         "hex": "#F2B84B",
+         "href": "../foundations/color?for=color-status-warning#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "From the light scale, fixed colors",
+       "rows": [
+        {
+         "token": "text.warning-on-light",
+         "prim": "amber.light.800",
+         "hex": "#462A02",
+         "href": "../foundations/color?for=color-text-warning-on-light#what-each-color-is-for"
+        },
+        {
+         "token": "text.warning-on-dark",
+         "prim": "amber.light.100",
+         "hex": "#FEE8CF",
+         "href": "../foundations/color?for=color-text-warning-on-dark#what-each-color-is-for"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "red": {
+   "panels": [
+    {
+     "mode": "light",
+     "label": "Light theme",
+     "style": {
+      "background": "#F7F8FA",
+      "color": "#161B23",
+      "--odv-muted": "#535D6D",
+      "--odv-edge": "#DDE2EA",
+      "--odv-ring": "#161B23",
+      "--odv-dash": "#DDE2EA"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#FEF7F7",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#FFDBD8",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "200",
+         "hex": "#FED7D2",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#FEC8C2",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#F68C82",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#D64F48",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#C42B2B",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "700",
+         "hex": "#981519",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "800",
+         "hex": "#6D0008",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#450003",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#210001",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.danger.subtle",
+         "prim": "red.light.100",
+         "hex": "#FFDBD8",
+         "href": "../foundations/color?for=color-status-danger-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "action.danger",
+         "prim": "red.light.600",
+         "hex": "#C42B2B",
+         "href": "../foundations/color?for=color-action-danger#what-each-color-is-for",
+         "link": "fill-600"
+        },
+        {
+         "token": "action.danger.hover",
+         "prim": "red.light.700",
+         "hex": "#981519",
+         "href": "../foundations/color?for=color-action-danger-hover#what-each-color-is-for",
+         "link": "fill-700"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#FEF7F7",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#FFDBD8",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#FED7D2",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#FEC8C2",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#F68C82",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#D64F48",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#C42B2B",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#981519",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#6D0008",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#450003",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#210001",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.danger",
+         "prim": "red.light.600",
+         "hex": "#C42B2B",
+         "href": "../foundations/color?for=color-status-danger#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#FEF7F7",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#FFDBD8",
+         "on": true,
+         "kind": "text",
+         "ground": "#161B23"
+        },
+        {
+         "st": "200",
+         "hex": "#FED7D2",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#FEC8C2",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#F68C82",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#D64F48",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#C42B2B",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#981519",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#6D0008",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "900",
+         "hex": "#450003",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#210001",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.danger-on-dark",
+         "prim": "red.light.100",
+         "hex": "#FFDBD8",
+         "href": "../foundations/color?for=color-text-danger-on-dark#what-each-color-is-for",
+         "link": "text-100"
+        },
+        {
+         "token": "text.danger-on-light",
+         "prim": "red.light.800",
+         "hex": "#6D0008",
+         "href": "../foundations/color?for=color-text-danger-on-light#what-each-color-is-for",
+         "link": "text-800"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "label": "Dark theme",
+     "style": {
+      "background": "#0D1117",
+      "color": "#F7F8FA",
+      "--odv-muted": "#969FAD",
+      "--odv-edge": "#3D4655",
+      "--odv-ring": "#F7F8FA",
+      "--odv-dash": "#3D4655"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#3A0A0E",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#4C171A",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "200",
+         "hex": "#65282A",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#803B3D",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#A15253",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#C66C6C",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#F28B8B",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "700",
+         "hex": "#FAA9A8",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "800",
+         "hex": "#FEC3C1",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#FEDBDA",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#FEF2F1",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.danger.subtle",
+         "prim": "red.dark.100",
+         "hex": "#4C171A",
+         "href": "../foundations/color?for=color-status-danger-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "action.danger",
+         "prim": "red.dark.600",
+         "hex": "#F28B8B",
+         "href": "../foundations/color?for=color-action-danger#what-each-color-is-for",
+         "link": "fill-600"
+        },
+        {
+         "token": "action.danger.hover",
+         "prim": "red.dark.700",
+         "hex": "#FAA9A8",
+         "href": "../foundations/color?for=color-action-danger-hover#what-each-color-is-for",
+         "link": "fill-700"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#3A0A0E",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#4C171A",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#65282A",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#803B3D",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#A15253",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#C66C6C",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#F28B8B",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#FAA9A8",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#FEC3C1",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#FEDBDA",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#FEF2F1",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.danger",
+         "prim": "red.dark.600",
+         "hex": "#F28B8B",
+         "href": "../foundations/color?for=color-status-danger#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "From the light scale, fixed colors",
+       "rows": [
+        {
+         "token": "text.danger-on-light",
+         "prim": "red.light.800",
+         "hex": "#6D0008",
+         "href": "../foundations/color?for=color-text-danger-on-light#what-each-color-is-for"
+        },
+        {
+         "token": "text.danger-on-dark",
+         "prim": "red.light.100",
+         "hex": "#FFDBD8",
+         "href": "../foundations/color?for=color-text-danger-on-dark#what-each-color-is-for"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "black": {
+   "panels": [
+    {
+     "mode": "light",
+     "label": "Light theme",
+     "style": {
+      "background": "#F7F8FA",
+      "color": "#161B23",
+      "--odv-muted": "#535D6D",
+      "--odv-edge": "#DDE2EA",
+      "--odv-ring": "#161B23",
+      "--odv-dash": "#DDE2EA"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(56px, 3fr)",
+       "steps": [
+        {
+         "st": "scrim",
+         "hex": "#0000008C",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        }
+       ],
+       "rows": [
+        {
+         "token": "surface.scrim",
+         "prim": "black.light.scrim",
+         "hex": "#0000008C",
+         "href": "../foundations/color?for=color-surface-scrim#what-each-color-is-for",
+         "link": "fill-scrim"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "label": "Dark theme",
+     "style": {
+      "background": "#0D1117",
+      "color": "#F7F8FA",
+      "--odv-muted": "#969FAD",
+      "--odv-edge": "#3D4655",
+      "--odv-ring": "#F7F8FA",
+      "--odv-dash": "#3D4655"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(56px, 3fr)",
+       "steps": [
+        {
+         "st": "scrim",
+         "hex": "#000000B3",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        }
+       ],
+       "rows": [
+        {
+         "token": "surface.scrim",
+         "prim": "black.dark.scrim",
+         "hex": "#000000B3",
+         "href": "../foundations/color?for=color-surface-scrim#what-each-color-is-for",
+         "link": "fill-scrim"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "blue": {
+   "panels": [
+    {
+     "mode": "light",
+     "label": "Light theme",
+     "style": {
+      "background": "#F7F8FA",
+      "color": "#161B23",
+      "--odv-muted": "#535D6D",
+      "--odv-edge": "#DDE2EA",
+      "--odv-ring": "#161B23",
+      "--odv-dash": "#DDE2EA"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F4F7FE",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#D3E4FF",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "200",
+         "hex": "#C3D9FE",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#B2CCF8",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#6F95D6",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#2C5AAA",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#083C93",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "700",
+         "hex": "#012A72",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#001A4E",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#000D31",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#000316",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.info.subtle",
+         "prim": "blue.light.100",
+         "hex": "#D3E4FF",
+         "href": "../foundations/color?for=color-status-info-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.2.subtle",
+         "prim": "blue.light.100",
+         "hex": "#D3E4FF",
+         "href": "../foundations/color?for=color-category-2-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.2",
+         "prim": "blue.light.600",
+         "hex": "#083C93",
+         "href": "../foundations/color?for=color-category-2#what-each-color-is-for",
+         "link": "fill-600"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F4F7FE",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#D3E4FF",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#C3D9FE",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#B2CCF8",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#6F95D6",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#2C5AAA",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#083C93",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#012A72",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#001A4E",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#000D31",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#000316",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.info",
+         "prim": "blue.light.600",
+         "hex": "#083C93",
+         "href": "../foundations/color?for=color-status-info#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "Text",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#F4F7FE",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#D3E4FF",
+         "on": true,
+         "kind": "text",
+         "ground": "#161B23"
+        },
+        {
+         "st": "200",
+         "hex": "#C3D9FE",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#B2CCF8",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#6F95D6",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#2C5AAA",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#083C93",
+         "on": false
+        },
+        {
+         "st": "700",
+         "hex": "#012A72",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#001A4E",
+         "on": true,
+         "kind": "text"
+        },
+        {
+         "st": "900",
+         "hex": "#000D31",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#000316",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "text.info-on-dark",
+         "prim": "blue.light.100",
+         "hex": "#D3E4FF",
+         "href": "../foundations/color?for=color-text-info-on-dark#what-each-color-is-for",
+         "link": "text-100"
+        },
+        {
+         "token": "text.info-on-light",
+         "prim": "blue.light.800",
+         "hex": "#001A4E",
+         "href": "../foundations/color?for=color-text-info-on-light#what-each-color-is-for",
+         "link": "text-800"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "label": "Dark theme",
+     "style": {
+      "background": "#0D1117",
+      "color": "#F7F8FA",
+      "--odv-muted": "#969FAD",
+      "--odv-edge": "#3D4655",
+      "--odv-ring": "#F7F8FA",
+      "--odv-dash": "#3D4655"
+     },
+     "lanes": [
+      {
+       "title": "Backgrounds",
+       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#0A1D3C",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#162C4F",
+         "on": true,
+         "kind": "fill",
+         "ink": "#FFFFFF"
+        },
+        {
+         "st": "200",
+         "hex": "#274068",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#3A5684",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#5171A6",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#6B8FCB",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#8AB4F8",
+         "on": true,
+         "kind": "fill",
+         "ink": "#000000"
+        },
+        {
+         "st": "700",
+         "hex": "#A7C8FC",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#C1D8FE",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#D9E7FE",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#F0F6FF",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.info.subtle",
+         "prim": "blue.dark.100",
+         "hex": "#162C4F",
+         "href": "../foundations/color?for=color-status-info-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.2.subtle",
+         "prim": "blue.dark.100",
+         "hex": "#162C4F",
+         "href": "../foundations/color?for=color-category-2-subtle#what-each-color-is-for",
+         "link": "fill-100"
+        },
+        {
+         "token": "category.2",
+         "prim": "blue.dark.600",
+         "hex": "#8AB4F8",
+         "href": "../foundations/color?for=color-category-2#what-each-color-is-for",
+         "link": "fill-600"
+        }
+       ]
+      },
+      {
+       "title": "Edges and rings",
+       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
+       "steps": [
+        {
+         "st": "50",
+         "hex": "#0A1D3C",
+         "on": false
+        },
+        {
+         "st": "100",
+         "hex": "#162C4F",
+         "on": false
+        },
+        {
+         "st": "200",
+         "hex": "#274068",
+         "on": false
+        },
+        {
+         "st": "300",
+         "hex": "#3A5684",
+         "on": false
+        },
+        {
+         "st": "400",
+         "hex": "#5171A6",
+         "on": false
+        },
+        {
+         "st": "500",
+         "hex": "#6B8FCB",
+         "on": false
+        },
+        {
+         "st": "600",
+         "hex": "#8AB4F8",
+         "on": true,
+         "kind": "edge"
+        },
+        {
+         "st": "700",
+         "hex": "#A7C8FC",
+         "on": false
+        },
+        {
+         "st": "800",
+         "hex": "#C1D8FE",
+         "on": false
+        },
+        {
+         "st": "900",
+         "hex": "#D9E7FE",
+         "on": false
+        },
+        {
+         "st": "950",
+         "hex": "#F0F6FF",
+         "on": false
+        }
+       ],
+       "rows": [
+        {
+         "token": "status.info",
+         "prim": "blue.dark.600",
+         "hex": "#8AB4F8",
+         "href": "../foundations/color?for=color-status-info#what-each-color-is-for",
+         "link": "edge-600"
+        }
+       ]
+      },
+      {
+       "title": "From the light scale, fixed colors",
+       "rows": [
+        {
+         "token": "text.info-on-light",
+         "prim": "blue.light.800",
+         "hex": "#001A4E",
+         "href": "../foundations/color?for=color-text-info-on-light#what-each-color-is-for"
+        },
+        {
+         "token": "text.info-on-dark",
+         "prim": "blue.light.100",
+         "hex": "#D3E4FF",
+         "href": "../foundations/color?for=color-text-info-on-dark#what-each-color-is-for"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

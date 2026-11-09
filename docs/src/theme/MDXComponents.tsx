@@ -5,6 +5,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import AnatomyDrawing from "@open-ds/doc-composites/AnatomyDrawing";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
 import Intro from "@open-ds/doc-composites/Intro";
+import ColorScale from "@open-ds/doc-composites/ColorScale";
 import Fold from "@open-ds/doc-composites/Fold";
 import Grid from "@open-ds/doc-composites/Grid";
 import Label from "@open-ds/doc-composites/Label";
@@ -55,6 +56,7 @@ export default {
   section: Section,
   AnatomyDrawing,
   CardGrid,
+  ColorScale,
   Fold: LinkedFold,
   Grid,
   Panel: LinkedPanel,
