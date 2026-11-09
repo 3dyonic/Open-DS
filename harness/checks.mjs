@@ -2593,7 +2593,7 @@ export const CHECKS = {
           ["index.md", "odv-tile"],
           ["foundations/color.md", '::specimen{id="color/key/'],
           ["foundations/color.md", "odv-stack"],
-          ["primitives/color.md", "odv-scale"],
+          ["primitives/color.md", "::color-scale{"],
           ["components/button.md", ":::panel{"],
           ["components/button.md", "::reason-chain{"],
           ["components/button.md", "::token-table{"],
