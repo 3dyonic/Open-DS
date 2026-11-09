@@ -30,7 +30,12 @@ export default function Fold({ id, title, note, children }: FoldProps) {
         {note && <span className="odv-qsec-n">{note}</span>}
       </button>
       <div className="odv-qsec-b" id={`${id}-body`} hidden>
-        <Card>{children}</Card>
+        <Card>
+          {/* Each answer starts at its question; a line runs between answers, edge to edge. */}
+          <div className="flex flex-col [&>h4:not(:first-child)]:mx-[calc(var(--card-padding)*-1)]! [&>h4:not(:first-child)]:mt-[var(--space-gap-group)]! [&>h4:not(:first-child)]:border-t [&>h4:not(:first-child)]:border-[var(--color-border-default)] [&>h4:not(:first-child)]:px-[var(--card-padding)] [&>h4:not(:first-child)]:pt-[var(--space-gap-group)] [&>h4]:mb-[var(--space-gap-default)]!">
+            {children}
+          </div>
+        </Card>
       </div>
     </section>
   );

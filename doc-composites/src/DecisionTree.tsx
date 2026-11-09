@@ -24,7 +24,7 @@ const code = "text-[length:var(--type-caption-font-size)] [font-family:var(--typ
 function Node({ node, root }: { node: DecisionNode; root?: boolean }) {
   return (
     <Twig root={root}>
-      <span className="inline-flex flex-wrap items-center gap-[var(--space-gap-tight)]">
+      <span className="inline-flex flex-wrap items-center gap-[var(--space-gap-default)]">
         <Label tone="info">{node.answer}</Label>
         {node.question && <span className={muted}>{node.question}</span>}
         {node.also?.length ? (

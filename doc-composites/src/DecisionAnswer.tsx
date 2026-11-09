@@ -72,12 +72,12 @@ function Line({ text, link }: { text: string; link?: Link }) {
 export default function DecisionAnswer({ data }: { data: DecisionAnswerData }) {
   const count = data.decided.groups.reduce((n, g) => n + g.items.length, 0);
   return (
-    <div data-composite="decision-answer" className="flex flex-col items-start gap-[var(--space-gap-tight)]">
+    <div data-composite="decision-answer" className="ml-[var(--space-gap-group)] flex flex-col items-start gap-[var(--space-gap-default)]">
       <Label tone="info">{data.answer}</Label>
       <div className="w-full">
         <Tree>
           <Twig>
-            <span className="inline-flex flex-wrap gap-[var(--space-gap-tight)]">
+            <span className="inline-flex flex-wrap gap-[var(--space-gap-default)]">
               <span className={head}>Why</span>
               <span className={muted}>{data.why}</span>
             </span>
@@ -102,16 +102,21 @@ export default function DecisionAnswer({ data }: { data: DecisionAnswerData }) {
             </Twig>
           ) : null}
           <Twig>
-            <span className={head}>Because of</span>
-            <Tree>
-              {data.because.length ? (
-                data.because.map((b) => <Twig key={b}>{b}</Twig>)
-              ) : (
-                <Twig>
-                  <span className={muted}>Nothing before it. It's one of the first answers.</span>
-                </Twig>
-              )}
-            </Tree>
+            {data.because.length ? (
+              <>
+                <span className={head}>Because of</span>
+                <Tree>
+                  {data.because.map((b) => (
+                    <Twig key={b}>{b}</Twig>
+                  ))}
+                </Tree>
+              </>
+            ) : (
+              <span className="inline-flex flex-wrap gap-[var(--space-gap-default)]">
+                <span className={head}>Because of</span>
+                <span className={muted}>Nothing before it. It's one of the first answers.</span>
+              </span>
+            )}
           </Twig>
           <Twig>
             <span className={head}>What it decided{count ? ` (${count})` : ""}</span>

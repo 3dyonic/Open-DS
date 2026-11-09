@@ -1198,7 +1198,7 @@ export function docsPages(
     const every = ["Reasons", "Scopes"]
       .map(
         (grp) =>
-          `### ${grp}\n\n` +
+          `::::group{title="${grp}"}\n` +
           sections
             .filter((r) => r.group === grp)
             .map(
@@ -1207,7 +1207,8 @@ export function docsPages(
                 r.questions.map((q) => qa(q, r)).join("\n\n") +
                 `\n:::`,
             )
-            .join("\n\n"),
+            .join("\n\n") +
+          "\n::::",
       )
       .join("\n\n");
     const has = (q) => qs[q] && answer(q);

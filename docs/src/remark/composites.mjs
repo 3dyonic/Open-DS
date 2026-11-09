@@ -38,6 +38,7 @@ const COMPOSITES = {
   steps: "Steps",
   "decision-tree": "DecisionTree",
   "decision-answer": "DecisionAnswer",
+  group: "Group",
 };
 // The attribute that names a composite's entry in the page's data file.
 const DATA_KEY = {
