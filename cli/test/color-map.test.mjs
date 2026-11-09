@@ -60,16 +60,26 @@ test("a decision shows in components, one row per component token", () => {
 
 test("the focus ring's reasons run from the business to the palette, without the text contrast floor", () => {
   const chain = reasonChain(light, map.reasons, "color.border.focus");
-  assert.deepEqual(
-    chain.steps.map((s) => s.answer),
-    ["Neutrals and one brand ramp", "AAA", "Everyone, including people with disabilities", "Serves the public"],
-  );
-  assert.deepEqual(chain.links, [
+  // The palette answer rests on AAA, on everyone, and on color meaning links and actions first (OD-273).
+  assert.deepEqual(chain.steps.map((s) => s.answer), [
+    "Neutrals and one brand ramp",
+    "AAA",
+    "Everyone, including people with disabilities",
+    "Serves the public",
+    "Links and actions",
+    "Completion without errors",
+    "Complete a form",
+    "Forms and tasks",
+  ]);
+  assert.deepEqual(chain.links.slice(0, 6), [
     { from: "color.definition", to: "decision" },
     { from: "people.q2", to: "color.definition" },
     { from: "people.q1", to: "people.q2" },
     { from: "business.q1", to: "people.q1" },
+    { from: "people.q1", to: "color.definition" },
+    { from: "color.lands", to: "color.definition" },
   ]);
+  assert.ok(!chain.steps.some((s) => s.id === "accessibility.definition"));
 });
 
 test("a fill keeps the text contrast floor among its reasons: its label is text", () => {

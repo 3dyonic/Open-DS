@@ -188,7 +188,6 @@
   position: relative;
   padding: 0.35rem 0.75rem;
   border-top: var(--border-width-default) solid var(--color-border-default);
-  background: var(--color-surface-selected);
 }
 
 /* The reasons behind a decision */
@@ -274,5 +273,64 @@
 .node,
 .toolButton,
 .try {
+  pointer-events: all;
+}
+
+/* The left-to-right map (OD-274 v2) */
+.cap {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+}
+.chip {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: none;
+  border-radius: var(--radius-badge);
+  border: var(--border-width-default) solid var(--color-border-default);
+}
+/* The one line a box leads with: the value's or the decision's recorded reason. */
+.key {
+  font-weight: var(--type-label-font-weight);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-badge);
+  background: var(--color-surface-selected);
+  border-inline-start: var(--border-width-focus) solid var(--color-border-selected);
+}
+.qa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin-block: 0.15rem 0.35rem;
+  padding-inline-start: 0.6rem;
+  border-inline-start: var(--border-width-default) solid var(--color-border-default);
+  font-size: 0.8rem;
+}
+.more {
+  align-self: flex-start;
+  padding: 0.2rem 0;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--color-border-selected);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.more:focus-visible {
+  outline: var(--border-width-focus) solid var(--color-border-focus);
+  outline-offset: var(--border-width-focus-offset);
+}
+.pick {
+  cursor: pointer;
+}
+.rowOn {
+  background: var(--color-surface-selected);
+}
+.tokenRow {
+  padding: 0.2rem 0 0.2rem 0.9rem;
+}
+.more,
+.pick {
   pointer-events: all;
 }

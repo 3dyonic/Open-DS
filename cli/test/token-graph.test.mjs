@@ -90,7 +90,7 @@ test("the map file holds each brand in light and dark, the scopes, and each pick
     { id: "color.definition", question: "How is the palette defined?", answer: "Neutrals and one brand ramp" },
   ]);
   // The reasons: each answer in plain words with the answers it follows from.
-  assert.deepEqual(map.reasons["color.definition"].because, ["people.q2"]);
+  assert.deepEqual(map.reasons["color.definition"].because, ["people.q2", "people.q1", "color.lands"]);
   assert.equal(map.reasons["business.q1"].answer, "Serves the public");
   const primary = map.graphs["default/light"].nodes.find((n) => n.id === "color.action.primary.@");
   assert.equal(primary.tone, "dark");

@@ -6,7 +6,7 @@
 // It reads a graph from token-graph.mjs (one brand, one mode) and the scheme's reasons (reasonsOf).
 import { BACKGROUNDS, contrasts, jobCheck, jobOf } from "./token-measure.mjs";
 
-const PRIMITIVE = /^color\.([a-z]+)\.(light|dark)\.([a-z0-9]+)$/;
+const PRIMITIVE = /^color\.([a-z][a-z-]*)\.(light|dark)\.([a-z0-9]+)$/;
 
 // A primitive color's hue, mode and step, or null for any other token.
 export function primitiveParts(id) {

@@ -1,49 +1,28 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
+  applyNodeChanges,
   Background,
   Controls,
   Handle,
-  MiniMap,
-  NodeToolbar,
   Panel,
   Position,
   ReactFlow,
   ReactFlowProvider,
+  useNodesState,
   useReactFlow,
   type Edge,
   type Node,
+  type NodeChange,
   type NodeProps,
 } from "@xyflow/react";
 import "@xyflow/react/dist/base.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import {
-  colorIndex,
-  componentsShowing,
-  contrastsOf,
-  groupsReading,
-  impactOf,
-  plainName,
-  primitiveParts,
-  reasonChain,
-  rowLabel,
-  selectionFor,
-  tokenName,
-  type Check,
-  type ColorIndex,
-  type Graph,
-  type Reason,
-  type ReasonStep,
-} from "../../../../cli/src/color-map.mjs";
-import { ratioText } from "../../../../cli/src/token-measure.mjs";
-import { Picker, type Option } from "../Picker";
 import styles from "./styles.module.css";
 
-// The Token map page (OD-274): this scheme's colors. A color value is a word with a meaning; a
-// semantic token is a decision that uses the word for one job; a component token is where you see
-// the decision. Four boxes pick a hue, a step, a semantic group and a decision; the graph shows the
-// same path, and a click on the graph sets the boxes. A selected decision shows the chain of answers
-// behind it, and the word shows what changes when its value changes. The numbers and the paths are
-// cli/src/color-map.mjs, the code the tests run; the data is static/token-map/ (scripts/generate.mjs).
+// The Token map page (OD-274). It reads left to right: area, scale, step, semantic group, decision,
+// and the decision's components and copies. Every level keeps its other options in view and opens the
+// pressed one in place; after a press the view zooms to the pressed box and what it opened. The data
+// is cli/src/token-map-view.mjs, built per scheme and brand by scripts/generate.mjs.
 
 export type Props = {
   scheme: string;
@@ -51,504 +30,633 @@ export type Props = {
   files: Record<string, string>;
 };
 type Mode = "light" | "dark";
-type MapFile = { scheme: string; brands: string[]; graphs: Record<string, Graph>; reasons: Record<string, Reason> };
-type Load = { state: "loading" } | { state: "error"; message: string } | { state: "ready"; map: MapFile };
-type Path = { hue: string | null; step: string | null; group: string | null; decision: string | null };
-
-const NONE = "";
-const COMPONENT_LIMIT = 4;
-// Column x positions and widths, left to right.
-const COL = { word: 0, group: 360, decision: 560, component: 940 };
-const WIDTH = { word: 300, group: 160, decision: 320, component: 260, reason: 220 };
-const GAP = 16;
-const REASON_ROW = 190;
-
-// A rough height for a box, from its text, so boxes in a column do not overlap before React Flow
-// measures them. Characters per line at the box's width, about 7px a character.
-const lines = (text: string | null | undefined, width: number) =>
-  text ? Math.ceil(text.length / Math.max(1, Math.floor((width - 24) / 7))) : 0;
-
-const readUrlFocus = () => new URLSearchParams(window.location.search).get("focus");
-const writeUrlFocus = (id: string | null) => {
-  const url = new URL(window.location.href);
-  if (id) url.searchParams.set("focus", id);
-  else url.searchParams.delete("focus");
-  window.history.replaceState(null, "", url);
-};
-
-// The same step in the other mode, when the scheme has it: color.blue.light.600 → color.blue.dark.600.
-function sameStep(index: ColorIndex, id: string | null): string | null {
-  const p = id ? primitiveParts(id) : null;
-  if (!p) return null;
-  const other = `color.${p.hue}.${index.mode}.${p.step}`;
-  return index.nodes.has(other) ? other : null;
-}
-
-type WordData = {
+type Answer = { id: string; question: string; answer: string; why: string | null };
+type Better = { name: string; read: boolean } | null;
+type Row = { id: string; label: string; better: Better };
+type Component = { component: string; rows: Row[] };
+type Decision = {
   id: string;
-  value: string;
-  contrasts: { label: string; ratio: number }[];
-  impact: string;
-  tryOptions: Option[];
-  tryStep: string;
-  onTry: (id: string) => void;
-};
-type GroupData = { id: string; count: number; open: boolean; onOpen: () => void };
-type DecisionData = {
-  id: string;
+  group: string;
+  why: string | null;
   description: string | null;
-  check: Check;
-  trying: boolean;
-  selected: boolean;
-  onSelect: () => void;
+  answers: string[];
+  direct: string[];
+  components: Component[];
+  via?: string | null;
+  stepWhy?: string | null;
 };
-type ComponentData = { component: string; rows: { id: string; label: string }[] };
-type MoreData = { count: number; open: boolean; onToggle: () => void };
-type ReasonData = ReasonStep;
+type Check = { what: string; ratio: number };
+type Step = {
+  id: string;
+  step: string;
+  name: string;
+  value: string;
+  otherMode?: string | null;
+  brand?: boolean;
+  decisions: string[];
+  checks: Check[];
+};
+type Family = { id: string; area: string; label: string; scope: string; steps: Step[] };
+type Theme = Record<
+  "canvas" | "panel" | "sunken" | "text" | "muted" | "line" | "lineStrong" | "accent" | "accentSoft",
+  string | null
+>;
+type ModeData = { theme: Theme; families: Family[]; decisions: Record<string, Decision> };
+type MapFile = {
+  scheme: string;
+  name: string;
+  brand: string;
+  areas: string[];
+  answers: Record<string, Answer>;
+  shared: { families: Family[]; decisions: Record<string, Decision> };
+  modes: Record<Mode, ModeData>;
+};
+type Model = { families: Family[]; decisions: Record<string, Decision>; theme: Theme };
+type Path = {
+  area: string | null;
+  hue: string | null;
+  step: string | null;
+  group: string | null;
+  decision: string | null;
+};
+type Load = { state: "loading" } | { state: "error"; message: string } | { state: "ready"; map: MapFile };
 
-const Source = () => <Handle type="source" position={Position.Right} isConnectable={false} className={styles.handle} />;
-const Target = ({ id }: { id?: string }) => (
-  <Handle type="target" position={Position.Left} id={id} isConnectable={false} className={styles.handle} />
+const NONE: Path = { area: null, hue: null, step: null, group: null, decision: null };
+// Columns, left to right.
+const X = { area: 0, family: 210, word: 420, group: 850, decision: 1050, list: 1480 };
+const W = { area: 160, family: 160, step: 170, word: 370, group: 160, decision: 370, list: 300 };
+
+const ratio = (r: number) => `${Math.round(r * 10) / 10}:1`;
+const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1) + (/[.!?]$/.test(s) ? "" : ".");
+const pxOf = (v: string) => {
+  const m = /^([\d.]+)rem$/.exec(v);
+  return m ? `${v} · ${parseFloat(m[1]) * 16}px` : v;
+};
+
+const Hidden = ({ type, pos, id }: { type: "source" | "target"; pos: Position; id?: string }) => (
+  <Handle type={type} position={pos} id={id} isConnectable={false} className={styles.handle} />
 );
 
-function WordView({ data }: NodeProps<Node<WordData>>) {
-  return (
-    <div className={`${styles.node} ${styles.word}`} style={{ width: WIDTH.word }}>
-      <span className={styles.title}>{plainName(data.id)}</span>
-      <span className={styles.id}>{data.id}</span>
-      <span className={styles.swatchRow}>
-        <span className={styles.swatchBig} style={{ background: data.value }} aria-hidden="true" />
-        <span className={styles.mono}>{data.value}</span>
-      </span>
-      {data.contrasts.length > 0 && (
-        <span className={styles.line}>
-          Contrast: {data.contrasts.map((c) => `${ratioText(c.ratio)}:1 on ${c.label}`).join(" · ")}
-        </span>
-      )}
-      <span className={styles.impact}>{data.impact}</span>
-      {data.tryOptions.length > 0 && (
-        <div className={`nodrag nopan ${styles.try}`}>
-          <Picker label="Try another step" options={data.tryOptions} value={data.tryStep} onPick={data.onTry} />
-        </div>
-      )}
-      <Source />
-    </div>
-  );
-}
-
-function GroupView({ data }: NodeProps<Node<GroupData>>) {
-  return (
-    <div className={styles.slot} style={{ width: WIDTH.group }}>
-      <Target />
-      <button
-        type="button"
-        className={`nodrag ${styles.node} ${styles.button} ${data.open ? styles.open : styles.closed}`}
-        aria-expanded={data.open}
-        onClick={data.onOpen}
-      >
-        <span className={styles.title}>
-          {data.id} <span aria-hidden="true">{data.open ? "▾" : "▸"}</span>
-        </span>
-        <span className={styles.line}>{data.count === 1 ? "1 decision" : `${data.count} decisions`}</span>
-      </button>
-      <Source />
-    </div>
-  );
-}
-
-function CopyButton({ text }: { text: string }) {
-  const [note, setNote] = useState("");
-  const copy = () => {
-    const done = navigator.clipboard?.writeText(text);
-    if (!done) {
-      setNote("Copy is not available here. Select the name to copy it.");
-      return;
-    }
-    done.then(
-      () => setNote("Copied"),
-      () => setNote("Copy did not work. Select the name to copy it."),
-    );
-  };
+function Answers({ ids, answers }: { ids: string[]; answers: Record<string, Answer> }) {
+  const list = ids.map((id) => answers[id]).filter(Boolean);
+  if (!list.length) return null;
   return (
     <>
-      <button type="button" className={`nodrag ${styles.toolButton}`} onClick={copy}>
-        Copy token
-      </button>
-      <span role="status" className={styles.toolNote}>
-        {note}
-      </span>
+      {list.map((a) => (
+        <div key={a.id} className={styles.qa}>
+          <div>
+            <span className={styles.line}>{a.question}</span> <b>{a.answer}</b>
+          </div>
+          {a.why && <div className={styles.line}>{a.why}</div>}
+        </div>
+      ))}
     </>
   );
 }
 
-function DecisionView({ data }: NodeProps<Node<DecisionData>>) {
-  const name = tokenName(data.id);
-  return (
-    <div className={styles.slot} style={{ width: WIDTH.decision }}>
-      <NodeToolbar isVisible={data.selected} position={Position.Top} className={styles.toolbar}>
-        <CopyButton text={name} />
-      </NodeToolbar>
-      <Target />
-      <button
-        type="button"
-        className={`nodrag ${styles.node} ${styles.button} ${data.selected ? styles.selected : styles.open}`}
-        aria-pressed={data.selected}
-        onClick={data.onSelect}
-      >
-        <span className={`${styles.title} ${styles.mono}`}>{name}</span>
-        {data.description && <span className={styles.line}>{data.description}</span>}
-        {data.check && (
-          <span className={data.check.met ? styles.met : styles.missed} title={data.check.rule}>
-            {data.trying ? "With the step you try: " : ""}
-            {data.check.text}
-          </span>
-        )}
-      </button>
-      <Source />
-    </div>
-  );
-}
-
-function ComponentView({ data }: NodeProps<Node<ComponentData>>) {
-  return (
-    <div className={`${styles.node} ${styles.component}`} style={{ width: WIDTH.component }}>
-      <span className={styles.componentHead}>{data.component}</span>
-      {data.rows.map((r) => (
-        <span key={r.id} className={styles.row} title={r.id}>
-          <Target id={r.id} />
-          {r.label}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function MoreView({ data }: NodeProps<Node<MoreData>>) {
+// Open and close, inside a box that React Flow would otherwise take as a press on the box.
+function More({ open, onToggle, closed }: { open: boolean; onToggle: () => void; closed: string }) {
   return (
     <button
       type="button"
-      className={`nodrag ${styles.node} ${styles.button} ${styles.closed}`}
-      style={{ width: WIDTH.component }}
-      aria-expanded={data.open}
-      onClick={data.onToggle}
+      className={`${styles.more} nodrag`}
+      aria-expanded={open}
+      onClick={(e) => {
+        e.stopPropagation();
+        onToggle();
+      }}
     >
-      <span className={styles.title}>
-        {data.open ? "Show fewer components" : `${data.count} more components`}{" "}
-        <span aria-hidden="true">{data.open ? "▾" : "▸"}</span>
-      </span>
+      {open ? "▾ Less" : `▸ ${closed}`}
     </button>
   );
 }
 
-function ReasonView({ data }: NodeProps<Node<ReasonData>>) {
+type AreaData = { area: string; count: number; selected: boolean };
+function AreaNode({ data }: NodeProps<Node<AreaData>>) {
   return (
-    <div className={`${styles.node} ${styles.reason}`} style={{ width: WIDTH.reason }}>
-      <Target />
-      <span className={styles.reasonGroup}>{data.group}</span>
-      <span className={styles.title}>{data.answer}</span>
-      {data.why && <span className={styles.line}>{data.why}</span>}
-      <Source />
+    <div className={`${styles.node} ${data.selected ? styles.selected : ""}`}>
+      <Hidden type="source" pos={Position.Right} />
+      <div className={styles.title}>
+        {data.selected ? "▾" : "▸"} {data.area}
+      </div>
+      <div className={styles.line}>
+        {data.count} value{data.count === 1 ? "" : "s"} in use
+      </div>
+    </div>
+  );
+}
+
+type FamilyData = { label: string; count: number; selected: boolean; swatch: string | null };
+function FamilyNode({ data }: NodeProps<Node<FamilyData>>) {
+  return (
+    <div className={`${styles.node} ${data.selected ? styles.selected : ""}`}>
+      <Hidden type="target" pos={Position.Left} />
+      <Hidden type="source" pos={Position.Right} />
+      <div className={styles.swatchRow}>
+        {data.swatch && <span className={styles.chip} style={{ background: data.swatch }} />}
+        <span className={styles.title}>
+          {data.selected ? "▾" : "▸"} {data.label}
+        </span>
+      </div>
+      <div className={styles.line}>
+        {data.count} step{data.count === 1 ? "" : "s"}
+      </div>
+    </div>
+  );
+}
+
+type StepData = { id: string; name: string; value: string; color: boolean };
+function StepNode({ data }: NodeProps<Node<StepData>>) {
+  return (
+    <div className={styles.node}>
+      <Hidden type="target" pos={Position.Left} />
+      <div className={styles.swatchRow}>
+        {data.color && <span className={styles.chip} style={{ background: data.value }} />}
+        <span className={styles.title}>{data.name}</span>
+      </div>
+      <div className={styles.mono}>{pxOf(data.value).slice(0, 28)}</div>
+    </div>
+  );
+}
+
+// The value: what it is and the checks it passes on top; why it is here behind "more".
+type WordData = {
+  step: Step;
+  family: Family;
+  keyLine: string | null;
+  why: { text: string; answers: string[] }[];
+  answers: Record<string, Answer>;
+};
+function WordNode({ data }: NodeProps<Node<WordData>>) {
+  const [open, setOpen] = useState(false);
+  const s = data.step;
+  return (
+    <div className={`${styles.node} ${styles.word}`}>
+      <Hidden type="target" pos={Position.Left} />
+      <Hidden type="source" pos={Position.Right} />
+      <div className={styles.swatchRow}>
+        {data.family.area === "Color" && <span className={styles.swatchBig} style={{ background: s.value }} />}
+        <span className={styles.title}>{s.name}</span>
+        <span className={styles.mono}>{pxOf(s.value)}</span>
+      </div>
+      {data.keyLine && <div className={styles.key}>{data.keyLine}</div>}
+      {s.checks.length > 0 && (
+        <div>
+          {s.checks.map((c, i) => (
+            <span key={c.what}>
+              {i ? " · " : ""}✓ {c.what} <span className={styles.line}>{ratio(c.ratio)}</span>
+            </span>
+          ))}
+        </div>
+      )}
+      {data.why.length > 0 && <More open={open} onToggle={() => setOpen(!open)} closed="Why it's here" />}
+      {open &&
+        data.why.map((w, i) => (
+          <div key={i}>
+            {w.text && <div>{w.text}</div>}
+            <Answers ids={w.answers} answers={data.answers} />
+          </div>
+        ))}
+    </div>
+  );
+}
+
+type GroupData = { group: string; count: number; valueName: string; selected: boolean };
+function GroupNode({ data }: NodeProps<Node<GroupData>>) {
+  return (
+    <div className={`${styles.node} ${data.selected ? styles.selected : ""}`}>
+      <Hidden type="target" pos={Position.Left} />
+      <Hidden type="source" pos={Position.Right} />
+      <div className={styles.cap}>Semantic group</div>
+      <div className={styles.title}>
+        {data.selected ? "▾" : "▸"} {data.group}
+      </div>
+      <div className={styles.line}>
+        {data.count} token{data.count === 1 ? " uses" : "s use"} {data.valueName}
+      </div>
+    </div>
+  );
+}
+
+// A decision: its name and its recorded reason on top; the answers behind it behind "more".
+type DecisionData = { d: Decision; selected: boolean; answers: Record<string, Answer> };
+function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
+  const [open, setOpen] = useState(false);
+  const d = data.d;
+  const used = d.components.length;
+  return (
+    <div className={`${styles.node} ${styles.word} ${data.selected ? styles.selected : ""}`}>
+      <Hidden type="target" pos={Position.Left} />
+      <Hidden type="source" pos={Position.Right} />
+      <div className={styles.cap}>Decision</div>
+      <div className={`${styles.title} ${styles.mono}`}>{d.id}</div>
+      {d.why ? <div className={styles.key}>{sentence(d.why)}</div> : d.description && <div>{d.description}</div>}
+      {d.via && <div className={styles.line}>Same as {d.via}</div>}
+      {used === 0 && !d.via && <div className={styles.line}>No component uses it.</div>}
+      {(d.stepWhy || d.answers.length > 0) && <More open={open} onToggle={() => setOpen(!open)} closed="Why" />}
+      {open && (
+        <>
+          {d.stepWhy && <div>{d.stepWhy}</div>}
+          {d.answers.length > 0 && <div className={styles.cap}>The answers behind it</div>}
+          <Answers ids={d.answers} answers={data.answers} />
+        </>
+      )}
+    </div>
+  );
+}
+
+// One box per decision listing its components; a row opens to its token names, one row at a time.
+type ListData = {
+  title: string;
+  owner: string;
+  items: Component[];
+  open: string | null;
+  onToggle: ((key: string) => void) | null;
+};
+function ListNode({ data }: NodeProps<Node<ListData>>) {
+  return (
+    <div className={`${styles.node} ${styles.component}`}>
+      <Hidden type="target" pos={Position.Left} />
+      <div className={styles.componentHead}>
+        {data.title} <span className={styles.line}>{data.items.length}</span>
+      </div>
+      {data.items.map((c) => {
+        const key = `${data.owner}|${c.component}`;
+        const open = data.open === key;
+        return (
+          <div
+            key={key}
+            className={`${styles.row} ${data.onToggle ? styles.pick : ""} ${open ? styles.rowOn : ""}`}
+            onClick={
+              data.onToggle
+                ? (e) => {
+                    e.stopPropagation();
+                    data.onToggle!(key);
+                  }
+                : undefined
+            }
+          >
+            {data.onToggle ? (open ? "▾ " : "▸ ") : ""}
+            {c.component}
+            {c.rows.length > 0 && <span className={styles.line}> {c.rows.length}</span>}
+            {open &&
+              c.rows.map((r) => (
+                <div key={r.id} className={styles.tokenRow}>
+                  {r.better && (
+                    <div>
+                      {r.better.name}
+                      {!r.better.read && <span className={styles.line}> · no component code reads it</span>}
+                    </div>
+                  )}
+                  <div className={styles.mono}>{r.id}</div>
+                </div>
+              ))}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 const nodeTypes = {
-  word: WordView,
-  group: GroupView,
-  decision: DecisionView,
-  component: ComponentView,
-  more: MoreView,
-  reason: ReasonView,
+  area: AreaNode,
+  family: FamilyNode,
+  step: StepNode,
+  word: WordNode,
+  semantic: GroupNode,
+  decision: DecisionNode,
+  list: ListNode,
 };
 
-function MapView({ map, mode, onMode, brand }: { map: MapFile; mode: Mode; onMode: (m: Mode) => void; brand: string }) {
-  const index = useMemo(() => colorIndex(map.graphs[`${brand}/${mode}`], mode), [map, brand, mode]);
-  const [path, setPath] = useState<Path>(() => {
-    const focus = readUrlFocus();
-    const s = focus ? selectionFor(index, focus) : null;
-    return s ?? { hue: null, step: null, group: null, decision: null };
-  });
-  const [tryStep, setTryStep] = useState(NONE);
-  const [more, setMore] = useState(false);
-  const flow = useReactFlow();
+// Why a value is here, from the scheme's own answers: the brand hue's palette answer; a color step that
+// is the lightest to pass its label floor (measured); for other areas, the area's own answers.
+function whyOf(map: MapFile, model: Model, family: Family, step: Step) {
+  if (family.area !== "Color") {
+    const ids = [`${family.scope}.definition`, `${family.scope}.values`].filter((id) => map.answers[id]);
+    return { keyLine: null, why: ids.length ? [{ text: "", answers: ids }] : [] };
+  }
+  const why: { text: string; answers: string[] }[] = [];
+  const palette = map.answers["color.definition"];
+  if (step.brand && palette?.why) why.push({ text: "", answers: ["color.definition"] });
+  const lightest = step.decisions.map((d) => model.decisions[d]?.stepWhy).find(Boolean);
+  if (lightest)
+    why.push({ text: lightest, answers: map.answers["accessibility.definition"] ? ["accessibility.definition"] : [] });
+  return { keyLine: step.brand && palette?.why ? palette.why : null, why };
+}
 
-  // A new mode keeps the path: the same step of the other ramp, and the decision while it still reads it.
-  useEffect(() => {
-    setPath((p) => {
-      if (!p.step || primitiveParts(p.step)?.mode === index.mode) return p;
-      const step = sameStep(index, p.step);
-      if (!step) return { hue: p.hue, step: null, group: null, decision: null };
-      const groups = groupsReading(index, step);
-      const group = groups.find((g) => g.id === p.group);
-      const decision = group?.decisions.includes(p.decision ?? "") ? p.decision : null;
-      return { hue: p.hue, step, group: group ? group.id : null, decision };
-    });
-    setTryStep(NONE);
-  }, [index]);
-
-  useEffect(() => writeUrlFocus(path.decision ?? path.step), [path.decision, path.step]);
-
-  const choose = useCallback((next: Partial<Path>) => {
-    setPath((p) => {
-      const out = { ...p, ...next };
-      if ("hue" in next && next.hue !== p.hue) Object.assign(out, { step: null, group: null, decision: null });
-      else if ("step" in next && next.step !== p.step) Object.assign(out, { group: null, decision: null });
-      else if ("group" in next && next.group !== p.group) Object.assign(out, { decision: null });
-      return out;
-    });
-    if ("hue" in next || "step" in next) setTryStep(NONE);
-    setMore(false);
-  }, []);
-
-  const hue = index.hues.find((h) => h.id === path.hue) ?? null;
-  const step = path.step && primitiveParts(path.step)?.mode === index.mode ? path.step : null;
-  const groups = step ? groupsReading(index, step) : [];
-  const group = groups.find((g) => g.id === path.group) ?? null;
-  const decision = group && path.decision && group.decisions.includes(path.decision) ? path.decision : null;
-
-  // The boxes: each lists only what exists under the one before it.
-  const hueOptions: Option[] = index.hues.map((h) => ({
-    id: h.id,
-    label: h.id,
-    color: h.steps[Math.floor(h.steps.length / 2)]?.value,
-  }));
-  const stepOptions: Option[] = (hue?.steps ?? []).map((s) => ({ id: s.id, label: s.step, color: s.value }));
-  const groupOptions: Option[] = groups.map((g) => ({ id: g.id, label: g.id }));
-  const decisionOptions: Option[] = (group?.decisions ?? []).map((d) => ({ id: d, label: tokenName(d) }));
-
-  const value = step ? String(index.nodes.get(step)?.value) : "";
-  const tried = tryStep && index.nodes.has(tryStep) ? String(index.nodes.get(tryStep)?.value) : null;
-  const impact = useMemo(() => (step ? impactOf(index, step, tried ?? undefined) : null), [index, step, tried]);
-  const checkOf = (d: string) => impact?.checks.find((c) => c.decision === d)?.check ?? null;
-  const chain = useMemo(() => (decision ? reasonChain(index, map.reasons, decision) : null), [index, map, decision]);
-
-  const drawn = useMemo(() => {
-    const nodes: Node[] = [];
-    const edges: Edge[] = [];
-    if (!step || !impact) return { nodes, edges };
-    const lit = (on: boolean) => (on ? styles.edgeLit : styles.edge);
-
-    // The chain of reasons, a row above the graph: the deepest reason on the left, into the decision.
-    let top = 0;
-    if (chain && chain.steps.length) {
-      const depth = new Map<string, number>([["decision", 0]]);
-      const depthOf = (id: string): number => {
-        if (depth.has(id)) return depth.get(id)!;
-        const to = chain.links.filter((l) => l.from === id).map((l) => depthOf(l.to));
-        const d = Math.max(0, ...to) + 1;
-        depth.set(id, d);
-        return d;
-      };
-      chain.steps.forEach((s) => depthOf(s.id));
-      const max = Math.max(...chain.steps.map((s) => depth.get(s.id)!));
-      const rows = new Map<number, number>();
-      for (const s of chain.steps) {
-        const d = depth.get(s.id)!;
-        const row = rows.get(d) ?? 0;
-        rows.set(d, row + 1);
-        nodes.push({
-          id: `reason:${s.id}`,
-          type: "reason",
-          position: { x: (max - d) * (WIDTH.reason + 40), y: row * REASON_ROW },
-          data: s,
-        });
-      }
-      // The graph starts below the tallest reason box, with room for the toolbar of the decision.
-      const tallest = Math.max(
-        ...chain.steps.map((s) => 56 + 20 * (lines(s.answer, WIDTH.reason) + lines(s.why, WIDTH.reason))),
-      );
-      top = (Math.max(...rows.values()) - 1) * REASON_ROW + tallest + 90;
-      for (const l of chain.links)
-        edges.push({
-          id: `why:${l.from}>${l.to}`,
-          source: `reason:${l.from}`,
-          target: l.to === "decision" ? `decision:${decision}` : `reason:${l.to}`,
-          className: styles.edgeReason,
-        });
-    }
-
-    const tryOptions: Option[] = [
-      { id: NONE, label: "No other step" },
-      ...(hue?.steps ?? []).filter((s) => s.id !== step).map((s) => ({ id: s.id, label: s.step, color: s.value })),
-    ];
-    const n = impact.decisions;
-    const c = impact.components;
-    const impactText =
-      n === 0
-        ? "No decision uses this step yet."
-        : `Changing ${plainName(step)} changes ${n === 1 ? "1 decision" : `${n} decisions`} and ${
-            c === 1 ? "1 component" : `${c} components`
-          }.`;
+function build(map: MapFile, model: Model, path: Path, openComp: string | null, toggleComp: (k: string) => void) {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
+  const at = (x: number, y: number) => ({ x, y });
+  map.areas.forEach((a, i) =>
     nodes.push({
-      id: "word",
-      type: "word",
-      position: { x: COL.word, y: top },
+      id: `area:${a}`,
+      type: "area",
+      position: at(X.area, i * 100),
+      style: { width: W.area },
       data: {
-        id: step,
-        value,
-        contrasts: contrastsOf(index, value),
-        impact: impactText,
-        tryOptions: n ? tryOptions : [],
-        tryStep,
-        onTry: setTryStep,
+        area: a,
+        selected: a === path.area,
+        count: model.families.filter((f) => f.area === a).reduce((s, f) => s + f.steps.length, 0),
+      },
+    }),
+  );
+  if (!path.area) return { nodes, edges };
+  const fams = model.families.filter((f) => f.area === path.area);
+  fams.forEach((f, i) => {
+    const mid = f.steps.find((s) => s.step === "600") ?? f.steps[Math.floor(f.steps.length / 2)];
+    nodes.push({
+      id: `fam:${f.id}`,
+      type: "family",
+      position: at(X.family, i * 100),
+      style: { width: W.family },
+      data: {
+        label: f.label,
+        count: f.steps.length,
+        selected: f.id === path.hue,
+        swatch: f.area === "Color" ? (mid?.value ?? null) : null,
       },
     });
-
-    let y = top;
-    for (const g of groups) {
-      const open = g.id === group?.id;
+    edges.push({ id: `e:area:${f.id}`, source: `area:${path.area}`, target: `fam:${f.id}`, className: styles.edge });
+  });
+  const hue = fams.find((f) => f.id === path.hue);
+  if (!hue) return { nodes, edges };
+  const step = hue.steps.find((s) => s.id === path.step);
+  hue.steps.forEach((s, i) => {
+    if (s === step) {
+      const w = whyOf(map, model, hue, s);
       nodes.push({
-        id: `group:${g.id}`,
-        type: "group",
-        position: { x: COL.group, y },
-        data: { id: g.id, count: g.decisions.length, open, onOpen: () => choose({ group: open ? null : g.id }) },
+        id: "word",
+        type: "word",
+        position: at(X.word, i * 80),
+        style: { width: W.word },
+        data: { step: s, family: hue, ...w, answers: map.answers },
       });
-      edges.push({ id: `w>${g.id}`, source: "word", target: `group:${g.id}`, className: lit(open) });
-      y += 64 + GAP;
+      edges.push({ id: "e:fam:word", source: `fam:${hue.id}`, target: "word", className: styles.edgeLit });
+    } else {
+      nodes.push({
+        id: `step:${s.id}`,
+        type: "step",
+        position: at(X.word, i * 80),
+        style: { width: W.step },
+        data: { id: s.id, name: s.name, value: s.value, color: hue.area === "Color" },
+      });
+      edges.push({ id: `e:fam:${s.id}`, source: `fam:${hue.id}`, target: `step:${s.id}`, className: styles.edge });
     }
-
-    if (group) {
-      y = top;
-      for (const d of group.decisions) {
-        const node = index.nodes.get(d);
-        const selected = d === decision;
+  });
+  if (!step) return { nodes, edges };
+  const groups = [...new Set(step.decisions.map((d) => model.decisions[d]?.group).filter(Boolean))] as string[];
+  let gy = 0;
+  let dy = 0;
+  let cy = 0;
+  for (const g of groups) {
+    if (path.group && path.group !== g) continue;
+    const ds = step.decisions.filter((d) => model.decisions[d]?.group === g);
+    nodes.push({
+      id: `g:${g}`,
+      type: "semantic",
+      position: at(X.group, gy),
+      style: { width: W.group },
+      data: { group: g, count: ds.length, valueName: step.name, selected: path.group === g },
+    });
+    edges.push({
+      id: `e:w:${g}`,
+      source: "word",
+      target: `g:${g}`,
+      className: path.group === g ? styles.edgeLit : styles.edge,
+    });
+    gy += 110;
+    if (path.group !== g) continue;
+    for (const id of ds) {
+      if (path.decision && path.decision !== id) continue;
+      const d = model.decisions[id];
+      const top = Math.max(dy, cy);
+      nodes.push({
+        id: `d:${id}`,
+        type: "decision",
+        position: at(X.decision, top),
+        style: { width: W.decision },
+        data: { d, selected: path.decision === id, answers: map.answers },
+      });
+      edges.push({ id: `e:${g}:${id}`, source: `g:${g}`, target: `d:${id}`, className: styles.edgeLit });
+      dy = top + 160;
+      cy = top;
+      if (d.components.length) {
         nodes.push({
-          id: `decision:${d}`,
-          type: "decision",
-          position: { x: COL.decision, y },
+          id: `cl:${id}`,
+          type: "list",
+          position: at(X.list, cy),
+          style: { width: W.list },
+          data: { title: "Components", owner: id, items: d.components, open: openComp, onToggle: toggleComp },
+        });
+        edges.push({ id: `e:cl:${id}`, source: `d:${id}`, target: `cl:${id}`, className: styles.edgeLit });
+        cy += 60 + d.components.length * 32;
+      }
+      const copies = Object.values(model.decisions).filter((x) => x.via === id);
+      if (copies.length) {
+        nodes.push({
+          id: `al:${id}`,
+          type: "list",
+          position: at(X.list, cy),
+          style: { width: W.list },
           data: {
-            id: d,
-            description: node?.description ?? null,
-            check: checkOf(d),
-            trying: !!tried,
-            selected,
-            onSelect: () => choose({ decision: selected ? null : d }),
+            title: "Aliases",
+            owner: id,
+            items: copies.map((c) => ({ component: c.id, rows: [] })),
+            open: null,
+            onToggle: null,
           },
         });
-        edges.push({ id: `${group.id}>${d}`, source: `group:${group.id}`, target: `decision:${d}`, className: lit(selected) });
-        y += 70 + 18 * (lines(node?.description, WIDTH.decision) + 2) + GAP;
+        edges.push({ id: `e:al:${id}`, source: `d:${id}`, target: `al:${id}`, className: styles.edgeLit });
+        cy += 60 + copies.length * 32;
       }
+      cy += 30;
     }
+  }
+  return { nodes, edges };
+}
 
-    if (decision) {
-      const shown = componentsShowing(index, decision);
-      const list = more ? shown : shown.slice(0, COMPONENT_LIMIT);
-      y = top;
-      for (const s of list) {
-        const rows = s.rows.map((r) => ({ id: r, label: rowLabel(r) }));
-        nodes.push({
-          id: `component:${s.component}`,
-          type: "component",
-          position: { x: COL.component, y },
-          data: { component: s.component, rows },
-        });
-        for (const r of rows)
-          edges.push({
-            id: `${decision}>${r.id}`,
-            source: `decision:${decision}`,
-            target: `component:${s.component}`,
-            targetHandle: r.id,
-            className: styles.edgeLit,
-          });
-        y += 44 + 30 * rows.length + GAP;
-      }
-      if (shown.length > COMPONENT_LIMIT)
-        nodes.push({
-          id: "more",
-          type: "more",
-          position: { x: COL.component, y },
-          data: { count: shown.length - COMPONENT_LIMIT, open: more, onToggle: () => setMore((m) => !m) },
-        });
-    }
-    return { nodes, edges };
-  }, [index, step, impact, chain, hue, group, groups, decision, more, tryStep, tried, value, choose]);
+// The boxes to zoom to after a press: the node pressed and what it opened.
+function focusOf(map: MapFile, model: Model, path: Path, openComp: string | null): string[] {
+  if (openComp) return [`cl:${openComp.split("|")[0]}`];
+  if (!path.area) return map.areas.map((a) => `area:${a}`);
+  const fams = model.families.filter((f) => f.area === path.area);
+  const hue = fams.find((f) => f.id === path.hue);
+  if (!hue) return [`area:${path.area}`, ...fams.map((f) => `fam:${f.id}`)];
+  const step = hue.steps.find((s) => s.id === path.step);
+  if (!step) return [`fam:${hue.id}`, ...hue.steps.map((s) => `step:${s.id}`)];
+  const groups = [...new Set(step.decisions.map((d) => model.decisions[d]?.group).filter(Boolean))];
+  if (!path.group) return ["word", ...groups.map((g) => `g:${g}`)];
+  const ds = step.decisions.filter(
+    (d) => model.decisions[d]?.group === path.group && (!path.decision || d === path.decision),
+  );
+  const lists = ds.flatMap((d) => [
+    model.decisions[d].components.length ? `cl:${d}` : null,
+    Object.values(model.decisions).some((x) => x.via === d) ? `al:${d}` : null,
+  ]);
+  return [path.decision ? null : `g:${path.group}`, ...ds.map((d) => `d:${d}`), ...lists].filter(Boolean) as string[];
+}
 
-  // Frame what is drawn on the next frame, after React Flow has measured the boxes.
+// The canvas and its boxes wear the scheme's own surfaces for the values' mode.
+const canvasStyle = (t: Theme) =>
+  ({
+    background: t.canvas ?? undefined,
+    color: t.text ?? undefined,
+    "--color-surface-default": t.panel,
+    "--color-surface-sunken": t.sunken,
+    "--color-surface-canvas": t.canvas,
+    "--color-text-primary": t.text,
+    "--color-text-secondary": t.muted,
+    "--color-border-default": t.line,
+    "--color-border-strong": t.lineStrong,
+    "--color-border-selected": t.accent,
+    "--color-surface-selected": t.accentSoft,
+  }) as React.CSSProperties;
+
+function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: Mode) => void }) {
+  const model: Model = useMemo(() => {
+    const m = map.modes[mode];
+    return {
+      families: [...m.families, ...map.shared.families],
+      decisions: { ...m.decisions, ...map.shared.decisions },
+      theme: m.theme,
+    };
+  }, [map, mode]);
+  const [path, setPath] = useState<Path>(NONE);
+  const [openComp, setOpenComp] = useState<string | null>(null);
+  const flow = useReactFlow();
+  const [nodes, setNodes] = useNodesState<Node>([]);
+  const isColor = path.area === "Color";
+
+  const set = (next: Path) => {
+    setPath(next);
+    setOpenComp(null);
+  };
+  // The same step in the other mode, so switching the values keeps your place.
   useEffect(() => {
-    const frame = requestAnimationFrame(() => flow.fitView({ padding: 0.14, maxZoom: 1, duration: 0 }));
-    return () => cancelAnimationFrame(frame);
-  }, [drawn, flow]);
+    if (!path.step) return;
+    const [, hue, , step] = path.step.split(".");
+    const same = map.modes[mode].families.find((f) => f.id === hue)?.steps.find((s) => s.step === step);
+    if (path.step.startsWith("color.") && same && same.id !== path.step) setPath({ ...path, step: same.id });
+  }, [mode]);
+
+  const graph = useMemo(
+    () => build(map, model, path, openComp, (k) => setOpenComp((o) => (o === k ? null : k))),
+    [map, model, path, openComp],
+  );
+  useEffect(() => setNodes(graph.nodes), [graph]);
+
+  // Stack each column by the boxes' measured heights, so a box that grows pushes the ones below it.
+  const onNodesChange = (changes: NodeChange[]) =>
+    setNodes((ns) => {
+      const next = applyNodeChanges(changes, ns);
+      if (!changes.some((c) => c.type === "dimensions")) return next;
+      const cols: Record<number, Node[]> = {};
+      for (const n of next) (cols[n.position.x] ??= []).push(n);
+      const y: Record<string, number> = {};
+      for (const col of Object.values(cols)) {
+        col.sort((a, b) => a.position.y - b.position.y);
+        let bottom = -Infinity;
+        for (const n of col) {
+          const top = Math.max(n.position.y, bottom + 16);
+          y[n.id] = top;
+          bottom = top + (n.measured?.height ?? 80);
+        }
+      }
+      return next.map((n) => (y[n.id] !== n.position.y ? { ...n, position: { ...n.position, y: y[n.id] } } : n));
+    });
+
+  // After each press, zoom to the pressed box and what it opened, once those boxes are measured and
+  // have stopped moving (the column stacking moves them once).
+  const focus = useMemo(() => focusOf(map, model, path, openComp), [map, model, path, openComp]);
+  const focusKey = focus.join(",");
+  useEffect(() => {
+    let frame = 0;
+    let last = "";
+    let stable = 0;
+    let cancelled = false;
+    const tick = () => {
+      if (cancelled) return;
+      const want = new Set(focus);
+      const got = flow.getNodes().filter((n) => want.has(n.id));
+      const ready = got.length === want.size && got.every((n) => n.measured?.width && n.measured?.height);
+      const sig = got.map((n) => `${n.id}:${n.position.x},${n.position.y},${n.measured?.height}`).join("|");
+      stable = ready && sig === last ? stable + 1 : 0;
+      last = sig;
+      if (stable >= 2 || frame++ > 60) {
+        if (got.length)
+          flow.fitView({ nodes: got.map((n) => ({ id: n.id })), padding: 0.2, maxZoom: 1.2, duration: 350 });
+        return;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    return () => {
+      cancelled = true;
+    };
+  }, [focusKey, mode]);
+
+  // A press picks a box and shows what connects to it; pressing the picked box again steps back.
+  const onNodeClick = (_: React.MouseEvent, n: Node) => {
+    const data = n.data as Record<string, unknown>;
+    if (n.type === "area") {
+      if (path.area === data.area) return set(NONE);
+      const fams = model.families.filter((f) => f.area === data.area);
+      return set({ ...NONE, area: data.area as string, hue: fams.length === 1 ? fams[0].id : null });
+    }
+    if (n.type === "family") {
+      const id = n.id.slice(4);
+      return set({ ...NONE, area: path.area, hue: path.hue === id ? null : id });
+    }
+    if (n.type === "step") return set({ ...path, step: data.id as string, group: null, decision: null });
+    if (n.type === "word") return set({ ...path, step: null, group: null, decision: null });
+    if (n.type === "semantic")
+      return set({ ...path, group: path.group === data.group ? null : (data.group as string), decision: null });
+    if (n.type === "decision") {
+      const id = n.id.slice(2);
+      return set({ ...path, group: model.decisions[id].group, decision: path.decision === id ? null : id });
+    }
+  };
 
   return (
-    <div className={styles.root}>
-      <div className={styles.boxes}>
-        <Picker
-          label="Hue"
-          options={hueOptions}
-          value={hue?.id ?? NONE}
-          onPick={(id) => choose({ hue: id })}
-        />
-        <Picker
-          label="Step"
-          options={stepOptions}
-          value={step ?? NONE}
-          onPick={(id) => choose({ step: id })}
-          disabled={!hue}
-        />
-        <Picker
-          label="Semantic group"
-          options={groupOptions}
-          value={group?.id ?? NONE}
-          onPick={(id) => choose({ group: id })}
-          disabled={!groupOptions.length}
-        />
-        <Picker
-          label="Decision"
-          options={decisionOptions}
-          value={decision ?? NONE}
-          onPick={(id) => choose({ decision: id })}
-          disabled={!decisionOptions.length}
-          wide
-        />
-        <div className={styles.toggle} role="group" aria-label="Values in">
-          <span className={styles.fieldLabel}>Values in</span>
-          <span className={styles.toggleButtons}>
-            {(["light", "dark"] as Mode[]).map((m) => (
-              <button
-                key={m}
-                type="button"
-                className={`${styles.toggleButton} ${m === mode ? styles.toggleOn : ""}`}
-                aria-pressed={m === mode}
-                onClick={() => onMode(m)}
-              >
-                {m === "light" ? "Light" : "Dark"}
-              </button>
-            ))}
-          </span>
-        </div>
-      </div>
-      {!step ? (
-        <div className={styles.empty}>
-          <p>Pick a hue and a step to see the decisions that use that color and the components where you see them.</p>
-        </div>
-      ) : (
-        <div className={styles.canvas}>
-          <ReactFlow
-            nodes={drawn.nodes}
-            edges={drawn.edges}
-            nodeTypes={nodeTypes}
-            nodesDraggable={false}
-            nodesConnectable={false}
-            nodesFocusable={false}
-            edgesFocusable={false}
-            elementsSelectable={false}
-            minZoom={0.2}
-            maxZoom={1.5}
-            panOnScroll
-            zoomOnScroll={false}
-            proOptions={{ hideAttribution: true }}
-            aria-label={`Token map: ${plainName(step)}`}
-          >
-            <Background gap={24} size={1} />
-            <Panel position="bottom-left" className={styles.legend}>
-              <p>Solid lines: the value and what uses it.</p>
-              <p>Dashed lines: the answers behind a decision.</p>
-            </Panel>
-            <Controls showInteractive={false} position="top-right" orientation="horizontal" className={styles.controls} />
-            <MiniMap position="bottom-right" pannable zoomable className={styles.minimap} style={{ width: 140, height: 90 }} ariaLabel="Overview of the map" />
-          </ReactFlow>
-        </div>
-      )}
+    <div className={styles.canvas} style={canvasStyle(isColor ? model.theme : map.modes.light.theme)}>
+      <ReactFlow
+        nodes={nodes}
+        onNodesChange={onNodesChange}
+        edges={graph.edges}
+        nodeTypes={nodeTypes}
+        onNodeClick={onNodeClick}
+        nodesConnectable={false}
+        elementsSelectable
+        nodesDraggable
+        nodeDragThreshold={10}
+        nodeClickDistance={10}
+        paneClickDistance={10}
+        panOnScroll
+        minZoom={0.2}
+        proOptions={{ hideAttribution: true }}
+        aria-label={`Token map of ${map.name}`}
+      >
+        <Background gap={24} size={1} />
+        <Controls showInteractive={false} position="bottom-left" className={styles.controls} />
+        {isColor && (
+          <Panel position="top-right">
+            <div className={styles.toggleButtons} role="group" aria-label="Values in">
+              {(["light", "dark"] as const).map((m) => (
+                <button
+                  key={m}
+                  type="button"
+                  className={`${styles.toggleButton} ${mode === m ? styles.toggleOn : ""}`}
+                  aria-pressed={mode === m}
+                  onClick={() => onMode(m)}
+                >
+                  {m === "light" ? "Light" : "Dark"}
+                </button>
+              ))}
+            </div>
+          </Panel>
+        )}
+      </ReactFlow>
     </div>
   );
 }
@@ -593,7 +701,7 @@ export default function TokenMapView({ scheme, files }: Props) {
         <p>Reload the page. If it fails again, run pnpm --dir docs generate and build the docs again.</p>
       </div>
     );
-  if (load.map.scheme !== scheme || !load.map.reasons)
+  if (load.map.scheme !== scheme || !load.map.modes)
     return (
       <div className={styles.error} role="alert">
         <p>The map file is not this page's map. Run pnpm --dir docs generate and build the docs again.</p>
@@ -601,7 +709,9 @@ export default function TokenMapView({ scheme, files }: Props) {
     );
   return (
     <ReactFlowProvider>
-      <MapView map={load.map} mode={mode} onMode={setMode} brand={brand} />
+      <React.Fragment key={load.map.brand}>
+        <MapView map={load.map} mode={mode} onMode={setMode} />
+      </React.Fragment>
     </ReactFlowProvider>
   );
 }
