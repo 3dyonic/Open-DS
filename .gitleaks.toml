@@ -1,0 +1,16 @@
+# gitleaks configuration. The default rules apply, with one narrow exception.
+# The docs' data files hold design token paths under the key "token", such as
+# "token": "border-width.2". The generic-api-key rule reads them as secrets.
+# The exception allows only a dotted lowercase token path, and only in docs/docs and docs/static JSON.
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "Design token paths in the docs' data files"
+condition = "AND"
+paths = ['''^docs/(docs|static)/.+\.json$''']
+regexTarget = "secret"
+regexes = ['''^[a-z][a-z0-9-]*(\.[a-z0-9@-]+)+$''']
