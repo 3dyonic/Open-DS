@@ -1,0 +1,64 @@
+{
+ "specimen": {
+  "theming/default/corners": {
+   "title": "Corners",
+   "items": [
+    {
+     "draw": {
+      "radius": "0.125rem"
+     },
+     "lines": [
+      "control · 0.125rem (2px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0rem"
+     },
+     "lines": [
+      "badge · 0rem (0px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0rem"
+     },
+     "lines": [
+      "option · 0rem (0px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.25rem"
+     },
+     "lines": [
+      "container · 0.25rem (4px)"
+     ]
+    }
+   ]
+  },
+  "theming/default/type": {
+   "title": "Type families",
+   "items": [
+    {
+     "font": "IBM Plex Sans",
+     "lines": [
+      "Display, Title, Heading, Body, Label, Caption"
+     ],
+     "sample": [
+      "IBM Plex Sans"
+     ]
+    },
+    {
+     "font": "IBM Plex Mono",
+     "lines": [
+      "Data"
+     ],
+     "sample": [
+      "IBM Plex Mono"
+     ]
+    }
+   ]
+  }
+ }
+}

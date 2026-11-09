@@ -1,7 +1,8 @@
 /**
- * Preview: a live frame, such as a Storybook story, in light and dark, with a caption and links.
- * Built from the scheme's Card and Tabs, used through their props only. The docs generator writes
- * the frames (_composites.json); the page holds one line: ::preview{id="button/live"}
+ * Preview: a live frame, such as a Storybook story, with a caption and links. With a dark frame it
+ * shows Light and Dark tabs. Built from the scheme's Card and Tabs, used through their props only.
+ * The docs generator writes the frames (<page>.json beside the page); the page holds one line:
+ * ::preview{id="button/live"}
  */
 import * as React from "react";
 import { Card, CardContent, CardFooter } from "@open-ds/ui/components/card";
@@ -16,9 +17,9 @@ export type PreviewData = {
   title: string;
   // Shown behind the frame until it loads, so a reader knows what to start.
   wait: string;
-  frames: { light: string; dark: string };
-  caption: string;
-  links: { text: string; href: string }[];
+  frames: { light: string; dark?: string };
+  caption?: string;
+  links?: { text: string; href: string }[];
 };
 
 function Frame({
@@ -46,36 +47,59 @@ function Frame({
 }
 
 export default function Preview({ data }: { data: PreviewData }) {
+  const { dark } = data.frames;
+  const links = data.links ?? [];
   return (
     <div data-composite="preview">
       <Card>
-        <Tabs defaultValue="light">
-          <TabsList>
-            <TabsTrigger value="light">Light</TabsTrigger>
-            <TabsTrigger value="dark">Dark</TabsTrigger>
-          </TabsList>
-          {(["light", "dark"] as const).map((mode) => (
-            <TabsContent key={mode} value={mode}>
+        {dark ? (
+          <Tabs defaultValue="light">
+            <TabsList>
+              <TabsTrigger value="light">Light</TabsTrigger>
+              <TabsTrigger value="dark">Dark</TabsTrigger>
+            </TabsList>
+            <TabsContent value="light">
               <CardContent>
                 <Frame
-                  src={data.frames[mode]}
-                  title={`${data.title}, ${mode}`}
+                  src={data.frames.light}
+                  title={`${data.title}, light`}
                   wait={data.wait}
                 />
               </CardContent>
             </TabsContent>
-          ))}
-        </Tabs>
-        <CardFooter>
-          <span className="text-[length:var(--type-caption-font-size)]">
-            {data.caption}
-          </span>
-          {data.links.map((l) => (
-            <a key={l.href} href={l.href}>
-              {l.text}
-            </a>
-          ))}
-        </CardFooter>
+            <TabsContent value="dark">
+              <CardContent>
+                <Frame
+                  src={dark}
+                  title={`${data.title}, dark`}
+                  wait={data.wait}
+                />
+              </CardContent>
+            </TabsContent>
+          </Tabs>
+        ) : (
+          <CardContent>
+            <Frame
+              src={data.frames.light}
+              title={data.title}
+              wait={data.wait}
+            />
+          </CardContent>
+        )}
+        {(data.caption || links.length > 0) && (
+          <CardFooter>
+            {data.caption && (
+              <span className="text-[length:var(--type-caption-font-size)]">
+                {data.caption}
+              </span>
+            )}
+            {links.map((l) => (
+              <a key={l.href} href={l.href}>
+                {l.text}
+              </a>
+            ))}
+          </CardFooter>
+        )}
       </Card>
     </div>
   );

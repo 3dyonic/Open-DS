@@ -1,0 +1,65 @@
+{
+ "specimen": {
+  "type/fonts": {
+   "items": [
+    {
+     "font": "'Bricolage Grotesque', system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.bricolage-grotesque",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 700,
+       "name": "Bold"
+      },
+      {
+       "weight": 800,
+       "name": "800"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family"
+      ]
+     },
+     "foot": "\"Bricolage Grotesque\", system-ui, sans-serif"
+    },
+    {
+     "font": "'DM Sans', system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.dm-sans",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 700,
+       "name": "Bold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family",
+       "type.data.font-family"
+      ]
+     },
+     "foot": "\"DM Sans\", system-ui, sans-serif"
+    }
+   ]
+  }
+ }
+}

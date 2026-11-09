@@ -1,0 +1,65 @@
+{
+ "specimen": {
+  "type/fonts": {
+   "items": [
+    {
+     "font": "'Source Serif 4', Georgia, serif",
+     "big": "Aa",
+     "token": "font.family.source-serif-4",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 600,
+       "name": "Semibold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.data.font-family"
+      ]
+     },
+     "foot": "\"Source Serif 4\", Georgia, serif"
+    },
+    {
+     "font": "Inter, system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.inter",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 600,
+       "name": "Semibold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.label.font-family",
+       "type.caption.font-family"
+      ]
+     },
+     "foot": "Inter, system-ui, sans-serif"
+    }
+   ]
+  }
+ }
+}

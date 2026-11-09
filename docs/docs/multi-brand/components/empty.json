@@ -14,6 +14,20 @@
      "href": "/storybook/?path=/docs/components-empty--docs"
     }
    ]
+  },
+  "empty/variant/default": {
+   "title": "Empty default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-empty--playground&viewMode=story&globals=scheme:multi-brand--aster;mode:light&args=variant:default"
+   }
+  },
+  "empty/variant/icon": {
+   "title": "Empty icon",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-empty--playground&viewMode=story&globals=scheme:multi-brand--aster;mode:light&args=variant:icon"
+   }
   }
  },
  "card-grid": {

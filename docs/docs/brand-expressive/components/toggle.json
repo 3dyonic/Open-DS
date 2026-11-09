@@ -14,6 +14,41 @@
      "href": "/storybook/?path=/docs/components-toggle--docs"
     }
    ]
+  },
+  "toggle/variant/default": {
+   "title": "Toggle default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:default"
+   }
+  },
+  "toggle/variant/outline": {
+   "title": "Toggle outline",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:outline"
+   }
+  },
+  "toggle/size/default": {
+   "title": "Toggle default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:default"
+   }
+  },
+  "toggle/size/sm": {
+   "title": "Toggle sm",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:sm"
+   }
+  },
+  "toggle/size/lg": {
+   "title": "Toggle lg",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:lg"
+   }
   }
  },
  "card-grid": {

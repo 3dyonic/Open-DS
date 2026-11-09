@@ -1,0 +1,55 @@
+{
+ "specimen": {
+  "theming/default/corners": {
+   "title": "Corners",
+   "items": [
+    {
+     "draw": {
+      "radius": "0.375rem"
+     },
+     "lines": [
+      "control · 0.375rem (6px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.25rem"
+     },
+     "lines": [
+      "badge · 0.25rem (4px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.25rem"
+     },
+     "lines": [
+      "option · 0.25rem (4px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.5rem"
+     },
+     "lines": [
+      "container · 0.5rem (8px)"
+     ]
+    }
+   ]
+  },
+  "theming/default/type": {
+   "title": "Type families",
+   "items": [
+    {
+     "font": "Atkinson Hyperlegible",
+     "lines": [
+      "Display, Title, Heading, Body, Label, Caption, Data"
+     ],
+     "sample": [
+      "Atkinson Hyperlegible"
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "specimen": {
+  "theming/default/corners": {
+   "title": "Corners",
+   "items": [
+    {
+     "draw": {
+      "radius": "0.5rem"
+     },
+     "lines": [
+      "control · 0.5rem (8px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "9999px"
+     },
+     "lines": [
+      "badge · 9999px"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.5rem"
+     },
+     "lines": [
+      "option · 0.5rem (8px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.75rem"
+     },
+     "lines": [
+      "container · 0.75rem (12px)"
+     ]
+    }
+   ]
+  },
+  "theming/default/type": {
+   "title": "Type families",
+   "items": [
+    {
+     "font": "Source Serif 4",
+     "lines": [
+      "Display, Title, Heading, Body, Data"
+     ],
+     "sample": [
+      "Source Serif 4"
+     ]
+    },
+    {
+     "font": "Inter",
+     "lines": [
+      "Label, Caption"
+     ],
+     "sample": [
+      "Inter"
+     ]
+    }
+   ]
+  }
+ }
+}

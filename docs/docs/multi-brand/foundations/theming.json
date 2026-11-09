@@ -1,0 +1,157 @@
+{
+ "specimen": {
+  "theming/aster/corners": {
+   "title": "Corners",
+   "items": [
+    {
+     "draw": {
+      "radius": "0.25rem"
+     },
+     "lines": [
+      "control · 0.25rem (4px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.25rem"
+     },
+     "lines": [
+      "badge · 0.25rem (4px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.25rem"
+     },
+     "lines": [
+      "option · 0.25rem (4px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.5rem"
+     },
+     "lines": [
+      "container · 0.5rem (8px)"
+     ]
+    }
+   ]
+  },
+  "theming/aster/type": {
+   "title": "Type families",
+   "items": [
+    {
+     "font": "Inter",
+     "lines": [
+      "Display, Title, Heading, Body, Label, Caption, Data"
+     ],
+     "sample": [
+      "Inter"
+     ]
+    }
+   ]
+  },
+  "theming/birch/corners": {
+   "title": "Corners",
+   "items": [
+    {
+     "draw": {
+      "radius": "0.75rem"
+     },
+     "lines": [
+      "control · 0.75rem (12px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "9999px"
+     },
+     "lines": [
+      "badge · 9999px"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "0.75rem"
+     },
+     "lines": [
+      "option · 0.75rem (12px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "1rem"
+     },
+     "lines": [
+      "container · 1rem (16px)"
+     ]
+    }
+   ]
+  },
+  "theming/birch/type": {
+   "title": "Type families",
+   "items": [
+    {
+     "font": "Plus Jakarta Sans",
+     "lines": [
+      "Display, Title, Heading, Body, Label, Caption, Data"
+     ],
+     "sample": [
+      "Plus Jakarta Sans"
+     ]
+    }
+   ]
+  },
+  "theming/coral/corners": {
+   "title": "Corners",
+   "items": [
+    {
+     "draw": {
+      "radius": "9999px"
+     },
+     "lines": [
+      "control · 9999px"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "9999px"
+     },
+     "lines": [
+      "badge · 9999px"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "1rem"
+     },
+     "lines": [
+      "option · 1rem (16px)"
+     ]
+    },
+    {
+     "draw": {
+      "radius": "1.25rem"
+     },
+     "lines": [
+      "container · 1.25rem (20px)"
+     ]
+    }
+   ]
+  },
+  "theming/coral/type": {
+   "title": "Type families",
+   "items": [
+    {
+     "font": "Poppins",
+     "lines": [
+      "Display, Title, Heading, Body, Label, Caption, Data"
+     ],
+     "sample": [
+      "Poppins"
+     ]
+    }
+   ]
+  }
+ }
+}

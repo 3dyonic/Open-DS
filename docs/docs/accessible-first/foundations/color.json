@@ -1,0 +1,96 @@
+{
+ "specimen": {
+  "color/key/default": {
+   "items": [
+    {
+     "draw": {
+      "color": "var(--color-action-primary)"
+     },
+     "lines": [
+      "Action",
+      "action.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-text-primary)"
+     },
+     "lines": [
+      "Text",
+      "text.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-success)"
+     },
+     "lines": [
+      "Success",
+      "status.success"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-warning)"
+     },
+     "lines": [
+      "Warning",
+      "status.warning"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-danger)"
+     },
+     "lines": [
+      "Danger",
+      "status.danger"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-info)"
+     },
+     "lines": [
+      "Info",
+      "status.info"
+     ]
+    }
+   ]
+  },
+  "color/status/default": {
+   "items": [
+    {
+     "label": {
+      "text": "Completed",
+      "tone": "success"
+     },
+     "lines": [
+      "Completed. This step is done.",
+      "light 4.7:1 dark 6.8:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Check your answers",
+      "tone": "warning"
+     },
+     "lines": [
+      "Check your answers. Something needs a second look before you continue.",
+      "light 5.2:1 dark 8.2:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Upload failed",
+      "tone": "danger"
+     },
+     "lines": [
+      "Upload failed. The file did not reach us and must be sent again.",
+      "light 6.7:1 dark 6.6:1"
+     ]
+    }
+   ]
+  }
+ }
+}

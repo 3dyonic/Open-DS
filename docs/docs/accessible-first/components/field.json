@@ -14,6 +14,27 @@
      "href": "/storybook/?path=/docs/components-field--docs"
     }
    ]
+  },
+  "field/orientation/vertical": {
+   "title": "Field vertical",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=orientation:vertical"
+   }
+  },
+  "field/orientation/horizontal": {
+   "title": "Field horizontal",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=orientation:horizontal"
+   }
+  },
+  "field/orientation/responsive": {
+   "title": "Field responsive",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=orientation:responsive"
+   }
   }
  },
  "card-grid": {

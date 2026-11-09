@@ -1,0 +1,65 @@
+{
+ "specimen": {
+  "type/fonts": {
+   "items": [
+    {
+     "font": "'IBM Plex Sans', system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.ibm-plex-sans",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 500,
+       "name": "Medium"
+      },
+      {
+       "weight": 600,
+       "name": "Semibold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family"
+      ]
+     },
+     "foot": "\"IBM Plex Sans\", system-ui, sans-serif"
+    },
+    {
+     "font": "'IBM Plex Mono', ui-monospace, monospace",
+     "big": "Aa",
+     "token": "font.family.ibm-plex-mono",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.data.font-family"
+      ]
+     },
+     "foot": "\"IBM Plex Mono\", ui-monospace, monospace"
+    }
+   ]
+  }
+ }
+}

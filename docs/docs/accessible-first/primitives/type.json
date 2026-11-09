@@ -1,0 +1,40 @@
+{
+ "specimen": {
+  "type/fonts": {
+   "items": [
+    {
+     "font": "'Atkinson Hyperlegible', Verdana, sans-serif",
+     "big": "Aa",
+     "token": "font.family.atkinson-hyperlegible",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 700,
+       "name": "Bold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family",
+       "type.data.font-family"
+      ]
+     },
+     "foot": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
+    }
+   ]
+  }
+ }
+}

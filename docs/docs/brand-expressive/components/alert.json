@@ -14,6 +14,20 @@
      "href": "/storybook/?path=/docs/components-alert--docs"
     }
    ]
+  },
+  "alert/variant/default": {
+   "title": "Alert default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:default"
+   }
+  },
+  "alert/variant/destructive": {
+   "title": "Alert destructive",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:destructive"
+   }
   }
  },
  "card-grid": {

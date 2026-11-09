@@ -1,0 +1,116 @@
+{
+ "specimen": {
+  "type/fonts": {
+   "items": [
+    {
+     "font": "Inter, system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.inter",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 600,
+       "name": "Semibold"
+      },
+      {
+       "weight": 700,
+       "name": "Bold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family",
+       "type.data.font-family"
+      ]
+     },
+     "foot": "Inter, system-ui, sans-serif"
+    },
+    {
+     "font": "'Plus Jakarta Sans', system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.plus-jakarta-sans",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 600,
+       "name": "Semibold"
+      },
+      {
+       "weight": 700,
+       "name": "Bold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family",
+       "type.data.font-family"
+      ]
+     },
+     "foot": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+    },
+    {
+     "font": "Poppins, system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.poppins",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 600,
+       "name": "Semibold"
+      },
+      {
+       "weight": 700,
+       "name": "Bold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family",
+       "type.data.font-family"
+      ]
+     },
+     "foot": "Poppins, system-ui, sans-serif"
+    }
+   ]
+  }
+ }
+}

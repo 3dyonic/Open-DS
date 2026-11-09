@@ -1,0 +1,280 @@
+{
+ "specimen": {
+  "color/key/aster": {
+   "items": [
+    {
+     "draw": {
+      "color": "var(--color-action-primary)"
+     },
+     "lines": [
+      "Action",
+      "action.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-text-primary)"
+     },
+     "lines": [
+      "Text",
+      "text.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-success)"
+     },
+     "lines": [
+      "Success",
+      "status.success"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-warning)"
+     },
+     "lines": [
+      "Warning",
+      "status.warning"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-danger)"
+     },
+     "lines": [
+      "Danger",
+      "status.danger"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-info)"
+     },
+     "lines": [
+      "Info",
+      "status.info"
+     ]
+    }
+   ]
+  },
+  "color/key/birch": {
+   "items": [
+    {
+     "draw": {
+      "color": "var(--color-action-primary)"
+     },
+     "lines": [
+      "Action",
+      "action.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-text-primary)"
+     },
+     "lines": [
+      "Text",
+      "text.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-success)"
+     },
+     "lines": [
+      "Success",
+      "status.success"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-warning)"
+     },
+     "lines": [
+      "Warning",
+      "status.warning"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-danger)"
+     },
+     "lines": [
+      "Danger",
+      "status.danger"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-info)"
+     },
+     "lines": [
+      "Info",
+      "status.info"
+     ]
+    }
+   ]
+  },
+  "color/key/coral": {
+   "items": [
+    {
+     "draw": {
+      "color": "var(--color-action-primary)"
+     },
+     "lines": [
+      "Action",
+      "action.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-text-primary)"
+     },
+     "lines": [
+      "Text",
+      "text.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-success)"
+     },
+     "lines": [
+      "Success",
+      "status.success"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-warning)"
+     },
+     "lines": [
+      "Warning",
+      "status.warning"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-danger)"
+     },
+     "lines": [
+      "Danger",
+      "status.danger"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-info)"
+     },
+     "lines": [
+      "Info",
+      "status.info"
+     ]
+    }
+   ]
+  },
+  "color/status/aster": {
+   "items": [
+    {
+     "label": {
+      "text": "Active",
+      "tone": "success"
+     },
+     "lines": [
+      "Active. The plan is paid and running.",
+      "aster-light 4.7:1 aster-dark 7.1:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Renews in 3 days",
+      "tone": "info"
+     },
+     "lines": [
+      "Renews in 3 days. A payment is coming: news, nothing has gone wrong.",
+      "aster-light 7.8:1 aster-dark 7.5:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Card declined",
+      "tone": "danger"
+     },
+     "lines": [
+      "Card declined. The payment failed, so the plan will stop.",
+      "aster-light 4.4:1 aster-dark 6.9:1"
+     ]
+    }
+   ]
+  },
+  "color/status/birch": {
+   "items": [
+    {
+     "label": {
+      "text": "Active",
+      "tone": "success"
+     },
+     "lines": [
+      "Active. The plan is paid and running.",
+      "birch-light 4.7:1 birch-dark 7.1:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Renews in 3 days",
+      "tone": "info"
+     },
+     "lines": [
+      "Renews in 3 days. A payment is coming: news, nothing has gone wrong.",
+      "birch-light 7.8:1 birch-dark 7.5:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Card declined",
+      "tone": "danger"
+     },
+     "lines": [
+      "Card declined. The payment failed, so the plan will stop.",
+      "birch-light 4.4:1 birch-dark 6.9:1"
+     ]
+    }
+   ]
+  },
+  "color/status/coral": {
+   "items": [
+    {
+     "label": {
+      "text": "Active",
+      "tone": "success"
+     },
+     "lines": [
+      "Active. The plan is paid and running.",
+      "coral-light 4.7:1 coral-dark 7.1:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Renews in 3 days",
+      "tone": "info"
+     },
+     "lines": [
+      "Renews in 3 days. A payment is coming: news, nothing has gone wrong.",
+      "coral-light 7.8:1 coral-dark 7.5:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Card declined",
+      "tone": "danger"
+     },
+     "lines": [
+      "Card declined. The payment failed, so the plan will stop.",
+      "coral-light 4.4:1 coral-dark 6.9:1"
+     ]
+    }
+   ]
+  }
+ }
+}

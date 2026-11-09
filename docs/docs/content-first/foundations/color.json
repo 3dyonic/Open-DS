@@ -1,0 +1,86 @@
+{
+ "specimen": {
+  "color/key/default": {
+   "items": [
+    {
+     "draw": {
+      "color": "var(--color-action-primary)"
+     },
+     "lines": [
+      "Action",
+      "action.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-text-primary)"
+     },
+     "lines": [
+      "Text",
+      "text.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-success)"
+     },
+     "lines": [
+      "Success",
+      "status.success"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-warning)"
+     },
+     "lines": [
+      "Warning",
+      "status.warning"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-danger)"
+     },
+     "lines": [
+      "Danger",
+      "status.danger"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-info)"
+     },
+     "lines": [
+      "Info",
+      "status.info"
+     ]
+    }
+   ]
+  },
+  "color/status/default": {
+   "items": [
+    {
+     "label": {
+      "text": "Finished",
+      "tone": "success"
+     },
+     "lines": [
+      "Finished. You read it to the end.",
+      "light 4.7:1 dark 6.2:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Out of date",
+      "tone": "warning"
+     },
+     "lines": [
+      "Out of date. The facts may have changed since it was written.",
+      "light 5.2:1 dark 7.5:1"
+     ]
+    }
+   ]
+  }
+ }
+}

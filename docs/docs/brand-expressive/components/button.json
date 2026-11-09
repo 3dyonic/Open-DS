@@ -14,6 +14,62 @@
      "href": "/storybook/?path=/docs/components-button--docs"
     }
    ]
+  },
+  "button/variant/primary": {
+   "title": "Button primary",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:primary"
+   }
+  },
+  "button/variant/secondary": {
+   "title": "Button secondary",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:secondary"
+   }
+  },
+  "button/variant/danger": {
+   "title": "Button danger",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:danger"
+   }
+  },
+  "button/variant/ghost": {
+   "title": "Button ghost",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=variant:ghost"
+   }
+  },
+  "button/size/default": {
+   "title": "Button default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:default"
+   }
+  },
+  "button/size/compact": {
+   "title": "Button compact",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:compact"
+   }
+  },
+  "button/size/icon": {
+   "title": "Button icon",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:icon"
+   }
+  },
+  "button/size/large": {
+   "title": "Button large",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:large"
+   }
   }
  },
  "card-grid": {

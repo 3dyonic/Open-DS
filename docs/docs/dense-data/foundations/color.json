@@ -1,0 +1,106 @@
+{
+ "specimen": {
+  "color/key/default": {
+   "items": [
+    {
+     "draw": {
+      "color": "var(--color-action-primary)"
+     },
+     "lines": [
+      "Action",
+      "action.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-text-primary)"
+     },
+     "lines": [
+      "Text",
+      "text.primary"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-success)"
+     },
+     "lines": [
+      "Success",
+      "status.success"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-warning)"
+     },
+     "lines": [
+      "Warning",
+      "status.warning"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-danger)"
+     },
+     "lines": [
+      "Danger",
+      "status.danger"
+     ]
+    },
+    {
+     "draw": {
+      "color": "var(--color-status-info)"
+     },
+     "lines": [
+      "Info",
+      "status.info"
+     ]
+    }
+   ]
+  },
+  "color/status/default": {
+   "items": [
+    {
+     "label": {
+      "text": "Investigating",
+      "tone": "info"
+     },
+     "lines": [
+      "Investigating. An analyst is on it: news, nothing for you to act on.",
+      "light 7.8:1 dark 6.6:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Escalated",
+      "tone": "warning"
+     },
+     "lines": [
+      "Escalated. Needs a senior analyst soon, still containable.",
+      "light 5.2:1 dark 7.5:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Breach confirmed",
+      "tone": "danger"
+     },
+     "lines": [
+      "Breach confirmed. Data left or an account was taken over: a real loss.",
+      "light 4.4:1 dark 6.1:1"
+     ]
+    },
+    {
+     "label": {
+      "text": "Resolved",
+      "tone": "success"
+     },
+     "lines": [
+      "Resolved. Contained and closed.",
+      "light 4.7:1 dark 6.2:1"
+     ]
+    }
+   ]
+  }
+ }
+}

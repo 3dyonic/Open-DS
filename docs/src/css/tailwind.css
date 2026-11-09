@@ -18,7 +18,7 @@
 @source not inline("container");
 
 /* The ui components expect Tailwind's reset, which the docs leave out. Inside a composite only, the
-   few base rules they rely on put the browser's own button and list styles back to none. */
+   few base rules they rely on put the browser's own button, paragraph and list spacing back to none. */
 @layer base {
   [data-composite] button {
     margin: 0;
@@ -29,7 +29,10 @@
     font: inherit;
     cursor: pointer;
   }
-  [data-composite] :where(ul, ol) {
-    margin: 0;
-  }
+}
+
+/* Inside a composite the Card spaces its contents, so paragraphs and lists add no margin. Outside a
+   layer, because the docs' own paragraph margins are outside one too. */
+[data-composite] :is(p, ul, ol) {
+  margin: 0;
 }

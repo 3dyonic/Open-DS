@@ -2503,6 +2503,34 @@ export const CHECKS = {
         : ok("no docs page or data file holds a local address");
     },
   },
+  // The docs pages are semantic Markdown (OD-284): visuals are directives, and their data sits in
+  // <page>.json beside them. Every HTML tag left in a page counts; the count only goes down, to zero.
+  "docs-no-html": {
+    requires: ["docs/docs", "harness/docs-html-baseline.json"],
+    run: (c) => {
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${dir}/${e.name}`) : e.name.endsWith(".md") ? [`${dir}/${e.name}`] : [],
+        );
+      const tags = (text) =>
+        text
+          .replace(/^---\n[\s\S]*?\n---\n/, "")
+          .replace(/```[\s\S]*?```/g, "")
+          .replace(/`[^`\n]*`/g, "")
+          .match(/<\/?[a-zA-Z][^>]*>|<!--/g)?.length ?? 0;
+      const pages = walk("docs/docs").map((f) => [f, tags(c.read(f))]);
+      const total = pages.reduce((a, [, n]) => a + n, 0);
+      const clean = pages.filter(([, n]) => !n).length;
+      const { tags: baseline } = c.json("harness/docs-html-baseline.json");
+      if (total > baseline)
+        return bad(`${total} HTML tags in the docs pages, up from ${baseline}; write a directive and its data instead`);
+      return total
+        ? ok(
+            `${total} HTML tags left in the docs pages (baseline ${baseline}); ${clean} of ${pages.length} pages have none`,
+          )
+        : ok(`no HTML in the ${pages.length} docs pages`);
+    },
+  },
   "docs-docusaurus": {
     requires: ["docs/package.json"],
     run: (c) =>
@@ -2563,10 +2591,10 @@ export const CHECKS = {
         const visual = [
           ["index.md", "odv-hero"],
           ["index.md", "odv-tile"],
-          ["foundations/color.md", "odv-band"],
+          ["foundations/color.md", '::specimen{id="color/key/'],
           ["foundations/color.md", "odv-stack"],
           ["primitives/color.md", "odv-scale"],
-          ["components/button.md", "odv-variant"],
+          ["components/button.md", ":::panel{"],
           ["components/button.md", "::reason-chain{"],
           ["components/button.md", "::token-table{"],
         ];

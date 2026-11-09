@@ -4,9 +4,12 @@ import useBrokenLinks from "@docusaurus/useBrokenLinks";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
 import Intro from "@open-ds/doc-composites/Intro";
+import Grid from "@open-ds/doc-composites/Grid";
 import Label from "@open-ds/doc-composites/Label";
+import Panel from "@open-ds/doc-composites/Panel";
 import Preview from "@open-ds/doc-composites/Preview";
 import ReasonChain from "@open-ds/doc-composites/ReasonChain";
+import Specimen from "@open-ds/doc-composites/Specimen";
 import TokenTable from "@open-ds/doc-composites/TokenTable";
 
 // The pages link to sections by id: a "Because" chip opens the answer card below it (#why-...).
@@ -36,9 +39,12 @@ export default {
   ...MDXComponents,
   section: Section,
   CardGrid,
+  Grid,
+  Panel,
   Intro: RobotIntro,
   Label,
   Preview,
   ReasonChain: LinkedReasonChain,
+  Specimen,
   TokenTable,
 };

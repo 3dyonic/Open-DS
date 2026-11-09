@@ -14,6 +14,41 @@
      "href": "/storybook/?path=/docs/components-badge--docs"
     }
    ]
+  },
+  "badge/tone/neutral": {
+   "title": "Badge neutral",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:neutral"
+   }
+  },
+  "badge/tone/info": {
+   "title": "Badge info",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:info"
+   }
+  },
+  "badge/tone/success": {
+   "title": "Badge success",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:success"
+   }
+  },
+  "badge/tone/warning": {
+   "title": "Badge warning",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:warning"
+   }
+  },
+  "badge/tone/danger": {
+   "title": "Badge danger",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:danger"
+   }
   }
  },
  "card-grid": {

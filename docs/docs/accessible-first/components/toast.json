@@ -14,6 +14,27 @@
      "href": "/storybook/?path=/docs/components-toast--docs"
     }
    ]
+  },
+  "toast/tone/neutral": {
+   "title": "Toast neutral",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toast--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:neutral"
+   }
+  },
+  "toast/tone/success": {
+   "title": "Toast success",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toast--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:success"
+   }
+  },
+  "toast/tone/danger": {
+   "title": "Toast danger",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-toast--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=tone:danger"
+   }
   }
  },
  "card-grid": {

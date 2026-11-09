@@ -14,6 +14,34 @@
      "href": "/storybook/?path=/docs/components-input-group--docs"
     }
    ]
+  },
+  "input-group/align/inline-start": {
+   "title": "Input group inline-start",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=align:inline-start"
+   }
+  },
+  "input-group/align/inline-end": {
+   "title": "Input group inline-end",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=align:inline-end"
+   }
+  },
+  "input-group/align/block-start": {
+   "title": "Input group block-start",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=align:block-start"
+   }
+  },
+  "input-group/align/block-end": {
+   "title": "Input group block-end",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=align:block-end"
+   }
   }
  },
  "card-grid": {
