@@ -23,6 +23,9 @@ import SurfaceStack from "@open-ds/doc-composites/SurfaceStack";
 import TokenTable from "@open-ds/doc-composites/TokenTable";
 import TokenSwatches from "@open-ds/doc-composites/TokenSwatches";
 import TypeRoles from "@open-ds/doc-composites/TypeRoles";
+import Steps from "@open-ds/doc-composites/Steps";
+import DecisionTree from "@open-ds/doc-composites/DecisionTree";
+import DecisionAnswer from "@open-ds/doc-composites/DecisionAnswer";
 
 // The pages link to sections by id: a "Because" chip opens the answer card below it (#why-...).
 // Docusaurus only registers headings as link targets, so it reported those links as broken though
@@ -108,4 +111,7 @@ export default {
   TokenTable,
   TokenSwatches,
   TypeRoles,
+  Steps,
+  DecisionTree,
+  DecisionAnswer,
 };

@@ -1048,12 +1048,6 @@ export function docsPages(
   // comparison with other schemes. Its section menu sits in the left sidebar
   // (_decision-menu.json, read by src/decisionMenu.ts) and opens only on this page.
   {
-    const he = (x) =>
-      String(x ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;");
     const sections = [
       ...g.reasons.map((r) => ({ ...r, group: "Reasons", scope: null })),
       ...g.scopes.map((r) => ({ ...r, group: "Scopes", scope: r.id })),
@@ -1098,100 +1092,45 @@ export function docsPages(
         ];
     const n = (q) => (made[q] ?? []).length;
     const total = (r) => r.questions.reduce((t, q) => t + n(q.id), 0);
-    // One icon per group title, the Lucide icons the Figma design uses.
-    const svg = (paths) =>
-      `<svg class="odv-kind-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
-    const KINDS = [
-      [
-        "Answer",
-        "Answers it led to",
-        svg(
-          '<path d="M5.26665 13.3333C6.53903 13.986 8.0027 14.1628 9.3939 13.8318C10.7851 13.5009 12.0123 12.6839 12.8545 11.5281C13.6966 10.3723 14.0983 8.9538 13.987 7.5281C13.8758 6.1024 13.259 4.7633 12.2479 3.75212C11.2367 2.74093 9.89757 2.12416 8.47187 2.01293C7.04617 1.90171 5.62763 2.30335 4.47186 3.14549C3.31609 3.98762 2.49911 5.21486 2.16813 6.60607C1.83715 7.99727 2.01394 9.46094 2.66665 10.7333L1.33331 14.6667L5.26665 13.3333Z"/>',
-        ),
-      ],
-      [
-        "Rule",
-        "Rules it sets",
-        svg(
-          '<path d="M10.6667 10.6667L12.6667 5.33334L14.6667 10.6667C14.0867 11.1 13.3867 11.3333 12.6667 11.3333C11.9467 11.3333 11.2467 11.1 10.6667 10.6667Z"/><path d="M1.33331 10.6667L3.33331 5.33334L5.33331 10.6667C4.75331 11.1 4.05331 11.3333 3.33331 11.3333C2.61331 11.3333 1.91331 11.1 1.33331 10.6667Z"/><path d="M4.66669 14H11.3334"/><path d="M8 2V14"/><path d="M2 4.66668H3.33333C4.66667 4.66668 6.66667 4.00001 8 3.33334C9.33333 4.00001 11.3333 4.66668 12.6667 4.66668H14"/>',
-        ),
-      ],
-      [
-        "Variant",
-        "Variants it picks",
-        svg(
-          '<path d="M10.3574 7.52867C10.2324 7.65369 10.1622 7.82322 10.1622 8C10.1622 8.17678 10.2324 8.34632 10.3574 8.47133L11.9414 10.056C12.0664 10.181 12.2359 10.2512 12.4127 10.2512C12.5895 10.2512 12.759 10.181 12.884 10.056L14.4687 8.47133C14.5937 8.34632 14.6639 8.17678 14.6639 8C14.6639 7.82322 14.5937 7.65369 14.4687 7.52867L12.884 5.944C12.759 5.81902 12.5895 5.74881 12.4127 5.74881C12.2359 5.74881 12.0664 5.81902 11.9414 5.944L10.3574 7.52867Z"/><path d="M1.53131 7.52867C1.40633 7.65369 1.33612 7.82322 1.33612 8C1.33612 8.17678 1.40633 8.34632 1.53131 8.47133L3.11598 10.056C3.241 10.181 3.41054 10.2512 3.58731 10.2512C3.76409 10.2512 3.93363 10.181 4.05864 10.056L5.64331 8.47133C5.76829 8.34632 5.8385 8.17678 5.8385 8C5.8385 7.82322 5.76829 7.65369 5.64331 7.52867L4.05864 5.944C3.93363 5.81902 3.76409 5.74881 3.58731 5.74881C3.41054 5.74881 3.241 5.81902 3.11598 5.944L1.53131 7.52867Z"/><path d="M5.944 11.9413C5.88201 12.0032 5.83284 12.0768 5.79929 12.1577C5.76574 12.2386 5.74847 12.3254 5.74847 12.413C5.74847 12.5006 5.76574 12.5874 5.79929 12.6683C5.83284 12.7492 5.88201 12.8227 5.944 12.8847L7.52867 14.4687C7.65368 14.5936 7.82322 14.6639 8 14.6639C8.17677 14.6639 8.34631 14.5936 8.47133 14.4687L10.056 12.8847C10.118 12.8227 10.1672 12.7492 10.2007 12.6683C10.2343 12.5874 10.2515 12.5006 10.2515 12.413C10.2515 12.3254 10.2343 12.2386 10.2007 12.1577C10.1672 12.0768 10.118 12.0032 10.056 11.9413L8.47133 10.3573C8.34631 10.2324 8.17677 10.1621 8 10.1621C7.82322 10.1621 7.65368 10.2324 7.52867 10.3573L5.944 11.9413Z"/><path d="M5.94397 3.11601C5.81899 3.24103 5.74878 3.41057 5.74878 3.58734C5.74878 3.76412 5.81899 3.93366 5.94397 4.05868L7.52864 5.64268C7.65366 5.76766 7.82319 5.83787 7.99997 5.83787C8.17675 5.83787 8.34628 5.76766 8.4713 5.64268L10.056 4.05868C10.181 3.93366 10.2512 3.76412 10.2512 3.58734C10.2512 3.41057 10.181 3.24103 10.056 3.11601L8.4713 1.53134C8.34628 1.40636 8.17675 1.33615 7.99997 1.33615C7.82319 1.33615 7.65366 1.40636 7.52864 1.53134L5.94397 3.11601Z"/>',
-        ),
-      ],
-    ];
-    // Lucide "brush" (24px grid), scaled to the 16px grid of the other kind icons.
-    KINDS.push([
-      "Pick",
-      "Theme picks it sets",
-      svg(
-        '<g transform="scale(0.6667)"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></g>',
-      ),
-    ]);
-    // Every answer in Markdown (OD-284): its label, why, what it weighs, what it came from and what
-    // it decided, under its question; the sections fold, one open at a time.
-    const pill = (q) => `:label[${esc(label(q))}]{tone="info"}`;
-    const item = (d) =>
-      `- ${esc(d.text)}${d.href && d.go ? ` [${esc(d.go)} →](${d.href})` : ""}`;
-    const decided = (q, r) => {
-      const all = made[q] ?? [];
-      if (!all.length)
-        return r.scope
-          ? `**What it decided**\n\nIt sets the values of the ${esc(r.title.toLowerCase())} tokens: [${esc(r.title)} →](foundations/${r.scope})`
-          : "";
-      return (
-        `**What it decided (${all.length})**\n\n` +
-        KINDS.map(([k, t]) => {
-          const list = all.filter((d) => d.kind === k);
-          return list.length
-            ? `*${esc(t)} (${list.length})*\n\n${list.map(item).join("\n")}`
-            : "";
-        })
-          .filter(Boolean)
-          .join("\n\n")
-      );
+    // One answer as the DecisionAnswer composite (OD-284): the question stays the page's heading.
+    const GROUP = { Answer: "answers", Rule: "rules", Variant: "variants", Pick: "picks" };
+    const answerData = (q, r) => {
+      const all = made[q.id] ?? [];
+      const a = answer(q.id);
+      const considered = a.considers ?? {};
+      const weighs = [...new Set((q.considers ?? []).map((k) => k.group))].map((gr) => ({
+        group: gr,
+        items: q.considers
+          .filter((k) => k.group === gr)
+          .map((k) => ({ label: k.label, text: considered[k.id] ?? "Not answered yet." })),
+      }));
+      return {
+        answer: label(q.id),
+        why: sentence(a.why),
+        ...(weighs.length && { weighs }),
+        because: (a.because ?? []).map((x) => lineOf[x]).filter(Boolean),
+        decided: {
+          groups: Object.entries(GROUP)
+            .map(([k, kind]) => ({
+              kind,
+              items: all
+                .filter((d) => d.kind === k)
+                .map((d) => ({
+                  text: d.text,
+                  ...(d.href && d.go && { link: { label: d.go, href: d.href } }),
+                })),
+            }))
+            .filter((x) => x.items.length),
+          ...(!all.length &&
+            r.scope && { values: { label: r.title, href: `foundations/${r.scope}` } }),
+        },
+      };
     };
-    const because = (q) => {
-      const b = answer(q).because ?? [];
-      return `**Because of**\n\n${b.length ? b.map((x) => `- ${esc(lineOf[x])}`).join("\n") : "Nothing before it. It's one of the first answers."}`;
+    const qa = (q, r) => {
+      const id = q.id.replace(/\./g, "-");
+      (compositeData["decision-answer"] ??= {})[id] = answerData(q, r);
+      return `#### ${esc(q.text)} {#${id}}\n\n::decision-answer{id="${id}"}`;
     };
-    // What the answer had to weigh, and this scheme's words for each (OD-245), in their groups.
-    const considers = (q) => {
-      if (!q.considers?.length) return "";
-      const a = answer(q.id).considers ?? {};
-      const groups = [...new Set(q.considers.map((k) => k.group))];
-      return (
-        `**What it weighs (${q.considers.length})**\n\n` +
-        groups
-          .map(
-            (gr) =>
-              `*${esc(gr)}*\n\n` +
-              q.considers
-                .filter((k) => k.group === gr)
-                .map(
-                  (k) =>
-                    `- **${esc(k.label)}.** ${esc(a[k.id] ?? "Not answered yet.")}`,
-                )
-                .join("\n"),
-          )
-          .join("\n\n")
-      );
-    };
-    const qa = (q, r) =>
-      [
-        `#### ${esc(q.text)} {#${q.id.replace(/\./g, "-")}}`,
-        pill(q.id),
-        `**Why**\n\n${esc(sentence(answer(q.id).why))}`,
-        considers(q),
-        because(q.id),
-        decided(q.id, r),
-      ]
-        .filter(Boolean)
-        .join("\n\n");
     // Where it starts: a simple process tree. The first answers (nothing before them), each later
     // answer under the first answer it came from, and at the leaves the foundation values they set.
     const reasons = scheme.answers
@@ -1213,9 +1152,13 @@ export function docsPages(
         /^-?[\d.]/.test(String(aliasChain(ix, k).value)),
       );
       const p = sized.find((k) => /\.body\./.test(k)) ?? sized[0] ?? all[0];
-      if (!p) return "";
+      if (!p) return {};
       const c = aliasChain(ix, p);
-      return ` \`${p}\`${c.hops.at(-1) ? ` \`${c.hops.at(-1)}\`` : ""}: ${esc(c.value)}`;
+      return {
+        token: p,
+        ...(c.hops.at(-1) && { primitive: c.hops.at(-1) }),
+        value: typeof c.value === "object" ? cssValue(c.value) : String(c.value),
+      };
     };
     const leaves = (q, depth) =>
       scheme.answers
@@ -1225,22 +1168,32 @@ export function docsPages(
             /\.values$/.test(a.question) &&
             (a.because ?? [])[0] === q,
         )
-        .map(
-          (a) =>
-            `${"  ".repeat(depth)}- ${pill(a.question)} ${esc(secOf[a.question].title.toLowerCase())} →${firstValue(secOf[a.question].scope)}`,
-        );
-    const branch = (q, depth = 0) => {
+        .map((a) => {
+          const sec = secOf[a.question];
+          return {
+            answer: label(a.question),
+            scope: {
+              title: sec.title.toLowerCase(),
+              href: `foundations/${sec.scope}`,
+              ...firstValue(sec.scope),
+            },
+          };
+        });
+    const branch = (q) => {
       const also = (answer(q).because ?? []).slice(1);
-      return [
-        `${"  ".repeat(depth)}- ${pill(q)} ${esc(qs[q].text)}${also.length ? `, also because **${also.map((b) => esc(label(b))).join(", ")}**` : ""}`,
-        ...(kids[q] ?? []).map((k) => branch(k, depth + 1)),
-        ...leaves(q, depth + 1),
-      ].join("\n");
+      const children = [...(kids[q] ?? []).map((k) => branch(k)), ...leaves(q)];
+      return {
+        answer: label(q),
+        question: qs[q].text,
+        ...(also.length && { also: also.map((b) => label(b)) }),
+        ...(children.length && { children }),
+      };
     };
     const roots = reasons.filter(
       (q) => !(answer(q).because ?? []).some((b) => reasons.includes(b)),
     );
-    const tree = roots.map((q) => branch(q)).join("\n");
+    (compositeData["decision-tree"] ??= {}).start = { roots: roots.map((q) => branch(q)) };
+    const tree = `::decision-tree{id="start"}`;
     // Every question: one fold per section, one open at a time (src/clientModules/scales.ts).
     const every = ["Reasons", "Scopes"]
       .map(
@@ -1270,15 +1223,10 @@ export function docsPages(
       `- Open one section when you wonder why.${esc(example)}\n` +
       `- Come in from a component page. Each one links here, to the answers that shaped it.\n\n` +
       `Everything else can wait until you need it.\n:::`;
-    const flow = [
-      "Question",
-      "Answer",
-      "Why, and what it came from",
-      "Design values",
-      "In the UI",
-    ]
-      .map((x, k) => `${k + 1}. ${x}`)
-      .join("\n");
+    (compositeData.steps ??= {}).flow = {
+      steps: ["Question", "Answer", "Why, and what it came from", "Design values", "In the UI"],
+    };
+    const flow = `::steps{id="flow"}`;
     pages["decision-reference.md"] =
       fm({
         sidebar_position: 1.5,
@@ -3062,6 +3010,9 @@ export function docsPages(
     "sample-screen": "id",
     "token-swatches": "id",
     "type-roles": "id",
+    steps: "id",
+    "decision-tree": "id",
+    "decision-answer": "id",
   };
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;

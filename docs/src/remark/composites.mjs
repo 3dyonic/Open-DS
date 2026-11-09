@@ -35,6 +35,9 @@ const COMPOSITES = {
   "anatomy-drawing": "AnatomyDrawing",
   "token-swatches": "TokenSwatches",
   "type-roles": "TypeRoles",
+  steps: "Steps",
+  "decision-tree": "DecisionTree",
+  "decision-answer": "DecisionAnswer",
 };
 // The attribute that names a composite's entry in the page's data file.
 const DATA_KEY = {
@@ -51,6 +54,9 @@ const DATA_KEY = {
   "sample-screen": "id",
   "token-swatches": "id",
   "type-roles": "id",
+  steps: "id",
+  "decision-tree": "id",
+  "decision-answer": "id",
 };
 // The name the page's data has inside the compiled page.
 const DATA = "__compositeData";

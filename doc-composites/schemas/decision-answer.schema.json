@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/decision-answer.schema.json",
+  "title": "Decision answer",
+  "description": "One answer of a scheme: why, what it weighs, what it came from and every design decision it made. Drawn by the DecisionAnswer composite under its question on the Decision reference.",
+  "type": "object",
+  "required": ["answer", "why", "because", "decided"],
+  "additionalProperties": false,
+  "$defs": {
+    "link": {
+      "type": "object",
+      "required": ["label", "href"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "description": "The page's name." },
+        "href": { "type": "string", "description": "The link, relative to this page or a #section." }
+      }
+    }
+  },
+  "properties": {
+    "answer": { "type": "string", "minLength": 1, "description": "The scheme's answer, as its short label." },
+    "why": { "type": "string", "minLength": 1, "description": "Why the scheme answers this way, in a sentence." },
+    "weighs": {
+      "type": "array",
+      "description": "What the answer had to weigh, by group, with this scheme's words for each.",
+      "items": {
+        "type": "object",
+        "required": ["group", "items"],
+        "additionalProperties": false,
+        "properties": {
+          "group": { "type": "string", "description": "The group's name." },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["label", "text"],
+              "additionalProperties": false,
+              "properties": {
+                "label": { "type": "string", "description": "What is weighed." },
+                "text": { "type": "string", "description": "The scheme's words for it." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "because": {
+      "type": "array",
+      "description": "The earlier answers it came from, each as question → answer. Empty for a first answer.",
+      "items": { "type": "string" }
+    },
+    "decided": {
+      "type": "object",
+      "description": "Every design decision the answer made, by kind.",
+      "required": ["groups"],
+      "additionalProperties": false,
+      "properties": {
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["kind", "items"],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": ["answers", "rules", "variants", "picks"],
+                "description": "Later answers it led to, usage rules it sets, component variants it picks, or theme picks it sets."
+              },
+              "items": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["text"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "text": { "type": "string", "description": "The decision, in a line." },
+                    "link": { "$ref": "#/$defs/link", "description": "The page that goes deeper." }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "values": { "$ref": "#/$defs/link", "description": "For a foundation answer with no other decision: the page with the values of its tokens." }
+      }
+    }
+  }
+}
