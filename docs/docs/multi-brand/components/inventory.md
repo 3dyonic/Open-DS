@@ -10,7 +10,9 @@ hide_table_of_contents: true
 
 # Inventory
 
-<div class="odv-pagehero"><div><p><b>49</b> components are in Multi-brand. The components answers picked them (see <a href="../foundations/components">Components</a>). Anything not in is out, and its page says why.</p><div class="odv-stats"><span><b>49</b>In</span><span><b>13</b>Left out</span><span><b>9</b>Families</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/shelf.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/shelf-dark.webp" alt="" loading="lazy"/></span></div>
+:::intro{robot="shelf" stats="49 In|13 Left out|9 Families"}
+**49** components are in Multi-brand. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::
 
 ## Action
 

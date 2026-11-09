@@ -4,14 +4,14 @@
    "title": "Hover card examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
-    "light": "http://localhost:6006/iframe.html?id=components-hover-card--examples&viewMode=story&globals=scheme:dense-data;mode:light",
-    "dark": "http://localhost:6006/iframe.html?id=components-hover-card--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+    "light": "/storybook/iframe.html?id=components-hover-card--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-hover-card--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
    },
    "caption": "Live from Storybook",
    "links": [
     {
      "text": "Open Hover card in Storybook",
-     "href": "http://localhost:6006/?path=/docs/components-hover-card--docs"
+     "href": "/storybook/?path=/docs/components-hover-card--docs"
     }
    ]
   }

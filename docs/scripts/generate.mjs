@@ -162,7 +162,9 @@ const index = [];
 for (const id of ids) {
   const scheme = loadScheme(id, roots);
   const pages = docsPages(scheme, g, roots, {
-    storybook: process.env.STORYBOOK_URL,
+    // Storybook sits next to the docs on the site, at /storybook (site/src/lib/places.ts). No host:
+    // the pages and their data files hold the site path. A local run sets STORYBOOK_URL.
+    storybook: (process.env.STORYBOOK_URL ?? "/storybook").replace(/\/$/, ""),
     all: true,
     robots: true,
     base: BASE,

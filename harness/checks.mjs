@@ -2488,6 +2488,21 @@ export const CHECKS = {
         : ok(`${files.length} composites use the ui components through their props and the scheme's tokens`);
     },
   },
+  // The committed docs hold no local address (OD-284): pages and their data files link Storybook and
+  // the site by path, so what an agent reads in the repo is what the site serves.
+  "docs-no-localhost": {
+    requires: ["docs/docs"],
+    run: (c) => {
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${dir}/${e.name}`) : /\.(md|json)$/.test(e.name) ? [`${dir}/${e.name}`] : [],
+        );
+      const hits = walk("docs/docs").filter((f) => /localhost|127\.0\.0\.1/.test(c.read(f)));
+      return hits.length
+        ? bad(`${hits.length} docs files hold a local address, such as ${hits[0]}; link by site path`)
+        : ok("no docs page or data file holds a local address");
+    },
+  },
   "docs-docusaurus": {
     requires: ["docs/package.json"],
     run: (c) =>

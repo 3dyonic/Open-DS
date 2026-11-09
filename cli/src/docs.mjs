@@ -608,6 +608,8 @@ export function docsPages(
   // Foundations card, the scheme's robot on its home page and in "Not part of" notes, Shelf on the
   // inventory. Day and night editions; the theme picks one. base: the site's base URL, for raw HTML. Created projects get the same layout
   // without the pictures, so the package stays small.
+  // An Intro composite's robot (OD-284): named in the directive, drawn in the repo docs only.
+  const introRobot = (name) => (robots ? `robot="${name}" ` : "");
   const robot = (name, cls = "") =>
     robots
       ? `<span class="odv-robot ${cls}"><img class="odv-robot-day" src="${base}robots/${name}.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="${base}robots/${name}-dark.webp" alt="" loading="lazy"/></span>`
@@ -1282,9 +1284,16 @@ export function docsPages(
     const has = (q) => qs[q] && answer(q);
     const example =
       has("spacing.values") && has("voice.values")
-        ? ` For example, why ${he(scheme.name)}'s spacing is ${he(lc(label("spacing.values")))}, or why its voice is ${he(lc(label("voice.values")))}.`
+        ? ` For example, why ${scheme.name}'s spacing is ${lc(label("spacing.values"))}, or why its voice is ${lc(label("voice.values"))}.`
         : "";
-    const intro = `<div class="odv-intro">${robot(scheme.id, "odv-intro-robot")}<div class="odv-intro-body"><h2 class="odv-intro-t">Take it one answer at a time</h2><p>This page keeps every decision behind ${he(scheme.name)} in one place: ${scheme.answers.length} answers and what each one shaped. It's a reference, not a reading list. Most days you only need one answer.</p><b class="odv-intro-sub">Three easy ways in</b><ul><li>Take a minute with <a href="#where-it-starts">Where it starts</a>. It shows the few first answers the rest grow from.</li><li>Open one section when you wonder why.${example}</li><li>Come in from a component page. Each one links here, to the answers that shaped it.</li></ul><p class="odv-intro-end">Everything else can wait until you need it.</p></div></div>`;
+    const intro =
+      `:::intro{${introRobot(scheme.id)}title="Take it one answer at a time"}\n` +
+      `This page keeps every decision behind ${esc(scheme.name)} in one place: ${scheme.answers.length} answers and what each one shaped. It's a reference, not a reading list. Most days you only need one answer.\n\n` +
+      `**Three easy ways in**\n\n` +
+      `- Take a minute with [Where it starts](#where-it-starts). It shows the few first answers the rest grow from.\n` +
+      `- Open one section when you wonder why.${esc(example)}\n` +
+      `- Come in from a component page. Each one links here, to the answers that shaped it.\n\n` +
+      `Everything else can wait until you need it.\n:::`;
     const flow = `<ol class="odv-flow">${["Question", "Answer", "Why, and what it came from", "Design values", "In the UI"].map((s) => `<li>${s}</li>`).join("")}</ol>`;
     pages["decision-reference.md"] =
       fm({
@@ -1295,9 +1304,10 @@ export function docsPages(
       }) +
       NOTE +
       `# Decision reference\n\n` +
+      intro +
+      "\n\n" +
       h(
         `<div class="odv-decided">`,
-        intro,
         flow,
         `<h2 id="where-it-starts">Where it starts</h2><p>The first answers lead to the rest. Each branch is an answer that follows from the one above it.</p>`,
         tree,
@@ -1918,13 +1928,8 @@ export function docsPages(
     }) +
     NOTE +
     `# Primitives\n\n` +
-    h(
-      `<div class="odv-pagehero"><div><p>`,
-      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.`,
-      `</p><div class="odv-stats"><span><b>${prims.length}</b>Primitives</span><span><b>${nUsed}</b>In use</span><span><b>${prims.length - nUsed}</b>Spare</span></div></div>`,
-      robot(scheme.id, "odv-pagehero-robot"),
-      `</div>`,
-    ) +
+    `:::intro{${introRobot(scheme.id)}stats="${prims.length} Primitives|${nUsed} In use|${prims.length - nUsed} Spare"}\n` +
+    `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/)), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.\n:::` +
     "\n\n" +
     [...PRIM_GROUPS, ...(primRest.length ? [["More", primRest]] : [])]
       .map(([t, ids]) => {
@@ -2404,13 +2409,8 @@ export function docsPages(
     `# Inventory
 
 ` +
-    h(
-      `<div class="odv-pagehero"><div><p>`,
-      `<b>${Object.keys(inventory).length}</b> components are in ${esc(scheme.name)}. The components answers picked them (see <a href="../foundations/components">Components</a>). Anything not in is out, and its page says why.`,
-      `</p><div class="odv-stats"><span><b>${Object.keys(inventory).length}</b>In</span><span><b>${outItems.length}</b>Left out</span><span><b>${new Set(inItems.map((c) => c.family)).size}</b>Families</span></div></div>`,
-      robot("shelf", "odv-pagehero-robot"),
-      `</div>`,
-    ) +
+    `:::intro{${introRobot("shelf")}stats="${Object.keys(inventory).length} In|${outItems.length} Left out|${new Set(inItems.map((c) => c.family)).size} Families"}\n` +
+    `**${Object.keys(inventory).length}** components are in ${esc(scheme.name)}. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.\n:::` +
     "\n\n" +
     families
       .map((f) => {
@@ -2713,12 +2713,14 @@ export function docsPages(
         `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
       );
     };
-    const intro = h(
-      `<div class="odv-intro">${robot("anatomy", "odv-intro-robot")}<div class="odv-intro-body"><h2 class="odv-intro-t">Look closer, when you want to</h2>`,
-      `<p>This page takes ${attr(spec.intro ?? T)} apart to show how design decisions become the parts you see. You don't need it to use ${attr(spec.intro ?? T)}: <a href="../${name}">its own page</a> has everything you need to build.</p>`,
-      `<b class="odv-intro-sub">Three easy ways in</b><ul><li>Start with the drawing. Each number is one part, and the legend beside it names it.</li><li>Want to know why a part looks the way it does? Its card follows the decision from the answer about the product, through the rule and the token, to what you see.</li><li>Or start from a job, like Focus or Emphasis, and find every part that does it in the legend.</li></ul>`,
-      `<p class="odv-intro-end">Come back whenever a part makes you wonder why.</p></div></div>`,
-    );
+    const intro =
+      `:::intro{${introRobot("anatomy")}title="Look closer, when you want to"}\n` +
+      `This page takes ${esc(spec.intro ?? T)} apart to show how design decisions become the parts you see. You don't need it to use ${esc(spec.intro ?? T)}: [its own page](../${name}) has everything you need to build.\n\n` +
+      `**Three easy ways in**\n\n` +
+      `- Start with the drawing. Each number is one part, and the legend beside it names it.\n` +
+      `- Want to know why a part looks the way it does? Its card follows the decision from the answer about the product, through the rule and the token, to what you see.\n` +
+      `- Or start from a job, like Focus or Emphasis, and find every part that does it in the legend.\n\n` +
+      `Come back whenever a part makes you wonder why.\n:::`;
     const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
     const partsBlock = h(
       `<div class="odv-am-parts"><figure class="odv-am-stage">${asset ? assetImg("stage", spec.drawing.figma?.stage?.[scheme.id], `${T}, every part numbered`) : spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${asset ? (borrowed ? `Dense data's drawing, shown until ${attr(scheme.name)}'s own is exported; the parts and the decisions below are ${attr(scheme.name)}'s.` : `${attr(scheme.name)}, light, drawn in Figma from the scheme's tokens.`) : spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,

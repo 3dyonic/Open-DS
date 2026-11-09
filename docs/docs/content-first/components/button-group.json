@@ -4,14 +4,14 @@
    "title": "Button group examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
-    "light": "http://localhost:6006/iframe.html?id=components-button-group--examples&viewMode=story&globals=scheme:content-first;mode:light",
-    "dark": "http://localhost:6006/iframe.html?id=components-button-group--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+    "light": "/storybook/iframe.html?id=components-button-group--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-button-group--examples&viewMode=story&globals=scheme:content-first;mode:dark"
    },
    "caption": "Live from Storybook",
    "links": [
     {
      "text": "Open Button group in Storybook",
-     "href": "http://localhost:6006/?path=/docs/components-button-group--docs"
+     "href": "/storybook/?path=/docs/components-button-group--docs"
     }
    ]
   }

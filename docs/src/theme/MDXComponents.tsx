@@ -1,7 +1,9 @@
 import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
+import Intro from "@open-ds/doc-composites/Intro";
 import Label from "@open-ds/doc-composites/Label";
 import Preview from "@open-ds/doc-composites/Preview";
 import ReasonChain from "@open-ds/doc-composites/ReasonChain";
@@ -22,11 +24,19 @@ function LinkedReasonChain(props: React.ComponentProps<typeof ReasonChain>) {
   return <ReasonChain {...props} />;
 }
 
+// An intro names its robot; the docs serve the robot's day and night pictures.
+function RobotIntro({ robot, ...props }: Omit<React.ComponentProps<typeof Intro>, "robot"> & { robot?: string }) {
+  const day = useBaseUrl(`/robots/${robot}.webp`);
+  const night = useBaseUrl(`/robots/${robot}-dark.webp`);
+  return <Intro {...props} robot={robot ? { day, night } : undefined} />;
+}
+
 // The composites the pages' directives name (src/remark/composites.mjs).
 export default {
   ...MDXComponents,
   section: Section,
   CardGrid,
+  Intro: RobotIntro,
   Label,
   Preview,
   ReasonChain: LinkedReasonChain,

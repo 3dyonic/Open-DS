@@ -4,14 +4,14 @@
    "title": "Tooltip examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
-    "light": "http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
-    "dark": "http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+    "light": "/storybook/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "/storybook/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
    },
    "caption": "Live from Storybook",
    "links": [
     {
      "text": "Open Tooltip in Storybook",
-     "href": "http://localhost:6006/?path=/docs/components-tooltip--docs"
+     "href": "/storybook/?path=/docs/components-tooltip--docs"
     }
    ]
   }

@@ -10,7 +10,9 @@ hide_table_of_contents: true
 
 # Inventory
 
-<div class="odv-pagehero"><div><p><b>36</b> components are in Content first. The components answers picked them (see <a href="../foundations/components">Components</a>). Anything not in is out, and its page says why.</p><div class="odv-stats"><span><b>36</b>In</span><span><b>26</b>Left out</span><span><b>9</b>Families</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/shelf.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/shelf-dark.webp" alt="" loading="lazy"/></span></div>
+:::intro{robot="shelf" stats="36 In|26 Left out|9 Families"}
+**36** components are in Content first. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::
 
 ## Action
 

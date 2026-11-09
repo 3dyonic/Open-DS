@@ -1,5 +1,6 @@
 // A directive in a plain .md page becomes the composite it names (OD-284). A line such as
-// ::token-table{component="field"} becomes a block; :label[Left out]{tone="warning"} sits inside text.
+// ::token-table{component="field"} becomes a block; :label[Left out]{tone="warning"} sits inside text;
+// :::intro{…} … ::: wraps Markdown that stays in the page.
 // The page stays Markdown. The composites live in doc-composites/ and src/theme/MDXComponents.tsx
 // registers them. An unknown directive is left for Docusaurus, which shows it as text.
 //
@@ -16,6 +17,7 @@ const COMPOSITES = {
   "reason-chain": "ReasonChain",
   "card-grid": "CardGrid",
   preview: "Preview",
+  intro: "Intro",
 };
 // The attribute that names a composite's entry in _composites.json.
 const DATA_KEY = { "token-table": "component", "reason-chain": "id", "card-grid": "id", preview: "id" };
@@ -58,7 +60,7 @@ const jsx = (node, name, data) => ({
 
 export default function composites() {
   return (tree, vfile) => {
-    visit(tree, ["leafDirective", "textDirective"], (node, index, parent) => {
+    visit(tree, ["containerDirective", "leafDirective", "textDirective"], (node, index, parent) => {
       const name = COMPOSITES[node.name];
       if (!name || !parent) return;
       const key = DATA_KEY[node.name];

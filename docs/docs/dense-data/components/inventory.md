@@ -10,7 +10,9 @@ hide_table_of_contents: true
 
 # Inventory
 
-<div class="odv-pagehero"><div><p><b>58</b> components are in Dense data. The components answers picked them (see <a href="../foundations/components">Components</a>). Anything not in is out, and its page says why.</p><div class="odv-stats"><span><b>58</b>In</span><span><b>4</b>Left out</span><span><b>10</b>Families</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/shelf.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/shelf-dark.webp" alt="" loading="lazy"/></span></div>
+:::intro{robot="shelf" stats="58 In|4 Left out|10 Families"}
+**58** components are in Dense data. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::
 
 ## Action
 

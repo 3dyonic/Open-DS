@@ -8,7 +8,9 @@ hide_table_of_contents: true
 
 # Primitives
 
-<div class="odv-pagehero"><div><p>The raw values of Content first. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>175</b>Primitives</span><span><b>93</b>In use</span><span><b>82</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span></div>
+:::intro{robot="content-first" stats="175 Primitives|93 In use|82 Spare"}
+The raw values of Content first. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/)), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.
+:::
 
 ## Color
 

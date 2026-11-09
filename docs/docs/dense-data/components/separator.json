@@ -4,14 +4,14 @@
    "title": "Separator examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
-    "light": "http://localhost:6006/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:dense-data;mode:light",
-    "dark": "http://localhost:6006/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+    "light": "/storybook/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
    },
    "caption": "Live from Storybook",
    "links": [
     {
      "text": "Open Separator in Storybook",
-     "href": "http://localhost:6006/?path=/docs/components-separator--docs"
+     "href": "/storybook/?path=/docs/components-separator--docs"
     }
    ]
   }

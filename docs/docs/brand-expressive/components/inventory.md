@@ -10,7 +10,9 @@ hide_table_of_contents: true
 
 # Inventory
 
-<div class="odv-pagehero"><div><p><b>47</b> components are in Brand expressive. The components answers picked them (see <a href="../foundations/components">Components</a>). Anything not in is out, and its page says why.</p><div class="odv-stats"><span><b>47</b>In</span><span><b>15</b>Left out</span><span><b>10</b>Families</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/shelf.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/shelf-dark.webp" alt="" loading="lazy"/></span></div>
+:::intro{robot="shelf" stats="47 In|15 Left out|10 Families"}
+**47** components are in Brand expressive. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::
 
 ## Action
 

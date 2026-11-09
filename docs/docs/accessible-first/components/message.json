@@ -4,14 +4,14 @@
    "title": "Message examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
-    "light": "http://localhost:6006/iframe.html?id=components-message--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
-    "dark": "http://localhost:6006/iframe.html?id=components-message--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+    "light": "/storybook/iframe.html?id=components-message--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-message--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
    },
    "caption": "Live from Storybook",
    "links": [
     {
      "text": "Open Message in Storybook",
-     "href": "http://localhost:6006/?path=/docs/components-message--docs"
+     "href": "/storybook/?path=/docs/components-message--docs"
     }
    ]
   }
