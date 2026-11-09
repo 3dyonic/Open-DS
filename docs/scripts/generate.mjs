@@ -202,10 +202,6 @@ for (const id of ids) {
   files[`static/logo-${id}.svg`] = logo(modeTokens("light"));
   files[`static/logo-${id}-dark.svg`] = logo(modeTokens("dark"));
   files[`static/${id}/llms.txt`] = docsLlms(scheme, pages);
-  // Each page's composite data on the site too, beside the page, for an agent that reads the
-  // published docs (OD-284).
-  for (const p of Object.keys(pages).filter((x) => x.endsWith(".json") && !x.includes("_")))
-    files[`static/${id}/${p}`] = pages[p];
   for (const [p, text] of Object.entries(pages))
     files[`docs/${id}/${p}`] = p.endsWith("_category_.json")
       ? // A category's link names a doc by id; ids now start with the scheme's folder.

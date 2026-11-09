@@ -97,6 +97,18 @@ const config: Config = {
   ],
   // OD-284 step 0: Tailwind 4 for the design system components the docs render (no reset; see tailwind.css).
   plugins: [
+    // Each page's composite data (<page>.json beside it, OD-284) is published with the page, so an
+    // agent that reads the site finds the rows at the same path. One source: docs/docs.
+    () => ({
+      name: "composite-data",
+      async postBuild({ outDir }) {
+        const { cpSync } = await import("node:fs");
+        cpSync(`${__dirname}/docs`, outDir, {
+          recursive: true,
+          filter: (src) => !/\/_[^/]*$/.test(src) && (!/\.[a-z]+$/.test(src) || src.endsWith(".json")),
+        });
+      },
+    }),
     () => ({
       name: "tailwind",
       configurePostCss(options) {
