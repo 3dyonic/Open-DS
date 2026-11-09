@@ -1,0 +1,510 @@
+{
+ "preview": {
+  "alert-dialog/live": {
+   "title": "Alert dialog examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Alert dialog in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-alert-dialog--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/alert-dialog": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the alert dialog, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./alert-dialog/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "alert-dialog": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Transition panels duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.panels-duration",
+      "alias": "motion.duration.panels",
+      "variable": "transition-panels-duration"
+     },
+     "values": [
+      {
+       "token": "duration.relaxed",
+       "text": "320ms"
+      }
+     ]
+    },
+    {
+     "group": "Overlay",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert-dialog.overlay.background",
+      "alias": "color.surface.scrim",
+      "variable": "alert-dialog-overlay-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#0000008C"
+       },
+       "token": "black.light.scrim",
+       "text": "#0000008C"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#000000B3"
+       },
+       "token": "black.dark.scrim",
+       "text": "#000000B3"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.content.gap",
+      "alias": "space.gap.group",
+      "variable": "alert-dialog-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.content.radius",
+      "alias": "radius.container",
+      "variable": "alert-dialog-content-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert-dialog.content.background",
+      "alias": "color.surface.raised",
+      "variable": "alert-dialog-content-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.dark.50",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.content.padding",
+      "alias": "space.inset.container",
+      "variable": "alert-dialog-content-padding"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert-dialog.content.shadow",
+      "alias": "elevation.overlay",
+      "variable": "alert-dialog-content-shadow"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #1F1B1629"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert-dialog.content.border",
+      "alias": "color.border.default",
+      "variable": "alert-dialog-content-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E4DDD0"
+       },
+       "token": "stone.light.200",
+       "text": "#E4DDD0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4A4339"
+       },
+       "token": "stone.dark.200",
+       "text": "#4A4339"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.content.border-width",
+      "alias": "border-width.default",
+      "variable": "alert-dialog-content-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert-dialog.content.label",
+      "alias": "color.text.primary",
+      "variable": "alert-dialog-content-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.dark.900",
+       "text": "#FFFDF8"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.header.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "alert-dialog-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.header.gap-x",
+      "alias": "space.gap.section",
+      "variable": "alert-dialog-header-gap-x"
+     },
+     "values": [
+      {
+       "token": "space.64",
+       "text": "4rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.footer.gap",
+      "alias": "space.gap.default",
+      "variable": "alert-dialog-footer-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.title.font-size",
+      "alias": "type.heading.font-size",
+      "variable": "alert-dialog-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.28",
+       "text": "1.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.title.font-weight",
+      "alias": "type.heading.font-weight",
+      "variable": "alert-dialog-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.title.font-family",
+      "alias": "type.heading.font-family",
+      "variable": "alert-dialog-title-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.source-serif-4",
+       "text": "\"Source Serif 4\", Georgia, serif"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "alert-dialog-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert-dialog.description.label",
+      "alias": "color.text.secondary",
+      "variable": "alert-dialog-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4A4339"
+       },
+       "token": "stone.light.700",
+       "text": "#4A4339"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.media.radius",
+      "alias": "radius.control",
+      "variable": "alert-dialog-media-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert-dialog.media.background",
+      "alias": "color.surface.sunken",
+      "variable": "alert-dialog-media-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.media.size",
+      "alias": "size.control.default",
+      "variable": "alert-dialog-media-size"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Margin bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert-dialog.media.margin-bottom",
+      "alias": "component-spacing-map.x2",
+      "variable": "alert-dialog-media-margin-bottom"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

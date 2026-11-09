@@ -1,4 +1,5 @@
 ---
+composite_data: "./index.json"
 sidebar_position: 1
 slug: "/accessible-first/"
 title: "Accessible first"
@@ -15,7 +16,7 @@ hide_table_of_contents: true
 
 Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).
 
-<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What accessibility level do we commit to?</div><q>AAA</q><p>AAA where it applies; nobody is left out.</p><span class="odv-ans">people.q2</span></div><div class="odv-card"><div class="odv-eyebrow">What is the smallest target?</div><q>Large</q><p>Large targets for tremor and touch.</p><span class="odv-ans">accessibility.values</span></div><div class="odv-card"><div class="odv-eyebrow">How many signals carry each meaning?</div><q>Three: color, icon and word</q><p>Never color alone.</p><span class="odv-ans">accessibility.count</span></div></div>
+::card-grid{id="home/answers"}
 
 ## Explore the system
 

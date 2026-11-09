@@ -1,4 +1,5 @@
 ---
+composite_data: "./pagination.json"
 sidebar_position: 42
 title: "Pagination"
 description: "Pagination in Brand expressive."
@@ -14,7 +15,7 @@ Moves between pages of results.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-pagination--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Pagination examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-pagination--docs">Open Pagination in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-pagination--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="pagination/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Progress](./progress.md): Steps of a task.
 - [Table](./table.md): The rows being paged.
 
-<a class="odv-anatref" href="./pagination/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the pagination, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/pagination"}
 
 ## Words
 

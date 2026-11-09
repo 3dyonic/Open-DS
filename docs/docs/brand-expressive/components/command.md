@@ -1,4 +1,5 @@
 ---
+composite_data: "./command.json"
 sidebar_position: 19
 title: "Command"
 description: "Command in Brand expressive."
@@ -15,7 +16,7 @@ A search-first menu of actions and places, opened from the keyboard.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Command examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-command--docs">Open Command in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="command/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 - [Dropdown menu](./dropdown-menu.md): A short menu from a button.
 - [Combobox](./combobox.md): Picking a value for a field.
 
-<a class="odv-anatref" href="./command/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the command menu, the job it does, and the decisions behind it. 11 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/command"}
 
 ## Words
 

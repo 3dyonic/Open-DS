@@ -1,4 +1,5 @@
 ---
+composite_data: "./item.json"
 sidebar_position: 33
 title: "Item"
 description: "Item in Brand expressive."
@@ -14,7 +15,7 @@ A row with media, a title, a description and actions.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-item--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Item examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-item--docs">Open Item in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-item--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="item/live"}
 
 ## When to use it
 
@@ -42,7 +43,7 @@ What each variant is for in any design system, then what Brand expressive decide
 
 <section class="odv-variant off"><header><code>sm</code><span class="odv-axisname">size</span><span class="odv-pill">Not used in Brand expressive</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-item--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=size:sm" title="Item sm" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>Tighter padding.</p><div class="odv-when"><div><span class="y">✓</span>Dense panels and short rows.</div><div><span class="n">✕</span>Touch screens and lists people read slowly.</div></div></div><div class="odv-topic"><h4>In Brand expressive</h4><p class="odv-decision">Phones first: no compact rows.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-accessibility-values"><span>What is the smallest target?</span><b>Touch size</b> · <code>accessibility.values</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./item/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the item, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/item"}
 
 ## Why it works this way
 

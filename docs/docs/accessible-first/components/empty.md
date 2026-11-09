@@ -1,4 +1,5 @@
 ---
+composite_data: "./empty.json"
 sidebar_position: 26
 title: "Empty"
 description: "Empty in Accessible first."
@@ -14,7 +15,7 @@ What a region shows when it loaded and has nothing: why, and what to do next.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Empty examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-empty--docs">Open Empty in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="empty/live"}
 
 ## When to use it
 
@@ -36,7 +37,7 @@ What each variant is for in any design system, then what Accessible first decide
 
 <section class="odv-variant"><header><code>icon</code><span class="odv-axisname">variant</span><span class="odv-pill used">Used in Accessible first</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-empty--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=variant:icon" title="Empty icon" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>The picture as an icon in a small tile.</p><div class="odv-when"><div><span class="y">✓</span>A compact empty state next to data.</div><div><span class="n">✕</span>A first visit that needs more warmth than an icon.</div></div></div><div class="odv-topic"><h4>In Accessible first</h4><p class="odv-decision">A filled icon in a tile, beside words that say what will appear here and how to start.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-iconography-definition"><span>What icon style?</span><b>Filled</b> · <code>iconography.definition</code></a><a class="odv-achip" href="#why-voice-values"><span>How does it sound?</span><b>Plain and direct</b> · <code>voice.values</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./empty/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the empty state, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/empty"}
 
 ## How Accessible first uses it
 

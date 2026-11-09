@@ -1,0 +1,721 @@
+{
+ "preview": {
+  "toggle/live": {
+   "title": "Toggle examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-toggle--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-toggle--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Toggle in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-toggle--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/toggle": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the toggle, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./toggle/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "toggle/human.q2": {
+   "anchor": "why-human-q2",
+   "question": "How do people recall the interface?",
+   "key": "human.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "They see it fresh each time",
+     "why": "Nobody remembers the interface from last time."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toggle",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Every action looks like a control people can find, so the toggle keeps its border."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: secondary",
+       "Button: ghost",
+       "Button: disabled",
+       "Field: responsive"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Toggle decisions would reopen",
+     "text": "and 1 answer that follow from it: Actions and status."
+    }
+   ]
+  },
+  "toggle/elevation.definition": {
+   "anchor": "why-elevation-definition",
+   "question": "What separates groups on the page?",
+   "key": "elevation.definition",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Lines",
+     "why": "Strong borders separate groups at any zoom."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toggle",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Every action looks like a control people can find, so the toggle keeps its border."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "outline",
+       "text": "Every toggle, with a strong border and a word, so it reads as a control at any zoom."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Item: default",
+       "Item: outline"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Toggle decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "toggle/iconography.roles": {
+   "anchor": "why-iconography-roles",
+   "question": "What do icons do?",
+   "key": "iconography.roles",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Actions and status",
+     "why": "Icons support words; they never replace them."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toggle",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "outline",
+       "text": "Every toggle, with a strong border and a word, so it reads as a control at any zoom."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: icon",
+       "Input group: inline-end"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Toggle decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "toggle/accessibility.values": {
+   "anchor": "why-accessibility-values",
+   "question": "What is the smallest target?",
+   "key": "accessibility.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Large",
+     "why": "Large targets for tremor and touch."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toggle",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "Every toggle. Large targets help people with motor needs."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "sm",
+       "text": "Large targets help people with motor needs; nothing smaller."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "lg",
+       "text": "The default size is already large for motor needs; a bigger one adds nothing."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: default",
+       "Button: compact",
+       "Button: large",
+       "Item: default",
+       "Item: sm"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 3,
+     "caption": "Toggle decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "toggle": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Accessible first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Accessible first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Toggle",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.gap",
+      "alias": "space.gap.default",
+      "variable": "toggle-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.radius",
+      "alias": "radius.control",
+      "variable": "toggle-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.375rem"
+       },
+       "token": "radius.6",
+       "text": "0.375rem"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.font-size",
+      "alias": "type.body.font-size",
+      "variable": "toggle-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.19",
+       "text": "1.1875rem"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "toggle-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Disabled opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.disabled-opacity-disabled",
+      "alias": "opacity.disabled",
+      "variable": "toggle-disabled-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.50",
+       "text": "0.5"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Border invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.border-invalid",
+      "alias": "color.status.danger",
+      "variable": "toggle-border-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#981519"
+       },
+       "token": "red.light.700",
+       "text": "#981519"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.icon-size",
+      "alias": "size.icon",
+      "variable": "toggle-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.focus",
+      "alias": "border-width.focus",
+      "variable": "toggle-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "toggle-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#0B4FC0"
+       },
+       "token": "blue.light.600",
+       "text": "#0B4FC0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8AB4F8"
+       },
+       "token": "blue.dark.600",
+       "text": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "toggle-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F7F7"
+       },
+       "token": "gray.light.50",
+       "text": "#F7F7F7"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0A0A0A"
+       },
+       "token": "gray.dark.0",
+       "text": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "toggle-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Toggle",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.label",
+      "alias": "color.text.primary",
+      "variable": "toggle-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#141414"
+       },
+       "token": "gray.light.900",
+       "text": "#141414"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F7F7"
+       },
+       "token": "gray.dark.900",
+       "text": "#F7F7F7"
+      }
+     ]
+    },
+    {
+     "group": "Outline",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.outline.border",
+      "alias": "color.border.strong",
+      "variable": "toggle-outline-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
+      }
+     ]
+    },
+    {
+     "group": "Outline",
+     "part": "Shadow",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.outline.shadow",
+      "alias": "elevation.card",
+      "variable": "toggle-outline-shadow"
+     },
+     "values": [
+      {
+       "swatch": {
+        "shadow": "0px 0px 0px 0px #00000000"
+       },
+       "text": "shadow.none"
+      }
+     ]
+    },
+    {
+     "group": "Outline",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.outline.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "toggle-outline-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Outline",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.outline.border-width",
+      "alias": "border-width.default",
+      "variable": "toggle-outline-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Default",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.default.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "toggle-default-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.sm.height",
+      "alias": "size.control.default",
+      "variable": "toggle-sm-height"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.sm.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "toggle-sm-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Lg",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.lg.padding-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "toggle-lg-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Fill",
+     "part": "Hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "toggle-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Fill",
+     "part": "On",
+     "when": "when on",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.background.on",
+      "alias": "color.surface.selected",
+      "variable": "toggle-background-on"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E2EDFF"
+       },
+       "token": "blue.light.100",
+       "text": "#E2EDFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#102547"
+       },
+       "token": "blue.dark.100",
+       "text": "#102547"
+      }
+     ]
+    },
+    {
+     "group": "Edge width",
+     "part": "On",
+     "when": "when on",
+     "themed": false,
+     "chain": {
+      "token": "component.toggle.edge-width.on",
+      "alias": "border-width.default",
+      "variable": "toggle-edge-width-on"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

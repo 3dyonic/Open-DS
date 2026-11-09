@@ -1,4 +1,5 @@
 ---
+composite_data: "./card.json"
 sidebar_position: 13
 title: "Card"
 description: "Card in Multi-brand."
@@ -14,7 +15,7 @@ A bordered container for one item or group, with its title, content and actions.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Card examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-card--docs">Open Card in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="card/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Table](./table.md): Records compared across rows.
 - [Item](./item.md): A compact row in a list.
 
-<a class="odv-anatref" href="./card/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the card, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/card"}
 
 ## How Multi-brand uses it
 

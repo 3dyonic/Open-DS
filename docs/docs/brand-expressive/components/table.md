@@ -1,4 +1,5 @@
 ---
+composite_data: "./table.json"
 sidebar_position: 56
 title: "Table"
 description: "Table in Brand expressive."
@@ -14,7 +15,7 @@ Rows and columns of comparable records, with headers.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-table--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Table examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-table--docs">Open Table in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-table--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="table/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Data table](./data-table.md): Many records with search, filters and paging.
 - [Chart](./chart.md): The shape of the numbers.
 
-<a class="odv-anatref" href="./table/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the table, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/table"}
 
 ## How Brand expressive uses it
 

@@ -1,4 +1,5 @@
 ---
+composite_data: "./index.json"
 sidebar_position: 1
 slug: "/brand-expressive/"
 title: "Brand expressive"
@@ -15,7 +16,7 @@ hide_table_of_contents: true
 
 Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).
 
-<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What is the smallest target?</div><q>Touch size</q><p>Visitors come from social posts on phones.</p><span class="odv-ans">accessibility.values</span></div><div class="odv-card"><div class="odv-eyebrow">Which outcome matters most?</div><q>Engagement</q><p>Engagement and sign-ups.</p><span class="odv-ans">outcomes.q1</span></div><div class="odv-card"><div class="odv-eyebrow">How many tones does it use?</div><q>One per moment</q><p>Playful in headlines, plain in errors.</p><span class="odv-ans">voice.count</span></div></div>
+::card-grid{id="home/answers"}
 
 ## Explore the system
 

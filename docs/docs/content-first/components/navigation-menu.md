@@ -1,4 +1,5 @@
 ---
+composite_data: "./navigation-menu.json"
 sidebar_position: 41
 title: "Navigation menu"
 description: "Navigation menu in Content first."
@@ -14,7 +15,7 @@ Site navigation with links and panels.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-navigation-menu--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Navigation menu examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-navigation-menu--docs">Open Navigation menu in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-navigation-menu--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="navigation-menu/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Sidebar](./sidebar.md): App navigation that stays open.
 - [Tabs](./tabs.md): Views of one thing.
 
-<a class="odv-anatref" href="./navigation-menu/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the navigation menu, the job it does, and the decisions behind it. 11 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/navigation-menu"}
 
 ## Words
 

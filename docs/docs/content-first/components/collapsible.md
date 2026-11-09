@@ -1,4 +1,5 @@
 ---
+composite_data: "./collapsible.json"
 sidebar_position: 17
 title: "Collapsible"
 description: "Collapsible in Content first."
@@ -14,7 +15,7 @@ One section that opens and closes.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-collapsible--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Collapsible examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-collapsible--docs">Open Collapsible in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-collapsible--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="collapsible/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Accordion](./accordion.md): A stack of sections.
 
-<a class="odv-anatref" href="./collapsible/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the collapsible, the job it does, and the decisions behind it. 1 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/collapsible"}
 
 ## Words
 

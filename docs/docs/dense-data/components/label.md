@@ -1,4 +1,5 @@
 ---
+composite_data: "./label.json"
 sidebar_position: 35
 title: "Label"
 description: "Label in Dense data."
@@ -14,7 +15,7 @@ The visible name of a form control.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Label examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-label--docs">Open Label in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+::preview{id="label/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Field](./field.md): The label laid out with hint and error.
 
-<a class="odv-anatref" href="./label/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the label, the job it does, and the decisions behind it. 2 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/label"}
 
 ## How Dense data uses it
 

@@ -1,4 +1,5 @@
 ---
+composite_data: "./date-picker.json"
 sidebar_position: 22
 title: "Date picker"
 description: "Date picker in Multi-brand."
@@ -14,7 +15,7 @@ A field-like button that opens a calendar for one date or a range.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-date-picker--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Date picker examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-date-picker--docs">Open Date picker in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-date-picker--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="date-picker/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Calendar](./calendar.md): The calendar on its own, always shown.
 - [Input](./input.md): A known date typed in.
 
-<a class="odv-anatref" href="./date-picker/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the date picker, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/date-picker"}
 
 ## Words
 

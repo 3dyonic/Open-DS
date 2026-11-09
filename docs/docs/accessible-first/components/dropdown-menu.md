@@ -1,4 +1,5 @@
 ---
+composite_data: "./dropdown-menu.json"
 sidebar_position: 25
 title: "Dropdown menu"
 description: "Dropdown menu in Accessible first."
@@ -15,7 +16,7 @@ A menu of actions opened from a button.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dropdown-menu--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Dropdown menu examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dropdown-menu--docs">Open Dropdown menu in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dropdown-menu--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="dropdown-menu/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 - [Select](./select.md): Choosing a value.
 - [Context menu](./context-menu.md): The same menu on right-click.
 
-<a class="odv-anatref" href="./dropdown-menu/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the menu, the job it does, and the decisions behind it. 12 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/dropdown-menu"}
 
 ## How Accessible first uses it
 

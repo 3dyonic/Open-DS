@@ -1,0 +1,2846 @@
+{
+ "preview": {
+  "sidebar/live": {
+   "title": "Sidebar examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Sidebar in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-sidebar--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/sidebar": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the sidebar, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./sidebar/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "sidebar/content.q1": {
+   "anchor": "why-content-q1",
+   "question": "What is the main content?",
+   "key": "content.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Numbers and records",
+     "why": "Most of the screen is numbers and records."
+    },
+    {
+     "kind": "decided",
+     "title": "So Sidebar",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "Menu items with no border, quiet beside dense data."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "outline",
+       "text": "Borders on every item would compete with the data."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Badge: neutral",
+       "Badge: info",
+       "Badge: success",
+       "Badge: warning",
+       "Badge: danger",
+       "Empty: default",
+       "Item: default",
+       "Item: outline",
+       "Toggle: default",
+       "Toggle: outline"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 4,
+     "caption": "Sidebar decisions would reopen",
+     "text": "and 45 answers that follow from it: A lot, Scan and compare, People keep their place, and 42 more."
+    }
+   ]
+  },
+  "sidebar/tasks.q2": {
+   "anchor": "why-tasks-q2",
+   "question": "How often do people repeat actions?",
+   "key": "tasks.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Constantly",
+     "why": "The same actions repeat many times an hour."
+    },
+    {
+     "kind": "decided",
+     "title": "So Sidebar",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "Every section of the app."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: ghost",
+       "Input group: inline-end",
+       "Alert: default",
+       "Toast: success",
+       "Toggle: default"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Sidebar decision would reopen",
+     "text": "and 11 answers that follow from it: Time on task, All day, Three, and 8 more."
+    }
+   ]
+  },
+  "sidebar/spacing.count": {
+   "anchor": "why-spacing-count",
+   "question": "How many densities exist?",
+   "key": "spacing.count",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Two",
+     "why": "A second, denser size serves tables and toolbars."
+    },
+    {
+     "kind": "decided",
+     "title": "So Sidebar",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "sm",
+       "text": "Long secondary lists, at the denser size."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: horizontal",
+       "Item: default",
+       "Item: sm"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Sidebar decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "sidebar/content.q2": {
+   "anchor": "why-content-q2",
+   "question": "How much is on one screen?",
+   "key": "content.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "A lot",
+     "why": "Experts want many records on one screen."
+    },
+    {
+     "kind": "decided",
+     "title": "So Sidebar",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "lg",
+       "text": "Rows stay small so the whole navigation fits the screen all shift."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: default",
+       "Button: compact",
+       "Button: large",
+       "Input group: block-start",
+       "Input group: block-end",
+       "Field: horizontal",
+       "Toggle: default",
+       "Toggle: sm",
+       "Toggle: lg"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Sidebar decision would reopen",
+     "text": "and 15 answers that follow from it: Quiet, A neutral grotesque, with a monospace for data, Only the steps the screens need, and 12 more."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "sidebar": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Wrapper",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.wrapper.background",
+      "alias": "color.surface.default",
+      "variable": "sidebar-wrapper-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Sidebar",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.background",
+      "alias": "color.surface.default",
+      "variable": "sidebar-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Sidebar",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.label",
+      "alias": "color.text.primary",
+      "variable": "sidebar-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Gap",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.gap.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "sidebar-gap-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.container.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "sidebar-container-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.container.padding",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-container-padding"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.container.border",
+      "alias": "color.border.default",
+      "variable": "sidebar-container-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.container.border-width",
+      "alias": "border-width.default",
+      "variable": "sidebar-container-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Inner",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.inner.background",
+      "alias": "color.surface.default",
+      "variable": "sidebar-inner-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Inner",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.inner.radius",
+      "alias": "radius.container",
+      "variable": "sidebar-inner-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Inner",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.inner.border",
+      "alias": "color.border.default",
+      "variable": "sidebar-inner-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Inner",
+     "part": "Shadow",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.inner.shadow",
+      "alias": "elevation.card",
+      "variable": "sidebar-inner-shadow"
+     },
+     "values": [
+      {
+       "swatch": {
+        "shadow": "0px 0px 0px 0px #00000000"
+       },
+       "text": "shadow.none"
+      }
+     ]
+    },
+    {
+     "group": "Inner",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.inner.border-width",
+      "alias": "border-width.default",
+      "variable": "sidebar-inner-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Rail",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.rail.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-rail-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Rail",
+     "part": "Line hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.rail.line.hover",
+      "alias": "color.border.strong",
+      "variable": "sidebar-rail-line-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Rail",
+     "part": "Line width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.rail.line-width",
+      "alias": "border-width.default",
+      "variable": "sidebar-rail-line-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Inset",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.inset.background",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-inset-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Inset",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.inset.radius",
+      "alias": "radius.container",
+      "variable": "sidebar-inset-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Inset",
+     "part": "Shadow",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.inset.shadow",
+      "alias": "elevation.card",
+      "variable": "sidebar-inset-shadow"
+     },
+     "values": [
+      {
+       "swatch": {
+        "shadow": "0px 0px 0px 0px #00000000"
+       },
+       "text": "shadow.none"
+      }
+     ]
+    },
+    {
+     "group": "Inset",
+     "part": "Margin",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.inset.margin",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-inset-margin"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Input",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.input.height",
+      "alias": "size.control.default",
+      "variable": "sidebar-input-height"
+     },
+     "values": [
+      {
+       "token": "size.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Input",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.input.background",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-input-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.header.gap",
+      "alias": "space.gap.default",
+      "variable": "sidebar-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.header.padding",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-header-padding"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.footer.gap",
+      "alias": "space.gap.default",
+      "variable": "sidebar-footer-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.footer.padding",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-footer-padding"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.separator.background",
+      "alias": "color.border.default",
+      "variable": "sidebar-separator-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Margin x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.separator.margin-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-separator-margin-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.content.gap",
+      "alias": "space.gap.default",
+      "variable": "sidebar-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.padding",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-group-padding"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.height",
+      "alias": "size.control.default",
+      "variable": "sidebar-group-label-height"
+     },
+     "values": [
+      {
+       "token": "size.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.radius",
+      "alias": "radius.control",
+      "variable": "sidebar-group-label-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-group-label-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "sidebar-group-label-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label font weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "sidebar-group-label-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.label.label",
+      "alias": "color.text.secondary",
+      "variable": "sidebar-group-label-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.light.700",
+       "text": "#3D4655"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label focus ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.label.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "sidebar-group-label-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "sidebar-group-label-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.icon-size",
+      "alias": "size.icon",
+      "variable": "sidebar-group-label-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.focus",
+      "alias": "border-width.focus",
+      "variable": "sidebar-group-label-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.label.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "sidebar-group-label-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.label.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-group-label-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Label focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.label.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "sidebar-group-label-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.action.radius",
+      "alias": "radius.control",
+      "variable": "sidebar-group-action-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.action.label",
+      "alias": "color.text.primary",
+      "variable": "sidebar-group-action-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action focus ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.action.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "sidebar-group-action-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.action.icon-size",
+      "alias": "size.icon",
+      "variable": "sidebar-group-action-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.action.focus",
+      "alias": "border-width.focus",
+      "variable": "sidebar-group-action-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.action.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "sidebar-group-action-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.action.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-group-action-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.group.action.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-group-action-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Action focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.action.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "sidebar-group-action-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Content font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.group.content.font-size",
+      "alias": "type.body.font-size",
+      "variable": "sidebar-group-content-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.gap",
+      "alias": "space.gap.tight",
+      "variable": "sidebar-menu-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.action.radius",
+      "alias": "radius.control",
+      "variable": "sidebar-menu-action-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.action.label",
+      "alias": "color.text.primary",
+      "variable": "sidebar-menu-action-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action focus ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.action.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "sidebar-menu-action-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.action.icon-size",
+      "alias": "size.icon",
+      "variable": "sidebar-menu-action-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.action.focus",
+      "alias": "border-width.focus",
+      "variable": "sidebar-menu-action-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.action.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "sidebar-menu-action-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.action.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-menu-action-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.action.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-menu-action-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Action focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.action.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "sidebar-menu-action-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Badge radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.badge.radius",
+      "alias": "radius.control",
+      "variable": "sidebar-menu-badge-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Badge padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.badge.padding-x",
+      "alias": "component-spacing-map.x1",
+      "variable": "sidebar-menu-badge-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Badge font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.badge.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "sidebar-menu-badge-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Badge font weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.badge.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "sidebar-menu-badge-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Badge label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.badge.label",
+      "alias": "color.text.primary",
+      "variable": "sidebar-menu-badge-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Skeleton height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.skeleton.height",
+      "alias": "size.control.default",
+      "variable": "sidebar-menu-skeleton-height"
+     },
+     "values": [
+      {
+       "token": "size.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Skeleton gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.skeleton.gap",
+      "alias": "space.gap.default",
+      "variable": "sidebar-menu-skeleton-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Skeleton radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.skeleton.radius",
+      "alias": "radius.control",
+      "variable": "sidebar-menu-skeleton-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Skeleton padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.skeleton.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-menu-skeleton-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Skeleton text height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.skeleton.text-height",
+      "alias": "size.icon",
+      "variable": "sidebar-menu-skeleton-text-height"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.gap",
+      "alias": "space.gap.tight",
+      "variable": "sidebar-menu-sub-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.border",
+      "alias": "color.border.default",
+      "variable": "sidebar-menu-sub-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.padding-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "sidebar-menu-sub-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub padding y",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.padding-y",
+      "alias": "component-spacing-map.hairline",
+      "variable": "sidebar-menu-sub-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.gap",
+      "alias": "space.gap.default",
+      "variable": "sidebar-menu-sub-button-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.radius",
+      "alias": "radius.control",
+      "variable": "sidebar-menu-sub-button-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-menu-sub-button-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.label",
+      "alias": "color.text.primary",
+      "variable": "sidebar-menu-sub-button-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button focus ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "sidebar-menu-sub-button-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button disabled opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.disabled-opacity-disabled",
+      "alias": "opacity.disabled",
+      "variable": "sidebar-menu-sub-button-disabled-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.icon-size",
+      "alias": "size.icon",
+      "variable": "sidebar-menu-sub-button-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.focus",
+      "alias": "border-width.focus",
+      "variable": "sidebar-menu-sub-button-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "sidebar-menu-sub-button-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-menu-sub-button-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-menu-sub-button-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button background pressed",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.background.pressed",
+      "alias": "color.surface.pressed",
+      "variable": "sidebar-menu-sub-button-background-pressed"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button background current",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.background.current",
+      "alias": "color.surface.selected",
+      "variable": "sidebar-menu-sub-button-background-current"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E8ECFF"
+       },
+       "token": "violet.light.100",
+       "text": "#E8ECFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2A244F"
+       },
+       "token": "violet.dark.100",
+       "text": "#2A244F"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button edge width current",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.edge-width.current",
+      "alias": "border-width.focus",
+      "variable": "sidebar-menu-sub-button-edge-width-current"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button md font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.md.font-size",
+      "alias": "type.body.font-size",
+      "variable": "sidebar-menu-sub-button-md-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "sidebar-menu-sub-button-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button sm font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.sm.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "sidebar-menu-sub-button-sm-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu.sub.border-width",
+      "alias": "border-width.default",
+      "variable": "sidebar-menu-sub-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-menu-button-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Background current",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.background.current",
+      "alias": "color.surface.selected",
+      "variable": "sidebar-menu-button-background-current"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E8ECFF"
+       },
+       "token": "violet.light.100",
+       "text": "#E8ECFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2A244F"
+       },
+       "token": "violet.dark.100",
+       "text": "#2A244F"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Background pressed",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.background.pressed",
+      "alias": "color.surface.pressed",
+      "variable": "sidebar-menu-button-background-pressed"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Background open hover",
+     "when": "when open, on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.background.open-hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-menu-button-background-open-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "sidebar-menu-button-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Edge width current",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.edge-width.current",
+      "alias": "border-width.focus",
+      "variable": "sidebar-menu-button-edge-width-current"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Default height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.default.height",
+      "alias": "size.control.default",
+      "variable": "sidebar-menu-button-default-height"
+     },
+     "values": [
+      {
+       "token": "size.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Default font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.default.font-size",
+      "alias": "type.body.font-size",
+      "variable": "sidebar-menu-button-default-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Sm font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.sm.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "sidebar-menu-button-sm-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Lg font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.lg.font-size",
+      "alias": "type.body.font-size",
+      "variable": "sidebar-menu-button-lg-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.opacity.disabled",
+      "alias": "opacity.disabled",
+      "variable": "sidebar-menu-button-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Focus width",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.focus-width",
+      "alias": "border-width.focus",
+      "variable": "sidebar-menu-button-focus-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Focus ring",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "sidebar-menu-button-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Focus ring offset",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-menu-button-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.font-size",
+      "alias": "type.body.font-size",
+      "variable": "sidebar-menu-button-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Font weight current",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.font-weight.current",
+      "alias": "type.label.font-weight",
+      "variable": "sidebar-menu-button-font-weight-current"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.icon-size",
+      "alias": "size.icon",
+      "variable": "sidebar-menu-button-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Outline background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.outline.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-menu-button-outline-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Outline background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.outline.background",
+      "alias": "color.surface.canvas",
+      "variable": "sidebar-menu-button-outline-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Outline border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.outline.border",
+      "alias": "color.border.default",
+      "variable": "sidebar-menu-button-outline-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Outline border hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.outline.border.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sidebar-menu-button-outline-border-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Outline border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.outline.border-width",
+      "alias": "border-width.default",
+      "variable": "sidebar-menu-button-outline-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.padding",
+      "alias": "component-spacing-map.x2",
+      "variable": "sidebar-menu-button-padding"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Padding right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.padding-right",
+      "alias": "component-spacing-map.x8",
+      "variable": "sidebar-menu-button-padding-right"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.radius",
+      "alias": "radius.control",
+      "variable": "sidebar-menu-button-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.125rem"
+       },
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Collapsed size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.collapsed-size",
+      "alias": "size.control.default",
+      "variable": "sidebar-menu-button-collapsed-size"
+     },
+     "values": [
+      {
+       "token": "size.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sidebar.menu-button.gap",
+      "alias": "space.gap.default",
+      "variable": "sidebar-menu-button-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

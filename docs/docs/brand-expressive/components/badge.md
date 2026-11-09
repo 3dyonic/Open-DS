@@ -1,4 +1,5 @@
 ---
+composite_data: "./badge.json"
 sidebar_position: 7
 title: "Badge"
 description: "Badge in Brand expressive."
@@ -14,7 +15,7 @@ A short label for a status, category or count, next to what it describes.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Badge examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-badge--docs">Open Badge in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="badge/live"}
 
 ## When to use it
 
@@ -42,7 +43,7 @@ What each variant is for in any design system, then what Brand expressive decide
 
 <section class="odv-variant off"><header><code>danger</code><span class="odv-axisname">tone</span><span class="odv-pill">Not used in Brand expressive</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=tone:danger" title="Badge danger" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>Failed, blocked or lost; act now.</p><div class="odv-when"><div><span class="y">✓</span>A real failure or loss.</div><div><span class="n">✕</span>Anything that is only unusual.</div></div></div><div class="odv-topic"><h4>In Brand expressive</h4><p class="odv-decision">Nothing on a launch page is labeled as failed; errors are plain sentences.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-voice-count"><span>How many tones does it use?</span><b>One per moment</b> · <code>voice.count</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./badge/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the badge, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/badge"}
 
 ## How Brand expressive uses it
 

@@ -1,4 +1,5 @@
 ---
+composite_data: "./tabs.json"
 sidebar_position: 57
 title: "Tabs"
 description: "Tabs in Multi-brand."
@@ -14,7 +15,7 @@ Switches between views of the same thing on one page.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Tabs examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-tabs--docs">Open Tabs in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="tabs/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Accordion](./accordion.md): Stacked sections people can open together.
 - [Navigation menu](./navigation-menu.md): Other pages.
 
-<a class="odv-anatref" href="./tabs/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the tabs, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/tabs"}
 
 ## Words
 

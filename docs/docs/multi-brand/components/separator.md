@@ -1,4 +1,5 @@
 ---
+composite_data: "./separator.json"
 sidebar_position: 49
 title: "Separator"
 description: "Separator in Multi-brand."
@@ -14,7 +15,7 @@ A line between groups.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Separator examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-separator--docs">Open Separator in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="separator/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Card](./card.md): A container, when groups need a boundary.
 
-<a class="odv-anatref" href="./separator/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the separator, the job it does, and the decisions behind it. 1 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/separator"}
 
 ## How Multi-brand uses it
 

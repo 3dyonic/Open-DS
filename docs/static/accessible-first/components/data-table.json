@@ -1,0 +1,323 @@
+{
+ "preview": {
+  "data-table/live": {
+   "title": "Data table examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Data table in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-data-table--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/data-table": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the data table, the job it does, and the decisions behind it. 13 parts.",
+     "href": "./data-table/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "data-table": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Accessible first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Accessible first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Table row height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.row-height",
+      "alias": "size.row",
+      "variable": "table-row-height"
+     },
+     "values": [
+      {
+       "token": "size.56",
+       "text": "3.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.gap",
+      "alias": "space.gap.tight",
+      "variable": "data-table-gap"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Label hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.label-hover",
+      "alias": "color.text.primary",
+      "variable": "data-table-label-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#141414"
+       },
+       "token": "gray.light.900",
+       "text": "#141414"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F7F7"
+       },
+       "token": "gray.dark.900",
+       "text": "#F7F7F7"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.padding",
+      "alias": "component-spacing-map.x2",
+      "variable": "data-table-padding"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.gap-2",
+      "alias": "space.gap.default",
+      "variable": "data-table-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.radius",
+      "alias": "radius.badge",
+      "variable": "data-table-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "data-table-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.padding-y",
+      "alias": "component-spacing-map.x1",
+      "variable": "data-table-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.label",
+      "alias": "color.text.muted",
+      "variable": "data-table-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B4B4B4"
+       },
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
+      }
+     ]
+    },
+    {
+     "group": "Row",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.row.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "data-table-row-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.container.border",
+      "alias": "color.border.default",
+      "variable": "data-table-container-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D6D6D6"
+       },
+       "token": "gray.light.200",
+       "text": "#D6D6D6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#333333"
+       },
+       "token": "gray.dark.200",
+       "text": "#333333"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.container.border-width",
+      "alias": "border-width.default",
+      "variable": "data-table-container-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.container.radius",
+      "alias": "radius.container",
+      "variable": "data-table-container-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

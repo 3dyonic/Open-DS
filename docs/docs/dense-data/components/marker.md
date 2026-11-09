@@ -1,4 +1,5 @@
 ---
+composite_data: "./marker.json"
 sidebar_position: 36
 title: "Marker"
 description: "Marker in Dense data."
@@ -14,7 +15,7 @@ A divider or status line inside a conversation, such as a date or someone joinin
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-marker--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Marker examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-marker--docs">Open Marker in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-marker--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+::preview{id="marker/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Message](./message.md): Something someone said.
 
-<a class="odv-anatref" href="./marker/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the marker, the job it does, and the decisions behind it. 2 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/marker"}
 
 ## Words
 

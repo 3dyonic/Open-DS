@@ -1,4 +1,5 @@
 ---
+composite_data: "./message-scroller.json"
 sidebar_position: 39
 title: "Message scroller"
 description: "Message scroller in Multi-brand."
@@ -15,7 +16,7 @@ A scrolling list of messages that keeps the newest in view.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-message-scroller--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Message scroller examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-message-scroller--docs">Open Message scroller in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-message-scroller--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="message-scroller/live"}
 
 ## When to use it
 
@@ -26,7 +27,7 @@ Instead:
 
 - [Scroll area](./scroll-area.md): A plain scrolling region.
 
-<a class="odv-anatref" href="./message-scroller/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the message scroller, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/message-scroller"}
 
 ## Words
 

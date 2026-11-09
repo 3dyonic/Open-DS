@@ -1,4 +1,5 @@
 ---
+composite_data: "./popover.json"
 sidebar_position: 43
 title: "Popover"
 description: "Popover in Accessible first."
@@ -15,7 +16,7 @@ Rich content in a floating panel, opened by click.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-popover--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Popover examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-popover--docs">Open Popover in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-popover--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="popover/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 - [Tooltip](./tooltip.md): A one-line hint on hover.
 - [Dialog](./dialog.md): A blocking task.
 
-<a class="odv-anatref" href="./popover/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the popover, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/popover"}
 
 ## Words
 

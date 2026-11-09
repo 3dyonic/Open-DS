@@ -1,7 +1,9 @@
 import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
+import CardGrid from "@open-ds/doc-composites/CardGrid";
 import Label from "@open-ds/doc-composites/Label";
+import Preview from "@open-ds/doc-composites/Preview";
 import ReasonChain from "@open-ds/doc-composites/ReasonChain";
 import TokenTable from "@open-ds/doc-composites/TokenTable";
 
@@ -21,4 +23,12 @@ function LinkedReasonChain(props: React.ComponentProps<typeof ReasonChain>) {
 }
 
 // The composites the pages' directives name (src/remark/composites.mjs).
-export default { ...MDXComponents, section: Section, Label, ReasonChain: LinkedReasonChain, TokenTable };
+export default {
+  ...MDXComponents,
+  section: Section,
+  CardGrid,
+  Label,
+  Preview,
+  ReasonChain: LinkedReasonChain,
+  TokenTable,
+};

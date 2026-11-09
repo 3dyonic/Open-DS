@@ -1,0 +1,540 @@
+{
+ "preview": {
+  "breadcrumb/live": {
+   "title": "Breadcrumb examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-breadcrumb--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-breadcrumb--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Breadcrumb in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-breadcrumb--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/breadcrumb": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the breadcrumb, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./breadcrumb/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "breadcrumb": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "List",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.list.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "breadcrumb-list-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "List",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.list.font-size",
+      "alias": "type.body.font-size",
+      "variable": "breadcrumb-list-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "List",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.breadcrumb.list.label",
+      "alias": "color.text.muted",
+      "variable": "breadcrumb-list-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "group": "List",
+     "part": "Wide gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.list.wide.gap",
+      "alias": "component-spacing-map.x3",
+      "variable": "breadcrumb-list-wide-gap"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.item.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "breadcrumb-item-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Label hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.breadcrumb.link.label-hover",
+      "alias": "color.text.primary",
+      "variable": "breadcrumb-link-label-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.link.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "breadcrumb-link-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.link.easing",
+      "alias": "motion.easing.standard",
+      "variable": "breadcrumb-link-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.breadcrumb.link.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "breadcrumb-link-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F766E"
+       },
+       "token": "teal.light.600",
+       "text": "#0F766E"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#7FCFC6"
+       },
+       "token": "teal.dark.600",
+       "text": "#7FCFC6"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#6D28D9"
+       },
+       "token": "purple.light.600",
+       "text": "#6D28D9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#B79DF7"
+       },
+       "token": "purple.dark.600",
+       "text": "#B79DF7"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C2410C"
+       },
+       "token": "orange.light.600",
+       "text": "#C2410C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F7A67F"
+       },
+       "token": "orange.dark.600",
+       "text": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Focus width",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.link.focus-width",
+      "alias": "border-width.focus",
+      "variable": "breadcrumb-link-focus-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.breadcrumb.link.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "breadcrumb-link-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.link.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "breadcrumb-link-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Page",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.page.font-weight",
+      "alias": "type.body.font-weight",
+      "variable": "breadcrumb-page-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.400",
+       "text": "400"
+      }
+     ]
+    },
+    {
+     "group": "Page",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.breadcrumb.page.label",
+      "alias": "color.text.primary",
+      "variable": "breadcrumb-page-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Ellipsis",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.ellipsis.icon-size",
+      "alias": "size.icon",
+      "variable": "breadcrumb-ellipsis-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.breadcrumb.separator.icon-size",
+      "alias": "size.icon",
+      "variable": "breadcrumb-separator-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

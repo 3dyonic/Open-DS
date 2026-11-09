@@ -1,0 +1,533 @@
+{
+ "preview": {
+  "data-table/live": {
+   "title": "Data table examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Data table in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-data-table--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/data-table": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the data table, the job it does, and the decisions behind it. 13 parts.",
+     "href": "./data-table/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "data-table": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Table row height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.row-height",
+      "alias": "size.row",
+      "variable": "table-row-height"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.gap",
+      "alias": "space.gap.tight",
+      "variable": "data-table-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Label hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.label-hover",
+      "alias": "color.text.primary",
+      "variable": "data-table-label-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.padding",
+      "alias": "component-spacing-map.x2",
+      "variable": "data-table-padding"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.gap-2",
+      "alias": "space.gap.default",
+      "variable": "data-table-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.radius",
+      "alias": "radius.badge",
+      "variable": "data-table-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "data-table-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.padding-y",
+      "alias": "component-spacing-map.x1",
+      "variable": "data-table-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Data table",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.label",
+      "alias": "color.text.muted",
+      "variable": "data-table-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "group": "Row",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.row.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "data-table-row-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.container.border",
+      "alias": "color.border.default",
+      "variable": "data-table-container-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.data-table.container.border-width",
+      "alias": "border-width.default",
+      "variable": "data-table-container-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Container",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.data-table.container.radius",
+      "alias": "radius.container",
+      "variable": "data-table-container-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

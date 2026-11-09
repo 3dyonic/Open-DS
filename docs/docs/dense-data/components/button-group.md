@@ -1,4 +1,5 @@
 ---
+composite_data: "./button-group.json"
 sidebar_position: 11
 title: "Button group"
 description: "Button group in Dense data."
@@ -14,7 +15,7 @@ Related buttons joined into one control.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-button-group--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Button group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-button-group--docs">Open Button group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-button-group--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+::preview{id="button-group/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Toggle group](./toggle-group.md): The choice stays pressed.
 - [Dropdown menu](./dropdown-menu.md): More actions than fit in a row.
 
-<a class="odv-anatref" href="./button-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the button group, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/button-group"}
 
 ## Words
 

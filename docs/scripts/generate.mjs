@@ -34,7 +34,7 @@ const codeFont = (scheme) => {
   const b = Object.values(scheme.tokens.brands)[0];
   const ref = b?.theme?.base?.type?.data?.["font-family"]?.$value ?? "";
   const key = ref.match(/^\{font\.family\.([a-z0-9-]+)\}$/)?.[1];
-  const stack = key ? scheme.tokens.primitive?.font?.family?.[key]?.$value ?? "" : "";
+  const stack = key ? (scheme.tokens.primitive?.font?.family?.[key]?.$value ?? "") : "";
   return /monospace\s*$/.test(stack) ? "var(--type-data-font-family)" : MONO;
 };
 
@@ -144,7 +144,8 @@ function onSelected(scheme, scope) {
       ["light", "dark"].map((mode) => {
         const c = def.theme?.[mode]?.color ?? {};
         const vars = [];
-        if (tone(c.surface?.selected)) vars.push(`--ods-text-on-selected: var(--color-text-on-${tone(c.surface.selected)});`);
+        if (tone(c.surface?.selected))
+          vars.push(`--ods-text-on-selected: var(--color-text-on-${tone(c.surface.selected)});`);
         for (const st of ["info", "success", "warning", "danger"])
           if (tone(c.status?.[st]?.subtle))
             vars.push(`--ods-text-on-${st}-subtle: var(--color-text-${st}-on-${tone(c.status[st].subtle)});`);
@@ -201,6 +202,10 @@ for (const id of ids) {
   files[`static/logo-${id}.svg`] = logo(modeTokens("light"));
   files[`static/logo-${id}-dark.svg`] = logo(modeTokens("dark"));
   files[`static/${id}/llms.txt`] = docsLlms(scheme, pages);
+  // Each page's composite data on the site too, beside the page, for an agent that reads the
+  // published docs (OD-284).
+  for (const p of Object.keys(pages).filter((x) => x.endsWith(".json") && !x.includes("_")))
+    files[`static/${id}/${p}`] = pages[p];
   for (const [p, text] of Object.entries(pages))
     files[`docs/${id}/${p}`] = p.endsWith("_category_.json")
       ? // A category's link names a doc by id; ids now start with the scheme's folder.

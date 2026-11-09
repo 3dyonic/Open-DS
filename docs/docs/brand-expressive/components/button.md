@@ -1,4 +1,5 @@
 ---
+composite_data: "./button.json"
 sidebar_position: 10
 title: "Button"
 description: "Button in Brand expressive."
@@ -14,7 +15,7 @@ A control that commits an action on this screen.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Button examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-button--docs">Open Button in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="button/live"}
 
 ## When to use it
 
@@ -54,7 +55,7 @@ What each variant is for in any design system, then what Brand expressive decide
 
 <section class="odv-variant nostage"><header><code>disabled</code><span class="odv-axisname">state</span><span class="odv-pill used">Used in Brand expressive</span></header><div class="odv-vbody"><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>The action is not available. It must stay perceivable and say why.</p><div class="odv-when"><div><span class="y">✓</span>A control that must not run now, with a visible reason.</div><div><span class="n">✕</span>A form's submit that could explain the problem on press instead.</div></div></div><div class="odv-topic"><h4>In Brand expressive</h4><p class="odv-decision">Only with a visible reason next to it.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-people-q2"><span>What accessibility level do we commit to?</span><b>AA</b> · <code>people.q2</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./button/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the button, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/button"}
 
 ## How Brand expressive uses it
 

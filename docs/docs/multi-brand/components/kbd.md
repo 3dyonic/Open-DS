@@ -1,4 +1,5 @@
 ---
+composite_data: "./kbd.json"
 sidebar_position: 34
 title: "Kbd"
 description: "Kbd in Multi-brand."
@@ -14,7 +15,7 @@ A keyboard key or shortcut, shown as text.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-kbd--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Kbd examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-kbd--docs">Open Kbd in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-kbd--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="kbd/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Command](./command.md): Where shortcuts are often listed.
 
-<a class="odv-anatref" href="./kbd/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the keyboard key, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/kbd"}
 
 ## Words
 

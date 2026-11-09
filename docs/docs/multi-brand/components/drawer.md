@@ -1,4 +1,5 @@
 ---
+composite_data: "./drawer.json"
 sidebar_position: 24
 title: "Drawer"
 description: "Drawer in Multi-brand."
@@ -14,7 +15,7 @@ A panel that slides up from the bottom, for phones.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-drawer--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Drawer examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-drawer--docs">Open Drawer in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-drawer--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="drawer/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Sheet](./sheet.md): Slides from an edge on wide screens.
 - [Dialog](./dialog.md): A blocking decision.
 
-<a class="odv-anatref" href="./drawer/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the drawer, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/drawer"}
 
 ## Words
 

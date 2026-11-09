@@ -1,0 +1,620 @@
+{
+ "preview": {
+  "toast/live": {
+   "title": "Toast examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Toast in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-toast--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/toast": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the toast, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./toast/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "toast/voice.values": {
+   "anchor": "why-voice-values",
+   "question": "How does it sound?",
+   "key": "voice.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Terse",
+     "why": "Experts want short labels and short messages."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toast",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "neutral",
+       "text": "A plain confirmation: Filters cleared."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "success",
+       "text": "A short confirmation with the count: 12 alerts exported."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "danger",
+       "text": "A background failure: name the record, then the fix."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Alert: destructive"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 3,
+     "caption": "Toast decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "toast/tasks.q2": {
+   "anchor": "why-tasks-q2",
+   "question": "How often do people repeat actions?",
+   "key": "tasks.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Constantly",
+     "why": "The same actions repeat many times an hour."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toast",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "success",
+       "text": "A short confirmation with the count: 12 alerts exported."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: ghost",
+       "Input group: inline-end",
+       "Sidebar: default",
+       "Alert: default",
+       "Toggle: default"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Toast decision would reopen",
+     "text": "and 11 answers that follow from it: Time on task, All day, Three, and 8 more."
+    }
+   ]
+  },
+  "toast/voice.lands": {
+   "anchor": "why-voice-lands",
+   "question": "Where do the words matter most?",
+   "key": "voice.lands",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Errors and empty states",
+     "why": "Errors and empty tables are where words decide the next action."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toast",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "danger",
+       "text": "A background failure: name the record, then the fix."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Empty: default"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Toast decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "toast/outcomes.q2": {
+   "anchor": "why-outcomes-q2",
+   "question": "What is a costly mistake?",
+   "key": "outcomes.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Acting on the wrong record",
+     "why": "Acting on the wrong row is the costly error."
+    },
+    {
+     "kind": "decided",
+     "title": "So Toast",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "danger",
+       "text": "A background failure: name the record, then the fix."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: primary",
+       "Button: secondary",
+       "Button: danger",
+       "Alert: default",
+       "Alert: destructive"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Toast decision would reopen",
+     "text": "and 2 answers that follow from it: Status in tables, Errors and empty states."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "toast": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Toast",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.gap",
+      "alias": "space.gap.default",
+      "variable": "toast-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Toast",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.padding",
+      "alias": "space.inset.container",
+      "variable": "toast-padding"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Toast",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.label",
+      "alias": "color.text.primary",
+      "variable": "toast-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Toast",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.border-width",
+      "alias": "border-width.default",
+      "variable": "toast-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Toast",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.background",
+      "alias": "color.surface.raised",
+      "variable": "toast-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Toast",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.radius",
+      "alias": "radius.container",
+      "variable": "toast-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Toast",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.shadow",
+      "alias": "elevation.overlay",
+      "variable": "toast-shadow"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "shadow": "0px 8px 24px 0px #0D111729"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "shadow": "0px 8px 24px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Neutral",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.neutral.border",
+      "alias": "color.border.default",
+      "variable": "toast-neutral-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Success",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.success.border",
+      "alias": "color.border.default",
+      "variable": "toast-success-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Success",
+     "part": "Edge",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.success.edge",
+      "alias": "color.status.success",
+      "variable": "toast-success-edge"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F7A3A"
+       },
+       "token": "green.light.600",
+       "text": "#1F7A3A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#5CC283"
+       },
+       "token": "green.dark.600",
+       "text": "#5CC283"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.danger.border",
+      "alias": "color.border.default",
+      "variable": "toast-danger-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Edge",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.danger.edge",
+      "alias": "color.status.danger",
+      "variable": "toast-danger-edge"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.title.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "toast-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.title.font-size",
+      "alias": "type.body.font-size",
+      "variable": "toast-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.toast.description.label",
+      "alias": "color.text.secondary",
+      "variable": "toast-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.light.700",
+       "text": "#3D4655"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.description.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "toast-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.toast.content.gap",
+      "alias": "space.gap.tight",
+      "variable": "toast-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

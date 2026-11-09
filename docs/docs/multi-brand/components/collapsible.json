@@ -1,0 +1,31 @@
+{
+ "preview": {
+  "collapsible/live": {
+   "title": "Collapsible examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-collapsible--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-collapsible--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Collapsible in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-collapsible--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/collapsible": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the collapsible, the job it does, and the decisions behind it. 1 parts.",
+     "href": "./collapsible/anatomy",
+     "go": true
+    }
+   ]
+  }
+ }
+}

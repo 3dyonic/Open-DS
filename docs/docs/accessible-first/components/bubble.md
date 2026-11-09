@@ -1,4 +1,5 @@
 ---
+composite_data: "./bubble.json"
 sidebar_position: 9
 title: "Bubble"
 description: "Bubble in Accessible first."
@@ -14,7 +15,7 @@ A chat message in a bubble that shows who sent it.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-bubble--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Bubble examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-bubble--docs">Open Bubble in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-bubble--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="bubble/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Message](./message.md): One message with its author and time, without the bubble shape.
 
-<a class="odv-anatref" href="./bubble/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the bubble, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/bubble"}
 
 ## Words
 

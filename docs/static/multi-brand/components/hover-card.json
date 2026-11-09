@@ -1,0 +1,415 @@
+{
+ "preview": {
+  "hover-card/live": {
+   "title": "Hover card examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-hover-card--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-hover-card--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Hover card in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-hover-card--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/hover-card": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the hover card, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./hover-card/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "hover-card": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Overlay offset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.overlay.offset",
+      "alias": "space.gap.tight",
+      "variable": "overlay-offset"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.hover-card.content.radius",
+      "alias": "radius.container",
+      "variable": "hover-card-content-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.hover-card.content.background",
+      "alias": "color.surface.raised",
+      "variable": "hover-card-content-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.hover-card.content.padding",
+      "alias": "space.inset.container",
+      "variable": "hover-card-content-padding"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.hover-card.content.label",
+      "alias": "color.text.primary",
+      "variable": "hover-card-content-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.hover-card.content.shadow",
+      "alias": "elevation.overlay",
+      "variable": "hover-card-content-shadow"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #0F172A29"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #0F172A29"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #0F172A29"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.hover-card.content.border",
+      "alias": "color.border.default",
+      "variable": "hover-card-content-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.hover-card.content.border-width",
+      "alias": "border-width.default",
+      "variable": "hover-card-content-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.hover-card.content.duration",
+      "alias": "motion.duration.panels",
+      "variable": "hover-card-content-duration"
+     },
+     "values": [
+      {
+       "token": "duration.relaxed",
+       "text": "320ms"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

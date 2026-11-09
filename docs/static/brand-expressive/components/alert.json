@@ -1,0 +1,609 @@
+{
+ "preview": {
+  "alert/live": {
+   "title": "Alert examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Alert in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-alert--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/alert": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the alert, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./alert/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "alert/tasks.q2": {
+   "anchor": "why-tasks-q2",
+   "question": "How often do people repeat actions?",
+   "key": "tasks.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Rarely",
+     "why": "One action: sign up."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Alerts here only report a sign-up that did not go through; confirmations go in a toast."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Input group: block-start",
+       "Input group: block-end",
+       "Toggle: lg"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Alert decision would reopen",
+     "text": "and 2 answers that follow from it: Three, Only what today's screens use."
+    }
+   ]
+  },
+  "alert/voice.count": {
+   "anchor": "why-voice-count",
+   "question": "How many tones does it use?",
+   "key": "voice.count",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "One per moment",
+     "why": "Playful in headlines, plain in errors."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Alerts here only report a sign-up that did not go through; confirmations go in a toast."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "destructive",
+       "text": "A sign-up that did not go through: plain first, then how to recover, with a word beside the color."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Badge: danger",
+       "Toast: neutral",
+       "Toast: danger"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Alert decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "alert/accessibility.count": {
+   "anchor": "why-accessibility-count",
+   "question": "How many signals carry each meaning?",
+   "key": "accessibility.count",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Two: color and word",
+     "why": "Color and word."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "destructive",
+       "text": "A sign-up that did not go through: plain first, then how to recover, with a word beside the color."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Badge: neutral",
+       "Badge: success",
+       "Badge: warning"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Alert decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "alert/outcomes.q2": {
+   "anchor": "why-outcomes-q2",
+   "question": "What is a costly mistake?",
+   "key": "outcomes.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Looking off-brand",
+     "why": "A bland page is the costly mistake."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "destructive",
+       "text": "A sign-up that did not go through: plain first, then how to recover, with a word beside the color."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: secondary",
+       "Button: danger",
+       "Item: muted"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Alert decisions would reopen",
+     "text": "and 1 answer that follow from it: One per moment."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "alert": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Alert",
+     "part": "Gap y",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.gap-y",
+      "alias": "component-spacing-map.hairline",
+      "variable": "alert-gap-y"
+     },
+     "values": [
+      {
+       "token": "space.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.radius",
+      "alias": "radius.container",
+      "variable": "alert-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "1.5rem"
+       },
+       "token": "radius.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.padding-x",
+      "alias": "space.inset.container",
+      "variable": "alert-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.padding-y",
+      "alias": "component-spacing-map.x3",
+      "variable": "alert-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.font-size",
+      "alias": "type.body.font-size",
+      "variable": "alert-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Gap x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.gap-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "alert-gap-x"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.icon-size",
+      "alias": "size.icon",
+      "variable": "alert-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.border",
+      "alias": "color.border.default",
+      "variable": "alert-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.border-width",
+      "alias": "border-width.default",
+      "variable": "alert-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Default",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.default.background",
+      "alias": "color.surface.default",
+      "variable": "alert-default-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "taupe.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.dark.50",
+       "text": "#1F1411"
+      }
+     ]
+    },
+    {
+     "group": "Default",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.default.label",
+      "alias": "color.text.primary",
+      "variable": "alert-default-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Destructive",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.destructive.background",
+      "alias": "color.surface.default",
+      "variable": "alert-destructive-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "taupe.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.dark.50",
+       "text": "#1F1411"
+      }
+     ]
+    },
+    {
+     "group": "Destructive",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.destructive.label",
+      "alias": "color.status.danger",
+      "variable": "alert-destructive-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Destructive",
+     "part": "Description label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.destructive.description.label",
+      "alias": "color.status.danger",
+      "variable": "alert-destructive-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.title.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "alert-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.description.gap",
+      "alias": "space.gap.tight",
+      "variable": "alert-description-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "alert-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.description.label",
+      "alias": "color.text.muted",
+      "variable": "alert-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

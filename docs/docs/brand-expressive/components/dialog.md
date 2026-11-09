@@ -1,4 +1,5 @@
 ---
+composite_data: "./dialog.json"
 sidebar_position: 23
 title: "Dialog"
 description: "Dialog in Brand expressive."
@@ -14,7 +15,7 @@ A window over the page that takes attention until people finish or close it.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dialog--docs">Open Dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="dialog/live"}
 
 ## When to use it
 
@@ -29,7 +30,7 @@ Instead:
 - [Toast](./toast.md): Does not interrupt.
 - [Alert dialog](./alert-dialog.md): Confirms something that cannot be undone.
 
-<a class="odv-anatref" href="./dialog/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the dialog, the job it does, and the decisions behind it. 8 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/dialog"}
 
 ## How Brand expressive uses it
 

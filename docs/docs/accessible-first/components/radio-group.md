@@ -1,4 +1,5 @@
 ---
+composite_data: "./radio-group.json"
 sidebar_position: 45
 title: "Radio group"
 description: "Radio group in Accessible first."
@@ -14,7 +15,7 @@ One choice from a short list shown at once.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-radio-group--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Radio group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-radio-group--docs">Open Radio group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-radio-group--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="radio-group/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Checkbox](./checkbox.md): More than one may be true.
 - [Select](./select.md): The list is long.
 
-<a class="odv-anatref" href="./radio-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the radio group, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/radio-group"}
 
 ## Words
 

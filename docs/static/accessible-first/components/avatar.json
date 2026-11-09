@@ -1,0 +1,556 @@
+{
+ "preview": {
+  "avatar/live": {
+   "title": "Avatar examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-avatar--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-avatar--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Avatar in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-avatar--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/avatar": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the avatar, the job it does, and the decisions behind it. 8 parts.",
+     "href": "./avatar/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "avatar": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Accessible first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Accessible first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Avatar",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.size",
+      "alias": "size.control.default",
+      "variable": "avatar-size"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Avatar",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.radius",
+      "alias": "radius.round",
+      "variable": "avatar-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.full",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Fallback",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.fallback.radius",
+      "alias": "radius.round",
+      "variable": "avatar-fallback-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.full",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Fallback",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.fallback.background",
+      "alias": "color.surface.sunken",
+      "variable": "avatar-fallback-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Fallback",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.fallback.font-size",
+      "alias": "type.body.font-size",
+      "variable": "avatar-fallback-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.19",
+       "text": "1.1875rem"
+      }
+     ]
+    },
+    {
+     "group": "Fallback",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.fallback.label",
+      "alias": "color.text.muted",
+      "variable": "avatar-fallback-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B4B4B4"
+       },
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
+      }
+     ]
+    },
+    {
+     "group": "Fallback",
+     "part": "Sm font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.fallback.sm.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "avatar-fallback-sm-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Badge",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.badge.radius",
+      "alias": "radius.round",
+      "variable": "avatar-badge-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.full",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Badge",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.badge.background",
+      "alias": "color.action.primary",
+      "variable": "avatar-badge-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#0B4FC0"
+       },
+       "token": "blue.light.600",
+       "text": "#0B4FC0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8AB4F8"
+       },
+       "token": "blue.dark.600",
+       "text": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "group": "Badge",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.badge.label",
+      "alias": "color.text.on-action",
+      "variable": "avatar-badge-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "gray.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#141414"
+       },
+       "token": "gray.light.900",
+       "text": "#141414"
+      }
+     ]
+    },
+    {
+     "group": "Badge",
+     "part": "Ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.badge.ring",
+      "alias": "color.surface.canvas",
+      "variable": "avatar-badge-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F7F7"
+       },
+       "token": "gray.light.50",
+       "text": "#F7F7F7"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0A0A0A"
+       },
+       "token": "gray.dark.0",
+       "text": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "group": "Badge",
+     "part": "Ring width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.badge.ring-width",
+      "alias": "border-width.default",
+      "variable": "avatar-badge-ring-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.group.count.size",
+      "alias": "size.control.default",
+      "variable": "avatar-group-count-size"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.group.count.radius",
+      "alias": "radius.round",
+      "variable": "avatar-group-count-radius"
+     },
+     "values": [
+      {
+       "token": "radius.full",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.group.count.background",
+      "alias": "color.surface.sunken",
+      "variable": "avatar-group-count-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count font size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.group.count.font-size",
+      "alias": "type.body.font-size",
+      "variable": "avatar-group-count-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.19",
+       "text": "1.1875rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.group.count.label",
+      "alias": "color.text.muted",
+      "variable": "avatar-group-count-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B4B4B4"
+       },
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.group.count.icon-size",
+      "alias": "size.icon",
+      "variable": "avatar-group-count-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.group.count.ring",
+      "alias": "color.surface.canvas",
+      "variable": "avatar-group-count-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F7F7"
+       },
+       "token": "gray.light.50",
+       "text": "#F7F7F7"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0A0A0A"
+       },
+       "token": "gray.dark.0",
+       "text": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Count ring width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.group.count.ring-width",
+      "alias": "border-width.default",
+      "variable": "avatar-group-count-ring-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.avatar.group.ring",
+      "alias": "color.surface.canvas",
+      "variable": "avatar-group-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F7F7"
+       },
+       "token": "gray.light.50",
+       "text": "#F7F7F7"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0A0A0A"
+       },
+       "token": "gray.dark.0",
+       "text": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Ring width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.group.ring-width",
+      "alias": "border-width.default",
+      "variable": "avatar-group-ring-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Overlap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.avatar.group.overlap",
+      "alias": "component-spacing-map.x2",
+      "variable": "avatar-group-overlap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

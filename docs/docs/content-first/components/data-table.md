@@ -1,4 +1,5 @@
 ---
+composite_data: "./data-table.json"
 sidebar_position: 21
 title: "Data table"
 description: "Data table in Content first."
@@ -15,7 +16,7 @@ Many records in one view, with search, filters, sorting, column choice, selectio
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Data table examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-data-table--docs">Open Data table in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="data-table/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 - [Table](./table.md): A few rows, no tools.
 - [Card](./card.md): Items to browse, not compare.
 
-<a class="odv-anatref" href="./data-table/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the data table, the job it does, and the decisions behind it. 13 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/data-table"}
 
 ## How Content first uses it
 

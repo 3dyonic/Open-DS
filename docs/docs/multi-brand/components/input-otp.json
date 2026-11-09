@@ -1,0 +1,984 @@
+{
+ "preview": {
+  "input-otp/live": {
+   "title": "Input otp examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Input otp in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-input-otp--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/input-otp": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the code input, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./input-otp/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "input-otp": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Input otp",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.gap",
+      "alias": "space.gap.default",
+      "variable": "input-otp-gap"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.border",
+      "alias": "color.border.strong",
+      "variable": "input-otp-slot-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border highlight",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.border.highlight",
+      "alias": "color.border.focus",
+      "variable": "input-otp-slot-border-highlight"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F766E"
+       },
+       "token": "teal.light.600",
+       "text": "#0F766E"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#7FCFC6"
+       },
+       "token": "teal.dark.600",
+       "text": "#7FCFC6"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#6D28D9"
+       },
+       "token": "purple.light.600",
+       "text": "#6D28D9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#B79DF7"
+       },
+       "token": "purple.dark.600",
+       "text": "#B79DF7"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C2410C"
+       },
+       "token": "orange.light.600",
+       "text": "#C2410C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F7A67F"
+       },
+       "token": "orange.dark.600",
+       "text": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.font-size",
+      "alias": "type.body.font-size",
+      "variable": "input-otp-slot-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.border-invalid",
+      "alias": "color.status.danger",
+      "variable": "input-otp-slot-border-invalid"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus ring highlight",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.focus-ring.highlight",
+      "alias": "color.border.focus",
+      "variable": "input-otp-slot-focus-ring-highlight"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F766E"
+       },
+       "token": "teal.light.600",
+       "text": "#0F766E"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#7FCFC6"
+       },
+       "token": "teal.dark.600",
+       "text": "#7FCFC6"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#6D28D9"
+       },
+       "token": "purple.light.600",
+       "text": "#6D28D9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#B79DF7"
+       },
+       "token": "purple.dark.600",
+       "text": "#B79DF7"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C2410C"
+       },
+       "token": "orange.light.600",
+       "text": "#C2410C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F7A67F"
+       },
+       "token": "orange.dark.600",
+       "text": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus ring invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.focus-ring-invalid",
+      "alias": "color.status.danger",
+      "variable": "input-otp-slot-focus-ring-invalid"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.border-width",
+      "alias": "border-width.default",
+      "variable": "input-otp-slot-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.radius",
+      "alias": "radius.control",
+      "variable": "input-otp-slot-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.focus-width",
+      "alias": "border-width.focus",
+      "variable": "input-otp-slot-focus-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.size",
+      "alias": "size.control.default",
+      "variable": "input-otp-slot-size"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus offset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "input-otp-slot-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus ring offset",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "input-otp-slot-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "input-otp-slot-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.easing",
+      "alias": "motion.easing.standard",
+      "variable": "input-otp-slot-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.background",
+      "alias": "color.surface.default",
+      "variable": "input-otp-slot-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "input-otp-slot-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "input-otp-slot-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Disabled text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "input-otp-slot-disabled-text"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.caret.width",
+      "alias": "border-width.default",
+      "variable": "input-otp-caret-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.caret.height",
+      "alias": "size.icon",
+      "variable": "input-otp-caret-height"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.caret.background",
+      "alias": "color.text.primary",
+      "variable": "input-otp-caret-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.caret.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "input-otp-caret-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.separator.icon-size",
+      "alias": "size.icon",
+      "variable": "input-otp-separator-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

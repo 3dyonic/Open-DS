@@ -1,4 +1,5 @@
 ---
+composite_data: "./message.json"
 sidebar_position: 38
 title: "Message"
 description: "Message in Multi-brand."
@@ -15,7 +16,7 @@ One message with its author and time.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-message--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Message examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-message--docs">Open Message in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-message--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+::preview{id="message/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 - [Bubble](./bubble.md): A chat bubble.
 - [Alert](./alert.md): A system message.
 
-<a class="odv-anatref" href="./message/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the message, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/message"}
 
 ## Words
 

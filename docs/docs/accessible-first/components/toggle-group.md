@@ -1,4 +1,5 @@
 ---
+composite_data: "./toggle-group.json"
 sidebar_position: 61
 title: "Toggle group"
 description: "Toggle group in Accessible first."
@@ -14,7 +15,7 @@ A set of toggles where one or many stay pressed.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toggle-group--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Toggle group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toggle-group--docs">Open Toggle group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toggle-group--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="toggle-group/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Radio group](./radio-group.md): An answer in a form.
 - [Button group](./button-group.md): Actions, not a pressed choice.
 
-<a class="odv-anatref" href="./toggle-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the toggle group, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/toggle-group"}
 
 ## Words
 

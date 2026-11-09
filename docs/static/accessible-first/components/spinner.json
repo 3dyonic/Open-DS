@@ -1,0 +1,65 @@
+{
+ "preview": {
+  "spinner/live": {
+   "title": "Spinner examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Spinner in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-spinner--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/spinner": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the spinner, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./spinner/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "spinner": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Accessible first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Accessible first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Spinner",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.spinner.icon-size",
+      "alias": "size.icon",
+      "variable": "spinner-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

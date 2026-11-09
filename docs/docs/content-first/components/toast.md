@@ -1,4 +1,5 @@
 ---
+composite_data: "./toast.json"
 sidebar_position: 59
 title: "Toast"
 description: "Toast in Content first."
@@ -14,7 +15,7 @@ A short message that confirms an action and goes away.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Toast examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toast--docs">Open Toast in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="toast/live"}
 
 ## When to use it
 
@@ -38,7 +39,7 @@ What each variant is for in any design system, then what Content first decided a
 
 <section class="odv-variant"><header><code>danger</code><span class="odv-axisname">tone</span><span class="odv-pill used">Used in Content first</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-toast--playground&viewMode=story&globals=scheme:content-first;mode:light&args=tone:danger" title="Toast danger" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>Something failed in the background.</p><div class="odv-when"><div><span class="y">✓</span>What failed and how to fix it, when it can wait for people's attention.</div><div><span class="n">✕</span>A failure that blocks the task: use an alert or a dialog.</div></div></div><div class="odv-topic"><h4>In Content first</h4><p class="odv-decision">Calm and helpful: take the blame, offer the way forward.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-voice-count"><span>How many tones does it use?</span><b>One per moment</b> · <code>voice.count</code></a><a class="odv-achip" href="#why-voice-values"><span>How does it sound?</span><b>Conversational</b> · <code>voice.values</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./toast/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the toast, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/toast"}
 
 ## How Content first uses it
 

@@ -1,4 +1,5 @@
 ---
+composite_data: "./slider.json"
 sidebar_position: 53
 title: "Slider"
 description: "Slider in Dense data."
@@ -14,7 +15,7 @@ A value picked by dragging along a track, when an exact number is not needed.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Slider examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-slider--docs">Open Slider in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+::preview{id="slider/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Input](./input.md): An exact number.
 - [Radio group](./radio-group.md): A few named choices.
 
-<a class="odv-anatref" href="./slider/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the slider, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/slider"}
 
 ## Words
 

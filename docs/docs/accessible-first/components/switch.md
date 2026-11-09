@@ -1,4 +1,5 @@
 ---
+composite_data: "./switch.json"
 sidebar_position: 55
 title: "Switch"
 description: "Switch in Accessible first."
@@ -15,7 +16,7 @@ An on or off setting that applies at once, with no submit.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Switch examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-switch--docs">Open Switch in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="switch/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 - [Checkbox](./checkbox.md): Waits for the form.
 - [Toggle](./toggle.md): A pressed button in a toolbar.
 
-<a class="odv-anatref" href="./switch/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the switch, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/switch"}
 
 ## Words
 

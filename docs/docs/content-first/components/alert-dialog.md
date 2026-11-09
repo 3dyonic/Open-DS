@@ -1,4 +1,5 @@
 ---
+composite_data: "./alert-dialog.json"
 sidebar_position: 3
 title: "Alert dialog"
 description: "Alert dialog in Content first."
@@ -14,7 +15,7 @@ A dialog that interrupts to confirm an action that cannot be undone.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Alert dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert-dialog--docs">Open Alert dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="alert-dialog/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Dialog](./dialog.md): A focused task, not a confirmation.
 - [Toast](./toast.md): Undo after the fact, when the action can be reversed.
 
-<a class="odv-anatref" href="./alert-dialog/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the alert dialog, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/alert-dialog"}
 
 ## How Content first uses it
 

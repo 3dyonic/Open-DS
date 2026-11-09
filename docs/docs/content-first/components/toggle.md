@@ -1,4 +1,5 @@
 ---
+composite_data: "./toggle.json"
 sidebar_position: 60
 title: "Toggle"
 description: "Toggle in Content first."
@@ -15,7 +16,7 @@ A button that stays pressed or not.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toggle--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Toggle examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toggle--docs">Open Toggle in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toggle--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="toggle/live"}
 
 ## When to use it
 
@@ -42,7 +43,7 @@ What each variant is for in any design system, then what Content first decided a
 
 <section class="odv-variant"><header><code>lg</code><span class="odv-axisname">size</span><span class="odv-pill">Not decided yet</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:content-first;mode:light&args=size:lg" title="Toggle lg" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>A larger toggle.</p><div class="odv-when"><div><span class="y">✓</span>A few toggles that need to be easy to hit.</div><div><span class="n">✕</span>Dense toolbars.</div></div></div><div class="odv-topic"><h4>In Content first</h4><p class="odv-decision">Not decided yet.</p></div></div></div></section>
 
-<a class="odv-anatref" href="./toggle/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the toggle, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/toggle"}
 
 ## Words
 

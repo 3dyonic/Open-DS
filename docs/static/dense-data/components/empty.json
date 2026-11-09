@@ -1,0 +1,533 @@
+{
+ "preview": {
+  "empty/live": {
+   "title": "Empty examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Empty in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-empty--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/empty": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the empty state, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./empty/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "empty/content.q1": {
+   "anchor": "why-content-q1",
+   "question": "What is the main content?",
+   "key": "content.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Numbers and records",
+     "why": "Most of the screen is numbers and records."
+    },
+    {
+     "kind": "decided",
+     "title": "So Empty",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "No pictures: an empty table needs the reason and the one action that fills it."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Badge: neutral",
+       "Badge: info",
+       "Badge: success",
+       "Badge: warning",
+       "Badge: danger",
+       "Sidebar: default",
+       "Sidebar: outline",
+       "Item: default",
+       "Item: outline",
+       "Toggle: default",
+       "Toggle: outline"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Empty decisions would reopen",
+     "text": "and 45 answers that follow from it: A lot, Scan and compare, People keep their place, and 42 more."
+    }
+   ]
+  },
+  "empty/voice.lands": {
+   "anchor": "why-voice-lands",
+   "question": "Where do the words matter most?",
+   "key": "voice.lands",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Errors and empty states",
+     "why": "Errors and empty tables are where words decide the next action."
+    },
+    {
+     "kind": "decided",
+     "title": "So Empty",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "No pictures: an empty table needs the reason and the one action that fills it."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Toast: danger"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Empty decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "empty/iconography.roles": {
+   "anchor": "why-iconography-roles",
+   "question": "What do icons do?",
+   "key": "iconography.roles",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Actions and status",
+     "why": "Icons mark row actions and status."
+    },
+    {
+     "kind": "decided",
+     "title": "So Empty",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "icon",
+       "text": "An outline icon in a small tile beside the reason and the action."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: icon",
+       "Input group: inline-start"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Empty decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "empty/iconography.definition": {
+   "anchor": "why-iconography-definition",
+   "question": "What icon style?",
+   "key": "iconography.definition",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Outline",
+     "why": "Outline icons stay light next to dense text."
+    },
+    {
+     "kind": "decided",
+     "title": "So Empty",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "icon",
+       "text": "An outline icon in a small tile beside the reason and the action."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Empty decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "empty": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Empty",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.gap",
+      "alias": "space.gap.section",
+      "variable": "empty-gap"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.radius",
+      "alias": "radius.container",
+      "variable": "empty-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.padding",
+      "alias": "component-spacing-map.x6",
+      "variable": "empty-padding"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Padding 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.padding-2",
+      "alias": "component-spacing-map.x12",
+      "variable": "empty-padding-2"
+     },
+     "values": [
+      {
+       "token": "space.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.header.gap",
+      "alias": "space.gap.default",
+      "variable": "empty-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.icon.radius",
+      "alias": "radius.container",
+      "variable": "empty-icon-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.icon.background",
+      "alias": "color.surface.sunken",
+      "variable": "empty-icon-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.icon.label",
+      "alias": "color.text.primary",
+      "variable": "empty-icon-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Margin bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.icon.margin-bottom",
+      "alias": "component-spacing-map.x2",
+      "variable": "empty-icon-margin-bottom"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.title.font-size",
+      "alias": "type.heading.font-size",
+      "variable": "empty-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.title.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "empty-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "empty-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.description.label",
+      "alias": "color.text.muted",
+      "variable": "empty-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#535D6D"
+       },
+       "token": "slate.light.600",
+       "text": "#535D6D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Label 2",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.description.label-2",
+      "alias": "color.action.primary",
+      "variable": "empty-description-label-2"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.content.gap",
+      "alias": "space.gap.group",
+      "variable": "empty-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.content.font-size",
+      "alias": "type.body.font-size",
+      "variable": "empty-content-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

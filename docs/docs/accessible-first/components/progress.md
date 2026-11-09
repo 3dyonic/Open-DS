@@ -1,4 +1,5 @@
 ---
+composite_data: "./progress.json"
 sidebar_position: 44
 title: "Progress"
 description: "Progress in Accessible first."
@@ -14,7 +15,7 @@ How far a task has come.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-progress--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Progress examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-progress--docs">Open Progress in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-progress--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="progress/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Spinner](./spinner.md): A wait of unknown length.
 - [Skeleton](./skeleton.md): Content that has not arrived.
 
-<a class="odv-anatref" href="./progress/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the progress bar, the job it does, and the decisions behind it. 2 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/progress"}
 
 ## Words
 

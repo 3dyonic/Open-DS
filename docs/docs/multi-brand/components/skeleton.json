@@ -1,0 +1,170 @@
+{
+ "preview": {
+  "skeleton/live": {
+   "title": "Skeleton examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Skeleton in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-skeleton--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/skeleton": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the skeleton, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./skeleton/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "skeleton": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Skeleton",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.skeleton.radius",
+      "alias": "radius.control",
+      "variable": "skeleton-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Skeleton",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.skeleton.background",
+      "alias": "color.surface.sunken",
+      "variable": "skeleton-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

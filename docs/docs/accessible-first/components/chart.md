@@ -1,4 +1,5 @@
 ---
+composite_data: "./chart.json"
 sidebar_position: 15
 title: "Chart"
 description: "Chart in Accessible first."
@@ -14,7 +15,7 @@ A picture of numbers: comparison, trend, share or spread.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-chart--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Chart examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-chart--docs">Open Chart in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-chart--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="chart/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Table](./table.md): The numbers as rows; often needed beside the chart.
 
-<a class="odv-anatref" href="./chart/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the chart, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/chart"}
 
 ## How Accessible first uses it
 

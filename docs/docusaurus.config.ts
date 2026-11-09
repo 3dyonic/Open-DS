@@ -114,7 +114,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           sidebarItemsGenerator: decisionMenu(BASE),
           rehypePlugins: [[rehypeBaseUrlImages, { base: BASE }]],
-          remarkPlugins: [[composites, { docsDir: `${__dirname}/docs` }]],
+          remarkPlugins: [composites],
         },
         blog: false,
         theme: { customCss: ["./src/css/tailwind.css", "./src/css/custom.css"] },

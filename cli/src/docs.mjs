@@ -598,6 +598,12 @@ export function docsPages(
     base = "/",
   } = {},
 ) {
+  // The data the page composites draw (OD-284), written to _composites.json beside the pages.
+  const compositeData = {};
+  const cardGrid = (id, cards) => {
+    (compositeData["card-grid"] ??= {})[id] = { cards };
+    return `::card-grid{id="${id}"}`;
+  };
   // robots: the Open DS robot illustrations (OD-209), in the repo docs only. A scope's robot on its
   // Foundations card, the scheme's robot on its home page and in "Not part of" notes, Shelf on the
   // inventory. Day and night editions; the theme picks one. base: the site's base URL, for raw HTML. Created projects get the same layout
@@ -1051,13 +1057,14 @@ export function docsPages(
       `</div>${heroSample}</div>`,
     ) +
     `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).\n\n` +
-    h(
-      `<div class="odv-grid">`,
-      top.map(
-        (q) =>
-          `<div class="odv-card"><div class="odv-eyebrow">${attr(qs[q].text)}</div><q>${attr(label(q))}</q><p>${attr(answer(q).why)}</p><span class="odv-ans">${q}</span></div>`,
-      ),
-      `</div>`,
+    cardGrid(
+      "home/answers",
+      top.map((q) => ({
+        eyebrow: qs[q].text,
+        title: label(q),
+        text: answer(q).why,
+        code: q,
+      })),
     ) +
     `\n\n## Explore the system\n\n` +
     h(
@@ -2228,8 +2235,6 @@ export function docsPages(
         .map((r) => ({ ...r, group: "From the system" })),
     ];
   };
-  // The data the page composites draw (OD-284), written to _composites.json beside the pages.
-  const compositeData = {};
   const tokensRead = (name) => {
     const rows = readsOf(name);
     if (!rows.length)
@@ -2376,18 +2381,16 @@ export function docsPages(
   ];
   // Only a component with a page links to it: built, and in the inventory unless every page is made.
   const hasPage = (id) => built.includes(id) && (all || id in inventory);
-  const icard = (c, out) =>
-    h(
-      hasPage(c.id)
-        ? `<a class="odv-icard" href="./${c.id}">`
-        : `<div class="odv-icard">`,
-      `<span class="odv-icard-name">${title(c.id)}</span>`,
-      // Every card says what the component is (OD-213). The scheme's rule, or why it leaves the
-      // component out, is on the component's page.
-      `<span class="odv-icard-why">${esc(c.description ?? "")}</span>`,
-      `<span class="odv-pill${out ? " odv-pill-out" : ""}">${out ? "Left out" : "In · built"}</span>`,
-      hasPage(c.id) ? `</a>` : `</div>`,
-    );
+  // An inventory card (OD-284: a CardGrid card). Every card says what the component is (OD-213). The
+  // scheme's rule, or why it leaves the component out, is on the component's page.
+  const icard = (c, out) => ({
+    title: title(c.id),
+    text: c.description ?? "",
+    label: out
+      ? { text: "Left out", tone: "warning" }
+      : { text: "In · built", tone: "info" },
+    ...(hasPage(c.id) && { href: `./${c.id}` }),
+  });
   const inItems = catalogue.filter((c) => c.id in inventory);
   const outItems = catalogue.filter((c) => !(c.id in inventory));
   pages["components/inventory.md"] =
@@ -2417,10 +2420,9 @@ export function docsPages(
         if (!list.length) return "";
         return (
           `## ${title(f)}\n\n${FAMILY_TEXT[f] ?? ""} ${list.length} in ${esc(scheme.name)}.\n\n` +
-          h(
-            `<div class="odv-icards">`,
+          cardGrid(
+            `inventory/${f}`,
             list.map((c) => icard(c)),
-            `</div>`,
           )
         );
       })
@@ -2428,12 +2430,11 @@ export function docsPages(
       .join("\n\n") +
     (outItems.length
       ? `\n\n## Left out\n\nThe components answers did not pick these.${all ? " Each page still shows how it would look." : ""}\n\n` +
-        h(
-          `<div class="odv-icards">`,
+        cardGrid(
+          "inventory/left-out",
           outItems
             .sort((a, b) => a.id.localeCompare(b.id))
-            .map((c) => icard(c, out[c.id] ?? "Left out.")),
-          `</div>`,
+            .map((c) => icard(c, true)),
         )
       : "") +
     "\n";
@@ -2768,9 +2769,14 @@ export function docsPages(
             : [p],
       );
     const anatCard = anat
-      ? h(
-          `<a class="odv-anatref" href="./${name}/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of ${attr(anatSpec.intro)}, the job it does, and the decisions behind it. ${leaves(anatSpec.parts).length} parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>`,
-        )
+      ? cardGrid(`anatomy-link/${name}`, [
+          {
+            title: "Anatomy reference",
+            text: `Every part of ${anatSpec.intro}, the job it does, and the decisions behind it. ${leaves(anatSpec.parts).length} parts.`,
+            href: `./${name}/anatomy`,
+            go: true,
+          },
+        ])
       : "";
     parts.push(
       `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
@@ -2784,15 +2790,24 @@ export function docsPages(
               : "")
           : `:label[In ${esc(scheme.name)}]{tone="info"}`),
     );
-    // The live component, from Storybook (OD-183). Docusaurus serves this page as Markdown, so the
-    // embed is plain HTML; the link works where the embed cannot load.
-    parts.push(
-      `## See it live\n\n` +
-        h(
-          `<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:light" title="${title(name)} examples in Storybook" loading="lazy"></iframe>`,
-          `<div class="bar"><span>Live from Storybook</span><a href="${storybook}/?path=/docs/components-${name}--docs">Open ${title(name)} in Storybook</a><a href="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:dark">See it in dark</a></div></div>`,
-        ),
-    );
+    // The live component, from Storybook (OD-183), in light and dark: a Preview composite (OD-284).
+    // The link works where the embed cannot load.
+    (compositeData.preview ??= {})[`${name}/live`] = {
+      title: `${title(name)} examples in Storybook`,
+      wait: "Start Storybook to see it live: npm run storybook",
+      frames: {
+        light: `${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:light`,
+        dark: `${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:dark`,
+      },
+      caption: "Live from Storybook",
+      links: [
+        {
+          text: `Open ${title(name)} in Storybook`,
+          href: `${storybook}/?path=/docs/components-${name}--docs`,
+        },
+      ],
+    };
+    parts.push(`## See it live\n\n::preview{id="${name}/live"}`);
     // A kept component's own use leads "When to use it" (OD-211): where this scheme uses it, then
     // what it is for in any design system.
     const ownUse = leftOut(name) ? "" : (guide?.why ?? inventory[name] ?? "");
@@ -3026,7 +3041,34 @@ export function docsPages(
     `- **The full scheme** in \`.open-ds/scheme.json\`: every answer with its reason.\n` +
     `- **llms.txt** next to these docs: an index of these pages for agents.\n\n` +
     `Ask the open-ds CLI or MCP server:\n\n\`\`\`bash\nopen-ds why ${scheme.id} typography.definition\nopen-ds when ${scheme.id} "a number in a table"\n\`\`\`\n`;
-  pages["_composites.json"] = JSON.stringify(compositeData) + "\n";
+  // Each page's composite data sits beside it, as <page>.json (OD-284): an agent that reads the raw
+  // page finds the rows next to it, and the front matter names the file.
+  const KEYS = {
+    "token-table": "component",
+    "reason-chain": "id",
+    "card-grid": "id",
+    preview: "id",
+  };
+  for (const [p, text] of Object.entries(pages)) {
+    if (!p.endsWith(".md")) continue;
+    const data = {};
+    for (const m of text.matchAll(/^::([a-z-]+)\{([a-z]+)="([^"]+)"\}$/gm)) {
+      const [, kind, key, id] = m;
+      if (KEYS[kind] !== key) continue;
+      if (compositeData[kind]?.[id] === undefined)
+        throw new Error(
+          `${p}: ::${kind}{${key}="${id}"} has no data. The generator wrote the line without its rows.`,
+        );
+      (data[kind] ??= {})[id] = compositeData[kind][id];
+    }
+    if (!Object.keys(data).length) continue;
+    const file = p.replace(/\.md$/, ".json");
+    pages[file] = JSON.stringify(data, null, 1) + "\n";
+    pages[p] = text.replace(
+      /^---\n/,
+      `---\ncomposite_data: "./${file.split("/").pop()}"\n`,
+    );
+  }
   return pages;
 }
 

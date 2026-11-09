@@ -1,0 +1,611 @@
+{
+ "preview": {
+  "sheet/live": {
+   "title": "Sheet examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Sheet in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-sheet--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/sheet": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the sheet, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./sheet/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "sheet": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Transition panels duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.panels-duration",
+      "alias": "motion.duration.panels",
+      "variable": "transition-panels-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Overlay",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.overlay.background",
+      "alias": "color.surface.scrim",
+      "variable": "sheet-overlay-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#0000008C"
+       },
+       "token": "black.light.scrim",
+       "text": "#0000008C"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#000000B3"
+       },
+       "token": "black.dark.scrim",
+       "text": "#000000B3"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.content.gap",
+      "alias": "space.gap.group",
+      "variable": "sheet-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.40",
+       "text": "2.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.content.background",
+      "alias": "color.surface.canvas",
+      "variable": "sheet-content-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.light.50",
+       "text": "#FFF8F3"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#120B09"
+       },
+       "token": "taupe.dark.0",
+       "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.content.shadow",
+      "alias": "elevation.overlay",
+      "variable": "sheet-content-shadow"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "shadow": "0px 24px 48px 0px #1F141133"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "shadow": "0px 24px 48px 0px #00000099"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.content.border",
+      "alias": "color.border.default",
+      "variable": "sheet-content-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.content.border-width",
+      "alias": "border-width.default",
+      "variable": "sheet-content-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.header.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "sheet-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.header.padding",
+      "alias": "space.inset.container",
+      "variable": "sheet-header-padding"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.footer.gap",
+      "alias": "space.gap.default",
+      "variable": "sheet-footer-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.footer.padding",
+      "alias": "space.inset.container",
+      "variable": "sheet-footer-padding"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.title.font-weight",
+      "alias": "type.heading.font-weight",
+      "variable": "sheet-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.title.label",
+      "alias": "color.text.primary",
+      "variable": "sheet-title-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.title.font-family",
+      "alias": "type.heading.font-family",
+      "variable": "sheet-title-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.bricolage-grotesque",
+       "text": "\"Bricolage Grotesque\", system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.title.font-size",
+      "alias": "type.heading.font-size",
+      "variable": "sheet-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.28",
+       "text": "1.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "sheet-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.description.label",
+      "alias": "color.text.secondary",
+      "variable": "sheet-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.light.700",
+       "text": "#4D3A33"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "sheet-close-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.radius",
+      "alias": "radius.control",
+      "variable": "sheet-close-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus ring width",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.focus-ring.width",
+      "alias": "border-width.focus",
+      "variable": "sheet-close-focus-ring-width"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus ring color",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.focus-ring.color",
+      "alias": "color.border.focus",
+      "variable": "sheet-close-focus-ring-color"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus ring offset color",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.focus-ring.offset-color",
+      "alias": "color.surface.canvas",
+      "variable": "sheet-close-focus-ring-offset-color"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.light.50",
+       "text": "#FFF8F3"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#120B09"
+       },
+       "token": "taupe.dark.0",
+       "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sheet-close-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.icon-size",
+      "alias": "size.icon",
+      "variable": "sheet-close-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.label",
+      "alias": "color.text.secondary",
+      "variable": "sheet-close-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.light.700",
+       "text": "#4D3A33"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.padding",
+      "alias": "component-spacing-map.x1",
+      "variable": "sheet-close-padding"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

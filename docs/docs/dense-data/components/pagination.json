@@ -1,0 +1,150 @@
+{
+ "preview": {
+  "pagination/live": {
+   "title": "Pagination examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-pagination--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-pagination--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Pagination in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-pagination--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/pagination": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the pagination, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./pagination/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "pagination": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.pagination.content.gap",
+      "alias": "space.gap.tight",
+      "variable": "pagination-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Ellipsis",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.pagination.ellipsis.icon-size",
+      "alias": "size.icon",
+      "variable": "pagination-ellipsis-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.pagination.link.gap",
+      "alias": "space.gap.tight",
+      "variable": "pagination-link-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Link",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.pagination.link.padding-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "pagination-link-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Previous",
+     "part": "Padding left",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.pagination.previous.padding-left",
+      "alias": "component-spacing-map.x3",
+      "variable": "pagination-previous-padding-left"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Next",
+     "part": "Padding right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.pagination.next.padding-right",
+      "alias": "component-spacing-map.x3",
+      "variable": "pagination-next-padding-right"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

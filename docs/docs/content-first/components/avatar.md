@@ -1,4 +1,5 @@
 ---
+composite_data: "./avatar.json"
 sidebar_position: 6
 title: "Avatar"
 description: "Avatar in Content first."
@@ -14,7 +15,7 @@ A small image or initials that stand for a person or account.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-avatar--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Avatar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-avatar--docs">Open Avatar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-avatar--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="avatar/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Badge](./badge.md): A status or count, not a person.
 
-<a class="odv-anatref" href="./avatar/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the avatar, the job it does, and the decisions behind it. 8 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/avatar"}
 
 ## Words
 

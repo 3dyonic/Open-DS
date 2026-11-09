@@ -1,0 +1,1025 @@
+{
+ "preview": {
+  "item/live": {
+   "title": "Item examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-item--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-item--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Item in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-item--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/item": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the item, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./item/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "item/content.q1": {
+   "anchor": "why-content-q1",
+   "question": "What is the main content?",
+   "key": "content.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Numbers and records",
+     "why": "Most of the screen is numbers and records."
+    },
+    {
+     "kind": "decided",
+     "title": "So Item",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "Users and settings in a panel or menu, with no border, quiet beside the data."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "outline",
+       "text": "Borders on every row would compete with the data; hairlines between sections do that work."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Badge: neutral",
+       "Badge: info",
+       "Badge: success",
+       "Badge: warning",
+       "Badge: danger",
+       "Sidebar: default",
+       "Sidebar: outline",
+       "Empty: default",
+       "Toggle: default",
+       "Toggle: outline"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 5,
+     "caption": "Item decisions would reopen",
+     "text": "and 45 answers that follow from it: A lot, Scan and compare, People keep their place, and 42 more."
+    }
+   ]
+  },
+  "item/elevation.definition": {
+   "anchor": "why-elevation-definition",
+   "question": "What separates groups on the page?",
+   "key": "elevation.definition",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Lines",
+     "why": "Thin lines guide the eye along rows."
+    },
+    {
+     "kind": "decided",
+     "title": "So Item",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "outline",
+       "text": "Borders on every row would compete with the data; hairlines between sections do that work."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Item decision would reopen",
+     "text": "and 3 answers that follow from it: Only what floats, One, Menus and dialogs."
+    }
+   ]
+  },
+  "item/tasks.q1": {
+   "anchor": "why-tasks-q1",
+   "question": "What is the main task?",
+   "key": "tasks.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Scan and compare",
+     "why": "People scan rows and compare values."
+    },
+    {
+     "kind": "decided",
+     "title": "So Item",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "muted",
+       "text": "The current user or setting, with a soft fill so people keep their place."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: vertical"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 4,
+     "caption": "Item decisions would reopen",
+     "text": "and 20 answers that follow from it: People keep their place, Acting on the wrong record, Core and data, and 17 more."
+    }
+   ]
+  },
+  "item/human.q1": {
+   "anchor": "why-human-q1",
+   "question": "What must the interface protect?",
+   "key": "human.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "People keep their place",
+     "why": "Losing your place in a long table costs time and errors."
+    },
+    {
+     "kind": "decided",
+     "title": "So Item",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "muted",
+       "text": "The current user or setting, with a soft fill so people keep their place."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Item decisions would reopen",
+     "text": "and 8 answers that follow from it: Lines, Feedback only, One, and 5 more."
+    }
+   ]
+  },
+  "item/spacing.count": {
+   "anchor": "why-spacing-count",
+   "question": "How many densities exist?",
+   "key": "spacing.count",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Two",
+     "why": "A second, denser size serves tables and toolbars."
+    },
+    {
+     "kind": "decided",
+     "title": "So Item",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "Settings and user lists outside the table, at the standard row."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "sm",
+       "text": "Long lists in a side panel, at the denser size. It still fits a mouse."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: horizontal",
+       "Sidebar: sm"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Item decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "item/accessibility.values": {
+   "anchor": "why-accessibility-values",
+   "question": "What is the smallest target?",
+   "key": "accessibility.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Compact, for a pointer",
+     "why": "Mouse and keyboard; compact targets are enough."
+    },
+    {
+     "kind": "decided",
+     "title": "So Item",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "sm",
+       "text": "Long lists in a side panel, at the denser size. It still fits a mouse."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: default",
+       "Button: compact",
+       "Toggle: sm"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Item decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "item": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Item",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.radius",
+      "alias": "radius.control",
+      "variable": "item-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.125rem"
+       },
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.font-size",
+      "alias": "type.body.font-size",
+      "variable": "item-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "item-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Border focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.item.border-focus",
+      "alias": "color.border.focus",
+      "variable": "item-border-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.item.focus",
+      "alias": "border-width.focus",
+      "variable": "item-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.item.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "item-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.item.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "item-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.item.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "item-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.border-width",
+      "alias": "border-width.default",
+      "variable": "item-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Outline",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.item.outline.border",
+      "alias": "color.border.default",
+      "variable": "item-outline-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Muted",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.item.muted.background",
+      "alias": "color.surface.sunken",
+      "variable": "item-muted-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Default",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.default.gap",
+      "alias": "space.gap.group",
+      "variable": "item-default-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Default",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.default.padding",
+      "alias": "space.inset.container",
+      "variable": "item-default-padding"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.sm.gap",
+      "alias": "component-spacing-map.x3",
+      "variable": "item-sm-gap"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.sm.padding-x",
+      "alias": "space.inset.container",
+      "variable": "item-sm-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.sm.padding-y",
+      "alias": "component-spacing-map.x3",
+      "variable": "item-sm-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.content.gap",
+      "alias": "space.gap.tight",
+      "variable": "item-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.title.gap",
+      "alias": "space.gap.default",
+      "variable": "item-title-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.title.font-size",
+      "alias": "type.body.font-size",
+      "variable": "item-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.title.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "item-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "item-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.description.font-weight",
+      "alias": "type.body.font-weight",
+      "variable": "item-description-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.400",
+       "text": "400"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.item.description.label",
+      "alias": "color.text.muted",
+      "variable": "item-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#535D6D"
+       },
+       "token": "slate.light.600",
+       "text": "#535D6D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Label 2",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.item.description.label-2",
+      "alias": "color.action.primary",
+      "variable": "item-description-label-2"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Actions",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.actions.gap",
+      "alias": "space.gap.default",
+      "variable": "item-actions-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.header.gap",
+      "alias": "space.gap.default",
+      "variable": "item-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.footer.gap",
+      "alias": "space.gap.default",
+      "variable": "item-footer-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Fill",
+     "part": "Hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.item.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "item-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.media.gap",
+      "alias": "space.gap.default",
+      "variable": "item-media-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.media.icon.size",
+      "alias": "size.control.default",
+      "variable": "item-media-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Icon radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.media.icon.radius",
+      "alias": "radius.control",
+      "variable": "item-media-icon-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Icon background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.item.media.icon.background",
+      "alias": "color.surface.sunken",
+      "variable": "item-media-icon-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Icon icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.media.icon.icon-size",
+      "alias": "size.icon",
+      "variable": "item-media-icon-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Icon border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.media.icon.border-width",
+      "alias": "border-width.default",
+      "variable": "item-media-icon-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Icon border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.item.media.icon.border",
+      "alias": "color.border.default",
+      "variable": "item-media-icon-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Media",
+     "part": "Image radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.item.media.image.radius",
+      "alias": "radius.control",
+      "variable": "item-media-image-radius"
+     },
+     "values": [
+      {
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

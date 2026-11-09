@@ -1,0 +1,26 @@
+{
+ "card-grid": {
+  "home/answers": {
+   "cards": [
+    {
+     "eyebrow": "What is the main content?",
+     "title": "Numbers and records",
+     "text": "Most of the screen is numbers and records.",
+     "code": "content.q1"
+    },
+    {
+     "eyebrow": "How much is on one screen?",
+     "title": "A lot",
+     "text": "Experts want many records on one screen.",
+     "code": "content.q2"
+    },
+    {
+     "eyebrow": "What is a costly mistake?",
+     "title": "Acting on the wrong record",
+     "text": "Acting on the wrong row is the costly error.",
+     "code": "outcomes.q2"
+    }
+   ]
+  }
+ }
+}

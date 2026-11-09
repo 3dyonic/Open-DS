@@ -1,4 +1,5 @@
 ---
+composite_data: "./textarea.json"
 sidebar_position: 58
 title: "Textarea"
 description: "Textarea in Brand expressive."
@@ -14,7 +15,7 @@ A field for free text over several lines.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Textarea examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-textarea--docs">Open Textarea in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="textarea/live"}
 
 ## When to use it
 
@@ -27,7 +28,7 @@ Instead:
 
 - [Input](./input.md): One line.
 
-<a class="odv-anatref" href="./textarea/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the textarea, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/textarea"}
 
 ## How Brand expressive uses it
 

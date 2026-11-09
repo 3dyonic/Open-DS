@@ -1,4 +1,5 @@
 ---
+composite_data: "./context-menu.json"
 sidebar_position: 20
 title: "Context menu"
 description: "Context menu in Content first."
@@ -15,7 +16,7 @@ A menu of actions on right-click or long-press.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-context-menu--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Context menu examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-context-menu--docs">Open Context menu in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-context-menu--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="context-menu/live"}
 
 ## When to use it
 
@@ -26,7 +27,7 @@ Instead:
 
 - [Dropdown menu](./dropdown-menu.md): The same actions from a visible button.
 
-<a class="odv-anatref" href="./context-menu/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the context menu, the job it does, and the decisions behind it. 12 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/context-menu"}
 
 ## Words
 

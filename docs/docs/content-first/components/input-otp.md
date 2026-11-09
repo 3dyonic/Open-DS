@@ -1,4 +1,5 @@
 ---
+composite_data: "./input-otp.json"
 sidebar_position: 32
 title: "Input otp"
 description: "Input otp in Content first."
@@ -15,7 +16,7 @@ Separate boxes for a one-time code.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Input otp examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input-otp--docs">Open Input otp in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="input-otp/live"}
 
 ## When to use it
 
@@ -26,7 +27,7 @@ Instead:
 
 - [Input](./input.md): Any other short value.
 
-<a class="odv-anatref" href="./input-otp/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the code input, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/input-otp"}
 
 ## Words
 

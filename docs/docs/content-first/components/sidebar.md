@@ -1,4 +1,5 @@
 ---
+composite_data: "./sidebar.json"
 sidebar_position: 51
 title: "Sidebar"
 description: "Sidebar in Content first."
@@ -15,7 +16,7 @@ The side navigation of an app, open while people work.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Sidebar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sidebar--docs">Open Sidebar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="sidebar/live"}
 
 ## When to use it
 
@@ -41,7 +42,7 @@ What each variant is for in any design system, then what Content first decided a
 
 <section class="odv-variant"><header><code>lg</code><span class="odv-axisname">size</span><span class="odv-pill">Not decided yet</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--playground&viewMode=story&globals=scheme:content-first;mode:light&args=size:lg" title="Sidebar lg" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>A taller row with room for an icon and two lines.</p><div class="odv-when"><div><span class="y">✓</span>A workspace or account switcher at the top.</div><div><span class="n">✕</span>Ordinary menu items.</div></div></div><div class="odv-topic"><h4>In Content first</h4><p class="odv-decision">Not decided yet.</p></div></div></div></section>
 
-<a class="odv-anatref" href="./sidebar/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the sidebar, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/sidebar"}
 
 ## Words
 

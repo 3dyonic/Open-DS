@@ -1,4 +1,5 @@
 ---
+composite_data: "./tooltip.json"
 sidebar_position: 62
 title: "Tooltip"
 description: "Tooltip in Dense data."
@@ -14,7 +15,7 @@ A short hint on hover or focus.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Tooltip examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-tooltip--docs">Open Tooltip in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+::preview{id="tooltip/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Popover](./popover.md): Opens on click and works on touch.
 - [Hover card](./hover-card.md): A richer preview.
 
-<a class="odv-anatref" href="./tooltip/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the tooltip, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/tooltip"}
 
 ## How Dense data uses it
 

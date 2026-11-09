@@ -1,4 +1,5 @@
 ---
+composite_data: "./resizable.json"
 sidebar_position: 46
 title: "Resizable"
 description: "Resizable in Content first."
@@ -15,7 +16,7 @@ Panels people resize by dragging the line between them.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-resizable--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Resizable examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-resizable--docs">Open Resizable in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-resizable--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+::preview{id="resizable/live"}
 
 ## When to use it
 
@@ -26,7 +27,7 @@ Instead:
 
 - [Sidebar](./sidebar.md): Fixed app navigation.
 
-<a class="odv-anatref" href="./resizable/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the resizable panels, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/resizable"}
 
 ## Words
 

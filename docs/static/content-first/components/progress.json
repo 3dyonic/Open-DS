@@ -1,0 +1,126 @@
+{
+ "preview": {
+  "progress/live": {
+   "title": "Progress examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-progress--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-progress--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Progress in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-progress--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/progress": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the progress bar, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./progress/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "progress": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Progress",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.progress.radius",
+      "alias": "radius.round",
+      "variable": "progress-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.full",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Progress",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.progress.background",
+      "alias": "color.surface.sunken",
+      "variable": "progress-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Indicator",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.progress.indicator.background",
+      "alias": "color.action.primary",
+      "variable": "progress-indicator-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,403 @@
+{
+ "preview": {
+  "switch/live": {
+   "title": "Switch examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Switch in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-switch--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/switch": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the switch, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./switch/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "switch": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Transition duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "transition-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.easing",
+      "alias": "motion.easing.standard",
+      "variable": "transition-easing"
+     },
+     "values": [
+      {
+       "token": "easing.spring",
+       "text": "cubic-bezier(0.34,1.56,0.64,1)"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.height",
+      "alias": "size.icon",
+      "variable": "switch-height"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.width",
+      "alias": "size.icon",
+      "variable": "switch-width"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.radius",
+      "alias": "radius.round",
+      "variable": "switch-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.full",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.padding",
+      "alias": "component-spacing-map.hairline",
+      "variable": "switch-padding"
+     },
+     "values": [
+      {
+       "token": "space.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.focus",
+      "alias": "border-width.focus",
+      "variable": "switch-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.disabled",
+      "alias": "opacity.disabled",
+      "variable": "switch-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "switch-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Focus ring",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "switch-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Focus ring offset",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "switch-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.light.50",
+       "text": "#FFF8F3"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#120B09"
+       },
+       "token": "taupe.dark.0",
+       "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.thumb.size",
+      "alias": "size.icon",
+      "variable": "switch-thumb-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Travel",
+     "when": "when on",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.thumb.travel",
+      "alias": "size.icon",
+      "variable": "switch-thumb-travel"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.thumb.radius",
+      "alias": "radius.round",
+      "variable": "switch-thumb-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.full",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.thumb.background",
+      "alias": "color.surface.default",
+      "variable": "switch-thumb-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "taupe.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.dark.50",
+       "text": "#1F1411"
+      }
+     ]
+    },
+    {
+     "group": "Track",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.track.background",
+      "alias": "color.border.strong",
+      "variable": "switch-track-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Track",
+     "part": "Background checked",
+     "when": "when on",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.track.background.checked",
+      "alias": "color.action.primary",
+      "variable": "switch-track-background-checked"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

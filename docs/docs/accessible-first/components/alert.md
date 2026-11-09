@@ -1,4 +1,5 @@
 ---
+composite_data: "./alert.json"
 sidebar_position: 2
 title: "Alert"
 description: "Alert in Accessible first."
@@ -14,7 +15,7 @@ A message that stays on the page with the content it is about.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Alert examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert--docs">Open Alert in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="alert/live"}
 
 ## When to use it
 
@@ -37,7 +38,7 @@ What each variant is for in any design system, then what Accessible first decide
 
 <section class="odv-variant"><header><code>destructive</code><span class="odv-axisname">variant</span><span class="odv-pill used">Used in Accessible first</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=variant:destructive" title="Alert destructive" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>Something failed or will be lost, and people must act to recover.</p><div class="odv-when"><div><span class="y">✓</span>An error, with what went wrong and how to fix it.</div><div><span class="n">✕</span>A plain note dressed as danger for emphasis.</div></div></div><div class="odv-topic"><h4>In Accessible first</h4><p class="odv-decision">Errors, with what went wrong, where, and exactly how to fix it, next to the field.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-accessibility-count"><span>How many signals carry each meaning?</span><b>Three: color, icon and word</b> · <code>accessibility.count</code></a><a class="odv-achip" href="#why-outcomes-q2"><span>What is a costly mistake?</span><b>A task that fails</b> · <code>outcomes.q2</code></a><a class="odv-achip" href="#why-voice-values"><span>How does it sound?</span><b>Plain and direct</b> · <code>voice.values</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./alert/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the alert, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/alert"}
 
 ## How Accessible first uses it
 

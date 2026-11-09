@@ -1,4 +1,5 @@
 ---
+composite_data: "./breadcrumb.json"
 sidebar_position: 8
 title: "Breadcrumb"
 description: "Breadcrumb in Brand expressive."
@@ -14,7 +15,7 @@ The trail of pages above this one, so people know where they are.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-breadcrumb--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Breadcrumb examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-breadcrumb--docs">Open Breadcrumb in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-breadcrumb--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="breadcrumb/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Progress](./progress.md): Steps of a task, not where a page sits.
 - [Pagination](./pagination.md): Pages of a list, not levels.
 
-<a class="odv-anatref" href="./breadcrumb/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the breadcrumb, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/breadcrumb"}
 
 ## Words
 

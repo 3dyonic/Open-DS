@@ -1,0 +1,1752 @@
+{
+ "preview": {
+  "button/live": {
+   "title": "Button examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Button in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-button--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/button": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the button, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./button/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "button/outcomes.q1": {
+   "anchor": "why-outcomes-q1",
+   "question": "Which outcome matters most?",
+   "key": "outcomes.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Completion without errors",
+     "why": "Finished sign-ups and orders."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "primary",
+       "text": "One clear action per view."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "large",
+       "text": "One clear action per view, at the normal size, in every brand."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Alert: default"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/color.count": {
+   "anchor": "why-color-count",
+   "question": "How many emphasis levels do actions need?",
+   "key": "color.count",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Three",
+     "why": "Primary, secondary and ghost in every brand."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "secondary",
+       "text": "The alternative that steps back, and the first step of a delete."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Button decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/outcomes.q2": {
+   "anchor": "why-outcomes-q2",
+   "question": "What is a costly mistake?",
+   "key": "outcomes.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Looking off-brand",
+     "why": "A page that looks like the wrong brand loses trust."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "secondary",
+       "text": "The alternative that steps back, and the first step of a delete."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "danger",
+       "text": "The confirm of a delete, the same red in every brand: danger never follows the brand."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Badge: danger",
+       "Alert: destructive"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "and 1 answer that follow from it: Also for emphasis and size."
+    }
+   ]
+  },
+  "button/human.q2": {
+   "anchor": "why-human-q2",
+   "question": "How do people recall the interface?",
+   "key": "human.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "They see it fresh each time",
+     "why": "Customers see it fresh each time."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "ghost",
+       "text": "Row actions, with a word."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Toggle: outline"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Button decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/accessibility.values": {
+   "anchor": "why-accessibility-values",
+   "question": "What is the smallest target?",
+   "key": "accessibility.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Touch size",
+     "why": "Customers sign up on phones."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "Every button, at touch size: customers are often on phones."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "compact",
+       "text": "Customers are often on phones: no compact controls."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "icon",
+       "text": "Customers use any device and hover hints never show on touch, so every button has a word."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: horizontal",
+       "Item: default",
+       "Item: sm",
+       "Toggle: default",
+       "Toggle: sm"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 3,
+     "caption": "Button decisions would reopen",
+     "text": "and 1 answer that follow from it: Those and pressed."
+    }
+   ]
+  },
+  "button/iconography.roles": {
+   "anchor": "why-iconography-roles",
+   "question": "What do icons do?",
+   "key": "iconography.roles",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Actions, status and navigation",
+     "why": "Icons for actions, status and navigation."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "icon",
+       "text": "Customers use any device and hover hints never show on touch, so every button has a word."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Button decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/motion.values": {
+   "anchor": "why-motion-values",
+   "question": "How fast does feedback feel?",
+   "key": "motion.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Moderate",
+     "why": "Moderate speed across brands."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "hover",
+       "text": "Moderate feedback, shared across brands."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Button decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/people.q2": {
+   "anchor": "why-people-q2",
+   "question": "What accessibility level do we commit to?",
+   "key": "people.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "AA",
+     "why": "AA in every brand."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "focus",
+       "text": "Follows the brand, but always shows."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "disabled",
+       "text": "Only with a visible reason next to it."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: vertical",
+       "Input group: block-start",
+       "Input group: block-end"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "and 1 answer that follow from it: AA."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "button": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Primary",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.primary.background",
+      "alias": "color.action.primary",
+      "variable": "button-primary-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F766E"
+       },
+       "token": "teal.light.600",
+       "text": "#0F766E"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#7FCFC6"
+       },
+       "token": "teal.dark.600",
+       "text": "#7FCFC6"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#6D28D9"
+       },
+       "token": "purple.light.600",
+       "text": "#6D28D9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#B79DF7"
+       },
+       "token": "purple.dark.600",
+       "text": "#B79DF7"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C2410C"
+       },
+       "token": "orange.light.600",
+       "text": "#C2410C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F7A67F"
+       },
+       "token": "orange.dark.600",
+       "text": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "group": "Primary",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.primary.background.hover",
+      "alias": "color.action.primary.hover",
+      "variable": "button-primary-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#015852"
+       },
+       "token": "teal.light.700",
+       "text": "#015852"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#A1DCD4"
+       },
+       "token": "teal.dark.700",
+       "text": "#A1DCD4"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#5212AA"
+       },
+       "token": "purple.light.700",
+       "text": "#5212AA"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#C9B7FC"
+       },
+       "token": "purple.dark.700",
+       "text": "#C9B7FC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#942D02"
+       },
+       "token": "orange.light.700",
+       "text": "#942D02"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#FCBD9F"
+       },
+       "token": "orange.dark.700",
+       "text": "#FCBD9F"
+      }
+     ]
+    },
+    {
+     "group": "Primary",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.primary.label",
+      "alias": "color.text.on-action",
+      "variable": "button-primary-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.background",
+      "alias": "color.action.secondary",
+      "variable": "button-secondary-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.dark.50",
+       "text": "#0F172A"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.background.hover",
+      "alias": "color.action.secondary.hover",
+      "variable": "button-secondary-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.label",
+      "alias": "color.text.primary",
+      "variable": "button-secondary-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.border",
+      "alias": "color.border.strong",
+      "variable": "button-secondary-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.secondary.border-width",
+      "alias": "border-width.default",
+      "variable": "button-secondary-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.danger.background",
+      "alias": "color.action.danger",
+      "variable": "button-danger-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.danger.background.hover",
+      "alias": "color.action.danger.hover",
+      "variable": "button-danger-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#981519"
+       },
+       "token": "red.light.700",
+       "text": "#981519"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#FAA9A8"
+       },
+       "token": "red.dark.700",
+       "text": "#FAA9A8"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#981519"
+       },
+       "token": "red.light.700",
+       "text": "#981519"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#FAA9A8"
+       },
+       "token": "red.dark.700",
+       "text": "#FAA9A8"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#981519"
+       },
+       "token": "red.light.700",
+       "text": "#981519"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#FAA9A8"
+       },
+       "token": "red.dark.700",
+       "text": "#FAA9A8"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.danger.label",
+      "alias": "color.text.on-danger",
+      "variable": "button-danger-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      }
+     ]
+    },
+    {
+     "group": "Ghost",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.ghost.label",
+      "alias": "color.text.link",
+      "variable": "button-ghost-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#015852"
+       },
+       "token": "teal.light.700",
+       "text": "#015852"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#A1DCD4"
+       },
+       "token": "teal.dark.700",
+       "text": "#A1DCD4"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#5212AA"
+       },
+       "token": "purple.light.700",
+       "text": "#5212AA"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#C9B7FC"
+       },
+       "token": "purple.dark.700",
+       "text": "#C9B7FC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#942D02"
+       },
+       "token": "orange.light.700",
+       "text": "#942D02"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#FCBD9F"
+       },
+       "token": "orange.dark.700",
+       "text": "#FCBD9F"
+      }
+     ]
+    },
+    {
+     "group": "Ghost",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.ghost.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "button-ghost-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.height",
+      "alias": "size.control.default",
+      "variable": "button-height"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.padding-x",
+      "alias": "space.inset.control-x",
+      "variable": "button-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.radius",
+      "alias": "radius.control",
+      "variable": "button-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "9999px"
+       },
+       "token": "radius.999",
+       "text": "9999px"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.font-size",
+      "alias": "type.label.font-size",
+      "variable": "button-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "button-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus ring",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.button.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "button-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F766E"
+       },
+       "token": "teal.light.600",
+       "text": "#0F766E"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#7FCFC6"
+       },
+       "token": "teal.dark.600",
+       "text": "#7FCFC6"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#6D28D9"
+       },
+       "token": "purple.light.600",
+       "text": "#6D28D9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#B79DF7"
+       },
+       "token": "purple.dark.600",
+       "text": "#B79DF7"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C2410C"
+       },
+       "token": "orange.light.600",
+       "text": "#C2410C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F7A67F"
+       },
+       "token": "orange.dark.600",
+       "text": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.icon-size",
+      "alias": "size.icon",
+      "variable": "button-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.gap",
+      "alias": "space.gap.default",
+      "variable": "button-gap"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Font family",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.font-family",
+      "alias": "type.label.font-family",
+      "variable": "button-font-family"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "token": "font.family.inter",
+       "text": "Inter, system-ui, sans-serif"
+      },
+      {
+       "theme": "Aster Dark",
+       "token": "font.family.inter",
+       "text": "Inter, system-ui, sans-serif"
+      },
+      {
+       "theme": "Birch Light",
+       "token": "font.family.plus-jakarta-sans",
+       "text": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+      },
+      {
+       "theme": "Birch Dark",
+       "token": "font.family.plus-jakarta-sans",
+       "text": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+      },
+      {
+       "theme": "Coral Light",
+       "token": "font.family.poppins",
+       "text": "Poppins, system-ui, sans-serif"
+      },
+      {
+       "theme": "Coral Dark",
+       "token": "font.family.poppins",
+       "text": "Poppins, system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.button.focus",
+      "alias": "border-width.focus",
+      "variable": "button-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.button.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "button-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus ring offset",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.button.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "button-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Fill",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.button.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "button-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.button.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "button-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      }
+     ]
+    },
+    {
+     "group": "Compact",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.compact.height",
+      "alias": "size.control.compact",
+      "variable": "button-compact-height"
+     },
+     "values": [
+      {
+       "token": "size.36",
+       "text": "2.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Compact",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.compact.padding-x",
+      "alias": "space.inset.cell-x",
+      "variable": "button-compact-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Large",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.large.height",
+      "alias": "size.control.large",
+      "variable": "button-large-height"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "transition-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.easing",
+      "alias": "motion.easing.standard",
+      "variable": "transition-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

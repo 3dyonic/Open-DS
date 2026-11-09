@@ -1,4 +1,5 @@
 ---
+composite_data: "./field.json"
 sidebar_position: 27
 title: "Field"
 description: "Field in Brand expressive."
@@ -14,7 +15,7 @@ A label, control, hint and error laid out together, the same way every time.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Field examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-field--docs">Open Field in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="field/live"}
 
 ## When to use it
 
@@ -37,7 +38,7 @@ What each variant is for in any design system, then what Brand expressive decide
 
 <section class="odv-variant off"><header><code>responsive</code><span class="odv-axisname">orientation</span><span class="odv-pill">Not used in Brand expressive</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=orientation:responsive" title="Field responsive" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>The label above on narrow screens and beside on wide ones.</p><div class="odv-when"><div><span class="y">✓</span>Forms people use on phones and laptops alike.</div><div><span class="n">✕</span>When one layout is simpler for everyone.</div></div></div><div class="odv-topic"><h4>In Brand expressive</h4><p class="odv-decision">Phones first: one stacked layout.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-scenarios-q1"><span>Where do people use it?</span><b>On the move</b> · <code>scenarios.q1</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./field/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the field, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/field"}
 
 ## How Brand expressive uses it
 

@@ -1,0 +1,409 @@
+{
+ "preview": {
+  "tabs/live": {
+   "title": "Tabs examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Tabs in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-tabs--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/tabs": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the tabs, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./tabs/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "tabs": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "List",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.list.gap",
+      "alias": "space.gap.tight",
+      "variable": "tabs-list-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "List",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.list.border-width",
+      "alias": "border-width.default",
+      "variable": "tabs-list-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "List",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tabs.list.border",
+      "alias": "color.border.default",
+      "variable": "tabs-list-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.height",
+      "alias": "size.control.default",
+      "variable": "tabs-trigger-height"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.font-family",
+      "alias": "type.label.font-family",
+      "variable": "tabs-trigger-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.dm-sans",
+       "text": "\"DM Sans\", system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.font-size",
+      "alias": "type.label.font-size",
+      "variable": "tabs-trigger-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.15",
+       "text": "0.9375rem"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "tabs-trigger-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "tabs-trigger-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tabs.trigger.label",
+      "alias": "color.text.primary",
+      "variable": "tabs-trigger-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Edge current",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tabs.trigger.edge.current",
+      "alias": "color.border.selected",
+      "variable": "tabs-trigger-edge-current"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Edge width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.edge-width",
+      "alias": "border-width.default",
+      "variable": "tabs-trigger-edge-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Background current",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tabs.trigger.background.current",
+      "alias": "color.surface.selected",
+      "variable": "tabs-trigger-background-current"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFEAF0"
+       },
+       "token": "pink.light.100",
+       "text": "#FFEAF0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#451731"
+       },
+       "token": "pink.dark.100",
+       "text": "#451731"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.padding-x",
+      "alias": "space.inset.control-x",
+      "variable": "tabs-trigger-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.28",
+       "text": "1.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Focus width",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.trigger.focus-width",
+      "alias": "border-width.focus",
+      "variable": "tabs-trigger-focus-width"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Focus ring offset",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.tabs.trigger.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "tabs-trigger-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.light.50",
+       "text": "#FFF8F3"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#120B09"
+       },
+       "token": "taupe.dark.0",
+       "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Focus ring",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.tabs.trigger.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "tabs-trigger-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Padding, top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tabs.content.padding-top",
+      "alias": "space.gap.default",
+      "variable": "tabs-content-padding-top"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

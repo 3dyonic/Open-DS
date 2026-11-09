@@ -1,4 +1,5 @@
 ---
+composite_data: "./input.json"
 sidebar_position: 30
 title: "Input"
 description: "Input in Accessible first."
@@ -14,7 +15,7 @@ A labeled field for a short typed value.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Input examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input--docs">Open Input in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+::preview{id="input/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Textarea](./textarea.md): Several lines.
 - [Select](./select.md): A known list of options.
 
-<a class="odv-anatref" href="./input/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the input, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/input"}
 
 ## How Accessible first uses it
 

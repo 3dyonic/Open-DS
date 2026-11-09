@@ -1,0 +1,828 @@
+{
+ "preview": {
+  "calendar/live": {
+   "title": "Calendar examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "http://localhost:6006/iframe.html?id=components-calendar--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "http://localhost:6006/iframe.html?id=components-calendar--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Calendar in Storybook",
+     "href": "http://localhost:6006/?path=/docs/components-calendar--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/calendar": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the calendar, the job it does, and the decisions behind it. 12 parts.",
+     "href": "./calendar/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "calendar": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Calendar",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.background",
+      "alias": "color.surface.canvas",
+      "variable": "calendar-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.light.50",
+       "text": "#FFFDF8"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#14110D"
+       },
+       "token": "stone.dark.0",
+       "text": "#14110D"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.padding",
+      "alias": "component-spacing-map.x3",
+      "variable": "calendar-padding"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.gap",
+      "alias": "space.gap.group",
+      "variable": "calendar-gap"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.gap-2",
+      "alias": "space.gap.tight",
+      "variable": "calendar-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Disabled opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.disabled-opacity-disabled",
+      "alias": "opacity.disabled",
+      "variable": "calendar-disabled-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Gap 3",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.gap-3",
+      "alias": "component-spacing-map.x2",
+      "variable": "calendar-gap-3"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.font-size",
+      "alias": "type.body.font-size",
+      "variable": "calendar-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "calendar-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.radius",
+      "alias": "radius.control",
+      "variable": "calendar-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.border",
+      "alias": "color.border.strong",
+      "variable": "calendar-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A39A8B"
+       },
+       "token": "stone.dark.400",
+       "text": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Shadow",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.shadow",
+      "alias": "elevation.card",
+      "variable": "calendar-shadow"
+     },
+     "values": [
+      {
+       "swatch": {
+        "shadow": "0px 0px 0px 0px #00000000"
+       },
+       "text": "shadow.none"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Border 2",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.border-2",
+      "alias": "color.border.focus",
+      "variable": "calendar-border-2"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Focus",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.focus",
+      "alias": "border-width.focus",
+      "variable": "calendar-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Focus ring",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "calendar-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Focus ring offset",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "calendar-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.light.50",
+       "text": "#FFFDF8"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#14110D"
+       },
+       "token": "stone.dark.0",
+       "text": "#14110D"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Background 2",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.background-2",
+      "alias": "color.surface.raised",
+      "variable": "calendar-background-2"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.dark.50",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.height",
+      "alias": "size.control.default",
+      "variable": "calendar-height"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Padding right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.padding-right",
+      "alias": "component-spacing-map.x1",
+      "variable": "calendar-padding-right"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Padding left",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.padding-left",
+      "alias": "component-spacing-map.x2",
+      "variable": "calendar-padding-left"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.label",
+      "alias": "color.text.muted",
+      "variable": "calendar-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#61594D"
+       },
+       "token": "stone.light.600",
+       "text": "#61594D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A39A8B"
+       },
+       "token": "stone.dark.400",
+       "text": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Font weight 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.font-weight-2",
+      "alias": "type.body.font-weight",
+      "variable": "calendar-font-weight-2"
+     },
+     "values": [
+      {
+       "token": "font.weight.400",
+       "text": "400"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.icon-size",
+      "alias": "size.icon",
+      "variable": "calendar-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Font size 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.font-size-2",
+      "alias": "type.caption.font-size",
+      "variable": "calendar-font-size-2"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Calendar",
+     "part": "Focus offset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "calendar-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Range background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.range.background",
+      "alias": "color.surface.selected",
+      "variable": "calendar-day-range-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E0E9F5"
+       },
+       "token": "navy.light.100",
+       "text": "#E0E9F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#202B3B"
+       },
+       "token": "navy.dark.100",
+       "text": "#202B3B"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Range label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.range.label",
+      "alias": "color.text.primary",
+      "variable": "calendar-day-range-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.dark.900",
+       "text": "#FFFDF8"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Range ends background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.range-ends.background",
+      "alias": "color.action.primary",
+      "variable": "calendar-day-range-ends-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Range ends label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.range-ends.label",
+      "alias": "color.text.on-action",
+      "variable": "calendar-day-range-ends-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Selected background",
+     "when": "when selected",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.selected.background",
+      "alias": "color.action.primary",
+      "variable": "calendar-day-selected-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Selected label",
+     "when": "when selected",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.selected.label",
+      "alias": "color.text.on-action",
+      "variable": "calendar-day-selected-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Disabled opacity",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.day.disabled-opacity",
+      "alias": "opacity.disabled",
+      "variable": "calendar-day-disabled-opacity"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Today background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.today.background",
+      "alias": "color.surface.selected",
+      "variable": "calendar-day-today-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E0E9F5"
+       },
+       "token": "navy.light.100",
+       "text": "#E0E9F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#202B3B"
+       },
+       "token": "navy.dark.100",
+       "text": "#202B3B"
+      }
+     ]
+    },
+    {
+     "group": "Day",
+     "part": "Today label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.today.label",
+      "alias": "color.text.primary",
+      "variable": "calendar-day-today-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.dark.900",
+       "text": "#FFFDF8"
+      }
+     ]
+    },
+    {
+     "group": "Week",
+     "part": "Margin top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.week.margin-top",
+      "alias": "component-spacing-map.x2",
+      "variable": "calendar-week-margin-top"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Dropdown",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.calendar.dropdown.border-width",
+      "alias": "border-width.default",
+      "variable": "calendar-dropdown-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

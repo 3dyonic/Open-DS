@@ -1,4 +1,5 @@
 ---
+composite_data: "./combobox.json"
 sidebar_position: 18
 title: "Combobox"
 description: "Combobox in Dense data."
@@ -14,7 +15,7 @@ A text field that suggests and completes matches from a known list as people typ
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Combobox examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-combobox--docs">Open Combobox in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+::preview{id="combobox/live"}
 
 ## When to use it
 
@@ -28,7 +29,7 @@ Instead:
 - [Select](./select.md): A compact closed list without typing.
 - [Command](./command.md): A search-first menu of actions.
 
-<a class="odv-anatref" href="./combobox/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the combobox, the job it does, and the decisions behind it. 11 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/combobox"}
 
 ## Words
 

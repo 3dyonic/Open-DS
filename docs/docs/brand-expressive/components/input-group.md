@@ -1,4 +1,5 @@
 ---
+composite_data: "./input-group.json"
 sidebar_position: 31
 title: "Input group"
 description: "Input group in Brand expressive."
@@ -14,7 +15,7 @@ An input with addons inside its border: icons, text, buttons.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Input group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input-group--docs">Open Input group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+::preview{id="input-group/live"}
 
 ## When to use it
 
@@ -39,7 +40,7 @@ What each variant is for in any design system, then what Brand expressive decide
 
 <section class="odv-variant off"><header><code>block-end</code><span class="odv-axisname">align</span><span class="odv-pill">Not used in Brand expressive</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:brand-expressive;mode:light&args=align:block-end" title="Input group block-end" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>An addon row below the text, inside the field.</p><div class="odv-when"><div><span class="y">✓</span>A counter or actions under a larger input.</div><div><span class="n">✕</span>Single-line fields in a toolbar.</div></div></div><div class="odv-topic"><h4>In Brand expressive</h4><p class="odv-decision">Copy is short and sign-up is the one action, so fields stay one line.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-content-q1"><span>What is the main content?</span><b>Images and campaigns</b> · <code>content.q1</code></a><a class="odv-achip" href="#why-tasks-q2"><span>How often do people repeat actions?</span><b>Rarely</b> · <code>tasks.q2</code></a></div></div></div></div></section>
 
-<a class="odv-anatref" href="./input-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the input group, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+::card-grid{id="anatomy-link/input-group"}
 
 ## Why it works this way
 
