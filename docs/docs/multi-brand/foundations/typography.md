@@ -1,4 +1,5 @@
 ---
+composite_data: "./typography.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 1
 title: "Typography"
@@ -9,27 +10,7 @@ description: "Multi-brand: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-- **display** 32px · 1.8 · 700
-
-  :sample[Your plan]{kind="type" role="display"}
-- **title** 24px · 1.2 · 600
-
-  :sample[Your plan]{kind="type" role="title"}
-- **heading** 20px · 1.2 · 600
-
-  :sample[Standard plan]{kind="type" role="heading"}
-- **body** 16px · 1.5 · 400
-
-  :sample[A customer signs up for a plan on the Birch site, then manages it in the shared account area.]{kind="type" role="body"}
-- **label** 14px · 1.2 · 600
-
-  :sample[Get started]{kind="type" role="label"}
-- **caption** 13px · 1.5 · 400
-
-  :sample[A customer signs up for a plan on the Birch site, then manages it in the shared account area.]{kind="type" role="caption"}
-- **data** 16px · 1.5 · 400
-
-  :sample[Plan Standard · Next payment 12.00 · Orders this year 9 · Member since 2024]{kind="type" role="data"}
+::type-roles{id="typography"}
 
 ## The five answers
 

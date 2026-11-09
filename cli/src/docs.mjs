@@ -219,46 +219,49 @@ const PRIMITIVE_PAGES = [
   },
 ];
 
-// A line height, as the line box it makes (OD-221): one line of Ag at a fixed 16px on a band exactly
-// one line height tall, with that height in px.
 // A drawn value as an inline Sample composite (OD-284). Quotes in a value become single quotes, so the
 // directive's attribute stays whole.
 const draw = (kind, v, extra = "") =>
   `:sample{kind="${kind}" value="${String(v).replace(/"/g, "'")}"${extra}}`;
-const leading = (v) => {
-  const m = String(v).match(/^([\d.]+)(rem|px)?$/);
-  const px = m ? Math.round(Number(m[1]) * (m[2] === "px" ? 1 : 16)) : "";
-  return draw("leading", v, px ? ` note="${px}px"` : "");
-};
-function sample(path, type, raw) {
+// A token's value as the facts a drawing needs: what it is (kind), the CSS value, and a note.
+function sampleFact(path, type, raw) {
   // Primitives are not CSS variables (only semantic tokens and component keys are), so a primitive's
   // sample draws its own value.
-  const v = raw === undefined ? cssVar(path) : cssValue(raw);
-  if (type === "color") return draw("color", v);
-  if (type === "fontFamily") return draw("font", v);
-  if (type === "fontWeight" || /font[.-]weight/.test(path))
-    return draw("weight", v);
-  if (/line-height/.test(path) && type !== "dimension") return leading(v);
-  if (/letter/.test(path) && type !== "dimension") return draw("tracking", v);
-  if (type === "shadow") return draw("shadow", v);
-  // Motion plays when you hover its row (OD-220): a duration at the standard easing, an easing at a
-  // relaxed speed.
-  if (type === "duration") return draw("duration", v);
-  if (type === "cubicBezier") return draw("easing", v);
-  if (type === "number" && /opacity/.test(path)) return draw("opacity", v);
-  if (type === "dimension") {
-    if (/radius/.test(path)) return draw("radius", v);
-    if (/border-width/.test(path)) return draw("line", v);
-    // A type size shows type at that size (OD-217), not a bar.
-    if (/font[.-]size/.test(path)) return draw("size", v);
-    if (/letter/.test(path)) return draw("tracking", v);
-    if (/line-height/.test(path)) return leading(v);
-    return draw("bar", v);
-  }
-  return "";
+  const value = String(raw === undefined ? cssVar(path) : cssValue(raw)).replace(/"/g, "'");
+  const kind = (() => {
+    if (type === "color") return "color";
+    if (type === "fontFamily") return "font";
+    if (type === "fontWeight" || /font[.-]weight/.test(path)) return "weight";
+    if (/line-height/.test(path)) return "leading";
+    if (/letter/.test(path)) return "tracking";
+    if (type === "shadow") return "shadow";
+    // Motion plays when you hover it (OD-220): a duration at the standard easing, an easing at a
+    // relaxed speed.
+    if (type === "duration") return "duration";
+    if (type === "cubicBezier") return "easing";
+    if (type === "number" && /opacity/.test(path)) return "opacity";
+    if (type === "dimension") {
+      if (/radius/.test(path)) return "radius";
+      if (/border-width/.test(path)) return "line";
+      // A type size shows type at that size (OD-217), not a bar.
+      if (/font[.-]size/.test(path)) return "size";
+      return "bar";
+    }
+    return null;
+  })();
+  if (!kind) return null;
+  if (kind !== "leading") return { kind, value };
+  // A line height, as the line box it makes (OD-221), with that height in px.
+  const m = value.match(/^([\d.]+)(rem|px)?$/);
+  const px = m ? Math.round(Number(m[1]) * (m[2] === "px" ? 1 : 16)) : "";
+  return px ? { kind, value, note: `${px}px` } : { kind, value };
+}
+function sample(path, type, raw) {
+  const f = sampleFact(path, type, raw);
+  return f ? draw(f.kind, f.value, f.note ? ` note="${f.note}"` : "") : "";
 }
 
-/** The specimen at the top of a foundation page: the scope's semantic tokens, drawn live. */
+/** The specimen at the top of a foundation page: the scope's semantic tokens, drawn live, as composite data. */
 // The type specimen shows each role with its own kind of content (OD-218): headings the screen title,
 // running text the scenario, a label the main action, data a number. Values come from the theme.
 const ROLE_TEXT = {
@@ -276,32 +279,36 @@ function specimen(tokens, text, x = {}) {
         .filter(Boolean),
     ),
   ];
-  // Each type role as a line set in its own tokens, with its values (OD-284: a Markdown list).
+  // Each type role as a line set in its own tokens, with its values (OD-284: the TypeRoles composite).
+  // Otherwise each token drawn as its value (the TokenSwatches composite). Returns the composite's data.
   if (roles.length)
-    return (
-      roles
-        .map((r) => {
+    return {
+      kind: "type-roles",
+      data: {
+        roles: roles.map((r) => {
           const p = `type.${r}`;
           const line = (x.smp && ROLE_TEXT[r]?.(x)) || text;
-          const values = x.val
-            ? [
-                x.val(`${p}.font-size`),
-                x.val(`${p}.line-height`),
-                x.val(`${p}.font-weight`),
+          return {
+            role: r,
+            text: line,
+            ...Object.fromEntries(
+              [
+                ["size", "font-size"],
+                ["lineHeight", "line-height"],
+                ["weight", "font-weight"],
               ]
-                .filter(Boolean)
-                .join(" · ")
-            : "";
-          return `- **${r}**${values ? ` ${esc(values)}` : ""}\n\n  :sample[${esc(line).replace(/[[\]]/g, "")}]{kind="type" role="${r}"}`;
-        })
-        .join("\n") + "\n\n"
-    );
-  const items = tokens
-    .map((t) => ({ t, s: sample(t.path, t.type) }))
-    .filter((x) => x.s)
+                .map(([k, t]) => [k, x.val?.(`${p}.${t}`)])
+                .filter(([, v]) => v),
+            ),
+          };
+        }),
+      },
+    };
+  const swatches = tokens
+    .map((t) => ({ token: t.path, ...sampleFact(t.path, t.type) }))
+    .filter((x) => x.kind)
     .slice(0, 40);
-  if (!items.length) return "";
-  return items.map(({ t, s }) => `- ${s} \`${t.path}\``).join("\n") + "\n\n";
+  return swatches.length ? { kind: "token-swatches", data: { tokens: swatches } } : null;
 }
 
 /** The header comment of a component file, as plain text. */
@@ -571,6 +578,12 @@ export function docsPages(
   const cardGrid = (id, cards) => {
     (compositeData["card-grid"] ??= {})[id] = { cards };
     return `::card-grid{id="${id}"}`;
+  };
+  // A foundation's specimen (TokenSwatches or TypeRoles), as its directive.
+  const foundationSpecimen = (id, block) => {
+    if (!block) return "";
+    (compositeData[block.kind] ??= {})[id] = block.data;
+    return `::${block.kind}{id="${id}"}\n\n`;
   };
   const specimenBlock = (id, data) => {
     (compositeData.specimen ??= {})[id] = data;
@@ -1649,16 +1662,19 @@ export function docsPages(
         ? themingVisuals()
         : ["components", "naming", "voice"].includes(sc.id)
           ? ""
-          : specimen(
-              semantics.length ? semantics : tokens,
-              scheme.scenarios[0].text,
-              {
-                smp,
-                val: (path) => {
-                  const v = String(value(first, path, ""));
-                  return v.match(/\((\d+(?:\.\d+)?px)\)/)?.[1] ?? v;
+          : foundationSpecimen(
+              sc.id,
+              specimen(
+                semantics.length ? semantics : tokens,
+                scheme.scenarios[0].text,
+                {
+                  smp,
+                  val: (path) => {
+                    const v = String(value(first, path, ""));
+                    return v.match(/\((\d+(?:\.\d+)?px)\)/)?.[1] ?? v;
+                  },
                 },
-              },
+              ),
             );
     pages[`foundations/${sc.id}.md`] =
       fm({
@@ -3044,6 +3060,8 @@ export function docsPages(
     "pairs-chart": "id",
     "surface-stack": "id",
     "sample-screen": "id",
+    "token-swatches": "id",
+    "type-roles": "id",
   };
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;

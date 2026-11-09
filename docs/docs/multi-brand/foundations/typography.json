@@ -1,0 +1,57 @@
+{
+ "type-roles": {
+  "typography": {
+   "roles": [
+    {
+     "role": "display",
+     "text": "Your plan",
+     "size": "32px",
+     "lineHeight": "1.8",
+     "weight": "700"
+    },
+    {
+     "role": "title",
+     "text": "Your plan",
+     "size": "24px",
+     "lineHeight": "1.2",
+     "weight": "600"
+    },
+    {
+     "role": "heading",
+     "text": "Standard plan",
+     "size": "20px",
+     "lineHeight": "1.2",
+     "weight": "600"
+    },
+    {
+     "role": "body",
+     "text": "A customer signs up for a plan on the Birch site, then manages it in the shared account area.",
+     "size": "16px",
+     "lineHeight": "1.5",
+     "weight": "400"
+    },
+    {
+     "role": "label",
+     "text": "Get started",
+     "size": "14px",
+     "lineHeight": "1.2",
+     "weight": "600"
+    },
+    {
+     "role": "caption",
+     "text": "A customer signs up for a plan on the Birch site, then manages it in the shared account area.",
+     "size": "13px",
+     "lineHeight": "1.5",
+     "weight": "400"
+    },
+    {
+     "role": "data",
+     "text": "Plan Standard · Next payment 12.00 · Orders this year 9 · Member since 2024",
+     "size": "16px",
+     "lineHeight": "1.5",
+     "weight": "400"
+    }
+   ]
+  }
+ }
+}

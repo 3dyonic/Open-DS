@@ -33,6 +33,8 @@ const COMPOSITES = {
   "mode-preview": "ModePreview",
   "color-scale": "ColorScale",
   "anatomy-drawing": "AnatomyDrawing",
+  "token-swatches": "TokenSwatches",
+  "type-roles": "TypeRoles",
 };
 // The attribute that names a composite's entry in the page's data file.
 const DATA_KEY = {
@@ -47,6 +49,8 @@ const DATA_KEY = {
   "pairs-chart": "id",
   "surface-stack": "id",
   "sample-screen": "id",
+  "token-swatches": "id",
+  "type-roles": "id",
 };
 // The name the page's data has inside the compiled page.
 const DATA = "__compositeData";

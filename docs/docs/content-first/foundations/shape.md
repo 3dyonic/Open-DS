@@ -1,4 +1,5 @@
 ---
+composite_data: "./shape.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 4
 title: "Shape"
@@ -9,14 +10,7 @@ description: "Content first: Corners and borders."
 
 Corners and borders.
 
-- :sample{kind="radius" value="var(--radius-control)"} `radius.control`
-- :sample{kind="radius" value="var(--radius-badge)"} `radius.badge`
-- :sample{kind="radius" value="var(--radius-option)"} `radius.option`
-- :sample{kind="radius" value="var(--radius-container)"} `radius.container`
-- :sample{kind="radius" value="var(--radius-round)"} `radius.round`
-- :sample{kind="line" value="var(--border-width-default)"} `border-width.default`
-- :sample{kind="line" value="var(--border-width-focus)"} `border-width.focus`
-- :sample{kind="line" value="var(--border-width-focus-offset)"} `border-width.focus-offset`
+::token-swatches{id="shape"}
 
 ## The five answers
 

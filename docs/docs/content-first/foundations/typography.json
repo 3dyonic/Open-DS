@@ -1,0 +1,57 @@
+{
+ "type-roles": {
+  "typography": {
+   "roles": [
+    {
+     "role": "display",
+     "text": "Your reading list",
+     "size": "44px",
+     "lineHeight": "1.15",
+     "weight": "600"
+    },
+    {
+     "role": "title",
+     "text": "Your reading list",
+     "size": "36px",
+     "lineHeight": "1.15",
+     "weight": "600"
+    },
+    {
+     "role": "heading",
+     "text": "Planting a winter garden",
+     "size": "28px",
+     "lineHeight": "1.15",
+     "weight": "600"
+    },
+    {
+     "role": "body",
+     "text": "A reader arrives from search on a phone and reads a long guide in one sitting.",
+     "size": "18px",
+     "lineHeight": "1.65",
+     "weight": "400"
+    },
+    {
+     "role": "label",
+     "text": "Keep reading",
+     "size": "16px",
+     "lineHeight": "1.45",
+     "weight": "600"
+    },
+    {
+     "role": "caption",
+     "text": "A reader arrives from search on a phone and reads a long guide in one sitting.",
+     "size": "14px",
+     "lineHeight": "1.45",
+     "weight": "400"
+    },
+    {
+     "role": "data",
+     "text": "Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday",
+     "size": "18px",
+     "lineHeight": "1.65",
+     "weight": "400"
+    }
+   ]
+  }
+ }
+}

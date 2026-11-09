@@ -1,0 +1,23 @@
+{
+ "token-swatches": {
+  "motion": {
+   "tokens": [
+    {
+     "token": "motion.duration.feedback",
+     "kind": "duration",
+     "value": "var(--motion-duration-feedback)"
+    },
+    {
+     "token": "motion.duration.panels",
+     "kind": "duration",
+     "value": "var(--motion-duration-panels)"
+    },
+    {
+     "token": "motion.easing.standard",
+     "kind": "easing",
+     "value": "var(--motion-easing-standard)"
+    }
+   ]
+  }
+ }
+}

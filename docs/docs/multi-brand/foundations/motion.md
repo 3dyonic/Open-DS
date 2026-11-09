@@ -1,4 +1,5 @@
 ---
+composite_data: "./motion.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 6
 title: "Motion"
@@ -9,9 +10,7 @@ description: "Multi-brand: What moves, why and how fast."
 
 What moves, why and how fast.
 
-- :sample{kind="duration" value="var(--motion-duration-feedback)"} `motion.duration.feedback`
-- :sample{kind="duration" value="var(--motion-duration-panels)"} `motion.duration.panels`
-- :sample{kind="easing" value="var(--motion-easing-standard)"} `motion.easing.standard`
+::token-swatches{id="motion"}
 
 ## The five answers
 

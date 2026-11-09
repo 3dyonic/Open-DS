@@ -16,7 +16,8 @@ import { basename, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { agentsMd, skillSection } from "./agents.mjs";
 import { booklets } from "./brief.mjs";
-import { componentsFor, packagesFor } from "./components.mjs";
+import { componentsFor, packagesFor, withImports } from "./components.mjs";
+import { compositeComponents, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, focusedSkills, grammar, loadScheme } from "./schemes.mjs";
 
@@ -34,6 +35,7 @@ const DEV_DEPENDENCIES = {
   "@mdx-js/react": "^3.1.0",
   "@storybook/addon-docs": "^10.6.5",
   "@storybook/react-vite": "^10.6.5",
+  "@tailwindcss/postcss": "^4.3.3",
   "@tailwindcss/vite": "^4.3.3",
   "@types/react": "^19.1.13",
   "@types/react-dom": "^19.1.9",
@@ -43,6 +45,7 @@ const DEV_DEPENDENCIES = {
   "style-dictionary": "^5.7.1",
   tailwindcss: "^4.3.3",
   typescript: "^5.9.2",
+  "unist-util-visit": "^5.0.0",
   vite: "^8.3.5",
 };
 
@@ -215,7 +218,13 @@ export function createProject(
 
   // The scheme's inventory, plus the components those import, and their styles.
   const components = componentsFor(scheme, roots);
-  for (const c of components) {
+  // The docs' composites draw with ui components the scheme may leave out (OD-284). Those are written
+  // for the docs too, and the index exports only the scheme's own.
+  const written = withImports(
+    [...new Set([...components, ...compositeComponents(roots)])],
+    roots,
+  );
+  for (const c of written) {
     write(
       `src/components/ui/${c}.tsx`,
       readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8").replaceAll(
@@ -333,7 +342,13 @@ export function createProject(
     ),
   );
 
-  // The docs pages.
+  // The docs pages, and the composites their directives name.
+  for (const [rel, text] of Object.entries(
+    docSiteFiles(roots, {
+      components: withImports(compositeComponents(roots), roots),
+    }),
+  ))
+    write(`docs/src/${rel}`, text);
   const pages = docsPages(scheme, g, roots);
   for (const [rel, text] of Object.entries(pages))
     write(`docs/docs/${rel}`, text);
@@ -385,7 +400,7 @@ export function createProject(
       dependencies: {
         react: "^19.1.1",
         "react-dom": "^19.1.1",
-        ...packagesFor(components, roots),
+        ...packagesFor(written, roots),
       },
       devDependencies: { "open-ds": openDs, ...DEV_DEPENDENCIES },
       // Docusaurus's dev server pulls sockjs, whose latest release still asks for uuid@8, so every

@@ -1,4 +1,5 @@
 ---
+composite_data: "./typography.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 1
 title: "Typography"
@@ -9,27 +10,7 @@ description: "Brand expressive: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-- **display** 56px · 1.8 · 800
-
-  :sample[The drop is coming]{kind="type" role="display"}
-- **title** 40px · 1.1 · 800
-
-  :sample[The drop is coming]{kind="type" role="title"}
-- **heading** 28px · 1.1 · 700
-
-  :sample[Night runner jacket]{kind="type" role="heading"}
-- **body** 17px · 1.55 · 400
-
-  :sample[A visitor lands on a launch page from a social post and joins the waiting list.]{kind="type" role="body"}
-- **label** 15px · 1.1 · 700
-
-  :sample[Join the drop]{kind="type" role="label"}
-- **caption** 14px · 1.55 · 400
-
-  :sample[A visitor lands on a launch page from a social post and joins the waiting list.]{kind="type" role="caption"}
-- **data** 17px · 1.55 · 400
-
-  :sample[Days to launch 6 · On the list 2,400 · Pieces in the drop 12 · Colors 4]{kind="type" role="data"}
+::type-roles{id="typography"}
 
 ## The five answers
 

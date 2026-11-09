@@ -1,4 +1,5 @@
 ---
+composite_data: "./spacing.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 3
 title: "Spacing"
@@ -9,14 +10,7 @@ description: "Accessible first: How space shows what belongs together."
 
 How space shows what belongs together.
 
-- :sample{kind="bar" value="var(--space-gap-tight)"} `space.gap.tight`
-- :sample{kind="bar" value="var(--space-gap-default)"} `space.gap.default`
-- :sample{kind="bar" value="var(--space-gap-group)"} `space.gap.group`
-- :sample{kind="bar" value="var(--space-gap-section)"} `space.gap.section`
-- :sample{kind="bar" value="var(--space-inset-control-x)"} `space.inset.control-x`
-- :sample{kind="bar" value="var(--space-inset-container)"} `space.inset.container`
-- :sample{kind="bar" value="var(--space-inset-cell-x)"} `space.inset.cell-x`
-- :sample{kind="bar" value="var(--size-row)"} `size.row`
+::token-swatches{id="spacing"}
 
 ## The five answers
 

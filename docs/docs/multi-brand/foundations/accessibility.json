@@ -1,0 +1,33 @@
+{
+ "token-swatches": {
+  "accessibility": {
+   "tokens": [
+    {
+     "token": "size.control.default",
+     "kind": "bar",
+     "value": "var(--size-control-default)"
+    },
+    {
+     "token": "size.control.compact",
+     "kind": "bar",
+     "value": "var(--size-control-compact)"
+    },
+    {
+     "token": "size.control.large",
+     "kind": "bar",
+     "value": "var(--size-control-large)"
+    },
+    {
+     "token": "opacity.disabled",
+     "kind": "opacity",
+     "value": "var(--opacity-disabled)"
+    },
+    {
+     "token": "color.border.focus",
+     "kind": "color",
+     "value": "var(--color-border-focus)"
+    }
+   ]
+  }
+ }
+}

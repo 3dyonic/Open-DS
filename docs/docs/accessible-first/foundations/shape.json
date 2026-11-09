@@ -1,0 +1,48 @@
+{
+ "token-swatches": {
+  "shape": {
+   "tokens": [
+    {
+     "token": "radius.control",
+     "kind": "radius",
+     "value": "var(--radius-control)"
+    },
+    {
+     "token": "radius.badge",
+     "kind": "radius",
+     "value": "var(--radius-badge)"
+    },
+    {
+     "token": "radius.option",
+     "kind": "radius",
+     "value": "var(--radius-option)"
+    },
+    {
+     "token": "radius.container",
+     "kind": "radius",
+     "value": "var(--radius-container)"
+    },
+    {
+     "token": "radius.round",
+     "kind": "radius",
+     "value": "var(--radius-round)"
+    },
+    {
+     "token": "border-width.default",
+     "kind": "line",
+     "value": "var(--border-width-default)"
+    },
+    {
+     "token": "border-width.focus",
+     "kind": "line",
+     "value": "var(--border-width-focus)"
+    },
+    {
+     "token": "border-width.focus-offset",
+     "kind": "line",
+     "value": "var(--border-width-focus-offset)"
+    }
+   ]
+  }
+ }
+}

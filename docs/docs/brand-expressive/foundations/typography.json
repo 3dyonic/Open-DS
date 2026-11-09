@@ -1,0 +1,57 @@
+{
+ "type-roles": {
+  "typography": {
+   "roles": [
+    {
+     "role": "display",
+     "text": "The drop is coming",
+     "size": "56px",
+     "lineHeight": "1.8",
+     "weight": "800"
+    },
+    {
+     "role": "title",
+     "text": "The drop is coming",
+     "size": "40px",
+     "lineHeight": "1.1",
+     "weight": "800"
+    },
+    {
+     "role": "heading",
+     "text": "Night runner jacket",
+     "size": "28px",
+     "lineHeight": "1.1",
+     "weight": "700"
+    },
+    {
+     "role": "body",
+     "text": "A visitor lands on a launch page from a social post and joins the waiting list.",
+     "size": "17px",
+     "lineHeight": "1.55",
+     "weight": "400"
+    },
+    {
+     "role": "label",
+     "text": "Join the drop",
+     "size": "15px",
+     "lineHeight": "1.1",
+     "weight": "700"
+    },
+    {
+     "role": "caption",
+     "text": "A visitor lands on a launch page from a social post and joins the waiting list.",
+     "size": "14px",
+     "lineHeight": "1.55",
+     "weight": "400"
+    },
+    {
+     "role": "data",
+     "text": "Days to launch 6 · On the list 2,400 · Pieces in the drop 12 · Colors 4",
+     "size": "17px",
+     "lineHeight": "1.55",
+     "weight": "400"
+    }
+   ]
+  }
+ }
+}

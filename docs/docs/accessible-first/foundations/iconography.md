@@ -1,4 +1,5 @@
 ---
+composite_data: "./iconography.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 7
 title: "Iconography"
@@ -9,7 +10,7 @@ description: "Accessible first: When icons appear and how they look."
 
 When icons appear and how they look.
 
-- :sample{kind="bar" value="var(--size-icon)"} `size.icon`
+::token-swatches{id="iconography"}
 
 ## The five answers
 

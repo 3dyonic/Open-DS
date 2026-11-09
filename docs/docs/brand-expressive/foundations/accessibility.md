@@ -1,4 +1,5 @@
 ---
+composite_data: "./accessibility.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 9
 title: "Accessibility"
@@ -9,11 +10,7 @@ description: "Brand expressive: Floors the system must hold."
 
 Floors the system must hold.
 
-- :sample{kind="bar" value="var(--size-control-default)"} `size.control.default`
-- :sample{kind="bar" value="var(--size-control-compact)"} `size.control.compact`
-- :sample{kind="bar" value="var(--size-control-large)"} `size.control.large`
-- :sample{kind="opacity" value="var(--opacity-disabled)"} `opacity.disabled`
-- :sample{kind="color" value="var(--color-border-focus)"} `color.border.focus`
+::token-swatches{id="accessibility"}
 
 ## The five answers
 

@@ -1,0 +1,57 @@
+{
+ "type-roles": {
+  "typography": {
+   "roles": [
+    {
+     "role": "display",
+     "text": "Apply for support with housing costs",
+     "size": "36px",
+     "lineHeight": "1.25",
+     "weight": "700"
+    },
+    {
+     "role": "title",
+     "text": "Apply for support with housing costs",
+     "size": "28px",
+     "lineHeight": "1.25",
+     "weight": "700"
+    },
+    {
+     "role": "heading",
+     "text": "Step 2 of 4: Your home",
+     "size": "22px",
+     "lineHeight": "1.25",
+     "weight": "700"
+    },
+    {
+     "role": "body",
+     "text": "A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.",
+     "size": "19px",
+     "lineHeight": "1.6",
+     "weight": "400"
+    },
+    {
+     "role": "label",
+     "text": "Continue",
+     "size": "18px",
+     "lineHeight": "1.6",
+     "weight": "700"
+    },
+    {
+     "role": "caption",
+     "text": "A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.",
+     "size": "16px",
+     "lineHeight": "1.6",
+     "weight": "400"
+    },
+    {
+     "role": "data",
+     "text": "Steps done 2 of 4 · Documents sent 3 · Time left to apply 12 days · Time this takes About 10 minutes",
+     "size": "19px",
+     "lineHeight": "1.6",
+     "weight": "400"
+    }
+   ]
+  }
+ }
+}

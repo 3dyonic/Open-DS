@@ -1,0 +1,48 @@
+{
+ "token-swatches": {
+  "spacing": {
+   "tokens": [
+    {
+     "token": "space.gap.tight",
+     "kind": "bar",
+     "value": "var(--space-gap-tight)"
+    },
+    {
+     "token": "space.gap.default",
+     "kind": "bar",
+     "value": "var(--space-gap-default)"
+    },
+    {
+     "token": "space.gap.group",
+     "kind": "bar",
+     "value": "var(--space-gap-group)"
+    },
+    {
+     "token": "space.gap.section",
+     "kind": "bar",
+     "value": "var(--space-gap-section)"
+    },
+    {
+     "token": "space.inset.control-x",
+     "kind": "bar",
+     "value": "var(--space-inset-control-x)"
+    },
+    {
+     "token": "space.inset.container",
+     "kind": "bar",
+     "value": "var(--space-inset-container)"
+    },
+    {
+     "token": "space.inset.cell-x",
+     "kind": "bar",
+     "value": "var(--space-inset-cell-x)"
+    },
+    {
+     "token": "size.row",
+     "kind": "bar",
+     "value": "var(--size-row)"
+    }
+   ]
+  }
+ }
+}

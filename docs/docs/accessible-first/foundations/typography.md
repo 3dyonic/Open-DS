@@ -1,4 +1,5 @@
 ---
+composite_data: "./typography.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 1
 title: "Typography"
@@ -9,27 +10,7 @@ description: "Accessible first: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-- **display** 36px · 1.25 · 700
-
-  :sample[Apply for support with housing costs]{kind="type" role="display"}
-- **title** 28px · 1.25 · 700
-
-  :sample[Apply for support with housing costs]{kind="type" role="title"}
-- **heading** 22px · 1.25 · 700
-
-  :sample[Step 2 of 4: Your home]{kind="type" role="heading"}
-- **body** 19px · 1.6 · 400
-
-  :sample[A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.]{kind="type" role="body"}
-- **label** 18px · 1.6 · 700
-
-  :sample[Continue]{kind="type" role="label"}
-- **caption** 16px · 1.6 · 400
-
-  :sample[A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.]{kind="type" role="caption"}
-- **data** 19px · 1.6 · 400
-
-  :sample[Steps done 2 of 4 · Documents sent 3 · Time left to apply 12 days · Time this takes About 10 minutes]{kind="type" role="data"}
+::type-roles{id="typography"}
 
 ## The five answers
 

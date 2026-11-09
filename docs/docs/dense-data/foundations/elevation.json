@@ -1,0 +1,18 @@
+{
+ "token-swatches": {
+  "elevation": {
+   "tokens": [
+    {
+     "token": "elevation.card",
+     "kind": "shadow",
+     "value": "var(--elevation-card)"
+    },
+    {
+     "token": "elevation.overlay",
+     "kind": "shadow",
+     "value": "var(--elevation-overlay)"
+    }
+   ]
+  }
+ }
+}

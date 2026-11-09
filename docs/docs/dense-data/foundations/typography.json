@@ -1,0 +1,57 @@
+{
+ "type-roles": {
+  "typography": {
+   "roles": [
+    {
+     "role": "display",
+     "text": "Open alerts",
+     "size": "24px",
+     "lineHeight": "1.2",
+     "weight": "600"
+    },
+    {
+     "role": "title",
+     "text": "Open alerts",
+     "size": "20px",
+     "lineHeight": "1.2",
+     "weight": "600"
+    },
+    {
+     "role": "heading",
+     "text": "Alert ALR-2043",
+     "size": "16px",
+     "lineHeight": "1.2",
+     "weight": "600"
+    },
+    {
+     "role": "body",
+     "text": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.",
+     "size": "14px",
+     "lineHeight": "1.45",
+     "weight": "400"
+    },
+    {
+     "role": "label",
+     "text": "Investigate",
+     "size": "12px",
+     "lineHeight": "1.2",
+     "weight": "500"
+    },
+    {
+     "role": "caption",
+     "text": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.",
+     "size": "12px",
+     "lineHeight": "1.45",
+     "weight": "400"
+    },
+    {
+     "role": "data",
+     "text": "Open alerts 142 · Escalated 7 · Model precision 96.4% · Mean time to contain 38 min",
+     "size": "13px",
+     "lineHeight": "1.45",
+     "weight": "400"
+    }
+   ]
+  }
+ }
+}

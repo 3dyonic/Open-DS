@@ -10,46 +10,7 @@ description: "Multi-brand: How color carries action, state and brand."
 
 How color carries action, state and brand.
 
-- :sample{kind="color" value="var(--color-neutral-0)"} `color.neutral.0`
-- :sample{kind="color" value="var(--color-neutral-50)"} `color.neutral.50`
-- :sample{kind="color" value="var(--color-neutral-100)"} `color.neutral.100`
-- :sample{kind="color" value="var(--color-neutral-200)"} `color.neutral.200`
-- :sample{kind="color" value="var(--color-neutral-300)"} `color.neutral.300`
-- :sample{kind="color" value="var(--color-neutral-400)"} `color.neutral.400`
-- :sample{kind="color" value="var(--color-neutral-500)"} `color.neutral.500`
-- :sample{kind="color" value="var(--color-neutral-600)"} `color.neutral.600`
-- :sample{kind="color" value="var(--color-neutral-700)"} `color.neutral.700`
-- :sample{kind="color" value="var(--color-neutral-800)"} `color.neutral.800`
-- :sample{kind="color" value="var(--color-neutral-900)"} `color.neutral.900`
-- :sample{kind="color" value="var(--color-neutral-950)"} `color.neutral.950`
-- :sample{kind="color" value="var(--color-surface-canvas)"} `color.surface.canvas`
-- :sample{kind="color" value="var(--color-surface-default)"} `color.surface.default`
-- :sample{kind="color" value="var(--color-surface-raised)"} `color.surface.raised`
-- :sample{kind="color" value="var(--color-surface-sunken)"} `color.surface.sunken`
-- :sample{kind="color" value="var(--color-surface-highlight)"} `color.surface.highlight`
-- :sample{kind="color" value="var(--color-surface-pressed)"} `color.surface.pressed`
-- :sample{kind="color" value="var(--color-surface-selected)"} `color.surface.selected`
-- :sample{kind="color" value="var(--color-surface-inverse)"} `color.surface.inverse`
-- :sample{kind="color" value="var(--color-surface-scrim)"} `color.surface.scrim`
-- :sample{kind="color" value="var(--color-text-primary)"} `color.text.primary`
-- :sample{kind="color" value="var(--color-text-secondary)"} `color.text.secondary`
-- :sample{kind="color" value="var(--color-text-muted)"} `color.text.muted`
-- :sample{kind="color" value="var(--color-text-inverse)"} `color.text.inverse`
-- :sample{kind="color" value="var(--color-text-on-action)"} `color.text.on-action`
-- :sample{kind="color" value="var(--color-text-link)"} `color.text.link`
-- :sample{kind="color" value="var(--color-text-on-danger)"} `color.text.on-danger`
-- :sample{kind="color" value="var(--color-text-on-light)"} `color.text.on-light`
-- :sample{kind="color" value="var(--color-text-on-dark)"} `color.text.on-dark`
-- :sample{kind="color" value="var(--color-text-info-on-light)"} `color.text.info-on-light`
-- :sample{kind="color" value="var(--color-text-info-on-dark)"} `color.text.info-on-dark`
-- :sample{kind="color" value="var(--color-text-success-on-light)"} `color.text.success-on-light`
-- :sample{kind="color" value="var(--color-text-success-on-dark)"} `color.text.success-on-dark`
-- :sample{kind="color" value="var(--color-text-warning-on-light)"} `color.text.warning-on-light`
-- :sample{kind="color" value="var(--color-text-warning-on-dark)"} `color.text.warning-on-dark`
-- :sample{kind="color" value="var(--color-text-danger-on-light)"} `color.text.danger-on-light`
-- :sample{kind="color" value="var(--color-text-danger-on-dark)"} `color.text.danger-on-dark`
-- :sample{kind="color" value="var(--color-border-default)"} `color.border.default`
-- :sample{kind="color" value="var(--color-border-strong)"} `color.border.strong`
+::token-swatches{id="color"}
 
 ::::brand{id="aster" name="Aster"}
 ::specimen{id="color/key/aster"}

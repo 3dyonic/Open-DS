@@ -1,4 +1,210 @@
 {
+ "token-swatches": {
+  "color": {
+   "tokens": [
+    {
+     "token": "color.neutral.0",
+     "kind": "color",
+     "value": "var(--color-neutral-0)"
+    },
+    {
+     "token": "color.neutral.50",
+     "kind": "color",
+     "value": "var(--color-neutral-50)"
+    },
+    {
+     "token": "color.neutral.100",
+     "kind": "color",
+     "value": "var(--color-neutral-100)"
+    },
+    {
+     "token": "color.neutral.200",
+     "kind": "color",
+     "value": "var(--color-neutral-200)"
+    },
+    {
+     "token": "color.neutral.300",
+     "kind": "color",
+     "value": "var(--color-neutral-300)"
+    },
+    {
+     "token": "color.neutral.400",
+     "kind": "color",
+     "value": "var(--color-neutral-400)"
+    },
+    {
+     "token": "color.neutral.500",
+     "kind": "color",
+     "value": "var(--color-neutral-500)"
+    },
+    {
+     "token": "color.neutral.600",
+     "kind": "color",
+     "value": "var(--color-neutral-600)"
+    },
+    {
+     "token": "color.neutral.700",
+     "kind": "color",
+     "value": "var(--color-neutral-700)"
+    },
+    {
+     "token": "color.neutral.800",
+     "kind": "color",
+     "value": "var(--color-neutral-800)"
+    },
+    {
+     "token": "color.neutral.900",
+     "kind": "color",
+     "value": "var(--color-neutral-900)"
+    },
+    {
+     "token": "color.neutral.950",
+     "kind": "color",
+     "value": "var(--color-neutral-950)"
+    },
+    {
+     "token": "color.surface.canvas",
+     "kind": "color",
+     "value": "var(--color-surface-canvas)"
+    },
+    {
+     "token": "color.surface.default",
+     "kind": "color",
+     "value": "var(--color-surface-default)"
+    },
+    {
+     "token": "color.surface.raised",
+     "kind": "color",
+     "value": "var(--color-surface-raised)"
+    },
+    {
+     "token": "color.surface.sunken",
+     "kind": "color",
+     "value": "var(--color-surface-sunken)"
+    },
+    {
+     "token": "color.surface.highlight",
+     "kind": "color",
+     "value": "var(--color-surface-highlight)"
+    },
+    {
+     "token": "color.surface.pressed",
+     "kind": "color",
+     "value": "var(--color-surface-pressed)"
+    },
+    {
+     "token": "color.surface.selected",
+     "kind": "color",
+     "value": "var(--color-surface-selected)"
+    },
+    {
+     "token": "color.surface.inverse",
+     "kind": "color",
+     "value": "var(--color-surface-inverse)"
+    },
+    {
+     "token": "color.surface.scrim",
+     "kind": "color",
+     "value": "var(--color-surface-scrim)"
+    },
+    {
+     "token": "color.text.primary",
+     "kind": "color",
+     "value": "var(--color-text-primary)"
+    },
+    {
+     "token": "color.text.secondary",
+     "kind": "color",
+     "value": "var(--color-text-secondary)"
+    },
+    {
+     "token": "color.text.muted",
+     "kind": "color",
+     "value": "var(--color-text-muted)"
+    },
+    {
+     "token": "color.text.inverse",
+     "kind": "color",
+     "value": "var(--color-text-inverse)"
+    },
+    {
+     "token": "color.text.on-action",
+     "kind": "color",
+     "value": "var(--color-text-on-action)"
+    },
+    {
+     "token": "color.text.link",
+     "kind": "color",
+     "value": "var(--color-text-link)"
+    },
+    {
+     "token": "color.text.on-danger",
+     "kind": "color",
+     "value": "var(--color-text-on-danger)"
+    },
+    {
+     "token": "color.text.on-light",
+     "kind": "color",
+     "value": "var(--color-text-on-light)"
+    },
+    {
+     "token": "color.text.on-dark",
+     "kind": "color",
+     "value": "var(--color-text-on-dark)"
+    },
+    {
+     "token": "color.text.info-on-light",
+     "kind": "color",
+     "value": "var(--color-text-info-on-light)"
+    },
+    {
+     "token": "color.text.info-on-dark",
+     "kind": "color",
+     "value": "var(--color-text-info-on-dark)"
+    },
+    {
+     "token": "color.text.success-on-light",
+     "kind": "color",
+     "value": "var(--color-text-success-on-light)"
+    },
+    {
+     "token": "color.text.success-on-dark",
+     "kind": "color",
+     "value": "var(--color-text-success-on-dark)"
+    },
+    {
+     "token": "color.text.warning-on-light",
+     "kind": "color",
+     "value": "var(--color-text-warning-on-light)"
+    },
+    {
+     "token": "color.text.warning-on-dark",
+     "kind": "color",
+     "value": "var(--color-text-warning-on-dark)"
+    },
+    {
+     "token": "color.text.danger-on-light",
+     "kind": "color",
+     "value": "var(--color-text-danger-on-light)"
+    },
+    {
+     "token": "color.text.danger-on-dark",
+     "kind": "color",
+     "value": "var(--color-text-danger-on-dark)"
+    },
+    {
+     "token": "color.border.default",
+     "kind": "color",
+     "value": "var(--color-border-default)"
+    },
+    {
+     "token": "color.border.strong",
+     "kind": "color",
+     "value": "var(--color-border-strong)"
+    }
+   ]
+  }
+ },
  "specimen": {
   "color/key/default": {
    "items": [

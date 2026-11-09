@@ -1,4 +1,5 @@
 ---
+composite_data: "./elevation.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 5
 title: "Elevation"
@@ -9,8 +10,7 @@ description: "Accessible first: When something rises above the page, and what se
 
 When something rises above the page, and what separates groups.
 
-- :sample{kind="shadow" value="var(--elevation-card)"} `elevation.card`
-- :sample{kind="shadow" value="var(--elevation-overlay)"} `elevation.overlay`
+::token-swatches{id="elevation"}
 
 ## The five answers
 

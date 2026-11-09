@@ -1,4 +1,5 @@
 ---
+composite_data: "./typography.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 1
 title: "Typography"
@@ -9,27 +10,7 @@ description: "Dense data: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-- **display** 24px · 1.2 · 600
-
-  :sample[Open alerts]{kind="type" role="display"}
-- **title** 20px · 1.2 · 600
-
-  :sample[Open alerts]{kind="type" role="title"}
-- **heading** 16px · 1.2 · 600
-
-  :sample[Alert ALR-2043]{kind="type" role="heading"}
-- **body** 14px · 1.45 · 400
-
-  :sample[A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.]{kind="type" role="body"}
-- **label** 12px · 1.2 · 500
-
-  :sample[Investigate]{kind="type" role="label"}
-- **caption** 12px · 1.45 · 400
-
-  :sample[A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.]{kind="type" role="caption"}
-- **data** 13px · 1.45 · 400
-
-  :sample[Open alerts 142 · Escalated 7 · Model precision 96.4% · Mean time to contain 38 min]{kind="type" role="data"}
+::type-roles{id="typography"}
 
 ## The five answers
 

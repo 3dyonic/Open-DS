@@ -1,4 +1,5 @@
 ---
+composite_data: "./typography.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 1
 title: "Typography"
@@ -9,27 +10,7 @@ description: "Content first: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-- **display** 44px · 1.15 · 600
-
-  :sample[Your reading list]{kind="type" role="display"}
-- **title** 36px · 1.15 · 600
-
-  :sample[Your reading list]{kind="type" role="title"}
-- **heading** 28px · 1.15 · 600
-
-  :sample[Planting a winter garden]{kind="type" role="heading"}
-- **body** 18px · 1.65 · 400
-
-  :sample[A reader arrives from search on a phone and reads a long guide in one sitting.]{kind="type" role="body"}
-- **label** 16px · 1.45 · 600
-
-  :sample[Keep reading]{kind="type" role="label"}
-- **caption** 14px · 1.45 · 400
-
-  :sample[A reader arrives from search on a phone and reads a long guide in one sitting.]{kind="type" role="caption"}
-- **data** 18px · 1.65 · 400
-
-  :sample[Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday]{kind="type" role="data"}
+::type-roles{id="typography"}
 
 ## The five answers
 
