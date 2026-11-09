@@ -1860,7 +1860,7 @@ export function docsPages(
       const ds = pick
         .filter((x) => x.path.startsWith("duration."))
         .map((x) => String(x.ref));
-      return [{ kind: "text", value: ds.slice(0, 3).join(" · ") }];
+      return ds.length ? [{ kind: "duration", value: ds[0] }] : [];
     }
     if (k.id === "effects")
       return pick

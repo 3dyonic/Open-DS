@@ -164,7 +164,7 @@
      },
      "samples": [
       {
-       "kind": "text",
+       "kind": "duration",
        "value": "120ms"
       }
      ],

@@ -57,25 +57,69 @@ function Samples({ list }: { list: NonNullable<CardItem["samples"]> }) {
   );
 }
 
-function OneCard({ card }: { card: CardItem }) {
-  const body = (
+// A scope card's values, drawn small as RC1 drew them: swatches, rising columns, outlined corners,
+// type set in each family, a moving dot, lifted boxes. Drawings of values, in the scheme's tokens.
+const note = "[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)]";
+function Drawn({ x }: { x: { kind: string; value: string } }) {
+  switch (x.kind) {
+    case "color":
+      return <i aria-hidden="true" className="size-5.5 rounded-[var(--radius-badge)] border border-[var(--color-border-default)]" style={{ background: x.value }} />;
+    case "bar":
+      return <i aria-hidden="true" className="w-2 rounded-[var(--radius-badge)] bg-[var(--color-action-primary)]" style={{ height: `max(3px, ${x.value})` }} />;
+    case "radius":
+      return <i aria-hidden="true" className="h-5.5 w-7.5 border-2 border-[var(--color-action-primary)]" style={{ borderRadius: x.value }} />;
+    case "font":
+      return <span aria-hidden="true" className="text-2xl leading-none font-semibold" style={{ fontFamily: x.value }}>Aa</span>;
+    case "shadow":
+      return <i aria-hidden="true" className="h-6.5 w-10 rounded-[var(--radius-control)] border border-[var(--color-border-default)] bg-[var(--color-surface-raised)]" style={{ boxShadow: x.value }} />;
+    case "duration":
+      return (
+        <>
+          <i aria-hidden="true" className="ods-slide size-2.5 rounded-full bg-[var(--color-action-primary)]" style={{ ["--ods-d" as string]: x.value }} />
+          <span className={note}>{x.value}</span>
+        </>
+      );
+    case "text":
+      return <span className={note}>{x.value}</span>;
+    default:
+      return <Sample kind={x.kind} value={x.value} />;
+  }
+}
+
+// A scope card: the robot on a band across the top, the title, its values, the count and the meter.
+function ScopeCard({ card }: { card: CardItem }) {
+  const lifted = card.samples?.some((x) => x.kind === "shadow");
+  return (
     <Card>
-      {card.robot && (
-        <span aria-hidden="true" className="w-24">
-          <img
-            src={card.robot.day}
-            alt=""
-            loading="lazy"
-            className="dark:hidden"
-          />
-          <img
-            src={card.robot.night}
-            alt=""
-            loading="lazy"
-            className="hidden dark:block"
-          />
-        </span>
-      )}
+      <span aria-hidden="true" className="-mx-[var(--card-padding)] -mt-[var(--card-padding)] flex h-42 justify-center rounded-t-[var(--card-radius)] bg-[var(--color-surface-sunken)] p-[var(--space-gap-default)] [&_img]:max-h-full">
+        <img src={card.robot!.day} alt="" loading="lazy" className="dark:hidden" />
+        <img src={card.robot!.night} alt="" loading="lazy" className="hidden dark:block" />
+      </span>
+      <CardHeader>
+        <CardTitle>{card.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {card.samples && (
+          <div className={`flex min-h-8 items-end gap-[var(--space-gap-default)] ${lifted ? "rounded-[var(--radius-control)] bg-[var(--color-surface-sunken)] p-[var(--space-gap-default)]" : ""}`}>
+            {card.samples.map((x, i) => (
+              <Drawn key={i} x={x} />
+            ))}
+          </div>
+        )}
+        <CardDescription>{card.text}</CardDescription>
+        {card.meter && (
+          <Progress value={(card.meter.value / card.meter.max) * 100} aria-label={card.meter.label} />
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function OneCard({ card }: { card: CardItem }) {
+  const body = card.robot ? (
+    <ScopeCard card={card} />
+  ) : (
+    <Card>
       <CardHeader>
         {card.eyebrow && <CardDescription>{card.eyebrow}</CardDescription>}
         <CardTitle>{card.title}</CardTitle>
@@ -124,9 +168,11 @@ export default function CardGrid({ data }: { data: CardGridData }) {
     <div
       data-composite="card-grid"
       className={
-        data.cards.length > 1
-          ? "grid gap-[var(--space-gap-default)] sm:grid-cols-2 lg:grid-cols-3"
-          : "grid gap-[var(--space-gap-default)]"
+        data.cards.some((c) => c.robot)
+          ? "grid gap-[var(--space-gap-group)] sm:grid-cols-2 lg:grid-cols-4"
+          : data.cards.length > 1
+            ? "grid gap-[var(--space-gap-default)] sm:grid-cols-2 lg:grid-cols-3"
+            : "grid gap-[var(--space-gap-default)]"
       }
     >
       {data.cards.map((c) => (

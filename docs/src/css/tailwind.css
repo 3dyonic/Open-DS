@@ -36,3 +36,23 @@
 [data-composite] :is(h1, h2, h3, h4, h5, h6, p, ul, ol) {
   margin: 0;
 }
+
+/* A duration drawn as a dot that moves once, there and back, at that duration (OD-220). Never a loop. */
+@media (prefers-reduced-motion: no-preference) {
+  .ods-slide {
+    animation: ods-slide calc(var(--ods-d, 120ms) * 6) ease-in-out 2 alternate;
+  }
+  a:hover .ods-slide {
+    animation-name: ods-slide-again;
+  }
+}
+@keyframes ods-slide {
+  to {
+    transform: translateX(4rem);
+  }
+}
+@keyframes ods-slide-again {
+  to {
+    transform: translateX(4rem);
+  }
+}

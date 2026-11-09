@@ -160,8 +160,8 @@
      },
      "samples": [
       {
-       "kind": "text",
-       "value": "200ms · 320ms"
+       "kind": "duration",
+       "value": "200ms"
       }
      ],
      "meter": {
