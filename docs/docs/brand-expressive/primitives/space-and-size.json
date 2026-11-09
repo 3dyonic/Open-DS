@@ -1,0 +1,232 @@
+{
+ "primitive-table": {
+  "space": {
+   "rows": [
+    {
+     "primitive": "space.2",
+     "value": "0.125rem (2px)",
+     "sample": {
+      "kind": "bar",
+      "value": "0.125rem"
+     },
+     "usedBy": [
+      {
+       "token": "component-spacing-map.hairline",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.4",
+     "value": "0.25rem (4px)",
+     "sample": {
+      "kind": "bar",
+      "value": "0.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "component-spacing-map.x1",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.8",
+     "value": "0.5rem (8px)",
+     "sample": {
+      "kind": "bar",
+      "value": "0.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "space.gap.tight",
+       "where": "semantic"
+      },
+      {
+       "token": "component-spacing-map.x2",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.16",
+     "value": "1rem (16px)",
+     "sample": {
+      "kind": "bar",
+      "value": "1rem"
+     },
+     "usedBy": [
+      {
+       "token": "space.gap.default",
+       "where": "semantic"
+      },
+      {
+       "token": "space.inset.cell-x",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.24",
+     "value": "1.5rem (24px)",
+     "sample": {
+      "kind": "bar",
+      "value": "1.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "component-spacing-map.x3",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.28",
+     "value": "1.75rem (28px)",
+     "sample": {
+      "kind": "bar",
+      "value": "1.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "space.inset.control-x",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.32",
+     "value": "2rem (32px)",
+     "sample": {
+      "kind": "bar",
+      "value": "2rem"
+     },
+     "usedBy": [
+      {
+       "token": "space.inset.container",
+       "where": "semantic"
+      },
+      {
+       "token": "component-spacing-map.x4",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.40",
+     "value": "2.5rem (40px)",
+     "sample": {
+      "kind": "bar",
+      "value": "2.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "space.gap.group",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.48",
+     "value": "3rem (48px)",
+     "sample": {
+      "kind": "bar",
+      "value": "3rem"
+     },
+     "usedBy": [
+      {
+       "token": "component-spacing-map.x6",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "space.64",
+     "value": "4rem (64px)",
+     "sample": {
+      "kind": "bar",
+      "value": "4rem"
+     },
+     "usedBy": [
+      {
+       "token": "space.gap.section",
+       "where": "semantic"
+      },
+      {
+       "token": "component-spacing-map.x8",
+       "where": "semantic"
+      },
+      {
+       "token": "component-spacing-map.x12",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "size": {
+   "rows": [
+    {
+     "primitive": "size.20",
+     "value": "1.25rem (20px)",
+     "sample": {
+      "kind": "bar",
+      "value": "1.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "size.icon",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "size.44",
+     "value": "2.75rem (44px)",
+     "sample": {
+      "kind": "bar",
+      "value": "2.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "size.control.compact",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "size.52",
+     "value": "3.25rem (52px)",
+     "sample": {
+      "kind": "bar",
+      "value": "3.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "size.control.default",
+       "where": "semantic"
+      },
+      {
+       "token": "size.row",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "size.60",
+     "value": "3.75rem (60px)",
+     "sample": {
+      "kind": "bar",
+      "value": "3.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "size.control.large",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

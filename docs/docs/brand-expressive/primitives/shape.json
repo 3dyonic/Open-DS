@@ -1,0 +1,104 @@
+{
+ "primitive-table": {
+  "radius": {
+   "rows": [
+    {
+     "primitive": "radius.20",
+     "value": "1.25rem (20px)",
+     "sample": {
+      "kind": "radius",
+      "value": "1.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.option",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.24",
+     "value": "1.5rem (24px)",
+     "sample": {
+      "kind": "radius",
+      "value": "1.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.container",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.999",
+     "value": "9999px",
+     "sample": {
+      "kind": "radius",
+      "value": "9999px"
+     },
+     "usedBy": [
+      {
+       "token": "radius.control",
+       "where": "every mode"
+      },
+      {
+       "token": "radius.badge",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.full",
+     "value": "9999px",
+     "sample": {
+      "kind": "radius",
+      "value": "9999px"
+     },
+     "usedBy": [
+      {
+       "token": "radius.round",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "border-width": {
+   "rows": [
+    {
+     "primitive": "border-width.2",
+     "value": "2px",
+     "sample": {
+      "kind": "line",
+      "value": "2px"
+     },
+     "usedBy": [
+      {
+       "token": "border-width.default",
+       "where": "semantic"
+      },
+      {
+       "token": "border-width.focus-offset",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "border-width.3",
+     "value": "3px",
+     "sample": {
+      "kind": "line",
+      "value": "3px"
+     },
+     "usedBy": [
+      {
+       "token": "border-width.focus",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

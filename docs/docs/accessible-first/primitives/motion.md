@@ -1,4 +1,5 @@
 ---
+composite_data: "./motion.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 5
 title: "Motion"
@@ -11,12 +12,8 @@ description: "Motion primitives in Accessible first."
 
 ## `duration`
 
-| Primitive | Value | Sample | Used by |
-| --- | --- | --- | --- |
-| `duration.moderate` | 200ms | :sample{kind="duration" value="200ms"} | `motion.duration.feedback` (semantic); `motion.duration.panels` (semantic) |
+::primitive-table{id="duration"}
 
 ## `easing`
 
-| Primitive | Value | Sample | Used by |
-| --- | --- | --- | --- |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | :sample{kind="easing" value="cubic-bezier(0.2,0,0,1)"} | `motion.easing.standard` (semantic) |
+::primitive-table{id="easing"}

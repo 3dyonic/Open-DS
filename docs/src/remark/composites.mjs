@@ -39,6 +39,7 @@ const COMPOSITES = {
   "decision-tree": "DecisionTree",
   "decision-answer": "DecisionAnswer",
   group: "Group",
+  "primitive-table": "PrimitiveTable",
 };
 // The attribute that names a composite's entry in the page's data file.
 const DATA_KEY = {
@@ -58,6 +59,7 @@ const DATA_KEY = {
   steps: "id",
   "decision-tree": "id",
   "decision-answer": "id",
+  "primitive-table": "id",
 };
 // The name the page's data has inside the compiled page.
 const DATA = "__compositeData";

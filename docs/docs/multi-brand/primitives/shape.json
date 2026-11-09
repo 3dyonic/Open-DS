@@ -1,0 +1,166 @@
+{
+ "primitive-table": {
+  "radius": {
+   "rows": [
+    {
+     "primitive": "radius.4",
+     "value": "0.25rem (4px)",
+     "sample": {
+      "kind": "radius",
+      "value": "0.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.control",
+       "where": "every mode, aster"
+      },
+      {
+       "token": "radius.badge",
+       "where": "every mode, aster"
+      },
+      {
+       "token": "radius.option",
+       "where": "every mode, aster"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.8",
+     "value": "0.5rem (8px)",
+     "sample": {
+      "kind": "radius",
+      "value": "0.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.container",
+       "where": "every mode, aster"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.12",
+     "value": "0.75rem (12px)",
+     "sample": {
+      "kind": "radius",
+      "value": "0.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.control",
+       "where": "every mode, birch"
+      },
+      {
+       "token": "radius.option",
+       "where": "every mode, birch"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.16",
+     "value": "1rem (16px)",
+     "sample": {
+      "kind": "radius",
+      "value": "1rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.container",
+       "where": "every mode, birch"
+      },
+      {
+       "token": "radius.option",
+       "where": "every mode, coral"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.20",
+     "value": "1.25rem (20px)",
+     "sample": {
+      "kind": "radius",
+      "value": "1.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.container",
+       "where": "every mode, coral"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.999",
+     "value": "9999px",
+     "sample": {
+      "kind": "radius",
+      "value": "9999px"
+     },
+     "usedBy": [
+      {
+       "token": "radius.badge",
+       "where": "every mode, birch"
+      },
+      {
+       "token": "radius.control",
+       "where": "every mode, coral"
+      },
+      {
+       "token": "radius.badge",
+       "where": "every mode, coral"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.full",
+     "value": "9999px",
+     "sample": {
+      "kind": "radius",
+      "value": "9999px"
+     },
+     "usedBy": [
+      {
+       "token": "radius.round",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "border-width": {
+   "rows": [
+    {
+     "primitive": "border-width.1",
+     "value": "1px",
+     "sample": {
+      "kind": "line",
+      "value": "1px"
+     },
+     "usedBy": [
+      {
+       "token": "border-width.default",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "border-width.2",
+     "value": "2px",
+     "sample": {
+      "kind": "line",
+      "value": "2px"
+     },
+     "usedBy": [
+      {
+       "token": "border-width.focus",
+       "where": "semantic"
+      },
+      {
+       "token": "border-width.focus-offset",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

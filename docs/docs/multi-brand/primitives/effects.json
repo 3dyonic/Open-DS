@@ -1,0 +1,114 @@
+{
+ "primitive-table": {
+  "opacity": {
+   "rows": [
+    {
+     "primitive": "opacity.40",
+     "value": "0.4",
+     "sample": {
+      "kind": "opacity",
+      "value": "0.4"
+     },
+     "usedBy": [
+      {
+       "token": "opacity.disabled",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "shadow": {
+   "rows": [
+    {
+     "primitive": "shadow.card",
+     "value": "0px 2px 8px 0px #0F172A14",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 2px 8px 0px #0F172A14"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.card",
+       "where": "light, aster"
+      },
+      {
+       "token": "elevation.card",
+       "where": "light, birch"
+      },
+      {
+       "token": "elevation.card",
+       "where": "light, coral"
+      }
+     ]
+    },
+    {
+     "primitive": "shadow.overlay",
+     "value": "0px 12px 32px 0px #0F172A29",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 12px 32px 0px #0F172A29"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.overlay",
+       "where": "light, aster"
+      },
+      {
+       "token": "elevation.overlay",
+       "where": "light, birch"
+      },
+      {
+       "token": "elevation.overlay",
+       "where": "light, coral"
+      }
+     ]
+    },
+    {
+     "primitive": "shadow.card-dark",
+     "value": "0px 2px 8px 0px #00000066",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 2px 8px 0px #00000066"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.card",
+       "where": "dark, aster"
+      },
+      {
+       "token": "elevation.card",
+       "where": "dark, birch"
+      },
+      {
+       "token": "elevation.card",
+       "where": "dark, coral"
+      }
+     ]
+    },
+    {
+     "primitive": "shadow.overlay-dark",
+     "value": "0px 12px 32px 0px #00000080",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 12px 32px 0px #00000080"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.overlay",
+       "where": "dark, aster"
+      },
+      {
+       "token": "elevation.overlay",
+       "where": "dark, birch"
+      },
+      {
+       "token": "elevation.overlay",
+       "where": "dark, coral"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

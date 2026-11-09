@@ -32,6 +32,8 @@ export type SpecimenItem = {
 export type SpecimenData = { title?: string; items: SpecimenItem[] };
 
 const small = "text-[length:var(--type-caption-font-size)]";
+const data = "[font-family:var(--type-data-font-family)]";
+const muted = "text-[color:var(--color-text-muted)]";
 
 function Drawing({ draw }: { draw: NonNullable<SpecimenItem["draw"]> }) {
   return (
@@ -54,14 +56,11 @@ function Item({ item }: { item: SpecimenItem }) {
       {(item.big || item.token) && (
         <div className="flex flex-wrap items-end justify-between gap-[var(--space-gap-tight)]">
           {item.big && (
-            <span
-              className="text-[length:var(--type-display-font-size)] leading-none"
-              style={face}
-            >
+            <span className="text-6xl leading-none" style={face}>
               {item.big}
             </span>
           )}
-          {item.token && <Label>{item.token}</Label>}
+          {item.token && <span className={`${small} ${data} ${muted}`}>{item.token}</span>}
         </div>
       )}
       {(item.draw || item.label || item.lines) && (
@@ -80,7 +79,7 @@ function Item({ item }: { item: SpecimenItem }) {
         </div>
       )}
       {item.sample?.map((l) => (
-        <span key={l} style={face}>
+        <span key={l} className="text-lg" style={face}>
           {l}
         </span>
       ))}
@@ -96,7 +95,7 @@ function Item({ item }: { item: SpecimenItem }) {
               style={{ fontWeight: w.weight }}
             >
               {w.name}
-              <code className={small}>{w.weight}</code>
+              <span className={`${small} ${data} ${muted} font-normal`}>{w.weight}</span>
             </span>
           ))}
         </div>
@@ -107,22 +106,34 @@ function Item({ item }: { item: SpecimenItem }) {
         >
           {item.read.label}
           {item.read.codes.map((c) => (
-            <code key={c}>{c}</code>
+            <code key={c} className={muted}>
+              {c}
+            </code>
           ))}
         </div>
       )}
-      {item.foot && <code className={small}>{item.foot}</code>}
+      {item.foot && <span className={`${small} ${data} ${muted}`}>{item.foot}</span>}
     </div>
   );
 }
 
 export default function Specimen({ data }: { data: SpecimenData }) {
-  // Typefaces sit two across; statuses stack, one per line; small values wrap in a row.
-  const layout = data.items.some((i) => i.big)
-    ? "grid gap-[var(--space-gap-group)] sm:grid-cols-2"
-    : data.items.some((i) => i.label)
-      ? "flex flex-col gap-[var(--space-gap-default)]"
-      : "flex flex-wrap gap-[var(--space-gap-default)]";
+  // Typefaces each get a card, two across; statuses stack, one per line; small values wrap in a row.
+  if (data.items.some((i) => i.big))
+    return (
+      <div data-composite="specimen" className="mb-[var(--space-gap-group)] grid gap-[var(--space-gap-group)] sm:grid-cols-2">
+        {data.items.map((item, i) => (
+          <Card key={i}>
+            <CardContent>
+              <Item item={item} />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    );
+  const layout = data.items.some((i) => i.label)
+    ? "flex flex-col gap-[var(--space-gap-default)]"
+    : "flex flex-wrap gap-[var(--space-gap-default)]";
   return (
     <div data-composite="specimen">
       <Card>

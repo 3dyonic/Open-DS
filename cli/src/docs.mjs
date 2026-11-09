@@ -1699,14 +1699,22 @@ export function docsPages(
         : p[0];
   };
   const nUsed = prims.filter((x) => usedBy[x.path]).length;
-  const table = (list) =>
-    `| Primitive | Value | Sample | Used by |\n| --- | --- | --- | --- |\n` +
-    list
-      .map((x) => {
-        const u = usedBy[x.path] ?? [];
-        return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? primitiveType(x.path), x.ref)} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("; ") : "Not used yet"} |`;
-      })
-      .join("\n");
+  // One group of primitives as the PrimitiveTable composite (OD-284): each value drawn, and every
+  // token that uses it, one per line.
+  const table = (list, id) => {
+    (compositeData["primitive-table"] ??= {})[id] = {
+      rows: list.map((x) => {
+        const f = sampleFact(x.path, x.type ?? primitiveType(x.path), x.ref);
+        return {
+          primitive: x.path,
+          value: String(value(first, x.path, x.ref)),
+          ...(f && { sample: f }),
+          usedBy: (usedBy[x.path] ?? []).map((y) => ({ token: y.token, where: y.where })),
+        };
+      }),
+    };
+    return `::primitive-table{id="${id}"}`;
+  };
   // A small specimen per font family (above its table): a large Aa, the alphabet and figures, the
   // weights this scheme uses with it, the roles that read it and its fallback stack.
   const WEIGHT = {
@@ -1941,10 +1949,10 @@ export function docsPages(
         ? fams
             .map(
               (f) =>
-                `## \`${f}\`\n\n${f === "font.family" ? fontSpecimens(k.list.filter((x) => family(x.path) === f)) : ""}${table(k.list.filter((x) => family(x.path) === f))}`,
+                `## \`${f}\`\n\n${f === "font.family" ? fontSpecimens(k.list.filter((x) => family(x.path) === f)) : ""}${table(k.list.filter((x) => family(x.path) === f), f)}`,
             )
             .join("\n\n")
-        : table(k.list)) +
+        : table(k.list, k.id)) +
       "\n";
   });
 
@@ -3011,6 +3019,7 @@ export function docsPages(
     "sample-screen": "id",
     "token-swatches": "id",
     "type-roles": "id",
+    "primitive-table": "id",
     steps: "id",
     "decision-tree": "id",
     "decision-answer": "id",

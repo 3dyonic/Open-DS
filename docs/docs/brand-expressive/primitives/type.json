@@ -1,4 +1,277 @@
 {
+ "primitive-table": {
+  "font.size": {
+   "rows": [
+    {
+     "primitive": "font.size.14",
+     "value": "0.875rem (14px)",
+     "sample": {
+      "kind": "size",
+      "value": "0.875rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.caption.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.15",
+     "value": "0.9375rem (15px)",
+     "sample": {
+      "kind": "size",
+      "value": "0.9375rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.label.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.17",
+     "value": "1.0625rem (17px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.0625rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.font-size",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.28",
+     "value": "1.75rem (28px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.heading.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.40",
+     "value": "2.5rem (40px)",
+     "sample": {
+      "kind": "size",
+      "value": "2.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.title.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.56",
+     "value": "3.5rem (56px)",
+     "sample": {
+      "kind": "size",
+      "value": "3.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-size",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.weight": {
+   "rows": [
+    {
+     "primitive": "font.weight.400",
+     "value": "400",
+     "sample": {
+      "kind": "weight",
+      "value": "400"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.font-weight",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.weight.700",
+     "value": "700",
+     "sample": {
+      "kind": "weight",
+      "value": "700"
+     },
+     "usedBy": [
+      {
+       "token": "type.heading.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.label.font-weight",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.weight.800",
+     "value": "800",
+     "sample": {
+      "kind": "weight",
+      "value": "800"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.title.font-weight",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.line-height": {
+   "rows": [
+    {
+     "primitive": "font.line-height.1_1",
+     "value": "1.1",
+     "sample": {
+      "kind": "leading",
+      "value": "1.1",
+      "note": "18px"
+     },
+     "usedBy": [
+      {
+       "token": "type.title.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.heading.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.label.line-height",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.line-height.1_55",
+     "value": "1.55",
+     "sample": {
+      "kind": "leading",
+      "value": "1.55",
+      "note": "25px"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.line-height",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.line-height.1_8",
+     "value": "1.8",
+     "sample": {
+      "kind": "leading",
+      "value": "1.8",
+      "note": "29px"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.line-height",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.family": {
+   "rows": [
+    {
+     "primitive": "font.family.bricolage-grotesque",
+     "value": "\"Bricolage Grotesque\", system-ui, sans-serif",
+     "sample": {
+      "kind": "font",
+      "value": "'Bricolage Grotesque', system-ui, sans-serif"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.title.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.heading.font-family",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "font.family.dm-sans",
+     "value": "\"DM Sans\", system-ui, sans-serif",
+     "sample": {
+      "kind": "font",
+      "value": "'DM Sans', system-ui, sans-serif"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.label.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.caption.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.data.font-family",
+       "where": "every mode"
+      }
+     ]
+    }
+   ]
+  }
+ },
  "specimen": {
   "type/fonts": {
    "items": [

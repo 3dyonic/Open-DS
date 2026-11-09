@@ -1,0 +1,72 @@
+{
+ "primitive-table": {
+  "opacity": {
+   "rows": [
+    {
+     "primitive": "opacity.40",
+     "value": "0.4",
+     "sample": {
+      "kind": "opacity",
+      "value": "0.4"
+     },
+     "usedBy": [
+      {
+       "token": "opacity.disabled",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "shadow": {
+   "rows": [
+    {
+     "primitive": "shadow.none",
+     "value": "0px 0px 0px 0px #00000000",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 0px 0px 0px #00000000"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.card",
+       "where": "light"
+      },
+      {
+       "token": "elevation.card",
+       "where": "dark"
+      }
+     ]
+    },
+    {
+     "primitive": "shadow.overlay",
+     "value": "0px 8px 24px 0px #0D111729",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 8px 24px 0px #0D111729"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.overlay",
+       "where": "light"
+      }
+     ]
+    },
+    {
+     "primitive": "shadow.overlay-dark",
+     "value": "0px 8px 24px 0px #00000080",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 8px 24px 0px #00000080"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.overlay",
+       "where": "dark"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
