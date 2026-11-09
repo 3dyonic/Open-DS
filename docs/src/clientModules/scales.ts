@@ -110,7 +110,7 @@ function markMenu() {
 // Decision reference menu on every other page.
 function foldMenu() {
   const cat = document.querySelector(".odv-dmenu-cat");
-  if (!cat || document.querySelector(".odv-decided")) return;
+  if (!cat || document.querySelector(".odv-decided, [data-composite=fold]")) return;
   if (cat.classList.contains("menu__list-item--collapsed")) return;
   cat.querySelector<HTMLButtonElement>(".menu__caret")?.click();
 }
@@ -125,7 +125,8 @@ if (typeof window !== "undefined") {
       return;
     }
     const a = t.closest<HTMLAnchorElement>("a[href*='#']");
-    if (!a || !document.querySelector(".odv-decided") || a.pathname !== location.pathname) return;
+    if (!a || !document.querySelector(".odv-decided, [data-composite=fold]") || a.pathname !== location.pathname)
+      return;
     e.preventDefault();
     history.pushState(null, "", a.hash);
     openFor(a.hash);
@@ -135,6 +136,6 @@ if (typeof window !== "undefined") {
 
 function decidedRoute() {
   foldMenu();
-  if (!document.querySelector(".odv-decided")) return;
+  if (!document.querySelector(".odv-decided, [data-composite=fold]")) return;
   openFor(location.hash);
 }

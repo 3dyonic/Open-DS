@@ -5,6 +5,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import AnatomyDrawing from "@open-ds/doc-composites/AnatomyDrawing";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
 import Intro from "@open-ds/doc-composites/Intro";
+import Fold from "@open-ds/doc-composites/Fold";
 import Grid from "@open-ds/doc-composites/Grid";
 import Label from "@open-ds/doc-composites/Label";
 import Panel from "@open-ds/doc-composites/Panel";
@@ -42,12 +43,19 @@ function LinkedPanel(props: React.ComponentProps<typeof Panel> & { id?: string }
   return <Panel {...props} />;
 }
 
+// A fold is a link target too (#people): the sidebar menu opens it.
+function LinkedFold(props: React.ComponentProps<typeof Fold>) {
+  useBrokenLinks().collectAnchor(props.id);
+  return <Fold {...props} />;
+}
+
 // The composites the pages' directives name (src/remark/composites.mjs).
 export default {
   ...MDXComponents,
   section: Section,
   AnatomyDrawing,
   CardGrid,
+  Fold: LinkedFold,
   Grid,
   Panel: LinkedPanel,
   Intro: RobotIntro,

@@ -1180,54 +1180,66 @@ export function docsPages(
         '<g transform="scale(0.6667)"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></g>',
       ),
     ]);
-    const pill = (q) => `<span class="odv-apill">${he(label(q))}</span>`;
-    const lbl = (t) => `<b class="odv-lbl">${he(t)}</b>`;
+    // Every answer in Markdown (OD-284): its label, why, what it weighs, what it came from and what
+    // it decided, under its question; the sections fold, one open at a time.
+    const pill = (q) => `:label[${esc(label(q))}]{tone="info"}`;
     const item = (d) =>
-      `<li><span class="odv-dec-what">${he(d.text)}</span>${d.href && d.go ? `<a class="odv-go" href="${d.href}">${he(d.go)} →</a>` : ""}</li>`;
+      `- ${esc(d.text)}${d.href && d.go ? ` [${esc(d.go)} →](${d.href})` : ""}`;
     const decided = (q, r) => {
       const all = made[q] ?? [];
       if (!all.length)
         return r.scope
-          ? `<li>${lbl("What it decided")}<p class="odv-why">It sets the values of the ${he(r.title.toLowerCase())} tokens: <a href="foundations/${r.scope}">${he(r.title)} →</a></p></li>`
+          ? `**What it decided**\n\nIt sets the values of the ${esc(r.title.toLowerCase())} tokens: [${esc(r.title)} →](foundations/${r.scope})`
           : "";
-      return `<li>${lbl(`What it decided (${all.length})`)}${KINDS.map(
-        ([k, t, icon]) => {
+      return (
+        `**What it decided (${all.length})**\n\n` +
+        KINDS.map(([k, t]) => {
           const list = all.filter((d) => d.kind === k);
           return list.length
-            ? `<div class="odv-dgroup"><div class="odv-dgroup-t">${icon}${he(t)} (${list.length})</div><ul class="odv-tree">${list.map(item).join("")}</ul></div>`
+            ? `*${esc(t)} (${list.length})*\n\n${list.map(item).join("\n")}`
             : "";
-        },
-      ).join("")}</li>`;
+        })
+          .filter(Boolean)
+          .join("\n\n")
+      );
     };
     const because = (q) => {
       const b = answer(q).because ?? [];
-      return `<li>${lbl("Because of")}${
-        b.length
-          ? `<ul class="odv-tree">${b.map((x) => `<li>${he(lineOf[x])}</li>`).join("")}</ul>`
-          : `<p class="odv-why">Nothing before it. It's one of the first answers.</p>`
-      }</li>`;
+      return `**Because of**\n\n${b.length ? b.map((x) => `- ${esc(lineOf[x])}`).join("\n") : "Nothing before it. It's one of the first answers."}`;
     };
     // What the answer had to weigh, and this scheme's words for each (OD-245), in their groups.
     const considers = (q) => {
       if (!q.considers?.length) return "";
       const a = answer(q.id).considers ?? {};
       const groups = [...new Set(q.considers.map((k) => k.group))];
-      return `<li>${lbl(`What it weighs (${q.considers.length})`)}${groups
-        .map(
-          (gr) =>
-            `<div class="odv-dgroup"><div class="odv-dgroup-t">${he(gr)}</div><ul class="odv-tree">${q.considers
-              .filter((k) => k.group === gr)
-              .map(
-                (k) =>
-                  `<li><span class="odv-dec-what"><b>${he(k.label)}.</b> ${he(a[k.id] ?? "Not answered yet.")}</span></li>`,
-              )
-              .join("")}</ul></div>`,
-        )
-        .join("")}</li>`;
+      return (
+        `**What it weighs (${q.considers.length})**\n\n` +
+        groups
+          .map(
+            (gr) =>
+              `*${esc(gr)}*\n\n` +
+              q.considers
+                .filter((k) => k.group === gr)
+                .map(
+                  (k) =>
+                    `- **${esc(k.label)}.** ${esc(a[k.id] ?? "Not answered yet.")}`,
+                )
+                .join("\n"),
+          )
+          .join("\n\n")
+      );
     };
     const qa = (q, r) =>
-      `<div class="odv-qa" id="${he(q.id.replace(/\./g, "-"))}"><div class="odv-q">${he(q.text)}</div><ul class="odv-tree odv-tree-root"><li>${pill(q.id)}<ul class="odv-tree">` +
-      `<li>${lbl("Why")}<p class="odv-why">${he(sentence(answer(q.id).why))}</p></li>${considers(q)}${because(q.id)}${decided(q.id, r)}</ul></li></ul></div>`;
+      [
+        `#### ${esc(q.text)} {#${q.id.replace(/\./g, "-")}}`,
+        pill(q.id),
+        `**Why**\n\n${esc(sentence(answer(q.id).why))}`,
+        considers(q),
+        because(q.id),
+        decided(q.id, r),
+      ]
+        .filter(Boolean)
+        .join("\n\n");
     // Where it starts: a simple process tree. The first answers (nothing before them), each later
     // answer under the first answer it came from, and at the leaves the foundation values they set.
     const reasons = scheme.answers
@@ -1251,9 +1263,9 @@ export function docsPages(
       const p = sized.find((k) => /\.body\./.test(k)) ?? sized[0] ?? all[0];
       if (!p) return "";
       const c = aliasChain(ix, p);
-      return ` <span class="odv-chip">${he(p)}</span>${c.hops.at(-1) ? ` <span class="odv-chip">${he(c.hops.at(-1))}</span>` : ""}<span class="odv-tq">:</span> <span class="odv-raw">${he(c.value)}</span>`;
+      return ` \`${p}\`${c.hops.at(-1) ? ` \`${c.hops.at(-1)}\`` : ""}: ${esc(c.value)}`;
     };
-    const leaves = (q) =>
+    const leaves = (q, depth) =>
       scheme.answers
         .filter(
           (a) =>
@@ -1263,31 +1275,36 @@ export function docsPages(
         )
         .map(
           (a) =>
-            `<li>${pill(a.question)} <span class="odv-tq">${he(secOf[a.question].title.toLowerCase())} →</span>${firstValue(secOf[a.question].scope)}</li>`,
+            `${"  ".repeat(depth)}- ${pill(a.question)} ${esc(secOf[a.question].title.toLowerCase())} →${firstValue(secOf[a.question].scope)}`,
         );
-    const branch = (q) => {
+    const branch = (q, depth = 0) => {
       const also = (answer(q).because ?? []).slice(1);
-      const under = [...(kids[q] ?? []).map(branch), ...leaves(q)];
-      return `<li>${pill(q)} <span class="odv-tq">${he(qs[q].text)}</span>${also.length ? `<span class="odv-tq">, also because</span> <b>${also.map((b) => he(label(b))).join(", ")}</b>` : ""}${under.length ? `<ul class="odv-tree">${under.join("")}</ul>` : ""}</li>`;
+      return [
+        `${"  ".repeat(depth)}- ${pill(q)} ${esc(qs[q].text)}${also.length ? `, also because **${also.map((b) => esc(label(b))).join(", ")}**` : ""}`,
+        ...(kids[q] ?? []).map((k) => branch(k, depth + 1)),
+        ...leaves(q, depth + 1),
+      ].join("\n");
     };
     const roots = reasons.filter(
       (q) => !(answer(q).because ?? []).some((b) => reasons.includes(b)),
     );
-    const tree = `<ul class="odv-tree odv-tree-root odv-starts">${roots.map(branch).join("")}</ul>`;
+    const tree = roots.map((q) => branch(q)).join("\n");
     // Every question: one fold per section, one open at a time (src/clientModules/scales.ts).
     const every = ["Reasons", "Scopes"]
       .map(
         (grp) =>
-          `<h3 class="odv-grp">${grp}</h3>` +
+          `### ${grp}\n\n` +
           sections
             .filter((r) => r.group === grp)
             .map(
               (r) =>
-                `<section class="odv-qsec" id="${he(r.id)}"><button type="button" class="odv-qsec-h" aria-expanded="false" aria-controls="${he(r.id)}-body"><span class="odv-qsec-t">${he(r.title)}</span><span class="odv-qsec-n">${r.questions.length} answers, ${total(r)} decision${total(r) === 1 ? "" : "s"}${r.scope ? ", and the values of its tokens" : ""}</span></button><div class="odv-qsec-b" id="${he(r.id)}-body" hidden>${r.questions.map((q) => qa(q, r)).join("")}</div></section>`,
+                `:::fold{id="${r.id}" title="${r.title.replaceAll('"', "'")}" note="${r.questions.length} answers, ${total(r)} decision${total(r) === 1 ? "" : "s"}${r.scope ? ", and the values of its tokens" : ""}"}\n` +
+                r.questions.map((q) => qa(q, r)).join("\n\n") +
+                `\n:::`,
             )
-            .join(""),
+            .join("\n\n"),
       )
-      .join("");
+      .join("\n\n");
     const has = (q) => qs[q] && answer(q);
     const example =
       has("spacing.values") && has("voice.values")
@@ -1301,7 +1318,15 @@ export function docsPages(
       `- Open one section when you wonder why.${esc(example)}\n` +
       `- Come in from a component page. Each one links here, to the answers that shaped it.\n\n` +
       `Everything else can wait until you need it.\n:::`;
-    const flow = `<ol class="odv-flow">${["Question", "Answer", "Why, and what it came from", "Design values", "In the UI"].map((s) => `<li>${s}</li>`).join("")}</ol>`;
+    const flow = [
+      "Question",
+      "Answer",
+      "Why, and what it came from",
+      "Design values",
+      "In the UI",
+    ]
+      .map((x, k) => `${k + 1}. ${x}`)
+      .join("\n");
     pages["decision-reference.md"] =
       fm({
         sidebar_position: 1.5,
@@ -1313,15 +1338,10 @@ export function docsPages(
       `# Decision reference\n\n` +
       intro +
       "\n\n" +
-      h(
-        `<div class="odv-decided">`,
-        flow,
-        `<h2 id="where-it-starts">Where it starts</h2><p>The first answers lead to the rest. Each branch is an answer that follows from the one above it.</p>`,
-        tree,
-        `<h2 id="every-question">Every question</h2><p>All ${scheme.answers.length}, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.</p>`,
-        every,
-        `</div>`,
-      ) +
+      `${flow}\n\n` +
+      `## Where it starts\n\nThe first answers lead to the rest. Each branch is an answer that follows from the one above it.\n\n${tree}\n\n` +
+      `## Every question\n\nAll ${scheme.answers.length}, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.\n\n` +
+      every +
       "\n";
     // The section menu for the left sidebar, under Decision reference.
     pages["_decision-menu.json"] =

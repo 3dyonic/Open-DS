@@ -21,6 +21,7 @@ const COMPOSITES = {
   specimen: "Specimen",
   panel: "Panel",
   grid: "Grid",
+  fold: "Fold",
   "anatomy-drawing": "AnatomyDrawing",
 };
 // The attribute that names a composite's entry in _composites.json.
