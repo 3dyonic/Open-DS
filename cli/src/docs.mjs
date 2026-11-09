@@ -454,19 +454,20 @@ function colorScales(scheme, g, fams, put) {
       }
     return [...rows.values()];
   };
-  const row = (r, lane) => {
+  // One token as facts (OD-284, doc-composites/schemas/color-scale.schema.json).
+  const token = (r, own) => {
     const id = `color.${r.token}`;
     return {
       token: r.token,
-      ...(many &&
-        r.brands.length < brands.length && { tag: r.brands.join(", ") }),
-      prim: r.prim.replace(/^color\./, ""),
+      paints: laneOf(r.token),
+      ...(own && { step: r.step }),
+      primitive: r.prim.replace(/^color\./, ""),
       ...(r.via && { via: r.via }),
       hex: hex(r.prim),
+      ...(many && r.brands.length < brands.length && { brands: r.brands }),
       ...(guided.has(id) && {
-        href: `../foundations/color?for=${cssId(id)}#what-each-color-is-for`,
+        guidance: `../foundations/color?for=${cssId(id)}#what-each-color-is-for`,
       }),
-      ...(lane && { link: `${lane}-${r.step}` }),
     };
   };
   const hues = [
@@ -480,82 +481,34 @@ function colorScales(scheme, g, fams, put) {
       (m) => t.primitive?.color?.[hue]?.[m],
     );
     if (!modes.length) continue;
-    const panels = modes.map((m) => {
-      const steps = Object.keys(t.primitive.color[hue][m]).filter(
-        (k) => !k.startsWith("$"),
-      );
-      const own = entries(hue, m, "own");
-      const canvas = surf(m, "color.surface.canvas");
-      const fixed = entries(hue, m, "other");
-      // used steps get the room; empty slots stay narrow
-      const cols = (steps, on) =>
-        steps
-          .map((st) => (on.has(st) ? "minmax(56px, 3fr)" : "minmax(30px, 1fr)"))
-          .join(" ");
-      // text shows on the page, or on the page's text color when it is a label for dark fills
-      const step = (st, kind, on) => {
-        const v = hex(`color.${hue}.${m}.${st}`);
-        if (!on) return { st, hex: v, on: false };
-        if (kind === "fill") return { st, hex: v, on: true, kind, ink: ink(v) };
-        if (kind === "text" && contrast(v, canvas) < 3)
-          return {
-            st,
-            hex: v,
-            on: true,
-            kind,
-            ground:
-              contrast(v, surf(m, "color.text.primary")) >= 3
-                ? surf(m, "color.text.primary")
-                : surf(m, "color.surface.inverse"),
-          };
-        return { st, hex: v, on: true, kind };
-      };
-      const lanes = LANES.map(({ id, title }) => {
-        const list = own
-          .filter((r) => laneOf(r.token) === id)
-          .sort((a, b) => steps.indexOf(a.step) - steps.indexOf(b.step));
-        if (!list.length) return null;
-        const on = new Set(list.map((r) => r.step));
-        return {
-          title,
-          cols: cols(steps, on),
-          steps: steps.map((st) => step(st, id, on.has(st))),
-          rows: list.map((r) => row(r, id)),
-        };
-      }).filter(Boolean);
-      if (!own.length)
-        lanes.push({
-          title: "Not used yet in this theme",
-          cols: cols(steps, new Set()),
-          steps: steps.map((st) => step(st, null, false)),
-          rows: [],
-        });
-      const other = m === "light" ? "dark" : "light";
-      if (fixed.length)
-        lanes.push({
-          title: `From the ${other} scale, fixed colors`,
-          rows: fixed.map((r) => row(r, null)),
-        });
-      return {
+    const data = {
+      family: hue,
+      modes: modes.map((m) => ({
         mode: m,
-        label: `${title(m)} theme`,
-        style: {
-          background: surf(m, "color.surface.canvas"),
-          color: surf(m, "color.text.primary"),
-          "--odv-muted": surf(m, "color.text.muted"),
-          "--odv-edge": surf(m, "color.border.default"),
-          "--odv-ring": surf(m, "color.text.primary"),
-          "--odv-dash":
-            surf(m, "color.border.placeholder") ||
-            surf(m, "color.border.default"),
+        page: {
+          canvas: surf(m, "color.surface.canvas"),
+          text: surf(m, "color.text.primary"),
+          muted: surf(m, "color.text.muted"),
+          border: surf(m, "color.border.default"),
+          inverse: surf(m, "color.surface.inverse"),
         },
-        lanes,
-      };
-    });
+        steps: Object.keys(t.primitive.color[hue][m])
+          .filter((k) => !k.startsWith("$"))
+          .map((st) => ({
+            step: st,
+            primitive: `${hue}.${m}.${st}`,
+            hex: hex(`color.${hue}.${m}.${st}`),
+          })),
+        tokens: [
+          ...entries(hue, m, "own").map((r) => token(r, true)),
+          ...entries(hue, m, "other").map((r) => token(r, false)),
+        ],
+      })),
+    };
     const n = (m) => entries(hue, m, "own").length;
     out.push(
       `## ${title(hue)}\n\n${modes.map((m) => `${n(m)} tokens in ${m}`).join(", ")}.\n\n` +
-        put(hue, { panels }),
+        put(hue, data),
     );
   }
   return (

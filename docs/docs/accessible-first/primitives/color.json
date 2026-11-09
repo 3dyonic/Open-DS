@@ -1,3257 +1,1848 @@
 {
  "color-scale": {
   "gray": {
-   "panels": [
+   "family": "gray",
+   "modes": [
     {
      "mode": "light",
-     "label": "Light theme",
-     "style": {
-      "background": "#F7F7F7",
-      "color": "#141414",
-      "--odv-muted": "#595959",
-      "--odv-edge": "#D6D6D6",
-      "--odv-ring": "#141414",
-      "--odv-dash": "#D6D6D6"
+     "page": {
+      "canvas": "#F7F7F7",
+      "text": "#141414",
+      "muted": "#595959",
+      "border": "#D6D6D6",
+      "inverse": "#141414"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "0",
-         "hex": "#FFFFFF",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "50",
-         "hex": "#F7F7F7",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "100",
-         "hex": "#EDEDED",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "200",
-         "hex": "#D6D6D6",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "300",
-         "hex": "#949494",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#767676",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#595959",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "600",
-         "hex": "#464646",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#333333",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#222222",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#141414",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "950",
-         "hex": "#0A0A0A",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "surface.default",
-         "prim": "gray.light.0",
-         "via": "neutral.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-surface-default#what-each-color-is-for",
-         "link": "fill-0"
-        },
-        {
-         "token": "surface.raised",
-         "prim": "gray.light.0",
-         "via": "neutral.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-surface-raised#what-each-color-is-for",
-         "link": "fill-0"
-        },
-        {
-         "token": "action.secondary",
-         "prim": "gray.light.0",
-         "via": "neutral.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-action-secondary#what-each-color-is-for",
-         "link": "fill-0"
-        },
-        {
-         "token": "surface.canvas",
-         "prim": "gray.light.50",
-         "via": "neutral.50",
-         "hex": "#F7F7F7",
-         "href": "../foundations/color?for=color-surface-canvas#what-each-color-is-for",
-         "link": "fill-50"
-        },
-        {
-         "token": "surface.sunken",
-         "prim": "gray.light.100",
-         "via": "neutral.100",
-         "hex": "#EDEDED",
-         "href": "../foundations/color?for=color-surface-sunken#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "surface.highlight",
-         "prim": "gray.light.100",
-         "via": "neutral.100",
-         "hex": "#EDEDED",
-         "href": "../foundations/color?for=color-surface-highlight#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "action.secondary.hover",
-         "prim": "gray.light.100",
-         "via": "neutral.100",
-         "hex": "#EDEDED",
-         "href": "../foundations/color?for=color-action-secondary-hover#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.5.subtle",
-         "prim": "gray.light.100",
-         "via": "neutral.100",
-         "hex": "#EDEDED",
-         "href": "../foundations/color?for=color-category-5-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "disabled.surface",
-         "prim": "gray.light.100",
-         "via": "neutral.100",
-         "hex": "#EDEDED",
-         "href": "../foundations/color?for=color-disabled-surface#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "surface.pressed",
-         "prim": "gray.light.200",
-         "via": "neutral.200",
-         "hex": "#D6D6D6",
-         "href": "../foundations/color?for=color-surface-pressed#what-each-color-is-for",
-         "link": "fill-200"
-        },
-        {
-         "token": "category.5",
-         "prim": "gray.light.500",
-         "via": "neutral.500",
-         "hex": "#595959",
-         "href": "../foundations/color?for=color-category-5#what-each-color-is-for",
-         "link": "fill-500"
-        },
-        {
-         "token": "surface.inverse",
-         "prim": "gray.light.900",
-         "via": "neutral.900",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-surface-inverse#what-each-color-is-for",
-         "link": "fill-900"
-        }
-       ]
+       "step": "0",
+       "primitive": "gray.light.0",
+       "hex": "#FFFFFF"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "0",
-         "hex": "#FFFFFF",
-         "on": false
-        },
-        {
-         "st": "50",
-         "hex": "#F7F7F7",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#EDEDED",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#D6D6D6",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "300",
-         "hex": "#949494",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#767676",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#595959",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "600",
-         "hex": "#464646",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#333333",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#222222",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#141414",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#0A0A0A",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "border.default",
-         "prim": "gray.light.200",
-         "via": "neutral.200",
-         "hex": "#D6D6D6",
-         "href": "../foundations/color?for=color-border-default#what-each-color-is-for",
-         "link": "edge-200"
-        },
-        {
-         "token": "disabled.border",
-         "prim": "gray.light.200",
-         "via": "neutral.200",
-         "hex": "#D6D6D6",
-         "href": "../foundations/color?for=color-disabled-border#what-each-color-is-for",
-         "link": "edge-200"
-        },
-        {
-         "token": "border.strong",
-         "prim": "gray.light.500",
-         "via": "neutral.500",
-         "hex": "#595959",
-         "href": "../foundations/color?for=color-border-strong#what-each-color-is-for",
-         "link": "edge-500"
-        }
-       ]
+       "step": "50",
+       "primitive": "gray.light.50",
+       "hex": "#F7F7F7"
       },
       {
-       "title": "Text",
-       "cols": "minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "0",
-         "hex": "#FFFFFF",
-         "on": true,
-         "kind": "text",
-         "ground": "#141414"
-        },
-        {
-         "st": "50",
-         "hex": "#F7F7F7",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#EDEDED",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#D6D6D6",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#949494",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#767676",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#595959",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "600",
-         "hex": "#464646",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#333333",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "800",
-         "hex": "#222222",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#141414",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "950",
-         "hex": "#0A0A0A",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "text.inverse",
-         "prim": "gray.light.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-text-inverse#what-each-color-is-for",
-         "link": "text-0"
-        },
-        {
-         "token": "text.on-action",
-         "prim": "gray.light.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-text-on-action#what-each-color-is-for",
-         "link": "text-0"
-        },
-        {
-         "token": "text.on-danger",
-         "prim": "gray.light.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-text-on-danger#what-each-color-is-for",
-         "link": "text-0"
-        },
-        {
-         "token": "text.on-dark",
-         "prim": "gray.light.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-text-on-dark#what-each-color-is-for",
-         "link": "text-0"
-        },
-        {
-         "token": "text.muted",
-         "prim": "gray.light.500",
-         "via": "neutral.500",
-         "hex": "#595959",
-         "href": "../foundations/color?for=color-text-muted#what-each-color-is-for",
-         "link": "text-500"
-        },
-        {
-         "token": "disabled.text",
-         "prim": "gray.light.500",
-         "via": "neutral.500",
-         "hex": "#595959",
-         "href": "../foundations/color?for=color-disabled-text#what-each-color-is-for",
-         "link": "text-500"
-        },
-        {
-         "token": "text.secondary",
-         "prim": "gray.light.700",
-         "via": "neutral.700",
-         "hex": "#333333",
-         "href": "../foundations/color?for=color-text-secondary#what-each-color-is-for",
-         "link": "text-700"
-        },
-        {
-         "token": "text.primary",
-         "prim": "gray.light.900",
-         "via": "neutral.900",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-text-primary#what-each-color-is-for",
-         "link": "text-900"
-        },
-        {
-         "token": "text.on-light",
-         "prim": "gray.light.900",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-text-on-light#what-each-color-is-for",
-         "link": "text-900"
-        }
-       ]
+       "step": "100",
+       "primitive": "gray.light.100",
+       "hex": "#EDEDED"
+      },
+      {
+       "step": "200",
+       "primitive": "gray.light.200",
+       "hex": "#D6D6D6"
+      },
+      {
+       "step": "300",
+       "primitive": "gray.light.300",
+       "hex": "#949494"
+      },
+      {
+       "step": "400",
+       "primitive": "gray.light.400",
+       "hex": "#767676"
+      },
+      {
+       "step": "500",
+       "primitive": "gray.light.500",
+       "hex": "#595959"
+      },
+      {
+       "step": "600",
+       "primitive": "gray.light.600",
+       "hex": "#464646"
+      },
+      {
+       "step": "700",
+       "primitive": "gray.light.700",
+       "hex": "#333333"
+      },
+      {
+       "step": "800",
+       "primitive": "gray.light.800",
+       "hex": "#222222"
+      },
+      {
+       "step": "900",
+       "primitive": "gray.light.900",
+       "hex": "#141414"
+      },
+      {
+       "step": "950",
+       "primitive": "gray.light.950",
+       "hex": "#0A0A0A"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "surface.canvas",
+       "paints": "fill",
+       "step": "50",
+       "primitive": "gray.light.50",
+       "via": "neutral.50",
+       "hex": "#F7F7F7",
+       "guidance": "../foundations/color?for=color-surface-canvas#what-each-color-is-for"
+      },
+      {
+       "token": "surface.default",
+       "paints": "fill",
+       "step": "0",
+       "primitive": "gray.light.0",
+       "via": "neutral.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-surface-default#what-each-color-is-for"
+      },
+      {
+       "token": "surface.raised",
+       "paints": "fill",
+       "step": "0",
+       "primitive": "gray.light.0",
+       "via": "neutral.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
+      },
+      {
+       "token": "text.inverse",
+       "paints": "text",
+       "step": "0",
+       "primitive": "gray.light.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-text-inverse#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-action",
+       "paints": "text",
+       "step": "0",
+       "primitive": "gray.light.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-text-on-action#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-danger",
+       "paints": "text",
+       "step": "0",
+       "primitive": "gray.light.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-text-on-danger#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-dark",
+       "paints": "text",
+       "step": "0",
+       "primitive": "gray.light.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-text-on-dark#what-each-color-is-for"
+      },
+      {
+       "token": "action.secondary",
+       "paints": "fill",
+       "step": "0",
+       "primitive": "gray.light.0",
+       "via": "neutral.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-action-secondary#what-each-color-is-for"
+      },
+      {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.light.100",
+       "via": "neutral.100",
+       "hex": "#EDEDED",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.light.100",
+       "via": "neutral.100",
+       "hex": "#EDEDED",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+      },
+      {
+       "token": "action.secondary.hover",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.light.100",
+       "via": "neutral.100",
+       "hex": "#EDEDED",
+       "guidance": "../foundations/color?for=color-action-secondary-hover#what-each-color-is-for"
+      },
+      {
+       "token": "category.5.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.light.100",
+       "via": "neutral.100",
+       "hex": "#EDEDED",
+       "guidance": "../foundations/color?for=color-category-5-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "disabled.surface",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.light.100",
+       "via": "neutral.100",
+       "hex": "#EDEDED",
+       "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
+      },
+      {
+       "token": "surface.pressed",
+       "paints": "fill",
+       "step": "200",
+       "primitive": "gray.light.200",
+       "via": "neutral.200",
+       "hex": "#D6D6D6",
+       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
+      },
+      {
+       "token": "border.default",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "gray.light.200",
+       "via": "neutral.200",
+       "hex": "#D6D6D6",
+       "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
+      },
+      {
+       "token": "disabled.border",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "gray.light.200",
+       "via": "neutral.200",
+       "hex": "#D6D6D6",
+       "guidance": "../foundations/color?for=color-disabled-border#what-each-color-is-for"
+      },
+      {
+       "token": "surface.inverse",
+       "paints": "fill",
+       "step": "900",
+       "primitive": "gray.light.900",
+       "via": "neutral.900",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-surface-inverse#what-each-color-is-for"
+      },
+      {
+       "token": "text.primary",
+       "paints": "text",
+       "step": "900",
+       "primitive": "gray.light.900",
+       "via": "neutral.900",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-text-primary#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-light",
+       "paints": "text",
+       "step": "900",
+       "primitive": "gray.light.900",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-text-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.secondary",
+       "paints": "text",
+       "step": "700",
+       "primitive": "gray.light.700",
+       "via": "neutral.700",
+       "hex": "#333333",
+       "guidance": "../foundations/color?for=color-text-secondary#what-each-color-is-for"
+      },
+      {
+       "token": "text.muted",
+       "paints": "text",
+       "step": "500",
+       "primitive": "gray.light.500",
+       "via": "neutral.500",
+       "hex": "#595959",
+       "guidance": "../foundations/color?for=color-text-muted#what-each-color-is-for"
+      },
+      {
+       "token": "border.strong",
+       "paints": "edge",
+       "step": "500",
+       "primitive": "gray.light.500",
+       "via": "neutral.500",
+       "hex": "#595959",
+       "guidance": "../foundations/color?for=color-border-strong#what-each-color-is-for"
+      },
+      {
+       "token": "category.5",
+       "paints": "fill",
+       "step": "500",
+       "primitive": "gray.light.500",
+       "via": "neutral.500",
+       "hex": "#595959",
+       "guidance": "../foundations/color?for=color-category-5#what-each-color-is-for"
+      },
+      {
+       "token": "disabled.text",
+       "paints": "text",
+       "step": "500",
+       "primitive": "gray.light.500",
+       "via": "neutral.500",
+       "hex": "#595959",
+       "guidance": "../foundations/color?for=color-disabled-text#what-each-color-is-for"
       }
      ]
     },
     {
      "mode": "dark",
-     "label": "Dark theme",
-     "style": {
-      "background": "#0A0A0A",
-      "color": "#F7F7F7",
-      "--odv-muted": "#B4B4B4",
-      "--odv-edge": "#333333",
-      "--odv-ring": "#F7F7F7",
-      "--odv-dash": "#333333"
+     "page": {
+      "canvas": "#0A0A0A",
+      "text": "#F7F7F7",
+      "muted": "#B4B4B4",
+      "border": "#333333",
+      "inverse": "#F7F7F7"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "0",
-         "hex": "#0A0A0A",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "50",
-         "hex": "#141414",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "100",
-         "hex": "#222222",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "200",
-         "hex": "#333333",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "300",
-         "hex": "#595959",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#767676",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#949494",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#B4B4B4",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#D6D6D6",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "800",
-         "hex": "#EDEDED",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#F7F7F7",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "950",
-         "hex": "#FFFFFF",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "surface.canvas",
-         "prim": "gray.dark.0",
-         "via": "neutral.0",
-         "hex": "#0A0A0A",
-         "href": "../foundations/color?for=color-surface-canvas#what-each-color-is-for",
-         "link": "fill-0"
-        },
-        {
-         "token": "surface.default",
-         "prim": "gray.dark.50",
-         "via": "neutral.50",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-surface-default#what-each-color-is-for",
-         "link": "fill-50"
-        },
-        {
-         "token": "surface.raised",
-         "prim": "gray.dark.50",
-         "via": "neutral.50",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-surface-raised#what-each-color-is-for",
-         "link": "fill-50"
-        },
-        {
-         "token": "action.secondary",
-         "prim": "gray.dark.50",
-         "via": "neutral.50",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-action-secondary#what-each-color-is-for",
-         "link": "fill-50"
-        },
-        {
-         "token": "surface.sunken",
-         "prim": "gray.dark.100",
-         "via": "neutral.100",
-         "hex": "#222222",
-         "href": "../foundations/color?for=color-surface-sunken#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "surface.highlight",
-         "prim": "gray.dark.100",
-         "via": "neutral.100",
-         "hex": "#222222",
-         "href": "../foundations/color?for=color-surface-highlight#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "action.secondary.hover",
-         "prim": "gray.dark.100",
-         "via": "neutral.100",
-         "hex": "#222222",
-         "href": "../foundations/color?for=color-action-secondary-hover#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.5.subtle",
-         "prim": "gray.dark.100",
-         "via": "neutral.100",
-         "hex": "#222222",
-         "href": "../foundations/color?for=color-category-5-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "disabled.surface",
-         "prim": "gray.dark.100",
-         "via": "neutral.100",
-         "hex": "#222222",
-         "href": "../foundations/color?for=color-disabled-surface#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "surface.pressed",
-         "prim": "gray.dark.200",
-         "via": "neutral.200",
-         "hex": "#333333",
-         "href": "../foundations/color?for=color-surface-pressed#what-each-color-is-for",
-         "link": "fill-200"
-        },
-        {
-         "token": "category.5",
-         "prim": "gray.dark.700",
-         "via": "neutral.700",
-         "hex": "#D6D6D6",
-         "href": "../foundations/color?for=color-category-5#what-each-color-is-for",
-         "link": "fill-700"
-        },
-        {
-         "token": "surface.inverse",
-         "prim": "gray.dark.900",
-         "via": "neutral.900",
-         "hex": "#F7F7F7",
-         "href": "../foundations/color?for=color-surface-inverse#what-each-color-is-for",
-         "link": "fill-900"
-        }
-       ]
+       "step": "0",
+       "primitive": "gray.dark.0",
+       "hex": "#0A0A0A"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "0",
-         "hex": "#0A0A0A",
-         "on": false
-        },
-        {
-         "st": "50",
-         "hex": "#141414",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#222222",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#333333",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "300",
-         "hex": "#595959",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#767676",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#949494",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "600",
-         "hex": "#B4B4B4",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#D6D6D6",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#EDEDED",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#F7F7F7",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#FFFFFF",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "border.default",
-         "prim": "gray.dark.200",
-         "via": "neutral.200",
-         "hex": "#333333",
-         "href": "../foundations/color?for=color-border-default#what-each-color-is-for",
-         "link": "edge-200"
-        },
-        {
-         "token": "disabled.border",
-         "prim": "gray.dark.200",
-         "via": "neutral.200",
-         "hex": "#333333",
-         "href": "../foundations/color?for=color-disabled-border#what-each-color-is-for",
-         "link": "edge-200"
-        },
-        {
-         "token": "border.strong",
-         "prim": "gray.dark.500",
-         "via": "neutral.500",
-         "hex": "#949494",
-         "href": "../foundations/color?for=color-border-strong#what-each-color-is-for",
-         "link": "edge-500"
-        }
-       ]
+       "step": "50",
+       "primitive": "gray.dark.50",
+       "hex": "#141414"
       },
       {
-       "title": "Text",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "0",
-         "hex": "#0A0A0A",
-         "on": false
-        },
-        {
-         "st": "50",
-         "hex": "#141414",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#222222",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#333333",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#595959",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#767676",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#949494",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "600",
-         "hex": "#B4B4B4",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "700",
-         "hex": "#D6D6D6",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "800",
-         "hex": "#EDEDED",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#F7F7F7",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "950",
-         "hex": "#FFFFFF",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "disabled.text",
-         "prim": "gray.dark.500",
-         "via": "neutral.500",
-         "hex": "#949494",
-         "href": "../foundations/color?for=color-disabled-text#what-each-color-is-for",
-         "link": "text-500"
-        },
-        {
-         "token": "text.muted",
-         "prim": "gray.dark.600",
-         "via": "neutral.600",
-         "hex": "#B4B4B4",
-         "href": "../foundations/color?for=color-text-muted#what-each-color-is-for",
-         "link": "text-600"
-        },
-        {
-         "token": "text.secondary",
-         "prim": "gray.dark.700",
-         "via": "neutral.700",
-         "hex": "#D6D6D6",
-         "href": "../foundations/color?for=color-text-secondary#what-each-color-is-for",
-         "link": "text-700"
-        },
-        {
-         "token": "text.primary",
-         "prim": "gray.dark.900",
-         "via": "neutral.900",
-         "hex": "#F7F7F7",
-         "href": "../foundations/color?for=color-text-primary#what-each-color-is-for",
-         "link": "text-900"
-        }
-       ]
+       "step": "100",
+       "primitive": "gray.dark.100",
+       "hex": "#222222"
       },
       {
-       "title": "From the light scale, fixed colors",
-       "rows": [
-        {
-         "token": "text.inverse",
-         "prim": "gray.light.900",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-text-inverse#what-each-color-is-for"
-        },
-        {
-         "token": "text.on-action",
-         "prim": "gray.light.900",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-text-on-action#what-each-color-is-for"
-        },
-        {
-         "token": "text.on-danger",
-         "prim": "gray.light.900",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-text-on-danger#what-each-color-is-for"
-        },
-        {
-         "token": "text.on-light",
-         "prim": "gray.light.900",
-         "hex": "#141414",
-         "href": "../foundations/color?for=color-text-on-light#what-each-color-is-for"
-        },
-        {
-         "token": "text.on-dark",
-         "prim": "gray.light.0",
-         "hex": "#FFFFFF",
-         "href": "../foundations/color?for=color-text-on-dark#what-each-color-is-for"
-        }
-       ]
+       "step": "200",
+       "primitive": "gray.dark.200",
+       "hex": "#333333"
+      },
+      {
+       "step": "300",
+       "primitive": "gray.dark.300",
+       "hex": "#595959"
+      },
+      {
+       "step": "400",
+       "primitive": "gray.dark.400",
+       "hex": "#767676"
+      },
+      {
+       "step": "500",
+       "primitive": "gray.dark.500",
+       "hex": "#949494"
+      },
+      {
+       "step": "600",
+       "primitive": "gray.dark.600",
+       "hex": "#B4B4B4"
+      },
+      {
+       "step": "700",
+       "primitive": "gray.dark.700",
+       "hex": "#D6D6D6"
+      },
+      {
+       "step": "800",
+       "primitive": "gray.dark.800",
+       "hex": "#EDEDED"
+      },
+      {
+       "step": "900",
+       "primitive": "gray.dark.900",
+       "hex": "#F7F7F7"
+      },
+      {
+       "step": "950",
+       "primitive": "gray.dark.950",
+       "hex": "#FFFFFF"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "surface.canvas",
+       "paints": "fill",
+       "step": "0",
+       "primitive": "gray.dark.0",
+       "via": "neutral.0",
+       "hex": "#0A0A0A",
+       "guidance": "../foundations/color?for=color-surface-canvas#what-each-color-is-for"
+      },
+      {
+       "token": "surface.default",
+       "paints": "fill",
+       "step": "50",
+       "primitive": "gray.dark.50",
+       "via": "neutral.50",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-surface-default#what-each-color-is-for"
+      },
+      {
+       "token": "surface.raised",
+       "paints": "fill",
+       "step": "50",
+       "primitive": "gray.dark.50",
+       "via": "neutral.50",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
+      },
+      {
+       "token": "action.secondary",
+       "paints": "fill",
+       "step": "50",
+       "primitive": "gray.dark.50",
+       "via": "neutral.50",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-action-secondary#what-each-color-is-for"
+      },
+      {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.dark.100",
+       "via": "neutral.100",
+       "hex": "#222222",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.dark.100",
+       "via": "neutral.100",
+       "hex": "#222222",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+      },
+      {
+       "token": "action.secondary.hover",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.dark.100",
+       "via": "neutral.100",
+       "hex": "#222222",
+       "guidance": "../foundations/color?for=color-action-secondary-hover#what-each-color-is-for"
+      },
+      {
+       "token": "category.5.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.dark.100",
+       "via": "neutral.100",
+       "hex": "#222222",
+       "guidance": "../foundations/color?for=color-category-5-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "disabled.surface",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "gray.dark.100",
+       "via": "neutral.100",
+       "hex": "#222222",
+       "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
+      },
+      {
+       "token": "surface.pressed",
+       "paints": "fill",
+       "step": "200",
+       "primitive": "gray.dark.200",
+       "via": "neutral.200",
+       "hex": "#333333",
+       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
+      },
+      {
+       "token": "border.default",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "gray.dark.200",
+       "via": "neutral.200",
+       "hex": "#333333",
+       "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
+      },
+      {
+       "token": "disabled.border",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "gray.dark.200",
+       "via": "neutral.200",
+       "hex": "#333333",
+       "guidance": "../foundations/color?for=color-disabled-border#what-each-color-is-for"
+      },
+      {
+       "token": "surface.inverse",
+       "paints": "fill",
+       "step": "900",
+       "primitive": "gray.dark.900",
+       "via": "neutral.900",
+       "hex": "#F7F7F7",
+       "guidance": "../foundations/color?for=color-surface-inverse#what-each-color-is-for"
+      },
+      {
+       "token": "text.primary",
+       "paints": "text",
+       "step": "900",
+       "primitive": "gray.dark.900",
+       "via": "neutral.900",
+       "hex": "#F7F7F7",
+       "guidance": "../foundations/color?for=color-text-primary#what-each-color-is-for"
+      },
+      {
+       "token": "text.secondary",
+       "paints": "text",
+       "step": "700",
+       "primitive": "gray.dark.700",
+       "via": "neutral.700",
+       "hex": "#D6D6D6",
+       "guidance": "../foundations/color?for=color-text-secondary#what-each-color-is-for"
+      },
+      {
+       "token": "category.5",
+       "paints": "fill",
+       "step": "700",
+       "primitive": "gray.dark.700",
+       "via": "neutral.700",
+       "hex": "#D6D6D6",
+       "guidance": "../foundations/color?for=color-category-5#what-each-color-is-for"
+      },
+      {
+       "token": "text.muted",
+       "paints": "text",
+       "step": "600",
+       "primitive": "gray.dark.600",
+       "via": "neutral.600",
+       "hex": "#B4B4B4",
+       "guidance": "../foundations/color?for=color-text-muted#what-each-color-is-for"
+      },
+      {
+       "token": "border.strong",
+       "paints": "edge",
+       "step": "500",
+       "primitive": "gray.dark.500",
+       "via": "neutral.500",
+       "hex": "#949494",
+       "guidance": "../foundations/color?for=color-border-strong#what-each-color-is-for"
+      },
+      {
+       "token": "disabled.text",
+       "paints": "text",
+       "step": "500",
+       "primitive": "gray.dark.500",
+       "via": "neutral.500",
+       "hex": "#949494",
+       "guidance": "../foundations/color?for=color-disabled-text#what-each-color-is-for"
+      },
+      {
+       "token": "text.inverse",
+       "paints": "text",
+       "primitive": "gray.light.900",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-text-inverse#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-action",
+       "paints": "text",
+       "primitive": "gray.light.900",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-text-on-action#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-danger",
+       "paints": "text",
+       "primitive": "gray.light.900",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-text-on-danger#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-light",
+       "paints": "text",
+       "primitive": "gray.light.900",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-text-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.on-dark",
+       "paints": "text",
+       "primitive": "gray.light.0",
+       "hex": "#FFFFFF",
+       "guidance": "../foundations/color?for=color-text-on-dark#what-each-color-is-for"
       }
      ]
     }
    ]
   },
   "blue": {
-   "panels": [
+   "family": "blue",
+   "modes": [
     {
      "mode": "light",
-     "label": "Light theme",
-     "style": {
-      "background": "#F7F7F7",
-      "color": "#141414",
-      "--odv-muted": "#595959",
-      "--odv-edge": "#D6D6D6",
-      "--odv-ring": "#141414",
-      "--odv-dash": "#D6D6D6"
+     "page": {
+      "canvas": "#F7F7F7",
+      "text": "#141414",
+      "muted": "#595959",
+      "border": "#D6D6D6",
+      "inverse": "#141414"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F5F8FE",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#E2EDFF",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "200",
-         "hex": "#CBDEFF",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#B8D3FF",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#73A2F3",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#316BD2",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#0B4FC0",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "700",
-         "hex": "#013895",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "800",
-         "hex": "#002567",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#001442",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#000620",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "surface.selected",
-         "prim": "blue.light.100",
-         "hex": "#E2EDFF",
-         "href": "../foundations/color?for=color-surface-selected#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.1.subtle",
-         "prim": "blue.light.100",
-         "hex": "#E2EDFF",
-         "href": "../foundations/color?for=color-category-1-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "action.primary",
-         "prim": "blue.light.600",
-         "hex": "#0B4FC0",
-         "href": "../foundations/color?for=color-action-primary#what-each-color-is-for",
-         "link": "fill-600"
-        },
-        {
-         "token": "category.1",
-         "prim": "blue.light.600",
-         "hex": "#0B4FC0",
-         "href": "../foundations/color?for=color-category-1#what-each-color-is-for",
-         "link": "fill-600"
-        },
-        {
-         "token": "action.primary.hover",
-         "prim": "blue.light.700",
-         "hex": "#013895",
-         "href": "../foundations/color?for=color-action-primary-hover#what-each-color-is-for",
-         "link": "fill-700"
-        }
-       ]
+       "step": "50",
+       "primitive": "blue.light.50",
+       "hex": "#F5F8FE"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F5F8FE",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#E2EDFF",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#CBDEFF",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#B8D3FF",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#73A2F3",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#316BD2",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#0B4FC0",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#013895",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#002567",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#001442",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#000620",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "border.focus",
-         "prim": "blue.light.600",
-         "hex": "#0B4FC0",
-         "href": "../foundations/color?for=color-border-focus#what-each-color-is-for",
-         "link": "edge-600"
-        },
-        {
-         "token": "border.selected",
-         "prim": "blue.light.600",
-         "hex": "#0B4FC0",
-         "href": "../foundations/color?for=color-border-selected#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "blue.light.100",
+       "hex": "#E2EDFF"
       },
       {
-       "title": "Text",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F5F8FE",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#E2EDFF",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#CBDEFF",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#B8D3FF",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#73A2F3",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#316BD2",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#0B4FC0",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#013895",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "800",
-         "hex": "#002567",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#001442",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#000620",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "text.link",
-         "prim": "blue.light.700",
-         "hex": "#013895",
-         "href": "../foundations/color?for=color-text-link#what-each-color-is-for",
-         "link": "text-700"
-        }
-       ]
+       "step": "200",
+       "primitive": "blue.light.200",
+       "hex": "#CBDEFF"
+      },
+      {
+       "step": "300",
+       "primitive": "blue.light.300",
+       "hex": "#B8D3FF"
+      },
+      {
+       "step": "400",
+       "primitive": "blue.light.400",
+       "hex": "#73A2F3"
+      },
+      {
+       "step": "500",
+       "primitive": "blue.light.500",
+       "hex": "#316BD2"
+      },
+      {
+       "step": "600",
+       "primitive": "blue.light.600",
+       "hex": "#0B4FC0"
+      },
+      {
+       "step": "700",
+       "primitive": "blue.light.700",
+       "hex": "#013895"
+      },
+      {
+       "step": "800",
+       "primitive": "blue.light.800",
+       "hex": "#002567"
+      },
+      {
+       "step": "900",
+       "primitive": "blue.light.900",
+       "hex": "#001442"
+      },
+      {
+       "step": "950",
+       "primitive": "blue.light.950",
+       "hex": "#000620"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "surface.selected",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "blue.light.100",
+       "hex": "#E2EDFF",
+       "guidance": "../foundations/color?for=color-surface-selected#what-each-color-is-for"
+      },
+      {
+       "token": "category.1.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "blue.light.100",
+       "hex": "#E2EDFF",
+       "guidance": "../foundations/color?for=color-category-1-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "text.link",
+       "paints": "text",
+       "step": "700",
+       "primitive": "blue.light.700",
+       "hex": "#013895",
+       "guidance": "../foundations/color?for=color-text-link#what-each-color-is-for"
+      },
+      {
+       "token": "action.primary.hover",
+       "paints": "fill",
+       "step": "700",
+       "primitive": "blue.light.700",
+       "hex": "#013895",
+       "guidance": "../foundations/color?for=color-action-primary-hover#what-each-color-is-for"
+      },
+      {
+       "token": "border.focus",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "blue.light.600",
+       "hex": "#0B4FC0",
+       "guidance": "../foundations/color?for=color-border-focus#what-each-color-is-for"
+      },
+      {
+       "token": "border.selected",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "blue.light.600",
+       "hex": "#0B4FC0",
+       "guidance": "../foundations/color?for=color-border-selected#what-each-color-is-for"
+      },
+      {
+       "token": "action.primary",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "blue.light.600",
+       "hex": "#0B4FC0",
+       "guidance": "../foundations/color?for=color-action-primary#what-each-color-is-for"
+      },
+      {
+       "token": "category.1",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "blue.light.600",
+       "hex": "#0B4FC0",
+       "guidance": "../foundations/color?for=color-category-1#what-each-color-is-for"
       }
      ]
     },
     {
      "mode": "dark",
-     "label": "Dark theme",
-     "style": {
-      "background": "#0A0A0A",
-      "color": "#F7F7F7",
-      "--odv-muted": "#B4B4B4",
-      "--odv-edge": "#333333",
-      "--odv-ring": "#F7F7F7",
-      "--odv-dash": "#333333"
+     "page": {
+      "canvas": "#0A0A0A",
+      "text": "#F7F7F7",
+      "muted": "#B4B4B4",
+      "border": "#333333",
+      "inverse": "#F7F7F7"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#051634",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#102547",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "200",
-         "hex": "#223A61",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#36527F",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#4E6EA2",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#698DC9",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#8AB4F8",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "700",
-         "hex": "#A7C8FC",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "800",
-         "hex": "#C1D8FE",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#D9E7FE",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#F0F6FF",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "surface.selected",
-         "prim": "blue.dark.100",
-         "hex": "#102547",
-         "href": "../foundations/color?for=color-surface-selected#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.1.subtle",
-         "prim": "blue.dark.100",
-         "hex": "#102547",
-         "href": "../foundations/color?for=color-category-1-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "action.primary",
-         "prim": "blue.dark.600",
-         "hex": "#8AB4F8",
-         "href": "../foundations/color?for=color-action-primary#what-each-color-is-for",
-         "link": "fill-600"
-        },
-        {
-         "token": "category.1",
-         "prim": "blue.dark.600",
-         "hex": "#8AB4F8",
-         "href": "../foundations/color?for=color-category-1#what-each-color-is-for",
-         "link": "fill-600"
-        },
-        {
-         "token": "action.primary.hover",
-         "prim": "blue.dark.700",
-         "hex": "#A7C8FC",
-         "href": "../foundations/color?for=color-action-primary-hover#what-each-color-is-for",
-         "link": "fill-700"
-        }
-       ]
+       "step": "50",
+       "primitive": "blue.dark.50",
+       "hex": "#051634"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#051634",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#102547",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#223A61",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#36527F",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#4E6EA2",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#698DC9",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#8AB4F8",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#A7C8FC",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#C1D8FE",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#D9E7FE",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#F0F6FF",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "border.focus",
-         "prim": "blue.dark.600",
-         "hex": "#8AB4F8",
-         "href": "../foundations/color?for=color-border-focus#what-each-color-is-for",
-         "link": "edge-600"
-        },
-        {
-         "token": "border.selected",
-         "prim": "blue.dark.600",
-         "hex": "#8AB4F8",
-         "href": "../foundations/color?for=color-border-selected#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "blue.dark.100",
+       "hex": "#102547"
       },
       {
-       "title": "Text",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#051634",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#102547",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#223A61",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#36527F",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#4E6EA2",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#698DC9",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#8AB4F8",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#A7C8FC",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "800",
-         "hex": "#C1D8FE",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#D9E7FE",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#F0F6FF",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "text.link",
-         "prim": "blue.dark.700",
-         "hex": "#A7C8FC",
-         "href": "../foundations/color?for=color-text-link#what-each-color-is-for",
-         "link": "text-700"
-        }
-       ]
+       "step": "200",
+       "primitive": "blue.dark.200",
+       "hex": "#223A61"
+      },
+      {
+       "step": "300",
+       "primitive": "blue.dark.300",
+       "hex": "#36527F"
+      },
+      {
+       "step": "400",
+       "primitive": "blue.dark.400",
+       "hex": "#4E6EA2"
+      },
+      {
+       "step": "500",
+       "primitive": "blue.dark.500",
+       "hex": "#698DC9"
+      },
+      {
+       "step": "600",
+       "primitive": "blue.dark.600",
+       "hex": "#8AB4F8"
+      },
+      {
+       "step": "700",
+       "primitive": "blue.dark.700",
+       "hex": "#A7C8FC"
+      },
+      {
+       "step": "800",
+       "primitive": "blue.dark.800",
+       "hex": "#C1D8FE"
+      },
+      {
+       "step": "900",
+       "primitive": "blue.dark.900",
+       "hex": "#D9E7FE"
+      },
+      {
+       "step": "950",
+       "primitive": "blue.dark.950",
+       "hex": "#F0F6FF"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "surface.selected",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "blue.dark.100",
+       "hex": "#102547",
+       "guidance": "../foundations/color?for=color-surface-selected#what-each-color-is-for"
+      },
+      {
+       "token": "category.1.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "blue.dark.100",
+       "hex": "#102547",
+       "guidance": "../foundations/color?for=color-category-1-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "text.link",
+       "paints": "text",
+       "step": "700",
+       "primitive": "blue.dark.700",
+       "hex": "#A7C8FC",
+       "guidance": "../foundations/color?for=color-text-link#what-each-color-is-for"
+      },
+      {
+       "token": "action.primary.hover",
+       "paints": "fill",
+       "step": "700",
+       "primitive": "blue.dark.700",
+       "hex": "#A7C8FC",
+       "guidance": "../foundations/color?for=color-action-primary-hover#what-each-color-is-for"
+      },
+      {
+       "token": "border.focus",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "blue.dark.600",
+       "hex": "#8AB4F8",
+       "guidance": "../foundations/color?for=color-border-focus#what-each-color-is-for"
+      },
+      {
+       "token": "border.selected",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "blue.dark.600",
+       "hex": "#8AB4F8",
+       "guidance": "../foundations/color?for=color-border-selected#what-each-color-is-for"
+      },
+      {
+       "token": "action.primary",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "blue.dark.600",
+       "hex": "#8AB4F8",
+       "guidance": "../foundations/color?for=color-action-primary#what-each-color-is-for"
+      },
+      {
+       "token": "category.1",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "blue.dark.600",
+       "hex": "#8AB4F8",
+       "guidance": "../foundations/color?for=color-category-1#what-each-color-is-for"
       }
      ]
     }
    ]
   },
   "green": {
-   "panels": [
+   "family": "green",
+   "modes": [
     {
      "mode": "light",
-     "label": "Light theme",
-     "style": {
-      "background": "#F7F7F7",
-      "color": "#141414",
-      "--odv-muted": "#595959",
-      "--odv-edge": "#D6D6D6",
-      "--odv-ring": "#141414",
-      "--odv-dash": "#D6D6D6"
+     "page": {
+      "canvas": "#F7F7F7",
+      "text": "#141414",
+      "muted": "#595959",
+      "border": "#D6D6D6",
+      "inverse": "#141414"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F1FDF2",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#DBF7DF",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "200",
-         "hex": "#CBE9CF",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#BCE0C1",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#82BA8B",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#448F54",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#1F7A3A",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "700",
-         "hex": "#0B5C27",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#023E17",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#01260B",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#001003",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.success.subtle",
-         "prim": "green.light.100",
-         "hex": "#DBF7DF",
-         "href": "../foundations/color?for=color-status-success-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.3.subtle",
-         "prim": "green.light.100",
-         "hex": "#DBF7DF",
-         "href": "../foundations/color?for=color-category-3-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.3",
-         "prim": "green.light.600",
-         "hex": "#1F7A3A",
-         "href": "../foundations/color?for=color-category-3#what-each-color-is-for",
-         "link": "fill-600"
-        }
-       ]
+       "step": "50",
+       "primitive": "green.light.50",
+       "hex": "#F1FDF2"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F1FDF2",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#DBF7DF",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#CBE9CF",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#BCE0C1",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#82BA8B",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#448F54",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#1F7A3A",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#0B5C27",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#023E17",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#01260B",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#001003",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.success",
-         "prim": "green.light.600",
-         "hex": "#1F7A3A",
-         "href": "../foundations/color?for=color-status-success#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "green.light.100",
+       "hex": "#DBF7DF"
       },
       {
-       "title": "Text",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F1FDF2",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#DBF7DF",
-         "on": true,
-         "kind": "text",
-         "ground": "#141414"
-        },
-        {
-         "st": "200",
-         "hex": "#CBE9CF",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#BCE0C1",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#82BA8B",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#448F54",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#1F7A3A",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#0B5C27",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#023E17",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "900",
-         "hex": "#01260B",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#001003",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "text.success-on-dark",
-         "prim": "green.light.100",
-         "hex": "#DBF7DF",
-         "href": "../foundations/color?for=color-text-success-on-dark#what-each-color-is-for",
-         "link": "text-100"
-        },
-        {
-         "token": "text.success-on-light",
-         "prim": "green.light.800",
-         "hex": "#023E17",
-         "href": "../foundations/color?for=color-text-success-on-light#what-each-color-is-for",
-         "link": "text-800"
-        }
-       ]
+       "step": "200",
+       "primitive": "green.light.200",
+       "hex": "#CBE9CF"
+      },
+      {
+       "step": "300",
+       "primitive": "green.light.300",
+       "hex": "#BCE0C1"
+      },
+      {
+       "step": "400",
+       "primitive": "green.light.400",
+       "hex": "#82BA8B"
+      },
+      {
+       "step": "500",
+       "primitive": "green.light.500",
+       "hex": "#448F54"
+      },
+      {
+       "step": "600",
+       "primitive": "green.light.600",
+       "hex": "#1F7A3A"
+      },
+      {
+       "step": "700",
+       "primitive": "green.light.700",
+       "hex": "#0B5C27"
+      },
+      {
+       "step": "800",
+       "primitive": "green.light.800",
+       "hex": "#023E17"
+      },
+      {
+       "step": "900",
+       "primitive": "green.light.900",
+       "hex": "#01260B"
+      },
+      {
+       "step": "950",
+       "primitive": "green.light.950",
+       "hex": "#001003"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "text.success-on-light",
+       "paints": "text",
+       "step": "800",
+       "primitive": "green.light.800",
+       "hex": "#023E17",
+       "guidance": "../foundations/color?for=color-text-success-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.success-on-dark",
+       "paints": "text",
+       "step": "100",
+       "primitive": "green.light.100",
+       "hex": "#DBF7DF",
+       "guidance": "../foundations/color?for=color-text-success-on-dark#what-each-color-is-for"
+      },
+      {
+       "token": "status.success.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "green.light.100",
+       "hex": "#DBF7DF",
+       "guidance": "../foundations/color?for=color-status-success-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "category.3.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "green.light.100",
+       "hex": "#DBF7DF",
+       "guidance": "../foundations/color?for=color-category-3-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "status.success",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "green.light.600",
+       "hex": "#1F7A3A",
+       "guidance": "../foundations/color?for=color-status-success#what-each-color-is-for"
+      },
+      {
+       "token": "category.3",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "green.light.600",
+       "hex": "#1F7A3A",
+       "guidance": "../foundations/color?for=color-category-3#what-each-color-is-for"
       }
      ]
     },
     {
      "mode": "dark",
-     "label": "Dark theme",
-     "style": {
-      "background": "#0A0A0A",
-      "color": "#F7F7F7",
-      "--odv-muted": "#B4B4B4",
-      "--odv-edge": "#333333",
-      "--odv-ring": "#F7F7F7",
-      "--odv-dash": "#333333"
+     "page": {
+      "canvas": "#0A0A0A",
+      "text": "#F7F7F7",
+      "muted": "#B4B4B4",
+      "border": "#333333",
+      "inverse": "#F7F7F7"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#001D0C",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#012E16",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "200",
-         "hex": "#004423",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#0A5D33",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#267A4A",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#3F9B64",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#5CC283",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "700",
-         "hex": "#8AD3A2",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#ADE2BD",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#CBEFD5",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#E8FBED",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.success.subtle",
-         "prim": "green.dark.100",
-         "hex": "#012E16",
-         "href": "../foundations/color?for=color-status-success-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.3.subtle",
-         "prim": "green.dark.100",
-         "hex": "#012E16",
-         "href": "../foundations/color?for=color-category-3-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.3",
-         "prim": "green.dark.600",
-         "hex": "#5CC283",
-         "href": "../foundations/color?for=color-category-3#what-each-color-is-for",
-         "link": "fill-600"
-        }
-       ]
+       "step": "50",
+       "primitive": "green.dark.50",
+       "hex": "#001D0C"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#001D0C",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#012E16",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#004423",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#0A5D33",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#267A4A",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#3F9B64",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#5CC283",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#8AD3A2",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#ADE2BD",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#CBEFD5",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#E8FBED",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.success",
-         "prim": "green.dark.600",
-         "hex": "#5CC283",
-         "href": "../foundations/color?for=color-status-success#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "green.dark.100",
+       "hex": "#012E16"
       },
       {
-       "title": "From the light scale, fixed colors",
-       "rows": [
-        {
-         "token": "text.success-on-light",
-         "prim": "green.light.800",
-         "hex": "#023E17",
-         "href": "../foundations/color?for=color-text-success-on-light#what-each-color-is-for"
-        },
-        {
-         "token": "text.success-on-dark",
-         "prim": "green.light.100",
-         "hex": "#DBF7DF",
-         "href": "../foundations/color?for=color-text-success-on-dark#what-each-color-is-for"
-        }
-       ]
+       "step": "200",
+       "primitive": "green.dark.200",
+       "hex": "#004423"
+      },
+      {
+       "step": "300",
+       "primitive": "green.dark.300",
+       "hex": "#0A5D33"
+      },
+      {
+       "step": "400",
+       "primitive": "green.dark.400",
+       "hex": "#267A4A"
+      },
+      {
+       "step": "500",
+       "primitive": "green.dark.500",
+       "hex": "#3F9B64"
+      },
+      {
+       "step": "600",
+       "primitive": "green.dark.600",
+       "hex": "#5CC283"
+      },
+      {
+       "step": "700",
+       "primitive": "green.dark.700",
+       "hex": "#8AD3A2"
+      },
+      {
+       "step": "800",
+       "primitive": "green.dark.800",
+       "hex": "#ADE2BD"
+      },
+      {
+       "step": "900",
+       "primitive": "green.dark.900",
+       "hex": "#CBEFD5"
+      },
+      {
+       "step": "950",
+       "primitive": "green.dark.950",
+       "hex": "#E8FBED"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "status.success",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "green.dark.600",
+       "hex": "#5CC283",
+       "guidance": "../foundations/color?for=color-status-success#what-each-color-is-for"
+      },
+      {
+       "token": "category.3",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "green.dark.600",
+       "hex": "#5CC283",
+       "guidance": "../foundations/color?for=color-category-3#what-each-color-is-for"
+      },
+      {
+       "token": "status.success.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "green.dark.100",
+       "hex": "#012E16",
+       "guidance": "../foundations/color?for=color-status-success-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "category.3.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "green.dark.100",
+       "hex": "#012E16",
+       "guidance": "../foundations/color?for=color-category-3-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "text.success-on-light",
+       "paints": "text",
+       "primitive": "green.light.800",
+       "hex": "#023E17",
+       "guidance": "../foundations/color?for=color-text-success-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.success-on-dark",
+       "paints": "text",
+       "primitive": "green.light.100",
+       "hex": "#DBF7DF",
+       "guidance": "../foundations/color?for=color-text-success-on-dark#what-each-color-is-for"
       }
      ]
     }
    ]
   },
   "amber": {
-   "panels": [
+   "family": "amber",
+   "modes": [
     {
      "mode": "light",
-     "label": "Light theme",
-     "style": {
-      "background": "#F7F7F7",
-      "color": "#141414",
-      "--odv-muted": "#595959",
-      "--odv-edge": "#D6D6D6",
-      "--odv-ring": "#141414",
-      "--odv-dash": "#D6D6D6"
+     "page": {
+      "canvas": "#F7F7F7",
+      "text": "#141414",
+      "muted": "#595959",
+      "border": "#D6D6D6",
+      "inverse": "#141414"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#FFF7EF",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#FEE8CF",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "200",
-         "hex": "#F1DBC3",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#EACFB3",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#C7A074",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#9E6E32",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#8A5600",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "700",
-         "hex": "#673F01",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#462A02",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#2B1800",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#130800",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.warning.subtle",
-         "prim": "amber.light.100",
-         "hex": "#FEE8CF",
-         "href": "../foundations/color?for=color-status-warning-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.4.subtle",
-         "prim": "amber.light.100",
-         "hex": "#FEE8CF",
-         "href": "../foundations/color?for=color-category-4-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.4",
-         "prim": "amber.light.600",
-         "hex": "#8A5600",
-         "href": "../foundations/color?for=color-category-4#what-each-color-is-for",
-         "link": "fill-600"
-        }
-       ]
+       "step": "50",
+       "primitive": "amber.light.50",
+       "hex": "#FFF7EF"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#FFF7EF",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#FEE8CF",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#F1DBC3",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#EACFB3",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#C7A074",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#9E6E32",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#8A5600",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#673F01",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#462A02",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#2B1800",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#130800",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.warning",
-         "prim": "amber.light.600",
-         "hex": "#8A5600",
-         "href": "../foundations/color?for=color-status-warning#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "amber.light.100",
+       "hex": "#FEE8CF"
       },
       {
-       "title": "Text",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#FFF7EF",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#FEE8CF",
-         "on": true,
-         "kind": "text",
-         "ground": "#141414"
-        },
-        {
-         "st": "200",
-         "hex": "#F1DBC3",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#EACFB3",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#C7A074",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#9E6E32",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#8A5600",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#673F01",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#462A02",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "900",
-         "hex": "#2B1800",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#130800",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "text.warning-on-dark",
-         "prim": "amber.light.100",
-         "hex": "#FEE8CF",
-         "href": "../foundations/color?for=color-text-warning-on-dark#what-each-color-is-for",
-         "link": "text-100"
-        },
-        {
-         "token": "text.warning-on-light",
-         "prim": "amber.light.800",
-         "hex": "#462A02",
-         "href": "../foundations/color?for=color-text-warning-on-light#what-each-color-is-for",
-         "link": "text-800"
-        }
-       ]
+       "step": "200",
+       "primitive": "amber.light.200",
+       "hex": "#F1DBC3"
+      },
+      {
+       "step": "300",
+       "primitive": "amber.light.300",
+       "hex": "#EACFB3"
+      },
+      {
+       "step": "400",
+       "primitive": "amber.light.400",
+       "hex": "#C7A074"
+      },
+      {
+       "step": "500",
+       "primitive": "amber.light.500",
+       "hex": "#9E6E32"
+      },
+      {
+       "step": "600",
+       "primitive": "amber.light.600",
+       "hex": "#8A5600"
+      },
+      {
+       "step": "700",
+       "primitive": "amber.light.700",
+       "hex": "#673F01"
+      },
+      {
+       "step": "800",
+       "primitive": "amber.light.800",
+       "hex": "#462A02"
+      },
+      {
+       "step": "900",
+       "primitive": "amber.light.900",
+       "hex": "#2B1800"
+      },
+      {
+       "step": "950",
+       "primitive": "amber.light.950",
+       "hex": "#130800"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "text.warning-on-light",
+       "paints": "text",
+       "step": "800",
+       "primitive": "amber.light.800",
+       "hex": "#462A02",
+       "guidance": "../foundations/color?for=color-text-warning-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.warning-on-dark",
+       "paints": "text",
+       "step": "100",
+       "primitive": "amber.light.100",
+       "hex": "#FEE8CF",
+       "guidance": "../foundations/color?for=color-text-warning-on-dark#what-each-color-is-for"
+      },
+      {
+       "token": "status.warning.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "amber.light.100",
+       "hex": "#FEE8CF",
+       "guidance": "../foundations/color?for=color-status-warning-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "category.4.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "amber.light.100",
+       "hex": "#FEE8CF",
+       "guidance": "../foundations/color?for=color-category-4-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "status.warning",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "amber.light.600",
+       "hex": "#8A5600",
+       "guidance": "../foundations/color?for=color-status-warning#what-each-color-is-for"
+      },
+      {
+       "token": "category.4",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "amber.light.600",
+       "hex": "#8A5600",
+       "guidance": "../foundations/color?for=color-category-4#what-each-color-is-for"
       }
      ]
     },
     {
      "mode": "dark",
-     "label": "Dark theme",
-     "style": {
-      "background": "#0A0A0A",
-      "color": "#F7F7F7",
-      "--odv-muted": "#B4B4B4",
-      "--odv-edge": "#333333",
-      "--odv-ring": "#F7F7F7",
-      "--odv-dash": "#333333"
+     "page": {
+      "canvas": "#0A0A0A",
+      "text": "#F7F7F7",
+      "muted": "#B4B4B4",
+      "border": "#333333",
+      "inverse": "#F7F7F7"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#231600",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#372500",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "200",
-         "hex": "#533900",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#735102",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#9A6E04",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#C28F2A",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#F2B84B",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "700",
-         "hex": "#F6CA7F",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#FAD9A3",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#FDE7C3",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#FFF4E2",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.warning.subtle",
-         "prim": "amber.dark.100",
-         "hex": "#372500",
-         "href": "../foundations/color?for=color-status-warning-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.4.subtle",
-         "prim": "amber.dark.100",
-         "hex": "#372500",
-         "href": "../foundations/color?for=color-category-4-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.4",
-         "prim": "amber.dark.600",
-         "hex": "#F2B84B",
-         "href": "../foundations/color?for=color-category-4#what-each-color-is-for",
-         "link": "fill-600"
-        }
-       ]
+       "step": "50",
+       "primitive": "amber.dark.50",
+       "hex": "#231600"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#231600",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#372500",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#533900",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#735102",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#9A6E04",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#C28F2A",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#F2B84B",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#F6CA7F",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#FAD9A3",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#FDE7C3",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#FFF4E2",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.warning",
-         "prim": "amber.dark.600",
-         "hex": "#F2B84B",
-         "href": "../foundations/color?for=color-status-warning#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "amber.dark.100",
+       "hex": "#372500"
       },
       {
-       "title": "From the light scale, fixed colors",
-       "rows": [
-        {
-         "token": "text.warning-on-light",
-         "prim": "amber.light.800",
-         "hex": "#462A02",
-         "href": "../foundations/color?for=color-text-warning-on-light#what-each-color-is-for"
-        },
-        {
-         "token": "text.warning-on-dark",
-         "prim": "amber.light.100",
-         "hex": "#FEE8CF",
-         "href": "../foundations/color?for=color-text-warning-on-dark#what-each-color-is-for"
-        }
-       ]
+       "step": "200",
+       "primitive": "amber.dark.200",
+       "hex": "#533900"
+      },
+      {
+       "step": "300",
+       "primitive": "amber.dark.300",
+       "hex": "#735102"
+      },
+      {
+       "step": "400",
+       "primitive": "amber.dark.400",
+       "hex": "#9A6E04"
+      },
+      {
+       "step": "500",
+       "primitive": "amber.dark.500",
+       "hex": "#C28F2A"
+      },
+      {
+       "step": "600",
+       "primitive": "amber.dark.600",
+       "hex": "#F2B84B"
+      },
+      {
+       "step": "700",
+       "primitive": "amber.dark.700",
+       "hex": "#F6CA7F"
+      },
+      {
+       "step": "800",
+       "primitive": "amber.dark.800",
+       "hex": "#FAD9A3"
+      },
+      {
+       "step": "900",
+       "primitive": "amber.dark.900",
+       "hex": "#FDE7C3"
+      },
+      {
+       "step": "950",
+       "primitive": "amber.dark.950",
+       "hex": "#FFF4E2"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "status.warning",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "amber.dark.600",
+       "hex": "#F2B84B",
+       "guidance": "../foundations/color?for=color-status-warning#what-each-color-is-for"
+      },
+      {
+       "token": "category.4",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "amber.dark.600",
+       "hex": "#F2B84B",
+       "guidance": "../foundations/color?for=color-category-4#what-each-color-is-for"
+      },
+      {
+       "token": "status.warning.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "amber.dark.100",
+       "hex": "#372500",
+       "guidance": "../foundations/color?for=color-status-warning-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "category.4.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "amber.dark.100",
+       "hex": "#372500",
+       "guidance": "../foundations/color?for=color-category-4-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "text.warning-on-light",
+       "paints": "text",
+       "primitive": "amber.light.800",
+       "hex": "#462A02",
+       "guidance": "../foundations/color?for=color-text-warning-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.warning-on-dark",
+       "paints": "text",
+       "primitive": "amber.light.100",
+       "hex": "#FEE8CF",
+       "guidance": "../foundations/color?for=color-text-warning-on-dark#what-each-color-is-for"
       }
      ]
     }
    ]
   },
   "red": {
-   "panels": [
+   "family": "red",
+   "modes": [
     {
      "mode": "light",
-     "label": "Light theme",
-     "style": {
-      "background": "#F7F7F7",
-      "color": "#141414",
-      "--odv-muted": "#595959",
-      "--odv-edge": "#D6D6D6",
-      "--odv-ring": "#141414",
-      "--odv-dash": "#D6D6D6"
+     "page": {
+      "canvas": "#F7F7F7",
+      "text": "#141414",
+      "muted": "#595959",
+      "border": "#D6D6D6",
+      "inverse": "#141414"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#FEF7F7",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#FFDBD8",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "200",
-         "hex": "#FED7D2",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#FEC8C2",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#F68C82",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#D64F48",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#C42B2B",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#981519",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "800",
-         "hex": "#6D0008",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "900",
-         "hex": "#450003",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#210001",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.danger.subtle",
-         "prim": "red.light.100",
-         "hex": "#FFDBD8",
-         "href": "../foundations/color?for=color-status-danger-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "action.danger",
-         "prim": "red.light.700",
-         "hex": "#981519",
-         "href": "../foundations/color?for=color-action-danger#what-each-color-is-for",
-         "link": "fill-700"
-        },
-        {
-         "token": "action.danger.hover",
-         "prim": "red.light.800",
-         "hex": "#6D0008",
-         "href": "../foundations/color?for=color-action-danger-hover#what-each-color-is-for",
-         "link": "fill-800"
-        }
-       ]
+       "step": "50",
+       "primitive": "red.light.50",
+       "hex": "#FEF7F7"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#FEF7F7",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#FFDBD8",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#FED7D2",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#FEC8C2",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#F68C82",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#D64F48",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#C42B2B",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#981519",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "800",
-         "hex": "#6D0008",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#450003",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#210001",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.danger",
-         "prim": "red.light.700",
-         "hex": "#981519",
-         "href": "../foundations/color?for=color-status-danger#what-each-color-is-for",
-         "link": "edge-700"
-        }
-       ]
+       "step": "100",
+       "primitive": "red.light.100",
+       "hex": "#FFDBD8"
       },
       {
-       "title": "Text",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#FEF7F7",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#FFDBD8",
-         "on": true,
-         "kind": "text",
-         "ground": "#141414"
-        },
-        {
-         "st": "200",
-         "hex": "#FED7D2",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#FEC8C2",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#F68C82",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#D64F48",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#C42B2B",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#981519",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#6D0008",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "900",
-         "hex": "#450003",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#210001",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "text.danger-on-dark",
-         "prim": "red.light.100",
-         "hex": "#FFDBD8",
-         "href": "../foundations/color?for=color-text-danger-on-dark#what-each-color-is-for",
-         "link": "text-100"
-        },
-        {
-         "token": "text.danger-on-light",
-         "prim": "red.light.800",
-         "hex": "#6D0008",
-         "href": "../foundations/color?for=color-text-danger-on-light#what-each-color-is-for",
-         "link": "text-800"
-        }
-       ]
+       "step": "200",
+       "primitive": "red.light.200",
+       "hex": "#FED7D2"
+      },
+      {
+       "step": "300",
+       "primitive": "red.light.300",
+       "hex": "#FEC8C2"
+      },
+      {
+       "step": "400",
+       "primitive": "red.light.400",
+       "hex": "#F68C82"
+      },
+      {
+       "step": "500",
+       "primitive": "red.light.500",
+       "hex": "#D64F48"
+      },
+      {
+       "step": "600",
+       "primitive": "red.light.600",
+       "hex": "#C42B2B"
+      },
+      {
+       "step": "700",
+       "primitive": "red.light.700",
+       "hex": "#981519"
+      },
+      {
+       "step": "800",
+       "primitive": "red.light.800",
+       "hex": "#6D0008"
+      },
+      {
+       "step": "900",
+       "primitive": "red.light.900",
+       "hex": "#450003"
+      },
+      {
+       "step": "950",
+       "primitive": "red.light.950",
+       "hex": "#210001"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "text.danger-on-light",
+       "paints": "text",
+       "step": "800",
+       "primitive": "red.light.800",
+       "hex": "#6D0008",
+       "guidance": "../foundations/color?for=color-text-danger-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "action.danger.hover",
+       "paints": "fill",
+       "step": "800",
+       "primitive": "red.light.800",
+       "hex": "#6D0008",
+       "guidance": "../foundations/color?for=color-action-danger-hover#what-each-color-is-for"
+      },
+      {
+       "token": "text.danger-on-dark",
+       "paints": "text",
+       "step": "100",
+       "primitive": "red.light.100",
+       "hex": "#FFDBD8",
+       "guidance": "../foundations/color?for=color-text-danger-on-dark#what-each-color-is-for"
+      },
+      {
+       "token": "status.danger.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "red.light.100",
+       "hex": "#FFDBD8",
+       "guidance": "../foundations/color?for=color-status-danger-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "action.danger",
+       "paints": "fill",
+       "step": "700",
+       "primitive": "red.light.700",
+       "hex": "#981519",
+       "guidance": "../foundations/color?for=color-action-danger#what-each-color-is-for"
+      },
+      {
+       "token": "status.danger",
+       "paints": "edge",
+       "step": "700",
+       "primitive": "red.light.700",
+       "hex": "#981519",
+       "guidance": "../foundations/color?for=color-status-danger#what-each-color-is-for"
       }
      ]
     },
     {
      "mode": "dark",
-     "label": "Dark theme",
-     "style": {
-      "background": "#0A0A0A",
-      "color": "#F7F7F7",
-      "--odv-muted": "#B4B4B4",
-      "--odv-edge": "#333333",
-      "--odv-ring": "#F7F7F7",
-      "--odv-dash": "#333333"
+     "page": {
+      "canvas": "#0A0A0A",
+      "text": "#F7F7F7",
+      "muted": "#B4B4B4",
+      "border": "#333333",
+      "inverse": "#F7F7F7"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#320308",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#451014",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "200",
-         "hex": "#5E2225",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#7B3738",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#9E4F50",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#C46A6A",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#F28B8B",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "700",
-         "hex": "#FAA9A8",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "800",
-         "hex": "#FEC3C1",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#FEDBDA",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#FEF2F1",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.danger.subtle",
-         "prim": "red.dark.100",
-         "hex": "#451014",
-         "href": "../foundations/color?for=color-status-danger-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "action.danger",
-         "prim": "red.dark.600",
-         "hex": "#F28B8B",
-         "href": "../foundations/color?for=color-action-danger#what-each-color-is-for",
-         "link": "fill-600"
-        },
-        {
-         "token": "action.danger.hover",
-         "prim": "red.dark.700",
-         "hex": "#FAA9A8",
-         "href": "../foundations/color?for=color-action-danger-hover#what-each-color-is-for",
-         "link": "fill-700"
-        }
-       ]
+       "step": "50",
+       "primitive": "red.dark.50",
+       "hex": "#320308"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#320308",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#451014",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#5E2225",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#7B3738",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#9E4F50",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#C46A6A",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#F28B8B",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#FAA9A8",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#FEC3C1",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#FEDBDA",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#FEF2F1",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.danger",
-         "prim": "red.dark.600",
-         "hex": "#F28B8B",
-         "href": "../foundations/color?for=color-status-danger#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "red.dark.100",
+       "hex": "#451014"
       },
       {
-       "title": "From the light scale, fixed colors",
-       "rows": [
-        {
-         "token": "text.danger-on-light",
-         "prim": "red.light.800",
-         "hex": "#6D0008",
-         "href": "../foundations/color?for=color-text-danger-on-light#what-each-color-is-for"
-        },
-        {
-         "token": "text.danger-on-dark",
-         "prim": "red.light.100",
-         "hex": "#FFDBD8",
-         "href": "../foundations/color?for=color-text-danger-on-dark#what-each-color-is-for"
-        }
-       ]
+       "step": "200",
+       "primitive": "red.dark.200",
+       "hex": "#5E2225"
+      },
+      {
+       "step": "300",
+       "primitive": "red.dark.300",
+       "hex": "#7B3738"
+      },
+      {
+       "step": "400",
+       "primitive": "red.dark.400",
+       "hex": "#9E4F50"
+      },
+      {
+       "step": "500",
+       "primitive": "red.dark.500",
+       "hex": "#C46A6A"
+      },
+      {
+       "step": "600",
+       "primitive": "red.dark.600",
+       "hex": "#F28B8B"
+      },
+      {
+       "step": "700",
+       "primitive": "red.dark.700",
+       "hex": "#FAA9A8"
+      },
+      {
+       "step": "800",
+       "primitive": "red.dark.800",
+       "hex": "#FEC3C1"
+      },
+      {
+       "step": "900",
+       "primitive": "red.dark.900",
+       "hex": "#FEDBDA"
+      },
+      {
+       "step": "950",
+       "primitive": "red.dark.950",
+       "hex": "#FEF2F1"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "action.danger",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "red.dark.600",
+       "hex": "#F28B8B",
+       "guidance": "../foundations/color?for=color-action-danger#what-each-color-is-for"
+      },
+      {
+       "token": "status.danger",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "red.dark.600",
+       "hex": "#F28B8B",
+       "guidance": "../foundations/color?for=color-status-danger#what-each-color-is-for"
+      },
+      {
+       "token": "action.danger.hover",
+       "paints": "fill",
+       "step": "700",
+       "primitive": "red.dark.700",
+       "hex": "#FAA9A8",
+       "guidance": "../foundations/color?for=color-action-danger-hover#what-each-color-is-for"
+      },
+      {
+       "token": "status.danger.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "red.dark.100",
+       "hex": "#451014",
+       "guidance": "../foundations/color?for=color-status-danger-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "text.danger-on-light",
+       "paints": "text",
+       "primitive": "red.light.800",
+       "hex": "#6D0008",
+       "guidance": "../foundations/color?for=color-text-danger-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.danger-on-dark",
+       "paints": "text",
+       "primitive": "red.light.100",
+       "hex": "#FFDBD8",
+       "guidance": "../foundations/color?for=color-text-danger-on-dark#what-each-color-is-for"
       }
      ]
     }
    ]
   },
   "black": {
-   "panels": [
+   "family": "black",
+   "modes": [
     {
      "mode": "light",
-     "label": "Light theme",
-     "style": {
-      "background": "#F7F7F7",
-      "color": "#141414",
-      "--odv-muted": "#595959",
-      "--odv-edge": "#D6D6D6",
-      "--odv-ring": "#141414",
-      "--odv-dash": "#D6D6D6"
+     "page": {
+      "canvas": "#F7F7F7",
+      "text": "#141414",
+      "muted": "#595959",
+      "border": "#D6D6D6",
+      "inverse": "#141414"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(56px, 3fr)",
-       "steps": [
-        {
-         "st": "scrim",
-         "hex": "#0000008C",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        }
-       ],
-       "rows": [
-        {
-         "token": "surface.scrim",
-         "prim": "black.light.scrim",
-         "hex": "#0000008C",
-         "href": "../foundations/color?for=color-surface-scrim#what-each-color-is-for",
-         "link": "fill-scrim"
-        }
-       ]
+       "step": "scrim",
+       "primitive": "black.light.scrim",
+       "hex": "#0000008C"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "surface.scrim",
+       "paints": "fill",
+       "step": "scrim",
+       "primitive": "black.light.scrim",
+       "hex": "#0000008C",
+       "guidance": "../foundations/color?for=color-surface-scrim#what-each-color-is-for"
       }
      ]
     },
     {
      "mode": "dark",
-     "label": "Dark theme",
-     "style": {
-      "background": "#0A0A0A",
-      "color": "#F7F7F7",
-      "--odv-muted": "#B4B4B4",
-      "--odv-edge": "#333333",
-      "--odv-ring": "#F7F7F7",
-      "--odv-dash": "#333333"
+     "page": {
+      "canvas": "#0A0A0A",
+      "text": "#F7F7F7",
+      "muted": "#B4B4B4",
+      "border": "#333333",
+      "inverse": "#F7F7F7"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(56px, 3fr)",
-       "steps": [
-        {
-         "st": "scrim",
-         "hex": "#000000B3",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        }
-       ],
-       "rows": [
-        {
-         "token": "surface.scrim",
-         "prim": "black.dark.scrim",
-         "hex": "#000000B3",
-         "href": "../foundations/color?for=color-surface-scrim#what-each-color-is-for",
-         "link": "fill-scrim"
-        }
-       ]
+       "step": "scrim",
+       "primitive": "black.dark.scrim",
+       "hex": "#000000B3"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "surface.scrim",
+       "paints": "fill",
+       "step": "scrim",
+       "primitive": "black.dark.scrim",
+       "hex": "#000000B3",
+       "guidance": "../foundations/color?for=color-surface-scrim#what-each-color-is-for"
       }
      ]
     }
    ]
   },
   "teal": {
-   "panels": [
+   "family": "teal",
+   "modes": [
     {
      "mode": "light",
-     "label": "Light theme",
-     "style": {
-      "background": "#F7F7F7",
-      "color": "#141414",
-      "--odv-muted": "#595959",
-      "--odv-edge": "#D6D6D6",
-      "--odv-ring": "#141414",
-      "--odv-dash": "#D6D6D6"
+     "page": {
+      "canvas": "#F7F7F7",
+      "text": "#141414",
+      "muted": "#595959",
+      "border": "#D6D6D6",
+      "inverse": "#141414"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F1FAF9",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#CDF4F0",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "200",
-         "hex": "#C8E1DD",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#B8D5D1",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#79A6A0",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#36736D",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#0B5B55",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "700",
-         "hex": "#02433F",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#022C29",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#011A17",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#000907",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.info.subtle",
-         "prim": "teal.light.100",
-         "hex": "#CDF4F0",
-         "href": "../foundations/color?for=color-status-info-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.2.subtle",
-         "prim": "teal.light.100",
-         "hex": "#CDF4F0",
-         "href": "../foundations/color?for=color-category-2-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.2",
-         "prim": "teal.light.600",
-         "hex": "#0B5B55",
-         "href": "../foundations/color?for=color-category-2#what-each-color-is-for",
-         "link": "fill-600"
-        }
-       ]
+       "step": "50",
+       "primitive": "teal.light.50",
+       "hex": "#F1FAF9"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F1FAF9",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#CDF4F0",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#C8E1DD",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#B8D5D1",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#79A6A0",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#36736D",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#0B5B55",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#02433F",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#022C29",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#011A17",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#000907",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.info",
-         "prim": "teal.light.600",
-         "hex": "#0B5B55",
-         "href": "../foundations/color?for=color-status-info#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "teal.light.100",
+       "hex": "#CDF4F0"
       },
       {
-       "title": "Text",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#F1FAF9",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#CDF4F0",
-         "on": true,
-         "kind": "text",
-         "ground": "#141414"
-        },
-        {
-         "st": "200",
-         "hex": "#C8E1DD",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#B8D5D1",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#79A6A0",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#36736D",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#0B5B55",
-         "on": false
-        },
-        {
-         "st": "700",
-         "hex": "#02433F",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#022C29",
-         "on": true,
-         "kind": "text"
-        },
-        {
-         "st": "900",
-         "hex": "#011A17",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#000907",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "text.info-on-dark",
-         "prim": "teal.light.100",
-         "hex": "#CDF4F0",
-         "href": "../foundations/color?for=color-text-info-on-dark#what-each-color-is-for",
-         "link": "text-100"
-        },
-        {
-         "token": "text.info-on-light",
-         "prim": "teal.light.800",
-         "hex": "#022C29",
-         "href": "../foundations/color?for=color-text-info-on-light#what-each-color-is-for",
-         "link": "text-800"
-        }
-       ]
+       "step": "200",
+       "primitive": "teal.light.200",
+       "hex": "#C8E1DD"
+      },
+      {
+       "step": "300",
+       "primitive": "teal.light.300",
+       "hex": "#B8D5D1"
+      },
+      {
+       "step": "400",
+       "primitive": "teal.light.400",
+       "hex": "#79A6A0"
+      },
+      {
+       "step": "500",
+       "primitive": "teal.light.500",
+       "hex": "#36736D"
+      },
+      {
+       "step": "600",
+       "primitive": "teal.light.600",
+       "hex": "#0B5B55"
+      },
+      {
+       "step": "700",
+       "primitive": "teal.light.700",
+       "hex": "#02433F"
+      },
+      {
+       "step": "800",
+       "primitive": "teal.light.800",
+       "hex": "#022C29"
+      },
+      {
+       "step": "900",
+       "primitive": "teal.light.900",
+       "hex": "#011A17"
+      },
+      {
+       "step": "950",
+       "primitive": "teal.light.950",
+       "hex": "#000907"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "text.info-on-light",
+       "paints": "text",
+       "step": "800",
+       "primitive": "teal.light.800",
+       "hex": "#022C29",
+       "guidance": "../foundations/color?for=color-text-info-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.info-on-dark",
+       "paints": "text",
+       "step": "100",
+       "primitive": "teal.light.100",
+       "hex": "#CDF4F0",
+       "guidance": "../foundations/color?for=color-text-info-on-dark#what-each-color-is-for"
+      },
+      {
+       "token": "status.info.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "teal.light.100",
+       "hex": "#CDF4F0",
+       "guidance": "../foundations/color?for=color-status-info-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "category.2.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "teal.light.100",
+       "hex": "#CDF4F0",
+       "guidance": "../foundations/color?for=color-category-2-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "status.info",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "teal.light.600",
+       "hex": "#0B5B55",
+       "guidance": "../foundations/color?for=color-status-info#what-each-color-is-for"
+      },
+      {
+       "token": "category.2",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "teal.light.600",
+       "hex": "#0B5B55",
+       "guidance": "../foundations/color?for=color-category-2#what-each-color-is-for"
       }
      ]
     },
     {
      "mode": "dark",
-     "label": "Dark theme",
-     "style": {
-      "background": "#0A0A0A",
-      "color": "#F7F7F7",
-      "--odv-muted": "#B4B4B4",
-      "--odv-edge": "#333333",
-      "--odv-ring": "#F7F7F7",
-      "--odv-dash": "#333333"
+     "page": {
+      "canvas": "#0A0A0A",
+      "text": "#F7F7F7",
+      "muted": "#B4B4B4",
+      "border": "#333333",
+      "inverse": "#F7F7F7"
      },
-     "lanes": [
+     "steps": [
       {
-       "title": "Backgrounds",
-       "cols": "minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#011E1B",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#012F2C",
-         "on": true,
-         "kind": "fill",
-         "ink": "#FFFFFF"
-        },
-        {
-         "st": "200",
-         "hex": "#104742",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#27615B",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#41817A",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#5DA49C",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#7FCFC6",
-         "on": true,
-         "kind": "fill",
-         "ink": "#000000"
-        },
-        {
-         "st": "700",
-         "hex": "#A1DCD4",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#BCE6E1",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#D3F0EC",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#EAF9F7",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.info.subtle",
-         "prim": "teal.dark.100",
-         "hex": "#012F2C",
-         "href": "../foundations/color?for=color-status-info-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.2.subtle",
-         "prim": "teal.dark.100",
-         "hex": "#012F2C",
-         "href": "../foundations/color?for=color-category-2-subtle#what-each-color-is-for",
-         "link": "fill-100"
-        },
-        {
-         "token": "category.2",
-         "prim": "teal.dark.600",
-         "hex": "#7FCFC6",
-         "href": "../foundations/color?for=color-category-2#what-each-color-is-for",
-         "link": "fill-600"
-        }
-       ]
+       "step": "50",
+       "primitive": "teal.dark.50",
+       "hex": "#011E1B"
       },
       {
-       "title": "Edges and rings",
-       "cols": "minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(56px, 3fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr) minmax(30px, 1fr)",
-       "steps": [
-        {
-         "st": "50",
-         "hex": "#011E1B",
-         "on": false
-        },
-        {
-         "st": "100",
-         "hex": "#012F2C",
-         "on": false
-        },
-        {
-         "st": "200",
-         "hex": "#104742",
-         "on": false
-        },
-        {
-         "st": "300",
-         "hex": "#27615B",
-         "on": false
-        },
-        {
-         "st": "400",
-         "hex": "#41817A",
-         "on": false
-        },
-        {
-         "st": "500",
-         "hex": "#5DA49C",
-         "on": false
-        },
-        {
-         "st": "600",
-         "hex": "#7FCFC6",
-         "on": true,
-         "kind": "edge"
-        },
-        {
-         "st": "700",
-         "hex": "#A1DCD4",
-         "on": false
-        },
-        {
-         "st": "800",
-         "hex": "#BCE6E1",
-         "on": false
-        },
-        {
-         "st": "900",
-         "hex": "#D3F0EC",
-         "on": false
-        },
-        {
-         "st": "950",
-         "hex": "#EAF9F7",
-         "on": false
-        }
-       ],
-       "rows": [
-        {
-         "token": "status.info",
-         "prim": "teal.dark.600",
-         "hex": "#7FCFC6",
-         "href": "../foundations/color?for=color-status-info#what-each-color-is-for",
-         "link": "edge-600"
-        }
-       ]
+       "step": "100",
+       "primitive": "teal.dark.100",
+       "hex": "#012F2C"
       },
       {
-       "title": "From the light scale, fixed colors",
-       "rows": [
-        {
-         "token": "text.info-on-light",
-         "prim": "teal.light.800",
-         "hex": "#022C29",
-         "href": "../foundations/color?for=color-text-info-on-light#what-each-color-is-for"
-        },
-        {
-         "token": "text.info-on-dark",
-         "prim": "teal.light.100",
-         "hex": "#CDF4F0",
-         "href": "../foundations/color?for=color-text-info-on-dark#what-each-color-is-for"
-        }
-       ]
+       "step": "200",
+       "primitive": "teal.dark.200",
+       "hex": "#104742"
+      },
+      {
+       "step": "300",
+       "primitive": "teal.dark.300",
+       "hex": "#27615B"
+      },
+      {
+       "step": "400",
+       "primitive": "teal.dark.400",
+       "hex": "#41817A"
+      },
+      {
+       "step": "500",
+       "primitive": "teal.dark.500",
+       "hex": "#5DA49C"
+      },
+      {
+       "step": "600",
+       "primitive": "teal.dark.600",
+       "hex": "#7FCFC6"
+      },
+      {
+       "step": "700",
+       "primitive": "teal.dark.700",
+       "hex": "#A1DCD4"
+      },
+      {
+       "step": "800",
+       "primitive": "teal.dark.800",
+       "hex": "#BCE6E1"
+      },
+      {
+       "step": "900",
+       "primitive": "teal.dark.900",
+       "hex": "#D3F0EC"
+      },
+      {
+       "step": "950",
+       "primitive": "teal.dark.950",
+       "hex": "#EAF9F7"
+      }
+     ],
+     "tokens": [
+      {
+       "token": "status.info",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "teal.dark.600",
+       "hex": "#7FCFC6",
+       "guidance": "../foundations/color?for=color-status-info#what-each-color-is-for"
+      },
+      {
+       "token": "category.2",
+       "paints": "fill",
+       "step": "600",
+       "primitive": "teal.dark.600",
+       "hex": "#7FCFC6",
+       "guidance": "../foundations/color?for=color-category-2#what-each-color-is-for"
+      },
+      {
+       "token": "status.info.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "teal.dark.100",
+       "hex": "#012F2C",
+       "guidance": "../foundations/color?for=color-status-info-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "category.2.subtle",
+       "paints": "fill",
+       "step": "100",
+       "primitive": "teal.dark.100",
+       "hex": "#012F2C",
+       "guidance": "../foundations/color?for=color-category-2-subtle#what-each-color-is-for"
+      },
+      {
+       "token": "text.info-on-light",
+       "paints": "text",
+       "primitive": "teal.light.800",
+       "hex": "#022C29",
+       "guidance": "../foundations/color?for=color-text-info-on-light#what-each-color-is-for"
+      },
+      {
+       "token": "text.info-on-dark",
+       "paints": "text",
+       "primitive": "teal.light.100",
+       "hex": "#CDF4F0",
+       "guidance": "../foundations/color?for=color-text-info-on-dark#what-each-color-is-for"
       }
      ]
     }

@@ -1,12 +1,19 @@
 /**
- * PairsChart: which text may sit on which fill, and the contrast it keeps there, in each mode. Each
- * fill is painted in its color with every text that may sit on it; a pair below its floor is marked.
- * Light and dark are tabs (src/clientModules/scales.ts reads the odv-scale hooks). The docs generator
- * writes the pairs (<page>.json beside the page); the page holds one line: ::pairs-chart{id="aster"}
- *
- * The data is facts only: fills, texts, their primitives and values, each contrast and its floor.
+ * PairsChart: which text may sit on which fill, and the contrast each pair keeps, in each mode. Each
+ * fill is painted in its own color with every text that may sit on it; a pair below its floor is
+ * marked with a Badge. Built from the scheme's Tabs, Card and Badge, used through their props only;
+ * the fills are drawings of values. The data follows doc-composites/schemas/pairs-chart.schema.json;
+ * the page holds one line: ::pairs-chart{id="aster"}
  */
 import * as React from "react";
+import { Badge } from "@open-ds/ui/components/badge";
+import { Card, CardContent } from "@open-ds/ui/components/card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@open-ds/ui/components/tabs";
 
 export type Pair = {
   text: string;
@@ -23,85 +30,107 @@ export type Fill = {
 };
 export type FillGroup = { title: string; note: string; fills: Fill[] };
 export type PairsMode = {
-  mode: string;
+  mode: "light" | "dark";
   page: { canvas: string; text: string; muted: string; edge: string };
   groups: FillGroup[];
 };
 export type PairsChartData = { modes: PairsMode[] };
 
-export default function PairsChart({ data }: { data: PairsChartData }) {
+const small =
+  "text-[length:var(--type-caption-font-size)] [font-family:var(--type-data-font-family)]";
+
+function FillTile({ f, page }: { f: Fill; page: PairsMode["page"] }) {
   return (
-    <div data-composite="pairs-chart" className="odv-scale" data-scale="">
-      <div className="odv-scale-tabs" role="tablist">
-        {data.modes.map((m, i) => (
-          <button
-            key={m.mode}
-            type="button"
-            role="tab"
-            data-mode={m.mode}
-            aria-selected={i === 0}
-          >
-            {m.mode.charAt(0).toUpperCase() + m.mode.slice(1)} theme
-          </button>
-        ))}
-      </div>
-      {data.modes.map((m) => (
+    <div
+      className="flex flex-col gap-[var(--space-gap-tight)] rounded-[var(--radius-container)] border p-[var(--space-inset-container)]"
+      style={{
+        background: f.hex,
+        borderColor: page.edge,
+        color: f.pairs[0]?.hex,
+      }}
+    >
+      <p className="flex flex-col whitespace-nowrap font-semibold">
+        {f.fill}
+        <span className={small}>{f.primitive}</span>
+      </p>
+      {f.pairs.map((p) => (
         <div
-          key={m.mode}
-          className="odv-scale-p"
-          data-mode={m.mode}
-          role="tabpanel"
-          style={
-            {
-              background: m.page.canvas,
-              color: m.page.text,
-              "--odv-muted": m.page.muted,
-              "--odv-edge": m.page.edge,
-            } as React.CSSProperties
-          }
+          key={p.text}
+          className="flex items-center gap-[var(--space-gap-tight)]"
+          style={{ color: p.hex }}
         >
-          {m.groups.map((g) => (
-            <div key={g.title} className="odv-pgroup">
-              <p className="odv-lane-h">{g.title}</p>
-              <p className="odv-pgroup-n">{g.note}</p>
-              <div className="odv-tiles">
-                {g.fills.map((f) => (
-                  <div
-                    key={f.fill}
-                    className="odv-tile"
-                    style={{ background: f.hex }}
-                  >
-                    <p
-                      className="odv-tile-h"
-                      style={{ color: f.pairs[0]?.hex ?? "inherit" }}
-                    >
-                      {f.fill}
-                      <small>{f.primitive}</small>
-                    </p>
-                    {f.pairs.map((p) => (
-                      <div key={p.text} className="odv-pr">
-                        <span className="odv-pr-aa" style={{ color: p.hex }}>
-                          Aa
-                        </span>
-                        <span className="odv-pr-k" style={{ color: p.hex }}>
-                          {p.text}
-                          <small>{p.primitive}</small>
-                        </span>
-                        <span
-                          className={`odv-pr-c${p.contrast >= p.floor ? "" : " no"}`}
-                          style={{ color: p.hex }}
-                        >
-                          {p.contrast.toFixed(1)}:1
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+          <b className="text-[length:var(--type-title-font-size)]">Aa</b>
+          <span className={`flex min-w-0 flex-col whitespace-nowrap ${small}`}>
+            {p.text}
+            <span>{p.primitive}</span>
+          </span>
+          <span className={`ml-auto whitespace-nowrap ${small}`}>
+            {p.contrast.toFixed(1)}:1
+          </span>
+          {p.contrast < p.floor && (
+            <Badge tone="danger">Below {p.floor}:1</Badge>
+          )}
         </div>
       ))}
+    </div>
+  );
+}
+
+export default function PairsChart({
+  data,
+  mode = "light",
+}: {
+  data: PairsChartData;
+  mode?: "light" | "dark";
+}) {
+  const start = data.modes.some((m) => m.mode === mode)
+    ? mode
+    : data.modes[0].mode;
+  return (
+    <div data-composite="pairs-chart">
+      <Card>
+        <Tabs defaultValue={start}>
+          <TabsList>
+            {data.modes.map((m) => (
+              <TabsTrigger key={m.mode} value={m.mode}>
+                {m.mode === "light" ? "Light theme" : "Dark theme"}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {data.modes.map((m) => (
+            <TabsContent key={m.mode} value={m.mode}>
+              <CardContent>
+                <div
+                  className="flex flex-col gap-[var(--space-gap-group)] rounded-[var(--radius-container)] p-[var(--space-inset-container)]"
+                  style={{ background: m.page.canvas, color: m.page.text }}
+                >
+                  {m.groups.map((g) => (
+                    <section
+                      key={g.title}
+                      className="flex flex-col gap-[var(--space-gap-tight)]"
+                    >
+                      <h4
+                        className="text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wide"
+                        style={{ color: m.page.muted }}
+                      >
+                        {g.title}
+                      </h4>
+                      <p className={small} style={{ color: m.page.muted }}>
+                        {g.note}
+                      </p>
+                      <div className="grid gap-[var(--space-gap-tight)] sm:grid-cols-2">
+                        {g.fills.map((f) => (
+                          <FillTile key={f.fill} f={f} page={m.page} />
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </CardContent>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </Card>
     </div>
   );
 }

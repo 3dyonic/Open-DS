@@ -2532,6 +2532,41 @@ export const CHECKS = {
         : ok(`no HTML in the ${pages.length} docs pages`);
     },
   },
+  // Each docs page's data (<page>.json, OD-284) matches the schema of the composite it feeds
+  // (doc-composites/schemas/<kind>.schema.json): facts only, every field described for an agent.
+  "doc-composites-data": {
+    requires: ["docs/docs", "doc-composites/schemas"],
+    run: (c) => {
+      const a = ajv();
+      const schemas = Object.fromEntries(
+        readdirSync(c.p("doc-composites/schemas"))
+          .filter((f) => f.endsWith(".schema.json"))
+          .map((f) => [f.replace(/\.schema\.json$/, ""), a.compile(c.json(`doc-composites/schemas/${f}`))]),
+      );
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory()
+            ? walk(`${dir}/${e.name}`)
+            : e.name.endsWith(".json") && !e.name.startsWith("_")
+              ? [`${dir}/${e.name}`]
+              : [],
+        );
+      const gaps = [];
+      let checked = 0;
+      for (const f of walk("docs/docs"))
+        for (const [kind, entries] of Object.entries(c.json(f))) {
+          const valid = schemas[kind];
+          if (!valid) continue;
+          for (const [id, data] of Object.entries(entries)) {
+            checked++;
+            if (!valid(data)) gaps.push(`${f} ${kind} ${id}: ${a.errorsText(valid.errors)}`);
+          }
+        }
+      return gaps.length
+        ? bad(`${gaps.length} entries fail their schema; first: ${gaps[0]}`)
+        : ok(`${checked} composite entries match their ${Object.keys(schemas).length} schemas`);
+    },
+  },
   "docs-docusaurus": {
     requires: ["docs/package.json"],
     run: (c) =>

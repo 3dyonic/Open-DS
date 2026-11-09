@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/color-scale.schema.json",
+  "title": "Color scale",
+  "description": "One color family of a scheme, in each mode: every step of its scale, and every semantic token that points at one of its steps. Drawn by the ColorScale composite on Primitives › Color.",
+  "type": "object",
+  "required": ["family", "modes"],
+  "additionalProperties": false,
+  "properties": {
+    "family": {
+      "type": "string",
+      "description": "The color family's name, such as blue or slate."
+    },
+    "modes": {
+      "type": "array",
+      "description": "The family in each mode the scheme ships, light first.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["mode", "page", "steps", "tokens"],
+        "additionalProperties": false,
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": ["light", "dark"],
+            "description": "The mode."
+          },
+          "page": {
+            "type": "object",
+            "description": "The page colors of this mode, so the scale is shown on the ground it is used on.",
+            "required": ["canvas", "text", "muted", "border", "inverse"],
+            "additionalProperties": false,
+            "properties": {
+              "canvas": {
+                "type": "string",
+                "description": "color.surface.canvas, as a hex value."
+              },
+              "text": {
+                "type": "string",
+                "description": "color.text.primary, as a hex value."
+              },
+              "muted": {
+                "type": "string",
+                "description": "color.text.muted, as a hex value."
+              },
+              "border": {
+                "type": "string",
+                "description": "color.border.default, as a hex value."
+              },
+              "inverse": {
+                "type": "string",
+                "description": "color.surface.inverse, as a hex value."
+              }
+            }
+          },
+          "steps": {
+            "type": "array",
+            "description": "Every step of the family's scale in this mode, lightest first.",
+            "items": {
+              "type": "object",
+              "required": ["step", "primitive", "hex"],
+              "additionalProperties": false,
+              "properties": {
+                "step": {
+                  "type": "string",
+                  "description": "The step's number, such as 600."
+                },
+                "primitive": {
+                  "type": "string",
+                  "description": "The primitive token, such as blue.light.600."
+                },
+                "hex": {
+                  "type": "string",
+                  "description": "The primitive's value."
+                }
+              }
+            }
+          },
+          "tokens": {
+            "type": "array",
+            "description": "Every semantic token that points at a step of this family in this mode.",
+            "items": {
+              "type": "object",
+              "required": ["token", "paints", "primitive", "hex"],
+              "additionalProperties": false,
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "The semantic token, without color., such as action.primary."
+                },
+                "paints": {
+                  "type": "string",
+                  "enum": ["fill", "edge", "text"],
+                  "description": "What the token paints: a background, an edge or ring, or text."
+                },
+                "step": {
+                  "type": "string",
+                  "description": "The step it points at, when the step is on this mode's scale. A token fixed to the other mode's scale has none."
+                },
+                "primitive": {
+                  "type": "string",
+                  "description": "The primitive it ends at."
+                },
+                "via": {
+                  "type": "string",
+                  "description": "The semantic it goes through on the way, when it does."
+                },
+                "hex": {
+                  "type": "string",
+                  "description": "The value it ends at."
+                },
+                "brands": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "description": "The brands it lands in, when not every brand."
+                },
+                "guidance": {
+                  "type": "string",
+                  "description": "A link to the token's guidance on Foundations › Color, when it has some."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

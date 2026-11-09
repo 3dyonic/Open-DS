@@ -1,157 +1,314 @@
 /**
- * ColorScale: one hue's whole scale in each theme, with lanes for what its tokens paint (backgrounds,
- * edges and rings, text), and one row per token under it. Light and dark are tabs; pointing at a row
- * finds its step (src/clientModules/scales.ts reads the odv-scale hooks). The docs generator writes
- * the scale (<page>.json beside the page); the page holds one line: ::color-scale{id="blue"}
- *
- * This is a drawing of the scheme's colors, so it shows their values; its look comes from the docs'
- * scale styles.
+ * ColorScale: one color family of a scheme in each mode. Every step of the scale, the steps its tokens
+ * use filled in, and one row per token: what it paints (a background, an edge or ring, or text), the
+ * step it points at and its value. Pointing at a row lights its step, and the other way round. Built
+ * from the scheme's Tabs and Card, used through their props only; the steps are drawings of values.
+ * The data follows doc-composites/schemas/color-scale.schema.json; the page holds one line:
+ * ::color-scale{id="blue"}
  */
 import * as React from "react";
+import { Card, CardContent } from "@open-ds/ui/components/card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@open-ds/ui/components/tabs";
+import { contrast, ink } from "./color";
 
-type Step = {
-  st: string;
-  hex: string;
-  on: boolean;
-  kind?: "fill" | "edge" | "text";
-  ink?: string;
-  ground?: string;
-};
-type Row = {
+type Paints = "fill" | "edge" | "text";
+type Token = {
   token: string;
-  tag?: string;
-  prim: string;
+  paints: Paints;
+  step?: string;
+  primitive: string;
   via?: string;
   hex: string;
-  href?: string;
-  link?: string;
+  brands?: string[];
+  guidance?: string;
 };
-type Lane = { title: string; cols?: string; steps?: Step[]; rows: Row[] };
-type Panel = {
-  mode: string;
-  label: string;
-  style: Record<string, string>;
-  lanes: Lane[];
+type Mode = {
+  mode: "light" | "dark";
+  page: {
+    canvas: string;
+    text: string;
+    muted: string;
+    border: string;
+    inverse: string;
+  };
+  steps: { step: string; primitive: string; hex: string }[];
+  tokens: Token[];
 };
-export type ColorScaleData = { panels: Panel[] };
+export type ColorScaleData = { family: string; modes: Mode[] };
 
-function StepCell({ s }: { s: Step }) {
-  if (!s.on)
-    return (
-      <div className="odv-sl">
-        <span className="n">{s.st}</span>
-        <i style={{ background: s.hex }} />
-      </div>
-    );
-  if (s.kind === "fill")
+const LANES: { paints: Paints; title: string }[] = [
+  { paints: "fill", title: "Backgrounds" },
+  { paints: "edge", title: "Edges and rings" },
+  { paints: "text", title: "Text" },
+];
+const label =
+  "text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wide";
+const small =
+  "text-[length:var(--type-caption-font-size)] [font-family:var(--type-data-font-family)]";
+
+function Step({
+  s,
+  paints,
+  page,
+  on,
+  lit,
+  onLight,
+}: {
+  s: Mode["steps"][number];
+  paints: Paints | null;
+  page: Mode["page"];
+  on: boolean;
+  lit: boolean;
+  onLight: (on: boolean) => void;
+}) {
+  const ring = lit ? "ring-2 ring-[var(--color-border-focus)]" : "";
+  const box = `flex min-h-24 flex-col whitespace-nowrap gap-[var(--space-gap-tight)] rounded-[var(--radius-option)] p-[var(--space-gap-tight)] ${small} ${ring}`;
+  if (!on || !paints)
     return (
       <div
-        className="odv-st"
-        data-link={`fill-${s.st}`}
-        style={{ background: s.hex, color: s.ink }}
+        className={`${box} border border-dashed`}
+        style={{ borderColor: page.muted, color: page.muted }}
       >
-        <span className="n">{s.st}</span>
-        <span className="x">{s.hex}</span>
+        <span>{s.step}</span>
+        <span
+          aria-hidden="true"
+          className="mt-auto size-[var(--type-body-font-size)] rounded-[var(--radius-badge)]"
+          style={{ background: s.hex }}
+        />
       </div>
     );
-  if (s.kind === "edge")
+  const hover = {
+    onMouseEnter: () => onLight(true),
+    onMouseLeave: () => onLight(false),
+  };
+  if (paints === "fill")
     return (
-      <div className="odv-st odv-st-bare" data-link={`edge-${s.st}`}>
-        <span className="n">{s.st}</span>
-        <span className="x">{s.hex}</span>
-        <span className="mk">
-          <i style={{ background: s.hex }} />
-          <b style={{ background: s.hex }} />
-        </span>
+      <div
+        className={box}
+        style={{ background: s.hex, color: ink(s.hex) }}
+        {...hover}
+      >
+        <b>{s.step}</b>
+        <span>{s.hex}</span>
       </div>
     );
+  if (paints === "edge")
+    return (
+      <div
+        className={`${box} border`}
+        style={{ borderColor: page.border, color: page.muted }}
+        {...hover}
+      >
+        <b>{s.step}</b>
+        <span>{s.hex}</span>
+        <span
+          aria-hidden="true"
+          className="mt-auto h-[var(--type-title-font-size)] w-[var(--space-gap-tight)] rounded-[var(--radius-badge)]"
+          style={{ background: s.hex }}
+        />
+      </div>
+    );
+  // Text shows on the page, or on the page's text color when it is a label for dark fills.
+  const ground =
+    contrast(s.hex, page.canvas) < 3
+      ? contrast(s.hex, page.text) >= 3
+        ? page.text
+        : page.inverse
+      : undefined;
   return (
     <div
-      className="odv-st odv-st-bare"
-      data-link={`text-${s.st}`}
-      style={{ color: s.hex, background: s.ground }}
+      className={`${box} border`}
+      style={{ borderColor: page.border, color: s.hex, background: ground }}
+      {...hover}
     >
-      <span className="n">{s.st}</span>
-      <span className="x">{s.hex}</span>
-      <span className="aa">Aa</span>
+      <b>{s.step}</b>
+      <span>{s.hex}</span>
+      <b className="mt-auto text-[length:var(--type-title-font-size)]">Aa</b>
     </div>
   );
 }
 
-function TokenRow({ r }: { r: Row }) {
+function Row({
+  t,
+  lit,
+  onLight,
+}: {
+  t: Token;
+  lit: boolean;
+  onLight: (on: boolean) => void;
+}) {
   const inner = (
     <>
-      <i className="odv-kv-sw" style={{ background: r.hex }} />
-      <span>
-        <span className="odv-kv-k">{r.token}</span>
-        {r.tag && <span className="odv-kv-tag">{r.tag}</span>}
-      </span>
-      <span className="odv-kv-v">
-        <b>{r.prim}</b>
-        {r.via && <small>via {r.via}</small>}
-        <small>{r.hex}</small>
+      <span
+        aria-hidden="true"
+        className="size-[var(--type-body-font-size)] shrink-0 rounded-[var(--radius-badge)] border"
+        style={{ background: t.hex }}
+      />
+      <span className={small}>{t.token}</span>
+      {t.brands && <span className={small}>{t.brands.join(", ")}</span>}
+      <span className={`ml-auto ${small}`}>
+        <b>{t.primitive}</b>
+        {t.via && ` via ${t.via}`} {t.hex}
       </span>
     </>
   );
-  return r.href ? (
-    <a className="odv-kv" data-link={r.link} href={r.href}>
+  const cls = `flex items-center gap-[var(--space-gap-tight)] rounded-[var(--radius-option)] px-[var(--space-gap-tight)] py-[var(--space-gap-tight)] no-underline text-[inherit] ${lit ? "ring-2 ring-[var(--color-border-focus)]" : ""}`;
+  const hover = {
+    onMouseEnter: () => onLight(true),
+    onMouseLeave: () => onLight(false),
+    onFocus: () => onLight(true),
+    onBlur: () => onLight(false),
+  };
+  return t.guidance ? (
+    <a className={cls} href={t.guidance} {...hover}>
       {inner}
     </a>
   ) : (
-    <div className="odv-kv" data-link={r.link} tabIndex={0}>
+    <div className={cls} tabIndex={0} {...hover}>
       {inner}
     </div>
   );
 }
 
-export default function ColorScale({ data }: { data: ColorScaleData }) {
+function Panel({ m }: { m: Mode }) {
+  // The lane and step a row or step points at, lit while pointed at.
+  const [lit, setLit] = React.useState<string | null>(null);
+  const light = (key: string) => (on: boolean) => setLit(on ? key : null);
+  const own = m.tokens.filter((t) => t.step);
+  const fixed = m.tokens.filter((t) => !t.step);
   return (
-    <div data-composite="color-scale" className="odv-scale" data-scale="">
-      <div className="odv-scale-tabs" role="tablist">
-        {data.panels.map((p, i) => (
-          <button
-            key={p.mode}
-            type="button"
-            role="tab"
-            data-mode={p.mode}
-            aria-selected={i === 0}
+    <div
+      className="flex flex-col gap-[var(--space-gap-group)] overflow-x-auto rounded-[var(--radius-container)] p-[var(--space-inset-container)]"
+      style={{ background: m.page.canvas, color: m.page.text }}
+    >
+      {LANES.map(({ paints, title }) => {
+        const list = own.filter((t) => t.paints === paints);
+        if (!list.length) return null;
+        const used = new Set(list.map((t) => t.step));
+        return (
+          <section
+            key={paints}
+            className="flex flex-col gap-[var(--space-gap-tight)]"
           >
-            {p.label}
-          </button>
-        ))}
-      </div>
-      {data.panels.map((p) => (
-        <div
-          key={p.mode}
-          className="odv-scale-p"
-          data-mode={p.mode}
-          role="tabpanel"
-          style={p.style}
-        >
-          {p.lanes.map((l) => (
-            <div key={l.title} className="odv-lane">
-              <p className="odv-lane-h">{l.title}</p>
-              {l.steps && (
-                <div
-                  className="odv-sts"
-                  style={{ gridTemplateColumns: l.cols }}
-                >
-                  {l.steps.map((s) => (
-                    <StepCell key={s.st} s={s} />
-                  ))}
-                </div>
-              )}
-              {l.rows.length > 0 && (
-                <div className="odv-kvs">
-                  {l.rows.map((r) => (
-                    <TokenRow key={`${r.token}|${r.prim}`} r={r} />
-                  ))}
-                </div>
-              )}
+            <h4 className={label} style={{ color: m.page.muted }}>
+              {title}
+            </h4>
+            <div
+              className="grid gap-[var(--space-gap-tight)]"
+              style={{
+                gridTemplateColumns: m.steps
+                  .map((s) =>
+                    used.has(s.step)
+                      ? "minmax(min-content, 3fr)"
+                      : "minmax(min-content, 1fr)",
+                  )
+                  .join(" "),
+              }}
+            >
+              {m.steps.map((s) => (
+                <Step
+                  key={s.step}
+                  s={s}
+                  paints={paints}
+                  page={m.page}
+                  on={used.has(s.step)}
+                  lit={lit === `${paints}-${s.step}`}
+                  onLight={light(`${paints}-${s.step}`)}
+                />
+              ))}
             </div>
+            <div className="flex flex-col">
+              {list.map((t) => (
+                <Row
+                  key={`${t.token}|${t.primitive}`}
+                  t={t}
+                  lit={lit === `${paints}-${t.step}`}
+                  onLight={light(`${paints}-${t.step}`)}
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+      {own.length === 0 && (
+        <section className="flex flex-col gap-[var(--space-gap-tight)]">
+          <h4 className={label} style={{ color: m.page.muted }}>
+            Not used yet in this theme
+          </h4>
+          <div
+            className="grid gap-[var(--space-gap-tight)]"
+            style={{
+              gridTemplateColumns: `repeat(${m.steps.length}, minmax(min-content, 1fr))`,
+            }}
+          >
+            {m.steps.map((s) => (
+              <Step
+                key={s.step}
+                s={s}
+                paints={null}
+                page={m.page}
+                on={false}
+                lit={false}
+                onLight={() => {}}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+      {fixed.length > 0 && (
+        <section className="flex flex-col gap-[var(--space-gap-tight)]">
+          <h4 className={label} style={{ color: m.page.muted }}>
+            From the {m.mode === "light" ? "dark" : "light"} scale, fixed colors
+          </h4>
+          {fixed.map((t) => (
+            <Row
+              key={`${t.token}|${t.primitive}`}
+              t={t}
+              lit={false}
+              onLight={() => {}}
+            />
           ))}
-        </div>
-      ))}
+        </section>
+      )}
+    </div>
+  );
+}
+
+export default function ColorScale({
+  data,
+  mode = "light",
+}: {
+  data: ColorScaleData;
+  mode?: "light" | "dark";
+}) {
+  const start = data.modes.some((m) => m.mode === mode)
+    ? mode
+    : data.modes[0].mode;
+  return (
+    <div data-composite="color-scale">
+      <Card>
+        <Tabs defaultValue={start}>
+          <TabsList>
+            {data.modes.map((m) => (
+              <TabsTrigger key={m.mode} value={m.mode}>
+                {m.mode === "light" ? "Light theme" : "Dark theme"}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {data.modes.map((m) => (
+            <TabsContent key={m.mode} value={m.mode}>
+              <CardContent>
+                <Panel m={m} />
+              </CardContent>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </Card>
     </div>
   );
 }

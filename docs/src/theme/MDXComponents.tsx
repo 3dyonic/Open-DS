@@ -64,6 +64,23 @@ function RobotHero({ robot, ...props }: Omit<React.ComponentProps<typeof Hero>, 
   return <Hero {...props} robot={robot ? { day, night } : undefined} />;
 }
 
+// A color scale opens on the docs' own theme, light or dark.
+// It reads the theme once the page is in the browser, then opens on it.
+function useDocsMode() {
+  const [mode, setMode] = React.useState<"light" | "dark">("light");
+  React.useEffect(() => setMode(document.documentElement.dataset.theme === "dark" ? "dark" : "light"), []);
+  return mode;
+}
+function ThemedColorScale(props: React.ComponentProps<typeof ColorScale>) {
+  const mode = useDocsMode();
+  return <ColorScale key={mode} {...props} mode={mode} />;
+}
+// So does the pairs chart.
+function ThemedPairsChart(props: React.ComponentProps<typeof PairsChart>) {
+  const mode = useDocsMode();
+  return <PairsChart key={mode} {...props} mode={mode} />;
+}
+
 // The composites the pages' directives name (src/remark/composites.mjs).
 export default {
   ...MDXComponents,
@@ -72,10 +89,10 @@ export default {
   BrandSet,
   CardGrid,
   ModePreview,
-  PairsChart,
+  PairsChart: ThemedPairsChart,
   Sample,
   SampleScreen,
-  ColorScale,
+  ColorScale: ThemedColorScale,
   Fold: LinkedFold,
   Grid,
   Panel: LinkedPanel,
