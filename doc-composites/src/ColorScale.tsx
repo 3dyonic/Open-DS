@@ -2,12 +2,11 @@
  * ColorScale: one color family of a scheme in each mode. Every step of the scale, the steps its tokens
  * use filled in, and one row per token: what it paints (a background, an edge or ring, or text), the
  * step it points at and its value. Pointing at a row lights its step, and the other way round. Built
- * from the scheme's Tabs and Card, used through their props only; the steps are drawings of values.
+ * from the scheme's Tabs, used through their props only; the steps are drawings of values.
  * The data follows doc-composites/schemas/color-scale.schema.json; the page holds one line:
  * ::color-scale{id="blue"}
  */
 import * as React from "react";
-import { Card, CardContent } from "@open-ds/ui/components/card";
 import {
   Tabs,
   TabsContent,
@@ -106,11 +105,10 @@ function Step({
       >
         <b>{s.step}</b>
         <span>{s.hex}</span>
-        <span
-          aria-hidden="true"
-          className="mt-auto h-[var(--type-title-font-size)] w-[var(--space-gap-tight)] rounded-[var(--radius-badge)]"
-          style={{ background: s.hex }}
-        />
+        <span aria-hidden="true" className="mt-auto flex items-center gap-[var(--space-gap-default)]">
+          <i className="h-[var(--type-title-font-size)] w-[var(--space-gap-tight)] rounded-[var(--radius-badge)]" style={{ background: s.hex }} />
+          <i className="size-2.5 rounded-full" style={{ background: s.hex }} />
+        </span>
       </div>
     );
   // Text shows on the page, or on the page's text color when it is a label for dark fills.
@@ -133,43 +131,54 @@ function Step({
   );
 }
 
+const data = "text-[length:var(--type-data-font-size)] [font-family:var(--type-data-font-family)]";
+const tiny = "text-[length:var(--type-caption-font-size)]";
+
 function Row({
   t,
+  page,
   lit,
   onLight,
 }: {
   t: Token;
+  page: Mode["page"];
   lit: boolean;
   onLight: (on: boolean) => void;
 }) {
+  // One row per token, as RC1 drew it: its color, its name, then the step it points at, the semantic
+  // it goes through and the value, in a column of their own.
   const inner = (
     <>
       <span
         aria-hidden="true"
-        className="size-[var(--type-body-font-size)] shrink-0 rounded-[var(--radius-badge)] border"
-        style={{ background: t.hex }}
+        className="size-5.5 shrink-0 rounded-[var(--radius-badge)] border"
+        style={{ background: t.hex, borderColor: page.border }}
       />
-      <span className={small}>{t.token}</span>
-      {t.brands && <span className={small}>{t.brands.join(", ")}</span>}
-      <span className={`ml-auto ${small}`}>
-        <b>{t.primitive}</b>
-        {t.via && ` via ${t.via}`} {t.hex}
+      <span className={`w-48 shrink-0 ${data}`}>
+        {t.token}
+        {t.brands && <span style={{ color: page.muted }}> {t.brands.join(", ")}</span>}
+      </span>
+      <span className={`flex flex-wrap items-baseline gap-[var(--space-gap-default)] ${data}`}>
+        {t.primitive}
+        {t.via && <span className={tiny} style={{ color: page.muted }}>via {t.via}</span>}
+        <span className={tiny} style={{ color: page.muted }}>{t.hex}</span>
       </span>
     </>
   );
-  const cls = `flex items-center gap-[var(--space-gap-tight)] rounded-[var(--radius-option)] px-[var(--space-gap-tight)] py-[var(--space-gap-tight)] no-underline text-[inherit] ${lit ? "ring-2 ring-[var(--color-border-focus)]" : ""}`;
+  const cls = `flex items-center gap-[var(--space-gap-group)] border-b px-[var(--space-gap-tight)] py-1.5 no-underline text-[inherit] hover:no-underline ${lit ? "ring-2 ring-[var(--color-border-focus)]" : ""}`;
   const hover = {
     onMouseEnter: () => onLight(true),
     onMouseLeave: () => onLight(false),
     onFocus: () => onLight(true),
     onBlur: () => onLight(false),
   };
+  const edge = { borderColor: page.border, color: page.text };
   return t.guidance ? (
-    <a className={cls} href={t.guidance} {...hover}>
+    <a className={cls} style={edge} href={t.guidance} {...hover}>
       {inner}
     </a>
   ) : (
-    <div className={cls} tabIndex={0} {...hover}>
+    <div className={cls} style={edge} tabIndex={0} {...hover}>
       {inner}
     </div>
   );
@@ -183,11 +192,17 @@ function Panel({ m }: { m: Mode }) {
   const fixed = m.tokens.filter((t) => !t.step);
   return (
     <div
-      className="flex flex-col gap-[var(--space-gap-group)] overflow-x-auto rounded-[var(--radius-container)] p-[var(--space-inset-container)]"
-      style={{ background: m.page.canvas, color: m.page.text }}
+      className="flex flex-col gap-[var(--space-gap-group)] overflow-x-auto rounded-[var(--radius-container)] border p-[var(--space-inset-container)]"
+      style={{ background: m.page.canvas, color: m.page.text, borderColor: m.page.border }}
     >
       {LANES.map(({ paints, title }) => {
-        const list = own.filter((t) => t.paints === paints);
+        // Rows follow the scale: the lightest step first, the data's order within a step.
+        const at = (t: Token) => m.steps.findIndex((s) => s.step === t.step);
+        const list = own
+          .filter((t) => t.paints === paints)
+          .map((t, i) => ({ t, i }))
+          .sort((a, b) => at(a.t) - at(b.t) || a.i - b.i)
+          .map((x) => x.t);
         if (!list.length) return null;
         const used = new Set(list.map((t) => t.step));
         return (
@@ -222,11 +237,12 @@ function Panel({ m }: { m: Mode }) {
                 />
               ))}
             </div>
-            <div className="flex flex-col">
+            <div className="flex max-w-3xl flex-col">
               {list.map((t) => (
                 <Row
                   key={`${t.token}|${t.primitive}`}
                   t={t}
+                  page={m.page}
                   lit={lit === `${paints}-${t.step}`}
                   onLight={light(`${paints}-${t.step}`)}
                 />
@@ -269,6 +285,7 @@ function Panel({ m }: { m: Mode }) {
             <Row
               key={`${t.token}|${t.primitive}`}
               t={t}
+              page={m.page}
               lit={false}
               onLight={() => {}}
             />
@@ -291,8 +308,7 @@ export default function ColorScale({
     : data.modes[0].mode;
   return (
     <div data-composite="color-scale">
-      <Card>
-        <Tabs defaultValue={start}>
+      <Tabs defaultValue={start}>
           <TabsList>
             {data.modes.map((m) => (
               <TabsTrigger key={m.mode} value={m.mode}>
@@ -302,13 +318,10 @@ export default function ColorScale({
           </TabsList>
           {data.modes.map((m) => (
             <TabsContent key={m.mode} value={m.mode}>
-              <CardContent>
-                <Panel m={m} />
-              </CardContent>
+              <Panel m={m} />
             </TabsContent>
           ))}
-        </Tabs>
-      </Card>
+      </Tabs>
     </div>
   );
 }
