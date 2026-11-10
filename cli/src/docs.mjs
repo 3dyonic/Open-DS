@@ -809,7 +809,9 @@ export function docsPages(
             m,
             t.tone === "light" ? "color.text.on-light" : "color.text.on-dark",
           );
-          return `${draw("tone", bg?.hex ?? "", ` ink="${fg?.hex ?? ""}"`)} ${t.tone}${t.waits ? ` · waits for ${esc(t.waits.for)}` : ""}`;
+          // A gray names its neutral step; any other color names its primitive.
+          const source = bg && short(bg.via ?? `color.${bg.prim}`);
+          return `${draw("tone", bg?.hex ?? "", ` ink="${fg?.hex ?? ""}"`)} ${t.tone}${source ? ` · \`${source}\`` : ""}${t.waits ? ` · waits for ${esc(t.waits.for)}` : ""}`;
         };
         return (
           `${flips === rows.length ? `Every fill changes tone between light and dark mode.` : `${flips} of ${rows.length} fills change tone between light and dark mode.`}\n\n` +

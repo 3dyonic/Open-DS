@@ -293,21 +293,21 @@ Every fill changes tone between light and dark mode.
 
 | Fill | Light mode | Dark mode |
 | --- | --- | --- |
-| `surface.canvas` | :sample{kind="tone" value="#FFF8F3" ink="#1F1411"} light | :sample{kind="tone" value="#120B09" ink="#FFFFFF"} dark |
-| `surface.default` | :sample{kind="tone" value="#FFFFFF" ink="#1F1411"} light | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark |
-| `surface.raised` | :sample{kind="tone" value="#FFFFFF" ink="#1F1411"} light | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark |
-| `surface.sunken` | :sample{kind="tone" value="#FCEFE6" ink="#1F1411"} light | :sample{kind="tone" value="#33241F" ink="#FFFFFF"} dark |
-| `surface.highlight` | :sample{kind="tone" value="#FCEFE6" ink="#1F1411"} light | :sample{kind="tone" value="#33241F" ink="#FFFFFF"} dark |
-| `surface.pressed` | :sample{kind="tone" value="#F2DCCF" ink="#1F1411"} light | :sample{kind="tone" value="#4D3A33" ink="#FFFFFF"} dark |
-| `surface.selected` | :sample{kind="tone" value="#FFEAF0" ink="#1F1411"} light | :sample{kind="tone" value="#451731" ink="#FFFFFF"} dark |
-| `surface.inverse` | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark | :sample{kind="tone" value="#FFF8F3" ink="#1F1411"} light |
-| `action.primary` | :sample{kind="tone" value="#D61F7A" ink="#FFFFFF"} dark | :sample{kind="tone" value="#F59ACA" ink="#1F1411"} light · waits for OD-225 |
-| `action.primary.hover` | :sample{kind="tone" value="#A6025B" ink="#FFFFFF"} dark | :sample{kind="tone" value="#FBB4D8" ink="#1F1411"} light |
-| `action.danger` | :sample{kind="tone" value="#C42B2B" ink="#FFFFFF"} dark | :sample{kind="tone" value="#F28B8B" ink="#1F1411"} light |
-| `action.danger.hover` | :sample{kind="tone" value="#981519" ink="#FFFFFF"} dark | :sample{kind="tone" value="#FAA9A8" ink="#1F1411"} light |
-| `action.secondary` | :sample{kind="tone" value="#FFFFFF" ink="#1F1411"} light | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark |
-| `action.secondary.hover` | :sample{kind="tone" value="#FCEFE6" ink="#1F1411"} light | :sample{kind="tone" value="#33241F" ink="#FFFFFF"} dark |
-| `status.info.subtle` | :sample{kind="tone" value="#D3E4FF" ink="#1F1411"} light | :sample{kind="tone" value="#13284B" ink="#FFFFFF"} dark |
-| `status.warning.subtle` | :sample{kind="tone" value="#FEE8CF" ink="#1F1411"} light | :sample{kind="tone" value="#3B2701" ink="#FFFFFF"} dark |
-| `status.danger.subtle` | :sample{kind="tone" value="#FFDBD8" ink="#1F1411"} light | :sample{kind="tone" value="#481316" ink="#FFFFFF"} dark |
-| `status.success.subtle` | :sample{kind="tone" value="#DBF7DF" ink="#1F1411"} light | :sample{kind="tone" value="#013118" ink="#FFFFFF"} dark |
+| `surface.canvas` | :sample{kind="tone" value="#FFF8F3" ink="#1F1411"} light · `neutral.50` | :sample{kind="tone" value="#120B09" ink="#FFFFFF"} dark · `neutral.0` |
+| `surface.default` | :sample{kind="tone" value="#FFFFFF" ink="#1F1411"} light · `neutral.0` | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark · `neutral.50` |
+| `surface.raised` | :sample{kind="tone" value="#FFFFFF" ink="#1F1411"} light · `neutral.0` | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark · `neutral.50` |
+| `surface.sunken` | :sample{kind="tone" value="#FCEFE6" ink="#1F1411"} light · `neutral.100` | :sample{kind="tone" value="#33241F" ink="#FFFFFF"} dark · `neutral.100` |
+| `surface.highlight` | :sample{kind="tone" value="#FCEFE6" ink="#1F1411"} light · `neutral.100` | :sample{kind="tone" value="#33241F" ink="#FFFFFF"} dark · `neutral.100` |
+| `surface.pressed` | :sample{kind="tone" value="#F2DCCF" ink="#1F1411"} light · `neutral.200` | :sample{kind="tone" value="#4D3A33" ink="#FFFFFF"} dark · `neutral.200` |
+| `surface.selected` | :sample{kind="tone" value="#FFEAF0" ink="#1F1411"} light · `pink.light.100` | :sample{kind="tone" value="#451731" ink="#FFFFFF"} dark · `pink.dark.100` |
+| `surface.inverse` | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark · `neutral.900` | :sample{kind="tone" value="#FFF8F3" ink="#1F1411"} light · `neutral.900` |
+| `action.primary` | :sample{kind="tone" value="#D61F7A" ink="#FFFFFF"} dark · `pink.light.600` | :sample{kind="tone" value="#F59ACA" ink="#1F1411"} light · `pink.dark.600` · waits for OD-225 |
+| `action.primary.hover` | :sample{kind="tone" value="#A6025B" ink="#FFFFFF"} dark · `pink.light.700` | :sample{kind="tone" value="#FBB4D8" ink="#1F1411"} light · `pink.dark.700` |
+| `action.danger` | :sample{kind="tone" value="#C42B2B" ink="#FFFFFF"} dark · `red.light.600` | :sample{kind="tone" value="#F28B8B" ink="#1F1411"} light · `red.dark.600` |
+| `action.danger.hover` | :sample{kind="tone" value="#981519" ink="#FFFFFF"} dark · `red.light.700` | :sample{kind="tone" value="#FAA9A8" ink="#1F1411"} light · `red.dark.700` |
+| `action.secondary` | :sample{kind="tone" value="#FFFFFF" ink="#1F1411"} light · `neutral.0` | :sample{kind="tone" value="#1F1411" ink="#FFFFFF"} dark · `neutral.50` |
+| `action.secondary.hover` | :sample{kind="tone" value="#FCEFE6" ink="#1F1411"} light · `neutral.100` | :sample{kind="tone" value="#33241F" ink="#FFFFFF"} dark · `neutral.100` |
+| `status.info.subtle` | :sample{kind="tone" value="#D3E4FF" ink="#1F1411"} light · `blue.light.100` | :sample{kind="tone" value="#13284B" ink="#FFFFFF"} dark · `blue.dark.100` |
+| `status.warning.subtle` | :sample{kind="tone" value="#FEE8CF" ink="#1F1411"} light · `amber.light.100` | :sample{kind="tone" value="#3B2701" ink="#FFFFFF"} dark · `amber.dark.100` |
+| `status.danger.subtle` | :sample{kind="tone" value="#FFDBD8" ink="#1F1411"} light · `red.light.100` | :sample{kind="tone" value="#481316" ink="#FFFFFF"} dark · `red.dark.100` |
+| `status.success.subtle` | :sample{kind="tone" value="#DBF7DF" ink="#1F1411"} light · `green.light.100` | :sample{kind="tone" value="#013118" ink="#FFFFFF"} dark · `green.dark.100` |

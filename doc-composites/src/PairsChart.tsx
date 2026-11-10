@@ -28,16 +28,8 @@ const small = "text-[length:var(--type-caption-font-size)] [font-family:var(--ty
 const muted = "text-[color:var(--color-text-muted)]";
 // The page shows token names without their color. prefix.
 const name = (token: string) => token.replace(/^color\./, "");
-// The aliases a token goes through to its primitive, such as neutral.600 → slate.light.600. It wraps
-// at the arrow, so each name stays whole in a narrow tile.
-function Chain({ x, className = "" }: { x: { via?: string; primitive: string }; className?: string }) {
-  return (
-    <span className={`flex flex-wrap gap-x-[var(--space-gap-tight)] ${className}`}>
-      {x.via && <span className="whitespace-nowrap">{name(x.via)} →</span>}
-      <span className="whitespace-nowrap">{name(x.primitive)}</span>
-    </span>
-  );
-}
+// A gray names its neutral step, such as neutral.600; any other color names its primitive.
+const source = (x: { via?: string; primitive: string }) => name(x.via ?? x.primitive);
 
 function FillTile({ f, floor }: { f: Fill; floor: number }) {
   return (
@@ -47,14 +39,14 @@ function FillTile({ f, floor }: { f: Fill; floor: number }) {
     >
       <p className="flex flex-col whitespace-nowrap font-semibold">
         {name(f.fill)}
-        <Chain x={f} className={small} />
+        <span className={small}>{source(f)}</span>
       </p>
       {f.pairs.map((p) => (
         <div key={p.text} className="flex items-center gap-[var(--space-gap-tight)]" style={{ color: p.hex }}>
           <b className="text-[length:var(--type-title-font-size)]">Aa</b>
           <span className={`flex min-w-0 flex-1 flex-col ${small}`}>
             <span className="truncate">{name(p.text)}</span>
-            <Chain x={p} />
+            <span>{source(p)}</span>
           </span>
           <span className={`shrink-0 whitespace-nowrap rounded-full border border-current px-[var(--space-gap-tight)] ${small}`}>
             {p.contrast.toFixed(1)}:1
