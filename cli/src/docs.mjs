@@ -412,7 +412,7 @@ function spacingMap(scheme, g) {
     chain: aliasChain,
     hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
   });
-  const val = (r) => `\`${r.primitive}\`: ${r.px}px`;
+  const val = (r) => `${r.primitive}: ${r.px}px`;
   return (
     `\n\n## The component spacing map\n\n` +
     `Inside a component, spacing is a step of this map. Each step is 4px × its multiplier × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. In ${scheme.name} the rhythm is ${sg.rhythm}. ${esc(sg.why)}\n\n` +
@@ -421,7 +421,7 @@ function spacingMap(scheme, g) {
     sg.steps
       .map(
         (x) =>
-          `| ${x.step}${x.fixed ? " (holds still)" : ""} | ${x.multiplier ? `×${x.multiplier}` : "fixed"} | \`*-map-${x.step}\` | \`${x.token}\` ${val(x)} |`,
+          `| ${x.step}${x.fixed ? " (holds still)" : ""} | ${x.multiplier ? `×${x.multiplier}` : "fixed"} | \`*-map-${x.step}\` | ${x.token} ${val(x)} |`,
       )
       .join("\n") +
     `\n\nBetween things and on the page, use a role instead: ` +
