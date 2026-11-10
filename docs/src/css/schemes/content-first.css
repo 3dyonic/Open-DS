@@ -51,6 +51,7 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #FFFFFF;
   --color-neutral-50: #FFFDF8;
   --color-neutral-100: #F6F2EA;
@@ -1864,6 +1865,7 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #14110D;
   --color-neutral-50: #1F1B16;
   --color-neutral-100: #2E2A24;

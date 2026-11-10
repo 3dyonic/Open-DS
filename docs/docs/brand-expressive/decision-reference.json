@@ -1987,7 +1987,7 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Iconography · What icon style? → Two-tone",
+        "text": "Iconography · What icon style and stroke? → Contained",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -3021,8 +3021,8 @@
    }
   },
   "iconography-definition": {
-   "answer": "Two-tone",
-   "why": "Two-tone icons carry the brand color.",
+   "answer": "Contained",
+   "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth.",
    "because": [
     "Color · How saturated is the palette? → Vivid"
    ],

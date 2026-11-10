@@ -63,9 +63,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Icons match the text.
 
-- **Answer** Iconography · What icon style? → Outline
+- **Answer** Iconography · What icon style and stroke? → Outline
 
-  One outline set for every brand.
+  One outline set for every brand, at a 1.5px stroke.
 
 - **Rule** For an icon with no label, use Not used: always add a word; a popover explains a fee. Don't use an icon button with a hover hint.
 

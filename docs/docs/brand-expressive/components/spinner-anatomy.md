@@ -63,9 +63,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Larger icons hold their own next to big type.
 
-- **Answer** Iconography · What icon style? → Two-tone
+- **Answer** Iconography · What icon style and stroke? → Contained
 
-  Two-tone icons carry the brand color.
+  Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth.
 
 - **Rule** For an icon with no label, use Not used: always add a word. Don't use an icon button with a hover hint.
 

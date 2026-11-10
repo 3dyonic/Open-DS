@@ -184,6 +184,7 @@ const primitiveType = (path) =>
     shadow: "shadow",
     duration: "duration",
     opacity: "number",
+    "stroke-width": "number",
   })[path.split(".")[0]] ??
   (path.startsWith("font.family")
     ? "fontFamily"
@@ -204,7 +205,7 @@ const PRIMITIVE_PAGES = [
   {
     id: "shape",
     title: "Shape",
-    match: (p) => /^(radius|border-width)\./.test(p),
+    match: (p) => /^(radius|border-width|stroke-width)\./.test(p),
   },
   { id: "type", title: "Type", match: (p) => p.startsWith("font.") },
   {

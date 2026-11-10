@@ -1427,8 +1427,8 @@
     },
     {
       "question": "iconography.definition",
-      "option": "duotone",
-      "why": "Two-tone icons carry the brand color.",
+      "option": "contained",
+      "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth.",
       "because": [
         "color.values"
       ]
@@ -2931,6 +2931,14 @@
           },
           "$description": "Raw shadow for overlay in dark mode."
         }
+      },
+      "stroke-width": {
+        "175": {
+          "$type": "number",
+          "$value": 1.75,
+          "$description": "An icon stroke width option, on Lucide's 24px grid."
+        },
+        "$description": "Icon stroke width options."
       }
     },
     "brands": {
@@ -5798,6 +5806,13 @@
               "multiplier": 12
             }
           }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.175}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid."
         }
       }
     },

@@ -8,7 +8,7 @@ description: "Shape primitives in Accessible first."
 
 # Shape
 
-6 primitives, 6 used.
+7 primitives, 7 used.
 
 ## `radius`
 
@@ -17,3 +17,7 @@ description: "Shape primitives in Accessible first."
 ## `border-width`
 
 ::primitive-table{id="border-width"}
+
+## `stroke-width`
+
+::primitive-table{id="stroke-width"}

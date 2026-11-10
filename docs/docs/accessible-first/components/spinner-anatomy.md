@@ -63,9 +63,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Larger icons are easier to see.
 
-- **Answer** Iconography · What icon style? → Filled
+- **Answer** Iconography · What icon style and stroke? → Bold stroke
 
-  Filled icons stay visible at low vision.
+  A bold 2px stroke keeps every icon easy to see, for low vision and small screens.
 
 - **Rule** For an icon with no label, use Not used: always add a word. Don't use an icon button.
 

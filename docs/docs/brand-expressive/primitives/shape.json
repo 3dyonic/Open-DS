@@ -99,6 +99,20 @@
      ]
     }
    ]
+  },
+  "stroke-width": {
+   "rows": [
+    {
+     "primitive": "stroke-width.175",
+     "value": "1.75",
+     "usedBy": [
+      {
+       "token": "icon.stroke-width",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
   }
  }
 }

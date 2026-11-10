@@ -63,9 +63,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Icons match the text size.
 
-- **Answer** Iconography · What icon style? → Outline
+- **Answer** Iconography · What icon style and stroke? → Outline
 
-  Outline icons stay quiet beside text.
+  Outline icons stay quiet beside text, at a 1.5px stroke.
 
 - **Rule** For an icon with no label, use Not used: always add a word. Don't use an icon button.
 

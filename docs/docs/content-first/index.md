@@ -9,7 +9,7 @@ hide_title: true
 hide_table_of_contents: true
 ---
 
-:::hero{robot="content-first" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="36 components|175 primitives|2 themes"}
+:::hero{robot="content-first" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="36 components|176 primitives|2 themes"}
 # Content first
 
 Large, calm type and generous space, for people who come to read.

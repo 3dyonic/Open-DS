@@ -18,7 +18,7 @@ When icons appear and how they look.
 | --- | --- | --- |
 | What do icons do? | Those and decoration | Icons also decorate campaign pages. |
 | How many icon sizes exist? | Two | One size next to text, one for decoration. |
-| What icon style? | Two-tone | Two-tone icons carry the brand color. |
+| What icon style and stroke? | Contained | Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth. |
 | How big are icons next to text? | Larger than the text | Larger icons hold their own next to big type. |
 | Where do icons work hardest? | Buttons and calls to action | Icons sit in calls to action. |
 
@@ -29,6 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.20` |
+| `icon.stroke-width` | `stroke-width.175` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

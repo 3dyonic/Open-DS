@@ -1665,7 +1665,7 @@
       "kind": "scope",
       "title": "Iconography",
       "description": "When icons appear and how they look.",
-      "owns": ["size.icon"],
+      "owns": ["size.icon", "icon.stroke-width"],
       "lands_in": [
         "accordion",
         "alert",
@@ -1739,20 +1739,20 @@
         {
           "id": "iconography.definition",
           "method": "definition",
-          "text": "What icon style?",
-          "description": "Stroke or fill.",
+          "text": "What icon style and stroke?",
+          "description": "Open DS draws every icon with one open-source set, Lucide, which draws in lines. The style sets how heavy the line is, or whether the icon sits in a contained shape; the answer names the stroke width.",
           "options": [
             {
               "id": "outline",
               "label": "Outline"
             },
             {
-              "id": "filled",
-              "label": "Filled"
+              "id": "bold",
+              "label": "Bold stroke"
             },
             {
-              "id": "duotone",
-              "label": "Two-tone"
+              "id": "contained",
+              "label": "Contained"
             }
           ]
         },

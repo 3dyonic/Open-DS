@@ -8,7 +8,7 @@ description: "Shape primitives in Multi-brand."
 
 # Shape
 
-9 primitives, 9 used.
+10 primitives, 10 used.
 
 ## `radius`
 
@@ -17,3 +17,7 @@ description: "Shape primitives in Multi-brand."
 ## `border-width`
 
 ::primitive-table{id="border-width"}
+
+## `stroke-width`
+
+::primitive-table{id="stroke-width"}

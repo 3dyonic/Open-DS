@@ -18,7 +18,7 @@ When icons appear and how they look.
 | --- | --- | --- |
 | What do icons do? | Actions, status and navigation | Occasional readers need icons for save, share and navigation. |
 | How many icon sizes exist? | One | One size next to text. |
-| What icon style? | Outline | Outline icons stay quiet beside text. |
+| What icon style and stroke? | Outline | Outline icons stay quiet beside text, at a 1.5px stroke. |
 | How big are icons next to text? | Match the text | Icons match the text size. |
 | Where do icons work hardest? | Navigation | Icons help most in navigation. |
 
@@ -29,6 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+| `icon.stroke-width` | `stroke-width.150` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

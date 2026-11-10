@@ -117,14 +117,14 @@
   },
   "empty/iconography.definition": {
    "anchor": "why-iconography-definition",
-   "question": "What icon style?",
+   "question": "What icon style and stroke?",
    "key": "iconography.definition",
    "steps": [
     {
      "kind": "answer",
      "title": "The answer",
      "answer": "Outline",
-     "why": "Outline icons stay quiet beside text."
+     "why": "Outline icons stay quiet beside text, at a 1.5px stroke."
     },
     {
      "kind": "decided",

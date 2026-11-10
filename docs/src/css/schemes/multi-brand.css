@@ -55,6 +55,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #FFFFFF;
   --color-neutral-50: #F8FAFC;
   --color-neutral-100: #F1F5F9;
@@ -1874,6 +1875,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #020617;
   --color-neutral-50: #0F172A;
   --color-neutral-100: #1E293B;
@@ -3689,6 +3691,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #FFFFFF;
   --color-neutral-50: #F8FAFC;
   --color-neutral-100: #F1F5F9;
@@ -5506,6 +5509,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #020617;
   --color-neutral-50: #0F172A;
   --color-neutral-100: #1E293B;
@@ -7321,6 +7325,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #FFFFFF;
   --color-neutral-50: #F8FAFC;
   --color-neutral-100: #F1F5F9;
@@ -9138,6 +9143,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --color-neutral-0: #020617;
   --color-neutral-50: #0F172A;
   --color-neutral-100: #1E293B;

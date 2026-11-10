@@ -68,7 +68,7 @@ A filled icon in a tile, beside words that say what will appear here and how to 
 
 **Because**
 
-- [What icon style? **Filled**](#why-iconography-definition) · `iconography.definition`
+- [What icon style and stroke? **Bold stroke**](#why-iconography-definition) · `iconography.definition`
 - [How does it sound? **Plain and direct**](#why-voice-values) · `voice.values`
 :::
 

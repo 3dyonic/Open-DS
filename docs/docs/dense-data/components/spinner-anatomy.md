@@ -63,9 +63,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Icons match the label so they do not outweigh it.
 
-- **Answer** Iconography · What icon style? → Outline
+- **Answer** Iconography · What icon style and stroke? → Outline
 
-  Outline icons stay light next to dense text.
+  Outline icons at a 1.5px stroke stay light next to dense text.
 
 - **Rule** For an icon with no label, use Icon button with a tooltip. Don't use a bare icon.
 

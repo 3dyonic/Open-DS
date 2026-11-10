@@ -18,7 +18,7 @@ When icons appear and how they look.
 | --- | --- | --- |
 | What do icons do? | Actions and status | Icons support words; they never replace them. |
 | How many icon sizes exist? | One | One size, larger than the text. |
-| What icon style? | Filled | Filled icons stay visible at low vision. |
+| What icon style and stroke? | Bold stroke | A bold 2px stroke keeps every icon easy to see, for low vision and small screens. |
 | How big are icons next to text? | Larger than the text | Larger icons are easier to see. |
 | Where do icons work hardest? | Status and messages | Icons work hardest beside status words and errors. |
 
@@ -29,6 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.20` |
+| `icon.stroke-width` | `stroke-width.200` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

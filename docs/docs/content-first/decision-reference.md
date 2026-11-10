@@ -271,7 +271,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 
 ::decision-answer{id="iconography-count"}
 
-#### What icon style? {#iconography-definition}
+#### What icon style and stroke? {#iconography-definition}
 
 ::decision-answer{id="iconography-definition"}
 

@@ -18,7 +18,7 @@ When icons appear and how they look.
 | --- | --- | --- |
 | What do icons do? | Actions and status | Icons mark row actions and status. |
 | How many icon sizes exist? | One | One size, matched to the small text. |
-| What icon style? | Outline | Outline icons stay light next to dense text. |
+| What icon style and stroke? | Outline | Outline icons at a 1.5px stroke stay light next to dense text. |
 | How big are icons next to text? | Match the text | Icons match the label so they do not outweigh it. |
 | Where do icons work hardest? | Toolbars and rows | Icons work hardest in toolbars and row actions. |
 
@@ -29,6 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+| `icon.stroke-width` | `stroke-width.150` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

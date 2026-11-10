@@ -69,7 +69,7 @@ An outline icon in a small tile beside the reason and the action.
 **Because**
 
 - [What do icons do? **Actions and status**](#why-iconography-roles) · `iconography.roles`
-- [What icon style? **Outline**](#why-iconography-definition) · `iconography.definition`
+- [What icon style and stroke? **Outline**](#why-iconography-definition) · `iconography.definition`
 :::
 
 ::card-grid{id="anatomy-link/empty"}

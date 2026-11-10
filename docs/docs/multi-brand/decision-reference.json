@@ -360,7 +360,7 @@
         }
        },
        {
-        "text": "Iconography · What icon style? → Outline",
+        "text": "Iconography · What icon style and stroke? → Outline",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -2929,7 +2929,7 @@
   },
   "iconography-definition": {
    "answer": "Outline",
-   "why": "One outline set for every brand.",
+   "why": "One outline set for every brand, at a 1.5px stroke.",
    "because": [
     "How many brands or products share the system? → Many"
    ],

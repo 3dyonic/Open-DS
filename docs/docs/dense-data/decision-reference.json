@@ -655,7 +655,7 @@
         }
        },
        {
-        "text": "Iconography · What icon style? → Outline",
+        "text": "Iconography · What icon style and stroke? → Outline",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -3220,7 +3220,7 @@
   },
   "iconography-definition": {
    "answer": "Outline",
-   "why": "Outline icons stay light next to dense text.",
+   "why": "Outline icons at a 1.5px stroke stay light next to dense text.",
    "because": [
     "How much is on one screen? → A lot"
    ],

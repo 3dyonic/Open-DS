@@ -47,7 +47,7 @@ A currency sign or a search icon before the text, from the outline set every bra
 
 **Because**
 
-- [What icon style? **Outline**](#why-iconography-definition) · `iconography.definition`
+- [What icon style and stroke? **Outline**](#why-iconography-definition) · `iconography.definition`
 - [What is the main content? **Forms and tasks**](#why-content-q1) · `content.q1`
 :::
 
