@@ -7,6 +7,7 @@
 @source "../../../ui/src/components/{badge,button,card,empty,input,item,progress,separator,table,tabs}.tsx";
 @source "../components";
 @source "../../../doc-composites/src";
+@import "../../../ui/src/icons.css";
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* Tailwind's own palette shares names with the scheme's tokens (--color-neutral-100 …) and would
