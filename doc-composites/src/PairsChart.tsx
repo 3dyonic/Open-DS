@@ -6,6 +6,7 @@
  * the page holds one line: ::pairs-chart{id="aster"}
  */
 import * as React from "react";
+import Frame from "./base/Frame";
 import { Badge } from "@open-ds/ui/components/badge";
 import {
   Tabs,
@@ -97,10 +98,8 @@ export default function PairsChart({
           </TabsList>
           {data.modes.map((m) => (
             <TabsContent key={m.mode} value={m.mode}>
-                <div
-                  className="flex flex-col gap-[var(--space-gap-group)] rounded-[var(--radius-container)] border p-[var(--space-inset-container)]"
-                  style={{ background: m.page.canvas, color: m.page.text, borderColor: m.page.edge }}
-                >
+                <Frame variant="plain" style={{ background: m.page.canvas, color: m.page.text, borderColor: m.page.edge }}>
+                <div className="flex flex-col gap-[var(--space-gap-group)]">
                   {m.groups.map((g) => (
                     <section
                       key={g.title}
@@ -123,6 +122,7 @@ export default function PairsChart({
                     </section>
                   ))}
                 </div>
+                </Frame>
             </TabsContent>
           ))}
       </Tabs>

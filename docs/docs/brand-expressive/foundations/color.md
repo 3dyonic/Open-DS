@@ -40,77 +40,146 @@ Each status label always gets the same color, with its dot, so color is never th
 
 Each token points to another token. Values live only on primitives, below.
 
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `color.neutral.0` | `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
-| `color.neutral.50` | `brand-expressive.theme.light.color.neutral.50` → `color.taupe.light.50` | `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
-| `color.neutral.100` | `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
-| `color.neutral.200` | `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
-| `color.neutral.300` | `brand-expressive.theme.light.color.neutral.300` → `color.taupe.light.300` | `brand-expressive.theme.dark.color.neutral.300` → `color.taupe.dark.300` |
-| `color.neutral.400` | `brand-expressive.theme.light.color.neutral.400` → `color.taupe.light.400` | `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
-| `color.neutral.500` | `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
-| `color.neutral.600` | `brand-expressive.theme.light.color.neutral.600` → `color.taupe.light.600` | `brand-expressive.theme.dark.color.neutral.600` → `color.taupe.dark.600` |
-| `color.neutral.700` | `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` | `brand-expressive.theme.dark.color.neutral.700` → `color.taupe.dark.700` |
-| `color.neutral.800` | `brand-expressive.theme.light.color.neutral.800` → `color.taupe.light.800` | `brand-expressive.theme.dark.color.neutral.800` → `color.taupe.dark.800` |
-| `color.neutral.900` | `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
-| `color.neutral.950` | `brand-expressive.theme.light.color.neutral.950` → `color.taupe.light.950` | `brand-expressive.theme.dark.color.neutral.950` → `color.taupe.dark.950` |
-| `color.surface.canvas` | `brand-expressive.theme.light.color.surface.canvas` → `color.neutral.50` → `brand-expressive.theme.light.color.neutral.50` → `color.taupe.light.50` | `brand-expressive.theme.dark.color.surface.canvas` → `color.neutral.0` → `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
-| `color.surface.default` | `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.surface.default` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
-| `color.surface.raised` | `brand-expressive.theme.light.color.surface.raised` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.surface.raised` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
-| `color.surface.sunken` | `brand-expressive.theme.light.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
-| `color.surface.highlight` | `brand-expressive.theme.light.color.surface.highlight` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.surface.highlight` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
-| `color.surface.pressed` | `brand-expressive.theme.light.color.surface.pressed` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.surface.pressed` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
-| `color.surface.selected` | `brand-expressive.theme.light.color.surface.selected` → `color.pink.light.100` | `brand-expressive.theme.dark.color.surface.selected` → `color.pink.dark.100` |
-| `color.surface.inverse` | `brand-expressive.theme.light.color.surface.inverse` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.surface.inverse` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
-| `color.surface.scrim` | `brand-expressive.theme.light.color.surface.scrim` → `color.black.light.scrim` | `brand-expressive.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `brand-expressive.theme.light.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
-| `color.text.secondary` | `brand-expressive.theme.light.color.text.secondary` → `color.neutral.700` → `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` | `brand-expressive.theme.dark.color.text.secondary` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
-| `color.text.muted` | `brand-expressive.theme.light.color.text.muted` → `color.neutral.600` → `brand-expressive.theme.light.color.neutral.600` → `color.taupe.light.600` | `brand-expressive.theme.dark.color.text.muted` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
-| `color.text.inverse` | `brand-expressive.theme.light.color.text.inverse` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.inverse` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
-| `color.text.on-action` | `brand-expressive.theme.light.color.text.on-action` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.on-action` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
-| `color.text.link` | `brand-expressive.theme.light.color.text.link` → `color.pink.light.700` | `brand-expressive.theme.dark.color.text.link` → `color.pink.dark.700` |
-| `color.text.on-danger` | `brand-expressive.theme.light.color.text.on-danger` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.on-danger` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
-| `color.text.on-light` | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
-| `color.text.on-dark` | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
-| `color.text.info-on-light` | `brand-expressive.theme.base.color.text.info-on-light` → `color.blue.light.800` | `brand-expressive.theme.base.color.text.info-on-light` → `color.blue.light.800` |
-| `color.text.info-on-dark` | `brand-expressive.theme.base.color.text.info-on-dark` → `color.blue.light.100` | `brand-expressive.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
-| `color.text.success-on-light` | `brand-expressive.theme.base.color.text.success-on-light` → `color.green.light.800` | `brand-expressive.theme.base.color.text.success-on-light` → `color.green.light.800` |
-| `color.text.success-on-dark` | `brand-expressive.theme.base.color.text.success-on-dark` → `color.green.light.100` | `brand-expressive.theme.base.color.text.success-on-dark` → `color.green.light.100` |
-| `color.text.warning-on-light` | `brand-expressive.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `brand-expressive.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
-| `color.text.warning-on-dark` | `brand-expressive.theme.base.color.text.warning-on-dark` → `color.amber.light.100` | `brand-expressive.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
-| `color.text.danger-on-light` | `brand-expressive.theme.base.color.text.danger-on-light` → `color.red.light.800` | `brand-expressive.theme.base.color.text.danger-on-light` → `color.red.light.800` |
-| `color.text.danger-on-dark` | `brand-expressive.theme.base.color.text.danger-on-dark` → `color.red.light.100` | `brand-expressive.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
-| `color.border.default` | `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.border.default` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
-| `color.border.strong` | `brand-expressive.theme.light.color.border.strong` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.border.strong` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
-| `color.border.focus` | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
-| `color.border.selected` | `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.600` |
-| `color.action.primary.@` | `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.600` |
-| `color.action.primary.hover` | `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` | `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.700` |
-| `color.action.secondary.@` | `brand-expressive.theme.light.color.action.secondary.@` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.action.secondary.@` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
-| `color.action.secondary.hover` | `brand-expressive.theme.light.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
-| `color.action.danger.@` | `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.600` | `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.600` |
-| `color.action.danger.hover` | `brand-expressive.theme.light.color.action.danger.hover` → `color.red.light.700` | `brand-expressive.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
-| `color.status.info.@` | `brand-expressive.theme.light.color.status.info.@` → `color.blue.light.600` | `brand-expressive.theme.dark.color.status.info.@` → `color.blue.dark.600` |
-| `color.status.info.subtle` | `brand-expressive.theme.light.color.status.info.subtle` → `color.blue.light.100` | `brand-expressive.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `color.status.success.@` | `brand-expressive.theme.light.color.status.success.@` → `color.green.light.600` | `brand-expressive.theme.dark.color.status.success.@` → `color.green.dark.600` |
-| `color.status.success.subtle` | `brand-expressive.theme.light.color.status.success.subtle` → `color.green.light.100` | `brand-expressive.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `color.status.warning.@` | `brand-expressive.theme.light.color.status.warning.@` → `color.amber.light.600` | `brand-expressive.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
-| `color.status.warning.subtle` | `brand-expressive.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `brand-expressive.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `color.status.danger.@` | `brand-expressive.theme.light.color.status.danger.@` → `color.red.light.600` | `brand-expressive.theme.dark.color.status.danger.@` → `color.red.dark.600` |
-| `color.status.danger.subtle` | `brand-expressive.theme.light.color.status.danger.subtle` → `color.red.light.100` | `brand-expressive.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `color.category.1.@` | `brand-expressive.theme.light.color.category.1.@` → `color.pink.light.600` | `brand-expressive.theme.dark.color.category.1.@` → `color.pink.dark.600` |
-| `color.category.1.subtle` | `brand-expressive.theme.light.color.category.1.subtle` → `color.pink.light.100` | `brand-expressive.theme.dark.color.category.1.subtle` → `color.pink.dark.100` |
-| `color.category.2.@` | `brand-expressive.theme.light.color.category.2.@` → `color.blue.light.600` | `brand-expressive.theme.dark.color.category.2.@` → `color.blue.dark.600` |
-| `color.category.2.subtle` | `brand-expressive.theme.light.color.category.2.subtle` → `color.blue.light.100` | `brand-expressive.theme.dark.color.category.2.subtle` → `color.blue.dark.100` |
-| `color.category.3.@` | `brand-expressive.theme.light.color.category.3.@` → `color.green.light.600` | `brand-expressive.theme.dark.color.category.3.@` → `color.green.dark.600` |
-| `color.category.3.subtle` | `brand-expressive.theme.light.color.category.3.subtle` → `color.green.light.100` | `brand-expressive.theme.dark.color.category.3.subtle` → `color.green.dark.100` |
-| `color.category.4.@` | `brand-expressive.theme.light.color.category.4.@` → `color.amber.light.600` | `brand-expressive.theme.dark.color.category.4.@` → `color.amber.dark.600` |
-| `color.category.4.subtle` | `brand-expressive.theme.light.color.category.4.subtle` → `color.amber.light.100` | `brand-expressive.theme.dark.color.category.4.subtle` → `color.amber.dark.100` |
-| `color.category.5.@` | `brand-expressive.theme.light.color.category.5.@` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.category.5.@` → `color.neutral.700` → `brand-expressive.theme.dark.color.neutral.700` → `color.taupe.dark.700` |
-| `color.category.5.subtle` | `brand-expressive.theme.light.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
-| `color.disabled.text` | `brand-expressive.theme.light.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
-| `color.disabled.surface` | `brand-expressive.theme.light.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
-| `color.disabled.border` | `brand-expressive.theme.light.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
+| `color.neutral.0` | light | `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
+| `color.neutral.50` | light | `brand-expressive.theme.light.color.neutral.50` → `color.taupe.light.50` |
+| | dark | `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `color.neutral.100` | light | `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
+| | dark | `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.neutral.200` | light | `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` |
+| | dark | `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
+| `color.neutral.300` | light | `brand-expressive.theme.light.color.neutral.300` → `color.taupe.light.300` |
+| | dark | `brand-expressive.theme.dark.color.neutral.300` → `color.taupe.dark.300` |
+| `color.neutral.400` | light | `brand-expressive.theme.light.color.neutral.400` → `color.taupe.light.400` |
+| | dark | `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
+| `color.neutral.500` | light | `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` |
+| | dark | `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
+| `color.neutral.600` | light | `brand-expressive.theme.light.color.neutral.600` → `color.taupe.light.600` |
+| | dark | `brand-expressive.theme.dark.color.neutral.600` → `color.taupe.dark.600` |
+| `color.neutral.700` | light | `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` |
+| | dark | `brand-expressive.theme.dark.color.neutral.700` → `color.taupe.dark.700` |
+| `color.neutral.800` | light | `brand-expressive.theme.light.color.neutral.800` → `color.taupe.light.800` |
+| | dark | `brand-expressive.theme.dark.color.neutral.800` → `color.taupe.dark.800` |
+| `color.neutral.900` | light | `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` |
+| | dark | `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
+| `color.neutral.950` | light | `brand-expressive.theme.light.color.neutral.950` → `color.taupe.light.950` |
+| | dark | `brand-expressive.theme.dark.color.neutral.950` → `color.taupe.dark.950` |
+| `color.surface.canvas` | light | `brand-expressive.theme.light.color.surface.canvas` → `color.neutral.50` → `brand-expressive.theme.light.color.neutral.50` → `color.taupe.light.50` |
+| | dark | `brand-expressive.theme.dark.color.surface.canvas` → `color.neutral.0` → `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
+| `color.surface.default` | light | `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.surface.default` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `color.surface.raised` | light | `brand-expressive.theme.light.color.surface.raised` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.surface.raised` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `color.surface.sunken` | light | `brand-expressive.theme.light.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
+| | dark | `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.surface.highlight` | light | `brand-expressive.theme.light.color.surface.highlight` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
+| | dark | `brand-expressive.theme.dark.color.surface.highlight` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.surface.pressed` | light | `brand-expressive.theme.light.color.surface.pressed` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` |
+| | dark | `brand-expressive.theme.dark.color.surface.pressed` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
+| `color.surface.selected` | light | `brand-expressive.theme.light.color.surface.selected` → `color.pink.light.100` |
+| | dark | `brand-expressive.theme.dark.color.surface.selected` → `color.pink.dark.100` |
+| `color.surface.inverse` | light | `brand-expressive.theme.light.color.surface.inverse` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` |
+| | dark | `brand-expressive.theme.dark.color.surface.inverse` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
+| `color.surface.scrim` | light | `brand-expressive.theme.light.color.surface.scrim` → `color.black.light.scrim` |
+| | dark | `brand-expressive.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | light | `brand-expressive.theme.light.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` |
+| | dark | `brand-expressive.theme.dark.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
+| `color.text.secondary` | light | `brand-expressive.theme.light.color.text.secondary` → `color.neutral.700` → `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` |
+| | dark | `brand-expressive.theme.dark.color.text.secondary` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
+| `color.text.muted` | light | `brand-expressive.theme.light.color.text.muted` → `color.neutral.600` → `brand-expressive.theme.light.color.neutral.600` → `color.taupe.light.600` |
+| | dark | `brand-expressive.theme.dark.color.text.muted` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
+| `color.text.inverse` | light | `brand-expressive.theme.light.color.text.inverse` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.text.inverse` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
+| `color.text.on-action` | light | `brand-expressive.theme.light.color.text.on-action` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.text.on-action` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
+| `color.text.link` | light | `brand-expressive.theme.light.color.text.link` → `color.pink.light.700` |
+| | dark | `brand-expressive.theme.dark.color.text.link` → `color.pink.dark.700` |
+| `color.text.on-danger` | light | `brand-expressive.theme.light.color.text.on-danger` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.text.on-danger` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
+| `color.text.on-light` | light | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
+| | dark | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
+| `color.text.on-dark` | light | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
+| `color.text.info-on-light` | light | `brand-expressive.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| | dark | `brand-expressive.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| `color.text.info-on-dark` | light | `brand-expressive.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| | dark | `brand-expressive.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| `color.text.success-on-light` | light | `brand-expressive.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| | dark | `brand-expressive.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| `color.text.success-on-dark` | light | `brand-expressive.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| | dark | `brand-expressive.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| `color.text.warning-on-light` | light | `brand-expressive.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| | dark | `brand-expressive.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| `color.text.warning-on-dark` | light | `brand-expressive.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| | dark | `brand-expressive.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| `color.text.danger-on-light` | light | `brand-expressive.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| | dark | `brand-expressive.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| `color.text.danger-on-dark` | light | `brand-expressive.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| | dark | `brand-expressive.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| `color.border.default` | light | `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` |
+| | dark | `brand-expressive.theme.dark.color.border.default` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
+| `color.border.strong` | light | `brand-expressive.theme.light.color.border.strong` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` |
+| | dark | `brand-expressive.theme.dark.color.border.strong` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
+| `color.border.focus` | light | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` |
+| | dark | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
+| `color.border.selected` | light | `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` |
+| | dark | `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.600` |
+| `color.action.primary.@` | light | `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` |
+| | dark | `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.600` |
+| `color.action.primary.hover` | light | `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` |
+| | dark | `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.700` |
+| `color.action.secondary.@` | light | `brand-expressive.theme.light.color.action.secondary.@` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.action.secondary.@` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `color.action.secondary.hover` | light | `brand-expressive.theme.light.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
+| | dark | `brand-expressive.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.action.danger.@` | light | `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.600` |
+| | dark | `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.600` |
+| `color.action.danger.hover` | light | `brand-expressive.theme.light.color.action.danger.hover` → `color.red.light.700` |
+| | dark | `brand-expressive.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
+| `color.status.info.@` | light | `brand-expressive.theme.light.color.status.info.@` → `color.blue.light.600` |
+| | dark | `brand-expressive.theme.dark.color.status.info.@` → `color.blue.dark.600` |
+| `color.status.info.subtle` | light | `brand-expressive.theme.light.color.status.info.subtle` → `color.blue.light.100` |
+| | dark | `brand-expressive.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `color.status.success.@` | light | `brand-expressive.theme.light.color.status.success.@` → `color.green.light.600` |
+| | dark | `brand-expressive.theme.dark.color.status.success.@` → `color.green.dark.600` |
+| `color.status.success.subtle` | light | `brand-expressive.theme.light.color.status.success.subtle` → `color.green.light.100` |
+| | dark | `brand-expressive.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `color.status.warning.@` | light | `brand-expressive.theme.light.color.status.warning.@` → `color.amber.light.600` |
+| | dark | `brand-expressive.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
+| `color.status.warning.subtle` | light | `brand-expressive.theme.light.color.status.warning.subtle` → `color.amber.light.100` |
+| | dark | `brand-expressive.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `color.status.danger.@` | light | `brand-expressive.theme.light.color.status.danger.@` → `color.red.light.600` |
+| | dark | `brand-expressive.theme.dark.color.status.danger.@` → `color.red.dark.600` |
+| `color.status.danger.subtle` | light | `brand-expressive.theme.light.color.status.danger.subtle` → `color.red.light.100` |
+| | dark | `brand-expressive.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `color.category.1.@` | light | `brand-expressive.theme.light.color.category.1.@` → `color.pink.light.600` |
+| | dark | `brand-expressive.theme.dark.color.category.1.@` → `color.pink.dark.600` |
+| `color.category.1.subtle` | light | `brand-expressive.theme.light.color.category.1.subtle` → `color.pink.light.100` |
+| | dark | `brand-expressive.theme.dark.color.category.1.subtle` → `color.pink.dark.100` |
+| `color.category.2.@` | light | `brand-expressive.theme.light.color.category.2.@` → `color.blue.light.600` |
+| | dark | `brand-expressive.theme.dark.color.category.2.@` → `color.blue.dark.600` |
+| `color.category.2.subtle` | light | `brand-expressive.theme.light.color.category.2.subtle` → `color.blue.light.100` |
+| | dark | `brand-expressive.theme.dark.color.category.2.subtle` → `color.blue.dark.100` |
+| `color.category.3.@` | light | `brand-expressive.theme.light.color.category.3.@` → `color.green.light.600` |
+| | dark | `brand-expressive.theme.dark.color.category.3.@` → `color.green.dark.600` |
+| `color.category.3.subtle` | light | `brand-expressive.theme.light.color.category.3.subtle` → `color.green.light.100` |
+| | dark | `brand-expressive.theme.dark.color.category.3.subtle` → `color.green.dark.100` |
+| `color.category.4.@` | light | `brand-expressive.theme.light.color.category.4.@` → `color.amber.light.600` |
+| | dark | `brand-expressive.theme.dark.color.category.4.@` → `color.amber.dark.600` |
+| `color.category.4.subtle` | light | `brand-expressive.theme.light.color.category.4.subtle` → `color.amber.light.100` |
+| | dark | `brand-expressive.theme.dark.color.category.4.subtle` → `color.amber.dark.100` |
+| `color.category.5.@` | light | `brand-expressive.theme.light.color.category.5.@` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` |
+| | dark | `brand-expressive.theme.dark.color.category.5.@` → `color.neutral.700` → `brand-expressive.theme.dark.color.neutral.700` → `color.taupe.dark.700` |
+| `color.category.5.subtle` | light | `brand-expressive.theme.light.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
+| | dark | `brand-expressive.theme.dark.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.disabled.text` | light | `brand-expressive.theme.light.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` |
+| | dark | `brand-expressive.theme.dark.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
+| `color.disabled.surface` | light | `brand-expressive.theme.light.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
+| | dark | `brand-expressive.theme.dark.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.disabled.border` | light | `brand-expressive.theme.light.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` |
+| | dark | `brand-expressive.theme.dark.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
 
 The raw values these tokens end at are on [Primitives › Color](../primitives/color).
 

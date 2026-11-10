@@ -5,9 +5,10 @@
  *   | `space.16` | 1rem | :sample{kind="bar" value="1rem"} |
  *   - :sample[Your answers are saved]{kind="type" role="body"} `type.body`
  *
- * This is a drawing of a value, so it shows it; its look comes from the docs' sample styles.
+ * This is a drawing of a value, so it shows it; its look comes from its own classes and the scheme's tokens.
  */
 import * as React from "react";
+import Swatch from "./base/Swatch";
 
 export type SampleProps = {
   kind: string;
@@ -28,38 +29,45 @@ type Drawn = {
   title?: string;
 };
 
+// The drawing of each kind of value, in the scheme's tokens. A square for a color, a corner or a lift,
+// a line for a border width, a bar for a length, type for a size, weight or spacing, a moving dot for
+// motion. Its value comes from the data, in the inline style.
+const box = "inline-block size-6 flex-none rounded-[var(--radius-control)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] align-middle";
 const DRAW: Record<string, (v: string, p: SampleProps) => Drawn> = {
-  color: (v) => ({ cls: "ods-swatch", style: { background: v } }),
-  opacity: (v) => ({ cls: "ods-swatch", style: { opacity: v } }),
-  font: (v) => ({ cls: "ods-font", style: { fontFamily: v }, text: "Aa 123" }),
+  opacity: (v) => ({ cls: `${box} bg-[var(--color-text-primary)]`, style: { opacity: v } }),
+  font: (v) => ({ cls: "text-lg", style: { fontFamily: v }, text: "Aa 123" }),
   weight: (v) => ({
-    cls: "ods-typesample",
+    cls: "inline-block leading-none",
     style: { fontWeight: v as React.CSSProperties["fontWeight"] },
     text: "Aa",
   }),
-  size: (v) => ({ cls: "ods-typesample", style: { fontSize: v }, text: "Aa" }),
+  size: (v) => ({ cls: "inline-block font-semibold leading-none", style: { fontSize: v }, text: "Aa" }),
   tracking: (v) => ({
-    cls: "ods-typesample",
+    cls: "inline-block font-semibold leading-none",
     style: { letterSpacing: v },
     text: "Aa Aa",
   }),
-  shadow: (v) => ({ cls: "ods-card", style: { boxShadow: v } }),
-  radius: (v) => ({ cls: "ods-tile", style: { borderRadius: v } }),
-  line: (v) => ({ cls: "ods-line", style: { height: v } }),
-  bar: (v) => ({ cls: "ods-bar", style: { width: v } }),
+  shadow: (v) => ({ cls: `${box} w-10 bg-[var(--color-surface-raised)]`, style: { boxShadow: v } }),
+  radius: (v) => ({ cls: `${box} border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)]`, style: { borderRadius: v } }),
+  line: (v) => ({ cls: "inline-block w-6 bg-[var(--color-text-primary)] align-middle", style: { height: v } }),
+  bar: (v) => ({ cls: "inline-block h-2 min-w-px rounded-[var(--radius-badge)] bg-[var(--color-action-primary)]", style: { width: v } }),
   duration: (v) => ({
-    cls: "ods-motion",
-    style: { ["--ods-d" as string]: v },
+    cls: motion,
+    style: { ["--sample-duration" as string]: v },
     inner: true,
     title: "Hover to play",
   }),
   easing: (v) => ({
-    cls: "ods-motion",
-    style: { ["--ods-e" as string]: v },
+    cls: motion,
+    style: { ["--sample-easing" as string]: v },
     inner: true,
     title: "Hover to play",
   }),
 };
+// A track with a dot that crosses it when its row is pointed at (OD-220).
+const motion = "relative inline-block h-3 w-12 rounded-full bg-[var(--color-surface-sunken)] align-middle";
+const dot =
+  "absolute left-0 top-0 size-3 rounded-full bg-[var(--color-action-primary)] transition-[left] duration-[var(--sample-duration,320ms)] ease-[var(--sample-easing,var(--motion-easing-standard))] motion-reduce:transition-none [tr:hover_&]:left-9 [li:hover_&]:left-9";
 
 export default function Sample({
   kind,
@@ -69,15 +77,25 @@ export default function Sample({
   note,
   children,
 }: SampleProps) {
+  // A line height, as the line box it makes: a band exactly one line tall with an accent edge, and
+  // the height in pixels beside it (OD-221).
   if (kind === "leading")
     return (
       <span
         data-composite="sample"
-        className="ods-leading"
+        className="relative isolate ml-2 mr-14 inline-block whitespace-nowrap text-base font-normal"
         style={{ lineHeight: value }}
-        data-h={note}
       >
+        <span
+          aria-hidden="true"
+          className="absolute -inset-x-1.5 top-0 -z-10 h-[1lh] border-l-3 border-[var(--color-action-primary)] bg-[var(--color-surface-selected)]"
+        />
         Ag Ag Ag
+        {note && (
+          <span className="absolute -right-1.5 top-0 flex h-[1lh] translate-x-full items-center pl-1.5 [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-action-primary)]">
+            {note}
+          </span>
+        )}
       </span>
     );
   // A color with text on it, as the theme tables show a key color.
@@ -106,7 +124,7 @@ export default function Sample({
     return (
       <span
         data-composite="sample"
-        className="ods-typeline"
+        className="truncate"
         style={{
           fontFamily: `var(--type-${role}-font-family)`,
           fontSize: `var(--type-${role}-font-size)`,
@@ -118,6 +136,8 @@ export default function Sample({
         {children}
       </span>
     );
+  // A color is the Swatch base form.
+  if (kind === "color") return <Swatch color={value} />;
   const d = DRAW[kind]?.(value, { kind, value, ink, role, note });
   if (!d) return null;
   return (
@@ -128,7 +148,7 @@ export default function Sample({
       title={d.title}
     >
       {d.text}
-      {d.inner && <span />}
+      {d.inner && <span className={dot} />}
     </span>
   );
 }

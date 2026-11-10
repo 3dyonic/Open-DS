@@ -26,13 +26,18 @@ Floors the system must hold.
 
 Each token points to another token. Values live only on primitives, below.
 
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `size.control.default` | `size.32` | `size.32` |
-| `size.control.compact` | `size.24` | `size.24` |
-| `size.control.large` | `size.32` | `size.32` |
-| `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.600` |
+| `size.control.default` | light | `size.32` |
+| | dark | `size.32` |
+| `size.control.compact` | light | `size.24` |
+| | dark | `size.24` |
+| `size.control.large` | light | `size.32` |
+| | dark | `size.32` |
+| `opacity.disabled` | light | `opacity.40` |
+| | dark | `opacity.40` |
+| `color.border.focus` | light | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` |
+| | dark | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.600` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

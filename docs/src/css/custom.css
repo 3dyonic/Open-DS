@@ -67,10 +67,6 @@ body {
   border-collapse: collapse;
   font-size: var(--table-font-size);
 }
-/* A long token name in a cell breaks where it must, so a table never pushes the page sideways. */
-.markdown table td code {
-  overflow-wrap: anywhere;
-}
 .markdown table thead tr {
   background: var(--table-header-background);
 }

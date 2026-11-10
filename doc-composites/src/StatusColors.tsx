@@ -1,12 +1,13 @@
 /**
  * StatusColors: each status in use, as the product shows it: the scheme's Badge with its dot, the
- * status on its subtle fill with what it means, and the contrast of that pair in each mode. Built from
- * the scheme's Card and Badge (through Label), used through their props only; the fill is a drawing.
+ * status on its subtle fill with what it means, and the contrast of that pair in each mode. Built on
+ * the Frame and Rows base forms, with the scheme's Badge (through Label); the fill is a drawing.
  * The data follows doc-composites/schemas/status-colors.schema.json; the page holds one line:
  * ::status-colors{id="default"}
  */
 import * as React from "react";
-import { Card, CardContent } from "@open-ds/ui/components/card";
+import Frame from "./base/Frame";
+import Rows from "./base/Rows";
 import Label from "./Label";
 
 type Tone = "info" | "success" | "warning" | "danger";
@@ -20,13 +21,12 @@ const FLOOR = 4.5;
 export default function StatusColors({ data }: { data: StatusColorsData }) {
   return (
     <div data-composite="status-colors">
-      <Card>
-        <CardContent>
-          <div className="flex flex-col">
+      <Frame>
+          <Rows>
             {data.statuses.map((s) => (
               <div
                 key={s.label}
-                className="grid items-center gap-[var(--space-gap-default)] border-b border-[var(--color-border-default)] py-[var(--space-gap-group)] last:border-b-0 sm:grid-cols-[auto_1fr_auto]"
+                className="grid items-center gap-[var(--space-gap-default)] sm:grid-cols-[auto_1fr_auto]"
               >
                 <span className="flex w-40">
                   <Label tone={s.tone}>
@@ -52,9 +52,8 @@ export default function StatusColors({ data }: { data: StatusColorsData }) {
                 </span>
               </div>
             ))}
-          </div>
-        </CardContent>
-      </Card>
+          </Rows>
+      </Frame>
     </div>
   );
 }

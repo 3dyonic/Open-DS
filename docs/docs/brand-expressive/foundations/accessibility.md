@@ -26,13 +26,18 @@ Floors the system must hold.
 
 Each token points to another token. Values live only on primitives, below.
 
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `size.control.default` | `size.52` | `size.52` |
-| `size.control.compact` | `size.44` | `size.44` |
-| `size.control.large` | `size.60` | `size.60` |
-| `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
+| `size.control.default` | light | `size.52` |
+| | dark | `size.52` |
+| `size.control.compact` | light | `size.44` |
+| | dark | `size.44` |
+| `size.control.large` | light | `size.60` |
+| | dark | `size.60` |
+| `opacity.disabled` | light | `opacity.40` |
+| | dark | `opacity.40` |
+| `color.border.focus` | light | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` |
+| | dark | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

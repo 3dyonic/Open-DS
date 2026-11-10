@@ -1,11 +1,11 @@
 /**
  * TokenSwatches: the semantic tokens of one foundation, each drawn as its own value with its name.
- * Built from the scheme's Card, used through its props only; Sample draws each value.
+ * Built on the Frame base form; Sample draws each value.
  * The data follows doc-composites/schemas/token-swatches.schema.json; the page holds one line:
  * ::token-swatches{id="color"}
  */
 import * as React from "react";
-import { Card, CardContent } from "@open-ds/ui/components/card";
+import Frame from "./base/Frame";
 import Sample from "./Sample";
 
 export type TokenSwatch = {
@@ -17,23 +17,21 @@ export type TokenSwatch = {
 export type TokenSwatchesData = { tokens: TokenSwatch[] };
 
 export default function TokenSwatches({ data }: { data: TokenSwatchesData }) {
-  // RC1's specimen: three columns of a value drawn and its token's name, compact.
+  // Each value drawn with its token's name; items keep their width and wrap whole, as RC1's did.
   return (
     <div data-composite="token-swatches" className="mb-[var(--space-gap-group)]">
-      <Card>
-        <CardContent>
-          <ul className="m-0 grid list-none gap-x-[var(--space-gap-group)] gap-y-[var(--space-gap-default)] p-0 sm:grid-cols-2 lg:grid-cols-3">
+      <Frame>
+          <ul className="m-0 flex list-none flex-wrap gap-x-[var(--space-gap-section)] gap-y-[var(--space-gap-default)] p-0">
             {data.tokens.map((t) => (
-              <li key={t.token} className="m-0 flex min-w-0 items-center gap-[var(--space-gap-default)]">
+              <li key={t.token} className="m-0 flex min-w-48 items-center gap-[var(--space-gap-default)]">
                 <Sample kind={t.kind} value={t.value} note={t.note} />
-                <span className="break-all [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
+                <span className="[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
                   {t.token}
                 </span>
               </li>
             ))}
           </ul>
-        </CardContent>
-      </Card>
+      </Frame>
     </div>
   );
 }

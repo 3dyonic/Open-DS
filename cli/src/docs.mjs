@@ -1596,17 +1596,18 @@ export function docsPages(
         primitiveOf(D, key(t.path)),
       ]),
     ];
+    // One row per token per mode, so each chain has the whole last column to itself.
     const tokenTable = (F, D) =>
       (darkDiffers(F, D)
-        ? "| Token | Points to, light | Points to, dark |\n| --- | --- | --- |\n"
-        : "| Token | Points to |\n| --- | --- |\n") +
-      semantics
-        .map((t) =>
-          darkDiffers(F, D)
-            ? `| \`${t.path}\` | ${link(F, key(t.path))} | ${link(D, key(t.path))} |`
-            : `| \`${t.path}\` | ${link(F, key(t.path))} |`,
-        )
-        .join("\n");
+        ? `| Token | Mode | Points to |\n| --- | --- | --- |\n` +
+          semantics
+            .flatMap((t) => [
+              `| \`${t.path}\` | ${F.mode} | ${link(F, key(t.path))} |`,
+              `| | ${D.mode} | ${link(D, key(t.path))} |`,
+            ])
+            .join("\n")
+        : "| Token | Points to |\n| --- | --- |\n" +
+          semantics.map((t) => `| \`${t.path}\` | ${link(F, key(t.path))} |`).join("\n"));
     const hasPrims = primsOf(first, dark).filter(Boolean).length > 0;
     const SPECIMEN =
       sc.id === "theming"

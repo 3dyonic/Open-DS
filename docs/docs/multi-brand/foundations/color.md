@@ -71,225 +71,432 @@ Each status label always gets the same color, with its dot, so color is never th
 Each token points to another token. Values live only on primitives, below.
 
 ::::brand{id="aster" name="Aster"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `color.neutral.0` | `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
-| `color.neutral.50` | `aster.theme.light.color.neutral.50` → `color.slate-deep.light.50` | `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.neutral.100` | `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.neutral.200` | `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.neutral.300` | `aster.theme.light.color.neutral.300` → `color.slate-deep.light.300` | `aster.theme.dark.color.neutral.300` → `color.slate-deep.dark.300` |
-| `color.neutral.400` | `aster.theme.light.color.neutral.400` → `color.slate-deep.light.400` | `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.neutral.500` | `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `aster.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.neutral.600` | `aster.theme.light.color.neutral.600` → `color.slate-deep.light.600` | `aster.theme.dark.color.neutral.600` → `color.slate-deep.dark.600` |
-| `color.neutral.700` | `aster.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `aster.theme.dark.color.neutral.700` → `color.slate-deep.dark.700` |
-| `color.neutral.800` | `aster.theme.light.color.neutral.800` → `color.slate-deep.light.800` | `aster.theme.dark.color.neutral.800` → `color.slate-deep.dark.800` |
-| `color.neutral.900` | `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.neutral.950` | `aster.theme.light.color.neutral.950` → `color.slate-deep.light.950` | `aster.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
-| `color.surface.canvas` | `aster.theme.light.color.surface.canvas` → `color.neutral.50` → `aster.theme.light.color.neutral.50` → `color.slate-deep.light.50` | `aster.theme.dark.color.surface.canvas` → `color.neutral.0` → `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
-| `color.surface.default` | `aster.theme.light.color.surface.default` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `aster.theme.dark.color.surface.default` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.surface.raised` | `aster.theme.light.color.surface.raised` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `aster.theme.dark.color.surface.raised` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.surface.sunken` | `aster.theme.light.color.surface.sunken` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `aster.theme.dark.color.surface.sunken` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.surface.highlight` | `aster.theme.light.color.surface.highlight` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `aster.theme.dark.color.surface.highlight` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.surface.pressed` | `aster.theme.light.color.surface.pressed` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `aster.theme.dark.color.surface.pressed` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.surface.selected` | `aster.theme.light.color.surface.selected` → `color.teal.light.100` | `aster.theme.dark.color.surface.selected` → `color.teal.dark.100` |
-| `color.surface.inverse` | `aster.theme.light.color.surface.inverse` → `color.neutral.900` → `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `aster.theme.dark.color.surface.inverse` → `color.neutral.900` → `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.surface.scrim` | `aster.theme.light.color.surface.scrim` → `color.black.light.scrim` | `aster.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `aster.theme.light.color.text.primary` → `color.neutral.900` → `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `aster.theme.dark.color.text.primary` → `color.neutral.900` → `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.text.secondary` | `aster.theme.light.color.text.secondary` → `color.neutral.700` → `aster.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `aster.theme.dark.color.text.secondary` → `color.neutral.500` → `aster.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.text.muted` | `aster.theme.light.color.text.muted` → `color.neutral.600` → `aster.theme.light.color.neutral.600` → `color.slate-deep.light.600` | `aster.theme.dark.color.text.muted` → `color.neutral.400` → `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.text.inverse` | `aster.theme.light.color.text.inverse` → `color.text.on-dark` → `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `aster.theme.dark.color.text.inverse` → `color.text.on-light` → `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-action` | `aster.theme.light.color.text.on-action` → `color.text.on-dark` → `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `aster.theme.dark.color.text.on-action` → `color.text.on-light` → `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.link` | `aster.theme.light.color.text.link` → `color.teal.light.700` | `aster.theme.dark.color.text.link` → `color.teal.dark.700` |
-| `color.text.on-danger` | `aster.theme.light.color.text.on-danger` → `color.text.on-dark` → `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `aster.theme.dark.color.text.on-danger` → `color.text.on-light` → `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-light` | `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` | `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-dark` | `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
-| `color.text.info-on-light` | `aster.theme.base.color.text.info-on-light` → `color.blue.light.800` | `aster.theme.base.color.text.info-on-light` → `color.blue.light.800` |
-| `color.text.info-on-dark` | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.100` | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
-| `color.text.success-on-light` | `aster.theme.base.color.text.success-on-light` → `color.green.light.800` | `aster.theme.base.color.text.success-on-light` → `color.green.light.800` |
-| `color.text.success-on-dark` | `aster.theme.base.color.text.success-on-dark` → `color.green.light.100` | `aster.theme.base.color.text.success-on-dark` → `color.green.light.100` |
-| `color.text.warning-on-light` | `aster.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `aster.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
-| `color.text.warning-on-dark` | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.100` | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
-| `color.text.danger-on-light` | `aster.theme.base.color.text.danger-on-light` → `color.red.light.800` | `aster.theme.base.color.text.danger-on-light` → `color.red.light.800` |
-| `color.text.danger-on-dark` | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.100` | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
-| `color.border.default` | `aster.theme.light.color.border.default` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `aster.theme.dark.color.border.default` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.border.strong` | `aster.theme.light.color.border.strong` → `color.neutral.500` → `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `aster.theme.dark.color.border.strong` → `color.neutral.400` → `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
-| `color.border.selected` | `aster.theme.light.color.border.selected` → `color.teal.light.600` | `aster.theme.dark.color.border.selected` → `color.teal.dark.600` |
-| `color.action.primary.@` | `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `aster.theme.dark.color.action.primary.@` → `color.teal.dark.600` |
-| `color.action.primary.hover` | `aster.theme.light.color.action.primary.hover` → `color.teal.light.700` | `aster.theme.dark.color.action.primary.hover` → `color.teal.dark.700` |
-| `color.action.secondary.@` | `aster.theme.light.color.action.secondary.@` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `aster.theme.dark.color.action.secondary.@` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.action.secondary.hover` | `aster.theme.light.color.action.secondary.hover` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `aster.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.action.danger.@` | `aster.theme.light.color.action.danger.@` → `color.red.light.600` | `aster.theme.dark.color.action.danger.@` → `color.red.dark.600` |
-| `color.action.danger.hover` | `aster.theme.light.color.action.danger.hover` → `color.red.light.700` | `aster.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
-| `color.status.info.@` | `aster.theme.light.color.status.info.@` → `color.blue.light.600` | `aster.theme.dark.color.status.info.@` → `color.blue.dark.600` |
-| `color.status.info.subtle` | `aster.theme.light.color.status.info.subtle` → `color.blue.light.100` | `aster.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `color.status.success.@` | `aster.theme.light.color.status.success.@` → `color.green.light.600` | `aster.theme.dark.color.status.success.@` → `color.green.dark.600` |
-| `color.status.success.subtle` | `aster.theme.light.color.status.success.subtle` → `color.green.light.100` | `aster.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `color.status.warning.@` | `aster.theme.light.color.status.warning.@` → `color.amber.light.600` | `aster.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
-| `color.status.warning.subtle` | `aster.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `aster.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `color.status.danger.@` | `aster.theme.light.color.status.danger.@` → `color.red.light.600` | `aster.theme.dark.color.status.danger.@` → `color.red.dark.600` |
-| `color.status.danger.subtle` | `aster.theme.light.color.status.danger.subtle` → `color.red.light.100` | `aster.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `color.category.1.@` | `aster.theme.light.color.category.1.@` → `color.teal.light.600` | `aster.theme.dark.color.category.1.@` → `color.teal.dark.600` |
-| `color.category.1.subtle` | `aster.theme.light.color.category.1.subtle` → `color.teal.light.100` | `aster.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
-| `color.category.2.@` | `aster.theme.light.color.category.2.@` → `color.purple.light.600` | `aster.theme.dark.color.category.2.@` → `color.purple.dark.600` |
-| `color.category.2.subtle` | `aster.theme.light.color.category.2.subtle` → `color.purple.light.100` | `aster.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
-| `color.category.3.@` | `aster.theme.light.color.category.3.@` → `color.orange.light.600` | `aster.theme.dark.color.category.3.@` → `color.orange.dark.600` |
-| `color.category.3.subtle` | `aster.theme.light.color.category.3.subtle` → `color.orange.light.100` | `aster.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
-| `color.category.4.@` | `aster.theme.light.color.category.4.@` → `color.blue.light.600` | `aster.theme.dark.color.category.4.@` → `color.blue.dark.600` |
-| `color.category.4.subtle` | `aster.theme.light.color.category.4.subtle` → `color.blue.light.100` | `aster.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
-| `color.category.5.@` | `aster.theme.light.color.category.5.@` → `color.green.light.600` | `aster.theme.dark.color.category.5.@` → `color.green.dark.600` |
-| `color.category.5.subtle` | `aster.theme.light.color.category.5.subtle` → `color.green.light.100` | `aster.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
-| `color.disabled.text` | `aster.theme.light.color.disabled.text` → `color.neutral.500` → `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `aster.theme.dark.color.disabled.text` → `color.neutral.500` → `aster.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.disabled.surface` | `aster.theme.light.color.disabled.surface` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `aster.theme.dark.color.disabled.surface` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.disabled.border` | `aster.theme.light.color.disabled.border` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `aster.theme.dark.color.disabled.border` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.neutral.0` | light | `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| `color.neutral.50` | light | `aster.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
+| | dark | `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.neutral.100` | light | `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.neutral.200` | light | `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.neutral.300` | light | `aster.theme.light.color.neutral.300` → `color.slate-deep.light.300` |
+| | dark | `aster.theme.dark.color.neutral.300` → `color.slate-deep.dark.300` |
+| `color.neutral.400` | light | `aster.theme.light.color.neutral.400` → `color.slate-deep.light.400` |
+| | dark | `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.neutral.500` | light | `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `aster.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.neutral.600` | light | `aster.theme.light.color.neutral.600` → `color.slate-deep.light.600` |
+| | dark | `aster.theme.dark.color.neutral.600` → `color.slate-deep.dark.600` |
+| `color.neutral.700` | light | `aster.theme.light.color.neutral.700` → `color.slate-deep.light.700` |
+| | dark | `aster.theme.dark.color.neutral.700` → `color.slate-deep.dark.700` |
+| `color.neutral.800` | light | `aster.theme.light.color.neutral.800` → `color.slate-deep.light.800` |
+| | dark | `aster.theme.dark.color.neutral.800` → `color.slate-deep.dark.800` |
+| `color.neutral.900` | light | `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.neutral.950` | light | `aster.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
+| | dark | `aster.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.surface.canvas` | light | `aster.theme.light.color.surface.canvas` → `color.neutral.50` → `aster.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
+| | dark | `aster.theme.dark.color.surface.canvas` → `color.neutral.0` → `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| `color.surface.default` | light | `aster.theme.light.color.surface.default` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.surface.default` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.surface.raised` | light | `aster.theme.light.color.surface.raised` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.surface.raised` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.surface.sunken` | light | `aster.theme.light.color.surface.sunken` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `aster.theme.dark.color.surface.sunken` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.surface.highlight` | light | `aster.theme.light.color.surface.highlight` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `aster.theme.dark.color.surface.highlight` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.surface.pressed` | light | `aster.theme.light.color.surface.pressed` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `aster.theme.dark.color.surface.pressed` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.surface.selected` | light | `aster.theme.light.color.surface.selected` → `color.teal.light.100` |
+| | dark | `aster.theme.dark.color.surface.selected` → `color.teal.dark.100` |
+| `color.surface.inverse` | light | `aster.theme.light.color.surface.inverse` → `color.neutral.900` → `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `aster.theme.dark.color.surface.inverse` → `color.neutral.900` → `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.surface.scrim` | light | `aster.theme.light.color.surface.scrim` → `color.black.light.scrim` |
+| | dark | `aster.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | light | `aster.theme.light.color.text.primary` → `color.neutral.900` → `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `aster.theme.dark.color.text.primary` → `color.neutral.900` → `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.text.secondary` | light | `aster.theme.light.color.text.secondary` → `color.neutral.700` → `aster.theme.light.color.neutral.700` → `color.slate-deep.light.700` |
+| | dark | `aster.theme.dark.color.text.secondary` → `color.neutral.500` → `aster.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.text.muted` | light | `aster.theme.light.color.text.muted` → `color.neutral.600` → `aster.theme.light.color.neutral.600` → `color.slate-deep.light.600` |
+| | dark | `aster.theme.dark.color.text.muted` → `color.neutral.400` → `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.text.inverse` | light | `aster.theme.light.color.text.inverse` → `color.text.on-dark` → `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.text.inverse` → `color.text.on-light` → `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-action` | light | `aster.theme.light.color.text.on-action` → `color.text.on-dark` → `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.text.on-action` → `color.text.on-light` → `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.link` | light | `aster.theme.light.color.text.link` → `color.teal.light.700` |
+| | dark | `aster.theme.dark.color.text.link` → `color.teal.dark.700` |
+| `color.text.on-danger` | light | `aster.theme.light.color.text.on-danger` → `color.text.on-dark` → `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.text.on-danger` → `color.text.on-light` → `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-light` | light | `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| | dark | `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-dark` | light | `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| `color.text.info-on-light` | light | `aster.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| | dark | `aster.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| `color.text.info-on-dark` | light | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| | dark | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| `color.text.success-on-light` | light | `aster.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| | dark | `aster.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| `color.text.success-on-dark` | light | `aster.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| | dark | `aster.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| `color.text.warning-on-light` | light | `aster.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| | dark | `aster.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| `color.text.warning-on-dark` | light | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| | dark | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| `color.text.danger-on-light` | light | `aster.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| | dark | `aster.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| `color.text.danger-on-dark` | light | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| | dark | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| `color.border.default` | light | `aster.theme.light.color.border.default` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `aster.theme.dark.color.border.default` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.border.strong` | light | `aster.theme.light.color.border.strong` → `color.neutral.500` → `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `aster.theme.dark.color.border.strong` → `color.neutral.400` → `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.border.focus` | light | `aster.theme.light.color.border.focus` → `color.teal.light.600` |
+| | dark | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
+| `color.border.selected` | light | `aster.theme.light.color.border.selected` → `color.teal.light.600` |
+| | dark | `aster.theme.dark.color.border.selected` → `color.teal.dark.600` |
+| `color.action.primary.@` | light | `aster.theme.light.color.action.primary.@` → `color.teal.light.600` |
+| | dark | `aster.theme.dark.color.action.primary.@` → `color.teal.dark.600` |
+| `color.action.primary.hover` | light | `aster.theme.light.color.action.primary.hover` → `color.teal.light.700` |
+| | dark | `aster.theme.dark.color.action.primary.hover` → `color.teal.dark.700` |
+| `color.action.secondary.@` | light | `aster.theme.light.color.action.secondary.@` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.action.secondary.@` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.action.secondary.hover` | light | `aster.theme.light.color.action.secondary.hover` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `aster.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.action.danger.@` | light | `aster.theme.light.color.action.danger.@` → `color.red.light.600` |
+| | dark | `aster.theme.dark.color.action.danger.@` → `color.red.dark.600` |
+| `color.action.danger.hover` | light | `aster.theme.light.color.action.danger.hover` → `color.red.light.700` |
+| | dark | `aster.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
+| `color.status.info.@` | light | `aster.theme.light.color.status.info.@` → `color.blue.light.600` |
+| | dark | `aster.theme.dark.color.status.info.@` → `color.blue.dark.600` |
+| `color.status.info.subtle` | light | `aster.theme.light.color.status.info.subtle` → `color.blue.light.100` |
+| | dark | `aster.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `color.status.success.@` | light | `aster.theme.light.color.status.success.@` → `color.green.light.600` |
+| | dark | `aster.theme.dark.color.status.success.@` → `color.green.dark.600` |
+| `color.status.success.subtle` | light | `aster.theme.light.color.status.success.subtle` → `color.green.light.100` |
+| | dark | `aster.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `color.status.warning.@` | light | `aster.theme.light.color.status.warning.@` → `color.amber.light.600` |
+| | dark | `aster.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
+| `color.status.warning.subtle` | light | `aster.theme.light.color.status.warning.subtle` → `color.amber.light.100` |
+| | dark | `aster.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `color.status.danger.@` | light | `aster.theme.light.color.status.danger.@` → `color.red.light.600` |
+| | dark | `aster.theme.dark.color.status.danger.@` → `color.red.dark.600` |
+| `color.status.danger.subtle` | light | `aster.theme.light.color.status.danger.subtle` → `color.red.light.100` |
+| | dark | `aster.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `color.category.1.@` | light | `aster.theme.light.color.category.1.@` → `color.teal.light.600` |
+| | dark | `aster.theme.dark.color.category.1.@` → `color.teal.dark.600` |
+| `color.category.1.subtle` | light | `aster.theme.light.color.category.1.subtle` → `color.teal.light.100` |
+| | dark | `aster.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
+| `color.category.2.@` | light | `aster.theme.light.color.category.2.@` → `color.purple.light.600` |
+| | dark | `aster.theme.dark.color.category.2.@` → `color.purple.dark.600` |
+| `color.category.2.subtle` | light | `aster.theme.light.color.category.2.subtle` → `color.purple.light.100` |
+| | dark | `aster.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
+| `color.category.3.@` | light | `aster.theme.light.color.category.3.@` → `color.orange.light.600` |
+| | dark | `aster.theme.dark.color.category.3.@` → `color.orange.dark.600` |
+| `color.category.3.subtle` | light | `aster.theme.light.color.category.3.subtle` → `color.orange.light.100` |
+| | dark | `aster.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
+| `color.category.4.@` | light | `aster.theme.light.color.category.4.@` → `color.blue.light.600` |
+| | dark | `aster.theme.dark.color.category.4.@` → `color.blue.dark.600` |
+| `color.category.4.subtle` | light | `aster.theme.light.color.category.4.subtle` → `color.blue.light.100` |
+| | dark | `aster.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
+| `color.category.5.@` | light | `aster.theme.light.color.category.5.@` → `color.green.light.600` |
+| | dark | `aster.theme.dark.color.category.5.@` → `color.green.dark.600` |
+| `color.category.5.subtle` | light | `aster.theme.light.color.category.5.subtle` → `color.green.light.100` |
+| | dark | `aster.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
+| `color.disabled.text` | light | `aster.theme.light.color.disabled.text` → `color.neutral.500` → `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `aster.theme.dark.color.disabled.text` → `color.neutral.500` → `aster.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.disabled.surface` | light | `aster.theme.light.color.disabled.surface` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `aster.theme.dark.color.disabled.surface` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.disabled.border` | light | `aster.theme.light.color.disabled.border` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `aster.theme.dark.color.disabled.border` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 ::::
 
 ::::brand{id="birch" name="Birch"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `color.neutral.0` | `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
-| `color.neutral.50` | `birch.theme.light.color.neutral.50` → `color.slate-deep.light.50` | `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.neutral.100` | `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.neutral.200` | `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.neutral.300` | `birch.theme.light.color.neutral.300` → `color.slate-deep.light.300` | `birch.theme.dark.color.neutral.300` → `color.slate-deep.dark.300` |
-| `color.neutral.400` | `birch.theme.light.color.neutral.400` → `color.slate-deep.light.400` | `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.neutral.500` | `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `birch.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.neutral.600` | `birch.theme.light.color.neutral.600` → `color.slate-deep.light.600` | `birch.theme.dark.color.neutral.600` → `color.slate-deep.dark.600` |
-| `color.neutral.700` | `birch.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `birch.theme.dark.color.neutral.700` → `color.slate-deep.dark.700` |
-| `color.neutral.800` | `birch.theme.light.color.neutral.800` → `color.slate-deep.light.800` | `birch.theme.dark.color.neutral.800` → `color.slate-deep.dark.800` |
-| `color.neutral.900` | `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.neutral.950` | `birch.theme.light.color.neutral.950` → `color.slate-deep.light.950` | `birch.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
-| `color.surface.canvas` | `birch.theme.light.color.surface.canvas` → `color.neutral.50` → `birch.theme.light.color.neutral.50` → `color.slate-deep.light.50` | `birch.theme.dark.color.surface.canvas` → `color.neutral.0` → `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
-| `color.surface.default` | `birch.theme.light.color.surface.default` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `birch.theme.dark.color.surface.default` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.surface.raised` | `birch.theme.light.color.surface.raised` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `birch.theme.dark.color.surface.raised` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.surface.sunken` | `birch.theme.light.color.surface.sunken` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `birch.theme.dark.color.surface.sunken` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.surface.highlight` | `birch.theme.light.color.surface.highlight` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `birch.theme.dark.color.surface.highlight` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.surface.pressed` | `birch.theme.light.color.surface.pressed` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `birch.theme.dark.color.surface.pressed` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.surface.selected` | `birch.theme.light.color.surface.selected` → `color.purple.light.100` | `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
-| `color.surface.inverse` | `birch.theme.light.color.surface.inverse` → `color.neutral.900` → `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `birch.theme.dark.color.surface.inverse` → `color.neutral.900` → `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.surface.scrim` | `birch.theme.light.color.surface.scrim` → `color.black.light.scrim` | `birch.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `birch.theme.light.color.text.primary` → `color.neutral.900` → `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `birch.theme.dark.color.text.primary` → `color.neutral.900` → `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.text.secondary` | `birch.theme.light.color.text.secondary` → `color.neutral.700` → `birch.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `birch.theme.dark.color.text.secondary` → `color.neutral.500` → `birch.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.text.muted` | `birch.theme.light.color.text.muted` → `color.neutral.600` → `birch.theme.light.color.neutral.600` → `color.slate-deep.light.600` | `birch.theme.dark.color.text.muted` → `color.neutral.400` → `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.text.inverse` | `birch.theme.light.color.text.inverse` → `color.text.on-dark` → `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `birch.theme.dark.color.text.inverse` → `color.text.on-light` → `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-action` | `birch.theme.light.color.text.on-action` → `color.text.on-dark` → `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `birch.theme.dark.color.text.on-action` → `color.text.on-light` → `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.link` | `birch.theme.light.color.text.link` → `color.purple.light.700` | `birch.theme.dark.color.text.link` → `color.purple.dark.700` |
-| `color.text.on-danger` | `birch.theme.light.color.text.on-danger` → `color.text.on-dark` → `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `birch.theme.dark.color.text.on-danger` → `color.text.on-light` → `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-light` | `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` | `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-dark` | `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
-| `color.text.info-on-light` | `birch.theme.base.color.text.info-on-light` → `color.blue.light.800` | `birch.theme.base.color.text.info-on-light` → `color.blue.light.800` |
-| `color.text.info-on-dark` | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.100` | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
-| `color.text.success-on-light` | `birch.theme.base.color.text.success-on-light` → `color.green.light.800` | `birch.theme.base.color.text.success-on-light` → `color.green.light.800` |
-| `color.text.success-on-dark` | `birch.theme.base.color.text.success-on-dark` → `color.green.light.100` | `birch.theme.base.color.text.success-on-dark` → `color.green.light.100` |
-| `color.text.warning-on-light` | `birch.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `birch.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
-| `color.text.warning-on-dark` | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.100` | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
-| `color.text.danger-on-light` | `birch.theme.base.color.text.danger-on-light` → `color.red.light.800` | `birch.theme.base.color.text.danger-on-light` → `color.red.light.800` |
-| `color.text.danger-on-dark` | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.100` | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
-| `color.border.default` | `birch.theme.light.color.border.default` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `birch.theme.dark.color.border.default` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.border.strong` | `birch.theme.light.color.border.strong` → `color.neutral.500` → `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `birch.theme.dark.color.border.strong` → `color.neutral.400` → `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
-| `color.border.selected` | `birch.theme.light.color.border.selected` → `color.purple.light.600` | `birch.theme.dark.color.border.selected` → `color.purple.dark.600` |
-| `color.action.primary.@` | `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `birch.theme.dark.color.action.primary.@` → `color.purple.dark.600` |
-| `color.action.primary.hover` | `birch.theme.light.color.action.primary.hover` → `color.purple.light.700` | `birch.theme.dark.color.action.primary.hover` → `color.purple.dark.700` |
-| `color.action.secondary.@` | `birch.theme.light.color.action.secondary.@` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `birch.theme.dark.color.action.secondary.@` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.action.secondary.hover` | `birch.theme.light.color.action.secondary.hover` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `birch.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.action.danger.@` | `birch.theme.light.color.action.danger.@` → `color.red.light.600` | `birch.theme.dark.color.action.danger.@` → `color.red.dark.600` |
-| `color.action.danger.hover` | `birch.theme.light.color.action.danger.hover` → `color.red.light.700` | `birch.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
-| `color.status.info.@` | `birch.theme.light.color.status.info.@` → `color.blue.light.600` | `birch.theme.dark.color.status.info.@` → `color.blue.dark.600` |
-| `color.status.info.subtle` | `birch.theme.light.color.status.info.subtle` → `color.blue.light.100` | `birch.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `color.status.success.@` | `birch.theme.light.color.status.success.@` → `color.green.light.600` | `birch.theme.dark.color.status.success.@` → `color.green.dark.600` |
-| `color.status.success.subtle` | `birch.theme.light.color.status.success.subtle` → `color.green.light.100` | `birch.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `color.status.warning.@` | `birch.theme.light.color.status.warning.@` → `color.amber.light.600` | `birch.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
-| `color.status.warning.subtle` | `birch.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `birch.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `color.status.danger.@` | `birch.theme.light.color.status.danger.@` → `color.red.light.600` | `birch.theme.dark.color.status.danger.@` → `color.red.dark.600` |
-| `color.status.danger.subtle` | `birch.theme.light.color.status.danger.subtle` → `color.red.light.100` | `birch.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `color.category.1.@` | `birch.theme.light.color.category.1.@` → `color.teal.light.600` | `birch.theme.dark.color.category.1.@` → `color.teal.dark.600` |
-| `color.category.1.subtle` | `birch.theme.light.color.category.1.subtle` → `color.teal.light.100` | `birch.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
-| `color.category.2.@` | `birch.theme.light.color.category.2.@` → `color.purple.light.600` | `birch.theme.dark.color.category.2.@` → `color.purple.dark.600` |
-| `color.category.2.subtle` | `birch.theme.light.color.category.2.subtle` → `color.purple.light.100` | `birch.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
-| `color.category.3.@` | `birch.theme.light.color.category.3.@` → `color.orange.light.600` | `birch.theme.dark.color.category.3.@` → `color.orange.dark.600` |
-| `color.category.3.subtle` | `birch.theme.light.color.category.3.subtle` → `color.orange.light.100` | `birch.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
-| `color.category.4.@` | `birch.theme.light.color.category.4.@` → `color.blue.light.600` | `birch.theme.dark.color.category.4.@` → `color.blue.dark.600` |
-| `color.category.4.subtle` | `birch.theme.light.color.category.4.subtle` → `color.blue.light.100` | `birch.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
-| `color.category.5.@` | `birch.theme.light.color.category.5.@` → `color.green.light.600` | `birch.theme.dark.color.category.5.@` → `color.green.dark.600` |
-| `color.category.5.subtle` | `birch.theme.light.color.category.5.subtle` → `color.green.light.100` | `birch.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
-| `color.disabled.text` | `birch.theme.light.color.disabled.text` → `color.neutral.500` → `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `birch.theme.dark.color.disabled.text` → `color.neutral.500` → `birch.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.disabled.surface` | `birch.theme.light.color.disabled.surface` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `birch.theme.dark.color.disabled.surface` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.disabled.border` | `birch.theme.light.color.disabled.border` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `birch.theme.dark.color.disabled.border` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.neutral.0` | light | `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| `color.neutral.50` | light | `birch.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
+| | dark | `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.neutral.100` | light | `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.neutral.200` | light | `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.neutral.300` | light | `birch.theme.light.color.neutral.300` → `color.slate-deep.light.300` |
+| | dark | `birch.theme.dark.color.neutral.300` → `color.slate-deep.dark.300` |
+| `color.neutral.400` | light | `birch.theme.light.color.neutral.400` → `color.slate-deep.light.400` |
+| | dark | `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.neutral.500` | light | `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `birch.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.neutral.600` | light | `birch.theme.light.color.neutral.600` → `color.slate-deep.light.600` |
+| | dark | `birch.theme.dark.color.neutral.600` → `color.slate-deep.dark.600` |
+| `color.neutral.700` | light | `birch.theme.light.color.neutral.700` → `color.slate-deep.light.700` |
+| | dark | `birch.theme.dark.color.neutral.700` → `color.slate-deep.dark.700` |
+| `color.neutral.800` | light | `birch.theme.light.color.neutral.800` → `color.slate-deep.light.800` |
+| | dark | `birch.theme.dark.color.neutral.800` → `color.slate-deep.dark.800` |
+| `color.neutral.900` | light | `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.neutral.950` | light | `birch.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
+| | dark | `birch.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.surface.canvas` | light | `birch.theme.light.color.surface.canvas` → `color.neutral.50` → `birch.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
+| | dark | `birch.theme.dark.color.surface.canvas` → `color.neutral.0` → `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| `color.surface.default` | light | `birch.theme.light.color.surface.default` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.surface.default` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.surface.raised` | light | `birch.theme.light.color.surface.raised` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.surface.raised` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.surface.sunken` | light | `birch.theme.light.color.surface.sunken` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `birch.theme.dark.color.surface.sunken` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.surface.highlight` | light | `birch.theme.light.color.surface.highlight` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `birch.theme.dark.color.surface.highlight` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.surface.pressed` | light | `birch.theme.light.color.surface.pressed` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `birch.theme.dark.color.surface.pressed` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.surface.selected` | light | `birch.theme.light.color.surface.selected` → `color.purple.light.100` |
+| | dark | `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
+| `color.surface.inverse` | light | `birch.theme.light.color.surface.inverse` → `color.neutral.900` → `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `birch.theme.dark.color.surface.inverse` → `color.neutral.900` → `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.surface.scrim` | light | `birch.theme.light.color.surface.scrim` → `color.black.light.scrim` |
+| | dark | `birch.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | light | `birch.theme.light.color.text.primary` → `color.neutral.900` → `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `birch.theme.dark.color.text.primary` → `color.neutral.900` → `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.text.secondary` | light | `birch.theme.light.color.text.secondary` → `color.neutral.700` → `birch.theme.light.color.neutral.700` → `color.slate-deep.light.700` |
+| | dark | `birch.theme.dark.color.text.secondary` → `color.neutral.500` → `birch.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.text.muted` | light | `birch.theme.light.color.text.muted` → `color.neutral.600` → `birch.theme.light.color.neutral.600` → `color.slate-deep.light.600` |
+| | dark | `birch.theme.dark.color.text.muted` → `color.neutral.400` → `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.text.inverse` | light | `birch.theme.light.color.text.inverse` → `color.text.on-dark` → `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.text.inverse` → `color.text.on-light` → `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-action` | light | `birch.theme.light.color.text.on-action` → `color.text.on-dark` → `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.text.on-action` → `color.text.on-light` → `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.link` | light | `birch.theme.light.color.text.link` → `color.purple.light.700` |
+| | dark | `birch.theme.dark.color.text.link` → `color.purple.dark.700` |
+| `color.text.on-danger` | light | `birch.theme.light.color.text.on-danger` → `color.text.on-dark` → `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.text.on-danger` → `color.text.on-light` → `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-light` | light | `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| | dark | `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-dark` | light | `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| `color.text.info-on-light` | light | `birch.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| | dark | `birch.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| `color.text.info-on-dark` | light | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| | dark | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| `color.text.success-on-light` | light | `birch.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| | dark | `birch.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| `color.text.success-on-dark` | light | `birch.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| | dark | `birch.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| `color.text.warning-on-light` | light | `birch.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| | dark | `birch.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| `color.text.warning-on-dark` | light | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| | dark | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| `color.text.danger-on-light` | light | `birch.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| | dark | `birch.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| `color.text.danger-on-dark` | light | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| | dark | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| `color.border.default` | light | `birch.theme.light.color.border.default` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `birch.theme.dark.color.border.default` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.border.strong` | light | `birch.theme.light.color.border.strong` → `color.neutral.500` → `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `birch.theme.dark.color.border.strong` → `color.neutral.400` → `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.border.focus` | light | `birch.theme.light.color.border.focus` → `color.purple.light.600` |
+| | dark | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
+| `color.border.selected` | light | `birch.theme.light.color.border.selected` → `color.purple.light.600` |
+| | dark | `birch.theme.dark.color.border.selected` → `color.purple.dark.600` |
+| `color.action.primary.@` | light | `birch.theme.light.color.action.primary.@` → `color.purple.light.600` |
+| | dark | `birch.theme.dark.color.action.primary.@` → `color.purple.dark.600` |
+| `color.action.primary.hover` | light | `birch.theme.light.color.action.primary.hover` → `color.purple.light.700` |
+| | dark | `birch.theme.dark.color.action.primary.hover` → `color.purple.dark.700` |
+| `color.action.secondary.@` | light | `birch.theme.light.color.action.secondary.@` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.action.secondary.@` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.action.secondary.hover` | light | `birch.theme.light.color.action.secondary.hover` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `birch.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.action.danger.@` | light | `birch.theme.light.color.action.danger.@` → `color.red.light.600` |
+| | dark | `birch.theme.dark.color.action.danger.@` → `color.red.dark.600` |
+| `color.action.danger.hover` | light | `birch.theme.light.color.action.danger.hover` → `color.red.light.700` |
+| | dark | `birch.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
+| `color.status.info.@` | light | `birch.theme.light.color.status.info.@` → `color.blue.light.600` |
+| | dark | `birch.theme.dark.color.status.info.@` → `color.blue.dark.600` |
+| `color.status.info.subtle` | light | `birch.theme.light.color.status.info.subtle` → `color.blue.light.100` |
+| | dark | `birch.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `color.status.success.@` | light | `birch.theme.light.color.status.success.@` → `color.green.light.600` |
+| | dark | `birch.theme.dark.color.status.success.@` → `color.green.dark.600` |
+| `color.status.success.subtle` | light | `birch.theme.light.color.status.success.subtle` → `color.green.light.100` |
+| | dark | `birch.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `color.status.warning.@` | light | `birch.theme.light.color.status.warning.@` → `color.amber.light.600` |
+| | dark | `birch.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
+| `color.status.warning.subtle` | light | `birch.theme.light.color.status.warning.subtle` → `color.amber.light.100` |
+| | dark | `birch.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `color.status.danger.@` | light | `birch.theme.light.color.status.danger.@` → `color.red.light.600` |
+| | dark | `birch.theme.dark.color.status.danger.@` → `color.red.dark.600` |
+| `color.status.danger.subtle` | light | `birch.theme.light.color.status.danger.subtle` → `color.red.light.100` |
+| | dark | `birch.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `color.category.1.@` | light | `birch.theme.light.color.category.1.@` → `color.teal.light.600` |
+| | dark | `birch.theme.dark.color.category.1.@` → `color.teal.dark.600` |
+| `color.category.1.subtle` | light | `birch.theme.light.color.category.1.subtle` → `color.teal.light.100` |
+| | dark | `birch.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
+| `color.category.2.@` | light | `birch.theme.light.color.category.2.@` → `color.purple.light.600` |
+| | dark | `birch.theme.dark.color.category.2.@` → `color.purple.dark.600` |
+| `color.category.2.subtle` | light | `birch.theme.light.color.category.2.subtle` → `color.purple.light.100` |
+| | dark | `birch.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
+| `color.category.3.@` | light | `birch.theme.light.color.category.3.@` → `color.orange.light.600` |
+| | dark | `birch.theme.dark.color.category.3.@` → `color.orange.dark.600` |
+| `color.category.3.subtle` | light | `birch.theme.light.color.category.3.subtle` → `color.orange.light.100` |
+| | dark | `birch.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
+| `color.category.4.@` | light | `birch.theme.light.color.category.4.@` → `color.blue.light.600` |
+| | dark | `birch.theme.dark.color.category.4.@` → `color.blue.dark.600` |
+| `color.category.4.subtle` | light | `birch.theme.light.color.category.4.subtle` → `color.blue.light.100` |
+| | dark | `birch.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
+| `color.category.5.@` | light | `birch.theme.light.color.category.5.@` → `color.green.light.600` |
+| | dark | `birch.theme.dark.color.category.5.@` → `color.green.dark.600` |
+| `color.category.5.subtle` | light | `birch.theme.light.color.category.5.subtle` → `color.green.light.100` |
+| | dark | `birch.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
+| `color.disabled.text` | light | `birch.theme.light.color.disabled.text` → `color.neutral.500` → `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `birch.theme.dark.color.disabled.text` → `color.neutral.500` → `birch.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.disabled.surface` | light | `birch.theme.light.color.disabled.surface` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `birch.theme.dark.color.disabled.surface` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.disabled.border` | light | `birch.theme.light.color.disabled.border` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `birch.theme.dark.color.disabled.border` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 ::::
 
 ::::brand{id="coral" name="Coral"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `color.neutral.0` | `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
-| `color.neutral.50` | `coral.theme.light.color.neutral.50` → `color.slate-deep.light.50` | `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.neutral.100` | `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.neutral.200` | `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.neutral.300` | `coral.theme.light.color.neutral.300` → `color.slate-deep.light.300` | `coral.theme.dark.color.neutral.300` → `color.slate-deep.dark.300` |
-| `color.neutral.400` | `coral.theme.light.color.neutral.400` → `color.slate-deep.light.400` | `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.neutral.500` | `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `coral.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.neutral.600` | `coral.theme.light.color.neutral.600` → `color.slate-deep.light.600` | `coral.theme.dark.color.neutral.600` → `color.slate-deep.dark.600` |
-| `color.neutral.700` | `coral.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `coral.theme.dark.color.neutral.700` → `color.slate-deep.dark.700` |
-| `color.neutral.800` | `coral.theme.light.color.neutral.800` → `color.slate-deep.light.800` | `coral.theme.dark.color.neutral.800` → `color.slate-deep.dark.800` |
-| `color.neutral.900` | `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.neutral.950` | `coral.theme.light.color.neutral.950` → `color.slate-deep.light.950` | `coral.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
-| `color.surface.canvas` | `coral.theme.light.color.surface.canvas` → `color.neutral.50` → `coral.theme.light.color.neutral.50` → `color.slate-deep.light.50` | `coral.theme.dark.color.surface.canvas` → `color.neutral.0` → `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
-| `color.surface.default` | `coral.theme.light.color.surface.default` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `coral.theme.dark.color.surface.default` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.surface.raised` | `coral.theme.light.color.surface.raised` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `coral.theme.dark.color.surface.raised` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.surface.sunken` | `coral.theme.light.color.surface.sunken` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `coral.theme.dark.color.surface.sunken` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.surface.highlight` | `coral.theme.light.color.surface.highlight` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `coral.theme.dark.color.surface.highlight` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.surface.pressed` | `coral.theme.light.color.surface.pressed` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `coral.theme.dark.color.surface.pressed` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.surface.selected` | `coral.theme.light.color.surface.selected` → `color.orange.light.100` | `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
-| `color.surface.inverse` | `coral.theme.light.color.surface.inverse` → `color.neutral.900` → `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `coral.theme.dark.color.surface.inverse` → `color.neutral.900` → `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.surface.scrim` | `coral.theme.light.color.surface.scrim` → `color.black.light.scrim` | `coral.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `coral.theme.light.color.text.primary` → `color.neutral.900` → `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `coral.theme.dark.color.text.primary` → `color.neutral.900` → `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `color.text.secondary` | `coral.theme.light.color.text.secondary` → `color.neutral.700` → `coral.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `coral.theme.dark.color.text.secondary` → `color.neutral.500` → `coral.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.text.muted` | `coral.theme.light.color.text.muted` → `color.neutral.600` → `coral.theme.light.color.neutral.600` → `color.slate-deep.light.600` | `coral.theme.dark.color.text.muted` → `color.neutral.400` → `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.text.inverse` | `coral.theme.light.color.text.inverse` → `color.text.on-dark` → `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `coral.theme.dark.color.text.inverse` → `color.text.on-light` → `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-action` | `coral.theme.light.color.text.on-action` → `color.text.on-dark` → `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `coral.theme.dark.color.text.on-action` → `color.text.on-light` → `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.link` | `coral.theme.light.color.text.link` → `color.orange.light.700` | `coral.theme.dark.color.text.link` → `color.orange.dark.700` |
-| `color.text.on-danger` | `coral.theme.light.color.text.on-danger` → `color.text.on-dark` → `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `coral.theme.dark.color.text.on-danger` → `color.text.on-light` → `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-light` | `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` | `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-| `color.text.on-dark` | `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
-| `color.text.info-on-light` | `coral.theme.base.color.text.info-on-light` → `color.blue.light.800` | `coral.theme.base.color.text.info-on-light` → `color.blue.light.800` |
-| `color.text.info-on-dark` | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.100` | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
-| `color.text.success-on-light` | `coral.theme.base.color.text.success-on-light` → `color.green.light.800` | `coral.theme.base.color.text.success-on-light` → `color.green.light.800` |
-| `color.text.success-on-dark` | `coral.theme.base.color.text.success-on-dark` → `color.green.light.100` | `coral.theme.base.color.text.success-on-dark` → `color.green.light.100` |
-| `color.text.warning-on-light` | `coral.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `coral.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
-| `color.text.warning-on-dark` | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.100` | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
-| `color.text.danger-on-light` | `coral.theme.base.color.text.danger-on-light` → `color.red.light.800` | `coral.theme.base.color.text.danger-on-light` → `color.red.light.800` |
-| `color.text.danger-on-dark` | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.100` | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
-| `color.border.default` | `coral.theme.light.color.border.default` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `coral.theme.dark.color.border.default` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
-| `color.border.strong` | `coral.theme.light.color.border.strong` → `color.neutral.500` → `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `coral.theme.dark.color.border.strong` → `color.neutral.400` → `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
-| `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
-| `color.border.selected` | `coral.theme.light.color.border.selected` → `color.orange.light.600` | `coral.theme.dark.color.border.selected` → `color.orange.dark.600` |
-| `color.action.primary.@` | `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `coral.theme.dark.color.action.primary.@` → `color.orange.dark.600` |
-| `color.action.primary.hover` | `coral.theme.light.color.action.primary.hover` → `color.orange.light.700` | `coral.theme.dark.color.action.primary.hover` → `color.orange.dark.700` |
-| `color.action.secondary.@` | `coral.theme.light.color.action.secondary.@` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `coral.theme.dark.color.action.secondary.@` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
-| `color.action.secondary.hover` | `coral.theme.light.color.action.secondary.hover` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `coral.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.action.danger.@` | `coral.theme.light.color.action.danger.@` → `color.red.light.600` | `coral.theme.dark.color.action.danger.@` → `color.red.dark.600` |
-| `color.action.danger.hover` | `coral.theme.light.color.action.danger.hover` → `color.red.light.700` | `coral.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
-| `color.status.info.@` | `coral.theme.light.color.status.info.@` → `color.blue.light.600` | `coral.theme.dark.color.status.info.@` → `color.blue.dark.600` |
-| `color.status.info.subtle` | `coral.theme.light.color.status.info.subtle` → `color.blue.light.100` | `coral.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `color.status.success.@` | `coral.theme.light.color.status.success.@` → `color.green.light.600` | `coral.theme.dark.color.status.success.@` → `color.green.dark.600` |
-| `color.status.success.subtle` | `coral.theme.light.color.status.success.subtle` → `color.green.light.100` | `coral.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `color.status.warning.@` | `coral.theme.light.color.status.warning.@` → `color.amber.light.600` | `coral.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
-| `color.status.warning.subtle` | `coral.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `coral.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `color.status.danger.@` | `coral.theme.light.color.status.danger.@` → `color.red.light.600` | `coral.theme.dark.color.status.danger.@` → `color.red.dark.600` |
-| `color.status.danger.subtle` | `coral.theme.light.color.status.danger.subtle` → `color.red.light.100` | `coral.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `color.category.1.@` | `coral.theme.light.color.category.1.@` → `color.teal.light.600` | `coral.theme.dark.color.category.1.@` → `color.teal.dark.600` |
-| `color.category.1.subtle` | `coral.theme.light.color.category.1.subtle` → `color.teal.light.100` | `coral.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
-| `color.category.2.@` | `coral.theme.light.color.category.2.@` → `color.purple.light.600` | `coral.theme.dark.color.category.2.@` → `color.purple.dark.600` |
-| `color.category.2.subtle` | `coral.theme.light.color.category.2.subtle` → `color.purple.light.100` | `coral.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
-| `color.category.3.@` | `coral.theme.light.color.category.3.@` → `color.orange.light.600` | `coral.theme.dark.color.category.3.@` → `color.orange.dark.600` |
-| `color.category.3.subtle` | `coral.theme.light.color.category.3.subtle` → `color.orange.light.100` | `coral.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
-| `color.category.4.@` | `coral.theme.light.color.category.4.@` → `color.blue.light.600` | `coral.theme.dark.color.category.4.@` → `color.blue.dark.600` |
-| `color.category.4.subtle` | `coral.theme.light.color.category.4.subtle` → `color.blue.light.100` | `coral.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
-| `color.category.5.@` | `coral.theme.light.color.category.5.@` → `color.green.light.600` | `coral.theme.dark.color.category.5.@` → `color.green.dark.600` |
-| `color.category.5.subtle` | `coral.theme.light.color.category.5.subtle` → `color.green.light.100` | `coral.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
-| `color.disabled.text` | `coral.theme.light.color.disabled.text` → `color.neutral.500` → `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `coral.theme.dark.color.disabled.text` → `color.neutral.500` → `coral.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
-| `color.disabled.surface` | `coral.theme.light.color.disabled.surface` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `coral.theme.dark.color.disabled.surface` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `color.disabled.border` | `coral.theme.light.color.disabled.border` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `coral.theme.dark.color.disabled.border` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.neutral.0` | light | `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| `color.neutral.50` | light | `coral.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
+| | dark | `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.neutral.100` | light | `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.neutral.200` | light | `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.neutral.300` | light | `coral.theme.light.color.neutral.300` → `color.slate-deep.light.300` |
+| | dark | `coral.theme.dark.color.neutral.300` → `color.slate-deep.dark.300` |
+| `color.neutral.400` | light | `coral.theme.light.color.neutral.400` → `color.slate-deep.light.400` |
+| | dark | `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.neutral.500` | light | `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `coral.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.neutral.600` | light | `coral.theme.light.color.neutral.600` → `color.slate-deep.light.600` |
+| | dark | `coral.theme.dark.color.neutral.600` → `color.slate-deep.dark.600` |
+| `color.neutral.700` | light | `coral.theme.light.color.neutral.700` → `color.slate-deep.light.700` |
+| | dark | `coral.theme.dark.color.neutral.700` → `color.slate-deep.dark.700` |
+| `color.neutral.800` | light | `coral.theme.light.color.neutral.800` → `color.slate-deep.light.800` |
+| | dark | `coral.theme.dark.color.neutral.800` → `color.slate-deep.dark.800` |
+| `color.neutral.900` | light | `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.neutral.950` | light | `coral.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
+| | dark | `coral.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.surface.canvas` | light | `coral.theme.light.color.surface.canvas` → `color.neutral.50` → `coral.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
+| | dark | `coral.theme.dark.color.surface.canvas` → `color.neutral.0` → `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| `color.surface.default` | light | `coral.theme.light.color.surface.default` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.surface.default` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.surface.raised` | light | `coral.theme.light.color.surface.raised` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.surface.raised` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.surface.sunken` | light | `coral.theme.light.color.surface.sunken` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `coral.theme.dark.color.surface.sunken` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.surface.highlight` | light | `coral.theme.light.color.surface.highlight` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `coral.theme.dark.color.surface.highlight` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.surface.pressed` | light | `coral.theme.light.color.surface.pressed` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `coral.theme.dark.color.surface.pressed` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.surface.selected` | light | `coral.theme.light.color.surface.selected` → `color.orange.light.100` |
+| | dark | `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
+| `color.surface.inverse` | light | `coral.theme.light.color.surface.inverse` → `color.neutral.900` → `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `coral.theme.dark.color.surface.inverse` → `color.neutral.900` → `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.surface.scrim` | light | `coral.theme.light.color.surface.scrim` → `color.black.light.scrim` |
+| | dark | `coral.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | light | `coral.theme.light.color.text.primary` → `color.neutral.900` → `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` |
+| | dark | `coral.theme.dark.color.text.primary` → `color.neutral.900` → `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
+| `color.text.secondary` | light | `coral.theme.light.color.text.secondary` → `color.neutral.700` → `coral.theme.light.color.neutral.700` → `color.slate-deep.light.700` |
+| | dark | `coral.theme.dark.color.text.secondary` → `color.neutral.500` → `coral.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.text.muted` | light | `coral.theme.light.color.text.muted` → `color.neutral.600` → `coral.theme.light.color.neutral.600` → `color.slate-deep.light.600` |
+| | dark | `coral.theme.dark.color.text.muted` → `color.neutral.400` → `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.text.inverse` | light | `coral.theme.light.color.text.inverse` → `color.text.on-dark` → `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.text.inverse` → `color.text.on-light` → `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-action` | light | `coral.theme.light.color.text.on-action` → `color.text.on-dark` → `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.text.on-action` → `color.text.on-light` → `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.link` | light | `coral.theme.light.color.text.link` → `color.orange.light.700` |
+| | dark | `coral.theme.dark.color.text.link` → `color.orange.dark.700` |
+| `color.text.on-danger` | light | `coral.theme.light.color.text.on-danger` → `color.text.on-dark` → `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.text.on-danger` → `color.text.on-light` → `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-light` | light | `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| | dark | `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
+| `color.text.on-dark` | light | `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
+| `color.text.info-on-light` | light | `coral.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| | dark | `coral.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| `color.text.info-on-dark` | light | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| | dark | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
+| `color.text.success-on-light` | light | `coral.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| | dark | `coral.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| `color.text.success-on-dark` | light | `coral.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| | dark | `coral.theme.base.color.text.success-on-dark` → `color.green.light.100` |
+| `color.text.warning-on-light` | light | `coral.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| | dark | `coral.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| `color.text.warning-on-dark` | light | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| | dark | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
+| `color.text.danger-on-light` | light | `coral.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| | dark | `coral.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| `color.text.danger-on-dark` | light | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| | dark | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
+| `color.border.default` | light | `coral.theme.light.color.border.default` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `coral.theme.dark.color.border.default` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.border.strong` | light | `coral.theme.light.color.border.strong` → `color.neutral.500` → `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `coral.theme.dark.color.border.strong` → `color.neutral.400` → `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
+| `color.border.focus` | light | `coral.theme.light.color.border.focus` → `color.orange.light.600` |
+| | dark | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
+| `color.border.selected` | light | `coral.theme.light.color.border.selected` → `color.orange.light.600` |
+| | dark | `coral.theme.dark.color.border.selected` → `color.orange.dark.600` |
+| `color.action.primary.@` | light | `coral.theme.light.color.action.primary.@` → `color.orange.light.600` |
+| | dark | `coral.theme.dark.color.action.primary.@` → `color.orange.dark.600` |
+| `color.action.primary.hover` | light | `coral.theme.light.color.action.primary.hover` → `color.orange.light.700` |
+| | dark | `coral.theme.dark.color.action.primary.hover` → `color.orange.dark.700` |
+| `color.action.secondary.@` | light | `coral.theme.light.color.action.secondary.@` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.action.secondary.@` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `color.action.secondary.hover` | light | `coral.theme.light.color.action.secondary.hover` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `coral.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.action.danger.@` | light | `coral.theme.light.color.action.danger.@` → `color.red.light.600` |
+| | dark | `coral.theme.dark.color.action.danger.@` → `color.red.dark.600` |
+| `color.action.danger.hover` | light | `coral.theme.light.color.action.danger.hover` → `color.red.light.700` |
+| | dark | `coral.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
+| `color.status.info.@` | light | `coral.theme.light.color.status.info.@` → `color.blue.light.600` |
+| | dark | `coral.theme.dark.color.status.info.@` → `color.blue.dark.600` |
+| `color.status.info.subtle` | light | `coral.theme.light.color.status.info.subtle` → `color.blue.light.100` |
+| | dark | `coral.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `color.status.success.@` | light | `coral.theme.light.color.status.success.@` → `color.green.light.600` |
+| | dark | `coral.theme.dark.color.status.success.@` → `color.green.dark.600` |
+| `color.status.success.subtle` | light | `coral.theme.light.color.status.success.subtle` → `color.green.light.100` |
+| | dark | `coral.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `color.status.warning.@` | light | `coral.theme.light.color.status.warning.@` → `color.amber.light.600` |
+| | dark | `coral.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
+| `color.status.warning.subtle` | light | `coral.theme.light.color.status.warning.subtle` → `color.amber.light.100` |
+| | dark | `coral.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `color.status.danger.@` | light | `coral.theme.light.color.status.danger.@` → `color.red.light.600` |
+| | dark | `coral.theme.dark.color.status.danger.@` → `color.red.dark.600` |
+| `color.status.danger.subtle` | light | `coral.theme.light.color.status.danger.subtle` → `color.red.light.100` |
+| | dark | `coral.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `color.category.1.@` | light | `coral.theme.light.color.category.1.@` → `color.teal.light.600` |
+| | dark | `coral.theme.dark.color.category.1.@` → `color.teal.dark.600` |
+| `color.category.1.subtle` | light | `coral.theme.light.color.category.1.subtle` → `color.teal.light.100` |
+| | dark | `coral.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
+| `color.category.2.@` | light | `coral.theme.light.color.category.2.@` → `color.purple.light.600` |
+| | dark | `coral.theme.dark.color.category.2.@` → `color.purple.dark.600` |
+| `color.category.2.subtle` | light | `coral.theme.light.color.category.2.subtle` → `color.purple.light.100` |
+| | dark | `coral.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
+| `color.category.3.@` | light | `coral.theme.light.color.category.3.@` → `color.orange.light.600` |
+| | dark | `coral.theme.dark.color.category.3.@` → `color.orange.dark.600` |
+| `color.category.3.subtle` | light | `coral.theme.light.color.category.3.subtle` → `color.orange.light.100` |
+| | dark | `coral.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
+| `color.category.4.@` | light | `coral.theme.light.color.category.4.@` → `color.blue.light.600` |
+| | dark | `coral.theme.dark.color.category.4.@` → `color.blue.dark.600` |
+| `color.category.4.subtle` | light | `coral.theme.light.color.category.4.subtle` → `color.blue.light.100` |
+| | dark | `coral.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
+| `color.category.5.@` | light | `coral.theme.light.color.category.5.@` → `color.green.light.600` |
+| | dark | `coral.theme.dark.color.category.5.@` → `color.green.dark.600` |
+| `color.category.5.subtle` | light | `coral.theme.light.color.category.5.subtle` → `color.green.light.100` |
+| | dark | `coral.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
+| `color.disabled.text` | light | `coral.theme.light.color.disabled.text` → `color.neutral.500` → `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
+| | dark | `coral.theme.dark.color.disabled.text` → `color.neutral.500` → `coral.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
+| `color.disabled.surface` | light | `coral.theme.light.color.disabled.surface` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
+| | dark | `coral.theme.dark.color.disabled.surface` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| `color.disabled.border` | light | `coral.theme.light.color.disabled.border` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `coral.theme.dark.color.disabled.border` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 ::::
 
 The raw values these tokens end at are on [Primitives › Color](../primitives/color).

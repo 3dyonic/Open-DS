@@ -27,24 +27,30 @@ When something rises above the page, and what separates groups.
 Each token points to another token. Values live only on primitives, below.
 
 ::::brand{id="aster" name="Aster"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `elevation.card` | `aster.theme.light.elevation.card` → `shadow.card` | `aster.theme.dark.elevation.card` → `shadow.card-dark` |
-| `elevation.overlay` | `aster.theme.light.elevation.overlay` → `shadow.overlay` | `aster.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `elevation.card` | light | `aster.theme.light.elevation.card` → `shadow.card` |
+| | dark | `aster.theme.dark.elevation.card` → `shadow.card-dark` |
+| `elevation.overlay` | light | `aster.theme.light.elevation.overlay` → `shadow.overlay` |
+| | dark | `aster.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
 
 ::::brand{id="birch" name="Birch"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `elevation.card` | `birch.theme.light.elevation.card` → `shadow.card` | `birch.theme.dark.elevation.card` → `shadow.card-dark` |
-| `elevation.overlay` | `birch.theme.light.elevation.overlay` → `shadow.overlay` | `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `elevation.card` | light | `birch.theme.light.elevation.card` → `shadow.card` |
+| | dark | `birch.theme.dark.elevation.card` → `shadow.card-dark` |
+| `elevation.overlay` | light | `birch.theme.light.elevation.overlay` → `shadow.overlay` |
+| | dark | `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
 
 ::::brand{id="coral" name="Coral"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `elevation.card` | `coral.theme.light.elevation.card` → `shadow.card` | `coral.theme.dark.elevation.card` → `shadow.card-dark` |
-| `elevation.overlay` | `coral.theme.light.elevation.overlay` → `shadow.overlay` | `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `elevation.card` | light | `coral.theme.light.elevation.card` → `shadow.card` |
+| | dark | `coral.theme.dark.elevation.card` → `shadow.card-dark` |
+| `elevation.overlay` | light | `coral.theme.light.elevation.overlay` → `shadow.overlay` |
+| | dark | `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
 
 The raw values these tokens end at are on [Primitives › Effects](../primitives/effects).

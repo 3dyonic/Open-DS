@@ -4,15 +4,24 @@
 // One source: the files the Open DS docs use, with their import paths pointed at the project.
 
 import { readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { PACKAGES } from "./components.mjs";
 
 const UI_IMPORT = /from "@open-ds\/ui\/components\/([a-z-]+)"/g;
 
+// Every composite source file, base forms included, as paths relative to the composites folder.
+const sources = (roots) => {
+  const walk = (dir) =>
+    readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+      e.isDirectory() ? walk(join(dir, e.name)) : [relative(roots.composites, join(dir, e.name))],
+    );
+  return walk(roots.composites);
+};
+
 /** The ui components the composites import. */
 export function compositeComponents(roots) {
   const names = new Set();
-  for (const f of readdirSync(roots.composites))
+  for (const f of sources(roots))
     for (const [, name] of readFileSync(join(roots.composites, f), "utf8").matchAll(UI_IMPORT))
       names.add(name);
   return [...names].sort();
@@ -21,7 +30,7 @@ export function compositeComponents(roots) {
 /** The npm packages the composites import themselves, such as lucide-react for icons, with versions. */
 export function compositePackages(roots) {
   const used = new Set();
-  for (const f of readdirSync(roots.composites)) {
+  for (const f of sources(roots)) {
     const src = readFileSync(join(roots.composites, f), "utf8");
     for (const pkg of Object.keys(PACKAGES)) if (src.includes(`from "${pkg}"`)) used.add(pkg);
   }
@@ -34,11 +43,14 @@ export function compositePackages(roots) {
  */
 export function docSiteFiles(roots, { ui = "../../../src/components/ui", components = compositeComponents(roots) } = {}) {
   const files = {};
-  for (const f of readdirSync(roots.composites))
+  for (const f of sources(roots)) {
+    // A base form sits one folder deeper, so its path to the components does too.
+    const up = "../".repeat(f.split("/").length - 1);
     files[`composites/${f}`] = readFileSync(join(roots.composites, f), "utf8").replace(
       UI_IMPORT,
-      (_, name) => `from "${ui}/${name}"`,
+      (_, name) => `from "${up}${ui}/${name}"`,
     );
+  }
   files["remark/composites.mjs"] = readFileSync(join(roots.docsSrc, "remark", "composites.mjs"), "utf8");
   files["theme/MDXComponents.tsx"] = readFileSync(
     join(roots.docsSrc, "theme", "MDXComponents.tsx"),

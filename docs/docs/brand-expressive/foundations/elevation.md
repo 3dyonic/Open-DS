@@ -26,10 +26,12 @@ When something rises above the page, and what separates groups.
 
 Each token points to another token. Values live only on primitives, below.
 
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `elevation.card` | `brand-expressive.theme.light.elevation.card` → `shadow.card` | `brand-expressive.theme.dark.elevation.card` → `shadow.card-dark` |
-| `elevation.overlay` | `brand-expressive.theme.light.elevation.overlay` → `shadow.overlay` | `brand-expressive.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `elevation.card` | light | `brand-expressive.theme.light.elevation.card` → `shadow.card` |
+| | dark | `brand-expressive.theme.dark.elevation.card` → `shadow.card-dark` |
+| `elevation.overlay` | light | `brand-expressive.theme.light.elevation.overlay` → `shadow.overlay` |
+| | dark | `brand-expressive.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 
 The raw values these tokens end at are on [Primitives › Effects](../primitives/effects).
 

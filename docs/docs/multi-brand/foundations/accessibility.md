@@ -27,33 +27,48 @@ Floors the system must hold.
 Each token points to another token. Values live only on primitives, below.
 
 ::::brand{id="aster" name="Aster"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `size.control.default` | `size.44` | `size.44` |
-| `size.control.compact` | `size.36` | `size.36` |
-| `size.control.large` | `size.44` | `size.44` |
-| `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
+| `size.control.default` | light | `size.44` |
+| | dark | `size.44` |
+| `size.control.compact` | light | `size.36` |
+| | dark | `size.36` |
+| `size.control.large` | light | `size.44` |
+| | dark | `size.44` |
+| `opacity.disabled` | light | `opacity.40` |
+| | dark | `opacity.40` |
+| `color.border.focus` | light | `aster.theme.light.color.border.focus` → `color.teal.light.600` |
+| | dark | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
 ::::
 
 ::::brand{id="birch" name="Birch"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `size.control.default` | `size.44` | `size.44` |
-| `size.control.compact` | `size.36` | `size.36` |
-| `size.control.large` | `size.44` | `size.44` |
-| `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
+| `size.control.default` | light | `size.44` |
+| | dark | `size.44` |
+| `size.control.compact` | light | `size.36` |
+| | dark | `size.36` |
+| `size.control.large` | light | `size.44` |
+| | dark | `size.44` |
+| `opacity.disabled` | light | `opacity.40` |
+| | dark | `opacity.40` |
+| `color.border.focus` | light | `birch.theme.light.color.border.focus` → `color.purple.light.600` |
+| | dark | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
 ::::
 
 ::::brand{id="coral" name="Coral"}
-| Token | Points to, light | Points to, dark |
+| Token | Mode | Points to |
 | --- | --- | --- |
-| `size.control.default` | `size.44` | `size.44` |
-| `size.control.compact` | `size.36` | `size.36` |
-| `size.control.large` | `size.44` | `size.44` |
-| `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
+| `size.control.default` | light | `size.44` |
+| | dark | `size.44` |
+| `size.control.compact` | light | `size.36` |
+| | dark | `size.36` |
+| `size.control.large` | light | `size.44` |
+| | dark | `size.44` |
+| `opacity.disabled` | light | `opacity.40` |
+| | dark | `opacity.40` |
+| `color.border.focus` | light | `coral.theme.light.color.border.focus` → `color.orange.light.600` |
+| | dark | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
 ::::
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
