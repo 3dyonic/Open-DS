@@ -64,7 +64,7 @@ function ScopeCard({ card }: { card: CardItem }) {
   const lifted = !card.answer && card.samples?.some((x) => x.kind === "shadow");
   return (
     <Card>
-      <span aria-hidden="true" className="-mx-[var(--card-padding)] -mt-[var(--card-padding)] flex h-42 justify-center rounded-t-[var(--card-radius)] bg-[var(--color-surface-sunken)] p-[var(--space-gap-default)] [&_img]:max-h-full">
+      <span aria-hidden="true" className="mx-[calc(var(--card-padding)*-1)] mt-[calc(var(--card-padding)*-1)] flex h-42 min-w-0 justify-center overflow-hidden rounded-t-[var(--card-radius)] bg-[var(--color-surface-sunken)] p-[var(--space-gap-default)] [&_img]:max-h-full [&_img]:min-w-0 [&_img]:object-contain">
         <img src={card.robot!.day} alt="" loading="lazy" className="dark:hidden" />
         <img src={card.robot!.night} alt="" loading="lazy" className="hidden dark:block" />
       </span>
@@ -137,12 +137,12 @@ function OneCard({ card }: { card: CardItem }) {
   return card.href ? (
     <a
       href={card.href}
-      className="grid text-[inherit] no-underline hover:no-underline"
+      className="grid min-w-0 text-[inherit] no-underline hover:no-underline [&>*]:min-w-0"
     >
       {body}
     </a>
   ) : (
-    <div className="grid">{body}</div>
+    <div className="grid min-w-0 [&>*]:min-w-0">{body}</div>
   );
 }
 
@@ -152,7 +152,9 @@ export default function CardGrid({ data }: { data: CardGridData }) {
       data-composite="card-grid"
       className={
         data.cards.some((c) => c.robot)
-          ? "grid gap-[var(--space-gap-group)] sm:grid-cols-2 lg:grid-cols-4"
+          ? // As many scope cards as fit: a card is never narrower than its words need plus the
+            // scheme's own card padding, so a roomy scheme shows fewer across, not squeezed ones.
+            "grid gap-[var(--space-gap-group)] [grid-template-columns:repeat(auto-fill,minmax(calc(10rem+2*var(--card-padding)),1fr))]"
           : data.cards.length > 1
             ? "grid gap-[var(--space-gap-default)] sm:grid-cols-2 lg:grid-cols-3"
             : "grid gap-[var(--space-gap-default)]"
