@@ -75,34 +75,44 @@ function ColorGroups({ tokens }: { tokens: TokenSwatch[] }) {
       </div>
       {modes.map((m) => (
         <TabsContent key={m} value={m}>
-          {/* Inside data-mode the whole list, thumbs and text, takes this mode's values. */}
-          <div data-mode={m} className="flex flex-col gap-[var(--space-gap-default)]">
-            {groups.map(([g, title, why]) => (
-              <Frame key={g}>
-                <p className="m-0 mb-[var(--space-gap-default)] flex flex-wrap items-baseline gap-x-[var(--space-gap-default)]">
-                  <b className="text-[color:var(--color-text-primary)]">{title}</b>
-                  <span className="text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)]">{why}</span>
-                </p>
-                <ul className="m-0 grid list-none grid-cols-[auto_minmax(0,1fr)] items-center gap-x-[var(--space-gap-default)] gap-y-[var(--space-gap-tight)] p-0 sm:grid-cols-[auto_minmax(0,max-content)_minmax(0,1fr)]">
-                  {tokens
-                    .filter((t) => groupOf(t) === g)
-                    .map((t) => {
-                      const r = t.modes?.find((x) => x.mode === m);
-                      return (
-                        <li key={t.token} className="col-span-2 m-0 grid grid-cols-subgrid items-center sm:col-span-3">
-                          <Swatch color={tokenVar(t.token)} size="md" />
-                          <span className={`text-[color:var(--color-text-primary)] ${mono}`}>{name(t.token)}</span>
-                          {r && (
-                            <span className={`max-sm:col-start-2 text-[color:var(--color-text-muted)] ${mono}`}>
-                              <Chain lead parts={[name(r.via ?? r.primitive), r.hex]} />
-                            </span>
-                          )}
-                        </li>
-                      );
-                    })}
-                </ul>
-              </Frame>
-            ))}
+          {/* Inside data-mode the whole list, thumbs and text, takes this mode's values. One list for every
+              group, so the thumb, name and chain columns line up down the page; each group opens with a
+              header row. Subtle separators between rows: the scheme's default border, at half strength. */}
+          <div data-mode={m}>
+            <Frame>
+              <ul className="m-0 grid list-none grid-cols-[auto_minmax(0,1fr)] items-center gap-x-[var(--space-gap-default)] p-0 sm:grid-cols-[auto_minmax(0,max-content)_minmax(0,1fr)]">
+                {groups.map(([g, title, why], gi) => (
+                  <React.Fragment key={g}>
+                    <li
+                      className={`col-span-2 m-0 flex flex-wrap items-baseline gap-x-[var(--space-gap-default)] pb-[var(--space-gap-tight)] sm:col-span-3 ${gi ? "pt-[var(--space-gap-section)]" : ""}`}
+                    >
+                      <b className="text-[color:var(--color-text-primary)]">{title}</b>
+                      <span className="text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)]">{why}</span>
+                    </li>
+                    {tokens
+                      .filter((t) => groupOf(t) === g)
+                      .map((t, ti, list) => {
+                        const r = t.modes?.find((x) => x.mode === m);
+                        const last = ti === list.length - 1;
+                        return (
+                          <li
+                            key={t.token}
+                            className={`col-span-2 m-0 grid grid-cols-subgrid items-center py-[var(--space-gap-tight)] sm:col-span-3 ${last ? "" : "border-b-[length:var(--border-width-default)] border-[color-mix(in_srgb,var(--color-border-default)_50%,transparent)]"}`}
+                          >
+                            <Swatch color={tokenVar(t.token)} size="lg" />
+                            <span className={`text-[color:var(--color-text-primary)] ${mono}`}>{name(t.token)}</span>
+                            {r && (
+                              <span className={`max-sm:col-start-2 text-[color:var(--color-text-muted)] ${mono}`}>
+                                <Chain lead parts={[name(r.via ?? r.primitive), r.hex]} />
+                              </span>
+                            )}
+                          </li>
+                        );
+                      })}
+                  </React.Fragment>
+                ))}
+              </ul>
+            </Frame>
           </div>
         </TabsContent>
       ))}
