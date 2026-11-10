@@ -7,7 +7,6 @@ import * as React from "react";
 import { Card, CardContent } from "@open-ds/ui/components/card";
 import {
   Item,
-  ItemContent,
   ItemDescription,
   ItemTitle,
 } from "@open-ds/ui/components/item";
@@ -23,23 +22,31 @@ export type TypeRole = {
 export type TypeRolesData = { roles: TypeRole[] };
 
 export default function TypeRoles({ data }: { data: TypeRolesData }) {
+  // One row per role, as RC1 drew it: the role and its values on the left, the line set in the role
+  // on the right, cut to one line, a divider between rows.
   return (
     <div data-composite="type-roles">
       <Card>
         <CardContent>
-          <div className="flex flex-col gap-[var(--space-gap-tight)]">
+          <div className="flex flex-col">
             {data.roles.map((r) => (
-              <Item key={r.role}>
-                <ItemContent>
-                  <ItemTitle>{r.role}</ItemTitle>
-                  <ItemDescription>
-                    {[r.size, r.lineHeight, r.weight].filter(Boolean).join(" · ")}
-                  </ItemDescription>
-                  <Sample kind="type" role={r.role}>
-                    {r.text}
-                  </Sample>
-                </ItemContent>
-              </Item>
+              <div key={r.role} className="border-b border-[var(--color-border-default)] last:border-b-0">
+                <Item>
+                  <div className="flex w-40 flex-none flex-col">
+                    <ItemTitle>{r.role}</ItemTitle>
+                    <ItemDescription>
+                      <span className="[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] whitespace-pre">
+                        {[r.size, r.lineHeight, r.weight].filter(Boolean).join(" · ")}
+                      </span>
+                    </ItemDescription>
+                  </div>
+                  <div className="min-w-0 flex-1 truncate">
+                    <Sample kind="type" role={r.role}>
+                      {r.text}
+                    </Sample>
+                  </div>
+                </Item>
+              </div>
             ))}
           </div>
         </CardContent>
