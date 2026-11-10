@@ -134,7 +134,15 @@
        "subject": "icon",
        "text": "A filled icon in a tile, beside words that say what will appear here and how to start."
       }
-     ]
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
+      ]
+     }
     },
     {
      "kind": "change",

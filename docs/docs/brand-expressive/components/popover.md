@@ -1,7 +1,7 @@
 ---
 composite_data: "./popover.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 43
+sidebar_position: 44
 title: "Popover"
 description: "Popover in Brand expressive."
 ---

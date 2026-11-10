@@ -136,7 +136,15 @@
        "subject": "icon",
        "text": "A two-tone icon in a tile, for a small region where a picture would push the words away."
       }
-     ]
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
+      ]
+     }
     },
     {
      "kind": "change",

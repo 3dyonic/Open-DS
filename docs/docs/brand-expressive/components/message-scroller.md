@@ -1,7 +1,7 @@
 ---
 composite_data: "./message-scroller.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 39
+sidebar_position: 40
 title: "Message scroller"
 description: "Message scroller in Brand expressive."
 sidebar_class_name: "ods-left-out"

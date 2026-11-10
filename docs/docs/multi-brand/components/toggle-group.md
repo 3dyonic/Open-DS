@@ -1,7 +1,7 @@
 ---
 composite_data: "./toggle-group.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 61
+sidebar_position: 62
 title: "Toggle group"
 description: "Toggle group in Multi-brand."
 ---

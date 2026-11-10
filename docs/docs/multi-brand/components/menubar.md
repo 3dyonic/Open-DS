@@ -1,7 +1,7 @@
 ---
 composite_data: "./menubar.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 37
+sidebar_position: 38
 title: "Menubar"
 description: "Menubar in Multi-brand."
 sidebar_class_name: "ods-left-out"

@@ -9,8 +9,8 @@ hide_table_of_contents: true
 
 # Inventory
 
-:::intro{robot="shelf" stats="41 In|21 Left out|9 Families"}
-**41** components are in Accessible first. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::intro{robot="shelf" stats="42 In|21 Left out|9 Families"}
+**42** components are in Accessible first. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
 :::
 
 ## Action
@@ -57,7 +57,7 @@ The frame around content. 5 in Accessible first.
 
 ## Media
 
-Pictures and slides. 2 in Accessible first.
+Pictures and slides. 3 in Accessible first.
 
 ::card-grid{id="inventory/media"}
 

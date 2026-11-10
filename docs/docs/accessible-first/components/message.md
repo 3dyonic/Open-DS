@@ -1,7 +1,7 @@
 ---
 composite_data: "./message.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 38
+sidebar_position: 39
 title: "Message"
 description: "Message in Accessible first."
 ---

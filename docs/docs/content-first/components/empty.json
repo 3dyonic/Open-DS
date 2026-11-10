@@ -136,7 +136,15 @@
        "subject": "icon",
        "text": "A quiet outline icon in a small tile, above a warm invitation to save an article."
       }
-     ]
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
+      ]
+     }
     },
     {
      "kind": "change",

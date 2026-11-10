@@ -189,7 +189,15 @@
        "subject": "icon",
        "text": "An outline icon in a small tile beside the reason and the action."
       }
-     ]
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
+      ]
+     }
     },
     {
      "kind": "change",

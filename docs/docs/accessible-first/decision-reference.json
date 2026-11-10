@@ -2983,11 +2983,27 @@
     "Iconography · How big are icons next to text? → Larger than the text"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Iconography",
-     "href": "foundations/iconography"
-    }
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. Larger than the text beside it, so it is easy to see.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's large size isn't used. Accessible first has one icon size, already larger than the text.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "iconography-definition": {
@@ -3006,6 +3022,27 @@
         "link": {
          "label": "Empty",
          "href": "components/empty"
+        }
+       },
+       {
+        "text": "Icon's plain variant. Every icon: a bold 2px stroke, easy to see.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-tint variant isn't used. A bold stroke carries the icon; a shape adds nothing people need.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-solid variant isn't used. A bold stroke carries the icon.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
         }
        }
       ]
@@ -3029,6 +3066,18 @@
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. Larger than the text beside it, so it is easy to see.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
         }
        }
       ]

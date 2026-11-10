@@ -1,7 +1,7 @@
 ---
 composite_data: "./input-group.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 31
+sidebar_position: 32
 title: "Input group"
 description: "Input group in Dense data."
 ---

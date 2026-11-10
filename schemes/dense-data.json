@@ -550,6 +550,50 @@
         "why": "A quick look at an asset or user on hover, also reachable on click. Never the only way to see it."
       },
       {
+        "id": "icon",
+        "why": "Row actions and status, beside their words.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "16px, the size of the small text in rows and toolbars.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Dense data has one icon size.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: outline at a 1.5px stroke.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "Outline icons stay light next to dense text; a shape would add weight to every row.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "Outline icons stay light next to dense text.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
+      },
+      {
         "id": "input-otp",
         "why": "A fixed-length one-time code sent by text or email. Not for passwords or any other value."
       },
@@ -13810,6 +13854,46 @@
           "on": {
             "$value": "{border-width.default}",
             "$description": "Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width."
+          }
+        }
+      },
+      "icon": {
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the icon next to text."
+        },
+        "size-large": {
+          "$value": "{size.icon}",
+          "$description": "Size of the large icon, where the scheme has two sizes."
+        },
+        "contained": {
+          "padding": {
+            "$value": "{space.gap.tight}",
+            "$description": "Space between a contained icon and its shape."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the shape a contained icon sits in."
+          },
+          "tint": {
+            "background": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of the tinted shape."
+            },
+            "color": {
+              "$value": "{color.text.link}",
+              "$description": "Icon color on the tinted shape."
+            }
+          },
+          "solid": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the solid shape."
+            },
+            "color": {
+              "$value": "{color.text.on-action}",
+              "$description": "Icon color on the solid shape."
+            }
           }
         }
       }

@@ -1,7 +1,7 @@
 ---
 composite_data: "./textarea.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 58
+sidebar_position: 59
 title: "Textarea"
 description: "Textarea in Brand expressive."
 ---

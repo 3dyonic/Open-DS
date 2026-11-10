@@ -1,6 +1,6 @@
 ---
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 44.5
+sidebar_position: 45.5
 slug: "progress/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

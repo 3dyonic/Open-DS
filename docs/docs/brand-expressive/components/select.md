@@ -1,7 +1,7 @@
 ---
 composite_data: "./select.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 48
+sidebar_position: 49
 title: "Select"
 description: "Select in Brand expressive."
 sidebar_class_name: "ods-left-out"

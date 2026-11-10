@@ -1,7 +1,7 @@
 ---
 composite_data: "./sheet.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 50
+sidebar_position: 51
 title: "Sheet"
 description: "Sheet in Brand expressive."
 sidebar_class_name: "ods-left-out"

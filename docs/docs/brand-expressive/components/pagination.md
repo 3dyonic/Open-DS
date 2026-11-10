@@ -1,7 +1,7 @@
 ---
 composite_data: "./pagination.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 42
+sidebar_position: 43
 title: "Pagination"
 description: "Pagination in Brand expressive."
 ---

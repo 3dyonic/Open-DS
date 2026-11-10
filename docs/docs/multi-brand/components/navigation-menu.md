@@ -1,7 +1,7 @@
 ---
 composite_data: "./navigation-menu.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 41
+sidebar_position: 42
 title: "Navigation menu"
 description: "Navigation menu in Multi-brand."
 ---

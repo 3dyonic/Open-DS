@@ -1,7 +1,7 @@
 ---
 composite_data: "./native-select.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 40
+sidebar_position: 41
 title: "Native select"
 description: "Native select in Brand expressive."
 ---

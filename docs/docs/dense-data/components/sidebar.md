@@ -1,7 +1,7 @@
 ---
 composite_data: "./sidebar.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 51
+sidebar_position: 52
 title: "Sidebar"
 description: "Sidebar in Dense data."
 ---

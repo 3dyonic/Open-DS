@@ -506,6 +506,50 @@
       {
         "id": "table",
         "why": "The rare table inside an article, read row by row at a comfortable height. Not for records people scan or sort."
+      },
+      {
+        "id": "icon",
+        "why": "Navigation and actions beside their words.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "The size of the text beside it.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Content first has one icon size.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: outline at a 1.5px stroke, quiet beside text.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "Icons stay quiet beside reading text.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "Icons stay quiet beside reading text.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
       }
     ],
     "out": [
@@ -13699,6 +13743,46 @@
           "on": {
             "$value": "{border-width.default}",
             "$description": "Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width."
+          }
+        }
+      },
+      "icon": {
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the icon next to text."
+        },
+        "size-large": {
+          "$value": "{size.icon}",
+          "$description": "Size of the large icon, where the scheme has two sizes."
+        },
+        "contained": {
+          "padding": {
+            "$value": "{space.gap.tight}",
+            "$description": "Space between a contained icon and its shape."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the shape a contained icon sits in."
+          },
+          "tint": {
+            "background": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of the tinted shape."
+            },
+            "color": {
+              "$value": "{color.text.link}",
+              "$description": "Icon color on the tinted shape."
+            }
+          },
+          "solid": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the solid shape."
+            },
+            "color": {
+              "$value": "{color.text.on-action}",
+              "$description": "Icon color on the solid shape."
+            }
           }
         }
       }

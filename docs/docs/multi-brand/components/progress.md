@@ -1,7 +1,7 @@
 ---
 composite_data: "./progress.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 44
+sidebar_position: 45
 title: "Progress"
 description: "Progress in Multi-brand."
 ---

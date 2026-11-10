@@ -1,7 +1,7 @@
 ---
 composite_data: "./input-otp.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 32
+sidebar_position: 33
 title: "Input otp"
 description: "Input otp in Content first."
 sidebar_class_name: "ods-left-out"

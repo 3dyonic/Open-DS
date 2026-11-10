@@ -1,7 +1,7 @@
 ---
 composite_data: "./toast.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 59
+sidebar_position: 60
 title: "Toast"
 description: "Toast in Accessible first."
 sidebar_class_name: "ods-left-out"

@@ -1,7 +1,7 @@
 ---
 composite_data: "./separator.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 49
+sidebar_position: 50
 title: "Separator"
 description: "Separator in Accessible first."
 ---

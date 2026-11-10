@@ -82,7 +82,10 @@
      "also": {
       "label": "It also shapes",
       "items": [
-       "Empty: icon"
+       "Empty: icon",
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
       ]
      }
     },

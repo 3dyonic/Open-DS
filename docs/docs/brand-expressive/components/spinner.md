@@ -1,7 +1,7 @@
 ---
 composite_data: "./spinner.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 54
+sidebar_position: 55
 title: "Spinner"
 description: "Spinner in Brand expressive."
 ---

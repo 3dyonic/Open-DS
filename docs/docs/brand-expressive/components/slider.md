@@ -1,7 +1,7 @@
 ---
 composite_data: "./slider.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 53
+sidebar_position: 54
 title: "Slider"
 description: "Slider in Brand expressive."
 ---

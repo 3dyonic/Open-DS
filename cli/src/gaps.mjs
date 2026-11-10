@@ -286,6 +286,9 @@ export function componentGaps(scheme, g, roots) {
 function componentGapsNow(scheme, g, roots) {
   const comps = builtComponents(roots);
   const catalogue = new Set(g.catalogue.items.map((i) => i.id));
+  // A token a scope owns by its own name is that scope's shared role, not a component's: size.icon
+  // belongs to iconography, for every icon (OD-285), even though Icon is also a component.
+  const scopeOwned = new Set(g.scopes.flatMap((x) => x.owns ?? []));
   const rule = new Map(
     g.semantics.keys.map((k) => [
       k.id.replace(/\.@$/, ""),
@@ -551,6 +554,7 @@ function componentGapsNow(scheme, g, roots) {
       if (
         role &&
         catalogue.has(role) &&
+        !scopeOwned.has(t.aliases) &&
         role !== comp &&
         !comp.startsWith(role) &&
         !named

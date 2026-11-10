@@ -1,7 +1,7 @@
 ---
 composite_data: "./radio-group.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 45
+sidebar_position: 46
 title: "Radio group"
 description: "Radio group in Accessible first."
 ---

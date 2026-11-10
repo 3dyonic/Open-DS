@@ -149,7 +149,10 @@
      "also": {
       "label": "It also shapes",
       "items": [
-       "Input group: inline-start"
+       "Input group: inline-start",
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
       ]
      }
     },

@@ -655,6 +655,50 @@
       {
         "id": "table",
         "why": "A customer's own records in the account area, such as Your subscriptions, in comfortable rows. Not as a tool for bulk work."
+      },
+      {
+        "id": "icon",
+        "why": "Navigation and actions, the same in every brand.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "The size of the text beside it.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Multi-brand has one icon size.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: one outline set for every brand, at a 1.5px stroke.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "One outline set serves every brand; a shape would need a brand decision.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "One outline set serves every brand.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
       }
     ],
     "out": [
@@ -18185,6 +18229,46 @@
           "on": {
             "$value": "{border-width.default}",
             "$description": "Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width."
+          }
+        }
+      },
+      "icon": {
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the icon next to text."
+        },
+        "size-large": {
+          "$value": "{size.icon}",
+          "$description": "Size of the large icon, where the scheme has two sizes."
+        },
+        "contained": {
+          "padding": {
+            "$value": "{space.gap.tight}",
+            "$description": "Space between a contained icon and its shape."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the shape a contained icon sits in."
+          },
+          "tint": {
+            "background": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of the tinted shape."
+            },
+            "color": {
+              "$value": "{color.text.link}",
+              "$description": "Icon color on the tinted shape."
+            }
+          },
+          "solid": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the solid shape."
+            },
+            "color": {
+              "$value": "{color.text.on-action}",
+              "$description": "Icon color on the solid shape."
+            }
           }
         }
       }

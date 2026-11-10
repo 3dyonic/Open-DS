@@ -2956,11 +2956,27 @@
     "Iconography · How big are icons next to text? → Match the text"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Iconography",
-     "href": "foundations/iconography"
-    }
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. The size of the text beside it.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's large size isn't used. Content first has one icon size.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "iconography-definition": {
@@ -2979,6 +2995,27 @@
         "link": {
          "label": "Empty",
          "href": "components/empty"
+        }
+       },
+       {
+        "text": "Icon's plain variant. Every icon: outline at a 1.5px stroke, quiet beside text.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-tint variant isn't used. Icons stay quiet beside reading text.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-solid variant isn't used. Icons stay quiet beside reading text.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
         }
        }
       ]
@@ -3002,6 +3039,18 @@
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. The size of the text beside it.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
         }
        }
       ]
