@@ -616,7 +616,11 @@ export function docsPages(
   // path from the page to the component pages.
   const iconsTable = (base) => {
     const by = {};
-    for (const [c, icons] of Object.entries(lucideIcons)) for (const i of icons) (by[i] ??= []).push(c);
+    // Only the components this docs site has a page for: all of them in the Open DS docs, the carried
+    // ones in a created project (the same rule as the component pages).
+    const hasPage = (c) => all || !scheme.inventory || scheme.inventory.in.some((x) => x.id === c);
+    for (const [c, icons] of Object.entries(lucideIcons))
+      if (hasPage(c)) for (const i of icons) (by[i] ??= []).push(c);
     return (
       `| Icon | Drawn by |\n| --- | --- |\n` +
       Object.entries(by)

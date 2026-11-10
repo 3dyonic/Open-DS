@@ -561,6 +561,21 @@
         "every spacing a scheme decides sits on the 4px grid, at most 64px"
       ],
       "checks": ["spacing-map-generated", "spacing-on-grid", "components-own-api", "json-files-validate"]
+    },
+    {
+      "id": "OD-285",
+      "title": "Icons follow each scheme: one Lucide set, the scheme's size and stroke, and an Icon component for content",
+      "in": [
+        "every scheme answers its icon style and stroke; icon.stroke-width holds the stroke the answer names, and every Lucide icon reads it",
+        "the large icon size differs from the default only where the scheme answers two icon sizes",
+        "the docs' own visuals draw their icons through Icon, and an icon-only button anywhere has an accessible name"
+      ],
+      "checks": [
+        "icons-follow-scheme",
+        "catalogue-built",
+        "components-reference",
+        "inventory-decided"
+      ]
     }
   ]
 }

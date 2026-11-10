@@ -20,6 +20,15 @@ export function useVariant(component: string, axis: string, fallback: string): s
   return Object.entries(item?.variants?.[axis] ?? {}).find(([, d]) => !d.not_used)?.[0] ?? fallback;
 }
 type Carried = { id: string; variants?: Record<string, Record<string, { not_used?: boolean }>> };
+/** Every variant this scheme uses on an axis, so an example shows only its decisions (OD-285). */
+export function useVariants(component: string, axis: string): string[] {
+  const { scheme } = useScheme();
+  const data = SCHEMES[scheme] ?? SCHEMES["dense-data"];
+  const item = (data.inventory.in as Carried[]).find((i) => i.id === component);
+  return Object.entries(item?.variants?.[axis] ?? {})
+    .filter(([, d]) => !d.not_used)
+    .map(([v]) => v);
+}
 
 export const toneOf = (s: Samples, label: string) => s.statuses.find((x) => x.label === label)?.meaning ?? "neutral";
 

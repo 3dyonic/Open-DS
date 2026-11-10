@@ -1147,6 +1147,35 @@ export function ComponentHeader() {
   );
 }
 
+/** Icon's docs only (OD-285): the two ways to draw an icon, the same words as the docs page. */
+export function IconWays() {
+  const { s, item } = useComponent();
+  if (item?.id !== "icon") return null;
+  const ref = String(s.tokens?.semantic?.icon?.["stroke-width"]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
+  const stroke = ref?.split(".").reduce((n: Any, k: string) => n?.[k], s.tokens.primitive)?.$value;
+  return (
+    <Frame>
+      <h2>Two ways to draw an icon</h2>
+      <p>
+        To keep things simple, Open DS uses one open-source icon set, Lucide, in every scheme. {s.name} sets each
+        icon's size and its stroke, {stroke}px; the drawings stay the same. Both ways read the same tokens, so an icon
+        looks the same either way.
+      </p>
+      <p>
+        <b>Inside the components</b>, shadcn's way. Select, Accordion, Checkbox and the other components draw their
+        own icons, so you add nothing. They import Lucide directly, as shadcn does, so they stay easy to update.
+      </p>
+      <p>
+        <b>In your content</b>, use Icon: an icon beside a word; an icon button with no word, which needs a label; the
+        large size; and the contained looks.
+      </p>
+      <pre>
+        <code>{`<Icon icon={Bell} /> Notify me\n<Button variant="ghost"><Icon icon={X} label="Close" /></Button>`}</code>
+      </pre>
+    </Frame>
+  );
+}
+
 /** When to use it, when not, and what to use instead (the reference). */
 export function WhenToUse() {
   const { s, item, carried } = useComponent();

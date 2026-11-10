@@ -2593,6 +2593,47 @@ export const CHECKS = {
         : ok(`the data in ${files} page files holds facts only`);
     },
   },
+  // OD-285: icons follow each scheme. The style answer names its stroke and icon.stroke-width holds it;
+  // icons.css gives every Lucide icon that stroke; the large size differs only where the scheme answers
+  // two sizes. The docs' own visuals draw icons through Icon, and an icon-only button has a name.
+  "icons-follow-scheme": {
+    requires: [...SCHEMES.map((s) => `schemes/${s}.json`), "ui/src/icons.css", "doc-composites/src", "storybook/stories"],
+    run: (c) => {
+      const gaps = [];
+      if (!/\.lucide\s*\{[^}]*stroke-width:\s*var\(--icon-stroke-width\)/.test(c.read("ui", "src", "icons.css")))
+        gaps.push("ui/src/icons.css does not give .lucide the icon stroke");
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const ref = String(s.tokens.semantic.icon?.["stroke-width"]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
+        const stroke = ref?.split(".").reduce((n, k) => n?.[k], s.tokens.primitive)?.$value;
+        const answer = s.answers.find((a) => a.question === "iconography.definition");
+        if (stroke === undefined) gaps.push(`${id}: icon.stroke-width does not resolve to a primitive`);
+        else if (!answer?.why?.includes(`${stroke}px`)) gaps.push(`${id}: the style answer does not name its ${stroke}px stroke`);
+        const two = s.answers.find((a) => a.question === "iconography.count")?.option === "two";
+        const large = s.tokens.component.icon?.["size-large"]?.$value;
+        if (two === (large === "{size.icon}"))
+          gaps.push(`${id}: the large icon size ${two ? "matches the default though the scheme answers two sizes" : "differs though the scheme answers one size"}`);
+      }
+      // The docs' own visuals draw a Lucide icon only through Icon.
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${dir}/${e.name}`) : e.name.endsWith(".tsx") ? [`${dir}/${e.name}`] : [],
+        );
+      for (const f of walk("doc-composites/src")) {
+        const text = c.read(f);
+        const names = (text.match(/import \{([^}]*)\} from "lucide-react"/)?.[1] ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+        for (const n of names) if (new RegExp(`<${n}[\\s/>]`).test(text)) gaps.push(`${f}: draws ${n} directly; use Icon`);
+      }
+      // An icon-only button names itself, on the button or the Icon.
+      for (const f of [...walk("doc-composites/src"), ...walk("storybook/stories")]) {
+        for (const m of c.read(f).matchAll(/<Button\b([^>]*)>\s*<Icon\b([^>]*?)\/>\s*<\/Button>/g))
+          if (!/aria-label=/.test(m[1]) && !/\blabel=/.test(m[2])) gaps.push(`${f}: an icon-only button has no name`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${SCHEMES.length} schemes name their icon stroke and every Lucide icon reads it; the docs draw icons through Icon, and every icon-only button has a name`);
+    },
+  },
   // Rule 15 (OD-284): a color fact names the step it reads. Where the docs show what a color token
   // resolves to, the data carries the neutral step it goes through as via, so the page shows
   // neutral.600, not the gray primitive behind it. Each entry is traced again through the scheme.
