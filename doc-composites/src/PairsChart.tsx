@@ -11,8 +11,8 @@ import { Badge } from "@open-ds/ui/components/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@open-ds/ui/components/tabs";
 import Frame from "./base/Frame";
 
-export type Pair = { text: string; primitive: string; hex: string; contrast: number; floor?: number };
-export type Fill = { fill: string; primitive: string; hex: string; pairs: Pair[] };
+export type Pair = { text: string; via?: string; primitive: string; hex: string; contrast: number; floor?: number };
+export type Fill = { fill: string; via?: string; primitive: string; hex: string; pairs: Pair[] };
 type Tone = "page" | "light" | "dark";
 export type PairsMode = { mode: "light" | "dark"; fills: Partial<Record<Tone, Fill[]>> };
 export type PairsChartData = { floor: number; modes: PairsMode[] };
@@ -28,6 +28,16 @@ const small = "text-[length:var(--type-caption-font-size)] [font-family:var(--ty
 const muted = "text-[color:var(--color-text-muted)]";
 // The page shows token names without their color. prefix.
 const name = (token: string) => token.replace(/^color\./, "");
+// The aliases a token goes through to its primitive, such as neutral.600 → slate.light.600. It wraps
+// at the arrow, so each name stays whole in a narrow tile.
+function Chain({ x, className = "" }: { x: { via?: string; primitive: string }; className?: string }) {
+  return (
+    <span className={`flex flex-wrap gap-x-[var(--space-gap-tight)] ${className}`}>
+      {x.via && <span className="whitespace-nowrap">{name(x.via)} →</span>}
+      <span className="whitespace-nowrap">{name(x.primitive)}</span>
+    </span>
+  );
+}
 
 function FillTile({ f, floor }: { f: Fill; floor: number }) {
   return (
@@ -37,14 +47,14 @@ function FillTile({ f, floor }: { f: Fill; floor: number }) {
     >
       <p className="flex flex-col whitespace-nowrap font-semibold">
         {name(f.fill)}
-        <span className={small}>{name(f.primitive)}</span>
+        <Chain x={f} className={small} />
       </p>
       {f.pairs.map((p) => (
         <div key={p.text} className="flex items-center gap-[var(--space-gap-tight)]" style={{ color: p.hex }}>
           <b className="text-[length:var(--type-title-font-size)]">Aa</b>
-          <span className={`flex min-w-0 flex-1 flex-col truncate ${small}`}>
-            {name(p.text)}
-            <span>{name(p.primitive)}</span>
+          <span className={`flex min-w-0 flex-1 flex-col ${small}`}>
+            <span className="truncate">{name(p.text)}</span>
+            <Chain x={p} />
           </span>
           <span className={`shrink-0 whitespace-nowrap rounded-full border border-current px-[var(--space-gap-tight)] ${small}`}>
             {p.contrast.toFixed(1)}:1

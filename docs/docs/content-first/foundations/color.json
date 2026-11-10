@@ -250,23 +250,27 @@
        {
         "fill": "color.surface.canvas",
         "primitive": "color.stone.light.50",
+        "via": "color.neutral.50",
         "hex": "#FFFDF8",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 16.84
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.light.700",
+          "via": "color.neutral.700",
           "hex": "#4A4339",
           "contrast": 9.59
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.light.600",
+          "via": "color.neutral.600",
           "hex": "#61594D",
           "contrast": 6.79
          },
@@ -287,23 +291,27 @@
        {
         "fill": "color.surface.default",
         "primitive": "color.stone.light.0",
+        "via": "color.neutral.0",
         "hex": "#FFFFFF",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 17.12
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.light.700",
+          "via": "color.neutral.700",
           "hex": "#4A4339",
           "contrast": 9.75
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.light.600",
+          "via": "color.neutral.600",
           "hex": "#61594D",
           "contrast": 6.9
          },
@@ -324,23 +332,27 @@
        {
         "fill": "color.surface.raised",
         "primitive": "color.stone.light.0",
+        "via": "color.neutral.0",
         "hex": "#FFFFFF",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 17.12
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.light.700",
+          "via": "color.neutral.700",
           "hex": "#4A4339",
           "contrast": 9.75
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.light.600",
+          "via": "color.neutral.600",
           "hex": "#61594D",
           "contrast": 6.9
          },
@@ -361,23 +373,27 @@
        {
         "fill": "color.surface.sunken",
         "primitive": "color.stone.light.100",
+        "via": "color.neutral.100",
         "hex": "#F6F2EA",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 15.33
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.light.700",
+          "via": "color.neutral.700",
           "hex": "#4A4339",
           "contrast": 8.74
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.light.600",
+          "via": "color.neutral.600",
           "hex": "#61594D",
           "contrast": 6.18
          },
@@ -398,23 +414,27 @@
        {
         "fill": "color.surface.highlight",
         "primitive": "color.stone.light.100",
+        "via": "color.neutral.100",
         "hex": "#F6F2EA",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 15.33
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.light.700",
+          "via": "color.neutral.700",
           "hex": "#4A4339",
           "contrast": 8.74
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.light.600",
+          "via": "color.neutral.600",
           "hex": "#61594D",
           "contrast": 6.18
          },
@@ -435,17 +455,20 @@
        {
         "fill": "color.surface.pressed",
         "primitive": "color.stone.light.200",
+        "via": "color.neutral.200",
         "hex": "#E4DDD0",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 12.68
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.light.700",
+          "via": "color.neutral.700",
           "hex": "#4A4339",
           "contrast": 7.22
          },
@@ -465,18 +488,21 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 13.98
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.light.700",
+          "via": "color.neutral.700",
           "hex": "#4A4339",
           "contrast": 7.96
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.light.600",
+          "via": "color.neutral.600",
           "hex": "#61594D",
           "contrast": 5.63
          },
@@ -499,11 +525,13 @@
        {
         "fill": "color.action.secondary",
         "primitive": "color.stone.light.0",
+        "via": "color.neutral.0",
         "hex": "#FFFFFF",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 17.12
          },
@@ -518,11 +546,13 @@
        {
         "fill": "color.action.secondary.hover",
         "primitive": "color.stone.light.100",
+        "via": "color.neutral.100",
         "hex": "#F6F2EA",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 15.33
          },
@@ -542,6 +572,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 13.3
          },
@@ -567,6 +598,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 14.4
          },
@@ -592,6 +624,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 13.35
          },
@@ -617,6 +650,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.light.900",
+          "via": "color.neutral.900",
           "hex": "#1F1B16",
           "contrast": 14.99
          },
@@ -639,6 +673,7 @@
        {
         "fill": "color.surface.inverse",
         "primitive": "color.stone.light.900",
+        "via": "color.neutral.900",
         "hex": "#1F1B16",
         "pairs": [
          {
@@ -741,23 +776,27 @@
        {
         "fill": "color.surface.canvas",
         "primitive": "color.stone.dark.0",
+        "via": "color.neutral.0",
         "hex": "#14110D",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 18.51
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
+          "via": "color.neutral.500",
           "hex": "#CFC6B6",
           "contrast": 11.12
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
+          "via": "color.neutral.400",
           "hex": "#A39A8B",
           "contrast": 6.77
          },
@@ -778,23 +817,27 @@
        {
         "fill": "color.surface.default",
         "primitive": "color.stone.dark.50",
+        "via": "color.neutral.50",
         "hex": "#1F1B16",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 16.84
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
+          "via": "color.neutral.500",
           "hex": "#CFC6B6",
           "contrast": 10.11
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
+          "via": "color.neutral.400",
           "hex": "#A39A8B",
           "contrast": 6.16
          },
@@ -815,23 +858,27 @@
        {
         "fill": "color.surface.raised",
         "primitive": "color.stone.dark.50",
+        "via": "color.neutral.50",
         "hex": "#1F1B16",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 16.84
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
+          "via": "color.neutral.500",
           "hex": "#CFC6B6",
           "contrast": 10.11
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
+          "via": "color.neutral.400",
           "hex": "#A39A8B",
           "contrast": 6.16
          },
@@ -852,23 +899,27 @@
        {
         "fill": "color.surface.sunken",
         "primitive": "color.stone.dark.100",
+        "via": "color.neutral.100",
         "hex": "#2E2A24",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 14.03
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
+          "via": "color.neutral.500",
           "hex": "#CFC6B6",
           "contrast": 8.42
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
+          "via": "color.neutral.400",
           "hex": "#A39A8B",
           "contrast": 5.13
          },
@@ -889,23 +940,27 @@
        {
         "fill": "color.surface.highlight",
         "primitive": "color.stone.dark.100",
+        "via": "color.neutral.100",
         "hex": "#2E2A24",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 14.03
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
+          "via": "color.neutral.500",
           "hex": "#CFC6B6",
           "contrast": 8.42
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
+          "via": "color.neutral.400",
           "hex": "#A39A8B",
           "contrast": 5.13
          },
@@ -926,17 +981,20 @@
        {
         "fill": "color.surface.pressed",
         "primitive": "color.stone.dark.200",
+        "via": "color.neutral.200",
         "hex": "#4A4339",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 9.59
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
+          "via": "color.neutral.500",
           "hex": "#CFC6B6",
           "contrast": 5.76
          },
@@ -956,18 +1014,21 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 14.05
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
+          "via": "color.neutral.500",
           "hex": "#CFC6B6",
           "contrast": 8.44
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
+          "via": "color.neutral.400",
           "hex": "#A39A8B",
           "contrast": 5.14
          },
@@ -990,6 +1051,7 @@
        {
         "fill": "color.surface.inverse",
         "primitive": "color.stone.dark.900",
+        "via": "color.neutral.900",
         "hex": "#FFFDF8",
         "pairs": [
          {
@@ -1087,11 +1149,13 @@
        {
         "fill": "color.action.secondary",
         "primitive": "color.stone.dark.50",
+        "via": "color.neutral.50",
         "hex": "#1F1B16",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 16.84
          },
@@ -1106,11 +1170,13 @@
        {
         "fill": "color.action.secondary.hover",
         "primitive": "color.stone.dark.100",
+        "via": "color.neutral.100",
         "hex": "#2E2A24",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 14.03
          },
@@ -1130,6 +1196,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 13.68
          },
@@ -1155,6 +1222,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 13.21
          },
@@ -1180,6 +1248,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 14.14
          },
@@ -1205,6 +1274,7 @@
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
+          "via": "color.neutral.900",
           "hex": "#FFFDF8",
           "contrast": 13.52
          },

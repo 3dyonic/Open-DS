@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://open-ds.dev/schemas/doc-composites/pairs-chart.schema.json",
   "title": "Pairs chart",
-  "description": "Which text may sit on which fill in one brand of a scheme, and the contrast each pair keeps, in each mode. Drawn by the PairsChart composite on Foundations › Color.",
+  "description": "Which text may sit on which fill in one brand of a scheme, and the contrast each pair keeps, in each mode. Drawn by the PairsChart composite on Foundations \u203a Color.",
   "type": "object",
   "required": [
     "floor",
@@ -44,6 +44,11 @@
         "floor": {
           "type": "number",
           "description": "The least contrast this pair needs, when it differs from the chart's floor."
+        },
+        "via": {
+          "type": "string",
+          "pattern": "^color\\.neutral\\.[0-9]+$",
+          "description": "The neutral step the text goes through on its way to its primitive, such as color.neutral.600. Absent when the text points at its primitive directly."
         }
       }
     },
@@ -78,6 +83,11 @@
           "items": {
             "$ref": "#/$defs/pair"
           }
+        },
+        "via": {
+          "type": "string",
+          "pattern": "^color\\.neutral\\.[0-9]+$",
+          "description": "The neutral step the fill goes through on its way to its primitive, such as color.neutral.600. Absent when the fill points at its primitive directly."
         }
       }
     }

@@ -701,7 +701,7 @@ export function docsPages(
       follow(scheme.tokens, b, m, path) ??
       follow(scheme.tokens, b, m, `${path}.@`);
     return f
-      ? { hex: prim(f.prim), prim: f.prim.replace(/^color\./, "") }
+      ? { hex: prim(f.prim), prim: f.prim.replace(/^color\./, ""), via: f.via }
       : null;
   };
   const short = (p) => p.replace(/^color\./, "").replace(/\.@$/, "");
@@ -735,6 +735,7 @@ export function docsPages(
         return {
           fill: fill.replace(/\.@$/, ""),
           primitive: `color.${bg.prim}`,
+          ...(bg.via && { via: bg.via }),
           hex: bg.hex,
           pairs: (byFill[fill] ?? [])
             .map((p) => {
@@ -743,6 +744,7 @@ export function docsPages(
                 ? {
                     text: p.key.replace(/\.@$/, ""),
                     primitive: `color.${t.prim}`,
+                    ...(t.via && { via: t.via }),
                     hex: t.hex,
                     contrast: Number(contrast(t.hex, bg.hex).toFixed(2)),
                     // A pair names its own floor only when it differs from the chart's.
