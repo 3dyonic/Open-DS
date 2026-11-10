@@ -556,7 +556,7 @@
      "themed": true,
      "chain": {
       "token": "component.sidebar.inner.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "sidebar-inner-radius"
      },
      "values": [
@@ -950,7 +950,7 @@
      "themed": true,
      "chain": {
       "token": "component.sidebar.inset.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "sidebar-inset-radius"
      },
      "values": [
@@ -1384,13 +1384,13 @@
       },
       {
        "theme": "Coral Light",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -1790,13 +1790,13 @@
       },
       {
        "theme": "Coral Light",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -2223,13 +2223,13 @@
       },
       {
        "theme": "Coral Light",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -2622,13 +2622,13 @@
       },
       {
        "theme": "Coral Light",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -2811,13 +2811,13 @@
       },
       {
        "theme": "Coral Light",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -3017,13 +3017,13 @@
       },
       {
        "theme": "Coral Light",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -4501,18 +4501,18 @@
       {
        "theme": "Coral Light",
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },

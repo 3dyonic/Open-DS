@@ -83,9 +83,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** size.52
 
-- **Token** `radius.round` → `radius` 9999px
+- **Token** `radius.round` → `radius` 50%
 
-  - **Pick** radius.full
+  - **Pick** radius.round
 
 - **Token** `color.surface.sunken` → `fallback.background` #EDEDED · dark #222222 :label[By scheme]{tone="info"}
 
@@ -129,9 +129,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** blue.dark.600: the primary action's fill; its label reads, 8.74:1, above the 7:1 floor.
   - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
 
-- **Token** `radius.round` → `badge.radius` 9999px
+- **Token** `radius.round` → `badge.radius` 50%
 
-  - **Pick** radius.full
+  - **Pick** radius.round
 
 - **Token** `color.surface.canvas` → `badge.ring` #F7F7F7 · dark #0A0A0A :label[By scheme]{tone="info"}
 

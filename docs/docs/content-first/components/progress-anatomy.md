@@ -82,9 +82,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Rounded corners feel friendly.
 
-- **Token** `radius.round` → `radius` 9999px
+- **Token** `radius.pill` → `radius` calc(infinity * 1px)
 
-  - **Pick** radius.full
+  - **Pick** radius.pill
 :::
 
 :::panel{id="part-2" title="Indicator" note="Parts 2"}

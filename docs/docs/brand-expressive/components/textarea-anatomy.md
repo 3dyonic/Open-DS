@@ -83,9 +83,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** size.52
 
-- **Token** `radius.control` → `radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.control` → `radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `color.border.strong` → `border` #8A6F63 · dark #B5988A :label[By scheme]{tone="info"}
 

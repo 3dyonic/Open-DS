@@ -49,7 +49,12 @@ const DRAW: Record<string, (v: string, p: SampleProps) => Drawn> = {
     text: "Aa Aa",
   }),
   shadow: (v) => ({ cls: `${box} w-10 bg-[var(--color-surface-raised)]`, style: { boxShadow: v } }),
-  radius: (v) => ({ cls: `${box} border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)]`, style: { borderRadius: v } }),
+  // One corner of a 48px square, so a small corner and a large one look different: a full corner ends
+  // at a quarter circle (24px) instead of turning every sample into the same circle (OD-286).
+  radius: (v) => ({
+    cls: "inline-block size-12 flex-none border-t-[length:var(--border-width-focus)] border-l-[length:var(--border-width-focus)] border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)] align-middle",
+    style: { borderTopLeftRadius: v },
+  }),
   line: (v) => ({ cls: "inline-block w-6 bg-[var(--color-text-primary)] align-middle", style: { height: v } }),
   bar: (v) => ({ cls: "inline-block h-2 min-w-px rounded-[var(--radius-badge)] bg-[var(--color-action-primary)]", style: { width: v } }),
   duration: (v) => ({
@@ -136,7 +141,7 @@ export default function Sample({
     return (
       <i
         data-composite="sample"
-        className="inline-block size-[var(--type-caption-font-size)] rounded-[var(--radius-round)] border border-[var(--color-border-default)] align-middle"
+        className="inline-block size-[var(--type-caption-font-size)] rounded-full border border-[var(--color-border-default)] align-middle"
         style={{ background: value }}
         aria-hidden="true"
       />

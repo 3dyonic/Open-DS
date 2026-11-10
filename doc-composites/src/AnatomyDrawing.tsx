@@ -345,7 +345,7 @@ export default function AnatomyDrawing({ data }: { data: AnatomyDrawingData }) {
   return (
     <div
       data-composite="anatomy-drawing"
-      className="flex justify-center overflow-x-auto rounded-[var(--radius-container)] bg-[var(--color-surface-canvas)] p-[var(--space-inset-container)]"
+      className="flex justify-center overflow-x-auto rounded-[var(--radius-surface)] bg-[var(--color-surface-canvas)] p-[var(--space-inset-container)]"
     >
       {data.kind === "menu" ? (
         <Menu data={data} />

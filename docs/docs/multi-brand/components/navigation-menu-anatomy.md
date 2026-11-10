@@ -155,7 +155,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 
-- **Token** `radius.container` → `viewport.radius` 0.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `viewport.radius` 0.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.8: Rounded by default; each brand sets its own corner.
 

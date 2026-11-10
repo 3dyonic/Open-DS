@@ -100,7 +100,7 @@
      "themed": true,
      "chain": {
       "token": "component.menubar.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "menubar-radius"
      },
      "values": [
@@ -779,7 +779,7 @@
      "themed": true,
      "chain": {
       "token": "component.menubar.content.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "menubar-content-radius"
      },
      "values": [
@@ -2873,7 +2873,7 @@
      "themed": true,
      "chain": {
       "token": "component.menubar.sub.content.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "menubar-sub-content-radius"
      },
      "values": [

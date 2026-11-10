@@ -71,7 +71,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Small corners keep dense rows straight.
 
-- **Token** `radius.container` → `radius` 0.25rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `radius` 0.25rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.4: Small corners keep dense rows straight.
 :::

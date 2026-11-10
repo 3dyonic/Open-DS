@@ -85,9 +85,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.900: the reverse of content for short messages; its text reads, 17.12:1 on surface.inverse, above the 4.5:1 floor.
   - **Shares the step with** text.primary. Changing this pick moves only what reads color.surface.inverse.
 
-- **Token** `radius.badge` → `content.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.badge` → `content.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `component-spacing-map.x2` → `content.padding-x` 0.5rem
 

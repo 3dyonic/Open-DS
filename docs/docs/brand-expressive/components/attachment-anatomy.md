@@ -88,9 +88,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 
-- **Token** `radius.control` → `radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.control` → `radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `component-spacing-map.x2` → `padding-y` 0.5rem
 
@@ -114,9 +114,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** size.52
 
-- **Token** `radius.control` → `media.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.control` → `media.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `color.surface.sunken` → `media.background` #FCEFE6 · dark #33241F :label[By scheme]{tone="info"}
 

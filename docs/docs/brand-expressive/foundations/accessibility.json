@@ -5,21 +5,37 @@
     {
      "token": "size.control.default",
      "type": "dimension",
+     "resolves": {
+      "primitive": "size.52",
+      "value": "3.25rem"
+     },
      "px": 52
     },
     {
      "token": "size.control.compact",
      "type": "dimension",
+     "resolves": {
+      "primitive": "size.44",
+      "value": "2.75rem"
+     },
      "px": 44
     },
     {
      "token": "size.control.large",
      "type": "dimension",
+     "resolves": {
+      "primitive": "size.60",
+      "value": "3.75rem"
+     },
      "px": 60
     },
     {
      "token": "opacity.disabled",
-     "type": "number"
+     "type": "number",
+     "resolves": {
+      "primitive": "opacity.40",
+      "value": "0.4"
+     }
     },
     {
      "token": "color.border.focus",

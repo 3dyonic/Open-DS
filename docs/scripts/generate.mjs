@@ -71,7 +71,7 @@ const INFIMA = {
   "--ifm-heading-font-family": "type-heading-font-family",
   "--ifm-heading-font-weight": "type-heading-font-weight",
   "--ifm-font-weight-bold": "type-label-font-weight",
-  "--ifm-global-radius": "radius-container",
+  "--ifm-global-radius": "radius-surface",
   "--ifm-button-border-radius": "button-radius",
   "--ifm-code-border-radius": "radius-control",
   "--ifm-global-border-width": "border-width-default",

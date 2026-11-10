@@ -700,7 +700,7 @@ export const CHECKS = {
             .replace(/\.tsx$/, ""),
         )
         .filter((x) => !["sheet", "drawer", "tooltip"].includes(x));
-      const want = { radius: "radius.container", shadow: "elevation.overlay" };
+      const want = { radius: "radius.surface", shadow: "elevation.overlay" };
       const gaps = [];
       let n = 0;
       for (const comp of floats) {

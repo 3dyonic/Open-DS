@@ -204,9 +204,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Most visitors arrive on phones, and a compact control is too small for a thumb.
 
-- **Token** `radius.control` → `label.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.control` → `label.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `component-spacing-map.x4` → `label.padding` 2rem :label[By scheme]{tone="info"}
 

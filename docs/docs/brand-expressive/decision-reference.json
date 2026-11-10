@@ -167,9 +167,9 @@
          "scope": {
           "title": "shape",
           "href": "foundations/shape",
-          "token": "radius.control",
-          "primitive": "radius.999",
-          "value": "9999px"
+          "token": "radius.option",
+          "primitive": "radius.20",
+          "value": "1.25rem"
          }
         },
         {
@@ -2375,14 +2375,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.999: Pill controls feel playful.",
+        "text": "radius.control: radius.pill: Pill controls feel playful.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.999: Pill controls feel playful.",
+        "text": "radius.badge: radius.pill: Pill controls feel playful.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2396,7 +2396,7 @@
         }
        },
        {
-        "text": "radius.container: radius.24: Pill controls feel playful.",
+        "text": "radius.surface: radius.24: Pill controls feel playful.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2471,21 +2471,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.999: Pill controls feel playful.",
+        "text": "radius.control: radius.pill: Pill controls feel playful.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.999: Pill controls feel playful.",
+        "text": "radius.badge: radius.pill: Pill controls feel playful.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.container: radius.24: Pill controls feel playful.",
+        "text": "radius.surface: radius.24: Pill controls feel playful.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"

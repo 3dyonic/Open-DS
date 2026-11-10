@@ -2385,7 +2385,7 @@
         }
        },
        {
-        "text": "radius.badge: radius.999: Rounded corners feel friendly.",
+        "text": "radius.badge: radius.pill: Rounded corners feel friendly.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2399,7 +2399,7 @@
         }
        },
        {
-        "text": "radius.container: radius.12: Rounded corners feel friendly.",
+        "text": "radius.surface: radius.12: Rounded corners feel friendly.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2469,14 +2469,14 @@
         }
        },
        {
-        "text": "radius.badge: radius.999: Rounded corners feel friendly.",
+        "text": "radius.badge: radius.pill: Rounded corners feel friendly.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.container: radius.12: Rounded corners feel friendly.",
+        "text": "radius.surface: radius.12: Rounded corners feel friendly.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"

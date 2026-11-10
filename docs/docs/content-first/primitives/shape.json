@@ -29,36 +29,88 @@
      },
      "usedBy": [
       {
-       "token": "radius.container",
+       "token": "radius.surface",
        "where": "every mode"
       }
      ]
     },
     {
-     "primitive": "radius.999",
-     "value": "9999px",
+     "primitive": "radius.round",
+     "value": "50%",
      "sample": {
       "kind": "radius",
-      "value": "9999px"
+      "value": "50%"
+     },
+     "usedBy": [
+      {
+       "token": "avatar.radius",
+       "where": "component key"
+      },
+      {
+       "token": "avatar.fallback.radius",
+       "where": "component key"
+      },
+      {
+       "token": "avatar.badge.radius",
+       "where": "component key"
+      },
+      {
+       "token": "avatar.group.count.radius",
+       "where": "component key"
+      },
+      {
+       "token": "carousel.previous.radius",
+       "where": "component key"
+      },
+      {
+       "token": "carousel.next.radius",
+       "where": "component key"
+      },
+      {
+       "token": "radio-group.item.radius",
+       "where": "component key"
+      },
+      {
+       "token": "slider.thumb.radius",
+       "where": "component key"
+      },
+      {
+       "token": "switch.thumb.radius",
+       "where": "component key"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.pill",
+     "value": "calc(infinity * 1px)",
+     "sample": {
+      "kind": "radius",
+      "value": "calc(infinity * 1px)"
      },
      "usedBy": [
       {
        "token": "radius.badge",
        "where": "every mode"
-      }
-     ]
-    },
-    {
-     "primitive": "radius.full",
-     "value": "9999px",
-     "sample": {
-      "kind": "radius",
-      "value": "9999px"
-     },
-     "usedBy": [
+      },
       {
-       "token": "radius.round",
-       "where": "semantic"
+       "token": "drawer.handle.radius",
+       "where": "component key"
+      },
+      {
+       "token": "progress.radius",
+       "where": "component key"
+      },
+      {
+       "token": "scroll-area.thumb.radius",
+       "where": "component key"
+      },
+      {
+       "token": "slider.track.radius",
+       "where": "component key"
+      },
+      {
+       "token": "switch.radius",
+       "where": "component key"
       }
      ]
     }

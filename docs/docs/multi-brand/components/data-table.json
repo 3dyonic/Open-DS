@@ -201,34 +201,34 @@
       {
        "theme": "Birch Light",
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Birch Dark",
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Light",
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       },
       {
        "theme": "Coral Dark",
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -473,7 +473,7 @@
      "themed": true,
      "chain": {
       "token": "component.data-table.container.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "data-table-container-radius"
      },
      "values": [

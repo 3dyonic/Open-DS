@@ -99,9 +99,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** size.16
 
-- **Token** `radius.round` → `item.radius` 9999px
+- **Token** `radius.round` → `item.radius` 50%
 
-  - **Pick** radius.full
+  - **Pick** radius.round
 
 - **Token** `color.border.strong` → `item.border` #64748B · dark #96A3B5 :label[By scheme]{tone="info"}
 

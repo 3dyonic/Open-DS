@@ -92,7 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.50: the base for content; body text reads 16.26:1 on it, above the 4.5:1 floor.
   - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
 
-- **Token** `radius.container` → `radius` 0.25rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `radius` 0.25rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.4: Small corners keep dense rows straight.
 

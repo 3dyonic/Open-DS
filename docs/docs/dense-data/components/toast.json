@@ -353,7 +353,7 @@
      "themed": false,
      "chain": {
       "token": "component.toast.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "toast-radius"
      },
      "values": [

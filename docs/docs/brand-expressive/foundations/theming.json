@@ -757,11 +757,11 @@
    "corners": [
     {
      "token": "control",
-     "value": "9999px"
+     "value": "calc(infinity * 1px)"
     },
     {
      "token": "badge",
-     "value": "9999px"
+     "value": "calc(infinity * 1px)"
     },
     {
      "token": "option",
@@ -769,7 +769,7 @@
      "px": "20px"
     },
     {
-     "token": "container",
+     "token": "surface",
      "value": "1.5rem",
      "px": "24px"
     }

@@ -84,7 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
   - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
 
-- **Token** `radius.container` → `radius` 0.75rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `radius` 0.75rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.12: Rounded corners feel friendly.
 

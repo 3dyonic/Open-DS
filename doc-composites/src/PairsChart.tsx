@@ -34,7 +34,7 @@ const source = (x: { via?: string; primitive: string }) => name(x.via ?? x.primi
 function FillTile({ f, floor }: { f: Fill; floor: number }) {
   return (
     <div
-      className="flex min-w-0 flex-col gap-[var(--space-gap-tight)] rounded-[var(--radius-container)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] p-[var(--space-gap-default)]"
+      className="flex min-w-0 flex-col gap-[var(--space-gap-tight)] rounded-[var(--radius-surface)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] p-[var(--space-gap-default)]"
       style={{ background: f.hex, color: f.pairs[0]?.hex }}
     >
       <p className="flex flex-col whitespace-nowrap font-semibold">

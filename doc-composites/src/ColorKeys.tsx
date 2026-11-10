@@ -13,7 +13,7 @@ export default function ColorKeys({ data }: { data: ColorKeysData }) {
   return (
     <div
       data-composite="color-keys"
-      className="grid grid-cols-2 overflow-hidden rounded-[var(--radius-container)] sm:grid-cols-3 lg:grid-cols-6"
+      className="grid grid-cols-2 overflow-hidden rounded-[var(--radius-surface)] sm:grid-cols-3 lg:grid-cols-6"
     >
       {data.keys.map((k) => (
         <Swatch key={k.token} color={tokenVar(k.token)} size="block">

@@ -366,7 +366,7 @@
      "themed": false,
      "chain": {
       "token": "component.chart.tooltip.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "chart-tooltip-radius"
      },
      "values": [

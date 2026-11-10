@@ -29,10 +29,10 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `content-first.theme.base.radius.control` → `radius.8` |
-| `radius.badge` | `content-first.theme.base.radius.badge` → `radius.999` |
+| `radius.badge` | `content-first.theme.base.radius.badge` → `radius.pill` |
 | `radius.option` | `content-first.theme.base.radius.option` → `radius.8` |
-| `radius.container` | `content-first.theme.base.radius.container` → `radius.12` |
-| `radius.round` | `radius.full` |
+| `radius.surface` | `content-first.theme.base.radius.surface` → `radius.12` |
+| `radius.container` | `radius.surface` → `content-first.theme.base.radius.surface` → `radius.12` |
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 | `border-width.focus-offset` | `border-width.2` |

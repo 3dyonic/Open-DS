@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   render: (args) => (
     <ContextMenu {...args}>
-      <ContextMenuTrigger className="flex h-24 max-w-sm items-center justify-center rounded-[var(--radius-container)] border border-dashed border-[var(--color-border-strong)]">
+      <ContextMenuTrigger className="flex h-24 max-w-sm items-center justify-center rounded-[var(--radius-surface)] border border-dashed border-[var(--color-border-strong)]">
         Right-click here
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -34,7 +34,7 @@ export const Examples: Story = {
     <Show component="context-menu">
       {(s) => (
         <ContextMenu>
-          <ContextMenuTrigger className="flex h-24 max-w-sm items-center justify-center rounded-[var(--radius-container)] border border-dashed border-[var(--color-border-strong)]">
+          <ContextMenuTrigger className="flex h-24 max-w-sm items-center justify-center rounded-[var(--radius-surface)] border border-dashed border-[var(--color-border-strong)]">
             {s.table?.rows[0].cells.join(" · ") ?? s.screen}
           </ContextMenuTrigger>
           <ContextMenuContent>

@@ -236,7 +236,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.content.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "navigation-menu-content-radius"
      },
      "values": [
@@ -302,7 +302,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.viewport.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "navigation-menu-viewport-radius"
      },
      "values": [
@@ -1297,10 +1297,10 @@
      "values": [
       {
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },

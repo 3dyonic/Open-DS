@@ -25,7 +25,7 @@ export default function Frame({
 }) {
   return (
     <div
-      className={`min-w-0 rounded-[var(--radius-container)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] p-[var(--space-inset-container)] ${VARIANT[variant]}`}
+      className={`min-w-0 rounded-[var(--radius-surface)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] p-[var(--space-inset-container)] ${VARIANT[variant]}`}
       style={style}
     >
       {children}

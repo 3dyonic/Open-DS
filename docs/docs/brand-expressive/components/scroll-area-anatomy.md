@@ -70,9 +70,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** border-width.2
 
-- **Token** `radius.round` → `thumb.radius` 9999px
+- **Token** `radius.pill` → `thumb.radius` calc(infinity * 1px)
 
-  - **Pick** radius.full
+  - **Pick** radius.pill
 
 - **Token** `color.border.default` → `thumb.background` #F2DCCF · dark #4D3A33 :label[By scheme]{tone="info"}
 

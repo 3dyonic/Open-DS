@@ -31,8 +31,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.control` | `accessible-first.theme.base.radius.control` → `radius.6` |
 | `radius.badge` | `accessible-first.theme.base.radius.badge` → `radius.4` |
 | `radius.option` | `accessible-first.theme.base.radius.option` → `radius.4` |
-| `radius.container` | `accessible-first.theme.base.radius.container` → `radius.8` |
-| `radius.round` | `radius.full` |
+| `radius.surface` | `accessible-first.theme.base.radius.surface` → `radius.8` |
+| `radius.container` | `radius.surface` → `accessible-first.theme.base.radius.surface` → `radius.8` |
 | `border-width.default` | `border-width.2` |
 | `border-width.focus` | `border-width.3` |
 | `border-width.focus-offset` | `border-width.2` |

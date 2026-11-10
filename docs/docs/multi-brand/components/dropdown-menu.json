@@ -110,7 +110,7 @@
      "themed": true,
      "chain": {
       "token": "component.overlay.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "overlay-radius"
      },
      "values": [

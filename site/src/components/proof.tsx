@@ -37,7 +37,7 @@ function Specimen({ p }: { p: ProofData }) {
       <Label size={10}>Where the answers land</Label>
       <div
         data-scheme={p.id}
-        className="flex w-full flex-col gap-[10px] rounded-[var(--radius-container)] border border-[var(--color-border-default)] bg-[var(--color-surface-default)] p-4 text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]"
+        className="flex w-full flex-col gap-[10px] rounded-[var(--radius-surface)] border border-[var(--color-border-default)] bg-[var(--color-surface-default)] p-4 text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]"
       >
         <p className="[font-family:var(--type-heading-font-family)] text-[length:var(--type-heading-font-size)] [font-weight:var(--type-heading-font-weight)]">
           {p.sample.screen}
@@ -73,7 +73,7 @@ function Specimen({ p }: { p: ProofData }) {
           </table>
         )}
         {!p.sample.table && p.sample.card && (
-          <div className="flex flex-col gap-1 rounded-[var(--radius-container)] border border-[var(--color-border-default)] p-3">
+          <div className="flex flex-col gap-1 rounded-[var(--radius-surface)] border border-[var(--color-border-default)] p-3">
             <span className="[font-family:var(--type-heading-font-family)] text-[17px] [font-weight:var(--type-heading-font-weight)]">
               {p.sample.card.title}
             </span>

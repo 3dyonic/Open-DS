@@ -2642,7 +2642,7 @@
         }
        },
        {
-        "text": "radius.container: radius.4: Small corners keep dense rows straight.",
+        "text": "radius.surface: radius.4: Small corners keep dense rows straight.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2719,7 +2719,7 @@
         }
        },
        {
-        "text": "radius.container: radius.4: Small corners keep dense rows straight.",
+        "text": "radius.surface: radius.4: Small corners keep dense rows straight.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"

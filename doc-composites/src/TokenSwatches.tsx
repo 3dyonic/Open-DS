@@ -15,7 +15,13 @@ import Swatch from "./base/Swatch";
 import { tokenVar } from "./base/token";
 
 type Resolved = { mode: "light" | "dark"; primitive: string; via?: string; hex: string };
-export type TokenSwatch = { token: string; type: string; px?: number; modes?: Resolved[] };
+export type TokenSwatch = {
+  token: string;
+  type: string;
+  px?: number;
+  modes?: Resolved[];
+  resolves?: { primitive: string; value: string };
+};
 export type TokenSwatchesData = { tokens: TokenSwatch[] };
 
 // How a token is drawn, from its DTCG type and its name.
@@ -127,15 +133,23 @@ export default function TokenSwatches({ data }: { data: TokenSwatchesData }) {
         <ColorGroups tokens={data.tokens} />
       </div>
     );
-  // One row per token: its value drawn, then its name, in two columns so the names line up.
+  // One row per token: its value drawn, its name, then the primitive it ends at and that value, in
+  // shared columns so the names and the chains line up.
   return (
     <div data-composite="token-swatches" className="mb-[var(--space-gap-group)]">
       <Frame>
-        <ul className="m-0 grid list-none grid-cols-[auto_minmax(0,1fr)] items-center gap-x-[var(--space-gap-group)] gap-y-[var(--space-gap-default)] p-0">
+        <ul className="m-0 grid list-none grid-cols-[auto_minmax(0,1fr)] items-center gap-x-[var(--space-gap-group)] gap-y-[var(--space-gap-default)] p-0 sm:grid-cols-[auto_minmax(0,max-content)_minmax(0,1fr)]">
           {data.tokens.map((t) => (
-            <li key={t.token} className="col-span-2 m-0 grid grid-cols-subgrid items-center">
+            <li key={t.token} className="col-span-2 m-0 grid grid-cols-subgrid items-center sm:col-span-3">
               <Sample kind={kindOf(t.token, t.type) ?? "bar"} value={tokenVar(t.token)} note={t.px ? `${t.px}px` : undefined} />
               <span className={`text-[color:var(--color-text-secondary)] ${mono}`}>{t.token}</span>
+              {t.resolves ? (
+                <span className={`max-sm:col-start-2 text-[color:var(--color-text-muted)] ${mono}`}>
+                  <Chain lead parts={[t.resolves.primitive, t.resolves.value]} />
+                </span>
+              ) : (
+                <span className="max-sm:hidden" />
+              )}
             </li>
           ))}
         </ul>

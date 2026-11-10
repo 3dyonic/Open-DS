@@ -126,7 +126,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 
-- **Token** `radius.container` → `content.radius` 0.75rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 0.75rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.12: Rounded corners feel friendly.
 :::
@@ -257,9 +257,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.
   - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
 
-- **Token** `radius.badge` → `chip.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.badge` → `chip.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Rounded corners feel friendly.
+  - **Pick** radius.pill: Rounded corners feel friendly.
 
 - **Token** `color.text.muted` → `chip.remove.label` #61594D · dark #A39A8B :label[By scheme]{tone="info"}
 

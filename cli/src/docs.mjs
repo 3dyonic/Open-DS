@@ -314,6 +314,7 @@ function specimen(tokens, text, x = {}) {
       type: t.type,
       ...(f.note && { px: Number(f.note.replace("px", "")) }),
       ...(t.type === "color" && x.color && { modes: x.color(t.path) }),
+      ...(t.type !== "color" && x.prim?.(t.path) && { resolves: x.prim(t.path) }),
       // A control size is drawn as the target it makes, with its size in pixels beside it.
       ...(/^size\.control\./.test(t.path) &&
         Number.parseFloat(x.val?.(t.path) ?? "") > 0 && { px: Number.parseFloat(x.val(t.path)) }),
@@ -1333,7 +1334,7 @@ export function docsPages(
       "bar",
     ),
     shape: vars(
-      ["radius-badge", "radius-option", "radius-control", "radius-container"],
+      ["radius-badge", "radius-option", "radius-control", "radius-surface"],
       "radius",
     ),
     elevation: vars(["elevation-card", "elevation-overlay"], "shadow"),
@@ -1612,7 +1613,8 @@ export function docsPages(
           : foundationSpecimen(
               sc.id,
               specimen(
-                semantics.length ? semantics : tokens,
+                // A deprecated alias draws the same as the token it points at, so the specimen leaves it out.
+                (semantics.length ? semantics : tokens).filter((t) => !get(scheme.tokens.semantic, t.path)?.$deprecated),
                 scheme.scenarios[0].text,
                 {
                   smp,
@@ -1633,6 +1635,12 @@ export function docsPages(
                         return { mode: m, primitive: f.prim, ...(via && { via }), hex: hex.toUpperCase() };
                       })
                       .filter(Boolean),
+                  // OD-286: any other token names the primitive it ends at and that primitive's value.
+                  prim: (path) => {
+                    const prim = primitiveOf(first, path);
+                    const v = prim && prim.split(".").reduce((n, k) => n?.[k], scheme.tokens.primitive)?.$value;
+                    return typeof v === "string" || typeof v === "number" ? { primitive: prim, value: String(v) } : null;
+                  },
                 },
               ),
             );

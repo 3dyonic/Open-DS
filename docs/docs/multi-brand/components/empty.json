@@ -201,7 +201,7 @@
      "themed": true,
      "chain": {
       "token": "component.empty.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "empty-radius"
      },
      "values": [
@@ -313,7 +313,7 @@
      "themed": true,
      "chain": {
       "token": "component.empty.icon.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "empty-icon-radius"
      },
      "values": [

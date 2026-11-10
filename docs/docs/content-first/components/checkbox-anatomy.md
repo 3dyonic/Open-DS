@@ -91,9 +91,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** border-width.1
 
-- **Token** `radius.badge` → `radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.badge` → `radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Rounded corners feel friendly.
+  - **Pick** radius.pill: Rounded corners feel friendly.
 :::
 
 :::panel{id="part-2-3" title="Checked" note="Parts 2, 3"}

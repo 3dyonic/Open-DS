@@ -101,7 +101,7 @@ export function Applied({
           {s.metrics.map((m) => (
             <div
               key={m.label}
-              className="rounded-[var(--radius-container)] border border-[var(--card-border)] bg-[var(--card-background)] p-3"
+              className="rounded-[var(--radius-surface)] border border-[var(--card-border)] bg-[var(--card-background)] p-3"
             >
               <p className="text-[length:var(--type-caption-font-size)] uppercase text-[var(--color-text-secondary)]">
                 {m.label}
@@ -113,7 +113,7 @@ export function Applied({
           ))}
         </div>
         {s.table && inventory.includes("table") ? (
-          <div className="overflow-x-auto rounded-[var(--radius-container)] border border-[var(--card-border)] bg-[var(--card-background)]">
+          <div className="overflow-x-auto rounded-[var(--radius-surface)] border border-[var(--card-border)] bg-[var(--card-background)]">
             <Table aria-label={s.table.caption}>
               <TableHeader>
                 <TableRow>

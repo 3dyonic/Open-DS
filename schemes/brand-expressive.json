@@ -2756,15 +2756,16 @@
           "$type": "dimension",
           "$value": "1.5rem"
         },
-        "999": {
-          "$type": "dimension",
-          "$value": "9999px"
-        },
         "$description": "Corner options.",
-        "full": {
+        "round": {
           "$type": "dimension",
-          "$value": "9999px",
-          "$description": "Fully round."
+          "$value": "50%",
+          "$description": "A circle of a square: avatars, radio dots, thumbs and round buttons."
+        },
+        "pill": {
+          "$type": "dimension",
+          "$value": "calc(infinity * 1px)",
+          "$description": "A capsule of any box: tracks, progress, the scroll thumb and pill controls."
         }
       },
       "border-width": {
@@ -2943,10 +2944,10 @@
             "radius": {
               "control": {
                 "$type": "dimension",
-                "$value": "{radius.999}",
+                "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.999: Pill controls feel playful.",
+                    "why": "radius.pill: Pill controls feel playful.",
                     "because": [
                       "shape.roles",
                       "shape.values"
@@ -2957,10 +2958,10 @@
               },
               "badge": {
                 "$type": "dimension",
-                "$value": "{radius.999}",
+                "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.999: Pill controls feel playful.",
+                    "why": "radius.pill: Pill controls feel playful.",
                     "because": [
                       "shape.roles",
                       "shape.values"
@@ -2982,7 +2983,7 @@
                   }
                 }
               },
-              "container": {
+              "surface": {
                 "$type": "dimension",
                 "$value": "{radius.24}",
                 "$extensions": {
@@ -5130,15 +5131,16 @@
           "$value": "{theme.radius.option}",
           "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
         },
-        "container": {
+        "surface": {
           "$type": "dimension",
-          "$value": "{theme.radius.container}",
+          "$value": "{theme.radius.surface}",
           "$description": "Corner of cards, menus and dialogs."
         },
-        "round": {
+        "container": {
           "$type": "dimension",
-          "$value": "{radius.full}",
-          "$description": "Fully round: avatars and dots."
+          "$value": "{radius.surface}",
+          "$description": "Deprecated: use radius.surface (OD-286).",
+          "$deprecated": "Use radius.surface. Removed in the next minor release."
         }
       },
       "border-width": {
@@ -6183,7 +6185,7 @@
           "$description": "Card border."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Card corner radius."
         },
         "padding": {
@@ -6438,7 +6440,7 @@
           "$description": "Fill of a dialog, menu or toast."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner radius of overlays."
         },
         "shadow": {
@@ -6649,7 +6651,7 @@
             "$description": "Content gap of the alert dialog."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the alert dialog."
           },
           "background": {
@@ -6750,7 +6752,7 @@
           "$description": "Gap y of the alert."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Radius of the alert."
         },
         "padding-x": {
@@ -7261,7 +7263,7 @@
         },
         "body": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Body radius of the bubble."
           },
           "padding-x": {
@@ -7733,7 +7735,7 @@
             "$description": "Width of the border of the chart's tooltip."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the chart's tooltip."
           },
           "background": {
@@ -7858,7 +7860,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the combobox."
           },
           "background": {
@@ -8194,7 +8196,7 @@
       },
       "command": {
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels."
         },
         "background": {
@@ -8486,7 +8488,7 @@
           },
           "content": {
             "radius": {
-              "$value": "{radius.container}",
+              "$value": "{radius.surface}",
               "$description": "Sub content radius of the context menu."
             },
             "background": {
@@ -8517,7 +8519,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the context menu."
           },
           "background": {
@@ -8865,7 +8867,7 @@
             "$description": "Width of the table frame's edge, of the data table."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the table frame, of the data table."
           }
         }
@@ -8903,7 +8905,7 @@
             "$description": "Width of the dialog panel's edge."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers."
           },
           "shadow": {
@@ -9086,7 +9088,7 @@
             "$description": "Content background of the drawer."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the drawer panel on the side away from the screen edge: a container corner."
           },
           "border": {
@@ -9174,7 +9176,7 @@
         },
         "handle": {
           "radius": {
-            "$value": "{radius.round}",
+            "$value": "{radius.pill}",
             "$description": "Corner of the drawer handle: fully round."
           },
           "background": {
@@ -9280,7 +9282,7 @@
           "$description": "Gap of the empty."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Radius of the empty."
         },
         "padding": {
@@ -9299,7 +9301,7 @@
         },
         "icon": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Icon radius of the empty."
           },
           "background": {
@@ -9620,7 +9622,7 @@
       "hover-card": {
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content corner of the hover card, like every floating panel's."
           },
           "background": {
@@ -10525,7 +10527,7 @@
           "$description": "Gap of the menubar."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the menubar: a panel that holds its triggers."
         },
         "background": {
@@ -10591,7 +10593,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the menubar."
           },
           "background": {
@@ -10938,7 +10940,7 @@
           },
           "content": {
             "radius": {
-              "$value": "{radius.container}",
+              "$value": "{radius.surface}",
               "$description": "Sub content radius of the menubar."
             },
             "background": {
@@ -10986,7 +10988,7 @@
           "$description": "Gap of the message scroller."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the message scroller: the region that holds a conversation is a container, not a control."
         },
         "focus": {
@@ -11363,7 +11365,7 @@
             "$description": "Content shadow of the navigation menu: it floats, like a menu."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content corner of the navigation menu, like every floating panel's."
           },
           "border": {
@@ -11392,7 +11394,7 @@
         },
         "viewport": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Viewport corner of the navigation menu, like every floating panel's."
           },
           "background": {
@@ -11707,7 +11709,7 @@
       "popover": {
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content corner of the popover, like every floating panel's."
           },
           "background": {
@@ -11768,7 +11770,7 @@
       },
       "progress": {
         "radius": {
-          "$value": "{radius.round}",
+          "$value": "{radius.pill}",
           "$description": "Radius of the progress."
         },
         "background": {
@@ -11936,7 +11938,7 @@
         },
         "thumb": {
           "radius": {
-            "$value": "{radius.round}",
+            "$value": "{radius.pill}",
             "$description": "Thumb radius of the scroll area."
           },
           "background": {
@@ -12331,7 +12333,7 @@
             "$description": "Inner background of the sidebar."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Inner radius of the sidebar."
           },
           "border": {
@@ -12381,7 +12383,7 @@
             "$description": "Inset background of the sidebar."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Inset radius of the sidebar."
           },
           "shadow": {
@@ -13143,7 +13145,7 @@
         },
         "track": {
           "radius": {
-            "$value": "{radius.round}",
+            "$value": "{radius.pill}",
             "$description": "Track radius of the slider."
           },
           "background": {
@@ -13225,7 +13227,7 @@
           "$description": "Width of the switch."
         },
         "radius": {
-          "$value": "{radius.round}",
+          "$value": "{radius.pill}",
           "$description": "Radius of the switch."
         },
         "padding": {
@@ -13509,7 +13511,7 @@
           "$description": "Fill of the toast, like every floating panel's: surface.raised (menus, dialogs, toasts)."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the toast, like every floating panel's."
         },
         "shadow": {

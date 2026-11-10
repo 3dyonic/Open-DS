@@ -101,7 +101,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** shadow.none: No shadows; borders do the work.
   - **Shares the step with** elevation.card. Changing this pick moves only what reads elevation.overlay.
 
-- **Token** `radius.container` → `content.radius` 0.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 0.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.8: Clear, slightly rounded controls.
 
@@ -135,9 +135,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.
   - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
 
-- **Token** `radius.round` → `handle.radius` 9999px
+- **Token** `radius.pill` → `handle.radius` calc(infinity * 1px)
 
-  - **Pick** radius.full
+  - **Pick** radius.pill
 
 - **Token** `space.inset.container` → `handle.margin-top` 1.5rem :label[By scheme]{tone="info"}
 

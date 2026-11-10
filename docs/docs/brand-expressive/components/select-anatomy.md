@@ -104,9 +104,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** space.28
 
-- **Token** `radius.control` → `trigger.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.control` → `trigger.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `color.text.muted` → `trigger.icon` #6B544A · dark #B5988A :label[By scheme]{tone="info"}
 
@@ -232,7 +232,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** shadow.overlay: Pronounced shadows add depth.
   - **Dark** shadow.overlay-dark: Pronounced shadows add depth.
 
-- **Token** `radius.container` → `overlay.radius` 1.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `overlay.radius` 1.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.24: Pill controls feel playful.
 

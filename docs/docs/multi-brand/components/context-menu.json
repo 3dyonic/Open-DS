@@ -499,7 +499,7 @@
      "themed": true,
      "chain": {
       "token": "component.context-menu.sub.content.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "context-menu-sub-content-radius"
      },
      "values": [
@@ -820,7 +820,7 @@
      "themed": true,
      "chain": {
       "token": "component.context-menu.content.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "context-menu-content-radius"
      },
      "values": [

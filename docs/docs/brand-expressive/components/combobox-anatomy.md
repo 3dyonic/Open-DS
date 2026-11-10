@@ -126,7 +126,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 
-- **Token** `radius.container` → `content.radius` 1.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 1.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.24: Pill controls feel playful.
 :::
@@ -245,9 +245,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.400: the edge of a control people must find, 6.71:1 on surface.default, above the 3:1 floor.
   - **Shares the step with** category.5, disabled.text. Changing this pick moves only what reads color.border.strong.
 
-- **Token** `radius.control` → `chips.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.control` → `chips.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `color.surface.sunken` → `chip.background` #FCEFE6 · dark #33241F :label[By scheme]{tone="info"}
 
@@ -257,9 +257,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.
   - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
 
-- **Token** `radius.badge` → `chip.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.badge` → `chip.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `color.text.muted` → `chip.remove.label` #6B544A · dark #B5988A :label[By scheme]{tone="info"}
 

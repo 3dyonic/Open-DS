@@ -2269,7 +2269,7 @@
      "px": "4px"
     },
     {
-     "token": "container",
+     "token": "surface",
      "value": "0.5rem",
      "px": "8px"
     }
@@ -2298,7 +2298,7 @@
     },
     {
      "token": "badge",
-     "value": "9999px"
+     "value": "calc(infinity * 1px)"
     },
     {
      "token": "option",
@@ -2306,7 +2306,7 @@
      "px": "12px"
     },
     {
-     "token": "container",
+     "token": "surface",
      "value": "1rem",
      "px": "16px"
     }
@@ -2330,11 +2330,11 @@
    "corners": [
     {
      "token": "control",
-     "value": "9999px"
+     "value": "calc(infinity * 1px)"
     },
     {
      "token": "badge",
-     "value": "9999px"
+     "value": "calc(infinity * 1px)"
     },
     {
      "token": "option",
@@ -2342,7 +2342,7 @@
      "px": "16px"
     },
     {
-     "token": "container",
+     "token": "surface",
      "value": "1.25rem",
      "px": "20px"
     }

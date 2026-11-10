@@ -274,7 +274,7 @@ export const RECIPES = {
     "Table",
     "Rows of records: a header, rows, and a selected row.",
     String.raw`
-    const c = comp('Table', 'VERTICAL', 0); width(c, 520); fill(c, 'card-background'); stroke(c, 'table-row-border'); radius(c, 'radius-container', 8); c.clipsContent = true;
+    const c = comp('Table', 'VERTICAL', 0); width(c, 520); fill(c, 'card-background'); stroke(c, 'table-row-border'); radius(c, 'radius-surface', 8); c.clipsContent = true;
     const rows = [['Name', 'Status', 'Updated'], ['Row one', 'Open', '09:41'], ['Row two', 'Closed', '08:15'], ['Row three', 'Open', 'Yesterday']];
     for (const [i, r] of rows.entries()) {
       const rw = row(i ? (i === 2 ? 'Row, selected' : 'Row') : 'Header', 0); c.appendChild(rw); stretch(rw); rw.counterAxisSizingMode = 'FIXED'; num(rw, 'height', 'table-row-height', 32);
@@ -291,7 +291,7 @@ export const RECIPES = {
     String.raw`
     const c = comp('Data table', 'VERTICAL', 12); width(c, 560);
     const bar = row('Toolbar', 8); bar.appendChild(await field('Filter rows', 'default', 220, 'search')); const sp = row('Space'); bar.appendChild(sp); sp.layoutGrow = 1; bar.appendChild(await btn('Export', 'secondary')); c.appendChild(bar); stretch(bar);
-    const t = col('Table', 0); fill(t, 'card-background'); stroke(t, 'table-row-border'); radius(t, 'radius-container', 8); t.clipsContent = true; c.appendChild(t); stretch(t);
+    const t = col('Table', 0); fill(t, 'card-background'); stroke(t, 'table-row-border'); radius(t, 'radius-surface', 8); t.clipsContent = true; c.appendChild(t); stretch(t);
     for (const [i, r] of [['', 'Alert', 'Severity'], ['☐', '2041', 'High'], ['☑', '2042', 'Low'], ['☐', '2043', 'Medium']].entries()) {
       const rw = row('Row', 0); t.appendChild(rw); stretch(rw); rw.counterAxisSizingMode = 'FIXED'; num(rw, 'height', 'table-row-height', 32); fill(rw, i === 0 ? 'table-header-background' : i === 2 ? 'table-row-selected' : null);
       if (K('table-row-border') && i < 3) { rw.strokes = [paint('table-row-border')]; rw.strokeTopWeight = 0; rw.strokeLeftWeight = 0; rw.strokeRightWeight = 0; rw.strokeBottomWeight = 1; }
@@ -383,14 +383,14 @@ export const RECIPES = {
     "Aspect ratio",
     "Keeps media at a set shape, here 16:9.",
     String.raw`
-    const c = comp('Aspect ratio', 'HORIZONTAL', 0); fixed(c, 320, 180); c.primaryAxisAlignItems = 'CENTER'; radius(c, 'radius-container', 8); fill(c, 'color-surface-sunken');
+    const c = comp('Aspect ratio', 'HORIZONTAL', 0); fixed(c, 320, 180); c.primaryAxisAlignItems = 'CENTER'; radius(c, 'radius-surface', 8); fill(c, 'color-surface-sunken');
     c.appendChild(await lbl('16:9', 'caption', 'color-text-muted')); return c;`,
   ],
   "scroll-area": [
     "Scroll area",
     "A box that scrolls on its own.",
     String.raw`
-    const c = comp('Scroll area', 'HORIZONTAL', 4); c.counterAxisAlignItems = 'MIN'; stroke(c, 'color-border-default'); radius(c, 'radius-container', 8); c.paddingLeft = 12; c.paddingTop = 8; c.paddingBottom = 8; c.paddingRight = 4;
+    const c = comp('Scroll area', 'HORIZONTAL', 4); c.counterAxisAlignItems = 'MIN'; stroke(c, 'color-border-default'); radius(c, 'radius-surface', 8); c.paddingLeft = 12; c.paddingTop = 8; c.paddingBottom = 8; c.paddingRight = 4;
     const list = col('Content', 8); for (const n of ['v1.2.0', 'v1.1.4', 'v1.1.3', 'v1.1.2', 'v1.1.1']) list.appendChild(await lbl(n, 'data')); c.appendChild(list); list.resize(180, list.height);
     const bar = figma.createRectangle(); bar.name = 'Scrollbar'; bar.resize(4, 48); bar.cornerRadius = 2; fill(bar, 'color-border-strong'); c.appendChild(bar); return c;`,
   ],
@@ -398,7 +398,7 @@ export const RECIPES = {
     "Resizable",
     "Panels the person can resize with a handle.",
     String.raw`
-    const c = comp('Resizable', 'HORIZONTAL', 0); stroke(c, 'color-border-default'); radius(c, 'radius-container', 8); c.clipsContent = true; fixed(c, 420, 140); c.counterAxisAlignItems = 'MIN';
+    const c = comp('Resizable', 'HORIZONTAL', 0); stroke(c, 'color-border-default'); radius(c, 'radius-surface', 8); c.clipsContent = true; fixed(c, 420, 140); c.counterAxisAlignItems = 'MIN';
     const a = col('Panel', 4); a.paddingLeft = 12; a.paddingTop = 12; a.appendChild(await lbl('List', 'label')); c.appendChild(a); fixed(a, 160, 140);
     const h = row('Handle', 0); fixed(h, 9, 140); h.primaryAxisAlignItems = 'CENTER'; fill(h, 'color-border-default'); c.appendChild(h);
     const b = col('Panel', 4); b.paddingLeft = 12; b.paddingTop = 12; b.appendChild(await lbl('Details', 'label')); c.appendChild(b); b.layoutGrow = 1; return c;`,
@@ -496,7 +496,7 @@ export const RECIPES = {
     String.raw`
     const comps = [];
     for (const [n, tone] of [['Info', 'info'], ['Warning', 'warning'], ['Danger', 'danger'], ['Success', 'success']]) {
-      const c = comp('Tone=' + n, 'HORIZONTAL', 12); c.counterAxisAlignItems = 'MIN'; width(c, 380); pad(c, 'space-inset-container', 'space-inset-container', 16, 12); radius(c, 'radius-container', 8);
+      const c = comp('Tone=' + n, 'HORIZONTAL', 12); c.counterAxisAlignItems = 'MIN'; width(c, 380); pad(c, 'space-inset-container', 'space-inset-container', 16, 12); radius(c, 'radius-surface', 8);
       fill(c, 'color-status-' + tone + '-subtle'); stroke(c, 'color-status-' + tone); c.appendChild(icon('info', 'color-status-' + tone));
       const t = col('Text', 2); t.appendChild(await lbl(n === 'Danger' ? 'Sync failed' : n === 'Warning' ? 'Key expires soon' : n === 'Success' ? 'Rule saved' : 'New version', 'label')); t.appendChild(await lbl('Say what happened and what to do next.', 'body', 'color-text-secondary')); c.appendChild(t); t.layoutGrow = 1; comps.push(c);
     }

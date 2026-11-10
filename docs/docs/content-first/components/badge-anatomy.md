@@ -73,9 +73,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Pills sit softly next to text.
 
-- **Token** `radius.badge` → `radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.badge` → `radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Rounded corners feel friendly.
+  - **Pick** radius.pill: Rounded corners feel friendly.
 
 - **Token** `space.gap.tight` → `padding-x` 0.5rem :label[By scheme]{tone="info"}
 

@@ -8,7 +8,7 @@ description: "Shape primitives in Dense data."
 
 # Shape
 
-6 primitives, 6 used.
+7 primitives, 7 used.
 
 ## `radius`
 

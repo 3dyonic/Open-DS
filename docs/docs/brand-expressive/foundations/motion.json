@@ -4,15 +4,27 @@
    "tokens": [
     {
      "token": "motion.duration.feedback",
-     "type": "duration"
+     "type": "duration",
+     "resolves": {
+      "primitive": "duration.fast",
+      "value": "120ms"
+     }
     },
     {
      "token": "motion.duration.panels",
-     "type": "duration"
+     "type": "duration",
+     "resolves": {
+      "primitive": "duration.moderate",
+      "value": "200ms"
+     }
     },
     {
      "token": "motion.duration.hero",
-     "type": "duration"
+     "type": "duration",
+     "resolves": {
+      "primitive": "duration.relaxed",
+      "value": "320ms"
+     }
     },
     {
      "token": "motion.easing.standard",

@@ -84,9 +84,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** size.20
 
-- **Token** `radius.round` → `radius` 9999px
+- **Token** `radius.pill` → `radius` calc(infinity * 1px)
 
-  - **Pick** radius.full
+  - **Pick** radius.pill
 :::
 
 :::panel{id="part-2" title="Thumb" note="Parts 2"}
@@ -110,9 +110,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** size.20
 
-- **Token** `radius.round` → `thumb.radius` 9999px
+- **Token** `radius.round` → `thumb.radius` 50%
 
-  - **Pick** radius.full
+  - **Pick** radius.round
 
 - **Token** `color.surface.default` → `thumb.background` #FFFFFF · dark #141414 :label[By scheme]{tone="info"}
 

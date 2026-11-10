@@ -65,7 +65,7 @@ function Frame({
   if (state !== "live") {
     const [lead, command] = wait.split(/:\s*/);
     return (
-      <div className={`flex w-full items-center justify-center rounded-[var(--radius-container)] bg-[var(--color-surface-sunken)] ${state === "checking" ? "aspect-video" : ""}`}>
+      <div className={`flex w-full items-center justify-center rounded-[var(--radius-surface)] bg-[var(--color-surface-sunken)] ${state === "checking" ? "aspect-video" : ""}`}>
         {state === "missing" && (
           <Empty>
             <EmptyHeader>

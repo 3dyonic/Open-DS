@@ -102,7 +102,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** shadow.overlay: Soft shadows suit warm paper.
   - **Dark** shadow.overlay-dark: Soft shadows suit warm paper.
 
-- **Token** `radius.container` → `content.radius` 0.75rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 0.75rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.12: Rounded corners feel friendly.
 

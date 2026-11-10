@@ -98,7 +98,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** border-width.1
 
-- **Token** `radius.container` → `radius` 0.75rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `radius` 0.75rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.12: Rounded corners feel friendly.
 

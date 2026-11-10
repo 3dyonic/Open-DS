@@ -14,7 +14,6 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --size-control-large: 2rem; /** Height of large controls. Not used in this system, so it equals the default. */
   --size-row: 2rem; /** Height of one table row. */
   --size-icon: 1rem; /** Icon size next to text. */
-  --radius-round: 9999px; /** Fully round: avatars and dots. */
   --border-width-default: 1px; /** Every border. */
   --border-width-focus: 2px; /** The focus ring. */
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
@@ -51,6 +50,20 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --component-spacing-map-x6: 1.5rem;
   --component-spacing-map-x8: 2rem;
   --component-spacing-map-x12: 3rem;
+  --avatar-radius: 50%; /** Radius of the avatar. */
+  --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
+  --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
+  --avatar-group-count-radius: 50%; /** Group count radius of the avatar. */
+  --carousel-previous-radius: 50%; /** Previous radius of the carousel. */
+  --carousel-next-radius: 50%; /** Next radius of the carousel. */
+  --drawer-handle-radius: calc(infinity * 1px); /** Corner of the drawer handle: fully round. */
+  --progress-radius: calc(infinity * 1px); /** Radius of the progress. */
+  --radio-group-item-radius: 50%; /** Item radius of the radio group. */
+  --scroll-area-thumb-radius: calc(infinity * 1px); /** Thumb radius of the scroll area. */
+  --slider-track-radius: calc(infinity * 1px); /** Track radius of the slider. */
+  --slider-thumb-radius: 50%; /** Thumb radius of the slider. */
+  --switch-radius: calc(infinity * 1px); /** Radius of the switch. */
+  --switch-thumb-radius: 50%; /** Corner of the switch's thumb: round, as the track is. */
   --color-neutral-0: #FFFFFF;
   --color-neutral-50: #F7F8FA;
   --color-neutral-100: #EEF1F5;
@@ -101,7 +114,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --radius-control: 0.125rem; /** Corner of buttons and inputs. */
   --radius-badge: 0rem; /** Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks. */
   --radius-option: 0rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
-  --radius-container: 0.25rem; /** Corner of cards, menus and dialogs. */
+  --radius-surface: 0.25rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "IBM Plex Sans", system-ui, sans-serif;
   --type-title-font-family: "IBM Plex Sans", system-ui, sans-serif;
   --type-heading-font-family: "IBM Plex Sans", system-ui, sans-serif;
@@ -224,16 +237,12 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --attachment-meta-line-height: var(--type-caption-line-height); /** The line height of the file's type and size text. */
   --attachment-name-font-weight: var(--type-label-font-weight); /** The weight of the file's name. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
-  --avatar-radius: var(--radius-round); /** Radius of the avatar. */
-  --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
   --avatar-fallback-font-size: var(--type-body-font-size); /** Fallback font size of the avatar. */
   --avatar-fallback-line-height: var(--type-body-line-height); /** Fallback line height of the avatar. */
   --avatar-fallback-sm-font-size: var(--type-caption-font-size); /** Font size of the fallback initials in a small avatar. */
   --avatar-fallback-sm-line-height: var(--type-caption-line-height); /** Line height of the fallback initials in a small avatar. */
-  --avatar-badge-radius: var(--radius-round); /** Badge radius of the avatar. */
   --avatar-badge-ring-width: var(--border-width-default); /** Width of the ring that cuts the status badge out of the avatar: a border, so it follows the scheme's border weight. */
   --avatar-group-count-size: var(--size-control-default); /** Group count size of the avatar. */
-  --avatar-group-count-radius: var(--radius-round); /** Group count radius of the avatar. */
   --avatar-group-count-font-size: var(--type-body-font-size); /** Group count font size of the avatar. */
   --avatar-group-count-line-height: var(--type-body-line-height); /** Group count line height of the avatar. */
   --avatar-group-count-icon-size: var(--size-icon); /** Group count icon size of the avatar. */
@@ -290,9 +299,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --carousel-item-padding-left: var(--component-spacing-map-x4); /** Item padding left of the carousel. */
   --carousel-item-padding-top: var(--component-spacing-map-x4); /** Item padding top of the carousel. */
   --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
-  --carousel-previous-radius: var(--radius-round); /** Previous radius of the carousel. */
   --carousel-next-size: var(--size-control-default); /** Next size of the carousel. */
-  --carousel-next-radius: var(--radius-round); /** Next radius of the carousel. */
   --chart-font-size: var(--type-caption-font-size); /** Font size of the chart. */
   --chart-line-height: var(--type-caption-line-height); /** Line height of the chart. */
   --chart-font-weight: var(--type-label-font-weight); /** Font weight of the chart. */
@@ -456,6 +463,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --dialog-header-gap: var(--space-gap-tight); /** Gap between the dialog title and its description. */
   --dialog-footer-gap: var(--space-gap-default); /** Gap between the dialog footer's buttons. */
   --drawer-content-border-width: var(--border-width-default); /** Width of the drawer panel's edge. */
+  --drawer-radius: var(--drawer-handle-radius); /** Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer. */
   --drawer-header-gap: var(--component-spacing-map-hairline); /** Header gap of the drawer. */
   --drawer-header-padding: var(--space-inset-container); /** Header padding of the drawer. */
   --drawer-header-gap-2: var(--component-spacing-map-x2); /** Header gap 2 of the drawer. */
@@ -466,7 +474,6 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --drawer-title-line-height: var(--type-heading-line-height); /** Line height of the drawer title: a heading. */
   --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
   --drawer-description-line-height: var(--type-body-line-height); /** Description line height of the drawer. */
-  --drawer-handle-radius: var(--radius-round); /** Corner of the drawer handle: fully round. */
   --drawer-handle-margin-top: var(--space-inset-container); /** Gap between the drawer panel's edge and its handle: the panel's inset. */
   --dropdown-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the dropdown menu. */
   --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
@@ -740,10 +747,8 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
   --popover-header-line-height: var(--type-body-line-height); /** Header line height of the popover. */
   --popover-title-font-weight: var(--type-label-font-weight); /** Title font weight of the popover. */
-  --progress-radius: var(--radius-round); /** Radius of the progress. */
   --radio-group-gap: var(--component-spacing-map-x3); /** Gap of the radio group. */
   --radio-group-item-icon-size: var(--size-icon); /** Item icon size of the radio group. */
-  --radio-group-item-radius: var(--radius-round); /** Item radius of the radio group. */
   --radio-group-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the radio group. */
   --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
   --radio-group-item-focus-offset: var(--border-width-focus-offset); /** Gap between the radio group item and its focus ring. */
@@ -755,7 +760,6 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --resizable-grip-height: var(--size-icon); /** Height of the resizable grip. */
   --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
   --scroll-area-viewport-focus-offset: var(--border-width-focus-offset); /** Gap between the scroll area viewport and its focus ring. */
-  --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
   --scroll-area-scrollbar-border-width: var(--border-width-default); /** Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge. */
   --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
   --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
@@ -866,9 +870,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --sidebar-menu-button-collapsed-size: var(--size-control-default); /** Width and height of a menu button when the sidebar is collapsed to icons. */
   --sidebar-menu-button-gap: var(--space-gap-default); /** Gap between the icon and the label of a menu button, of the sidebar. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
-  --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
-  --slider-thumb-radius: var(--radius-round); /** Thumb radius of the slider. */
   --slider-thumb-disabled-opacity-disabled: var(--opacity-disabled); /** Thumb disabled opacity disabled of the slider. */
   --slider-thumb-focus: var(--border-width-focus); /** Thumb focus of the slider. */
   --slider-thumb-focus-offset: var(--border-width-focus-offset); /** Gap between the slider thumb and its focus ring. */
@@ -876,14 +878,12 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --spinner-icon-size: var(--size-icon); /** Icon size of the spinner. */
   --switch-height: var(--size-icon); /** Height of the switch. */
   --switch-width: var(--size-icon); /** Width of the switch. */
-  --switch-radius: var(--radius-round); /** Radius of the switch. */
   --switch-padding: var(--component-spacing-map-hairline); /** Padding of the switch. */
   --switch-focus: var(--border-width-focus); /** Focus of the switch. */
   --switch-disabled: var(--opacity-disabled); /** Disabled of the switch. */
   --switch-focus-offset: var(--border-width-focus-offset); /** Gap between the switch and its focus ring. */
   --switch-thumb-size: var(--size-icon); /** Size of the switch's thumb. */
   --switch-thumb-travel: var(--size-icon); /** How far the thumb moves when the switch turns on: one thumb's width. */
-  --switch-thumb-radius: var(--radius-round); /** Corner of the switch's thumb: round, as the track is. */
   --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
   --textarea-padding-y: var(--component-spacing-map-x2); /** Padding y of the textarea. */
   --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
@@ -918,6 +918,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -942,7 +943,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
   --badge-info-label: var(--color-text-info-on-light); /** Info badge label. */
   --badge-font-family: var(--type-caption-font-family); /** Font family of the badge. */
-  --card-radius: var(--radius-container); /** Card corner radius. */
+  --card-radius: var(--radius-surface); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
   --card-title-font-family: var(--type-heading-font-family); /** Title font family of the card. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
@@ -954,7 +955,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --tabs-trigger-background-current: var(--color-surface-selected); /** Fill of the current tab trigger: the selected and current decision. */
   --tabs-trigger-focus-ring: var(--color-border-focus); /** Focus ring color of a tab trigger, at full strength. */
   --tabs-focus: var(--tabs-trigger-focus-width); /** Deprecated: use component.tabs.trigger.focus-width (OD-243). Focus of the tabs. */
-  --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
+  --overlay-radius: var(--radius-surface); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
@@ -965,11 +966,11 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --accordion-disabled-opacity: var(--accordion-trigger-disabled-opacity); /** Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is. */
   --accordion-focus-offset: var(--accordion-trigger-focus-offset); /** Deprecated: use component.accordion.trigger.focus-offset (OD-243). Gap between the accordion and its focus ring. */
   --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
-  --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
+  --alert-dialog-content-radius: var(--radius-surface); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
   --alert-dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the alert dialog title: a heading. */
   --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
-  --alert-radius: var(--radius-container); /** Radius of the alert. */
+  --alert-radius: var(--radius-surface); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
   --alert-destructive-description-label: var(--color-status-danger); /** The description's text in a destructive alert: error text, at full strength, like the title. */
   --attachment-radius: var(--radius-control); /** Radius of the attachment. */
@@ -988,7 +989,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --breadcrumb-icon-size: var(--breadcrumb-ellipsis-icon-size); /** Deprecated: use component.breadcrumb.ellipsis.icon-size (OD-243). Icon size of the breadcrumb. */
   --bubble-font-size: var(--bubble-byline-font-size); /** Deprecated: use component.bubble.byline.font-size (OD-243). Font size of the bubble. */
   --bubble-line-height: var(--bubble-byline-line-height); /** Deprecated: use component.bubble.byline.line-height (OD-243). Line height of the bubble. */
-  --bubble-body-radius: var(--radius-container); /** Body radius of the bubble. */
+  --bubble-body-radius: var(--radius-surface); /** Body radius of the bubble. */
   --bubble-body-me-background: var(--color-action-primary); /** Fill of the body of a message the viewer sent. */
   --button-group-text-radius: var(--radius-control); /** Text radius of the button group. */
   --calendar-radius: var(--radius-control); /** Radius of the calendar. */
@@ -1005,12 +1006,12 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --chart-gap-3: var(--chart-legend-gap); /** Deprecated: use component.chart.legend.gap (OD-243). Gap 3 of the chart. */
   --chart-padding-bottom: var(--chart-legend-padding-bottom); /** Deprecated: use component.chart.legend.padding-bottom (OD-243). Padding bottom of the chart. */
   --chart-padding-top: var(--chart-legend-padding-top); /** Deprecated: use component.chart.legend.padding-top (OD-243). Padding top of the chart. */
-  --chart-tooltip-radius: var(--radius-container); /** Corner of the chart's tooltip. */
+  --chart-tooltip-radius: var(--radius-surface); /** Corner of the chart's tooltip. */
   --chart-tooltip-shadow: var(--elevation-overlay); /** Shadow of the chart's tooltip: it floats over the chart. */
   --checkbox-focus-ring: var(--color-border-focus); /** Color of the checkbox's focus ring: the focus ring at full strength. */
   --checkbox-background-checked: var(--color-action-primary); /** Fill of a checked checkbox: the rule for checked controls. The check mark says checked, so it is never color alone. */
   --checkbox-radius: var(--radius-badge); /** Corner of the checkbox: the rule for badges and checkboxes. */
-  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-surface); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
   --combobox-content-height: var(--combobox-input-height); /** Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox. */
   --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
@@ -1021,13 +1022,13 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --combobox-chips-focus-ring-invalid: var(--color-status-danger); /** Chips focus ring invalid of the combobox. */
   --combobox-chips-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the chips field when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
-  --command-radius: var(--radius-container); /** Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels. */
+  --command-radius: var(--radius-surface); /** Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
   --command-item-radius: var(--radius-option); /** Item radius of the command. */
   --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-surface); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-surface); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
   --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the context menu. */
@@ -1036,8 +1037,8 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
-  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
-  --dialog-content-radius: var(--radius-container); /** Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers. */
+  --data-table-container-radius: var(--radius-surface); /** Corner of the table frame, of the data table. */
+  --dialog-content-radius: var(--radius-surface); /** Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers. */
   --dialog-content-shadow: var(--elevation-overlay); /** Shadow of the dialog panel: it floats over the page. */
   --dialog-border-width: var(--dialog-content-border-width); /** Deprecated: use component.dialog.content.border-width (OD-243). Border width of the dialog. */
   --dialog-padding: var(--dialog-close-padding); /** Deprecated: use component.dialog.close.padding (OD-243). Padding of the dialog. */
@@ -1052,14 +1053,13 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --dialog-overlay-background: var(--color-surface-scrim); /** The scrim behind the dialog: the see-through layer behind a modal. */
   --dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the dialog title: a heading. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --drawer-content-radius: var(--radius-container); /** Corner of the drawer panel on the side away from the screen edge: a container corner. */
+  --drawer-content-radius: var(--radius-surface); /** Corner of the drawer panel on the side away from the screen edge: a container corner. */
   --drawer-content-shadow: var(--elevation-overlay); /** Shadow of the drawer panel: it sits over the page, like the sheet. */
-  --drawer-radius: var(--drawer-handle-radius); /** Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer. */
   --drawer-title-font-family: var(--type-heading-font-family); /** Typeface of the drawer title: a heading. */
   --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
-  --empty-radius: var(--radius-container); /** Radius of the empty. */
-  --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
+  --empty-radius: var(--radius-surface); /** Radius of the empty. */
+  --empty-icon-radius: var(--radius-surface); /** Icon radius of the empty. */
   --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
   --field-label-invalid: var(--color-status-danger); /** Label invalid of the field. */
   --field-label-radius: var(--radius-control); /** Label radius of the field. */
@@ -1072,7 +1072,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --field-error-label: var(--color-status-danger); /** Error label of the field. */
   --form-label-label: var(--color-status-danger); /** Label label of the form. */
   --form-message-label: var(--color-status-danger); /** Message label of the form. */
-  --hover-card-content-radius: var(--radius-container); /** Content corner of the hover card, like every floating panel's. */
+  --hover-card-content-radius: var(--radius-surface); /** Content corner of the hover card, like every floating panel's. */
   --hover-card-content-shadow: var(--elevation-overlay); /** Content shadow of the hover card. */
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-border-focus: var(--color-border-focus); /** Border of the input group when the keyboard is in its control. */
@@ -1120,10 +1120,10 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --item-media-image-radius: var(--radius-control); /** Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile. */
   --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
   --label-font-family: var(--type-label-font-family); /** Font family of the label. */
-  --menubar-radius: var(--radius-container); /** Corner of the menubar: a panel that holds its triggers. */
+  --menubar-radius: var(--radius-surface); /** Corner of the menubar: a panel that holds its triggers. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-option); /** Corner of a menubar trigger: an option in the bar, nested in its corner. */
-  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-surface); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
   --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the menubar. */
@@ -1132,9 +1132,9 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
   --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
   --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-surface); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
-  --message-scroller-radius: var(--radius-container); /** Corner of the message scroller: the region that holds a conversation is a container, not a control. */
+  --message-scroller-radius: var(--radius-surface); /** Corner of the message scroller: the region that holds a conversation is a container, not a control. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
   --message-gap-2: var(--message-content-gap); /** Deprecated: use component.message.content.gap (OD-243). Gap 2 of the message. */
   --message-gap-x: var(--message-header-gap); /** Deprecated: use component.message.header.gap (OD-243). Gap x of the message. */
@@ -1155,8 +1155,8 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --navigation-menu-disabled-opacity-disabled: var(--navigation-menu-trigger-disabled-opacity); /** Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu. */
   --navigation-menu-focus: var(--navigation-menu-trigger-focus-width); /** Deprecated: use component.navigation-menu.trigger.focus-width (OD-243). Focus of the navigation menu. */
   --navigation-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the navigation menu: it floats, like a menu. */
-  --navigation-menu-content-radius: var(--radius-container); /** Content corner of the navigation menu, like every floating panel's. */
-  --navigation-menu-viewport-radius: var(--radius-container); /** Viewport corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-content-radius: var(--radius-surface); /** Content corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-viewport-radius: var(--radius-surface); /** Viewport corner of the navigation menu, like every floating panel's. */
   --navigation-menu-viewport-shadow: var(--elevation-overlay); /** Viewport shadow of the navigation menu: it floats, like a menu. */
   --navigation-menu-link-radius: var(--radius-option); /** Link corner: an option in the panel, nested in its corner. */
   --navigation-menu-link-background-current: var(--color-surface-selected); /** Background of the link to the current page, of the navigation menu. */
@@ -1171,7 +1171,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --pagination-padding-left: var(--pagination-previous-padding-left); /** Deprecated: use component.pagination.previous.padding-left (OD-243). Padding left of the pagination. */
   --pagination-padding-right: var(--pagination-next-padding-right); /** Deprecated: use component.pagination.next.padding-right (OD-243). Padding right of the pagination. */
   --pagination-icon-size: var(--pagination-ellipsis-icon-size); /** Deprecated: use component.pagination.ellipsis.icon-size (OD-243). Icon size of the pagination. */
-  --popover-content-radius: var(--radius-container); /** Content corner of the popover, like every floating panel's. */
+  --popover-content-radius: var(--radius-surface); /** Content corner of the popover, like every floating panel's. */
   --popover-content-shadow: var(--elevation-overlay); /** Content shadow of the popover. */
   --progress-indicator-background: var(--color-action-primary); /** Indicator background of the progress. */
   --radio-group-item-label: var(--color-action-primary); /** Item label of the radio group. */
@@ -1199,9 +1199,9 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --sheet-close-radius: var(--radius-control); /** Corner of the sheet close button: a button's corner. */
   --sheet-close-focus-ring-color: var(--color-border-focus); /** Color of the focus ring on the sheet close button, at full strength. */
   --sidebar-padding: var(--sidebar-menu-button-padding); /** Deprecated: use component.sidebar.menu-button.padding (OD-243). Padding of the sidebar. */
-  --sidebar-inner-radius: var(--radius-container); /** Inner radius of the sidebar. */
+  --sidebar-inner-radius: var(--radius-surface); /** Inner radius of the sidebar. */
   --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
-  --sidebar-inset-radius: var(--radius-container); /** Inset radius of the sidebar. */
+  --sidebar-inset-radius: var(--radius-surface); /** Inset radius of the sidebar. */
   --sidebar-inset-shadow: var(--elevation-card); /** Inset shadow of the sidebar. */
   --sidebar-group-label-radius: var(--radius-control); /** Group label radius of the sidebar. */
   --sidebar-group-label-focus-ring: var(--color-border-focus); /** Group label focus ring of the sidebar. */
@@ -1264,7 +1264,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --toast-font-weight: var(--toast-title-font-weight); /** Deprecated: use component.toast.title.font-weight (OD-243). Font weight of the toast. */
   --toast-font-size: var(--toast-title-font-size); /** Deprecated: use component.toast.title.font-size (OD-243). Font size of the toast. */
   --toast-font-size-2: var(--toast-description-font-size); /** Deprecated: use component.toast.description.font-size (OD-243). Font size 2 of the toast. */
-  --toast-radius: var(--radius-container); /** Corner of the toast, like every floating panel's. */
+  --toast-radius: var(--radius-surface); /** Corner of the toast, like every floating panel's. */
   --toast-shadow: var(--elevation-overlay); /** Shadow of the toast, like every floating panel's. */
   --toggle-group-radius: var(--radius-control); /** Radius of the toggle group. */
   --toggle-group-shadow: var(--elevation-card); /** Shadow of the toggle group. */
@@ -1827,7 +1827,6 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --size-control-large: 2rem; /** Height of large controls. Not used in this system, so it equals the default. */
   --size-row: 2rem; /** Height of one table row. */
   --size-icon: 1rem; /** Icon size next to text. */
-  --radius-round: 9999px; /** Fully round: avatars and dots. */
   --border-width-default: 1px; /** Every border. */
   --border-width-focus: 2px; /** The focus ring. */
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
@@ -1864,6 +1863,20 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --component-spacing-map-x6: 1.5rem;
   --component-spacing-map-x8: 2rem;
   --component-spacing-map-x12: 3rem;
+  --avatar-radius: 50%; /** Radius of the avatar. */
+  --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
+  --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
+  --avatar-group-count-radius: 50%; /** Group count radius of the avatar. */
+  --carousel-previous-radius: 50%; /** Previous radius of the carousel. */
+  --carousel-next-radius: 50%; /** Next radius of the carousel. */
+  --drawer-handle-radius: calc(infinity * 1px); /** Corner of the drawer handle: fully round. */
+  --progress-radius: calc(infinity * 1px); /** Radius of the progress. */
+  --radio-group-item-radius: 50%; /** Item radius of the radio group. */
+  --scroll-area-thumb-radius: calc(infinity * 1px); /** Thumb radius of the scroll area. */
+  --slider-track-radius: calc(infinity * 1px); /** Track radius of the slider. */
+  --slider-thumb-radius: 50%; /** Thumb radius of the slider. */
+  --switch-radius: calc(infinity * 1px); /** Radius of the switch. */
+  --switch-thumb-radius: 50%; /** Corner of the switch's thumb: round, as the track is. */
   --color-neutral-0: #0D1117;
   --color-neutral-50: #161B23;
   --color-neutral-100: #262D38;
@@ -1914,7 +1927,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --radius-control: 0.125rem; /** Corner of buttons and inputs. */
   --radius-badge: 0rem; /** Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks. */
   --radius-option: 0rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
-  --radius-container: 0.25rem; /** Corner of cards, menus and dialogs. */
+  --radius-surface: 0.25rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "IBM Plex Sans", system-ui, sans-serif;
   --type-title-font-family: "IBM Plex Sans", system-ui, sans-serif;
   --type-heading-font-family: "IBM Plex Sans", system-ui, sans-serif;
@@ -2037,16 +2050,12 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --attachment-meta-line-height: var(--type-caption-line-height); /** The line height of the file's type and size text. */
   --attachment-name-font-weight: var(--type-label-font-weight); /** The weight of the file's name. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
-  --avatar-radius: var(--radius-round); /** Radius of the avatar. */
-  --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
   --avatar-fallback-font-size: var(--type-body-font-size); /** Fallback font size of the avatar. */
   --avatar-fallback-line-height: var(--type-body-line-height); /** Fallback line height of the avatar. */
   --avatar-fallback-sm-font-size: var(--type-caption-font-size); /** Font size of the fallback initials in a small avatar. */
   --avatar-fallback-sm-line-height: var(--type-caption-line-height); /** Line height of the fallback initials in a small avatar. */
-  --avatar-badge-radius: var(--radius-round); /** Badge radius of the avatar. */
   --avatar-badge-ring-width: var(--border-width-default); /** Width of the ring that cuts the status badge out of the avatar: a border, so it follows the scheme's border weight. */
   --avatar-group-count-size: var(--size-control-default); /** Group count size of the avatar. */
-  --avatar-group-count-radius: var(--radius-round); /** Group count radius of the avatar. */
   --avatar-group-count-font-size: var(--type-body-font-size); /** Group count font size of the avatar. */
   --avatar-group-count-line-height: var(--type-body-line-height); /** Group count line height of the avatar. */
   --avatar-group-count-icon-size: var(--size-icon); /** Group count icon size of the avatar. */
@@ -2103,9 +2112,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --carousel-item-padding-left: var(--component-spacing-map-x4); /** Item padding left of the carousel. */
   --carousel-item-padding-top: var(--component-spacing-map-x4); /** Item padding top of the carousel. */
   --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
-  --carousel-previous-radius: var(--radius-round); /** Previous radius of the carousel. */
   --carousel-next-size: var(--size-control-default); /** Next size of the carousel. */
-  --carousel-next-radius: var(--radius-round); /** Next radius of the carousel. */
   --chart-font-size: var(--type-caption-font-size); /** Font size of the chart. */
   --chart-line-height: var(--type-caption-line-height); /** Line height of the chart. */
   --chart-font-weight: var(--type-label-font-weight); /** Font weight of the chart. */
@@ -2269,6 +2276,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --dialog-header-gap: var(--space-gap-tight); /** Gap between the dialog title and its description. */
   --dialog-footer-gap: var(--space-gap-default); /** Gap between the dialog footer's buttons. */
   --drawer-content-border-width: var(--border-width-default); /** Width of the drawer panel's edge. */
+  --drawer-radius: var(--drawer-handle-radius); /** Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer. */
   --drawer-header-gap: var(--component-spacing-map-hairline); /** Header gap of the drawer. */
   --drawer-header-padding: var(--space-inset-container); /** Header padding of the drawer. */
   --drawer-header-gap-2: var(--component-spacing-map-x2); /** Header gap 2 of the drawer. */
@@ -2279,7 +2287,6 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --drawer-title-line-height: var(--type-heading-line-height); /** Line height of the drawer title: a heading. */
   --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
   --drawer-description-line-height: var(--type-body-line-height); /** Description line height of the drawer. */
-  --drawer-handle-radius: var(--radius-round); /** Corner of the drawer handle: fully round. */
   --drawer-handle-margin-top: var(--space-inset-container); /** Gap between the drawer panel's edge and its handle: the panel's inset. */
   --dropdown-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the dropdown menu. */
   --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
@@ -2553,10 +2560,8 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
   --popover-header-line-height: var(--type-body-line-height); /** Header line height of the popover. */
   --popover-title-font-weight: var(--type-label-font-weight); /** Title font weight of the popover. */
-  --progress-radius: var(--radius-round); /** Radius of the progress. */
   --radio-group-gap: var(--component-spacing-map-x3); /** Gap of the radio group. */
   --radio-group-item-icon-size: var(--size-icon); /** Item icon size of the radio group. */
-  --radio-group-item-radius: var(--radius-round); /** Item radius of the radio group. */
   --radio-group-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the radio group. */
   --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
   --radio-group-item-focus-offset: var(--border-width-focus-offset); /** Gap between the radio group item and its focus ring. */
@@ -2568,7 +2573,6 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --resizable-grip-height: var(--size-icon); /** Height of the resizable grip. */
   --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
   --scroll-area-viewport-focus-offset: var(--border-width-focus-offset); /** Gap between the scroll area viewport and its focus ring. */
-  --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
   --scroll-area-scrollbar-border-width: var(--border-width-default); /** Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge. */
   --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
   --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
@@ -2679,9 +2683,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --sidebar-menu-button-collapsed-size: var(--size-control-default); /** Width and height of a menu button when the sidebar is collapsed to icons. */
   --sidebar-menu-button-gap: var(--space-gap-default); /** Gap between the icon and the label of a menu button, of the sidebar. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
-  --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
-  --slider-thumb-radius: var(--radius-round); /** Thumb radius of the slider. */
   --slider-thumb-disabled-opacity-disabled: var(--opacity-disabled); /** Thumb disabled opacity disabled of the slider. */
   --slider-thumb-focus: var(--border-width-focus); /** Thumb focus of the slider. */
   --slider-thumb-focus-offset: var(--border-width-focus-offset); /** Gap between the slider thumb and its focus ring. */
@@ -2689,14 +2691,12 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --spinner-icon-size: var(--size-icon); /** Icon size of the spinner. */
   --switch-height: var(--size-icon); /** Height of the switch. */
   --switch-width: var(--size-icon); /** Width of the switch. */
-  --switch-radius: var(--radius-round); /** Radius of the switch. */
   --switch-padding: var(--component-spacing-map-hairline); /** Padding of the switch. */
   --switch-focus: var(--border-width-focus); /** Focus of the switch. */
   --switch-disabled: var(--opacity-disabled); /** Disabled of the switch. */
   --switch-focus-offset: var(--border-width-focus-offset); /** Gap between the switch and its focus ring. */
   --switch-thumb-size: var(--size-icon); /** Size of the switch's thumb. */
   --switch-thumb-travel: var(--size-icon); /** How far the thumb moves when the switch turns on: one thumb's width. */
-  --switch-thumb-radius: var(--radius-round); /** Corner of the switch's thumb: round, as the track is. */
   --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
   --textarea-padding-y: var(--component-spacing-map-x2); /** Padding y of the textarea. */
   --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
@@ -2731,6 +2731,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -2755,7 +2756,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
   --badge-info-label: var(--color-text-info-on-dark); /** Info badge label. */
   --badge-font-family: var(--type-caption-font-family); /** Font family of the badge. */
-  --card-radius: var(--radius-container); /** Card corner radius. */
+  --card-radius: var(--radius-surface); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
   --card-title-font-family: var(--type-heading-font-family); /** Title font family of the card. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
@@ -2767,7 +2768,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --tabs-trigger-background-current: var(--color-surface-selected); /** Fill of the current tab trigger: the selected and current decision. */
   --tabs-trigger-focus-ring: var(--color-border-focus); /** Focus ring color of a tab trigger, at full strength. */
   --tabs-focus: var(--tabs-trigger-focus-width); /** Deprecated: use component.tabs.trigger.focus-width (OD-243). Focus of the tabs. */
-  --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
+  --overlay-radius: var(--radius-surface); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
@@ -2778,11 +2779,11 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --accordion-disabled-opacity: var(--accordion-trigger-disabled-opacity); /** Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is. */
   --accordion-focus-offset: var(--accordion-trigger-focus-offset); /** Deprecated: use component.accordion.trigger.focus-offset (OD-243). Gap between the accordion and its focus ring. */
   --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
-  --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
+  --alert-dialog-content-radius: var(--radius-surface); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
   --alert-dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the alert dialog title: a heading. */
   --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
-  --alert-radius: var(--radius-container); /** Radius of the alert. */
+  --alert-radius: var(--radius-surface); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
   --alert-destructive-description-label: var(--color-status-danger); /** The description's text in a destructive alert: error text, at full strength, like the title. */
   --attachment-radius: var(--radius-control); /** Radius of the attachment. */
@@ -2801,7 +2802,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --breadcrumb-icon-size: var(--breadcrumb-ellipsis-icon-size); /** Deprecated: use component.breadcrumb.ellipsis.icon-size (OD-243). Icon size of the breadcrumb. */
   --bubble-font-size: var(--bubble-byline-font-size); /** Deprecated: use component.bubble.byline.font-size (OD-243). Font size of the bubble. */
   --bubble-line-height: var(--bubble-byline-line-height); /** Deprecated: use component.bubble.byline.line-height (OD-243). Line height of the bubble. */
-  --bubble-body-radius: var(--radius-container); /** Body radius of the bubble. */
+  --bubble-body-radius: var(--radius-surface); /** Body radius of the bubble. */
   --bubble-body-me-background: var(--color-action-primary); /** Fill of the body of a message the viewer sent. */
   --button-group-text-radius: var(--radius-control); /** Text radius of the button group. */
   --calendar-radius: var(--radius-control); /** Radius of the calendar. */
@@ -2818,12 +2819,12 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --chart-gap-3: var(--chart-legend-gap); /** Deprecated: use component.chart.legend.gap (OD-243). Gap 3 of the chart. */
   --chart-padding-bottom: var(--chart-legend-padding-bottom); /** Deprecated: use component.chart.legend.padding-bottom (OD-243). Padding bottom of the chart. */
   --chart-padding-top: var(--chart-legend-padding-top); /** Deprecated: use component.chart.legend.padding-top (OD-243). Padding top of the chart. */
-  --chart-tooltip-radius: var(--radius-container); /** Corner of the chart's tooltip. */
+  --chart-tooltip-radius: var(--radius-surface); /** Corner of the chart's tooltip. */
   --chart-tooltip-shadow: var(--elevation-overlay); /** Shadow of the chart's tooltip: it floats over the chart. */
   --checkbox-focus-ring: var(--color-border-focus); /** Color of the checkbox's focus ring: the focus ring at full strength. */
   --checkbox-background-checked: var(--color-action-primary); /** Fill of a checked checkbox: the rule for checked controls. The check mark says checked, so it is never color alone. */
   --checkbox-radius: var(--radius-badge); /** Corner of the checkbox: the rule for badges and checkboxes. */
-  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-surface); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
   --combobox-content-height: var(--combobox-input-height); /** Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox. */
   --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
@@ -2834,13 +2835,13 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --combobox-chips-focus-ring-invalid: var(--color-status-danger); /** Chips focus ring invalid of the combobox. */
   --combobox-chips-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the chips field when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
-  --command-radius: var(--radius-container); /** Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels. */
+  --command-radius: var(--radius-surface); /** Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
   --command-item-radius: var(--radius-option); /** Item radius of the command. */
   --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-surface); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-surface); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
   --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the context menu. */
@@ -2849,8 +2850,8 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
-  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
-  --dialog-content-radius: var(--radius-container); /** Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers. */
+  --data-table-container-radius: var(--radius-surface); /** Corner of the table frame, of the data table. */
+  --dialog-content-radius: var(--radius-surface); /** Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers. */
   --dialog-content-shadow: var(--elevation-overlay); /** Shadow of the dialog panel: it floats over the page. */
   --dialog-border-width: var(--dialog-content-border-width); /** Deprecated: use component.dialog.content.border-width (OD-243). Border width of the dialog. */
   --dialog-padding: var(--dialog-close-padding); /** Deprecated: use component.dialog.close.padding (OD-243). Padding of the dialog. */
@@ -2865,14 +2866,13 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --dialog-overlay-background: var(--color-surface-scrim); /** The scrim behind the dialog: the see-through layer behind a modal. */
   --dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the dialog title: a heading. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --drawer-content-radius: var(--radius-container); /** Corner of the drawer panel on the side away from the screen edge: a container corner. */
+  --drawer-content-radius: var(--radius-surface); /** Corner of the drawer panel on the side away from the screen edge: a container corner. */
   --drawer-content-shadow: var(--elevation-overlay); /** Shadow of the drawer panel: it sits over the page, like the sheet. */
-  --drawer-radius: var(--drawer-handle-radius); /** Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer. */
   --drawer-title-font-family: var(--type-heading-font-family); /** Typeface of the drawer title: a heading. */
   --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
-  --empty-radius: var(--radius-container); /** Radius of the empty. */
-  --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
+  --empty-radius: var(--radius-surface); /** Radius of the empty. */
+  --empty-icon-radius: var(--radius-surface); /** Icon radius of the empty. */
   --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
   --field-label-invalid: var(--color-status-danger); /** Label invalid of the field. */
   --field-label-radius: var(--radius-control); /** Label radius of the field. */
@@ -2885,7 +2885,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --field-error-label: var(--color-status-danger); /** Error label of the field. */
   --form-label-label: var(--color-status-danger); /** Label label of the form. */
   --form-message-label: var(--color-status-danger); /** Message label of the form. */
-  --hover-card-content-radius: var(--radius-container); /** Content corner of the hover card, like every floating panel's. */
+  --hover-card-content-radius: var(--radius-surface); /** Content corner of the hover card, like every floating panel's. */
   --hover-card-content-shadow: var(--elevation-overlay); /** Content shadow of the hover card. */
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-border-focus: var(--color-border-focus); /** Border of the input group when the keyboard is in its control. */
@@ -2933,10 +2933,10 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --item-media-image-radius: var(--radius-control); /** Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile. */
   --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
   --label-font-family: var(--type-label-font-family); /** Font family of the label. */
-  --menubar-radius: var(--radius-container); /** Corner of the menubar: a panel that holds its triggers. */
+  --menubar-radius: var(--radius-surface); /** Corner of the menubar: a panel that holds its triggers. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-option); /** Corner of a menubar trigger: an option in the bar, nested in its corner. */
-  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-surface); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
   --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the menubar. */
@@ -2945,9 +2945,9 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
   --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
   --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-surface); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
-  --message-scroller-radius: var(--radius-container); /** Corner of the message scroller: the region that holds a conversation is a container, not a control. */
+  --message-scroller-radius: var(--radius-surface); /** Corner of the message scroller: the region that holds a conversation is a container, not a control. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
   --message-gap-2: var(--message-content-gap); /** Deprecated: use component.message.content.gap (OD-243). Gap 2 of the message. */
   --message-gap-x: var(--message-header-gap); /** Deprecated: use component.message.header.gap (OD-243). Gap x of the message. */
@@ -2968,8 +2968,8 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --navigation-menu-disabled-opacity-disabled: var(--navigation-menu-trigger-disabled-opacity); /** Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu. */
   --navigation-menu-focus: var(--navigation-menu-trigger-focus-width); /** Deprecated: use component.navigation-menu.trigger.focus-width (OD-243). Focus of the navigation menu. */
   --navigation-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the navigation menu: it floats, like a menu. */
-  --navigation-menu-content-radius: var(--radius-container); /** Content corner of the navigation menu, like every floating panel's. */
-  --navigation-menu-viewport-radius: var(--radius-container); /** Viewport corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-content-radius: var(--radius-surface); /** Content corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-viewport-radius: var(--radius-surface); /** Viewport corner of the navigation menu, like every floating panel's. */
   --navigation-menu-viewport-shadow: var(--elevation-overlay); /** Viewport shadow of the navigation menu: it floats, like a menu. */
   --navigation-menu-link-radius: var(--radius-option); /** Link corner: an option in the panel, nested in its corner. */
   --navigation-menu-link-background-current: var(--color-surface-selected); /** Background of the link to the current page, of the navigation menu. */
@@ -2984,7 +2984,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --pagination-padding-left: var(--pagination-previous-padding-left); /** Deprecated: use component.pagination.previous.padding-left (OD-243). Padding left of the pagination. */
   --pagination-padding-right: var(--pagination-next-padding-right); /** Deprecated: use component.pagination.next.padding-right (OD-243). Padding right of the pagination. */
   --pagination-icon-size: var(--pagination-ellipsis-icon-size); /** Deprecated: use component.pagination.ellipsis.icon-size (OD-243). Icon size of the pagination. */
-  --popover-content-radius: var(--radius-container); /** Content corner of the popover, like every floating panel's. */
+  --popover-content-radius: var(--radius-surface); /** Content corner of the popover, like every floating panel's. */
   --popover-content-shadow: var(--elevation-overlay); /** Content shadow of the popover. */
   --progress-indicator-background: var(--color-action-primary); /** Indicator background of the progress. */
   --radio-group-item-label: var(--color-action-primary); /** Item label of the radio group. */
@@ -3012,9 +3012,9 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --sheet-close-radius: var(--radius-control); /** Corner of the sheet close button: a button's corner. */
   --sheet-close-focus-ring-color: var(--color-border-focus); /** Color of the focus ring on the sheet close button, at full strength. */
   --sidebar-padding: var(--sidebar-menu-button-padding); /** Deprecated: use component.sidebar.menu-button.padding (OD-243). Padding of the sidebar. */
-  --sidebar-inner-radius: var(--radius-container); /** Inner radius of the sidebar. */
+  --sidebar-inner-radius: var(--radius-surface); /** Inner radius of the sidebar. */
   --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
-  --sidebar-inset-radius: var(--radius-container); /** Inset radius of the sidebar. */
+  --sidebar-inset-radius: var(--radius-surface); /** Inset radius of the sidebar. */
   --sidebar-inset-shadow: var(--elevation-card); /** Inset shadow of the sidebar. */
   --sidebar-group-label-radius: var(--radius-control); /** Group label radius of the sidebar. */
   --sidebar-group-label-focus-ring: var(--color-border-focus); /** Group label focus ring of the sidebar. */
@@ -3077,7 +3077,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --toast-font-weight: var(--toast-title-font-weight); /** Deprecated: use component.toast.title.font-weight (OD-243). Font weight of the toast. */
   --toast-font-size: var(--toast-title-font-size); /** Deprecated: use component.toast.title.font-size (OD-243). Font size of the toast. */
   --toast-font-size-2: var(--toast-description-font-size); /** Deprecated: use component.toast.description.font-size (OD-243). Font size 2 of the toast. */
-  --toast-radius: var(--radius-container); /** Corner of the toast, like every floating panel's. */
+  --toast-radius: var(--radius-surface); /** Corner of the toast, like every floating panel's. */
   --toast-shadow: var(--elevation-overlay); /** Shadow of the toast, like every floating panel's. */
   --toggle-group-radius: var(--radius-control); /** Radius of the toggle group. */
   --toggle-group-shadow: var(--elevation-card); /** Shadow of the toggle group. */
@@ -3657,7 +3657,7 @@ html[data-scheme="dense-data"] [data-mode] [data-brand] {
   --ifm-heading-font-family: var(--type-heading-font-family);
   --ifm-heading-font-weight: var(--type-heading-font-weight);
   --ifm-font-weight-bold: var(--type-label-font-weight);
-  --ifm-global-radius: var(--radius-container);
+  --ifm-global-radius: var(--radius-surface);
   --ifm-button-border-radius: var(--button-radius);
   --ifm-code-border-radius: var(--radius-control);
   --ifm-global-border-width: var(--border-width-default);

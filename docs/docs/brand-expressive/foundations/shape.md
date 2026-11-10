@@ -28,11 +28,11 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to |
 | --- | --- |
-| `radius.control` | `brand-expressive.theme.base.radius.control` → `radius.999` |
-| `radius.badge` | `brand-expressive.theme.base.radius.badge` → `radius.999` |
+| `radius.control` | `brand-expressive.theme.base.radius.control` → `radius.pill` |
+| `radius.badge` | `brand-expressive.theme.base.radius.badge` → `radius.pill` |
 | `radius.option` | `brand-expressive.theme.base.radius.option` → `radius.20` |
-| `radius.container` | `brand-expressive.theme.base.radius.container` → `radius.24` |
-| `radius.round` | `radius.full` |
+| `radius.surface` | `brand-expressive.theme.base.radius.surface` → `radius.24` |
+| `radius.container` | `radius.surface` → `brand-expressive.theme.base.radius.surface` → `radius.24` |
 | `border-width.default` | `border-width.2` |
 | `border-width.focus` | `border-width.3` |
 | `border-width.focus-offset` | `border-width.2` |

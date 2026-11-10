@@ -14,7 +14,7 @@ export const Playground: Story = {
   render: (args) => (
     <ScrollArea
       {...args}
-      className="h-32 max-w-xs rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+      className="h-32 max-w-xs rounded-[var(--radius-surface)] border border-[var(--color-border-default)]"
     >
       <div className="p-[var(--space-inset-container)]">{"Line. ".repeat(60)}</div>
     </ScrollArea>
@@ -27,7 +27,7 @@ export const Examples: Story = {
       {(s) => (
         <ScrollArea
           type="always"
-          className="h-40 max-w-sm rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+          className="h-40 max-w-sm rounded-[var(--radius-surface)] border border-[var(--color-border-default)]"
         >
           <ul className="p-[var(--space-inset-container)]">
             {[...Array(s.table && s.table.rows.length > 12 ? 1 : 4)].flatMap((_, i) =>

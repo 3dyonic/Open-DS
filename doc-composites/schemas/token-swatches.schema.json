@@ -44,6 +44,23 @@
             "type": "number",
             "description": "For a line height or a control size: its size in pixels, which the page prints beside it."
           },
+          "resolves": {
+            "type": "object",
+            "description": "For any token but a color: the primitive it ends at and that primitive's value. The row prints them.",
+            "required": ["primitive", "value"],
+            "additionalProperties": false,
+            "properties": {
+              "primitive": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                "description": "The primitive, such as radius.pill."
+              },
+              "value": {
+                "type": "string",
+                "description": "The primitive's value, such as 1.5rem or calc(infinity * 1px)."
+              }
+            }
+          },
           "modes": {
             "type": "array",
             "description": "For a color: what it resolves to in each mode of the first brand. The row prints it.",

@@ -260,10 +260,10 @@
      "values": [
       {
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },
@@ -775,10 +775,10 @@
      "values": [
       {
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.999",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },

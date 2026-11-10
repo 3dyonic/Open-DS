@@ -123,7 +123,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.
   - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
 
-- **Token** `radius.container` → `body.radius` 1.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `body.radius` 1.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.24: Pill controls feel playful.
 :::

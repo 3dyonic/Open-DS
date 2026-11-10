@@ -192,7 +192,7 @@ function Panel({ m }: { m: Mode }) {
   const fixed = m.tokens.filter((t) => !t.step);
   return (
     <div
-      className="flex flex-col gap-[var(--space-gap-group)] overflow-x-auto rounded-[var(--radius-container)] border p-[var(--space-inset-container)]"
+      className="flex flex-col gap-[var(--space-gap-group)] overflow-x-auto rounded-[var(--radius-surface)] border p-[var(--space-inset-container)]"
       style={{ background: m.page.canvas, color: m.page.text, borderColor: m.page.border }}
     >
       {LANES.map(({ paints, title }) => {

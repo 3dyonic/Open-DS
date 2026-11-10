@@ -95,7 +95,7 @@
       },
       {
        "kind": "radius",
-       "value": "var(--radius-container)"
+       "value": "var(--radius-surface)"
       }
      ]
     },

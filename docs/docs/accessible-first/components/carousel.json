@@ -106,10 +106,10 @@
      "values": [
       {
        "swatch": {
-        "corner": "9999px"
+        "corner": "50%"
        },
-       "token": "radius.full",
-       "text": "9999px"
+       "token": "radius.round",
+       "text": "50%"
       }
      ]
     },
@@ -143,10 +143,10 @@
      "values": [
       {
        "swatch": {
-        "corner": "9999px"
+        "corner": "50%"
        },
-       "token": "radius.full",
-       "text": "9999px"
+       "token": "radius.round",
+       "text": "50%"
       }
      ]
     }

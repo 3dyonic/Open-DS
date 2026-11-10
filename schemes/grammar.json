@@ -5211,7 +5211,7 @@
       "id": "card/radius",
       "component": "card",
       "description": "Card corner radius.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "card/padding",
@@ -5310,7 +5310,7 @@
       "id": "overlay/radius",
       "component": "overlay",
       "description": "Corner radius of overlays.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "overlay/shadow",
@@ -5540,7 +5540,7 @@
       "id": "alert-dialog/content/radius",
       "component": "alert-dialog",
       "description": "Content radius of the alert dialog.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "alert-dialog/content/background",
@@ -5672,7 +5672,7 @@
       "id": "alert/radius",
       "component": "alert",
       "description": "Radius of the alert.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "alert/padding-x",
@@ -6408,7 +6408,7 @@
       "id": "bubble/body/radius",
       "component": "bubble",
       "description": "Body radius of the bubble.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "bubble/body/padding-x",
@@ -7020,13 +7020,13 @@
       "id": "chart/tooltip/radius",
       "component": "chart",
       "description": "Corner of the chart's tooltip.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "chart/radius",
       "component": "chart",
       "description": "Deprecated: use chart/tooltip/radius (OD-243). Radius of the chart.",
-      "default": "radius.container",
+      "default": "radius.surface",
       "replaced_by": "chart/tooltip/radius"
     },
     {
@@ -7288,7 +7288,7 @@
       "id": "combobox/content/radius",
       "component": "combobox",
       "description": "Content radius of the combobox.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "combobox/content/background",
@@ -7745,7 +7745,7 @@
       "id": "command/radius",
       "component": "command",
       "description": "Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "command/background",
@@ -8141,7 +8141,7 @@
       "id": "context-menu/sub/content/radius",
       "component": "context-menu",
       "description": "Sub content radius of the context menu.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "context-menu/sub/content/background",
@@ -8171,7 +8171,7 @@
       "id": "context-menu/content/radius",
       "component": "context-menu",
       "description": "Content radius of the context menu.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "context-menu/content/background",
@@ -8653,7 +8653,7 @@
       "id": "data-table/container/radius",
       "component": "data-table",
       "description": "Corner of the table frame, of the data table.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "date-picker/font-weight",
@@ -8858,7 +8858,7 @@
       "id": "dialog/content/radius",
       "component": "dialog",
       "description": "Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "dialog/content/shadow",
@@ -8936,13 +8936,13 @@
       "id": "drawer/handle/radius",
       "component": "drawer",
       "description": "Corner of the drawer handle: fully round.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "drawer/radius",
       "component": "drawer",
       "description": "Deprecated: use drawer/handle/radius (OD-243). Radius of the drawer.",
-      "default": "radius.round",
+      "default": "radius.pill",
       "replaced_by": "drawer/handle/radius"
     },
     {
@@ -9028,7 +9028,7 @@
       "id": "drawer/content/radius",
       "component": "drawer",
       "description": "Corner of the drawer panel on the side away from the screen edge: a container corner.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "drawer/content/border",
@@ -9187,7 +9187,7 @@
       "id": "empty/radius",
       "component": "empty",
       "description": "Radius of the empty.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "empty/padding",
@@ -9211,7 +9211,7 @@
       "id": "empty/icon/radius",
       "component": "empty",
       "description": "Icon radius of the empty.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "empty/icon/background",
@@ -9624,7 +9624,7 @@
       "id": "hover-card/content/radius",
       "component": "hover-card",
       "description": "Content corner of the hover card, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "hover-card/content/background",
@@ -10852,7 +10852,7 @@
       "id": "menubar/radius",
       "component": "menubar",
       "description": "Corner of the menubar: a panel that holds its triggers.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "menubar/background",
@@ -10943,7 +10943,7 @@
       "id": "menubar/content/radius",
       "component": "menubar",
       "description": "Content radius of the menubar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "menubar/content/background",
@@ -11383,7 +11383,7 @@
       "id": "menubar/sub/content/radius",
       "component": "menubar",
       "description": "Sub content radius of the menubar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "menubar/sub/content/background",
@@ -11479,7 +11479,7 @@
       "id": "message-scroller/radius",
       "component": "message-scroller",
       "description": "Corner of the message scroller: the region that holds a conversation is a container, not a control.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "message-scroller/focus",
@@ -12122,7 +12122,7 @@
       "id": "navigation-menu/viewport/radius",
       "component": "navigation-menu",
       "description": "Viewport corner of the navigation menu, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "navigation-menu/viewport/background",
@@ -12328,7 +12328,7 @@
       "id": "navigation-menu/content/radius",
       "component": "navigation-menu",
       "description": "Content corner of the navigation menu, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "navigation-menu/link/edge-width/current",
@@ -12441,7 +12441,7 @@
       "id": "popover/content/radius",
       "component": "popover",
       "description": "Content corner of the popover, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "popover/content/background",
@@ -12519,7 +12519,7 @@
       "id": "progress/radius",
       "component": "progress",
       "description": "Radius of the progress.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "progress/background",
@@ -12549,7 +12549,7 @@
       "id": "radio-group/item/radius",
       "component": "radio-group",
       "description": "Item radius of the radio group.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "radio-group/item/border",
@@ -12738,7 +12738,7 @@
       "id": "scroll-area/thumb/radius",
       "component": "scroll-area",
       "description": "Thumb radius of the scroll area.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "scroll-area/thumb/background",
@@ -13240,7 +13240,7 @@
       "id": "sidebar/inner/radius",
       "component": "sidebar",
       "description": "Inner radius of the sidebar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "sidebar/inner/border",
@@ -13290,7 +13290,7 @@
       "id": "sidebar/inset/radius",
       "component": "sidebar",
       "description": "Inset radius of the sidebar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "sidebar/inset/shadow",
@@ -14315,7 +14315,7 @@
       "id": "slider/track/radius",
       "component": "slider",
       "description": "Track radius of the slider.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "slider/track/background",
@@ -14339,7 +14339,7 @@
       "id": "slider/thumb/radius",
       "component": "slider",
       "description": "Thumb radius of the slider.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "slider/thumb/border",
@@ -14424,7 +14424,7 @@
       "id": "switch/radius",
       "component": "switch",
       "description": "Radius of the switch.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "switch/padding",
@@ -14499,7 +14499,7 @@
       "id": "switch/thumb/radius",
       "component": "switch",
       "description": "Corner of the switch's thumb: round, as the track is.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "switch/thumb/background",
@@ -14966,7 +14966,7 @@
       "id": "toast/radius",
       "component": "toast",
       "description": "Corner of the toast, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "toast/shadow",
@@ -17481,7 +17481,7 @@
               "w": 320,
               "h": 180,
               "clip": true,
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "fill": "color.surface.sunken",
               "n": 1,
               "at": "corner",
@@ -23807,7 +23807,7 @@
               "layout": "none",
               "w": 340,
               "h": 270,
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "stroke": "color.border.strong",
               "strokeW": "border-width.default",
               "dash": [4, 4],
@@ -32782,7 +32782,7 @@
               "align": "start",
               "stroke": "color.border.default",
               "strokeW": "border-width.default",
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "clip": true,
               "children": [
                 {
@@ -33036,7 +33036,7 @@
               "align": "start",
               "stroke": "color.border.default",
               "strokeW": "border-width.default",
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "clip": true,
               "children": [
                 {
@@ -33312,13 +33312,13 @@
                   "w": 180,
                   "stroke": "color.border.default",
                   "strokeW": "border-width.default",
-                  "radius": "radius.container",
+                  "radius": "radius.surface",
                   "ring": {
                     "color": "component.scroll-area.viewport.focus-ring-focus",
                     "width": "component.scroll-area.viewport.focus",
                     "offset": "component.scroll-area.viewport.focus-offset",
                     "fill": "component.scroll-area.viewport.focus-ring-offset-focus",
-                    "radius": "radius.container",
+                    "radius": "radius.surface",
                     "n": 3
                   }
                 }

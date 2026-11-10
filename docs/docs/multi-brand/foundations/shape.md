@@ -32,8 +32,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.control` | `aster.theme.base.radius.control` → `radius.4` |
 | `radius.badge` | `aster.theme.base.radius.badge` → `radius.4` |
 | `radius.option` | `aster.theme.base.radius.option` → `radius.4` |
-| `radius.container` | `aster.theme.base.radius.container` → `radius.8` |
-| `radius.round` | `radius.full` |
+| `radius.surface` | `aster.theme.base.radius.surface` → `radius.8` |
+| `radius.container` | `radius.surface` → `aster.theme.base.radius.surface` → `radius.8` |
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 | `border-width.focus-offset` | `border-width.2` |
@@ -43,10 +43,10 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `birch.theme.base.radius.control` → `radius.12` |
-| `radius.badge` | `birch.theme.base.radius.badge` → `radius.999` |
+| `radius.badge` | `birch.theme.base.radius.badge` → `radius.pill` |
 | `radius.option` | `birch.theme.base.radius.option` → `radius.12` |
-| `radius.container` | `birch.theme.base.radius.container` → `radius.16` |
-| `radius.round` | `radius.full` |
+| `radius.surface` | `birch.theme.base.radius.surface` → `radius.16` |
+| `radius.container` | `radius.surface` → `birch.theme.base.radius.surface` → `radius.16` |
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 | `border-width.focus-offset` | `border-width.2` |
@@ -55,11 +55,11 @@ Each token points to another token. Values live only on primitives, below.
 ::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
-| `radius.control` | `coral.theme.base.radius.control` → `radius.999` |
-| `radius.badge` | `coral.theme.base.radius.badge` → `radius.999` |
+| `radius.control` | `coral.theme.base.radius.control` → `radius.pill` |
+| `radius.badge` | `coral.theme.base.radius.badge` → `radius.pill` |
 | `radius.option` | `coral.theme.base.radius.option` → `radius.16` |
-| `radius.container` | `coral.theme.base.radius.container` → `radius.20` |
-| `radius.round` | `radius.full` |
+| `radius.surface` | `coral.theme.base.radius.surface` → `radius.20` |
+| `radius.container` | `radius.surface` → `coral.theme.base.radius.surface` → `radius.20` |
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 | `border-width.focus-offset` | `border-width.2` |

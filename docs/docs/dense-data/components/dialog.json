@@ -158,7 +158,7 @@
      "themed": false,
      "chain": {
       "token": "component.dialog.content.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "dialog-content-radius"
      },
      "values": [

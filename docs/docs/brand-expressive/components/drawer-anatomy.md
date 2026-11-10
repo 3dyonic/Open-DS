@@ -101,7 +101,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** shadow.overlay: Pronounced shadows add depth.
   - **Dark** shadow.overlay-dark: Pronounced shadows add depth.
 
-- **Token** `radius.container` → `content.radius` 1.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 1.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.24: Pill controls feel playful.
 
@@ -135,9 +135,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.
   - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
 
-- **Token** `radius.round` → `handle.radius` 9999px
+- **Token** `radius.pill` → `handle.radius` calc(infinity * 1px)
 
-  - **Pick** radius.full
+  - **Pick** radius.pill
 
 - **Token** `space.inset.container` → `handle.margin-top` 2rem :label[By scheme]{tone="info"}
 

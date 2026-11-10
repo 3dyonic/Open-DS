@@ -103,7 +103,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** shadow.overlay: Pronounced shadows add depth.
   - **Dark** shadow.overlay-dark: Pronounced shadows add depth.
 
-- **Token** `radius.container` → `content.radius` 1.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 1.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.24: Pill controls feel playful.
 
@@ -246,9 +246,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Focus must show on vivid color.
 
-- **Token** `radius.control` → `close.radius` 9999px :label[By scheme]{tone="info"}
+- **Token** `radius.control` → `close.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
 
-  - **Pick** radius.999: Pill controls feel playful.
+  - **Pick** radius.pill: Pill controls feel playful.
 
 - **Token** `size.icon` → `close.icon-size` 1.25rem :label[By scheme]{tone="info"}
 

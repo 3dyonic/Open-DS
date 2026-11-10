@@ -4,35 +4,67 @@
    "tokens": [
     {
      "token": "space.gap.tight",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "space.8",
+      "value": "0.5rem"
+     }
     },
     {
      "token": "space.gap.default",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "space.16",
+      "value": "1rem"
+     }
     },
     {
      "token": "space.gap.group",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "space.40",
+      "value": "2.5rem"
+     }
     },
     {
      "token": "space.gap.section",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "space.64",
+      "value": "4rem"
+     }
     },
     {
      "token": "space.inset.control-x",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "space.28",
+      "value": "1.75rem"
+     }
     },
     {
      "token": "space.inset.container",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "space.32",
+      "value": "2rem"
+     }
     },
     {
      "token": "space.inset.cell-x",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "space.16",
+      "value": "1rem"
+     }
     },
     {
      "token": "size.row",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "size.52",
+      "value": "3.25rem"
+     }
     }
    ]
   }

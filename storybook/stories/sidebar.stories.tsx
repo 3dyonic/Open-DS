@@ -40,7 +40,7 @@ export const Examples: Story = {
         <SidebarProvider className="min-h-0">
           <Sidebar
             collapsible="none"
-            className="rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+            className="rounded-[var(--radius-surface)] border border-[var(--color-border-default)]"
           >
             <SidebarContent>
               <SidebarGroup>

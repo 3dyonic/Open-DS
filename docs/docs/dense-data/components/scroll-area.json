@@ -141,16 +141,16 @@
      "themed": false,
      "chain": {
       "token": "component.scroll-area.thumb.radius",
-      "alias": "radius.round",
+      "alias": "radius.pill",
       "variable": "scroll-area-thumb-radius"
      },
      "values": [
       {
        "swatch": {
-        "corner": "9999px"
+        "corner": "calc(infinity * 1px)"
        },
-       "token": "radius.full",
-       "text": "9999px"
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
       }
      ]
     },

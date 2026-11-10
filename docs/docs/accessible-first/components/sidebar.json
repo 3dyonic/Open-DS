@@ -297,7 +297,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.inner.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "sidebar-inner-radius"
      },
      "values": [
@@ -486,7 +486,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.inset.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "sidebar-inset-radius"
      },
      "values": [

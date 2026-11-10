@@ -103,7 +103,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** shadow.overlay: Soft shadows fit every brand.
   - **Dark** shadow.overlay-dark: Soft shadows fit every brand.
 
-- **Token** `radius.container` → `content.radius` 0.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 0.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.8: Rounded by default; each brand sets its own corner.
 

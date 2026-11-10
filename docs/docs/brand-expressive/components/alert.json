@@ -248,7 +248,7 @@
      "themed": false,
      "chain": {
       "token": "component.alert.radius",
-      "alias": "radius.container",
+      "alias": "radius.surface",
       "variable": "alert-radius"
      },
      "values": [

@@ -16,7 +16,7 @@ type Any = any;
 
 const CSS = `
 .odg .sc-tabs{display:flex;gap:6px;margin:10px 0 8px}.odg .sc-tabs button{font:500 13px var(--type-body-font-family);padding:6px 12px;border-radius:var(--radius-control);border:0;background:var(--color-surface-sunken);color:var(--color-text-primary);cursor:pointer}.odg .sc-tabs button[aria-selected=true]{background:var(--color-action-primary);color:var(--color-text-on-action)}
-.odg .sc-p{border-radius:var(--radius-container);padding:16px;display:grid;gap:22px;overflow-x:auto}
+.odg .sc-p{border-radius:var(--radius-surface);padding:16px;display:grid;gap:22px;overflow-x:auto}
 .odg .sc-lane{display:grid;gap:8px;min-width:560px}.odg .sc-h{margin:0;font:600 10px var(--type-data-font-family);text-transform:uppercase;letter-spacing:.08em;color:var(--sc-muted)}
 .odg .sc-sts{display:grid;gap:4px}.odg .sc-st,.odg .sc-sl{border-radius:6px;padding:8px 6px;min-height:96px;display:flex;flex-direction:column;gap:3px;font:500 11px var(--type-data-font-family)}
 .odg .sc-sl{color:var(--sc-muted);background:linear-gradient(90deg,var(--sc-dash) 6px,transparent 6px) top/11px 2px repeat-x,linear-gradient(90deg,var(--sc-dash) 6px,transparent 6px) bottom/11px 2px repeat-x,linear-gradient(0deg,var(--sc-dash) 6px,transparent 6px) left/2px 11px repeat-y,linear-gradient(0deg,var(--sc-dash) 6px,transparent 6px) right/2px 11px repeat-y}.odg .sc-sl i{margin-top:auto;width:18px;height:18px;border-radius:4px;display:block}
@@ -50,27 +50,27 @@ const CSS = `
 .odg .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .odg .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .odg .grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-.odg .card{background:var(--color-surface-default);border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-container);padding:var(--space-inset-container)}
+.odg .card{background:var(--color-surface-default);border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-surface);padding:var(--space-inset-container)}
 .odg .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
 .odg .chip{display:inline-flex;align-items:center;padding:1px 8px;border-radius:var(--radius-badge);font-size:var(--type-caption-font-size);background:var(--color-surface-sunken);color:var(--color-text-secondary)}
 .odg .chip.use{background:var(--color-status-success-subtle);color:var(--color-text-primary)}
 .odg .chip.avoid{background:var(--color-status-danger-subtle);color:var(--color-text-primary);text-decoration:line-through}
 .odg .dot{display:inline-block;width:8px;height:8px;border-radius:99px;margin-right:6px}
 .odg blockquote{margin:0;padding:12px 14px;border-left:3px solid var(--color-border-strong);background:var(--color-surface-sunken);color:var(--color-text-secondary)}
-.odg pre{margin:0;padding:12px 14px;background:var(--color-surface-inverse);color:var(--color-text-inverse);border-radius:var(--radius-container);font:var(--type-data-font-size)/1.6 var(--type-data-font-family);overflow:auto;white-space:pre-wrap}
+.odg pre{margin:0;padding:12px 14px;background:var(--color-surface-inverse);color:var(--color-text-inverse);border-radius:var(--radius-surface);font:var(--type-data-font-size)/1.6 var(--type-data-font-family);overflow:auto;white-space:pre-wrap}
 .odg code{font-family:var(--type-data-font-family);font-size:var(--type-data-font-size)}
 .odg .step{display:grid;grid-template-columns:28px 1fr 1.2fr;gap:16px;align-items:start;margin-bottom:12px}
 .odg .num{width:28px;height:28px;border-radius:var(--radius-control);background:var(--color-surface-inverse);color:var(--color-text-inverse);display:flex;align-items:center;justify-content:center;font-weight:600}
-.odg .why{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;background:var(--color-surface-sunken);border-radius:var(--radius-container);padding:10px 14px;margin:6px 0 16px;color:var(--color-text-secondary);font-size:var(--type-caption-font-size)}
+.odg .why{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;background:var(--color-surface-sunken);border-radius:var(--radius-surface);padding:10px 14px;margin:6px 0 16px;color:var(--color-text-secondary);font-size:var(--type-caption-font-size)}
 .odg .why b{color:var(--color-text-primary)}
-.odg .sw{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-container);overflow:hidden;background:var(--color-surface-default)}
+.odg .sw{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-surface);overflow:hidden;background:var(--color-surface-default)}
 .odg .sw .chipbox{height:52px;border-bottom:var(--border-width-default) solid var(--color-border-default)}
 .odg .sw .meta{padding:8px 10px;font-size:var(--type-caption-font-size)}
 .odg .row{display:grid;grid-template-columns:1.3fr 190px 1.2fr;gap:16px;align-items:baseline;padding:12px 0;border-top:var(--border-width-default) solid var(--color-border-default)}
 .odg .spec{font:var(--type-caption-font-size) var(--type-data-font-family);color:var(--color-text-muted)}
 .odg .bar{height:14px;background:var(--color-status-info-subtle);border-left:3px solid var(--color-status-info)}
 .odg .layers{display:grid;grid-template-columns:1fr 18px 1fr 18px 1fr 18px 1fr;align-items:center;gap:6px}
-.odg .rule{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-container);background:var(--color-surface-default);margin-bottom:12px;overflow:hidden}
+.odg .rule{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-surface);background:var(--color-surface-default);margin-bottom:12px;overflow:hidden}
 .odg .rule .t{padding:10px 14px;font-weight:600;border-bottom:var(--border-width-default) solid var(--color-border-default);display:flex;justify-content:space-between;gap:12px}
 .odg .dd{display:grid;grid-template-columns:1fr 1fr}
 .odg .do,.odg .dont{padding:12px 14px}
@@ -85,7 +85,7 @@ const CSS = `
 .odg .leftout-chip{color:var(--color-status-warning);background:var(--color-status-warning-subtle);border-color:var(--color-status-warning)}
 .odg .cite{font:11px var(--type-data-font-family);color:var(--color-text-muted);margin-top:4px}
 .odg a{color:var(--color-text-link)}
-.odg .prim{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-container);overflow:hidden;background:var(--color-surface-default)}
+.odg .prim{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-surface);overflow:hidden;background:var(--color-surface-default)}
 .odg .prim.unused{border-style:dashed}
 .odg .prim .c{height:40px;border-bottom:var(--border-width-default) solid var(--color-border-default)}
 .odg .prim .t{padding:6px 8px;font-size:var(--type-caption-font-size);line-height:1.4}

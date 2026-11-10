@@ -27,7 +27,7 @@ export const Examples: Story = {
             mode="single"
             defaultMonth={selectedDay}
             selected={selectedDay}
-            className="rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+            className="rounded-[var(--radius-surface)] border border-[var(--color-border-default)]"
           />
         </div>
       )}

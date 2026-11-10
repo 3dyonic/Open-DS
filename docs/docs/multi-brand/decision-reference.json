@@ -121,9 +121,9 @@
          "scope": {
           "title": "shape",
           "href": "foundations/shape",
-          "token": "radius.control",
-          "primitive": "radius.999",
-          "value": "9999px"
+          "token": "radius.option",
+          "primitive": "radius.16",
+          "value": "1rem"
          }
         },
         {
@@ -2356,7 +2356,7 @@
         }
        },
        {
-        "text": "radius.container: radius.8: Rounded by default; each brand sets its own corner.",
+        "text": "radius.surface: radius.8: Rounded by default; each brand sets its own corner.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2442,7 +2442,7 @@
         }
        },
        {
-        "text": "radius.container: radius.8: Rounded by default; each brand sets its own corner.",
+        "text": "radius.surface: radius.8: Rounded by default; each brand sets its own corner.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"

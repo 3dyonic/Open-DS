@@ -71,7 +71,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   Rounded by default; each brand sets its own corner.
 
-- **Token** `radius.container` → `radius` 0.5rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `radius` 0.5rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.8: Rounded by default; each brand sets its own corner.
 :::

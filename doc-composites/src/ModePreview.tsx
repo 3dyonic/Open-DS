@@ -38,7 +38,7 @@ export default function ModePreview({ data }: { data: ModePreviewData }) {
         <div key={mode} data-mode={mode}>
           <div
             data-brand={data.brand?.id}
-            className="flex flex-col gap-[var(--space-gap-default)] rounded-[var(--radius-container)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] bg-[var(--color-surface-canvas)] p-[var(--space-inset-container)] text-[var(--color-text-primary)]"
+            className="flex flex-col gap-[var(--space-gap-default)] rounded-[var(--radius-surface)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] bg-[var(--color-surface-canvas)] p-[var(--space-inset-container)] text-[var(--color-text-primary)]"
           >
             <p className="flex justify-between text-[length:var(--type-caption-font-size)] text-[var(--color-text-secondary)]">
               <span>{mode === "light" ? "Light" : "Dark"}</span>

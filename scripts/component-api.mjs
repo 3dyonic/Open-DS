@@ -217,7 +217,7 @@ function map(util, comp) {
     if (m[1] === "-full")
       return {
         name: "radius",
-        sem: "radius.round",
+        sem: "radius.pill",
         out: (x) => `rounded-[var(${x})]`,
       };
     const v =

@@ -4,7 +4,11 @@
    "tokens": [
     {
      "token": "size.icon",
-     "type": "dimension"
+     "type": "dimension",
+     "resolves": {
+      "primitive": "size.20",
+      "value": "1.25rem"
+     }
     }
    ]
   }

@@ -126,7 +126,7 @@
 .odv-app {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   box-shadow: var(--elevation-overlay, none);
   overflow: hidden;
 }
@@ -187,7 +187,7 @@
 .odv-card {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   padding: 14px 16px;
   min-width: 0;
 }
@@ -270,7 +270,7 @@
 /* The live component, and each variant drawn live from its Storybook story. */
 .odv-live {
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   overflow: hidden;
   margin: 18px 0 6px;
   background: var(--color-surface-default);
@@ -294,7 +294,7 @@
 /* Do and don't. */
 .odv-dd {
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   overflow: hidden;
   background: var(--color-surface-default);
 }
@@ -323,7 +323,7 @@
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   height: 112px;
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   overflow: hidden;
   margin: 18px 0 8px;
 }
@@ -337,13 +337,13 @@
 .odv-stack {
   position: relative;
   height: 220px;
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   border: var(--border-width-default) solid;
   overflow: hidden;
 }
 .odv-stack div {
   position: absolute;
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   border: var(--border-width-default) solid;
   padding: 10px 12px;
   font-size: var(--type-caption-font-size);
@@ -399,7 +399,7 @@
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 1fr);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   overflow: hidden;
   border: var(--border-width-default) solid var(--color-border-default);
 }
@@ -484,7 +484,7 @@
 .odv-variant {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   overflow: hidden;
   margin: 16px 0;
 }
@@ -598,7 +598,7 @@
 }
 .odv-achip {
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   padding: 6px 10px;
   background: var(--color-surface-canvas);
   font-size: var(--type-caption-font-size);
@@ -625,7 +625,7 @@
 .odv-trail {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   overflow: hidden;
   margin: 16px 0;
   scroll-margin-top: 80px;
@@ -776,7 +776,7 @@ html[data-theme="dark"] .odv-robot-night {
   display: grid;
   align-content: start;
   border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   background: var(--color-surface-default);
   color: inherit;
   overflow: hidden;
@@ -966,7 +966,7 @@ a.odv-icard:hover {
 .odv-stats span {
   display: grid;
   border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   padding: 8px 14px;
   font: var(--type-caption-font-size) var(--type-data-font-family);
   text-transform: uppercase;
@@ -1020,7 +1020,7 @@ a.odv-icard:hover {
   border: 1px solid var(--color-border-default);
   border-left: 4px solid var(--color-status-warning);
   background: var(--color-status-warning-subtle);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   padding: 8px 12px;
 }
 .odv-leftout .odv-robot {
@@ -1056,7 +1056,7 @@ a.odv-icard:hover {
   margin: 16px;
   padding: 16px;
   border: var(--border-width-default, 1px) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   background: var(--color-surface-raised, var(--color-surface-default));
   box-shadow: var(--elevation-card, none);
 }
@@ -1451,7 +1451,7 @@ a.odv-icard:hover {
   box-shadow: 0 1px 2px color-mix(in srgb, var(--color-text-primary) 18%, transparent);
 }
 .odv-scale-p {
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   border: var(--border-width-default) solid var(--odv-edge);
   padding: 16px;
   display: grid;
@@ -1938,7 +1938,7 @@ tr.odv-for td {
   align-items: baseline;
   margin: 0 0 12px;
   padding: 10px 12px;
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   background: var(--color-surface-default);
 }
 .odv-tlegend .odv-themed {
@@ -2030,7 +2030,7 @@ tr.odv-for td {
 /* Anatomy reference (OD-229): one card per part, each token a chain from the decision to the value. */
 .odv-byscheme { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px 1px 6px; border-radius: 999px; background: var(--color-surface-selected); color: var(--ods-text-on-selected); font-size: 11px; font-weight: 600; line-height: 18px; white-space: nowrap; vertical-align: middle; }
 .odv-anat-parts { width: 100%; font-size: 0.92em; }
-.odv-anat-card { margin: 0 0 16px; padding: 16px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-container, 8px); background: var(--color-surface-default); }
+.odv-anat-card { margin: 0 0 16px; padding: 16px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-surface, 8px); background: var(--color-surface-default); }
 .odv-anat-card > header { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 1.05em; }
 .odv-anat-tokens { list-style: none; margin: 0; padding: 0; }
 .odv-anat-token { padding: 10px 0; border-top: 1px solid var(--color-border-default); }
@@ -2051,7 +2051,7 @@ tr.odv-for td {
 .odv-am-n.none { background: none; }
 .odv-am-parts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 @media (max-width: 996px) { .odv-am-parts { grid-template-columns: minmax(0, 1fr); } }
-.odv-am-stage { margin: 0; padding: 48px 24px 16px; border: 1px solid var(--color-border-default); border-radius: var(--radius-container, 8px); background: var(--color-surface-canvas); display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.odv-am-stage { margin: 0; padding: 48px 24px 16px; border: 1px solid var(--color-border-default); border-radius: var(--radius-surface, 8px); background: var(--color-surface-canvas); display: flex; flex-direction: column; align-items: center; gap: 40px; }
 .odv-am-stage > .odv-at { overflow-x: auto; padding: 12px 14px 14px 0; }
 .odv-am-stage figcaption { align-self: stretch; color: var(--color-text-secondary); font-size: 12px; }
 .odv-am-menu { position: relative; min-width: 260px; padding: var(--dropdown-menu-content-padding); border: var(--dropdown-menu-content-border-width) solid var(--dropdown-menu-content-border); border-radius: var(--overlay-radius); background: var(--overlay-background); box-shadow: var(--overlay-shadow); color: var(--dropdown-menu-content-label); }
@@ -2081,7 +2081,7 @@ tr.odv-for td {
 .odv-am-glyph { color: var(--color-text-muted); font-family: var(--ifm-font-family-monospace); }
 .odv-am-need { color: var(--color-text-secondary); font-size: 12px; }
 .odv-am-roles { margin-left: auto; display: inline-flex; gap: 6px; flex-wrap: wrap; }
-.odv-am-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; margin: 0 0 16px; padding: 18px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-container, 8px); background: var(--color-surface-default); }
+.odv-am-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; margin: 0 0 16px; padding: 18px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-surface, 8px); background: var(--color-surface-default); }
 @media (max-width: 996px) { .odv-am-card { grid-template-columns: minmax(0, 1fr); } }
 .odv-am-img { align-self: start; padding: 32px 16px; border-radius: 6px; background: var(--color-surface-canvas); display: flex; justify-content: center; overflow: hidden; }
 .odv-am-body { min-width: 0; }
@@ -2127,7 +2127,7 @@ tr.odv-for td {
 .odv-at-empty { text-align: center !important; color: var(--data-table-label); }
 
 /* The Anatomy reference card (OD-229), after a component's variants: a link to the parts layer. */
-.odv-anatref { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin: 8px 0 24px; border: var(--border-width-default, 1px) solid var(--color-border-default); border-radius: var(--radius-container); background: var(--color-surface-default); color: inherit; text-decoration: none; }
+.odv-anatref { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin: 8px 0 24px; border: var(--border-width-default, 1px) solid var(--color-border-default); border-radius: var(--radius-surface); background: var(--color-surface-default); color: inherit; text-decoration: none; }
 .odv-anatref:hover { background: var(--color-surface-highlight); text-decoration: none; color: inherit; }
 .odv-anatref:focus-visible { outline: var(--border-width-focus, 2px) solid var(--color-border-focus); outline-offset: var(--border-width-focus-offset, 2px); }
 .odv-anatref-b { display: grid; gap: 4px; flex: 1; min-width: 0; }
@@ -2137,7 +2137,7 @@ tr.odv-for td {
 
 /* Anatomy drawings as Figma assets (OD-229): the exported frame, and a link back to it in Figma. */
 .odv-am-assetbox { display: grid; gap: 6px; justify-items: start; }
-.odv-am-asset { display: block; max-width: 100%; height: auto; border-radius: var(--radius-container); }
+.odv-am-asset { display: block; max-width: 100%; height: auto; border-radius: var(--radius-surface); }
 /* A card's image is cropped to its own parts (OD-248): it fills the card, up to a height that keeps the
    card's text beside it in view. */
 .odv-am-img.wide .odv-am-assetbox { justify-items: stretch; width: 100%; }

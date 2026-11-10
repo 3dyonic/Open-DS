@@ -103,7 +103,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** shadow.overlay: Subtle shadows keep the grid crisp.
   - **Dark** shadow.overlay-dark: Subtle shadows keep the grid crisp.
 
-- **Token** `radius.container` → `content.radius` 0.25rem :label[By scheme]{tone="info"}
+- **Token** `radius.surface` → `content.radius` 0.25rem :label[By scheme]{tone="info"}
 
   - **Pick** radius.4: Small corners keep dense rows straight.
 

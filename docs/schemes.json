@@ -91,7 +91,7 @@
     "themes": 2,
     "primary": "#D61F7A",
     "primaryDark": "#F59ACA",
-    "corners": "9999px",
+    "corners": "calc(infinity * 1px)",
     "font": "\"Bricolage Grotesque\", system-ui, sans-serif",
     "motion": "120ms"
   },

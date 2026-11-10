@@ -79,9 +79,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.
   - **Shares the step with** surface.highlight, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
 
-- **Token** `radius.round` → `track.radius` 9999px
+- **Token** `radius.pill` → `track.radius` calc(infinity * 1px)
 
-  - **Pick** radius.full
+  - **Pick** radius.pill
 
 - **Token** `color.action.primary` → `range.background` #4B3FD9 · dark #A9A3F6 :label[By scheme]{tone="info"}
 
@@ -117,9 +117,9 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
   - **Pick** size.16
 
-- **Token** `radius.round` → `thumb.radius` 9999px
+- **Token** `radius.round` → `thumb.radius` 50%
 
-  - **Pick** radius.full
+  - **Pick** radius.round
 
 - **Token** `color.action.primary` → `thumb.border` #4B3FD9 · dark #A9A3F6 :label[By scheme]{tone="info"}
 
