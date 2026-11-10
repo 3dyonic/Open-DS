@@ -12,7 +12,7 @@ How color carries action, state and brand.
 
 ::token-swatches{id="color"}
 
-::specimen{id="color/key/default"}
+::color-keys{id="default"}
 
 ## Surfaces
 
@@ -24,7 +24,7 @@ The canvas, then the surfaces content sits on, in light and dark.
 
 Each status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.
 
-::specimen{id="color/status/default"}
+::status-colors{id="default"}
 
 ## The five answers
 

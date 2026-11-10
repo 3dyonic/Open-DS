@@ -1430,14 +1430,17 @@ export function docsPages(
         all.findIndex((y) => y.meaning === x.meaning) === j,
     );
     return (
-      perBrand((F) =>
-        specimenBlock(`color/key/${F.brand ?? "all"}`, {
-          items: band.map(([n, p]) => ({
-            draw: { color: cssVar(p) },
-            lines: [n, p.replace(/^color\./, "")],
+      perBrand((F) => {
+        const id = F.brand ?? "all";
+        (compositeData["color-keys"] ??= {})[id] = {
+          keys: band.map(([n, p]) => ({
+            name: n,
+            token: p.replace(/^color\./, ""),
+            value: cssVar(p),
           })),
-        }),
-      ) +
+        };
+        return `::color-keys{id="${id}"}`;
+      }) +
       `\n\n## Surfaces\n\nThe canvas, then the surfaces content sits on, in ${scheme.themes.map((th) => th.id).join(" and ")}.\n\n` +
       perBrand((F, D) => {
         const id = F.brand ?? "all";
@@ -1449,24 +1452,24 @@ export function docsPages(
       }) +
       (sts.length
         ? `\n\n## Status colors in use\n\nEach status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.\n\n` +
-          perBrand((F, D) =>
-            specimenBlock(`color/status/${F.brand ?? "all"}`, {
-              items: sts.map((x) => {
+          perBrand((F, D) => {
+            const id = F.brand ?? "all";
+            (compositeData["status-colors"] ??= {})[id] = {
+              statuses: sts.map((x) => {
                 const k = `color.status.${x.meaning}`;
-                const r = (th) =>
-                  th
-                    ? contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)
-                    : "";
                 return {
-                  label: { text: x.label, tone: STATUS_CLASS[x.meaning] },
-                  lines: [
-                    `${x.label}. ${x.why}`,
-                    `${F.id} ${r(F)}:1 ${D?.id ?? ""} ${r(D)}:1`,
-                  ],
+                  label: x.label,
+                  tone: STATUS_CLASS[x.meaning],
+                  meaning: x.why,
+                  contrast: [F, D].filter(Boolean).map((th) => ({
+                    mode: th.id,
+                    ratio: Number(contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)),
+                  })),
                 };
               }),
-            }),
-          )
+            };
+            return `::status-colors{id="${id}"}`;
+          })
         : "") +
       "\n\n"
     );
@@ -3030,6 +3033,8 @@ export function docsPages(
     "token-swatches": "id",
     "type-roles": "id",
     "primitive-table": "id",
+    "color-keys": "id",
+    "status-colors": "id",
     steps: "id",
     "decision-tree": "id",
     "decision-answer": "id",

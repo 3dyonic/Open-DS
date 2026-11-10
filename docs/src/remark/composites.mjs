@@ -40,6 +40,8 @@ const COMPOSITES = {
   "decision-answer": "DecisionAnswer",
   group: "Group",
   "primitive-table": "PrimitiveTable",
+  "color-keys": "ColorKeys",
+  "status-colors": "StatusColors",
 };
 // The attribute that names a composite's entry in the page's data file.
 const DATA_KEY = {
@@ -60,6 +62,8 @@ const DATA_KEY = {
   "decision-tree": "id",
   "decision-answer": "id",
   "primitive-table": "id",
+  "color-keys": "id",
+  "status-colors": "id",
 };
 // The name the page's data has inside the compiled page.
 const DATA = "__compositeData";

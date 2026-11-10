@@ -205,86 +205,38 @@
    ]
   }
  },
- "specimen": {
-  "color/key/default": {
-   "items": [
+ "color-keys": {
+  "default": {
+   "keys": [
     {
-     "draw": {
-      "color": "var(--color-action-primary)"
-     },
-     "lines": [
-      "Action",
-      "action.primary"
-     ]
+     "name": "Action",
+     "token": "action.primary",
+     "value": "var(--color-action-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-text-primary)"
-     },
-     "lines": [
-      "Text",
-      "text.primary"
-     ]
+     "name": "Text",
+     "token": "text.primary",
+     "value": "var(--color-text-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-success)"
-     },
-     "lines": [
-      "Success",
-      "status.success"
-     ]
+     "name": "Success",
+     "token": "status.success",
+     "value": "var(--color-status-success)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-warning)"
-     },
-     "lines": [
-      "Warning",
-      "status.warning"
-     ]
+     "name": "Warning",
+     "token": "status.warning",
+     "value": "var(--color-status-warning)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-danger)"
-     },
-     "lines": [
-      "Danger",
-      "status.danger"
-     ]
+     "name": "Danger",
+     "token": "status.danger",
+     "value": "var(--color-status-danger)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-info)"
-     },
-     "lines": [
-      "Info",
-      "status.info"
-     ]
-    }
-   ]
-  },
-  "color/status/default": {
-   "items": [
-    {
-     "label": {
-      "text": "On the list",
-      "tone": "success"
-     },
-     "lines": [
-      "On the list. You joined and your place is saved.",
-      "light 4.7:1 dark 6.5:1"
-     ]
-    },
-    {
-     "label": {
-      "text": "Almost gone",
-      "tone": "warning"
-     },
-     "lines": [
-      "Almost gone. Few left; act soon.",
-      "light 5.2:1 dark 7.9:1"
-     ]
+     "name": "Info",
+     "token": "status.info",
+     "value": "var(--color-status-info)"
     }
    ]
   }
@@ -294,6 +246,42 @@
    "modes": [
     "light",
     "dark"
+   ]
+  }
+ },
+ "status-colors": {
+  "default": {
+   "statuses": [
+    {
+     "label": "On the list",
+     "tone": "success",
+     "meaning": "You joined and your place is saved.",
+     "contrast": [
+      {
+       "mode": "light",
+       "ratio": 4.7
+      },
+      {
+       "mode": "dark",
+       "ratio": 6.5
+      }
+     ]
+    },
+    {
+     "label": "Almost gone",
+     "tone": "warning",
+     "meaning": "Few left; act soon.",
+     "contrast": [
+      {
+       "mode": "light",
+       "ratio": 5.2
+      },
+      {
+       "mode": "dark",
+       "ratio": 7.9
+      }
+     ]
+    }
    ]
   }
  },

@@ -2627,7 +2627,7 @@ export const CHECKS = {
         const visual = [
           ["index.md", ":::hero{"],
           ["index.md", '::card-grid{id="home/sections"}'],
-          ["foundations/color.md", '::specimen{id="color/key/'],
+          ["foundations/color.md", '::color-keys{id="'],
           ["foundations/color.md", "::surface-stack{"],
           ["primitives/color.md", "::color-scale{"],
           ["components/button.md", ":::panel{"],

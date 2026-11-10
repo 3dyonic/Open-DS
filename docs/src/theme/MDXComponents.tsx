@@ -28,6 +28,8 @@ import DecisionTree from "@open-ds/doc-composites/DecisionTree";
 import DecisionAnswer from "@open-ds/doc-composites/DecisionAnswer";
 import Group from "@open-ds/doc-composites/Group";
 import PrimitiveTable from "@open-ds/doc-composites/PrimitiveTable";
+import ColorKeys from "@open-ds/doc-composites/ColorKeys";
+import StatusColors from "@open-ds/doc-composites/StatusColors";
 
 // The pages link to sections by id: a "Because" chip opens the answer card below it (#why-...).
 // Docusaurus only registers headings as link targets, so it reported those links as broken though
@@ -125,4 +127,6 @@ export default {
   DecisionAnswer,
   Group,
   PrimitiveTable,
+  ColorKeys,
+  StatusColors,
 };

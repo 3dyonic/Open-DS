@@ -1,13 +1,12 @@
 /**
  * PairsChart: which text may sit on which fill, and the contrast each pair keeps, in each mode. Each
  * fill is painted in its own color with every text that may sit on it; a pair below its floor is
- * marked with a Badge. Built from the scheme's Tabs, Card and Badge, used through their props only;
+ * marked with a Badge. Built from the scheme's Tabs and Badge, used through their props only;
  * the fills are drawings of values. The data follows doc-composites/schemas/pairs-chart.schema.json;
  * the page holds one line: ::pairs-chart{id="aster"}
  */
 import * as React from "react";
 import { Badge } from "@open-ds/ui/components/badge";
-import { Card, CardContent } from "@open-ds/ui/components/card";
 import {
   Tabs,
   TabsContent,
@@ -42,7 +41,7 @@ const small =
 function FillTile({ f, page }: { f: Fill; page: PairsMode["page"] }) {
   return (
     <div
-      className="flex flex-col gap-[var(--space-gap-tight)] rounded-[var(--radius-container)] border p-[var(--space-inset-container)]"
+      className="flex min-w-0 flex-col gap-[var(--space-gap-tight)] rounded-[var(--radius-container)] border p-[var(--space-gap-default)]"
       style={{
         background: f.hex,
         borderColor: page.edge,
@@ -60,11 +59,11 @@ function FillTile({ f, page }: { f: Fill; page: PairsMode["page"] }) {
           style={{ color: p.hex }}
         >
           <b className="text-[length:var(--type-title-font-size)]">Aa</b>
-          <span className={`flex min-w-0 flex-col whitespace-nowrap ${small}`}>
+          <span className={`flex min-w-0 flex-1 flex-col truncate ${small}`}>
             {p.text}
             <span>{p.primitive}</span>
           </span>
-          <span className={`ml-auto whitespace-nowrap ${small}`}>
+          <span className={`shrink-0 whitespace-nowrap rounded-full border border-current px-[var(--space-gap-tight)] ${small}`}>
             {p.contrast.toFixed(1)}:1
           </span>
           {p.contrast < p.floor && (
@@ -88,8 +87,7 @@ export default function PairsChart({
     : data.modes[0].mode;
   return (
     <div data-composite="pairs-chart">
-      <Card>
-        <Tabs defaultValue={start}>
+      <Tabs defaultValue={start}>
           <TabsList>
             {data.modes.map((m) => (
               <TabsTrigger key={m.mode} value={m.mode}>
@@ -99,10 +97,9 @@ export default function PairsChart({
           </TabsList>
           {data.modes.map((m) => (
             <TabsContent key={m.mode} value={m.mode}>
-              <CardContent>
                 <div
-                  className="flex flex-col gap-[var(--space-gap-group)] rounded-[var(--radius-container)] p-[var(--space-inset-container)]"
-                  style={{ background: m.page.canvas, color: m.page.text }}
+                  className="flex flex-col gap-[var(--space-gap-group)] rounded-[var(--radius-container)] border p-[var(--space-inset-container)]"
+                  style={{ background: m.page.canvas, color: m.page.text, borderColor: m.page.edge }}
                 >
                   {m.groups.map((g) => (
                     <section
@@ -115,10 +112,10 @@ export default function PairsChart({
                       >
                         {g.title}
                       </h4>
-                      <p className={small} style={{ color: m.page.muted }}>
+                      <p className="text-[length:var(--type-caption-font-size)]" style={{ color: m.page.muted }}>
                         {g.note}
                       </p>
-                      <div className="grid gap-[var(--space-gap-tight)] sm:grid-cols-2">
+                      <div className="grid gap-[var(--space-gap-tight)] sm:grid-cols-2 lg:grid-cols-3">
                         {g.fills.map((f) => (
                           <FillTile key={f.fill} f={f} page={m.page} />
                         ))}
@@ -126,11 +123,9 @@ export default function PairsChart({
                     </section>
                   ))}
                 </div>
-              </CardContent>
             </TabsContent>
           ))}
-        </Tabs>
-      </Card>
+      </Tabs>
     </div>
   );
 }

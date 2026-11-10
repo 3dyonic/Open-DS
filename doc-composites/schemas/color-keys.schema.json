@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/color-keys.schema.json",
+  "title": "Color keys",
+  "description": "The key colors of a scheme, each with its name and token. Drawn by the ColorKeys composite as a band on Foundations › Color.",
+  "type": "object",
+  "required": ["keys"],
+  "additionalProperties": false,
+  "properties": {
+    "keys": {
+      "type": "array",
+      "description": "Each key color, in the order the band shows them.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "token", "value"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "description": "What the color is for, such as Action." },
+          "token": { "type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@-]+)+$", "description": "The token, without color., such as action.primary." },
+          "value": { "type": "string", "description": "The CSS value drawn: the token's CSS variable." }
+        }
+      }
+    }
+  }
+}

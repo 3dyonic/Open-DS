@@ -13,15 +13,15 @@ How color carries action, state and brand.
 ::token-swatches{id="color"}
 
 ::::brand{id="aster" name="Aster"}
-::specimen{id="color/key/aster"}
+::color-keys{id="aster"}
 ::::
 
 ::::brand{id="birch" name="Birch"}
-::specimen{id="color/key/birch"}
+::color-keys{id="birch"}
 ::::
 
 ::::brand{id="coral" name="Coral"}
-::specimen{id="color/key/coral"}
+::color-keys{id="coral"}
 ::::
 
 ## Surfaces
@@ -45,15 +45,15 @@ The canvas, then the surfaces content sits on, in aster-light and aster-dark and
 Each status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.
 
 ::::brand{id="aster" name="Aster"}
-::specimen{id="color/status/aster"}
+::status-colors{id="aster"}
 ::::
 
 ::::brand{id="birch" name="Birch"}
-::specimen{id="color/status/birch"}
+::status-colors{id="birch"}
 ::::
 
 ::::brand{id="coral" name="Coral"}
-::specimen{id="color/status/coral"}
+::status-colors{id="coral"}
 ::::
 
 ## The five answers

@@ -205,280 +205,106 @@
    ]
   }
  },
- "specimen": {
-  "color/key/aster": {
-   "items": [
+ "color-keys": {
+  "aster": {
+   "keys": [
     {
-     "draw": {
-      "color": "var(--color-action-primary)"
-     },
-     "lines": [
-      "Action",
-      "action.primary"
-     ]
+     "name": "Action",
+     "token": "action.primary",
+     "value": "var(--color-action-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-text-primary)"
-     },
-     "lines": [
-      "Text",
-      "text.primary"
-     ]
+     "name": "Text",
+     "token": "text.primary",
+     "value": "var(--color-text-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-success)"
-     },
-     "lines": [
-      "Success",
-      "status.success"
-     ]
+     "name": "Success",
+     "token": "status.success",
+     "value": "var(--color-status-success)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-warning)"
-     },
-     "lines": [
-      "Warning",
-      "status.warning"
-     ]
+     "name": "Warning",
+     "token": "status.warning",
+     "value": "var(--color-status-warning)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-danger)"
-     },
-     "lines": [
-      "Danger",
-      "status.danger"
-     ]
+     "name": "Danger",
+     "token": "status.danger",
+     "value": "var(--color-status-danger)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-info)"
-     },
-     "lines": [
-      "Info",
-      "status.info"
-     ]
+     "name": "Info",
+     "token": "status.info",
+     "value": "var(--color-status-info)"
     }
    ]
   },
-  "color/key/birch": {
-   "items": [
+  "birch": {
+   "keys": [
     {
-     "draw": {
-      "color": "var(--color-action-primary)"
-     },
-     "lines": [
-      "Action",
-      "action.primary"
-     ]
+     "name": "Action",
+     "token": "action.primary",
+     "value": "var(--color-action-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-text-primary)"
-     },
-     "lines": [
-      "Text",
-      "text.primary"
-     ]
+     "name": "Text",
+     "token": "text.primary",
+     "value": "var(--color-text-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-success)"
-     },
-     "lines": [
-      "Success",
-      "status.success"
-     ]
+     "name": "Success",
+     "token": "status.success",
+     "value": "var(--color-status-success)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-warning)"
-     },
-     "lines": [
-      "Warning",
-      "status.warning"
-     ]
+     "name": "Warning",
+     "token": "status.warning",
+     "value": "var(--color-status-warning)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-danger)"
-     },
-     "lines": [
-      "Danger",
-      "status.danger"
-     ]
+     "name": "Danger",
+     "token": "status.danger",
+     "value": "var(--color-status-danger)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-info)"
-     },
-     "lines": [
-      "Info",
-      "status.info"
-     ]
+     "name": "Info",
+     "token": "status.info",
+     "value": "var(--color-status-info)"
     }
    ]
   },
-  "color/key/coral": {
-   "items": [
+  "coral": {
+   "keys": [
     {
-     "draw": {
-      "color": "var(--color-action-primary)"
-     },
-     "lines": [
-      "Action",
-      "action.primary"
-     ]
+     "name": "Action",
+     "token": "action.primary",
+     "value": "var(--color-action-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-text-primary)"
-     },
-     "lines": [
-      "Text",
-      "text.primary"
-     ]
+     "name": "Text",
+     "token": "text.primary",
+     "value": "var(--color-text-primary)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-success)"
-     },
-     "lines": [
-      "Success",
-      "status.success"
-     ]
+     "name": "Success",
+     "token": "status.success",
+     "value": "var(--color-status-success)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-warning)"
-     },
-     "lines": [
-      "Warning",
-      "status.warning"
-     ]
+     "name": "Warning",
+     "token": "status.warning",
+     "value": "var(--color-status-warning)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-danger)"
-     },
-     "lines": [
-      "Danger",
-      "status.danger"
-     ]
+     "name": "Danger",
+     "token": "status.danger",
+     "value": "var(--color-status-danger)"
     },
     {
-     "draw": {
-      "color": "var(--color-status-info)"
-     },
-     "lines": [
-      "Info",
-      "status.info"
-     ]
-    }
-   ]
-  },
-  "color/status/aster": {
-   "items": [
-    {
-     "label": {
-      "text": "Active",
-      "tone": "success"
-     },
-     "lines": [
-      "Active. The plan is paid and running.",
-      "aster-light 4.7:1 aster-dark 7.1:1"
-     ]
-    },
-    {
-     "label": {
-      "text": "Renews in 3 days",
-      "tone": "info"
-     },
-     "lines": [
-      "Renews in 3 days. A payment is coming: news, nothing has gone wrong.",
-      "aster-light 7.8:1 aster-dark 7.5:1"
-     ]
-    },
-    {
-     "label": {
-      "text": "Card declined",
-      "tone": "danger"
-     },
-     "lines": [
-      "Card declined. The payment failed, so the plan will stop.",
-      "aster-light 4.4:1 aster-dark 6.9:1"
-     ]
-    }
-   ]
-  },
-  "color/status/birch": {
-   "items": [
-    {
-     "label": {
-      "text": "Active",
-      "tone": "success"
-     },
-     "lines": [
-      "Active. The plan is paid and running.",
-      "birch-light 4.7:1 birch-dark 7.1:1"
-     ]
-    },
-    {
-     "label": {
-      "text": "Renews in 3 days",
-      "tone": "info"
-     },
-     "lines": [
-      "Renews in 3 days. A payment is coming: news, nothing has gone wrong.",
-      "birch-light 7.8:1 birch-dark 7.5:1"
-     ]
-    },
-    {
-     "label": {
-      "text": "Card declined",
-      "tone": "danger"
-     },
-     "lines": [
-      "Card declined. The payment failed, so the plan will stop.",
-      "birch-light 4.4:1 birch-dark 6.9:1"
-     ]
-    }
-   ]
-  },
-  "color/status/coral": {
-   "items": [
-    {
-     "label": {
-      "text": "Active",
-      "tone": "success"
-     },
-     "lines": [
-      "Active. The plan is paid and running.",
-      "coral-light 4.7:1 coral-dark 7.1:1"
-     ]
-    },
-    {
-     "label": {
-      "text": "Renews in 3 days",
-      "tone": "info"
-     },
-     "lines": [
-      "Renews in 3 days. A payment is coming: news, nothing has gone wrong.",
-      "coral-light 7.8:1 coral-dark 7.5:1"
-     ]
-    },
-    {
-     "label": {
-      "text": "Card declined",
-      "tone": "danger"
-     },
-     "lines": [
-      "Card declined. The payment failed, so the plan will stop.",
-      "coral-light 4.4:1 coral-dark 6.9:1"
-     ]
+     "name": "Info",
+     "token": "status.info",
+     "value": "var(--color-status-info)"
     }
    ]
   }
@@ -503,6 +329,155 @@
    "modes": [
     "light",
     "dark"
+   ]
+  }
+ },
+ "status-colors": {
+  "aster": {
+   "statuses": [
+    {
+     "label": "Active",
+     "tone": "success",
+     "meaning": "The plan is paid and running.",
+     "contrast": [
+      {
+       "mode": "aster-light",
+       "ratio": 4.7
+      },
+      {
+       "mode": "aster-dark",
+       "ratio": 7.1
+      }
+     ]
+    },
+    {
+     "label": "Renews in 3 days",
+     "tone": "info",
+     "meaning": "A payment is coming: news, nothing has gone wrong.",
+     "contrast": [
+      {
+       "mode": "aster-light",
+       "ratio": 7.8
+      },
+      {
+       "mode": "aster-dark",
+       "ratio": 7.5
+      }
+     ]
+    },
+    {
+     "label": "Card declined",
+     "tone": "danger",
+     "meaning": "The payment failed, so the plan will stop.",
+     "contrast": [
+      {
+       "mode": "aster-light",
+       "ratio": 4.4
+      },
+      {
+       "mode": "aster-dark",
+       "ratio": 6.9
+      }
+     ]
+    }
+   ]
+  },
+  "birch": {
+   "statuses": [
+    {
+     "label": "Active",
+     "tone": "success",
+     "meaning": "The plan is paid and running.",
+     "contrast": [
+      {
+       "mode": "birch-light",
+       "ratio": 4.7
+      },
+      {
+       "mode": "birch-dark",
+       "ratio": 7.1
+      }
+     ]
+    },
+    {
+     "label": "Renews in 3 days",
+     "tone": "info",
+     "meaning": "A payment is coming: news, nothing has gone wrong.",
+     "contrast": [
+      {
+       "mode": "birch-light",
+       "ratio": 7.8
+      },
+      {
+       "mode": "birch-dark",
+       "ratio": 7.5
+      }
+     ]
+    },
+    {
+     "label": "Card declined",
+     "tone": "danger",
+     "meaning": "The payment failed, so the plan will stop.",
+     "contrast": [
+      {
+       "mode": "birch-light",
+       "ratio": 4.4
+      },
+      {
+       "mode": "birch-dark",
+       "ratio": 6.9
+      }
+     ]
+    }
+   ]
+  },
+  "coral": {
+   "statuses": [
+    {
+     "label": "Active",
+     "tone": "success",
+     "meaning": "The plan is paid and running.",
+     "contrast": [
+      {
+       "mode": "coral-light",
+       "ratio": 4.7
+      },
+      {
+       "mode": "coral-dark",
+       "ratio": 7.1
+      }
+     ]
+    },
+    {
+     "label": "Renews in 3 days",
+     "tone": "info",
+     "meaning": "A payment is coming: news, nothing has gone wrong.",
+     "contrast": [
+      {
+       "mode": "coral-light",
+       "ratio": 7.8
+      },
+      {
+       "mode": "coral-dark",
+       "ratio": 7.5
+      }
+     ]
+    },
+    {
+     "label": "Card declined",
+     "tone": "danger",
+     "meaning": "The payment failed, so the plan will stop.",
+     "contrast": [
+      {
+       "mode": "coral-light",
+       "ratio": 4.4
+      },
+      {
+       "mode": "coral-dark",
+       "ratio": 6.9
+      }
+     ]
+    }
    ]
   }
  },
