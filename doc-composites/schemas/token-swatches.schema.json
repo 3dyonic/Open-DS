@@ -43,6 +43,44 @@
           "px": {
             "type": "number",
             "description": "For a line height or a control size: its size in pixels, which the page prints beside it."
+          },
+          "modes": {
+            "type": "array",
+            "description": "For a color: what it resolves to in each mode of the first brand. The row prints it.",
+            "items": {
+              "type": "object",
+              "required": [
+                "mode",
+                "primitive",
+                "hex"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "light",
+                    "dark"
+                  ],
+                  "description": "The mode."
+                },
+                "primitive": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                  "description": "The primitive the color ends at in this mode, such as color.slate.light.50."
+                },
+                "via": {
+                  "type": "string",
+                  "pattern": "^color\\.neutral\\.[0-9]+$",
+                  "description": "The neutral step a gray goes through in this mode, such as color.neutral.50. Absent for a neutral step itself or a color that points at its primitive directly."
+                },
+                "hex": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-F]{6}([0-9A-F]{2})?$",
+                  "description": "The primitive's value in this mode, with its alpha when it has one, which the row prints."
+                }
+              }
+            }
           }
         }
       }

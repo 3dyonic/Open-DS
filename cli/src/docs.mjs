@@ -309,11 +309,11 @@ function specimen(tokens, text, x = {}) {
   const swatches = tokens
     .map((t) => ({ t, f: sampleFact(t.path, t.type) }))
     .filter((x) => x.f)
-    .slice(0, 40)
     .map(({ t, f }) => ({
       token: t.path,
       type: t.type,
       ...(f.note && { px: Number(f.note.replace("px", "")) }),
+      ...(t.type === "color" && x.color && { modes: x.color(t.path) }),
       // A control size is drawn as the target it makes, with its size in pixels beside it.
       ...(/^size\.control\./.test(t.path) &&
         Number.parseFloat(x.val?.(t.path) ?? "") > 0 && { px: Number.parseFloat(x.val(t.path)) }),
@@ -1616,6 +1616,19 @@ export function docsPages(
                     const v = String(value(first, path, ""));
                     return v.match(/\((\d+(?:\.\d+)?px)\)/)?.[1] ?? v;
                   },
+                  // OD-286: what a color resolves to in each mode of the first brand: the neutral step
+                  // a gray goes through (rule 15), the primitive, and its hex, which the row prints.
+                  color: (path) =>
+                    ["light", "dark"]
+                      .map((m) => {
+                        const b = first.brand ?? Object.keys(scheme.tokens.brands)[0];
+                        const f = follow(scheme.tokens, b, m, path) ?? follow(scheme.tokens, b, m, `${path}.@`);
+                        if (!f) return null;
+                        const hex = String(f.prim.split(".").reduce((n, k) => n?.[k], scheme.tokens.primitive)?.$value ?? "");
+                        const via = f.via && f.via !== path ? f.via : undefined;
+                        return { mode: m, primitive: f.prim, ...(via && { via }), hex: hex.toUpperCase() };
+                      })
+                      .filter(Boolean),
                 },
               ),
             );

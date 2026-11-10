@@ -23,7 +23,19 @@
     },
     {
      "token": "color.border.focus",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.600",
+       "hex": "#0F766E"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.600",
+       "hex": "#7FCFC6"
+      }
+     ]
     }
    ]
   }

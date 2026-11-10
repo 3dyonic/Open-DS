@@ -4,163 +4,1145 @@
    "tokens": [
     {
      "token": "color.neutral.0",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.0",
+       "hex": "#14110D"
+      }
+     ]
     },
     {
      "token": "color.neutral.50",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.50",
+       "hex": "#FFFDF8"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.50",
+       "hex": "#1F1B16"
+      }
+     ]
     },
     {
      "token": "color.neutral.100",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.100",
+       "hex": "#F6F2EA"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.100",
+       "hex": "#2E2A24"
+      }
+     ]
     },
     {
      "token": "color.neutral.200",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.200",
+       "hex": "#E4DDD0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.200",
+       "hex": "#4A4339"
+      }
+     ]
     },
     {
      "token": "color.neutral.300",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.300",
+       "hex": "#CFC6B6"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.300",
+       "hex": "#7A7062"
+      }
+     ]
     },
     {
      "token": "color.neutral.400",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.400",
+       "hex": "#A39A8B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.400",
+       "hex": "#A39A8B"
+      }
+     ]
     },
     {
      "token": "color.neutral.500",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.500",
+       "hex": "#7A7062"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.500",
+       "hex": "#CFC6B6"
+      }
+     ]
     },
     {
      "token": "color.neutral.600",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.600",
+       "hex": "#61594D"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.600",
+       "hex": "#D9D1C3"
+      }
+     ]
     },
     {
      "token": "color.neutral.700",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.700",
+       "hex": "#4A4339"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.700",
+       "hex": "#E4DDD0"
+      }
+     ]
     },
     {
      "token": "color.neutral.800",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.800",
+       "hex": "#2E2A24"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.800",
+       "hex": "#F6F2EA"
+      }
+     ]
     },
     {
      "token": "color.neutral.900",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.900",
+       "hex": "#1F1B16"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.900",
+       "hex": "#FFFDF8"
+      }
+     ]
     },
     {
      "token": "color.neutral.950",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.950",
+       "hex": "#14110D"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.950",
+       "hex": "#FFFFFF"
+      }
+     ]
     },
     {
      "token": "color.surface.canvas",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.50",
+       "via": "color.neutral.50",
+       "hex": "#FFFDF8"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.0",
+       "via": "color.neutral.0",
+       "hex": "#14110D"
+      }
+     ]
     },
     {
      "token": "color.surface.default",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "via": "color.neutral.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.50",
+       "via": "color.neutral.50",
+       "hex": "#1F1B16"
+      }
+     ]
     },
     {
      "token": "color.surface.raised",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "via": "color.neutral.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.50",
+       "via": "color.neutral.50",
+       "hex": "#1F1B16"
+      }
+     ]
     },
     {
      "token": "color.surface.sunken",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F6F2EA"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#2E2A24"
+      }
+     ]
     },
     {
      "token": "color.surface.highlight",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F6F2EA"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#2E2A24"
+      }
+     ]
     },
     {
      "token": "color.surface.pressed",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.200",
+       "via": "color.neutral.200",
+       "hex": "#E4DDD0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#4A4339"
+      }
+     ]
     },
     {
      "token": "color.surface.selected",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.100",
+       "hex": "#E0E9F5"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.100",
+       "hex": "#202B3B"
+      }
+     ]
     },
     {
      "token": "color.surface.inverse",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.900",
+       "via": "color.neutral.900",
+       "hex": "#1F1B16"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.900",
+       "via": "color.neutral.900",
+       "hex": "#FFFDF8"
+      }
+     ]
     },
     {
      "token": "color.surface.scrim",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.black.light.scrim",
+       "hex": "#0000008C"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.black.dark.scrim",
+       "hex": "#000000B3"
+      }
+     ]
     },
     {
      "token": "color.text.primary",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.900",
+       "via": "color.neutral.900",
+       "hex": "#1F1B16"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.900",
+       "via": "color.neutral.900",
+       "hex": "#FFFDF8"
+      }
+     ]
     },
     {
      "token": "color.text.secondary",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.700",
+       "via": "color.neutral.700",
+       "hex": "#4A4339"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.500",
+       "via": "color.neutral.500",
+       "hex": "#CFC6B6"
+      }
+     ]
     },
     {
      "token": "color.text.muted",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.600",
+       "via": "color.neutral.600",
+       "hex": "#61594D"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.400",
+       "via": "color.neutral.400",
+       "hex": "#A39A8B"
+      }
+     ]
     },
     {
      "token": "color.text.inverse",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.light.900",
+       "hex": "#1F1B16"
+      }
+     ]
     },
     {
      "token": "color.text.on-action",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.light.900",
+       "hex": "#1F1B16"
+      }
+     ]
     },
     {
      "token": "color.text.link",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.700",
+       "hex": "#122948"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.700",
+       "hex": "#ACBDD5"
+      }
+     ]
     },
     {
      "token": "color.text.on-danger",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.light.900",
+       "hex": "#1F1B16"
+      }
+     ]
     },
     {
      "token": "color.text.on-light",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.900",
+       "hex": "#1F1B16"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.light.900",
+       "hex": "#1F1B16"
+      }
+     ]
     },
     {
      "token": "color.text.on-dark",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.light.0",
+       "hex": "#FFFFFF"
+      }
+     ]
     },
     {
      "token": "color.text.info-on-light",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.800",
+       "hex": "#001A4E"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.light.800",
+       "hex": "#001A4E"
+      }
+     ]
     },
     {
      "token": "color.text.info-on-dark",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      }
+     ]
     },
     {
      "token": "color.text.success-on-light",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.800",
+       "hex": "#023E17"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.light.800",
+       "hex": "#023E17"
+      }
+     ]
     },
     {
      "token": "color.text.success-on-dark",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      }
+     ]
     },
     {
      "token": "color.text.warning-on-light",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.800",
+       "hex": "#462A02"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.light.800",
+       "hex": "#462A02"
+      }
+     ]
     },
     {
      "token": "color.text.warning-on-dark",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.100",
+       "hex": "#FEE8CF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.light.100",
+       "hex": "#FEE8CF"
+      }
+     ]
     },
     {
      "token": "color.text.danger-on-light",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.800",
+       "hex": "#6D0008"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.light.800",
+       "hex": "#6D0008"
+      }
+     ]
     },
     {
      "token": "color.text.danger-on-dark",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.100",
+       "hex": "#FFDBD8"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.light.100",
+       "hex": "#FFDBD8"
+      }
+     ]
     },
     {
      "token": "color.border.default",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.200",
+       "via": "color.neutral.200",
+       "hex": "#E4DDD0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#4A4339"
+      }
+     ]
     },
     {
      "token": "color.border.strong",
-     "type": "color"
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.500",
+       "via": "color.neutral.500",
+       "hex": "#7A7062"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.400",
+       "via": "color.neutral.400",
+       "hex": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "token": "color.border.focus",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.600",
+       "hex": "#1E3A5F"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.600",
+       "hex": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "token": "color.border.selected",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.600",
+       "hex": "#1E3A5F"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.600",
+       "hex": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "token": "color.action.primary.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.600",
+       "hex": "#1E3A5F"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.600",
+       "hex": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "token": "color.action.primary.hover",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.700",
+       "hex": "#122948"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.700",
+       "hex": "#ACBDD5"
+      }
+     ]
+    },
+    {
+     "token": "color.action.secondary.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "via": "color.neutral.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.50",
+       "via": "color.neutral.50",
+       "hex": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "token": "color.action.secondary.hover",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F6F2EA"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "token": "color.action.danger.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.600",
+       "hex": "#C42B2B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.600",
+       "hex": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "token": "color.action.danger.hover",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.700",
+       "hex": "#981519"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.700",
+       "hex": "#FAA9A8"
+      }
+     ]
+    },
+    {
+     "token": "color.status.info.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.600",
+       "hex": "#083C93"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.600",
+       "hex": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "token": "color.status.info.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.100",
+       "hex": "#172C4F"
+      }
+     ]
+    },
+    {
+     "token": "color.status.success.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.600",
+       "hex": "#1F7A3A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.600",
+       "hex": "#5CC283"
+      }
+     ]
+    },
+    {
+     "token": "color.status.success.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.100",
+       "hex": "#02351B"
+      }
+     ]
+    },
+    {
+     "token": "color.status.warning.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.600",
+       "hex": "#8A5600"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.dark.600",
+       "hex": "#F2B84B"
+      }
+     ]
+    },
+    {
+     "token": "color.status.warning.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.100",
+       "hex": "#FEE8CF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.dark.100",
+       "hex": "#402B00"
+      }
+     ]
+    },
+    {
+     "token": "color.status.danger.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.600",
+       "hex": "#C42B2B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.600",
+       "hex": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "token": "color.status.danger.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.100",
+       "hex": "#FFDBD8"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.100",
+       "hex": "#4D181A"
+      }
+     ]
+    },
+    {
+     "token": "color.category.1.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.600",
+       "hex": "#1E3A5F"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.600",
+       "hex": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "token": "color.category.1.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.navy.light.100",
+       "hex": "#E0E9F5"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.navy.dark.100",
+       "hex": "#202B3B"
+      }
+     ]
+    },
+    {
+     "token": "color.category.2.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.600",
+       "hex": "#083C93"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.600",
+       "hex": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "token": "color.category.2.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.100",
+       "hex": "#172C4F"
+      }
+     ]
+    },
+    {
+     "token": "color.category.3.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.600",
+       "hex": "#1F7A3A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.600",
+       "hex": "#5CC283"
+      }
+     ]
+    },
+    {
+     "token": "color.category.3.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.100",
+       "hex": "#02351B"
+      }
+     ]
+    },
+    {
+     "token": "color.category.4.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.600",
+       "hex": "#8A5600"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.dark.600",
+       "hex": "#F2B84B"
+      }
+     ]
+    },
+    {
+     "token": "color.category.4.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.100",
+       "hex": "#FEE8CF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.dark.100",
+       "hex": "#402B00"
+      }
+     ]
+    },
+    {
+     "token": "color.category.5.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.500",
+       "via": "color.neutral.500",
+       "hex": "#7A7062"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.700",
+       "via": "color.neutral.700",
+       "hex": "#E4DDD0"
+      }
+     ]
+    },
+    {
+     "token": "color.category.5.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F6F2EA"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "token": "color.disabled.text",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.500",
+       "via": "color.neutral.500",
+       "hex": "#7A7062"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.500",
+       "via": "color.neutral.500",
+       "hex": "#CFC6B6"
+      }
+     ]
+    },
+    {
+     "token": "color.disabled.surface",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F6F2EA"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "token": "color.disabled.border",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.200",
+       "via": "color.neutral.200",
+       "hex": "#E4DDD0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#4A4339"
+      }
+     ]
     }
    ]
   }
