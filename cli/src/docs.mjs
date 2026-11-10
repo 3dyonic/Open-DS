@@ -801,27 +801,27 @@ export function docsPages(
           }))
           .filter((x) => x.l && x.d);
         const flips = rows.filter((x) => x.l.tone !== x.d.tone).length;
-        // A fill's tone in one mode: a sample of the fill with the text its tone picks, and the tone.
-        const chip = (m, t, id) => {
+        // A fill's tone in one mode, as facts: the tone, and the neutral step or primitive it reads.
+        const tone = (m, t, id) => {
           const bg = at(b, m, id);
-          const fg = at(
-            b,
-            m,
-            t.tone === "light" ? "color.text.on-light" : "color.text.on-dark",
-          );
-          // A gray names its neutral step; any other color names its primitive.
-          const source = bg && short(bg.via ?? `color.${bg.prim}`);
-          return `${draw("tone", bg?.hex ?? "", ` ink="${fg?.hex ?? ""}"`)} ${t.tone}${source ? ` · \`${source}\`` : ""}${t.waits ? ` · waits for ${esc(t.waits.for)}` : ""}`;
+          return {
+            mode: m,
+            tone: t.tone,
+            ...(bg && { primitive: `color.${bg.prim}` }),
+            ...(bg?.via && { via: bg.via }),
+            ...(t.waits && { waits: t.waits.for }),
+          };
+        };
+        (compositeData["fill-tones"] ??= {})[b] = {
+          modes: ["light", "dark"],
+          fills: rows.map((x) => ({
+            fill: x.id.replace(/\.@$/, ""),
+            tones: [tone("light", x.l, x.id), tone("dark", x.d, x.id)],
+          })),
         };
         return (
-          `${flips === rows.length ? `Every fill changes tone between light and dark mode.` : `${flips} of ${rows.length} fills change tone between light and dark mode.`}\n\n` +
-          `| Fill | Light mode | Dark mode |\n| --- | --- | --- |\n` +
-          rows
-            .map(
-              (x) =>
-                `| \`${short(x.id)}\` | ${chip("light", x.l, x.id)} | ${chip("dark", x.d, x.id)} |`,
-            )
-            .join("\n")
+          `**${flips === rows.length ? `Every fill changes tone between light and dark mode.` : `${flips} of ${rows.length} fills change tone between light and dark mode.`}**\n\n` +
+          `::fill-tones{id="${b}"}`
         );
       }) +
       "\n"
@@ -3019,6 +3019,7 @@ export function docsPages(
     "type-roles": "id",
     "primitive-table": "id",
     "color-keys": "id",
+    "fill-tones": "id",
     "status-colors": "id",
     "mode-changes": "id",
     "mode-constants": "id",

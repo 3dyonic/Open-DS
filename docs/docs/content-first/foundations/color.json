@@ -1297,5 +1297,303 @@
     }
    ]
   }
+ },
+ "fill-tones": {
+  "default": {
+   "modes": [
+    "light",
+    "dark"
+   ],
+   "fills": [
+    {
+     "fill": "color.surface.canvas",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.50",
+       "via": "color.neutral.50"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.0",
+       "via": "color.neutral.0"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.default",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.raised",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.sunken",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.highlight",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.pressed",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.200",
+       "via": "color.neutral.200"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.200",
+       "via": "color.neutral.200"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.selected",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.navy.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.navy.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.inverse",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.stone.light.900",
+       "via": "color.neutral.900"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.stone.dark.900",
+       "via": "color.neutral.900"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.navy.light.600"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.navy.dark.600"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.navy.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.navy.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.600"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.600"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.stone.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.stone.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.info.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.blue.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.blue.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.warning.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.amber.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.amber.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.danger.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.red.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.red.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.success.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.green.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.green.dark.100"
+      }
+     ]
+    }
+   ]
+  }
  }
 }

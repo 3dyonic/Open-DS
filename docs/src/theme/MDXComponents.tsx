@@ -29,6 +29,7 @@ import DecisionAnswer from "@open-ds/doc-composites/DecisionAnswer";
 import Group from "@open-ds/doc-composites/Group";
 import PrimitiveTable from "@open-ds/doc-composites/PrimitiveTable";
 import ColorKeys from "@open-ds/doc-composites/ColorKeys";
+import FillTones from "@open-ds/doc-composites/FillTones";
 import StatusColors from "@open-ds/doc-composites/StatusColors";
 import ModeChanges from "@open-ds/doc-composites/ModeChanges";
 import ModeConstants from "@open-ds/doc-composites/ModeConstants";
@@ -130,6 +131,7 @@ export default {
   Group,
   PrimitiveTable,
   ColorKeys,
+  FillTones,
   StatusColors,
   ModeChanges,
   ModeConstants,

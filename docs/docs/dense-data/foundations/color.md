@@ -289,25 +289,6 @@ Which text may sit on which fill, and the contrast it keeps there. Each fill is 
 
 Every fill says whether it is light or dark, in each mode, and that picks the text on it. A fill can change tone between modes: the same token, the other text.
 
-Every fill changes tone between light and dark mode.
+**Every fill changes tone between light and dark mode.**
 
-| Fill | Light mode | Dark mode |
-| --- | --- | --- |
-| `surface.canvas` | :sample{kind="tone" value="#F7F8FA" ink="#161B23"} light · `neutral.50` | :sample{kind="tone" value="#0D1117" ink="#FFFFFF"} dark · `neutral.0` |
-| `surface.default` | :sample{kind="tone" value="#FFFFFF" ink="#161B23"} light · `neutral.0` | :sample{kind="tone" value="#161B23" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.raised` | :sample{kind="tone" value="#FFFFFF" ink="#161B23"} light · `neutral.0` | :sample{kind="tone" value="#161B23" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.sunken` | :sample{kind="tone" value="#EEF1F5" ink="#161B23"} light · `neutral.100` | :sample{kind="tone" value="#262D38" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.highlight` | :sample{kind="tone" value="#EEF1F5" ink="#161B23"} light · `neutral.100` | :sample{kind="tone" value="#262D38" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.pressed` | :sample{kind="tone" value="#EEF1F5" ink="#161B23"} light · `neutral.100` | :sample{kind="tone" value="#262D38" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.selected` | :sample{kind="tone" value="#E8ECFF" ink="#161B23"} light · `violet.light.100` | :sample{kind="tone" value="#2A244F" ink="#FFFFFF"} dark · `violet.dark.100` |
-| `surface.inverse` | :sample{kind="tone" value="#161B23" ink="#FFFFFF"} dark · `neutral.900` | :sample{kind="tone" value="#F7F8FA" ink="#161B23"} light · `neutral.900` |
-| `action.primary` | :sample{kind="tone" value="#4B3FD9" ink="#FFFFFF"} dark · `violet.light.600` | :sample{kind="tone" value="#A9A3F6" ink="#161B23"} light · `violet.dark.600` |
-| `action.primary.hover` | :sample{kind="tone" value="#3729AA" ink="#FFFFFF"} dark · `violet.light.700` | :sample{kind="tone" value="#BEBBFB" ink="#161B23"} light · `violet.dark.700` |
-| `action.danger` | :sample{kind="tone" value="#C42B2B" ink="#FFFFFF"} dark · `red.light.600` | :sample{kind="tone" value="#F28B8B" ink="#161B23"} light · `red.dark.600` |
-| `action.danger.hover` | :sample{kind="tone" value="#981519" ink="#FFFFFF"} dark · `red.light.700` | :sample{kind="tone" value="#FAA9A8" ink="#161B23"} light · `red.dark.700` |
-| `action.secondary` | :sample{kind="tone" value="#FFFFFF" ink="#161B23"} light · `neutral.0` | :sample{kind="tone" value="#161B23" ink="#FFFFFF"} dark · `neutral.50` |
-| `action.secondary.hover` | :sample{kind="tone" value="#EEF1F5" ink="#161B23"} light · `neutral.100` | :sample{kind="tone" value="#262D38" ink="#FFFFFF"} dark · `neutral.100` |
-| `status.info.subtle` | :sample{kind="tone" value="#D3E4FF" ink="#161B23"} light · `blue.light.100` | :sample{kind="tone" value="#162C4F" ink="#FFFFFF"} dark · `blue.dark.100` |
-| `status.warning.subtle` | :sample{kind="tone" value="#FEE8CF" ink="#161B23"} light · `amber.light.100` | :sample{kind="tone" value="#3F2B02" ink="#FFFFFF"} dark · `amber.dark.100` |
-| `status.danger.subtle` | :sample{kind="tone" value="#FFDBD8" ink="#161B23"} light · `red.light.100` | :sample{kind="tone" value="#4C171A" ink="#FFFFFF"} dark · `red.dark.100` |
-| `status.success.subtle` | :sample{kind="tone" value="#DBF7DF" ink="#161B23"} light · `green.light.100` | :sample{kind="tone" value="#01351A" ink="#FFFFFF"} dark · `green.dark.100` |
+::fill-tones{id="default"}

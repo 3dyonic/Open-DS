@@ -618,76 +618,19 @@ Which text may sit on which fill, and the contrast it keeps there. Each fill is 
 Every fill says whether it is light or dark, in each mode, and that picks the text on it. A fill can change tone between modes: the same token, the other text.
 
 ::::brand{id="aster" name="Aster"}
-Every fill changes tone between light and dark mode.
+**Every fill changes tone between light and dark mode.**
 
-| Fill | Light mode | Dark mode |
-| --- | --- | --- |
-| `surface.canvas` | :sample{kind="tone" value="#F8FAFC" ink="#0F172A"} light · `neutral.50` | :sample{kind="tone" value="#020617" ink="#FFFFFF"} dark · `neutral.0` |
-| `surface.default` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.raised` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.sunken` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.highlight` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.pressed` | :sample{kind="tone" value="#E2E8F0" ink="#0F172A"} light · `neutral.200` | :sample{kind="tone" value="#334155" ink="#FFFFFF"} dark · `neutral.200` |
-| `surface.selected` | :sample{kind="tone" value="#DEF3F0" ink="#0F172A"} light · `teal.light.100` | :sample{kind="tone" value="#012C28" ink="#FFFFFF"} dark · `teal.dark.100` |
-| `surface.inverse` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.900` | :sample{kind="tone" value="#F8FAFC" ink="#0F172A"} light · `neutral.900` |
-| `action.primary` | :sample{kind="tone" value="#0F766E" ink="#FFFFFF"} dark · `teal.light.600` | :sample{kind="tone" value="#7FCFC6" ink="#0F172A"} light · `teal.dark.600` |
-| `action.primary.hover` | :sample{kind="tone" value="#015852" ink="#FFFFFF"} dark · `teal.light.700` | :sample{kind="tone" value="#A1DCD4" ink="#0F172A"} light · `teal.dark.700` |
-| `action.danger` | :sample{kind="tone" value="#C42B2B" ink="#FFFFFF"} dark · `red.light.600` | :sample{kind="tone" value="#F28B8B" ink="#0F172A"} light · `red.dark.600` |
-| `action.danger.hover` | :sample{kind="tone" value="#981519" ink="#FFFFFF"} dark · `red.light.700` | :sample{kind="tone" value="#FAA9A8" ink="#0F172A"} light · `red.dark.700` |
-| `action.secondary` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `action.secondary.hover` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `status.info.subtle` | :sample{kind="tone" value="#D3E4FF" ink="#0F172A"} light · `blue.light.100` | :sample{kind="tone" value="#0D2244" ink="#FFFFFF"} dark · `blue.dark.100` |
-| `status.warning.subtle` | :sample{kind="tone" value="#FEE8CF" ink="#0F172A"} light · `amber.light.100` | :sample{kind="tone" value="#332201" ink="#FFFFFF"} dark · `amber.dark.100` |
-| `status.danger.subtle` | :sample{kind="tone" value="#FFDBD8" ink="#0F172A"} light · `red.light.100` | :sample{kind="tone" value="#410C11" ink="#FFFFFF"} dark · `red.dark.100` |
-| `status.success.subtle` | :sample{kind="tone" value="#DBF7DF" ink="#0F172A"} light · `green.light.100` | :sample{kind="tone" value="#012A14" ink="#FFFFFF"} dark · `green.dark.100` |
+::fill-tones{id="aster"}
 ::::
 
 ::::brand{id="birch" name="Birch"}
-Every fill changes tone between light and dark mode.
+**Every fill changes tone between light and dark mode.**
 
-| Fill | Light mode | Dark mode |
-| --- | --- | --- |
-| `surface.canvas` | :sample{kind="tone" value="#F8FAFC" ink="#0F172A"} light · `neutral.50` | :sample{kind="tone" value="#020617" ink="#FFFFFF"} dark · `neutral.0` |
-| `surface.default` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.raised` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.sunken` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.highlight` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.pressed` | :sample{kind="tone" value="#E2E8F0" ink="#0F172A"} light · `neutral.200` | :sample{kind="tone" value="#334155" ink="#FFFFFF"} dark · `neutral.200` |
-| `surface.selected` | :sample{kind="tone" value="#EDEAFE" ink="#0F172A"} light · `purple.light.100` | :sample{kind="tone" value="#271745" ink="#FFFFFF"} dark · `purple.dark.100` |
-| `surface.inverse` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.900` | :sample{kind="tone" value="#F8FAFC" ink="#0F172A"} light · `neutral.900` |
-| `action.primary` | :sample{kind="tone" value="#6D28D9" ink="#FFFFFF"} dark · `purple.light.600` | :sample{kind="tone" value="#B79DF7" ink="#0F172A"} light · `purple.dark.600` |
-| `action.primary.hover` | :sample{kind="tone" value="#5212AA" ink="#FFFFFF"} dark · `purple.light.700` | :sample{kind="tone" value="#C9B7FC" ink="#0F172A"} light · `purple.dark.700` |
-| `action.danger` | :sample{kind="tone" value="#C42B2B" ink="#FFFFFF"} dark · `red.light.600` | :sample{kind="tone" value="#F28B8B" ink="#0F172A"} light · `red.dark.600` |
-| `action.danger.hover` | :sample{kind="tone" value="#981519" ink="#FFFFFF"} dark · `red.light.700` | :sample{kind="tone" value="#FAA9A8" ink="#0F172A"} light · `red.dark.700` |
-| `action.secondary` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `action.secondary.hover` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `status.info.subtle` | :sample{kind="tone" value="#D3E4FF" ink="#0F172A"} light · `blue.light.100` | :sample{kind="tone" value="#0D2244" ink="#FFFFFF"} dark · `blue.dark.100` |
-| `status.warning.subtle` | :sample{kind="tone" value="#FEE8CF" ink="#0F172A"} light · `amber.light.100` | :sample{kind="tone" value="#332201" ink="#FFFFFF"} dark · `amber.dark.100` |
-| `status.danger.subtle` | :sample{kind="tone" value="#FFDBD8" ink="#0F172A"} light · `red.light.100` | :sample{kind="tone" value="#410C11" ink="#FFFFFF"} dark · `red.dark.100` |
-| `status.success.subtle` | :sample{kind="tone" value="#DBF7DF" ink="#0F172A"} light · `green.light.100` | :sample{kind="tone" value="#012A14" ink="#FFFFFF"} dark · `green.dark.100` |
+::fill-tones{id="birch"}
 ::::
 
 ::::brand{id="coral" name="Coral"}
-Every fill changes tone between light and dark mode.
+**Every fill changes tone between light and dark mode.**
 
-| Fill | Light mode | Dark mode |
-| --- | --- | --- |
-| `surface.canvas` | :sample{kind="tone" value="#F8FAFC" ink="#0F172A"} light · `neutral.50` | :sample{kind="tone" value="#020617" ink="#FFFFFF"} dark · `neutral.0` |
-| `surface.default` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.raised` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `surface.sunken` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.highlight` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `surface.pressed` | :sample{kind="tone" value="#E2E8F0" ink="#0F172A"} light · `neutral.200` | :sample{kind="tone" value="#334155" ink="#FFFFFF"} dark · `neutral.200` |
-| `surface.selected` | :sample{kind="tone" value="#FEEBE4" ink="#0F172A"} light · `orange.light.100` | :sample{kind="tone" value="#3F1702" ink="#FFFFFF"} dark · `orange.dark.100` |
-| `surface.inverse` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.900` | :sample{kind="tone" value="#F8FAFC" ink="#0F172A"} light · `neutral.900` |
-| `action.primary` | :sample{kind="tone" value="#C2410C" ink="#FFFFFF"} dark · `orange.light.600` · waits for OD-225 | :sample{kind="tone" value="#F7A67F" ink="#0F172A"} light · `orange.dark.600` · waits for OD-225 |
-| `action.primary.hover` | :sample{kind="tone" value="#942D02" ink="#FFFFFF"} dark · `orange.light.700` | :sample{kind="tone" value="#FCBD9F" ink="#0F172A"} light · `orange.dark.700` |
-| `action.danger` | :sample{kind="tone" value="#C42B2B" ink="#FFFFFF"} dark · `red.light.600` | :sample{kind="tone" value="#F28B8B" ink="#0F172A"} light · `red.dark.600` |
-| `action.danger.hover` | :sample{kind="tone" value="#981519" ink="#FFFFFF"} dark · `red.light.700` | :sample{kind="tone" value="#FAA9A8" ink="#0F172A"} light · `red.dark.700` |
-| `action.secondary` | :sample{kind="tone" value="#FFFFFF" ink="#0F172A"} light · `neutral.0` | :sample{kind="tone" value="#0F172A" ink="#FFFFFF"} dark · `neutral.50` |
-| `action.secondary.hover` | :sample{kind="tone" value="#F1F5F9" ink="#0F172A"} light · `neutral.100` | :sample{kind="tone" value="#1E293B" ink="#FFFFFF"} dark · `neutral.100` |
-| `status.info.subtle` | :sample{kind="tone" value="#D3E4FF" ink="#0F172A"} light · `blue.light.100` | :sample{kind="tone" value="#0D2244" ink="#FFFFFF"} dark · `blue.dark.100` |
-| `status.warning.subtle` | :sample{kind="tone" value="#FEE8CF" ink="#0F172A"} light · `amber.light.100` | :sample{kind="tone" value="#332201" ink="#FFFFFF"} dark · `amber.dark.100` |
-| `status.danger.subtle` | :sample{kind="tone" value="#FFDBD8" ink="#0F172A"} light · `red.light.100` | :sample{kind="tone" value="#410C11" ink="#FFFFFF"} dark · `red.dark.100` |
-| `status.success.subtle` | :sample{kind="tone" value="#DBF7DF" ink="#0F172A"} light · `green.light.100` | :sample{kind="tone" value="#012A14" ink="#FFFFFF"} dark · `green.dark.100` |
+::fill-tones{id="coral"}
 ::::
