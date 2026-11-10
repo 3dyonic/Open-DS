@@ -17,13 +17,13 @@ export type TokenSwatch = {
 export type TokenSwatchesData = { tokens: TokenSwatch[] };
 
 export default function TokenSwatches({ data }: { data: TokenSwatchesData }) {
-  // Each value drawn with its token's name; items keep their width and wrap whole, as RC1's did.
+  // One row per token: its value drawn, then its name.
   return (
     <div data-composite="token-swatches" className="mb-[var(--space-gap-group)]">
       <Frame>
-          <ul className="m-0 flex list-none flex-wrap gap-x-[var(--space-gap-section)] gap-y-[var(--space-gap-default)] p-0">
+          <ul className="m-0 flex list-none flex-col gap-[var(--space-gap-default)] p-0">
             {data.tokens.map((t) => (
-              <li key={t.token} className="m-0 flex min-w-48 items-center gap-[var(--space-gap-default)]">
+              <li key={t.token} className="m-0 flex items-center gap-[var(--space-gap-default)]">
                 <Sample kind={t.kind} value={t.value} note={t.note} />
                 <span className="[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
                   {t.token}
