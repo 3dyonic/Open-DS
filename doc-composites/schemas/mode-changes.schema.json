@@ -35,8 +35,8 @@
         "properties": {
           "group": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
-            "description": "The group's token path, such as color.surface."
+            "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)*$",
+            "description": "The group's token path, such as color.surface or elevation."
           },
           "rows": {
             "type": "array",
@@ -75,7 +75,7 @@
                       "primitive": {
                         "type": "string",
                         "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
-                        "description": "The primitive a color ends at in this mode, such as color.slate.light.50."
+                        "description": "The primitive the job ends at in this mode, such as color.slate.light.50 or shadow.card."
                       },
                       "via": {
                         "type": "string",

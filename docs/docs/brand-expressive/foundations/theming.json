@@ -715,35 +715,34 @@
      ]
     },
     {
-     "group": "elevation.card",
+     "group": "elevation",
      "rows": [
       {
        "token": "elevation.card",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.card",
          "value": "0px 12px 32px 0px #1F141124"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.card-dark",
          "value": "0px 12px 32px 0px #00000080"
         }
        ]
-      }
-     ]
-    },
-    {
-     "group": "elevation.overlay",
-     "rows": [
+      },
       {
        "token": "elevation.overlay",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.overlay",
          "value": "0px 24px 48px 0px #1F141133"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.overlay-dark",
          "value": "0px 24px 48px 0px #00000099"
         }
        ]

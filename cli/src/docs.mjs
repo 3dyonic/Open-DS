@@ -1523,9 +1523,9 @@ export function docsPages(
       const jobs = leaves(tree[ths[0]?.mode] ?? {}, "")
         .map((x) => semPath(x.path))
         .filter((p) => !p.startsWith("color.neutral."));
-      const groups = [
-        ...new Set(jobs.map((p) => p.split(".").slice(0, 2).join("."))),
-      ];
+      // Colors group by job (color.surface); any other kind is one group (elevation).
+      const groupOf = (p) => p.split(".").slice(0, p.startsWith("color.") ? 2 : 1).join(".");
+      const groups = [...new Set(jobs.map(groupOf))];
       // Every color cell follows its token to the primitive, the way the scale view does (OD-223):
       // the primitive's name, the neutral step it goes through, and a swatch. Never a bare value.
       const cell = (th, p) => {
@@ -1533,7 +1533,11 @@ export function docsPages(
           ? (follow(scheme.tokens, b, th.mode, p) ??
             follow(scheme.tokens, b, th.mode, `${p}.@`))
           : null;
-        if (!f) return { mode: th.mode, value: String(value(th, p, "")) };
+        // A job that is not a color (a shadow) names the primitive it ends at, then that value.
+        if (!f) {
+          const prim = primitiveOf(th, p);
+          return { mode: th.mode, ...(prim && { primitive: prim }), value: String(value(th, p, "")) };
+        }
         // The token itself draws the swatch, in its mode; the data names what it reads.
         return { mode: th.mode, primitive: f.prim, ...(f.via && { via: f.via }) };
       };
@@ -1553,7 +1557,7 @@ export function docsPages(
         groups: groups.map((gr) => ({
           group: gr,
           rows: jobs
-            .filter((p) => p.startsWith(`${gr}.`) || p === gr)
+            .filter((p) => groupOf(p) === gr)
             .map((p) => ({
               token: p.replace(/\.@$/, ""),
               cells: ths.map((t) => cell(t, p)),

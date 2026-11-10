@@ -14,6 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@open-ds/ui/components/table";
+import Chain from "./base/Chain";
 import Swatch from "./base/Swatch";
 import { tokenVar } from "./base/token";
 
@@ -29,10 +30,30 @@ const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 // The page shows token names without their color. prefix.
 const name = (token: string) => token.replace(/^color\./, "");
 
+// A job that is not a color, such as a shadow: the primitive it ends at, then that primitive's value,
+// split into its parts. A shadow's color shows as a swatch with its hex.
+function Parts({ c }: { c: Cell }) {
+  const hex = c.value!.match(/#[0-9A-Fa-f]{6,8}\b/)?.[0];
+  const rest = hex ? c.value!.replace(hex, "").trim() : c.value!;
+  // The geometry and the color are one value, so no arrow sits between them.
+  const parts: React.ReactNode[] = [
+    <span key="v" className="inline-flex items-center gap-[var(--space-gap-tight)]">
+      {rest}
+      {hex && <Swatch color={hex} size="sm" />}
+      {hex}
+    </span>,
+  ];
+  return (
+    <span className={data}>
+      {c.primitive ? <Chain parts={[name(c.primitive), ...parts]} /> : <Chain parts={parts} />}
+    </span>
+  );
+}
+
 // One mode's cell: the job's own swatch, drawn from its token in that mode, and what it reads. A gray
 // names its neutral step; any other color its primitive (rule 15).
 function Value({ token, c }: { token: string; c: Cell }) {
-  if (!c.primitive) return <code>{c.value}</code>;
+  if (c.value !== undefined) return <Parts c={c} />;
   return (
     <span className="flex items-center gap-[var(--space-gap-default)]">
       {/* Only the swatch sits in the mode's scope; the text stays in the page's colors. */}

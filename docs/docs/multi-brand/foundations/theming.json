@@ -767,35 +767,34 @@
      ]
     },
     {
-     "group": "elevation.card",
+     "group": "elevation",
      "rows": [
       {
        "token": "elevation.card",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.card",
          "value": "0px 2px 8px 0px #0F172A14"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.card-dark",
          "value": "0px 2px 8px 0px #00000066"
         }
        ]
-      }
-     ]
-    },
-    {
-     "group": "elevation.overlay",
-     "rows": [
+      },
       {
        "token": "elevation.overlay",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.overlay",
          "value": "0px 12px 32px 0px #0F172A29"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.overlay-dark",
          "value": "0px 12px 32px 0px #00000080"
         }
        ]
@@ -1491,35 +1490,34 @@
      ]
     },
     {
-     "group": "elevation.card",
+     "group": "elevation",
      "rows": [
       {
        "token": "elevation.card",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.card",
          "value": "0px 2px 8px 0px #0F172A14"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.card-dark",
          "value": "0px 2px 8px 0px #00000066"
         }
        ]
-      }
-     ]
-    },
-    {
-     "group": "elevation.overlay",
-     "rows": [
+      },
       {
        "token": "elevation.overlay",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.overlay",
          "value": "0px 12px 32px 0px #0F172A29"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.overlay-dark",
          "value": "0px 12px 32px 0px #00000080"
         }
        ]
@@ -2215,35 +2213,34 @@
      ]
     },
     {
-     "group": "elevation.card",
+     "group": "elevation",
      "rows": [
       {
        "token": "elevation.card",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.card",
          "value": "0px 2px 8px 0px #0F172A14"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.card-dark",
          "value": "0px 2px 8px 0px #00000066"
         }
        ]
-      }
-     ]
-    },
-    {
-     "group": "elevation.overlay",
-     "rows": [
+      },
       {
        "token": "elevation.overlay",
        "cells": [
         {
          "mode": "light",
+         "primitive": "shadow.overlay",
          "value": "0px 12px 32px 0px #0F172A29"
         },
         {
          "mode": "dark",
+         "primitive": "shadow.overlay-dark",
          "value": "0px 12px 32px 0px #00000080"
         }
        ]
