@@ -2489,6 +2489,109 @@ export const CHECKS = {
         : ok(`${files.length} composites use the ui components through their props and the scheme's tokens`);
     },
   },
+  // The docs rules (OD-284, Orchestra "rules for building the Open DS docs pages"), 3 to 7: a composite
+  // styles itself with Tailwind classes scoped to it, reads every value from a CSS variable and never
+  // knows which scheme it is in. No page-wide classes, no stylesheet of its own, no fixed values.
+  "doc-composites-scoped-styles": {
+    requires: ["doc-composites/src", "schemes"],
+    run: (c) => {
+      const dir = "doc-composites/src";
+      const walk = (d) =>
+        readdirSync(c.p(d), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${d}/${e.name}`) : /\.tsx?$/.test(e.name) ? [`${d}/${e.name}`] : [],
+        );
+      const schemeIds = readdirSync(c.p("schemes"))
+        .filter((f) => f.endsWith(".json") && f !== "grammar.json")
+        .map((f) => f.replace(/\.json$/, ""));
+      const gaps = [];
+      for (const f of walk(dir)) {
+        const text = c.read(f);
+        const name = f.slice(dir.length + 1);
+        if (/import\s+["'][^"']+\.css["']/.test(text)) gaps.push(`${name}: imports a stylesheet; style with scoped Tailwind classes`);
+        for (const m of text.matchAll(/className=(?:"([^"]*)"|\{`([^`]*)`\})/g)) {
+          const cls = m[1] ?? m[2];
+          if (/(^|\s)(odv|ods)-/.test(cls)) gaps.push(`${name}: page-wide class in "${cls.slice(0, 60)}"`);
+          if (/#[0-9a-f]{3,8}\b|\[-?\d+(\.\d+)?(px|rem|em|%)\]/i.test(cls))
+            gaps.push(`${name}: a fixed value in "${cls.slice(0, 60)}"; read a CSS variable`);
+        }
+        // An inline style may draw a value from the data, never a literal color or length.
+        for (const m of text.matchAll(/style=\{\{([^}]*)\}\}/g))
+          if (/["'`]#[0-9a-f]{3,8}\b|["'`]-?\d+(\.\d+)?(px|rem|em)["'`]/i.test(m[1]))
+            gaps.push(`${name}: a fixed value in an inline style; read a CSS variable or the data`);
+        for (const id of schemeIds)
+          if (new RegExp(`["'\`]${id}["'\`]`).test(text)) gaps.push(`${name}: names the scheme ${id}; a composite never knows its scheme`);
+      }
+      return gaps.length
+        ? bad(`${gaps.length} styling gaps; ${gaps.slice(0, 4).join("; ")}`)
+        : ok("every composite styles itself with scoped Tailwind classes and reads every value from a CSS variable");
+    },
+  },
+  // Rules 8 to 10: a few base forms (doc-composites/src/base/), each composite built on one, and props
+  // that name real choices. A composite takes its content in one data prop; any other prop is a
+  // choice from a fixed list (a union of words) or a yes/no.
+  "doc-composites-base-forms": {
+    requires: ["doc-composites/src"],
+    run: (c) => {
+      const dir = "doc-composites/src";
+      const base = existsSync(c.p(`${dir}/base`))
+        ? readdirSync(c.p(`${dir}/base`)).filter((f) => f.endsWith(".tsx"))
+        : [];
+      if (!base.length) return bad(`no base forms in ${dir}/base; build the shared forms the composites extend`);
+      // A composite is a file whose name starts with a capital letter; lowercase files are helpers.
+      const composites = readdirSync(c.p(dir)).filter((f) => /^[A-Z].*\.tsx$/.test(f));
+      const gaps = [];
+      for (const f of composites) {
+        const text = c.read(`${dir}/${f}`);
+        if (!/from "\.\/base\//.test(text)) gaps.push(`${f}: builds on no base form`);
+        const sig = text.match(/export default function \w+\(\s*\{[^}]*\}\s*:\s*\{([^}]*)\}/);
+        if (!sig) continue;
+        for (const [, prop, type] of sig[1].matchAll(/(\w+)\??:\s*([^;]+);?/g)) {
+          if (["data", "children"].includes(prop)) continue;
+          if (!/^\s*("[^"]+"\s*\|\s*)*"[^"]+"\s*$|^\s*boolean\s*$/.test(type))
+            gaps.push(`${f}: prop ${prop} is ${type.trim()}; content goes in data, a prop names one choice`);
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} gaps; ${gaps.slice(0, 4).join("; ")}`)
+        : ok(`${composites.length} composites built on ${base.length} base forms, each prop a named choice`);
+    },
+  },
+  // Rules 11 to 13: a page's JSON holds facts a person can read without the page: names, values,
+  // numbers, token paths. No text formatted for display, no class names, no markup.
+  "doc-composites-facts": {
+    requires: ["docs/docs"],
+    run: (c) => {
+      const walk = (d) =>
+        readdirSync(c.p(d), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory()
+            ? walk(`${d}/${e.name}`)
+            : e.name.endsWith(".json") && !e.name.startsWith("_")
+              ? [`${d}/${e.name}`]
+              : [],
+        );
+      const SIGNS = [
+        [/\b\d+(\.\d+)?:1\b/, "a ratio written as text; store the number"],
+        [/ · /, "values joined for display; store each one"],
+        [/(^|\s)(odv|ods)-[a-z]/, "a class name"],
+        [/<\/?[a-z][^>]*>/i, "markup"],
+      ];
+      const found = {};
+      let files = 0;
+      const visit = (v, f) => {
+        if (typeof v === "string") {
+          for (const [re, what] of SIGNS) if (re.test(v)) (found[what] ??= []).push(`${f}: "${v.slice(0, 50)}"`);
+        } else if (v && typeof v === "object") for (const x of Object.values(v)) visit(x, f);
+      };
+      for (const f of walk("docs/docs")) {
+        files++;
+        visit(c.json(f), f.replace(/^docs\/docs\//, ""));
+      }
+      const kinds = Object.entries(found);
+      return kinds.length
+        ? bad(kinds.map(([what, hits]) => `${hits.length}× ${what}, such as ${hits[0]}`).join("; "))
+        : ok(`the data in ${files} page files holds facts only`);
+    },
+  },
   // The committed docs hold no local address (OD-284): pages and their data files link Storybook and
   // the site by path, so what an agent reads in the repo is what the site serves.
   "docs-no-localhost": {
@@ -2552,19 +2655,41 @@ export const CHECKS = {
               : [],
         );
       const gaps = [];
+      const missing = {};
       let checked = 0;
+      // Rule 14: every field of every schema says what it holds.
+      const undescribed = [];
+      const look = (node, at, file) => {
+        if (!node || typeof node !== "object") return;
+        for (const [k, v] of Object.entries(node.properties ?? {})) {
+          if (!v.description && !v.$ref) undescribed.push(`${file} ${at}${k}`);
+          look(v, `${at}${k}.`, file);
+        }
+        if (node.items) look(node.items, at, file);
+        for (const [k, v] of Object.entries(node.$defs ?? {})) look(v, `${k}.`, file);
+      };
+      for (const f of readdirSync(c.p("doc-composites/schemas")).filter((x) => x.endsWith(".schema.json")))
+        look(c.json(`doc-composites/schemas/${f}`), "", f);
       for (const f of walk("docs/docs"))
         for (const [kind, entries] of Object.entries(c.json(f))) {
           const valid = schemas[kind];
-          if (!valid) continue;
+          if (!valid) {
+            (missing[kind] ??= f);
+            continue;
+          }
           for (const [id, data] of Object.entries(entries)) {
             checked++;
             if (!valid(data)) gaps.push(`${f} ${kind} ${id}: ${a.errorsText(valid.errors)}`);
           }
         }
+      const kinds = Object.keys(missing);
+      if (kinds.length)
+        gaps.unshift(`${kinds.length} data kinds have no schema (${kinds.join(", ")}); write doc-composites/schemas/<kind>.schema.json`);
+      if (undescribed.length)
+        gaps.unshift(`${undescribed.length} schema fields have no description, such as ${undescribed[0]}`);
       return gaps.length
-        ? bad(`${gaps.length} entries fail their schema; first: ${gaps[0]}`)
-        : ok(`${checked} composite entries match their ${Object.keys(schemas).length} schemas`);
+        ? bad(`${gaps.length} gaps; ${gaps.slice(0, 3).join("; ")}`)
+        : ok(`${checked} composite entries match their ${Object.keys(schemas).length} schemas; every field described`);
     },
   },
   "docs-docusaurus": {

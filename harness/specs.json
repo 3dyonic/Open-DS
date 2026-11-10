@@ -97,7 +97,7 @@
         "about, voice and tone, a page per scope, components, themes, agents",
         "the Open DS guide in guide/"
       ],
-      "checks": ["docs-docusaurus", "docs-sections", "llm-docs-frontmatter", "docs-build", "content-no-real-names", "doc-composites-props-only", "docs-no-localhost", "docs-no-html", "doc-composites-data"]
+      "checks": ["docs-docusaurus", "docs-sections", "llm-docs-frontmatter", "docs-build", "content-no-real-names", "doc-composites-props-only", "doc-composites-scoped-styles", "doc-composites-base-forms", "doc-composites-facts", "docs-no-localhost", "docs-no-html", "doc-composites-data"]
     },
     {
       "id": "OD-121",
