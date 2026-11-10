@@ -23,63 +23,771 @@
    ]
   }
  },
- "specimen": {
-  "theming/default/corners": {
-   "title": "Corners",
-   "items": [
+ "mode-changes": {
+  "default": {
+   "modes": [
+    "light",
+    "dark"
+   ],
+   "groups": [
     {
-     "draw": {
-      "radius": "0.5rem"
-     },
-     "lines": [
-      "control · 0.5rem (8px)"
+     "title": "Surface",
+     "rows": [
+      {
+       "job": "surface.canvas",
+       "cells": [
+        {
+         "primitive": "stone.light.50",
+         "via": "neutral.50",
+         "hex": "#FFFDF8"
+        },
+        {
+         "primitive": "stone.dark.0",
+         "via": "neutral.0",
+         "hex": "#14110D"
+        }
+       ]
+      },
+      {
+       "job": "surface.default",
+       "cells": [
+        {
+         "primitive": "stone.light.0",
+         "via": "neutral.0",
+         "hex": "#FFFFFF"
+        },
+        {
+         "primitive": "stone.dark.50",
+         "via": "neutral.50",
+         "hex": "#1F1B16"
+        }
+       ]
+      },
+      {
+       "job": "surface.raised",
+       "cells": [
+        {
+         "primitive": "stone.light.0",
+         "via": "neutral.0",
+         "hex": "#FFFFFF"
+        },
+        {
+         "primitive": "stone.dark.50",
+         "via": "neutral.50",
+         "hex": "#1F1B16"
+        }
+       ]
+      },
+      {
+       "job": "surface.sunken",
+       "cells": [
+        {
+         "primitive": "stone.light.100",
+         "via": "neutral.100",
+         "hex": "#F6F2EA"
+        },
+        {
+         "primitive": "stone.dark.100",
+         "via": "neutral.100",
+         "hex": "#2E2A24"
+        }
+       ]
+      },
+      {
+       "job": "surface.highlight",
+       "cells": [
+        {
+         "primitive": "stone.light.100",
+         "via": "neutral.100",
+         "hex": "#F6F2EA"
+        },
+        {
+         "primitive": "stone.dark.100",
+         "via": "neutral.100",
+         "hex": "#2E2A24"
+        }
+       ]
+      },
+      {
+       "job": "surface.pressed",
+       "cells": [
+        {
+         "primitive": "stone.light.200",
+         "via": "neutral.200",
+         "hex": "#E4DDD0"
+        },
+        {
+         "primitive": "stone.dark.200",
+         "via": "neutral.200",
+         "hex": "#4A4339"
+        }
+       ]
+      },
+      {
+       "job": "surface.selected",
+       "cells": [
+        {
+         "primitive": "navy.light.100",
+         "hex": "#E0E9F5"
+        },
+        {
+         "primitive": "navy.dark.100",
+         "hex": "#202B3B"
+        }
+       ]
+      },
+      {
+       "job": "surface.inverse",
+       "cells": [
+        {
+         "primitive": "stone.light.900",
+         "via": "neutral.900",
+         "hex": "#1F1B16"
+        },
+        {
+         "primitive": "stone.dark.900",
+         "via": "neutral.900",
+         "hex": "#FFFDF8"
+        }
+       ]
+      },
+      {
+       "job": "surface.scrim",
+       "cells": [
+        {
+         "primitive": "black.light.scrim",
+         "hex": "#0000008C"
+        },
+        {
+         "primitive": "black.dark.scrim",
+         "hex": "#000000B3"
+        }
+       ]
+      }
      ]
     },
     {
-     "draw": {
-      "radius": "9999px"
-     },
-     "lines": [
-      "badge · 9999px"
+     "title": "Text",
+     "rows": [
+      {
+       "job": "text.primary",
+       "cells": [
+        {
+         "primitive": "stone.light.900",
+         "via": "neutral.900",
+         "hex": "#1F1B16"
+        },
+        {
+         "primitive": "stone.dark.900",
+         "via": "neutral.900",
+         "hex": "#FFFDF8"
+        }
+       ]
+      },
+      {
+       "job": "text.secondary",
+       "cells": [
+        {
+         "primitive": "stone.light.700",
+         "via": "neutral.700",
+         "hex": "#4A4339"
+        },
+        {
+         "primitive": "stone.dark.500",
+         "via": "neutral.500",
+         "hex": "#CFC6B6"
+        }
+       ]
+      },
+      {
+       "job": "text.muted",
+       "cells": [
+        {
+         "primitive": "stone.light.600",
+         "via": "neutral.600",
+         "hex": "#61594D"
+        },
+        {
+         "primitive": "stone.dark.400",
+         "via": "neutral.400",
+         "hex": "#A39A8B"
+        }
+       ]
+      },
+      {
+       "job": "text.inverse",
+       "cells": [
+        {
+         "primitive": "stone.light.0",
+         "hex": "#FFFFFF"
+        },
+        {
+         "primitive": "stone.light.900",
+         "hex": "#1F1B16"
+        }
+       ]
+      },
+      {
+       "job": "text.on-action",
+       "cells": [
+        {
+         "primitive": "stone.light.0",
+         "hex": "#FFFFFF"
+        },
+        {
+         "primitive": "stone.light.900",
+         "hex": "#1F1B16"
+        }
+       ]
+      },
+      {
+       "job": "text.link",
+       "cells": [
+        {
+         "primitive": "navy.light.700",
+         "hex": "#122948"
+        },
+        {
+         "primitive": "navy.dark.700",
+         "hex": "#ACBDD5"
+        }
+       ]
+      },
+      {
+       "job": "text.on-danger",
+       "cells": [
+        {
+         "primitive": "stone.light.0",
+         "hex": "#FFFFFF"
+        },
+        {
+         "primitive": "stone.light.900",
+         "hex": "#1F1B16"
+        }
+       ]
+      }
      ]
     },
     {
-     "draw": {
-      "radius": "0.5rem"
-     },
-     "lines": [
-      "option · 0.5rem (8px)"
+     "title": "Border",
+     "rows": [
+      {
+       "job": "border.default",
+       "cells": [
+        {
+         "primitive": "stone.light.200",
+         "via": "neutral.200",
+         "hex": "#E4DDD0"
+        },
+        {
+         "primitive": "stone.dark.200",
+         "via": "neutral.200",
+         "hex": "#4A4339"
+        }
+       ]
+      },
+      {
+       "job": "border.strong",
+       "cells": [
+        {
+         "primitive": "stone.light.500",
+         "via": "neutral.500",
+         "hex": "#7A7062"
+        },
+        {
+         "primitive": "stone.dark.400",
+         "via": "neutral.400",
+         "hex": "#A39A8B"
+        }
+       ]
+      },
+      {
+       "job": "border.focus",
+       "cells": [
+        {
+         "primitive": "navy.light.600",
+         "hex": "#1E3A5F"
+        },
+        {
+         "primitive": "navy.dark.600",
+         "hex": "#8FA6C4"
+        }
+       ]
+      },
+      {
+       "job": "border.selected",
+       "cells": [
+        {
+         "primitive": "navy.light.600",
+         "hex": "#1E3A5F"
+        },
+        {
+         "primitive": "navy.dark.600",
+         "hex": "#8FA6C4"
+        }
+       ]
+      }
      ]
     },
     {
-     "draw": {
-      "radius": "0.75rem"
-     },
-     "lines": [
-      "container · 0.75rem (12px)"
+     "title": "Action",
+     "rows": [
+      {
+       "job": "action.primary",
+       "cells": [
+        {
+         "primitive": "navy.light.600",
+         "hex": "#1E3A5F"
+        },
+        {
+         "primitive": "navy.dark.600",
+         "hex": "#8FA6C4"
+        }
+       ]
+      },
+      {
+       "job": "action.primary.hover",
+       "cells": [
+        {
+         "primitive": "navy.light.700",
+         "hex": "#122948"
+        },
+        {
+         "primitive": "navy.dark.700",
+         "hex": "#ACBDD5"
+        }
+       ]
+      },
+      {
+       "job": "action.secondary",
+       "cells": [
+        {
+         "primitive": "stone.light.0",
+         "via": "neutral.0",
+         "hex": "#FFFFFF"
+        },
+        {
+         "primitive": "stone.dark.50",
+         "via": "neutral.50",
+         "hex": "#1F1B16"
+        }
+       ]
+      },
+      {
+       "job": "action.secondary.hover",
+       "cells": [
+        {
+         "primitive": "stone.light.100",
+         "via": "neutral.100",
+         "hex": "#F6F2EA"
+        },
+        {
+         "primitive": "stone.dark.100",
+         "via": "neutral.100",
+         "hex": "#2E2A24"
+        }
+       ]
+      },
+      {
+       "job": "action.danger",
+       "cells": [
+        {
+         "primitive": "red.light.600",
+         "hex": "#C42B2B"
+        },
+        {
+         "primitive": "red.dark.600",
+         "hex": "#F28B8B"
+        }
+       ]
+      },
+      {
+       "job": "action.danger.hover",
+       "cells": [
+        {
+         "primitive": "red.light.700",
+         "hex": "#981519"
+        },
+        {
+         "primitive": "red.dark.700",
+         "hex": "#FAA9A8"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Status",
+     "rows": [
+      {
+       "job": "status.info",
+       "cells": [
+        {
+         "primitive": "blue.light.600",
+         "hex": "#083C93"
+        },
+        {
+         "primitive": "blue.dark.600",
+         "hex": "#8AB4F8"
+        }
+       ]
+      },
+      {
+       "job": "status.info.subtle",
+       "cells": [
+        {
+         "primitive": "blue.light.100",
+         "hex": "#D3E4FF"
+        },
+        {
+         "primitive": "blue.dark.100",
+         "hex": "#172C4F"
+        }
+       ]
+      },
+      {
+       "job": "status.success",
+       "cells": [
+        {
+         "primitive": "green.light.600",
+         "hex": "#1F7A3A"
+        },
+        {
+         "primitive": "green.dark.600",
+         "hex": "#5CC283"
+        }
+       ]
+      },
+      {
+       "job": "status.success.subtle",
+       "cells": [
+        {
+         "primitive": "green.light.100",
+         "hex": "#DBF7DF"
+        },
+        {
+         "primitive": "green.dark.100",
+         "hex": "#02351B"
+        }
+       ]
+      },
+      {
+       "job": "status.warning",
+       "cells": [
+        {
+         "primitive": "amber.light.600",
+         "hex": "#8A5600"
+        },
+        {
+         "primitive": "amber.dark.600",
+         "hex": "#F2B84B"
+        }
+       ]
+      },
+      {
+       "job": "status.warning.subtle",
+       "cells": [
+        {
+         "primitive": "amber.light.100",
+         "hex": "#FEE8CF"
+        },
+        {
+         "primitive": "amber.dark.100",
+         "hex": "#402B00"
+        }
+       ]
+      },
+      {
+       "job": "status.danger",
+       "cells": [
+        {
+         "primitive": "red.light.600",
+         "hex": "#C42B2B"
+        },
+        {
+         "primitive": "red.dark.600",
+         "hex": "#F28B8B"
+        }
+       ]
+      },
+      {
+       "job": "status.danger.subtle",
+       "cells": [
+        {
+         "primitive": "red.light.100",
+         "hex": "#FFDBD8"
+        },
+        {
+         "primitive": "red.dark.100",
+         "hex": "#4D181A"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Category",
+     "rows": [
+      {
+       "job": "category.1",
+       "cells": [
+        {
+         "primitive": "navy.light.600",
+         "hex": "#1E3A5F"
+        },
+        {
+         "primitive": "navy.dark.600",
+         "hex": "#8FA6C4"
+        }
+       ]
+      },
+      {
+       "job": "category.1.subtle",
+       "cells": [
+        {
+         "primitive": "navy.light.100",
+         "hex": "#E0E9F5"
+        },
+        {
+         "primitive": "navy.dark.100",
+         "hex": "#202B3B"
+        }
+       ]
+      },
+      {
+       "job": "category.2",
+       "cells": [
+        {
+         "primitive": "blue.light.600",
+         "hex": "#083C93"
+        },
+        {
+         "primitive": "blue.dark.600",
+         "hex": "#8AB4F8"
+        }
+       ]
+      },
+      {
+       "job": "category.2.subtle",
+       "cells": [
+        {
+         "primitive": "blue.light.100",
+         "hex": "#D3E4FF"
+        },
+        {
+         "primitive": "blue.dark.100",
+         "hex": "#172C4F"
+        }
+       ]
+      },
+      {
+       "job": "category.3",
+       "cells": [
+        {
+         "primitive": "green.light.600",
+         "hex": "#1F7A3A"
+        },
+        {
+         "primitive": "green.dark.600",
+         "hex": "#5CC283"
+        }
+       ]
+      },
+      {
+       "job": "category.3.subtle",
+       "cells": [
+        {
+         "primitive": "green.light.100",
+         "hex": "#DBF7DF"
+        },
+        {
+         "primitive": "green.dark.100",
+         "hex": "#02351B"
+        }
+       ]
+      },
+      {
+       "job": "category.4",
+       "cells": [
+        {
+         "primitive": "amber.light.600",
+         "hex": "#8A5600"
+        },
+        {
+         "primitive": "amber.dark.600",
+         "hex": "#F2B84B"
+        }
+       ]
+      },
+      {
+       "job": "category.4.subtle",
+       "cells": [
+        {
+         "primitive": "amber.light.100",
+         "hex": "#FEE8CF"
+        },
+        {
+         "primitive": "amber.dark.100",
+         "hex": "#402B00"
+        }
+       ]
+      },
+      {
+       "job": "category.5",
+       "cells": [
+        {
+         "primitive": "stone.light.500",
+         "via": "neutral.500",
+         "hex": "#7A7062"
+        },
+        {
+         "primitive": "stone.dark.700",
+         "via": "neutral.700",
+         "hex": "#E4DDD0"
+        }
+       ]
+      },
+      {
+       "job": "category.5.subtle",
+       "cells": [
+        {
+         "primitive": "stone.light.100",
+         "via": "neutral.100",
+         "hex": "#F6F2EA"
+        },
+        {
+         "primitive": "stone.dark.100",
+         "via": "neutral.100",
+         "hex": "#2E2A24"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Disabled",
+     "rows": [
+      {
+       "job": "disabled.text",
+       "cells": [
+        {
+         "primitive": "stone.light.500",
+         "via": "neutral.500",
+         "hex": "#7A7062"
+        },
+        {
+         "primitive": "stone.dark.500",
+         "via": "neutral.500",
+         "hex": "#CFC6B6"
+        }
+       ]
+      },
+      {
+       "job": "disabled.surface",
+       "cells": [
+        {
+         "primitive": "stone.light.100",
+         "via": "neutral.100",
+         "hex": "#F6F2EA"
+        },
+        {
+         "primitive": "stone.dark.100",
+         "via": "neutral.100",
+         "hex": "#2E2A24"
+        }
+       ]
+      },
+      {
+       "job": "disabled.border",
+       "cells": [
+        {
+         "primitive": "stone.light.200",
+         "via": "neutral.200",
+         "hex": "#E4DDD0"
+        },
+        {
+         "primitive": "stone.dark.200",
+         "via": "neutral.200",
+         "hex": "#4A4339"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Card",
+     "rows": [
+      {
+       "job": "card",
+       "cells": [
+        {
+         "value": "0px 0px 0px 0px #00000000"
+        },
+        {
+         "value": "0px 0px 0px 0px #00000000"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Overlay",
+     "rows": [
+      {
+       "job": "overlay",
+       "cells": [
+        {
+         "value": "0px 12px 32px 0px #1F1B1629"
+        },
+        {
+         "value": "0px 12px 32px 0px #00000080"
+        }
+       ]
+      }
      ]
     }
    ]
-  },
-  "theming/default/type": {
-   "title": "Type families",
-   "items": [
+  }
+ },
+ "mode-constants": {
+  "default": {
+   "corners": [
     {
-     "font": "Source Serif 4",
-     "lines": [
-      "Display, Title, Heading, Body, Data"
-     ],
-     "sample": [
-      "Source Serif 4"
+     "token": "control",
+     "value": "0.5rem",
+     "px": "8px"
+    },
+    {
+     "token": "badge",
+     "value": "9999px"
+    },
+    {
+     "token": "option",
+     "value": "0.5rem",
+     "px": "8px"
+    },
+    {
+     "token": "container",
+     "value": "0.75rem",
+     "px": "12px"
+    }
+   ],
+   "families": [
+    {
+     "family": "Source Serif 4",
+     "roles": [
+      "display",
+      "title",
+      "heading",
+      "body",
+      "data"
      ]
     },
     {
-     "font": "Inter",
-     "lines": [
-      "Label, Caption"
-     ],
-     "sample": [
-      "Inter"
+     "family": "Inter",
+     "roles": [
+      "label",
+      "caption"
      ]
     }
    ]

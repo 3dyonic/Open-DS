@@ -26,7 +26,7 @@ export default function TokenSwatches({ data }: { data: TokenSwatchesData }) {
             {data.tokens.map((t) => (
               <li key={t.token} className="m-0 flex min-w-0 items-center gap-[var(--space-gap-default)]">
                 <Sample kind={t.kind} value={t.value} note={t.note} />
-                <span className="truncate [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
+                <span className="break-all [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
                   {t.token}
                 </span>
               </li>

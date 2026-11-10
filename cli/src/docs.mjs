@@ -1508,28 +1508,15 @@ export function docsPages(
           .replaceAll('"', "");
         if (v) (fams[v] ??= []).push(role);
       }
-      return (
-        `\n\n### What stays the same in every mode\n\n` +
-        (radii.length
-          ? specimenBlock(`theming/${b}/corners`, {
-              title: "Corners",
-              items: radii.map((r) => ({
-                draw: { radius: radius(th, r).replace(/ \(.*\)$/, "") },
-                lines: [`${r} · ${radius(th, r)}`],
-              })),
-            }) + "\n\n"
-          : "") +
-        (Object.keys(fams).length
-          ? specimenBlock(`theming/${b}/type`, {
-              title: "Type families",
-              items: Object.entries(fams).map(([f, roles]) => ({
-                font: f,
-                lines: [roles.map(cap).join(", ")],
-                sample: [f],
-              })),
-            }) + "\n\n"
-          : "")
-      );
+      // What stays the same in every mode (OD-284): the corners and the type families, as facts.
+      (compositeData["mode-constants"] ??= {})[b] = {
+        corners: radii.map((r) => {
+          const [v, px] = String(radius(th, r)).match(/^(\S+)(?: \((.*)\))?$/)?.slice(1) ?? [String(radius(th, r))];
+          return { token: r, value: v, ...(px && { px }) };
+        }),
+        families: Object.entries(fams).map(([family, roles]) => ({ family, roles })),
+      };
+      return `\n\n### What stays the same in every mode\n\n::mode-constants{id="${b}"}\n\n`;
     };
     const themingSet = (b) => {
       const ths = scheme.themes.filter((t) => t.brand === b);
@@ -1548,12 +1535,16 @@ export function docsPages(
           ? (follow(scheme.tokens, b, th.mode, p) ??
             follow(scheme.tokens, b, th.mode, `${p}.@`))
           : null;
-        if (!f) return `\`${value(th, p, "")}\``;
+        if (!f) return { value: String(value(th, p, "")) };
         const hx = String(
           f.prim.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
             ?.$value ?? "",
         );
-        return `${draw("dot", hx)} ${f.prim.replace(/^color\./, "")}${f.via ? ` · via ${f.via.replace(/^color\./, "")}` : ""}`;
+        return {
+          primitive: f.prim.replace(/^color\./, ""),
+          ...(f.via && { via: f.via.replace(/^color\./, "") }),
+          hex: hx,
+        };
       };
       // The mode previews (OD-284): the scheme's own components, shown in each mode. The colors
       // and corners come from the tokens, so the data holds only the content.
@@ -1565,22 +1556,20 @@ export function docsPages(
         ...(brandIds.length > 1 && { brand: { id: b, label: brandLabel(b) } }),
         modes: ths.map((th) => th.mode),
       };
-      // What a mode changes: one Markdown table per job group, every mode side by side.
-      const tables = groups
-        .map((gr) => {
-          const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
-          return (
-            `**${esc(cap(gr.split(".").pop()))} · ${list.length}**\n\n` +
-            `| Job | ${ths.map((t) => cap(t.mode)).join(" | ")} |\n| --- | ${ths.map(() => "---").join(" | ")} |\n` +
-            list
-              .map(
-                (p) =>
-                  `| \`${p.split(".").slice(1).join(".")}\` | ${ths.map((t) => cell(t, p)).join(" | ")} |`,
-              )
-              .join("\n")
-          );
-        })
-        .join("\n\n");
+      // What a mode changes (OD-284): one table, a row per job group, every mode side by side.
+      (compositeData["mode-changes"] ??= {})[b] = {
+        modes: ths.map((t) => t.mode),
+        groups: groups.map((gr) => ({
+          title: cap(gr.split(".").pop()),
+          rows: jobs
+            .filter((p) => p.startsWith(`${gr}.`) || p === gr)
+            .map((p) => ({
+              job: p.split(".").slice(1).join("."),
+              cells: ths.map((t) => cell(t, p)),
+            })),
+        })),
+      };
+      const tables = `::mode-changes{id="${b}"}`;
       const body =
         `::mode-preview{id="${b}"}\n\n### What a mode changes\n\n${tables}` +
         sameBlock(b);
@@ -3035,6 +3024,8 @@ export function docsPages(
     "primitive-table": "id",
     "color-keys": "id",
     "status-colors": "id",
+    "mode-changes": "id",
+    "mode-constants": "id",
     steps: "id",
     "decision-tree": "id",
     "decision-answer": "id",
