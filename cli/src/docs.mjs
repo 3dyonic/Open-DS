@@ -305,7 +305,7 @@ function specimen(tokens, text, x = {}) {
       },
     };
   // Each token by its full name and its DTCG type; the composite draws it from its CSS variable.
-  // A line height also carries its pixels, which the page prints beside it.
+  // A line height and a control size also carry their pixels, which the page prints beside them.
   const swatches = tokens
     .map((t) => ({ t, f: sampleFact(t.path, t.type) }))
     .filter((x) => x.f)
@@ -314,6 +314,9 @@ function specimen(tokens, text, x = {}) {
       token: t.path,
       type: t.type,
       ...(f.note && { px: Number(f.note.replace("px", "")) }),
+      // A control size is drawn as the target it makes, with its size in pixels beside it.
+      ...(/^size\.control\./.test(t.path) &&
+        Number.parseFloat(x.val?.(t.path) ?? "") > 0 && { px: Number.parseFloat(x.val(t.path)) }),
     }));
   return swatches.length ? { kind: "token-swatches", data: { tokens: swatches } } : null;
 }

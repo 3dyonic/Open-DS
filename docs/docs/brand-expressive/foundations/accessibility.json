@@ -4,15 +4,18 @@
    "tokens": [
     {
      "token": "size.control.default",
-     "type": "dimension"
+     "type": "dimension",
+     "px": 52
     },
     {
      "token": "size.control.compact",
-     "type": "dimension"
+     "type": "dimension",
+     "px": 44
     },
     {
      "token": "size.control.large",
-     "type": "dimension"
+     "type": "dimension",
+     "px": 60
     },
     {
      "token": "opacity.disabled",

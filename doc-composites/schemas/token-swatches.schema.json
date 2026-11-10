@@ -42,7 +42,7 @@
           },
           "px": {
             "type": "number",
-            "description": "For a line height: its size in pixels, which the page prints beside it."
+            "description": "For a line height or a control size: its size in pixels, which the page prints beside it."
           }
         }
       }

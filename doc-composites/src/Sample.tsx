@@ -9,6 +9,7 @@
  */
 import * as React from "react";
 import Swatch from "./base/Swatch";
+import { Pointer } from "lucide-react";
 
 export type SampleProps = {
   kind: string;
@@ -93,6 +94,27 @@ export default function Sample({
         Ag Ag Ag
         {note && (
           <span className="absolute -right-1.5 top-0 flex h-[1lh] translate-x-full items-center pl-1.5 [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-action-primary)]">
+            {note}
+          </span>
+        )}
+      </span>
+    );
+  // A control size, as the target it makes: the outer square is the control, the area a pointer or a
+  // finger hits; the inner square is its content, at the icon size; the pointer cursor marks the target.
+  // Neutral, so it never reads as a color swatch.
+  if (kind === "target")
+    return (
+      <span data-composite="sample" className="inline-flex shrink-0 items-center gap-[var(--space-gap-default)]">
+        <span
+          aria-hidden="true"
+          className="relative flex shrink-0 items-center justify-center rounded-[var(--radius-control)] border-[length:var(--border-width-default)] border-dashed border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)]"
+          style={{ width: value, height: value }}
+        >
+          <span className="size-[var(--size-icon)] rounded-[var(--radius-badge)] bg-[var(--color-border-default)]" />
+          <Pointer className="absolute -bottom-[var(--space-gap-tight)] -right-[var(--space-gap-tight)] size-[var(--size-icon)] fill-[var(--color-surface-default)] text-[color:var(--color-text-primary)]" />
+        </span>
+        {note && (
+          <span className="[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
             {note}
           </span>
         )}
