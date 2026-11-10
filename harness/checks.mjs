@@ -2625,6 +2625,12 @@ export const CHECKS = {
             }
         for (const [b, t] of Object.entries(d["fill-tones"] ?? {}))
           for (const f of t.fills) for (const x of f.tones) expect("fill tones", b, x.mode, f.fill, x);
+        const theming = `docs/docs/${s}/foundations/theming.json`;
+        if (existsSync(c.p(theming)))
+          for (const [b, t] of Object.entries(c.json(theming)["mode-changes"] ?? {}))
+            for (const g of t.groups)
+              for (const r of g.rows)
+                for (const x of r.cells) if (x.primitive) expect("mode changes", b, x.mode, r.token, x);
       }
       return gaps.length
         ? bad(`${gaps.length} color facts name the wrong step; ${gaps.slice(0, 3).join("; ")}`)

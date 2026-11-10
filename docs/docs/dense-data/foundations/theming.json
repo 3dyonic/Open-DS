@@ -31,699 +31,701 @@
    ],
    "groups": [
     {
-     "title": "Surface",
+     "group": "color.surface",
      "rows": [
       {
-       "job": "surface.canvas",
+       "token": "color.surface.canvas",
        "cells": [
         {
-         "primitive": "slate.light.50",
-         "via": "neutral.50",
-         "hex": "#F7F8FA"
+         "mode": "light",
+         "primitive": "color.slate.light.50",
+         "via": "color.neutral.50"
         },
         {
-         "primitive": "slate.dark.0",
-         "via": "neutral.0",
-         "hex": "#0D1117"
+         "mode": "dark",
+         "primitive": "color.slate.dark.0",
+         "via": "color.neutral.0"
         }
        ]
       },
       {
-       "job": "surface.default",
+       "token": "color.surface.default",
        "cells": [
         {
-         "primitive": "slate.light.0",
-         "via": "neutral.0",
-         "hex": "#FFFFFF"
+         "mode": "light",
+         "primitive": "color.slate.light.0",
+         "via": "color.neutral.0"
         },
         {
-         "primitive": "slate.dark.50",
-         "via": "neutral.50",
-         "hex": "#161B23"
+         "mode": "dark",
+         "primitive": "color.slate.dark.50",
+         "via": "color.neutral.50"
         }
        ]
       },
       {
-       "job": "surface.raised",
+       "token": "color.surface.raised",
        "cells": [
         {
-         "primitive": "slate.light.0",
-         "via": "neutral.0",
-         "hex": "#FFFFFF"
+         "mode": "light",
+         "primitive": "color.slate.light.0",
+         "via": "color.neutral.0"
         },
         {
-         "primitive": "slate.dark.50",
-         "via": "neutral.50",
-         "hex": "#161B23"
+         "mode": "dark",
+         "primitive": "color.slate.dark.50",
+         "via": "color.neutral.50"
         }
        ]
       },
       {
-       "job": "surface.sunken",
+       "token": "color.surface.sunken",
        "cells": [
         {
-         "primitive": "slate.light.100",
-         "via": "neutral.100",
-         "hex": "#EEF1F5"
+         "mode": "light",
+         "primitive": "color.slate.light.100",
+         "via": "color.neutral.100"
         },
         {
-         "primitive": "slate.dark.100",
-         "via": "neutral.100",
-         "hex": "#262D38"
+         "mode": "dark",
+         "primitive": "color.slate.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
       {
-       "job": "surface.highlight",
+       "token": "color.surface.highlight",
        "cells": [
         {
-         "primitive": "slate.light.100",
-         "via": "neutral.100",
-         "hex": "#EEF1F5"
+         "mode": "light",
+         "primitive": "color.slate.light.100",
+         "via": "color.neutral.100"
         },
         {
-         "primitive": "slate.dark.100",
-         "via": "neutral.100",
-         "hex": "#262D38"
+         "mode": "dark",
+         "primitive": "color.slate.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
       {
-       "job": "surface.pressed",
+       "token": "color.surface.pressed",
        "cells": [
         {
-         "primitive": "slate.light.100",
-         "via": "neutral.100",
-         "hex": "#EEF1F5"
+         "mode": "light",
+         "primitive": "color.slate.light.100",
+         "via": "color.neutral.100"
         },
         {
-         "primitive": "slate.dark.100",
-         "via": "neutral.100",
-         "hex": "#262D38"
+         "mode": "dark",
+         "primitive": "color.slate.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
       {
-       "job": "surface.selected",
+       "token": "color.surface.selected",
        "cells": [
         {
-         "primitive": "violet.light.100",
-         "hex": "#E8ECFF"
+         "mode": "light",
+         "primitive": "color.violet.light.100"
         },
         {
-         "primitive": "violet.dark.100",
-         "hex": "#2A244F"
+         "mode": "dark",
+         "primitive": "color.violet.dark.100"
         }
        ]
       },
       {
-       "job": "surface.inverse",
+       "token": "color.surface.inverse",
        "cells": [
         {
-         "primitive": "slate.light.900",
-         "via": "neutral.900",
-         "hex": "#161B23"
+         "mode": "light",
+         "primitive": "color.slate.light.900",
+         "via": "color.neutral.900"
         },
         {
-         "primitive": "slate.dark.900",
-         "via": "neutral.900",
-         "hex": "#F7F8FA"
+         "mode": "dark",
+         "primitive": "color.slate.dark.900",
+         "via": "color.neutral.900"
         }
        ]
       },
       {
-       "job": "surface.scrim",
+       "token": "color.surface.scrim",
        "cells": [
         {
-         "primitive": "black.light.scrim",
-         "hex": "#0000008C"
+         "mode": "light",
+         "primitive": "color.black.light.scrim"
         },
         {
-         "primitive": "black.dark.scrim",
-         "hex": "#000000B3"
+         "mode": "dark",
+         "primitive": "color.black.dark.scrim"
         }
        ]
       }
      ]
     },
     {
-     "title": "Text",
+     "group": "color.text",
      "rows": [
       {
-       "job": "text.primary",
+       "token": "color.text.primary",
        "cells": [
         {
-         "primitive": "slate.light.900",
-         "via": "neutral.900",
-         "hex": "#161B23"
+         "mode": "light",
+         "primitive": "color.slate.light.900",
+         "via": "color.neutral.900"
         },
         {
-         "primitive": "slate.dark.900",
-         "via": "neutral.900",
-         "hex": "#F7F8FA"
+         "mode": "dark",
+         "primitive": "color.slate.dark.900",
+         "via": "color.neutral.900"
         }
        ]
       },
       {
-       "job": "text.secondary",
+       "token": "color.text.secondary",
        "cells": [
         {
-         "primitive": "slate.light.700",
-         "via": "neutral.700",
-         "hex": "#3D4655"
+         "mode": "light",
+         "primitive": "color.slate.light.700",
+         "via": "color.neutral.700"
         },
         {
-         "primitive": "slate.dark.500",
-         "via": "neutral.500",
-         "hex": "#C4CBD6"
+         "mode": "dark",
+         "primitive": "color.slate.dark.500",
+         "via": "color.neutral.500"
         }
        ]
       },
       {
-       "job": "text.muted",
+       "token": "color.text.muted",
        "cells": [
         {
-         "primitive": "slate.light.600",
-         "via": "neutral.600",
-         "hex": "#535D6D"
+         "mode": "light",
+         "primitive": "color.slate.light.600",
+         "via": "color.neutral.600"
         },
         {
-         "primitive": "slate.dark.400",
-         "via": "neutral.400",
-         "hex": "#969FAD"
+         "mode": "dark",
+         "primitive": "color.slate.dark.400",
+         "via": "color.neutral.400"
         }
        ]
       },
       {
-       "job": "text.inverse",
+       "token": "color.text.inverse",
        "cells": [
         {
-         "primitive": "slate.light.0",
-         "hex": "#FFFFFF"
+         "mode": "light",
+         "primitive": "color.slate.light.0"
         },
         {
-         "primitive": "slate.light.900",
-         "hex": "#161B23"
+         "mode": "dark",
+         "primitive": "color.slate.light.900"
         }
        ]
       },
       {
-       "job": "text.on-action",
+       "token": "color.text.on-action",
        "cells": [
         {
-         "primitive": "slate.light.0",
-         "hex": "#FFFFFF"
+         "mode": "light",
+         "primitive": "color.slate.light.0"
         },
         {
-         "primitive": "slate.light.900",
-         "hex": "#161B23"
+         "mode": "dark",
+         "primitive": "color.slate.light.900"
         }
        ]
       },
       {
-       "job": "text.link",
+       "token": "color.text.link",
        "cells": [
         {
-         "primitive": "violet.light.700",
-         "hex": "#3729AA"
+         "mode": "light",
+         "primitive": "color.violet.light.700"
         },
         {
-         "primitive": "violet.dark.700",
-         "hex": "#BEBBFB"
+         "mode": "dark",
+         "primitive": "color.violet.dark.700"
         }
        ]
       },
       {
-       "job": "text.on-danger",
+       "token": "color.text.on-danger",
        "cells": [
         {
-         "primitive": "slate.light.0",
-         "hex": "#FFFFFF"
+         "mode": "light",
+         "primitive": "color.slate.light.0"
         },
         {
-         "primitive": "slate.light.900",
-         "hex": "#161B23"
+         "mode": "dark",
+         "primitive": "color.slate.light.900"
         }
        ]
       }
      ]
     },
     {
-     "title": "Border",
+     "group": "color.border",
      "rows": [
       {
-       "job": "border.default",
+       "token": "color.border.default",
        "cells": [
         {
-         "primitive": "slate.light.200",
-         "via": "neutral.200",
-         "hex": "#DDE2EA"
+         "mode": "light",
+         "primitive": "color.slate.light.200",
+         "via": "color.neutral.200"
         },
         {
-         "primitive": "slate.dark.200",
-         "via": "neutral.200",
-         "hex": "#3D4655"
+         "mode": "dark",
+         "primitive": "color.slate.dark.200",
+         "via": "color.neutral.200"
         }
        ]
       },
       {
-       "job": "border.strong",
+       "token": "color.border.strong",
        "cells": [
         {
-         "primitive": "slate.light.500",
-         "via": "neutral.500",
-         "hex": "#6B7585"
+         "mode": "light",
+         "primitive": "color.slate.light.500",
+         "via": "color.neutral.500"
         },
         {
-         "primitive": "slate.dark.400",
-         "via": "neutral.400",
-         "hex": "#969FAD"
+         "mode": "dark",
+         "primitive": "color.slate.dark.400",
+         "via": "color.neutral.400"
         }
        ]
       },
       {
-       "job": "border.focus",
+       "token": "color.border.focus",
        "cells": [
         {
-         "primitive": "violet.light.600",
-         "hex": "#4B3FD9"
+         "mode": "light",
+         "primitive": "color.violet.light.600"
         },
         {
-         "primitive": "violet.dark.600",
-         "hex": "#A9A3F6"
+         "mode": "dark",
+         "primitive": "color.violet.dark.600"
         }
        ]
       },
       {
-       "job": "border.selected",
+       "token": "color.border.selected",
        "cells": [
         {
-         "primitive": "violet.light.600",
-         "hex": "#4B3FD9"
+         "mode": "light",
+         "primitive": "color.violet.light.600"
         },
         {
-         "primitive": "violet.dark.600",
-         "hex": "#A9A3F6"
+         "mode": "dark",
+         "primitive": "color.violet.dark.600"
         }
        ]
       }
      ]
     },
     {
-     "title": "Action",
+     "group": "color.action",
      "rows": [
       {
-       "job": "action.primary",
+       "token": "color.action.primary",
        "cells": [
         {
-         "primitive": "violet.light.600",
-         "hex": "#4B3FD9"
+         "mode": "light",
+         "primitive": "color.violet.light.600"
         },
         {
-         "primitive": "violet.dark.600",
-         "hex": "#A9A3F6"
+         "mode": "dark",
+         "primitive": "color.violet.dark.600"
         }
        ]
       },
       {
-       "job": "action.primary.hover",
+       "token": "color.action.primary.hover",
        "cells": [
         {
-         "primitive": "violet.light.700",
-         "hex": "#3729AA"
+         "mode": "light",
+         "primitive": "color.violet.light.700"
         },
         {
-         "primitive": "violet.dark.700",
-         "hex": "#BEBBFB"
+         "mode": "dark",
+         "primitive": "color.violet.dark.700"
         }
        ]
       },
       {
-       "job": "action.secondary",
+       "token": "color.action.secondary",
        "cells": [
         {
-         "primitive": "slate.light.0",
-         "via": "neutral.0",
-         "hex": "#FFFFFF"
+         "mode": "light",
+         "primitive": "color.slate.light.0",
+         "via": "color.neutral.0"
         },
         {
-         "primitive": "slate.dark.50",
-         "via": "neutral.50",
-         "hex": "#161B23"
+         "mode": "dark",
+         "primitive": "color.slate.dark.50",
+         "via": "color.neutral.50"
         }
        ]
       },
       {
-       "job": "action.secondary.hover",
+       "token": "color.action.secondary.hover",
        "cells": [
         {
-         "primitive": "slate.light.100",
-         "via": "neutral.100",
-         "hex": "#EEF1F5"
+         "mode": "light",
+         "primitive": "color.slate.light.100",
+         "via": "color.neutral.100"
         },
         {
-         "primitive": "slate.dark.100",
-         "via": "neutral.100",
-         "hex": "#262D38"
+         "mode": "dark",
+         "primitive": "color.slate.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
       {
-       "job": "action.danger",
+       "token": "color.action.danger",
        "cells": [
         {
-         "primitive": "red.light.600",
-         "hex": "#C42B2B"
+         "mode": "light",
+         "primitive": "color.red.light.600"
         },
         {
-         "primitive": "red.dark.600",
-         "hex": "#F28B8B"
+         "mode": "dark",
+         "primitive": "color.red.dark.600"
         }
        ]
       },
       {
-       "job": "action.danger.hover",
+       "token": "color.action.danger.hover",
        "cells": [
         {
-         "primitive": "red.light.700",
-         "hex": "#981519"
+         "mode": "light",
+         "primitive": "color.red.light.700"
         },
         {
-         "primitive": "red.dark.700",
-         "hex": "#FAA9A8"
+         "mode": "dark",
+         "primitive": "color.red.dark.700"
         }
        ]
       }
      ]
     },
     {
-     "title": "Status",
+     "group": "color.status",
      "rows": [
       {
-       "job": "status.info",
+       "token": "color.status.info",
        "cells": [
         {
-         "primitive": "blue.light.600",
-         "hex": "#083C93"
+         "mode": "light",
+         "primitive": "color.blue.light.600"
         },
         {
-         "primitive": "blue.dark.600",
-         "hex": "#8AB4F8"
+         "mode": "dark",
+         "primitive": "color.blue.dark.600"
         }
        ]
       },
       {
-       "job": "status.info.subtle",
+       "token": "color.status.info.subtle",
        "cells": [
         {
-         "primitive": "blue.light.100",
-         "hex": "#D3E4FF"
+         "mode": "light",
+         "primitive": "color.blue.light.100"
         },
         {
-         "primitive": "blue.dark.100",
-         "hex": "#162C4F"
+         "mode": "dark",
+         "primitive": "color.blue.dark.100"
         }
        ]
       },
       {
-       "job": "status.success",
+       "token": "color.status.success",
        "cells": [
         {
-         "primitive": "green.light.600",
-         "hex": "#1F7A3A"
+         "mode": "light",
+         "primitive": "color.green.light.600"
         },
         {
-         "primitive": "green.dark.600",
-         "hex": "#5CC283"
+         "mode": "dark",
+         "primitive": "color.green.dark.600"
         }
        ]
       },
       {
-       "job": "status.success.subtle",
+       "token": "color.status.success.subtle",
        "cells": [
         {
-         "primitive": "green.light.100",
-         "hex": "#DBF7DF"
+         "mode": "light",
+         "primitive": "color.green.light.100"
         },
         {
-         "primitive": "green.dark.100",
-         "hex": "#01351A"
+         "mode": "dark",
+         "primitive": "color.green.dark.100"
         }
        ]
       },
       {
-       "job": "status.warning",
+       "token": "color.status.warning",
        "cells": [
         {
-         "primitive": "amber.light.600",
-         "hex": "#8A5600"
+         "mode": "light",
+         "primitive": "color.amber.light.600"
         },
         {
-         "primitive": "amber.dark.600",
-         "hex": "#F2B84B"
+         "mode": "dark",
+         "primitive": "color.amber.dark.600"
         }
        ]
       },
       {
-       "job": "status.warning.subtle",
+       "token": "color.status.warning.subtle",
        "cells": [
         {
-         "primitive": "amber.light.100",
-         "hex": "#FEE8CF"
+         "mode": "light",
+         "primitive": "color.amber.light.100"
         },
         {
-         "primitive": "amber.dark.100",
-         "hex": "#3F2B02"
+         "mode": "dark",
+         "primitive": "color.amber.dark.100"
         }
        ]
       },
       {
-       "job": "status.danger",
+       "token": "color.status.danger",
        "cells": [
         {
-         "primitive": "red.light.600",
-         "hex": "#C42B2B"
+         "mode": "light",
+         "primitive": "color.red.light.600"
         },
         {
-         "primitive": "red.dark.600",
-         "hex": "#F28B8B"
+         "mode": "dark",
+         "primitive": "color.red.dark.600"
         }
        ]
       },
       {
-       "job": "status.danger.subtle",
+       "token": "color.status.danger.subtle",
        "cells": [
         {
-         "primitive": "red.light.100",
-         "hex": "#FFDBD8"
+         "mode": "light",
+         "primitive": "color.red.light.100"
         },
         {
-         "primitive": "red.dark.100",
-         "hex": "#4C171A"
+         "mode": "dark",
+         "primitive": "color.red.dark.100"
         }
        ]
       }
      ]
     },
     {
-     "title": "Category",
+     "group": "color.category",
      "rows": [
       {
-       "job": "category.1",
+       "token": "color.category.1",
        "cells": [
         {
-         "primitive": "violet.light.600",
-         "hex": "#4B3FD9"
+         "mode": "light",
+         "primitive": "color.violet.light.600"
         },
         {
-         "primitive": "violet.dark.600",
-         "hex": "#A9A3F6"
+         "mode": "dark",
+         "primitive": "color.violet.dark.600"
         }
        ]
       },
       {
-       "job": "category.1.subtle",
+       "token": "color.category.1.subtle",
        "cells": [
         {
-         "primitive": "violet.light.100",
-         "hex": "#E8ECFF"
+         "mode": "light",
+         "primitive": "color.violet.light.100"
         },
         {
-         "primitive": "violet.dark.100",
-         "hex": "#2A244F"
+         "mode": "dark",
+         "primitive": "color.violet.dark.100"
         }
        ]
       },
       {
-       "job": "category.2",
+       "token": "color.category.2",
        "cells": [
         {
-         "primitive": "blue.light.600",
-         "hex": "#083C93"
+         "mode": "light",
+         "primitive": "color.blue.light.600"
         },
         {
-         "primitive": "blue.dark.600",
-         "hex": "#8AB4F8"
+         "mode": "dark",
+         "primitive": "color.blue.dark.600"
         }
        ]
       },
       {
-       "job": "category.2.subtle",
+       "token": "color.category.2.subtle",
        "cells": [
         {
-         "primitive": "blue.light.100",
-         "hex": "#D3E4FF"
+         "mode": "light",
+         "primitive": "color.blue.light.100"
         },
         {
-         "primitive": "blue.dark.100",
-         "hex": "#162C4F"
+         "mode": "dark",
+         "primitive": "color.blue.dark.100"
         }
        ]
       },
       {
-       "job": "category.3",
+       "token": "color.category.3",
        "cells": [
         {
-         "primitive": "green.light.600",
-         "hex": "#1F7A3A"
+         "mode": "light",
+         "primitive": "color.green.light.600"
         },
         {
-         "primitive": "green.dark.600",
-         "hex": "#5CC283"
+         "mode": "dark",
+         "primitive": "color.green.dark.600"
         }
        ]
       },
       {
-       "job": "category.3.subtle",
+       "token": "color.category.3.subtle",
        "cells": [
         {
-         "primitive": "green.light.100",
-         "hex": "#DBF7DF"
+         "mode": "light",
+         "primitive": "color.green.light.100"
         },
         {
-         "primitive": "green.dark.100",
-         "hex": "#01351A"
+         "mode": "dark",
+         "primitive": "color.green.dark.100"
         }
        ]
       },
       {
-       "job": "category.4",
+       "token": "color.category.4",
        "cells": [
         {
-         "primitive": "amber.light.600",
-         "hex": "#8A5600"
+         "mode": "light",
+         "primitive": "color.amber.light.600"
         },
         {
-         "primitive": "amber.dark.600",
-         "hex": "#F2B84B"
+         "mode": "dark",
+         "primitive": "color.amber.dark.600"
         }
        ]
       },
       {
-       "job": "category.4.subtle",
+       "token": "color.category.4.subtle",
        "cells": [
         {
-         "primitive": "amber.light.100",
-         "hex": "#FEE8CF"
+         "mode": "light",
+         "primitive": "color.amber.light.100"
         },
         {
-         "primitive": "amber.dark.100",
-         "hex": "#3F2B02"
+         "mode": "dark",
+         "primitive": "color.amber.dark.100"
         }
        ]
       },
       {
-       "job": "category.5",
+       "token": "color.category.5",
        "cells": [
         {
-         "primitive": "slate.light.500",
-         "via": "neutral.500",
-         "hex": "#6B7585"
+         "mode": "light",
+         "primitive": "color.slate.light.500",
+         "via": "color.neutral.500"
         },
         {
-         "primitive": "slate.dark.700",
-         "via": "neutral.700",
-         "hex": "#DDE2EA"
+         "mode": "dark",
+         "primitive": "color.slate.dark.700",
+         "via": "color.neutral.700"
         }
        ]
       },
       {
-       "job": "category.5.subtle",
+       "token": "color.category.5.subtle",
        "cells": [
         {
-         "primitive": "slate.light.100",
-         "via": "neutral.100",
-         "hex": "#EEF1F5"
+         "mode": "light",
+         "primitive": "color.slate.light.100",
+         "via": "color.neutral.100"
         },
         {
-         "primitive": "slate.dark.100",
-         "via": "neutral.100",
-         "hex": "#262D38"
+         "mode": "dark",
+         "primitive": "color.slate.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       }
      ]
     },
     {
-     "title": "Disabled",
+     "group": "color.disabled",
      "rows": [
       {
-       "job": "disabled.text",
+       "token": "color.disabled.text",
        "cells": [
         {
-         "primitive": "slate.light.500",
-         "via": "neutral.500",
-         "hex": "#6B7585"
+         "mode": "light",
+         "primitive": "color.slate.light.500",
+         "via": "color.neutral.500"
         },
         {
-         "primitive": "slate.dark.500",
-         "via": "neutral.500",
-         "hex": "#C4CBD6"
+         "mode": "dark",
+         "primitive": "color.slate.dark.500",
+         "via": "color.neutral.500"
         }
        ]
       },
       {
-       "job": "disabled.surface",
+       "token": "color.disabled.surface",
        "cells": [
         {
-         "primitive": "slate.light.100",
-         "via": "neutral.100",
-         "hex": "#EEF1F5"
+         "mode": "light",
+         "primitive": "color.slate.light.100",
+         "via": "color.neutral.100"
         },
         {
-         "primitive": "slate.dark.100",
-         "via": "neutral.100",
-         "hex": "#262D38"
+         "mode": "dark",
+         "primitive": "color.slate.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
       {
-       "job": "disabled.border",
+       "token": "color.disabled.border",
        "cells": [
         {
-         "primitive": "slate.light.200",
-         "via": "neutral.200",
-         "hex": "#DDE2EA"
+         "mode": "light",
+         "primitive": "color.slate.light.200",
+         "via": "color.neutral.200"
         },
         {
-         "primitive": "slate.dark.200",
-         "via": "neutral.200",
-         "hex": "#3D4655"
+         "mode": "dark",
+         "primitive": "color.slate.dark.200",
+         "via": "color.neutral.200"
         }
        ]
       }
      ]
     },
     {
-     "title": "Card",
+     "group": "elevation.card",
      "rows": [
       {
-       "job": "card",
+       "token": "elevation.card",
        "cells": [
         {
+         "mode": "light",
          "value": "0px 0px 0px 0px #00000000"
         },
         {
+         "mode": "dark",
          "value": "0px 0px 0px 0px #00000000"
         }
        ]
@@ -731,15 +733,17 @@
      ]
     },
     {
-     "title": "Overlay",
+     "group": "elevation.overlay",
      "rows": [
       {
-       "job": "overlay",
+       "token": "elevation.overlay",
        "cells": [
         {
+         "mode": "light",
          "value": "0px 8px 24px 0px #0D111729"
         },
         {
+         "mode": "dark",
          "value": "0px 8px 24px 0px #00000080"
         }
        ]

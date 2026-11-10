@@ -1530,16 +1530,9 @@ export function docsPages(
           ? (follow(scheme.tokens, b, th.mode, p) ??
             follow(scheme.tokens, b, th.mode, `${p}.@`))
           : null;
-        if (!f) return { value: String(value(th, p, "")) };
-        const hx = String(
-          f.prim.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
-            ?.$value ?? "",
-        );
-        return {
-          primitive: f.prim.replace(/^color\./, ""),
-          ...(f.via && { via: f.via.replace(/^color\./, "") }),
-          hex: hx,
-        };
+        if (!f) return { mode: th.mode, value: String(value(th, p, "")) };
+        // The token itself draws the swatch, in its mode; the data names what it reads.
+        return { mode: th.mode, primitive: f.prim, ...(f.via && { via: f.via }) };
       };
       // The mode previews (OD-284): the scheme's own components, shown in each mode. The colors
       // and corners come from the tokens, so the data holds only the content.
@@ -1555,11 +1548,11 @@ export function docsPages(
       (compositeData["mode-changes"] ??= {})[b] = {
         modes: ths.map((t) => t.mode),
         groups: groups.map((gr) => ({
-          title: cap(gr.split(".").pop()),
+          group: gr,
           rows: jobs
             .filter((p) => p.startsWith(`${gr}.`) || p === gr)
             .map((p) => ({
-              job: p.split(".").slice(1).join("."),
+              token: p.replace(/\.@$/, ""),
               cells: ths.map((t) => cell(t, p)),
             })),
         })),

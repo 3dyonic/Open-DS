@@ -4,44 +4,88 @@
   "title": "Mode changes",
   "description": "Every job a mode changes in one brand of a scheme, by group, with what each mode points it at. Drawn by the ModeChanges composite on Foundations › Theming.",
   "type": "object",
-  "required": ["modes", "groups"],
+  "required": [
+    "modes",
+    "groups"
+  ],
   "additionalProperties": false,
   "properties": {
     "modes": {
       "type": "array",
-      "description": "The modes, in column order, such as light and dark.",
       "minItems": 1,
-      "items": { "type": "string" }
+      "items": {
+        "type": "string",
+        "enum": [
+          "light",
+          "dark"
+        ]
+      },
+      "description": "The modes, in column order."
     },
     "groups": {
       "type": "array",
-      "description": "Each group of jobs, such as surface or text.",
+      "description": "Each group of jobs, such as color.surface or color.text.",
       "items": {
         "type": "object",
-        "required": ["title", "rows"],
+        "required": [
+          "group",
+          "rows"
+        ],
         "additionalProperties": false,
         "properties": {
-          "title": { "type": "string", "description": "The group's name." },
+          "group": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+            "description": "The group's token path, such as color.surface."
+          },
           "rows": {
             "type": "array",
             "description": "Each job in the group.",
             "items": {
               "type": "object",
-              "required": ["job", "cells"],
+              "required": [
+                "token",
+                "cells"
+              ],
               "additionalProperties": false,
               "properties": {
-                "job": { "type": "string", "description": "The token, without its group, such as canvas or primary." },
+                "token": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                  "description": "The job's full token name, such as color.surface.canvas."
+                },
                 "cells": {
                   "type": "array",
                   "description": "What each mode points the job at, in the order of modes.",
                   "items": {
                     "type": "object",
+                    "required": [
+                      "mode"
+                    ],
                     "additionalProperties": false,
                     "properties": {
-                      "primitive": { "type": "string", "description": "The primitive a color ends at, without color." },
-                      "via": { "type": "string", "description": "The semantic it goes through, without color., when it does." },
-                      "hex": { "type": "string", "description": "The primitive's value." },
-                      "value": { "type": "string", "description": "The value, for a job that is not a color." }
+                      "mode": {
+                        "type": "string",
+                        "enum": [
+                          "light",
+                          "dark"
+                        ],
+                        "description": "The mode."
+                      },
+                      "primitive": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                        "description": "The primitive a color ends at in this mode, such as color.slate.light.50."
+                      },
+                      "via": {
+                        "type": "string",
+                        "pattern": "^color\\.neutral\\.[0-9]+$",
+                        "description": "The neutral step a color goes through in this mode, such as color.neutral.50. Absent when it points at its primitive directly."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value in this mode, for a job that is not a color, such as a shadow. The page shows it as text."
+                      }
                     }
                   }
                 }

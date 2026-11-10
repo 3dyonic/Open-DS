@@ -1,6 +1,7 @@
 /**
  * ModeChanges: every job a mode changes, in one table: a row for each group, then each job with what
- * every mode points it at, its swatch, the primitive and the step it goes through. Built from the
+ * every mode points it at: its swatch, drawn from the token in that mode, and the neutral step or
+ * primitive it reads. Built from the
  * scheme's Table, used through its props only; the swatches are drawings of values. The data follows
  * doc-composites/schemas/mode-changes.schema.json; the page holds one line: ::mode-changes{id="default"}
  */
@@ -13,29 +14,32 @@ import {
   TableHeader,
   TableRow,
 } from "@open-ds/ui/components/table";
+import Swatch from "./base/Swatch";
+import { tokenVar } from "./base/token";
 
-type Cell = { primitive?: string; via?: string; hex?: string; value?: string };
+type Mode = "light" | "dark";
+type Cell = { mode: Mode; primitive?: string; via?: string; value?: string };
 export type ModeChangesData = {
-  modes: string[];
-  groups: { title: string; rows: { job: string; cells: Cell[] }[] }[];
+  modes: Mode[];
+  groups: { group: string; rows: { token: string; cells: Cell[] }[] }[];
 };
 
 const data = "[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]";
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+// The page shows token names without their color. prefix.
+const name = (token: string) => token.replace(/^color\./, "");
 
-function Value({ c }: { c: Cell }) {
+// One mode's cell: the job's own swatch, drawn from its token in that mode, and what it reads. A gray
+// names its neutral step; any other color its primitive (rule 15).
+function Value({ token, c }: { token: string; c: Cell }) {
   if (!c.primitive) return <code>{c.value}</code>;
   return (
     <span className="flex items-center gap-[var(--space-gap-default)]">
-      <i
-        aria-hidden="true"
-        className="size-4 shrink-0 rounded-[var(--radius-badge)] border border-[var(--color-border-default)]"
-        style={{ background: c.hex }}
-      />
-      <span className={`whitespace-nowrap ${data}`}>
-        {c.primitive}
-        {c.via && ` · via ${c.via}`}
+      {/* Only the swatch sits in the mode's scope; the text stays in the page's colors. */}
+      <span data-mode={c.mode} className="flex">
+        <Swatch color={tokenVar(token)} size="sm" />
       </span>
+      <span className={`whitespace-nowrap ${data}`}>{name(c.via ?? c.primitive)}</span>
     </span>
   );
 }
@@ -54,22 +58,22 @@ export default function ModeChanges({ data: d }: { data: ModeChangesData }) {
         </TableHeader>
         <TableBody>
           {d.groups.map((g) => (
-            <React.Fragment key={g.title}>
+            <React.Fragment key={g.group}>
               <TableRow>
                 <TableCell colSpan={d.modes.length + 1}>
                   <b>
-                    {g.title} · {g.rows.length}
+                    {cap(g.group.split(".").pop()!)} · {g.rows.length}
                   </b>
                 </TableCell>
               </TableRow>
               {g.rows.map((r) => (
-                <TableRow key={r.job}>
+                <TableRow key={r.token}>
                   <TableCell>
-                    <code>{r.job}</code>
+                    <code>{name(r.token)}</code>
                   </TableCell>
                   {r.cells.map((c, i) => (
                     <TableCell key={i}>
-                      <Value c={c} />
+                      <Value token={r.token} c={c} />
                     </TableCell>
                   ))}
                 </TableRow>
