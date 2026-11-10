@@ -1,4 +1,5 @@
 ---
+composite_data: "./message-scroller-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 39.5
 slug: "message-scroller/anatomy"
@@ -47,12 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Message scroller** required :label[Containment]
-  - **1** **Scroll region** required :label[By scheme]{tone="info"} :label[Containment] :label[Reach]
-  - **2** **Space between messages** required :label[By scheme]{tone="info"} :label[Grouping]
-  - **3** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-  - **Message** required · shown by Bubble :label[Readability]
-  - **Day marker** optional · shown by Marker :label[Grouping]
+::anatomy-legend{id="message-scroller"}
 :::
 
 ## How the decisions reach each part
@@ -64,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Reach]
 
-- **Answer** Shape · Which shape roles does it need? → Controls, badges and containers
-
-  Pill badges differ from controls.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Token** `radius.surface` → `radius` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.12: Rounded corners feel friendly.
+::anatomy-steps{id="message-scroller/card-1"}
 :::
 
 :::panel{id="part-2" title="Space between messages" note="Parts 2" media="side"}
@@ -82,21 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · Which spacing roles does it need? → Gaps and insets
-
-  No dense tables, so no row role.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Text needs air even inside a group.
-
-- **Token** `space.gap.group` → `gap` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.32
+::anatomy-steps{id="message-scroller/card-2"}
 :::
 
 :::panel{id="part-3" title="Focus ring" note="Parts 3" media="side"}
@@ -104,40 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed gets its own value for touch.
-
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast, with large text helping further.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `border-width.focus` → `focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `color.border.focus` → `focus-ring-focus` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.
-  - **Dark** navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus-offset` → `focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `focus-ring-offset-focus` #FFFDF8 · dark #14110D :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="message-scroller/card-3"}
 :::
 
 ## For agents

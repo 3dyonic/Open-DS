@@ -1,0 +1,195 @@
+{
+ "anatomy-legend": {
+  "date-picker": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Trigger",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Calendar icon",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Date",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Placeholder",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Feedback"
+     ]
+    },
+    {
+     "label": "Calendar",
+     "need": "required",
+     "note": "shown by Calendar",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "date-picker/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Compact, for a pointer",
+     "why": "Mouse and keyboard; compact targets are enough."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control",
+     "not": "radius.round",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.compact",
+     "not": "anything smaller",
+     "why": "Compact still fits a mouse. Touch is not this product's input."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "button.height",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "size.32",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "button.radius",
+     "value": "0.125rem",
+     "byScheme": true,
+     "pick": "radius.2: Small corners keep dense rows straight.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.strong",
+     "key": "button.secondary.border",
+     "value": "#6B7585",
+     "darkValue": "#969FAD",
+     "byScheme": true,
+     "rule": "The edge of a control people must find.",
+     "pick": "neutral.500: the edge of a control people must find, 4.66:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.400: the edge of a control people must find, 6.47:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "button.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "date-picker/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Small",
+     "why": "Small body text fits more rows on the screen."
+    },
+    {
+     "kind": "rule",
+     "situation": "field label or column header",
+     "use": "type.label",
+     "not": "type.heading",
+     "why": "Headers repeat on every column; a heavy style would compete with the data."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-weight",
+     "key": "font-weight",
+     "value": "400",
+     "byScheme": false,
+     "pick": "font.weight.400",
+     "shares": []
+    }
+   ]
+  },
+  "date-picker/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Small",
+     "why": "Small body text fits more rows on the screen."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "rule",
+     "situation": "an empty state",
+     "use": "Why it is empty and the one action that fills it",
+     "not": "a blank table",
+     "why": "An empty table with no words looks like an error."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#535D6D",
+     "darkValue": "#969FAD",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

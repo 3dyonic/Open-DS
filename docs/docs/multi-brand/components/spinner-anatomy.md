@@ -1,4 +1,5 @@
 ---
+composite_data: "./spinner-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 54.5
 slug: "spinner/anatomy"
@@ -47,8 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Spinner** required :label[By scheme]{tone="info"} :label[Feedback]
-- **2** **Spin** state · no token yet :label[Feedback]
+::anatomy-legend{id="spinner"}
 :::
 
 ## How the decisions reach each part
@@ -60,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the text.
-
-- **Answer** Iconography · What icon style? → Outline
-
-  One outline set for every brand.
-
-- **Rule** For an icon with no label, use Not used: always add a word; a popover explains a fee. Don't use an icon button with a hover hint.
-
-  On touch screens hover hints never show; a word says what will happen.
-
-- **Token** `size.icon` → `icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
+::anatomy-steps{id="spinner/card-1"}
 :::
 
 :::panel{id="part-1" title="Color" note="Parts 1" media="side"}
@@ -82,9 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the text.
+::anatomy-steps{id="spinner/card-2"}
 :::
 
 :::panel{id="part-2" title="Spin" note="Parts 2" media="side"}
@@ -92,13 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Motion · How fast does feedback feel? → Moderate
-
-  Moderate speed across brands.
-
-- **Rule** For someone asked for less motion, use Reduced motion. Don't use full motion.
-
-  Motion is reduced, not removed: a fade keeps the change visible, and nothing slides.
+::anatomy-steps{id="spinner/card-3"}
 :::
 
 ## For agents

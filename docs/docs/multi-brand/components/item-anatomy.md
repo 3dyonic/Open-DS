@@ -1,4 +1,5 @@
 ---
+composite_data: "./item-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 33.5
 slug: "item/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Item** required :label[Containment] :label[Grouping]
-  - **1** **Row** required :label[By scheme]{tone="info"} :label[Containment] :label[Reach]
-  - **2** **Media** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Hierarchy]
-  - **3** **Title** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **4** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-  - **5** **Actions** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **Action buttons** optional · shown by Button :label[Affordance]
-  - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+::anatomy-legend{id="item"}
 :::
 
 ## How the decisions reach each part
@@ -66,29 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Reach]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
-
-  Spacing is shared across brands.
-
-- **Token** `space.inset.container` → `default.padding` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `space.gap.group` → `default.gap` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `radius.control` → `radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Rounded by default; each brand sets its own corner.
+::anatomy-steps{id="item/card-1"}
 :::
 
 :::panel{id="part-2" title="Media" note="Parts 2" media="side"}
@@ -96,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Hierarchy]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the text.
-
-- **Rule** For corners of buttons and inputs, use radius.control (set by the brand). Don't use a hard-coded radius.
-
-  Each brand sets its own corner through the theme.
-
-- **Token** `size.control.default` → `media.icon.size` 2.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.44
-
-- **Token** `radius.control` → `media.icon.radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Rounded by default; each brand sets its own corner.
-
-- **Token** `color.surface.sunken` → `media.icon.background` #F1F5F9 · dark #1E293B :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `size.icon` → `media.icon.icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
+::anatomy-steps{id="item/card-2"}
 :::
 
 :::panel{id="part-3" title="Title" note="Parts 3" media="side"}
@@ -134,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Token** `type.body.font-size` → `title.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.label.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
+::anatomy-steps{id="item/card-3"}
 :::
 
 :::panel{id="part-4" title="Description" note="Parts 4" media="side"}
@@ -152,28 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.caption.
-
-  Regular body size suits every brand.
-
-- **Token** `type.body.font-size` → `description.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `color.text.muted` → `description.label` #4B5A6F · dark #96A3B5 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.
+::anatomy-steps{id="item/card-4"}
 :::
 
 :::panel{id="part-5" title="Actions" note="Parts 5" media="side"}
@@ -181,17 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For an action on one row or item, use Button ghost with a word. Don't use an icon alone.
-
-  A word says what will happen.
-
-- **Token** `space.gap.default` → `actions.gap` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.12
+::anatomy-steps{id="item/card-5"}
 :::
 
 :::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
@@ -199,29 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `border-width.focus` → `focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `color.border.focus` → `focus-ring-focus` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.
-  - **Dark** teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus-offset` → `focus-offset` 2px
-
-  - **Pick** border-width.2
+::anatomy-steps{id="item/card-6"}
 :::
 
 ## For agents

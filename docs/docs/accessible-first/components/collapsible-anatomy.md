@@ -1,4 +1,5 @@
 ---
+composite_data: "./collapsible-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 17.5
 slug: "collapsible/anatomy"
@@ -47,8 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Trigger** required · shown by Button :label[Affordance]
-- **1** **Content** state · no token yet :label[Readability]
+::anatomy-legend{id="collapsible"}
 :::
 
 ## How the decisions reach each part
@@ -60,7 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-
+::anatomy-steps{id="collapsible/card-1"}
 :::
 
 ## For agents

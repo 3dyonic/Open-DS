@@ -1,4 +1,5 @@
 ---
+composite_data: "./navigation-menu-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 41.5
 slug: "navigation-menu/anatomy"
@@ -47,20 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **List** required
-  - **1** **Trigger** required :label[By scheme]{tone="info"} :label[Readability] :label[Affordance] :label[Reach]
-  - **2** **Open trigger fill** state :label[By scheme]{tone="info"} :label[Feedback]
-  - **3** **Chevron** required :label[By scheme]{tone="info"} :label[Affordance]
-- **Panel** required
-  - **4** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-  - **5** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-- **Link** required :label[Readability] :label[Reach]
-  - **6** **Link** required :label[By scheme]{tone="info"} :label[Readability] :label[Reach]
-  - **7** **Current link** state :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
-  - **8** **Hover fill** state :label[By scheme]{tone="info"} :label[Feedback]
-  - **9** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-  - **Link icon** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
-- **Indicator** optional · not in this example :label[By scheme]{tone="info"} :label[Affordance]
+::anatomy-legend{id="navigation-menu"}
 :::
 
 ## How the decisions reach each part
@@ -72,37 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Affordance] :label[Reach]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Customers are often on phones.
-
-- **Token** `type.body.font-size` → `trigger.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.label.font-weight` → `trigger.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `space.inset.container` → `trigger.padding-x` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `component-spacing-map.x2` → `trigger.padding-y` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `space.gap.tight` → `trigger.icon-gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="navigation-menu/card-1"}
 :::
 
 :::panel{id="part-2" title="Open trigger" note="Parts 2" media="side"}
@@ -110,17 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Token** `color.surface.highlight` → `trigger.background.open` #F1F5F9 · dark #1E293B :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, action.secondary.hover, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
+::anatomy-steps{id="navigation-menu/card-2"}
 :::
 
 :::panel{id="part-4-5" title="Panel surface and shadow" note="Parts 4, 5" media="side"}
@@ -128,42 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Cards too
-
-  Cards lift slightly to group offers.
-
-- **Answer** Elevation · How soft are shadows? → Soft
-
-  Soft shadows fit every brand.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow.
-
-  The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.
-
-- **Token** `color.surface.raised` → `viewport.background` #FFFFFF · dark #0F172A :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `color.border.default` → `viewport.border` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `radius.surface` → `viewport.radius` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.8: Rounded by default; each brand sets its own corner.
-
-- **Token** `elevation.overlay` → `viewport.shadow` 0px 12px 32px, #0F172A29 · dark 0px 12px 32px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Soft shadows fit every brand.
-  - **Dark** shadow.overlay-dark: Soft shadows fit every brand.
+::anatomy-steps{id="navigation-menu/card-3"}
 :::
 
 :::panel{id="part-6" title="Link" note="Parts 6" media="side"}
@@ -171,33 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Reach]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For a link, use color.text.link (from the brand). Don't use a fixed blue.
-
-  Links take the brand's color, so they look native in each brand. A fixed blue would clash with some brands.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Customers are often on phones.
-
-- **Token** `type.body.font-size` → `link.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `component-spacing-map.x2` → `link.padding` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `radius.option` → `link.radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.
+::anatomy-steps{id="navigation-menu/card-4"}
 :::
 
 :::panel{id="part-7" title="Current link" note="Parts 7" media="side"}
@@ -205,37 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Emphasis]
 
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Brand colors vary, so meaning needs a word.
-
-- **Rule** For a selected row or item, use color.surface.selected (from the brand). Don't use a fixed blue.
-
-  Selection follows the brand color.
-
-- **Token** `color.surface.selected` → `link.background.current` #DEF3F0 · dark #012C28 :label[By scheme]{tone="info"}
-
-  The fill of a selected or current item, or a toggle that is on.
-
-  - **Pick** teal.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Dark** teal.dark.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
-
-- **Token** `color.border.selected` → `link.edge.current` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The edge that marks a selected item, beside its fill, so selection is never color alone.
-
-  - **Pick** teal.light.600: the edge beside a selected fill, so selection is never color alone, 5.47:1 on surface.default, above the 3:1 floor.
-  - **Dark** teal.dark.600: the edge beside a selected fill, so selection is never color alone, 9.9:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.focus, action.primary, category.1. Changing this pick moves only what reads color.border.selected.
-
-- **Token** `border-width.focus` → `link.edge-width.current` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
+::anatomy-steps{id="navigation-menu/card-5"}
 :::
 
 :::panel{id="part-8" title="Hover fill" note="Parts 8" media="side"}
@@ -243,21 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (moderate). Don't use brand-specific motion.
-
-  Motion is shared, so one component library behaves the same in every brand.
-
-- **Token** `color.surface.highlight` → `link.background.hover` #F1F5F9 · dark #1E293B :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, action.secondary.hover, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
+::anatomy-steps{id="navigation-menu/card-6"}
 :::
 
 :::panel{id="part-9" title="Focus ring" note="Parts 9" media="side"}
@@ -265,29 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `color.border.focus` → `link.focus-ring-focus` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.
-  - **Dark** teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `link.focus-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `link.focus-offset` 2px
-
-  - **Pick** border-width.2
+::anatomy-steps{id="navigation-menu/card-7"}
 :::
 
 ## For agents

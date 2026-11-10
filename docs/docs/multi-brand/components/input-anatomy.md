@@ -1,4 +1,5 @@
 ---
+composite_data: "./input-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 30.5
 slug: "input/anatomy"
@@ -47,11 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Field** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach] :label[Containment]
-- **2** **Value and placeholder** required :label[By scheme]{tone="info"} :label[Readability]
-- **3** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-- **4** **Invalid field** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **5** **Disabled field** state :label[By scheme]{tone="info"} :label[Feedback]
+::anatomy-legend{id="input"}
 :::
 
 ## How the decisions reach each part
@@ -63,33 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Customers sign up on phones.
-
-- **Rule** For corners of buttons and inputs, use radius.control (set by the brand). Don't use a hard-coded radius.
-
-  Each brand sets its own corner through the theme.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Customers are often on phones.
-
-- **Token** `size.control.default` → `height` 2.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.44
-
-- **Token** `radius.control` → `radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Rounded by default; each brand sets its own corner.
-
-- **Token** `space.inset.control-x` → `padding-x` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="input/card-1"}
 :::
 
 :::panel{id="part-2" title="Value and placeholder" note="Parts 2" media="side"}
@@ -97,32 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Rule** For field label or column header, use type.label. Don't use type.caption.
-
-  Labels stay readable in every brand.
-
-- **Token** `color.text.primary` → `text` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `color.text.muted` → `placeholder` #4B5A6F · dark #96A3B5 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.body.font-size` → `font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
+::anatomy-steps{id="input/card-2"}
 :::
 
 :::panel{id="part-3" title="Focus ring" note="Parts 3" media="side"}
@@ -130,29 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `color.border.focus` → `border.focus` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.
-  - **Dark** teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `focus-offset` 2px
-
-  - **Pick** border-width.2
+::anatomy-steps{id="input/card-3"}
 :::
 
 :::panel{id="part-4" title="Invalid field" note="Parts 4" media="side"}
@@ -160,21 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Brand colors vary, so meaning needs a word.
-
-- **Rule** For an error message, use color.status.danger and a sentence. Don't use the brand color.
-
-  Status colors are shared, never branded.
-
-- **Token** `color.status.danger` → `border.invalid` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="input/card-4"}
 :::
 
 :::panel{id="part-5" title="Disabled field" note="Parts 5" media="side"}
@@ -182,33 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Token** `color.disabled.surface` → `disabled.background` #F1F5F9 · dark #1E293B :label[By scheme]{tone="info"}
-
-  The fill of a control that cannot be used right now.
-
-  - **Pick** neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Dark** neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Shares the step with** surface.sunken, surface.highlight, action.secondary.hover. Changing this pick moves only what reads color.disabled.surface.
-
-- **Token** `color.disabled.border` → `disabled.border` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  The edge of a control that cannot be used right now.
-
-  - **Pick** neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Dark** neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Shares the step with** surface.pressed, border.default. Changing this pick moves only what reads color.disabled.border.
-
-- **Token** `color.disabled.text` → `disabled.text` #64748B · dark #CBD5E1 :label[By scheme]{tone="info"}
-
-  Text and icons of a control that cannot be used right now.
-
-  - **Pick** neutral.500: 4.76:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.
-  - **Dark** neutral.500: 12.02:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.
-  - **Shares the step with** border.strong. Changing this pick moves only what reads color.disabled.text.
+::anatomy-steps{id="input/card-5"}
 :::
 
 ## For agents

@@ -1,4 +1,5 @@
 ---
+composite_data: "./field-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 27.5
 slug: "field/anatomy"
@@ -47,18 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Field** required :label[Grouping]
-  - **1** **Label** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **Control** required · shown by Input :label[Affordance]
-  - **2** **Description** optional :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **3** **Error message** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-  - **4** **Invalid field** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **Choice card** optional :label[Containment] :label[Affordance]
-  - **5** **Choice card** optional :label[By scheme]{tone="info"} :label[Containment] :label[Reach]
-  - **Checkbox or radio** required · shown by Checkbox :label[Affordance]
-  - **6** **Checked choice card** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **7** **Separator** optional :label[Grouping]
-- **Separator line** optional · shown by Separator :label[Grouping]
+::anatomy-legend{id="field"}
 :::
 
 ## How the decisions reach each part
@@ -70,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Rule** For field label or column header, use type.label. Don't use type.heading.
-
-  Headers repeat on every column; a heavy style would compete with the data.
-
-- **Token** `type.label.font-size` → `label.font-size` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.12
-
-- **Token** `type.label.font-weight` → `label.font-weight` 500 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.500
+::anatomy-steps{id="field/card-1"}
 :::
 
 :::panel{id="part-2" title="Description" note="Parts 2" media="side"}
@@ -92,36 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.label.
-
-  Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.
-
-- **Token** `type.body.font-size` → `description.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `color.text.muted` → `description.label` #535D6D · dark #969FAD :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `component-spacing-map.x1` → `description.margin-top` 0.25rem
-
-  - **Pick** space.4
+::anatomy-steps{id="field/card-2"}
 :::
 
 :::panel{id="part-3" title="Error message" note="Parts 3" media="side"}
@@ -129,33 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Answer** Accessibility · Which states get their own visible value? → Hover, focus, disabled
-
-  Pressed reuses hover; experts do not need more.
-
-- **Rule** For an error message, use color.status.danger with an icon. Don't use color.status.warning.
-
-  Red always means fix this, and the icon says it without color.
-
-- **Rule** For the words of an error, use Name the record, then the fix. Flat and specific.. Don't use "Oops" or a vague apology.
-
-  Experts act on the message; the record and the fix are all they need.
-
-- **Token** `color.status.danger` → `error.label` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.28:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
-
-- **Token** `type.body.font-weight` → `error.font-weight` 400
-
-  - **Pick** font.weight.400
+::anatomy-steps{id="field/card-3"}
 :::
 
 :::panel{id="part-4" title="Invalid field" note="Parts 4" media="side"}
@@ -163,25 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Answer** Accessibility · Which states get their own visible value? → Hover, focus, disabled
-
-  Pressed reuses hover; experts do not need more.
-
-- **Rule** For an error message, use color.status.danger with an icon. Don't use color.status.warning.
-
-  Red always means fix this, and the icon says it without color.
-
-- **Token** `color.status.danger` → `input.border.invalid` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.28:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="field/card-4"}
 :::
 
 :::panel{id="part-5" title="Choice card" note="Parts 5" media="side"}
@@ -189,33 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Reach]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For corners of buttons and inputs, use radius.control. Don't use radius.round.
-
-  Small corners keep dense rows straight.
-
-- **Rule** For the smallest clickable thing, use size.control.compact. Don't use anything smaller.
-
-  Compact still fits a mouse. Touch is not this product's input.
-
-- **Token** `radius.control` → `label.radius` 0.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.2: Small corners keep dense rows straight.
-
-- **Token** `component-spacing-map.x4` → `label.padding` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `border-width.default` → `label.border-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="field/card-5"}
 :::
 
 :::panel{id="part-6" title="Checked choice card" note="Parts 6" media="side"}
@@ -223,29 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Rule** For a selected row or item, use color.surface.selected. Don't use color.action.primary as a fill.
-
-  A light tint shows selection without hiding the data.
-
-- **Token** `color.border.selected` → `label.border.checked` #4B3FD9 · dark #A9A3F6 :label[By scheme]{tone="info"}
-
-  The edge that marks a selected item, beside its fill, so selection is never color alone.
-
-  - **Pick** violet.light.600: the edge beside a selected fill, so selection is never color alone, 6.97:1 on surface.default, above the 3:1 floor.
-  - **Dark** violet.dark.600: the edge beside a selected fill, so selection is never color alone, 7.62:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.focus, action.primary, category.1. Changing this pick moves only what reads color.border.selected.
-
-- **Token** `color.surface.selected` → `label.background.checked` #E8ECFF · dark #2A244F :label[By scheme]{tone="info"}
-
-  The fill of a selected or current item, or a toggle that is on.
-
-  - **Pick** violet.light.100: a tint of the brand, 1.17:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Dark** violet.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
+::anatomy-steps{id="field/card-6"}
 :::
 
 :::panel{id="part-7" title="Separator" note="Parts 7" media="side"}
@@ -253,17 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For between page sections, use space.gap.section and a hairline. Don't use a card around every section.
-
-  Lines separate without taking room from the data.
-
-- **Token** `component-spacing-map.x2` → `separator.margin-y` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="field/card-7"}
 :::
 
 ## For agents

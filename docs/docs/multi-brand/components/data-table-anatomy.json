@@ -1,0 +1,461 @@
+{
+ "anatomy-legend": {
+  "data-table": {
+   "parts": [
+    {
+     "label": "Toolbar",
+     "need": "optional",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Search field",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Filter",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Grouping",
+        "Affordance"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Selection count",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Density switch",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability",
+        "Reach"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Columns",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Header",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 6,
+       "label": "Header row",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Header label",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 8,
+       "label": "Sort control",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Feedback"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Row",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 9,
+       "label": "Row and its line",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Reach",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 10,
+       "label": "Cell",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 11,
+       "label": "Highlight row",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "n": 12,
+       "label": "Selected row",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 13,
+       "label": "Select box",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Meaning"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Empty state",
+     "need": "state",
+     "note": "shown by Empty",
+     "byScheme": false,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "data-table/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "How often do people repeat actions?",
+     "answer": "Sometimes",
+     "why": "Customers return now and then."
+    },
+    {
+     "kind": "answer",
+     "question": "How much is on one screen?",
+     "answer": "A moderate amount",
+     "why": "A moderate amount per screen."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "input.height",
+     "value": "2.75rem",
+     "byScheme": true,
+     "pick": "size.44",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.strong",
+     "key": "button.secondary.border",
+     "value": "#64748B",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The edge of a control people must find.",
+     "pick": "neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "data-table/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "What is the main content?",
+     "answer": "Forms and tasks",
+     "why": "Product pages, sign-up and account forms."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "One set of roles across brands."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "table.header-background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "table.head.label",
+     "value": "#334155",
+     "darkValue": "#CBD5E1",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 10.35:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 12.02:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "label-hover",
+     "value": "#0F172A",
+     "darkValue": "#F8FAFC",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    }
+   ]
+  },
+  "data-table/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "How much is on one screen?",
+     "answer": "A moderate amount",
+     "why": "A moderate amount per screen."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "table row height",
+     "use": "size.row (comfortable)",
+     "not": "a compact row",
+     "why": "Customers browse on phones, and compact rows are hard to tap in any brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "a number in a table",
+     "use": "type.body",
+     "not": "a mono font",
+     "why": "Prices sit in sentences and offers, not in columns to compare, so a mono font adds nothing in any brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.row",
+     "key": "table.row-height",
+     "value": "3rem",
+     "byScheme": true,
+     "pick": "size.48",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "table.row-border",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "table.label",
+     "value": "#0F172A",
+     "darkValue": "#F8FAFC",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.data.font-family",
+     "key": "table.cell.font-family",
+     "value": "Inter, system-ui, sans-serif",
+     "byScheme": true,
+     "pick": "inter for data text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+     "shares": []
+    }
+   ]
+  },
+  "data-table/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (moderate)",
+     "not": "brand-specific motion",
+     "why": "Motion is shared, so one component library behaves the same in every brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "row.background.hover",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "data-table/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "What is the main task?",
+     "answer": "Complete a form",
+     "why": "Customers sign up and buy."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Brand colors vary, so meaning needs a word."
+    },
+    {
+     "kind": "rule",
+     "situation": "a selected row or item",
+     "use": "color.surface.selected (from the brand)",
+     "not": "a fixed blue",
+     "why": "Selection follows the brand color."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "table.row-selected",
+     "value": "#DEF3F0",
+     "darkValue": "#012C28",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "teal.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "teal.dark.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.selected",
+     "key": "table.row-selected-edge",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
+     "pick": "teal.light.600: the edge beside a selected fill, so selection is never color alone, 5.47:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "teal.dark.600: the edge beside a selected fill, so selection is never color alone, 9.9:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.focus",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "checkbox.size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

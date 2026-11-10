@@ -1,0 +1,220 @@
+{
+ "anatomy-legend": {
+  "message": {
+   "parts": [
+    {
+     "label": "Message",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "label": "Avatar",
+       "need": "optional",
+       "note": "shown by Avatar",
+       "byScheme": false,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 1,
+       "label": "Author",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Emphasis"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Time",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Body",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "message/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and editorial display",
+     "why": "A lead and a display role open articles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How many steps does the type scale take?",
+     "answer": "Fine steps, so pages can set their own rhythm",
+     "why": "Long pages need a clear hierarchy of headings, with fine steps between them."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "author.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    }
+   ]
+  },
+  "message/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "How saturated is the palette?",
+     "answer": "Balanced",
+     "why": "A calm, balanced palette."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "time.label",
+     "value": "#61594D",
+     "darkValue": "#A39A8B",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "time.font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.line-height",
+     "key": "time.line-height",
+     "value": "1.45",
+     "byScheme": true,
+     "pick": "font.line-height.1_45",
+     "shares": []
+    }
+   ]
+  },
+  "message/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, at most 65 characters a line",
+     "not": "type.caption",
+     "why": "A large size and short lines make long text easy on the eyes."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "line-height",
+     "value": "1.65",
+     "byScheme": true,
+     "pick": "font.line-height.1_65",
+     "shares": []
+    }
+   ]
+  },
+  "message/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "Which spacing roles does it need?",
+     "answer": "Gaps and insets",
+     "why": "No dense tables, so no row role."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Text needs air even inside a group."
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "gap",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "content.gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "header.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

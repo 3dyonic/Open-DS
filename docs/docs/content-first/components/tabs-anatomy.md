@@ -1,4 +1,5 @@
 ---
+composite_data: "./tabs-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 57.5
 slug: "tabs/anatomy"
@@ -47,12 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Tab list** required :label[By scheme]{tone="info"} :label[Grouping]
-- **Tab** required :label[Reach] :label[Affordance] :label[Readability]
-  - **2** **Tab label** required :label[By scheme]{tone="info"} :label[Readability]
-  - **3** **Current tab** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-  - **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-- **5** **Panel** required :label[By scheme]{tone="info"} :label[Containment]
+::anatomy-legend{id="tabs"}
 :::
 
 ## How the decisions reach each part
@@ -64,29 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Text needs air even inside a group.
-
-- **Token** `space.gap.tight` → `list.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
-
-- **Token** `color.border.default` → `list.border` #E4DDD0 · dark #4A4339 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `border-width.default` → `list.border-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="tabs/card-1"}
 :::
 
 :::panel{id="part-2" title="Tab" note="Parts 2" media="side"}
@@ -94,41 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Reach] :label[Readability]
 
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Readers are often on phones.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Answer** Typography · Which text roles does it need? → Core and editorial display
-
-  A lead and a display role open articles.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Many readers are on phones.
-
-- **Token** `size.control.default` → `trigger.height` 3rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.48
-
-- **Token** `space.inset.control-x` → `trigger.padding-x` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
-
-- **Token** `color.text.primary` → `trigger.label` #1F1B16 · dark #FFFDF8 :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `type.label.font-size` → `trigger.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
+::anatomy-steps{id="tabs/card-2"}
 :::
 
 :::panel{id="part-3" title="Current tab" note="Parts 3" media="side"}
@@ -136,37 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Status is rare; color and a word are enough.
-
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed gets its own value for touch.
-
-- **Rule** For a selected row or item, use color.surface.selected. Don't use bold text only.
-
-  A tint shows the choice clearly on warm paper.
-
-- **Token** `color.surface.selected` → `trigger.background.current` #E0E9F5 · dark #202B3B :label[By scheme]{tone="info"}
-
-  The fill of a selected or current item, or a toggle that is on.
-
-  - **Pick** navy.light.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Dark** navy.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
-
-- **Token** `color.border.selected` → `trigger.edge.current` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The edge that marks a selected item, beside its fill, so selection is never color alone.
-
-  - **Pick** navy.light.600: the edge beside a selected fill, so selection is never color alone, 11.5:1 on surface.default, above the 3:1 floor.
-  - **Dark** navy.dark.600: the edge beside a selected fill, so selection is never color alone, 6.86:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.focus, action.primary, category.1. Changing this pick moves only what reads color.border.selected.
-
-- **Token** `border-width.default` → `trigger.edge-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="tabs/card-3"}
 :::
 
 :::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
@@ -174,36 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast, with large text helping further.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `color.border.focus` → `trigger.focus-ring` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.
-  - **Dark** navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `trigger.focus-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `trigger.focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `trigger.focus-ring-offset` #FFFDF8 · dark #14110D :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="tabs/card-4"}
 :::
 
 :::panel{id="part-5" title="Panel" note="Parts 5" media="side"}
@@ -211,17 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Text needs air even inside a group.
-
-- **Token** `space.gap.default` → `content.padding-top` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="tabs/card-5"}
 :::
 
 ## For agents

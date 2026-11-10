@@ -1,0 +1,238 @@
+{
+ "anatomy-legend": {
+  "form": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Item",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Label",
+     "need": "required",
+     "note": "shown by Label",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "label": "Control",
+     "need": "required",
+     "note": "shown by Input",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Description",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Hierarchy"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Label in error",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Feedback"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Error message",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "form/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Text needs air even inside a group."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "item.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  },
+  "form/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, at most 65 characters a line",
+     "not": "type.caption",
+     "why": "A large size and short lines make long text easy on the eyes."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "description.font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "description.line-height",
+     "value": "1.65",
+     "byScheme": true,
+     "pick": "font.line-height.1_65",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "description.label",
+     "value": "#61594D",
+     "darkValue": "#A39A8B",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "form/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Status is rare; color and a word are enough."
+    },
+    {
+     "kind": "rule",
+     "situation": "an error message",
+     "use": "color.status.danger and a plain sentence",
+     "not": "color alone",
+     "why": "The sentence says what to fix; color only draws the eye."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "label.label",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    }
+   ]
+  },
+  "form/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Status is rare; color and a word are enough."
+    },
+    {
+     "kind": "answer",
+     "scope": "Voice and tone",
+     "question": "How does it sound?",
+     "answer": "Conversational",
+     "why": "Talk to one reader, like a good editor."
+    },
+    {
+     "kind": "rule",
+     "situation": "an error message",
+     "use": "color.status.danger and a plain sentence",
+     "not": "color alone",
+     "why": "The sentence says what to fix; color only draws the eye."
+    },
+    {
+     "kind": "rule",
+     "situation": "the words of an error",
+     "use": "Calm and helpful. Take the blame, offer the way forward.",
+     "not": "blaming the reader",
+     "why": "A calm error keeps the reader's trust."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "message.font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "message.line-height",
+     "value": "1.65",
+     "byScheme": true,
+     "pick": "font.line-height.1_65",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "message.label",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    }
+   ]
+  }
+ }
+}

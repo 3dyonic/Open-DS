@@ -1,0 +1,342 @@
+{
+ "anatomy-legend": {
+  "attachment": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Frame",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "File icon",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "File name",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Hierarchy",
+      "Readability"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Type and size",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Hover fill",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "n": 6,
+     "label": "Focus ring",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Focus"
+     ]
+    },
+    {
+     "label": "The message it is shared in",
+     "need": "optional",
+     "note": "shown by Message",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "attachment/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control",
+     "not": "radius.round",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.compact",
+     "not": "anything smaller",
+     "why": "Compact still fits a mouse. Touch is not this product's input."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "border",
+     "value": "#DDE2EA",
+     "darkValue": "#3D4655",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "radius",
+     "value": "0.125rem",
+     "byScheme": true,
+     "pick": "radius.2: Small corners keep dense rows straight.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "padding-y",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "attachment/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the label so they do not outweigh it."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "media.size",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "size.32",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "media.radius",
+     "value": "0.125rem",
+     "byScheme": true,
+     "pick": "radius.2: Small corners keep dense rows straight.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "media.background",
+     "value": "#EEF1F5",
+     "darkValue": "#262D38",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "surface.pressed",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "media.icon.label",
+     "value": "#535D6D",
+     "darkValue": "#969FAD",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "attachment/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and data",
+     "why": "A data role keeps numbers in aligned columns."
+    },
+    {
+     "kind": "rule",
+     "situation": "a link",
+     "use": "color.text.link",
+     "not": "color.action.primary",
+     "why": "Links and buttons look different, so people know which one navigates."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "name.font-weight",
+     "value": "500",
+     "byScheme": true,
+     "pick": "font.weight.500",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "meta.label",
+     "value": "#535D6D",
+     "darkValue": "#969FAD",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "meta.font-size",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "font.size.12",
+     "shares": []
+    }
+   ]
+  },
+  "attachment/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Hover, focus, disabled",
+     "why": "Pressed reuses hover; experts do not need more."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (fast)",
+     "not": "no transition",
+     "why": "Fast feedback confirms the pointer without slowing experts."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "background.hover",
+     "value": "#EEF1F5",
+     "darkValue": "#262D38",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "surface.pressed",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "attachment/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast for every text."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Keyboard users must always see where they are."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "focus",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "focus-ring-focus",
+     "value": "#4B3FD9",
+     "darkValue": "#A9A3F6",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

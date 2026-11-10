@@ -1,4 +1,5 @@
 ---
+composite_data: "./input-otp-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 32.5
 slug: "input-otp/anatomy"
@@ -47,13 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Slot** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach] :label[Containment]
-- **2** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-- **3** **Caret** state :label[By scheme]{tone="info"} :label[Focus] :label[Feedback]
-- **4** **Separator** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **5** **Invalid slots** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **6** **Disabled slots** state :label[By scheme]{tone="info"} :label[Feedback]
-- **Digit** required · not in this example :label[By scheme]{tone="info"} :label[Readability]
+::anatomy-legend{id="input-otp"}
 :::
 
 ## How the decisions reach each part
@@ -65,29 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Customers sign up on phones.
-
-- **Rule** For corners of buttons and inputs, use radius.control (set by the brand). Don't use a hard-coded radius.
-
-  Each brand sets its own corner through the theme.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Customers are often on phones.
-
-- **Token** `size.control.default` → `slot.size` 2.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.44
-
-- **Token** `radius.control` → `slot.radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Rounded by default; each brand sets its own corner.
+::anatomy-steps{id="input-otp/card-1"}
 :::
 
 :::panel{id="part-2" title="Focus ring" note="Parts 2" media="side"}
@@ -95,29 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `color.border.focus` → `slot.focus-ring.highlight` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.
-  - **Dark** teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `slot.focus-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `slot.focus-offset` 2px
-
-  - **Pick** border-width.2
+::anatomy-steps{id="input-otp/card-2"}
 :::
 
 :::panel{id="part-3" title="Caret" note="Parts 3" media="side"}
@@ -125,33 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus] :label[Feedback]
 
-- **Answer** Motion · How fast does feedback feel? → Moderate
-
-  Moderate speed across brands.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `size.icon` → `caret.height` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `border-width.default` → `caret.width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
-
-- **Token** `color.text.primary` → `caret.background` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `motion.duration.feedback` → `caret.duration` 200ms :label[By scheme]{tone="info"}
-
-  - **Pick** duration.moderate
+::anatomy-steps{id="input-otp/card-3"}
 :::
 
 :::panel{id="part-4" title="Separator" note="Parts 4" media="side"}
@@ -159,21 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
-
-  Spacing is shared across brands.
-
-- **Token** `size.icon` → `separator.icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `space.gap.default` → `gap` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.12
+::anatomy-steps{id="input-otp/card-4"}
 :::
 
 :::panel{id="part-5" title="Invalid slots" note="Parts 5" media="side"}
@@ -181,29 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Brand colors vary, so meaning needs a word.
-
-- **Rule** For an error message, use color.status.danger and a sentence. Don't use the brand color.
-
-  Status colors are shared, never branded.
-
-- **Token** `color.status.danger` → `slot.border-invalid` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
-
-- **Token** `color.status.danger` → `slot.focus-ring-invalid` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="input-otp/card-5"}
 :::
 
 :::panel{id="part-6" title="Disabled slots" note="Parts 6" media="side"}
@@ -211,33 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Token** `color.disabled.surface` → `slot.disabled.background` #F1F5F9 · dark #1E293B :label[By scheme]{tone="info"}
-
-  The fill of a control that cannot be used right now.
-
-  - **Pick** neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Dark** neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Shares the step with** surface.sunken, surface.highlight, action.secondary.hover. Changing this pick moves only what reads color.disabled.surface.
-
-- **Token** `color.disabled.border` → `slot.disabled.border` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  The edge of a control that cannot be used right now.
-
-  - **Pick** neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Dark** neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Shares the step with** surface.pressed, border.default. Changing this pick moves only what reads color.disabled.border.
-
-- **Token** `color.disabled.text` → `slot.disabled.text` #64748B · dark #CBD5E1 :label[By scheme]{tone="info"}
-
-  Text and icons of a control that cannot be used right now.
-
-  - **Pick** neutral.500: 4.76:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.
-  - **Dark** neutral.500: 12.02:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.
-  - **Shares the step with** border.strong. Changing this pick moves only what reads color.disabled.text.
+::anatomy-steps{id="input-otp/card-6"}
 :::
 
 ## For agents

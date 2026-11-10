@@ -1,0 +1,293 @@
+{
+ "anatomy-legend": {
+  "bubble": {
+   "parts": [
+    {
+     "label": "Bubble",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Byline",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Their message",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Meaning"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Your message",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Meaning",
+        "Emphasis"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Message text",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "bubble/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and data",
+     "why": "A data role keeps numbers in aligned columns."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Small",
+     "why": "Small body text fits more rows on the screen."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.tight",
+     "not": "space.gap.group",
+     "why": "Things that belong together sit close."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "byline.label",
+     "value": "#535D6D",
+     "darkValue": "#969FAD",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "byline.font-size",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "font.size.12",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.line-height",
+     "key": "byline.line-height",
+     "value": "1.45",
+     "byScheme": true,
+     "pick": "font.line-height.1_45",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "gap",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "space.4",
+     "shares": []
+    }
+   ]
+  },
+  "bubble/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "Which shape roles does it need?",
+     "answer": "Controls, badges and containers",
+     "why": "Badges sit in columns and need their own corner."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "body.them.background",
+     "value": "#EEF1F5",
+     "darkValue": "#262D38",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "surface.pressed",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "body.them.label",
+     "value": "#161B23",
+     "darkValue": "#F7F8FA",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "body.radius",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "radius.4: Small corners keep dense rows straight.",
+     "shares": []
+    }
+   ]
+  },
+  "bubble/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "How many emphasis levels do actions need?",
+     "answer": "Three",
+     "why": "One primary per view; the rest step back."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast for every text."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "body.me.background",
+     "value": "#4B3FD9",
+     "darkValue": "#A9A3F6",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "violet.light.600: the primary action's fill; its label reads, 6.97:1, above the 4.5:1 floor.",
+     "darkPick": "violet.dark.600: the primary action's fill; its label reads, 7.62:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.on-action",
+     "key": "body.me.label",
+     "value": "#FFFFFF",
+     "darkValue": "#161B23",
+     "byScheme": true,
+     "rule": "Text and icons on the main action's fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 6.97:1 on action.primary, above the 4.5:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 7.62:1 on action.primary, above the 4.5:1 floor.",
+     "shares": [
+      "text.inverse",
+      "text.on-danger"
+     ]
+    }
+   ]
+  },
+  "bubble/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Small",
+     "why": "Small body text fits more rows on the screen."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body",
+     "not": "type.label",
+     "why": "Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "body.font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "body.line-height",
+     "value": "1.45",
+     "byScheme": true,
+     "pick": "font.line-height.1_45",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "body.padding-x",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "body.padding-y",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

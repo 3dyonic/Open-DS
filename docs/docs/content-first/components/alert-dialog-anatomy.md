@@ -1,4 +1,5 @@
 ---
+composite_data: "./alert-dialog-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 3.5
 slug: "alert-dialog/anatomy"
@@ -47,15 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Scrim** required :label[Layering]
-- **2** **Panel** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-- **3** **Header** required :label[By scheme]{tone="info"} :label[Grouping] :label[Hierarchy]
-  - **4** **Media** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
-  - **5** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **6** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-- **7** **Footer** required :label[By scheme]{tone="info"} :label[Grouping]
-  - **Cancel** required · shown by Button :label[Affordance]
-  - **Action** required · shown by Button :label[Affordance] :label[Emphasis] :label[Meaning]
+::anatomy-legend{id="alert-dialog"}
 :::
 
 ## How the decisions reach each part
@@ -67,53 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Only what floats
-
-  Only menus and dialogs float.
-
-- **Answer** Elevation · How soft are shadows? → Soft
-
-  Soft shadows suit warm paper.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow.
-
-  The dimmed page focuses the reader on the dialog.
-
-- **Token** `color.surface.scrim` → `overlay.background` #0000008C · dark #000000B3
-
-  The see-through layer behind a modal.
-
-  - **Pick** black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.
-  - **Dark** black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.
-
-- **Token** `color.surface.raised` → `content.background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `elevation.overlay` → `content.shadow` 0px 12px 32px, #1F1B1629 · dark 0px 12px 32px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Soft shadows suit warm paper.
-  - **Dark** shadow.overlay-dark: Soft shadows suit warm paper.
-
-- **Token** `radius.surface` → `content.radius` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.12: Rounded corners feel friendly.
-
-- **Token** `color.border.default` → `content.border` #E4DDD0 · dark #4A4339 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="alert-dialog/card-1"}
 :::
 
 :::panel{id="part-2" title="Room inside the panel" note="Parts 2" media="side"}
@@ -121,21 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Text needs air even inside a group.
-
-- **Token** `space.inset.container` → `content.padding` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `space.gap.group` → `content.gap` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.32
+::anatomy-steps{id="alert-dialog/card-2"}
 :::
 
 :::panel{id="part-4" title="Media" note="Parts 4" media="side"}
@@ -143,37 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Emphasis]
 
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the text size.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Rule** For delete or remove, use Button secondary with the full verb, then confirm with Button danger. Don't use button primary.
-
-  Naming the verb and confirming prevents a mistake.
-
-- **Token** `color.surface.sunken` → `media.background` #F6F2EA · dark #2E2A24 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `radius.control` → `media.radius` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.8: Rounded corners feel friendly.
-
-- **Token** `size.control.default` → `media.size` 3rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.48
-
-- **Token** `component-spacing-map.x2` → `media.margin-bottom` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="alert-dialog/card-3"}
 :::
 
 :::panel{id="part-3-5-6" title="The question" note="Parts 3, 5, 6" media="side"}
@@ -181,56 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and editorial display
-
-  A lead and a display role open articles.
-
-- **Answer** Typography · How large is body text? → Large
-
-  Large body text is easy on the eyes.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Reading needs few color roles.
-
-- **Answer** How much is on one screen? → One idea at a time
-
-  One idea per screen keeps reading calm.
-
-- **Rule** For a confirmation question, use Gentle and clear about what changes. Don't use guilt or pressure.
-
-  Readers come back when leaving felt respectful.
-
-- **Rule** For paragraph or help text, use type.body, at most 65 characters a line. Don't use type.caption.
-
-  A large size and short lines make long text easy on the eyes.
-
-- **Token** `type.heading.font-family` → `title.font-family` "Source Serif 4", Georgia, serif :label[By scheme]{tone="info"}
-
-  - **Pick** source-serif-4 for heading text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.
-
-- **Token** `type.heading.font-size` → `title.font-size` 1.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.28
-
-- **Token** `type.heading.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `type.body.font-size` → `description.font-size` 1.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.18
-
-- **Token** `color.text.secondary` → `description.label` #4A4339 · dark #CFC6B6 :label[By scheme]{tone="info"}
-
-  Supporting text.
-
-  - **Pick** neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `component-spacing-map.x2` → `header.gap` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="alert-dialog/card-4"}
 :::
 
 :::panel{id="part-7" title="Footer" note="Parts 7" media="side"}
@@ -238,25 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For the action that completes the task, use Button primary, one per section. Don't use two primaries side by side.
-
-  One clear action per section. Two primaries make the reader choose before they have read.
-
-- **Rule** For an alternative or cancel, use Button ghost as a text link. Don't use a second boxed button.
-
-  A link feels lighter and does not compete.
-
-- **Rule** For delete or remove, use Button secondary with the full verb, then confirm with Button danger. Don't use button primary.
-
-  Naming the verb and confirming prevents a mistake.
-
-- **Token** `space.gap.default` → `footer.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="alert-dialog/card-5"}
 :::
 
 ## For agents

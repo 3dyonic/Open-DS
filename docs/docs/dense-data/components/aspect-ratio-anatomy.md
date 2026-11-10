@@ -1,4 +1,5 @@
 ---
+composite_data: "./aspect-ratio-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 4.5
 slug: "aspect-ratio/anatomy"
@@ -47,8 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Frame** required :label[Containment]
-- **2** **Media** required :label[Readability]
+::anatomy-legend{id="aspect-ratio"}
 :::
 
 ## How the decisions reach each part
@@ -60,7 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment]
 
-
+::anatomy-steps{id="aspect-ratio/card-1"}
 :::
 
 :::panel{id="part-2" title="Media" note="Parts 2" media="side"}
@@ -68,7 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-
+::anatomy-steps{id="aspect-ratio/card-2"}
 :::
 
 ## For agents

@@ -1,0 +1,195 @@
+{
+ "anatomy-legend": {
+  "date-picker": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Trigger",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Calendar icon",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Date",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Placeholder",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Feedback"
+     ]
+    },
+    {
+     "label": "Calendar",
+     "need": "required",
+     "note": "shown by Calendar",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "date-picker/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Visitors come from social posts on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control (pill)",
+     "not": "sharp corners",
+     "why": "Pills match the brand's round, playful shapes. Sharp corners would feel corporate."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Most visitors arrive on phones, and a compact control is too small for a thumb."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "button.height",
+     "value": "3.25rem",
+     "byScheme": true,
+     "pick": "size.52",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "button.radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": true,
+     "pick": "radius.pill: Pill controls feel playful.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.strong",
+     "key": "button.secondary.border",
+     "value": "#8A6F63",
+     "darkValue": "#B5988A",
+     "byScheme": true,
+     "rule": "The edge of a control people must find.",
+     "pick": "neutral.500: the edge of a control people must find, 4.63:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.400: the edge of a control people must find, 6.71:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "button.icon-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    }
+   ]
+  },
+  "date-picker/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body; the display does the shouting."
+    },
+    {
+     "kind": "rule",
+     "situation": "field label or column header",
+     "use": "type.label",
+     "not": "type.caption",
+     "why": "Labels stay readable on vivid color."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-weight",
+     "key": "font-weight",
+     "value": "400",
+     "byScheme": false,
+     "pick": "font.weight.400",
+     "shares": []
+    }
+   ]
+  },
+  "date-picker/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body; the display does the shouting."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "rule",
+     "situation": "an empty state",
+     "use": "Playful, with a clear next step",
+     "not": "a dead end",
+     "why": "Playful words still need a way forward."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#6B544A",
+     "darkValue": "#B5988A",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

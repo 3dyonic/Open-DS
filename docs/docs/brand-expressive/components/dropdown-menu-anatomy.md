@@ -1,4 +1,5 @@
 ---
+composite_data: "./dropdown-menu-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 25.5
 slug: "dropdown-menu/anatomy"
@@ -47,20 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Menu** required
-  - **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-  - **2** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-- **Item** required :label[Readability] :label[Reach] :label[Affordance]
-  - **3** **Item label** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **4** **Item icon** optional :label[By scheme]{tone="info"} :label[Meaning]
-  - **5** **Shortcut** optional · no token yet :label[Hierarchy]
-  - **6** **Submenu chevron** optional · no token yet :label[Affordance]
-  - **7** **Highlight fill** state :label[By scheme]{tone="info"} :label[Feedback]
-  - **8** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-  - **9** **Disabled item** state :label[By scheme]{tone="info"} :label[Feedback]
-  - **10** **Destructive item** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
-- **11** **Separator** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **Group label** optional · not in this example :label[Hierarchy] :label[Grouping]
+::anatomy-legend{id="dropdown-menu"}
 :::
 
 ## How the decisions reach each part
@@ -72,30 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Cards too
-
-  Cards lift to feel like objects.
-
-- **Answer** Elevation · How soft are shadows? → Pronounced
-
-  Pronounced shadows add depth.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow.
-
-  Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.
-
-- **Token** `color.surface.raised` → `overlay.background` #FFFFFF · dark #1F1411 :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `elevation.overlay` → `overlay.shadow` 0px 24px 48px, #1F141133 · dark 0px 24px 48px, #00000099 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Pronounced shadows add depth.
-  - **Dark** shadow.overlay-dark: Pronounced shadows add depth.
+::anatomy-steps{id="dropdown-menu/card-1"}
 :::
 
 :::panel{id="part-3-4-5" title="Item" note="Parts 3, 4, 5" media="side"}
@@ -103,33 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Reach] :label[Affordance]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body; the display does the shouting.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Big space makes big moments.
-
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Visitors come from social posts on phones.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Most visitors arrive on phones, and a compact control is too small for a thumb.
-
-- **Token** `type.body.font-size` → `item.font-size` 1.0625rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.17
-
-- **Token** `space.inset.cell-x` → `item.padding-x` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `size.control.default` → `overlay.item-height` 3.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.52
+::anatomy-steps{id="dropdown-menu/card-2"}
 :::
 
 :::panel{id="part-7" title="Highlight fill" note="Parts 7" media="side"}
@@ -137,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Answer** Motion · How fast does feedback feel? → Fast
-
-  Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (fast). Don't use an instant change.
-
-  Fast feedback, on the brand's spring. An instant change drops the brand's motion.
-
-- **Token** `color.surface.highlight` → `item.background.highlight` #FCEFE6 · dark #33241F :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
+::anatomy-steps{id="dropdown-menu/card-3"}
 :::
 
 :::panel{id="part-8" title="Focus ring" note="Parts 8" media="side"}
@@ -163,25 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA, checked on every vivid color.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Focus must show on vivid color.
-
-- **Token** `color.border.focus` no key of its own yet #D61F7A · dark #F59ACA :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.
-  - **Dark** pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` no key of its own yet 3px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.3
+::anatomy-steps{id="dropdown-menu/card-4"}
 :::
 
 :::panel{id="part-9" title="Disabled item" note="Parts 9" media="side"}
@@ -189,13 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Token** `opacity.disabled` → `item.disabled` 0.4 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.40
+::anatomy-steps{id="dropdown-menu/card-5"}
 :::
 
 :::panel{id="part-10" title="Destructive item" note="Parts 10" media="side"}
@@ -203,21 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Emphasis]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Color and word.
-
-- **Rule** For delete or remove, use Button secondary, then confirm with Button danger. Don't use button primary.
-
-  Confirm before destroying data.
-
-- **Token** `color.status.danger` → `item.label.destructive` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.58:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="dropdown-menu/card-6"}
 :::
 
 :::panel{id="part-11" title="Separator" note="Parts 11" media="side"}
@@ -225,21 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Elevation · What separates groups on the page? → Cards
-
-  Cards hold each offer.
-
-- **Rule** For between page sections, use space.gap.section and a color block. Don't use a thin line.
-
-  Big space and color make each section a moment.
-
-- **Token** `color.border.default` → `separator.background` #F2DCCF · dark #4D3A33 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="dropdown-menu/card-7"}
 :::
 
 ## For agents

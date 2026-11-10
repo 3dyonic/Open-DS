@@ -1,4 +1,5 @@
 ---
+composite_data: "./slider-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 53.5
 slug: "slider/anatomy"
@@ -47,12 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Track** required :label[By scheme]{tone="info"} :label[Containment]
-- **2** **Range** required :label[By scheme]{tone="info"} :label[Meaning]
-- **3** **Thumb** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-- **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-- **5** **Disabled slider** state :label[By scheme]{tone="info"} :label[Feedback]
-- **Label** required · shown by Label :label[Readability]
+::anatomy-legend{id="slider"}
 :::
 
 ## How the decisions reach each part
@@ -64,33 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Meaning]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Reading needs few color roles.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Token** `color.surface.sunken` → `track.background` #F6F2EA · dark #2E2A24 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `radius.pill` → `track.radius` calc(infinity * 1px)
-
-  - **Pick** radius.pill
-
-- **Token** `color.action.primary` → `range.background` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.
-  - **Dark** navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
+::anatomy-steps{id="slider/card-1"}
 :::
 
 :::panel{id="part-3" title="Thumb" note="Parts 3" media="side"}
@@ -98,49 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Readers are often on phones.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Answer** Elevation · How soft are shadows? → Soft
-
-  Soft shadows suit warm paper.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Many readers are on phones.
-
-- **Token** `size.icon` → `thumb.icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `radius.round` → `thumb.radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `color.action.primary` → `thumb.border` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.
-  - **Dark** navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
-
-- **Token** `color.surface.default` → `thumb.background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
-
-  The base fill for content.
-
-  - **Pick** neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.
-  - **Dark** neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.
-  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
-
-- **Token** `elevation.card` → `thumb.shadow` 0px 0px 0px, #00000000 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.none: Only menus and dialogs float.
+::anatomy-steps{id="slider/card-2"}
 :::
 
 :::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
@@ -148,36 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast, with large text helping further.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `color.border.focus` → `thumb.focus-ring-focus` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.
-  - **Dark** navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `thumb.focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `thumb.focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `thumb.focus-ring-offset-focus` #FFFDF8 · dark #14110D :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="slider/card-3"}
 :::
 
 :::panel{id="part-5" title="Disabled slider" note="Parts 5" media="side"}
@@ -185,17 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed gets its own value for touch.
-
-- **Token** `opacity.disabled` → `disabled-opacity-disabled` 0.4 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.40
-
-- **Token** `opacity.disabled` → `thumb.disabled-opacity-disabled` 0.4 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.40
+::anatomy-steps{id="slider/card-4"}
 :::
 
 ## For agents

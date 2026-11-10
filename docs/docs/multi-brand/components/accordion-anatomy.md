@@ -1,4 +1,5 @@
 ---
+composite_data: "./accordion-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 1.5
 slug: "accordion/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Item** required :label[Grouping]
-  - **1** **Item and its divider** required :label[By scheme]{tone="info"} :label[Grouping]
-  - **2** **Trigger** required :label[By scheme]{tone="info"} :label[Affordance] :label[Hierarchy] :label[Reach]
-  - **3** **Chevron** required :label[By scheme]{tone="info"} :label[Affordance] :label[Feedback]
-  - **4** **Open item** state :label[By scheme]{tone="info"} :label[Feedback] :label[Meaning]
-  - **5** **Content** required :label[By scheme]{tone="info"} :label[Readability]
-  - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-  - **7** **Disabled trigger** state :label[By scheme]{tone="info"} :label[Feedback]
+::anatomy-legend{id="accordion"}
 :::
 
 ## How the decisions reach each part
@@ -66,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Rule** For between page sections, use space.gap.section and cards. Don't use lines.
-
-  Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart.
-
-- **Token** `border-width.default` → `item.divider.width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="accordion/card-1"}
 :::
 
 :::panel{id="part-2" title="Trigger" note="Parts 2" media="side"}
@@ -88,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Hierarchy] :label[Reach]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Customers are often on phones.
-
-- **Token** `color.text.primary` → `trigger.label` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `type.label.font-weight` → `trigger.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `space.inset.container` → `trigger.padding-y` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `space.gap.group` → `trigger.gap` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
+::anatomy-steps{id="accordion/card-2"}
 :::
 
 :::panel{id="part-3-4" title="Chevron and open item" note="Parts 3, 4" media="side"}
@@ -126,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Feedback]
 
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the text.
-
-- **Answer** Motion · How fast does feedback feel? → Moderate
-
-  Moderate speed across brands.
-
-- **Rule** For someone asked for less motion, use Reduced motion. Don't use full motion.
-
-  Motion is reduced, not removed: a fade keeps the change visible, and nothing slides.
-
-- **Token** `size.icon` → `icon.size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `motion.duration.feedback` → `icon.duration` 200ms :label[By scheme]{tone="info"}
-
-  - **Pick** duration.moderate
+::anatomy-steps{id="accordion/card-3"}
 :::
 
 :::panel{id="part-5" title="Content" note="Parts 5" media="side"}
@@ -152,25 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.caption.
-
-  Regular body size suits every brand.
-
-- **Token** `type.body.font-size` → `content.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `space.inset.container` → `content.padding-bottom` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
+::anatomy-steps{id="accordion/card-4"}
 :::
 
 :::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
@@ -178,28 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `border-width.focus` → `trigger.focus-ring.width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `trigger.focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `trigger.focus-ring-offset-focus` #F8FAFC · dark #020617 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="accordion/card-5"}
 :::
 
 :::panel{id="part-7" title="Disabled trigger" note="Parts 7" media="side"}
@@ -207,13 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Token** `opacity.disabled` → `trigger.disabled.opacity` 0.4 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.40
+::anatomy-steps{id="accordion/card-6"}
 :::
 
 ## For agents

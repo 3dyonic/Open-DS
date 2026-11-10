@@ -1,0 +1,128 @@
+{
+ "anatomy-legend": {
+  "progress": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Track",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Indicator",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Feedback"
+     ]
+    },
+    {
+     "label": "Label and value",
+     "need": "optional",
+     "note": "shown by the page, beside the bar",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "progress/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "background",
+     "value": "#EEF1F5",
+     "darkValue": "#262D38",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "surface.pressed",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "progress/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.pill",
+     "key": "radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": false,
+     "pick": "radius.pill",
+     "shares": []
+    }
+   ]
+  },
+  "progress/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Fast",
+     "why": "Fast feedback keeps up with experts."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "No motion",
+     "not": "a shorter version of the motion",
+     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "indicator.background",
+     "value": "#4B3FD9",
+     "darkValue": "#A9A3F6",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "violet.light.600: the primary action's fill; its label reads, 6.97:1, above the 4.5:1 floor.",
+     "darkPick": "violet.dark.600: the primary action's fill; its label reads, 7.62:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    }
+   ]
+  }
+ }
+}

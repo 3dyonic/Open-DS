@@ -1,4 +1,5 @@
 ---
+composite_data: "./label-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 35.5
 slug: "label/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Label text** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-- **2** **Gap to its mark** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **Field** required · shown by Input :label[Affordance]
-- **Checkbox** optional · shown by Checkbox :label[Affordance]
+::anatomy-legend{id="label"}
 :::
 
 ## How the decisions reach each part
@@ -62,33 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · How large is body text? → Large
-
-  Large text is readable for more people.
-
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Rule** For field label or column header, use type.label, above the field, always visible. Don't use a placeholder as the label.
-
-  Labels must stay visible while typing.
-
-- **Token** `type.label.font-size` → `font-size` 1.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.18
-
-- **Token** `type.label.font-weight` → `font-weight` 700 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.700
-
-- **Token** `type.label.font-family` → `font-family` "Atkinson Hyperlegible", Verdana, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.
-
-- **Token** `type.label.line-height` → `line-height` 1.6 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_6
+::anatomy-steps{id="label/card-1"}
 :::
 
 :::panel{id="part-1" title="Text color" note="Parts 1" media="side"}
@@ -96,25 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AAA for text
-
-  AAA contrast for text.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Rule** For field label or column header, use type.label, above the field, always visible. Don't use a placeholder as the label.
-
-  Labels must stay visible while typing.
-
-- **Token** `color.text.primary` → `label` #141414 · dark #F7F7F7 :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+::anatomy-steps{id="label/card-2"}
 :::
 
 :::panel{id="part-2" title="Gap to its mark" note="Parts 2" media="side"}
@@ -122,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Generous space lowers mis-taps.
-
-- **Token** `space.gap.default` → `gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="label/card-3"}
 :::
 
 ## For agents

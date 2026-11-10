@@ -1,4 +1,5 @@
 ---
+composite_data: "./label-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 35.5
 slug: "label/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Label text** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-- **2** **Gap to its mark** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **Field** required · shown by Input :label[Affordance]
-- **Checkbox** optional · shown by Checkbox :label[Affordance]
+::anatomy-legend{id="label"}
 :::
 
 ## How the decisions reach each part
@@ -62,33 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · How large is body text? → Large
-
-  Large body text is easy on the eyes.
-
-- **Answer** Typography · Which text roles does it need? → Core and editorial display
-
-  A lead and a display role open articles.
-
-- **Rule** For field label or column header, use type.label. Don't use type.caption.
-
-  Caption is too faint for a label people must read.
-
-- **Token** `type.label.font-size` → `font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.label.font-weight` → `font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `type.label.font-family` → `font-family` Inter, system-ui, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** inter for label text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.
-
-- **Token** `type.label.line-height` → `line-height` 1.45 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_45
+::anatomy-steps{id="label/card-1"}
 :::
 
 :::panel{id="part-1" title="Text color" note="Parts 1" media="side"}
@@ -96,25 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast, with large text helping further.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Reading needs few color roles.
-
-- **Rule** For field label or column header, use type.label. Don't use type.caption.
-
-  Caption is too faint for a label people must read.
-
-- **Token** `color.text.primary` → `label` #1F1B16 · dark #FFFDF8 :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+::anatomy-steps{id="label/card-2"}
 :::
 
 :::panel{id="part-2" title="Gap to its mark" note="Parts 2" media="side"}
@@ -122,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Text needs air even inside a group.
-
-- **Token** `space.gap.default` → `gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="label/card-3"}
 :::
 
 ## For agents

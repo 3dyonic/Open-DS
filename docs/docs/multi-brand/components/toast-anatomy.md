@@ -1,4 +1,5 @@
 ---
+composite_data: "./toast-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 59.5
 slug: "toast/anatomy"
@@ -47,13 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Toast** required :label[Containment]
-  - **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment]
-  - **2** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-  - **3** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **4** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-  - **5** **Tone edge** optional :label[By scheme]{tone="info"} :label[Meaning]
-  - **Action** optional · shown by Button :label[Affordance]
+::anatomy-legend{id="toast"}
 :::
 
 ## How the decisions reach each part
@@ -65,42 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Cards too
-
-  Cards lift slightly to group offers.
-
-- **Answer** Elevation · How soft are shadows? → Soft
-
-  Soft shadows fit every brand.
-
-- **Answer** Shape · Which shape roles does it need? → Controls, badges and containers
-
-  Each brand sets three corners.
-
-- **Token** `color.surface.raised` → `background` #FFFFFF · dark #0F172A :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `radius.surface` → `radius` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.8: Rounded by default; each brand sets its own corner.
-
-- **Token** `color.border.default` → `neutral.border` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `elevation.overlay` → `shadow` 0px 12px 32px, #0F172A29 · dark 0px 12px 32px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Soft shadows fit every brand.
-  - **Dark** shadow.overlay-dark: Soft shadows fit every brand.
+::anatomy-steps{id="toast/card-1"}
 :::
 
 :::panel{id="part-3" title="Title" note="Parts 3" media="side"}
@@ -108,33 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Voice and tone · How is the voice defined? → A shared core, brand tone on top
-
-  Errors and confirmations are shared; brand tone sits on top.
-
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Rule** For a success message, use Brand tone allowed: Aster calm, Birch friendly, Coral upbeat. Don't use the same flat line in every brand.
-
-  Success is a safe moment for brand tone.
-
-- **Token** `type.label.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `type.body.font-size` → `title.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `color.text.primary` → `label` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+::anatomy-steps{id="toast/card-2"}
 :::
 
 :::panel{id="part-4" title="Description" note="Parts 4" media="side"}
@@ -142,32 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Voice and tone · How is the voice defined? → A shared core, brand tone on top
-
-  Errors and confirmations are shared; brand tone sits on top.
-
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Rule** For the words of an error, use Shared across brands: plain and specific. Don't use brand tone in errors.
-
-  Errors read the same in every brand, so support can help anyone.
-
-- **Token** `color.text.secondary` → `description.label` #334155 · dark #CBD5E1 :label[By scheme]{tone="info"}
-
-  Supporting text.
-
-  - **Pick** neutral.700: supporting text, 10.35:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.500: supporting text, 12.02:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.caption.font-size` → `description.font-size` 0.8125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.13
-
-- **Token** `space.gap.tight` → `content.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="toast/card-3"}
 :::
 
 :::panel{id="part-5" title="Tone edge" note="Parts 5" media="side"}
@@ -175,33 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Brand colors vary, so meaning needs a word.
-
-- **Answer** Color · Where does color carry meaning first? → Brand moments
-
-  Brand color shows on actions and headlines.
-
-- **Rule** For a status, use Badge with a word. Don't use a brand color as status.
-
-  Brand hues vary, so meaning needs a word.
-
-- **Token** `color.status.success` → `success.edge` #1F7A3A · dark #5CC283
-
-  Confirmation that something worked. It sits outside the urgency order.
-
-  - **Pick** green.light.600: success reads as text and icons, 5.38:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** green.dark.600: success reads as text and icons, 8.08:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** category.5. Changing this pick moves only what reads color.status.success.
-
-- **Token** `color.status.danger` → `danger.edge` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="toast/card-4"}
 :::
 
 ## For agents

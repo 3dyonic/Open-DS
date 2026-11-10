@@ -1,4 +1,5 @@
 ---
+composite_data: "./sheet-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 50.5
 slug: "sheet/anatomy"
@@ -47,17 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Trigger** required · shown by Button :label[Affordance]
-- **1** **Scrim** required :label[Layering]
-- **2** **Panel** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-- **3** **Header** required :label[By scheme]{tone="info"} :label[Grouping] :label[Hierarchy]
-  - **4** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **5** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-- **6** **Footer** optional :label[By scheme]{tone="info"} :label[Grouping]
-  - **Actions** optional · shown by Button :label[Affordance] :label[Emphasis]
-- **7** **Close button** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-- **8** **Close hover fill** state :label[By scheme]{tone="info"} :label[Feedback]
-- **9** **Close focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+::anatomy-legend{id="sheet"}
 :::
 
 ## How the decisions reach each part
@@ -69,44 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Only what floats
-
-  Only menus and dialogs float; cards use lines.
-
-- **Answer** Elevation · How soft are shadows? → Subtle
-
-  Subtle shadows keep the grid crisp.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page for dialogs. Don't use a border only.
-
-  Floating things need a shadow so they read as on top.
-
-- **Token** `color.surface.scrim` → `overlay.background` #0000008C · dark #000000B3
-
-  The see-through layer behind a modal.
-
-  - **Pick** black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.
-  - **Dark** black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.
-
-- **Token** `color.surface.canvas` → `content.background` #F7F8FA · dark #0D1117 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `elevation.overlay` → `content.shadow` 0px 8px 24px, #0D111729 · dark 0px 8px 24px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Subtle shadows keep the grid crisp.
-  - **Dark** shadow.overlay-dark: Subtle shadows keep the grid crisp.
-
-- **Token** `color.border.default` → `content.border` #DDE2EA · dark #3D4655 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="sheet/card-1"}
 :::
 
 :::panel{id="part-2-3-6" title="Room inside the panel" note="Parts 2, 3, 6" media="side"}
@@ -114,25 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For items that belong together, use space.gap.tight. Don't use space.gap.group.
-
-  Things that belong together sit close.
-
-- **Token** `space.gap.group` → `content.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.inset.container` → `header.padding` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.inset.container` → `footer.padding` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="sheet/card-2"}
 :::
 
 :::panel{id="part-4-5" title="Title and description" note="Parts 4, 5" media="side"}
@@ -140,56 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Answer** Typography · How large is body text? → Small
-
-  Small body text fits more rows on the screen.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.label.
-
-  Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.
-
-- **Token** `type.heading.font-family` → `title.font-family` "IBM Plex Sans", system-ui, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** ibm-plex-sans for heading text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.
-
-- **Token** `type.heading.font-size` → `title.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.heading.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `color.text.primary` → `title.label` #161B23 · dark #F7F8FA :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `type.body.font-size` → `description.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `color.text.secondary` → `description.label` #3D4655 · dark #C4CBD6 :label[By scheme]{tone="info"}
-
-  Supporting text.
-
-  - **Pick** neutral.700: supporting text, 9.52:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.500: supporting text, 10.58:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `component-spacing-map.x2` → `header.gap` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="sheet/card-3"}
 :::
 
 :::panel{id="part-6" title="Footer" note="Parts 6" media="side"}
@@ -197,25 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Reach]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For the action that completes the task, use Button primary, one per view. Don't use two primaries side by side.
-
-  One primary makes the committing action obvious.
-
-- **Rule** For an alternative or cancel, use Button secondary. Don't use button ghost.
-
-  A ghost button has no edge, so next to a filled primary it reads as plain text and cancel gets lost. Secondary keeps a visible border, so people find it at once.
-
-- **Token** `space.gap.default` → `footer.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
-
-- **Token** `space.inset.container` → `footer.padding` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="sheet/card-4"}
 :::
 
 :::panel{id="part-7-8-9" title="Close button" note="Parts 7, 8, 9" media="side"}
@@ -223,68 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach] :label[Feedback] :label[Focus]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the label so they do not outweigh it.
-
-- **Answer** Accessibility · Which states get their own visible value? → Hover, focus, disabled
-
-  Pressed reuses hover; experts do not need more.
-
-- **Rule** For an icon with no label, use Icon button with a tooltip. Don't use a bare icon.
-
-  Experts learn icons; the tooltip covers the first uses.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (fast). Don't use no transition.
-
-  Fast feedback confirms the pointer without slowing experts.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `radius.control` → `close.radius` 0.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.2: Small corners keep dense rows straight.
-
-- **Token** `size.icon` → `close.icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `color.text.secondary` → `close.label` #3D4655 · dark #C4CBD6 :label[By scheme]{tone="info"}
-
-  Supporting text.
-
-  - **Pick** neutral.700: supporting text, 9.52:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.500: supporting text, 10.58:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `color.surface.highlight` → `close.background.hover` #EEF1F5 · dark #262D38 :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
-
-- **Token** `color.border.focus` → `close.focus-ring.color` #4B3FD9 · dark #A9A3F6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.
-  - **Dark** violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `close.focus-ring.width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `close.focus-offset` 2px
-
-  - **Pick** border-width.2
+::anatomy-steps{id="sheet/card-5"}
 :::
 
 ## For agents

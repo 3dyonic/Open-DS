@@ -1,4 +1,5 @@
 ---
+composite_data: "./drawer-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 24.5
 slug: "drawer/anatomy"
@@ -47,15 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Trigger** required · shown by Button :label[Affordance]
-- **1** **Scrim** required :label[Layering]
-- **2** **Panel** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-- **3** **Handle** optional :label[By scheme]{tone="info"} :label[Affordance]
-- **4** **Header** required :label[By scheme]{tone="info"} :label[Grouping] :label[Hierarchy]
-  - **5** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **6** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-- **7** **Footer** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Reach]
-  - **Actions** optional · shown by Button :label[Affordance] :label[Emphasis]
+::anatomy-legend{id="drawer"}
 :::
 
 ## How the decisions reach each part
@@ -67,52 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Only what floats
-
-  Only menus and dialogs float; cards use lines.
-
-- **Answer** Elevation · How soft are shadows? → Subtle
-
-  Subtle shadows keep the grid crisp.
-
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page for dialogs. Don't use a border only.
-
-  Floating things need a shadow so they read as on top.
-
-- **Token** `color.surface.scrim` → `overlay.background` #0000008C · dark #000000B3
-
-  The see-through layer behind a modal.
-
-  - **Pick** black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.
-  - **Dark** black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.
-
-- **Token** `color.surface.canvas` → `content.background` #F7F8FA · dark #0D1117 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `elevation.overlay` → `content.shadow` 0px 8px 24px, #0D111729 · dark 0px 8px 24px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Subtle shadows keep the grid crisp.
-  - **Dark** shadow.overlay-dark: Subtle shadows keep the grid crisp.
-
-- **Token** `radius.surface` → `content.radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Small corners keep dense rows straight.
-
-- **Token** `color.border.default` → `content.border` #DDE2EA · dark #3D4655 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="drawer/card-1"}
 :::
 
 :::panel{id="part-3" title="Handle" note="Parts 3" media="side"}
@@ -120,29 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Token** `color.surface.sunken` → `handle.background` #EEF1F5 · dark #262D38 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `radius.pill` → `handle.radius` calc(infinity * 1px)
-
-  - **Pick** radius.pill
-
-- **Token** `space.inset.container` → `handle.margin-top` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="drawer/card-2"}
 :::
 
 :::panel{id="part-4-5-6" title="Title and description" note="Parts 4, 5, 6" media="side"}
@@ -150,56 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Answer** Typography · How large is body text? → Small
-
-  Small body text fits more rows on the screen.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.label.
-
-  Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.
-
-- **Rule** For items that belong together, use space.gap.tight. Don't use space.gap.group.
-
-  Things that belong together sit close.
-
-- **Token** `type.heading.font-family` → `title.font-family` "IBM Plex Sans", system-ui, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** ibm-plex-sans for heading text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.
-
-- **Token** `type.heading.font-size` → `title.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.heading.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `type.body.font-size` → `description.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `color.text.secondary` → `description.label` #3D4655 · dark #C4CBD6 :label[By scheme]{tone="info"}
-
-  Supporting text.
-
-  - **Pick** neutral.700: supporting text, 9.52:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.500: supporting text, 10.58:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `component-spacing-map.hairline` → `header.gap` 0.125rem
-
-  - **Pick** space.2
-
-- **Token** `space.inset.container` → `header.padding` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="drawer/card-3"}
 :::
 
 :::panel{id="part-7" title="Footer" note="Parts 7" media="side"}
@@ -207,25 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Reach]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For the action that completes the task, use Button primary, one per view. Don't use two primaries side by side.
-
-  One primary makes the committing action obvious.
-
-- **Rule** For an alternative or cancel, use Button secondary. Don't use button ghost.
-
-  A ghost button has no edge, so next to a filled primary it reads as plain text and cancel gets lost. Secondary keeps a visible border, so people find it at once.
-
-- **Token** `space.gap.default` → `footer.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
-
-- **Token** `space.inset.container` → `footer.padding` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="drawer/card-4"}
 :::
 
 ## For agents

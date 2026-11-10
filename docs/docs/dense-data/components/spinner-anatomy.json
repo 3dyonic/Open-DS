@@ -1,0 +1,92 @@
+{
+ "anatomy-legend": {
+  "spinner": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Spinner",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Spin",
+     "need": "state",
+     "noToken": true,
+     "byScheme": false,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "spinner/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the label so they do not outweigh it."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What icon style?",
+     "answer": "Outline",
+     "why": "Outline icons stay light next to dense text."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Icon button with a tooltip",
+     "not": "a bare icon",
+     "why": "Experts learn icons; the tooltip covers the first uses."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "spinner/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the label so they do not outweigh it."
+    }
+   ]
+  },
+  "spinner/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Fast",
+     "why": "Fast feedback keeps up with experts."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "No motion",
+     "not": "a shorter version of the motion",
+     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+    }
+   ]
+  }
+ }
+}

@@ -1,4 +1,5 @@
 ---
+composite_data: "./toggle-group-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 61.5
 slug: "toggle-group/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Group** required :label[By scheme]{tone="info"} :label[Grouping]
-- **2** **Item** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-- **3** **End corners** required :label[By scheme]{tone="info"} :label[Grouping] :label[Containment]
-- **On, hover and focus of an item** state · shown by Toggle :label[Meaning] :label[Feedback] :label[Focus]
+::anatomy-legend{id="toggle-group"}
 :::
 
 ## How the decisions reach each part
@@ -62,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Big space makes big moments.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Air keeps big type readable.
-
-- **Token** `radius.control` → `radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
-
-  - **Pick** radius.pill: Pill controls feel playful.
+::anatomy-steps{id="toggle-group/card-1"}
 :::
 
 :::panel{id="part-2" title="Item" note="Parts 2" media="side"}
@@ -80,21 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Big space makes big moments.
-
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Visitors come from social posts on phones.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Most visitors arrive on phones, and a compact control is too small for a thumb.
-
-- **Token** `space.inset.control-x` → `item.padding-x` 1.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.28
+::anatomy-steps{id="toggle-group/card-2"}
 :::
 
 :::panel{id="part-3" title="End corners" note="Parts 3" media="side"}
@@ -102,21 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Containment]
 
-- **Answer** Shape · What should control corners say? → Pill
-
-  Pill controls feel playful.
-
-- **Rule** For corners of buttons and inputs, use radius.control (pill). Don't use sharp corners.
-
-  Pills match the brand's round, playful shapes. Sharp corners would feel corporate.
-
-- **Token** `radius.control` → `item.radius` calc(infinity * 1px) :label[By scheme]{tone="info"}
-
-  - **Pick** radius.pill: Pill controls feel playful.
-
-- **Token** `border-width.default` → `item.border-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
+::anatomy-steps{id="toggle-group/card-3"}
 :::
 
 ## For agents

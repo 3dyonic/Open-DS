@@ -1,4 +1,5 @@
 ---
+composite_data: "./resizable-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 46.5
 slug: "resizable/anatomy"
@@ -47,11 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Panel** required :label[Containment]
-- **Handle** required :label[Grouping] :label[Affordance]
-  - **1** **Line** required :label[By scheme]{tone="info"} :label[Grouping] :label[Affordance]
-  - **2** **Grip** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **3** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+::anatomy-legend{id="resizable"}
 :::
 
 ## How the decisions reach each part
@@ -63,25 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Affordance]
 
-- **Answer** Elevation · What separates groups on the page? → Cards
-
-  Cards group plans and offers.
-
-- **Rule** For between page sections, use space.gap.section and cards. Don't use lines.
-
-  Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart.
-
-- **Token** `border-width.default` → `handle.thickness` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
-
-- **Token** `color.border.default` → `handle.background` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="resizable/card-1"}
 :::
 
 :::panel{id="part-2" title="Grip" note="Parts 2" media="side"}
@@ -89,41 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Rule** For corners of buttons and inputs, use radius.control (set by the brand). Don't use a hard-coded radius.
-
-  Each brand sets its own corner through the theme.
-
-- **Token** `size.icon` → `grip.height` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `radius.control` → `grip.radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Rounded by default; each brand sets its own corner.
-
-- **Token** `color.border.default` → `grip.background` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `color.border.default` → `grip.border` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `border-width.default` → `grip.border-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="resizable/card-2"}
 :::
 
 :::panel{id="part-3" title="Focus ring" note="Parts 3" media="side"}
@@ -131,36 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `border-width.focus` → `handle.focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `color.border.focus` → `handle.focus-ring-focus` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.
-  - **Dark** teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus-offset` → `focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `handle.focus-ring-offset-focus` #F8FAFC · dark #020617 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="resizable/card-3"}
 :::
 
 ## For agents

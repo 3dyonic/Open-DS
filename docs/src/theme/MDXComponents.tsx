@@ -3,6 +3,8 @@ import MDXComponents from "@theme-original/MDXComponents";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import AnatomyDrawing from "@open-ds/doc-composites/AnatomyDrawing";
+import AnatomyLegend from "@open-ds/doc-composites/AnatomyLegend";
+import AnatomySteps from "@open-ds/doc-composites/AnatomySteps";
 import BrandSet from "@open-ds/doc-composites/BrandSet";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
 import Hero from "@open-ds/doc-composites/Hero";
@@ -105,6 +107,8 @@ export default {
   ...MDXComponents,
   section: Section,
   AnatomyDrawing,
+  AnatomyLegend,
+  AnatomySteps,
   BrandSet,
   CardGrid,
   ModePreview,

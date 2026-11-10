@@ -1,4 +1,5 @@
 ---
+composite_data: "./accordion-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 1.5
 slug: "accordion/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Item** required :label[Grouping]
-  - **1** **Item and its divider** required :label[By scheme]{tone="info"} :label[Grouping]
-  - **2** **Trigger** required :label[By scheme]{tone="info"} :label[Affordance] :label[Hierarchy] :label[Reach]
-  - **3** **Chevron** required :label[By scheme]{tone="info"} :label[Affordance] :label[Feedback]
-  - **4** **Open item** state :label[By scheme]{tone="info"} :label[Feedback] :label[Meaning]
-  - **5** **Content** required :label[By scheme]{tone="info"} :label[Readability]
-  - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-  - **7** **Disabled trigger** state :label[By scheme]{tone="info"} :label[Feedback]
+::anatomy-legend{id="accordion"}
 :::
 
 ## How the decisions reach each part
@@ -66,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Rule** For between page sections, use space.gap.section and a hairline. Don't use a card around every section.
-
-  Lines separate without taking room from the data.
-
-- **Token** `border-width.default` → `item.divider.width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="accordion/card-1"}
 :::
 
 :::panel{id="part-2" title="Trigger" note="Parts 2" media="side"}
@@ -88,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Hierarchy] :label[Reach]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For the smallest clickable thing, use size.control.compact. Don't use anything smaller.
-
-  Compact still fits a mouse. Touch is not this product's input.
-
-- **Token** `color.text.primary` → `trigger.label` #161B23 · dark #F7F8FA :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `type.label.font-weight` → `trigger.font-weight` 500 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.500
-
-- **Token** `space.inset.container` → `trigger.padding-y` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.gap.group` → `trigger.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="accordion/card-2"}
 :::
 
 :::panel{id="part-3-4" title="Chevron and open item" note="Parts 3, 4" media="side"}
@@ -126,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Feedback]
 
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the label so they do not outweigh it.
-
-- **Answer** Motion · How fast does feedback feel? → Fast
-
-  Fast feedback keeps up with experts.
-
-- **Rule** For someone asked for less motion, use No motion. Don't use a shorter version of the motion.
-
-  A shorter motion still moves. When people ask for less motion, nothing moves.
-
-- **Token** `size.icon` → `icon.size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `motion.duration.feedback` → `icon.duration` 120ms :label[By scheme]{tone="info"}
-
-  - **Pick** duration.fast
+::anatomy-steps{id="accordion/card-3"}
 :::
 
 :::panel{id="part-5" title="Content" note="Parts 5" media="side"}
@@ -152,25 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.label.
-
-  Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.
-
-- **Token** `type.body.font-size` → `content.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `space.inset.container` → `content.padding-bottom` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="accordion/card-4"}
 :::
 
 :::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
@@ -178,28 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast for every text.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `border-width.focus` → `trigger.focus-ring.width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `trigger.focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `trigger.focus-ring-offset-focus` #F7F8FA · dark #0D1117 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="accordion/card-5"}
 :::
 
 :::panel{id="part-7" title="Disabled trigger" note="Parts 7" media="side"}
@@ -207,13 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Hover, focus, disabled
-
-  Pressed reuses hover; experts do not need more.
-
-- **Token** `opacity.disabled` → `trigger.disabled.opacity` 0.4 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.40
+::anatomy-steps{id="accordion/card-6"}
 :::
 
 ## For agents

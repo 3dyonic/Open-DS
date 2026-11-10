@@ -1,4 +1,5 @@
 ---
+composite_data: "./skeleton-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 52.5
 slug: "skeleton/anatomy"
@@ -47,8 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Placeholder** required :label[By scheme]{tone="info"} :label[Containment] :label[Feedback]
-- **2** **Pulse** state · no token yet :label[Feedback]
+::anatomy-legend{id="skeleton"}
 :::
 
 ## How the decisions reach each part
@@ -60,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment]
 
-- **Answer** Shape · Which shape roles does it need? → Controls, badges and containers
-
-  Badges sit in columns and need their own corner.
-
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Rule** For corners of buttons and inputs, use radius.control. Don't use radius.round.
-
-  Small corners keep dense rows straight.
-
-- **Token** `radius.control` → `radius` 0.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.2: Small corners keep dense rows straight.
+::anatomy-steps{id="skeleton/card-1"}
 :::
 
 :::panel{id="part-1" title="Fill" note="Parts 1" media="side"}
@@ -82,21 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Answer** Color · How saturated is the palette? → Muted
-
-  Muted color keeps attention on the data.
-
-- **Token** `color.surface.sunken` → `background` #EEF1F5 · dark #262D38 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
+::anatomy-steps{id="skeleton/card-2"}
 :::
 
 :::panel{id="part-2" title="Pulse" note="Parts 2" media="side"}
@@ -104,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Motion · How fast does feedback feel? → Fast
-
-  Fast feedback keeps up with experts.
-
-- **Answer** Motion · Where does motion show? → State changes only
-
-  Only state changes move.
-
-- **Rule** For someone asked for less motion, use No motion. Don't use a shorter version of the motion.
-
-  A shorter motion still moves. When people ask for less motion, nothing moves.
+::anatomy-steps{id="skeleton/card-3"}
 :::
 
 ## For agents

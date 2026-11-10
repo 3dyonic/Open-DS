@@ -1,0 +1,179 @@
+{
+ "anatomy-legend": {
+  "kbd": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Shortcut",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Key",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Readability"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Key on an inverse fill",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "label": "Tooltip around the key",
+     "need": "optional",
+     "note": "shown by Tooltip",
+     "byScheme": false,
+     "roles": [
+      "Layering"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "kbd/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "group.gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "kbd/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and expressive display",
+     "why": "A big expressive display role carries the brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "background",
+     "value": "#FCEFE6",
+     "darkValue": "#33241F",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#6B544A",
+     "darkValue": "#B5988A",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.badge",
+     "key": "radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": true,
+     "pick": "radius.pill: Pill controls feel playful.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    }
+   ]
+  },
+  "kbd/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.inverse",
+     "key": "inverse.background",
+     "value": "#1F1411",
+     "darkValue": "#FFF8F3",
+     "byScheme": true,
+     "rule": "A reversed fill for small, short-lived messages.",
+     "pick": "neutral.900: the reverse of content for short messages; its text reads, 18.0:1 on surface.inverse, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+     "shares": [
+      "text.primary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.inverse",
+     "key": "inverse.label",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1411",
+     "byScheme": true,
+     "rule": "Text on an inverse fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 18.0:1 on surface.inverse, above the 4.5:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+     "shares": [
+      "text.on-action",
+      "text.on-danger"
+     ]
+    }
+   ]
+  }
+ }
+}

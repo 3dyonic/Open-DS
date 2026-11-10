@@ -1,4 +1,5 @@
 ---
+composite_data: "./alert-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 2.5
 slug: "alert/anatomy"
@@ -47,11 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Panel** required :label[By scheme]{tone="info"} :label[Containment]
-- **2** **Icon** optional :label[By scheme]{tone="info"} :label[Meaning]
-- **3** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy]
-- **4** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-- **5** **Destructive alert** state :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
+::anatomy-legend{id="alert"}
 :::
 
 ## How the decisions reach each part
@@ -63,49 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Reading needs few color roles.
-
-- **Rule** For a card on the page, use A border, no shadow. Don't use a strong shadow.
-
-  Cards stay flat on the page; shadows are for floating things.
-
-- **Token** `color.surface.default` → `default.background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
-
-  The base fill for content.
-
-  - **Pick** neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.
-  - **Dark** neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.
-  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
-
-- **Token** `color.border.default` → `border` #E4DDD0 · dark #4A4339 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `border-width.default` → `border-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
-
-- **Token** `radius.surface` → `radius` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.12: Rounded corners feel friendly.
-
-- **Token** `component-spacing-map.x3` → `padding-y` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
+::anatomy-steps{id="alert/card-1"}
 :::
 
 :::panel{id="part-2" title="Icon" note="Parts 2" media="side"}
@@ -113,17 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning]
 
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the text size.
-
-- **Token** `size.icon` → `icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `component-spacing-map.x3` → `gap-x` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
+::anatomy-steps{id="alert/card-2"}
 :::
 
 :::panel{id="part-3" title="Title" note="Parts 3" media="side"}
@@ -131,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core and editorial display
-
-  A lead and a display role open articles.
-
-- **Rule** For a status, use Badge pill with a word. Don't use an icon alone.
-
-  Status is rare, so readers never learn an icon for it. A word is clear the first time.
-
-- **Token** `type.label.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `color.text.primary` → `default.label` #1F1B16 · dark #FFFDF8 :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+::anatomy-steps{id="alert/card-3"}
 :::
 
 :::panel{id="part-4" title="Description" note="Parts 4" media="side"}
@@ -157,32 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and editorial display
-
-  A lead and a display role open articles.
-
-- **Answer** Voice and tone · Where do the words matter most? → Articles and guides
-
-  Most words are in articles and guides.
-
-- **Rule** For paragraph or help text, use type.body, at most 65 characters a line. Don't use type.caption.
-
-  A large size and short lines make long text easy on the eyes.
-
-- **Token** `color.text.muted` → `description.label` #61594D · dark #A39A8B :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.body.font-size` → `description.font-size` 1.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.18
-
-- **Token** `type.body.line-height` → `description.line-height` 1.65 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_65
+::anatomy-steps{id="alert/card-4"}
 :::
 
 :::panel{id="part-5" title="Destructive alert" note="Parts 5" media="side"}
@@ -190,45 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Emphasis]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Reading needs few color roles.
-
-- **Answer** What is a costly mistake? → Losing your place
-
-  Losing your place in an article breaks the read.
-
-- **Rule** For an error message, use color.status.danger and a plain sentence. Don't use color alone.
-
-  The sentence says what to fix; color only draws the eye.
-
-- **Rule** For the words of an error, use Calm and helpful. Take the blame, offer the way forward.. Don't use blaming the reader.
-
-  A calm error keeps the reader's trust.
-
-- **Token** `color.status.danger` → `destructive.label` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
-
-- **Token** `color.status.danger` → `destructive.description.label` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
-
-- **Token** `color.surface.default` → `destructive.background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
-
-  The base fill for content.
-
-  - **Pick** neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.
-  - **Dark** neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.
-  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
+::anatomy-steps{id="alert/card-5"}
 :::
 
 ## For agents

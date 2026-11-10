@@ -1,4 +1,5 @@
 ---
+composite_data: "./button-group-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 11.5
 slug: "button-group/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Group** required :label[By scheme]{tone="info"} :label[Grouping]
-- **Buttons** required · shown by Button :label[Affordance]
-- **2** **Separator** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **3** **Text** optional :label[By scheme]{tone="info"} :label[Readability] :label[Containment]
+::anatomy-legend{id="button-group"}
 :::
 
 ## How the decisions reach each part
@@ -62,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Text needs air even inside a group.
-
-- **Token** `space.gap.default` → `gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="button-group/card-1"}
 :::
 
 :::panel{id="part-2" title="Separator" note="Parts 2" media="side"}
@@ -80,17 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Elevation · What separates groups on the page? → Space
-
-  Space separates groups; lines would interrupt reading.
-
-- **Token** `color.border.strong` → `separator.background` #7A7062 · dark #A39A8B :label[By scheme]{tone="info"}
-
-  The edge of a control people must find.
-
-  - **Pick** neutral.500: the edge of a control people must find, 4.86:1 on surface.default, above the 3:1 floor.
-  - **Dark** neutral.400: the edge of a control people must find, 6.16:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** category.5, disabled.text. Changing this pick moves only what reads color.border.strong.
+::anatomy-steps{id="button-group/card-2"}
 :::
 
 :::panel{id="part-3" title="Text" note="Parts 3" media="side"}
@@ -98,53 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Containment]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Answer** Typography · Which text roles does it need? → Core and editorial display
-
-  A lead and a display role open articles.
-
-- **Rule** For corners of buttons and inputs, use radius.control (rounded). Don't use sharp corners.
-
-  Rounded corners match the warm reading tone. Sharp corners feel technical next to long text.
-
-- **Rule** For field label or column header, use type.label. Don't use type.caption.
-
-  Caption is too faint for a label people must read.
-
-- **Token** `color.surface.sunken` → `text.background` #F6F2EA · dark #2E2A24 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `color.border.default` → `text.border` #E4DDD0 · dark #4A4339 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `radius.control` → `text.radius` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.8: Rounded corners feel friendly.
-
-- **Token** `component-spacing-map.x4` → `text.padding-x` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `type.body.font-size` → `text.font-size` 1.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.18
+::anatomy-steps{id="button-group/card-3"}
 :::
 
 ## For agents

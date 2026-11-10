@@ -1,4 +1,5 @@
 ---
+composite_data: "./card-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 13.5
 slug: "card/anatomy"
@@ -47,17 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Card** required :label[Containment] :label[Grouping]
-  - **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Grouping]
-  - **2** **Border** required :label[By scheme]{tone="info"} :label[Containment]
-  - **3** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-- **Header** optional :label[Hierarchy]
-  - **4** **Title** optional :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **5** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-- **6** **Content** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **Status** optional · shown by Badge :label[Meaning]
-- **7** **Footer** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Affordance]
-- **Actions** optional · shown by Button :label[Affordance]
+::anatomy-legend{id="card"}
 :::
 
 ## How the decisions reach each part
@@ -69,54 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Cards too
-
-  Cards lift to feel like objects.
-
-- **Answer** Elevation · What separates groups on the page? → Cards
-
-  Cards hold each offer.
-
-- **Answer** Shape · What should control corners say? → Pill
-
-  Pill controls feel playful.
-
-- **Rule** For a card on the page, use elevation.card (pronounced). Don't use a flat card.
-
-  Cards float to feel tactile.
-
-- **Token** `color.surface.default` → `background` #FFFFFF · dark #1F1411 :label[By scheme]{tone="info"}
-
-  The base fill for content.
-
-  - **Pick** neutral.0: the base for content; body text reads 18.0:1 on it, above the 4.5:1 floor.
-  - **Dark** neutral.50: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.
-  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
-
-- **Token** `radius.surface` → `radius` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.24: Pill controls feel playful.
-
-- **Token** `space.inset.container` → `padding` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.32
-
-- **Token** `color.border.default` → `border` #F2DCCF · dark #4D3A33 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `border-width.default` → `border-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `elevation.card` → `shadow` 0px 12px 32px, #1F141124 · dark 0px 12px 32px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.card: Cards lift to feel like objects.
-  - **Dark** shadow.card-dark: Cards lift to feel like objects.
+::anatomy-steps{id="card/card-1"}
 :::
 
 :::panel{id="part-4-5" title="Header" note="Parts 4, 5" media="side"}
@@ -124,40 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and expressive display
-
-  A big expressive display role carries the brand.
-
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body; the display does the shouting.
-
-- **Token** `type.heading.font-family` → `title.font-family` "Bricolage Grotesque", system-ui, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** bricolage-grotesque for heading text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.
-
-- **Token** `type.heading.font-size` → `title.font-size` 1.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.28
-
-- **Token** `type.heading.font-weight` → `title.font-weight` 700 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.700
-
-- **Token** `space.gap.tight` → `header.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
-
-- **Token** `color.text.secondary` → `description.label` #4D3A33 · dark #E2C4B3 :label[By scheme]{tone="info"}
-
-  Supporting text.
-
-  - **Pick** neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.body.font-size` → `description.font-size` 1.0625rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.17
+::anatomy-steps{id="card/card-2"}
 :::
 
 :::panel{id="part-6-7" title="Content and footer" note="Parts 6, 7" media="side"}
@@ -165,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Big space makes big moments.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Air keeps big type readable.
-
-- **Token** `space.gap.default` → `gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.gap.default` → `content.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.gap.default` → `footer.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="card/card-3"}
 :::
 
 ## For agents

@@ -1,4 +1,5 @@
 ---
+composite_data: "./avatar-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 6.5
 slug: "avatar/anatomy"
@@ -47,16 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Avatar** required :label[By scheme]{tone="info"} :label[Meaning] :label[Containment]
-- **Image** optional · not in this example :label[Meaning]
-- **2** **Initials** optional :label[By scheme]{tone="info"} :label[Readability] :label[Meaning]
-- **Status badge** optional :label[Meaning]
-  - **3** **Badge** optional :label[By scheme]{tone="info"} :label[Meaning]
-  - **4** **Badge ring** optional :label[By scheme]{tone="info"} :label[Layering]
-- **Group** optional :label[Grouping]
-  - **5** **Overlap** optional :label[Grouping]
-  - **6** **Group ring** optional :label[By scheme]{tone="info"} :label[Layering]
-  - **Count** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
+::anatomy-legend{id="avatar"}
 :::
 
 ## How the decisions reach each part
@@ -68,44 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Readability]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Answer** Typography · How large is body text? → Small
-
-  Small body text fits more rows on the screen.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Token** `size.control.default` → `size` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.32
-
-- **Token** `radius.round` → `radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `color.surface.sunken` → `fallback.background` #EEF1F5 · dark #262D38 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `color.text.muted` → `fallback.label` #535D6D · dark #969FAD :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.body.font-size` → `fallback.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
+::anatomy-steps{id="avatar/card-1"}
 :::
 
 :::panel{id="part-3-4" title="Status badge" note="Parts 3, 4" media="side"}
@@ -113,36 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Layering]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Answer** Elevation · What separates groups on the page? → Lines
-
-  Thin lines guide the eye along rows.
-
-- **Token** `color.action.primary` → `badge.background` #4B3FD9 · dark #A9A3F6 :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** violet.light.600: the primary action's fill; its label reads, 6.97:1, above the 4.5:1 floor.
-  - **Dark** violet.dark.600: the primary action's fill; its label reads, 7.62:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
-
-- **Token** `radius.round` → `badge.radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `color.surface.canvas` → `badge.ring` #F7F8FA · dark #0D1117 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `border-width.default` → `badge.ring-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="avatar/card-2"}
 :::
 
 :::panel{id="part-5-6" title="Group" note="Parts 5, 6" media="side"}
@@ -150,32 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Layering]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Answer** Elevation · What separates groups on the page? → Lines
-
-  Thin lines guide the eye along rows.
-
-- **Rule** For items that belong together, use space.gap.tight. Don't use space.gap.group.
-
-  Things that belong together sit close.
-
-- **Token** `component-spacing-map.x2` → `group.overlap` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `color.surface.canvas` → `group.ring` #F7F8FA · dark #0D1117 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `border-width.default` → `group.ring-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="avatar/card-3"}
 :::
 
 ## For agents

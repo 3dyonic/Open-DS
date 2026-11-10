@@ -1,0 +1,92 @@
+{
+ "anatomy-legend": {
+  "spinner": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Spinner",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Spin",
+     "need": "state",
+     "noToken": true,
+     "byScheme": false,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "spinner/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text size."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What icon style?",
+     "answer": "Outline",
+     "why": "Outline icons stay quiet beside text."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Not used: always add a word",
+     "not": "an icon button",
+     "why": "Occasional visitors do not know icons."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "spinner/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text size."
+    }
+   ]
+  },
+  "spinner/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Moderate",
+     "why": "Moderate speed feels calm."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "No motion",
+     "not": "reduced motion",
+     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+    }
+   ]
+  }
+ }
+}

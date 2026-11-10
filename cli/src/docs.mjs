@@ -2588,51 +2588,56 @@ export function docsPages(
     const caption = `${attr(scheme.name)}, light, drawn from the scheme's tokens: ${px(D?.light.value ?? "")} items, ${px(tr("component.dropdown-menu.item.padding-x")?.light.value ?? "")} side padding, ${px(tr("component.dropdown-menu.item.font-size")?.light.value ?? "")} text, a ${px(tr("component.overlay.radius")?.light.value ?? "")} corner and its shadow.`;
     // The legend (OD-284): a nested Markdown list, one item per part, with its number, what it needs,
     // the "By scheme" tag and its roles as Labels.
-    const legendRow = (p, depth) => {
-      const need = `${p.need}${p.note ? ` · ${p.note}` : ""}${p.n && !(p.tokens ?? []).length && p.need !== "required" ? " · no token yet" : ""}`;
-      return `${"  ".repeat(depth)}- ${p.n ? `**${p.n}** ` : ""}**${esc(p.label)}** ${esc(need)}${changes(p) ? ` ${byTag}` : ""}${(p.roles ?? []).length ? ` ${p.roles.map(chip).join(" ")}` : ""}`;
+    // The legend as a tree (OD-286): an AnatomyLegend composite draws it from data beside the page.
+    const legendPart = (p) => ({
+      ...(p.n && { n: p.n }),
+      label: p.label,
+      need: p.need,
+      ...(p.note && { note: p.note }),
+      ...(p.n && !(p.tokens ?? []).length && p.need !== "required" && { noToken: true }),
+      byScheme: Boolean(changes(p)),
+      roles: (p.roles ?? []).map((id) => roleOf[id]?.label ?? id),
+      ...(p.children?.length && { children: p.children.map(legendPart) }),
+    });
+    const legend = (list) => {
+      (compositeData["anatomy-legend"] ??= {})[name] = { parts: list.map(legendPart) };
+      return `::anatomy-legend{id="${name}"}`;
     };
-    const legend = (list, depth = 0) =>
-      list
-        .flatMap((p) => [
-          legendRow(p, depth),
-          ...(p.children ? [legend(p.children, depth + 1)] : []),
-        ])
-        .join("\n");
-    // Each card's steps (OD-284): a Markdown list, from the answer through the rule to the token.
-    const answerStep = (a) =>
-      `- **Answer** ${esc(a.scope ? `${a.scope} · ` : "")}${esc(a.text)} → ${esc(a.answer)}\n\n  ${esc(a.why)}`;
-    const ruleStep = (u) =>
-      `- **Rule** For ${esc(lower(u.title))}, use ${esc(u.use)}.${u.not ? ` Don't use ${esc(lower(u.not))}.` : ""}${u.why ? `\n\n  ${esc(u.why)}` : ""}`;
-    const tokenStep = (t) => {
-      if (!t) return "";
-      const said = (x) => esc(x.why ?? x.pick);
-      const dark =
-        t.dark.value !== t.light.value ? ` · dark ${esc(t.dark.value)}` : "";
-      const lines = [
-        `  - **Pick** ${said(t.light)}`,
-        t.dark.value !== t.light.value || t.dark.why !== t.light.why
-          ? `  - **Dark** ${said(t.dark)}`
-          : "",
-        t.shares.length
-          ? `  - **Shares the step with** ${t.shares.map((x) => esc(x.replace(/^color\./, ""))).join(", ")}. Changing this pick moves only what reads ${esc(t.semantic)}.`
-          : "",
-      ].filter(Boolean);
-      return (
-        `- **Token** \`${t.semantic}\` ${t.key ? `→ \`${t.key.replace(`${name}.`, "")}\`` : "no key of its own yet"} ${esc(t.light.value)}${dark}${t.by_scheme ? ` ${byTag}` : ""}` +
-        (t.rule ? `\n\n  ${esc(t.rule)}` : "") +
-        `\n\n${lines.join("\n")}`
-      );
-    };
+    // Each card's steps as data (OD-286): the AnatomySteps composite gives each kind its icon.
+    const stepData = (d) => [
+      ...d.answers.map((a) => ({
+        kind: "answer",
+        ...(a.scope && { scope: a.scope }),
+        question: a.text,
+        answer: a.answer,
+        why: a.why,
+      })),
+      ...d.rules.map((u) => ({
+        kind: "rule",
+        situation: lower(u.title),
+        use: u.use,
+        ...(u.not && { not: lower(u.not) }),
+        ...(u.why && { why: u.why }),
+      })),
+      ...d.tokens.filter(Boolean).map((t) => ({
+        kind: "token",
+        semantic: t.semantic,
+        ...(t.key && { key: t.key.replace(`${name}.`, "") }),
+        value: String(t.light.value),
+        ...(t.dark.value !== t.light.value && { darkValue: String(t.dark.value) }),
+        byScheme: Boolean(t.by_scheme),
+        ...(t.rule && { rule: t.rule }),
+        pick: t.light.why ?? t.light.pick,
+        ...((t.dark.value !== t.light.value || t.dark.why !== t.light.why) && { darkPick: t.dark.why ?? t.dark.pick }),
+        shares: t.shares.map((x) => x.replace(/^color\./, "")),
+      })),
+    ];
     // One Panel per card (OD-284): its drawing, its parts and roles, and its steps.
     const card = (c, k) => {
       const nums = new Set(c.parts);
       const d = refCard[c.title];
-      const steps = [
-        ...d.answers.map(answerStep),
-        ...d.rules.map(ruleStep),
-        ...d.tokens.map(tokenStep),
-      ].filter(Boolean);
+      (compositeData["anatomy-steps"] ??= {})[`${name}/card-${k + 1}`] = { steps: stepData(d) };
+      const steps = [`::anatomy-steps{id="${name}/card-${k + 1}"}`];
       let image;
       if (asset)
         image = assetImg(
@@ -3038,6 +3043,8 @@ export function docsPages(
     preview: "id",
     specimen: "id",
     "anatomy-drawing": "id",
+    "anatomy-legend": "id",
+    "anatomy-steps": "id",
     "color-scale": "id",
     "mode-preview": "id",
     "pairs-chart": "id",

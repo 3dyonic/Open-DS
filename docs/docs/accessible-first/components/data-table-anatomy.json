@@ -1,0 +1,469 @@
+{
+ "anatomy-legend": {
+  "data-table": {
+   "parts": [
+    {
+     "label": "Toolbar",
+     "need": "optional",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Search field",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Filter",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Grouping",
+        "Affordance"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Selection count",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Density switch",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability",
+        "Reach"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Columns",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Header",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 6,
+       "label": "Header row",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Header label",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 8,
+       "label": "Sort control",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Feedback"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Row",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 9,
+       "label": "Row and its line",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Reach",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 10,
+       "label": "Cell",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 11,
+       "label": "Highlight row",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "n": 12,
+       "label": "Selected row",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 13,
+       "label": "Select box",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Meaning"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Empty state",
+     "need": "state",
+     "note": "shown by Empty",
+     "byScheme": false,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "data-table/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "How often do people repeat actions?",
+     "answer": "Rarely",
+     "why": "People do this once or twice a year."
+    },
+    {
+     "kind": "answer",
+     "question": "How much is on one screen?",
+     "answer": "One idea at a time",
+     "why": "One question per screen lowers effort."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "input.height",
+     "value": "3.25rem",
+     "byScheme": true,
+     "pick": "size.52",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.strong",
+     "key": "button.secondary.border",
+     "value": "#595959",
+     "darkValue": "#949494",
+     "byScheme": true,
+     "rule": "The edge of a control people must find.",
+     "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "text.muted",
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#595959",
+     "darkValue": "#B4B4B4",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "border.strong",
+      "category.5",
+      "disabled.text"
+     ]
+    }
+   ]
+  },
+  "data-table/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "What is the main content?",
+     "answer": "Forms and tasks",
+     "why": "Most screens are forms and steps."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "table.header-background",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "table.head.label",
+     "value": "#333333",
+     "darkValue": "#D6D6D6",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "label-hover",
+     "value": "#141414",
+     "darkValue": "#F7F7F7",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    }
+   ]
+  },
+  "data-table/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "How much is on one screen?",
+     "answer": "One idea at a time",
+     "why": "One question per screen lowers effort."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "rule",
+     "situation": "table row height",
+     "use": "size.row (large)",
+     "not": "a compact row",
+     "why": "Large rows are easy to read and tap."
+    },
+    {
+     "kind": "rule",
+     "situation": "a number in a table",
+     "use": "type.body",
+     "not": "a small or mono font",
+     "why": "Every number must be readable at large size."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.row",
+     "key": "table.row-height",
+     "value": "3.5rem",
+     "byScheme": true,
+     "pick": "size.56",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "table.row-border",
+     "value": "#D6D6D6",
+     "darkValue": "#333333",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "table.label",
+     "value": "#141414",
+     "darkValue": "#F7F7F7",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.data.font-family",
+     "key": "table.cell.font-family",
+     "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
+     "byScheme": true,
+     "pick": "atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "shares": []
+    }
+   ]
+  },
+  "data-table/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "All, including loading",
+     "why": "Every state, including loading, gets its own value."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (moderate)",
+     "not": "fast flicker",
+     "why": "Moderate speed is easy to follow."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "row.background.hover",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "data-table/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "What is the main task?",
+     "answer": "Complete a form",
+     "why": "People must finish the form."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Three: color, icon and word",
+     "why": "Never color alone."
+    },
+    {
+     "kind": "rule",
+     "situation": "a selected row or item",
+     "use": "color.surface.selected and a check icon",
+     "not": "color alone",
+     "why": "Selection never relies on color alone."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "table.row-selected",
+     "value": "#E2EDFF",
+     "darkValue": "#102547",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.selected",
+     "key": "table.row-selected-edge",
+     "value": "#0B4FC0",
+     "darkValue": "#8AB4F8",
+     "byScheme": true,
+     "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
+     "pick": "blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.focus",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "checkbox.size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

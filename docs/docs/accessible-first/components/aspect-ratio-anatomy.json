@@ -1,0 +1,34 @@
+{
+ "anatomy-legend": {
+  "aspect-ratio": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Frame",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Media",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "aspect-ratio/card-1": {
+   "steps": []
+  },
+  "aspect-ratio/card-2": {
+   "steps": []
+  }
+ }
+}

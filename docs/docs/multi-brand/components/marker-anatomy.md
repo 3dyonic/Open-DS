@@ -1,4 +1,5 @@
 ---
+composite_data: "./marker-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 36.5
 slug: "marker/anatomy"
@@ -47,8 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Line** required :label[By scheme]{tone="info"} :label[Grouping]
-- **2** **Label** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
+::anatomy-legend{id="marker"}
 :::
 
 ## How the decisions reach each part
@@ -60,33 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Elevation · What separates groups on the page? → Cards
-
-  Cards group plans and offers.
-
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For between page sections, use space.gap.section and cards. Don't use lines.
-
-  Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart.
-
-- **Token** `border-width.default` → `line.thickness` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
-
-- **Token** `color.border.default` → `line.background` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `component-spacing-map.x3` → `gap` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
+::anatomy-steps{id="marker/card-1"}
 :::
 
 :::panel{id="part-2" title="Label" note="Parts 2" media="side"}
@@ -94,28 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Token** `color.text.muted` → `label` #4B5A6F · dark #96A3B5 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.caption.font-size` → `font-size` 0.8125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.13
-
-- **Token** `type.caption.line-height` → `line-height` 1.5 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_5
+::anatomy-steps{id="marker/card-2"}
 :::
 
 ## For agents

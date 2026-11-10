@@ -1,4 +1,5 @@
 ---
+composite_data: "./message-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 38.5
 slug: "message/anatomy"
@@ -47,11 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Message** required :label[Grouping]
-  - **Avatar** optional · shown by Avatar :label[Meaning]
-  - **1** **Author** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Emphasis]
-  - **2** **Time** optional :label[By scheme]{tone="info"} :label[Readability]
-  - **3** **Body** required :label[By scheme]{tone="info"} :label[Readability]
+::anatomy-legend{id="message"}
 :::
 
 ## How the decisions reach each part
@@ -63,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Emphasis]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Answer** Typography · How many steps does the type scale take? → Only the steps the screens need
-
-  Only the sizes the screens need, each clearly different.
-
-- **Token** `type.label.font-weight` → `author.font-weight` 700 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.700
+::anatomy-steps{id="message/card-1"}
 :::
 
 :::panel{id="part-2" title="Time" note="Parts 2" media="side"}
@@ -81,29 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · How large is body text? → Large
-
-  Large text is readable for more people.
-
-- **Answer** Color · How saturated is the palette? → Balanced
-
-  Strong but not loud color.
-
-- **Token** `color.text.muted` → `time.label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
-
-- **Token** `type.caption.font-size` → `time.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.caption.line-height` → `time.line-height` 1.6 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_6
+::anatomy-steps{id="message/card-2"}
 :::
 
 :::panel{id="part-3" title="Body" note="Parts 3" media="side"}
@@ -111,21 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · How large is body text? → Large
-
-  Large text is readable for more people.
-
-- **Rule** For paragraph or help text, use type.body, short sentences. Don't use type.caption.
-
-  Large text and short lines lower effort.
-
-- **Token** `type.body.font-size` → `font-size` 1.1875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.19
-
-- **Token** `type.body.line-height` → `line-height` 1.6 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_6
+::anatomy-steps{id="message/card-3"}
 :::
 
 :::panel{id="part-1-2-3" title="Header and body" note="Parts 1, 2, 3" media="side"}
@@ -133,29 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · Which spacing roles does it need? → Gaps, insets and row heights
-
-  Large rows matter for touch and zoom.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Generous space lowers mis-taps.
-
-- **Token** `component-spacing-map.x3` → `gap` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
-
-- **Token** `space.gap.tight` → `content.gap` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.12
-
-- **Token** `space.gap.default` → `header.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="message/card-4"}
 :::
 
 ## For agents

@@ -1,4 +1,5 @@
 ---
+composite_data: "./chart-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 15.5
 slug: "chart/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Chart** required :label[Containment] :label[Readability]
-  - **1** **Chart area** required :label[By scheme]{tone="info"} :label[Containment]
-  - **2** **Bars** required · colors from the chart's config :label[Meaning] :label[Emphasis]
-  - **3** **Axis labels** optional :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **4** **Grid lines** optional :label[By scheme]{tone="info"} :label[Grouping]
-  - **5** **Cursor** state :label[By scheme]{tone="info"} :label[Feedback]
-- **6** **Tooltip** state :label[By scheme]{tone="info"} :label[Layering] :label[Feedback] :label[Readability]
-- **7** **Legend** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Meaning]
+::anatomy-legend{id="chart"}
 :::
 
 ## How the decisions reach each part
@@ -66,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Grouping]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Rule** For someone switches to dark, use The dark semantic mode, or high contrast. Don't use one mode only.
-
-  People pick the mode they can read.
-
-- **Token** `color.border.default` → `grid.line` #D6D6D6 · dark #333333 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="chart/card-1"}
 :::
 
 :::panel{id="part-2" title="Bars" note="Parts 2" media="side"}
@@ -88,9 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Emphasis]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
+::anatomy-steps{id="chart/card-2"}
 :::
 
 :::panel{id="part-3" title="Axis labels" note="Parts 3" media="side"}
@@ -98,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Token** `color.text.muted` → `axis.label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
-
-- **Token** `type.caption.font-size` → `font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
+::anatomy-steps{id="chart/card-3"}
 :::
 
 :::panel{id="part-5" title="Cursor" note="Parts 5" media="side"}
@@ -124,29 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (moderate). Don't use fast flicker.
-
-  Moderate speed is easy to follow.
-
-- **Token** `color.surface.highlight` → `cursor.fill` #EDEDED · dark #222222 :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
-
-- **Token** `color.border.default` → `cursor.line` #D6D6D6 · dark #333333 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="chart/card-4"}
 :::
 
 :::panel{id="part-6" title="Tooltip" note="Parts 6" media="side"}
@@ -154,45 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Layering] :label[Feedback]
 
-- **Answer** Elevation · What rises above the page? → Nothing
-
-  Flat is easier to read at high zoom.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For a menu or dialog, use A strong border and a dimmed page. Don't use a shadow only.
-
-  The dimmed page makes the dialog obvious.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (moderate). Don't use fast flicker.
-
-  Moderate speed is easy to follow.
-
-- **Token** `color.surface.canvas` → `tooltip.background` #F7F7F7 · dark #0A0A0A :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `color.border.default` → `tooltip.border` #D6D6D6 · dark #333333 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `elevation.overlay` → `tooltip.shadow` 0px 0px 0px, #00000000 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.none: No shadows; borders do the work.
-  - **Shares the step with** elevation.card. Changing this pick moves only what reads elevation.overlay.
-
-- **Token** `component-spacing-map.x3` → `tooltip.padding-x` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
+::anatomy-steps{id="chart/card-5"}
 :::
 
 :::panel{id="part-6" title="Tooltip values" note="Parts 6" media="side"}
@@ -200,33 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Rule** For a number in a table, use type.body. Don't use a small or mono font.
-
-  Every number must be readable at large size.
-
-- **Token** `color.text.muted` → `label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
-
-- **Token** `color.text.primary` → `label-2` #141414 · dark #F7F7F7 :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `type.label.font-weight` → `font-weight` 700 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.700
+::anatomy-steps{id="chart/card-6"}
 :::
 
 :::panel{id="part-7" title="Legend" note="Parts 7" media="side"}
@@ -234,17 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Meaning]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Generous space lowers mis-taps.
-
-- **Token** `space.gap.group` → `legend.gap` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.32
+::anatomy-steps{id="chart/card-7"}
 :::
 
 ## For agents

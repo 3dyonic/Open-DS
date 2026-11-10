@@ -1,4 +1,5 @@
 ---
+composite_data: "./combobox-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 18.5
 slug: "combobox/anatomy"
@@ -47,21 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Field** required · shown by Input group :label[Affordance]
-- **1** **Chevron** optional :label[By scheme]{tone="info"} :label[Affordance]
-- **List** required
-  - **2** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-  - **3** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-  - **4** **Group label** optional :label[By scheme]{tone="info"} :label[Hierarchy] :label[Grouping]
-  - **Empty message** state · not in this example :label[By scheme]{tone="info"} :label[Feedback]
-- **Item** required :label[Readability] :label[Reach]
-  - **5** **Item label** required :label[By scheme]{tone="info"} :label[Readability]
-  - **6** **Highlight fill** state :label[By scheme]{tone="info"} :label[Feedback] :label[Focus]
-  - **7** **Selected check** state :label[By scheme]{tone="info"} :label[Meaning]
-- **Chips** optional
-  - **8** **Chips field** optional :label[By scheme]{tone="info"} :label[Containment] :label[Affordance]
-  - **9** **Chip** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Meaning]
-  - **10** **Chip remove** optional :label[By scheme]{tone="info"} :label[Affordance]
+::anatomy-legend{id="combobox"}
 :::
 
 ## How the decisions reach each part
@@ -73,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance]
 
-- **Answer** Iconography · How big are icons next to text? → Larger than the text
-
-  Larger icons are easier to see.
-
-- **Token** `color.text.muted` → `trigger.icon.label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
-
-- **Token** `size.icon` → `trigger.icon.icon-size` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.20
+::anatomy-steps{id="combobox/card-1"}
 :::
 
 :::panel{id="part-2-3" title="Surface and shadow" note="Parts 2, 3" media="side"}
@@ -95,42 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Nothing
-
-  Flat is easier to read at high zoom.
-
-- **Answer** Elevation · How soft are shadows? → No shadows
-
-  No shadows; borders do the work.
-
-- **Rule** For a menu or dialog, use A strong border and a dimmed page. Don't use a shadow only.
-
-  The dimmed page makes the dialog obvious.
-
-- **Token** `color.surface.raised` → `content.background` #FFFFFF · dark #141414 :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `elevation.overlay` → `content.shadow` 0px 0px 0px, #00000000 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.none: No shadows; borders do the work.
-  - **Shares the step with** elevation.card. Changing this pick moves only what reads elevation.overlay.
-
-- **Token** `color.border.default` → `content.border` #D6D6D6 · dark #333333 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `radius.surface` → `content.radius` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.8: Clear, slightly rounded controls.
+::anatomy-steps{id="combobox/card-2"}
 :::
 
 :::panel{id="part-4" title="Group label" note="Parts 4" media="side"}
@@ -138,29 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Grouping]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Generous space lowers mis-taps.
-
-- **Token** `color.text.muted` → `label.label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
-
-- **Token** `type.caption.font-size` → `label.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `component-spacing-map.x2` → `label.padding-x` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="combobox/card-3"}
 :::
 
 :::panel{id="part-5-7" title="Item" note="Parts 5, 7" media="side"}
@@ -168,33 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Reach] :label[Meaning]
 
-- **Answer** Typography · How large is body text? → Large
-
-  Large text is readable for more people.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For the smallest clickable thing, use size.control.default (large). Don't use touch-minimum size.
-
-  Large targets help people with motor needs.
-
-- **Token** `type.body.font-size` → `item.font-size` 1.1875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.19
-
-- **Token** `component-spacing-map.x2` → `item.padding-y` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `component-spacing-map.x2` → `item.padding-left` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `size.icon` → `icon-size` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.20
+::anatomy-steps{id="combobox/card-4"}
 :::
 
 :::panel{id="part-6" title="Highlight fill" note="Parts 6" media="side"}
@@ -202,25 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback] :label[Focus]
 
-- **Answer** Accessibility · Which states get their own visible value? → All, including loading
-
-  Every state, including loading, gets its own value.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (moderate). Don't use fast flicker.
-
-  Moderate speed is easy to follow.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus, with an offset. Don't use a thin or faint outline.
-
-  Focus must be seen by everyone.
-
-- **Token** `color.surface.highlight` → `item.background.highlight` #EDEDED · dark #222222 :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
+::anatomy-steps{id="combobox/card-5"}
 :::
 
 :::panel{id="part-8-9-10" title="Chips" note="Parts 8, 9, 10" media="side"}
@@ -228,49 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Grouping] :label[Affordance]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Clear, slightly rounded controls.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For shape of a status badge, use radius.badge (rectangle). Don't use a pill.
-
-  Clear shapes with a word inside.
-
-- **Token** `color.border.strong` → `chips.border` #595959 · dark #949494 :label[By scheme]{tone="info"}
-
-  The edge of a control people must find.
-
-  - **Pick** neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.
-  - **Dark** neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** text.muted, category.5, disabled.text. Changing this pick moves only what reads color.border.strong.
-
-- **Token** `radius.control` → `chips.radius` 0.375rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.6: Clear, slightly rounded controls.
-
-- **Token** `color.surface.sunken` → `chip.background` #EDEDED · dark #222222 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `radius.badge` → `chip.radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Clear, slightly rounded controls.
-
-- **Token** `color.text.muted` → `chip.remove.label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
+::anatomy-steps{id="combobox/card-6"}
 :::
 
 ## For agents

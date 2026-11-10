@@ -1,4 +1,5 @@
 ---
+composite_data: "./empty-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 26.5
 slug: "empty/anatomy"
@@ -47,13 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Frame** required :label[By scheme]{tone="info"} :label[Containment]
-- **Header** required :label[Hierarchy] :label[Grouping]
-  - **2** **Icon** optional :label[By scheme]{tone="info"} :label[Meaning]
-  - **3** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy]
-  - **4** **Why it is empty** optional :label[By scheme]{tone="info"} :label[Readability]
-- **5** **Action area** optional :label[By scheme]{tone="info"} :label[Affordance]
-- **The one action that fills it** optional · shown by Button :label[Affordance]
+::anatomy-legend{id="empty"}
 :::
 
 ## How the decisions reach each part
@@ -65,25 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Token** `component-spacing-map.x6` → `padding` 2.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.36
-
-- **Token** `component-spacing-map.x12` → `padding-2` 4rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.64
-
-- **Token** `space.gap.section` → `gap` 3rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.48
+::anatomy-steps{id="empty/card-1"}
 :::
 
 :::panel{id="part-2" title="Icon" note="Parts 2" media="side"}
@@ -91,33 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning]
 
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the text.
-
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Token** `color.surface.sunken` → `icon.background` #F1F5F9 · dark #1E293B :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `color.text.primary` → `icon.label` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `component-spacing-map.x2` → `icon.margin-bottom` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="empty/card-2"}
 :::
 
 :::panel{id="part-3-4" title="Title and why it is empty" note="Parts 3, 4" media="side"}
@@ -125,32 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Answer** Voice and tone · Where do the words matter most? → Headlines and buttons
-
-  Brand tone shows in headlines and buttons.
-
-- **Rule** For an empty state, use Shared structure, brand words. Don't use a different structure per brand.
-
-  The structure is the shared core; words carry the brand.
-
-- **Token** `type.heading.font-size` → `title.font-size` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.20
-
-- **Token** `type.label.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `color.text.muted` → `description.label` #4B5A6F · dark #96A3B5 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.
+::anatomy-steps{id="empty/card-3"}
 :::
 
 :::panel{id="part-5" title="Action area" note="Parts 5" media="side"}
@@ -158,13 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance]
 
-- **Answer** What is the main task? → Complete a form
-
-  Customers sign up and buy.
-
-- **Token** `space.gap.group` → `content.gap` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
+::anatomy-steps{id="empty/card-4"}
 :::
 
 ## For agents

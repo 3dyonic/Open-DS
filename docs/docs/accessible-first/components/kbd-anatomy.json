@@ -1,0 +1,183 @@
+{
+ "anatomy-legend": {
+  "kbd": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Shortcut",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Key",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Readability"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Key on an inverse fill",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "label": "Tooltip around the key",
+     "need": "optional",
+     "note": "shown by Tooltip",
+     "byScheme": false,
+     "roles": [
+      "Layering"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "kbd/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "group.gap",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    }
+   ]
+  },
+  "kbd/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Clear, slightly rounded controls."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Few color roles, each with one clear meaning."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "background",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#595959",
+     "darkValue": "#B4B4B4",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "border.strong",
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.badge",
+     "key": "radius",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "radius.4: Clear, slightly rounded controls.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "font-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "font.size.16",
+     "shares": []
+    }
+   ]
+  },
+  "kbd/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Few color roles, each with one clear meaning."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.inverse",
+     "key": "inverse.background",
+     "value": "#141414",
+     "darkValue": "#F7F7F7",
+     "byScheme": true,
+     "rule": "A reversed fill for small, short-lived messages.",
+     "pick": "neutral.900: the reverse of content for short messages; its text reads, 18.42:1 on surface.inverse, above the 7:1 floor.",
+     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 17.2:1 on surface.inverse, above the 7:1 floor.",
+     "shares": [
+      "text.primary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.inverse",
+     "key": "inverse.label",
+     "value": "#FFFFFF",
+     "darkValue": "#141414",
+     "byScheme": true,
+     "rule": "Text on an inverse fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 18.42:1 on surface.inverse, above the 7:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 17.2:1 on surface.inverse, above the 7:1 floor.",
+     "shares": [
+      "text.on-action",
+      "text.on-danger"
+     ]
+    }
+   ]
+  }
+ }
+}

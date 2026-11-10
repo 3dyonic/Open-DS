@@ -1,4 +1,5 @@
 ---
+composite_data: "./card-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 13.5
 slug: "card/anatomy"
@@ -47,17 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Card** required :label[Containment] :label[Grouping]
-  - **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Grouping]
-  - **2** **Border** required :label[By scheme]{tone="info"} :label[Containment]
-  - **3** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-- **Header** optional :label[Hierarchy]
-  - **4** **Title** optional :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **5** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-- **6** **Content** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **Status** optional · shown by Badge :label[Meaning]
-- **7** **Footer** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Affordance]
-- **Actions** optional · shown by Button :label[Affordance]
+::anatomy-legend{id="card"}
 :::
 
 ## How the decisions reach each part
@@ -69,53 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Only what floats
-
-  Only menus and dialogs float.
-
-- **Answer** Elevation · What separates groups on the page? → Space
-
-  Space separates groups; lines would interrupt reading.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Rule** For a card on the page, use A border, no shadow. Don't use a strong shadow.
-
-  Cards stay flat on the page; shadows are for floating things.
-
-- **Token** `color.surface.default` → `background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
-
-  The base fill for content.
-
-  - **Pick** neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.
-  - **Dark** neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.
-  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
-
-- **Token** `radius.surface` → `radius` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.12: Rounded corners feel friendly.
-
-- **Token** `space.inset.container` → `padding` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `color.border.default` → `border` #E4DDD0 · dark #4A4339 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `border-width.default` → `border-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
-
-- **Token** `elevation.card` → `shadow` 0px 0px 0px, #00000000 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.none: Only menus and dialogs float.
+::anatomy-steps{id="card/card-1"}
 :::
 
 :::panel{id="part-4-5" title="Header" note="Parts 4, 5" media="side"}
@@ -123,40 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and editorial display
-
-  A lead and a display role open articles.
-
-- **Answer** Typography · How large is body text? → Large
-
-  Large body text is easy on the eyes.
-
-- **Token** `type.heading.font-family` → `title.font-family` "Source Serif 4", Georgia, serif :label[By scheme]{tone="info"}
-
-  - **Pick** source-serif-4 for heading text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.
-
-- **Token** `type.heading.font-size` → `title.font-size` 1.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.28
-
-- **Token** `type.heading.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `space.gap.tight` → `header.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
-
-- **Token** `color.text.secondary` → `description.label` #4A4339 · dark #CFC6B6 :label[By scheme]{tone="info"}
-
-  Supporting text.
-
-  - **Pick** neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.body.font-size` → `description.font-size` 1.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.18
+::anatomy-steps{id="card/card-2"}
 :::
 
 :::panel{id="part-6-7" title="Content and footer" note="Parts 6, 7" media="side"}
@@ -164,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Text needs air even inside a group.
-
-- **Token** `space.gap.default` → `gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.gap.default` → `content.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.gap.default` → `footer.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="card/card-3"}
 :::
 
 ## For agents

@@ -1,4 +1,5 @@
 ---
+composite_data: "./label-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 35.5
 slug: "label/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Label text** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-- **2** **Gap to its mark** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **Field** required · shown by Input :label[Affordance]
-- **Checkbox** optional · shown by Checkbox :label[Affordance]
+::anatomy-legend{id="label"}
 :::
 
 ## How the decisions reach each part
@@ -62,33 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · How large is body text? → Small
-
-  Small body text fits more rows on the screen.
-
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Rule** For field label or column header, use type.label. Don't use type.heading.
-
-  Headers repeat on every column; a heavy style would compete with the data.
-
-- **Token** `type.label.font-size` → `font-size` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.12
-
-- **Token** `type.label.font-weight` → `font-weight` 500 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.500
-
-- **Token** `type.label.font-family` → `font-family` "IBM Plex Sans", system-ui, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** ibm-plex-sans for label text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.
-
-- **Token** `type.label.line-height` → `line-height` 1.2 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_2
+::anatomy-steps{id="label/card-1"}
 :::
 
 :::panel{id="part-1" title="Text color" note="Parts 1" media="side"}
@@ -96,25 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast for every text.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Rule** For field label or column header, use type.label. Don't use type.heading.
-
-  Headers repeat on every column; a heavy style would compete with the data.
-
-- **Token** `color.text.primary` → `label` #161B23 · dark #F7F8FA :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+::anatomy-steps{id="label/card-2"}
 :::
 
 :::panel{id="part-2" title="Gap to its mark" note="Parts 2" media="side"}
@@ -122,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For items that belong together, use space.gap.tight. Don't use space.gap.group.
-
-  Things that belong together sit close.
-
-- **Token** `space.gap.default` → `gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="label/card-3"}
 :::
 
 ## For agents

@@ -7,7 +7,7 @@
  */
 import * as React from "react";
 import Label from "./Label";
-import { Tree, Twig } from "./tree";
+import { Tree, Twig } from "./base/Tree";
 import { Brush, Component, MessageCircle, Scale } from "lucide-react";
 
 type Link = { label: string; href: string };

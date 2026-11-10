@@ -1,4 +1,5 @@
 ---
+composite_data: "./separator-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 49.5
 slug: "separator/anatomy"
@@ -47,7 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Line** required :label[By scheme]{tone="info"} :label[Grouping]
+::anatomy-legend{id="separator"}
 :::
 
 ## How the decisions reach each part
@@ -59,29 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Elevation · What separates groups on the page? → Cards
-
-  Cards hold each offer.
-
-- **Rule** For between page sections, use space.gap.section and a color block. Don't use a thin line.
-
-  Big space and color make each section a moment.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Air keeps big type readable.
-
-- **Token** `border-width.default` → `thickness` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `color.border.default` → `background` #F2DCCF · dark #4D3A33 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="separator/card-1"}
 :::
 
 ## For agents

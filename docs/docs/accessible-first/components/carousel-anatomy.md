@@ -1,4 +1,5 @@
 ---
+composite_data: "./carousel-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 14.5
 slug: "carousel/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Viewport** required :label[By scheme]{tone="info"} :label[Containment]
-- **2** **Slide** required :label[By scheme]{tone="info"} :label[Grouping]
-- **Slide content** required · shown by Card :label[Containment]
-- **Controls** optional :label[Affordance] :label[Reach]
-  - **3** **Previous button** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **4** **Next button** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **Disabled control** state · shown by Button :label[Feedback]
-  - **Focus ring** state · shown by Button :label[Focus]
+::anatomy-legend{id="carousel"}
 :::
 
 ## How the decisions reach each part
@@ -66,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Generous space lowers mis-taps.
-
-- **Token** `component-spacing-map.x4` → `item.padding-left` 1.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.28
-
-- **Token** `component-spacing-map.x4` → `item.padding-top` 1.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.28
+::anatomy-steps{id="carousel/card-1"}
 :::
 
 :::panel{id="part-3-4" title="Previous and next" note="Parts 3, 4" media="side"}
@@ -88,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Accessibility · What is the smallest target? → Large
-
-  Large targets for tremor and touch.
-
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Clear, slightly rounded controls.
-
-- **Rule** For the smallest clickable thing, use size.control.default (large). Don't use touch-minimum size.
-
-  Large targets help people with motor needs.
-
-- **Rule** For an icon with no label, use Not used: always add a word. Don't use an icon button.
-
-  Icons alone are guesswork.
-
-- **Token** `size.control.default` → `previous.size` 3.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.52
-
-- **Token** `radius.round` → `previous.radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `size.control.default` → `next.size` 3.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.52
-
-- **Token** `radius.round` → `next.radius` 50%
-
-  - **Pick** radius.round
+::anatomy-steps{id="carousel/card-2"}
 :::
 
 ## For agents

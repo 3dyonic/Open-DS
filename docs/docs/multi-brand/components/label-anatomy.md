@@ -1,4 +1,5 @@
 ---
+composite_data: "./label-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 35.5
 slug: "label/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Label text** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-- **2** **Gap to its mark** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **Field** required · shown by Input :label[Affordance]
-- **Checkbox** optional · shown by Checkbox :label[Affordance]
+::anatomy-legend{id="label"}
 :::
 
 ## How the decisions reach each part
@@ -62,33 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Rule** For field label or column header, use type.label. Don't use type.caption.
-
-  Labels stay readable in every brand.
-
-- **Token** `type.label.font-size` → `font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `type.label.font-weight` → `font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `type.label.font-family` → `font-family` Inter, system-ui, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** inter for label text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.
-
-- **Token** `type.label.line-height` → `line-height` 1.2 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_2
+::anatomy-steps{id="label/card-1"}
 :::
 
 :::panel{id="part-1" title="Text color" note="Parts 1" media="side"}
@@ -96,25 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Rule** For field label or column header, use type.label. Don't use type.caption.
-
-  Labels stay readable in every brand.
-
-- **Token** `color.text.primary` → `label` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+::anatomy-steps{id="label/card-2"}
 :::
 
 :::panel{id="part-2" title="Gap to its mark" note="Parts 2" media="side"}
@@ -122,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
-
-  Spacing is shared across brands.
-
-- **Token** `space.gap.default` → `gap` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.12
+::anatomy-steps{id="label/card-3"}
 :::
 
 ## For agents

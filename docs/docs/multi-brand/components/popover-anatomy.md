@@ -1,4 +1,5 @@
 ---
+composite_data: "./popover-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 43.5
 slug: "popover/anatomy"
@@ -47,15 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Trigger** required · shown by Button :label[Affordance]
-- **Panel** required :label[Containment]
-  - **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-  - **2** **Border** required :label[By scheme]{tone="info"} :label[Containment]
-  - **3** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-- **Header** optional :label[Hierarchy]
-  - **4** **Title** optional :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **5** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-- **6** **Offset** required :label[By scheme]{tone="info"} :label[Grouping]
+::anatomy-legend{id="popover"}
 :::
 
 ## How the decisions reach each part
@@ -67,54 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Cards too
-
-  Cards lift slightly to group offers.
-
-- **Answer** Elevation · How soft are shadows? → Soft
-
-  Soft shadows fit every brand.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow.
-
-  The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.
-
-- **Token** `color.surface.raised` → `content.background` #FFFFFF · dark #0F172A :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `radius.surface` → `content.radius` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.8: Rounded by default; each brand sets its own corner.
-
-- **Token** `color.border.default` → `content.border` #E2E8F0 · dark #334155 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `border-width.default` → `content.border-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
-
-- **Token** `elevation.overlay` → `content.shadow` 0px 12px 32px, #0F172A29 · dark 0px 12px 32px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Soft shadows fit every brand.
-  - **Dark** shadow.overlay-dark: Soft shadows fit every brand.
-
-- **Token** `space.inset.container` → `content.padding` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
+::anatomy-steps{id="popover/card-1"}
 :::
 
 :::panel{id="part-4-5" title="Header" note="Parts 4, 5" media="side"}
@@ -122,40 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.caption.
-
-  Regular body size suits every brand.
-
-- **Token** `type.body.font-size` → `header.font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.body.line-height` → `header.line-height` 1.5 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_5
-
-- **Token** `space.gap.tight` → `header.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
-
-- **Token** `type.label.font-weight` → `title.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
-
-- **Token** `color.text.muted` → `description.label` #4B5A6F · dark #96A3B5 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.
+::anatomy-steps{id="popover/card-2"}
 :::
 
 :::panel{id="part-6" title="Offset" note="Parts 6" media="side"}
@@ -163,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
-
-  Spacing is shared across brands.
-
-- **Token** `space.gap.tight` → `overlay.offset` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="popover/card-3"}
 :::
 
 ## For agents

@@ -1,4 +1,5 @@
 ---
+composite_data: "./radio-group-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 45.5
 slug: "radio-group/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Group** required :label[By scheme]{tone="info"} :label[Grouping]
-- **Option** required :label[Affordance] :label[Reach]
-  - **2** **Circle** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **3** **Dot** state :label[By scheme]{tone="info"} :label[Meaning]
-  - **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-  - **5** **Invalid option** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-  - **6** **Disabled option** state :label[By scheme]{tone="info"} :label[Feedback]
-  - **Option label** required · shown by Label :label[Readability] :label[Reach]
+::anatomy-legend{id="radio-group"}
 :::
 
 ## How the decisions reach each part
@@ -66,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
-
-  Spacing is shared across brands.
-
-- **Token** `component-spacing-map.x3` → `gap` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
+::anatomy-steps{id="radio-group/card-1"}
 :::
 
 :::panel{id="part-2" title="Circle" note="Parts 2" media="side"}
@@ -84,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Customers sign up on phones.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Customers are often on phones.
-
-- **Token** `size.icon` → `item.icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `radius.round` → `item.radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `color.border.strong` → `item.border` #64748B · dark #96A3B5 :label[By scheme]{tone="info"}
-
-  The edge of a control people must find.
-
-  - **Pick** neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.
-  - **Dark** neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** disabled.text. Changing this pick moves only what reads color.border.strong.
-
-- **Token** `border-width.default` → `item.border-width` 1px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.1
+::anatomy-steps{id="radio-group/card-2"}
 :::
 
 :::panel{id="part-3" title="Selected dot" note="Parts 3" media="side"}
@@ -122,21 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Brand colors vary, so meaning needs a word.
-
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Token** `color.action.primary` → `icon` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.
-  - **Dark** teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
+::anatomy-steps{id="radio-group/card-3"}
 :::
 
 :::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
@@ -144,36 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA in every brand and mode.
-
-- **Rule** For keyboard focus, use button/focus-ring (from the brand). Don't use removing the outline.
-
-  Focus follows the brand but always shows.
-
-- **Token** `color.border.focus` → `item.focus-ring-focus` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.
-  - **Dark** teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `item.focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `item.focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `item.focus-ring-offset-focus` #F8FAFC · dark #020617 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="radio-group/card-4"}
 :::
 
 :::panel{id="part-5" title="Invalid option" note="Parts 5" media="side"}
@@ -181,32 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Brand colors vary, so meaning needs a word.
-
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Rule** For an error message, use color.status.danger and a sentence. Don't use the brand color.
-
-  Status colors are shared, never branded.
-
-- **Token** `color.status.danger` → `item.border-invalid` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
-
-- **Token** `color.status.danger.subtle` → `item.focus-ring-invalid` #FFDBD8 · dark #410C11 :label[By scheme]{tone="info"}
-
-  The fill behind danger status.
-
-  - **Pick** red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.
-  - **Dark** red.dark.100: a quiet tint behind danger; its text, 12.74:1, above the 4.5:1 floor.
+::anatomy-steps{id="radio-group/card-5"}
 :::
 
 :::panel{id="part-6" title="Disabled option" note="Parts 6" media="side"}
@@ -214,13 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed for touch.
-
-- **Token** `opacity.disabled` → `item.disabled-opacity-disabled` 0.4 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.40
+::anatomy-steps{id="radio-group/card-6"}
 :::
 
 ## For agents

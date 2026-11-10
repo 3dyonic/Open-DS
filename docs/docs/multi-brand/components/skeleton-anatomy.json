@@ -1,0 +1,123 @@
+{
+ "anatomy-legend": {
+  "skeleton": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Placeholder",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Feedback"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Pulse",
+     "need": "state",
+     "noToken": true,
+     "byScheme": false,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "skeleton/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "Which shape roles does it need?",
+     "answer": "Controls, badges and containers",
+     "why": "Each brand sets three corners."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control (set by the brand)",
+     "not": "a hard-coded radius",
+     "why": "Each brand sets its own corner through the theme."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "radius",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "radius.4: Rounded by default; each brand sets its own corner.",
+     "shares": []
+    }
+   ]
+  },
+  "skeleton/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "How saturated is the palette?",
+     "answer": "Balanced",
+     "why": "Balanced, so any brand hue works."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "skeleton/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Moderate",
+     "why": "Moderate speed across brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "Where does motion show?",
+     "answer": "State changes and panels",
+     "why": "State changes and panels move."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "Reduced motion",
+     "not": "full motion",
+     "why": "Motion is reduced, not removed: a fade keeps the change visible, and nothing slides."
+    }
+   ]
+  }
+ }
+}

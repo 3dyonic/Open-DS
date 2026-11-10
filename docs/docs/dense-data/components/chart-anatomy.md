@@ -1,4 +1,5 @@
 ---
+composite_data: "./chart-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 15.5
 slug: "chart/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Chart** required :label[Containment] :label[Readability]
-  - **1** **Chart area** required :label[By scheme]{tone="info"} :label[Containment]
-  - **2** **Bars** required · colors from the chart's config :label[Meaning] :label[Emphasis]
-  - **3** **Axis labels** optional :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **4** **Grid lines** optional :label[By scheme]{tone="info"} :label[Grouping]
-  - **5** **Cursor** state :label[By scheme]{tone="info"} :label[Feedback]
-- **6** **Tooltip** state :label[By scheme]{tone="info"} :label[Layering] :label[Feedback] :label[Readability]
-- **7** **Legend** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Meaning]
+::anatomy-legend{id="chart"}
 :::
 
 ## How the decisions reach each part
@@ -66,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Grouping]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Rule** For someone switches to dark, use The dark semantic mode. Don't use a second palette in components.
-
-  Only semantic colors change, so layout never moves.
-
-- **Token** `color.border.default` → `grid.line` #DDE2EA · dark #3D4655 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="chart/card-1"}
 :::
 
 :::panel{id="part-2" title="Bars" note="Parts 2" media="side"}
@@ -88,9 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Emphasis]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
+::anatomy-steps{id="chart/card-2"}
 :::
 
 :::panel{id="part-3" title="Axis labels" note="Parts 3" media="side"}
@@ -98,24 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Token** `color.text.muted` → `axis.label` #535D6D · dark #969FAD :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.caption.font-size` → `font-size` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.12
+::anatomy-steps{id="chart/card-3"}
 :::
 
 :::panel{id="part-5" title="Cursor" note="Parts 5" media="side"}
@@ -123,29 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (fast). Don't use no transition.
-
-  Fast feedback confirms the pointer without slowing experts.
-
-- **Token** `color.surface.highlight` → `cursor.fill` #EEF1F5 · dark #262D38 :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
-
-- **Token** `color.border.default` → `cursor.line` #DDE2EA · dark #3D4655 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="chart/card-4"}
 :::
 
 :::panel{id="part-6" title="Tooltip" note="Parts 6" media="side"}
@@ -153,45 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Layering] :label[Feedback]
 
-- **Answer** Elevation · What rises above the page? → Only what floats
-
-  Only menus and dialogs float; cards use lines.
-
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page for dialogs. Don't use a border only.
-
-  Floating things need a shadow so they read as on top.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (fast). Don't use no transition.
-
-  Fast feedback confirms the pointer without slowing experts.
-
-- **Token** `color.surface.canvas` → `tooltip.background` #F7F8FA · dark #0D1117 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `color.border.default` → `tooltip.border` #DDE2EA · dark #3D4655 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `elevation.overlay` → `tooltip.shadow` 0px 8px 24px, #0D111729 · dark 0px 8px 24px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Subtle shadows keep the grid crisp.
-  - **Dark** shadow.overlay-dark: Subtle shadows keep the grid crisp.
-
-- **Token** `component-spacing-map.x3` → `tooltip.padding-x` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.12
+::anatomy-steps{id="chart/card-5"}
 :::
 
 :::panel{id="part-6" title="Tooltip values" note="Parts 6" media="side"}
@@ -199,32 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Rule** For a number in a table, use type.data. Don't use type.body.
-
-  Mono digits line up in columns, so values compare at a glance.
-
-- **Token** `color.text.muted` → `label` #535D6D · dark #969FAD :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `color.text.primary` → `label-2` #161B23 · dark #F7F8FA :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `type.label.font-weight` → `font-weight` 500 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.500
+::anatomy-steps{id="chart/card-6"}
 :::
 
 :::panel{id="part-7" title="Legend" note="Parts 7" media="side"}
@@ -232,17 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Meaning]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For items that belong together, use space.gap.tight. Don't use space.gap.group.
-
-  Things that belong together sit close.
-
-- **Token** `space.gap.group` → `legend.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="chart/card-7"}
 :::
 
 ## For agents

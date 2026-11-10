@@ -1,4 +1,5 @@
 ---
+composite_data: "./hover-card-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 29.5
 slug: "hover-card/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Trigger** required · a link of the page :label[Affordance]
-- **Panel** required :label[Containment]
-  - **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-  - **2** **Border** required :label[By scheme]{tone="info"} :label[Containment]
-  - **3** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-- **4** **Content** required :label[By scheme]{tone="info"} :label[Readability]
-- **Avatar** optional · shown by Avatar :label[Meaning]
-- **5** **Offset** required :label[By scheme]{tone="info"} :label[Grouping]
+::anatomy-legend{id="hover-card"}
 :::
 
 ## How the decisions reach each part
@@ -66,54 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Cards too
-
-  Cards lift to feel like objects.
-
-- **Answer** Elevation · How soft are shadows? → Pronounced
-
-  Pronounced shadows add depth.
-
-- **Answer** Shape · What should control corners say? → Pill
-
-  Pill controls feel playful.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow.
-
-  Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.
-
-- **Token** `color.surface.raised` → `content.background` #FFFFFF · dark #1F1411 :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `radius.surface` → `content.radius` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.24: Pill controls feel playful.
-
-- **Token** `color.border.default` → `content.border` #F2DCCF · dark #4D3A33 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
-
-- **Token** `border-width.default` → `content.border-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `elevation.overlay` → `content.shadow` 0px 24px 48px, #1F141133 · dark 0px 24px 48px, #00000099 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Pronounced shadows add depth.
-  - **Dark** shadow.overlay-dark: Pronounced shadows add depth.
-
-- **Token** `space.inset.container` → `content.padding` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.32
+::anatomy-steps{id="hover-card/card-1"}
 :::
 
 :::panel{id="part-4" title="Content" note="Parts 4" media="side"}
@@ -121,25 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body; the display does the shouting.
-
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Brand accents are part of the message.
-
-- **Rule** For paragraph or help text, use type.body, short. Don't use long paragraphs.
-
-  Short copy keeps the energy.
-
-- **Token** `color.text.primary` → `content.label` #1F1411 · dark #FFF8F3 :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
+::anatomy-steps{id="hover-card/card-2"}
 :::
 
 :::panel{id="part-5" title="Offset" note="Parts 5" media="side"}
@@ -147,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Big space makes big moments.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Air keeps big type readable.
-
-- **Token** `space.gap.tight` → `overlay.offset` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="hover-card/card-3"}
 :::
 
 ## For agents

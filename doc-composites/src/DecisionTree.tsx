@@ -7,7 +7,7 @@
 import * as React from "react";
 import { Card, CardContent } from "@open-ds/ui/components/card";
 import Label from "./Label";
-import { Tree, Twig } from "./tree";
+import { Tree, Twig } from "./base/Tree";
 
 export type DecisionNode = {
   answer: string;

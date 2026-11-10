@@ -1,4 +1,5 @@
 ---
+composite_data: "./bubble-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 9.5
 slug: "bubble/anatomy"
@@ -47,11 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Bubble** required :label[Grouping]
-  - **1** **Byline** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
-  - **2** **Their message** required :label[By scheme]{tone="info"} :label[Containment] :label[Meaning]
-  - **3** **Your message** required :label[By scheme]{tone="info"} :label[Containment] :label[Meaning] :label[Emphasis]
-  - **4** **Message text** required :label[By scheme]{tone="info"} :label[Readability]
+::anatomy-legend{id="bubble"}
 :::
 
 ## How the decisions reach each part
@@ -63,36 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and expressive display
-
-  A big expressive display role carries the brand.
-
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body; the display does the shouting.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Air keeps big type readable.
-
-- **Token** `color.text.muted` → `byline.label` #6B544A · dark #B5988A :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.caption.font-size` → `byline.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `type.caption.line-height` → `byline.line-height` 1.55 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_55
-
-- **Token** `space.gap.tight` → `gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="bubble/card-1"}
 :::
 
 :::panel{id="part-2" title="Their message" note="Parts 2" media="side"}
@@ -100,33 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Meaning]
 
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Brand accents are part of the message.
-
-- **Answer** Shape · Which shape roles does it need? → Controls and containers
-
-  Pills everywhere; badges share the control corner.
-
-- **Token** `color.surface.sunken` → `body.them.background` #FCEFE6 · dark #33241F :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `color.text.primary` → `body.them.label` #1F1411 · dark #FFF8F3 :label[By scheme]{tone="info"}
-
-  Body text and headings.
-
-  - **Pick** neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
-
-- **Token** `radius.surface` → `body.radius` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.24: Pill controls feel playful.
+::anatomy-steps{id="bubble/card-2"}
 :::
 
 :::panel{id="part-3" title="Your message" note="Parts 3" media="side"}
@@ -134,29 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Emphasis]
 
-- **Answer** Color · How many emphasis levels do actions need? → Three
-
-  Primary, secondary, ghost.
-
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA, checked on every vivid color.
-
-- **Token** `color.action.primary` → `body.me.background` #D61F7A · dark #F59ACA :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.
-  - **Dark** pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
-
-- **Token** `color.text.on-action` → `body.me.label` #FFFFFF · dark #1F1411 :label[By scheme]{tone="info"}
-
-  Text and icons on the main action's fill.
-
-  - **Pick** text.on-dark: the text its fill's tone picks, 4.84:1 on action.primary, above the 4.5:1 floor.
-  - **Dark** text.on-light: the text its fill's tone picks, 8.88:1 on action.primary, above the 4.5:1 floor.
-  - **Shares the step with** text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.
+::anatomy-steps{id="bubble/card-3"}
 :::
 
 :::panel{id="part-4" title="Message text" note="Parts 4" media="side"}
@@ -164,33 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body; the display does the shouting.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Big space makes big moments.
-
-- **Rule** For paragraph or help text, use type.body, short. Don't use long paragraphs.
-
-  Short copy keeps the energy.
-
-- **Token** `type.body.font-size` → `body.font-size` 1.0625rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.17
-
-- **Token** `type.body.line-height` → `body.line-height` 1.55 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_55
-
-- **Token** `component-spacing-map.x3` → `body.padding-x` 1.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.24
-
-- **Token** `component-spacing-map.x2` → `body.padding-y` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="bubble/card-4"}
 :::
 
 ## For agents

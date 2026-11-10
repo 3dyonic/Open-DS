@@ -1,4 +1,5 @@
 ---
+composite_data: "./message-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 38.5
 slug: "message/anatomy"
@@ -47,11 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Message** required :label[Grouping]
-  - **Avatar** optional · shown by Avatar :label[Meaning]
-  - **1** **Author** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Emphasis]
-  - **2** **Time** optional :label[By scheme]{tone="info"} :label[Readability]
-  - **3** **Body** required :label[By scheme]{tone="info"} :label[Readability]
+::anatomy-legend{id="message"}
 :::
 
 ## How the decisions reach each part
@@ -63,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Hierarchy] :label[Emphasis]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  One set of roles across brands.
-
-- **Answer** Typography · How many steps does the type scale take? → One step per kind of text
-
-  One size per kind of text suits every brand font.
-
-- **Token** `type.label.font-weight` → `author.font-weight` 600 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.600
+::anatomy-steps{id="message/card-1"}
 :::
 
 :::panel{id="part-2" title="Time" note="Parts 2" media="side"}
@@ -81,28 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Answer** Color · How saturated is the palette? → Balanced
-
-  Balanced, so any brand hue works.
-
-- **Token** `color.text.muted` → `time.label` #4B5A6F · dark #96A3B5 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.caption.font-size` → `time.font-size` 0.8125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.13
-
-- **Token** `type.caption.line-height` → `time.line-height` 1.5 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_5
+::anatomy-steps{id="message/card-2"}
 :::
 
 :::panel{id="part-3" title="Body" note="Parts 3" media="side"}
@@ -110,21 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.caption.
-
-  Regular body size suits every brand.
-
-- **Token** `type.body.font-size` → `font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
-
-- **Token** `type.body.line-height` → `line-height` 1.5 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_5
+::anatomy-steps{id="message/card-3"}
 :::
 
 :::panel{id="part-1-2-3" title="Header and body" note="Parts 1, 2, 3" media="side"}
@@ -132,29 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · Which spacing roles does it need? → Gaps, insets and row heights
-
-  Account tables need a row height.
-
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
-
-  Spacing is shared across brands.
-
-- **Token** `component-spacing-map.x3` → `gap` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
-
-- **Token** `space.gap.tight` → `content.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
-
-- **Token** `space.gap.default` → `header.gap` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.12
+::anatomy-steps{id="message/card-4"}
 :::
 
 ## For agents

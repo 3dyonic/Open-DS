@@ -1,4 +1,5 @@
 ---
+composite_data: "./item-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 33.5
 slug: "item/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Item** required :label[Containment] :label[Grouping]
-  - **1** **Row** required :label[By scheme]{tone="info"} :label[Containment] :label[Reach]
-  - **2** **Media** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Hierarchy]
-  - **3** **Title** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **4** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
-  - **5** **Actions** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **Action buttons** optional · shown by Button :label[Affordance]
-  - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+::anatomy-legend{id="item"}
 :::
 
 ## How the decisions reach each part
@@ -66,29 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Reach]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Rule** For items that belong together, use space.gap.tight. Don't use space.gap.group.
-
-  Things that belong together sit close.
-
-- **Token** `space.inset.container` → `default.padding` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `space.gap.group` → `default.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `radius.control` → `radius` 0.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.2: Small corners keep dense rows straight.
+::anatomy-steps{id="item/card-1"}
 :::
 
 :::panel{id="part-2" title="Media" note="Parts 2" media="side"}
@@ -96,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Hierarchy]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Answer** Iconography · How big are icons next to text? → Match the text
-
-  Icons match the label so they do not outweigh it.
-
-- **Rule** For corners of buttons and inputs, use radius.control. Don't use radius.round.
-
-  Small corners keep dense rows straight.
-
-- **Token** `size.control.default` → `media.icon.size` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.32
-
-- **Token** `radius.control` → `media.icon.radius` 0.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.2: Small corners keep dense rows straight.
-
-- **Token** `color.surface.sunken` → `media.icon.background` #EEF1F5 · dark #262D38 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `size.icon` → `media.icon.icon-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
+::anatomy-steps{id="item/card-2"}
 :::
 
 :::panel{id="part-3" title="Title" note="Parts 3" media="side"}
@@ -134,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Token** `type.body.font-size` → `title.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `type.label.font-weight` → `title.font-weight` 500 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.500
+::anatomy-steps{id="item/card-3"}
 :::
 
 :::panel{id="part-4" title="Description" note="Parts 4" media="side"}
@@ -152,28 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Typography · Which text roles does it need? → Core and data
-
-  A data role keeps numbers in aligned columns.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Surface, text, action and status cover an operations tool.
-
-- **Rule** For paragraph or help text, use type.body. Don't use type.label.
-
-  Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.
-
-- **Token** `type.body.font-size` → `description.font-size` 0.875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.14
-
-- **Token** `color.text.muted` → `description.label` #535D6D · dark #969FAD :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.
+::anatomy-steps{id="item/card-4"}
 :::
 
 :::panel{id="part-5" title="Actions" note="Parts 5" media="side"}
@@ -181,17 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For an action on one row or item, use Icon button, ghost, compact. Don't use button secondary in every row.
-
-  Rows repeat dozens of times; a quiet icon keeps the table readable.
-
-- **Token** `space.gap.default` → `actions.gap` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="item/card-5"}
 :::
 
 :::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
@@ -199,29 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast for every text.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `border-width.focus` → `focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `color.border.focus` → `focus-ring-focus` #4B3FD9 · dark #A9A3F6 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.
-  - **Dark** violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus-offset` → `focus-offset` 2px
-
-  - **Pick** border-width.2
+::anatomy-steps{id="item/card-6"}
 :::
 
 ## For agents

@@ -1,4 +1,5 @@
 ---
+composite_data: "./carousel-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 14.5
 slug: "carousel/anatomy"
@@ -47,14 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Viewport** required :label[By scheme]{tone="info"} :label[Containment]
-- **2** **Slide** required :label[By scheme]{tone="info"} :label[Grouping]
-- **Slide content** required · shown by Card :label[Containment]
-- **Controls** optional :label[Affordance] :label[Reach]
-  - **3** **Previous button** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **4** **Next button** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-  - **Disabled control** state · shown by Button :label[Feedback]
-  - **Focus ring** state · shown by Button :label[Focus]
+::anatomy-legend{id="carousel"}
 :::
 
 ## How the decisions reach each part
@@ -66,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Compact
-
-  Compact spacing shows more records.
-
-- **Rule** For items that belong together, use space.gap.tight. Don't use space.gap.group.
-
-  Things that belong together sit close.
-
-- **Token** `component-spacing-map.x4` → `item.padding-left` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
-
-- **Token** `component-spacing-map.x4` → `item.padding-top` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="carousel/card-1"}
 :::
 
 :::panel{id="part-3-4" title="Previous and next" note="Parts 3, 4" media="side"}
@@ -88,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Accessibility · What is the smallest target? → Compact, for a pointer
-
-  Mouse and keyboard; compact targets are enough.
-
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Small corners keep dense rows straight.
-
-- **Rule** For the smallest clickable thing, use size.control.compact. Don't use anything smaller.
-
-  Compact still fits a mouse. Touch is not this product's input.
-
-- **Rule** For an icon with no label, use Icon button with a tooltip. Don't use a bare icon.
-
-  Experts learn icons; the tooltip covers the first uses.
-
-- **Token** `size.control.default` → `previous.size` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.32
-
-- **Token** `radius.round` → `previous.radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `size.control.default` → `next.size` 2rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.32
-
-- **Token** `radius.round` → `next.radius` 50%
-
-  - **Pick** radius.round
+::anatomy-steps{id="carousel/card-2"}
 :::
 
 ## For agents

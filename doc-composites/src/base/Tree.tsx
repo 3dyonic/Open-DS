@@ -1,4 +1,5 @@
-// The connector lines of a tree: each branch hangs from a line on its left. A drawing, in the
+// Tree: the connector lines of a tree. A base form: the Decision reference and the anatomy legend and steps extend it.
+// Each branch hangs from a line on its left. A drawing, in the
 // scheme's border token; the composites put their content in each twig. The indent and the tick come
 // from the scheme's gaps.
 import * as React from "react";

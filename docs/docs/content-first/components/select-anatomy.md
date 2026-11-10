@@ -1,4 +1,5 @@
 ---
+composite_data: "./select-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 48.5
 slug: "select/anatomy"
@@ -47,21 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Label** required · shown by Label :label[Readability]
-- **Trigger** required :label[Affordance] :label[Reach]
-  - **1** **Field** required :label[By scheme]{tone="info"} :label[Containment] :label[Affordance] :label[Reach]
-  - **2** **Value** required :label[By scheme]{tone="info"} :label[Readability]
-  - **3** **Chevron** required :label[By scheme]{tone="info"} :label[Affordance]
-  - **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-  - **5** **Invalid border** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-  - **6** **Disabled trigger** state :label[By scheme]{tone="info"} :label[Feedback]
-- **List** required
-  - **7** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-  - **8** **Shadow** required :label[By scheme]{tone="info"} :label[Layering]
-- **Option** required :label[Readability] :label[Reach]
-  - **9** **Option label** required :label[By scheme]{tone="info"} :label[Readability]
-  - **10** **Highlight fill** state :label[By scheme]{tone="info"} :label[Feedback] :label[Focus]
-  - **11** **Selected check** state :label[By scheme]{tone="info"} :label[Meaning]
+::anatomy-legend{id="select"}
 :::
 
 ## How the decisions reach each part
@@ -73,48 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Affordance] :label[Readability]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Answer** Typography · How large is body text? → Large
-
-  Large body text is easy on the eyes.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Rule** For field label or column header, use type.label. Don't use type.caption.
-
-  Caption is too faint for a label people must read.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Many readers are on phones.
-
-- **Rule** For corners of buttons and inputs, use radius.control (rounded). Don't use sharp corners.
-
-  Rounded corners match the warm reading tone. Sharp corners feel technical next to long text.
-
-- **Token** `size.control.default` → `trigger.height` 3rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.48
-
-- **Token** `space.inset.control-x` → `trigger.padding-x` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.20
-
-- **Token** `radius.control` → `trigger.radius` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.8: Rounded corners feel friendly.
-
-- **Token** `color.text.muted` → `trigger.icon` #61594D · dark #A39A8B :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.
+::anatomy-steps{id="select/card-1"}
 :::
 
 :::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
@@ -122,29 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast, with large text helping further.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `color.border.focus` → `trigger.border.focus` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.
-  - **Dark** navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `trigger.focus-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `trigger.focus-offset` 2px
-
-  - **Pick** border-width.2
+::anatomy-steps{id="select/card-2"}
 :::
 
 :::panel{id="part-5" title="Invalid border" note="Parts 5" media="side"}
@@ -152,21 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Reading needs few color roles.
-
-- **Rule** For an error message, use color.status.danger and a plain sentence. Don't use color alone.
-
-  The sentence says what to fix; color only draws the eye.
-
-- **Token** `color.status.danger` → `trigger.border.invalid` #C42B2B · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="select/card-3"}
 :::
 
 :::panel{id="part-6" title="Disabled trigger" note="Parts 6" media="side"}
@@ -174,33 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed gets its own value for touch.
-
-- **Token** `color.disabled.surface` → `trigger.disabled.background` #F6F2EA · dark #2E2A24 :label[By scheme]{tone="info"}
-
-  The fill of a control that cannot be used right now.
-
-  - **Pick** neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Dark** neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Shares the step with** surface.sunken, surface.highlight, action.secondary.hover, category.5.subtle. Changing this pick moves only what reads color.disabled.surface.
-
-- **Token** `color.disabled.border` → `trigger.disabled.border` #E4DDD0 · dark #4A4339 :label[By scheme]{tone="info"}
-
-  The edge of a control that cannot be used right now.
-
-  - **Pick** neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Dark** neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.
-  - **Shares the step with** surface.pressed, border.default. Changing this pick moves only what reads color.disabled.border.
-
-- **Token** `color.disabled.text` → `trigger.disabled.text` #7A7062 · dark #CFC6B6 :label[By scheme]{tone="info"}
-
-  Text and icons of a control that cannot be used right now.
-
-  - **Pick** neutral.500: 4.86:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.
-  - **Dark** neutral.500: 10.11:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.
-  - **Shares the step with** border.strong, category.5. Changing this pick moves only what reads color.disabled.text.
+::anatomy-steps{id="select/card-4"}
 :::
 
 :::panel{id="part-7-8" title="List surface and shadow" note="Parts 7, 8" media="side"}
@@ -208,42 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Elevation · What rises above the page? → Only what floats
-
-  Only menus and dialogs float.
-
-- **Answer** Elevation · How soft are shadows? → Soft
-
-  Soft shadows suit warm paper.
-
-- **Rule** For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow.
-
-  The dimmed page focuses the reader on the dialog.
-
-- **Token** `color.surface.raised` → `overlay.background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
-
-  Fills that float above content.
-
-  - **Pick** neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.
-  - **Dark** neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.
-  - **Shares the step with** surface.default, action.secondary. Changing this pick moves only what reads color.surface.raised.
-
-- **Token** `elevation.overlay` → `overlay.shadow` 0px 12px 32px, #1F1B1629 · dark 0px 12px 32px, #00000080 :label[By scheme]{tone="info"}
-
-  - **Pick** shadow.overlay: Soft shadows suit warm paper.
-  - **Dark** shadow.overlay-dark: Soft shadows suit warm paper.
-
-- **Token** `radius.surface` → `overlay.radius` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.12: Rounded corners feel friendly.
-
-- **Token** `color.border.default` → `content.border` #E4DDD0 · dark #4A4339 :label[By scheme]{tone="info"}
-
-  Quiet edges and dividers. Decorative, so it has no contrast minimum.
-
-  - **Pick** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.
-  - **Dark** neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.
-  - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
+::anatomy-steps{id="select/card-5"}
 :::
 
 :::panel{id="part-9-11" title="Option" note="Parts 9, 11" media="side"}
@@ -251,33 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Reach] :label[Meaning]
 
-- **Answer** Typography · How large is body text? → Large
-
-  Large body text is easy on the eyes.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Room around the text helps reading.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Many readers are on phones.
-
-- **Token** `size.control.default` → `overlay.item-height` 3rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.48
-
-- **Token** `type.body.font-size` → `item.font-size` 1.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.18
-
-- **Token** `component-spacing-map.x2` → `item.padding-left` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `size.icon` → `size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
+::anatomy-steps{id="select/card-6"}
 :::
 
 :::panel{id="part-10" title="Highlight fill" note="Parts 10" media="side"}
@@ -285,25 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback] :label[Focus]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed gets its own value for touch.
-
-- **Rule** For hover and press feedback, use motion.duration.feedback (moderate). Don't use a fast flash.
-
-  Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `color.surface.highlight` → `item.background.highlight` #F6F2EA · dark #2E2A24 :label[By scheme]{tone="info"}
-
-  The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.
-
-  - **Pick** neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.
-  - **Dark** neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.
-  - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
+::anatomy-steps{id="select/card-7"}
 :::
 
 ## For agents

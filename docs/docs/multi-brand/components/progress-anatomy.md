@@ -1,4 +1,5 @@
 ---
+composite_data: "./progress-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 44.5
 slug: "progress/anatomy"
@@ -47,9 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Track** required :label[By scheme]{tone="info"} :label[Containment]
-- **2** **Indicator** required :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **Label and value** optional · shown by the page, beside the bar :label[Readability]
+::anatomy-legend{id="progress"}
 :::
 
 ## How the decisions reach each part
@@ -61,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment]
 
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Token** `color.surface.sunken` → `background` #F1F5F9 · dark #1E293B :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
+::anatomy-steps{id="progress/card-1"}
 :::
 
 :::panel{id="part-1" title="Corner" note="Parts 1" media="side"}
@@ -79,13 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Token** `radius.pill` → `radius` calc(infinity * 1px)
-
-  - **Pick** radius.pill
+::anatomy-steps{id="progress/card-2"}
 :::
 
 :::panel{id="part-2" title="Indicator" note="Parts 2" media="side"}
@@ -93,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Answer** Motion · How fast does feedback feel? → Moderate
-
-  Moderate speed across brands.
-
-- **Rule** For someone asked for less motion, use Reduced motion. Don't use full motion.
-
-  Motion is reduced, not removed: a fade keeps the change visible, and nothing slides.
-
-- **Token** `color.action.primary` → `indicator.background` #0F766E · dark #7FCFC6 :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.
-  - **Dark** teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
+::anatomy-steps{id="progress/card-3"}
 :::
 
 ## For agents

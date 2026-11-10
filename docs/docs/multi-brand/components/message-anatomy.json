@@ -1,0 +1,220 @@
+{
+ "anatomy-legend": {
+  "message": {
+   "parts": [
+    {
+     "label": "Message",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "label": "Avatar",
+       "need": "optional",
+       "note": "shown by Avatar",
+       "byScheme": false,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 1,
+       "label": "Author",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Emphasis"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Time",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Body",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "message/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "One set of roles across brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How many steps does the type scale take?",
+     "answer": "One step per kind of text",
+     "why": "One size per kind of text suits every brand font."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "author.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    }
+   ]
+  },
+  "message/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body size suits all brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "How saturated is the palette?",
+     "answer": "Balanced",
+     "why": "Balanced, so any brand hue works."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "time.label",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "time.font-size",
+     "value": "0.8125rem",
+     "byScheme": true,
+     "pick": "font.size.13",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.line-height",
+     "key": "time.line-height",
+     "value": "1.5",
+     "byScheme": true,
+     "pick": "font.line-height.1_5",
+     "shares": []
+    }
+   ]
+  },
+  "message/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body size suits all brands."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body",
+     "not": "type.caption",
+     "why": "Regular body size suits every brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "font-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "font.size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "line-height",
+     "value": "1.5",
+     "byScheme": true,
+     "pick": "font.line-height.1_5",
+     "shares": []
+    }
+   ]
+  },
+  "message/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "Which spacing roles does it need?",
+     "answer": "Gaps, insets and row heights",
+     "why": "Account tables need a row height."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "brand-specific spacing",
+     "why": "Spacing is shared across brands."
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "gap",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "content.gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "header.gap",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

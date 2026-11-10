@@ -1,4 +1,5 @@
 ---
+composite_data: "./tooltip-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 62.5
 slug: "tooltip/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Trigger** required · shown by Button :label[Affordance]
-- **1** **Surface** required :label[By scheme]{tone="info"} :label[Containment] :label[Layering]
-- **2** **Hint** required :label[By scheme]{tone="info"} :label[Readability] :label[Meaning]
-- **3** **Offset** required :label[By scheme]{tone="info"} :label[Grouping]
+::anatomy-legend{id="tooltip"}
 :::
 
 ## How the decisions reach each part
@@ -62,41 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Layering]
 
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Each brand brings its own accent ramp.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded by default; each brand sets its own corner.
-
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For shape of a status badge, use radius.badge (set by the brand). Don't use a hard-coded shape.
-
-  The brand sets the badge shape.
-
-- **Token** `color.surface.inverse` → `content.background` #0F172A · dark #F8FAFC :label[By scheme]{tone="info"}
-
-  A reversed fill for small, short-lived messages.
-
-  - **Pick** neutral.900: the reverse of content for short messages; its text reads, 17.85:1 on surface.inverse, above the 4.5:1 floor.
-  - **Dark** neutral.900: the reverse of content for short messages; its text reads, 17.06:1 on surface.inverse, above the 4.5:1 floor.
-  - **Shares the step with** text.primary. Changing this pick moves only what reads color.surface.inverse.
-
-- **Token** `radius.badge` → `content.radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Rounded by default; each brand sets its own corner.
-
-- **Token** `component-spacing-map.x2` → `content.padding-x` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `component-spacing-map.x1` → `content.padding-y` 0.25rem
-
-  - **Pick** space.4
+::anatomy-steps{id="tooltip/card-1"}
 :::
 
 :::panel{id="part-2" title="Hint" note="Parts 2" media="side"}
@@ -104,33 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Meaning]
 
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body size suits all brands.
-
-- **Answer** Iconography · What do icons do? → Actions, status and navigation
-
-  Icons for actions, status and navigation.
-
-- **Rule** For an icon with no label, use Not used: always add a word; a popover explains a fee. Don't use an icon button with a hover hint.
-
-  On touch screens hover hints never show; a word says what will happen.
-
-- **Token** `color.text.inverse` → `content.label` #FFFFFF · dark #0F172A :label[By scheme]{tone="info"}
-
-  Text on an inverse fill.
-
-  - **Pick** text.on-dark: the text its fill's tone picks, 17.85:1 on surface.inverse, above the 4.5:1 floor.
-  - **Dark** text.on-light: the text its fill's tone picks, 17.06:1 on surface.inverse, above the 4.5:1 floor.
-  - **Shares the step with** text.on-action, text.on-danger. Changing this pick moves only what reads color.text.inverse.
-
-- **Token** `type.caption.font-size` → `content.font-size` 0.8125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.13
-
-- **Token** `type.caption.font-family` → `content.font-family` Inter, system-ui, sans-serif :label[By scheme]{tone="info"}
-
-  - **Pick** inter for caption text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.
+::anatomy-steps{id="tooltip/card-2"}
 :::
 
 :::panel{id="part-3" title="Offset" note="Parts 3" media="side"}
@@ -138,17 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Comfortable
-
-  Comfortable spacing in every brand.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use brand-specific spacing.
-
-  Spacing is shared across brands.
-
-- **Token** `space.gap.tight` → `overlay.offset` 0.5rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.8
+::anatomy-steps{id="tooltip/card-3"}
 :::
 
 ## For agents

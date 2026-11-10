@@ -1,4 +1,5 @@
 ---
+composite_data: "./kbd-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 34.5
 slug: "kbd/anatomy"
@@ -47,10 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Shortcut** optional :label[By scheme]{tone="info"} :label[Grouping]
-- **2** **Key** required :label[By scheme]{tone="info"} :label[Meaning] :label[Readability]
-- **3** **Key on an inverse fill** optional :label[By scheme]{tone="info"} :label[Readability]
-- **Tooltip around the key** optional · shown by Tooltip :label[Layering]
+::anatomy-legend{id="kbd"}
 :::
 
 ## How the decisions reach each part
@@ -62,13 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Token** `space.gap.tight` → `group.gap` 0.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.12
+::anatomy-steps{id="kbd/card-1"}
 :::
 
 :::panel{id="part-2" title="Key" note="Parts 2" media="side"}
@@ -76,41 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Readability]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Clear, slightly rounded controls.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Token** `color.surface.sunken` → `background` #EDEDED · dark #222222 :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `color.text.muted` → `label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
-
-- **Token** `radius.badge` → `radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Clear, slightly rounded controls.
-
-- **Token** `type.caption.font-size` → `font-size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.16
+::anatomy-steps{id="kbd/card-2"}
 :::
 
 :::panel{id="part-3" title="Key on an inverse fill" note="Parts 3" media="side"}
@@ -118,25 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Token** `color.surface.inverse` → `inverse.background` #141414 · dark #F7F7F7 :label[By scheme]{tone="info"}
-
-  A reversed fill for small, short-lived messages.
-
-  - **Pick** neutral.900: the reverse of content for short messages; its text reads, 18.42:1 on surface.inverse, above the 7:1 floor.
-  - **Dark** neutral.900: the reverse of content for short messages; its text reads, 17.2:1 on surface.inverse, above the 7:1 floor.
-  - **Shares the step with** text.primary. Changing this pick moves only what reads color.surface.inverse.
-
-- **Token** `color.text.inverse` → `inverse.label` #FFFFFF · dark #141414 :label[By scheme]{tone="info"}
-
-  Text on an inverse fill.
-
-  - **Pick** text.on-dark: the text its fill's tone picks, 18.42:1 on surface.inverse, above the 7:1 floor.
-  - **Dark** text.on-light: the text its fill's tone picks, 17.2:1 on surface.inverse, above the 7:1 floor.
-  - **Shares the step with** text.on-action, text.on-danger. Changing this pick moves only what reads color.text.inverse.
+::anatomy-steps{id="kbd/card-3"}
 :::
 
 ## For agents

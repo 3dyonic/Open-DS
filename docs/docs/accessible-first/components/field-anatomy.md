@@ -1,4 +1,5 @@
 ---
+composite_data: "./field-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 27.5
 slug: "field/anatomy"
@@ -47,18 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **Field** required :label[Grouping]
-  - **1** **Label** required :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **Control** required · shown by Input :label[Affordance]
-  - **2** **Description** optional :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-  - **3** **Error message** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-  - **4** **Invalid field** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **Choice card** optional :label[Containment] :label[Affordance]
-  - **5** **Choice card** optional :label[By scheme]{tone="info"} :label[Containment] :label[Reach]
-  - **Checkbox or radio** required · shown by Checkbox :label[Affordance]
-  - **6** **Checked choice card** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **7** **Separator** optional :label[Grouping]
-- **Separator line** optional · shown by Separator :label[Grouping]
+::anatomy-legend{id="field"}
 :::
 
 ## How the decisions reach each part
@@ -70,21 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Rule** For field label or column header, use type.label, above the field, always visible. Don't use a placeholder as the label.
-
-  Labels must stay visible while typing.
-
-- **Token** `type.label.font-size` → `label.font-size` 1.125rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.18
-
-- **Token** `type.label.font-weight` → `label.font-weight` 700 :label[By scheme]{tone="info"}
-
-  - **Pick** font.weight.700
+::anatomy-steps{id="field/card-1"}
 :::
 
 :::panel{id="part-2" title="Description" note="Parts 2" media="side"}
@@ -92,37 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · Which text roles does it need? → Core: heading, body, label
-
-  Few roles keep pages predictable.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For paragraph or help text, use type.body, short sentences. Don't use type.caption.
-
-  Large text and short lines lower effort.
-
-- **Token** `type.body.font-size` → `description.font-size` 1.1875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.19
-
-- **Token** `color.text.muted` → `description.label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
-
-- **Token** `component-spacing-map.x1` → `description.margin-top` 0.25rem
-
-  - **Pick** space.4
+::anatomy-steps{id="field/card-2"}
 :::
 
 :::panel{id="part-3" title="Error message" note="Parts 3" media="side"}
@@ -130,33 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Answer** Accessibility · Which states get their own visible value? → All, including loading
-
-  Every state, including loading, gets its own value.
-
-- **Rule** For an error message, use color.status.danger, an icon and a sentence next to the field. Don't use color alone.
-
-  People must know what went wrong and where.
-
-- **Rule** For the words of an error, use Say what is wrong, where, and exactly how to fix it. Don't use "Invalid input".
-
-  People must be able to fix the error without help.
-
-- **Token** `color.status.danger` → `error.label` #981519 · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
-
-- **Token** `type.body.font-weight` → `error.font-weight` 400
-
-  - **Pick** font.weight.400
+::anatomy-steps{id="field/card-3"}
 :::
 
 :::panel{id="part-4" title="Invalid field" note="Parts 4" media="side"}
@@ -164,25 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Answer** Accessibility · Which states get their own visible value? → All, including loading
-
-  Every state, including loading, gets its own value.
-
-- **Rule** For an error message, use color.status.danger, an icon and a sentence next to the field. Don't use color alone.
-
-  People must know what went wrong and where.
-
-- **Token** `color.status.danger` → `input.border.invalid` #981519 · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="field/card-4"}
 :::
 
 :::panel{id="part-5" title="Choice card" note="Parts 5" media="side"}
@@ -190,33 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Containment] :label[Reach]
 
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Clear, slightly rounded controls.
-
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For corners of buttons and inputs, use radius.control. Don't use a pill.
-
-  Clear rectangles read as fields and buttons.
-
-- **Rule** For the smallest clickable thing, use size.control.default (large). Don't use touch-minimum size.
-
-  Large targets help people with motor needs.
-
-- **Token** `radius.control` → `label.radius` 0.375rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.6: Clear, slightly rounded controls.
-
-- **Token** `component-spacing-map.x4` → `label.padding` 1.75rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.28
-
-- **Token** `border-width.default` → `label.border-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
+::anatomy-steps{id="field/card-5"}
 :::
 
 :::panel{id="part-6" title="Checked choice card" note="Parts 6" media="side"}
@@ -224,29 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Rule** For a selected row or item, use color.surface.selected and a check icon. Don't use color alone.
-
-  Selection never relies on color alone.
-
-- **Token** `color.border.selected` → `label.border.checked` #0B4FC0 · dark #8AB4F8 :label[By scheme]{tone="info"}
-
-  The edge that marks a selected item, beside its fill, so selection is never color alone.
-
-  - **Pick** blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.
-  - **Dark** blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.focus, action.primary, category.1. Changing this pick moves only what reads color.border.selected.
-
-- **Token** `color.surface.selected` → `label.background.checked` #E2EDFF · dark #102547 :label[By scheme]{tone="info"}
-
-  The fill of a selected or current item, or a toggle that is on.
-
-  - **Pick** blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Dark** blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.
-  - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
+::anatomy-steps{id="field/card-6"}
 :::
 
 :::panel{id="part-7" title="Separator" note="Parts 7" media="side"}
@@ -254,17 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For between page sections, use space.gap.section. Don't use a thin line.
-
-  Space is easy to see; thin lines are not.
-
-- **Token** `component-spacing-map.x2` → `separator.margin-y` 0.5rem
-
-  - **Pick** space.8
+::anatomy-steps{id="field/card-7"}
 :::
 
 ## For agents

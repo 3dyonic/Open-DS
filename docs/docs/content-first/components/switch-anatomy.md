@@ -1,4 +1,5 @@
 ---
+composite_data: "./switch-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 55.5
 slug: "switch/anatomy"
@@ -47,13 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Track** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-- **2** **Thumb** required :label[By scheme]{tone="info"} :label[Affordance]
-- **3** **On track** state :label[By scheme]{tone="info"} :label[Meaning]
-- **4** **Thumb at the on side** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **5** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-- **6** **Disabled switch** state :label[By scheme]{tone="info"} :label[Feedback]
-- **Label** required · shown by Label :label[Readability] :label[Reach]
+::anatomy-legend{id="switch"}
 :::
 
 ## How the decisions reach each part
@@ -65,29 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Accessibility · What is the smallest target? → Touch size
-
-  Readers are often on phones.
-
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Rule** For the smallest clickable thing, use size.control.default (touch). Don't use a compact control.
-
-  Many readers are on phones.
-
-- **Token** `size.icon` → `height` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `size.icon` → `width` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `radius.pill` → `radius` calc(infinity * 1px)
-
-  - **Pick** radius.pill
+::anatomy-steps{id="switch/card-1"}
 :::
 
 :::panel{id="part-2" title="Thumb" note="Parts 2" media="side"}
@@ -95,33 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance]
 
-- **Answer** Shape · What should control corners say? → Rounded
-
-  Rounded corners feel friendly.
-
-- **Answer** Theming · Which modes ship? → Light and dark
-
-  Light and dark ship as standard; dark helps night reading.
-
-- **Rule** For someone switches to dark, use The dark semantic mode. Don't use inverting images.
-
-  Only semantic colors change; the reading layout stays.
-
-- **Token** `size.icon` → `thumb.size` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
-
-- **Token** `radius.round` → `thumb.radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `color.surface.default` → `thumb.background` #FFFFFF · dark #1F1B16 :label[By scheme]{tone="info"}
-
-  The base fill for content.
-
-  - **Pick** neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.
-  - **Dark** neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.
-  - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
+::anatomy-steps{id="switch/card-2"}
 :::
 
 :::panel{id="part-3-4" title="On" note="Parts 3, 4" media="side"}
@@ -129,29 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Two: color and word
-
-  Status is rare; color and a word are enough.
-
-- **Answer** Motion · How fast does feedback feel? → Moderate
-
-  Moderate speed feels calm.
-
-- **Rule** For someone asked for less motion, use No motion. Don't use reduced motion.
-
-  A shorter motion still moves. When people ask for less motion, nothing moves.
-
-- **Token** `color.action.primary` → `track.background.checked` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.
-  - **Dark** navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
-
-- **Token** `size.icon` → `thumb.travel` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.16
+::anatomy-steps{id="switch/card-3"}
 :::
 
 :::panel{id="part-5" title="Focus ring" note="Parts 5" media="side"}
@@ -159,36 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AA
-
-  AA contrast, with large text helping further.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline.
-
-  Keyboard users must always see where they are.
-
-- **Token** `color.border.focus` → `focus-ring` #1E3A5F · dark #8FA6C4 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.
-  - **Dark** navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `focus` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `border-width.focus-offset` → `focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `focus-ring-offset` #FFFDF8 · dark #14110D :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="switch/card-4"}
 :::
 
 :::panel{id="part-6" title="Disabled switch" note="Parts 6" media="side"}
@@ -196,13 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → Those and pressed
-
-  Pressed gets its own value for touch.
-
-- **Token** `opacity.disabled` → `disabled` 0.4 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.40
+::anatomy-steps{id="switch/card-5"}
 :::
 
 ## For agents

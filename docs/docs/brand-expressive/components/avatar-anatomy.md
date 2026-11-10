@@ -1,4 +1,5 @@
 ---
+composite_data: "./avatar-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 6.5
 slug: "avatar/anatomy"
@@ -47,16 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Avatar** required :label[By scheme]{tone="info"} :label[Meaning] :label[Containment]
-- **Image** optional · not in this example :label[Meaning]
-- **2** **Initials** optional :label[By scheme]{tone="info"} :label[Readability] :label[Meaning]
-- **Status badge** optional :label[Meaning]
-  - **3** **Badge** optional :label[By scheme]{tone="info"} :label[Meaning]
-  - **4** **Badge ring** optional :label[By scheme]{tone="info"} :label[Layering]
-- **Group** optional :label[Grouping]
-  - **5** **Overlap** optional :label[Grouping]
-  - **6** **Group ring** optional :label[By scheme]{tone="info"} :label[Layering]
-  - **Count** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
+::anatomy-legend{id="avatar"}
 :::
 
 ## How the decisions reach each part
@@ -68,44 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Readability]
 
-- **Answer** Shape · What should control corners say? → Pill
-
-  Pill controls feel playful.
-
-- **Answer** Typography · How large is body text? → Regular
-
-  Regular body; the display does the shouting.
-
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Brand accents are part of the message.
-
-- **Token** `size.control.default` → `size` 3.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.52
-
-- **Token** `radius.round` → `radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `color.surface.sunken` → `fallback.background` #FCEFE6 · dark #33241F :label[By scheme]{tone="info"}
-
-  A recessed fill, a step below content.
-
-  - **Pick** neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.
-  - **Dark** neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.
-  - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
-
-- **Token** `color.text.muted` → `fallback.label` #6B544A · dark #B5988A :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.
-  - **Dark** neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.
-
-- **Token** `type.body.font-size` → `fallback.font-size` 1.0625rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.17
+::anatomy-steps{id="avatar/card-1"}
 :::
 
 :::panel{id="part-3-4" title="Status badge" note="Parts 3, 4" media="side"}
@@ -113,36 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Layering]
 
-- **Answer** Color · Which color roles does it need? → Those and brand accents
-
-  Brand accents are part of the message.
-
-- **Answer** Elevation · What separates groups on the page? → Cards
-
-  Cards hold each offer.
-
-- **Token** `color.action.primary` → `badge.background` #D61F7A · dark #F59ACA :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.
-  - **Dark** pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
-
-- **Token** `radius.round` → `badge.radius` 50%
-
-  - **Pick** radius.round
-
-- **Token** `color.surface.canvas` → `badge.ring` #FFF8F3 · dark #120B09 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `border-width.default` → `badge.ring-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
+::anatomy-steps{id="avatar/card-2"}
 :::
 
 :::panel{id="part-5-6" title="Group" note="Parts 5, 6" media="side"}
@@ -150,32 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping] :label[Layering]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Big space makes big moments.
-
-- **Answer** Elevation · What separates groups on the page? → Cards
-
-  Cards hold each offer.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Air keeps big type readable.
-
-- **Token** `component-spacing-map.x2` → `group.overlap` 0.5rem
-
-  - **Pick** space.8
-
-- **Token** `color.surface.canvas` → `group.ring` #FFF8F3 · dark #120B09 :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.
-
-- **Token** `border-width.default` → `group.ring-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
+::anatomy-steps{id="avatar/card-3"}
 :::
 
 ## For agents

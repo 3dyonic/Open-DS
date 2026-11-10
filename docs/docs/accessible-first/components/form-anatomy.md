@@ -1,4 +1,5 @@
 ---
+composite_data: "./form-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 28.5
 slug: "form/anatomy"
@@ -47,12 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Item** required :label[By scheme]{tone="info"} :label[Grouping]
-- **Label** required · shown by Label :label[Readability]
-- **Control** required · shown by Input :label[Affordance]
-- **2** **Description** optional :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
-- **3** **Label in error** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
-- **4** **Error message** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
+::anatomy-legend{id="form"}
 :::
 
 ## How the decisions reach each part
@@ -64,17 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Grouping]
 
-- **Answer** Spacing · How dense is the layout? → Spacious
-
-  Space lowers effort and mis-taps.
-
-- **Rule** For items that belong together, use space.gap.default. Don't use space.gap.tight.
-
-  Generous space lowers mis-taps.
-
-- **Token** `space.gap.default` → `item.gap` 1rem :label[By scheme]{tone="info"}
-
-  - **Pick** space.16
+::anatomy-steps{id="form/card-1"}
 :::
 
 :::panel{id="part-2" title="Description" note="Parts 2" media="side"}
@@ -82,29 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Readability] :label[Hierarchy]
 
-- **Answer** Typography · How large is body text? → Large
-
-  Large text is readable for more people.
-
-- **Rule** For paragraph or help text, use type.body, short sentences. Don't use type.caption.
-
-  Large text and short lines lower effort.
-
-- **Token** `type.body.font-size` → `description.font-size` 1.1875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.19
-
-- **Token** `type.body.line-height` → `description.line-height` 1.6 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_6
-
-- **Token** `color.text.muted` → `description.label` #595959 · dark #B4B4B4 :label[By scheme]{tone="info"}
-
-  The quietest text.
-
-  - **Pick** neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.
-  - **Dark** neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** border.strong, category.5, disabled.text. Changing this pick moves only what reads color.text.muted.
+::anatomy-steps{id="form/card-2"}
 :::
 
 :::panel{id="part-3" title="Label in error" note="Parts 3" media="side"}
@@ -112,21 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Three: color, icon and word
-
-  Never color alone.
-
-- **Rule** For an error message, use color.status.danger, an icon and a sentence next to the field. Don't use color alone.
-
-  People must know what went wrong and where.
-
-- **Token** `color.status.danger` → `label.label` #981519 · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="form/card-3"}
 :::
 
 :::panel{id="part-4" title="Error message" note="Parts 4" media="side"}
@@ -134,37 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning] :label[Feedback]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Three: color, icon and word
-
-  Never color alone.
-
-- **Answer** Voice and tone · How does it sound? → Plain and direct
-
-  Every sentence is easy to read on the first try.
-
-- **Rule** For an error message, use color.status.danger, an icon and a sentence next to the field. Don't use color alone.
-
-  People must know what went wrong and where.
-
-- **Rule** For the words of an error, use Say what is wrong, where, and exactly how to fix it. Don't use "Invalid input".
-
-  People must be able to fix the error without help.
-
-- **Token** `type.body.font-size` → `message.font-size` 1.1875rem :label[By scheme]{tone="info"}
-
-  - **Pick** font.size.19
-
-- **Token** `type.body.line-height` → `message.line-height` 1.6 :label[By scheme]{tone="info"}
-
-  - **Pick** font.line-height.1_6
-
-- **Token** `color.status.danger` → `message.label` #981519 · dark #F28B8B :label[By scheme]{tone="info"}
-
-  Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.
-
-  - **Pick** red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.
-  - **Dark** red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.
-  - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
+::anatomy-steps{id="form/card-4"}
 :::
 
 ## For agents

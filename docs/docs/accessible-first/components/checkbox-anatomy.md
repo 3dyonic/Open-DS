@@ -1,4 +1,5 @@
 ---
+composite_data: "./checkbox-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 16.5
 slug: "checkbox/anatomy"
@@ -47,12 +48,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
-- **1** **Box** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
-- **2** **Checked box** state :label[By scheme]{tone="info"} :label[Meaning]
-- **3** **Check mark** state :label[By scheme]{tone="info"} :label[Meaning]
-- **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
-- **5** **Disabled box** state :label[By scheme]{tone="info"} :label[Feedback]
-- **Label** required · shown by Label :label[Readability] :label[Reach]
+::anatomy-legend{id="checkbox"}
 :::
 
 ## How the decisions reach each part
@@ -64,37 +60,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Affordance] :label[Reach]
 
-- **Answer** Accessibility · What is the smallest target? → Large
-
-  Large targets for tremor and touch.
-
-- **Answer** Shape · What should control corners say? → Slightly rounded
-
-  Clear, slightly rounded controls.
-
-- **Rule** For the smallest clickable thing, use size.control.default (large). Don't use touch-minimum size.
-
-  Large targets help people with motor needs.
-
-- **Token** `size.icon` → `size` 1.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** size.20
-
-- **Token** `color.border.strong` → `border` #595959 · dark #949494 :label[By scheme]{tone="info"}
-
-  The edge of a control people must find.
-
-  - **Pick** neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.
-  - **Dark** neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** text.muted, category.5, disabled.text. Changing this pick moves only what reads color.border.strong.
-
-- **Token** `border-width.default` → `border-width` 2px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.2
-
-- **Token** `radius.badge` → `radius` 0.25rem :label[By scheme]{tone="info"}
-
-  - **Pick** radius.4: Clear, slightly rounded controls.
+::anatomy-steps{id="checkbox/card-1"}
 :::
 
 :::panel{id="part-2-3" title="Checked" note="Parts 2, 3" media="side"}
@@ -102,29 +68,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Meaning]
 
-- **Answer** Accessibility · How many signals carry each meaning? → Three: color, icon and word
-
-  Never color alone.
-
-- **Answer** Color · Which color roles does it need? → Surface, text, action and status
-
-  Few color roles, each with one clear meaning.
-
-- **Token** `color.action.primary` → `background.checked` #0B4FC0 · dark #8AB4F8 :label[By scheme]{tone="info"}
-
-  The one main action in a view.
-
-  - **Pick** blue.light.600: the primary action's fill; its label reads, 7.26:1, above the 7:1 floor.
-  - **Dark** blue.dark.600: the primary action's fill; its label reads, 8.74:1, above the 7:1 floor.
-  - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
-
-- **Token** `color.text.on-action` → `indicator.icon` #FFFFFF · dark #141414 :label[By scheme]{tone="info"}
-
-  Text and icons on the main action's fill.
-
-  - **Pick** text.on-dark: the text its fill's tone picks, 7.26:1 on action.primary, above the 7:1 floor.
-  - **Dark** text.on-light: the text its fill's tone picks, 8.74:1 on action.primary, above the 7:1 floor.
-  - **Shares the step with** text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.
+::anatomy-steps{id="checkbox/card-2"}
 :::
 
 :::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
@@ -132,36 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Focus]
 
-- **Answer** Accessibility · What contrast floor do we hold? → AAA for text
-
-  AAA contrast for text.
-
-- **Rule** For keyboard focus, use button/focus-ring at border-width.focus, with an offset. Don't use a thin or faint outline.
-
-  Focus must be seen by everyone.
-
-- **Token** `color.border.focus` → `focus-ring` #0B4FC0 · dark #8AB4F8 :label[By scheme]{tone="info"}
-
-  The focus ring.
-
-  - **Pick** blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.
-  - **Dark** blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.
-  - **Shares the step with** border.selected, action.primary, category.1. Changing this pick moves only what reads color.border.focus.
-
-- **Token** `border-width.focus` → `focus` 3px :label[By scheme]{tone="info"}
-
-  - **Pick** border-width.3
-
-- **Token** `border-width.focus-offset` → `focus-offset` 2px
-
-  - **Pick** border-width.2
-
-- **Token** `color.surface.canvas` → `focus-ring-offset` #F7F7F7 · dark #0A0A0A :label[By scheme]{tone="info"}
-
-  The page background behind everything.
-
-  - **Pick** neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.
-  - **Dark** neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.
+::anatomy-steps{id="checkbox/card-3"}
 :::
 
 :::panel{id="part-5" title="Disabled box" note="Parts 5" media="side"}
@@ -169,13 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 :label[Feedback]
 
-- **Answer** Accessibility · Which states get their own visible value? → All, including loading
-
-  Every state, including loading, gets its own value.
-
-- **Token** `opacity.disabled` → `disabled` 0.5 :label[By scheme]{tone="info"}
-
-  - **Pick** opacity.50
+::anatomy-steps{id="checkbox/card-4"}
 :::
 
 ## For agents
