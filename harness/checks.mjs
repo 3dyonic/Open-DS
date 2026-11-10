@@ -4,6 +4,7 @@
 
 import { themeTokens } from "../cli/src/tokens.mjs";
 import { pairsIn, toneOf } from "../cli/src/tones.mjs";
+import { follow } from "../cli/src/scale-map.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -2590,6 +2591,44 @@ export const CHECKS = {
       return kinds.length
         ? bad(kinds.map(([what, hits]) => `${hits.length}× ${what}, such as ${hits[0]}`).join("; "))
         : ok(`the data in ${files} page files holds facts only`);
+    },
+  },
+  // Rule 15 (OD-284): a color fact names the step it reads. Where the docs show what a color token
+  // resolves to, the data carries the neutral step it goes through as via, so the page shows
+  // neutral.600, not the gray primitive behind it. Each entry is traced again through the scheme.
+  "doc-composites-steps": {
+    requires: [...SCHEMES.map((s) => `schemes/${s}.json`), "docs/docs"],
+    run: (c) => {
+      const gaps = [];
+      let facts = 0;
+      for (const s of SCHEMES) {
+        const tokens = c.json(`schemes/${s}.json`).tokens;
+        const page = `docs/docs/${s}/foundations/color.json`;
+        if (!existsSync(c.p(page))) continue;
+        const d = c.json(page);
+        const trace = (b, mode, token) =>
+          follow(tokens, b, mode, token) ?? follow(tokens, b, mode, `${token}.@`);
+        const expect = (where, b, mode, token, x) => {
+          const f = trace(b, mode, token);
+          if (!f) return;
+          facts++;
+          if ((x.via ?? null) !== (f.via ?? null))
+            gaps.push(`${s} ${where} ${token} in ${mode}: via is ${x.via ?? "missing"}, the scheme reads ${f.via ?? "no neutral step"}`);
+          if (x.primitive && x.primitive !== f.prim)
+            gaps.push(`${s} ${where} ${token} in ${mode}: primitive is ${x.primitive}, the scheme reads ${f.prim}`);
+        };
+        for (const [b, chart] of Object.entries(d["pairs-chart"] ?? {}))
+          for (const m of chart.modes)
+            for (const f of Object.values(m.fills).flat()) {
+              expect("pairs chart", b, m.mode, f.fill, f);
+              for (const p of f.pairs) expect("pairs chart", b, m.mode, p.text, p);
+            }
+        for (const [b, t] of Object.entries(d["fill-tones"] ?? {}))
+          for (const f of t.fills) for (const x of f.tones) expect("fill tones", b, x.mode, f.fill, x);
+      }
+      return gaps.length
+        ? bad(`${gaps.length} color facts name the wrong step; ${gaps.slice(0, 3).join("; ")}`)
+        : ok(`${facts} color facts in ${SCHEMES.length} schemes name the step they read`);
     },
   },
   // The committed docs hold no local address (OD-284): pages and their data files link Storybook and
