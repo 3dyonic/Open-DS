@@ -14,7 +14,7 @@ Slides that move left and right, one or a few at a time.
 
 ## See it live
 
-::preview{id="carousel/live"}
+::preview{robot="slumber" id="carousel/live"}
 
 ## When to use it
 

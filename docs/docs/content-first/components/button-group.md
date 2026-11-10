@@ -15,7 +15,7 @@ Related buttons joined into one control.
 
 ## See it live
 
-::preview{id="button-group/live"}
+::preview{robot="slumber" id="button-group/live"}
 
 ## When to use it
 

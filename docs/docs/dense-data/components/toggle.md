@@ -14,7 +14,7 @@ A button that stays pressed or not.
 
 ## See it live
 
-::preview{id="toggle/live"}
+::preview{robot="slumber" id="toggle/live"}
 
 ## When to use it
 
@@ -34,7 +34,7 @@ Instead:
 What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="toggle/variant/default"}
+::preview{robot="slumber" id="toggle/variant/default"}
 
 **What it is for**
 
@@ -54,7 +54,7 @@ In the table toolbar, with no border; the pressed state shows as a fill, quiet b
 :::
 
 :::panel{title="outline" note="variant" label="Not used in Dense data" tone="neutral"}
-::preview{id="toggle/variant/outline"}
+::preview{robot="slumber" id="toggle/variant/outline"}
 
 **What it is for**
 
@@ -73,7 +73,7 @@ Borders on every toggle would compete with the data.
 :::
 
 :::panel{title="default" note="size" label="Not used in Dense data" tone="neutral"}
-::preview{id="toggle/size/default"}
+::preview{robot="slumber" id="toggle/size/default"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ Toggles sit in the table toolbar, at the smaller size like compact buttons.
 :::
 
 :::panel{title="sm" note="size" label="Used in Dense data" tone="success"}
-::preview{id="toggle/size/sm"}
+::preview{robot="slumber" id="toggle/size/sm"}
 
 **What it is for**
 
@@ -112,7 +112,7 @@ The table toolbar, matching compact buttons. It still fits a mouse.
 :::
 
 :::panel{title="lg" note="size" label="Not used in Dense data" tone="neutral"}
-::preview{id="toggle/size/lg"}
+::preview{robot="slumber" id="toggle/size/lg"}
 
 **What it is for**
 

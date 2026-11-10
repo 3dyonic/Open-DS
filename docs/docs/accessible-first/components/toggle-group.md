@@ -14,7 +14,7 @@ A set of toggles where one or many stay pressed.
 
 ## See it live
 
-::preview{id="toggle-group/live"}
+::preview{robot="slumber" id="toggle-group/live"}
 
 ## When to use it
 

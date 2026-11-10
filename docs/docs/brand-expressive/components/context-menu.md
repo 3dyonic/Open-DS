@@ -15,7 +15,7 @@ A menu of actions on right-click or long-press.
 
 ## See it live
 
-::preview{id="context-menu/live"}
+::preview{robot="slumber" id="context-menu/live"}
 
 ## When to use it
 

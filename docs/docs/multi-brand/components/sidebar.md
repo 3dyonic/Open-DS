@@ -14,7 +14,7 @@ The side navigation of an app, open while people work.
 
 ## See it live
 
-::preview{id="sidebar/live"}
+::preview{robot="slumber" id="sidebar/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Multi-brand decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Multi-brand" tone="success"}
-::preview{id="sidebar/variant/default"}
+::preview{robot="slumber" id="sidebar/variant/default"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ Account-area menu items, the same in every brand.
 :::
 
 :::panel{title="outline" note="variant" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="sidebar/variant/outline"}
+::preview{robot="slumber" id="sidebar/variant/outline"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Brands change color and corners, not the structure of the menu.
 :::
 
 :::panel{title="default" note="size" label="Used in Multi-brand" tone="success"}
-::preview{id="sidebar/size/default"}
+::preview{robot="slumber" id="sidebar/size/default"}
 
 **What it is for**
 
@@ -90,7 +90,7 @@ Every account-area menu item.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="sidebar/size/sm"}
+::preview{robot="slumber" id="sidebar/size/sm"}
 
 **What it is for**
 
@@ -109,7 +109,7 @@ One density across brands.
 :::
 
 :::panel{title="lg" note="size" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="sidebar/size/lg"}
+::preview{robot="slumber" id="sidebar/size/lg"}
 
 **What it is for**
 

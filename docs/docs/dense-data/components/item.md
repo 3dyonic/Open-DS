@@ -14,7 +14,7 @@ A row with media, a title, a description and actions.
 
 ## See it live
 
-::preview{id="item/live"}
+::preview{robot="slumber" id="item/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="item/variant/default"}
+::preview{robot="slumber" id="item/variant/default"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ Users and settings in a panel or menu, with no border, quiet beside the data.
 :::
 
 :::panel{title="outline" note="variant" label="Not used in Dense data" tone="neutral"}
-::preview{id="item/variant/outline"}
+::preview{robot="slumber" id="item/variant/outline"}
 
 **What it is for**
 
@@ -72,7 +72,7 @@ Borders on every row would compete with the data; hairlines between sections do 
 :::
 
 :::panel{title="muted" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="item/variant/muted"}
+::preview{robot="slumber" id="item/variant/muted"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ The current user or setting, with a soft fill so people keep their place.
 :::
 
 :::panel{title="default" note="size" label="Used in Dense data" tone="success"}
-::preview{id="item/size/default"}
+::preview{robot="slumber" id="item/size/default"}
 
 **What it is for**
 
@@ -111,7 +111,7 @@ Settings and user lists outside the table, at the standard row.
 :::
 
 :::panel{title="sm" note="size" label="Used in Dense data" tone="success"}
-::preview{id="item/size/sm"}
+::preview{robot="slumber" id="item/size/sm"}
 
 **What it is for**
 

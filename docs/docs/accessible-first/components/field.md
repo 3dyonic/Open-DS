@@ -14,7 +14,7 @@ A label, control, hint and error laid out together, the same way every time.
 
 ## See it live
 
-::preview{id="field/live"}
+::preview{robot="slumber" id="field/live"}
 
 ## When to use it
 
@@ -32,7 +32,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="vertical" note="orientation" label="Used in Accessible first" tone="success"}
-::preview{id="field/orientation/vertical"}
+::preview{robot="slumber" id="field/orientation/vertical"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ Every question: the label above the field, always visible.
 :::
 
 :::panel{title="horizontal" note="orientation" label="Not used in Accessible first" tone="neutral"}
-::preview{id="field/orientation/horizontal"}
+::preview{robot="slumber" id="field/orientation/horizontal"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Labels stay above the field, visible while typing and in the same place on any s
 :::
 
 :::panel{title="responsive" note="orientation" label="Not used in Accessible first" tone="neutral"}
-::preview{id="field/orientation/responsive"}
+::preview{robot="slumber" id="field/orientation/responsive"}
 
 **What it is for**
 

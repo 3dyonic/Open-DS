@@ -14,7 +14,7 @@ A short label for a status, category or count, next to what it describes.
 
 ## See it live
 
-::preview{id="badge/live"}
+::preview{robot="slumber" id="badge/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Brand expressive decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="neutral" note="tone" label="Used in Brand expressive" tone="success"}
-::preview{id="badge/tone/neutral"}
+::preview{robot="slumber" id="badge/tone/neutral"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ New: a label, not a state to fix.
 :::
 
 :::panel{title="info" note="tone" label="Not used in Brand expressive" tone="neutral"}
-::preview{id="badge/tone/info"}
+::preview{robot="slumber" id="badge/tone/info"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Campaign labels are a state or a nudge; there are no plain news labels.
 :::
 
 :::panel{title="success" note="tone" label="Used in Brand expressive" tone="success"}
-::preview{id="badge/tone/success"}
+::preview{robot="slumber" id="badge/tone/success"}
 
 **What it is for**
 
@@ -90,7 +90,7 @@ On the list: you joined and your place is saved.
 :::
 
 :::panel{title="warning" note="tone" label="Used in Brand expressive" tone="success"}
-::preview{id="badge/tone/warning"}
+::preview{robot="slumber" id="badge/tone/warning"}
 
 **What it is for**
 
@@ -110,7 +110,7 @@ Almost gone: few left, act soon.
 :::
 
 :::panel{title="danger" note="tone" label="Not used in Brand expressive" tone="neutral"}
-::preview{id="badge/tone/danger"}
+::preview{robot="slumber" id="badge/tone/danger"}
 
 **What it is for**
 

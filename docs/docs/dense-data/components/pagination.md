@@ -14,7 +14,7 @@ Moves between pages of results.
 
 ## See it live
 
-::preview{id="pagination/live"}
+::preview{robot="slumber" id="pagination/live"}
 
 ## When to use it
 

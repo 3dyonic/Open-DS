@@ -14,7 +14,7 @@ Many records in one view, with search, filters, sorting, column choice, selectio
 
 ## See it live
 
-::preview{id="data-table/live"}
+::preview{robot="slumber" id="data-table/live"}
 
 ## When to use it
 

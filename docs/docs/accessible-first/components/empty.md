@@ -14,7 +14,7 @@ What a region shows when it loaded and has nothing: why, and what to do next.
 
 ## See it live
 
-::preview{id="empty/live"}
+::preview{robot="slumber" id="empty/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Accessible first" tone="neutral"}
-::preview{id="empty/variant/default"}
+::preview{robot="slumber" id="empty/variant/default"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ The brand stays out of the way: words say what will appear and how to start.
 :::
 
 :::panel{title="icon" note="variant" label="Used in Accessible first" tone="success"}
-::preview{id="empty/variant/icon"}
+::preview{robot="slumber" id="empty/variant/icon"}
 
 **What it is for**
 

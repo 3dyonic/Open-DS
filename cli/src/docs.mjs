@@ -2764,7 +2764,7 @@ export function docsPages(
         },
       ],
     };
-    parts.push(`## See it live\n\n::preview{id="${name}/live"}`);
+    parts.push(`## See it live\n\n::preview{${introRobot("slumber")}id="${name}/live"}`);
     // A kept component's own use leads "When to use it" (OD-211): where this scheme uses it, then
     // what it is for in any design system.
     const ownUse = leftOut(name) ? "" : (guide?.why ?? inventory[name] ?? "");
@@ -2811,7 +2811,7 @@ export function docsPages(
                     light: `${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme};mode:light&args=${v.axis}:${v.id}`,
                   },
                 };
-                stage = `::preview{id="${id}"}\n\n`;
+                stage = `::preview{${introRobot("slumber")}id="${id}"}\n\n`;
               }
               const when = [
                 v.reference.apply_when
@@ -3037,9 +3037,11 @@ export function docsPages(
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;
     const data = {};
-    for (const m of text.matchAll(/^::([a-z-]+)\{([a-z]+)="([^"]+)"\}$/gm)) {
-      const [, kind, key, id] = m;
-      if (KEYS[kind] !== key) continue;
+    for (const m of text.matchAll(/^::([a-z-]+)\{([^}]*)\}$/gm)) {
+      const [, kind, attrs] = m;
+      // The directive's attributes, in any order; the one its kind names holds the entry's id.
+      const id = new RegExp(`(?:^|\\s)${KEYS[kind]}="([^"]+)"`).exec(attrs)?.[1];
+      if (!KEYS[kind] || !id) continue;
       if (compositeData[kind]?.[id] === undefined)
         throw new Error(
           `${p}: ::${kind}{${key}="${id}"} has no data. The generator wrote the line without its rows.`,

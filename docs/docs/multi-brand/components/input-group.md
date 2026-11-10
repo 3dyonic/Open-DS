@@ -14,7 +14,7 @@ An input with addons inside its border: icons, text, buttons.
 
 ## See it live
 
-::preview{id="input-group/live"}
+::preview{robot="slumber" id="input-group/live"}
 
 ## When to use it
 
@@ -32,7 +32,7 @@ Instead:
 What each variant is for in any design system, then what Multi-brand decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="inline-start" note="align" label="Used in Multi-brand" tone="success"}
-::preview{id="input-group/align/inline-start"}
+::preview{robot="slumber" id="input-group/align/inline-start"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ A currency sign or a search icon before the text, from the outline set every bra
 :::
 
 :::panel{title="inline-end" note="align" label="Used in Multi-brand" tone="success"}
-::preview{id="input-group/align/inline-end"}
+::preview{robot="slumber" id="input-group/align/inline-end"}
 
 **What it is for**
 
@@ -72,7 +72,7 @@ A unit after the value, the same in every brand.
 :::
 
 :::panel{title="block-start" note="align" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="input-group/align/block-start"}
+::preview{robot="slumber" id="input-group/align/block-start"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ Sign-up and account fields stay one line; field puts the label above, outside th
 :::
 
 :::panel{title="block-end" note="align" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="input-group/align/block-end"}
+::preview{robot="slumber" id="input-group/align/block-end"}
 
 **What it is for**
 

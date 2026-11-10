@@ -14,7 +14,7 @@ A button that stays pressed or not.
 
 ## See it live
 
-::preview{id="toggle/live"}
+::preview{robot="slumber" id="toggle/live"}
 
 ## When to use it
 
@@ -34,7 +34,7 @@ Instead:
 What each variant is for in any design system, then what Multi-brand decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="toggle/variant/default"}
+::preview{robot="slumber" id="toggle/variant/default"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ Toggles that sit together, like monthly or yearly prices, use toggle-group.
 :::
 
 :::panel{title="outline" note="variant" label="Used in Multi-brand" tone="success"}
-::preview{id="toggle/variant/outline"}
+::preview{robot="slumber" id="toggle/variant/outline"}
 
 **What it is for**
 
@@ -73,7 +73,7 @@ A single toggle, with a border so it reads as a control in every brand.
 :::
 
 :::panel{title="default" note="size" label="Used in Multi-brand" tone="success"}
-::preview{id="toggle/size/default"}
+::preview{robot="slumber" id="toggle/size/default"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ Every toggle, at touch size: customers are often on phones.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="toggle/size/sm"}
+::preview{robot="slumber" id="toggle/size/sm"}
 
 **What it is for**
 
@@ -111,7 +111,7 @@ Customers are often on phones: no compact controls.
 :::
 
 :::panel{title="lg" note="size" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="toggle/size/lg"}
+::preview{robot="slumber" id="toggle/size/lg"}
 
 **What it is for**
 

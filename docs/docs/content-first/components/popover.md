@@ -15,7 +15,7 @@ Rich content in a floating panel, opened by click.
 
 ## See it live
 
-::preview{id="popover/live"}
+::preview{robot="slumber" id="popover/live"}
 
 ## When to use it
 

@@ -15,7 +15,7 @@ Separate boxes for a one-time code.
 
 ## See it live
 
-::preview{id="input-otp/live"}
+::preview{robot="slumber" id="input-otp/live"}
 
 ## When to use it
 

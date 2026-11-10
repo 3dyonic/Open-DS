@@ -15,7 +15,7 @@ Placeholder shapes that match the final layout, so the page does not jump when c
 
 ## See it live
 
-::preview{id="skeleton/live"}
+::preview{robot="slumber" id="skeleton/live"}
 
 ## When to use it
 

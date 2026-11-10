@@ -14,7 +14,7 @@ Keeps an image or video at a fixed shape while the layout resizes.
 
 ## See it live
 
-::preview{id="aspect-ratio/live"}
+::preview{robot="slumber" id="aspect-ratio/live"}
 
 ## When to use it
 

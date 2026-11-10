@@ -15,7 +15,7 @@ An on or off setting that applies at once, with no submit.
 
 ## See it live
 
-::preview{id="switch/live"}
+::preview{robot="slumber" id="switch/live"}
 
 ## When to use it
 

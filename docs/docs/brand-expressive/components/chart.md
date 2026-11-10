@@ -14,7 +14,7 @@ A picture of numbers: comparison, trend, share or spread.
 
 ## See it live
 
-::preview{id="chart/live"}
+::preview{robot="slumber" id="chart/live"}
 
 ## When to use it
 

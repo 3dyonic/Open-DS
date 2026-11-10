@@ -14,7 +14,7 @@ A text field that suggests and completes matches from a known list as people typ
 
 ## See it live
 
-::preview{id="combobox/live"}
+::preview{robot="slumber" id="combobox/live"}
 
 ## When to use it
 

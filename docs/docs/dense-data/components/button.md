@@ -14,7 +14,7 @@ A control that commits an action on this screen.
 
 ## See it live
 
-::preview{id="button/live"}
+::preview{robot="slumber" id="button/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="primary" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="button/variant/primary"}
+::preview{robot="slumber" id="button/variant/primary"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ The one commit in a view.
 :::
 
 :::panel{title="secondary" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="button/variant/secondary"}
+::preview{robot="slumber" id="button/variant/secondary"}
 
 **What it is for**
 
@@ -73,7 +73,7 @@ Alternatives and cancel next to the primary, and the first step of a delete.
 :::
 
 :::panel{title="danger" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="button/variant/danger"}
+::preview{robot="slumber" id="button/variant/danger"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ The confirm of a bulk delete. Many records go at once, so the last press must no
 :::
 
 :::panel{title="ghost" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="button/variant/ghost"}
+::preview{robot="slumber" id="button/variant/ghost"}
 
 **What it is for**
 
@@ -112,7 +112,7 @@ Row actions, as compact icon buttons. Never for cancel.
 :::
 
 :::panel{title="default" note="size" label="Used in Dense data" tone="success"}
-::preview{id="button/size/default"}
+::preview{robot="slumber" id="button/size/default"}
 
 **What it is for**
 
@@ -129,7 +129,7 @@ Actions outside tables: forms, dialogs, page actions.
 :::
 
 :::panel{title="compact" note="size" label="Used in Dense data" tone="success"}
-::preview{id="button/size/compact"}
+::preview{robot="slumber" id="button/size/compact"}
 
 **What it is for**
 
@@ -148,7 +148,7 @@ Table rows and toolbars. Compact still fits a mouse.
 :::
 
 :::panel{title="icon" note="size" label="Used in Dense data" tone="success"}
-::preview{id="button/size/icon"}
+::preview{robot="slumber" id="button/size/icon"}
 
 **What it is for**
 
@@ -167,7 +167,7 @@ Known row and toolbar actions, always with a tooltip.
 :::
 
 :::panel{title="large" note="size" label="Not used in Dense data" tone="neutral"}
-::preview{id="button/size/large"}
+::preview{robot="slumber" id="button/size/large"}
 
 **What it is for**
 

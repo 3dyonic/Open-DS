@@ -14,7 +14,7 @@ The side navigation of an app, open while people work.
 
 ## See it live
 
-::preview{id="sidebar/live"}
+::preview{robot="slumber" id="sidebar/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Dense data" tone="success"}
-::preview{id="sidebar/variant/default"}
+::preview{robot="slumber" id="sidebar/variant/default"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ Menu items with no border, quiet beside dense data.
 :::
 
 :::panel{title="outline" note="variant" label="Not used in Dense data" tone="neutral"}
-::preview{id="sidebar/variant/outline"}
+::preview{robot="slumber" id="sidebar/variant/outline"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Borders on every item would compete with the data.
 :::
 
 :::panel{title="default" note="size" label="Used in Dense data" tone="success"}
-::preview{id="sidebar/size/default"}
+::preview{robot="slumber" id="sidebar/size/default"}
 
 **What it is for**
 
@@ -90,7 +90,7 @@ Every section of the app.
 :::
 
 :::panel{title="sm" note="size" label="Used in Dense data" tone="success"}
-::preview{id="sidebar/size/sm"}
+::preview{robot="slumber" id="sidebar/size/sm"}
 
 **What it is for**
 
@@ -109,7 +109,7 @@ Long secondary lists, at the denser size.
 :::
 
 :::panel{title="lg" note="size" label="Not used in Dense data" tone="neutral"}
-::preview{id="sidebar/size/lg"}
+::preview{robot="slumber" id="sidebar/size/lg"}
 
 **What it is for**
 

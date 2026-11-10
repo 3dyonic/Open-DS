@@ -15,7 +15,7 @@ A divider or status line inside a conversation, such as a date or someone joinin
 
 ## See it live
 
-::preview{id="marker/live"}
+::preview{robot="slumber" id="marker/live"}
 
 ## When to use it
 

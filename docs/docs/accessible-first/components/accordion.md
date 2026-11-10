@@ -15,7 +15,7 @@ Stacked sections that expand and collapse without leaving the page.
 
 ## See it live
 
-::preview{id="accordion/live"}
+::preview{robot="slumber" id="accordion/live"}
 
 ## When to use it
 

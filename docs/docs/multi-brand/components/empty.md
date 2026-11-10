@@ -14,7 +14,7 @@ What a region shows when it loaded and has nothing: why, and what to do next.
 
 ## See it live
 
-::preview{id="empty/live"}
+::preview{robot="slumber" id="empty/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Multi-brand decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Multi-brand" tone="neutral"}
-::preview{id="empty/variant/default"}
+::preview{robot="slumber" id="empty/variant/default"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ Shared structure in every brand: no brand pictures in empty states.
 :::
 
 :::panel{title="icon" note="variant" label="Used in Multi-brand" tone="success"}
-::preview{id="empty/variant/icon"}
+::preview{robot="slumber" id="empty/variant/icon"}
 
 **What it is for**
 

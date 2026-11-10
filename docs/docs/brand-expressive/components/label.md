@@ -14,7 +14,7 @@ The visible name of a form control.
 
 ## See it live
 
-::preview{id="label/live"}
+::preview{robot="slumber" id="label/live"}
 
 ## When to use it
 

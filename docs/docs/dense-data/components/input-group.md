@@ -14,7 +14,7 @@ An input with addons inside its border: icons, text, buttons.
 
 ## See it live
 
-::preview{id="input-group/live"}
+::preview{robot="slumber" id="input-group/live"}
 
 ## When to use it
 
@@ -32,7 +32,7 @@ Instead:
 What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="inline-start" note="align" label="Used in Dense data" tone="success"}
-::preview{id="input-group/align/inline-start"}
+::preview{robot="slumber" id="input-group/align/inline-start"}
 
 **What it is for**
 
@@ -51,7 +51,7 @@ The search icon before the text.
 :::
 
 :::panel{title="inline-end" note="align" label="Used in Dense data" tone="success"}
-::preview{id="input-group/align/inline-end"}
+::preview{robot="slumber" id="input-group/align/inline-end"}
 
 **What it is for**
 
@@ -70,7 +70,7 @@ The clear button after the text, for searches people repeat all day.
 :::
 
 :::panel{title="block-start" note="align" label="Not used in Dense data" tone="neutral"}
-::preview{id="input-group/align/block-start"}
+::preview{robot="slumber" id="input-group/align/block-start"}
 
 **What it is for**
 
@@ -89,7 +89,7 @@ Inputs stay one line high in toolbars and filter bars.
 :::
 
 :::panel{title="block-end" note="align" label="Not used in Dense data" tone="neutral"}
-::preview{id="input-group/align/block-end"}
+::preview{robot="slumber" id="input-group/align/block-end"}
 
 **What it is for**
 

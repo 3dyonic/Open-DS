@@ -14,7 +14,7 @@ A window over the page that takes attention until people finish or close it.
 
 ## See it live
 
-::preview{id="dialog/live"}
+::preview{robot="slumber" id="dialog/live"}
 
 ## When to use it
 

@@ -14,7 +14,7 @@ A row of menus, as in desktop apps.
 
 ## See it live
 
-::preview{id="menubar/live"}
+::preview{robot="slumber" id="menubar/live"}
 
 ## When to use it
 

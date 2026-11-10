@@ -14,7 +14,7 @@ A field-like button that opens a calendar for one date or a range.
 
 ## See it live
 
-::preview{id="date-picker/live"}
+::preview{robot="slumber" id="date-picker/live"}
 
 ## When to use it
 

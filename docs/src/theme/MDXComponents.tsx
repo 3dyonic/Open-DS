@@ -64,6 +64,13 @@ function LinkedFold(props: React.ComponentProps<typeof Fold>) {
   return <Fold {...props} />;
 }
 
+// A live preview names its robot too: the one that sleeps while Storybook is not running.
+function RobotPreview({ robot, ...props }: Omit<React.ComponentProps<typeof Preview>, "robot"> & { robot?: string }) {
+  const day = useBaseUrl(`/robots/${robot}.webp`);
+  const night = useBaseUrl(`/robots/${robot}-dark.webp`);
+  return <Preview {...props} robot={robot ? { day, night } : undefined} />;
+}
+
 // The home page's hero names its robot too.
 function RobotHero({ robot, ...props }: Omit<React.ComponentProps<typeof Hero>, "robot"> & { robot?: string }) {
   const day = useBaseUrl(`/robots/${robot}.webp`);
@@ -106,7 +113,7 @@ export default {
   Hero: RobotHero,
   Intro: RobotIntro,
   Label,
-  Preview,
+  Preview: RobotPreview,
   ReasonChain: LinkedReasonChain,
   Specimen,
   SurfaceStack,

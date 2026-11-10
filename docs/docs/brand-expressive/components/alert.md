@@ -14,7 +14,7 @@ A message that stays on the page with the content it is about.
 
 ## See it live
 
-::preview{id="alert/live"}
+::preview{robot="slumber" id="alert/live"}
 
 ## When to use it
 
@@ -34,7 +34,7 @@ Instead:
 What each variant is for in any design system, then what Brand expressive decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Brand expressive" tone="neutral"}
-::preview{id="alert/variant/default"}
+::preview{robot="slumber" id="alert/variant/default"}
 
 **What it is for**
 
@@ -54,7 +54,7 @@ Alerts here only report a sign-up that did not go through; confirmations go in a
 :::
 
 :::panel{title="destructive" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{id="alert/variant/destructive"}
+::preview{robot="slumber" id="alert/variant/destructive"}
 
 **What it is for**
 

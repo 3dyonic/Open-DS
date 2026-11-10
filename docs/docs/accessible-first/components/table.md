@@ -14,7 +14,7 @@ Rows and columns of comparable records, with headers.
 
 ## See it live
 
-::preview{id="table/live"}
+::preview{robot="slumber" id="table/live"}
 
 ## When to use it
 

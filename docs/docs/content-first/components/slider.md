@@ -15,7 +15,7 @@ A value picked by dragging along a track, when an exact number is not needed.
 
 ## See it live
 
-::preview{id="slider/live"}
+::preview{robot="slumber" id="slider/live"}
 
 ## When to use it
 

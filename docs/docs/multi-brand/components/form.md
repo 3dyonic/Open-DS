@@ -14,7 +14,7 @@ Form state and validation wired to the fields.
 
 ## See it live
 
-::preview{id="form/live"}
+::preview{robot="slumber" id="form/live"}
 
 ## When to use it
 

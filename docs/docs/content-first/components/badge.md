@@ -14,7 +14,7 @@ A short label for a status, category or count, next to what it describes.
 
 ## See it live
 
-::preview{id="badge/live"}
+::preview{robot="slumber" id="badge/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Content first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="neutral" note="tone" label="Used in Content first" tone="success"}
-::preview{id="badge/tone/neutral"}
+::preview{robot="slumber" id="badge/tone/neutral"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ Saved: waiting for you; nothing is wrong.
 :::
 
 :::panel{title="info" note="tone" label="Not used in Content first" tone="neutral"}
-::preview{id="badge/tone/info"}
+::preview{robot="slumber" id="badge/tone/info"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Topics and reading states need no news tone; status is rare.
 :::
 
 :::panel{title="success" note="tone" label="Used in Content first" tone="success"}
-::preview{id="badge/tone/success"}
+::preview{robot="slumber" id="badge/tone/success"}
 
 **What it is for**
 
@@ -90,7 +90,7 @@ Finished: you read it to the end.
 :::
 
 :::panel{title="warning" note="tone" label="Used in Content first" tone="success"}
-::preview{id="badge/tone/warning"}
+::preview{robot="slumber" id="badge/tone/warning"}
 
 **What it is for**
 
@@ -109,7 +109,7 @@ Out of date: the facts may have changed since it was written.
 :::
 
 :::panel{title="danger" note="tone" label="Not used in Content first" tone="neutral"}
-::preview{id="badge/tone/danger"}
+::preview{robot="slumber" id="badge/tone/danger"}
 
 **What it is for**
 

@@ -15,7 +15,7 @@ A short message that confirms an action and goes away.
 
 ## See it live
 
-::preview{id="toast/live"}
+::preview{robot="slumber" id="toast/live"}
 
 ## When to use it
 
@@ -32,7 +32,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="neutral" note="tone" label="Not decided yet" tone="neutral"}
-::preview{id="toast/tone/neutral"}
+::preview{robot="slumber" id="toast/tone/neutral"}
 
 **What it is for**
 
@@ -48,7 +48,7 @@ Not decided yet.
 :::
 
 :::panel{title="success" note="tone" label="Not decided yet" tone="neutral"}
-::preview{id="toast/tone/success"}
+::preview{robot="slumber" id="toast/tone/success"}
 
 **What it is for**
 
@@ -64,7 +64,7 @@ Not decided yet.
 :::
 
 :::panel{title="danger" note="tone" label="Not decided yet" tone="neutral"}
-::preview{id="toast/tone/danger"}
+::preview{robot="slumber" id="toast/tone/danger"}
 
 **What it is for**
 

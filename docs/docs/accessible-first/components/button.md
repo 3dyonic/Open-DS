@@ -14,7 +14,7 @@ A control that commits an action on this screen.
 
 ## See it live
 
-::preview{id="button/live"}
+::preview{robot="slumber" id="button/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="primary" note="variant" label="Used in Accessible first" tone="success"}
-::preview{id="button/variant/primary"}
+::preview{robot="slumber" id="button/variant/primary"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ The one next step on a page.
 :::
 
 :::panel{title="secondary" note="variant" label="Used in Accessible first" tone="success"}
-::preview{id="button/variant/secondary"}
+::preview{robot="slumber" id="button/variant/secondary"}
 
 **What it is for**
 
@@ -72,7 +72,7 @@ Every other action, always with a word: alternatives, row actions, and the first
 :::
 
 :::panel{title="danger" note="variant" label="Used in Accessible first" tone="success"}
-::preview{id="button/variant/danger"}
+::preview{robot="slumber" id="button/variant/danger"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ The confirm of a delete, always with the verb and an icon, so color is never the
 :::
 
 :::panel{title="ghost" note="variant" label="Not used in Accessible first" tone="neutral"}
-::preview{id="button/variant/ghost"}
+::preview{robot="slumber" id="button/variant/ghost"}
 
 **What it is for**
 
@@ -111,7 +111,7 @@ Every action looks like a button people can find.
 :::
 
 :::panel{title="default" note="size" label="Used in Accessible first" tone="success"}
-::preview{id="button/size/default"}
+::preview{robot="slumber" id="button/size/default"}
 
 **What it is for**
 
@@ -127,7 +127,7 @@ Every button. Large targets help people with motor needs.
 :::
 
 :::panel{title="compact" note="size" label="Not used in Accessible first" tone="neutral"}
-::preview{id="button/size/compact"}
+::preview{robot="slumber" id="button/size/compact"}
 
 **What it is for**
 
@@ -145,7 +145,7 @@ Large targets help people with motor needs; nothing smaller.
 :::
 
 :::panel{title="icon" note="size" label="Not used in Accessible first" tone="neutral"}
-::preview{id="button/size/icon"}
+::preview{robot="slumber" id="button/size/icon"}
 
 **What it is for**
 
@@ -164,7 +164,7 @@ Icons alone are guesswork: always add a word.
 :::
 
 :::panel{title="large" note="size" label="Not used in Accessible first" tone="neutral"}
-::preview{id="button/size/large"}
+::preview{robot="slumber" id="button/size/large"}
 
 **What it is for**
 

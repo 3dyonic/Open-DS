@@ -14,7 +14,7 @@ One choice from a short list shown at once.
 
 ## See it live
 
-::preview{id="radio-group/live"}
+::preview{robot="slumber" id="radio-group/live"}
 
 ## When to use it
 

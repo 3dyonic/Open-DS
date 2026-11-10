@@ -14,7 +14,7 @@ A panel that slides in from an edge.
 
 ## See it live
 
-::preview{id="sheet/live"}
+::preview{robot="slumber" id="sheet/live"}
 
 ## When to use it
 

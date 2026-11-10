@@ -15,7 +15,7 @@ The browser's own select, styled.
 
 ## See it live
 
-::preview{id="native-select/live"}
+::preview{robot="slumber" id="native-select/live"}
 
 ## When to use it
 

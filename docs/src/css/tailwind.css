@@ -4,7 +4,7 @@
 @layer theme, base, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
-@source "../../../ui/src/components/{badge,button,card,input,item,progress,separator,table,tabs}.tsx";
+@source "../../../ui/src/components/{badge,button,card,empty,input,item,progress,separator,table,tabs}.tsx";
 @source "../components";
 @source "../../../doc-composites/src";
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

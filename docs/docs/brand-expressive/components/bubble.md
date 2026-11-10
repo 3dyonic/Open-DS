@@ -15,7 +15,7 @@ A chat message in a bubble that shows who sent it.
 
 ## See it live
 
-::preview{id="bubble/live"}
+::preview{robot="slumber" id="bubble/live"}
 
 ## When to use it
 

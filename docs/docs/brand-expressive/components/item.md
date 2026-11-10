@@ -14,7 +14,7 @@ A row with media, a title, a description and actions.
 
 ## See it live
 
-::preview{id="item/live"}
+::preview{robot="slumber" id="item/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Brand expressive decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{id="item/variant/default"}
+::preview{robot="slumber" id="item/variant/default"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ Rows inside a card, which already gives the frame.
 :::
 
 :::panel{title="outline" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{id="item/variant/outline"}
+::preview{robot="slumber" id="item/variant/outline"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Rows on a color block, with a border so each holds its edge on vivid color.
 :::
 
 :::panel{title="muted" note="variant" label="Not used in Brand expressive" tone="neutral"}
-::preview{id="item/variant/muted"}
+::preview{robot="slumber" id="item/variant/muted"}
 
 **What it is for**
 
@@ -91,7 +91,7 @@ A quiet fill reads as bland on a loud page; color blocks already mark each secti
 :::
 
 :::panel{title="default" note="size" label="Used in Brand expressive" tone="success"}
-::preview{id="item/size/default"}
+::preview{robot="slumber" id="item/size/default"}
 
 **What it is for**
 
@@ -110,7 +110,7 @@ Every row, at touch size: phones first.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Brand expressive" tone="neutral"}
-::preview{id="item/size/sm"}
+::preview{robot="slumber" id="item/size/sm"}
 
 **What it is for**
 

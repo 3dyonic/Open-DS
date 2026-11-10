@@ -14,7 +14,7 @@ Switches between views of the same thing on one page.
 
 ## See it live
 
-::preview{id="tabs/live"}
+::preview{robot="slumber" id="tabs/live"}
 
 ## When to use it
 

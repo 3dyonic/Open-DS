@@ -14,7 +14,7 @@ A file attached to a message, with its name, type and size.
 
 ## See it live
 
-::preview{id="attachment/live"}
+::preview{robot="slumber" id="attachment/live"}
 
 ## When to use it
 

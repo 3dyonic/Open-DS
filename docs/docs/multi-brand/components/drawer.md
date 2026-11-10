@@ -14,7 +14,7 @@ A panel that slides up from the bottom, for phones.
 
 ## See it live
 
-::preview{id="drawer/live"}
+::preview{robot="slumber" id="drawer/live"}
 
 ## When to use it
 

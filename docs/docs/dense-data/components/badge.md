@@ -14,7 +14,7 @@ A short label for a status, category or count, next to what it describes.
 
 ## See it live
 
-::preview{id="badge/live"}
+::preview{robot="slumber" id="badge/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="neutral" note="tone" label="Used in Dense data" tone="success"}
-::preview{id="badge/tone/neutral"}
+::preview{robot="slumber" id="badge/tone/neutral"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ New and False positive: not triaged yet, or a finished outcome that is not a fai
 :::
 
 :::panel{title="info" note="tone" label="Used in Dense data" tone="success"}
-::preview{id="badge/tone/info"}
+::preview{robot="slumber" id="badge/tone/info"}
 
 **What it is for**
 
@@ -73,7 +73,7 @@ Investigating: an analyst is on it; news, nothing to act on.
 :::
 
 :::panel{title="success" note="tone" label="Used in Dense data" tone="success"}
-::preview{id="badge/tone/success"}
+::preview{robot="slumber" id="badge/tone/success"}
 
 **What it is for**
 
@@ -93,7 +93,7 @@ Resolved: contained and closed.
 :::
 
 :::panel{title="warning" note="tone" label="Used in Dense data" tone="success"}
-::preview{id="badge/tone/warning"}
+::preview{robot="slumber" id="badge/tone/warning"}
 
 **What it is for**
 
@@ -113,7 +113,7 @@ Escalated: needs a senior analyst soon, still containable.
 :::
 
 :::panel{title="danger" note="tone" label="Used in Dense data" tone="success"}
-::preview{id="badge/tone/danger"}
+::preview{robot="slumber" id="badge/tone/danger"}
 
 **What it is for**
 

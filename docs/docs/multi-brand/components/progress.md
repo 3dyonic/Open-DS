@@ -14,7 +14,7 @@ How far a task has come.
 
 ## See it live
 
-::preview{id="progress/live"}
+::preview{robot="slumber" id="progress/live"}
 
 ## When to use it
 

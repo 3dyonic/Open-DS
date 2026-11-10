@@ -14,7 +14,7 @@ One message with its author and time.
 
 ## See it live
 
-::preview{id="message/live"}
+::preview{robot="slumber" id="message/live"}
 
 ## When to use it
 
