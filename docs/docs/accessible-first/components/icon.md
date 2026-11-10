@@ -12,6 +12,24 @@ One small picture that marks an action or a status, beside its word. Open DS dra
 
 :label[In Accessible first]{tone="info"}
 
+## Two ways to draw an icon
+
+To keep things simple, Open DS uses one open-source icon set, Lucide, in every scheme. Accessible first sets each icon's size and its stroke, 2px; the drawings stay the same. Both ways read the same tokens, so an icon looks the same either way, and a change to the scheme reaches every icon.
+
+**Inside the components**, shadcn's way. Select, Accordion, Checkbox and the other components draw their own icons, so you add nothing. They import Lucide directly, as shadcn does, so they stay easy to update.
+
+```tsx
+// select.tsx, as it is
+<ChevronDown className="size-[var(--select-size)] text-[var(--select-trigger-icon)]" />
+```
+
+**In your content**, use Icon: an icon beside a word, in text, a card or a toolbar; an icon button with no word, which needs a label; the large size; and the contained looks.
+
+```tsx
+<Icon icon={Bell} /> Notify me
+<Button variant="ghost"><Icon icon={X} label="Close" /></Button>
+```
+
 ## See it live
 
 ::preview{robot="slumber" id="icon/live"}
@@ -176,6 +194,34 @@ The labels components use, from the voice tokens:
 
 See [Voice and tone](../voice.md) for the whole voice.
 
+## Icons in the components
+
+The components draw these Lucide icons themselves, at Accessible first's icon size and stroke.
+
+| Icon | Drawn by |
+| --- | --- |
+| `ArrowDown` | [Data table](./data-table.md) |
+| `ArrowLeft` | [Carousel](./carousel.md) |
+| `ArrowRight` | [Carousel](./carousel.md) |
+| `ArrowUp` | [Data table](./data-table.md) |
+| `Calendar` | [Date picker](./date-picker.md) |
+| `Check` | [Checkbox](./checkbox.md), [Combobox](./combobox.md), [Context menu](./context-menu.md), [Menubar](./menubar.md), [Select](./select.md) |
+| `ChevronDown` | [Accordion](./accordion.md), [Calendar](./calendar.md), [Combobox](./combobox.md), [Native select](./native-select.md), [Navigation menu](./navigation-menu.md), [Select](./select.md) |
+| `ChevronLeft` | [Calendar](./calendar.md), [Pagination](./pagination.md) |
+| `ChevronRight` | [Breadcrumb](./breadcrumb.md), [Calendar](./calendar.md), [Context menu](./context-menu.md), [Menubar](./menubar.md), [Pagination](./pagination.md) |
+| `ChevronsUpDown` | [Data table](./data-table.md) |
+| `Circle` | [Context menu](./context-menu.md), [Menubar](./menubar.md), [Radio group](./radio-group.md) |
+| `Columns3` | [Data table](./data-table.md) |
+| `FileText` | [Attachment](./attachment.md) |
+| `GripVertical` | [Resizable](./resizable.md) |
+| `ListFilter` | [Data table](./data-table.md) |
+| `Loader2` | [Spinner](./spinner.md) |
+| `Minus` | [Input otp](./input-otp.md) |
+| `MoreHorizontal` | [Breadcrumb](./breadcrumb.md), [Pagination](./pagination.md) |
+| `PanelLeft` | [Sidebar](./sidebar.md) |
+| `Search` | [Command](./command.md) |
+| `X` | [Combobox](./combobox.md), [Dialog](./dialog.md), [Sheet](./sheet.md) |
+
 ## Accessibility and keyboard
 
 Test before you ship:
@@ -189,6 +235,14 @@ Test before you ship:
 npx open-ds add icon
 ```
 
+```tsx
+import { Bell, X } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
+
+<Button><Icon icon={Bell} /> Notify me</Button>
+<Button variant="ghost"><Icon icon={X} label="Close" /></Button>
+```
+
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
@@ -196,3 +250,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Icon reads 8 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Icon's tokens to change Icon alone.
 
 ::token-table{component="icon"}
+
+Its icon also read `icon.stroke-width`, 2px in Accessible first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

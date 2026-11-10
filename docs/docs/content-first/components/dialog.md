@@ -85,3 +85,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Dialog reads 25 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Dialog's tokens to change Dialog alone.
 
 ::token-table{component="dialog"}
+
+Its icons (`X`) also read `icon.stroke-width`, 1.5px in Content first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

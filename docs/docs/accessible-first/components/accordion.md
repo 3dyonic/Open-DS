@@ -70,3 +70,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Accordion reads 18 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Accordion's tokens to change Accordion alone.
 
 ::token-table{component="accordion"}
+
+Its icons (`ChevronDown`) also read `icon.stroke-width`, 2px in Accessible first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

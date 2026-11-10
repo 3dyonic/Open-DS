@@ -66,3 +66,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Breadcrumb reads 16 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Breadcrumb's tokens to change Breadcrumb alone.
 
 ::token-table{component="breadcrumb"}
+
+Its icons (`ChevronRight`, `MoreHorizontal`) also read `icon.stroke-width`, 1.5px in Multi-brand: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

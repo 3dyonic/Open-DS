@@ -70,3 +70,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Radio group reads 16 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Radio group's tokens to change Radio group alone.
 
 ::token-table{component="radio-group"}
+
+Its icons (`Circle`) also read `icon.stroke-width`, 2px in Accessible first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

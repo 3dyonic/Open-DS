@@ -33,6 +33,44 @@ Each token points to another token. Values live only on primitives, below.
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
+## The icons
+
+Open DS draws every icon with one open-source set, Lucide. In Dense data:
+
+- **Style:** Outline
+- **Stroke:** 1.5px on Lucide's 24px grid
+- **Size next to text:** Match the text
+
+The components draw their own icons; in content, use [Icon](../components/icon.md).
+
+::preview{robot="slumber" id="icon/live"}
+
+## Icons in the components
+
+| Icon | Drawn by |
+| --- | --- |
+| `ArrowDown` | [Data table](../components/data-table.md) |
+| `ArrowLeft` | [Carousel](../components/carousel.md) |
+| `ArrowRight` | [Carousel](../components/carousel.md) |
+| `ArrowUp` | [Data table](../components/data-table.md) |
+| `Calendar` | [Date picker](../components/date-picker.md) |
+| `Check` | [Checkbox](../components/checkbox.md), [Combobox](../components/combobox.md), [Context menu](../components/context-menu.md), [Menubar](../components/menubar.md), [Select](../components/select.md) |
+| `ChevronDown` | [Accordion](../components/accordion.md), [Calendar](../components/calendar.md), [Combobox](../components/combobox.md), [Native select](../components/native-select.md), [Navigation menu](../components/navigation-menu.md), [Select](../components/select.md) |
+| `ChevronLeft` | [Calendar](../components/calendar.md), [Pagination](../components/pagination.md) |
+| `ChevronRight` | [Breadcrumb](../components/breadcrumb.md), [Calendar](../components/calendar.md), [Context menu](../components/context-menu.md), [Menubar](../components/menubar.md), [Pagination](../components/pagination.md) |
+| `ChevronsUpDown` | [Data table](../components/data-table.md) |
+| `Circle` | [Context menu](../components/context-menu.md), [Menubar](../components/menubar.md), [Radio group](../components/radio-group.md) |
+| `Columns3` | [Data table](../components/data-table.md) |
+| `FileText` | [Attachment](../components/attachment.md) |
+| `GripVertical` | [Resizable](../components/resizable.md) |
+| `ListFilter` | [Data table](../components/data-table.md) |
+| `Loader2` | [Spinner](../components/spinner.md) |
+| `Minus` | [Input otp](../components/input-otp.md) |
+| `MoreHorizontal` | [Breadcrumb](../components/breadcrumb.md), [Pagination](../components/pagination.md) |
+| `PanelLeft` | [Sidebar](../components/sidebar.md) |
+| `Search` | [Command](../components/command.md) |
+| `X` | [Combobox](../components/combobox.md), [Dialog](../components/dialog.md), [Sheet](../components/sheet.md) |
+
 ## When to use what
 
 | Situation | Use | Not | Why |

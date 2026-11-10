@@ -8,5 +8,22 @@
     }
    ]
   }
+ },
+ "preview": {
+  "icon/live": {
+   "title": "Icon examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-icon--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-icon--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Icon in Storybook",
+     "href": "/storybook/?path=/docs/components-icon--docs"
+    }
+   ]
+  }
  }
 }
