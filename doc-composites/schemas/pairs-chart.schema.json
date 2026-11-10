@@ -4,120 +4,134 @@
   "title": "Pairs chart",
   "description": "Which text may sit on which fill in one brand of a scheme, and the contrast each pair keeps, in each mode. Drawn by the PairsChart composite on Foundations › Color.",
   "type": "object",
-  "required": ["modes"],
+  "required": [
+    "floor",
+    "modes"
+  ],
   "additionalProperties": false,
+  "$defs": {
+    "pair": {
+      "type": "object",
+      "required": [
+        "text",
+        "primitive",
+        "hex",
+        "contrast"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+          "description": "The text token's full name, such as color.text.primary."
+        },
+        "primitive": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+          "description": "The primitive the text ends at in this mode, such as color.slate.light.900."
+        },
+        "hex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6,8}$",
+          "description": "The primitive's value, which the chart prints."
+        },
+        "contrast": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 21,
+          "description": "The WCAG contrast of the text on the fill, to two decimals."
+        },
+        "floor": {
+          "type": "number",
+          "description": "The least contrast this pair needs, when it differs from the chart's floor."
+        }
+      }
+    },
+    "fill": {
+      "type": "object",
+      "required": [
+        "fill",
+        "primitive",
+        "hex",
+        "pairs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fill": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+          "description": "The fill token's full name, such as color.surface.canvas."
+        },
+        "primitive": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+          "description": "The primitive the fill ends at in this mode."
+        },
+        "hex": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6,8}$",
+          "description": "The primitive's value, which the chart prints."
+        },
+        "pairs": {
+          "type": "array",
+          "description": "Every text token that may sit on this fill.",
+          "items": {
+            "$ref": "#/$defs/pair"
+          }
+        }
+      }
+    }
+  },
   "properties": {
+    "floor": {
+      "type": "number",
+      "description": "The least contrast every pair needs, such as 4.5."
+    },
     "modes": {
       "type": "array",
-      "description": "The pairs in each mode, light first.",
       "minItems": 1,
+      "description": "The pairs in each mode, light first.",
       "items": {
         "type": "object",
-        "required": ["mode", "page", "groups"],
+        "required": [
+          "mode",
+          "fills"
+        ],
         "additionalProperties": false,
         "properties": {
           "mode": {
             "type": "string",
-            "enum": ["light", "dark"],
+            "enum": [
+              "light",
+              "dark"
+            ],
             "description": "The mode."
           },
-          "page": {
+          "fills": {
             "type": "object",
-            "description": "The page colors of this mode, as hex values.",
-            "required": ["canvas", "text", "muted", "edge"],
             "additionalProperties": false,
+            "description": "The fills by the text they take.",
             "properties": {
-              "canvas": {
-                "type": "string",
-                "description": "color.surface.canvas."
-              },
-              "text": {
-                "type": "string",
-                "description": "color.text.primary."
-              },
-              "muted": { "type": "string", "description": "color.text.muted." },
-              "edge": {
-                "type": "string",
-                "description": "color.border.default."
-              }
-            }
-          },
-          "groups": {
-            "type": "array",
-            "description": "The fills, grouped by their tone in this mode: the page's own surfaces, light fills, dark fills.",
-            "items": {
-              "type": "object",
-              "required": ["title", "note", "fills"],
-              "additionalProperties": false,
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "description": "The group's name."
+              "page": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/fill"
                 },
-                "note": {
-                  "type": "string",
-                  "description": "Which text the group's fills take, in a sentence."
+                "description": "The page's own surfaces; the page's text sits on them."
+              },
+              "light": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/fill"
                 },
-                "fills": {
-                  "type": "array",
-                  "description": "Each fill in the group.",
-                  "items": {
-                    "type": "object",
-                    "required": ["fill", "primitive", "hex", "pairs"],
-                    "additionalProperties": false,
-                    "properties": {
-                      "fill": {
-                        "type": "string",
-                        "description": "The fill token, without color., such as surface.default."
-                      },
-                      "primitive": {
-                        "type": "string",
-                        "description": "The primitive the fill ends at."
-                      },
-                      "hex": {
-                        "type": "string",
-                        "description": "The fill's value."
-                      },
-                      "pairs": {
-                        "type": "array",
-                        "description": "Every text token that may sit on this fill.",
-                        "items": {
-                          "type": "object",
-                          "required": [
-                            "text",
-                            "primitive",
-                            "hex",
-                            "contrast",
-                            "floor"
-                          ],
-                          "additionalProperties": false,
-                          "properties": {
-                            "text": {
-                              "type": "string",
-                              "description": "The text token, without color., such as text.primary."
-                            },
-                            "primitive": {
-                              "type": "string",
-                              "description": "The primitive the text ends at."
-                            },
-                            "hex": {
-                              "type": "string",
-                              "description": "The text's value."
-                            },
-                            "contrast": {
-                              "type": "number",
-                              "description": "The WCAG contrast of the text on the fill, to two decimals."
-                            },
-                            "floor": {
-                              "type": "number",
-                              "description": "The least contrast the scheme requires for this pair."
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
+                "description": "Light fills; they take on-light text."
+              },
+              "dark": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/fill"
+                },
+                "description": "Dark fills; they take on-dark text."
               }
             }
           }

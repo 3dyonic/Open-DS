@@ -4,35 +4,45 @@
   "title": "Token swatches",
   "description": "The semantic tokens of one foundation, each drawn as its own value. Drawn by the TokenSwatches composite at the top of a Foundations page.",
   "type": "object",
-  "required": ["tokens"],
+  "required": [
+    "tokens"
+  ],
   "additionalProperties": false,
   "properties": {
     "tokens": {
       "type": "array",
-      "description": "Every token of the foundation that has a drawing, in the scheme's order.",
       "minItems": 1,
+      "description": "Every token of the foundation that has a drawing, in the scheme's order.",
       "items": {
         "type": "object",
-        "required": ["token", "kind", "value"],
+        "required": [
+          "token",
+          "type"
+        ],
         "additionalProperties": false,
         "properties": {
           "token": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@-]+)+$",
-            "description": "The token's path, such as color.neutral.0."
+            "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+            "description": "The token's full name, such as color.neutral.0. The composite draws it through its CSS variable."
           },
-          "kind": {
+          "type": {
             "type": "string",
-            "enum": ["color", "opacity", "font", "weight", "size", "tracking", "leading", "shadow", "radius", "line", "bar", "duration", "easing"],
-            "description": "What the value is, which sets how it is drawn: a fill, a corner, a border width, a length and so on."
+            "enum": [
+              "color",
+              "dimension",
+              "shadow",
+              "duration",
+              "cubicBezier",
+              "number",
+              "fontFamily",
+              "fontWeight"
+            ],
+            "description": "The token's DTCG type, which with its name sets how it is drawn."
           },
-          "value": {
-            "type": "string",
-            "description": "The CSS value drawn: the token's CSS variable, or its own value when it has none."
-          },
-          "note": {
-            "type": "string",
-            "description": "A line height in pixels, shown beside a leading drawing."
+          "px": {
+            "type": "number",
+            "description": "For a line height: its size in pixels, which the page prints beside it."
           }
         }
       }

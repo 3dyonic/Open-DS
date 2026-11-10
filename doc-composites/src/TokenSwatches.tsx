@@ -7,14 +7,27 @@
 import * as React from "react";
 import Frame from "./base/Frame";
 import Sample from "./Sample";
+import { tokenVar } from "./base/token";
 
-export type TokenSwatch = {
-  token: string;
-  kind: string;
-  value: string;
-  note?: string;
-};
+export type TokenSwatch = { token: string; type: string; px?: number };
 export type TokenSwatchesData = { tokens: TokenSwatch[] };
+
+// How a token is drawn, from its DTCG type and its name.
+function kindOf(token: string, type: string) {
+  if (type === "color") return "color";
+  if (type === "fontFamily") return "font";
+  if (type === "fontWeight" || /font[.-]weight/.test(token)) return "weight";
+  if (/line-height/.test(token)) return "leading";
+  if (/letter/.test(token)) return "tracking";
+  if (type === "shadow") return "shadow";
+  if (type === "duration") return "duration";
+  if (type === "cubicBezier") return "easing";
+  if (type === "number") return /opacity/.test(token) ? "opacity" : null;
+  if (/radius/.test(token)) return "radius";
+  if (/border-width/.test(token)) return "line";
+  if (/font[.-]size/.test(token)) return "size";
+  return "bar";
+}
 
 export default function TokenSwatches({ data }: { data: TokenSwatchesData }) {
   // One row per token: its value drawn, then its name.
@@ -24,7 +37,7 @@ export default function TokenSwatches({ data }: { data: TokenSwatchesData }) {
           <ul className="m-0 flex list-none flex-col gap-[var(--space-gap-default)] p-0">
             {data.tokens.map((t) => (
               <li key={t.token} className="m-0 flex items-center gap-[var(--space-gap-default)]">
-                <Sample kind={t.kind} value={t.value} note={t.note} />
+                <Sample kind={kindOf(t.token, t.type) ?? "bar"} value={tokenVar(t.token)} note={t.px ? `${t.px}px` : undefined} />
                 <span className="[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
                   {t.token}
                 </span>

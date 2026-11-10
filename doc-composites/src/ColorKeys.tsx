@@ -5,8 +5,9 @@
  */
 import * as React from "react";
 import Swatch from "./base/Swatch";
+import { tokenVar } from "./base/token";
 
-export type ColorKeysData = { keys: { name: string; token: string; value: string }[] };
+export type ColorKeysData = { keys: { name: string; token: string }[] };
 
 export default function ColorKeys({ data }: { data: ColorKeysData }) {
   return (
@@ -15,10 +16,10 @@ export default function ColorKeys({ data }: { data: ColorKeysData }) {
       className="grid grid-cols-2 overflow-hidden rounded-[var(--radius-container)] sm:grid-cols-3 lg:grid-cols-6"
     >
       {data.keys.map((k) => (
-        <Swatch key={k.token} color={k.value} size="block">
+        <Swatch key={k.token} color={tokenVar(k.token)} size="block">
           <span className="flex flex-col text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-on-action)]">
             <b>{k.name}</b>
-            <span className="[font-family:var(--type-data-font-family)]">{k.token}</span>
+            <span className="[font-family:var(--type-data-font-family)]">{k.token.replace(/^color\./, "")}</span>
           </span>
         </Swatch>
       ))}

@@ -4,18 +4,15 @@
    "tokens": [
     {
      "token": "motion.duration.feedback",
-     "kind": "duration",
-     "value": "var(--motion-duration-feedback)"
+     "type": "duration"
     },
     {
      "token": "motion.duration.panels",
-     "kind": "duration",
-     "value": "var(--motion-duration-panels)"
+     "type": "duration"
     },
     {
      "token": "motion.easing.standard",
-     "kind": "easing",
-     "value": "var(--motion-easing-standard)"
+     "type": "cubicBezier"
     }
    ]
   }

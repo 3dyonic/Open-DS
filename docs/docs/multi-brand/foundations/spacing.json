@@ -4,43 +4,35 @@
    "tokens": [
     {
      "token": "space.gap.tight",
-     "kind": "bar",
-     "value": "var(--space-gap-tight)"
+     "type": "dimension"
     },
     {
      "token": "space.gap.default",
-     "kind": "bar",
-     "value": "var(--space-gap-default)"
+     "type": "dimension"
     },
     {
      "token": "space.gap.group",
-     "kind": "bar",
-     "value": "var(--space-gap-group)"
+     "type": "dimension"
     },
     {
      "token": "space.gap.section",
-     "kind": "bar",
-     "value": "var(--space-gap-section)"
+     "type": "dimension"
     },
     {
      "token": "space.inset.control-x",
-     "kind": "bar",
-     "value": "var(--space-inset-control-x)"
+     "type": "dimension"
     },
     {
      "token": "space.inset.container",
-     "kind": "bar",
-     "value": "var(--space-inset-container)"
+     "type": "dimension"
     },
     {
      "token": "space.inset.cell-x",
-     "kind": "bar",
-     "value": "var(--space-inset-cell-x)"
+     "type": "dimension"
     },
     {
      "token": "size.row",
-     "kind": "bar",
-     "value": "var(--size-row)"
+     "type": "dimension"
     }
    ]
   }

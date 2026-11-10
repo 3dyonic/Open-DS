@@ -4,28 +4,23 @@
    "tokens": [
     {
      "token": "size.control.default",
-     "kind": "bar",
-     "value": "var(--size-control-default)"
+     "type": "dimension"
     },
     {
      "token": "size.control.compact",
-     "kind": "bar",
-     "value": "var(--size-control-compact)"
+     "type": "dimension"
     },
     {
      "token": "size.control.large",
-     "kind": "bar",
-     "value": "var(--size-control-large)"
+     "type": "dimension"
     },
     {
      "token": "opacity.disabled",
-     "kind": "opacity",
-     "value": "var(--opacity-disabled)"
+     "type": "number"
     },
     {
      "token": "color.border.focus",
-     "kind": "color",
-     "value": "var(--color-border-focus)"
+     "type": "color"
     }
    ]
   }

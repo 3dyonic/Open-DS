@@ -4,43 +4,35 @@
    "tokens": [
     {
      "token": "radius.control",
-     "kind": "radius",
-     "value": "var(--radius-control)"
+     "type": "dimension"
     },
     {
      "token": "radius.badge",
-     "kind": "radius",
-     "value": "var(--radius-badge)"
+     "type": "dimension"
     },
     {
      "token": "radius.option",
-     "kind": "radius",
-     "value": "var(--radius-option)"
+     "type": "dimension"
     },
     {
      "token": "radius.container",
-     "kind": "radius",
-     "value": "var(--radius-container)"
+     "type": "dimension"
     },
     {
      "token": "radius.round",
-     "kind": "radius",
-     "value": "var(--radius-round)"
+     "type": "dimension"
     },
     {
      "token": "border-width.default",
-     "kind": "line",
-     "value": "var(--border-width-default)"
+     "type": "dimension"
     },
     {
      "token": "border-width.focus",
-     "kind": "line",
-     "value": "var(--border-width-focus)"
+     "type": "dimension"
     },
     {
      "token": "border-width.focus-offset",
-     "kind": "line",
-     "value": "var(--border-width-focus-offset)"
+     "type": "dimension"
     }
    ]
   }

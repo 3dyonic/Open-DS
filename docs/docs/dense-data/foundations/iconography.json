@@ -4,8 +4,7 @@
    "tokens": [
     {
      "token": "size.icon",
-     "kind": "bar",
-     "value": "var(--size-icon)"
+     "type": "dimension"
     }
    ]
   }

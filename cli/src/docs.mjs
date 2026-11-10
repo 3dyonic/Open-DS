@@ -304,10 +304,17 @@ function specimen(tokens, text, x = {}) {
         }),
       },
     };
+  // Each token by its full name and its DTCG type; the composite draws it from its CSS variable.
+  // A line height also carries its pixels, which the page prints beside it.
   const swatches = tokens
-    .map((t) => ({ token: t.path, ...sampleFact(t.path, t.type) }))
-    .filter((x) => x.kind)
-    .slice(0, 40);
+    .map((t) => ({ t, f: sampleFact(t.path, t.type) }))
+    .filter((x) => x.f)
+    .slice(0, 40)
+    .map(({ t, f }) => ({
+      token: t.path,
+      type: t.type,
+      ...(f.note && { px: Number(f.note.replace("px", "")) }),
+    }));
   return swatches.length ? { kind: "token-swatches", data: { tokens: swatches } } : null;
 }
 
@@ -711,6 +718,11 @@ export function docsPages(
       /^color\.surface\.(canvas|default|raised|sunken|highlight|pressed|selected)$/;
     // One mode's pairs as facts (OD-284): each fill, its primitive and value, and every text that may
     // sit on it with the contrast it keeps and its floor. PairsChart draws them.
+    const FLOOR = Math.min(
+      ...colorBrands.flatMap((b) =>
+        ["light", "dark"].flatMap((m) => pairsIn(g, scheme, b, m).filter((p) => p.key.startsWith("color.text.")).map((p) => p.contrast)),
+      ),
+    );
     const mode = (b, m) => {
       const th = scheme.tokens.brands[b].theme;
       const byFill = {};
@@ -721,19 +733,20 @@ export function docsPages(
         const bg = at(b, m, fill);
         if (!bg) return null;
         return {
-          fill: short(fill),
-          primitive: bg.prim,
+          fill: fill.replace(/\.@$/, ""),
+          primitive: `color.${bg.prim}`,
           hex: bg.hex,
           pairs: (byFill[fill] ?? [])
             .map((p) => {
               const t = at(b, m, p.key);
               return t
                 ? {
-                    text: short(p.key),
-                    primitive: t.prim,
+                    text: p.key.replace(/\.@$/, ""),
+                    primitive: `color.${t.prim}`,
                     hex: t.hex,
                     contrast: Number(contrast(t.hex, bg.hex).toFixed(2)),
-                    floor: p.contrast,
+                    // A pair names its own floor only when it differs from the chart's.
+                    ...(p.contrast !== FLOOR && { floor: p.contrast }),
                   }
                 : null;
             })
@@ -744,44 +757,26 @@ export function docsPages(
         (f) => own.test(f) && toneOf(th, m, f)?.tone === pageTone,
       );
       const rest = fills.filter((f) => !ownFills.includes(f));
-      const groups = [
-        [
-          "The page's own surfaces",
-          "The page's own text sits on them: primary, secondary, muted and links.",
-          ownFills,
-        ],
-        [
-          "Light fills",
-          "Their tone is light, so the text on them is text.on-light, or a status's -on-light text.",
-          rest.filter((f) => toneOf(th, m, f)?.tone === "light"),
-        ],
-        [
-          "Dark fills",
-          "Their tone is dark, so the text on them is text.on-dark, or a status's -on-dark text.",
-          rest.filter((f) => toneOf(th, m, f)?.tone === "dark"),
-        ],
-      ]
-        .map(([title, note, list]) => ({
-          title,
-          note,
-          fills: list.map(fillOf).filter(Boolean),
-        }))
-        .filter((x) => x.fills.length);
+      // The fills by the text they take: the page's own surfaces, light fills, dark fills.
+      const fillsBy = {
+        page: ownFills,
+        light: rest.filter((f) => toneOf(th, m, f)?.tone === "light"),
+        dark: rest.filter((f) => toneOf(th, m, f)?.tone === "dark"),
+      };
       return {
         mode: m,
-        page: {
-          canvas: at(b, m, "color.surface.canvas")?.hex,
-          text: at(b, m, "color.text.primary")?.hex,
-          muted: at(b, m, "color.text.muted")?.hex,
-          edge: at(b, m, "color.border.default")?.hex,
-        },
-        groups,
+        fills: Object.fromEntries(
+          Object.entries(fillsBy)
+            .map(([tone, list]) => [tone, list.map(fillOf).filter(Boolean)])
+            .filter(([, list]) => list.length),
+        ),
       };
     };
     return (
       `\n## Pairs at a glance\n\nWhich text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take \`color.text.on-light\`, dark fills take \`color.text.on-dark\`. The harness checks every pair.\n\n` +
       forBrands((b) => {
         (compositeData["pairs-chart"] ??= {})[b] = {
+          floor: FLOOR,
           modes: ["light", "dark"].map((m) => mode(b, m)),
         };
         return `::pairs-chart{id="${b}"}`;
@@ -1433,11 +1428,7 @@ export function docsPages(
       perBrand((F) => {
         const id = F.brand ?? "all";
         (compositeData["color-keys"] ??= {})[id] = {
-          keys: band.map(([n, p]) => ({
-            name: n,
-            token: p.replace(/^color\./, ""),
-            value: cssVar(p),
-          })),
+          keys: band.map(([n, p]) => ({ name: n, token: p })),
         };
         return `::color-keys{id="${id}"}`;
       }) +
