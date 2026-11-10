@@ -3,8 +3,8 @@
    follows the docs' own switch (data-theme), not the operating system. */
 @layer theme, base, utilities;
 @import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
-@source "../../../ui/src/components";
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "../../../ui/src/components/{badge,button,card,input,item,progress,separator,table,tabs}.tsx";
 @source "../components";
 @source "../../../doc-composites/src";
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

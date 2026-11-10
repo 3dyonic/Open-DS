@@ -48,13 +48,8 @@ export function docSiteFiles(roots, { ui = "../../../src/components/ui", compone
   // carry selectors that the docs' webpack CSS step warns about, and the docs never show them.
   const sourced = `${ui}/{${components.join(",")}}.tsx`;
   files["css/tailwind.css"] = readFileSync(join(roots.docsSrc, "css", "tailwind.css"), "utf8")
-    .replace(/^@source "\.\.\/\.\.\/\.\.\/ui\/src\/components";$/m, `@source "${sourced}";`)
+    .replace(/^@source "\.\.\/\.\.\/\.\.\/ui\/src\/components[^"]*";$/m, `@source "${sourced}";`)
     .replace(/^@source "\.\.\/components";\n/m, "")
-    .replace(/^@source "\.\.\/\.\.\/\.\.\/doc-composites\/src";$/m, `@source "../composites";`)
-    // No automatic scan of the project either: only the sources above.
-    .replace(
-      `@import "tailwindcss/utilities.css" layer(utilities);`,
-      `@import "tailwindcss/utilities.css" layer(utilities) source(none);`,
-    );
+    .replace(/^@source "\.\.\/\.\.\/\.\.\/doc-composites\/src";$/m, `@source "../composites";`);
   return files;
 }

@@ -11,6 +11,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { docsLlms, docsPages } from "../../cli/src/docs.mjs";
 import { assetRoots, grammar, loadScheme, schemeIds } from "../../cli/src/schemes.mjs";
+import { withImports } from "../../cli/src/components.mjs";
+import { compositeComponents } from "../../cli/src/doc-site.mjs";
 
 const docs = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
@@ -181,6 +183,17 @@ function modeScopes(css, scope) {
 }
 
 const files = {};
+// Tailwind reads only the ui components the composites draw with (OD-284). The others carry selectors
+// that the dev server's CSS step warns about, and the docs never show them. This keeps the list current.
+{
+  const roots = assetRoots();
+  const list = withImports(compositeComponents(roots), roots).join(",");
+  const css = readFileSync(join(docs, "src/css/tailwind.css"), "utf8");
+  files["src/css/tailwind.css"] = css.replace(
+    /^@source "\.\.\/\.\.\/\.\.\/ui\/src\/components[^"]*";$/m,
+    `@source "../../../ui/src/components/{${list}}.tsx";`,
+  );
+}
 const index = [];
 for (const id of ids) {
   const scheme = loadScheme(id, roots);
