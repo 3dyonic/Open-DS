@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Navigation menu, every part numbered](/anatomy/brand-expressive/navigation-menu/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -61,12 +61,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **9** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
   - **Link icon** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
 - **Indicator** optional · not in this example :label[By scheme]{tone="info"} :label[Affordance]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-3" title="Trigger" note="Parts 1, 3"}
+:::panel{id="part-1-3" title="Trigger" note="Parts 1, 3" media="side"}
 ![Trigger: 1, 3](/anatomy/brand-expressive/navigation-menu/card-1.png)
 
 :label[Readability] :label[Affordance] :label[Reach]
@@ -104,7 +105,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-2" title="Open trigger" note="Parts 2"}
+:::panel{id="part-2" title="Open trigger" note="Parts 2" media="side"}
 ![Open trigger: 2](/anatomy/brand-expressive/navigation-menu/card-2.png)
 
 :label[Feedback]
@@ -122,7 +123,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-4-5" title="Panel surface and shadow" note="Parts 4, 5"}
+:::panel{id="part-4-5" title="Panel surface and shadow" note="Parts 4, 5" media="side"}
 ![Panel surface and shadow: 4, 5](/anatomy/brand-expressive/navigation-menu/card-3.png)
 
 :label[Containment] :label[Layering]
@@ -165,7 +166,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** shadow.overlay-dark: Pronounced shadows add depth.
 :::
 
-:::panel{id="part-6" title="Link" note="Parts 6"}
+:::panel{id="part-6" title="Link" note="Parts 6" media="side"}
 ![Link: 6](/anatomy/brand-expressive/navigation-menu/card-4.png)
 
 :label[Readability] :label[Reach]
@@ -199,7 +200,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.20: the panel's 24px corner less its 4px padding, so an option's corner nests inside the menu's.
 :::
 
-:::panel{id="part-7" title="Current link" note="Parts 7"}
+:::panel{id="part-7" title="Current link" note="Parts 7" media="side"}
 ![Current link: 7](/anatomy/brand-expressive/navigation-menu/card-5.png)
 
 :label[Meaning] :label[Emphasis]
@@ -237,7 +238,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.3
 :::
 
-:::panel{id="part-8" title="Hover fill" note="Parts 8"}
+:::panel{id="part-8" title="Hover fill" note="Parts 8" media="side"}
 ![Hover fill: 8](/anatomy/brand-expressive/navigation-menu/card-6.png)
 
 :label[Feedback]
@@ -259,7 +260,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-9" title="Focus ring" note="Parts 9"}
+:::panel{id="part-9" title="Focus ring" note="Parts 9" media="side"}
 ![Focus ring: 9](/anatomy/brand-expressive/navigation-menu/card-7.png)
 
 :label[Focus]

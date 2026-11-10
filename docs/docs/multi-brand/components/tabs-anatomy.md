@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Tabs, every part numbered](/anatomy/multi-brand/tabs/stage.png)
-
 *Multi-brand, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -53,12 +53,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **3** **Current tab** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
   - **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 - **5** **Panel** required :label[By scheme]{tone="info"} :label[Containment]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Tab list" note="Parts 1"}
+:::panel{id="part-1" title="Tab list" note="Parts 1" media="side"}
 ![Tab list: 1](/anatomy/multi-brand/tabs/card-1.png)
 
 :label[Grouping]
@@ -88,7 +89,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.1
 :::
 
-:::panel{id="part-2" title="Tab" note="Parts 2"}
+:::panel{id="part-2" title="Tab" note="Parts 2" media="side"}
 ![Tab: 2](/anatomy/multi-brand/tabs/card-2.png)
 
 :label[Reach] :label[Readability]
@@ -130,7 +131,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.size.14
 :::
 
-:::panel{id="part-3" title="Current tab" note="Parts 3"}
+:::panel{id="part-3" title="Current tab" note="Parts 3" media="side"}
 ![Current tab: 3](/anatomy/multi-brand/tabs/card-3.png)
 
 :label[Meaning] :label[Feedback]
@@ -168,7 +169,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.1
 :::
 
-:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+:::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
 ![Focus ring: 4](/anatomy/multi-brand/tabs/card-4.png)
 
 :label[Focus]
@@ -205,7 +206,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.
 :::
 
-:::panel{id="part-5" title="Panel" note="Parts 5"}
+:::panel{id="part-5" title="Panel" note="Parts 5" media="side"}
 ![Panel: 5](/anatomy/multi-brand/tabs/card-5.png)
 
 :label[Containment]

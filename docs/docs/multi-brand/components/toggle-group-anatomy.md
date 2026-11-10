@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Toggle group, every part numbered](/anatomy/multi-brand/toggle-group/stage.png)
-
 *Multi-brand, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -51,12 +51,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **2** **Item** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
 - **3** **End corners** required :label[By scheme]{tone="info"} :label[Grouping] :label[Containment]
 - **On, hover and focus of an item** state · shown by Toggle :label[Meaning] :label[Feedback] :label[Focus]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Group" note="Parts 1"}
+:::panel{id="part-1" title="Group" note="Parts 1" media="side"}
 ![Group: 1](/anatomy/multi-brand/toggle-group/card-1.png)
 
 :label[Grouping]
@@ -74,7 +75,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.4: Rounded by default; each brand sets its own corner.
 :::
 
-:::panel{id="part-2" title="Item" note="Parts 2"}
+:::panel{id="part-2" title="Item" note="Parts 2" media="side"}
 ![Item: 2](/anatomy/multi-brand/toggle-group/card-2.png)
 
 :label[Affordance] :label[Reach]
@@ -96,7 +97,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.16
 :::
 
-:::panel{id="part-3" title="End corners" note="Parts 3"}
+:::panel{id="part-3" title="End corners" note="Parts 3" media="side"}
 ![End corners: 3](/anatomy/multi-brand/toggle-group/card-3.png)
 
 :label[Grouping] :label[Containment]

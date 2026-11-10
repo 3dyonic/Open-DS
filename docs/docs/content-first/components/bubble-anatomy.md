@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Bubble, every part numbered](/anatomy/content-first/bubble/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -52,12 +52,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **2** **Their message** required :label[By scheme]{tone="info"} :label[Containment] :label[Meaning]
   - **3** **Your message** required :label[By scheme]{tone="info"} :label[Containment] :label[Meaning] :label[Emphasis]
   - **4** **Message text** required :label[By scheme]{tone="info"} :label[Readability]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Byline" note="Parts 1"}
+:::panel{id="part-1" title="Byline" note="Parts 1" media="side"}
 ![Byline: 1](/anatomy/content-first/bubble/card-1.png)
 
 :label[Hierarchy] :label[Readability]
@@ -94,7 +95,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-2" title="Their message" note="Parts 2"}
+:::panel{id="part-2" title="Their message" note="Parts 2" media="side"}
 ![Their message: 2](/anatomy/content-first/bubble/card-2.png)
 
 :label[Containment] :label[Meaning]
@@ -128,7 +129,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.12: Rounded corners feel friendly.
 :::
 
-:::panel{id="part-3" title="Your message" note="Parts 3"}
+:::panel{id="part-3" title="Your message" note="Parts 3" media="side"}
 ![Your message: 3](/anatomy/content-first/bubble/card-3.png)
 
 :label[Meaning] :label[Emphasis]
@@ -158,7 +159,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.
 :::
 
-:::panel{id="part-4" title="Message text" note="Parts 4"}
+:::panel{id="part-4" title="Message text" note="Parts 4" media="side"}
 ![Message text: 4](/anatomy/content-first/bubble/card-4.png)
 
 :label[Readability]

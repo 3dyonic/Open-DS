@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Carousel, every part numbered](/anatomy/accessible-first/carousel/stage.png)
-
 *Accessible first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **4** **Next button** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
   - **Disabled control** state · shown by Button :label[Feedback]
   - **Focus ring** state · shown by Button :label[Focus]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Slides" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Slides" note="Parts 1, 2" media="side"}
 ![Slides: 1, 2](/anatomy/accessible-first/carousel/card-1.png)
 
 :label[Containment] :label[Grouping]
@@ -82,7 +83,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.28
 :::
 
-:::panel{id="part-3-4" title="Previous and next" note="Parts 3, 4"}
+:::panel{id="part-3-4" title="Previous and next" note="Parts 3, 4" media="side"}
 ![Previous and next: 3, 4](/anatomy/accessible-first/carousel/card-2.png)
 
 :label[Affordance] :label[Reach]

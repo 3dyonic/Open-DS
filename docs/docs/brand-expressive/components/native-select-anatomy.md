@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Native select, every part numbered](/anatomy/brand-expressive/native-select/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **6** **Disabled field** state :label[By scheme]{tone="info"} :label[Feedback]
 - **7** **Small select** optional :label[By scheme]{tone="info"} :label[Reach]
 - **Options list** required · shown by the browser :label[Readability]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Field" note="Parts 1"}
+:::panel{id="part-1" title="Field" note="Parts 1" media="side"}
 ![Field: 1](/anatomy/brand-expressive/native-select/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -102,7 +103,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.28
 :::
 
-:::panel{id="part-2" title="Selected value" note="Parts 2"}
+:::panel{id="part-2" title="Selected value" note="Parts 2" media="side"}
 ![Selected value: 2](/anatomy/brand-expressive/native-select/card-2.png)
 
 :label[Readability]
@@ -124,7 +125,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.line-height.1_55
 :::
 
-:::panel{id="part-3" title="Chevron" note="Parts 3"}
+:::panel{id="part-3" title="Chevron" note="Parts 3" media="side"}
 ![Chevron: 3](/anatomy/brand-expressive/native-select/card-3.png)
 
 :label[Affordance]
@@ -153,7 +154,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.28
 :::
 
-:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+:::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
 ![Focus ring: 4](/anatomy/brand-expressive/native-select/card-4.png)
 
 :label[Focus]
@@ -183,7 +184,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.2
 :::
 
-:::panel{id="part-5" title="Invalid field" note="Parts 5"}
+:::panel{id="part-5" title="Invalid field" note="Parts 5" media="side"}
 ![Invalid field: 5](/anatomy/brand-expressive/native-select/card-5.png)
 
 :label[Meaning] :label[Feedback]
@@ -213,7 +214,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-6" title="Disabled field" note="Parts 6"}
+:::panel{id="part-6" title="Disabled field" note="Parts 6" media="side"}
 ![Disabled field: 6](/anatomy/brand-expressive/native-select/card-6.png)
 
 :label[Feedback]
@@ -255,7 +256,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** border.strong, category.5. Changing this pick moves only what reads color.disabled.text.
 :::
 
-:::panel{id="part-7" title="Small select" note="Parts 7"}
+:::panel{id="part-7" title="Small select" note="Parts 7" media="side"}
 ![Small select: 7](/anatomy/brand-expressive/native-select/card-7.png)
 
 :label[Reach]

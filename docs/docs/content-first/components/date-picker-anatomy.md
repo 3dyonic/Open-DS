@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Date picker, every part numbered](/anatomy/content-first/date-picker/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -52,12 +52,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **3** **Date** required :label[Readability]
 - **4** **Placeholder** state :label[By scheme]{tone="info"} :label[Readability] :label[Feedback]
 - **Calendar** required · shown by Calendar :label[Affordance]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Trigger" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Trigger" note="Parts 1, 2" media="side"}
 ![Trigger: 1, 2](/anatomy/content-first/date-picker/card-1.png)
 
 :label[Affordance] :label[Reach] :label[Meaning]
@@ -99,7 +100,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.16
 :::
 
-:::panel{id="part-3" title="Date" note="Parts 3"}
+:::panel{id="part-3" title="Date" note="Parts 3" media="side"}
 ![Date: 3](/anatomy/content-first/date-picker/card-2.png)
 
 :label[Readability]
@@ -117,7 +118,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.400
 :::
 
-:::panel{id="part-4" title="Placeholder" note="Parts 4"}
+:::panel{id="part-4" title="Placeholder" note="Parts 4" media="side"}
 ![Placeholder: 4](/anatomy/content-first/date-picker/card-3.png)
 
 :label[Readability] :label[Feedback]

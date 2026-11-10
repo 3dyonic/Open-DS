@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Message scroller, every part numbered](/anatomy/content-first/message-scroller/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -53,12 +53,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **3** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
   - **Message** required · shown by Bubble :label[Readability]
   - **Day marker** optional · shown by Marker :label[Grouping]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Scroll region" note="Parts 1"}
+:::panel{id="part-1" title="Scroll region" note="Parts 1" media="side"}
 ![Scroll region: 1](/anatomy/content-first/message-scroller/card-1.png)
 
 :label[Containment] :label[Reach]
@@ -76,7 +77,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.12: Rounded corners feel friendly.
 :::
 
-:::panel{id="part-2" title="Space between messages" note="Parts 2"}
+:::panel{id="part-2" title="Space between messages" note="Parts 2" media="side"}
 ![Space between messages: 2](/anatomy/content-first/message-scroller/card-2.png)
 
 :label[Grouping]
@@ -98,7 +99,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.32
 :::
 
-:::panel{id="part-3" title="Focus ring" note="Parts 3"}
+:::panel{id="part-3" title="Focus ring" note="Parts 3" media="side"}
 ![Focus ring: 3](/anatomy/content-first/message-scroller/card-3.png)
 
 :label[Focus]

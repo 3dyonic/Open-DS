@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Message, every part numbered](/anatomy/content-first/message/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -52,12 +52,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **1** **Author** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Emphasis]
   - **2** **Time** optional :label[By scheme]{tone="info"} :label[Readability]
   - **3** **Body** required :label[By scheme]{tone="info"} :label[Readability]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Author" note="Parts 1"}
+:::panel{id="part-1" title="Author" note="Parts 1" media="side"}
 ![Author: 1](/anatomy/content-first/message/card-1.png)
 
 :label[Hierarchy] :label[Emphasis]
@@ -75,7 +76,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.600
 :::
 
-:::panel{id="part-2" title="Time" note="Parts 2"}
+:::panel{id="part-2" title="Time" note="Parts 2" media="side"}
 ![Time: 2](/anatomy/content-first/message/card-2.png)
 
 :label[Readability]
@@ -104,7 +105,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.line-height.1_45
 :::
 
-:::panel{id="part-3" title="Body" note="Parts 3"}
+:::panel{id="part-3" title="Body" note="Parts 3" media="side"}
 ![Body: 3](/anatomy/content-first/message/card-3.png)
 
 :label[Readability]
@@ -126,7 +127,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.line-height.1_65
 :::
 
-:::panel{id="part-1-2-3" title="Header and body" note="Parts 1, 2, 3"}
+:::panel{id="part-1-2-3" title="Header and body" note="Parts 1, 2, 3" media="side"}
 ![Header and body: 1, 2, 3](/anatomy/content-first/message/card-4.png)
 
 :label[Grouping]

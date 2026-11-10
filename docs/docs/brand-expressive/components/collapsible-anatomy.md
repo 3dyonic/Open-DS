@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Collapsible, every part numbered](/anatomy/brand-expressive/collapsible/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -49,12 +49,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 - **Trigger** required · shown by Button :label[Affordance]
 - **1** **Content** state · no token yet :label[Readability]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Content" note="Parts 1"}
+:::panel{id="part-1" title="Content" note="Parts 1" media="side"}
 ![Content: 1](/anatomy/brand-expressive/collapsible/card-1.png)
 
 :label[Readability]

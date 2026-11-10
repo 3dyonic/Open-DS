@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Context menu, every part numbered](/anatomy/dense-data/context-menu/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -61,12 +61,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **Checkbox and radio items** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
 - **8** **Separator** optional :label[By scheme]{tone="info"} :label[Grouping]
 - **Group label** optional · not in this example :label[By scheme]{tone="info"} :label[Hierarchy] :label[Grouping]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Surface and shadow" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Surface and shadow" note="Parts 1, 2" media="side"}
 ![Surface and shadow: 1, 2](/anatomy/dense-data/context-menu/card-1.png)
 
 :label[Containment] :label[Layering]
@@ -109,7 +110,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.4: Small corners keep dense rows straight.
 :::
 
-:::panel{id="part-3-4" title="Item" note="Parts 3, 4"}
+:::panel{id="part-3-4" title="Item" note="Parts 3, 4" media="side"}
 ![Item: 3, 4](/anatomy/dense-data/context-menu/card-2.png)
 
 :label[Readability] :label[Reach] :label[Meaning]
@@ -154,7 +155,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.16
 :::
 
-:::panel{id="part-5" title="Highlight fill" note="Parts 5"}
+:::panel{id="part-5" title="Highlight fill" note="Parts 5" media="side"}
 ![Highlight fill: 5](/anatomy/dense-data/context-menu/card-3.png)
 
 :label[Feedback] :label[Focus]
@@ -180,7 +181,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-6" title="Submenu chevron" note="Parts 6"}
+:::panel{id="part-6" title="Submenu chevron" note="Parts 6" media="side"}
 ![Submenu chevron: 6](/anatomy/dense-data/context-menu/card-4.png)
 
 :label[Affordance]
@@ -201,7 +202,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.16
 :::
 
-:::panel{id="part-7" title="Destructive item" note="Parts 7"}
+:::panel{id="part-7" title="Destructive item" note="Parts 7" media="side"}
 ![Destructive item: 7](/anatomy/dense-data/context-menu/card-5.png)
 
 :label[Meaning] :label[Emphasis]
@@ -223,7 +224,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-8" title="Separator" note="Parts 8"}
+:::panel{id="part-8" title="Separator" note="Parts 8" media="side"}
 ![Separator: 8](/anatomy/dense-data/context-menu/card-6.png)
 
 :label[Grouping]

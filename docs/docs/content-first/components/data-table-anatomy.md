@@ -1,5 +1,4 @@
 ---
-composite_data: "./data-table-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 21.5
 slug: "data-table/anatomy"
@@ -40,9 +39,9 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
-::anatomy-drawing{id="data-table/stage"}
-
-*Content first, light, drawn from the scheme's tokens: 48px rows, 16px cell padding, 18px text and a 12px frame corner.*
+:::panel{media="wide"}
+![Data table, every part numbered](/anatomy/content-first/data-table/stage.png)
+*Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
 
@@ -65,13 +64,14 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **12** **Selected row** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
   - **13** **Select box** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Meaning]
 - **Empty state** state · shown by Empty :label[Feedback]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2-3-4-5" title="Toolbar" note="Parts 1, 2, 3, 4, 5"}
-::anatomy-drawing{id="data-table/card-1"}
+:::panel{id="part-1-2-3-4-5" title="Toolbar" note="Parts 1, 2, 3, 4, 5" media="side"}
+![Toolbar: 1, 2, 3, 4, 5](/anatomy/content-first/data-table/card-1.png)
 
 :label[Affordance] :label[Feedback]
 
@@ -103,8 +103,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-6-7-8" title="Header" note="Parts 6, 7, 8"}
-::anatomy-drawing{id="data-table/card-2"}
+:::panel{id="part-6-7-8" title="Header" note="Parts 6, 7, 8" media="side"}
+![Header: 6, 7, 8](/anatomy/content-first/data-table/card-2.png)
 
 :label[Hierarchy] :label[Grouping] :label[Affordance]
 
@@ -140,8 +140,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
 :::
 
-:::panel{id="part-9-10" title="Row" note="Parts 9, 10"}
-::anatomy-drawing{id="data-table/card-3"}
+:::panel{id="part-9-10" title="Row" note="Parts 9, 10" media="side"}
+![Row: 9, 10](/anatomy/content-first/data-table/card-3.png)
 
 :label[Readability] :label[Reach]
 
@@ -186,8 +186,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** source-serif-4 for data text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.
 :::
 
-:::panel{id="part-11" title="Highlight row" note="Parts 11"}
-::anatomy-drawing{id="data-table/card-4"}
+:::panel{id="part-11" title="Highlight row" note="Parts 11" media="side"}
+![Highlight row: 11](/anatomy/content-first/data-table/card-4.png)
 
 :label[Feedback]
 
@@ -208,8 +208,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-12-13" title="Selected row" note="Parts 12, 13"}
-::anatomy-drawing{id="data-table/card-5"}
+:::panel{id="part-12-13" title="Selected row" note="Parts 12, 13" media="side"}
+![Selected row: 12, 13](/anatomy/content-first/data-table/card-5.png)
 
 :label[Meaning] :label[Feedback]
 

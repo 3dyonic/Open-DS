@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Alert dialog, every part numbered](/anatomy/accessible-first/alert-dialog/stage.png)
-
 *Accessible first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -56,12 +56,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **7** **Footer** required :label[By scheme]{tone="info"} :label[Grouping]
   - **Cancel** required · shown by Button :label[Affordance]
   - **Action** required · shown by Button :label[Affordance] :label[Emphasis] :label[Meaning]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Panel and scrim" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Panel and scrim" note="Parts 1, 2" media="side"}
 ![Panel and scrim: 1, 2](/anatomy/accessible-first/alert-dialog/card-1.png)
 
 :label[Containment] :label[Layering]
@@ -115,7 +116,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 :::
 
-:::panel{id="part-2" title="Room inside the panel" note="Parts 2"}
+:::panel{id="part-2" title="Room inside the panel" note="Parts 2" media="side"}
 ![Room inside the panel: 2](/anatomy/accessible-first/alert-dialog/card-2.png)
 
 :label[Containment] :label[Grouping]
@@ -137,7 +138,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.32
 :::
 
-:::panel{id="part-4" title="Media" note="Parts 4"}
+:::panel{id="part-4" title="Media" note="Parts 4" media="side"}
 ![Media: 4](/anatomy/accessible-first/alert-dialog/card-3.png)
 
 :label[Meaning] :label[Emphasis]
@@ -175,7 +176,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-3-5-6" title="The question" note="Parts 3, 5, 6"}
+:::panel{id="part-3-5-6" title="The question" note="Parts 3, 5, 6" media="side"}
 ![The question: 3, 5, 6](/anatomy/accessible-first/alert-dialog/card-4.png)
 
 :label[Hierarchy] :label[Readability]
@@ -232,7 +233,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-7" title="Footer" note="Parts 7"}
+:::panel{id="part-7" title="Footer" note="Parts 7" media="side"}
 ![Footer: 7](/anatomy/accessible-first/alert-dialog/card-5.png)
 
 :label[Grouping]

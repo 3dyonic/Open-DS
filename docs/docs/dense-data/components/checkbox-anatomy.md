@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Checkbox, every part numbered](/anatomy/dense-data/checkbox/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -53,12 +53,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 - **5** **Disabled box** state :label[By scheme]{tone="info"} :label[Feedback]
 - **Label** required · shown by Label :label[Readability] :label[Reach]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Box" note="Parts 1"}
+:::panel{id="part-1" title="Box" note="Parts 1" media="side"}
 ![Box: 1](/anatomy/dense-data/checkbox/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -96,7 +97,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.0: Small corners keep dense rows straight.
 :::
 
-:::panel{id="part-2-3" title="Checked" note="Parts 2, 3"}
+:::panel{id="part-2-3" title="Checked" note="Parts 2, 3" media="side"}
 ![Checked: 2, 3](/anatomy/dense-data/checkbox/card-2.png)
 
 :label[Meaning]
@@ -126,7 +127,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** text.inverse, text.on-danger. Changing this pick moves only what reads color.text.on-action.
 :::
 
-:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+:::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
 ![Focus ring: 4](/anatomy/dense-data/checkbox/card-3.png)
 
 :label[Focus]
@@ -163,7 +164,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
 :::
 
-:::panel{id="part-5" title="Disabled box" note="Parts 5"}
+:::panel{id="part-5" title="Disabled box" note="Parts 5" media="side"}
 ![Disabled box: 5](/anatomy/dense-data/checkbox/card-4.png)
 
 :label[Feedback]

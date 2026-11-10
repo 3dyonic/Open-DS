@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Scroll area, every part numbered](/anatomy/content-first/scroll-area/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -52,12 +52,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **1** **Track** required :label[By scheme]{tone="info"} :label[Reach]
   - **2** **Thumb** required :label[By scheme]{tone="info"} :label[Feedback] :label[Affordance]
 - **3** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Scrollbar" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Scrollbar" note="Parts 1, 2" media="side"}
 ![Scrollbar: 1, 2](/anatomy/content-first/scroll-area/card-1.png)
 
 :label[Reach] :label[Feedback] :label[Affordance]
@@ -83,7 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 :::
 
-:::panel{id="part-3" title="Focus ring" note="Parts 3"}
+:::panel{id="part-3" title="Focus ring" note="Parts 3" media="side"}
 ![Focus ring: 3](/anatomy/content-first/scroll-area/card-2.png)
 
 :label[Focus]

@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Popover, every part numbered](/anatomy/dense-data/popover/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -56,12 +56,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **4** **Title** optional :label[By scheme]{tone="info"} :label[Hierarchy] :label[Readability]
   - **5** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
 - **6** **Offset** required :label[By scheme]{tone="info"} :label[Grouping]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2-3" title="Surface, border and shadow" note="Parts 1, 2, 3"}
+:::panel{id="part-1-2-3" title="Surface, border and shadow" note="Parts 1, 2, 3" media="side"}
 ![Surface, border and shadow: 1, 2, 3](/anatomy/dense-data/popover/card-1.png)
 
 :label[Containment] :label[Layering]
@@ -116,7 +117,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.16
 :::
 
-:::panel{id="part-4-5" title="Header" note="Parts 4, 5"}
+:::panel{id="part-4-5" title="Header" note="Parts 4, 5" media="side"}
 ![Header: 4, 5](/anatomy/dense-data/popover/card-2.png)
 
 :label[Hierarchy] :label[Readability]
@@ -157,7 +158,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-6" title="Offset" note="Parts 6"}
+:::panel{id="part-6" title="Offset" note="Parts 6" media="side"}
 ![Offset: 6](/anatomy/dense-data/popover/card-3.png)
 
 :label[Grouping]

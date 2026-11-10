@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Skeleton, every part numbered](/anatomy/brand-expressive/skeleton/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -49,12 +49,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 - **1** **Placeholder** required :label[By scheme]{tone="info"} :label[Containment] :label[Feedback]
 - **2** **Pulse** state · no token yet :label[Feedback]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Corner" note="Parts 1"}
+:::panel{id="part-1" title="Corner" note="Parts 1" media="side"}
 ![Corner: 1](/anatomy/brand-expressive/skeleton/card-1.png)
 
 :label[Containment]
@@ -76,7 +77,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.pill: Pill controls feel playful.
 :::
 
-:::panel{id="part-1" title="Fill" note="Parts 1"}
+:::panel{id="part-1" title="Fill" note="Parts 1" media="side"}
 ![Fill: 1](/anatomy/brand-expressive/skeleton/card-2.png)
 
 :label[Feedback]
@@ -98,7 +99,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.highlight, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
 :::
 
-:::panel{id="part-2" title="Pulse" note="Parts 2"}
+:::panel{id="part-2" title="Pulse" note="Parts 2" media="side"}
 ![Pulse: 2](/anatomy/brand-expressive/skeleton/card-3.png)
 
 :label[Feedback]

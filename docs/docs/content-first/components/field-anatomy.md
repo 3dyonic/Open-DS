@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Field, every part numbered](/anatomy/content-first/field/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -59,12 +59,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **6** **Checked choice card** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
 - **7** **Separator** optional :label[Grouping]
 - **Separator line** optional · shown by Separator :label[Grouping]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Label" note="Parts 1"}
+:::panel{id="part-1" title="Label" note="Parts 1" media="side"}
 ![Label: 1](/anatomy/content-first/field/card-1.png)
 
 :label[Readability] :label[Hierarchy]
@@ -86,7 +87,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.600
 :::
 
-:::panel{id="part-2" title="Description" note="Parts 2"}
+:::panel{id="part-2" title="Description" note="Parts 2" media="side"}
 ![Description: 2](/anatomy/content-first/field/card-2.png)
 
 :label[Readability] :label[Hierarchy]
@@ -123,7 +124,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.4
 :::
 
-:::panel{id="part-3" title="Error message" note="Parts 3"}
+:::panel{id="part-3" title="Error message" note="Parts 3" media="side"}
 ![Error message: 3](/anatomy/content-first/field/card-3.png)
 
 :label[Meaning] :label[Feedback]
@@ -157,7 +158,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.400
 :::
 
-:::panel{id="part-4" title="Invalid field" note="Parts 4"}
+:::panel{id="part-4" title="Invalid field" note="Parts 4" media="side"}
 ![Invalid field: 4](/anatomy/content-first/field/card-4.png)
 
 :label[Meaning] :label[Feedback]
@@ -183,7 +184,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-5" title="Choice card" note="Parts 5"}
+:::panel{id="part-5" title="Choice card" note="Parts 5" media="side"}
 ![Choice card: 5](/anatomy/content-first/field/card-5.png)
 
 :label[Containment] :label[Reach]
@@ -217,7 +218,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.1
 :::
 
-:::panel{id="part-6" title="Checked choice card" note="Parts 6"}
+:::panel{id="part-6" title="Checked choice card" note="Parts 6" media="side"}
 ![Checked choice card: 6](/anatomy/content-first/field/card-6.png)
 
 :label[Meaning] :label[Feedback]
@@ -247,7 +248,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** category.1.subtle. Changing this pick moves only what reads color.surface.selected.
 :::
 
-:::panel{id="part-7" title="Separator" note="Parts 7"}
+:::panel{id="part-7" title="Separator" note="Parts 7" media="side"}
 ![Separator: 7](/anatomy/content-first/field/card-7.png)
 
 :label[Grouping]

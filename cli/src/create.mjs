@@ -30,6 +30,7 @@ const VERSION = JSON.parse(
 
 const DEV_DEPENDENCIES = {
   "@docusaurus/core": "^3.10.2",
+  "@docusaurus/faster": "^3.10.2",
   "@docusaurus/preset-classic": "^3.10.2",
   "@docusaurus/types": "^3.10.2",
   "@mdx-js/react": "^3.1.0",

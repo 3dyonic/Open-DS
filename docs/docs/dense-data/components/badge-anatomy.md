@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Badge, every part numbered](/anatomy/dense-data/badge/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -51,12 +51,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **2** **Label** required :label[By scheme]{tone="info"} :label[Readability] :label[Meaning]
 - **3** **Tone** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
 - **Icon** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Fill" note="Parts 1"}
+:::panel{id="part-1" title="Fill" note="Parts 1" media="side"}
 ![Fill: 1](/anatomy/dense-data/badge/card-1.png)
 
 :label[Containment]
@@ -94,7 +95,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.highlight, surface.pressed, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.sunken.
 :::
 
-:::panel{id="part-2" title="Label" note="Parts 2"}
+:::panel{id="part-2" title="Label" note="Parts 2" media="side"}
 ![Label: 2](/anatomy/dense-data/badge/card-2.png)
 
 :label[Readability]
@@ -127,7 +128,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.500: supporting text, 10.58:1 on surface.default, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-3" title="Tone" note="Parts 3"}
+:::panel{id="part-3" title="Tone" note="Parts 3" media="side"}
 ![Tone: 3](/anatomy/dense-data/badge/card-3.png)
 
 :label[Meaning] :label[Emphasis]

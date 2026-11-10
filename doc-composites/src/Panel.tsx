@@ -24,6 +24,10 @@ export type PanelProps = {
   note?: string;
   label?: string;
   tone?: LabelProps["tone"];
+  // The first block is a drawing, set beside the words as on RC1 (OD-286); on a phone it stacks above
+  // them. side: a narrow column, a part's card. wide: half the panel, the whole component's drawing,
+  // never wider than its own pixels.
+  media?: "side" | "wide";
   children?: React.ReactNode;
 };
 
@@ -33,8 +37,10 @@ export default function Panel({
   note,
   label,
   tone,
+  media,
   children,
 }: PanelProps) {
+  const [first, ...rest] = React.Children.toArray(children);
   return (
     <div id={id} data-composite="panel" className="grid">
       <Card>
@@ -47,7 +53,20 @@ export default function Panel({
             </div>
           </CardHeader>
         )}
-        <CardContent>{children}</CardContent>
+        <CardContent>
+          {media ? (
+            <div className="flex flex-col gap-[var(--space-gap-group)] md:flex-row md:items-start">
+              <div
+                className={`shrink-0 [&_img]:block [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-[var(--radius-option)] [&_p]:m-0 ${media === "side" ? "md:w-72 [&_img]:w-full" : "md:w-1/2 [&_img]:w-auto"}`}
+              >
+                {first}
+              </div>
+              <div className="min-w-0 flex-1">{rest}</div>
+            </div>
+          ) : (
+            children
+          )}
+        </CardContent>
       </Card>
     </div>
   );

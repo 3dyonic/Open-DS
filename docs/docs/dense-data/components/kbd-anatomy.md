@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Kbd, every part numbered](/anatomy/dense-data/kbd/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -51,12 +51,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **2** **Key** required :label[By scheme]{tone="info"} :label[Meaning] :label[Readability]
 - **3** **Key on an inverse fill** optional :label[By scheme]{tone="info"} :label[Readability]
 - **Tooltip around the key** optional · shown by Tooltip :label[Layering]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Shortcut" note="Parts 1"}
+:::panel{id="part-1" title="Shortcut" note="Parts 1" media="side"}
 ![Shortcut: 1](/anatomy/dense-data/kbd/card-1.png)
 
 :label[Grouping]
@@ -70,7 +71,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.4
 :::
 
-:::panel{id="part-2" title="Key" note="Parts 2"}
+:::panel{id="part-2" title="Key" note="Parts 2" media="side"}
 ![Key: 2](/anatomy/dense-data/kbd/card-2.png)
 
 :label[Meaning] :label[Readability]
@@ -111,7 +112,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.size.12
 :::
 
-:::panel{id="part-3" title="Key on an inverse fill" note="Parts 3"}
+:::panel{id="part-3" title="Key on an inverse fill" note="Parts 3" media="side"}
 ![Key on an inverse fill: 3](/anatomy/dense-data/kbd/card-3.png)
 
 :label[Readability]

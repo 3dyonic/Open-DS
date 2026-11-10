@@ -400,10 +400,13 @@ function componentGapsNow(scheme, g, roots) {
         says: `${comp} draws its own empty state; the Empty component (why it is empty and the one action that fills it) is not used.`,
       });
     // Nested corners: an option's corner against its container's corner less the padding between them.
+    // radius.pill is calc(infinity * 1px): read it as the 9999px pill the message names.
     const px = (v) =>
       typeof v !== "string"
         ? null
-        : /rem$/.test(v)
+        : /infinity/.test(v)
+          ? 9999
+          : /rem$/.test(v)
           ? parseFloat(v) * 16
           : /px$/.test(v)
             ? parseFloat(v)

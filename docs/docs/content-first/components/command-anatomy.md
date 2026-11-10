@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Command, every part numbered](/anatomy/content-first/command/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -61,12 +61,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **Shortcut** optional · not in this example :label[By scheme]{tone="info"} :label[Hierarchy]
 - **9** **Separator** optional :label[By scheme]{tone="info"} :label[Grouping]
 - **Empty message** state · not in this example :label[By scheme]{tone="info"} :label[Feedback]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Panel" note="Parts 1"}
+:::panel{id="part-1" title="Panel" note="Parts 1" media="side"}
 ![Panel: 1](/anatomy/content-first/command/card-1.png)
 
 :label[Containment]
@@ -96,7 +97,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.12: Rounded corners feel friendly.
 :::
 
-:::panel{id="part-2-3-4" title="Search field" note="Parts 2, 3, 4"}
+:::panel{id="part-2-3-4" title="Search field" note="Parts 2, 3, 4" media="side"}
 ![Search field: 2, 3, 4](/anatomy/content-first/command/card-2.png)
 
 :label[Affordance] :label[Reach] :label[Readability]
@@ -148,7 +149,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-5" title="Group heading" note="Parts 5"}
+:::panel{id="part-5" title="Group heading" note="Parts 5" media="side"}
 ![Group heading: 5](/anatomy/content-first/command/card-3.png)
 
 :label[Hierarchy] :label[Grouping]
@@ -177,7 +178,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.600
 :::
 
-:::panel{id="part-6-7" title="Item" note="Parts 6, 7"}
+:::panel{id="part-6-7" title="Item" note="Parts 6, 7" media="side"}
 ![Item: 6, 7](/anatomy/content-first/command/card-4.png)
 
 :label[Readability] :label[Reach] :label[Meaning]
@@ -222,7 +223,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.16
 :::
 
-:::panel{id="part-8" title="Highlight fill" note="Parts 8"}
+:::panel{id="part-8" title="Highlight fill" note="Parts 8" media="side"}
 ![Highlight fill: 8](/anatomy/content-first/command/card-5.png)
 
 :label[Feedback] :label[Focus]
@@ -248,7 +249,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-9" title="Separator" note="Parts 9"}
+:::panel{id="part-9" title="Separator" note="Parts 9" media="side"}
 ![Separator: 9](/anatomy/content-first/command/card-6.png)
 
 :label[Grouping]

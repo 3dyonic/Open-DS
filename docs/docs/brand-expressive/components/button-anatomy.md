@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Button, every part numbered](/anatomy/brand-expressive/button/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -54,12 +54,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **3** **Hover fill** state :label[By scheme]{tone="info"} :label[Feedback]
 - **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 - **5** **Disabled** state :label[By scheme]{tone="info"} :label[Feedback]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Container" note="Parts 1"}
+:::panel{id="part-1" title="Container" note="Parts 1" media="side"}
 ![Container: 1](/anatomy/brand-expressive/button/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -97,7 +98,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.pill: Pill controls feel playful.
 :::
 
-:::panel{id="part-1" title="Emphasis" note="Parts 1"}
+:::panel{id="part-1" title="Emphasis" note="Parts 1" media="side"}
 ![Emphasis: 1](/anatomy/brand-expressive/button/card-2.png)
 
 :label[Emphasis]
@@ -127,7 +128,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** category.5, disabled.text. Changing this pick moves only what reads color.border.strong.
 :::
 
-:::panel{id="part-2" title="Label" note="Parts 2"}
+:::panel{id="part-2" title="Label" note="Parts 2" media="side"}
 ![Label: 2](/anatomy/brand-expressive/button/card-3.png)
 
 :label[Readability]
@@ -161,7 +162,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.700
 :::
 
-:::panel{id="part-3" title="Hover fill" note="Parts 3"}
+:::panel{id="part-3" title="Hover fill" note="Parts 3" media="side"}
 ![Hover fill: 3](/anatomy/brand-expressive/button/card-4.png)
 
 :label[Feedback]
@@ -203,7 +204,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+:::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
 ![Focus ring: 4](/anatomy/brand-expressive/button/card-5.png)
 
 :label[Focus]
@@ -240,7 +241,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.
 :::
 
-:::panel{id="part-5" title="Disabled" note="Parts 5"}
+:::panel{id="part-5" title="Disabled" note="Parts 5" media="side"}
 ![Disabled: 5](/anatomy/brand-expressive/button/card-6.png)
 
 :label[Feedback]

@@ -30,6 +30,9 @@ const config: Config = {
   onBrokenLinks: "throw",
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
+  // Lightning CSS minifies the scheme's CSS: the default minifier cannot read radius.pill's
+  // calc(infinity * 1px) and warns on it (OD-286). The Open DS docs use the same minifier.
+  future: { faster: { lightningCssMinimizer: true } },
   // The live Storybook embeds follow the docs theme (OD-213).
   clientModules: [
     "./src/clientModules/embed-mode.ts",

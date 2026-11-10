@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Switch, every part numbered](/anatomy/multi-brand/switch/stage.png)
-
 *Multi-brand, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -54,12 +54,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **5** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 - **6** **Disabled switch** state :label[By scheme]{tone="info"} :label[Feedback]
 - **Label** required · shown by Label :label[Readability] :label[Reach]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Track" note="Parts 1"}
+:::panel{id="part-1" title="Track" note="Parts 1" media="side"}
 ![Track: 1](/anatomy/multi-brand/switch/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -89,7 +90,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.pill
 :::
 
-:::panel{id="part-2" title="Thumb" note="Parts 2"}
+:::panel{id="part-2" title="Thumb" note="Parts 2" media="side"}
 ![Thumb: 2](/anatomy/multi-brand/switch/card-2.png)
 
 :label[Affordance]
@@ -123,7 +124,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
 :::
 
-:::panel{id="part-3-4" title="On" note="Parts 3, 4"}
+:::panel{id="part-3-4" title="On" note="Parts 3, 4" media="side"}
 ![On: 3, 4](/anatomy/multi-brand/switch/card-3.png)
 
 :label[Meaning] :label[Feedback]
@@ -153,7 +154,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.16
 :::
 
-:::panel{id="part-5" title="Focus ring" note="Parts 5"}
+:::panel{id="part-5" title="Focus ring" note="Parts 5" media="side"}
 ![Focus ring: 5](/anatomy/multi-brand/switch/card-4.png)
 
 :label[Focus]
@@ -190,7 +191,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.
 :::
 
-:::panel{id="part-6" title="Disabled switch" note="Parts 6"}
+:::panel{id="part-6" title="Disabled switch" note="Parts 6" media="side"}
 ![Disabled switch: 6](/anatomy/multi-brand/switch/card-5.png)
 
 :label[Feedback]

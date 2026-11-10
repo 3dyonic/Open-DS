@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Resizable, every part numbered](/anatomy/accessible-first/resizable/stage.png)
-
 *Accessible first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -52,12 +52,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **1** **Line** required :label[By scheme]{tone="info"} :label[Grouping] :label[Affordance]
   - **2** **Grip** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
   - **3** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Line" note="Parts 1"}
+:::panel{id="part-1" title="Line" note="Parts 1" media="side"}
 ![Line: 1](/anatomy/accessible-first/resizable/card-1.png)
 
 :label[Grouping] :label[Affordance]
@@ -83,7 +84,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 :::
 
-:::panel{id="part-2" title="Grip" note="Parts 2"}
+:::panel{id="part-2" title="Grip" note="Parts 2" media="side"}
 ![Grip: 2](/anatomy/accessible-first/resizable/card-2.png)
 
 :label[Affordance] :label[Reach]
@@ -125,7 +126,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.2
 :::
 
-:::panel{id="part-3" title="Focus ring" note="Parts 3"}
+:::panel{id="part-3" title="Focus ring" note="Parts 3" media="side"}
 ![Focus ring: 3](/anatomy/accessible-first/resizable/card-3.png)
 
 :label[Focus]

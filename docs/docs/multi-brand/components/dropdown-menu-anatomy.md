@@ -1,5 +1,4 @@
 ---
-composite_data: "./dropdown-menu-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
 sidebar_position: 25.5
 slug: "dropdown-menu/anatomy"
@@ -40,9 +39,9 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
-::anatomy-drawing{id="dropdown-menu/stage"}
-
-*Multi-brand, light, drawn from the scheme's tokens: 44px items, 16px side padding, 16px text, a 8px corner and its shadow.*
+:::panel{media="wide"}
+![Dropdown menu, every part numbered](/anatomy/multi-brand/dropdown-menu/stage.png)
+*Multi-brand, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
 
@@ -62,13 +61,14 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **10** **Destructive item** optional :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
 - **11** **Separator** optional :label[By scheme]{tone="info"} :label[Grouping]
 - **Group label** optional · not in this example :label[Hierarchy] :label[Grouping]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Surface and shadow" note="Parts 1, 2"}
-::anatomy-drawing{id="dropdown-menu/card-1"}
+:::panel{id="part-1-2" title="Surface and shadow" note="Parts 1, 2" media="side"}
+![Surface and shadow: 1, 2](/anatomy/multi-brand/dropdown-menu/card-1.png)
 
 :label[Containment] :label[Layering]
 
@@ -98,8 +98,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** shadow.overlay-dark: Soft shadows fit every brand.
 :::
 
-:::panel{id="part-3-4-5" title="Item" note="Parts 3, 4, 5"}
-::anatomy-drawing{id="dropdown-menu/card-2"}
+:::panel{id="part-3-4-5" title="Item" note="Parts 3, 4, 5" media="side"}
+![Item: 3, 4, 5](/anatomy/multi-brand/dropdown-menu/card-2.png)
 
 :label[Readability] :label[Reach] :label[Affordance]
 
@@ -132,8 +132,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.44
 :::
 
-:::panel{id="part-7" title="Highlight fill" note="Parts 7"}
-::anatomy-drawing{id="dropdown-menu/card-3"}
+:::panel{id="part-7" title="Highlight fill" note="Parts 7" media="side"}
+![Highlight fill: 7](/anatomy/multi-brand/dropdown-menu/card-3.png)
 
 :label[Feedback]
 
@@ -158,8 +158,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-8" title="Focus ring" note="Parts 8"}
-::anatomy-drawing{id="dropdown-menu/card-4"}
+:::panel{id="part-8" title="Focus ring" note="Parts 8" media="side"}
+![Focus ring: 8](/anatomy/multi-brand/dropdown-menu/card-4.png)
 
 :label[Focus]
 
@@ -184,8 +184,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.2
 :::
 
-:::panel{id="part-9" title="Disabled item" note="Parts 9"}
-::anatomy-drawing{id="dropdown-menu/card-5"}
+:::panel{id="part-9" title="Disabled item" note="Parts 9" media="side"}
+![Disabled item: 9](/anatomy/multi-brand/dropdown-menu/card-5.png)
 
 :label[Feedback]
 
@@ -198,8 +198,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** opacity.40
 :::
 
-:::panel{id="part-10" title="Destructive item" note="Parts 10"}
-::anatomy-drawing{id="dropdown-menu/card-6"}
+:::panel{id="part-10" title="Destructive item" note="Parts 10" media="side"}
+![Destructive item: 10](/anatomy/multi-brand/dropdown-menu/card-6.png)
 
 :label[Meaning] :label[Emphasis]
 
@@ -220,8 +220,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-11" title="Separator" note="Parts 11"}
-::anatomy-drawing{id="dropdown-menu/card-7"}
+:::panel{id="part-11" title="Separator" note="Parts 11" media="side"}
+![Separator: 11](/anatomy/multi-brand/dropdown-menu/card-7.png)
 
 :label[Grouping]
 

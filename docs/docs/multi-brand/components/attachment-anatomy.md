@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Attachment, every part numbered](/anatomy/multi-brand/attachment/stage.png)
-
 *Multi-brand, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -54,12 +54,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **5** **Hover fill** state :label[By scheme]{tone="info"} :label[Feedback]
 - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 - **The message it is shared in** optional · shown by Message :label[Grouping]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Frame" note="Parts 1"}
+:::panel{id="part-1" title="Frame" note="Parts 1" media="side"}
 ![Frame: 1](/anatomy/multi-brand/attachment/card-1.png)
 
 :label[Containment] :label[Affordance] :label[Reach]
@@ -97,7 +98,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-2" title="File icon" note="Parts 2"}
+:::panel{id="part-2" title="File icon" note="Parts 2" media="side"}
 ![File icon: 2](/anatomy/multi-brand/attachment/card-2.png)
 
 :label[Meaning]
@@ -134,7 +135,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-3-4" title="Name, type and size" note="Parts 3, 4"}
+:::panel{id="part-3-4" title="Name, type and size" note="Parts 3, 4" media="side"}
 ![Name, type and size: 3, 4](/anatomy/multi-brand/attachment/card-3.png)
 
 :label[Hierarchy] :label[Readability]
@@ -163,7 +164,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.size.13
 :::
 
-:::panel{id="part-5" title="Hover fill" note="Parts 5"}
+:::panel{id="part-5" title="Hover fill" note="Parts 5" media="side"}
 ![Hover fill: 5](/anatomy/multi-brand/attachment/card-4.png)
 
 :label[Feedback]
@@ -185,7 +186,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-6" title="Focus ring" note="Parts 6"}
+:::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
 ![Focus ring: 6](/anatomy/multi-brand/attachment/card-5.png)
 
 :label[Focus]

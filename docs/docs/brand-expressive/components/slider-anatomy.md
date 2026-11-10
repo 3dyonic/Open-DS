@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Slider, every part numbered](/anatomy/brand-expressive/slider/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -53,12 +53,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **4** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 - **5** **Disabled slider** state :label[By scheme]{tone="info"} :label[Feedback]
 - **Label** required · shown by Label :label[Readability]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Track and range" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Track and range" note="Parts 1, 2" media="side"}
 ![Track and range: 1, 2](/anatomy/brand-expressive/slider/card-1.png)
 
 :label[Containment] :label[Meaning]
@@ -92,7 +93,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
 :::
 
-:::panel{id="part-3" title="Thumb" note="Parts 3"}
+:::panel{id="part-3" title="Thumb" note="Parts 3" media="side"}
 ![Thumb: 3](/anatomy/brand-expressive/slider/card-2.png)
 
 :label[Affordance] :label[Reach]
@@ -143,7 +144,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** shadow.card-dark: Cards lift to feel like objects.
 :::
 
-:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+:::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
 ![Focus ring: 4](/anatomy/brand-expressive/slider/card-3.png)
 
 :label[Focus]
@@ -180,7 +181,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.
 :::
 
-:::panel{id="part-5" title="Disabled slider" note="Parts 5"}
+:::panel{id="part-5" title="Disabled slider" note="Parts 5" media="side"}
 ![Disabled slider: 5](/anatomy/brand-expressive/slider/card-4.png)
 
 :label[Feedback]

@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Input group, every part numbered](/anatomy/dense-data/input-group/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **5** **Invalid group** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
 - **6** **Disabled group** state :label[By scheme]{tone="info"} :label[Feedback]
 - **Addon button** optional · shown by Button :label[By scheme]{tone="info"} :label[Affordance]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Group" note="Parts 1"}
+:::panel{id="part-1" title="Group" note="Parts 1" media="side"}
 ![Group: 1](/anatomy/dense-data/input-group/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -98,7 +99,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.raised, action.secondary. Changing this pick moves only what reads color.surface.default.
 :::
 
-:::panel{id="part-2-3" title="Addons" note="Parts 2, 3"}
+:::panel{id="part-2-3" title="Addons" note="Parts 2, 3" media="side"}
 ![Addons: 2, 3](/anatomy/dense-data/input-group/card-2.png)
 
 :label[Meaning] :label[Hierarchy]
@@ -135,7 +136,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.12
 :::
 
-:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+:::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
 ![Focus ring: 4](/anatomy/dense-data/input-group/card-3.png)
 
 :label[Focus]
@@ -165,7 +166,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.2
 :::
 
-:::panel{id="part-5" title="Invalid group" note="Parts 5"}
+:::panel{id="part-5" title="Invalid group" note="Parts 5" media="side"}
 ![Invalid group: 5](/anatomy/dense-data/input-group/card-4.png)
 
 :label[Meaning] :label[Feedback]
@@ -195,7 +196,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-6" title="Disabled group" note="Parts 6"}
+:::panel{id="part-6" title="Disabled group" note="Parts 6" media="side"}
 ![Disabled group: 6](/anatomy/dense-data/input-group/card-5.png)
 
 :label[Feedback]

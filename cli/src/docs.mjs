@@ -2474,7 +2474,6 @@ export function docsPages(
     // A tree drawing (OD-229) is drawn in Figma by the Open DS anatomy plugin, bound to the scheme's kit,
     // and its frames are exported to the same place. Until they are, the page says so in their place.
     const tree = spec.drawing?.kind === "tree";
-    const asset = spec.drawing?.kind === "asset" || tree;
     const exportedIn = (id, file) =>
       existsSync(
         join(
@@ -2488,6 +2487,10 @@ export function docsPages(
           `${file}.png`,
         ),
       );
+    // The plugin's drawings win wherever this scheme has them all: a menu or a table drawn live is
+    // only the stand-in until they are exported (OD-286).
+    const allExported = ["stage", ...(spec.cards ?? []).map((_, k) => `card-${k + 1}`)].every((f) => exportedIn(scheme.id, f));
+    const asset = spec.drawing?.kind === "asset" || tree || allExported;
     // Until a scheme's own drawings are exported, its page borrows Dense data's and says so.
     const FALLBACK = "dense-data";
     const imgScheme = (file) =>
@@ -2651,7 +2654,7 @@ export function docsPages(
         image = drawing(`card-${k + 1}`, rows, nums, whole);
       }
       return (
-        `:::panel{id="part-${c.parts.join("-")}" title="${c.title.replaceAll('"', "'")}" note="Parts ${c.parts.join(", ")}"}\n` +
+        `:::panel{id="part-${c.parts.join("-")}" title="${c.title.replaceAll('"', "'")}" note="Parts ${c.parts.join(", ")}"${asset ? ' media="side"' : ""}}\n` +
         `${image}\n\n` +
         (c.roles.length ? `${c.roles.map(chip).join(" ")}\n\n` : "") +
         `${steps.join("\n\n")}\n:::`
@@ -2685,11 +2688,15 @@ export function docsPages(
       : spec.drawing.kind === "table"
         ? esc(tableCaption)
         : esc(caption);
-    const partsBlock =
-      `${stage}\n\n*${stageCaption}*\n\n` +
+    // The drawing beside its legend, as on RC1: an exported stage is drawn at 2x, so a half-width
+    // column shows it near its own size (OD-286). The caption stays under the drawing.
+    const legendBlock =
       `Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.\n\n` +
       `${byTag} Its value changes by scheme. The part is the same in every scheme.\n\n` +
       legend(spec.parts);
+    const partsBlock = asset
+      ? `:::panel{media="wide"}\n${stage}\n*${stageCaption}*\n\n${legendBlock}\n:::`
+      : `${stage}\n\n*${stageCaption}*\n\n${legendBlock}`;
     return (
       fm({
         sidebar_position: i + 1.5,

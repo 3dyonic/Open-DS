@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Pagination, every part numbered](/anatomy/content-first/pagination/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **5** **Gap** required :label[By scheme]{tone="info"} :label[Grouping] :label[Reach]
 - **6** **Next** required :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
 - **Page links** required · shown by Button :label[Affordance]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-6" title="Previous and next" note="Parts 1, 6"}
+:::panel{id="part-1-6" title="Previous and next" note="Parts 1, 6" media="side"}
 ![Previous and next: 1, 6](/anatomy/content-first/pagination/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -94,7 +95,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.20
 :::
 
-:::panel{id="part-2-3" title="Pages" note="Parts 2, 3"}
+:::panel{id="part-2-3" title="Pages" note="Parts 2, 3" media="side"}
 ![Pages: 2, 3](/anatomy/content-first/pagination/card-2.png)
 
 :label[Affordance] :label[Meaning]
@@ -136,7 +137,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.48
 :::
 
-:::panel{id="part-4-5" title="Ellipsis and gap" note="Parts 4, 5"}
+:::panel{id="part-4-5" title="Ellipsis and gap" note="Parts 4, 5" media="side"}
 ![Ellipsis and gap: 4, 5](/anatomy/content-first/pagination/card-3.png)
 
 :label[Grouping]

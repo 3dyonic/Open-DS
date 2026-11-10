@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Input otp, every part numbered](/anatomy/accessible-first/input-otp/stage.png)
-
 *Accessible first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -54,12 +54,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **5** **Invalid slots** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
 - **6** **Disabled slots** state :label[By scheme]{tone="info"} :label[Feedback]
 - **Digit** required · not in this example :label[By scheme]{tone="info"} :label[Readability]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Slot" note="Parts 1"}
+:::panel{id="part-1" title="Slot" note="Parts 1" media="side"}
 ![Slot: 1](/anatomy/accessible-first/input-otp/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -89,7 +90,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.6: Clear, slightly rounded controls.
 :::
 
-:::panel{id="part-2" title="Focus ring" note="Parts 2"}
+:::panel{id="part-2" title="Focus ring" note="Parts 2" media="side"}
 ![Focus ring: 2](/anatomy/accessible-first/input-otp/card-2.png)
 
 :label[Focus]
@@ -119,7 +120,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.2
 :::
 
-:::panel{id="part-3" title="Caret" note="Parts 3"}
+:::panel{id="part-3" title="Caret" note="Parts 3" media="side"}
 ![Caret: 3](/anatomy/accessible-first/input-otp/card-3.png)
 
 :label[Focus] :label[Feedback]
@@ -153,7 +154,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** duration.moderate
 :::
 
-:::panel{id="part-4" title="Separator" note="Parts 4"}
+:::panel{id="part-4" title="Separator" note="Parts 4" media="side"}
 ![Separator: 4](/anatomy/accessible-first/input-otp/card-4.png)
 
 :label[Grouping]
@@ -175,7 +176,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.16
 :::
 
-:::panel{id="part-5" title="Invalid slots" note="Parts 5"}
+:::panel{id="part-5" title="Invalid slots" note="Parts 5" media="side"}
 ![Invalid slots: 5](/anatomy/accessible-first/input-otp/card-5.png)
 
 :label[Meaning] :label[Feedback]
@@ -205,7 +206,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-6" title="Disabled slots" note="Parts 6"}
+:::panel{id="part-6" title="Disabled slots" note="Parts 6" media="side"}
 ![Disabled slots: 6](/anatomy/accessible-first/input-otp/card-6.png)
 
 :label[Feedback]

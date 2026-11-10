@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Table, every part numbered](/anatomy/dense-data/table/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -56,12 +56,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **5** **Selected row** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
 - **Status** optional · shown by Badge :label[Meaning]
 - **Row action** optional · shown by Button :label[Affordance]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Header" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Header" note="Parts 1, 2" media="side"}
 ![Header: 1, 2](/anatomy/dense-data/table/card-1.png)
 
 :label[Hierarchy] :label[Grouping]
@@ -102,7 +103,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.12
 :::
 
-:::panel{id="part-3-4" title="Row" note="Parts 3, 4"}
+:::panel{id="part-3-4" title="Row" note="Parts 3, 4" media="side"}
 ![Row: 3, 4](/anatomy/dense-data/table/card-2.png)
 
 :label[Readability] :label[Reach]
@@ -148,7 +149,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** ibm-plex-mono for data text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.
 :::
 
-:::panel{id="part-5" title="Selected row" note="Parts 5"}
+:::panel{id="part-5" title="Selected row" note="Parts 5" media="side"}
 ![Selected row: 5](/anatomy/dense-data/table/card-3.png)
 
 :label[Meaning] :label[Feedback]

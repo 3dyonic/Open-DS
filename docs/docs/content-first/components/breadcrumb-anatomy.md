@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Breadcrumb, every part numbered](/anatomy/content-first/breadcrumb/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -54,12 +54,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **4** **Current page** required :label[By scheme]{tone="info"} :label[Hierarchy] :label[Meaning]
 - **5** **Link under the pointer** state :label[By scheme]{tone="info"} :label[Feedback]
 - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-5" title="Link" note="Parts 1, 5"}
+:::panel{id="part-1-5" title="Link" note="Parts 1, 5" media="side"}
 ![Link: 1, 5](/anatomy/content-first/breadcrumb/card-1.png)
 
 :label[Affordance] :label[Feedback]
@@ -108,7 +109,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** easing.standard
 :::
 
-:::panel{id="part-2-3" title="Separator and ellipsis" note="Parts 2, 3"}
+:::panel{id="part-2-3" title="Separator and ellipsis" note="Parts 2, 3" media="side"}
 ![Separator and ellipsis: 2, 3](/anatomy/content-first/breadcrumb/card-2.png)
 
 :label[Grouping]
@@ -146,7 +147,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-4" title="Current page" note="Parts 4"}
+:::panel{id="part-4" title="Current page" note="Parts 4" media="side"}
 ![Current page: 4](/anatomy/content-first/breadcrumb/card-3.png)
 
 :label[Hierarchy] :label[Meaning]
@@ -172,7 +173,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.400
 :::
 
-:::panel{id="part-6" title="Focus ring" note="Parts 6"}
+:::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
 ![Focus ring: 6](/anatomy/content-first/breadcrumb/card-4.png)
 
 :label[Focus]

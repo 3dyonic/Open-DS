@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Input, every part numbered](/anatomy/multi-brand/input/stage.png)
-
 *Multi-brand, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -52,12 +52,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **3** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
 - **4** **Invalid field** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
 - **5** **Disabled field** state :label[By scheme]{tone="info"} :label[Feedback]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Field" note="Parts 1"}
+:::panel{id="part-1" title="Field" note="Parts 1" media="side"}
 ![Field: 1](/anatomy/multi-brand/input/card-1.png)
 
 :label[Affordance] :label[Reach]
@@ -91,7 +92,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.16
 :::
 
-:::panel{id="part-2" title="Value and placeholder" note="Parts 2"}
+:::panel{id="part-2" title="Value and placeholder" note="Parts 2" media="side"}
 ![Value and placeholder: 2](/anatomy/multi-brand/input/card-2.png)
 
 :label[Readability]
@@ -124,7 +125,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.size.16
 :::
 
-:::panel{id="part-3" title="Focus ring" note="Parts 3"}
+:::panel{id="part-3" title="Focus ring" note="Parts 3" media="side"}
 ![Focus ring: 3](/anatomy/multi-brand/input/card-3.png)
 
 :label[Focus]
@@ -154,7 +155,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.2
 :::
 
-:::panel{id="part-4" title="Invalid field" note="Parts 4"}
+:::panel{id="part-4" title="Invalid field" note="Parts 4" media="side"}
 ![Invalid field: 4](/anatomy/multi-brand/input/card-4.png)
 
 :label[Meaning] :label[Feedback]
@@ -176,7 +177,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-5" title="Disabled field" note="Parts 5"}
+:::panel{id="part-5" title="Disabled field" note="Parts 5" media="side"}
 ![Disabled field: 5](/anatomy/multi-brand/input/card-5.png)
 
 :label[Feedback]

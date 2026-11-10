@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Form, every part numbered](/anatomy/content-first/form/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -53,12 +53,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **2** **Description** optional :label[By scheme]{tone="info"} :label[Readability] :label[Hierarchy]
 - **3** **Label in error** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
 - **4** **Error message** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Item" note="Parts 1"}
+:::panel{id="part-1" title="Item" note="Parts 1" media="side"}
 ![Item: 1](/anatomy/content-first/form/card-1.png)
 
 :label[Grouping]
@@ -76,7 +77,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.16
 :::
 
-:::panel{id="part-2" title="Description" note="Parts 2"}
+:::panel{id="part-2" title="Description" note="Parts 2" media="side"}
 ![Description: 2](/anatomy/content-first/form/card-2.png)
 
 :label[Readability] :label[Hierarchy]
@@ -105,7 +106,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-3" title="Label in error" note="Parts 3"}
+:::panel{id="part-3" title="Label in error" note="Parts 3" media="side"}
 ![Label in error: 3](/anatomy/content-first/form/card-3.png)
 
 :label[Meaning] :label[Feedback]
@@ -127,7 +128,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** action.danger. Changing this pick moves only what reads color.status.danger.
 :::
 
-:::panel{id="part-4" title="Error message" note="Parts 4"}
+:::panel{id="part-4" title="Error message" note="Parts 4" media="side"}
 ![Error message: 4](/anatomy/content-first/form/card-4.png)
 
 :label[Meaning] :label[Feedback]

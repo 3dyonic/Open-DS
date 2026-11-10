@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Avatar, every part numbered](/anatomy/dense-data/avatar/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -57,12 +57,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **5** **Overlap** optional :label[Grouping]
   - **6** **Group ring** optional :label[By scheme]{tone="info"} :label[Layering]
   - **Count** optional · not in this example :label[By scheme]{tone="info"} :label[Meaning]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Avatar and initials" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Avatar and initials" note="Parts 1, 2" media="side"}
 ![Avatar and initials: 1, 2](/anatomy/dense-data/avatar/card-1.png)
 
 :label[Meaning] :label[Readability]
@@ -107,7 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.size.14
 :::
 
-:::panel{id="part-3-4" title="Status badge" note="Parts 3, 4"}
+:::panel{id="part-3-4" title="Status badge" note="Parts 3, 4" media="side"}
 ![Status badge: 3, 4](/anatomy/dense-data/avatar/card-2.png)
 
 :label[Meaning] :label[Layering]
@@ -144,7 +145,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.1
 :::
 
-:::panel{id="part-5-6" title="Group" note="Parts 5, 6"}
+:::panel{id="part-5-6" title="Group" note="Parts 5, 6" media="side"}
 ![Group: 5, 6](/anatomy/dense-data/avatar/card-3.png)
 
 :label[Grouping] :label[Layering]

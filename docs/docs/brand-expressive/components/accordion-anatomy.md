@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Accordion, every part numbered](/anatomy/brand-expressive/accordion/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **5** **Content** required :label[By scheme]{tone="info"} :label[Readability]
   - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
   - **7** **Disabled trigger** state :label[By scheme]{tone="info"} :label[Feedback]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Item and divider" note="Parts 1"}
+:::panel{id="part-1" title="Item and divider" note="Parts 1" media="side"}
 ![Item and divider: 1](/anatomy/brand-expressive/accordion/card-1.png)
 
 :label[Grouping]
@@ -82,7 +83,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.2
 :::
 
-:::panel{id="part-2" title="Trigger" note="Parts 2"}
+:::panel{id="part-2" title="Trigger" note="Parts 2" media="side"}
 ![Trigger: 2](/anatomy/brand-expressive/accordion/card-2.png)
 
 :label[Affordance] :label[Hierarchy] :label[Reach]
@@ -120,7 +121,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.40
 :::
 
-:::panel{id="part-3-4" title="Chevron and open item" note="Parts 3, 4"}
+:::panel{id="part-3-4" title="Chevron and open item" note="Parts 3, 4" media="side"}
 ![Chevron and open item: 3, 4](/anatomy/brand-expressive/accordion/card-3.png)
 
 :label[Affordance] :label[Feedback]
@@ -146,7 +147,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** duration.fast
 :::
 
-:::panel{id="part-5" title="Content" note="Parts 5"}
+:::panel{id="part-5" title="Content" note="Parts 5" media="side"}
 ![Content: 5](/anatomy/brand-expressive/accordion/card-4.png)
 
 :label[Readability]
@@ -172,7 +173,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.32
 :::
 
-:::panel{id="part-6" title="Focus ring" note="Parts 6"}
+:::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
 ![Focus ring: 6](/anatomy/brand-expressive/accordion/card-5.png)
 
 :label[Focus]
@@ -201,7 +202,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.
 :::
 
-:::panel{id="part-7" title="Disabled trigger" note="Parts 7"}
+:::panel{id="part-7" title="Disabled trigger" note="Parts 7" media="side"}
 ![Disabled trigger: 7](/anatomy/brand-expressive/accordion/card-6.png)
 
 :label[Feedback]

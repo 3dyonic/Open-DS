@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Chart, every part numbered](/anatomy/content-first/chart/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **5** **Cursor** state :label[By scheme]{tone="info"} :label[Feedback]
 - **6** **Tooltip** state :label[By scheme]{tone="info"} :label[Layering] :label[Feedback] :label[Readability]
 - **7** **Legend** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Meaning]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-4" title="Chart area and grid" note="Parts 1, 4"}
+:::panel{id="part-1-4" title="Chart area and grid" note="Parts 1, 4" media="side"}
 ![Chart area and grid: 1, 4](/anatomy/content-first/chart/card-1.png)
 
 :label[Containment] :label[Grouping]
@@ -82,7 +83,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 :::
 
-:::panel{id="part-2" title="Bars" note="Parts 2"}
+:::panel{id="part-2" title="Bars" note="Parts 2" media="side"}
 ![Bars: 2](/anatomy/content-first/chart/card-2.png)
 
 :label[Meaning] :label[Emphasis]
@@ -92,7 +93,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   Reading needs few color roles.
 :::
 
-:::panel{id="part-3" title="Axis labels" note="Parts 3"}
+:::panel{id="part-3" title="Axis labels" note="Parts 3" media="side"}
 ![Axis labels: 3](/anatomy/content-first/chart/card-3.png)
 
 :label[Readability] :label[Hierarchy]
@@ -117,7 +118,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.size.14
 :::
 
-:::panel{id="part-5" title="Cursor" note="Parts 5"}
+:::panel{id="part-5" title="Cursor" note="Parts 5" media="side"}
 ![Cursor: 5](/anatomy/content-first/chart/card-4.png)
 
 :label[Feedback]
@@ -147,7 +148,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 :::
 
-:::panel{id="part-6" title="Tooltip" note="Parts 6"}
+:::panel{id="part-6" title="Tooltip" note="Parts 6" media="side"}
 ![Tooltip: 6](/anatomy/content-first/chart/card-5.png)
 
 :label[Layering] :label[Feedback]
@@ -193,7 +194,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.20
 :::
 
-:::panel{id="part-6" title="Tooltip values" note="Parts 6"}
+:::panel{id="part-6" title="Tooltip values" note="Parts 6" media="side"}
 ![Tooltip values: 6](/anatomy/content-first/chart/card-6.png)
 
 :label[Readability] :label[Hierarchy]
@@ -226,7 +227,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.600
 :::
 
-:::panel{id="part-7" title="Legend" note="Parts 7"}
+:::panel{id="part-7" title="Legend" note="Parts 7" media="side"}
 ![Legend: 7](/anatomy/content-first/chart/card-7.png)
 
 :label[Grouping] :label[Meaning]

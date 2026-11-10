@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Radio group, every part numbered](/anatomy/dense-data/radio-group/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **5** **Invalid option** state :label[By scheme]{tone="info"} :label[Meaning] :label[Feedback]
   - **6** **Disabled option** state :label[By scheme]{tone="info"} :label[Feedback]
   - **Option label** required · shown by Label :label[Readability] :label[Reach]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Group" note="Parts 1"}
+:::panel{id="part-1" title="Group" note="Parts 1" media="side"}
 ![Group: 1](/anatomy/dense-data/radio-group/card-1.png)
 
 :label[Grouping]
@@ -78,7 +79,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.12
 :::
 
-:::panel{id="part-2" title="Circle" note="Parts 2"}
+:::panel{id="part-2" title="Circle" note="Parts 2" media="side"}
 ![Circle: 2](/anatomy/dense-data/radio-group/card-2.png)
 
 :label[Affordance] :label[Reach]
@@ -116,7 +117,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** border-width.1
 :::
 
-:::panel{id="part-3" title="Selected dot" note="Parts 3"}
+:::panel{id="part-3" title="Selected dot" note="Parts 3" media="side"}
 ![Selected dot: 3](/anatomy/dense-data/radio-group/card-3.png)
 
 :label[Meaning]
@@ -138,7 +139,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** border.focus, border.selected, category.1. Changing this pick moves only what reads color.action.primary.
 :::
 
-:::panel{id="part-4" title="Focus ring" note="Parts 4"}
+:::panel{id="part-4" title="Focus ring" note="Parts 4" media="side"}
 ![Focus ring: 4](/anatomy/dense-data/radio-group/card-4.png)
 
 :label[Focus]
@@ -175,7 +176,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.
 :::
 
-:::panel{id="part-5" title="Invalid option" note="Parts 5"}
+:::panel{id="part-5" title="Invalid option" note="Parts 5" media="side"}
 ![Invalid option: 5](/anatomy/dense-data/radio-group/card-5.png)
 
 :label[Meaning] :label[Feedback]
@@ -208,7 +209,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** red.dark.100: a quiet tint behind danger; its text, 11.33:1, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-6" title="Disabled option" note="Parts 6"}
+:::panel{id="part-6" title="Disabled option" note="Parts 6" media="side"}
 ![Disabled option: 6](/anatomy/dense-data/radio-group/card-6.png)
 
 :label[Feedback]

@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Drawer, every part numbered](/anatomy/brand-expressive/drawer/stage.png)
-
 *Brand expressive, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -56,12 +56,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **6** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
 - **7** **Footer** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Reach]
   - **Actions** optional · shown by Button :label[Affordance] :label[Emphasis]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Panel and scrim" note="Parts 1, 2"}
+:::panel{id="part-1-2" title="Panel and scrim" note="Parts 1, 2" media="side"}
 ![Panel and scrim: 1, 2](/anatomy/brand-expressive/drawer/card-1.png)
 
 :label[Containment] :label[Layering]
@@ -114,7 +115,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.pressed, disabled.border. Changing this pick moves only what reads color.border.default.
 :::
 
-:::panel{id="part-3" title="Handle" note="Parts 3"}
+:::panel{id="part-3" title="Handle" note="Parts 3" media="side"}
 ![Handle: 3](/anatomy/brand-expressive/drawer/card-2.png)
 
 :label[Affordance]
@@ -144,7 +145,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.32
 :::
 
-:::panel{id="part-4-5-6" title="Title and description" note="Parts 4, 5, 6"}
+:::panel{id="part-4-5-6" title="Title and description" note="Parts 4, 5, 6" media="side"}
 ![Title and description: 4, 5, 6](/anatomy/brand-expressive/drawer/card-3.png)
 
 :label[Hierarchy] :label[Readability]
@@ -201,7 +202,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.32
 :::
 
-:::panel{id="part-7" title="Footer" note="Parts 7"}
+:::panel{id="part-7" title="Footer" note="Parts 7" media="side"}
 ![Footer: 7](/anatomy/brand-expressive/drawer/card-4.png)
 
 :label[Grouping] :label[Reach]

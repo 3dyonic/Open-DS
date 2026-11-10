@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Combobox, every part numbered](/anatomy/accessible-first/combobox/stage.png)
-
 *Accessible first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -62,12 +62,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **8** **Chips field** optional :label[By scheme]{tone="info"} :label[Containment] :label[Affordance]
   - **9** **Chip** optional :label[By scheme]{tone="info"} :label[Grouping] :label[Meaning]
   - **10** **Chip remove** optional :label[By scheme]{tone="info"} :label[Affordance]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Chevron" note="Parts 1"}
+:::panel{id="part-1" title="Chevron" note="Parts 1" media="side"}
 ![Chevron: 1](/anatomy/accessible-first/combobox/card-1.png)
 
 :label[Affordance]
@@ -89,7 +90,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.20
 :::
 
-:::panel{id="part-2-3" title="Surface and shadow" note="Parts 2, 3"}
+:::panel{id="part-2-3" title="Surface and shadow" note="Parts 2, 3" media="side"}
 ![Surface and shadow: 2, 3](/anatomy/accessible-first/combobox/card-2.png)
 
 :label[Containment] :label[Layering]
@@ -132,7 +133,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.8: Clear, slightly rounded controls.
 :::
 
-:::panel{id="part-4" title="Group label" note="Parts 4"}
+:::panel{id="part-4" title="Group label" note="Parts 4" media="side"}
 ![Group label: 4](/anatomy/accessible-first/combobox/card-3.png)
 
 :label[Hierarchy] :label[Grouping]
@@ -162,7 +163,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-5-7" title="Item" note="Parts 5, 7"}
+:::panel{id="part-5-7" title="Item" note="Parts 5, 7" media="side"}
 ![Item: 5, 7](/anatomy/accessible-first/combobox/card-4.png)
 
 :label[Readability] :label[Reach] :label[Meaning]
@@ -196,7 +197,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.20
 :::
 
-:::panel{id="part-6" title="Highlight fill" note="Parts 6"}
+:::panel{id="part-6" title="Highlight fill" note="Parts 6" media="side"}
 ![Highlight fill: 6](/anatomy/accessible-first/combobox/card-5.png)
 
 :label[Feedback] :label[Focus]
@@ -222,7 +223,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.sunken, action.secondary.hover, category.5.subtle, disabled.surface. Changing this pick moves only what reads color.surface.highlight.
 :::
 
-:::panel{id="part-8-9-10" title="Chips" note="Parts 8, 9, 10"}
+:::panel{id="part-8-9-10" title="Chips" note="Parts 8, 9, 10" media="side"}
 ![Chips: 8, 9, 10](/anatomy/accessible-first/combobox/card-6.png)
 
 :label[Containment] :label[Grouping] :label[Affordance]

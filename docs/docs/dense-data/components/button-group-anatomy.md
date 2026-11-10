@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Button group, every part numbered](/anatomy/dense-data/button-group/stage.png)
-
 *Dense data, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -51,12 +51,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **Buttons** required · shown by Button :label[Affordance]
 - **2** **Separator** optional :label[By scheme]{tone="info"} :label[Grouping]
 - **3** **Text** optional :label[By scheme]{tone="info"} :label[Readability] :label[Containment]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Group" note="Parts 1"}
+:::panel{id="part-1" title="Group" note="Parts 1" media="side"}
 ![Group: 1](/anatomy/dense-data/button-group/card-1.png)
 
 :label[Grouping]
@@ -74,7 +75,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.8
 :::
 
-:::panel{id="part-2" title="Separator" note="Parts 2"}
+:::panel{id="part-2" title="Separator" note="Parts 2" media="side"}
 ![Separator: 2](/anatomy/dense-data/button-group/card-2.png)
 
 :label[Grouping]
@@ -92,7 +93,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** category.5, disabled.text. Changing this pick moves only what reads color.border.strong.
 :::
 
-:::panel{id="part-3" title="Text" note="Parts 3"}
+:::panel{id="part-3" title="Text" note="Parts 3" media="side"}
 ![Text: 3](/anatomy/dense-data/button-group/card-3.png)
 
 :label[Readability] :label[Containment]

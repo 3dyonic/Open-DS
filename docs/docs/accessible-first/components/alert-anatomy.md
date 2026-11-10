@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Alert, every part numbered](/anatomy/accessible-first/alert/stage.png)
-
 *Accessible first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -52,12 +52,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 - **3** **Title** required :label[By scheme]{tone="info"} :label[Hierarchy]
 - **4** **Description** optional :label[By scheme]{tone="info"} :label[Readability]
 - **5** **Destructive alert** state :label[By scheme]{tone="info"} :label[Meaning] :label[Emphasis]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Panel" note="Parts 1"}
+:::panel{id="part-1" title="Panel" note="Parts 1" media="side"}
 ![Panel: 1](/anatomy/accessible-first/alert/card-1.png)
 
 :label[Containment]
@@ -107,7 +108,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.20
 :::
 
-:::panel{id="part-2" title="Icon" note="Parts 2"}
+:::panel{id="part-2" title="Icon" note="Parts 2" media="side"}
 ![Icon: 2](/anatomy/accessible-first/alert/card-2.png)
 
 :label[Meaning]
@@ -125,7 +126,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.20
 :::
 
-:::panel{id="part-3" title="Title" note="Parts 3"}
+:::panel{id="part-3" title="Title" note="Parts 3" media="side"}
 ![Title: 3](/anatomy/accessible-first/alert/card-3.png)
 
 :label[Hierarchy]
@@ -151,7 +152,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Shares the step with** surface.inverse. Changing this pick moves only what reads color.text.primary.
 :::
 
-:::panel{id="part-4" title="Description" note="Parts 4"}
+:::panel{id="part-4" title="Description" note="Parts 4" media="side"}
 ![Description: 4](/anatomy/accessible-first/alert/card-4.png)
 
 :label[Readability]
@@ -185,7 +186,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.line-height.1_6
 :::
 
-:::panel{id="part-5" title="Destructive alert" note="Parts 5"}
+:::panel{id="part-5" title="Destructive alert" note="Parts 5" media="side"}
 ![Destructive alert: 5](/anatomy/accessible-first/alert/card-5.png)
 
 :label[Meaning] :label[Emphasis]

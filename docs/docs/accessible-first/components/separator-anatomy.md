@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Separator, every part numbered](/anatomy/accessible-first/separator/stage.png)
-
 *Accessible first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -48,12 +48,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 :label[By scheme]{tone="info"} Its value changes by scheme. The part is the same in every scheme.
 
 - **1** **Line** required :label[By scheme]{tone="info"} :label[Grouping]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Line" note="Parts 1"}
+:::panel{id="part-1" title="Line" note="Parts 1" media="side"}
 ![Line: 1](/anatomy/accessible-first/separator/card-1.png)
 
 :label[Grouping]

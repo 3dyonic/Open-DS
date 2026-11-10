@@ -39,8 +39,8 @@ Each part does a job for the person. These are the jobs, as questions the part a
 
 ## The parts
 
+:::panel{media="wide"}
 ![Item, every part numbered](/anatomy/content-first/item/stage.png)
-
 *Content first, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -55,12 +55,13 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
   - **5** **Actions** optional :label[By scheme]{tone="info"} :label[Affordance] :label[Reach]
   - **Action buttons** optional · shown by Button :label[Affordance]
   - **6** **Focus ring** state :label[By scheme]{tone="info"} :label[Focus]
+:::
 
 ## How the decisions reach each part
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1" title="Row" note="Parts 1"}
+:::panel{id="part-1" title="Row" note="Parts 1" media="side"}
 ![Row: 1](/anatomy/content-first/item/card-1.png)
 
 :label[Containment] :label[Reach]
@@ -90,7 +91,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** radius.8: Rounded corners feel friendly.
 :::
 
-:::panel{id="part-2" title="Media" note="Parts 2"}
+:::panel{id="part-2" title="Media" note="Parts 2" media="side"}
 ![Media: 2](/anatomy/content-first/item/card-2.png)
 
 :label[Meaning] :label[Hierarchy]
@@ -128,7 +129,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** size.16
 :::
 
-:::panel{id="part-3" title="Title" note="Parts 3"}
+:::panel{id="part-3" title="Title" note="Parts 3" media="side"}
 ![Title: 3](/anatomy/content-first/item/card-3.png)
 
 :label[Readability] :label[Hierarchy]
@@ -146,7 +147,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** font.weight.600
 :::
 
-:::panel{id="part-4" title="Description" note="Parts 4"}
+:::panel{id="part-4" title="Description" note="Parts 4" media="side"}
 ![Description: 4](/anatomy/content-first/item/card-4.png)
 
 :label[Readability]
@@ -175,7 +176,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Dark** neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.
 :::
 
-:::panel{id="part-5" title="Actions" note="Parts 5"}
+:::panel{id="part-5" title="Actions" note="Parts 5" media="side"}
 ![Actions: 5](/anatomy/content-first/item/card-5.png)
 
 :label[Affordance] :label[Reach]
@@ -193,7 +194,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
   - **Pick** space.16
 :::
 
-:::panel{id="part-6" title="Focus ring" note="Parts 6"}
+:::panel{id="part-6" title="Focus ring" note="Parts 6" media="side"}
 ![Focus ring: 6](/anatomy/content-first/item/card-6.png)
 
 :label[Focus]
