@@ -104,7 +104,8 @@ const config: Config = {
     // The top bar: the brand, then the switcher on the right. A scheme's sections live in its sidebar (OD-216).
     navbar: {
       title: "Open DS docs",
-      logo: { src: "logo.svg", alt: "Open DS" },
+      // The mark goes to the Open DS website, not the docs root.
+      logo: { src: "logo.svg", alt: "Open DS", href: "https://open-ds.dev", target: "_self" },
       items: [
         { type: "custom-schemeSwitcher", position: "right" },
         { href: STORYBOOK, label: "Storybook", position: "right" },

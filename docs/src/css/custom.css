@@ -52,8 +52,38 @@ body {
   border-radius: var(--radius-control);
   color: var(--ods-text-on-selected, var(--ifm-font-color-base));
 }
+/* The top bar is the same in every scheme: one height, one type, one layout. Only its colors follow
+   the scheme. A scheme's type, space and shape tokens are reset here, so the bar's parts (the brand,
+   the pickers, the links) never take a scheme's size or font. Docusaurus derives the padding on
+   :root from the scheme's spacing, so the padding is set again here too. */
 .navbar {
-  border-bottom: var(--border-width-default) solid var(--color-border-default);
+  --ods-navbar-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ifm-navbar-height: 3.75rem;
+  --ifm-navbar-padding-vertical: 0.5rem;
+  --ifm-navbar-padding-horizontal: 1rem;
+  --ifm-navbar-item-padding-vertical: 0.25rem;
+  --ifm-navbar-item-padding-horizontal: 0.75rem;
+  --ifm-font-family-base: var(--ods-navbar-font);
+  --ifm-font-weight-bold: 700;
+  --ifm-line-height-base: 1.5;
+  --ifm-global-radius: 0.375rem;
+  --ifm-global-border-width: 1px;
+  --type-label-font-family: var(--ods-navbar-font);
+  --type-label-font-size: 0.875rem;
+  --type-label-line-height: 1.25;
+  --type-label-font-weight: 600;
+  --type-caption-font-size: 0.75rem;
+  --space-gap-tight: 0.5rem;
+  --space-gap-default: 0.75rem;
+  --radius-control: 0.375rem;
+  --radius-container: 0.5rem;
+  --radius-option: 0.25rem;
+  --border-width-default: 1px;
+  --border-width-focus: 2px;
+  font-family: var(--ods-navbar-font);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--color-border-default, var(--ifm-color-emphasis-300));
   box-shadow: none;
 }
 .footer {
@@ -304,11 +334,11 @@ code {
   vertical-align: middle;
 }
 
-/* The brand: the Open DS mark in this system's colors, its name in the title type, and a tag
+/* The brand: the Open DS mark in this system's colors, its name in the bar's fixed type, and a tag
    that says these are its docs. */
 .navbar__brand {
-  /* OD-211: room between the mark and the name, even in the tightest scheme. */
-  gap: max(var(--space-gap-default, 0px), 0.75rem);
+  /* OD-211: room between the mark and the name. */
+  gap: 0.75rem;
 }
 .navbar__logo {
   height: 1.25rem;
@@ -318,9 +348,10 @@ code {
   height: 100%;
 }
 .navbar__title {
-  font-family: var(--type-title-font-family);
-  font-weight: var(--type-title-font-weight);
-  font-size: var(--type-heading-font-size);
+  font-family: var(--ods-navbar-font);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 .ods-docs-tag {
   display: inline-flex;
@@ -366,7 +397,8 @@ code {
   border: 1px solid var(--color-border-strong, var(--ifm-color-emphasis-500));
   border-radius: var(--radius-control, 0.25rem);
   padding: 0.25rem 0.5rem;
-  min-width: 9rem;
+  /* Wide enough for the longest scheme name, so the bar keeps one layout in every scheme. */
+  min-width: 10rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -853,8 +885,8 @@ html[data-theme="dark"] .ods-row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-/* The navbar holds a scheme's sections and the switcher in every scheme's type size: items never
-   wrap, and on narrower screens the labels and gaps tighten before Docusaurus switches to its menu. */
+/* The navbar items never wrap, and on narrower screens the labels and gaps tighten before
+   Docusaurus switches to its menu. */
 .navbar__item,
 .navbar__brand,
 .navbar__title {
