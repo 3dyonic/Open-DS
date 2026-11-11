@@ -32733,7 +32733,6 @@
                   "h": 8,
                   "radius": "component.progress.radius",
                   "fill": "component.progress.background",
-                  "fillOpacity": 0.2,
                   "clip": true,
                   "n": 1,
                   "at": "right",

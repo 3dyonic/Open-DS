@@ -69,17 +69,25 @@ figma.ui.onmessage = async (msg) => {
   try {
     figma.ui.postMessage({ type: "progress", text: "Reading " + scheme.library });
     const kit = await loadKit(scheme.library);
+    // When none of the kit's variables reach this file, the pages are still drawn, with the scheme's
+    // own values, and the report says once that they are not bound to the kit.
+    let unbound = null;
     if (!kit.size) {
       const seen = await kitLibraries();
-      throw new Error("No variables from " + scheme.library + " reach this file. " + (seen.length
-        ? "The variable libraries it can see: " + seen.join("; ") + ". If the kit is not among them, its variables were not published: publish the kit with its variables, then run again."
-        : "It can see no variable libraries at all: the kit's variables were not published, or the library is not enabled here. Publish the kit with its variables (Assets, Publish), then run again."));
+      unbound =
+        "Drawn with the scheme's own values: none of " + scheme.library + "'s variables reach this file, and it has no Semantic or Component collection of its own, so nothing is bound. Run it in the kit file, or enable the kit library here. " +
+        (seen.length ? "Variable libraries this file can see: " + seen.join("; ") + "." : "This file can see no variable libraries.");
+      // What Figma returns for the kit's collections, so the cause can be found from the report.
+      const cols = (await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()).filter((c) => c.libraryName === scheme.library);
+      const counts = [];
+      for (const c of cols) counts.push(c.name + ": " + (await figma.teamLibrary.getVariablesInLibraryCollectionAsync(c.key)).length + " variables");
+      unbound += " The kit's collections here: " + (counts.join(", ") || "none") + ".";
     }
     for (const [i, id] of msg.components.entries()) {
       current = id;
       figma.ui.postMessage({ type: "progress", text: (i + 1) + " of " + msg.components.length + ": " + id });
       const r = await renderAnatomy(scheme.components[id], kit);
-      for (const [role, why] of Object.entries(r.fallback)) missing[id + " · " + role] = why;
+      if (!unbound) for (const [role, why] of Object.entries(r.fallback)) missing[id + " · " + role] = why;
       for (const [role, why] of Object.entries(r.stale ?? {})) missing[id + " · " + role + " (stale in the kit)"] = why;
       frames.push([id, "stage", r.ids.stage], ...r.ids.cards.map((c, i) => [id, "card-" + (i + 1), c]));
     }
@@ -96,6 +104,7 @@ figma.ui.onmessage = async (msg) => {
       const bytes = await n.exportAsync({ format: "PNG", constraint: { type: "SCALE", value: scale } });
       figma.ui.postMessage({ type: "image", path: msg.scheme + "/" + id + "/" + file + ".png", bytes });
     }
+    if (unbound) missing["Kit"] = unbound;
     figma.ui.postMessage({ type: "done", components: msg.components.length, missing });
   } catch (e) {
     figma.ui.postMessage({ type: "progress", text: "Failed at " + current + ": " + (e && e.message ? e.message : String(e)) });

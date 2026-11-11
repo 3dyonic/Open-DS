@@ -182,6 +182,16 @@ export async function dryRun(component, scheme = "dense-data", shared = null) {
     const w = Math.max(crop.focus[0] + 2 * crop.margin, crop.min[0]), h = Math.max(crop.focus[1] + 2 * crop.margin, crop.min[1]);
     if (f.width > w + 1 || f.height > h + 1) problems.push(`card ${c.title}: ${Math.round(f.width)}×${Math.round(f.height)} for parts that take ${Math.round(crop.focus[0])}×${Math.round(crop.focus[1])}`);
   });
+  // A focus ring is a state: it shows on the stage and on the card that explains it, never on other cards.
+  const ringNums = new Set();
+  const rings = (d) => { if (!d) return; if (d.ring) for (const m of [].concat(d.ring.n ?? [])) ringNums.add(m); (d.children ?? []).forEach(rings); };
+  rings(SPEC.drawing?.stage);
+  for (const c of SPEC.cards) rings(c.image?.tree);
+  const hasRing = (n) => n.name === "Focus ring" || (n.children ?? []).some(hasRing);
+  SPEC.cards.forEach((c, i) => {
+    if (hasRing(card(i)) && !c.parts.some((n) => ringNums.has(n)) && !(c.image?.context ?? []).some((n) => ringNums.has(n)))
+      problems.push(`card ${c.title}: shows the focus ring, which is not its part`);
+  });
   const onStage = new Set(stage.children.filter((k) => k.name.startsWith("Number ")).map((k) => +k.name.slice(7)));
   const cardNums = new Set(SPEC.cards.flatMap((c) => c.parts));
   for (const p of SPEC.parts) if (!onStage.has(p.n) && !cardNums.has(p.n)) problems.push(`part ${p.n} ${p.label} is numbered nowhere`);
