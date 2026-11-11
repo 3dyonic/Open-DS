@@ -23,6 +23,7 @@ import {
   FAMILIES,
   RECIPES,
 } from "./figma-kit-components.mjs";
+import { grammar as loadGrammar, loadScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const MAX_SCRIPT = 48_000; // use_figma takes up to 50,000 characters per call.
@@ -153,12 +154,8 @@ function scopesFor(name, type) {
 
 /** Everything a kit needs, from the scheme's files. */
 export function kitData(id) {
-  const scheme = JSON.parse(
-    readFileSync(join(ROOT, "schemes", `${id}.json`), "utf8"),
-  );
-  const grammar = JSON.parse(
-    readFileSync(join(ROOT, "schemes", "grammar.json"), "utf8"),
-  );
+  const scheme = loadScheme(id);
+  const grammar = loadGrammar();
   const css = readFileSync(join(ROOT, "tokens/dist", id, "tokens.css"), "utf8");
   const { modes, vars, desc, order } = parseCss(css, id);
   const firstTheme = scheme.themes[0].id;

@@ -7,6 +7,7 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { cssName, publicPaths } from "../../cli/src/tokens.mjs";
+import { loadScheme } from "../../cli/src/schemes.mjs";
 
 const here = join(dirname(fileURLToPath(import.meta.url)), "..");
 const root = join(here, "..");
@@ -74,7 +75,7 @@ export function buildRegistry() {
   }
   const index = JSON.parse(read(join(tokensDist, "index.json")));
   for (const scheme of index.schemes) {
-    const ship = publicPaths(JSON.parse(read(join(root, "schemes", `${scheme.id}.json`))));
+    const ship = publicPaths(loadScheme(scheme.id));
     for (const [i, brand] of scheme.brands.entries()) {
       const theme = (mode) => scheme.themes.find((t) => t.brand === brand.id && t.mode === mode).id;
       const light = flatten(JSON.parse(read(join(tokensDist, scheme.id, `${theme("light")}.tokens.json`))), ship);

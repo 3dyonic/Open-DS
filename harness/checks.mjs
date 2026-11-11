@@ -5,7 +5,7 @@
 import { themeTokens } from "../cli/src/tokens.mjs";
 import { pairsIn, toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
-import { grammar as loadGrammar, loadScheme } from "../cli/src/schemes.mjs";
+import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "../cli/src/schemes.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -100,7 +100,8 @@ export function makeContext(root) {
   const roots = { schemes: p("schemes") };
   const grammar = () => loadGrammar(roots);
   const scheme = (id) => loadScheme(id, roots);
-  return { root, p, has, read, json, walk, sh, grammar, scheme };
+  const storedScheme = (id) => loadStored(id, roots);
+  return { root, p, has, read, json, walk, sh, grammar, scheme, storedScheme };
 }
 
 const ok = (detail = "") => ({ ok: true, detail });
@@ -2725,7 +2726,7 @@ export const CHECKS = {
         "cli/scripts/bundle.mjs",
         "scripts/test-package.mjs",
               ]);
-      const DIRS = ["cli/src", "cli/scripts", "cli/test", "docs/scripts", "docs/src", "harness", "scripts", "site/src", "storybook/src", "storybook/stories", "storybook/.storybook", "tokens", "mcp/src", "mcp/test", "doc-composites/src"];
+      const DIRS = ["cli/src", "cli/scripts", "cli/test", "docs/scripts", "docs/src", "harness", "scripts", "site/src", "storybook/src", "storybook/stories", "storybook/.storybook", "tokens", "mcp/src", "mcp/test", "doc-composites/src", "ui/scripts", "e2e", "site/scripts"];
       const SKIP = /node_modules|\/dist\/|\/build\/|\.next|\.docusaurus/;
       const walk = (d) =>
         !existsSync(c.p(d)) || SKIP.test(d)
@@ -2745,7 +2746,12 @@ export const CHECKS = {
           // requires: lists only say a file must exist; .includes() tests text, not a path.
           if (/requires:|\.includes\(/.test(line)) return;
           const path = /["'`](\.\.\/|\.\/)*schemes\/([^"'`\s]*\.json)?["'`]/.test(line);
-          const joined = /\.json\(\s*["'`]schemes["'`]|join\(\s*roots\.schemes\s*,\s*[`"'][^`"']*\.json/.test(line);
+          // A path built in parts: join(root, "schemes", `${id}.json`), join(root, "schemes") for a listing,
+          // or a json("schemes", …) helper.
+          const joined =
+            /\.json\(\s*["'`]schemes["'`]|\bjson\(\s*["'`]schemes["'`]\s*,|join\(\s*roots\.schemes\s*,\s*[`"'][^`"']*\.json/.test(line) ||
+            /join\([^)]*["'`]schemes["'`]\s*,\s*[`"'][^`"']*\.json[`"']\s*\)/.test(line) ||
+            (/join\([^)]*["'`]schemes["'`]\s*\)/.test(line) && /readdirSync|readFileSync|writeFileSync/.test(line));
           if (path || joined || (FILE.test(line) && ACCESS.test(line)))
             hits.push(`${f}:${i + 1}`);
         });
@@ -2753,6 +2759,24 @@ export const CHECKS = {
       return hits.length
         ? bad(`${hits.length} direct reads or writes of schemes/*.json, such as ${hits.slice(0, 4).join(", ")}; use loadScheme, grammar, saveScheme and saveGrammar from cli/src/schemes.mjs`)
         : ok("every read and write of a scheme goes through cli/src/schemes.mjs, or the one schemes module of its app");
+    },
+  },
+  // OD-291: a scheme file stores only the component values it decides. A token equal to the grammar's
+  // default (value and description) is a copy that can drift: saveScheme leaves it out.
+  "component-defaults-not-stored": {
+    requires: ["cli/src/scheme-defaults.mjs"],
+    run: async (c) => {
+      const { withoutDefaults } = await import(pathToFileURL(c.p("cli/src/scheme-defaults.mjs")).href);
+      const g = c.grammar();
+      const copies = [];
+      for (const id of SCHEMES) {
+        const stored = c.storedScheme(id);
+        const n = (o) => JSON.stringify(o).length;
+        if (n(withoutDefaults(stored, g)) !== n(stored)) copies.push(id);
+      }
+      return copies.length
+        ? bad(`${copies.join(", ")} store component values equal to the grammar's defaults; load and save each with loadScheme and saveScheme`)
+        : ok(`${SCHEMES.length} schemes store only the component values they decide`);
     },
   },
   "docs-no-localhost": {

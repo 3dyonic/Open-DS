@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { mapTokens, remOf } from "../cli/src/spacing-map.mjs";
+import { loadScheme, saveScheme } from "../cli/src/schemes.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -43,8 +44,7 @@ export const SEED = {
 };
 
 for (const id of Object.keys(SEED)) {
-  const file = join(root, "schemes", `${id}.json`);
-  const s = JSON.parse(readFileSync(file, "utf8"));
+  const s = loadScheme(id);
   const spec = s.tokens.semantic["component-spacing-map"]?.$extensions?.[
     "open-ds"
   ]?.because
@@ -62,7 +62,7 @@ for (const id of Object.keys(SEED)) {
     ...Object.fromEntries(Object.entries(opts).sort(([a], [b]) => Number(a) - Number(b))),
   };
   s.tokens.semantic["component-spacing-map"] = group;
-  writeFileSync(file, `${JSON.stringify(s, null, 2)}\n`);
+  saveScheme(s);
 }
 console.log(
   `Wrote the component spacing map in ${Object.keys(SEED).length} schemes.`,

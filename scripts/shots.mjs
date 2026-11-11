@@ -22,6 +22,7 @@ import { createServer } from "node:http";
 import { createRequire } from "node:module";
 import { extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { loadScheme } from "../cli/src/schemes.mjs";
 
 const root = join(fileURLToPath(new URL(".", import.meta.url)), "..");
 const staticDir = join(root, "storybook", "storybook-static");
@@ -108,9 +109,7 @@ const stories = new Set(
 rmSync(out, { recursive: true, force: true });
 let count = 0;
 for (const id of SCHEMES) {
-  const scheme = JSON.parse(
-    readFileSync(join(root, "schemes", `${id}.json`), "utf8"),
-  );
+  const scheme = loadScheme(id);
   const theme =
     Object.keys(scheme.tokens.brands).length > 1
       ? `${id}--${Object.keys(scheme.tokens.brands)[0]}`

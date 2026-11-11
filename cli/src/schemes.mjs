@@ -5,6 +5,7 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { guidanceFor } from "./guidance.mjs";
+import { withDefaults, withoutDefaults } from "./scheme-defaults.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -91,7 +92,14 @@ export function saveGrammar(g, roots = assetRoots()) {
 /** Write a scheme, by its id. The one way to change schemes/<id>.json (OD-289). */
 export function saveScheme(scheme, roots = assetRoots()) {
   if (!scheme?.id) throw new Error("saveScheme needs a scheme with an id. Load it with loadScheme first.");
-  writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(scheme, null, 2)}\n`);
+  // The file keeps only the component values the scheme decides (OD-291); loadScheme fills the rest.
+  const stored = withoutDefaults(scheme, grammar(roots));
+  writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(stored, null, 2)}\n`);
+}
+
+/** A scheme as its file stores it, without the grammar's defaults: for the checks that guard the file. */
+export function storedScheme(id, roots = assetRoots()) {
+  return readJson(join(roots.schemes, `${id}.json`));
 }
 
 export function loadScheme(id, roots = assetRoots()) {
@@ -101,7 +109,8 @@ export function loadScheme(id, roots = assetRoots()) {
       `No scheme called "${id}". Run "open-ds list" to see the schemes: ${schemeIds(roots).join(", ")}.`,
     );
   }
-  return readJson(path);
+  // The file stores only what the scheme decides; every other component key takes the grammar's default.
+  return withDefaults(readJson(path), grammar(roots));
 }
 
 /** Every grammar question by id, with its group. */

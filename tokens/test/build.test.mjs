@@ -3,12 +3,13 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
 import { SHADCN } from "../build.mjs";
+import { grammar, loadScheme } from "../../cli/src/schemes.mjs";
 
 const here = join(import.meta.dirname, "..");
 const root = join(here, "..");
 const read = (...p) => readFileSync(join(here, "dist", ...p), "utf8");
 const index = JSON.parse(read("index.json"));
-const keys = JSON.parse(readFileSync(join(root, "schemes", "grammar.json"), "utf8")).component_keys.map(
+const keys = grammar().component_keys.map(
   (k) =>
     `--${k.id
       .split("/")
@@ -127,7 +128,7 @@ test("only semantic and component keys ship as CSS variables, with primitives an
 
 test("each theme decides its own base: primitives are steps only, themes and semantics share paths", () => {
   for (const s of index.schemes) {
-    const scheme = JSON.parse(readFileSync(join(root, "schemes", `${s.id}.json`), "utf8"));
+    const scheme = loadScheme(s.id);
     for (const [hue, group] of Object.entries(scheme.tokens.primitive.color))
       assert.ok(!group["@"], `${s.id}: color.${hue} has a base; bases belong to themes`);
     for (const [id, b] of Object.entries(scheme.tokens.brands)) {

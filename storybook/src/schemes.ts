@@ -6,15 +6,18 @@ import content from "../../schemes/content-first.json";
 import dense from "../../schemes/dense-data.json";
 import multi from "../../schemes/multi-brand.json";
 import grammarJson from "../../schemes/grammar.json";
+// A scheme file stores only the component values it decides (OD-291); the rest are the grammar's.
+import { withDefaults } from "../../cli/src/scheme-defaults.mjs";
 
 export const grammar = grammarJson;
+const full = (s: unknown) => withDefaults(s, grammarJson);
 
 export const SCHEMES = {
-  "dense-data": dense,
-  "content-first": content,
-  "accessible-first": accessible,
-  "multi-brand": multi,
-  "brand-expressive": expressive,
+  "dense-data": full(dense),
+  "content-first": full(content),
+  "accessible-first": full(accessible),
+  "multi-brand": full(multi),
+  "brand-expressive": full(expressive),
 } as unknown as Record<string, SchemeData>;
 
 type Status = { label: string; meaning: "neutral" | "info" | "success" | "warning" | "danger"; why: string };
