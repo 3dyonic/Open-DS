@@ -114,6 +114,9 @@ function valueOf(v) {
   if (ref) return { kind: "alias", to: ref[1] };
   if (hex(v)) return { kind: "COLOR", value: v.toUpperCase() };
   if (isShadow(v)) return { kind: "shadow", value: v };
+  // The two shape radii are CSS-only: Figma caps a corner at half the shorter side, so 9999 draws
+  // radius.pill on any box and radius.round (50%) on a square (OD-286).
+  if (v === "calc(infinity * 1px)" || v === "50%") return { kind: "FLOAT", value: 9999 };
   const n = px(v);
   if (n !== null) return { kind: "FLOAT", value: n };
   if (/^\d+ms$/.test(v))

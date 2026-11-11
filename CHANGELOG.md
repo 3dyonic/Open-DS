@@ -4,6 +4,32 @@ All notable changes to this project are documented in this file.
 
 The format is based on Keep a Changelog, and this project uses semantic versioning.
 
+## [Unreleased]
+
+### Added
+
+- Two shape radii replace `radius.full` and `radius.999` (OD-286). `radius.round` (50%) makes a circle of a square: avatars, radio dots, thumbs and round buttons. `radius.pill` (`calc(infinity * 1px)`) makes a capsule of any box: tracks, progress, the scroll thumb and pill controls.
+- A usage rule for every foundation token in every scheme: 57 situations, each with what to use, what not to use, and why (OD-286).
+- Foundation pages show each token group as a sample, its tokens with their values, and its rules (OD-287).
+- `guide/contributing/adr/002-scoped-schemes.md`: the proposal for schemes split by scope (OD-288).
+
+### Changed
+
+- The display line height is 1.1 in Brand expressive and 1.2 in Multi-brand (it was 1.8).
+- The Figma kit writes both shape radii as 9999. Figma caps a corner at half the shorter side, so 9999 draws the pill and the circle.
+
+### Deprecated
+
+- `radius.container` and its CSS variable `--radius-container`: use `radius.surface` (`--radius-surface`). The old name keeps its value until the next minor release.
+
+### Removed
+
+- The semantic `radius.round` and its CSS variable `--radius-round`. Components read the primitive `radius.round` or `radius.pill`, by the shape they draw. In a created project, replace `var(--radius-round)` with `50%` for a circle, or with `calc(infinity * 1px)` for a capsule.
+
+### Upgrading a created project
+
+- `radius.round` and `radius.pill` are CSS values, not DTCG dimensions: DTCG has no dimension for `calc()` or a percentage. A tool that needs a number reads 9999 for both.
+
 ## [0.3.0] - 2026-11-05
 
 ### Added
