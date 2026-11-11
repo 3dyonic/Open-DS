@@ -51,11 +51,11 @@
     },
     {
      "kind": "token",
-     "semantic": "radius.control",
+     "semantic": "radius.element",
      "key": "radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Rounded by default; each brand sets its own corner.",
+     "pick": "radius.4: the control corner; it is not a pill, so a growing box keeps it.",
      "shares": []
     }
    ]

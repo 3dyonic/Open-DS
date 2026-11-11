@@ -197,7 +197,7 @@
      "themed": false,
      "chain": {
       "token": "component.calendar.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "calendar-radius"
      },
      "values": [

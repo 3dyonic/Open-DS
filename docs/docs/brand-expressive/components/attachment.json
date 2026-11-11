@@ -66,16 +66,16 @@
      "themed": false,
      "chain": {
       "token": "component.attachment.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "attachment-radius"
      },
      "values": [
       {
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     },
@@ -350,16 +350,16 @@
      "themed": false,
      "chain": {
       "token": "component.attachment.media.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "attachment-media-radius"
      },
      "values": [
       {
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     },

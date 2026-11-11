@@ -1334,7 +1334,7 @@ export function docsPages(
       "bar",
     ),
     shape: vars(
-      ["radius-badge", "radius-option", "radius-control", "radius-surface"],
+      ["radius-badge", "radius-option", "radius-control", "radius-element", "radius-surface"],
       "radius",
     ),
     elevation: vars(["elevation-card", "elevation-overlay"], "shadow"),

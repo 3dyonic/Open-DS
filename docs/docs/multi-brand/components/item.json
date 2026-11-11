@@ -324,7 +324,7 @@
      "themed": true,
      "chain": {
       "token": "component.item.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "item-radius"
      },
      "values": [
@@ -363,18 +363,18 @@
       {
        "theme": "Coral Light",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       },
       {
        "theme": "Coral Dark",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     },
@@ -1429,7 +1429,7 @@
      "themed": true,
      "chain": {
       "token": "component.item.media.image.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "item-media-image-radius"
      },
      "values": [
@@ -1455,13 +1455,13 @@
       },
       {
        "theme": "Coral Light",
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       },
       {
        "theme": "Coral Dark",
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     }

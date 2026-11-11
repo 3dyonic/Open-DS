@@ -3109,6 +3109,19 @@
                   }
                 }
               },
+              "element": {
+                "$type": "dimension",
+                "$value": "{radius.2}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
+                    "because": [
+                      "shape.roles",
+                      "shape.values"
+                    ]
+                  }
+                }
+              },
               "surface": {
                 "$type": "dimension",
                 "$value": "{radius.4}",
@@ -5253,6 +5266,11 @@
           "$value": "{theme.radius.option}",
           "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
         },
+        "element": {
+          "$type": "dimension",
+          "$value": "{theme.radius.element}",
+          "$description": "Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media."
+        },
         "surface": {
           "$type": "dimension",
           "$value": "{theme.radius.surface}",
@@ -6667,7 +6685,7 @@
             "$description": "Space between the trigger's text and its icon."
           },
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "The trigger's corner, seen on focus."
           },
           "focus-ring-offset-focus": {
@@ -6847,7 +6865,7 @@
         },
         "media": {
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "Media radius of the alert dialog."
           },
           "background": {
@@ -6962,7 +6980,7 @@
           "$description": "Gap of the attachment."
         },
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the attachment."
         },
         "background": {
@@ -7061,7 +7079,7 @@
             "$description": "The size of the square that holds the file icon."
           },
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "Corner of the attachment's file tile: a media tile, like the item's."
           },
           "background": {
@@ -7528,7 +7546,7 @@
           "$description": "Font weight of the calendar."
         },
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the calendar."
         },
         "border": {
@@ -10302,7 +10320,7 @@
       },
       "item": {
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the item."
         },
         "font-size": {
@@ -10510,7 +10528,7 @@
           },
           "image": {
             "radius": {
-              "$value": "{radius.control}",
+              "$value": "{radius.element}",
               "$description": "Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile."
             }
           }
@@ -13248,7 +13266,7 @@
       },
       "skeleton": {
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the skeleton."
         },
         "background": {
@@ -13420,7 +13438,7 @@
       },
       "textarea": {
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the textarea."
         },
         "border": {

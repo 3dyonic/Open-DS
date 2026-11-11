@@ -428,7 +428,7 @@
      "themed": false,
      "chain": {
       "token": "component.alert-dialog.media.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "alert-dialog-media-radius"
      },
      "values": [

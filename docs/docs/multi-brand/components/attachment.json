@@ -66,7 +66,7 @@
      "themed": true,
      "chain": {
       "token": "component.attachment.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "attachment-radius"
      },
      "values": [
@@ -105,18 +105,18 @@
       {
        "theme": "Coral Light",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       },
       {
        "theme": "Coral Dark",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     },
@@ -551,7 +551,7 @@
      "themed": true,
      "chain": {
       "token": "component.attachment.media.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "attachment-media-radius"
      },
      "values": [
@@ -590,18 +590,18 @@
       {
        "theme": "Coral Light",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       },
       {
        "theme": "Coral Dark",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     },

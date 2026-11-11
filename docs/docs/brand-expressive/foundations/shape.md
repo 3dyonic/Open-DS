@@ -31,6 +31,7 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.control` | `brand-expressive.theme.base.radius.control` → `radius.pill` |
 | `radius.badge` | `brand-expressive.theme.base.radius.badge` → `radius.pill` |
 | `radius.option` | `brand-expressive.theme.base.radius.option` → `radius.20` |
+| `radius.element` | `brand-expressive.theme.base.radius.element` → `radius.12` |
 | `radius.surface` | `brand-expressive.theme.base.radius.surface` → `radius.24` |
 | `radius.container` | `radius.surface` → `brand-expressive.theme.base.radius.surface` → `radius.24` |
 | `border-width.default` | `border-width.2` |

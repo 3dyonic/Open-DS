@@ -196,7 +196,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="spacing-lands"}
 :::
 
-:::fold{id="shape" title="Shape" note="5 answers, 11 decisions, and the values of its tokens"}
+:::fold{id="shape" title="Shape" note="5 answers, 13 decisions, and the values of its tokens"}
 #### Which shape roles does it need? {#shape-roles}
 
 ::decision-answer{id="shape-roles"}

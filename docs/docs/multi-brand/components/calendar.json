@@ -229,7 +229,7 @@
      "themed": true,
      "chain": {
       "token": "component.calendar.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "calendar-radius"
      },
      "values": [
@@ -268,18 +268,18 @@
       {
        "theme": "Coral Light",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       },
       {
        "theme": "Coral Dark",
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     },

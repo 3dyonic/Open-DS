@@ -2399,6 +2399,13 @@
         }
        },
        {
+        "text": "radius.element: radius.8: the control corner; it is not a pill, so a growing box keeps it.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
         "text": "radius.surface: radius.12: Rounded corners feel friendly.",
         "link": {
          "label": "Shape",
@@ -2470,6 +2477,13 @@
        },
        {
         "text": "radius.badge: radius.pill: Rounded corners feel friendly.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.8: the control corner; it is not a pill, so a growing box keeps it.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"

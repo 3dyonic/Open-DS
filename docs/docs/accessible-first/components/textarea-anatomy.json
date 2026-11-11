@@ -105,11 +105,11 @@
     },
     {
      "kind": "token",
-     "semantic": "radius.control",
+     "semantic": "radius.element",
      "key": "radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: Clear, slightly rounded controls.",
+     "pick": "radius.6: the control corner; it is not a pill, so a growing box keeps it.",
      "shares": []
     },
     {

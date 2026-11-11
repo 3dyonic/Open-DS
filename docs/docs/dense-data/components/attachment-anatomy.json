@@ -118,11 +118,11 @@
     },
     {
      "kind": "token",
-     "semantic": "radius.control",
+     "semantic": "radius.element",
      "key": "radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: Small corners keep dense rows straight.",
+     "pick": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
      "shares": []
     },
     {
@@ -163,11 +163,11 @@
     },
     {
      "kind": "token",
-     "semantic": "radius.control",
+     "semantic": "radius.element",
      "key": "media.radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: Small corners keep dense rows straight.",
+     "pick": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
      "shares": []
     },
     {

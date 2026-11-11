@@ -2396,6 +2396,13 @@
         }
        },
        {
+        "text": "radius.element: radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
         "text": "radius.surface: radius.24: Pill controls feel playful.",
         "link": {
          "label": "Shape",
@@ -2479,6 +2486,13 @@
        },
        {
         "text": "radius.badge: radius.pill: Pill controls feel playful.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"

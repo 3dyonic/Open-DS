@@ -17,6 +17,10 @@
       {
        "token": "radius.option",
        "where": "every mode"
+      },
+      {
+       "token": "radius.element",
+       "where": "every mode"
       }
      ]
     },

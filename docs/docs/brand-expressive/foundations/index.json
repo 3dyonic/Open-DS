@@ -95,6 +95,10 @@
       },
       {
        "kind": "radius",
+       "value": "var(--radius-element)"
+      },
+      {
+       "kind": "radius",
        "value": "var(--radius-surface)"
       }
      ]

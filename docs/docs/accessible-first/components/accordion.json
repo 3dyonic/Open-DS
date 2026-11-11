@@ -146,7 +146,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "accordion-trigger-radius"
      },
      "values": [

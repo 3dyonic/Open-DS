@@ -49,7 +49,7 @@
      "themed": false,
      "chain": {
       "token": "component.skeleton.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "skeleton-radius"
      },
      "values": [

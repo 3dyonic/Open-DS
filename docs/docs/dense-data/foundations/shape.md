@@ -31,6 +31,7 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.control` | `dense-data.theme.base.radius.control` → `radius.2` |
 | `radius.badge` | `dense-data.theme.base.radius.badge` → `radius.0` |
 | `radius.option` | `dense-data.theme.base.radius.option` → `radius.0` |
+| `radius.element` | `dense-data.theme.base.radius.element` → `radius.2` |
 | `radius.surface` | `dense-data.theme.base.radius.surface` → `radius.4` |
 | `radius.container` | `radius.surface` → `dense-data.theme.base.radius.surface` → `radius.4` |
 | `border-width.default` | `border-width.1` |

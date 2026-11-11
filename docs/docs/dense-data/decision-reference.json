@@ -2642,6 +2642,13 @@
         }
        },
        {
+        "text": "radius.element: radius.2: the control corner; it is not a pill, so a growing box keeps it.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
         "text": "radius.surface: radius.4: Small corners keep dense rows straight.",
         "link": {
          "label": "Shape",
@@ -2713,6 +2720,13 @@
        },
        {
         "text": "radius.badge: radius.0: Small corners keep dense rows straight.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.2: the control corner; it is not a pill, so a growing box keeps it.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"

@@ -32,6 +32,7 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.control` | `aster.theme.base.radius.control` → `radius.4` |
 | `radius.badge` | `aster.theme.base.radius.badge` → `radius.4` |
 | `radius.option` | `aster.theme.base.radius.option` → `radius.4` |
+| `radius.element` | `aster.theme.base.radius.element` → `radius.4` |
 | `radius.surface` | `aster.theme.base.radius.surface` → `radius.8` |
 | `radius.container` | `radius.surface` → `aster.theme.base.radius.surface` → `radius.8` |
 | `border-width.default` | `border-width.1` |
@@ -45,6 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.control` | `birch.theme.base.radius.control` → `radius.12` |
 | `radius.badge` | `birch.theme.base.radius.badge` → `radius.pill` |
 | `radius.option` | `birch.theme.base.radius.option` → `radius.12` |
+| `radius.element` | `birch.theme.base.radius.element` → `radius.12` |
 | `radius.surface` | `birch.theme.base.radius.surface` → `radius.16` |
 | `radius.container` | `radius.surface` → `birch.theme.base.radius.surface` → `radius.16` |
 | `border-width.default` | `border-width.1` |
@@ -58,6 +60,7 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.control` | `coral.theme.base.radius.control` → `radius.pill` |
 | `radius.badge` | `coral.theme.base.radius.badge` → `radius.pill` |
 | `radius.option` | `coral.theme.base.radius.option` → `radius.16` |
+| `radius.element` | `coral.theme.base.radius.element` → `radius.12` |
 | `radius.surface` | `coral.theme.base.radius.surface` → `radius.20` |
 | `radius.container` | `radius.surface` → `coral.theme.base.radius.surface` → `radius.20` |
 | `border-width.default` | `border-width.1` |

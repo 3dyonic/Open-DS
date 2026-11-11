@@ -769,6 +769,11 @@
      "px": "20px"
     },
     {
+     "token": "element",
+     "value": "0.75rem",
+     "px": "12px"
+    },
+    {
      "token": "surface",
      "value": "1.5rem",
      "px": "24px"

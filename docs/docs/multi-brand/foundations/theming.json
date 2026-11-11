@@ -2269,6 +2269,11 @@
      "px": "4px"
     },
     {
+     "token": "element",
+     "value": "0.25rem",
+     "px": "4px"
+    },
+    {
      "token": "surface",
      "value": "0.5rem",
      "px": "8px"
@@ -2302,6 +2307,11 @@
     },
     {
      "token": "option",
+     "value": "0.75rem",
+     "px": "12px"
+    },
+    {
+     "token": "element",
      "value": "0.75rem",
      "px": "12px"
     },
@@ -2340,6 +2350,11 @@
      "token": "option",
      "value": "1rem",
      "px": "16px"
+    },
+    {
+     "token": "element",
+     "value": "0.75rem",
+     "px": "12px"
     },
     {
      "token": "surface",

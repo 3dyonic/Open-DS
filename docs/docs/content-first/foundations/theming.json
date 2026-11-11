@@ -770,6 +770,11 @@
      "px": "8px"
     },
     {
+     "token": "element",
+     "value": "0.5rem",
+     "px": "8px"
+    },
+    {
      "token": "surface",
      "value": "0.75rem",
      "px": "12px"

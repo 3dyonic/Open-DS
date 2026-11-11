@@ -21,6 +21,10 @@
       {
        "token": "radius.option",
        "where": "every mode, aster"
+      },
+      {
+       "token": "radius.element",
+       "where": "every mode, aster"
       }
      ]
     },
@@ -53,6 +57,14 @@
       {
        "token": "radius.option",
        "where": "every mode, birch"
+      },
+      {
+       "token": "radius.element",
+       "where": "every mode, birch"
+      },
+      {
+       "token": "radius.element",
+       "where": "every mode, coral"
       }
      ]
     },

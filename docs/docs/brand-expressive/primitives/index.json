@@ -96,13 +96,17 @@
     },
     {
      "title": "Shape",
-     "text": "6 primitives · 6 in use",
+     "text": "7 primitives · 7 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
       "night": "/robots/scopes/shape-dark.webp"
      },
      "samples": [
+      {
+       "kind": "radius",
+       "value": "0.75rem"
+      },
       {
        "kind": "radius",
        "value": "1.25rem"
@@ -113,9 +117,9 @@
       }
      ],
      "meter": {
-      "value": 6,
-      "max": 6,
-      "label": "6 of 6 in use"
+      "value": 7,
+      "max": 7,
+      "label": "7 of 7 in use"
      }
     }
    ]

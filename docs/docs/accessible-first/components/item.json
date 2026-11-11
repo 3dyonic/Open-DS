@@ -292,7 +292,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "item-radius"
      },
      "values": [
@@ -1010,7 +1010,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.media.image.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "item-media-image-radius"
      },
      "values": [

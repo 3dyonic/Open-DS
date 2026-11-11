@@ -51,11 +51,11 @@
     },
     {
      "kind": "token",
-     "semantic": "radius.control",
+     "semantic": "radius.element",
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Rounded corners feel friendly.",
+     "pick": "radius.8: the control corner; it is not a pill, so a growing box keeps it.",
      "shares": []
     }
    ]

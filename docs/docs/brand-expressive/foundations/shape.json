@@ -27,6 +27,14 @@
      }
     },
     {
+     "token": "radius.element",
+     "type": "dimension",
+     "resolves": {
+      "primitive": "radius.12",
+      "value": "0.75rem"
+     }
+    },
+    {
      "token": "radius.surface",
      "type": "dimension",
      "resolves": {

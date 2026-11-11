@@ -5428,7 +5428,7 @@
       "id": "accordion/trigger/radius",
       "component": "accordion",
       "description": "The trigger's corner, seen on focus.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "accordion/trigger/focus-ring/@",
@@ -5618,7 +5618,7 @@
       "id": "alert-dialog/media/radius",
       "component": "alert-dialog",
       "description": "Media radius of the alert dialog.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "alert-dialog/media/background",
@@ -5792,7 +5792,7 @@
       "id": "attachment/radius",
       "component": "attachment",
       "description": "Radius of the attachment.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "attachment/background/@",
@@ -5865,7 +5865,7 @@
       "id": "attachment/media/radius",
       "component": "attachment",
       "description": "Corner of the attachment's file tile: a media tile, like the item's.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "attachment/radius-2",
@@ -6625,7 +6625,7 @@
       "id": "calendar/radius",
       "component": "calendar",
       "description": "Radius of the calendar.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "calendar/border",
@@ -10411,7 +10411,7 @@
       "id": "item/radius",
       "component": "item",
       "description": "Radius of the item.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "item/font-size",
@@ -10572,7 +10572,7 @@
       "id": "item/media/image/radius",
       "component": "item",
       "description": "Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "item/image/radius",
@@ -14297,7 +14297,7 @@
       "id": "skeleton/radius",
       "component": "skeleton",
       "description": "Radius of the skeleton.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "skeleton/background",
@@ -14681,7 +14681,7 @@
       "id": "textarea/radius",
       "component": "textarea",
       "description": "Radius of the textarea.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "textarea/border",

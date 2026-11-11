@@ -3,6 +3,20 @@
   "radius": {
    "rows": [
     {
+     "primitive": "radius.12",
+     "value": "0.75rem (12px)",
+     "sample": {
+      "kind": "radius",
+      "value": "0.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.element",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
      "primitive": "radius.20",
      "value": "1.25rem (20px)",
      "sample": {

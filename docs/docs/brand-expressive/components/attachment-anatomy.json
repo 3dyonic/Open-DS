@@ -119,11 +119,11 @@
     },
     {
      "kind": "token",
-     "semantic": "radius.control",
+     "semantic": "radius.element",
      "key": "radius",
-     "value": "calc(infinity * 1px)",
+     "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.pill: Pill controls feel playful.",
+     "pick": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
      "shares": []
     },
     {
@@ -164,11 +164,11 @@
     },
     {
      "kind": "token",
-     "semantic": "radius.control",
+     "semantic": "radius.element",
      "key": "media.radius",
-     "value": "calc(infinity * 1px)",
+     "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.pill: Pill controls feel playful.",
+     "pick": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
      "shares": []
     },
     {

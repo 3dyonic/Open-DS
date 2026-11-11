@@ -49,7 +49,7 @@
      "themed": false,
      "chain": {
       "token": "component.textarea.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "textarea-radius"
      },
      "values": [

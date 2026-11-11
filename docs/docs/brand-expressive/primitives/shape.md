@@ -8,7 +8,7 @@ description: "Shape primitives in Brand expressive."
 
 # Shape
 
-6 primitives, 6 used.
+7 primitives, 7 used.
 
 ## `radius`
 

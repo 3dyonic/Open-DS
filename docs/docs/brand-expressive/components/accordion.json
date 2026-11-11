@@ -146,16 +146,16 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "accordion-trigger-radius"
      },
      "values": [
       {
        "swatch": {
-        "corner": "calc(infinity * 1px)"
+        "corner": "0.75rem"
        },
-       "token": "radius.pill",
-       "text": "calc(infinity * 1px)"
+       "token": "radius.12",
+       "text": "0.75rem"
       }
      ]
     },
