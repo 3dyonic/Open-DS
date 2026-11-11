@@ -14,6 +14,7 @@ import {
   TableRow,
 } from "@open-ds/ui/components/table";
 import Label from "./Label";
+import ChainBase from "./base/Chain";
 
 type Swatch = { color?: string; corner?: string; shadow?: string };
 export type TokenValue = {
@@ -23,7 +24,7 @@ export type TokenValue = {
   text: string;
   span?: number;
 };
-type Chain =
+type ChainData =
   | { token: string; alias: string; variable: string }
   | { system: string; variable: string }
   | { cls: string; variable: string; token: string };
@@ -32,7 +33,7 @@ export type TokenRow = {
   part: string;
   when?: string;
   themed?: boolean;
-  chain: Chain;
+  chain: ChainData;
   values: TokenValue[];
 };
 export type TokenTableData = {
@@ -67,44 +68,32 @@ function Value({ value }: { value: TokenValue }) {
     <span className="inline-flex items-center gap-[var(--space-gap-tight)]">
       {value.swatch && <SwatchMark swatch={value.swatch} />}
       <span className={small}>
-        {value.token && (
-          <>
-            <Label>{value.token}</Label>:
-          </>
-        )}
-        {value.text}
+        {value.token ? <ChainBase parts={[<Label>{value.token}</Label>, value.text]} /> : value.text}
       </span>
     </span>
   );
 }
 
-function ChainCell({ chain }: { chain: Chain }) {
+// Every step from a token to the variable a class reads is joined by the Chain base form (OD-287).
+function ChainCell({ chain }: { chain: ChainData }) {
   if ("alias" in chain)
     return (
-      <span className={stack}>
-        <Label tone="info">{chain.token}</Label>
-        <Label>{chain.alias}</Label>
-        <code>var(--{chain.variable})</code>
-      </span>
+      <ChainBase
+        parts={[
+          <Label tone="info">{chain.token}</Label>,
+          <Label>{chain.alias}</Label>,
+          <code>var(--{chain.variable})</code>,
+        ]}
+      />
     );
   if ("system" in chain)
     return (
       <span className={stack}>
-        <Label>{chain.system}</Label>
-        <span className={small}>
-          straight from the system, through <code>--{chain.variable}</code>
-        </span>
+        <ChainBase parts={[<Label>{chain.system}</Label>, <code>--{chain.variable}</code>]} />
+        <span className={small}>straight from the system</span>
       </span>
     );
-  return (
-    <span className="inline-flex flex-wrap items-center gap-[var(--space-gap-tight)]">
-      <code>{chain.cls}</code>
-      <span aria-hidden="true">→</span>
-      <code>--{chain.variable}</code>
-      <span aria-hidden="true">→</span>
-      <Label>{chain.token}</Label>
-    </span>
-  );
+  return <ChainBase parts={[<code>{chain.cls}</code>, <code>--{chain.variable}</code>, <Label>{chain.token}</Label>]} />;
 }
 
 export default function TokenTable({ data }: { data: TokenTableData }) {
