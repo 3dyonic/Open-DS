@@ -1,0 +1,100 @@
+{
+ "anatomy-legend": {
+  "icon": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Glyph",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Contained shape",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "icon/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How many icon sizes exist?",
+     "answer": "One",
+     "why": "One size, larger than the text."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Larger than the text",
+     "why": "Larger icons are easier to see."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    }
+   ]
+  },
+  "icon/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What icon style and stroke?",
+     "answer": "Bold stroke",
+     "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens."
+    }
+   ]
+  },
+  "icon/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What icon style and stroke?",
+     "answer": "Bold stroke",
+     "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "contained.radius",
+     "value": "0.375rem",
+     "byScheme": true,
+     "pick": "radius.6: Clear, slightly rounded controls.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "contained.tint.background",
+     "value": "#E2EDFF",
+     "darkValue": "#102547",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    }
+   ]
+  }
+ }
+}

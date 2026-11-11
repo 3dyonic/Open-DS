@@ -117,14 +117,14 @@
   },
   "empty/iconography.definition": {
    "anchor": "why-iconography-definition",
-   "question": "What icon style?",
+   "question": "What icon style and stroke?",
    "key": "iconography.definition",
    "steps": [
     {
      "kind": "answer",
      "title": "The answer",
-     "answer": "Two-tone",
-     "why": "Two-tone icons carry the brand color."
+     "answer": "Contained",
+     "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth."
     },
     {
      "kind": "decided",
@@ -136,7 +136,15 @@
        "subject": "icon",
        "text": "A two-tone icon in a tile, for a small region where a picture would push the words away."
       }
-     ]
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
+      ]
+     }
     },
     {
      "kind": "change",

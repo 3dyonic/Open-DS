@@ -33,7 +33,8 @@ export function decisionCoverage(scheme, g) {
   // An id that the grammar does not ask, or this scheme does not answer, links nothing.
   const cited = (because) => (because ?? []).filter((id) => id in asked && answered.has(id));
 
-  const semantics = flatTokens(scheme.tokens.semantic);
+  // A deprecated alias decides nothing of its own: it points at the token that does (OD-286).
+  const semantics = flatTokens(scheme.tokens.semantic).filter(([, t]) => !t.$deprecated);
   const names = new Set(semantics.map(([p]) => shortName(p)));
 
   // A rule names a token ("color.status.danger") or a group of tokens ("type.body"), never a part of

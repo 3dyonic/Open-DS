@@ -1,7 +1,7 @@
 ---
 composite_data: "./select.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 48
+sidebar_position: 49
 title: "Select"
 description: "Select in Dense data."
 ---
@@ -71,3 +71,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Select reads 37 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Select's tokens to change Select alone.
 
 ::token-table{component="select"}
+
+Its icons (`Check`, `ChevronDown`) also read `icon.stroke-width`, 1.5px in Dense data: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

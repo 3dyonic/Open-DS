@@ -1,7 +1,7 @@
 ---
 composite_data: "./kbd.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 34
+sidebar_position: 35
 title: "Kbd"
 description: "Kbd in Dense data."
 ---

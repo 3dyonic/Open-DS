@@ -8,7 +8,7 @@ description: "Space and size primitives in Brand expressive."
 
 # Space and size
 
-14 primitives, 14 used.
+15 primitives, 15 used.
 
 ## `space`
 

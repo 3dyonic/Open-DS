@@ -360,7 +360,7 @@
         }
        },
        {
-        "text": "Iconography · What icon style? → Outline",
+        "text": "Iconography · What icon style and stroke? → Outline",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -2934,16 +2934,32 @@
     "Iconography · How big are icons next to text? → Match the text"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Iconography",
-     "href": "foundations/iconography"
-    }
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. The size of the text beside it.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's large size isn't used. Multi-brand has one icon size.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "iconography-definition": {
    "answer": "Outline",
-   "why": "One outline set for every brand.",
+   "why": "One outline set for every brand, at a 1.5px stroke.",
    "because": [
     "How many brands or products share the system? → Many"
    ],
@@ -2964,6 +2980,27 @@
         "link": {
          "label": "Input group",
          "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Icon's plain variant. Every icon: one outline set for every brand, at a 1.5px stroke.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-tint variant isn't used. One outline set serves every brand; a shape would need a brand decision.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-solid variant isn't used. One outline set serves every brand.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
         }
        }
       ]
@@ -2987,6 +3024,18 @@
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. The size of the text beside it.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
         }
        }
       ]

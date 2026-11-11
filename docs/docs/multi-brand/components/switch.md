@@ -1,7 +1,7 @@
 ---
 composite_data: "./switch.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 55
+sidebar_position: 56
 title: "Switch"
 description: "Switch in Multi-brand."
 ---

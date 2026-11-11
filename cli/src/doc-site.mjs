@@ -62,6 +62,8 @@ export function docSiteFiles(roots, { ui = "../../../src/components/ui", compone
   files["css/tailwind.css"] = readFileSync(join(roots.docsSrc, "css", "tailwind.css"), "utf8")
     .replace(/^@source "\.\.\/\.\.\/\.\.\/ui\/src\/components[^"]*";$/m, `@source "${sourced}";`)
     .replace(/^@source "\.\.\/components";\n/m, "")
-    .replace(/^@source "\.\.\/\.\.\/\.\.\/doc-composites\/src";$/m, `@source "../composites";`);
+    .replace(/^@source "\.\.\/\.\.\/\.\.\/doc-composites\/src";$/m, `@source "../composites";`)
+    // The icon stroke rule (OD-285) is written in, since a project's docs sit apart from the ui folder.
+    .replace(/^@import "\.\.\/\.\.\/\.\.\/ui\/src\/icons\.css";\n/m, () => readFileSync(join(roots.ui, "icons.css"), "utf8"));
   return files;
 }

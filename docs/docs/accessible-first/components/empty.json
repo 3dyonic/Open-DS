@@ -115,14 +115,14 @@
   },
   "empty/iconography.definition": {
    "anchor": "why-iconography-definition",
-   "question": "What icon style?",
+   "question": "What icon style and stroke?",
    "key": "iconography.definition",
    "steps": [
     {
      "kind": "answer",
      "title": "The answer",
-     "answer": "Filled",
-     "why": "Filled icons stay visible at low vision."
+     "answer": "Bold stroke",
+     "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens."
     },
     {
      "kind": "decided",
@@ -134,7 +134,15 @@
        "subject": "icon",
        "text": "A filled icon in a tile, beside words that say what will appear here and how to start."
       }
-     ]
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
+      ]
+     }
     },
     {
      "kind": "change",

@@ -1,7 +1,7 @@
 ---
 composite_data: "./skeleton.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 52
+sidebar_position: 53
 title: "Skeleton"
 description: "Skeleton in Multi-brand."
 ---

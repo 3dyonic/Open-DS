@@ -9,8 +9,8 @@ hide_table_of_contents: true
 
 # Inventory
 
-:::intro{robot="shelf" stats="49 In|13 Left out|9 Families"}
-**49** components are in Multi-brand. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::intro{robot="shelf" stats="50 In|13 Left out|9 Families"}
+**50** components are in Multi-brand. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
 :::
 
 ## Action
@@ -63,7 +63,7 @@ Ways to show more content. 1 in Multi-brand.
 
 ## Media
 
-Pictures and slides. 3 in Multi-brand.
+Pictures and slides. 4 in Multi-brand.
 
 ::card-grid{id="inventory/media"}
 

@@ -1987,7 +1987,7 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Iconography · What icon style? → Two-tone",
+        "text": "Iconography · What icon style and stroke? → Contained",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -3027,16 +3027,32 @@
     "Iconography · What do icons do? → Those and decoration"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Iconography",
-     "href": "foundations/iconography"
-    }
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. 20px, beside the text in buttons and lists.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's large size. 28px, for the icon that leads a feature card.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "iconography-definition": {
-   "answer": "Two-tone",
-   "why": "Two-tone icons carry the brand color.",
+   "answer": "Contained",
+   "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth.",
    "because": [
     "Color · How saturated is the palette? → Vivid"
    ],
@@ -3051,6 +3067,27 @@
          "label": "Empty",
          "href": "components/empty"
         }
+       },
+       {
+        "text": "Icon's plain variant. Beside a word in a button or a list.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-tint variant. A feature card or list item that leads with its icon, in a tinted shape.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-solid variant isn't used. The tint carries the brand; a solid shape would compete with the primary action.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
        }
       ]
      }
@@ -3064,11 +3101,20 @@
     "Typography · Which text roles does it need? → Core and expressive display"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Iconography",
-     "href": "foundations/iconography"
-    }
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. 20px, beside the text in buttons and lists.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "iconography-lands": {

@@ -1,7 +1,7 @@
 ---
 composite_data: "./toggle.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 60
+sidebar_position: 61
 title: "Toggle"
 description: "Toggle in Accessible first."
 ---

@@ -4,6 +4,7 @@
 // Theming page's constants use it.
 import * as React from "react";
 import { TriangleAlert } from "lucide-react";
+import { Icon } from "@open-ds/ui/components/icon";
 import Sample from "./Sample";
 
 const note = "[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)]";
@@ -18,7 +19,7 @@ export default function Drawn({ x }: { x: { kind: string; value: string; note?: 
     case "icon-label":
       return (
         <span className="rounded-[var(--radius-control)] border border-[var(--color-border-default)] px-[var(--space-gap-default)] text-[length:var(--type-caption-font-size)]">
-          <TriangleAlert aria-hidden="true" className="inline size-3 align-baseline" /> {x.value}
+          <Icon icon={TriangleAlert} /> {x.value}
         </span>
       );
     case "quote":

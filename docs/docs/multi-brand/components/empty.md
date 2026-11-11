@@ -68,7 +68,7 @@ An icon in a small tile, from the one outline set every brand shares.
 
 **Because**
 
-- [What icon style? **Outline**](#why-iconography-definition) · `iconography.definition`
+- [What icon style and stroke? **Outline**](#why-iconography-definition) · `iconography.definition`
 :::
 
 ::card-grid{id="anatomy-link/empty"}

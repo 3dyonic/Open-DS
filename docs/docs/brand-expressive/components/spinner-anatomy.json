@@ -37,9 +37,9 @@
     {
      "kind": "answer",
      "scope": "Iconography",
-     "question": "What icon style?",
-     "answer": "Two-tone",
-     "why": "Two-tone icons carry the brand color."
+     "question": "What icon style and stroke?",
+     "answer": "Contained",
+     "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth."
     },
     {
      "kind": "rule",

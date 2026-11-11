@@ -1,7 +1,7 @@
 ---
 composite_data: "./textarea-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 58.5
+sidebar_position: 59.5
 slug: "textarea/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

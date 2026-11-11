@@ -1,7 +1,7 @@
 ---
 composite_data: "./tabs.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 57
+sidebar_position: 58
 title: "Tabs"
 description: "Tabs in Multi-brand."
 ---

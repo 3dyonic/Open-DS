@@ -1,7 +1,7 @@
 ---
 composite_data: "./input-otp.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 32
+sidebar_position: 33
 title: "Input otp"
 description: "Input otp in Multi-brand."
 ---
@@ -65,3 +65,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Input otp reads 24 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Input otp's tokens to change Input otp alone.
 
 ::token-table{component="input-otp"}
+
+Its icons (`Minus`) also read `icon.stroke-width`, 1.5px in Multi-brand: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

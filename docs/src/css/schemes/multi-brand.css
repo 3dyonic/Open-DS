@@ -54,6 +54,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --avatar-radius: 50%; /** Radius of the avatar. */
   --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
   --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
@@ -131,6 +132,9 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --type-data-font-family: Inter, system-ui, sans-serif;
   --elevation-card: 0px 2px 8px 0px #0F172A14;
   --elevation-overlay: 0px 12px 32px 0px #0F172A29;
+  --icon-size: var(--size-icon); /** Size of the icon next to text. */
+  --icon-size-large: var(--size-icon); /** Size of the large icon, where the scheme has two sizes. */
+  --icon-contained-padding: var(--space-gap-tight); /** Space between a contained icon and its shape. */
   --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
@@ -926,6 +930,10 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
   --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
+  --icon-contained-radius: var(--radius-control); /** Corner of the shape a contained icon sits in. */
+  --icon-contained-tint-background: var(--color-surface-selected); /** Fill of the tinted shape. */
+  --icon-contained-tint-color: var(--color-text-link); /** Icon color on the tinted shape. */
+  --icon-contained-solid-background: var(--color-action-primary); /** Fill of the solid shape. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -1346,6 +1354,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --toast-success-border-2: var(--toast-success-edge); /** Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast. */
   --toast-danger-border-2: var(--toast-danger-edge); /** Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast. */
+  --icon-contained-solid-color: var(--color-text-on-action); /** Icon color on the solid shape. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -1874,6 +1883,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --avatar-radius: 50%; /** Radius of the avatar. */
   --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
   --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
@@ -1951,6 +1961,9 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --type-data-font-family: Inter, system-ui, sans-serif;
   --elevation-card: 0px 2px 8px 0px #00000066;
   --elevation-overlay: 0px 12px 32px 0px #00000080;
+  --icon-size: var(--size-icon); /** Size of the icon next to text. */
+  --icon-size-large: var(--size-icon); /** Size of the large icon, where the scheme has two sizes. */
+  --icon-contained-padding: var(--space-gap-tight); /** Space between a contained icon and its shape. */
   --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
@@ -2746,6 +2759,10 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
   --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
+  --icon-contained-radius: var(--radius-control); /** Corner of the shape a contained icon sits in. */
+  --icon-contained-tint-background: var(--color-surface-selected); /** Fill of the tinted shape. */
+  --icon-contained-tint-color: var(--color-text-link); /** Icon color on the tinted shape. */
+  --icon-contained-solid-background: var(--color-action-primary); /** Fill of the solid shape. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -3166,6 +3183,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --toast-success-border-2: var(--toast-success-edge); /** Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast. */
   --toast-danger-border-2: var(--toast-danger-edge); /** Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast. */
+  --icon-contained-solid-color: var(--color-text-on-action); /** Icon color on the solid shape. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -3690,6 +3708,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --avatar-radius: 50%; /** Radius of the avatar. */
   --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
   --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
@@ -3767,6 +3786,9 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --type-data-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   --elevation-card: 0px 2px 8px 0px #0F172A14;
   --elevation-overlay: 0px 12px 32px 0px #0F172A29;
+  --icon-size: var(--size-icon); /** Size of the icon next to text. */
+  --icon-size-large: var(--size-icon); /** Size of the large icon, where the scheme has two sizes. */
+  --icon-contained-padding: var(--space-gap-tight); /** Space between a contained icon and its shape. */
   --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
@@ -4562,6 +4584,10 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
   --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
+  --icon-contained-radius: var(--radius-control); /** Corner of the shape a contained icon sits in. */
+  --icon-contained-tint-background: var(--color-surface-selected); /** Fill of the tinted shape. */
+  --icon-contained-tint-color: var(--color-text-link); /** Icon color on the tinted shape. */
+  --icon-contained-solid-background: var(--color-action-primary); /** Fill of the solid shape. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -4982,6 +5008,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --toast-success-border-2: var(--toast-success-edge); /** Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast. */
   --toast-danger-border-2: var(--toast-danger-edge); /** Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast. */
+  --icon-contained-solid-color: var(--color-text-on-action); /** Icon color on the solid shape. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -5508,6 +5535,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --avatar-radius: 50%; /** Radius of the avatar. */
   --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
   --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
@@ -5585,6 +5613,9 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --type-data-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   --elevation-card: 0px 2px 8px 0px #00000066;
   --elevation-overlay: 0px 12px 32px 0px #00000080;
+  --icon-size: var(--size-icon); /** Size of the icon next to text. */
+  --icon-size-large: var(--size-icon); /** Size of the large icon, where the scheme has two sizes. */
+  --icon-contained-padding: var(--space-gap-tight); /** Space between a contained icon and its shape. */
   --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
@@ -6380,6 +6411,10 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
   --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
+  --icon-contained-radius: var(--radius-control); /** Corner of the shape a contained icon sits in. */
+  --icon-contained-tint-background: var(--color-surface-selected); /** Fill of the tinted shape. */
+  --icon-contained-tint-color: var(--color-text-link); /** Icon color on the tinted shape. */
+  --icon-contained-solid-background: var(--color-action-primary); /** Fill of the solid shape. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -6800,6 +6835,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --toast-success-border-2: var(--toast-success-edge); /** Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast. */
   --toast-danger-border-2: var(--toast-danger-edge); /** Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast. */
+  --icon-contained-solid-color: var(--color-text-on-action); /** Icon color on the solid shape. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -7324,6 +7360,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --avatar-radius: 50%; /** Radius of the avatar. */
   --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
   --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
@@ -7401,6 +7438,9 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --type-data-font-family: Poppins, system-ui, sans-serif;
   --elevation-card: 0px 2px 8px 0px #0F172A14;
   --elevation-overlay: 0px 12px 32px 0px #0F172A29;
+  --icon-size: var(--size-icon); /** Size of the icon next to text. */
+  --icon-size-large: var(--size-icon); /** Size of the large icon, where the scheme has two sizes. */
+  --icon-contained-padding: var(--space-gap-tight); /** Space between a contained icon and its shape. */
   --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
@@ -8196,6 +8236,10 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
   --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
+  --icon-contained-radius: var(--radius-control); /** Corner of the shape a contained icon sits in. */
+  --icon-contained-tint-background: var(--color-surface-selected); /** Fill of the tinted shape. */
+  --icon-contained-tint-color: var(--color-text-link); /** Icon color on the tinted shape. */
+  --icon-contained-solid-background: var(--color-action-primary); /** Fill of the solid shape. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -8616,6 +8660,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --toast-success-border-2: var(--toast-success-edge); /** Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast. */
   --toast-danger-border-2: var(--toast-danger-edge); /** Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast. */
+  --icon-contained-solid-color: var(--color-text-on-action); /** Icon color on the solid shape. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -9142,6 +9187,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --component-spacing-map-x6: 2.25rem;
   --component-spacing-map-x8: 3rem;
   --component-spacing-map-x12: 4rem;
+  --icon-stroke-width: 1.5; /** The line weight of every icon, on Lucide's 24px grid. */
   --avatar-radius: 50%; /** Radius of the avatar. */
   --avatar-fallback-radius: 50%; /** Fallback radius of the avatar. */
   --avatar-badge-radius: 50%; /** Badge radius of the avatar. */
@@ -9219,6 +9265,9 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --type-data-font-family: Poppins, system-ui, sans-serif;
   --elevation-card: 0px 2px 8px 0px #00000066;
   --elevation-overlay: 0px 12px 32px 0px #00000080;
+  --icon-size: var(--size-icon); /** Size of the icon next to text. */
+  --icon-size-large: var(--size-icon); /** Size of the large icon, where the scheme has two sizes. */
+  --icon-contained-padding: var(--space-gap-tight); /** Space between a contained icon and its shape. */
   --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
@@ -10014,6 +10063,10 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
   --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
+  --icon-contained-radius: var(--radius-control); /** Corner of the shape a contained icon sits in. */
+  --icon-contained-tint-background: var(--color-surface-selected); /** Fill of the tinted shape. */
+  --icon-contained-tint-color: var(--color-text-link); /** Icon color on the tinted shape. */
+  --icon-contained-solid-background: var(--color-action-primary); /** Fill of the solid shape. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -10434,6 +10487,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --toast-success-border-2: var(--toast-success-edge); /** Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast. */
   --toast-danger-border-2: var(--toast-danger-edge); /** Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast. */
+  --icon-contained-solid-color: var(--color-text-on-action); /** Icon color on the solid shape. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */

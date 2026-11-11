@@ -84,6 +84,14 @@ export function useVariant(
   );
 }
 
+/** Every variant this design system uses on an axis, so an example shows only its decisions. */
+export function useVariants(component: string, axis: string): string[] {
+  const item = data.inventory.in.find((i) => i.id === component);
+  return Object.entries(item?.variants?.[axis] ?? {})
+    .filter(([, d]) => !d.not_used)
+    .map(([v]) => v);
+}
+
 /** The tone a status label maps to, from its meaning in the scheme. */
 export const toneOf = (s: Samples, label: string) =>
   s.statuses.find((x) => x.label === label)?.meaning ?? "neutral";

@@ -835,6 +835,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -1090,6 +1091,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -1268,6 +1270,7 @@
         "empty",
         "field",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -1665,7 +1668,7 @@
       "kind": "scope",
       "title": "Iconography",
       "description": "When icons appear and how they look.",
-      "owns": ["size.icon"],
+      "owns": ["size.icon", "icon.stroke-width"],
       "lands_in": [
         "accordion",
         "alert",
@@ -1681,6 +1684,7 @@
         "context-menu",
         "dialog",
         "dropdown-menu",
+        "icon",
         "input-group",
         "input-otp",
         "item",
@@ -1739,20 +1743,20 @@
         {
           "id": "iconography.definition",
           "method": "definition",
-          "text": "What icon style?",
-          "description": "Stroke or fill.",
+          "text": "What icon style and stroke?",
+          "description": "Open DS draws every icon with one open-source set, Lucide, which draws in lines. The style sets how heavy the line is, or whether the icon sits in a contained shape; the answer names the stroke width.",
           "options": [
             {
               "id": "outline",
               "label": "Outline"
             },
             {
-              "id": "filled",
-              "label": "Filled"
+              "id": "bold",
+              "label": "Bold stroke"
             },
             {
-              "id": "duotone",
-              "label": "Two-tone"
+              "id": "contained",
+              "label": "Contained"
             }
           ]
         },
@@ -1831,6 +1835,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -2127,6 +2132,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -2281,6 +2287,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -2472,6 +2479,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -3847,6 +3855,20 @@
         "hover-card/content/border",
         "hover-card/content/border-width",
         "hover-card/content/duration"
+      ]
+    },
+    {
+      "id": "icon",
+      "description": "The icon component: one Lucide icon at the scheme's size and stroke.",
+      "keys": [
+        "icon/size",
+        "icon/size-large",
+        "icon/contained/padding",
+        "icon/contained/radius",
+        "icon/contained/tint/background",
+        "icon/contained/tint/color",
+        "icon/contained/solid/background",
+        "icon/contained/solid/color"
       ]
     },
     {
@@ -9667,6 +9689,54 @@
       "component": "hover-card",
       "description": "How long the hover card takes to open and close: the panel speed, like every floating panel.",
       "default": "motion.duration.panels"
+    },
+    {
+      "id": "icon/size",
+      "component": "icon",
+      "description": "Size of the icon next to text.",
+      "default": "size.icon"
+    },
+    {
+      "id": "icon/size-large",
+      "component": "icon",
+      "description": "Size of the large icon, where the scheme has two sizes.",
+      "default": "size.icon"
+    },
+    {
+      "id": "icon/contained/padding",
+      "component": "icon",
+      "description": "Space between a contained icon and its shape.",
+      "default": "space.gap.tight"
+    },
+    {
+      "id": "icon/contained/radius",
+      "component": "icon",
+      "description": "Corner of the shape a contained icon sits in.",
+      "default": "radius.control"
+    },
+    {
+      "id": "icon/contained/tint/background",
+      "component": "icon",
+      "description": "Fill of the tinted shape.",
+      "default": "color.surface.selected"
+    },
+    {
+      "id": "icon/contained/tint/color",
+      "component": "icon",
+      "description": "Icon color on the tinted shape.",
+      "default": "color.text.link"
+    },
+    {
+      "id": "icon/contained/solid/background",
+      "component": "icon",
+      "description": "Fill of the solid shape.",
+      "default": "color.action.primary.@"
+    },
+    {
+      "id": "icon/contained/solid/color",
+      "component": "icon",
+      "description": "Icon color on the solid shape.",
+      "default": "color.text.on-action"
     },
     {
       "id": "input-group/radius",
@@ -27157,6 +27227,208 @@
               "answers": ["spacing.values"],
               "rules": ["related-items"],
               "tokens": ["component.overlay.offset"]
+            }
+          ]
+        }
+      },
+      {
+        "id": "icon",
+        "family": "media",
+        "description": "One icon at the scheme's size and stroke.",
+        "overview": "One small picture that marks an action or a status, beside its word. Open DS draws every icon with one open-source set, Lucide; the scheme sets its size and stroke.",
+        "apply_when": "An icon in content or new UI: beside a word, in an icon button with a label, at the large size, or in a contained shape.",
+        "not_when": "Inside a component that already draws its icon, such as Select or Accordion: those draw Lucide directly and follow the same tokens.",
+        "vs": [
+          {
+            "id": "badge",
+            "why": "A status label, with a word."
+          },
+          {
+            "id": "button",
+            "why": "Something to press; it can hold an Icon."
+          }
+        ],
+        "variants": {
+          "size": [
+            {
+              "id": "default",
+              "overview": "The size of the text the icon sits beside.",
+              "apply_when": "Almost always: beside a word, in a row or a toolbar.",
+              "not_when": "A feature that leads a section, where the scheme has a large size."
+            },
+            {
+              "id": "large",
+              "overview": "A larger step, for schemes that answer two icon sizes.",
+              "apply_when": "An icon that leads a card or a section on its own.",
+              "not_when": "Beside running text or in a row."
+            }
+          ],
+          "variant": [
+            {
+              "id": "plain",
+              "overview": "The icon alone, in the color of the text beside it.",
+              "apply_when": "Every icon by default.",
+              "not_when": "The scheme's style answer asks for a contained look."
+            },
+            {
+              "id": "contained-tint",
+              "overview": "The icon in a tinted shape.",
+              "apply_when": "The scheme answers a contained style: a feature or a list item that leads with its icon.",
+              "not_when": "Beside running text, or many times in one row."
+            },
+            {
+              "id": "contained-solid",
+              "overview": "The icon on a solid fill, in the on-action color.",
+              "apply_when": "One strong mark per view, where the scheme answers a contained style.",
+              "not_when": "More than once in a view: it competes with the primary action."
+            }
+          ]
+        },
+        "situations": [
+          "icon-alone",
+          "row-action"
+        ],
+        "accessibility": [
+          {
+            "id": "decorative",
+            "overview": "Hidden from screen readers by default: the word beside it carries the meaning."
+          },
+          {
+            "id": "label",
+            "overview": "With no word on screen, the label is its accessible name."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        },
+        "anatomy": {
+          "intro": "the icon",
+          "drawing": {
+            "kind": "tree",
+            "stage": {
+              "t": "frame",
+              "name": "Icons",
+              "gap": "space.gap.section",
+              "children": [
+                {
+                  "t": "frame",
+                  "name": "Notify me",
+                  "gap": "space.gap.tight",
+                  "children": [
+                    {
+                      "t": "icon",
+                      "name": "Bell",
+                      "icon": "bell",
+                      "size": "component.icon.size",
+                      "color": "color.text.primary",
+                      "n": 1
+                    },
+                    {
+                      "t": "text",
+                      "text": "Notify me",
+                      "size": "type.body.font-size",
+                      "color": "color.text.primary"
+                    }
+                  ]
+                },
+                {
+                  "t": "frame",
+                  "name": "Contained",
+                  "pad": "component.icon.contained.padding",
+                  "radius": "component.icon.contained.radius",
+                  "fill": "component.icon.contained.tint.background",
+                  "n": 2,
+                  "children": [
+                    {
+                      "t": "icon",
+                      "name": "Bell",
+                      "icon": "bell",
+                      "size": "component.icon.size",
+                      "color": "component.icon.contained.tint.color"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "parts": [
+            {
+              "n": 1,
+              "id": "glyph",
+              "label": "Glyph",
+              "need": "required",
+              "roles": [
+                "meaning"
+              ],
+              "tokens": [
+                "component.icon.size"
+              ]
+            },
+            {
+              "n": 2,
+              "id": "shape",
+              "label": "Contained shape",
+              "need": "optional",
+              "roles": [
+                "containment"
+              ],
+              "tokens": [
+                "component.icon.contained.padding",
+                "component.icon.contained.radius",
+                "component.icon.contained.tint.background",
+                "component.icon.contained.tint.color"
+              ]
+            }
+          ],
+          "cards": [
+            {
+              "title": "Size",
+              "parts": [
+                1
+              ],
+              "roles": [
+                "meaning"
+              ],
+              "answers": [
+                "iconography.count",
+                "iconography.values"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.icon.size"
+              ]
+            },
+            {
+              "title": "Stroke",
+              "parts": [
+                1
+              ],
+              "roles": [
+                "readability"
+              ],
+              "answers": [
+                "iconography.definition"
+              ],
+              "rules": [],
+              "tokens": []
+            },
+            {
+              "title": "Contained shape",
+              "parts": [
+                2
+              ],
+              "roles": [
+                "containment"
+              ],
+              "answers": [
+                "iconography.definition"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.icon.contained.radius",
+                "component.icon.contained.tint.background"
+              ]
             }
           ]
         }

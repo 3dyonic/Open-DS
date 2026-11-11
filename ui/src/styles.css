@@ -1,4 +1,5 @@
 /* Base styles for an Open DS app. Import after Tailwind and after a scheme's tokens.css and theme.css. */
+@import "./icons.css";
 @layer base {
   html {
     background: var(--color-surface-canvas);

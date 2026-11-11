@@ -58,6 +58,7 @@ export * from "./components/attachment";
 export * from "./components/bubble";
 export * from "./components/button-group";
 export * from "./components/hover-card";
+export * from "./components/icon";
 export * from "./components/item";
 export * from "./components/marker";
 export * from "./components/menubar";

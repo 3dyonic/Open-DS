@@ -37,9 +37,9 @@
     {
      "kind": "answer",
      "scope": "Iconography",
-     "question": "What icon style?",
+     "question": "What icon style and stroke?",
      "answer": "Outline",
-     "why": "One outline set for every brand."
+     "why": "One outline set for every brand, at a 1.5px stroke."
     },
     {
      "kind": "rule",

@@ -1,7 +1,7 @@
 ---
 composite_data: "./input-group.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 31
+sidebar_position: 32
 title: "Input group"
 description: "Input group in Multi-brand."
 ---
@@ -47,7 +47,7 @@ A currency sign or a search icon before the text, from the outline set every bra
 
 **Because**
 
-- [What icon style? **Outline**](#why-iconography-definition) · `iconography.definition`
+- [What icon style and stroke? **Outline**](#why-iconography-definition) · `iconography.definition`
 - [What is the main content? **Forms and tasks**](#why-content-q1) · `content.q1`
 :::
 

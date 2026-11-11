@@ -1,7 +1,7 @@
 ---
 composite_data: "./switch-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 55.5
+sidebar_position: 56.5
 slug: "switch/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

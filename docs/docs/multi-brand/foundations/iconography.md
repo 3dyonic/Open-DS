@@ -18,7 +18,7 @@ When icons appear and how they look.
 | --- | --- | --- |
 | What do icons do? | Actions, status and navigation | Icons for actions, status and navigation. |
 | How many icon sizes exist? | One | One size next to text. |
-| What icon style? | Outline | One outline set for every brand. |
+| What icon style and stroke? | Outline | One outline set for every brand, at a 1.5px stroke. |
 | How big are icons next to text? | Match the text | Icons match the text. |
 | Where do icons work hardest? | Navigation | Icons help most in navigation. |
 
@@ -30,21 +30,62 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+| `icon.stroke-width` | `stroke-width.150` |
 ::::
 
 ::::brand{id="birch" name="Birch"}
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+| `icon.stroke-width` | `stroke-width.150` |
 ::::
 
 ::::brand{id="coral" name="Coral"}
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+| `icon.stroke-width` | `stroke-width.150` |
 ::::
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
+
+## The icons
+
+Open DS draws every icon with one open-source set, Lucide. In Multi-brand:
+
+- **Style:** Outline
+- **Stroke:** 1.5px on Lucide's 24px grid
+- **Size next to text:** Match the text
+
+The components draw their own icons; in content, use [Icon](../components/icon.md).
+
+::preview{robot="slumber" id="icon/live"}
+
+## Icons in the components
+
+| Icon | Drawn by |
+| --- | --- |
+| `ArrowDown` | [Data table](../components/data-table.md) |
+| `ArrowLeft` | [Carousel](../components/carousel.md) |
+| `ArrowRight` | [Carousel](../components/carousel.md) |
+| `ArrowUp` | [Data table](../components/data-table.md) |
+| `Calendar` | [Date picker](../components/date-picker.md) |
+| `Check` | [Checkbox](../components/checkbox.md), [Combobox](../components/combobox.md), [Context menu](../components/context-menu.md), [Menubar](../components/menubar.md), [Select](../components/select.md) |
+| `ChevronDown` | [Accordion](../components/accordion.md), [Calendar](../components/calendar.md), [Combobox](../components/combobox.md), [Native select](../components/native-select.md), [Navigation menu](../components/navigation-menu.md), [Select](../components/select.md) |
+| `ChevronLeft` | [Calendar](../components/calendar.md), [Pagination](../components/pagination.md) |
+| `ChevronRight` | [Breadcrumb](../components/breadcrumb.md), [Calendar](../components/calendar.md), [Context menu](../components/context-menu.md), [Menubar](../components/menubar.md), [Pagination](../components/pagination.md) |
+| `ChevronsUpDown` | [Data table](../components/data-table.md) |
+| `Circle` | [Context menu](../components/context-menu.md), [Menubar](../components/menubar.md), [Radio group](../components/radio-group.md) |
+| `Columns3` | [Data table](../components/data-table.md) |
+| `FileText` | [Attachment](../components/attachment.md) |
+| `GripVertical` | [Resizable](../components/resizable.md) |
+| `ListFilter` | [Data table](../components/data-table.md) |
+| `Loader2` | [Spinner](../components/spinner.md) |
+| `Minus` | [Input otp](../components/input-otp.md) |
+| `MoreHorizontal` | [Breadcrumb](../components/breadcrumb.md), [Pagination](../components/pagination.md) |
+| `PanelLeft` | [Sidebar](../components/sidebar.md) |
+| `Search` | [Command](../components/command.md) |
+| `X` | [Combobox](../components/combobox.md), [Dialog](../components/dialog.md), [Sheet](../components/sheet.md) |
 
 ## When to use what
 

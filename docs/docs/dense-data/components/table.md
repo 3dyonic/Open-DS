@@ -1,7 +1,7 @@
 ---
 composite_data: "./table.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 56
+sidebar_position: 57
 title: "Table"
 description: "Table in Dense data."
 ---

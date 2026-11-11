@@ -1,7 +1,7 @@
 ---
 composite_data: "./tooltip.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 62
+sidebar_position: 63
 title: "Tooltip"
 description: "Tooltip in Accessible first."
 sidebar_class_name: "ods-left-out"

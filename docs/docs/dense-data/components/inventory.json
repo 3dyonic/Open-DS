@@ -510,6 +510,15 @@
       "tone": "info"
      },
      "href": "./avatar"
+    },
+    {
+     "title": "Icon",
+     "text": "One icon at the scheme's size and stroke.",
+     "label": {
+      "text": "In · built",
+      "tone": "info"
+     },
+     "href": "./icon"
     }
    ]
   },

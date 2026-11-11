@@ -1,7 +1,7 @@
 ---
 composite_data: "./marker.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 36
+sidebar_position: 37
 title: "Marker"
 description: "Marker in Multi-brand."
 sidebar_class_name: "ods-left-out"

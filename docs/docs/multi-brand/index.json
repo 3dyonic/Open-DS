@@ -121,7 +121,7 @@
     {
      "href": "primitives/",
      "title": "Primitives",
-     "text": "All 226 raw values, and the tokens that point to each.",
+     "text": "All 227 raw values, and the tokens that point to each.",
      "samples": [
       {
        "kind": "color",
@@ -211,7 +211,7 @@
     {
      "href": "components/inventory",
      "title": "Components",
-     "text": "49 components, each with when to use it and how Multi-brand decided.",
+     "text": "50 components, each with when to use it and how Multi-brand decided.",
      "samples": [
       {
        "kind": "text",

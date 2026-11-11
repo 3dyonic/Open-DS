@@ -1,7 +1,7 @@
 ---
 composite_data: "./input-group-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 31.5
+sidebar_position: 32.5
 slug: "input-group/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

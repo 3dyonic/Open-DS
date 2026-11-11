@@ -66,3 +66,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Date picker reads 2 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Date picker's tokens to change Date picker alone.
 
 ::token-table{component="date-picker"}
+
+Its icons (`Calendar`) also read `icon.stroke-width`, 1.75px in Brand expressive: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

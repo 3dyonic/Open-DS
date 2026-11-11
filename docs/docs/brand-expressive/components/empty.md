@@ -68,7 +68,7 @@ A two-tone icon in a tile, for a small region where a picture would push the wor
 
 **Because**
 
-- [What icon style? **Two-tone**](#why-iconography-definition) · `iconography.definition`
+- [What icon style and stroke? **Contained**](#why-iconography-definition) · `iconography.definition`
 - [What do icons do? **Those and decoration**](#why-iconography-roles) · `iconography.roles`
 :::
 

@@ -8,7 +8,7 @@ description: "Shape primitives in Brand expressive."
 
 # Shape
 
-7 primitives, 7 used.
+8 primitives, 8 used.
 
 ## `radius`
 
@@ -17,3 +17,7 @@ description: "Shape primitives in Brand expressive."
 ## `border-width`
 
 ::primitive-table{id="border-width"}
+
+## `stroke-width`
+
+::primitive-table{id="stroke-width"}

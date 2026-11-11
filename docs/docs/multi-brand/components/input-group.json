@@ -59,14 +59,14 @@
  "reason-chain": {
   "input-group/iconography.definition": {
    "anchor": "why-iconography-definition",
-   "question": "What icon style?",
+   "question": "What icon style and stroke?",
    "key": "iconography.definition",
    "steps": [
     {
      "kind": "answer",
      "title": "The answer",
      "answer": "Outline",
-     "why": "One outline set for every brand."
+     "why": "One outline set for every brand, at a 1.5px stroke."
     },
     {
      "kind": "decided",
@@ -82,7 +82,10 @@
      "also": {
       "label": "It also shapes",
       "items": [
-       "Empty: icon"
+       "Empty: icon",
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
       ]
      }
     },

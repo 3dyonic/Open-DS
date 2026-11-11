@@ -181,6 +181,20 @@
      ]
     },
     {
+     "primitive": "size.28",
+     "value": "1.75rem (28px)",
+     "sample": {
+      "kind": "bar",
+      "value": "1.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "icon.size-large",
+       "where": "component key"
+      }
+     ]
+    },
+    {
      "primitive": "size.44",
      "value": "2.75rem (44px)",
      "sample": {

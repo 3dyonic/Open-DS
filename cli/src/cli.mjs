@@ -10,7 +10,7 @@ import {
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
-import { componentsFor, packagesFor, withImports } from "./components.mjs";
+import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
@@ -162,7 +162,7 @@ export function deploy(
     readFileSync(join(tokenDir, "tokens.css"), "utf8"),
     readFileSync(join(tokenDir, "theme.css"), "utf8"),
     readFileSync(join(tokenDir, "shadcn.css"), "utf8"),
-    readFileSync(join(roots.ui, "styles.css"), "utf8"),
+    baseCss(roots.ui),
   ].join("\n");
   write(dir, "src/styles/open-ds.css", css, files);
   for (const lib of readdirSync(join(roots.ui, "lib")))

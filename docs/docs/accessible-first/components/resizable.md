@@ -1,7 +1,7 @@
 ---
 composite_data: "./resizable.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 46
+sidebar_position: 47
 title: "Resizable"
 description: "Resizable in Accessible first."
 sidebar_class_name: "ods-left-out"
@@ -66,3 +66,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Resizable reads 11 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Resizable's tokens to change Resizable alone.
 
 ::token-table{component="resizable"}
+
+Its icons (`GripVertical`) also read `icon.stroke-width`, 2px in Accessible first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

@@ -9,8 +9,8 @@ hide_table_of_contents: true
 
 # Inventory
 
-:::intro{robot="shelf" stats="36 In|26 Left out|9 Families"}
-**36** components are in Content first. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::intro{robot="shelf" stats="37 In|26 Left out|9 Families"}
+**37** components are in Content first. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
 :::
 
 ## Action
@@ -63,7 +63,7 @@ Ways to show more content. 1 in Content first.
 
 ## Media
 
-Pictures and slides. 3 in Content first.
+Pictures and slides. 4 in Content first.
 
 ::card-grid{id="inventory/media"}
 

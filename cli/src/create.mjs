@@ -16,7 +16,7 @@ import { basename, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { agentsMd, skillSection } from "./agents.mjs";
 import { booklets } from "./brief.mjs";
-import { componentsFor, packagesFor, withImports } from "./components.mjs";
+import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, focusedSkills, grammar, loadScheme } from "./schemes.mjs";
@@ -238,7 +238,7 @@ export function createProject(
     write(`src/lib/${lib}`, readFileSync(join(roots.ui, "lib", lib), "utf8"));
   write(
     "src/styles/base.css",
-    readFileSync(join(roots.ui, "styles.css"), "utf8"),
+    baseCss(roots.ui),
   );
   write(
     "src/index.ts",

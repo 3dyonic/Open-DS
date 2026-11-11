@@ -1,7 +1,7 @@
 ---
 composite_data: "./navigation-menu.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 41
+sidebar_position: 42
 title: "Navigation menu"
 description: "Navigation menu in Content first."
 ---
@@ -66,3 +66,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Navigation menu reads 57 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Navigation menu's tokens to change Navigation menu alone.
 
 ::token-table{component="navigation-menu"}
+
+Its icons (`ChevronDown`) also read `icon.stroke-width`, 1.5px in Content first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

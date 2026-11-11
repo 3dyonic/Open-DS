@@ -1,7 +1,7 @@
 ---
 composite_data: "./resizable-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 46.5
+sidebar_position: 47.5
 slug: "resizable/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

@@ -10,6 +10,7 @@
 import * as React from "react";
 import Swatch from "./base/Swatch";
 import { Pointer } from "lucide-react";
+import { Icon } from "@open-ds/ui/components/icon";
 
 export type SampleProps = {
   kind: string;
@@ -116,7 +117,9 @@ export default function Sample({
           style={{ width: value, height: value }}
         >
           <span className="size-[var(--size-icon)] rounded-[var(--radius-badge)] bg-[var(--color-border-default)]" />
-          <Pointer className="absolute -bottom-[var(--space-gap-tight)] -right-[var(--space-gap-tight)] size-[var(--size-icon)] fill-[var(--color-surface-default)] text-[color:var(--color-text-primary)]" />
+          <span className="absolute -bottom-[var(--space-gap-tight)] -right-[var(--space-gap-tight)] flex text-[color:var(--color-text-primary)] [&_svg]:fill-[var(--color-surface-default)]">
+            <Icon icon={Pointer} />
+          </span>
         </span>
         {note && (
           <span className="[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">

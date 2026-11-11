@@ -1,7 +1,7 @@
 ---
 composite_data: "./spinner.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 54
+sidebar_position: 55
 title: "Spinner"
 description: "Spinner in Content first."
 ---
@@ -66,3 +66,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Spinner reads 1 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Spinner's tokens to change Spinner alone.
 
 ::token-table{component="spinner"}
+
+Its icons (`Loader2`) also read `icon.stroke-width`, 1.5px in Content first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

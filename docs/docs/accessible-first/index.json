@@ -110,7 +110,7 @@
     {
      "href": "primitives/",
      "title": "Primitives",
-     "text": "All 175 raw values, and the tokens that point to each.",
+     "text": "All 176 raw values, and the tokens that point to each.",
      "samples": [
       {
        "kind": "color",
@@ -200,7 +200,7 @@
     {
      "href": "components/inventory",
      "title": "Components",
-     "text": "41 components, each with when to use it and how Accessible first decided.",
+     "text": "42 components, each with when to use it and how Accessible first decided.",
      "samples": [
       {
        "kind": "text",

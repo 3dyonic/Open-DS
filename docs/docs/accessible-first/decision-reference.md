@@ -262,7 +262,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="motion-lands"}
 :::
 
-:::fold{id="iconography" title="Iconography" note="5 answers, 6 decisions, and the values of its tokens"}
+:::fold{id="iconography" title="Iconography" note="5 answers, 12 decisions, and the values of its tokens"}
 #### What do icons do? {#iconography-roles}
 
 ::decision-answer{id="iconography-roles"}
@@ -271,7 +271,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 
 ::decision-answer{id="iconography-count"}
 
-#### What icon style? {#iconography-definition}
+#### What icon style and stroke? {#iconography-definition}
 
 ::decision-answer{id="iconography-definition"}
 

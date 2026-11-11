@@ -9,8 +9,8 @@ hide_table_of_contents: true
 
 # Inventory
 
-:::intro{robot="shelf" stats="47 In|15 Left out|10 Families"}
-**47** components are in Brand expressive. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::intro{robot="shelf" stats="48 In|15 Left out|10 Families"}
+**48** components are in Brand expressive. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
 :::
 
 ## Action
@@ -63,7 +63,7 @@ Ways to show more content. 1 in Brand expressive.
 
 ## Media
 
-Pictures and slides. 3 in Brand expressive.
+Pictures and slides. 4 in Brand expressive.
 
 ::card-grid{id="inventory/media"}
 

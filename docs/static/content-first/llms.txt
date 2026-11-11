@@ -86,6 +86,8 @@
 - [Form](/components/form)
 - [Anatomy reference](/components/hover-card-anatomy)
 - [Hover card](/components/hover-card)
+- [Anatomy reference](/components/icon-anatomy)
+- [Icon](/components/icon)
 - [Anatomy reference](/components/input-anatomy)
 - [Input](/components/input)
 - [Anatomy reference](/components/input-group-anatomy)

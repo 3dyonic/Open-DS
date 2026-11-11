@@ -1,7 +1,7 @@
 ---
 composite_data: "./item.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 33
+sidebar_position: 34
 title: "Item"
 description: "Item in Content first."
 ---

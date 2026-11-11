@@ -8,6 +8,7 @@
 import * as React from "react";
 import Frame from "./base/Frame";
 import { Check, Minus } from "lucide-react";
+import { Icon } from "@open-ds/ui/components/icon";
 import Label from "./Label";
 
 export type ReasonLine = {
@@ -63,11 +64,9 @@ function Step({ step, n }: { step: ReasonStep; n: number }) {
             {step.lines.map((l, i) => (
               <li key={i} className="flex items-start gap-[var(--space-gap-tight)]">
                 {/* Used: a check in the success color. Not used: a dash in the muted color. */}
-                {l.used ? (
-                  <Check aria-label="used" className="mt-[calc((1lh_-_var(--size-icon))/2)] size-[var(--size-icon)] shrink-0 text-[color:var(--color-status-success)]" />
-                ) : (
-                  <Minus aria-label="not used" className="mt-[calc((1lh_-_var(--size-icon))/2)] size-[var(--size-icon)] shrink-0 text-[color:var(--color-text-muted)]" />
-                )}
+                <span className={`mt-[calc((1lh_-_var(--size-icon))/2)] flex ${l.used ? "text-[color:var(--color-status-success)]" : "text-[color:var(--color-text-muted)]"}`}>
+                  <Icon icon={l.used ? Check : Minus} label={l.used ? "used" : "not used"} />
+                </span>
                 <span>
                   {l.verb} <b>{l.subject}</b>: {l.text}
                 </span>

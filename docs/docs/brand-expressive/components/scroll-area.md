@@ -1,7 +1,7 @@
 ---
 composite_data: "./scroll-area.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 47
+sidebar_position: 48
 title: "Scroll area"
 description: "Scroll area in Brand expressive."
 ---

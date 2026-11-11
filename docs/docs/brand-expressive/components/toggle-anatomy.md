@@ -1,7 +1,7 @@
 ---
 composite_data: "./toggle-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 60.5
+sidebar_position: 61.5
 slug: "toggle/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

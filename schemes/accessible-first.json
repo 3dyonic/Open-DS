@@ -553,6 +553,50 @@
       {
         "id": "table",
         "why": "A summary like the steps of an application, with large rows and numbers in body text. Not compact rows or small fonts."
+      },
+      {
+        "id": "icon",
+        "why": "Status and messages, always beside a word.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "Larger than the text beside it, so it is easy to see.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Accessible first has one icon size, already larger than the text.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: a bold 2px stroke, easy to see.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "A bold stroke carries the icon; a shape adds nothing people need.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "A bold stroke carries the icon.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
       }
     ],
     "out": [
@@ -1440,8 +1484,8 @@
     },
     {
       "question": "iconography.definition",
-      "option": "filled",
-      "why": "Filled icons stay visible at low vision.",
+      "option": "bold",
+      "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens.",
       "because": [
         "people.q1"
       ]
@@ -2894,6 +2938,14 @@
           },
           "$description": "No shadow: flat surfaces."
         }
+      },
+      "stroke-width": {
+        "200": {
+          "$type": "number",
+          "$value": 2,
+          "$description": "An icon stroke width option, on Lucide's 24px grid."
+        },
+        "$description": "Icon stroke width options."
       }
     },
     "brands": {
@@ -5776,6 +5828,13 @@
               "multiplier": 12
             }
           }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.200}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid."
         }
       }
     },
@@ -13659,6 +13718,46 @@
           "on": {
             "$value": "{border-width.default}",
             "$description": "Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width."
+          }
+        }
+      },
+      "icon": {
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the icon next to text."
+        },
+        "size-large": {
+          "$value": "{size.icon}",
+          "$description": "Size of the large icon, where the scheme has two sizes."
+        },
+        "contained": {
+          "padding": {
+            "$value": "{space.gap.tight}",
+            "$description": "Space between a contained icon and its shape."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the shape a contained icon sits in."
+          },
+          "tint": {
+            "background": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of the tinted shape."
+            },
+            "color": {
+              "$value": "{color.text.link}",
+              "$description": "Icon color on the tinted shape."
+            }
+          },
+          "solid": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the solid shape."
+            },
+            "color": {
+              "$value": "{color.text.on-action}",
+              "$description": "Icon color on the solid shape."
+            }
           }
         }
       }

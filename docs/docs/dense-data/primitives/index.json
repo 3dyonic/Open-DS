@@ -96,7 +96,7 @@
     },
     {
      "title": "Shape",
-     "text": "7 primitives · 7 in use",
+     "text": "8 primitives · 8 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -117,9 +117,9 @@
       }
      ],
      "meter": {
-      "value": 7,
-      "max": 7,
-      "label": "7 of 7 in use"
+      "value": 8,
+      "max": 8,
+      "label": "8 of 8 in use"
      }
     }
    ]

@@ -1,0 +1,392 @@
+{
+ "preview": {
+  "icon/live": {
+   "title": "Icon examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-icon--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-icon--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Icon in Storybook",
+     "href": "/storybook/?path=/docs/components-icon--docs"
+    }
+   ]
+  },
+  "icon/size/default": {
+   "title": "Icon default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-icon--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=size:default"
+   }
+  },
+  "icon/size/large": {
+   "title": "Icon large",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-icon--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=size:large"
+   }
+  },
+  "icon/variant/plain": {
+   "title": "Icon plain",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-icon--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=variant:plain"
+   }
+  },
+  "icon/variant/contained-tint": {
+   "title": "Icon contained-tint",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-icon--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=variant:contained-tint"
+   }
+  },
+  "icon/variant/contained-solid": {
+   "title": "Icon contained-solid",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-icon--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=variant:contained-solid"
+   }
+  }
+ },
+ "card-grid": {
+  "anatomy-link/icon": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the icon, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./icon/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "icon/iconography.count": {
+   "anchor": "why-iconography-count",
+   "question": "How many icon sizes exist?",
+   "key": "iconography.count",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "One",
+     "why": "One size, matched to the small text."
+    },
+    {
+     "kind": "decided",
+     "title": "So Icon",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "16px, the size of the small text in rows and toolbars."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "large",
+       "text": "Dense data has one icon size."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Icon decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "icon/iconography.values": {
+   "anchor": "why-iconography-values",
+   "question": "How big are icons next to text?",
+   "key": "iconography.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Match the text",
+     "why": "Icons match the label so they do not outweigh it."
+    },
+    {
+     "kind": "decided",
+     "title": "So Icon",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "16px, the size of the small text in rows and toolbars."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Icon decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "icon/iconography.definition": {
+   "anchor": "why-iconography-definition",
+   "question": "What icon style and stroke?",
+   "key": "iconography.definition",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Outline",
+     "why": "Outline icons at a 1.5px stroke stay light next to dense text."
+    },
+    {
+     "kind": "decided",
+     "title": "So Icon",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "plain",
+       "text": "Every icon: outline at a 1.5px stroke."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "contained-tint",
+       "text": "Outline icons stay light next to dense text; a shape would add weight to every row."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "contained-solid",
+       "text": "Outline icons stay light next to dense text."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Empty: icon"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 3,
+     "caption": "Icon decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "icon": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Icon",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.icon.size",
+      "alias": "size.icon",
+      "variable": "icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Size large",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.icon.size-large",
+      "alias": "size.icon",
+      "variable": "icon-size-large"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Contained",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.icon.contained.padding",
+      "alias": "space.gap.tight",
+      "variable": "icon-contained-padding"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Contained",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.icon.contained.radius",
+      "alias": "radius.control",
+      "variable": "icon-contained-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.125rem"
+       },
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Contained",
+     "part": "Tint background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.icon.contained.tint.background",
+      "alias": "color.surface.selected",
+      "variable": "icon-contained-tint-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E8ECFF"
+       },
+       "token": "violet.light.100",
+       "text": "#E8ECFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2A244F"
+       },
+       "token": "violet.dark.100",
+       "text": "#2A244F"
+      }
+     ]
+    },
+    {
+     "group": "Contained",
+     "part": "Tint color",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.icon.contained.tint.color",
+      "alias": "color.text.link",
+      "variable": "icon-contained-tint-color"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#3729AA"
+       },
+       "token": "violet.light.700",
+       "text": "#3729AA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#BEBBFB"
+       },
+       "token": "violet.dark.700",
+       "text": "#BEBBFB"
+      }
+     ]
+    },
+    {
+     "group": "Contained",
+     "part": "Solid background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.icon.contained.solid.background",
+      "alias": "color.action.primary",
+      "variable": "icon-contained-solid-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Contained",
+     "part": "Solid color",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.icon.contained.solid.color",
+      "alias": "color.text.on-action",
+      "variable": "icon-contained-solid-color"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

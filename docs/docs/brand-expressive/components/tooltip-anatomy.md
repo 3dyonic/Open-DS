@@ -1,7 +1,7 @@
 ---
 composite_data: "./tooltip-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 62.5
+sidebar_position: 63.5
 slug: "tooltip/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

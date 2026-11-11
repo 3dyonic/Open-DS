@@ -130,7 +130,7 @@
     {
      "href": "primitives/",
      "title": "Primitives",
-     "text": "All 173 raw values, and the tokens that point to each.",
+     "text": "All 174 raw values, and the tokens that point to each.",
      "samples": [
       {
        "kind": "color",
@@ -220,7 +220,7 @@
     {
      "href": "components/inventory",
      "title": "Components",
-     "text": "58 components, each with when to use it and how Dense data decided.",
+     "text": "59 components, each with when to use it and how Dense data decided.",
      "samples": [
       {
        "kind": "text",

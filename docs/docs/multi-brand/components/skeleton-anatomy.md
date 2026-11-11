@@ -1,7 +1,7 @@
 ---
 composite_data: "./skeleton-anatomy.json"
 generated: "By open-ds from the scheme. Do not edit by hand."
-sidebar_position: 52.5
+sidebar_position: 53.5
 slug: "skeleton/anatomy"
 sidebar_label: "Anatomy reference"
 sidebar_class_name: "ods-anatomy"

@@ -71,3 +71,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Checkbox reads 12 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Checkbox's tokens to change Checkbox alone.
 
 ::token-table{component="checkbox"}
+
+Its icons (`Check`) also read `icon.stroke-width`, 1.5px in Multi-brand: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

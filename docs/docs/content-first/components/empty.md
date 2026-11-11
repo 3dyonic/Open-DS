@@ -68,7 +68,7 @@ A quiet outline icon in a small tile, above a warm invitation to save an article
 
 **Because**
 
-- [What icon style? **Outline**](#why-iconography-definition) · `iconography.definition`
+- [What icon style and stroke? **Outline**](#why-iconography-definition) · `iconography.definition`
 - [How does it sound? **Conversational**](#why-voice-values) · `voice.values`
 :::
 

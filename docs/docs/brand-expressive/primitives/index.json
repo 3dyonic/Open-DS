@@ -52,7 +52,7 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "14 primitives · 14 in use",
+     "text": "15 primitives · 15 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -89,14 +89,14 @@
       }
      ],
      "meter": {
-      "value": 14,
-      "max": 14,
-      "label": "14 of 14 in use"
+      "value": 15,
+      "max": 15,
+      "label": "15 of 15 in use"
      }
     },
     {
      "title": "Shape",
-     "text": "7 primitives · 7 in use",
+     "text": "8 primitives · 8 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -117,9 +117,9 @@
       }
      ],
      "meter": {
-      "value": 7,
-      "max": 7,
-      "label": "7 of 7 in use"
+      "value": 8,
+      "max": 8,
+      "label": "8 of 8 in use"
      }
     }
    ]

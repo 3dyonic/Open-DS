@@ -9,8 +9,8 @@ hide_table_of_contents: true
 
 # Inventory
 
-:::intro{robot="shelf" stats="58 In|4 Left out|10 Families"}
-**58** components are in Dense data. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
+:::intro{robot="shelf" stats="59 In|4 Left out|10 Families"}
+**59** components are in Dense data. The components answers picked them (see [Components](../foundations/components)). Anything not in is out, and its page says why.
 :::
 
 ## Action
@@ -63,7 +63,7 @@ Ways to show more content. 1 in Dense data.
 
 ## Media
 
-Pictures and slides. 2 in Dense data.
+Pictures and slides. 3 in Dense data.
 
 ::card-grid{id="inventory/media"}
 

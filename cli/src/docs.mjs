@@ -184,6 +184,7 @@ const primitiveType = (path) =>
     shadow: "shadow",
     duration: "duration",
     opacity: "number",
+    "stroke-width": "number",
   })[path.split(".")[0]] ??
   (path.startsWith("font.family")
     ? "fontFamily"
@@ -204,7 +205,7 @@ const PRIMITIVE_PAGES = [
   {
     id: "shape",
     title: "Shape",
-    match: (p) => /^(radius|border-width)\./.test(p),
+    match: (p) => /^(radius|border-width|stroke-width)\./.test(p),
   },
   { id: "type", title: "Type", match: (p) => p.startsWith("font.") },
   {
@@ -586,6 +587,49 @@ export function docsPages(
 ) {
   // The data the page composites draw (OD-284), written to _composites.json beside the pages.
   const compositeData = {};
+  // OD-285: the Lucide icons each component draws, read from its own imports, and the stroke every
+  // Lucide icon takes from the scheme (ui/src/icons.css).
+  const lucideIcons = Object.fromEntries(
+    readdirSync(join(roots.ui, "components"))
+      .filter((f) => f.endsWith(".tsx") && f !== "icon.tsx")
+      .map((f) => [
+        f.replace(/\.tsx$/, ""),
+        (readFileSync(join(roots.ui, "components", f), "utf8").match(/import \{([^}]*)\} from "lucide-react"/)?.[1] ?? "")
+          .split(",")
+          .map((x) => x.trim().replace(/Icon$/, ""))
+          .filter(Boolean),
+      ])
+      .filter(([, icons]) => icons.length),
+  );
+  const iconStroke = () => {
+    const ref = String(scheme.tokens.semantic.icon?.["stroke-width"]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
+    return ref?.split(".").reduce((n, k) => n?.[k], scheme.tokens.primitive)?.$value;
+  };
+  // The split (OD-285): the components draw Lucide themselves; content uses Icon. Both read the same
+  // tokens, so the page says how to insert an icon and why there are two ways.
+  const iconWays = () =>
+    `## Two ways to draw an icon\n\nTo keep things simple, Open DS uses one open-source icon set, Lucide, in every scheme. ${esc(scheme.name)} sets each icon's size and its stroke, ${iconStroke()}px; the drawings stay the same. Both ways read the same tokens, so an icon looks the same either way, and a change to the scheme reaches every icon.\n\n` +
+    `**Inside the components**, shadcn's way. Select, Accordion, Checkbox and the other components draw their own icons, so you add nothing. They import Lucide directly, as shadcn does, so they stay easy to update.\n\n` +
+    '```tsx\n// select.tsx, as it is\n<ChevronDown className="size-[var(--select-size)] text-[var(--select-trigger-icon)]" />\n```\n\n' +
+    `**In your content**, use Icon: an icon beside a word, in text, a card or a toolbar; an icon button with no word, which needs a label; the large size; and the contained looks.\n\n` +
+    '```tsx\n<Icon icon={Bell} /> Notify me\n<Button variant="ghost"><Icon icon={X} label="Close" /></Button>\n```';
+  // Each icon the components draw, and the components that draw it, as a Markdown table. base is the
+  // path from the page to the component pages.
+  const iconsTable = (base) => {
+    const by = {};
+    // Only the components this docs site has a page for: all of them in the Open DS docs, the carried
+    // ones in a created project (the same rule as the component pages).
+    const hasPage = (c) => all || !scheme.inventory || scheme.inventory.in.some((x) => x.id === c);
+    for (const [c, icons] of Object.entries(lucideIcons))
+      if (hasPage(c)) for (const i of icons) (by[i] ??= []).push(c);
+    return (
+      `| Icon | Drawn by |\n| --- | --- |\n` +
+      Object.entries(by)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([i, cs]) => `| \`${i}\` | ${cs.map((c) => `[${title(c)}](${base}${c}.md)`).join(", ")} |`)
+        .join("\n")
+    );
+  };
   const cardGrid = (id, cards) => {
     (compositeData["card-grid"] ??= {})[id] = { cards };
     return `::card-grid{id="${id}"}`;
@@ -1673,6 +1717,9 @@ export function docsPages(
             ? `\n\nThe raw values these tokens end at are on [Primitives › ${PRIM_PAGE_OF[sc.id]?.title ?? "all kinds"}](../primitives/${PRIM_PAGE_OF[sc.id]?.id ?? ""}).`
             : "")) +
       (sc.id === "spacing" ? spacingMap(scheme, g) : "") +
+      (sc.id === "iconography"
+        ? `\n\n## The icons\n\nOpen DS draws every icon with one open-source set, Lucide. In ${esc(scheme.name)}:\n\n- **Style:** ${esc(label("iconography.definition"))}\n- **Stroke:** ${iconStroke()}px on Lucide's 24px grid\n- **Size next to text:** ${esc(label("iconography.values"))}\n\nThe components draw their own icons; in content, use [Icon](../components/icon.md).\n\n::preview{${introRobot("slumber")}id="icon/live"}\n\n## Icons in the components\n\n${iconsTable("../components/")}`
+        : "") +
       // What lands where is shown per component, in its anatomy (OD-229), not as a list here.
       `\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
@@ -2252,7 +2299,10 @@ export function docsPages(
       tokenTable(
         name,
         rows.some((r) => r.own) ? ownTable(rows, ths) : classTable(rows, ths),
-      )
+      ) +
+      (lucideIcons[name] || name === "icon"
+        ? `\n\n${name === "icon" ? "Its icon" : `Its icons (${lucideIcons[name].map((i) => `\`${i}\``).join(", ")})`} also read \`icon.stroke-width\`, ${iconStroke()}px in ${esc(scheme.name)}: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).`
+        : "")
     );
   };
   // Each table is data in _composites.json; the page holds one directive line (OD-284).
@@ -2785,6 +2835,7 @@ export function docsPages(
         },
       ],
     };
+    if (name === "icon") parts.push(iconWays());
     parts.push(`## See it live\n\n::preview{${introRobot("slumber")}id="${name}/live"}`);
     // A kept component's own use leads "When to use it" (OD-211): where this scheme uses it, then
     // what it is for in any design system.
@@ -2957,6 +3008,10 @@ export function docsPages(
             : "") +
           `\n\nSee [Voice and tone](../voice.md) for the whole voice.`,
       );
+    if (name === "icon")
+      parts.push(
+        `## Icons in the components\n\nThe components draw these Lucide icons themselves, at ${esc(scheme.name)}'s icon size and stroke.\n\n${iconsTable("./")}`,
+      );
     const a11y = r.accessibility ?? [];
     const kb = r.keyboard ?? [];
     if (a11y.length || kb.length)
@@ -2971,6 +3026,9 @@ export function docsPages(
       );
     parts.push(
       `## Use it in code\n\n\`\`\`bash\nnpx open-ds add ${name}\n\`\`\`\n\n` +
+        (name === "icon"
+          ? "```tsx\nimport { Bell, X } from \"lucide-react\";\nimport { Icon } from \"@/components/ui/icon\";\n\n<Button><Icon icon={Bell} /> Notify me</Button>\n<Button variant=\"ghost\"><Icon icon={X} label=\"Close\" /></Button>\n```\n\n"
+          : "") +
         `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
     );
     parts.push(

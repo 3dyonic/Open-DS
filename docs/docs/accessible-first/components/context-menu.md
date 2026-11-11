@@ -66,3 +66,5 @@ The component reads only component keys and semantic tokens, so it follows the b
 Context menu reads 72 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Context menu's tokens to change Context menu alone.
 
 ::token-table{component="context-menu"}
+
+Its icons (`Check`, `ChevronRight`, `Circle`) also read `icon.stroke-width`, 2px in Accessible first: one rule gives every Lucide icon the scheme's stroke. See [Icon](./icon.md).

@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 # Primitives
 
-:::intro{robot="multi-brand" stats="226 Primitives|112 In use|114 Spare"}
+:::intro{robot="multi-brand" stats="227 Primitives|113 In use|114 Spare"}
 The raw values of Multi-brand. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/)), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.
 :::
 
@@ -26,13 +26,13 @@ The raw values of Multi-brand. Primitives hold the values; semantic tokens give 
 
 ## Every kind
 
-**226** primitives. **112** are used by a semantic token, a theme or a component key. **114** are not used yet.
+**227** primitives. **113** are used by a semantic token, a theme or a component key. **114** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
 | [Color](./color.md) | 180 | 66 |
 | [Space and size](./space-and-size.md) | 14 | 14 |
-| [Shape](./shape.md) | 9 | 9 |
+| [Shape](./shape.md) | 10 | 10 |
 | [Type](./type.md) | 15 | 15 |
 | [Motion](./motion.md) | 3 | 3 |
 | [Effects](./effects.md) | 5 | 5 |
