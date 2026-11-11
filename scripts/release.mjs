@@ -14,6 +14,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { grammar, loadScheme, schemeIds } from "../cli/src/schemes.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (...p) => readFileSync(join(root, ...p), "utf8");
@@ -22,10 +23,7 @@ const LEVELS = ["patch", "minor", "major"];
 
 /** The public surface now: sorted lists, one per kind. */
 export function surface() {
-  const ids = readdirSync(join(root, "schemes"))
-    .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-    .map((f) => f.replace(/\.json$/, ""))
-    .sort();
+  const ids = schemeIds().slice().sort();
   if (!existsSync(join(root, "tokens", "dist", "index.json")))
     throw new Error("Build the tokens first: pnpm --dir tokens build");
   const vars = ids.flatMap((id) =>
@@ -44,12 +42,12 @@ export function surface() {
   return {
     schemes: ids,
     brands: ids.flatMap((id) =>
-      Object.keys(json("schemes", `${id}.json`).tokens.brands).map(
+      Object.keys(loadScheme(id).tokens.brands).map(
         (b) => `${id} ${b}`,
       ),
     ),
     css_variables: vars.sort(),
-    component_keys: json("schemes", "grammar.json")
+    component_keys: grammar()
       .component_keys.map((k) => k.id)
       .sort(),
     cli_commands: [

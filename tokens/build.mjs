@@ -29,6 +29,7 @@ const TRANSFORMS = ["attribute/cti", "name/kebab", "fontFamily/css", "cubicBezie
 
 // The shadcn mapping lives with the CLI (OD-215), so the docs show exactly what this build writes.
 import { SHADCN, SHADCN_SCALE, spacingUtilities } from "../cli/src/shadcn.mjs";
+import { grammar, loadScheme, schemeIds } from "../cli/src/schemes.mjs";
 export { SHADCN };
 
 export const shadcnCss = (name, scheme) =>
@@ -151,16 +152,13 @@ export async function buildScheme(scheme) {
 
 export async function buildAll() {
   rmSync(dist, { recursive: true, force: true });
-  const ids = readdirSync(join(root, "schemes"))
-    .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-    .map((f) => f.replace(/\.json$/, ""))
-    .sort();
+  const ids = schemeIds().slice().sort();
   const index = [];
   // Semantic descriptions come from the grammar's guidance, written once for every scheme.
-  const grammar = JSON.parse(readFileSync(join(root, "schemes", "grammar.json"), "utf8"));
+  const g = grammar();
   for (const id of ids)
     index.push(
-      await buildScheme(withGuidance(JSON.parse(readFileSync(join(root, "schemes", `${id}.json`), "utf8")), grammar)),
+      await buildScheme(withGuidance(loadScheme(id), g)),
     );
   writeFileSync(join(dist, "shadcn-map.json"), JSON.stringify(SHADCN, null, 2) + "\n");
   writeFileSync(
