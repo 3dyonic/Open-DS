@@ -71,8 +71,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 ::anatomy-steps{id="menubar/card-2"}
 :::
 
-:::panel{id="part-4-5" title="Surface and shadow" note="Parts 4, 5" media="side"}
-![Surface and shadow: 4, 5](/anatomy/accessible-first/menubar/card-3.png)
+:::panel{id="part-4-5" title="Surface and edge" note="Parts 4, 5" media="side"}
+![Surface and edge: 4, 5](/anatomy/accessible-first/menubar/card-3.png)
 
 :label[Containment] :label[Layering]
 

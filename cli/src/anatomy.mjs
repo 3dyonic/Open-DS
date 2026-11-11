@@ -239,16 +239,20 @@ export function anatomyReference(scheme, g, roots, comp) {
       ...(p.children && { children: p.children.map(part) }),
     };
   };
+  // A card's title can depend on an answer: "Surface and shadow" reads "Surface and edge" in a
+  // scheme with no shadows (OD-267). title_when maps "question=option" to the title.
+  const chosen = new Set(scheme.answers.map((a) => `${a.question}=${a.option}`));
+  const titleOf = (c) => Object.entries(c.title_when ?? {}).find(([k]) => chosen.has(k))?.[1] ?? c.title;
   return {
     component: comp,
     scheme: scheme.id,
     parts_layer: true,
     roles,
     drawing: spec.drawing,
-    image: Object.fromEntries((spec.cards ?? []).filter((c) => c.image).map((c) => [c.title, c.image])),
+    image: Object.fromEntries((spec.cards ?? []).filter((c) => c.image).map((c) => [titleOf(c), c.image])),
     parts: spec.parts.map(part),
     cards: spec.cards.map((c) => ({
-      title: c.title,
+      title: titleOf(c),
       parts: c.parts,
       roles: c.roles,
       ...(c.image && { image: c.image }),

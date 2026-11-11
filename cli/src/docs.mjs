@@ -2602,7 +2602,6 @@ export function docsPages(
     const T = title(name);
     // One engine with open-ds anatomy and get_anatomy: the cards' answers, rules and tokens come from it.
     const ref = anatomyReference(scheme, g, roots, name);
-    const refCard = Object.fromEntries(ref.cards.map((c) => [c.title, c]));
     // Figma assets (OD-229): the drawings are frames in Figma, drawn from this scheme's tokens and
     // exported into docs/static/anatomy/<scheme>/<component>/. Each image links back to its frame, so
     // the drawing is seen and changed in Figma.
@@ -2770,7 +2769,8 @@ export function docsPages(
     // One Panel per card (OD-284): its drawing, its parts and roles, and its steps.
     const card = (c, k) => {
       const nums = new Set(c.parts);
-      const d = refCard[c.title];
+      // The engine's card k is this card, with its title for this scheme's answers (OD-267).
+      const d = ref.cards[k];
       (compositeData["anatomy-steps"] ??= {})[`${name}/card-${k + 1}`] = { steps: stepData(d) };
       const steps = [`::anatomy-steps{id="${name}/card-${k + 1}"}`];
       let image;
@@ -2778,7 +2778,7 @@ export function docsPages(
         image = assetImg(
           `card-${k + 1}`,
           c.figma?.[scheme.id],
-          `${c.title}: ${c.parts.join(", ")}`,
+          `${d.title}: ${c.parts.join(", ")}`,
         );
       else if (spec.drawing.kind === "table")
         image = tableDrawing(`card-${k + 1}`, c.image?.sections ?? [], nums);
@@ -2794,7 +2794,7 @@ export function docsPages(
         image = drawing(`card-${k + 1}`, rows, nums, whole);
       }
       return (
-        `:::panel{id="part-${c.parts.join("-")}" title="${c.title.replaceAll('"', "'")}" note="Parts ${c.parts.join(", ")}"${asset ? ' media="side"' : ""}}\n` +
+        `:::panel{id="part-${c.parts.join("-")}" title="${d.title.replaceAll('"', "'")}" note="Parts ${c.parts.join(", ")}"${asset ? ' media="side"' : ""}}\n` +
         `${image}\n\n` +
         (c.roles.length ? `${c.roles.map(chip).join(" ")}\n\n` : "") +
         `${steps.join("\n\n")}\n:::`
