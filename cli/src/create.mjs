@@ -67,7 +67,7 @@ function readme(scheme, name, brands) {
     "",
     "```bash",
     "npm install",
-    "npm run storybook   # the components, at http://localhost:6006",
+    "npm run storybook   # the components, at http://127.0.0.1:6006",
     "npm run docs        # the docs, at http://localhost:3000",
     "```",
     "",

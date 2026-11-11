@@ -88,7 +88,11 @@ const kitName = ({ tier, path }) =>
     : tier === "semantic"
       ? `Semantic/${path.replaceAll(".", "/").replace(/\/@$/, "/default")}`
       : null;
-const px = (v) => (typeof v === "number" ? v : /rem$/.test(v) ? parseFloat(v) * 16 : /px$/.test(v) ? parseFloat(v) : parseFloat(v));
+// The two shape radii are CSS-only (OD-286): Figma caps a corner at half the shorter side, so 9999
+// draws radius.pill on any box and radius.round (50%) on a square, as the kit writes them.
+const SHAPE = new Set(["calc(infinity * 1px)", "50%"]);
+const px = (v) =>
+  typeof v === "number" ? v : SHAPE.has(String(v).trim()) ? 9999 : /rem$/.test(v) ? parseFloat(v) * 16 : parseFloat(v);
 const hex = (v) => {
   const m = String(v).match(/^#([0-9a-f]{6})([0-9a-f]{2})?$/i);
   if (!m) return null;

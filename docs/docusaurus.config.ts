@@ -12,7 +12,7 @@ import { decisionMenu } from "./src/decisionMenu";
 // A created project's docs stay one scheme.
 type Scheme = { id: string; name: string; version: string; summary: string; brands: string[] };
 const schemes = JSON.parse(readFileSync(new URL("./schemes.json", import.meta.url), "utf8")) as Scheme[];
-const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
+const STORYBOOK = process.env.STORYBOOK_URL ?? "http://127.0.0.1:6006";
 // Where the site lives (OD-210): "/" locally, "/docs/" on open-ds.dev, next to /storybook/.
 const BASE = process.env.DOCS_BASE_URL ?? "/";
 // The generated pages write images from docs/static as root paths (/anatomy/…), and Docusaurus does

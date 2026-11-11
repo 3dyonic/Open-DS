@@ -474,7 +474,7 @@
      "themed": false,
      "chain": {
       "token": "component.field.label.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "field-label-radius"
      },
      "values": [

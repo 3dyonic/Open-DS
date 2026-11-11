@@ -7703,8 +7703,8 @@
     {
       "id": "combobox/chips/radius",
       "component": "combobox",
-      "description": "Chips radius of the combobox.",
-      "default": "radius.control"
+      "description": "Corner of the combobox's chips box: it wraps to more lines as chips are added, so it takes the element corner.",
+      "default": "radius.element"
     },
     {
       "id": "combobox/chips/border",
@@ -9537,8 +9537,8 @@
     {
       "id": "field/label/radius",
       "component": "field",
-      "description": "Label radius of the field.",
-      "default": "radius.control"
+      "description": "Corner of the field's label, seen on focus: text that can wrap, so it takes the element corner.",
+      "default": "radius.element"
     },
     {
       "id": "field/label/padding",
@@ -13580,8 +13580,8 @@
     {
       "id": "sidebar/group/label/radius",
       "component": "sidebar",
-      "description": "Group label radius of the sidebar.",
-      "default": "radius.control"
+      "description": "Corner of the sidebar's group label, seen on focus: text that can wrap, so it takes the element corner.",
+      "default": "radius.element"
     },
     {
       "id": "sidebar/group/label/padding-x",
@@ -13732,8 +13732,8 @@
     {
       "id": "sidebar/menu-button/radius",
       "component": "sidebar",
-      "description": "Corner of the menu button, of the sidebar.",
-      "default": "radius.control"
+      "description": "Corner of the sidebar's menu button: a list item that can grow past one line, so it takes the element corner.",
+      "default": "radius.element"
     },
     {
       "id": "sidebar/radius",
@@ -14161,8 +14161,8 @@
     {
       "id": "sidebar/menu/badge/radius",
       "component": "sidebar",
-      "description": "Menu badge radius of the sidebar.",
-      "default": "radius.control"
+      "description": "Corner of the sidebar's menu badge: a small label, so it takes the badge corner.",
+      "default": "radius.badge"
     },
     {
       "id": "sidebar/menu/badge/padding-x",
@@ -14209,8 +14209,8 @@
     {
       "id": "sidebar/menu/skeleton/radius",
       "component": "sidebar",
-      "description": "Menu skeleton radius of the sidebar.",
-      "default": "radius.control"
+      "description": "Corner of the sidebar's menu skeleton: it stands in for a list item, so it takes the element corner.",
+      "default": "radius.element"
     },
     {
       "id": "sidebar/menu/skeleton/padding-x",
@@ -14264,8 +14264,8 @@
     {
       "id": "sidebar/menu/sub/button/radius",
       "component": "sidebar",
-      "description": "Menu sub button radius of the sidebar.",
-      "default": "radius.control"
+      "description": "Corner of the sidebar's sub button: a list item, so it takes the element corner.",
+      "default": "radius.element"
     },
     {
       "id": "sidebar/menu/sub/button/padding-x",

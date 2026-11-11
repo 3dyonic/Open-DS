@@ -777,7 +777,7 @@
      "themed": false,
      "chain": {
       "token": "component.combobox.chips.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "combobox-chips-radius"
      },
      "values": [

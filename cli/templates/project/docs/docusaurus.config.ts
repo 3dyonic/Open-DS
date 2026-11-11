@@ -16,7 +16,7 @@ const scheme = JSON.parse(
   version: string;
   summary: string;
 };
-const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
+const STORYBOOK = process.env.STORYBOOK_URL ?? "http://127.0.0.1:6006";
 
 const config: Config = {
   // Browser tabs read "Page · Dense data docs · Open DS".

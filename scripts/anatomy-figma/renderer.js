@@ -31,19 +31,39 @@ async function loadKit(library) {
   return vars;
 }
 async function renderAnatomy(SPEC, vars) {
-const report = { bound: {}, fallback: {}, crops: [] };
+const report = { bound: {}, fallback: {}, stale: {}, crops: [] };
 const imported = new Map();
+// A published kit can lag the scheme: a variable still aliases an older decision (a trigger corner on
+// radius-control after it moved to radius-element). Read what the kit variable gives, and skip it when
+// it differs from the scheme's value; the next variable in the chain, or the scheme's value, draws.
+const probe = figma.createRectangle();
+probe.name = "Open DS kit probe";
+const kitValue = (v) => {
+  try { return v.resolveForConsumer(probe).value; } catch (e) { return undefined; }
+};
+const differs = (kit, want) => {
+  if (kit === undefined || want === undefined || want === null) return false;
+  if (typeof want === "number") return Number.isFinite(want) && typeof kit === "number" && Math.abs(kit - want) > 0.5;
+  if (typeof want === "object" && "r" in want && kit && typeof kit === "object" && "r" in kit)
+    return ["r", "g", "b"].some((c) => Math.abs(kit[c] - want[c]) > 0.01);
+  return false;
+};
 async function kitVar(role) {
   const b = SPEC.bind[role];
   for (const n of b.kit) {
     const key = vars.get(n);
     if (!key) continue;
     if (!imported.has(key)) imported.set(key, await figma.variables.importVariableByKeyAsync(key));
+    const kit = kitValue(imported.get(key));
+    if (differs(kit, b.value)) {
+      report.stale[role] = `${n} gives ${typeof kit === "number" ? kit : JSON.stringify(kit)}; the scheme says ${typeof b.value === "number" ? b.value : JSON.stringify(b.value)}. Republish the kit.`;
+      continue;
+    }
     report.bound[role] = n;
     return imported.get(key);
   }
   // Shadows are effect styles in the kits, not variables: drawn from the scheme's value, not missing.
-  if (b.kind !== "shadow") report.fallback[role] = `${b.path} (kit has none of: ${b.kit.join(", ") || "-"})`;
+  if (b.kind !== "shadow" && !report.stale[role]) report.fallback[role] = `${b.path} (kit has none of: ${b.kit.join(", ") || "-"})`;
   return null;
 }
 const V = {};
@@ -561,5 +581,6 @@ let top = 0;
 for (const sct of sections) { sct.x = 0; sct.y = top; top += sct.height + GAP; }
 // Loose frames from the old layout (other schemes, drawn before sections) go below.
 for (const c of page.children) if (c.type !== "SECTION") { c.y = top; top += c.height + GAP; }
-return { ids, bound: report.bound, fallback: report.fallback, crops: report.crops };
+probe.remove();
+return { ids, bound: report.bound, fallback: report.fallback, stale: report.stale, crops: report.crops };
 }

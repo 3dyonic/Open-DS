@@ -2,6 +2,7 @@ import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import useBrokenLinks from "@docusaurus/useBrokenLinks";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import AnatomyDrawing from "@open-ds/doc-composites/AnatomyDrawing";
 import AnatomyLegend from "@open-ds/doc-composites/AnatomyLegend";
 import AnatomySteps from "@open-ds/doc-composites/AnatomySteps";
@@ -73,10 +74,21 @@ function LinkedFold(props: React.ComponentProps<typeof Fold>) {
 }
 
 // A live preview names its robot too: the one that sleeps while Storybook is not running.
-function RobotPreview({ robot, ...props }: Omit<React.ComponentProps<typeof Preview>, "robot"> & { robot?: string }) {
+// The pages hold the site path /storybook, where open-ds.dev serves Storybook beside the docs. The dev
+// server has nothing there, so in development the frames and links go to the running Storybook
+// (customFields.storybook, STORYBOOK_URL or http://127.0.0.1:6006, the address Storybook prints).
+function RobotPreview({ robot, data, ...props }: Omit<React.ComponentProps<typeof Preview>, "robot"> & { robot?: string }) {
   const day = useBaseUrl(`/robots/${robot}.webp`);
   const night = useBaseUrl(`/robots/${robot}-dark.webp`);
-  return <Preview {...props} robot={robot ? { day, night } : undefined} />;
+  const live = String(useDocusaurusContext().siteConfig.customFields?.storybook ?? "").replace(/\/$/, "");
+  const local = (u?: string) =>
+    process.env.NODE_ENV === "development" && live && u?.startsWith("/storybook") ? live + u.slice("/storybook".length) : u;
+  const shown = {
+    ...data,
+    frames: { light: local(data.frames.light) as string, ...(data.frames.dark && { dark: local(data.frames.dark) }) },
+    ...(data.links && { links: data.links.map((l) => ({ ...l, href: local(l.href) as string })) }),
+  };
+  return <Preview {...props} data={shown} robot={robot ? { day, night } : undefined} />;
 }
 
 // The home page's hero names its robot too.
