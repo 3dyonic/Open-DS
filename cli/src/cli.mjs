@@ -10,6 +10,7 @@ import {
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
+import { build } from "./build.mjs";
 import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
@@ -61,6 +62,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds gaps <scheme> [<component>] where the decision trace breaks, by kind: keys that hide their
                                        part or state, wrong or borrowed links, a semantic with two
                                        jobs, rules not written, picks with no reason (the gap ledger)
+  open-ds build [<scheme>] [--out build/schemes]
+                                       check each scheme against its rules and write the built scheme
+                                       with its sha256 hash; when a rule fails, writes nothing and exits 1
   open-ds token <scheme> <words>       the tokens and component keys that fit an intent
   open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]
@@ -344,6 +348,20 @@ export async function run(argv) {
       }
       await runStdio();
       await new Promise(() => {});
+    }
+    if (cmd === "build") {
+      const dir = resolve(flag(args, "--out", "build/schemes"));
+      const ids = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--out");
+      const r = build({ ids, out: dir });
+      out(r, () => {
+        for (const b of r.built)
+          for (const x of b.results)
+            console.log(`${x.findings.length ? "✗" : "✓"} ${b.id}: ${x.rule}${x.findings.length ? ` (${x.findings.length})` : ""}`);
+        const broken = r.built.flatMap((b) => b.results.flatMap((x) => x.findings));
+        for (const f of broken.slice(0, 20)) console.log(`  ${f}`);
+        console.log(r.ok ? `Built ${r.built.length} schemes into ${r.out}.` : `${broken.length} rule failures; nothing written.`);
+      });
+      return r.ok ? 0 : 1;
     }
     if (cmd === "list") {
       const data = schemeIds().map((id) => {
