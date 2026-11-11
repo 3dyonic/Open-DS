@@ -1,4 +1,5 @@
-// OD-235: writes each scheme's component spacing map from its spec. Run after changing a rhythm or
+// OD-235: sets each scheme's component spacing map spec and the space primitives it needs. loadScheme
+// generates the steps from the spec (OD-292). Run after changing a rhythm or
 // which steps hold still: node scripts/spacing-map.mjs
 import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
