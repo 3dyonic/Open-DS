@@ -418,7 +418,8 @@ function tnode(d, out, show) {
   if (d.h !== undefined && d.h !== "fill" && d.h !== "hug") setN(node, "height", d.h);
   if (d.opacity !== undefined) setN(node, "opacity", d.opacity);
   // A focus ring: a frame around the node, its offset as padding, its width and color as the stroke.
-  if (d.ring) {
+  // It is a state, so it shows on the stage and on the card that explains it, never on other cards.
+  if (d.ring && (!show || [].concat(d.ring.n ?? []).some((m) => show.has(m)))) {
     const r = createAutoLayout("HORIZONTAL", { name: "Focus ring" });
     // The gap between the node and the ring shows the offset color, when the decision names one.
     r.fills = d.ring.fill ? [paint(d.ring.fill)] : [];
