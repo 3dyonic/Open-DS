@@ -16729,7 +16729,7 @@
                       "children": [
                         {
                           "t": "text",
-                          "text": "Is shipping free?",
+                          "sample": "metrics.0.label",
                           "size": "component.accordion.trigger.font-size",
                           "color": "component.accordion.trigger.label",
                           "weight": "component.accordion.trigger.font-weight"
@@ -16754,7 +16754,7 @@
                       "children": [
                         {
                           "t": "text",
-                          "text": "Yes, on orders over $50 in the US.",
+                          "sample": "metrics.0.value",
                           "size": "component.accordion.content.font-size",
                           "color": "color.text.primary",
                           "lh": "type.body.line-height"
@@ -16787,7 +16787,7 @@
                       "children": [
                         {
                           "t": "text",
-                          "text": "Can I return an item?",
+                          "sample": "metrics.1.label",
                           "size": "component.accordion.trigger.font-size",
                           "color": "component.accordion.trigger.label",
                           "weight": "component.accordion.trigger.font-weight"
@@ -16833,7 +16833,7 @@
                       "children": [
                         {
                           "t": "text",
-                          "text": "Do you ship abroad?",
+                          "sample": "metrics.2.label",
                           "size": "component.accordion.trigger.font-size",
                           "color": "component.accordion.trigger.label",
                           "weight": "component.accordion.trigger.font-weight"
