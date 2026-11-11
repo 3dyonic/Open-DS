@@ -61,11 +61,15 @@ test("a numbered component token gets a name from how the component code reads i
   assert.equal(betterName("component.button.primary.background.@", SOURCE), null);
 });
 
-test("nothing on the map is invented: no sample data, and no reason where the scheme records none", () => {
+test("nothing on the map is invented: no sample data, and a why only where the scheme records one", () => {
   const text = JSON.stringify(af);
   assert.ok(!/sample/i.test(text));
+  // space.gap.default has no theme pick: its why is the usage rule's own words, and the grammar's trace
+  // rule adds answers, never a sentence.
   const gap = af.shared.decisions["space.gap.default"];
-  assert.equal(gap.why, null);
+  const rules = loadScheme("accessible-first").usage.map((u) => u.why);
+  assert.ok(rules.includes(gap.why), gap.why);
+  assert.ok(gap.answers.includes("spacing.definition"));
   assert.equal(gap.description, "Between items in one group.");
 });
 

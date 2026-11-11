@@ -11,6 +11,7 @@ import {
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
 import { build } from "./build.mjs";
+import { traceScheme, traceText, traceToken, untraced } from "./trace.mjs";
 import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
@@ -65,6 +66,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds build [<scheme>] [--out build/schemes]
                                        check each scheme against its rules and write the built scheme
                                        with its sha256 hash; when a rule fails, writes nothing and exits 1
+  open-ds trace <scheme> [<token>]     how each value reaches the answers that decide it: a theme
+                                       pick, its own or its group's reason, a usage rule or a grammar
+                                       trace rule; with no token, the values no decision reaches yet
   open-ds token <scheme> <words>       the tokens and component keys that fit an intent
   open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]
@@ -362,6 +366,30 @@ export async function run(argv) {
         console.log(r.ok ? `Built ${r.built.length} schemes into ${r.out}.` : `${broken.length} rule failures; nothing written.`);
       });
       return r.ok ? 0 : 1;
+    }
+    if (cmd === "trace") {
+      const [id, token] = args.filter((a) => !a.startsWith("--"));
+      if (!id) throw new Error("trace needs a scheme: open-ds trace <scheme> [<token>]. open-ds list shows the schemes.");
+      const scheme = loadScheme(id);
+      const g = grammar();
+      const trace = traceScheme(scheme, g);
+      if (token) {
+        const t = traceToken(trace, token);
+        if (!t) {
+          console.error(`${id} has no semantic token ${token}. Run open-ds trace ${id} for the gaps, or open-ds token ${id} <words> to find one.`);
+          return 1;
+        }
+        out(t, () => console.log(traceText(scheme, g, t)));
+        return 0;
+      }
+      const gaps = untraced(trace);
+      const r = { scheme: id, total: trace.total, untraced: gaps.map((t) => t.token) };
+      out(r, () => {
+        console.log(`${id}: ${trace.total - gaps.length} of ${trace.total} semantic values reach a decision.`);
+        for (const t of gaps) console.log(`  no decision: ${t.token}`);
+        if (!gaps.length) console.log(`Every value is traced. Open one with open-ds trace ${id} <token>.`);
+      });
+      return gaps.length ? 1 : 0;
     }
     if (cmd === "list") {
       const data = schemeIds().map((id) => {

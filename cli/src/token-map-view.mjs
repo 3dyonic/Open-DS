@@ -22,6 +22,7 @@ import {
 } from "./color-map.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
+import { traceScheme } from "./trace.mjs";
 
 export const AREAS = ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Motion", "Opacity"];
 
@@ -153,8 +154,13 @@ const stepOrder = (a, b) => {
  */
 export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "" }) {
   const reasons = reasonsOf(scheme, grammar);
+  // A decision without a theme pick says why through its own, its group's or a usage rule's reason
+  // (trace.mjs). A grammar trace rule links answers but says no why of the scheme's: none is invented.
+  const trace = traceScheme(scheme, grammar);
+  const traced = new Map(trace.tokens.map((t) => [t.token, t]));
+  const tracedWhy = (id) => traced.get(tokenName(id))?.links.find((l) => l.by !== "pick" && l.why)?.why ?? null;
   const answer = (id) => (reasons[id] ? { id, question: reasons[id].question, answer: reasons[id].answer, why: reasons[id].why } : null);
-  const graphs = Object.fromEntries(["light", "dark"].map((m) => [m, tokenGraph({ scheme, brand, mode: m, grammar })]));
+  const graphs = Object.fromEntries(["light", "dark"].map((m) => [m, tokenGraph({ scheme, brand, mode: m, grammar, trace })]));
   const indexes = Object.fromEntries(["light", "dark"].map((m) => [m, colorIndex(graphs[m], m)]));
   const floorAnswer = reasons["accessibility.definition"]?.answer ?? "";
   const textFloor = /AAA/.test(floorAnswer) ? 7 : 4.5;
@@ -189,7 +195,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         shared.decisions[d] = {
           id: d,
           group,
-          why: plainWhy(pick?.why) ?? null,
+          why: plainWhy(pick?.why) ?? tracedWhy(d),
           description: indexes.light.nodes.get(d)?.description ?? null,
           answers: chain.answers,
           direct: chain.direct,
@@ -225,7 +231,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       decisions[tokenName(d)] = {
         id: tokenName(d),
         group: groupOf(d),
-        why: plainWhy(pick?.why) ?? null,
+        why: plainWhy(pick?.why) ?? tracedWhy(d),
         description: index.nodes.get(d)?.description ?? null,
         answers: chain.answers,
         direct: chain.direct,

@@ -16610,6 +16610,78 @@
       ]
     }
   },
+  "trace": [
+    {
+      "tokens": ["type.*.font-size"],
+      "follows": ["typography.roles", "typography.count", "typography.values"],
+      "says": "A text size exists because the roles answer names its role; the count answer sets how many steps the scale takes; the values answer sets the body size the scale grows from."
+    },
+    {
+      "tokens": ["type.*.line-height"],
+      "follows": ["typography.definition"],
+      "says": "The definition answer sets how line heights follow the size: on the grid or in proportion."
+    },
+    {
+      "tokens": ["type.*.font-weight"],
+      "follows": ["typography.roles"],
+      "says": "A weight belongs to its text role; the roles answer names the roles."
+    },
+    {
+      "tokens": ["space.gap.*", "space.inset.*"],
+      "follows": ["spacing.roles", "spacing.definition", "spacing.values"],
+      "says": "Gaps and insets are the spacing roles; the definition answer sets the size of the steps; the values answer sets the base density."
+    },
+    {
+      "tokens": ["size.row"],
+      "follows": ["spacing.roles", "spacing.values"],
+      "says": "A row height exists when the roles answer names rows; the values answer sets the density it follows."
+    },
+    {
+      "tokens": ["border-width.default"],
+      "follows": ["elevation.definition"],
+      "says": "The definition answer for layering says whether lines tell the eye a new group starts, so it sets the weight of the default line."
+    },
+    {
+      "tokens": ["border-width.focus", "border-width.focus-offset"],
+      "follows": ["accessibility.roles", "accessibility.definition"],
+      "says": "Focus is a state with its own visible look (roles answer); the ring and its gap must be seen at the contrast floor (definition answer)."
+    },
+    {
+      "tokens": ["motion.duration.feedback"],
+      "follows": ["motion.values"],
+      "says": "The values answer names how fast feedback feels."
+    },
+    {
+      "tokens": ["motion.duration.*"],
+      "follows": ["motion.roles", "motion.count"],
+      "says": "A speed exists because the roles answer names its job; the count answer sets how many speeds there are."
+    },
+    {
+      "tokens": ["motion.easing.*"],
+      "follows": ["motion.definition"],
+      "says": "The definition answer sets the easing: a standard ease-out or a spring."
+    },
+    {
+      "tokens": ["opacity.disabled"],
+      "follows": ["accessibility.roles"],
+      "says": "Disabled is a state with its own look; the roles answer names the states."
+    },
+    {
+      "tokens": ["size.control.*"],
+      "follows": ["accessibility.values"],
+      "says": "The values answer sets the smallest target, and control heights grow from it."
+    },
+    {
+      "tokens": ["size.icon"],
+      "follows": ["iconography.values", "iconography.count"],
+      "says": "The values answer sets the icon size next to text; the count answer sets how many icon sizes exist."
+    },
+    {
+      "tokens": ["icon.stroke-width"],
+      "follows": ["iconography.definition"],
+      "says": "The definition answer sets the icon style, and it names the stroke width."
+    }
+  ],
   "catalogue": {
     "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself, data-table, which wraps TanStack Table after shadcn's Data Table guide, and date-picker, after shadcn's Date Picker. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
     "source": "https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry/new-york-v4/ui",

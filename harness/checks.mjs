@@ -722,6 +722,39 @@ export const CHECKS = {
       return ok(`${total} gaps across ${Object.keys(now).length} schemes, none new; each count may only go down`);
     },
   },
+  "values-traced": {
+    requires: ["cli/src/trace.mjs", "cli/src/token-map-view.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-293: one trace engine for coverage, the Token map and the CLI. Every semantic value reaches
+      // an answer, every grammar trace rule cites questions the grammar asks, and the Token map shows
+      // a reason for every decision it draws.
+      const { traceScheme, untraced } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const { tokenMapView } = await import(pathToFileURL(c.p("cli/src/token-map-view.mjs")).href);
+      const g = c.grammar();
+      const asked = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
+      const gaps = [];
+      for (const r of g.trace ?? [])
+        for (const q of r.follows) if (!asked.has(q)) gaps.push(`trace rule ${r.tokens.join(", ")}: ${q} is not a grammar question`);
+      let values = 0;
+      let decisions = 0;
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const trace = traceScheme(s, g);
+        values += trace.total;
+        for (const t of untraced(trace)) gaps.push(`${id}: ${t.token} reaches no answer`);
+        for (const brand of Object.keys(s.tokens.brands)) {
+          const v = tokenMapView({ scheme: s, grammar: g, brand });
+          for (const d of [v.shared, v.modes.light, v.modes.dark].flatMap((m) => Object.values(m.decisions))) {
+            decisions++;
+            if (!(d.why || d.answers.length || d.stepWhy)) gaps.push(`${id}/${brand}: the Token map shows ${d.id} with no reason`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} gaps; ${gaps.slice(0, 4).join("; ")}. Run open-ds trace <scheme> <token>.`)
+        : ok(`${values} semantic values in ${SCHEMES.length} schemes reach their answers; the Token map shows a reason for all ${decisions} decisions`);
+    },
+  },
   "decisions-cover-values": {
     requires: ["schemes/grammar.json", "cli/src/coverage.mjs", "harness/coverage-baseline.json"],
     run: async (c) => {
