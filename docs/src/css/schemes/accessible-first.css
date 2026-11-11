@@ -114,6 +114,7 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
   --radius-badge: 0.25rem; /** Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks. */
   --radius-option: 0.25rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
+  --radius-element: 0.375rem; /** Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media. */
   --radius-surface: 0.5rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
   --type-title-font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
@@ -960,7 +961,7 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
-  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-trigger-radius: var(--radius-element); /** The trigger's corner, seen on focus. */
   --accordion-trigger-focus-ring: var(--color-border-focus); /** The trigger's focus ring color, at full strength. */
   --accordion-focus-ring-width: var(--accordion-trigger-focus-ring-width); /** Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width. */
   --accordion-disabled-opacity: var(--accordion-trigger-disabled-opacity); /** Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is. */
@@ -969,18 +970,18 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --alert-dialog-content-radius: var(--radius-surface); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
   --alert-dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the alert dialog title: a heading. */
-  --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
+  --alert-dialog-media-radius: var(--radius-element); /** Media radius of the alert dialog. */
   --alert-radius: var(--radius-surface); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
   --alert-destructive-description-label: var(--color-status-danger); /** The description's text in a destructive alert: error text, at full strength, like the title. */
-  --attachment-radius: var(--radius-control); /** Radius of the attachment. */
+  --attachment-radius: var(--radius-element); /** Radius of the attachment. */
   --attachment-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the attachment. */
   --attachment-size: var(--attachment-media-size); /** Deprecated: use component.attachment.media.size (OD-243). Size of the attachment. */
   --attachment-icon-size: var(--attachment-media-icon-size); /** Deprecated: use component.attachment.media.icon.size (OD-243). Icon size of the attachment. */
   --attachment-font-weight: var(--attachment-name-font-weight); /** Deprecated: use component.attachment.name.font-weight (OD-243). Font weight of the attachment. */
   --attachment-font-size-2: var(--attachment-meta-font-size); /** Deprecated: use component.attachment.meta.font-size (OD-243). Font size 2 of the attachment. */
   --attachment-line-height-2: var(--attachment-meta-line-height); /** Deprecated: use component.attachment.meta.line-height (OD-243). Line height 2 of the attachment. */
-  --attachment-media-radius: var(--radius-control); /** Corner of the attachment's file tile: a media tile, like the item's. */
+  --attachment-media-radius: var(--radius-element); /** Corner of the attachment's file tile: a media tile, like the item's. */
   --avatar-fallback-font-size-2: var(--avatar-fallback-sm-font-size); /** Deprecated: use component.avatar.fallback.sm.font-size (OD-243). Fallback font size 2 of the avatar. */
   --avatar-fallback-line-height-2: var(--avatar-fallback-sm-line-height); /** Deprecated: use component.avatar.fallback.sm.line-height (OD-243). Fallback line height 2 of the avatar. */
   --avatar-badge-background: var(--color-action-primary); /** Badge background of the avatar. */
@@ -992,7 +993,7 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --bubble-body-radius: var(--radius-surface); /** Body radius of the bubble. */
   --bubble-body-me-background: var(--color-action-primary); /** Fill of the body of a message the viewer sent. */
   --button-group-text-radius: var(--radius-control); /** Text radius of the button group. */
-  --calendar-radius: var(--radius-control); /** Radius of the calendar. */
+  --calendar-radius: var(--radius-element); /** Radius of the calendar. */
   --calendar-shadow: var(--elevation-card); /** Shadow of the calendar. */
   --calendar-border-2: var(--color-border-focus); /** Border 2 of the calendar. */
   --calendar-focus-ring: var(--color-border-focus); /** Focus ring of the calendar. */
@@ -1109,7 +1110,7 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --input-otp-height: var(--input-otp-caret-height); /** Deprecated: use component.input-otp.caret.height (OD-243). Height of the input otp. */
   --input-otp-duration: var(--input-otp-caret-duration); /** Deprecated: use component.input-otp.caret.duration (OD-243). Duration of the input otp. */
-  --item-radius: var(--radius-control); /** Radius of the item. */
+  --item-radius: var(--radius-element); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
   --item-gap: var(--item-media-gap); /** Deprecated: use component.item.media.gap (OD-243). Gap of the item. */
@@ -1117,7 +1118,7 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --item-icon-icon-size: var(--item-media-icon-icon-size); /** Deprecated: use component.item.media.icon.icon-size (OD-243). Icon icon size of the item. */
   --item-description-label-2: var(--color-action-primary); /** Description label 2 of the item. */
   --item-media-icon-radius: var(--radius-control); /** Corner of the item's icon media: a control-sized tile in a row of controls takes the control corner, so the tile and the buttons beside it read as one family. */
-  --item-media-image-radius: var(--radius-control); /** Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile. */
+  --item-media-image-radius: var(--radius-element); /** Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile. */
   --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
   --label-font-family: var(--type-label-font-family); /** Font family of the label. */
   --menubar-radius: var(--radius-surface); /** Corner of the menubar: a panel that holds its triggers. */
@@ -1242,7 +1243,7 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --sidebar-menu-button-focus-ring: var(--color-border-focus); /** Color of the menu button's keyboard focus ring, at full strength, of the sidebar. */
   --sidebar-menu-button-radius: var(--radius-control); /** Corner of the menu button, of the sidebar. */
   --sidebar-menu-button-edge-current: var(--color-border-selected); /** Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
-  --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
+  --skeleton-radius: var(--radius-element); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
   --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
   --slider-thumb-shadow: var(--elevation-card); /** Thumb shadow of the slider. */
@@ -1252,7 +1253,7 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --switch-icon: var(--switch-thumb-travel); /** Deprecated: use component.switch.thumb.travel (OD-243). Icon of the switch. */
   --switch-focus-ring: var(--color-border-focus); /** Color of the switch's focus ring: the focus ring at full strength. */
   --switch-track-background-checked: var(--color-action-primary); /** Fill of the switch's track when on: the rule for checked controls. The thumb's side says on, so it is never color alone. */
-  --textarea-radius: var(--radius-control); /** Radius of the textarea. */
+  --textarea-radius: var(--radius-element); /** Radius of the textarea. */
   --textarea-shadow: var(--elevation-card); /** Deprecated: use textarea/border (OD-243). Shadow of the textarea. */
   --textarea-border-focus: var(--color-border-focus); /** Border focus of the textarea. */
   --textarea-border-invalid: var(--color-status-danger); /** Border invalid of the textarea. */
@@ -1927,6 +1928,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
   --radius-badge: 0.25rem; /** Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks. */
   --radius-option: 0.25rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
+  --radius-element: 0.375rem; /** Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media. */
   --radius-surface: 0.5rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
   --type-title-font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
@@ -2773,7 +2775,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
-  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-trigger-radius: var(--radius-element); /** The trigger's corner, seen on focus. */
   --accordion-trigger-focus-ring: var(--color-border-focus); /** The trigger's focus ring color, at full strength. */
   --accordion-focus-ring-width: var(--accordion-trigger-focus-ring-width); /** Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width. */
   --accordion-disabled-opacity: var(--accordion-trigger-disabled-opacity); /** Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is. */
@@ -2782,18 +2784,18 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --alert-dialog-content-radius: var(--radius-surface); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
   --alert-dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the alert dialog title: a heading. */
-  --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
+  --alert-dialog-media-radius: var(--radius-element); /** Media radius of the alert dialog. */
   --alert-radius: var(--radius-surface); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
   --alert-destructive-description-label: var(--color-status-danger); /** The description's text in a destructive alert: error text, at full strength, like the title. */
-  --attachment-radius: var(--radius-control); /** Radius of the attachment. */
+  --attachment-radius: var(--radius-element); /** Radius of the attachment. */
   --attachment-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the attachment. */
   --attachment-size: var(--attachment-media-size); /** Deprecated: use component.attachment.media.size (OD-243). Size of the attachment. */
   --attachment-icon-size: var(--attachment-media-icon-size); /** Deprecated: use component.attachment.media.icon.size (OD-243). Icon size of the attachment. */
   --attachment-font-weight: var(--attachment-name-font-weight); /** Deprecated: use component.attachment.name.font-weight (OD-243). Font weight of the attachment. */
   --attachment-font-size-2: var(--attachment-meta-font-size); /** Deprecated: use component.attachment.meta.font-size (OD-243). Font size 2 of the attachment. */
   --attachment-line-height-2: var(--attachment-meta-line-height); /** Deprecated: use component.attachment.meta.line-height (OD-243). Line height 2 of the attachment. */
-  --attachment-media-radius: var(--radius-control); /** Corner of the attachment's file tile: a media tile, like the item's. */
+  --attachment-media-radius: var(--radius-element); /** Corner of the attachment's file tile: a media tile, like the item's. */
   --avatar-fallback-font-size-2: var(--avatar-fallback-sm-font-size); /** Deprecated: use component.avatar.fallback.sm.font-size (OD-243). Fallback font size 2 of the avatar. */
   --avatar-fallback-line-height-2: var(--avatar-fallback-sm-line-height); /** Deprecated: use component.avatar.fallback.sm.line-height (OD-243). Fallback line height 2 of the avatar. */
   --avatar-badge-background: var(--color-action-primary); /** Badge background of the avatar. */
@@ -2805,7 +2807,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --bubble-body-radius: var(--radius-surface); /** Body radius of the bubble. */
   --bubble-body-me-background: var(--color-action-primary); /** Fill of the body of a message the viewer sent. */
   --button-group-text-radius: var(--radius-control); /** Text radius of the button group. */
-  --calendar-radius: var(--radius-control); /** Radius of the calendar. */
+  --calendar-radius: var(--radius-element); /** Radius of the calendar. */
   --calendar-shadow: var(--elevation-card); /** Shadow of the calendar. */
   --calendar-border-2: var(--color-border-focus); /** Border 2 of the calendar. */
   --calendar-focus-ring: var(--color-border-focus); /** Focus ring of the calendar. */
@@ -2922,7 +2924,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --input-otp-height: var(--input-otp-caret-height); /** Deprecated: use component.input-otp.caret.height (OD-243). Height of the input otp. */
   --input-otp-duration: var(--input-otp-caret-duration); /** Deprecated: use component.input-otp.caret.duration (OD-243). Duration of the input otp. */
-  --item-radius: var(--radius-control); /** Radius of the item. */
+  --item-radius: var(--radius-element); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
   --item-gap: var(--item-media-gap); /** Deprecated: use component.item.media.gap (OD-243). Gap of the item. */
@@ -2930,7 +2932,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --item-icon-icon-size: var(--item-media-icon-icon-size); /** Deprecated: use component.item.media.icon.icon-size (OD-243). Icon icon size of the item. */
   --item-description-label-2: var(--color-action-primary); /** Description label 2 of the item. */
   --item-media-icon-radius: var(--radius-control); /** Corner of the item's icon media: a control-sized tile in a row of controls takes the control corner, so the tile and the buttons beside it read as one family. */
-  --item-media-image-radius: var(--radius-control); /** Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile. */
+  --item-media-image-radius: var(--radius-element); /** Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile. */
   --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
   --label-font-family: var(--type-label-font-family); /** Font family of the label. */
   --menubar-radius: var(--radius-surface); /** Corner of the menubar: a panel that holds its triggers. */
@@ -3055,7 +3057,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --sidebar-menu-button-focus-ring: var(--color-border-focus); /** Color of the menu button's keyboard focus ring, at full strength, of the sidebar. */
   --sidebar-menu-button-radius: var(--radius-control); /** Corner of the menu button, of the sidebar. */
   --sidebar-menu-button-edge-current: var(--color-border-selected); /** Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
-  --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
+  --skeleton-radius: var(--radius-element); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
   --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
   --slider-thumb-shadow: var(--elevation-card); /** Thumb shadow of the slider. */
@@ -3065,7 +3067,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --switch-icon: var(--switch-thumb-travel); /** Deprecated: use component.switch.thumb.travel (OD-243). Icon of the switch. */
   --switch-focus-ring: var(--color-border-focus); /** Color of the switch's focus ring: the focus ring at full strength. */
   --switch-track-background-checked: var(--color-action-primary); /** Fill of the switch's track when on: the rule for checked controls. The thumb's side says on, so it is never color alone. */
-  --textarea-radius: var(--radius-control); /** Radius of the textarea. */
+  --textarea-radius: var(--radius-element); /** Radius of the textarea. */
   --textarea-shadow: var(--elevation-card); /** Deprecated: use textarea/border (OD-243). Shadow of the textarea. */
   --textarea-border-focus: var(--color-border-focus); /** Border focus of the textarea. */
   --textarea-border-invalid: var(--color-status-danger); /** Border invalid of the textarea. */
