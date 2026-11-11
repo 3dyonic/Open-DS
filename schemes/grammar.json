@@ -23355,6 +23355,7 @@
             },
             {
               "title": "Surface and shadow",
+              "title_when": { "elevation.count=none": "Surface and edge" },
               "parts": [2, 3],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -24364,6 +24365,7 @@
           "cards": [
             {
               "title": "Surface and shadow",
+              "title_when": { "elevation.count=none": "Surface and edge" },
               "parts": [1, 2],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -26062,6 +26064,7 @@
           "cards": [
             {
               "title": "Surface and shadow",
+              "title_when": { "elevation.count=none": "Surface and edge" },
               "parts": [1, 2],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -30486,6 +30489,7 @@
             },
             {
               "title": "Surface and shadow",
+              "title_when": { "elevation.count=none": "Surface and edge" },
               "parts": [4, 5],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -38177,6 +38181,7 @@
           "cards": [
             {
               "title": "Surface and shadow",
+              "title_when": { "elevation.count=none": "Surface and edge" },
               "parts": [1, 2],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values", "shape.roles"],

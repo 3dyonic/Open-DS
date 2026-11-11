@@ -63,8 +63,8 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 ::anatomy-steps{id="combobox/card-1"}
 :::
 
-:::panel{id="part-2-3" title="Surface and shadow" note="Parts 2, 3" media="side"}
-![Surface and shadow: 2, 3](/anatomy/accessible-first/combobox/card-2.png)
+:::panel{id="part-2-3" title="Surface and edge" note="Parts 2, 3" media="side"}
+![Surface and edge: 2, 3](/anatomy/accessible-first/combobox/card-2.png)
 
 :label[Containment] :label[Layering]
 

@@ -55,8 +55,8 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
-:::panel{id="part-1-2" title="Surface and shadow" note="Parts 1, 2" media="side"}
-![Surface and shadow: 1, 2](/anatomy/accessible-first/toast/card-1.png)
+:::panel{id="part-1-2" title="Surface and edge" note="Parts 1, 2" media="side"}
+![Surface and edge: 1, 2](/anatomy/accessible-first/toast/card-1.png)
 
 :label[Containment] :label[Layering]
 
