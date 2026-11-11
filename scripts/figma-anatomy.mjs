@@ -71,6 +71,11 @@ figma.ui.onmessage = async (msg) => {
     const kit = await loadKit(scheme.library);
     if (!kit.size) {
       const seen = await kitLibraries();
+      // The kit is enabled here, but its variables are not published: usually the kits plugin redrew
+      // them and nobody published the change yet.
+      const norm = (x) => String(x).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+      if (seen.some((l) => norm(l) === norm(scheme.library)))
+        throw new Error(scheme.library + " is enabled in this file, but none of its variables are published. In the kit's file, publish its changes (Assets, Publish). Then accept the library update here and run again.");
       throw new Error("No variables from " + scheme.library + " reach this file. " + (seen.length
         ? "The variable libraries it can see: " + seen.join("; ") + ". If the kit is not among them, its variables were not published: publish the kit with its variables, then run again."
         : "It can see no variable libraries at all: the kit's variables were not published, or the library is not enabled here. Publish the kit with its variables (Assets, Publish), then run again."));
