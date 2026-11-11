@@ -32,7 +32,30 @@ In the grammar, `catalogue` (410 KB) and `component_keys` (277 KB) are half of t
 
 About 40 files read the scheme JSON files directly: the CLI, the docs generator, the harness, Storybook, the site, the token build and 25 one-off scripts in `scripts/`.
 
-## Proposal
+## The pack decision of 2026-10-29
+
+That decision said: a pack holds one scheme dictionary per scope, and each answer is global or scoped. Both parts still hold, and the data already has the shape:
+
+- **Global answers** are the 9 reason questions (business, people, content, tasks, human, outcomes, brand, scenarios, team). Dense data answers them 19 times. Usage rules and theme picks in every scope cite them.
+- **Scoped answers** are the 5 method questions of each of the 12 scopes: 60 answers per scheme.
+
+What changed since then: a scope now also owns semantic tokens (`owns`), usage rules and component keys. A scope file must carry those too, not only answers.
+
+## Options
+
+| | A. Status quo | B. Split by scope, one global file | C. Packs installed on their own |
+|---|---|---|---|
+| Layout | One file per scheme | A folder per scheme: `scheme.json` (global answers), `scopes/<scope>.json`, `components/<id>.json` | B, plus each scope file is a versioned package that a project installs alone |
+| Edit one scope | A diff in a 530 KB file | A diff in one small file | Same as B |
+| Install one scope | Not possible | Copy one file into an installed scheme | `open-ds add` with a version check against the grammar |
+| Cost: CLI, MCP | None | The loader joins files; callers do not change | B, plus version resolution |
+| Cost: tokens build, docs generator, Storybook, site | None | None after the readers move to the loader | Same as B |
+| Cost: harness | None | One new check: no direct reads | B, plus a check per scope version |
+| Risk | Grows with every scope rule | Cross-scope token names; more files | B, plus mixed versions in one project |
+
+**Recommendation: B now, C later.** B gives small diffs and one load path at low cost. C needs B first, and it needs a real user who installs one scope. Build C when that user exists.
+
+## Proposal (option B)
 
 ### 1. One folder per scheme, one file per scope
 
@@ -58,7 +81,7 @@ The grammar names 12 scopes: typography, color, spacing, shape, elevation, motio
 
 A write goes through one function, `saveScheme(id, scheme)`. It splits the object by `owns` and writes each file with `JSON.stringify(x, null, 2) + "\n"`. The grammar gets the same pair. This also ends the text edits that `grammar.json` needs today.
 
-### 3. Each scope file carries a version
+### 3. Each scope file carries a version (the start of option C)
 
 A scope file has `version` and `requires` (the grammar version it was written for). A scheme's version is the highest of its scope versions. The harness fails when a scope changes and its version does not.
 
