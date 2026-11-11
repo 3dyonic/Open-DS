@@ -44,7 +44,7 @@ function scheme(name) {
   sem.container = {
     $type: "dimension",
     $value: "{radius.surface}",
-    $description: "Deprecated: use radius.surface (OD-286).",
+    $description: "Deprecated: use radius.surface.",
     $deprecated: "Use radius.surface. Removed in the next minor release.",
   };
   tok.semantic.radius = sem;

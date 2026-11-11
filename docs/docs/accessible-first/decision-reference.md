@@ -44,7 +44,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="business-q2"}
 :::
 
-:::fold{id="people" title="People and work context" note="2 answers, 43 decisions"}
+:::fold{id="people" title="People and work context" note="2 answers, 44 decisions"}
 #### Who uses it most? {#people-q1}
 
 ::decision-answer{id="people-q1"}
@@ -152,7 +152,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="typography-lands"}
 :::
 
-:::fold{id="color" title="Color" note="5 answers, 90 decisions, and the values of its tokens"}
+:::fold{id="color" title="Color" note="5 answers, 95 decisions, and the values of its tokens"}
 #### Which color roles does it need? {#color-roles}
 
 ::decision-answer{id="color-roles"}

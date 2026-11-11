@@ -925,7 +925,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
-  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -2745,7 +2745,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
-  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -4561,7 +4561,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
-  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -6379,7 +6379,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
-  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -8195,7 +8195,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
-  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -10013,7 +10013,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
   --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --toggle-edge-width-on: var(--border-width-default); /** Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width. */
-  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface (OD-286). */
+  --radius-container: var(--radius-surface); /** Deprecated: use radius.surface. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */

@@ -302,6 +302,13 @@
         }
        },
        {
+        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "text": "Spacing · Which spacing roles does it need? → Gaps, insets and row heights",
         "link": {
          "label": "Spacing",
@@ -1556,7 +1563,7 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.action.primary in light: blue.light.600: the primary action's fill; its label reads, 7.26:1, above the 7:1 floor.",
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -1647,7 +1654,7 @@
         }
        },
        {
-        "text": "color.action.primary in dark: blue.dark.600: the primary action's fill; its label reads, 8.74:1, above the 7:1 floor.",
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -1744,9 +1751,11 @@
   },
   "color-definition": {
    "answer": "Neutrals and one brand ramp",
-   "why": "True neutrals and one strong blue, checked for contrast.",
+   "why": "True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    "What accessibility level do we commit to? → AAA",
+    "Who uses it most? → Everyone, including people with disabilities",
+    "Color · Where does color carry meaning first? → Links and actions"
    ],
    "decided": {
     "groups": [
@@ -1880,6 +1889,13 @@
         }
        },
        {
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "text": "color.neutral.0 in dark: gray.dark.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
         "link": {
          "label": "Color",
@@ -2004,6 +2020,13 @@
          "label": "Color",
          "href": "foundations/color"
         }
+       },
+       {
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
        }
       ]
      }
@@ -2033,8 +2056,27 @@
    "decided": {
     "groups": [
      {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     },
+     {
       "kind": "picks",
       "items": [
+       {
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
        {
         "text": "color.status.info in light: teal.light.600: info reads as text and icons, 7.95:1 on surface.default, above the 7:1 floor.",
         "link": {
@@ -2121,6 +2163,13 @@
        },
        {
         "text": "color.category.5 in light: neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 7.0:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3704,7 +3753,7 @@
         }
        },
        {
-        "text": "color.action.primary in light: blue.light.600: the primary action's fill; its label reads, 7.26:1, above the 7:1 floor.",
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3865,7 +3914,7 @@
         }
        },
        {
-        "text": "color.action.primary in dark: blue.dark.600: the primary action's fill; its label reads, 8.74:1, above the 7:1 floor.",
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
         "link": {
          "label": "Color",
          "href": "foundations/color"

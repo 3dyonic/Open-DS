@@ -23,6 +23,7 @@
     "@open-ds/doc-composites": "workspace:*",
     "@open-ds/ui": "workspace:*",
     "@tailwindcss/postcss": "4.3.3",
+    "@xyflow/react": "^12.12.1",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.1.1",
