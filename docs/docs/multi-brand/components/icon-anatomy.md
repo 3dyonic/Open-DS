@@ -41,7 +41,7 @@ Each part does a job for the person. These are the jobs, as questions the part a
 ## The parts
 
 :::panel{media="wide"}
-Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.
+![Icon, every part numbered](/anatomy/multi-brand/icon/stage.png)
 *Multi-brand, light, drawn in Figma from the scheme's tokens.*
 
 Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.
@@ -56,7 +56,7 @@ Legend: every part and its roles. The numbers match the drawing; a part without 
 Each part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.
 
 :::panel{id="part-1" title="Size" note="Parts 1" media="side"}
-Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.
+![Size: 1](/anatomy/multi-brand/icon/card-1.png)
 
 :label[Meaning]
 
@@ -64,7 +64,7 @@ Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.
 :::
 
 :::panel{id="part-1" title="Stroke" note="Parts 1" media="side"}
-Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.
+![Stroke: 1](/anatomy/multi-brand/icon/card-2.png)
 
 :label[Readability]
 
@@ -72,7 +72,7 @@ Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.
 :::
 
 :::panel{id="part-2" title="Contained shape" note="Parts 2" media="side"}
-Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.
+![Contained shape: 2](/anatomy/multi-brand/icon/card-3.png)
 
 :label[Containment]
 
