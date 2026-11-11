@@ -1,57 +1,120 @@
 {
- "token-swatches": {
+ "token-groups": {
   "accessibility": {
-   "tokens": [
+   "groups": [
     {
-     "token": "size.control.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.48",
-      "value": "3rem"
+     "title": "size.control.default",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-default)"
      },
-     "px": 48
-    },
-    {
-     "token": "size.control.compact",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.40",
-      "value": "2.5rem"
-     },
-     "px": 40
-    },
-    {
-     "token": "size.control.large",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.48",
-      "value": "3rem"
-     },
-     "px": 48
-    },
-    {
-     "token": "opacity.disabled",
-     "type": "number",
-     "resolves": {
-      "primitive": "opacity.40",
-      "value": "0.4"
-     }
-    },
-    {
-     "token": "color.border.focus",
-     "type": "color",
-     "modes": [
+     "api": [
       {
-       "mode": "light",
-       "primitive": "color.navy.light.600",
-       "hex": "#1E3A5F"
+       "token": "size.control.default",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The smallest clickable thing",
+       "detail": "size.control.default (touch)",
+       "why": "Many readers are on phones."
       },
       {
-       "mode": "dark",
-       "primitive": "color.navy.dark.600",
-       "hex": "#8FA6C4"
+       "kind": "use",
+       "situation": "Most buttons and inputs",
+       "why": "Readers on phones get a full touch target on every control."
+      },
+      {
+       "kind": "not",
+       "situation": "A button inside a field",
+       "detail": "use size.control.compact",
+       "why": "A clear or show button must fit inside the field around it."
       }
      ]
+    },
+    {
+     "title": "size.control.compact",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-compact)"
+     },
+     "api": [
+      {
+       "token": "size.control.compact",
+       "value": "40px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A button inside a field",
+       "why": "A clear or show button must fit inside the field around it."
+      },
+      {
+       "kind": "not",
+       "situation": "Most buttons and inputs",
+       "detail": "use size.control.default",
+       "why": "Readers on phones get a full touch target on every control."
+      }
+     ]
+    },
+    {
+     "title": "size.control.large",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-large)"
+     },
+     "api": [
+      {
+       "token": "size.control.large",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The main action on a screen",
+       "why": "It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text."
+      }
+     ]
+    },
+    {
+     "title": "opacity.disabled",
+     "sample": {
+      "kind": "opacity",
+      "value": "var(--opacity-disabled)"
+     },
+     "api": [
+      {
+       "token": "opacity.disabled",
+       "value": "0.4"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A control that is not available yet",
+       "why": "A faded control keeps its place. Hiding it would move the page and lose the reader's place."
+      }
+     ]
+    },
+    {
+     "title": "color.border.focus",
+     "sample": {
+      "kind": "color",
+      "value": "var(--color-border-focus)"
+     },
+     "api": [
+      {
+       "token": "color.border.focus",
+       "primitive": "color.navy.light.600",
+       "value": "#1E3A5F",
+       "dark": "#8FA6C4"
+      }
+     ],
+     "rules": []
     }
    ]
   }

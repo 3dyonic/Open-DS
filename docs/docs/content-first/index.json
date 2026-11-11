@@ -97,22 +97,22 @@
   "home/answers": {
    "cards": [
     {
+     "eyebrow": "What must the interface protect?",
+     "title": "Attention on the content",
+     "text": "Attention belongs to the text.",
+     "code": "human.q1"
+    },
+    {
      "eyebrow": "How do people recall the interface?",
      "title": "They see it fresh each time",
      "text": "Visitors see the interface fresh each time.",
      "code": "human.q2"
     },
     {
-     "eyebrow": "How does it sound?",
-     "title": "Conversational",
-     "text": "Talk to one reader, like a good editor.",
-     "code": "voice.values"
-    },
-    {
-     "eyebrow": "How many signals carry each meaning?",
-     "title": "Two: color and word",
-     "text": "Status is rare; color and a word are enough.",
-     "code": "accessibility.count"
+     "eyebrow": "What should the brand feel like?",
+     "title": "Warm",
+     "text": "Warm and considered, like a good magazine.",
+     "code": "brand.q1"
     }
    ]
   },

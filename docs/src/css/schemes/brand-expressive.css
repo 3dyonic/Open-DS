@@ -19,7 +19,7 @@ html[data-scheme="brand-expressive"] [data-mode="light"][data-mode] {
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.4; /** Disabled controls. */
   --type-display-font-size: 3.5rem;
-  --type-display-line-height: 1.8;
+  --type-display-line-height: 1.1;
   --type-display-font-weight: 800;
   --type-title-font-size: 2.5rem;
   --type-title-line-height: 1.1;
@@ -1843,7 +1843,7 @@ html[data-scheme="brand-expressive"] [data-mode="dark"][data-mode] {
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.4; /** Disabled controls. */
   --type-display-font-size: 3.5rem;
-  --type-display-line-height: 1.8;
+  --type-display-line-height: 1.1;
   --type-display-font-weight: 800;
   --type-title-font-size: 2.5rem;
   --type-title-line-height: 1.1;

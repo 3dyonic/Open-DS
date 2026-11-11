@@ -10,7 +10,7 @@ description: "Dense data: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-::type-roles{id="typography"}
+::token-groups{id="typography"}
 
 ## The five answers
 
@@ -67,3 +67,8 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | A number in a table | type.data | type.body | Mono digits line up in columns, so values compare at a glance. |
 | Paragraph or help text | type.body | type.label | Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences. |
 | Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |
+| Hero line or key number | type.display | type.display for page titles | It is for the one key number at the top of a dashboard. One big total gives analysts the headline at a glance. Everything below it stays small so more rows fit. |
+| Section heading | type.heading | type.title | Panel and card headings sit one step above body. They name a block without taking rows from the data. |
+| Supporting text | type.caption | type.body | Timestamps and hints step back, so the values stay the hero. |
+| Text in a table cell | type.data | type.body | Every cell shares the mono face, so IDs, times and values line up down each column. |
+| Title of a form page | type.title | type.display | Settings and form pages keep the same small title as every page. Experts find the fields higher up. |

@@ -10,7 +10,7 @@ description: "Dense data: Corners and borders."
 
 Corners and borders.
 
-::token-swatches{id="shape"}
+::token-groups{id="shape"}
 
 ## The five answers
 
@@ -46,3 +46,8 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | --- | --- | --- | --- |
 | Corners of buttons and inputs | radius.control | radius.round | Small corners keep dense rows straight. |
 | Shape of a status badge | radius.badge (rectangle) | A pill | Rectangles line up in a column. |
+| An option in a menu or list | radius.option | radius.control | Options sit square inside the menu. A long list scans as one clean column. |
+| Something that grows past one line | radius.element | radius.surface | Rows and text areas keep the small control corner, so long lists stay straight. |
+| Corners of cards, menus and dialogs | radius.surface | radius.control | Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen. |
+| Edges and dividers | border-width.default | A thicker border | A hairline separates rows and cards without taking room from the data. |
+| The gap around a focus ring | border-width.focus-offset | A ring that touches the control | The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one. |

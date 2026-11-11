@@ -10,7 +10,7 @@ description: "Brand expressive: How space shows what belongs together."
 
 How space shows what belongs together.
 
-::token-swatches{id="spacing"}
+::token-groups{id="spacing"}
 
 ## The five answers
 
@@ -65,3 +65,9 @@ Between things and on the page, use a role instead: `*-tight` (8px), `*-default`
 | Items that belong together | space.gap.default | space.gap.tight | Air keeps big type readable. |
 | Between page sections | space.gap.section and a color block | A thin line | Big space and color make each section a moment. |
 | Table row height | size.row (comfortable) | A compact row | Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm. |
+| Parts of one item | space.gap.tight | space.gap.default | An icon and its word sit close, so a call to action reads as one bold unit. |
+| Items in a list or a form row | space.gap.default | space.gap.tight | Air between items keeps big type readable. |
+| Between groups | space.gap.group | space.gap.default | Big gaps give each group its own moment inside a section. |
+| Inside a button or input | space.inset.control-x | Padding set by eye | Wide padding makes pill buttons bold and easy to hit with a thumb. |
+| Inside a card, panel or dialog | space.inset.container | Text that touches the card edge | Generous padding lets each card hold its moment. |
+| Inside a table cell | space.inset.cell-x | Narrow cell padding | Tables are rare, so cells keep the page's airy rhythm. |

@@ -10,7 +10,7 @@ description: "Accessible first: Floors the system must hold."
 
 Floors the system must hold.
 
-::token-swatches{id="accessibility"}
+::token-groups{id="accessibility"}
 
 ## The five answers
 
@@ -47,3 +47,7 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 | --- | --- | --- | --- |
 | Keyboard focus | button/focus-ring at border-width.focus, with an offset | A thin or faint outline | Focus must be seen by everyone. |
 | The smallest clickable thing | size.control.default (large) | Touch-minimum size | Large targets help people with motor needs. |
+| Most buttons and inputs | size.control.default | A touch-minimum size | Large controls help people with tremor and low vision. |
+| The main action on a screen | size.control.large | A taller button for the main action | It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable. |
+| A button inside a field | size.control.compact | A small icon button | It still meets the large target size and fits inside the field. |
+| A control that is not available yet | opacity.disabled | A faded control with no reason | It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step. |

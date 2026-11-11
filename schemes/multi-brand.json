@@ -2119,6 +2119,243 @@
         "brand.q1",
         "outcomes.q2"
       ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "A brand-specific headline style",
+      "why": "In the brand font for the product-page headline. Each brand speaks loudest in its product headline, on the shared scale.",
+      "because": [
+        "brand.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Headings stay one shared role; only the brand font changes.",
+      "because": [
+        "business.q2",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "A brand-specific small style",
+      "why": "One caption role serves fees, dates and hints in every brand.",
+      "because": [
+        "business.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A mono font",
+      "why": "It equals body here. Plan and order tables read like body text in every brand font.",
+      "because": [
+        "content.q1",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "In the brand font. Sign-up and account pages share one title role in every brand.",
+      "because": [
+        "content.q1",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "parts-of-one-item",
+      "use": "space.gap.tight",
+      "not": "Brand-specific spacing",
+      "why": "Parts of one item sit close in every brand, so the shared parts look the same.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "siblings-in-a-row",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Fields in a form keep a comfortable gap, so customers on phones tap the right one.",
+      "because": [
+        "content.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "between-groups",
+      "use": "space.gap.group",
+      "not": "Brand-specific spacing",
+      "why": "One group gap in every brand keeps sign-up forms the same shape.",
+      "because": [
+        "business.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-control",
+      "use": "space.inset.control-x",
+      "not": "Brand-specific padding",
+      "why": "Shared padding keeps buttons the same size in every brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "inside-a-container",
+      "use": "space.inset.container",
+      "not": "Brand-specific padding",
+      "why": "Cards hold offers the same way in every brand; only the corner and color change.",
+      "because": [
+        "business.q2",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "inside-a-cell",
+      "use": "space.inset.cell-x",
+      "not": "Narrow cell padding",
+      "why": "Account tables keep room between columns on a phone in every brand.",
+      "because": [
+        "content.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "A hard-coded radius",
+      "why": "(set by the brand). Each brand sets the option corner, and it nests inside that brand's menu corner.",
+      "because": [
+        "brand.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.control",
+      "why": "(set by the brand). A brand with pill controls would turn a text area into a capsule. The element corner stays sane in every brand.",
+      "because": [
+        "brand.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "A hard-coded radius",
+      "why": "(set by the brand). Each brand sets its own card corner; the role stays shared.",
+      "because": [
+        "theming.definition",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A brand-specific border width",
+      "why": "One thin edge serves every brand. Color carries the brand, not line weight.",
+      "because": [
+        "business.q2",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "border-width.focus-offset and border-width.focus",
+      "not": "A ring that touches the control",
+      "why": "The gap sits around a ring of border-width.focus. The ring and its gap stay the same in every brand, so focus shows on any brand color.",
+      "because": [
+        "people.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "panel-opens",
+      "use": "motion.duration.panels",
+      "not": "Brand-specific motion",
+      "why": "A relaxed open guides customers through sign-up the same way in every brand.",
+      "because": [
+        "business.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "any-transition",
+      "use": "motion.easing.standard",
+      "not": "A brand-specific curve",
+      "why": "One calm curve keeps the shared components the same in every brand.",
+      "because": [
+        "business.q2",
+        "naming.lands"
+      ]
+    },
+    {
+      "situation": "hero-motion",
+      "use": "No hero motion",
+      "not": "An intro animation for one brand",
+      "why": "A brand-only animation would break the shared library.",
+      "because": [
+        "business.q2",
+        "naming.lands"
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A brand-specific icon set",
+      "why": "One icon set and size serve every brand; only the color changes.",
+      "because": [
+        "business.q2",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "size.control.compact",
+      "why": "Customers sign up on phones, so every control fits a thumb in every brand.",
+      "because": [
+        "scenarios.q1",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "A taller button for one brand",
+      "why": "It is the same height as the default here. Brand color marks the main action. One height keeps every brand's forms the same.",
+      "because": [
+        "color.lands",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "size.control.default",
+      "why": "A clear or show-password button fits inside the field in every brand.",
+      "because": [
+        "business.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "opacity.disabled",
+      "not": "A grey color per brand",
+      "why": "One fade level works on every brand color, so no brand needs its own disabled color.",
+      "because": [
+        "business.q2"
+      ]
     }
   ],
   "tokens": {
@@ -3157,11 +3394,6 @@
           "1_5": {
             "$type": "number",
             "$value": 1.5,
-            "$description": "A ratio of the text size."
-          },
-          "1_8": {
-            "$type": "number",
-            "$value": 1.8,
             "$description": "A ratio of the text size."
           }
         },
@@ -9762,7 +9994,7 @@
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_8}"
+            "$value": "{font.line-height.1_2}"
           },
           "font-weight": {
             "$type": "fontWeight",

@@ -1,26 +1,70 @@
 {
- "token-swatches": {
+ "token-groups": {
   "motion": {
-   "tokens": [
+   "groups": [
     {
-     "token": "motion.duration.feedback",
-     "type": "duration",
-     "resolves": {
-      "primitive": "duration.moderate",
-      "value": "200ms"
-     }
+     "title": "motion.duration.feedback",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-feedback)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.feedback",
+       "primitive": "duration.moderate",
+       "value": "200ms"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Hover and press feedback",
+       "detail": "motion.duration.feedback (moderate)",
+       "why": "Moderate speed is easy to follow."
+      }
+     ]
     },
     {
-     "token": "motion.duration.panels",
-     "type": "duration",
-     "resolves": {
-      "primitive": "duration.moderate",
-      "value": "200ms"
-     }
+     "title": "motion.duration.panels",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-panels)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.panels",
+       "primitive": "duration.moderate",
+       "value": "200ms"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A panel opens",
+       "why": "A moderate open is easy to follow and shows where the panel came from."
+      }
+     ]
     },
     {
-     "token": "motion.easing.standard",
-     "type": "cubicBezier"
+     "title": "motion.easing.standard",
+     "sample": {
+      "kind": "easing",
+      "value": "var(--motion-easing-standard)"
+     },
+     "api": [
+      {
+       "token": "motion.easing.standard",
+       "primitive": "easing.standard",
+       "value": "cubic-bezier(0.2"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The curve of any move",
+       "why": "A plain ease-out is calm and clear. An overshoot can confuse and distract."
+      }
+     ]
     }
    ]
   }

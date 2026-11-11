@@ -97,22 +97,22 @@
   "home/answers": {
    "cards": [
     {
+     "eyebrow": "How many brands or products share the system?",
+     "title": "Many",
+     "text": "Three brands share one system today, more tomorrow.",
+     "code": "business.q2"
+    },
+    {
+     "eyebrow": "What is the main content?",
+     "title": "Forms and tasks",
+     "text": "Product pages, sign-up and account forms.",
+     "code": "content.q1"
+    },
+    {
      "eyebrow": "How are brands handled?",
      "title": "Brands as modes",
      "text": "Brands are theme modes over shared semantics.",
      "code": "theming.definition"
-    },
-    {
-     "eyebrow": "What is the smallest target?",
-     "title": "Touch size",
-     "text": "Customers sign up on phones.",
-     "code": "accessibility.values"
-    },
-    {
-     "eyebrow": "How many signals carry each meaning?",
-     "title": "Two: color and word",
-     "text": "Brand colors vary, so meaning needs a word.",
-     "code": "accessibility.count"
     }
    ]
   },
@@ -121,7 +121,7 @@
     {
      "href": "primitives/",
      "title": "Primitives",
-     "text": "All 227 raw values, and the tokens that point to each.",
+     "text": "All 226 raw values, and the tokens that point to each.",
      "samples": [
       {
        "kind": "color",

@@ -1,14 +1,36 @@
 {
- "token-swatches": {
+ "token-groups": {
   "elevation": {
-   "tokens": [
+   "groups": [
     {
-     "token": "elevation.card",
-     "type": "shadow"
+     "title": "elevation.card",
+     "sample": {
+      "kind": "shadow",
+      "value": "var(--elevation-card)"
+     },
+     "api": [
+      {
+       "token": "elevation.card",
+       "primitive": "shadow.none",
+       "value": "0px 0px 0px 0px #00000000"
+      }
+     ],
+     "rules": []
     },
     {
-     "token": "elevation.overlay",
-     "type": "shadow"
+     "title": "elevation.overlay",
+     "sample": {
+      "kind": "shadow",
+      "value": "var(--elevation-overlay)"
+     },
+     "api": [
+      {
+       "token": "elevation.overlay",
+       "primitive": "shadow.none",
+       "value": "0px 0px 0px 0px #00000000"
+      }
+     ],
+     "rules": []
     }
    ]
   }

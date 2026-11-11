@@ -166,6 +166,10 @@
      },
      "usedBy": [
       {
+       "token": "type.display.line-height",
+       "where": "semantic"
+      },
+      {
        "token": "type.title.line-height",
        "where": "semantic"
       },
@@ -198,21 +202,6 @@
       },
       {
        "token": "type.data.line-height",
-       "where": "semantic"
-      }
-     ]
-    },
-    {
-     "primitive": "font.line-height.1_8",
-     "value": "1.8",
-     "sample": {
-      "kind": "leading",
-      "value": "1.8",
-      "note": "29px"
-     },
-     "usedBy": [
-      {
-       "token": "type.display.line-height",
        "where": "semantic"
       }
      ]

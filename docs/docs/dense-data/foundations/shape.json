@@ -1,70 +1,180 @@
 {
- "token-swatches": {
+ "token-groups": {
   "shape": {
-   "tokens": [
+   "groups": [
     {
-     "token": "radius.control",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.2",
-      "value": "0.125rem"
-     }
+     "title": "radius.control",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-control)"
+     },
+     "api": [
+      {
+       "token": "radius.control",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of buttons and inputs",
+       "why": "Small corners keep dense rows straight."
+      },
+      {
+       "kind": "not",
+       "situation": "An option in a menu or list",
+       "detail": "use radius.option",
+       "why": "Options sit square inside the menu. A long list scans as one clean column."
+      },
+      {
+       "kind": "not",
+       "situation": "Corners of cards, menus and dialogs",
+       "detail": "use radius.surface",
+       "why": "Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen."
+      }
+     ]
     },
     {
-     "token": "radius.badge",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.0",
-      "value": "0rem"
-     }
+     "title": "radius.badge",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-badge)"
+     },
+     "api": [
+      {
+       "token": "radius.badge",
+       "value": "0px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Shape of a status badge",
+       "detail": "radius.badge (rectangle)",
+       "why": "Rectangles line up in a column."
+      }
+     ]
     },
     {
-     "token": "radius.option",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.0",
-      "value": "0rem"
-     }
+     "title": "radius.option",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-option)"
+     },
+     "api": [
+      {
+       "token": "radius.option",
+       "value": "0px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "An option in a menu or list",
+       "why": "Options sit square inside the menu. A long list scans as one clean column."
+      }
+     ]
     },
     {
-     "token": "radius.element",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.2",
-      "value": "0.125rem"
-     }
+     "title": "radius.element",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-element)"
+     },
+     "api": [
+      {
+       "token": "radius.element",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Something that grows past one line",
+       "why": "Rows and text areas keep the small control corner, so long lists stay straight."
+      }
+     ]
     },
     {
-     "token": "radius.surface",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.4",
-      "value": "0.25rem"
-     }
+     "title": "radius.surface",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-surface)"
+     },
+     "api": [
+      {
+       "token": "radius.surface",
+       "value": "4px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of cards, menus and dialogs",
+       "why": "Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen."
+      },
+      {
+       "kind": "not",
+       "situation": "Something that grows past one line",
+       "detail": "use radius.element",
+       "why": "Rows and text areas keep the small control corner, so long lists stay straight."
+      }
+     ]
     },
     {
-     "token": "border-width.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "border-width.1",
-      "value": "1px"
-     }
+     "title": "border-width.default",
+     "sample": {
+      "kind": "line",
+      "value": "var(--border-width-default)"
+     },
+     "api": [
+      {
+       "token": "border-width.default",
+       "value": "1px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Edges and dividers",
+       "why": "A hairline separates rows and cards without taking room from the data."
+      }
+     ]
     },
     {
-     "token": "border-width.focus",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "border-width.2",
-      "value": "2px"
-     }
-    },
-    {
-     "token": "border-width.focus-offset",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "border-width.2",
-      "value": "2px"
-     }
+     "title": "Focus ring",
+     "sample": {
+      "kind": "focus"
+     },
+     "api": [
+      {
+       "token": "border-width.focus",
+       "value": "2px"
+      },
+      {
+       "token": "border-width.focus-offset",
+       "value": "2px"
+      },
+      {
+       "token": "color.border.focus",
+       "primitive": "color.violet.light.600",
+       "value": "#4B3FD9",
+       "dark": "#A9A3F6"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring at border-width.focus",
+       "why": "Keyboard users must always see where they are."
+      },
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one."
+      }
+     ]
     }
    ]
   }

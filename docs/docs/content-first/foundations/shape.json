@@ -1,70 +1,182 @@
 {
- "token-swatches": {
+ "token-groups": {
   "shape": {
-   "tokens": [
+   "groups": [
     {
-     "token": "radius.control",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.8",
-      "value": "0.5rem"
-     }
+     "title": "radius.control",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-control)"
+     },
+     "api": [
+      {
+       "token": "radius.control",
+       "value": "8px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of buttons and inputs",
+       "detail": "radius.control (rounded)",
+       "why": "Rounded corners match the warm reading tone. Sharp corners feel technical next to long text."
+      },
+      {
+       "kind": "not",
+       "situation": "An option in a menu or list",
+       "detail": "use radius.option",
+       "why": "The option corner nests inside the menu corner. Soft, even curves keep the warm tone."
+      },
+      {
+       "kind": "not",
+       "situation": "Corners of cards, menus and dialogs",
+       "detail": "use radius.surface",
+       "why": "Softer corners on cards and menus feel warm, like good paper."
+      }
+     ]
     },
     {
-     "token": "radius.badge",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.pill",
-      "value": "calc(infinity * 1px)"
-     }
+     "title": "radius.badge",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-badge)"
+     },
+     "api": [
+      {
+       "token": "radius.badge",
+       "primitive": "radius.pill",
+       "value": "calc(infinity * 1px)"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Shape of a status badge",
+       "detail": "radius.badge (pill)",
+       "why": "Pills sit softly next to text."
+      }
+     ]
     },
     {
-     "token": "radius.option",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.8",
-      "value": "0.5rem"
-     }
+     "title": "radius.option",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-option)"
+     },
+     "api": [
+      {
+       "token": "radius.option",
+       "value": "8px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "An option in a menu or list",
+       "why": "The option corner nests inside the menu corner. Soft, even curves keep the warm tone."
+      }
+     ]
     },
     {
-     "token": "radius.element",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.8",
-      "value": "0.5rem"
-     }
+     "title": "radius.element",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-element)"
+     },
+     "api": [
+      {
+       "token": "radius.element",
+       "value": "8px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Something that grows past one line",
+       "why": "Text areas and list items share the control corner, so a form reads as one family."
+      }
+     ]
     },
     {
-     "token": "radius.surface",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "radius.12",
-      "value": "0.75rem"
-     }
+     "title": "radius.surface",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-surface)"
+     },
+     "api": [
+      {
+       "token": "radius.surface",
+       "value": "12px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of cards, menus and dialogs",
+       "why": "Softer corners on cards and menus feel warm, like good paper."
+      },
+      {
+       "kind": "not",
+       "situation": "Something that grows past one line",
+       "detail": "use radius.element",
+       "why": "Text areas and list items share the control corner, so a form reads as one family."
+      }
+     ]
     },
     {
-     "token": "border-width.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "border-width.1",
-      "value": "1px"
-     }
+     "title": "border-width.default",
+     "sample": {
+      "kind": "line",
+      "value": "var(--border-width-default)"
+     },
+     "api": [
+      {
+       "token": "border-width.default",
+       "value": "1px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Edges and dividers",
+       "why": "A thin edge stays quiet beside long text. The words carry the page, not the lines."
+      }
+     ]
     },
     {
-     "token": "border-width.focus",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "border-width.2",
-      "value": "2px"
-     }
-    },
-    {
-     "token": "border-width.focus-offset",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "border-width.2",
-      "value": "2px"
-     }
+     "title": "Focus ring",
+     "sample": {
+      "kind": "focus"
+     },
+     "api": [
+      {
+       "token": "border-width.focus",
+       "value": "2px"
+      },
+      {
+       "token": "border-width.focus-offset",
+       "value": "2px"
+      },
+      {
+       "token": "color.border.focus",
+       "primitive": "color.navy.light.600",
+       "value": "#1E3A5F",
+       "dark": "#8FA6C4"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring at border-width.focus",
+       "why": "Keyboard users must always see where they are."
+      },
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The ring stands clear of the control, so readers see focus on any fill."
+      }
+     ]
     }
    ]
   }

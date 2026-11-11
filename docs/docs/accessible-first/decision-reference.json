@@ -417,6 +417,125 @@
          "label": "Components",
          "href": "foundations/components"
         }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.caption for a hint sentence. It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a text in a table cell, use type.data. Don't use a small or mono font. It equals body here. Every cell stays as large and plain as body text, for people with low vision.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a parts of one item, use space.gap.tight. Don't use no gap. Parts sit close enough to read as one item, with room to tell them apart at high zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Space between fields lowers mis-taps for people with tremor.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding makes each button a bigger target that is easy to hit.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the edge. Wide padding keeps content clear of the strong border at any zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a table cell, use space.inset.cell-x. Don't use narrow cell padding. Clear space between columns keeps values apart at high zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use a pill. Slightly rounded panels read as one clear box at any zoom.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a hairline. A strong edge stays visible at high zoom and for people with low vision.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the thick ring clear of the control, so focus shows on any fill.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a long slide. A moderate open is easy to follow and shows where the panel came from.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a spring that overshoots. A plain ease-out is calm and clear. An overshoot can confuse and distract.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use no hero motion. Don't use an animated start page. Moving content distracts people with attention needs and slows the task.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a thin icon at text size. Larger icons with a bold line stay easy to see for people with low vision.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "For a most buttons and inputs, use size.control.default. Don't use a touch-minimum size. Large controls help people with tremor and low vision.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a button inside a field, use size.control.compact. Don't use a small icon button. It still meets the large target size and fits inside the field.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
        }
       ]
      }
@@ -531,6 +650,27 @@
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a hairline. A strong edge stays visible at high zoom and for people with low vision.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the thick ring clear of the control, so focus shows on any fill.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a thin icon at text size. Larger icons with a bold line stay easy to see for people with low vision.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
         }
        }
       ]
@@ -673,6 +813,32 @@
         }
        }
       ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Clear headings split a page into short parts that people can find again.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. A clear break shows where one group of questions ends and the next begins.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Text areas and list items keep the control corner, so people know they can type or pick there.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -684,7 +850,27 @@
     "Who uses it most? → Everyone, including people with disabilities"
    ],
    "decided": {
-    "groups": []
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display on step pages. It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Every step page has the same title size, so people always know where they are.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "tasks-q1": {
@@ -867,6 +1053,83 @@
          "label": "Voice",
          "href": "foundations/voice"
         }
+       },
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display on step pages. It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Clear headings split a page into short parts that people can find again.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Every step page has the same title size, so people always know where they are.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. A clear break shows where one group of questions ends and the next begins.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the edge. Wide padding keeps content clear of the strong border at any zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. The option corner nests inside the menu, so the highlighted option reads as one clear box.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Text areas and list items keep the control corner, so people know they can type or pick there.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a long slide. A moderate open is easy to follow and shows where the panel came from.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use no hero motion. Don't use an animated start page. Moving content distracts people with attention needs and slows the task.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a control that is not available yet, use opacity.disabled. Don't use a faded control with no reason. It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
        }
       ]
      },
@@ -1010,6 +1273,13 @@
          "label": "Voice",
          "href": "foundations/voice"
         }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding makes each button a bigger target that is easy to hit.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
        }
       ]
      },
@@ -1065,6 +1335,27 @@
         "link": {
          "label": "Voice",
          "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.caption for a hint sentence. It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Space between fields lowers mis-taps for people with tremor.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a control that is not available yet, use opacity.disabled. Don't use a faded control with no reason. It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
         }
        }
       ]
@@ -1152,6 +1443,32 @@
         "link": {
          "label": "Components",
          "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. The option corner nests inside the menu, so the highlighted option reads as one clear box.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use a pill. Slightly rounded panels read as one clear box at any zoom.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a spring that overshoots. A plain ease-out is calm and clear. An overshoot can confuse and distract.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
         }
        }
       ]

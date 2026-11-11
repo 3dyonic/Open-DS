@@ -10,7 +10,7 @@ description: "Multi-brand: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-::type-roles{id="typography"}
+::token-groups{id="typography"}
 
 ## The five answers
 
@@ -31,7 +31,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `type.display.font-family` | `aster.theme.base.type.display.font-family` → `font.family.inter` |
 | `type.display.font-size` | `font.size.32` |
-| `type.display.line-height` | `font.line-height.1_8` |
+| `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `aster.theme.base.type.title.font-family` → `font.family.inter` |
 | `type.title.font-size` | `font.size.24` |
@@ -64,7 +64,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `type.display.font-family` | `birch.theme.base.type.display.font-family` → `font.family.plus-jakarta-sans` |
 | `type.display.font-size` | `font.size.32` |
-| `type.display.line-height` | `font.line-height.1_8` |
+| `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `birch.theme.base.type.title.font-family` → `font.family.plus-jakarta-sans` |
 | `type.title.font-size` | `font.size.24` |
@@ -97,7 +97,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `type.display.font-family` | `coral.theme.base.type.display.font-family` → `font.family.poppins` |
 | `type.display.font-size` | `font.size.32` |
-| `type.display.line-height` | `font.line-height.1_8` |
+| `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `coral.theme.base.type.title.font-family` → `font.family.poppins` |
 | `type.title.font-size` | `font.size.24` |
@@ -135,3 +135,8 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | A number in a table | type.body | A mono font | Prices sit in sentences and offers, not in columns to compare, so a mono font adds nothing in any brand. |
 | Paragraph or help text | type.body | type.caption | Regular body size suits every brand. |
 | Field label or column header | type.label | type.caption | Labels stay readable in every brand. |
+| Hero line or key number | type.display | A brand-specific headline style | In the brand font for the product-page headline. Each brand speaks loudest in its product headline, on the shared scale. |
+| Section heading | type.heading | Bold body text | Headings stay one shared role; only the brand font changes. |
+| Supporting text | type.caption | A brand-specific small style | One caption role serves fees, dates and hints in every brand. |
+| Text in a table cell | type.data | A mono font | It equals body here. Plan and order tables read like body text in every brand font. |
+| Title of a form page | type.title | type.display | In the brand font. Sign-up and account pages share one title role in every brand. |

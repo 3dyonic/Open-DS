@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/token-groups.schema.json",
+  "title": "Token groups",
+  "description": "A foundation's tokens, each group being the thing they make: a type role, the focus ring, an icon, or one token. Drawn by the TokenGroups composite on every foundation page but Color.",
+  "type": "object",
+  "required": ["groups"],
+  "additionalProperties": false,
+  "properties": {
+    "groups": {
+      "type": "array",
+      "description": "Each group, in the order the scope lists its tokens.",
+      "items": {
+        "type": "object",
+        "required": ["title", "sample", "api", "rules"],
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string", "minLength": 1, "description": "The thing the tokens make, such as display or Focus ring, or the token's name for a group of one." },
+          "note": { "type": "string", "minLength": 1, "description": "A short line under the title, such as the icon style the scheme answers." },
+          "sample": {
+            "type": "object",
+            "required": ["kind"],
+            "additionalProperties": false,
+            "description": "How the value is drawn.",
+            "properties": {
+              "kind": { "type": "string", "enum": ["type", "focus", "icon", "gap", "inset", "target", "radius", "line", "bar", "shadow", "duration", "easing", "opacity", "size", "weight", "leading", "tracking", "font", "color"], "description": "The kind of drawing." },
+              "value": { "type": "string", "description": "The token's CSS variable, such as var(--radius-control)." },
+              "role": { "type": "string", "pattern": "^[a-z-]+$", "description": "For a type sample: the role whose tokens set the line." },
+              "text": { "type": "string", "description": "For a type sample: the line, from the scheme's samples." },
+              "note": { "type": "string", "description": "A value printed beside the drawing, such as 24px." }
+            }
+          },
+          "api": {
+            "type": "array",
+            "minItems": 1,
+            "description": "The tokens the thing is built from.",
+            "items": {
+              "type": "object",
+              "required": ["token", "value"],
+              "additionalProperties": false,
+              "properties": {
+                "token": { "type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$", "description": "The semantic token." },
+                "primitive": { "type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$", "description": "The primitive it ends at, only when its name says something the value does not." },
+                "value": { "type": "string", "description": "The value in light mode, in px where it is a length." },
+                "dark": { "type": "string", "description": "The value in dark mode, when it differs." }
+              }
+            }
+          },
+          "rules": {
+            "type": "array",
+            "description": "When to use it and when not, from the scheme's usage rules. Use lines first.",
+            "items": {
+              "type": "object",
+              "required": ["kind", "situation"],
+              "additionalProperties": false,
+              "properties": {
+                "kind": { "type": "string", "enum": ["use", "not"], "description": "use: use it for the situation. not: use something else." },
+                "situation": { "type": "string", "minLength": 1, "description": "The situation, as the grammar titles it." },
+                "detail": { "type": "string", "description": "For use: how. For not: what to use instead." },
+                "why": { "type": "string", "description": "The scheme's reason." }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

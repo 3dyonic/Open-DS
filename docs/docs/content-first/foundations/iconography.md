@@ -10,7 +10,7 @@ description: "Content first: When icons appear and how they look."
 
 When icons appear and how they look.
 
-::token-swatches{id="iconography"}
+::token-groups{id="iconography"}
 
 ## The five answers
 
@@ -77,3 +77,4 @@ The components draw their own icons; in content, use [Icon](../components/icon.m
 | --- | --- | --- | --- |
 | An icon with no label | Not used: always add a word | An icon button | Occasional visitors do not know icons. |
 | An action on one row or item | Button ghost with a word | An icon on its own | Occasional visitors need the word. |
+| An icon beside text | size.icon and icon.stroke-width | A filled or colored icon | Quiet outline icons sit beside the words and never outshine the text. |

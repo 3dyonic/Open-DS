@@ -10,7 +10,7 @@ description: "Brand expressive: Corners and borders."
 
 Corners and borders.
 
-::token-swatches{id="shape"}
+::token-groups{id="shape"}
 
 ## The five answers
 
@@ -46,3 +46,8 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | --- | --- | --- | --- |
 | Corners of buttons and inputs | radius.control (pill) | Sharp corners | Pills match the brand's round, playful shapes. Sharp corners would feel corporate. |
 | Shape of a status badge | radius.badge (pill) | A rectangle | Pills match the controls. |
+| An option in a menu or list | radius.option | radius.control | Round options nest inside the round menu, so a menu feels as playful as the buttons. |
+| Something that grows past one line | radius.element | radius.control | A pill corner breaks when a text area grows to many lines. The element corner stays round at any height. |
+| Corners of cards, menus and dialogs | radius.surface | Small corners | Big round corners make cards feel like friendly objects. |
+| Edges and dividers | border-width.default | A hairline | A bold edge matches the bold type and vivid color. |
+| The gap around a focus ring | border-width.focus-offset | A ring that touches the control | The gap keeps the ring visible on vivid fills. |

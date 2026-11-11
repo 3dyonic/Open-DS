@@ -10,7 +10,7 @@ description: "Multi-brand: When icons appear and how they look."
 
 When icons appear and how they look.
 
-::token-swatches{id="iconography"}
+::token-groups{id="iconography"}
 
 ## The five answers
 
@@ -93,3 +93,4 @@ The components draw their own icons; in content, use [Icon](../components/icon.m
 | --- | --- | --- | --- |
 | An icon with no label | Not used: always add a word; a popover explains a fee | An icon button with a hover hint | On touch screens hover hints never show; a word says what will happen. |
 | An action on one row or item | Button ghost with a word | An icon alone | A word says what will happen. |
+| An icon beside text | size.icon and icon.stroke-width | A brand-specific icon set | One icon set and size serve every brand; only the color changes. |

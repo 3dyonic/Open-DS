@@ -46,18 +46,12 @@ test("brief: short Markdown with no values, sections on request, the full answer
 
 test("brief: a long section pages by size, never inside an item", () => {
   const one = brief("dense-data", "build", { section: "rules", roots, g });
-  const two = brief("dense-data", "build", {
-    section: "rules",
-    page: 2,
-    roots,
-    g,
-  });
-  assert.match(
-    one,
-    /Page 1 of 2\. Next: get_context target=build section=rules page=2/,
-  );
-  assert.match(two, /Page 2 of 2\.$/);
-  for (const p of [one, two])
+  const n = Number(one.match(/Page 1 of (\d+)\./)[1]);
+  assert.ok(n >= 2);
+  assert.match(one, /Next: get_context target=build section=rules page=2/);
+  const last = brief("dense-data", "build", { section: "rules", page: n, roots, g });
+  assert.match(last, new RegExp(`Page ${n} of ${n}\\.$`));
+  for (const p of [one, last])
     assert.ok(Buffer.byteLength(p) < BUDGET.page + 200);
 });
 

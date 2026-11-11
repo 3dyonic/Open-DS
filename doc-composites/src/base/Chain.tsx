@@ -16,7 +16,7 @@ export default function Chain({ parts, lead = false }: { parts: React.ReactNode[
     <span className="inline-flex flex-wrap items-center gap-x-[var(--space-gap-tight)]">
       {parts.flatMap((p, i) => [
         ...(i || lead ? [arrow(`a${i}`)] : []),
-        <span key={`p${i}`} className="whitespace-nowrap">
+        <span key={`p${i}`} className="min-w-0 [overflow-wrap:anywhere]">
           {p}
         </span>,
       ])}

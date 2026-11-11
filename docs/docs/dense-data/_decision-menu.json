@@ -12,37 +12,37 @@
         {
           "id": "people",
           "title": "People and work context",
-          "count": 15
+          "count": 17
         },
         {
           "id": "content",
           "title": "Content and data",
-          "count": 46
+          "count": 63
         },
         {
           "id": "tasks",
           "title": "Tasks and flows",
-          "count": 30
+          "count": 36
         },
         {
           "id": "human",
           "title": "Human factors",
-          "count": 9
+          "count": 12
         },
         {
           "id": "outcomes",
           "title": "Outcomes",
-          "count": 14
+          "count": 19
         },
         {
           "id": "brand",
           "title": "Brand",
-          "count": 16
+          "count": 24
         },
         {
           "id": "scenarios",
           "title": "Use scenarios",
-          "count": 4
+          "count": 7
         },
         {
           "id": "team",
@@ -62,7 +62,7 @@
         {
           "id": "color",
           "title": "Color",
-          "count": 90
+          "count": 91
         },
         {
           "id": "spacing",

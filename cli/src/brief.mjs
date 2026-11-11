@@ -376,8 +376,15 @@ function shortTask(t, g) {
   );
   if (t.target === "build") {
     lines.push("", "## Situations");
-    for (const r of t.rules.filter((r) => r.use && !voice.has(r.situation)))
-      lines.push(`- ${r.title}: ${r.use}. Not ${r.not}.`);
+    // What to use in each situation; what not to use and why are in the paged rules section, so the
+    // booklet stays in its budget with a rule for every foundation token (OD-286).
+    lines.push("What not to use, and why: section rules.");
+    const order = g.situations.map((x) => x.id);
+    const items = t.rules
+      .filter((r) => r.use && !voice.has(r.situation))
+      .sort((a, b) => order.indexOf(a.situation) - order.indexOf(b.situation))
+      .map((r) => `${r.situation}: ${r.use}`);
+    lines.push(`${items.join("; ")}.`);
     if (t.urgency) lines.push("", t.urgency.description);
     lines.push(
       "",

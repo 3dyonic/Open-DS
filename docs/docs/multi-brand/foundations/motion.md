@@ -10,7 +10,7 @@ description: "Multi-brand: What moves, why and how fast."
 
 What moves, why and how fast.
 
-::token-swatches{id="motion"}
+::token-groups{id="motion"}
 
 ## The five answers
 
@@ -58,3 +58,6 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (moderate) | Brand-specific motion | Motion is shared, so one component library behaves the same in every brand. |
 | Someone asked for less motion | Reduced motion | Full motion | Motion is reduced, not removed: a fade keeps the change visible, and nothing slides. |
+| A panel opens | motion.duration.panels | Brand-specific motion | A relaxed open guides customers through sign-up the same way in every brand. |
+| The curve of any move | motion.easing.standard | A brand-specific curve | One calm curve keeps the shared components the same in every brand. |
+| A hero or launch moment | No hero motion | An intro animation for one brand | A brand-only animation would break the shared library. |

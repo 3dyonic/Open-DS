@@ -10,7 +10,7 @@ description: "Accessible first: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-::type-roles{id="typography"}
+::token-groups{id="typography"}
 
 ## The five answers
 
@@ -67,3 +67,8 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | A number in a table | type.body | A small or mono font | Every number must be readable at large size. |
 | Paragraph or help text | type.body, short sentences | type.caption | Large text and short lines lower effort. |
 | Field label or column header | type.label, above the field, always visible | A placeholder as the label | Labels must stay visible while typing. |
+| Hero line or key number | type.display | type.display on step pages | It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size. |
+| Section heading | type.heading | Bold body text | Clear headings split a page into short parts that people can find again. |
+| Supporting text | type.caption | type.caption for a hint sentence | It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size. |
+| Text in a table cell | type.data | A small or mono font | It equals body here. Every cell stays as large and plain as body text, for people with low vision. |
+| Title of a form page | type.title | type.display | Every step page has the same title size, so people always know where they are. |

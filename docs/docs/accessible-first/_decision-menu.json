@@ -12,12 +12,12 @@
         {
           "id": "people",
           "title": "People and work context",
-          "count": 44
+          "count": 64
         },
         {
           "id": "content",
           "title": "Content and data",
-          "count": 9
+          "count": 14
         },
         {
           "id": "tasks",
@@ -27,17 +27,17 @@
         {
           "id": "human",
           "title": "Human factors",
-          "count": 23
+          "count": 34
         },
         {
           "id": "outcomes",
           "title": "Outcomes",
-          "count": 13
+          "count": 17
         },
         {
           "id": "brand",
           "title": "Brand",
-          "count": 13
+          "count": 16
         },
         {
           "id": "scenarios",

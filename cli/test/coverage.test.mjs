@@ -28,12 +28,13 @@ test("a usage rule that names a group links every token in it", () => {
 });
 
 test("a value with no pick and no rule is unlinked, with the scope that owns it", () => {
-  assert.equal(linkOf(dense, "border-width.default"), undefined);
-  assert.deepEqual(gapOf(dense, "border-width.default"), {
-    token: "border-width.default",
-    value: "{border-width.1}",
-    scope: "shape",
-    owns: "border-width",
+  // Dense data has a rule for every foundation token; the component spacing map has no question yet.
+  assert.ok(linkOf(dense, "border-width.default"));
+  assert.deepEqual(gapOf(dense, "component-spacing-map.x1"), {
+    token: "component-spacing-map.x1",
+    value: "{space.4}",
+    scope: null,
+    owns: null,
   });
   assert.equal(dense.linked.length + dense.unlinked.length, dense.total);
 });

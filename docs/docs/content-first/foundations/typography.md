@@ -10,7 +10,7 @@ description: "Content first: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-::type-roles{id="typography"}
+::token-groups{id="typography"}
 
 ## The five answers
 
@@ -67,3 +67,8 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | A number in a table | type.body | A mono font | Tables are rare and read row by row, so digits never need to line up in columns. A mono font would break the reading voice. |
 | Paragraph or help text | type.body, at most 65 characters a line | type.caption | A large size and short lines make long text easy on the eyes. |
 | Field label or column header | type.label | type.caption | Caption is too faint for a label people must read. |
+| Hero line or key number | type.display | type.display on article titles | On the landing hero only. One big serif line opens the publication. Articles keep calm titles, so the text gets the attention. |
+| Section heading | type.heading | Bold body text | Clear headings let readers skim a long guide and find their place again. |
+| Supporting text | type.caption | type.body | Captions use the quiet interface face. Dates and notes never compete with the article. |
+| Text in a table cell | type.data | A mono font | It equals body here. Tables are rare and read row by row. Cells use the reading face, so a row reads like a sentence. |
+| Title of a form page | type.title | type.display | Subscribe and account pages share the calm article title. The brand shows in the serif, not in size. |

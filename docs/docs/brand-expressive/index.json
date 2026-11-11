@@ -103,16 +103,16 @@
      "code": "accessibility.values"
     },
     {
-     "eyebrow": "Which outcome matters most?",
-     "title": "Engagement",
-     "text": "Engagement and sign-ups.",
-     "code": "outcomes.q1"
+     "eyebrow": "What is the main content?",
+     "title": "Images and campaigns",
+     "text": "Images, campaigns and short punchy copy.",
+     "code": "content.q1"
     },
     {
-     "eyebrow": "How many tones does it use?",
-     "title": "One per moment",
-     "text": "Playful in headlines, plain in errors.",
-     "code": "voice.count"
+     "eyebrow": "What must the interface protect?",
+     "title": "Delight",
+     "text": "Delight is the point.",
+     "code": "human.q1"
     }
    ]
   },
@@ -121,7 +121,7 @@
     {
      "href": "primitives/",
      "title": "Primitives",
-     "text": "All 182 raw values, and the tokens that point to each.",
+     "text": "All 181 raw values, and the tokens that point to each.",
      "samples": [
       {
        "kind": "color",

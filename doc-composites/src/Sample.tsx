@@ -9,7 +9,7 @@
  */
 import * as React from "react";
 import Swatch from "./base/Swatch";
-import { Pointer } from "lucide-react";
+import { Bell, Pointer } from "lucide-react";
 import { Icon } from "@open-ds/ui/components/icon";
 
 export type SampleProps = {
@@ -148,6 +148,42 @@ export default function Sample({
         style={{ background: value }}
         aria-hidden="true"
       />
+    );
+  // A gap: two boxes with the space between them (OD-286), so a space token reads as distance.
+  if (kind === "gap")
+    return (
+      <span data-composite="sample" aria-hidden="true" className="inline-flex shrink-0 items-center" style={{ gap: value }}>
+        <span className="size-5 rounded-[var(--radius-badge)] border-[length:var(--border-width-default)] border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)]" />
+        <span className="size-5 rounded-[var(--radius-badge)] border-[length:var(--border-width-default)] border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)]" />
+      </span>
+    );
+  // An inset: a dashed box padded by the value around its content.
+  if (kind === "inset")
+    return (
+      <span
+        data-composite="sample"
+        aria-hidden="true"
+        className="inline-flex shrink-0 border-[length:var(--border-width-default)] border-dashed border-[var(--color-border-strong)]"
+        style={{ paddingInline: value, paddingBlock: "var(--space-gap-tight)" }}
+      >
+        <span className="h-3 w-5 bg-[var(--color-surface-sunken)]" />
+      </span>
+    );
+  // The focus ring as the scheme draws it: its width, its offset and its color, around a control.
+  if (kind === "focus")
+    return (
+      <span
+        data-composite="sample"
+        aria-hidden="true"
+        className="inline-flex h-[var(--size-control-compact)] w-16 rounded-[var(--radius-control)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] bg-[var(--color-surface-default)] outline-[length:var(--border-width-focus)] outline-offset-[length:var(--border-width-focus-offset)] outline-[var(--color-border-focus)] [outline-style:solid]"
+      />
+    );
+  // An icon at the scheme's icon size and stroke, drawn through Icon (OD-285).
+  if (kind === "icon")
+    return (
+      <span data-composite="sample" className="inline-flex text-[color:var(--color-text-primary)]">
+        <Icon icon={Bell} size="large" />
+      </span>
     );
   // A line of type set in a role's own tokens.
   if (kind === "type" && role)

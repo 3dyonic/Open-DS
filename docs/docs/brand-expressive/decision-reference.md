@@ -34,7 +34,7 @@ The first answers lead to the rest. Each branch is an answer that follows from t
 All 79, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.
 
 ::::group{title="Reasons"}
-:::fold{id="business" title="Business and product" note="2 answers, 11 decisions"}
+:::fold{id="business" title="Business and product" note="2 answers, 14 decisions"}
 #### What does the product do for the business? {#business-q1}
 
 ::decision-answer{id="business-q1"}
@@ -44,7 +44,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="business-q2"}
 :::
 
-:::fold{id="people" title="People and work context" note="2 answers, 11 decisions"}
+:::fold{id="people" title="People and work context" note="2 answers, 12 decisions"}
 #### Who uses it most? {#people-q1}
 
 ::decision-answer{id="people-q1"}
@@ -54,7 +54,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="people-q2"}
 :::
 
-:::fold{id="content" title="Content and data" note="2 answers, 16 decisions"}
+:::fold{id="content" title="Content and data" note="2 answers, 24 decisions"}
 #### What is the main content? {#content-q1}
 
 ::decision-answer{id="content-q1"}
@@ -64,7 +64,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="content-q2"}
 :::
 
-:::fold{id="tasks" title="Tasks and flows" note="2 answers, 7 decisions"}
+:::fold{id="tasks" title="Tasks and flows" note="2 answers, 9 decisions"}
 #### What is the main task? {#tasks-q1}
 
 ::decision-answer{id="tasks-q1"}
@@ -74,7 +74,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="tasks-q2"}
 :::
 
-:::fold{id="human" title="Human factors" note="2 answers, 2 decisions"}
+:::fold{id="human" title="Human factors" note="2 answers, 10 decisions"}
 #### What must the interface protect? {#human-q1}
 
 ::decision-answer{id="human-q1"}
@@ -84,7 +84,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="human-q2"}
 :::
 
-:::fold{id="outcomes" title="Outcomes" note="2 answers, 20 decisions"}
+:::fold{id="outcomes" title="Outcomes" note="2 answers, 22 decisions"}
 #### Which outcome matters most? {#outcomes-q1}
 
 ::decision-answer{id="outcomes-q1"}
@@ -94,7 +94,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="outcomes-q2"}
 :::
 
-:::fold{id="brand" title="Brand" note="3 answers, 32 decisions"}
+:::fold{id="brand" title="Brand" note="3 answers, 46 decisions"}
 #### What should the brand feel like? {#brand-q1}
 
 ::decision-answer{id="brand-q1"}
@@ -108,7 +108,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="brand-q3"}
 :::
 
-:::fold{id="scenarios" title="Use scenarios" note="2 answers, 5 decisions"}
+:::fold{id="scenarios" title="Use scenarios" note="2 answers, 10 decisions"}
 #### Where do people use it? {#scenarios-q1}
 
 ::decision-answer{id="scenarios-q1"}
@@ -152,7 +152,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="typography-lands"}
 :::
 
-:::fold{id="color" title="Color" note="5 answers, 96 decisions, and the values of its tokens"}
+:::fold{id="color" title="Color" note="5 answers, 97 decisions, and the values of its tokens"}
 #### Which color roles does it need? {#color-roles}
 
 ::decision-answer{id="color-roles"}

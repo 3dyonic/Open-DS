@@ -10,7 +10,7 @@ description: "Dense data: Floors the system must hold."
 
 Floors the system must hold.
 
-::token-swatches{id="accessibility"}
+::token-groups{id="accessibility"}
 
 ## The five answers
 
@@ -47,3 +47,7 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 | --- | --- | --- | --- |
 | Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Keyboard users must always see where they are. |
 | The smallest clickable thing | size.control.compact | Anything smaller | Compact still fits a mouse. Touch is not this product's input. |
+| Most buttons and inputs | size.control.default | size.control.large | Buttons and inputs fit a mouse and keep toolbars short. |
+| The main action on a screen | size.control.large | A taller button for the main action | It is the same height as the default here. Color and place mark the main action. One height keeps toolbar buttons in line. |
+| A button inside a field | size.control.compact | size.control.default | A clear or step button fits inside the field, so the field keeps its row height. |
+| A control that is not available yet | opacity.disabled | Hiding the control | A faded control stays in its place. Experts keep their bearings and see the action will come back. |

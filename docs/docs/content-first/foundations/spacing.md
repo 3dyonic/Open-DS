@@ -10,7 +10,7 @@ description: "Content first: How space shows what belongs together."
 
 How space shows what belongs together.
 
-::token-swatches{id="spacing"}
+::token-groups{id="spacing"}
 
 ## The five answers
 
@@ -65,3 +65,9 @@ Between things and on the page, use a role instead: `*-tight` (8px), `*-default`
 | Items that belong together | space.gap.default | space.gap.tight | Text needs air even inside a group. |
 | Between page sections | space.gap.section, no line | A divider line | Space alone separates sections; lines add noise. |
 | Table row height | size.row (comfortable) | A compact row | Rows are read, not scanned. |
+| Parts of one item | space.gap.tight | space.gap.default | An icon and its word sit close. Readers who visit now and then see one item, not two. |
+| Items in a list or a form row | space.gap.default | space.gap.tight | Items in a list need air, so each one reads on its own. |
+| Between groups | space.gap.group | space.gap.default | A clear step between groups gives the reader a place to pause. |
+| Inside a button or input | space.inset.control-x | Padding set by eye | Wide padding gives each rare action room, so a button feels as calm as the text. |
+| Inside a card, panel or dialog | space.inset.container | Text that touches the card edge | Generous padding frames each card like a page in a magazine. |
+| Inside a table cell | space.inset.cell-x | Narrow cell padding | Rows are read, not scanned. Cells get room like text does. |

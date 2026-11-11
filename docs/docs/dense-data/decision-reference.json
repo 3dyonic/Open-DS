@@ -359,6 +359,13 @@
          "label": "Voice",
          "href": "foundations/voice"
         }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a slow slide-in. Panels open at the feedback speed, so experts never wait for a menu.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
        }
       ]
      }
@@ -407,6 +414,13 @@
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
         }
        }
       ]
@@ -508,6 +522,20 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.body. Timestamps and hints step back, so the values stay the hero.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a text in a table cell, use type.data. Don't use type.body. Every cell shares the mono face, so IDs, times and values line up down each column.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
         }
        }
       ]
@@ -707,6 +735,111 @@
          "label": "Spacing",
          "href": "foundations/spacing"
         }
+       },
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display for page titles. It is for the one key number at the top of a dashboard. One big total gives analysts the headline at a glance. Everything below it stays small so more rows fit.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a section heading, use type.heading. Don't use type.title. Panel and card headings sit one step above body. They name a block without taking rows from the data.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Settings and form pages keep the same small title as every page. Experts find the fields higher up.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a parts of one item, use space.gap.tight. Don't use space.gap.default. An icon and its word sit close, so each item reads as one unit in a dense row.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Items in a list sit close but apart. Analysts still tell one record from the next.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.section. A small step marks a new group without pushing records off the screen.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Narrow padding keeps buttons short, so a toolbar holds every action an expert repeats.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use space.gap.section. Cards and dialogs keep a small inset, so their content starts close to the edge.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a table cell, use space.inset.cell-x. Don't use space.inset.container. Narrow cell padding fits more columns, and values in two columns still stay apart.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Rows and text areas keep the small control corner, so long lists stay straight.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use radius.control. Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a thicker border. A hairline separates rows and cards without taking room from the data.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a most buttons and inputs, use size.control.default. Don't use size.control.large. Buttons and inputs fit a mouse and keep toolbars short.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Color and place mark the main action. One height keeps toolbar buttons in line.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a button inside a field, use size.control.compact. Don't use size.control.default. A clear or step button fits inside the field, so the field keeps its row height.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
        }
       ]
      },
@@ -879,6 +1012,27 @@
          "label": "Color",
          "href": "foundations/color"
         }
+       },
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display for page titles. It is for the one key number at the top of a dashboard. One big total gives analysts the headline at a glance. Everything below it stays small so more rows fit.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a text in a table cell, use type.data. Don't use type.body. Every cell shares the mono face, so IDs, times and values line up down each column.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Inside a table cell, use space.inset.cell-x. Don't use space.inset.container. Narrow cell padding fits more columns, and values in two columns still stay apart.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
        }
       ]
      },
@@ -981,6 +1135,27 @@
          "label": "Voice",
          "href": "foundations/voice"
         }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Narrow padding keeps buttons short, so a toolbar holds every action an expert repeats.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. Options sit square inside the menu. A long list scans as one clean column.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use an icon larger than its label. Icons match the small text, so a toolbar reads as one line. The light stroke keeps rows quiet.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
        }
       ]
      },
@@ -1069,6 +1244,18 @@
       ]
      },
      {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.section. A small step marks a new group without pushing records off the screen.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     },
+     {
       "kind": "variants",
       "items": [
        {
@@ -1113,6 +1300,20 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Settings and form pages keep the same small title as every page. Experts find the fields higher up.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a control that is not available yet, use opacity.disabled. Don't use hiding the control. A faded control stays in its place. Experts keep their bearings and see the action will come back.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
         }
        }
       ]
@@ -1167,6 +1368,27 @@
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a slow slide-in. Panels open at the feedback speed, so experts never wait for a menu.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a spring or a bounce. A plain ease-out starts fast and settles quietly. Nothing pulls the eye from the data.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use no hero motion. Don't use an intro animation. Analysts open the tool to work for a whole shift. An intro would cost time on every visit.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
         }
        }
       ]
@@ -1230,6 +1452,20 @@
         "link": {
          "label": "Voice",
          "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Items in a list sit close but apart. Analysts still tell one record from the next.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
         }
        }
       ]
@@ -1327,6 +1563,32 @@
         }
        }
       ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. Options sit square inside the menu. A long list scans as one clean column.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Rows and text areas keep the small control corner, so long lists stay straight.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use radius.control. Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -1364,6 +1626,46 @@
         "link": {
          "label": "Components",
          "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a section heading, use type.heading. Don't use type.title. Panel and card headings sit one step above body. They name a block without taking rows from the data.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.body. Timestamps and hints step back, so the values stay the hero.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a thicker border. A hairline separates rows and cards without taking room from the data.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a spring or a bounce. A plain ease-out starts fast and settles quietly. Nothing pulls the eye from the data.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use an icon larger than its label. Icons match the small text, so a toolbar reads as one line. The light stroke keeps rows quiet.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
         }
        }
       ]
@@ -1532,6 +1834,25 @@
       ]
      },
      {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a most buttons and inputs, use size.control.default. Don't use size.control.large. Buttons and inputs fit a mouse and keep toolbars short.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a button inside a field, use size.control.compact. Don't use size.control.default. A clear or step button fits inside the field, so the field keeps its row height.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
       "kind": "variants",
       "items": [
        {
@@ -1562,6 +1883,18 @@
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a hero or launch moment, use no hero motion. Don't use an intro animation. Analysts open the tool to work for a whole shift. An intro would cost time on every visit.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
         }
        }
       ]
@@ -1778,6 +2111,13 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Color and place mark the main action. One height keeps toolbar buttons in line.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
         }
        }
       ]

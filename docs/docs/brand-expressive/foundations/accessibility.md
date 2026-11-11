@@ -10,7 +10,7 @@ description: "Brand expressive: Floors the system must hold."
 
 Floors the system must hold.
 
-::token-swatches{id="accessibility"}
+::token-groups{id="accessibility"}
 
 ## The five answers
 
@@ -47,3 +47,7 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 | --- | --- | --- | --- |
 | Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Focus must show on vivid color. |
 | The smallest clickable thing | size.control.default (touch) | A compact control | Most visitors arrive on phones, and a compact control is too small for a thumb. |
+| Most buttons and inputs | size.control.default | size.control.compact | Most visitors arrive on phones, so every control fits a thumb. |
+| The main action on a screen | size.control.large | size.control.default | The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb. |
+| A button inside a field | size.control.compact | A small icon button | It still fits a thumb and sits inside the pill field. |
+| A control that is not available yet | opacity.disabled | Hiding the button | A faded button keeps the layout. The vivid color returns when the visitor can sign up. |

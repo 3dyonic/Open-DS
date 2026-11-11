@@ -1,57 +1,108 @@
 {
- "token-swatches": {
+ "token-groups": {
   "accessibility": {
-   "tokens": [
+   "groups": [
     {
-     "token": "size.control.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.52",
-      "value": "3.25rem"
+     "title": "size.control.default",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-default)"
      },
-     "px": 52
-    },
-    {
-     "token": "size.control.compact",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.48",
-      "value": "3rem"
-     },
-     "px": 48
-    },
-    {
-     "token": "size.control.large",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.52",
-      "value": "3.25rem"
-     },
-     "px": 52
-    },
-    {
-     "token": "opacity.disabled",
-     "type": "number",
-     "resolves": {
-      "primitive": "opacity.50",
-      "value": "0.5"
-     }
-    },
-    {
-     "token": "color.border.focus",
-     "type": "color",
-     "modes": [
+     "api": [
       {
-       "mode": "light",
-       "primitive": "color.blue.light.600",
-       "hex": "#0B4FC0"
+       "token": "size.control.default",
+       "value": "52px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The smallest clickable thing",
+       "detail": "size.control.default (large)",
+       "why": "Large targets help people with motor needs."
       },
       {
-       "mode": "dark",
-       "primitive": "color.blue.dark.600",
-       "hex": "#8AB4F8"
+       "kind": "use",
+       "situation": "Most buttons and inputs",
+       "why": "Large controls help people with tremor and low vision."
       }
      ]
+    },
+    {
+     "title": "size.control.compact",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-compact)"
+     },
+     "api": [
+      {
+       "token": "size.control.compact",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A button inside a field",
+       "why": "It still meets the large target size and fits inside the field."
+      }
+     ]
+    },
+    {
+     "title": "size.control.large",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-large)"
+     },
+     "api": [
+      {
+       "token": "size.control.large",
+       "value": "52px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The main action on a screen",
+       "why": "It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable."
+      }
+     ]
+    },
+    {
+     "title": "opacity.disabled",
+     "sample": {
+      "kind": "opacity",
+      "value": "var(--opacity-disabled)"
+     },
+     "api": [
+      {
+       "token": "opacity.disabled",
+       "value": "0.5"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A control that is not available yet",
+       "why": "It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step."
+      }
+     ]
+    },
+    {
+     "title": "color.border.focus",
+     "sample": {
+      "kind": "color",
+      "value": "var(--color-border-focus)"
+     },
+     "api": [
+      {
+       "token": "color.border.focus",
+       "primitive": "color.blue.light.600",
+       "value": "#0B4FC0",
+       "dark": "#8AB4F8"
+      }
+     ],
+     "rules": []
     }
    ]
   }

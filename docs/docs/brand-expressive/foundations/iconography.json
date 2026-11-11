@@ -1,14 +1,31 @@
 {
- "token-swatches": {
+ "token-groups": {
   "iconography": {
-   "tokens": [
+   "groups": [
     {
-     "token": "size.icon",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.20",
-      "value": "1.25rem"
-     }
+     "title": "Icon",
+     "note": "Style: Contained",
+     "sample": {
+      "kind": "icon"
+     },
+     "api": [
+      {
+       "token": "size.icon",
+       "value": "20px"
+      },
+      {
+       "token": "icon.stroke-width",
+       "value": "1.75"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "An icon beside text",
+       "detail": "size.icon and icon.stroke-width",
+       "why": "Larger icons hold their own next to big type. The thicker line carries the brand's warmth."
+      }
+     ]
     }
    ]
   }

@@ -10,7 +10,7 @@ description: "Accessible first: What moves, why and how fast."
 
 What moves, why and how fast.
 
-::token-swatches{id="motion"}
+::token-groups{id="motion"}
 
 ## The five answers
 
@@ -40,3 +40,6 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (moderate) | Fast flicker | Moderate speed is easy to follow. |
 | Someone asked for less motion | No motion | Reduced motion | A shorter motion still moves. When people ask for less motion, nothing moves. |
+| A panel opens | motion.duration.panels | A long slide | A moderate open is easy to follow and shows where the panel came from. |
+| The curve of any move | motion.easing.standard | A spring that overshoots | A plain ease-out is calm and clear. An overshoot can confuse and distract. |
+| A hero or launch moment | No hero motion | An animated start page | Moving content distracts people with attention needs and slows the task. |

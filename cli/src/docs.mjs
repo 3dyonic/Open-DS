@@ -1649,12 +1649,97 @@ export function docsPages(
         : "| Token | Points to |\n| --- | --- |\n" +
           semantics.map((t) => `| \`${t.path}\` | ${link(F, key(t.path))} |`).join("\n"));
     const hasPrims = primsOf(first, dark).filter(Boolean).length > 0;
+    // OD-286, OD-287: every foundation but Color shows its tokens as token groups. A group is the thing
+    // the tokens make (a type role, the focus ring, an icon) or one token, with its value drawn, its token
+    // API, and when to use it and when not, from the scheme's usage rules.
+    const NAMED = (prim) => prim && !/\.\d[\d_]*$/.test(prim);
+    const pxOf = (v) => {
+      const s = String(v);
+      const m = s.match(/\((\d+(?:\.\d+)?px)\)/) ?? s.match(/^(-?[\d.]+)rem$/);
+      if (!m) return s.replace(/"/g, "").split(",")[0].trim();
+      return m[1].endsWith("px") ? m[1] : `${Number(m[1]) * 16}px`;
+    };
+    const apiRow = (path) => {
+      if (path.startsWith("color.")) {
+        const b = first.brand ?? Object.keys(scheme.tokens.brands)[0];
+        const at = (m) => follow(scheme.tokens, b, m, path) ?? follow(scheme.tokens, b, m, `${path}.@`);
+        const hex = (f) => String(f?.prim.split(".").reduce((n, k) => n?.[k], scheme.tokens.primitive)?.$value ?? "").toUpperCase();
+        const [l, d] = [at("light"), at("dark")];
+        if (!l) return { token: path, value: pxOf(value(first, path, "")) };
+        return { token: path, primitive: l.prim, value: hex(l), ...(d && hex(d) !== hex(l) && { dark: hex(d) }) };
+      }
+      const prim = primitiveOf(first, path);
+      return { token: path, ...(NAMED(prim) && { primitive: prim }), value: pxOf(value(first, path, "")) };
+    };
+    // The rules that name a token, or the role a token belongs to, in use or in not.
+    const RX = (name) => new RegExp(`(^|[^a-z.-])${name.replace(/\./g, "\\.")}(?![a-z0-9-])`);
+    const rulesFor = (names) => {
+      const out = [];
+      for (const u of scheme.usage ?? []) {
+        const sit = sits[u.situation]?.title ?? u.situation;
+        const use = String(u.use ?? ""), not = String(u.not ?? "");
+        const hit = names.find((n) => RX(n).test(use));
+        if (hit) {
+          // The scheme's own words when they say more than the token's name, such as "space.gap.section and a hairline".
+          const detail = use.trim() === hit ? "" : use.trim();
+          out.push({ kind: "use", situation: sit, ...(detail && { detail }), ...(u.why && { why: u.why }) });
+        }
+        if (names.some((n) => RX(n).test(not)) && !hit)
+          out.push({ kind: "not", situation: sit, detail: `use ${use}`, ...(u.why && { why: u.why }) });
+      }
+      return out.sort((a, b) => (a.kind === b.kind ? 0 : a.kind === "use" ? -1 : 1));
+    };
+    const tokenGroups = (list) => {
+      const paths = list.map((t) => t.path);
+      const used = new Set();
+      const groups = [];
+      // Type roles: one group per role, its four tokens.
+      for (const r of [...new Set(paths.map((p) => p.match(/^type\.([a-z-]+)\./)?.[1]).filter(Boolean))]) {
+        const own = paths.filter((p) => p.startsWith(`type.${r}.`));
+        own.forEach((p) => used.add(p));
+        groups.push({
+          title: r,
+          sample: { kind: "type", role: r, text: (smp && ROLE_TEXT[r]?.({ smp })) || scheme.scenarios[0].text },
+          api: ["font-family", "font-size", "line-height", "font-weight"].map((k) => `type.${r}.${k}`).filter((p) => own.includes(p)).map(apiRow),
+          rules: rulesFor([`type.${r}`]),
+        });
+      }
+      // The focus ring: its width, its offset, and its color.
+      const ring = paths.filter((p) => /^border-width\.focus/.test(p));
+      if (ring.length) {
+        ring.forEach((p) => used.add(p));
+        const parts = [...ring, "color.border.focus"];
+        groups.push({ title: "Focus ring", sample: { kind: "focus" }, api: parts.map(apiRow), rules: rulesFor(parts) });
+      }
+      // An icon: its size and its stroke, with the style the scheme answers.
+      const icon = paths.filter((p) => /^(size\.icon|icon\.)/.test(p));
+      if (icon.length) {
+        icon.forEach((p) => used.add(p));
+        const style = qs["iconography.definition"] && answer("iconography.definition") ? label("iconography.definition") : null;
+        groups.push({ title: "Icon", ...(style && { note: `Style: ${style}` }), sample: { kind: "icon" }, api: icon.map(apiRow), rules: rulesFor(icon) });
+      }
+      // Every other token is a group of one.
+      for (const t of list) {
+        if (used.has(t.path)) continue;
+        const f = sampleFact(t.path, t.type, value(first, t.path, ""));
+        const kind = /^space\.gap\./.test(t.path) ? "gap" : /^space\.inset\./.test(t.path) ? "inset" : /^size\.control\./.test(t.path) ? "target" : f?.kind ?? "bar";
+        groups.push({ title: t.path, sample: { kind, value: `var(--${t.path.replace(/\.@$/, "").replace(/\./g, "-")})`, ...(f?.note && { note: f.note }) }, api: [apiRow(t.path)], rules: rulesFor([t.path]) });
+      }
+      // In the order the scope lists its tokens: a group sits where its first token is.
+      const at = (g) => Math.min(...g.api.map((a) => (paths.indexOf(a.token) + 1 || 1e9)));
+      return groups.sort((a, b) => at(a) - at(b));
+    };
     const SPECIMEN =
       sc.id === "theming"
         ? themingVisuals()
         : ["components", "naming", "voice"].includes(sc.id)
           ? ""
-          : foundationSpecimen(
+          : sc.id !== "color" && (semantics.length ? semantics : tokens).length
+            ? foundationSpecimen(sc.id, {
+                kind: "token-groups",
+                data: { groups: tokenGroups((semantics.length ? semantics : tokens).filter((t) => !get(scheme.tokens.semantic, t.path)?.$deprecated)) },
+              })
+            : foundationSpecimen(
               sc.id,
               specimen(
                 // A deprecated alias draws the same as the token it points at, so the specimen leaves it out.
@@ -3109,6 +3194,7 @@ export function docsPages(
     "surface-stack": "id",
     "sample-screen": "id",
     "token-swatches": "id",
+    "token-groups": "id",
     "type-roles": "id",
     "primitive-table": "id",
     "color-keys": "id",

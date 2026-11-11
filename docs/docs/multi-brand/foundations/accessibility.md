@@ -10,7 +10,7 @@ description: "Multi-brand: Floors the system must hold."
 
 Floors the system must hold.
 
-::token-swatches{id="accessibility"}
+::token-groups{id="accessibility"}
 
 ## The five answers
 
@@ -79,3 +79,7 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 | --- | --- | --- | --- |
 | Keyboard focus | button/focus-ring (from the brand) | Removing the outline | Focus follows the brand but always shows. |
 | The smallest clickable thing | size.control.default (touch) | A compact control | Customers are often on phones. |
+| Most buttons and inputs | size.control.default | size.control.compact | Customers sign up on phones, so every control fits a thumb in every brand. |
+| The main action on a screen | size.control.large | A taller button for one brand | It is the same height as the default here. Brand color marks the main action. One height keeps every brand's forms the same. |
+| A button inside a field | size.control.compact | size.control.default | A clear or show-password button fits inside the field in every brand. |
+| A control that is not available yet | opacity.disabled | A grey color per brand | One fade level works on every brand color, so no brand needs its own disabled color. |

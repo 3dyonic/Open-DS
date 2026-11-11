@@ -24,6 +24,7 @@ import Specimen from "@open-ds/doc-composites/Specimen";
 import SurfaceStack from "@open-ds/doc-composites/SurfaceStack";
 import TokenTable from "@open-ds/doc-composites/TokenTable";
 import TokenSwatches from "@open-ds/doc-composites/TokenSwatches";
+import TokenGroups from "@open-ds/doc-composites/TokenGroups";
 import TypeRoles from "@open-ds/doc-composites/TypeRoles";
 import Steps from "@open-ds/doc-composites/Steps";
 import DecisionTree from "@open-ds/doc-composites/DecisionTree";
@@ -128,6 +129,7 @@ export default {
   SurfaceStack,
   TokenTable,
   TokenSwatches,
+  TokenGroups,
   TypeRoles,
   Steps,
   DecisionTree,

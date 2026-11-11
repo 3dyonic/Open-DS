@@ -10,7 +10,7 @@ description: "Dense data: What moves, why and how fast."
 
 What moves, why and how fast.
 
-::token-swatches{id="motion"}
+::token-groups{id="motion"}
 
 ## The five answers
 
@@ -40,3 +40,6 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (fast) | No transition | Fast feedback confirms the pointer without slowing experts. |
 | Someone asked for less motion | No motion | A shorter version of the motion | A shorter motion still moves. When people ask for less motion, nothing moves. |
+| A panel opens | motion.duration.panels | A slow slide-in | Panels open at the feedback speed, so experts never wait for a menu. |
+| The curve of any move | motion.easing.standard | A spring or a bounce | A plain ease-out starts fast and settles quietly. Nothing pulls the eye from the data. |
+| A hero or launch moment | No hero motion | An intro animation | Analysts open the tool to work for a whole shift. An intro would cost time on every visit. |

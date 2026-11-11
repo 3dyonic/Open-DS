@@ -1,14 +1,31 @@
 {
- "token-swatches": {
+ "token-groups": {
   "iconography": {
-   "tokens": [
+   "groups": [
     {
-     "token": "size.icon",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.16",
-      "value": "1rem"
-     }
+     "title": "Icon",
+     "note": "Style: Outline",
+     "sample": {
+      "kind": "icon"
+     },
+     "api": [
+      {
+       "token": "size.icon",
+       "value": "16px"
+      },
+      {
+       "token": "icon.stroke-width",
+       "value": "1.5"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "An icon beside text",
+       "detail": "size.icon and icon.stroke-width",
+       "why": "Icons match the small text, so a toolbar reads as one line. The light stroke keeps rows quiet."
+      }
+     ]
     }
    ]
   }

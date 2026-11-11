@@ -10,7 +10,7 @@ description: "Content first: Corners and borders."
 
 Corners and borders.
 
-::token-swatches{id="shape"}
+::token-groups{id="shape"}
 
 ## The five answers
 
@@ -46,3 +46,8 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | --- | --- | --- | --- |
 | Corners of buttons and inputs | radius.control (rounded) | Sharp corners | Rounded corners match the warm reading tone. Sharp corners feel technical next to long text. |
 | Shape of a status badge | radius.badge (pill) | A rectangle | Pills sit softly next to text. |
+| An option in a menu or list | radius.option | radius.control | The option corner nests inside the menu corner. Soft, even curves keep the warm tone. |
+| Something that grows past one line | radius.element | radius.surface | Text areas and list items share the control corner, so a form reads as one family. |
+| Corners of cards, menus and dialogs | radius.surface | radius.control | Softer corners on cards and menus feel warm, like good paper. |
+| Edges and dividers | border-width.default | A heavy rule | A thin edge stays quiet beside long text. The words carry the page, not the lines. |
+| The gap around a focus ring | border-width.focus-offset | A ring that touches the control | The ring stands clear of the control, so readers see focus on any fill. |

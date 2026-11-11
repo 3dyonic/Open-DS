@@ -2097,6 +2097,236 @@
         "tasks.q1",
         "outcomes.q1"
       ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "type.display on article titles",
+      "why": "On the landing hero only. One big serif line opens the publication. Articles keep calm titles, so the text gets the attention.",
+      "because": [
+        "brand.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Clear headings let readers skim a long guide and find their place again.",
+      "because": [
+        "outcomes.q2",
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "type.body",
+      "why": "Captions use the quiet interface face. Dates and notes never compete with the article.",
+      "because": [
+        "human.q1",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A mono font",
+      "why": "It equals body here. Tables are rare and read row by row. Cells use the reading face, so a row reads like a sentence.",
+      "because": [
+        "tasks.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "Subscribe and account pages share the calm article title. The brand shows in the serif, not in size.",
+      "because": [
+        "brand.q2",
+        "tasks.q2"
+      ]
+    },
+    {
+      "situation": "parts-of-one-item",
+      "use": "space.gap.tight",
+      "not": "space.gap.default",
+      "why": "An icon and its word sit close. Readers who visit now and then see one item, not two.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "siblings-in-a-row",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Items in a list need air, so each one reads on its own.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "between-groups",
+      "use": "space.gap.group",
+      "not": "space.gap.default",
+      "why": "A clear step between groups gives the reader a place to pause.",
+      "because": [
+        "tasks.q1",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-control",
+      "use": "space.inset.control-x",
+      "not": "Padding set by eye",
+      "why": "Wide padding gives each rare action room, so a button feels as calm as the text.",
+      "because": [
+        "tasks.q2",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-container",
+      "use": "space.inset.container",
+      "not": "Text that touches the card edge",
+      "why": "Generous padding frames each card like a page in a magazine.",
+      "because": [
+        "brand.q1",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-cell",
+      "use": "space.inset.cell-x",
+      "not": "Narrow cell padding",
+      "why": "Rows are read, not scanned. Cells get room like text does.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "radius.control",
+      "why": "The option corner nests inside the menu corner. Soft, even curves keep the warm tone.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.surface",
+      "why": "Text areas and list items share the control corner, so a form reads as one family.",
+      "because": [
+        "brand.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "radius.control",
+      "why": "Softer corners on cards and menus feel warm, like good paper.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A heavy rule",
+      "why": "A thin edge stays quiet beside long text. The words carry the page, not the lines.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "border-width.focus-offset",
+      "not": "A ring that touches the control",
+      "why": "The ring stands clear of the control, so readers see focus on any fill.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "panel-opens",
+      "use": "motion.duration.panels",
+      "not": "An instant pop",
+      "why": "A relaxed open guides the reader to the new panel without a jolt.",
+      "because": [
+        "human.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "any-transition",
+      "use": "motion.easing.standard",
+      "not": "A bounce",
+      "why": "A calm ease-out settles softly and never pulls the eye from the text.",
+      "because": [
+        "brand.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "hero-motion",
+      "use": "No hero motion: the landing stays still",
+      "not": "An animated headline",
+      "why": "Attention belongs to the text. A moving headline pulls the eye away from it.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A filled or colored icon",
+      "why": "Quiet outline icons sit beside the words and never outshine the text.",
+      "because": [
+        "human.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "size.control.compact",
+      "why": "Readers on phones get a full touch target on every control.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "A taller button for the main action",
+      "why": "It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text.",
+      "because": [
+        "tasks.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "size.control.default",
+      "why": "A clear or show button must fit inside the field around it.",
+      "because": [
+        "content.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "opacity.disabled",
+      "not": "Hiding the control",
+      "why": "A faded control keeps its place. Hiding it would move the page and lose the reader's place.",
+      "because": [
+        "outcomes.q2"
+      ]
     }
   ],
   "tokens": {

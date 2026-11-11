@@ -10,7 +10,7 @@ description: "Brand expressive: When icons appear and how they look."
 
 When icons appear and how they look.
 
-::token-swatches{id="iconography"}
+::token-groups{id="iconography"}
 
 ## The five answers
 
@@ -77,3 +77,4 @@ The components draw their own icons; in content, use [Icon](../components/icon.m
 | --- | --- | --- | --- |
 | An icon with no label | Not used: always add a word | An icon button with a hover hint | On phones, hover hints never show; a word says what will happen. |
 | An action on one row or item | Button ghost with a word | An icon alone | Visitors come rarely, so they never learn an icon. A word says what will happen. |
+| An icon beside text | size.icon and icon.stroke-width | A thin icon at text size | Larger icons hold their own next to big type. The thicker line carries the brand's warmth. |

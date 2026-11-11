@@ -1,70 +1,179 @@
 {
- "token-swatches": {
+ "token-groups": {
   "spacing": {
-   "tokens": [
+   "groups": [
     {
-     "token": "space.gap.tight",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.8",
-      "value": "0.5rem"
-     }
+     "title": "space.gap.tight",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-tight)"
+     },
+     "api": [
+      {
+       "token": "space.gap.tight",
+       "value": "8px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Parts of one item",
+       "why": "Parts of one item sit close in every brand, so the shared parts look the same."
+      },
+      {
+       "kind": "not",
+       "situation": "Items in a list or a form row",
+       "detail": "use space.gap.default",
+       "why": "Fields in a form keep a comfortable gap, so customers on phones tap the right one."
+      }
+     ]
     },
     {
-     "token": "space.gap.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.12",
-      "value": "0.75rem"
-     }
+     "title": "space.gap.default",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-default)"
+     },
+     "api": [
+      {
+       "token": "space.gap.default",
+       "value": "12px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Items that belong together",
+       "why": "Spacing is shared across brands."
+      },
+      {
+       "kind": "use",
+       "situation": "Items in a list or a form row",
+       "why": "Fields in a form keep a comfortable gap, so customers on phones tap the right one."
+      }
+     ]
     },
     {
-     "token": "space.gap.group",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.24",
-      "value": "1.5rem"
-     }
+     "title": "space.gap.group",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-group)"
+     },
+     "api": [
+      {
+       "token": "space.gap.group",
+       "value": "24px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between groups",
+       "why": "One group gap in every brand keeps sign-up forms the same shape."
+      }
+     ]
     },
     {
-     "token": "space.gap.section",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.48",
-      "value": "3rem"
-     }
+     "title": "space.gap.section",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-section)"
+     },
+     "api": [
+      {
+       "token": "space.gap.section",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between page sections",
+       "detail": "space.gap.section and cards",
+       "why": "Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart."
+      }
+     ]
     },
     {
-     "token": "space.inset.control-x",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.16",
-      "value": "1rem"
-     }
+     "title": "space.inset.control-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-control-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.control-x",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a button or input",
+       "why": "Shared padding keeps buttons the same size in every brand."
+      }
+     ]
     },
     {
-     "token": "space.inset.container",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.24",
-      "value": "1.5rem"
-     }
+     "title": "space.inset.container",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-container)"
+     },
+     "api": [
+      {
+       "token": "space.inset.container",
+       "value": "24px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a card, panel or dialog",
+       "why": "Cards hold offers the same way in every brand; only the corner and color change."
+      }
+     ]
     },
     {
-     "token": "space.inset.cell-x",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.16",
-      "value": "1rem"
-     }
+     "title": "space.inset.cell-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-cell-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.cell-x",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a table cell",
+       "why": "Account tables keep room between columns on a phone in every brand."
+      }
+     ]
     },
     {
-     "token": "size.row",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.48",
-      "value": "3rem"
-     }
+     "title": "size.row",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-row)"
+     },
+     "api": [
+      {
+       "token": "size.row",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Table row height",
+       "detail": "size.row (comfortable)",
+       "why": "Customers browse on phones, and compact rows are hard to tap in any brand."
+      }
+     ]
     }
    ]
   }

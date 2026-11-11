@@ -10,7 +10,7 @@ description: "Accessible first: How space shows what belongs together."
 
 How space shows what belongs together.
 
-::token-swatches{id="spacing"}
+::token-groups{id="spacing"}
 
 ## The five answers
 
@@ -65,3 +65,9 @@ Between things and on the page, use a role instead: `*-tight` (12px), `*-default
 | Items that belong together | space.gap.default | space.gap.tight | Generous space lowers mis-taps. |
 | Between page sections | space.gap.section | A thin line | Space is easy to see; thin lines are not. |
 | Table row height | size.row (large) | A compact row | Large rows are easy to read and tap. |
+| Parts of one item | space.gap.tight | No gap | Parts sit close enough to read as one item, with room to tell them apart at high zoom. |
+| Items in a list or a form row | space.gap.default | space.gap.tight | Space between fields lowers mis-taps for people with tremor. |
+| Between groups | space.gap.group | space.gap.default | A clear break shows where one group of questions ends and the next begins. |
+| Inside a button or input | space.inset.control-x | Padding set by eye | Wide padding makes each button a bigger target that is easy to hit. |
+| Inside a card, panel or dialog | space.inset.container | Text that touches the edge | Wide padding keeps content clear of the strong border at any zoom. |
+| Inside a table cell | space.inset.cell-x | Narrow cell padding | Clear space between columns keeps values apart at high zoom. |

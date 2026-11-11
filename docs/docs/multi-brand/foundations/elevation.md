@@ -10,7 +10,7 @@ description: "Multi-brand: When something rises above the page, and what separat
 
 When something rises above the page, and what separates groups.
 
-::token-swatches{id="elevation"}
+::token-groups{id="elevation"}
 
 ## The five answers
 

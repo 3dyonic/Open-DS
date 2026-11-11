@@ -1,70 +1,197 @@
 {
- "token-swatches": {
+ "token-groups": {
   "spacing": {
-   "tokens": [
+   "groups": [
     {
-     "token": "space.gap.tight",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.8",
-      "value": "0.5rem"
-     }
+     "title": "space.gap.tight",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-tight)"
+     },
+     "api": [
+      {
+       "token": "space.gap.tight",
+       "value": "8px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Parts of one item",
+       "why": "An icon and its word sit close. Readers who visit now and then see one item, not two."
+      },
+      {
+       "kind": "not",
+       "situation": "Items that belong together",
+       "detail": "use space.gap.default",
+       "why": "Text needs air even inside a group."
+      },
+      {
+       "kind": "not",
+       "situation": "Items in a list or a form row",
+       "detail": "use space.gap.default",
+       "why": "Items in a list need air, so each one reads on its own."
+      }
+     ]
     },
     {
-     "token": "space.gap.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.16",
-      "value": "1rem"
-     }
+     "title": "space.gap.default",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-default)"
+     },
+     "api": [
+      {
+       "token": "space.gap.default",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Items that belong together",
+       "why": "Text needs air even inside a group."
+      },
+      {
+       "kind": "use",
+       "situation": "Items in a list or a form row",
+       "why": "Items in a list need air, so each one reads on its own."
+      },
+      {
+       "kind": "not",
+       "situation": "Parts of one item",
+       "detail": "use space.gap.tight",
+       "why": "An icon and its word sit close. Readers who visit now and then see one item, not two."
+      },
+      {
+       "kind": "not",
+       "situation": "Between groups",
+       "detail": "use space.gap.group",
+       "why": "A clear step between groups gives the reader a place to pause."
+      }
+     ]
     },
     {
-     "token": "space.gap.group",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.32",
-      "value": "2rem"
-     }
+     "title": "space.gap.group",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-group)"
+     },
+     "api": [
+      {
+       "token": "space.gap.group",
+       "value": "32px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between groups",
+       "why": "A clear step between groups gives the reader a place to pause."
+      }
+     ]
     },
     {
-     "token": "space.gap.section",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.64",
-      "value": "4rem"
-     }
+     "title": "space.gap.section",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-section)"
+     },
+     "api": [
+      {
+       "token": "space.gap.section",
+       "value": "64px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between page sections",
+       "detail": "space.gap.section, no line",
+       "why": "Space alone separates sections; lines add noise."
+      }
+     ]
     },
     {
-     "token": "space.inset.control-x",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.20",
-      "value": "1.25rem"
-     }
+     "title": "space.inset.control-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-control-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.control-x",
+       "value": "20px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a button or input",
+       "why": "Wide padding gives each rare action room, so a button feels as calm as the text."
+      }
+     ]
     },
     {
-     "token": "space.inset.container",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.24",
-      "value": "1.5rem"
-     }
+     "title": "space.inset.container",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-container)"
+     },
+     "api": [
+      {
+       "token": "space.inset.container",
+       "value": "24px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a card, panel or dialog",
+       "why": "Generous padding frames each card like a page in a magazine."
+      }
+     ]
     },
     {
-     "token": "space.inset.cell-x",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.16",
-      "value": "1rem"
-     }
+     "title": "space.inset.cell-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-cell-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.cell-x",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a table cell",
+       "why": "Rows are read, not scanned. Cells get room like text does."
+      }
+     ]
     },
     {
-     "token": "size.row",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.48",
-      "value": "3rem"
-     }
+     "title": "size.row",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-row)"
+     },
+     "api": [
+      {
+       "token": "size.row",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Table row height",
+       "detail": "size.row (comfortable)",
+       "why": "Rows are read, not scanned."
+      }
+     ]
     }
    ]
   }

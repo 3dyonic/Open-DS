@@ -686,7 +686,12 @@
         "page-title",
         "number-in-table",
         "paragraph",
-        "field-label"
+        "field-label",
+        "hero-line",
+        "section-heading",
+        "supporting-text",
+        "table-cell",
+        "form-page-title"
       ],
       "questions": [
         {
@@ -1119,7 +1124,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["related-items", "between-sections", "table-row"],
+      "situations": ["related-items", "between-sections", "table-row", "parts-of-one-item", "siblings-in-a-row", "between-groups", "inside-a-control", "inside-a-container", "inside-a-cell"],
       "questions": [
         {
           "id": "spacing.roles",
@@ -1301,7 +1306,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["control-corner", "status-shape"],
+      "situations": ["control-corner", "status-shape", "option-in-list", "growing-element", "surface-corner", "edges-and-dividers", "focus-gap"],
       "questions": [
         {
           "id": "shape.roles",
@@ -1563,7 +1568,7 @@
         "textarea",
         "tooltip"
       ],
-      "situations": ["hover-feedback", "reduced-motion"],
+      "situations": ["hover-feedback", "reduced-motion", "panel-opens", "any-transition", "hero-motion"],
       "questions": [
         {
           "id": "motion.roles",
@@ -1702,7 +1707,7 @@
         "switch",
         "toggle"
       ],
-      "situations": ["icon-alone", "row-action"],
+      "situations": ["icon-alone", "row-action", "icon-beside-text"],
       "questions": [
         {
           "id": "iconography.roles",
@@ -1998,7 +2003,7 @@
         "textarea",
         "toggle"
       ],
-      "situations": ["keyboard-focus", "smallest-target"],
+      "situations": ["keyboard-focus", "smallest-target", "most-controls", "main-action", "control-inside-field", "unavailable-control"],
       "questions": [
         {
           "id": "accessibility.roles",
@@ -2847,6 +2852,150 @@
       "title": "No component in the inventory fits",
       "lead": "When no component in the inventory fits",
       "description": "You need a component this design system does not carry."
+    },
+    {
+      "id": "hero-line",
+      "scope": "typography",
+      "title": "Hero line or key number",
+      "description": "The one biggest line on a screen: a landing headline or a dashboard total."
+    },
+    {
+      "id": "section-heading",
+      "scope": "typography",
+      "title": "Section heading",
+      "description": "The heading of a page section, a card or a dialog."
+    },
+    {
+      "id": "supporting-text",
+      "scope": "typography",
+      "title": "Supporting text",
+      "description": "A timestamp, a hint under a field or a footnote."
+    },
+    {
+      "id": "table-cell",
+      "scope": "typography",
+      "title": "Text in a table cell",
+      "description": "Every value in a table body: names, IDs, dates and numbers."
+    },
+    {
+      "id": "form-page-title",
+      "scope": "typography",
+      "title": "Title of a form page",
+      "description": "The title of a page that holds a task: sign-up, checkout, settings."
+    },
+    {
+      "id": "parts-of-one-item",
+      "scope": "spacing",
+      "title": "Parts of one item",
+      "description": "An icon and its word, or a title and the line under it."
+    },
+    {
+      "id": "siblings-in-a-row",
+      "scope": "spacing",
+      "title": "Items in a list or a form row",
+      "description": "The gap between items of the same kind, one after the other."
+    },
+    {
+      "id": "between-groups",
+      "scope": "spacing",
+      "title": "Between groups",
+      "description": "The gap between two groups inside one section."
+    },
+    {
+      "id": "inside-a-control",
+      "scope": "spacing",
+      "title": "Inside a button or input",
+      "description": "The space from the edge of a control to its text."
+    },
+    {
+      "id": "inside-a-container",
+      "scope": "spacing",
+      "title": "Inside a card, panel or dialog",
+      "description": "The space from the edge of a container to its content."
+    },
+    {
+      "id": "inside-a-cell",
+      "scope": "spacing",
+      "title": "Inside a table cell",
+      "description": "The space from the edge of a cell to its value."
+    },
+    {
+      "id": "option-in-list",
+      "scope": "shape",
+      "title": "An option in a menu or list",
+      "description": "One choice inside a menu, a select or a command list."
+    },
+    {
+      "id": "growing-element",
+      "scope": "shape",
+      "title": "Something that grows past one line",
+      "description": "A list item, an accordion row, a text area, a calendar or media."
+    },
+    {
+      "id": "surface-corner",
+      "scope": "shape",
+      "title": "Corners of cards, menus and dialogs",
+      "description": "The corner shape of a container."
+    },
+    {
+      "id": "edges-and-dividers",
+      "scope": "shape",
+      "title": "Edges and dividers",
+      "description": "The width of a border or a line between two parts."
+    },
+    {
+      "id": "focus-gap",
+      "scope": "shape",
+      "title": "The gap around a focus ring",
+      "description": "The space between a control and its focus ring."
+    },
+    {
+      "id": "panel-opens",
+      "scope": "motion",
+      "title": "A panel opens",
+      "description": "A dialog, sheet, popover or menu opens or closes."
+    },
+    {
+      "id": "any-transition",
+      "scope": "motion",
+      "title": "The curve of any move",
+      "description": "How a change speeds up and slows down."
+    },
+    {
+      "id": "hero-motion",
+      "scope": "motion",
+      "title": "A hero or launch moment",
+      "description": "The motion of a landing hero or a launch reveal."
+    },
+    {
+      "id": "icon-beside-text",
+      "scope": "iconography",
+      "title": "An icon beside text",
+      "description": "An icon next to a word, in a button or in a menu."
+    },
+    {
+      "id": "most-controls",
+      "scope": "accessibility",
+      "title": "Most buttons and inputs",
+      "description": "The height of a normal button or field."
+    },
+    {
+      "id": "main-action",
+      "scope": "accessibility",
+      "title": "The main action on a screen",
+      "description": "The one button the screen exists for."
+    },
+    {
+      "id": "control-inside-field",
+      "scope": "accessibility",
+      "title": "A button inside a field",
+      "description": "A clear, show-password or step button that sits inside an input."
+    },
+    {
+      "id": "unavailable-control",
+      "scope": "accessibility",
+      "title": "A control that is not available yet",
+      "description": "A control people cannot use until they do something first."
     }
   ],
   "components": [

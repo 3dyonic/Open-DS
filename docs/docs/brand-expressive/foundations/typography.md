@@ -10,7 +10,7 @@ description: "Brand expressive: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
-::type-roles{id="typography"}
+::token-groups{id="typography"}
 
 ## The five answers
 
@@ -30,7 +30,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `type.display.font-family` | `brand-expressive.theme.base.type.display.font-family` → `font.family.bricolage-grotesque` |
 | `type.display.font-size` | `font.size.56` |
-| `type.display.line-height` | `font.line-height.1_8` |
+| `type.display.line-height` | `font.line-height.1_1` |
 | `type.display.font-weight` | `font.weight.800` |
 | `type.title.font-family` | `brand-expressive.theme.base.type.title.font-family` → `font.family.bricolage-grotesque` |
 | `type.title.font-size` | `font.size.40` |
@@ -67,3 +67,8 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | A number in a table | type.body | A mono font | Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice. |
 | Paragraph or help text | type.body, short | Long paragraphs | Short copy keeps the energy. |
 | Field label or column header | type.label | type.caption | Labels stay readable on vivid color. |
+| Hero line or key number | type.display | type.title | It is for every hero and section opener. Each section is one big idea. The biggest line sells it in the brand's loudest voice. |
+| Section heading | type.heading | Bold body text | Headings carry the brand's display face into cards and dialogs. |
+| Supporting text | type.caption | type.body | Fine print stays small, so the headlines keep the attention that wins sign-ups. |
+| Text in a table cell | type.data | A mono font | It equals body here. Tables are rare and short. Cells keep the brand's text face, so they sound like the rest of the page. |
+| Title of a form page | type.title | type.display | The sign-up form is the one action. A smaller title keeps the form in view on a phone. |

@@ -10,7 +10,7 @@ description: "Dense data: How space shows what belongs together."
 
 How space shows what belongs together.
 
-::token-swatches{id="spacing"}
+::token-groups{id="spacing"}
 
 ## The five answers
 
@@ -65,3 +65,9 @@ Between things and on the page, use a role instead: `*-tight` (4px), `*-default`
 | Items that belong together | space.gap.tight | space.gap.group | Things that belong together sit close. |
 | Between page sections | space.gap.section and a hairline | A card around every section | Lines separate without taking room from the data. |
 | Table row height | size.row (compact) | The comfortable row | Compact rows show more records without scrolling. |
+| Parts of one item | space.gap.tight | space.gap.default | An icon and its word sit close, so each item reads as one unit in a dense row. |
+| Items in a list or a form row | space.gap.default | space.gap.tight | Items in a list sit close but apart. Analysts still tell one record from the next. |
+| Between groups | space.gap.group | space.gap.section | A small step marks a new group without pushing records off the screen. |
+| Inside a button or input | space.inset.control-x | Padding set by eye | Narrow padding keeps buttons short, so a toolbar holds every action an expert repeats. |
+| Inside a card, panel or dialog | space.inset.container | space.gap.section | Cards and dialogs keep a small inset, so their content starts close to the edge. |
+| Inside a table cell | space.inset.cell-x | space.inset.container | Narrow cell padding fits more columns, and values in two columns still stay apart. |

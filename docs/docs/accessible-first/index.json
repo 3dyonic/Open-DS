@@ -86,22 +86,22 @@
   "home/answers": {
    "cards": [
     {
+     "eyebrow": "Who uses it most?",
+     "title": "Everyone, including people with disabilities",
+     "text": "Everyone, including people with low vision, motor and cognitive needs.",
+     "code": "people.q1"
+    },
+    {
+     "eyebrow": "What must the interface protect?",
+     "title": "Low effort to understand",
+     "text": "Low effort to understand each step.",
+     "code": "human.q1"
+    },
+    {
      "eyebrow": "What accessibility level do we commit to?",
      "title": "AAA",
      "text": "AAA where it applies; nobody is left out.",
      "code": "people.q2"
-    },
-    {
-     "eyebrow": "What is the smallest target?",
-     "title": "Large",
-     "text": "Large targets for tremor and touch.",
-     "code": "accessibility.values"
-    },
-    {
-     "eyebrow": "How many signals carry each meaning?",
-     "title": "Three: color, icon and word",
-     "text": "Never color alone.",
-     "code": "accessibility.count"
     }
    ]
   },

@@ -2060,6 +2060,242 @@
         "team.q2",
         "components.definition"
       ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "type.title",
+      "why": "It is for every hero and section opener. Each section is one big idea. The biggest line sells it in the brand's loudest voice.",
+      "because": [
+        "content.q2",
+        "business.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Headings carry the brand's display face into cards and dialogs.",
+      "because": [
+        "brand.q2",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "type.body",
+      "why": "Fine print stays small, so the headlines keep the attention that wins sign-ups.",
+      "because": [
+        "outcomes.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A mono font",
+      "why": "It equals body here. Tables are rare and short. Cells keep the brand's text face, so they sound like the rest of the page.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "The sign-up form is the one action. A smaller title keeps the form in view on a phone.",
+      "because": [
+        "tasks.q2",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "parts-of-one-item",
+      "use": "space.gap.tight",
+      "not": "space.gap.default",
+      "why": "An icon and its word sit close, so a call to action reads as one bold unit.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "siblings-in-a-row",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Air between items keeps big type readable.",
+      "because": [
+        "human.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "between-groups",
+      "use": "space.gap.group",
+      "not": "space.gap.default",
+      "why": "Big gaps give each group its own moment inside a section.",
+      "because": [
+        "human.q1",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "inside-a-control",
+      "use": "space.inset.control-x",
+      "not": "Padding set by eye",
+      "why": "Wide padding makes pill buttons bold and easy to hit with a thumb.",
+      "because": [
+        "brand.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-container",
+      "use": "space.inset.container",
+      "not": "Text that touches the card edge",
+      "why": "Generous padding lets each card hold its moment.",
+      "because": [
+        "human.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-cell",
+      "use": "space.inset.cell-x",
+      "not": "Narrow cell padding",
+      "why": "Tables are rare, so cells keep the page's airy rhythm.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "radius.control",
+      "why": "Round options nest inside the round menu, so a menu feels as playful as the buttons.",
+      "because": [
+        "brand.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.control",
+      "why": "A pill corner breaks when a text area grows to many lines. The element corner stays round at any height.",
+      "because": [
+        "brand.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "Small corners",
+      "why": "Big round corners make cards feel like friendly objects.",
+      "because": [
+        "brand.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A hairline",
+      "why": "A bold edge matches the bold type and vivid color.",
+      "because": [
+        "brand.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "border-width.focus-offset",
+      "not": "A ring that touches the control",
+      "why": "The gap keeps the ring visible on vivid fills.",
+      "because": [
+        "people.q2",
+        "color.values"
+      ]
+    },
+    {
+      "situation": "panel-opens",
+      "use": "motion.duration.panels",
+      "not": "A flat fade",
+      "why": "Panels open on the brand's spring, so people feel the brand in every menu.",
+      "because": [
+        "brand.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "any-transition",
+      "use": "motion.easing.standard",
+      "not": "A plain ease-out",
+      "why": "The overshoot makes each move feel alive and playful.",
+      "because": [
+        "human.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "hero-motion",
+      "use": "motion.duration.hero",
+      "not": "motion.duration.panels",
+      "why": "Hero and launch moments move slowest, so every visitor sees the launch.",
+      "because": [
+        "business.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A thin icon at text size",
+      "why": "Larger icons hold their own next to big type. The thicker line carries the brand's warmth.",
+      "because": [
+        "brand.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "size.control.compact",
+      "why": "Most visitors arrive on phones, so every control fits a thumb.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "size.control.default",
+      "why": "The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb.",
+      "because": [
+        "tasks.q2",
+        "business.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "A small icon button",
+      "why": "It still fits a thumb and sits inside the pill field.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "opacity.disabled",
+      "not": "Hiding the button",
+      "why": "A faded button keeps the layout. The vivid color returns when the visitor can sign up.",
+      "because": [
+        "outcomes.q1"
+      ]
     }
   ],
   "tokens": {
@@ -2880,11 +3116,6 @@
           "1_55": {
             "$type": "number",
             "$value": 1.55,
-            "$description": "A ratio of the text size."
-          },
-          "1_8": {
-            "$type": "number",
-            "$value": 1.8,
             "$description": "A ratio of the text size."
           }
         },
@@ -5248,7 +5479,7 @@
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_8}"
+            "$value": "{font.line-height.1_1}"
           },
           "font-weight": {
             "$type": "fontWeight",

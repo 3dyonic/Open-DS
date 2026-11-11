@@ -136,7 +136,7 @@
    "cards": [
     {
      "title": "Type",
-     "text": "15 primitives · 15 in use",
+     "text": "14 primitives · 14 in use",
      "href": "./type",
      "robot": {
       "day": "/robots/scopes/typography.webp",
@@ -157,9 +157,9 @@
       }
      ],
      "meter": {
-      "value": 15,
-      "max": 15,
-      "label": "15 of 15 in use"
+      "value": 14,
+      "max": 14,
+      "label": "14 of 14 in use"
      }
     },
     {

@@ -10,7 +10,7 @@ description: "Dense data: When icons appear and how they look."
 
 When icons appear and how they look.
 
-::token-swatches{id="iconography"}
+::token-groups{id="iconography"}
 
 ## The five answers
 
@@ -77,3 +77,4 @@ The components draw their own icons; in content, use [Icon](../components/icon.m
 | --- | --- | --- | --- |
 | An icon with no label | Icon button with a tooltip | A bare icon | Experts learn icons; the tooltip covers the first uses. |
 | An action on one row or item | Icon button, ghost, compact | Button secondary in every row | Rows repeat dozens of times; a quiet icon keeps the table readable. |
+| An icon beside text | size.icon and icon.stroke-width | An icon larger than its label | Icons match the small text, so a toolbar reads as one line. The light stroke keeps rows quiet. |

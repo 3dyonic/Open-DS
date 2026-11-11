@@ -405,6 +405,13 @@
          "label": "Accessibility",
          "href": "foundations/accessibility"
         }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The ring stands clear of the control, so readers see focus on any fill.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
        }
       ]
      },
@@ -547,6 +554,32 @@
       ]
      },
      {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a text in a table cell, use type.data. Don't use a mono font. It equals body here. Tables are rare and read row by row. Cells use the reading face, so a row reads like a sentence.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Text areas and list items share the control corner, so a form reads as one family.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a button inside a field, use size.control.compact. Don't use size.control.default. A clear or show button must fit inside the field around it.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
       "kind": "variants",
       "items": [
        {
@@ -660,6 +693,34 @@
          "label": "Components",
          "href": "foundations/components"
         }
+       },
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Clear headings let readers skim a long guide and find their place again.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a text in a table cell, use type.data. Don't use a mono font. It equals body here. Tables are rare and read row by row. Cells use the reading face, so a row reads like a sentence.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. A clear step between groups gives the reader a place to pause.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a table cell, use space.inset.cell-x. Don't use narrow cell padding. Rows are read, not scanned. Cells get room like text does.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
        }
       ]
      },
@@ -713,6 +774,27 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Subscribe and account pages share the calm article title. The brand shows in the serif, not in size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding gives each rare action room, so a button feels as calm as the text.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
         }
        }
       ]
@@ -809,6 +891,67 @@
       ]
      },
      {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display on article titles. On the landing hero only. One big serif line opens the publication. Articles keep calm titles, so the text gets the attention.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.body. Captions use the quiet interface face. Dates and notes never compete with the article.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a heavy rule. A thin edge stays quiet beside long text. The words carry the page, not the lines.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use an instant pop. A relaxed open guides the reader to the new panel without a jolt.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a bounce. A calm ease-out settles softly and never pulls the eye from the text.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use no hero motion: the landing stays still. Don't use an animated headline. Attention belongs to the text. A moving headline pulls the eye away from it.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a filled or colored icon. Quiet outline icons sit beside the words and never outshine the text.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
       "kind": "variants",
       "items": [
        {
@@ -881,6 +1024,13 @@
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "For a parts of one item, use space.gap.tight. Don't use space.gap.default. An icon and its word sit close. Readers who visit now and then see one item, not two.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
         }
        }
       ]
@@ -992,6 +1142,27 @@
          "label": "Components",
          "href": "foundations/components"
         }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Items in a list need air, so each one reads on its own.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. A clear step between groups gives the reader a place to pause.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the card edge. Generous padding frames each card like a page in a magazine.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
        }
       ]
      }
@@ -1014,6 +1185,20 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Clear headings let readers skim a long guide and find their place again.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a control that is not available yet, use opacity.disabled. Don't use hiding the control. A faded control keeps its place. Hiding it would move the page and lose the reader's place.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
         }
        }
       ]
@@ -1124,6 +1309,55 @@
          "label": "Color",
          "href": "foundations/color"
         }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding gives each rare action room, so a button feels as calm as the text.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the card edge. Generous padding frames each card like a page in a magazine.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. The option corner nests inside the menu corner. Soft, even curves keep the warm tone.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Text areas and list items share the control corner, so a form reads as one family.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use radius.control. Softer corners on cards and menus feel warm, like good paper.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use an instant pop. A relaxed open guides the reader to the new panel without a jolt.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a bounce. A calm ease-out settles softly and never pulls the eye from the text.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
        }
       ]
      },
@@ -1161,6 +1395,32 @@
         "link": {
          "label": "Components",
          "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display on article titles. On the landing hero only. One big serif line opens the publication. Articles keep calm titles, so the text gets the attention.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Subscribe and account pages share the calm article title. The brand shows in the serif, not in size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a filled or colored icon. Quiet outline icons sit beside the words and never outshine the text.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
         }
        }
       ]
@@ -1257,6 +1517,18 @@
    "decided": {
     "groups": [
      {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.body. Captions use the quiet interface face. Dates and notes never compete with the article.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     },
+     {
       "kind": "picks",
       "items": [
        {
@@ -1333,6 +1605,25 @@
        },
        {
         "text": "Accessibility · What is the smallest target? → Touch size",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a most buttons and inputs, use size.control.default. Don't use size.control.compact. Readers on phones get a full touch target on every control.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a button inside a field, use size.control.compact. Don't use size.control.default. A clear or show button must fit inside the field around it.",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"

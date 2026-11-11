@@ -44,7 +44,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="business-q2"}
 :::
 
-:::fold{id="people" title="People and work context" note="2 answers, 44 decisions"}
+:::fold{id="people" title="People and work context" note="2 answers, 64 decisions"}
 #### Who uses it most? {#people-q1}
 
 ::decision-answer{id="people-q1"}
@@ -54,7 +54,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="people-q2"}
 :::
 
-:::fold{id="content" title="Content and data" note="2 answers, 9 decisions"}
+:::fold{id="content" title="Content and data" note="2 answers, 14 decisions"}
 #### What is the main content? {#content-q1}
 
 ::decision-answer{id="content-q1"}
@@ -74,7 +74,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="tasks-q2"}
 :::
 
-:::fold{id="human" title="Human factors" note="2 answers, 23 decisions"}
+:::fold{id="human" title="Human factors" note="2 answers, 34 decisions"}
 #### What must the interface protect? {#human-q1}
 
 ::decision-answer{id="human-q1"}
@@ -84,7 +84,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="human-q2"}
 :::
 
-:::fold{id="outcomes" title="Outcomes" note="2 answers, 13 decisions"}
+:::fold{id="outcomes" title="Outcomes" note="2 answers, 17 decisions"}
 #### Which outcome matters most? {#outcomes-q1}
 
 ::decision-answer{id="outcomes-q1"}
@@ -94,7 +94,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="outcomes-q2"}
 :::
 
-:::fold{id="brand" title="Brand" note="3 answers, 13 decisions"}
+:::fold{id="brand" title="Brand" note="3 answers, 16 decisions"}
 #### What should the brand feel like? {#brand-q1}
 
 ::decision-answer{id="brand-q1"}

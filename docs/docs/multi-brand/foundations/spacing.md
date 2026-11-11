@@ -10,7 +10,7 @@ description: "Multi-brand: How space shows what belongs together."
 
 How space shows what belongs together.
 
-::token-swatches{id="spacing"}
+::token-groups{id="spacing"}
 
 ## The five answers
 
@@ -93,3 +93,9 @@ Between things and on the page, use a role instead: `*-tight` (8px), `*-default`
 | Items that belong together | space.gap.default | Brand-specific spacing | Spacing is shared across brands. |
 | Between page sections | space.gap.section and cards | Lines | Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart. |
 | Table row height | size.row (comfortable) | A compact row | Customers browse on phones, and compact rows are hard to tap in any brand. |
+| Parts of one item | space.gap.tight | Brand-specific spacing | Parts of one item sit close in every brand, so the shared parts look the same. |
+| Items in a list or a form row | space.gap.default | space.gap.tight | Fields in a form keep a comfortable gap, so customers on phones tap the right one. |
+| Between groups | space.gap.group | Brand-specific spacing | One group gap in every brand keeps sign-up forms the same shape. |
+| Inside a button or input | space.inset.control-x | Brand-specific padding | Shared padding keeps buttons the same size in every brand. |
+| Inside a card, panel or dialog | space.inset.container | Brand-specific padding | Cards hold offers the same way in every brand; only the corner and color change. |
+| Inside a table cell | space.inset.cell-x | Narrow cell padding | Account tables keep room between columns on a phone in every brand. |

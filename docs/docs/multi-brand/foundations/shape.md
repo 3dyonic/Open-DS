@@ -10,7 +10,7 @@ description: "Multi-brand: Corners and borders."
 
 Corners and borders.
 
-::token-swatches{id="shape"}
+::token-groups{id="shape"}
 
 ## The five answers
 
@@ -76,3 +76,8 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | --- | --- | --- | --- |
 | Corners of buttons and inputs | radius.control (set by the brand) | A hard-coded radius | Each brand sets its own corner through the theme. |
 | Shape of a status badge | radius.badge (set by the brand) | A hard-coded shape | The brand sets the badge shape. |
+| An option in a menu or list | radius.option | A hard-coded radius | (set by the brand). Each brand sets the option corner, and it nests inside that brand's menu corner. |
+| Something that grows past one line | radius.element | radius.control | (set by the brand). A brand with pill controls would turn a text area into a capsule. The element corner stays sane in every brand. |
+| Corners of cards, menus and dialogs | radius.surface | A hard-coded radius | (set by the brand). Each brand sets its own card corner; the role stays shared. |
+| Edges and dividers | border-width.default | A brand-specific border width | One thin edge serves every brand. Color carries the brand, not line weight. |
+| The gap around a focus ring | border-width.focus-offset and border-width.focus | A ring that touches the control | The gap sits around a ring of border-width.focus. The ring and its gap stay the same in every brand, so focus shows on any brand color. |

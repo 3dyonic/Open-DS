@@ -1,14 +1,49 @@
 {
- "token-swatches": {
+ "token-groups": {
   "elevation": {
-   "tokens": [
+   "groups": [
     {
-     "token": "elevation.card",
-     "type": "shadow"
+     "title": "elevation.card",
+     "sample": {
+      "kind": "shadow",
+      "value": "var(--elevation-card)"
+     },
+     "api": [
+      {
+       "token": "elevation.card",
+       "primitive": "shadow.card",
+       "value": "0px 2px 8px 0px #0F172A14"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A card on the page",
+       "why": "Cards lift slightly to group offers."
+      }
+     ]
     },
     {
-     "token": "elevation.overlay",
-     "type": "shadow"
+     "title": "elevation.overlay",
+     "sample": {
+      "kind": "shadow",
+      "value": "var(--elevation-overlay)"
+     },
+     "api": [
+      {
+       "token": "elevation.overlay",
+       "primitive": "shadow.overlay",
+       "value": "0px 12px 32px 0px #0F172A29"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A menu or dialog",
+       "detail": "elevation.overlay and a dimmed page",
+       "why": "The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards."
+      }
+     ]
     }
    ]
   }

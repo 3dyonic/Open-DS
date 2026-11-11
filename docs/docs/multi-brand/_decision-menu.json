@@ -7,17 +7,17 @@
         {
           "id": "business",
           "title": "Business and product",
-          "count": 35
+          "count": 56
         },
         {
           "id": "people",
           "title": "People and work context",
-          "count": 14
+          "count": 15
         },
         {
           "id": "content",
           "title": "Content and data",
-          "count": 14
+          "count": 22
         },
         {
           "id": "tasks",
@@ -27,7 +27,7 @@
         {
           "id": "human",
           "title": "Human factors",
-          "count": 3
+          "count": 4
         },
         {
           "id": "outcomes",
@@ -37,12 +37,12 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 19
+          "count": 26
         },
         {
           "id": "scenarios",
           "title": "Use scenarios",
-          "count": 3
+          "count": 6
         },
         {
           "id": "team",
@@ -62,7 +62,7 @@
         {
           "id": "color",
           "title": "Color",
-          "count": 90
+          "count": 91
         },
         {
           "id": "spacing",
@@ -92,7 +92,7 @@
         {
           "id": "theming",
           "title": "Theming",
-          "count": 15
+          "count": 16
         },
         {
           "id": "accessibility",
@@ -102,7 +102,7 @@
         {
           "id": "naming",
           "title": "Naming",
-          "count": 2
+          "count": 4
         },
         {
           "id": "voice",

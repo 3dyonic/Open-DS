@@ -10,7 +10,7 @@ description: "Brand expressive: What moves, why and how fast."
 
 What moves, why and how fast.
 
-::token-swatches{id="motion"}
+::token-groups{id="motion"}
 
 ## The five answers
 
@@ -41,3 +41,6 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (fast) | An instant change | Fast feedback, on the brand's spring. An instant change drops the brand's motion. |
 | Someone asked for less motion | Reduced motion | Full motion | Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less. |
+| A panel opens | motion.duration.panels | A flat fade | Panels open on the brand's spring, so people feel the brand in every menu. |
+| The curve of any move | motion.easing.standard | A plain ease-out | The overshoot makes each move feel alive and playful. |
+| A hero or launch moment | motion.duration.hero | motion.duration.panels | Hero and launch moments move slowest, so every visitor sees the launch. |

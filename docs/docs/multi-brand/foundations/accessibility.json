@@ -1,57 +1,120 @@
 {
- "token-swatches": {
+ "token-groups": {
   "accessibility": {
-   "tokens": [
+   "groups": [
     {
-     "token": "size.control.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.44",
-      "value": "2.75rem"
+     "title": "size.control.default",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-default)"
      },
-     "px": 44
-    },
-    {
-     "token": "size.control.compact",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.36",
-      "value": "2.25rem"
-     },
-     "px": 36
-    },
-    {
-     "token": "size.control.large",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.44",
-      "value": "2.75rem"
-     },
-     "px": 44
-    },
-    {
-     "token": "opacity.disabled",
-     "type": "number",
-     "resolves": {
-      "primitive": "opacity.40",
-      "value": "0.4"
-     }
-    },
-    {
-     "token": "color.border.focus",
-     "type": "color",
-     "modes": [
+     "api": [
       {
-       "mode": "light",
-       "primitive": "color.teal.light.600",
-       "hex": "#0F766E"
+       "token": "size.control.default",
+       "value": "44px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The smallest clickable thing",
+       "detail": "size.control.default (touch)",
+       "why": "Customers are often on phones."
       },
       {
-       "mode": "dark",
-       "primitive": "color.teal.dark.600",
-       "hex": "#7FCFC6"
+       "kind": "use",
+       "situation": "Most buttons and inputs",
+       "why": "Customers sign up on phones, so every control fits a thumb in every brand."
+      },
+      {
+       "kind": "not",
+       "situation": "A button inside a field",
+       "detail": "use size.control.compact",
+       "why": "A clear or show-password button fits inside the field in every brand."
       }
      ]
+    },
+    {
+     "title": "size.control.compact",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-compact)"
+     },
+     "api": [
+      {
+       "token": "size.control.compact",
+       "value": "36px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A button inside a field",
+       "why": "A clear or show-password button fits inside the field in every brand."
+      },
+      {
+       "kind": "not",
+       "situation": "Most buttons and inputs",
+       "detail": "use size.control.default",
+       "why": "Customers sign up on phones, so every control fits a thumb in every brand."
+      }
+     ]
+    },
+    {
+     "title": "size.control.large",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-large)"
+     },
+     "api": [
+      {
+       "token": "size.control.large",
+       "value": "44px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The main action on a screen",
+       "why": "It is the same height as the default here. Brand color marks the main action. One height keeps every brand's forms the same."
+      }
+     ]
+    },
+    {
+     "title": "opacity.disabled",
+     "sample": {
+      "kind": "opacity",
+      "value": "var(--opacity-disabled)"
+     },
+     "api": [
+      {
+       "token": "opacity.disabled",
+       "value": "0.4"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A control that is not available yet",
+       "why": "One fade level works on every brand color, so no brand needs its own disabled color."
+      }
+     ]
+    },
+    {
+     "title": "color.border.focus",
+     "sample": {
+      "kind": "color",
+      "value": "var(--color-border-focus)"
+     },
+     "api": [
+      {
+       "token": "color.border.focus",
+       "primitive": "color.teal.light.600",
+       "value": "#0F766E",
+       "dark": "#7FCFC6"
+      }
+     ],
+     "rules": []
     }
    ]
   }

@@ -10,7 +10,7 @@ description: "Content first: When something rises above the page, and what separ
 
 When something rises above the page, and what separates groups.
 
-::token-swatches{id="elevation"}
+::token-groups{id="elevation"}
 
 ## The five answers
 

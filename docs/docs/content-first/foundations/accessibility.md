@@ -10,7 +10,7 @@ description: "Content first: Floors the system must hold."
 
 Floors the system must hold.
 
-::token-swatches{id="accessibility"}
+::token-groups{id="accessibility"}
 
 ## The five answers
 
@@ -47,3 +47,7 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 | --- | --- | --- | --- |
 | Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Keyboard users must always see where they are. |
 | The smallest clickable thing | size.control.default (touch) | A compact control | Many readers are on phones. |
+| Most buttons and inputs | size.control.default | size.control.compact | Readers on phones get a full touch target on every control. |
+| The main action on a screen | size.control.large | A taller button for the main action | It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text. |
+| A button inside a field | size.control.compact | size.control.default | A clear or show button must fit inside the field around it. |
+| A control that is not available yet | opacity.disabled | Hiding the control | A faded control keeps its place. Hiding it would move the page and lose the reader's place. |

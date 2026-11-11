@@ -190,6 +190,30 @@ Themes: light, dark
 - A confirmation question (confirm-words): use Say what will happen in plain words, and offer a way back; not A double negative; Plain words prevent a choice people did not mean. Example: "Do you want to cancel your application? Your answers will be deleted."
 - A first visit (first-visit): use Say how many steps there are and how long it takes; not Marketing copy; Knowing the length lowers effort and anxiety. Example: "This takes about 10 minutes. There are 4 steps."
 - No component in the inventory fits (missing-component): use a native HTML element with a label and a hint; not a custom widget that needs hover, drag or precise pointing; Native elements work with every assistive technology without extra work.
+- Hero line or key number (hero-line): use type.display; not type.display on step pages; It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size.
+- Section heading (section-heading): use type.heading; not Bold body text; Clear headings split a page into short parts that people can find again.
+- Supporting text (supporting-text): use type.caption; not type.caption for a hint sentence; It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size.
+- Text in a table cell (table-cell): use type.data; not A small or mono font; It equals body here. Every cell stays as large and plain as body text, for people with low vision.
+- Title of a form page (form-page-title): use type.title; not type.display; Every step page has the same title size, so people always know where they are.
+- Parts of one item (parts-of-one-item): use space.gap.tight; not No gap; Parts sit close enough to read as one item, with room to tell them apart at high zoom.
+- Items in a list or a form row (siblings-in-a-row): use space.gap.default; not space.gap.tight; Space between fields lowers mis-taps for people with tremor.
+- Between groups (between-groups): use space.gap.group; not space.gap.default; A clear break shows where one group of questions ends and the next begins.
+- Inside a button or input (inside-a-control): use space.inset.control-x; not Padding set by eye; Wide padding makes each button a bigger target that is easy to hit.
+- Inside a card, panel or dialog (inside-a-container): use space.inset.container; not Text that touches the edge; Wide padding keeps content clear of the strong border at any zoom.
+- Inside a table cell (inside-a-cell): use space.inset.cell-x; not Narrow cell padding; Clear space between columns keeps values apart at high zoom.
+- An option in a menu or list (option-in-list): use radius.option; not radius.control; The option corner nests inside the menu, so the highlighted option reads as one clear box.
+- Something that grows past one line (growing-element): use radius.element; not radius.surface; Text areas and list items keep the control corner, so people know they can type or pick there.
+- Corners of cards, menus and dialogs (surface-corner): use radius.surface; not A pill; Slightly rounded panels read as one clear box at any zoom.
+- Edges and dividers (edges-and-dividers): use border-width.default; not A hairline; A strong edge stays visible at high zoom and for people with low vision.
+- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The gap keeps the thick ring clear of the control, so focus shows on any fill.
+- A panel opens (panel-opens): use motion.duration.panels; not A long slide; A moderate open is easy to follow and shows where the panel came from.
+- The curve of any move (any-transition): use motion.easing.standard; not A spring that overshoots; A plain ease-out is calm and clear. An overshoot can confuse and distract.
+- A hero or launch moment (hero-motion): use No hero motion; not An animated start page; Moving content distracts people with attention needs and slows the task.
+- An icon beside text (icon-beside-text): use size.icon and icon.stroke-width; not A thin icon at text size; Larger icons with a bold line stay easy to see for people with low vision.
+- Most buttons and inputs (most-controls): use size.control.default; not A touch-minimum size; Large controls help people with tremor and low vision.
+- The main action on a screen (main-action): use size.control.large; not A taller button for the main action; It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.
+- A button inside a field (control-inside-field): use size.control.compact; not A small icon button; It still meets the large target size and fits inside the field.
+- A control that is not available yet (unavailable-control): use opacity.disabled; not A faded control with no reason; It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.
 
 ### Voice and tone
 
@@ -330,6 +354,30 @@ Themes: light, dark
 - A confirmation question (confirm-words): use Plain. No jokes when something is lost.; not Playful copy; Loss is never the moment for a joke. Example: "Remove this from your list? You can add it back later."
 - A first visit (first-visit): use One bold line and one button; not A paragraph of copy; Visitors from a social post give a few seconds. Example: "The drop is coming. Be first."
 - No component in the inventory fits (missing-component): use a section built from the inventory with campaign tokens; not a new component for one campaign; Campaigns change the look through tokens; new parts every drop are hard to keep working.
+- Hero line or key number (hero-line): use type.display; not type.title; It is for every hero and section opener. Each section is one big idea. The biggest line sells it in the brand's loudest voice.
+- Section heading (section-heading): use type.heading; not Bold body text; Headings carry the brand's display face into cards and dialogs.
+- Supporting text (supporting-text): use type.caption; not type.body; Fine print stays small, so the headlines keep the attention that wins sign-ups.
+- Text in a table cell (table-cell): use type.data; not A mono font; It equals body here. Tables are rare and short. Cells keep the brand's text face, so they sound like the rest of the page.
+- Title of a form page (form-page-title): use type.title; not type.display; The sign-up form is the one action. A smaller title keeps the form in view on a phone.
+- Parts of one item (parts-of-one-item): use space.gap.tight; not space.gap.default; An icon and its word sit close, so a call to action reads as one bold unit.
+- Items in a list or a form row (siblings-in-a-row): use space.gap.default; not space.gap.tight; Air between items keeps big type readable.
+- Between groups (between-groups): use space.gap.group; not space.gap.default; Big gaps give each group its own moment inside a section.
+- Inside a button or input (inside-a-control): use space.inset.control-x; not Padding set by eye; Wide padding makes pill buttons bold and easy to hit with a thumb.
+- Inside a card, panel or dialog (inside-a-container): use space.inset.container; not Text that touches the card edge; Generous padding lets each card hold its moment.
+- Inside a table cell (inside-a-cell): use space.inset.cell-x; not Narrow cell padding; Tables are rare, so cells keep the page's airy rhythm.
+- An option in a menu or list (option-in-list): use radius.option; not radius.control; Round options nest inside the round menu, so a menu feels as playful as the buttons.
+- Something that grows past one line (growing-element): use radius.element; not radius.control; A pill corner breaks when a text area grows to many lines. The element corner stays round at any height.
+- Corners of cards, menus and dialogs (surface-corner): use radius.surface; not Small corners; Big round corners make cards feel like friendly objects.
+- Edges and dividers (edges-and-dividers): use border-width.default; not A hairline; A bold edge matches the bold type and vivid color.
+- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The gap keeps the ring visible on vivid fills.
+- A panel opens (panel-opens): use motion.duration.panels; not A flat fade; Panels open on the brand's spring, so people feel the brand in every menu.
+- The curve of any move (any-transition): use motion.easing.standard; not A plain ease-out; The overshoot makes each move feel alive and playful.
+- A hero or launch moment (hero-motion): use motion.duration.hero; not motion.duration.panels; Hero and launch moments move slowest, so every visitor sees the launch.
+- An icon beside text (icon-beside-text): use size.icon and icon.stroke-width; not A thin icon at text size; Larger icons hold their own next to big type. The thicker line carries the brand's warmth.
+- Most buttons and inputs (most-controls): use size.control.default; not size.control.compact; Most visitors arrive on phones, so every control fits a thumb.
+- The main action on a screen (main-action): use size.control.large; not size.control.default; The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb.
+- A button inside a field (control-inside-field): use size.control.compact; not A small icon button; It still fits a thumb and sits inside the pill field.
+- A control that is not available yet (unavailable-control): use opacity.disabled; not Hiding the button; A faded button keeps the layout. The vivid color returns when the visitor can sign up.
 
 ### Voice and tone
 
@@ -470,6 +518,30 @@ Themes: light, dark
 - A confirmation question (confirm-words): use Gentle and clear about what changes; not Guilt or pressure; Readers come back when leaving felt respectful. Example: "Unsubscribe from the weekly letter? You can come back any time."
 - A first visit (first-visit): use One sentence on what is here and why it is worth reading; not A sign-up wall; Occasional readers decide in seconds whether to stay. Example: "Practical guides, one a week. Start with the most read."
 - No component in the inventory fits (missing-component): use plain text, a link or a heading; not a new component for one article; Readers come for the words; extra parts pull the eye away from them.
+- Hero line or key number (hero-line): use type.display; not type.display on article titles; On the landing hero only. One big serif line opens the publication. Articles keep calm titles, so the text gets the attention.
+- Section heading (section-heading): use type.heading; not Bold body text; Clear headings let readers skim a long guide and find their place again.
+- Supporting text (supporting-text): use type.caption; not type.body; Captions use the quiet interface face. Dates and notes never compete with the article.
+- Text in a table cell (table-cell): use type.data; not A mono font; It equals body here. Tables are rare and read row by row. Cells use the reading face, so a row reads like a sentence.
+- Title of a form page (form-page-title): use type.title; not type.display; Subscribe and account pages share the calm article title. The brand shows in the serif, not in size.
+- Parts of one item (parts-of-one-item): use space.gap.tight; not space.gap.default; An icon and its word sit close. Readers who visit now and then see one item, not two.
+- Items in a list or a form row (siblings-in-a-row): use space.gap.default; not space.gap.tight; Items in a list need air, so each one reads on its own.
+- Between groups (between-groups): use space.gap.group; not space.gap.default; A clear step between groups gives the reader a place to pause.
+- Inside a button or input (inside-a-control): use space.inset.control-x; not Padding set by eye; Wide padding gives each rare action room, so a button feels as calm as the text.
+- Inside a card, panel or dialog (inside-a-container): use space.inset.container; not Text that touches the card edge; Generous padding frames each card like a page in a magazine.
+- Inside a table cell (inside-a-cell): use space.inset.cell-x; not Narrow cell padding; Rows are read, not scanned. Cells get room like text does.
+- An option in a menu or list (option-in-list): use radius.option; not radius.control; The option corner nests inside the menu corner. Soft, even curves keep the warm tone.
+- Something that grows past one line (growing-element): use radius.element; not radius.surface; Text areas and list items share the control corner, so a form reads as one family.
+- Corners of cards, menus and dialogs (surface-corner): use radius.surface; not radius.control; Softer corners on cards and menus feel warm, like good paper.
+- Edges and dividers (edges-and-dividers): use border-width.default; not A heavy rule; A thin edge stays quiet beside long text. The words carry the page, not the lines.
+- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The ring stands clear of the control, so readers see focus on any fill.
+- A panel opens (panel-opens): use motion.duration.panels; not An instant pop; A relaxed open guides the reader to the new panel without a jolt.
+- The curve of any move (any-transition): use motion.easing.standard; not A bounce; A calm ease-out settles softly and never pulls the eye from the text.
+- A hero or launch moment (hero-motion): use No hero motion: the landing stays still; not An animated headline; Attention belongs to the text. A moving headline pulls the eye away from it.
+- An icon beside text (icon-beside-text): use size.icon and icon.stroke-width; not A filled or colored icon; Quiet outline icons sit beside the words and never outshine the text.
+- Most buttons and inputs (most-controls): use size.control.default; not size.control.compact; Readers on phones get a full touch target on every control.
+- The main action on a screen (main-action): use size.control.large; not A taller button for the main action; It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text.
+- A button inside a field (control-inside-field): use size.control.compact; not size.control.default; A clear or show button must fit inside the field around it.
+- A control that is not available yet (unavailable-control): use opacity.disabled; not Hiding the control; A faded control keeps its place. Hiding it would move the page and lose the reader's place.
 
 ### Voice and tone
 
@@ -610,6 +682,30 @@ Themes: light, dark
 - A confirmation question (confirm-words): use Name the exact object and the consequence; not "Are you sure?"; Acting on the wrong record is the costly mistake. Example: "Dismiss 3 alerts? This cannot be undone."
 - A first visit (first-visit): use No tour. Show the data, with a tooltip where needed.; not A welcome tour; Daily experts skip tours; tooltips cover the first uses. Example: "Hover any column header to see what it counts."
 - No component in the inventory fits (missing-component): use a component from the inventory, composed (for example a popover with a command list); not a one-off component built for one screen; A small team keeps fewer parts right, and experts expect the same parts everywhere.
+- Hero line or key number (hero-line): use type.display; not type.display for page titles; It is for the one key number at the top of a dashboard. One big total gives analysts the headline at a glance. Everything below it stays small so more rows fit.
+- Section heading (section-heading): use type.heading; not type.title; Panel and card headings sit one step above body. They name a block without taking rows from the data.
+- Supporting text (supporting-text): use type.caption; not type.body; Timestamps and hints step back, so the values stay the hero.
+- Text in a table cell (table-cell): use type.data; not type.body; Every cell shares the mono face, so IDs, times and values line up down each column.
+- Title of a form page (form-page-title): use type.title; not type.display; Settings and form pages keep the same small title as every page. Experts find the fields higher up.
+- Parts of one item (parts-of-one-item): use space.gap.tight; not space.gap.default; An icon and its word sit close, so each item reads as one unit in a dense row.
+- Items in a list or a form row (siblings-in-a-row): use space.gap.default; not space.gap.tight; Items in a list sit close but apart. Analysts still tell one record from the next.
+- Between groups (between-groups): use space.gap.group; not space.gap.section; A small step marks a new group without pushing records off the screen.
+- Inside a button or input (inside-a-control): use space.inset.control-x; not Padding set by eye; Narrow padding keeps buttons short, so a toolbar holds every action an expert repeats.
+- Inside a card, panel or dialog (inside-a-container): use space.inset.container; not space.gap.section; Cards and dialogs keep a small inset, so their content starts close to the edge.
+- Inside a table cell (inside-a-cell): use space.inset.cell-x; not space.inset.container; Narrow cell padding fits more columns, and values in two columns still stay apart.
+- An option in a menu or list (option-in-list): use radius.option; not radius.control; Options sit square inside the menu. A long list scans as one clean column.
+- Something that grows past one line (growing-element): use radius.element; not radius.surface; Rows and text areas keep the small control corner, so long lists stay straight.
+- Corners of cards, menus and dialogs (surface-corner): use radius.surface; not radius.control; Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen.
+- Edges and dividers (edges-and-dividers): use border-width.default; not A thicker border; A hairline separates rows and cards without taking room from the data.
+- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one.
+- A panel opens (panel-opens): use motion.duration.panels; not A slow slide-in; Panels open at the feedback speed, so experts never wait for a menu.
+- The curve of any move (any-transition): use motion.easing.standard; not A spring or a bounce; A plain ease-out starts fast and settles quietly. Nothing pulls the eye from the data.
+- A hero or launch moment (hero-motion): use No hero motion; not An intro animation; Analysts open the tool to work for a whole shift. An intro would cost time on every visit.
+- An icon beside text (icon-beside-text): use size.icon and icon.stroke-width; not An icon larger than its label; Icons match the small text, so a toolbar reads as one line. The light stroke keeps rows quiet.
+- Most buttons and inputs (most-controls): use size.control.default; not size.control.large; Buttons and inputs fit a mouse and keep toolbars short.
+- The main action on a screen (main-action): use size.control.large; not A taller button for the main action; It is the same height as the default here. Color and place mark the main action. One height keeps toolbar buttons in line.
+- A button inside a field (control-inside-field): use size.control.compact; not size.control.default; A clear or step button fits inside the field, so the field keeps its row height.
+- A control that is not available yet (unavailable-control): use opacity.disabled; not Hiding the control; A faded control stays in its place. Experts keep their bearings and see the action will come back.
 
 ### Voice and tone
 
@@ -750,6 +846,30 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - A confirmation question (confirm-words): use Shared across brands: plain and specific; not Brand tone when something is lost; Loss is never the moment for personality. Example: "Cancel your plan? It stays active until the end of the month."
 - A first visit (first-visit): use Brand tone in the first headline only; not Brand tone in every line; One headline carries the brand; the rest stays shared. Example: "Birch: Hi! Let's set up your plan."
 - No component in the inventory fits (missing-component): use a component from the inventory with brand tokens; not a component made for one brand; Brands change primitives, never components; one brand-only part breaks the shared library.
+- Hero line or key number (hero-line): use type.display; not A brand-specific headline style; In the brand font for the product-page headline. Each brand speaks loudest in its product headline, on the shared scale.
+- Section heading (section-heading): use type.heading; not Bold body text; Headings stay one shared role; only the brand font changes.
+- Supporting text (supporting-text): use type.caption; not A brand-specific small style; One caption role serves fees, dates and hints in every brand.
+- Text in a table cell (table-cell): use type.data; not A mono font; It equals body here. Plan and order tables read like body text in every brand font.
+- Title of a form page (form-page-title): use type.title; not type.display; In the brand font. Sign-up and account pages share one title role in every brand.
+- Parts of one item (parts-of-one-item): use space.gap.tight; not Brand-specific spacing; Parts of one item sit close in every brand, so the shared parts look the same.
+- Items in a list or a form row (siblings-in-a-row): use space.gap.default; not space.gap.tight; Fields in a form keep a comfortable gap, so customers on phones tap the right one.
+- Between groups (between-groups): use space.gap.group; not Brand-specific spacing; One group gap in every brand keeps sign-up forms the same shape.
+- Inside a button or input (inside-a-control): use space.inset.control-x; not Brand-specific padding; Shared padding keeps buttons the same size in every brand.
+- Inside a card, panel or dialog (inside-a-container): use space.inset.container; not Brand-specific padding; Cards hold offers the same way in every brand; only the corner and color change.
+- Inside a table cell (inside-a-cell): use space.inset.cell-x; not Narrow cell padding; Account tables keep room between columns on a phone in every brand.
+- An option in a menu or list (option-in-list): use radius.option; not A hard-coded radius; (set by the brand). Each brand sets the option corner, and it nests inside that brand's menu corner.
+- Something that grows past one line (growing-element): use radius.element; not radius.control; (set by the brand). A brand with pill controls would turn a text area into a capsule. The element corner stays sane in every brand.
+- Corners of cards, menus and dialogs (surface-corner): use radius.surface; not A hard-coded radius; (set by the brand). Each brand sets its own card corner; the role stays shared.
+- Edges and dividers (edges-and-dividers): use border-width.default; not A brand-specific border width; One thin edge serves every brand. Color carries the brand, not line weight.
+- The gap around a focus ring (focus-gap): use border-width.focus-offset and border-width.focus; not A ring that touches the control; The gap sits around a ring of border-width.focus. The ring and its gap stay the same in every brand, so focus shows on any brand color.
+- A panel opens (panel-opens): use motion.duration.panels; not Brand-specific motion; A relaxed open guides customers through sign-up the same way in every brand.
+- The curve of any move (any-transition): use motion.easing.standard; not A brand-specific curve; One calm curve keeps the shared components the same in every brand.
+- A hero or launch moment (hero-motion): use No hero motion; not An intro animation for one brand; A brand-only animation would break the shared library.
+- An icon beside text (icon-beside-text): use size.icon and icon.stroke-width; not A brand-specific icon set; One icon set and size serve every brand; only the color changes.
+- Most buttons and inputs (most-controls): use size.control.default; not size.control.compact; Customers sign up on phones, so every control fits a thumb in every brand.
+- The main action on a screen (main-action): use size.control.large; not A taller button for one brand; It is the same height as the default here. Brand color marks the main action. One height keeps every brand's forms the same.
+- A button inside a field (control-inside-field): use size.control.compact; not size.control.default; A clear or show-password button fits inside the field in every brand.
+- A control that is not available yet (unavailable-control): use opacity.disabled; not A grey color per brand; One fade level works on every brand color, so no brand needs its own disabled color.
 
 ### Voice and tone
 

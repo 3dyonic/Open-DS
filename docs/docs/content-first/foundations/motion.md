@@ -10,7 +10,7 @@ description: "Content first: What moves, why and how fast."
 
 What moves, why and how fast.
 
-::token-swatches{id="motion"}
+::token-groups{id="motion"}
 
 ## The five answers
 
@@ -40,3 +40,6 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (moderate) | A fast flash | Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy. |
 | Someone asked for less motion | No motion | Reduced motion | A shorter motion still moves. When people ask for less motion, nothing moves. |
+| A panel opens | motion.duration.panels | An instant pop | A relaxed open guides the reader to the new panel without a jolt. |
+| The curve of any move | motion.easing.standard | A bounce | A calm ease-out settles softly and never pulls the eye from the text. |
+| A hero or launch moment | No hero motion: the landing stays still | An animated headline | Attention belongs to the text. A moving headline pulls the eye away from it. |

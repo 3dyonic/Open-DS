@@ -1,70 +1,209 @@
 {
- "token-swatches": {
+ "token-groups": {
   "spacing": {
-   "tokens": [
+   "groups": [
     {
-     "token": "space.gap.tight",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.4",
-      "value": "0.25rem"
-     }
+     "title": "space.gap.tight",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-tight)"
+     },
+     "api": [
+      {
+       "token": "space.gap.tight",
+       "value": "4px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Items that belong together",
+       "why": "Things that belong together sit close."
+      },
+      {
+       "kind": "use",
+       "situation": "Parts of one item",
+       "why": "An icon and its word sit close, so each item reads as one unit in a dense row."
+      },
+      {
+       "kind": "not",
+       "situation": "Items in a list or a form row",
+       "detail": "use space.gap.default",
+       "why": "Items in a list sit close but apart. Analysts still tell one record from the next."
+      }
+     ]
     },
     {
-     "token": "space.gap.default",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.8",
-      "value": "0.5rem"
-     }
+     "title": "space.gap.default",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-default)"
+     },
+     "api": [
+      {
+       "token": "space.gap.default",
+       "value": "8px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Items in a list or a form row",
+       "why": "Items in a list sit close but apart. Analysts still tell one record from the next."
+      },
+      {
+       "kind": "not",
+       "situation": "Parts of one item",
+       "detail": "use space.gap.tight",
+       "why": "An icon and its word sit close, so each item reads as one unit in a dense row."
+      }
+     ]
     },
     {
-     "token": "space.gap.group",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.16",
-      "value": "1rem"
-     }
+     "title": "space.gap.group",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-group)"
+     },
+     "api": [
+      {
+       "token": "space.gap.group",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between groups",
+       "why": "A small step marks a new group without pushing records off the screen."
+      },
+      {
+       "kind": "not",
+       "situation": "Items that belong together",
+       "detail": "use space.gap.tight",
+       "why": "Things that belong together sit close."
+      }
+     ]
     },
     {
-     "token": "space.gap.section",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.24",
-      "value": "1.5rem"
-     }
+     "title": "space.gap.section",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-section)"
+     },
+     "api": [
+      {
+       "token": "space.gap.section",
+       "value": "24px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between page sections",
+       "detail": "space.gap.section and a hairline",
+       "why": "Lines separate without taking room from the data."
+      },
+      {
+       "kind": "not",
+       "situation": "Between groups",
+       "detail": "use space.gap.group",
+       "why": "A small step marks a new group without pushing records off the screen."
+      },
+      {
+       "kind": "not",
+       "situation": "Inside a card, panel or dialog",
+       "detail": "use space.inset.container",
+       "why": "Cards and dialogs keep a small inset, so their content starts close to the edge."
+      }
+     ]
     },
     {
-     "token": "space.inset.control-x",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.12",
-      "value": "0.75rem"
-     }
+     "title": "space.inset.control-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-control-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.control-x",
+       "value": "12px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a button or input",
+       "why": "Narrow padding keeps buttons short, so a toolbar holds every action an expert repeats."
+      }
+     ]
     },
     {
-     "token": "space.inset.container",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.16",
-      "value": "1rem"
-     }
+     "title": "space.inset.container",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-container)"
+     },
+     "api": [
+      {
+       "token": "space.inset.container",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a card, panel or dialog",
+       "why": "Cards and dialogs keep a small inset, so their content starts close to the edge."
+      },
+      {
+       "kind": "not",
+       "situation": "Inside a table cell",
+       "detail": "use space.inset.cell-x",
+       "why": "Narrow cell padding fits more columns, and values in two columns still stay apart."
+      }
+     ]
     },
     {
-     "token": "space.inset.cell-x",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "space.12",
-      "value": "0.75rem"
-     }
+     "title": "space.inset.cell-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-cell-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.cell-x",
+       "value": "12px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a table cell",
+       "why": "Narrow cell padding fits more columns, and values in two columns still stay apart."
+      }
+     ]
     },
     {
-     "token": "size.row",
-     "type": "dimension",
-     "resolves": {
-      "primitive": "size.32",
-      "value": "2rem"
-     }
+     "title": "size.row",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-row)"
+     },
+     "api": [
+      {
+       "token": "size.row",
+       "value": "32px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Table row height",
+       "detail": "size.row (compact)",
+       "why": "Compact rows show more records without scrolling."
+      }
+     ]
     }
    ]
   }
