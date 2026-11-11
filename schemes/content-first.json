@@ -1017,7 +1017,8 @@
       "placeholder": "you@example.com",
       "hint": "One letter a week. Leave any time.",
       "error": "We could not save your email. Check it and try again.",
-      "invalid": "reader-at-home"
+      "invalid": "reader-at-home",
+      "value": "reader@example.com"
     },
     "checkbox": [
       "Home and garden",
@@ -1035,7 +1036,8 @@
     },
     "switches": [
       "Larger text",
-      "Email me the weekly letter"
+      "Email me the weekly letter",
+      "Show reading time"
     ],
     "messages": {
       "success": "You're in. The next issue arrives on Friday.",
@@ -1082,7 +1084,45 @@
       ],
       "destructive": "Remove from your list"
     },
-    "icon_action": "Save for later"
+    "icon_action": "Save for later",
+    "choices": [
+      {
+        "label": "Weekly letter",
+        "description": "One email on Friday with new guides."
+      },
+      {
+        "label": "Reading reminders",
+        "description": "A note when a saved guide waits a week."
+      }
+    ],
+    "search": {
+      "placeholder": "Search your guides",
+      "query": "garden",
+      "total": "4 guides",
+      "results": "1 guide",
+      "none": "No guides"
+    },
+    "chart": {
+      "series": [
+        "Saved",
+        "Finished"
+      ],
+      "ticks": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov"
+      ],
+      "point": {
+        "label": "Aug",
+        "values": [
+          "9",
+          "6"
+        ]
+      }
+    }
   },
   "themes": [
     {

@@ -969,7 +969,8 @@
       "placeholder": "you@example.com",
       "hint": "One email at launch. No spam.",
       "error": "That email doesn't look right. Check it and try again.",
-      "invalid": "hello@"
+      "invalid": "hello@",
+      "value": "runner@example.com"
     },
     "checkbox": [
       "Remind me at launch",
@@ -988,7 +989,8 @@
     },
     "switches": [
       "Launch reminder",
-      "Drop news by email"
+      "Drop news by email",
+      "Restock alerts"
     ],
     "messages": {
       "success": "You're on the list. See you at launch.",
@@ -1035,7 +1037,45 @@
       ],
       "destructive": "Leave the list"
     },
-    "icon_action": "Share the drop"
+    "icon_action": "Share the drop",
+    "choices": [
+      {
+        "label": "Ship to me",
+        "description": "We send it on drop day."
+      },
+      {
+        "label": "Pick up in store",
+        "description": "Collect it after launch."
+      }
+    ],
+    "search": {
+      "placeholder": "Search the drop",
+      "query": "jacket",
+      "total": "12 pieces",
+      "results": "2 pieces",
+      "none": "Nothing found"
+    },
+    "chart": {
+      "series": [
+        "Joined",
+        "Bought"
+      ],
+      "ticks": [
+        "Day 1",
+        "Day 2",
+        "Day 3",
+        "Day 4",
+        "Day 5",
+        "Day 6"
+      ],
+      "point": {
+        "label": "Day 3",
+        "values": [
+          "640",
+          "210"
+        ]
+      }
+    }
   },
   "themes": [
     {

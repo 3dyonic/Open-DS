@@ -1109,7 +1109,8 @@
       "placeholder": "0",
       "hint": "From 0 to 100.",
       "error": "Threshold must be between 0 and 100.",
-      "invalid": "140"
+      "invalid": "140",
+      "value": "75"
     },
     "checkbox": [
       "Escalated only",
@@ -1127,7 +1128,8 @@
     },
     "switches": [
       "Compact rows",
-      "Live updates"
+      "Live updates",
+      "Sound on escalation"
     ],
     "messages": {
       "success": "12 alerts exported.",
@@ -1174,7 +1176,45 @@
       ],
       "destructive": "Dismiss"
     },
-    "icon_action": "Filter"
+    "icon_action": "Filter",
+    "choices": [
+      {
+        "label": "Email on escalation",
+        "description": "A message when an alert is escalated."
+      },
+      {
+        "label": "Page on breach",
+        "description": "A page to the on-call analyst when a breach is confirmed."
+      }
+    ],
+    "search": {
+      "placeholder": "Search alerts",
+      "query": "llm-inference",
+      "total": "142 alerts",
+      "results": "9 alerts",
+      "none": "No alerts"
+    },
+    "chart": {
+      "series": [
+        "New alerts",
+        "Escalated"
+      ],
+      "ticks": [
+        "08:00",
+        "10:00",
+        "12:00",
+        "14:00",
+        "16:00",
+        "18:00"
+      ],
+      "point": {
+        "label": "12:00",
+        "values": [
+          "38",
+          "6"
+        ]
+      }
+    }
   },
   "themes": [
     {

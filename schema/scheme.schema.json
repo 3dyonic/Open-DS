@@ -480,6 +480,116 @@
               "type": "string",
               "minLength": 1,
               "description": "A value that triggers the error."
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "description": "A valid value the person typed, for a filled field (OD-135)."
+            }
+          }
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "description": "Choice cards (OD-135): options that each have a title and a line that explains them.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "description"],
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The option's title."
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the option does."
+              }
+            }
+          }
+        },
+        "search": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["placeholder", "query", "total", "results", "none"],
+          "description": "A search box with a count of results beside it (OD-135).",
+          "properties": {
+            "placeholder": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The empty box's placeholder."
+            },
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the person typed."
+            },
+            "total": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The count before a search, with its noun."
+            },
+            "results": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The count for the query, with its noun."
+            },
+            "none": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The count when nothing matches."
+            }
+          }
+        },
+        "chart": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["series", "ticks", "point"],
+          "description": "A bar chart with two series (OD-135): the series names, the axis labels and one point's values.",
+          "properties": {
+            "series": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "The two series' names, for the legend and the tooltip."
+            },
+            "ticks": {
+              "type": "array",
+              "minItems": 6,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "The labels along the axis, short enough for a tick."
+            },
+            "point": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["label", "values"],
+              "description": "The point the tooltip shows.",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The point's axis label."
+                },
+                "values": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": "Each series' value at the point, as shown."
+                }
+              }
             }
           }
         },

@@ -202,9 +202,10 @@
         "samples in every scheme: screen, actions, statuses with meaning and why, table, figures, field, messages, confirm, card, tabs, menu",
         "danger only where something failed or will be lost",
         "Storybook stories and the site preview read the active scheme's samples; every component renders in every scheme, and its docs page says when the scheme leaves it out (OD-192)",
-        "no shared fixtures between schemes"
+        "no shared fixtures between schemes",
+        "every text in an anatomy drawing reads a sample path that resolves in every scheme, or keeps its own text with a reason"
       ],
-      "checks": ["schemes-samples", "json-files-validate", "storybook-build", "site-build"]
+      "checks": ["schemes-samples", "json-files-validate", "storybook-build", "site-build", "anatomy-text-from-samples"]
     },
     {
       "id": "OD-138",

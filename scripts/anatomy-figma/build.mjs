@@ -8,6 +8,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { grammar, loadScheme } from "../../cli/src/schemes.mjs";
+import { sampleText } from "./sample-text.mjs";
 
 const ROOT = new URL("../..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
@@ -38,15 +39,16 @@ const spec = item && layer(item);
 if (!spec) throw new Error(`${component} has no parts layer.`);
 const recipe = RECIPES[spec.drawing?.kind];
 if (!recipe) throw new Error(`${component}: no recipe for drawing kind ${spec.drawing?.kind} yet.`);
-// A text node may name the scheme's own content (OD-135): "sample": "metrics.0.label" reads
+// A text node names the scheme's own content (OD-135): "sample": "metrics.0.label" reads
 // samples.metrics[0].label from this scheme, so each scheme's drawing says what its Storybook says.
+// sample-text.mjs has the path rules.
 const sampled = (node) => {
   if (!node || typeof node !== "object") return;
   if (Array.isArray(node)) return node.forEach(sampled);
   if (node.t === "text" && node.sample) {
-    const v = node.sample.split(".").reduce((o, k) => o?.[k], s.samples);
-    if (typeof v !== "string") throw new Error(`${component}: ${schemeId} has no samples.${node.sample} for the drawing's text.`);
-    node.text = v;
+    const { text, missing } = sampleText(node, s.samples);
+    if (missing) throw new Error(`${component}: ${schemeId} has no samples.${missing.join(", samples.")} for the drawing's text.`);
+    node.text = text;
   }
   for (const v of Object.values(node)) if (v && typeof v === "object") sampled(v);
 };
@@ -146,7 +148,7 @@ function treeNodes(sp) {
 }
 function treeBindings(sp) {
   const out = { canvas: bind("color.surface.canvas", "color"), font: bind("type.body.font-family", "font"), __ink: bind("color.text.primary", "color") };
-  const WORDS = new Set(["t", "id", "name", "text", "sample", "icon", "layout", "align", "justify", "at", "strokeAlign", "sides", "abs", "dash", "corners", "marks", "children", "ring", "n", "grow", "clip", "__ring"]);
+  const WORDS = new Set(["t", "id", "name", "text", "sample", "initials", "absent", "fixed", "icon", "layout", "align", "justify", "at", "strokeAlign", "sides", "abs", "dash", "corners", "marks", "children", "ring", "n", "grow", "clip", "__ring"]);
   for (const d of treeNodes(sp))
     for (const [k, raw] of Object.entries(d)) {
       if (WORDS.has(k)) continue;
