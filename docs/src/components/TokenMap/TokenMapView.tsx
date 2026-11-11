@@ -17,6 +17,7 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/base.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { Badge } from "@open-ds/ui/components/badge";
 import styles from "./styles.module.css";
 
 // The Token map page (OD-274). It reads left to right: area, scale, step, semantic group, decision,
@@ -93,6 +94,17 @@ const pxOf = (v: string) => {
   return m ? `${v} · ${parseFloat(m[1]) * 16}px` : v;
 };
 
+// A decision has a reason when the scheme records one: its own why, the answers behind it, or a measured fact.
+const hasReason = (d: Decision | undefined) => Boolean(d && (d.why || d.answers.length || d.stepWhy));
+// A value has a reason when some decision that reads it has one.
+const valueHasReason = (model: Model, step: Step) => step.decisions.some((d) => hasReason(model.decisions[d]));
+
+const NoReason = () => (
+  <Badge tone="warning" className={styles.gap}>
+    No reason recorded yet
+  </Badge>
+);
+
 const Hidden = ({ type, pos, id }: { type: "source" | "target"; pos: Position; id?: string }) => (
   <Handle type={type} position={pos} id={id} isConnectable={false} className={styles.handle} />
 );
@@ -146,8 +158,17 @@ function AreaNode({ data }: NodeProps<Node<AreaData>>) {
   );
 }
 
-type FamilyData = { label: string; count: number; selected: boolean; swatch: string | null };
+type FamilyData = {
+  label: string;
+  count: number;
+  selected: boolean;
+  swatch: string | null;
+  gaps: number;
+  why: string[];
+  answers: Record<string, Answer>;
+};
 function FamilyNode({ data }: NodeProps<Node<FamilyData>>) {
+  const [open, setOpen] = useState(false);
   return (
     <div className={`${styles.node} ${data.selected ? styles.selected : ""}`}>
       <Hidden type="target" pos={Position.Left} />
@@ -161,6 +182,13 @@ function FamilyNode({ data }: NodeProps<Node<FamilyData>>) {
       <div className={styles.line}>
         {data.count} step{data.count === 1 ? "" : "s"}
       </div>
+      {data.gaps > 0 && (
+        <div className={styles.gapCount}>
+          {data.gaps} value{data.gaps === 1 ? "" : "s"} with no reason
+        </div>
+      )}
+      {data.why.length > 0 && <More open={open} onToggle={() => setOpen(!open)} closed="More" />}
+      {open && <Answers ids={data.why} answers={data.answers} />}
     </div>
   );
 }
@@ -174,7 +202,7 @@ function StepNode({ data }: NodeProps<Node<StepData>>) {
         {data.color && <span className={styles.chip} style={{ background: data.value }} />}
         <span className={styles.title}>{data.name}</span>
       </div>
-      <div className={styles.mono}>{pxOf(data.value).slice(0, 28)}</div>
+      <div className={styles.mono}>{pxOf(data.value)}</div>
     </div>
   );
 }
@@ -185,6 +213,7 @@ type WordData = {
   family: Family;
   keyLine: string | null;
   why: { text: string; answers: string[] }[];
+  readers: Decision[];
   answers: Record<string, Answer>;
 };
 function WordNode({ data }: NodeProps<Node<WordData>>) {
@@ -209,7 +238,9 @@ function WordNode({ data }: NodeProps<Node<WordData>>) {
           ))}
         </div>
       )}
-      {data.why.length > 0 && <More open={open} onToggle={() => setOpen(!open)} closed="Why it's here" />}
+      {(data.why.length > 0 || data.readers.length > 0) && (
+        <More open={open} onToggle={() => setOpen(!open)} closed="Why it's here" />
+      )}
       {open &&
         data.why.map((w, i) => (
           <div key={i}>
@@ -217,6 +248,19 @@ function WordNode({ data }: NodeProps<Node<WordData>>) {
             <Answers ids={w.answers} answers={data.answers} />
           </div>
         ))}
+      {open && data.readers.length > 0 && (
+        <>
+          <div className={styles.cap}>Read by</div>
+          {data.readers.map((d) => (
+            <div key={d.id} className={styles.qa}>
+              <span className={styles.mono}>{d.id}</span>
+              {d.description && <span className={styles.line}>{d.description}</span>}
+              {d.why ? <span>{sentence(d.why)}</span> : <Answers ids={d.answers} answers={data.answers} />}
+              {!hasReason(d) && <NoReason />}
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 }
@@ -253,6 +297,7 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
       {d.why ? <div className={styles.key}>{sentence(d.why)}</div> : d.description && <div>{d.description}</div>}
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
       {used === 0 && !d.via && <div className={styles.line}>No component uses it.</div>}
+      {!hasReason(d) && <NoReason />}
       {(d.stepWhy || d.answers.length > 0) && <More open={open} onToggle={() => setOpen(!open)} closed="Why" />}
       {open && (
         <>
@@ -328,12 +373,18 @@ const nodeTypes = {
   list: ListNode,
 };
 
+// The scope's general answers, shown once on the family. Color answers per step instead.
+const familyWhyOf = (map: MapFile, family: Family) =>
+  family.area === "Color"
+    ? []
+    : [`${family.scope}.definition`, `${family.scope}.values`].filter((id) => map.answers[id]);
+
 // Why a value is here, from the scheme's own answers: the brand hue's palette answer; a color step that
-// is the lightest to pass its label floor (measured); for other areas, the area's own answers.
+// is the lightest to pass its label floor (measured); for other areas, the decisions that read the step.
 function whyOf(map: MapFile, model: Model, family: Family, step: Step) {
   if (family.area !== "Color") {
-    const ids = [`${family.scope}.definition`, `${family.scope}.values`].filter((id) => map.answers[id]);
-    return { keyLine: null, why: ids.length ? [{ text: "", answers: ids }] : [] };
+    const readers = step.decisions.map((d) => model.decisions[d]).filter(Boolean);
+    return { keyLine: null, why: [], readers };
   }
   const why: { text: string; answers: string[] }[] = [];
   const palette = map.answers["color.definition"];
@@ -341,7 +392,7 @@ function whyOf(map: MapFile, model: Model, family: Family, step: Step) {
   const lightest = step.decisions.map((d) => model.decisions[d]?.stepWhy).find(Boolean);
   if (lightest)
     why.push({ text: lightest, answers: map.answers["accessibility.definition"] ? ["accessibility.definition"] : [] });
-  return { keyLine: step.brand && palette?.why ? palette.why : null, why };
+  return { keyLine: step.brand && palette?.why ? palette.why : null, why, readers: [] as Decision[] };
 }
 
 function build(map: MapFile, model: Model, path: Path, openComp: string | null, toggleComp: (k: string) => void) {
@@ -375,6 +426,9 @@ function build(map: MapFile, model: Model, path: Path, openComp: string | null, 
         count: f.steps.length,
         selected: f.id === path.hue,
         swatch: f.area === "Color" ? (mid?.value ?? null) : null,
+        gaps: f.steps.filter((s) => !valueHasReason(model, s)).length,
+        why: familyWhyOf(map, f),
+        answers: map.answers,
       },
     });
     edges.push({ id: `e:area:${f.id}`, source: `area:${path.area}`, target: `fam:${f.id}`, className: styles.edge });
