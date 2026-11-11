@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/mode-preview.schema.json",
+  "title": "Mode preview",
+  "description": "The content of a small screen built from the scheme's own components, shown once in each mode of one brand. The colors and corners come from the scheme's tokens, not from this data. Drawn by the ModePreview composite on Foundations › Theming.",
+  "type": "object",
+  "required": ["name", "scenario", "actions", "statuses", "modes"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The scheme's name, shown as the screen's title."
+    },
+    "scenario": {
+      "type": "string",
+      "description": "A task the scheme is made for, in a sentence."
+    },
+    "actions": {
+      "type": "object",
+      "description": "The scheme's words for the two actions of a form.",
+      "required": ["commit", "cancel"],
+      "additionalProperties": false,
+      "properties": {
+        "commit": {
+          "type": "string",
+          "description": "content.action.commit: the action that completes the task."
+        },
+        "cancel": {
+          "type": "string",
+          "description": "content.action.cancel: the action that leaves it."
+        }
+      }
+    },
+    "statuses": {
+      "type": "array",
+      "description": "Up to two status labels from the scheme's sample content.",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["label", "meaning"],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The label as the product shows it."
+          },
+          "meaning": {
+            "type": "string",
+            "enum": ["info", "success", "warning", "danger"],
+            "description": "The status it means, which sets its color."
+          }
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "description": "The brand, when the scheme has more than one.",
+      "required": ["id", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The brand's id in the tokens."
+        },
+        "label": { "type": "string", "description": "The brand's name." }
+      }
+    },
+    "modes": {
+      "type": "array",
+      "description": "The modes this brand ships, light first.",
+      "minItems": 1,
+      "items": { "type": "string", "enum": ["light", "dark"] }
+    }
+  }
+}

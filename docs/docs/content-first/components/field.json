@@ -1,0 +1,963 @@
+{
+ "preview": {
+  "field/live": {
+   "title": "Field examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Field in Storybook",
+     "href": "/storybook/?path=/docs/components-field--docs"
+    }
+   ]
+  },
+  "field/orientation/vertical": {
+   "title": "Field vertical",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:content-first;mode:light&args=orientation:vertical"
+   }
+  },
+  "field/orientation/horizontal": {
+   "title": "Field horizontal",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:content-first;mode:light&args=orientation:horizontal"
+   }
+  },
+  "field/orientation/responsive": {
+   "title": "Field responsive",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:content-first;mode:light&args=orientation:responsive"
+   }
+  }
+ },
+ "card-grid": {
+  "anatomy-link/field": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the field, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./field/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "field/people.q2": {
+   "anchor": "why-people-q2",
+   "question": "What accessibility level do we commit to?",
+   "key": "people.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "AA",
+     "why": "AA is the commitment for a public site."
+    },
+    {
+     "kind": "decided",
+     "title": "So Field",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "vertical",
+       "text": "Newsletter and search forms: the label above."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: focus",
+       "Button: disabled"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Field decision would reopen",
+     "text": "and 3 answers that follow from it: A ratio, line heights in proportion, Two: color and word, AA."
+    }
+   ]
+  },
+  "field/tasks.q2": {
+   "anchor": "why-tasks-q2",
+   "question": "How often do people repeat actions?",
+   "key": "tasks.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Rarely",
+     "why": "Actions are rare: subscribe, share, save."
+    },
+    {
+     "kind": "decided",
+     "title": "So Field",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "horizontal",
+       "text": "Forms are rare and short; stacking keeps the reading column."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: primary",
+       "Button: large",
+       "Input group: block-start",
+       "Input group: block-end"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Field decision would reopen",
+     "text": "and 2 answers that follow from it: Three, Only what today's screens use."
+    }
+   ]
+  },
+  "field/human.q1": {
+   "anchor": "why-human-q1",
+   "question": "What must the interface protect?",
+   "key": "human.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Attention on the content",
+     "why": "Attention belongs to the text."
+    },
+    {
+     "kind": "decided",
+     "title": "So Field",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "horizontal",
+       "text": "Forms are rare and short; stacking keeps the reading column."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: large",
+       "Empty: default",
+       "Item: muted"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Field decision would reopen",
+     "text": "and 8 answers that follow from it: Surface, text, action and status, Only what floats, One, and 5 more."
+    }
+   ]
+  },
+  "field/scenarios.q1": {
+   "anchor": "why-scenarios-q1",
+   "question": "Where do people use it?",
+   "key": "scenarios.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Anywhere, on any device",
+     "why": "Readers arrive on phones and laptops alike."
+    },
+    {
+     "kind": "decided",
+     "title": "So Field",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "responsive",
+       "text": "One stacked layout reads the same on phones and laptops."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Field decision would reopen",
+     "text": "and 4 answers that follow from it: Light and dark, Touch size, Two, and 1 more."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "field": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Set",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.set.gap",
+      "alias": "space.gap.section",
+      "variable": "field-set-gap"
+     },
+     "values": [
+      {
+       "token": "space.64",
+       "text": "4rem"
+      }
+     ]
+    },
+    {
+     "group": "Set",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.set.gap-2",
+      "alias": "component-spacing-map.x3",
+      "variable": "field-set-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Legend",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.legend.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "field-legend-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Legend",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.legend.font-size",
+      "alias": "type.body.font-size",
+      "variable": "field-legend-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Legend",
+     "part": "Margin bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.legend.margin-bottom",
+      "alias": "component-spacing-map.x3",
+      "variable": "field-legend-margin-bottom"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.group.gap",
+      "alias": "component-spacing-map.x8",
+      "variable": "field-group-gap"
+     },
+     "values": [
+      {
+       "token": "space.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.group.gap-2",
+      "alias": "component-spacing-map.x3",
+      "variable": "field-group-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Gap 3",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.group.gap-3",
+      "alias": "space.gap.group",
+      "variable": "field-group-gap-3"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Field",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.gap",
+      "alias": "component-spacing-map.x3",
+      "variable": "field-gap"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Field",
+     "part": "Label invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.field.label-invalid",
+      "alias": "color.status.danger",
+      "variable": "field-label-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Field",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.gap-2",
+      "alias": "space.gap.tight",
+      "variable": "field-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.content.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "field-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.label.gap",
+      "alias": "space.gap.default",
+      "variable": "field-label-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Disabled opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.field.label.disabled-opacity-disabled",
+      "alias": "opacity.disabled",
+      "variable": "field-label-disabled-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.label.radius",
+      "alias": "radius.control",
+      "variable": "field-label-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.label.padding",
+      "alias": "component-spacing-map.x4",
+      "variable": "field-label-padding"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.label.font-size",
+      "alias": "type.body.font-size",
+      "variable": "field-label-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.label.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "field-label-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Border checked",
+     "when": "when on",
+     "themed": true,
+     "chain": {
+      "token": "component.field.label.border.checked",
+      "alias": "color.border.selected",
+      "variable": "field-label-border-checked"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.field.label.border",
+      "alias": "color.border.default",
+      "variable": "field-label-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E4DDD0"
+       },
+       "token": "stone.light.200",
+       "text": "#E4DDD0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4A4339"
+       },
+       "token": "stone.dark.200",
+       "text": "#4A4339"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Background checked",
+     "when": "when on",
+     "themed": true,
+     "chain": {
+      "token": "component.field.label.background.checked",
+      "alias": "color.surface.selected",
+      "variable": "field-label-background-checked"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E0E9F5"
+       },
+       "token": "navy.light.100",
+       "text": "#E0E9F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#202B3B"
+       },
+       "token": "navy.dark.100",
+       "text": "#202B3B"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.label.border-width",
+      "alias": "border-width.default",
+      "variable": "field-label-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "field-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.description.font-weight",
+      "alias": "type.body.font-weight",
+      "variable": "field-description-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.400",
+       "text": "400"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.field.description.label",
+      "alias": "color.text.muted",
+      "variable": "field-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#61594D"
+       },
+       "token": "stone.light.600",
+       "text": "#61594D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A39A8B"
+       },
+       "token": "stone.dark.400",
+       "text": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Label 2",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.field.description.label-2",
+      "alias": "color.action.primary",
+      "variable": "field-description-label-2"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Margin top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.description.margin-top",
+      "alias": "component-spacing-map.x1",
+      "variable": "field-description-margin-top"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Legend margin top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.description.legend-margin-top",
+      "alias": "component-spacing-map.x1",
+      "variable": "field-description-legend-margin-top"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.separator.font-size",
+      "alias": "type.body.font-size",
+      "variable": "field-separator-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Margin y",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.separator.margin-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "field-separator-margin-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Error",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.error.font-size",
+      "alias": "type.body.font-size",
+      "variable": "field-error-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Error",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.error.font-weight",
+      "alias": "type.body.font-weight",
+      "variable": "field-error-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.400",
+       "text": "400"
+      }
+     ]
+    },
+    {
+     "group": "Error",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.field.error.label",
+      "alias": "color.status.danger",
+      "variable": "field-error-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Error",
+     "part": "Indent",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.error.indent",
+      "alias": "component-spacing-map.x4",
+      "variable": "field-error-indent"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Separator content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.field.separator-content.background",
+      "alias": "color.surface.canvas",
+      "variable": "field-separator-content-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.light.50",
+       "text": "#FFFDF8"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#14110D"
+       },
+       "token": "stone.dark.0",
+       "text": "#14110D"
+      }
+     ]
+    },
+    {
+     "group": "Separator content",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.separator-content.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "field-separator-content-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Separator content",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.field.separator-content.label",
+      "alias": "color.text.muted",
+      "variable": "field-separator-content-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#61594D"
+       },
+       "token": "stone.light.600",
+       "text": "#61594D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A39A8B"
+       },
+       "token": "stone.dark.400",
+       "text": "#A39A8B"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

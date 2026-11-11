@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/mode-constants.schema.json",
+  "title": "Mode constants",
+  "description": "What stays the same in every mode of one brand: its corners and its type families. Drawn by the ModeConstants composite on Foundations › Theming.",
+  "type": "object",
+  "required": ["corners", "families"],
+  "additionalProperties": false,
+  "properties": {
+    "corners": {
+      "type": "array",
+      "description": "Each corner token of the brand.",
+      "items": {
+        "type": "object",
+        "required": ["token", "value"],
+        "additionalProperties": false,
+        "properties": {
+          "token": { "type": "string", "description": "The radius token, without radius., such as control." },
+          "value": { "type": "string", "description": "Its value as written, such as 0.125rem." },
+          "px": { "type": "string", "description": "The value in pixels, such as 2px." }
+        }
+      }
+    },
+    "families": {
+      "type": "array",
+      "description": "Each type family the brand uses.",
+      "items": {
+        "type": "object",
+        "required": ["family", "roles"],
+        "additionalProperties": false,
+        "properties": {
+          "family": { "type": "string", "description": "The family's name, such as IBM Plex Sans." },
+          "roles": { "type": "array", "items": { "type": "string" }, "description": "The type roles set in it, such as body." }
+        }
+      }
+    }
+  }
+}

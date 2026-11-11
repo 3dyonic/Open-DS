@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/decision-tree.schema.json",
+  "title": "Decision tree",
+  "description": "The first answers of a scheme and the answers that follow from each, down to the foundation values they set. Drawn by the DecisionTree composite under Where it starts on the Decision reference.",
+  "type": "object",
+  "required": ["roots"],
+  "additionalProperties": false,
+  "properties": {
+    "roots": {
+      "type": "array",
+      "description": "The first answers: those that follow from no other answer.",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/node" }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["answer"],
+      "additionalProperties": false,
+      "properties": {
+        "answer": { "type": "string", "minLength": 1, "description": "The scheme's answer, as its short label." },
+        "question": { "type": "string", "description": "The question it answers. A foundation value has none." },
+        "also": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "The other answers it also follows from, as their labels."
+        },
+        "scope": {
+          "type": "object",
+          "description": "The foundation whose values this answer sets, for a leaf.",
+          "required": ["title", "href"],
+          "additionalProperties": false,
+          "properties": {
+            "title": { "type": "string", "description": "The foundation's name, such as spacing." },
+            "href": { "type": "string", "description": "The link to the foundation's page, relative to this page." },
+            "token": { "type": "string", "description": "One token it sets, such as space.gap.tight." },
+            "primitive": { "type": "string", "description": "The primitive that token ends at." },
+            "value": { "type": "string", "description": "The value it ends at." }
+          }
+        },
+        "children": {
+          "type": "array",
+          "description": "The answers that follow from this one.",
+          "items": { "$ref": "#/$defs/node" }
+        }
+      }
+    }
+  }
+}

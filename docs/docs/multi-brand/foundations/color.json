@@ -1,0 +1,5469 @@
+{
+ "token-swatches": {
+  "color": {
+   "tokens": [
+    {
+     "token": "color.neutral.0",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.0",
+       "hex": "#020617"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.50",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.50",
+       "hex": "#F8FAFC"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.100",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.100",
+       "hex": "#F1F5F9"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "hex": "#1E293B"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.200",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.200",
+       "hex": "#E2E8F0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "hex": "#334155"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.300",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.300",
+       "hex": "#CBD5E1"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.300",
+       "hex": "#64748B"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.400",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.400",
+       "hex": "#96A3B5"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.400",
+       "hex": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.500",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.500",
+       "hex": "#64748B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.500",
+       "hex": "#CBD5E1"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.600",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.600",
+       "hex": "#4B5A6F"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.600",
+       "hex": "#D6DEE8"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.700",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.700",
+       "hex": "#334155"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.700",
+       "hex": "#E2E8F0"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.800",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.800",
+       "hex": "#1E293B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.800",
+       "hex": "#F1F5F9"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.900",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.900",
+       "hex": "#0F172A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.900",
+       "hex": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "token": "color.neutral.950",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.950",
+       "hex": "#020617"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.950",
+       "hex": "#FFFFFF"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.canvas",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.50",
+       "via": "color.neutral.50",
+       "hex": "#F8FAFC"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0",
+       "hex": "#020617"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.default",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.raised",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.sunken",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F1F5F9"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#1E293B"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.highlight",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F1F5F9"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#1E293B"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.pressed",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.200",
+       "via": "color.neutral.200",
+       "hex": "#E2E8F0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#334155"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.selected",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.100",
+       "hex": "#DEF3F0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.100",
+       "hex": "#012C28"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.inverse",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.900",
+       "via": "color.neutral.900",
+       "hex": "#0F172A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.900",
+       "via": "color.neutral.900",
+       "hex": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "token": "color.surface.scrim",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.black.light.scrim",
+       "hex": "#0000008C"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.black.dark.scrim",
+       "hex": "#000000B3"
+      }
+     ]
+    },
+    {
+     "token": "color.text.primary",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.900",
+       "via": "color.neutral.900",
+       "hex": "#0F172A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.900",
+       "via": "color.neutral.900",
+       "hex": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "token": "color.text.secondary",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.700",
+       "via": "color.neutral.700",
+       "hex": "#334155"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.500",
+       "via": "color.neutral.500",
+       "hex": "#CBD5E1"
+      }
+     ]
+    },
+    {
+     "token": "color.text.muted",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.600",
+       "via": "color.neutral.600",
+       "hex": "#4B5A6F"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.400",
+       "via": "color.neutral.400",
+       "hex": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "token": "color.text.inverse",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.light.900",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.text.on-action",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.light.900",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.text.link",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.700",
+       "hex": "#015852"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.700",
+       "hex": "#A1DCD4"
+      }
+     ]
+    },
+    {
+     "token": "color.text.on-danger",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.light.900",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.text.on-light",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.900",
+       "hex": "#0F172A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.light.900",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.text.on-dark",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.light.0",
+       "hex": "#FFFFFF"
+      }
+     ]
+    },
+    {
+     "token": "color.text.info-on-light",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.800",
+       "hex": "#001A4E"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.light.800",
+       "hex": "#001A4E"
+      }
+     ]
+    },
+    {
+     "token": "color.text.info-on-dark",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      }
+     ]
+    },
+    {
+     "token": "color.text.success-on-light",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.800",
+       "hex": "#023E17"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.light.800",
+       "hex": "#023E17"
+      }
+     ]
+    },
+    {
+     "token": "color.text.success-on-dark",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      }
+     ]
+    },
+    {
+     "token": "color.text.warning-on-light",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.800",
+       "hex": "#462A02"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.light.800",
+       "hex": "#462A02"
+      }
+     ]
+    },
+    {
+     "token": "color.text.warning-on-dark",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.100",
+       "hex": "#FEE8CF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.light.100",
+       "hex": "#FEE8CF"
+      }
+     ]
+    },
+    {
+     "token": "color.text.danger-on-light",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.800",
+       "hex": "#6D0008"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.light.800",
+       "hex": "#6D0008"
+      }
+     ]
+    },
+    {
+     "token": "color.text.danger-on-dark",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.100",
+       "hex": "#FFDBD8"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.light.100",
+       "hex": "#FFDBD8"
+      }
+     ]
+    },
+    {
+     "token": "color.border.default",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.200",
+       "via": "color.neutral.200",
+       "hex": "#E2E8F0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#334155"
+      }
+     ]
+    },
+    {
+     "token": "color.border.strong",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.500",
+       "via": "color.neutral.500",
+       "hex": "#64748B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.400",
+       "via": "color.neutral.400",
+       "hex": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "token": "color.border.focus",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.600",
+       "hex": "#0F766E"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.600",
+       "hex": "#7FCFC6"
+      }
+     ]
+    },
+    {
+     "token": "color.border.selected",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.600",
+       "hex": "#0F766E"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.600",
+       "hex": "#7FCFC6"
+      }
+     ]
+    },
+    {
+     "token": "color.action.primary.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.600",
+       "hex": "#0F766E"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.600",
+       "hex": "#7FCFC6"
+      }
+     ]
+    },
+    {
+     "token": "color.action.primary.hover",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.700",
+       "hex": "#015852"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.700",
+       "hex": "#A1DCD4"
+      }
+     ]
+    },
+    {
+     "token": "color.action.secondary.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50",
+       "hex": "#0F172A"
+      }
+     ]
+    },
+    {
+     "token": "color.action.secondary.hover",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F1F5F9"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#1E293B"
+      }
+     ]
+    },
+    {
+     "token": "color.action.danger.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.600",
+       "hex": "#C42B2B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.600",
+       "hex": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "token": "color.action.danger.hover",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.700",
+       "hex": "#981519"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.700",
+       "hex": "#FAA9A8"
+      }
+     ]
+    },
+    {
+     "token": "color.status.info.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.600",
+       "hex": "#083C93"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.600",
+       "hex": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "token": "color.status.info.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.100",
+       "hex": "#0D2244"
+      }
+     ]
+    },
+    {
+     "token": "color.status.success.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.600",
+       "hex": "#1F7A3A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.600",
+       "hex": "#5CC283"
+      }
+     ]
+    },
+    {
+     "token": "color.status.success.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.100",
+       "hex": "#012A14"
+      }
+     ]
+    },
+    {
+     "token": "color.status.warning.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.600",
+       "hex": "#8A5600"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.dark.600",
+       "hex": "#F2B84B"
+      }
+     ]
+    },
+    {
+     "token": "color.status.warning.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.amber.light.100",
+       "hex": "#FEE8CF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.amber.dark.100",
+       "hex": "#332201"
+      }
+     ]
+    },
+    {
+     "token": "color.status.danger.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.600",
+       "hex": "#C42B2B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.600",
+       "hex": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "token": "color.status.danger.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.red.light.100",
+       "hex": "#FFDBD8"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.red.dark.100",
+       "hex": "#410C11"
+      }
+     ]
+    },
+    {
+     "token": "color.category.1.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.600",
+       "hex": "#0F766E"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.600",
+       "hex": "#7FCFC6"
+      }
+     ]
+    },
+    {
+     "token": "color.category.1.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.teal.light.100",
+       "hex": "#DEF3F0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.teal.dark.100",
+       "hex": "#012C28"
+      }
+     ]
+    },
+    {
+     "token": "color.category.2.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.purple.light.600",
+       "hex": "#6D28D9"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.purple.dark.600",
+       "hex": "#B79DF7"
+      }
+     ]
+    },
+    {
+     "token": "color.category.2.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.purple.light.100",
+       "hex": "#EDEAFE"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.purple.dark.100",
+       "hex": "#271745"
+      }
+     ]
+    },
+    {
+     "token": "color.category.3.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.orange.light.600",
+       "hex": "#C2410C"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.orange.dark.600",
+       "hex": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "token": "color.category.3.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.orange.light.100",
+       "hex": "#FEEBE4"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.orange.dark.100",
+       "hex": "#3F1702"
+      }
+     ]
+    },
+    {
+     "token": "color.category.4.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.600",
+       "hex": "#083C93"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.600",
+       "hex": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "token": "color.category.4.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.blue.light.100",
+       "hex": "#D3E4FF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.blue.dark.100",
+       "hex": "#0D2244"
+      }
+     ]
+    },
+    {
+     "token": "color.category.5.@",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.600",
+       "hex": "#1F7A3A"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.600",
+       "hex": "#5CC283"
+      }
+     ]
+    },
+    {
+     "token": "color.category.5.subtle",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.green.light.100",
+       "hex": "#DBF7DF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.green.dark.100",
+       "hex": "#012A14"
+      }
+     ]
+    },
+    {
+     "token": "color.disabled.text",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.500",
+       "via": "color.neutral.500",
+       "hex": "#64748B"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.500",
+       "via": "color.neutral.500",
+       "hex": "#CBD5E1"
+      }
+     ]
+    },
+    {
+     "token": "color.disabled.surface",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100",
+       "hex": "#F1F5F9"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#1E293B"
+      }
+     ]
+    },
+    {
+     "token": "color.disabled.border",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.200",
+       "via": "color.neutral.200",
+       "hex": "#E2E8F0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#334155"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "color-keys": {
+  "aster": {
+   "keys": [
+    {
+     "name": "Action",
+     "token": "color.action.primary"
+    },
+    {
+     "name": "Text",
+     "token": "color.text.primary"
+    },
+    {
+     "name": "Success",
+     "token": "color.status.success"
+    },
+    {
+     "name": "Warning",
+     "token": "color.status.warning"
+    },
+    {
+     "name": "Danger",
+     "token": "color.status.danger"
+    },
+    {
+     "name": "Info",
+     "token": "color.status.info"
+    }
+   ]
+  },
+  "birch": {
+   "keys": [
+    {
+     "name": "Action",
+     "token": "color.action.primary"
+    },
+    {
+     "name": "Text",
+     "token": "color.text.primary"
+    },
+    {
+     "name": "Success",
+     "token": "color.status.success"
+    },
+    {
+     "name": "Warning",
+     "token": "color.status.warning"
+    },
+    {
+     "name": "Danger",
+     "token": "color.status.danger"
+    },
+    {
+     "name": "Info",
+     "token": "color.status.info"
+    }
+   ]
+  },
+  "coral": {
+   "keys": [
+    {
+     "name": "Action",
+     "token": "color.action.primary"
+    },
+    {
+     "name": "Text",
+     "token": "color.text.primary"
+    },
+    {
+     "name": "Success",
+     "token": "color.status.success"
+    },
+    {
+     "name": "Warning",
+     "token": "color.status.warning"
+    },
+    {
+     "name": "Danger",
+     "token": "color.status.danger"
+    },
+    {
+     "name": "Info",
+     "token": "color.status.info"
+    }
+   ]
+  }
+ },
+ "surface-stack": {
+  "aster": {
+   "brand": "aster",
+   "modes": [
+    "light",
+    "dark"
+   ]
+  },
+  "birch": {
+   "brand": "birch",
+   "modes": [
+    "light",
+    "dark"
+   ]
+  },
+  "coral": {
+   "brand": "coral",
+   "modes": [
+    "light",
+    "dark"
+   ]
+  }
+ },
+ "status-colors": {
+  "aster": {
+   "statuses": [
+    {
+     "label": "Active",
+     "tone": "success",
+     "meaning": "The plan is paid and running.",
+     "contrast": [
+      {
+       "mode": "aster-light",
+       "ratio": 4.7
+      },
+      {
+       "mode": "aster-dark",
+       "ratio": 7.1
+      }
+     ]
+    },
+    {
+     "label": "Renews in 3 days",
+     "tone": "info",
+     "meaning": "A payment is coming: news, nothing has gone wrong.",
+     "contrast": [
+      {
+       "mode": "aster-light",
+       "ratio": 7.8
+      },
+      {
+       "mode": "aster-dark",
+       "ratio": 7.5
+      }
+     ]
+    },
+    {
+     "label": "Card declined",
+     "tone": "danger",
+     "meaning": "The payment failed, so the plan will stop.",
+     "contrast": [
+      {
+       "mode": "aster-light",
+       "ratio": 4.4
+      },
+      {
+       "mode": "aster-dark",
+       "ratio": 6.9
+      }
+     ]
+    }
+   ]
+  },
+  "birch": {
+   "statuses": [
+    {
+     "label": "Active",
+     "tone": "success",
+     "meaning": "The plan is paid and running.",
+     "contrast": [
+      {
+       "mode": "birch-light",
+       "ratio": 4.7
+      },
+      {
+       "mode": "birch-dark",
+       "ratio": 7.1
+      }
+     ]
+    },
+    {
+     "label": "Renews in 3 days",
+     "tone": "info",
+     "meaning": "A payment is coming: news, nothing has gone wrong.",
+     "contrast": [
+      {
+       "mode": "birch-light",
+       "ratio": 7.8
+      },
+      {
+       "mode": "birch-dark",
+       "ratio": 7.5
+      }
+     ]
+    },
+    {
+     "label": "Card declined",
+     "tone": "danger",
+     "meaning": "The payment failed, so the plan will stop.",
+     "contrast": [
+      {
+       "mode": "birch-light",
+       "ratio": 4.4
+      },
+      {
+       "mode": "birch-dark",
+       "ratio": 6.9
+      }
+     ]
+    }
+   ]
+  },
+  "coral": {
+   "statuses": [
+    {
+     "label": "Active",
+     "tone": "success",
+     "meaning": "The plan is paid and running.",
+     "contrast": [
+      {
+       "mode": "coral-light",
+       "ratio": 4.7
+      },
+      {
+       "mode": "coral-dark",
+       "ratio": 7.1
+      }
+     ]
+    },
+    {
+     "label": "Renews in 3 days",
+     "tone": "info",
+     "meaning": "A payment is coming: news, nothing has gone wrong.",
+     "contrast": [
+      {
+       "mode": "coral-light",
+       "ratio": 7.8
+      },
+      {
+       "mode": "coral-dark",
+       "ratio": 7.5
+      }
+     ]
+    },
+    {
+     "label": "Card declined",
+     "tone": "danger",
+     "meaning": "The payment failed, so the plan will stop.",
+     "contrast": [
+      {
+       "mode": "coral-light",
+       "ratio": 4.4
+      },
+      {
+       "mode": "coral-dark",
+       "ratio": 6.9
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "pairs-chart": {
+  "aster": {
+   "floor": 4.5,
+   "modes": [
+    {
+     "mode": "light",
+     "fills": {
+      "page": [
+       {
+        "fill": "color.surface.canvas",
+        "primitive": "color.slate-deep.light.50",
+        "via": "color.neutral.50",
+        "hex": "#F8FAFC",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.9
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.71
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.light.700",
+          "hex": "#015852",
+          "contrast": 7.97
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.default",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 10.35
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 7.02
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.light.700",
+          "hex": "#015852",
+          "contrast": 8.34
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.raised",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 10.35
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 7.02
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.light.700",
+          "hex": "#015852",
+          "contrast": 8.34
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.sunken",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.45
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.41
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.light.700",
+          "hex": "#015852",
+          "contrast": 7.61
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.highlight",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.45
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.41
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.light.700",
+          "hex": "#015852",
+          "contrast": 7.61
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.pressed",
+        "primitive": "color.slate-deep.light.200",
+        "via": "color.neutral.200",
+        "hex": "#E2E8F0",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 14.48
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 8.4
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 14.48
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.selected",
+        "primitive": "color.teal.light.100",
+        "hex": "#DEF3F0",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.46
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 8.97
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.08
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.46
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.light.700",
+          "hex": "#015852",
+          "contrast": 7.22
+         }
+        ]
+       }
+      ],
+      "light": [
+       {
+        "fill": "color.action.secondary",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.secondary.hover",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         }
+        ]
+       },
+       {
+        "fill": "color.status.info.subtle",
+        "primitive": "color.blue.light.100",
+        "hex": "#D3E4FF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 13.87
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 13.87
+         },
+         {
+          "text": "color.text.info-on-light",
+          "primitive": "color.blue.light.800",
+          "hex": "#001A4E",
+          "contrast": 12.97
+         }
+        ]
+       },
+       {
+        "fill": "color.status.warning.subtle",
+        "primitive": "color.amber.light.100",
+        "hex": "#FEE8CF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.01
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.01
+         },
+         {
+          "text": "color.text.warning-on-light",
+          "primitive": "color.amber.light.800",
+          "hex": "#462A02",
+          "contrast": 11.09
+         }
+        ]
+       },
+       {
+        "fill": "color.status.danger.subtle",
+        "primitive": "color.red.light.100",
+        "hex": "#FFDBD8",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 13.92
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 13.92
+         },
+         {
+          "text": "color.text.danger-on-light",
+          "primitive": "color.red.light.800",
+          "hex": "#6D0008",
+          "contrast": 9.9
+         }
+        ]
+       },
+       {
+        "fill": "color.status.success.subtle",
+        "primitive": "color.green.light.100",
+        "hex": "#DBF7DF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.63
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.63
+         },
+         {
+          "text": "color.text.success-on-light",
+          "primitive": "color.green.light.800",
+          "hex": "#023E17",
+          "contrast": 10.79
+         }
+        ]
+       }
+      ],
+      "dark": [
+       {
+        "fill": "color.surface.inverse",
+        "primitive": "color.slate-deep.light.900",
+        "via": "color.neutral.900",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.inverse",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary",
+        "primitive": "color.teal.light.600",
+        "hex": "#0F766E",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.47
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.47
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary.hover",
+        "primitive": "color.teal.light.700",
+        "hex": "#015852",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.34
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.34
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger",
+        "primitive": "color.red.light.600",
+        "hex": "#C42B2B",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.63
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.63
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger.hover",
+        "primitive": "color.red.light.700",
+        "hex": "#981519",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.55
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.55
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "mode": "dark",
+     "fills": {
+      "page": [
+       {
+        "fill": "color.surface.canvas",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 19.28
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 13.59
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 7.88
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 20.17
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.dark.700",
+          "hex": "#A1DCD4",
+          "contrast": 13.16
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.default",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 12.02
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.dark.700",
+          "hex": "#A1DCD4",
+          "contrast": 11.65
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.raised",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 12.02
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.dark.700",
+          "hex": "#A1DCD4",
+          "contrast": 11.65
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.sunken",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 9.85
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 5.71
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.dark.700",
+          "hex": "#A1DCD4",
+          "contrast": 9.55
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.highlight",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 9.85
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 5.71
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.dark.700",
+          "hex": "#A1DCD4",
+          "contrast": 9.55
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.pressed",
+        "primitive": "color.slate-deep.dark.200",
+        "via": "color.neutral.200",
+        "hex": "#334155",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 9.9
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 10.35
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.selected",
+        "primitive": "color.teal.dark.100",
+        "hex": "#012C28",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 14.42
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 10.16
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 5.89
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.08
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.teal.dark.700",
+          "hex": "#A1DCD4",
+          "contrast": 9.84
+         }
+        ]
+       }
+      ],
+      "light": [
+       {
+        "fill": "color.surface.inverse",
+        "primitive": "color.slate-deep.dark.900",
+        "via": "color.neutral.900",
+        "hex": "#F8FAFC",
+        "pairs": [
+         {
+          "text": "color.text.inverse",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary",
+        "primitive": "color.teal.dark.600",
+        "hex": "#7FCFC6",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.9
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.9
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary.hover",
+        "primitive": "color.teal.dark.700",
+        "hex": "#A1DCD4",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 11.65
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 11.65
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger",
+        "primitive": "color.red.dark.600",
+        "hex": "#F28B8B",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.52
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.52
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger.hover",
+        "primitive": "color.red.dark.700",
+        "hex": "#FAA9A8",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.61
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.61
+         }
+        ]
+       }
+      ],
+      "dark": [
+       {
+        "fill": "color.action.secondary",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.secondary.hover",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         }
+        ]
+       },
+       {
+        "fill": "color.status.info.subtle",
+        "primitive": "color.blue.dark.100",
+        "hex": "#0D2244",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.1
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.8
+         },
+         {
+          "text": "color.text.info-on-dark",
+          "primitive": "color.blue.light.100",
+          "hex": "#D3E4FF",
+          "contrast": 12.27
+         }
+        ]
+       },
+       {
+        "fill": "color.status.warning.subtle",
+        "primitive": "color.amber.dark.100",
+        "hex": "#332201",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 14.65
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.33
+         },
+         {
+          "text": "color.text.warning-on-dark",
+          "primitive": "color.amber.light.100",
+          "hex": "#FEE8CF",
+          "contrast": 12.89
+         }
+        ]
+       },
+       {
+        "fill": "color.status.danger.subtle",
+        "primitive": "color.red.dark.100",
+        "hex": "#410C11",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.61
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 16.34
+         },
+         {
+          "text": "color.text.danger-on-dark",
+          "primitive": "color.red.light.100",
+          "hex": "#FFDBD8",
+          "contrast": 12.74
+         }
+        ]
+       },
+       {
+        "fill": "color.status.success.subtle",
+        "primitive": "color.green.dark.100",
+        "hex": "#012A14",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 14.95
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.64
+         },
+         {
+          "text": "color.text.success-on-dark",
+          "primitive": "color.green.light.100",
+          "hex": "#DBF7DF",
+          "contrast": 13.69
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "birch": {
+   "floor": 4.5,
+   "modes": [
+    {
+     "mode": "light",
+     "fills": {
+      "page": [
+       {
+        "fill": "color.surface.canvas",
+        "primitive": "color.slate-deep.light.50",
+        "via": "color.neutral.50",
+        "hex": "#F8FAFC",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.9
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.71
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.light.700",
+          "hex": "#5212AA",
+          "contrast": 9.91
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.default",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 10.35
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 7.02
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.light.700",
+          "hex": "#5212AA",
+          "contrast": 10.37
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.raised",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 10.35
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 7.02
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.light.700",
+          "hex": "#5212AA",
+          "contrast": 10.37
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.sunken",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.45
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.41
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.light.700",
+          "hex": "#5212AA",
+          "contrast": 9.46
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.highlight",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.45
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.41
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.light.700",
+          "hex": "#5212AA",
+          "contrast": 9.46
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.pressed",
+        "primitive": "color.slate-deep.light.200",
+        "via": "color.neutral.200",
+        "hex": "#E2E8F0",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 14.48
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 8.4
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 14.48
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.selected",
+        "primitive": "color.purple.light.100",
+        "hex": "#EDEAFE",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.13
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 8.78
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 5.95
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.13
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.light.700",
+          "hex": "#5212AA",
+          "contrast": 8.79
+         }
+        ]
+       }
+      ],
+      "light": [
+       {
+        "fill": "color.action.secondary",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.secondary.hover",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         }
+        ]
+       },
+       {
+        "fill": "color.status.info.subtle",
+        "primitive": "color.blue.light.100",
+        "hex": "#D3E4FF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 13.87
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 13.87
+         },
+         {
+          "text": "color.text.info-on-light",
+          "primitive": "color.blue.light.800",
+          "hex": "#001A4E",
+          "contrast": 12.97
+         }
+        ]
+       },
+       {
+        "fill": "color.status.warning.subtle",
+        "primitive": "color.amber.light.100",
+        "hex": "#FEE8CF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.01
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.01
+         },
+         {
+          "text": "color.text.warning-on-light",
+          "primitive": "color.amber.light.800",
+          "hex": "#462A02",
+          "contrast": 11.09
+         }
+        ]
+       },
+       {
+        "fill": "color.status.danger.subtle",
+        "primitive": "color.red.light.100",
+        "hex": "#FFDBD8",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 13.92
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 13.92
+         },
+         {
+          "text": "color.text.danger-on-light",
+          "primitive": "color.red.light.800",
+          "hex": "#6D0008",
+          "contrast": 9.9
+         }
+        ]
+       },
+       {
+        "fill": "color.status.success.subtle",
+        "primitive": "color.green.light.100",
+        "hex": "#DBF7DF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.63
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.63
+         },
+         {
+          "text": "color.text.success-on-light",
+          "primitive": "color.green.light.800",
+          "hex": "#023E17",
+          "contrast": 10.79
+         }
+        ]
+       }
+      ],
+      "dark": [
+       {
+        "fill": "color.surface.inverse",
+        "primitive": "color.slate-deep.light.900",
+        "via": "color.neutral.900",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.inverse",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary",
+        "primitive": "color.purple.light.600",
+        "hex": "#6D28D9",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 7.1
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 7.1
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary.hover",
+        "primitive": "color.purple.light.700",
+        "hex": "#5212AA",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 10.37
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 10.37
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger",
+        "primitive": "color.red.light.600",
+        "hex": "#C42B2B",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.63
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.63
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger.hover",
+        "primitive": "color.red.light.700",
+        "hex": "#981519",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.55
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.55
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "mode": "dark",
+     "fills": {
+      "page": [
+       {
+        "fill": "color.surface.canvas",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 19.28
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 13.59
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 7.88
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 20.17
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.dark.700",
+          "hex": "#C9B7FC",
+          "contrast": 11.2
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.default",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 12.02
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.dark.700",
+          "hex": "#C9B7FC",
+          "contrast": 9.91
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.raised",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 12.02
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.dark.700",
+          "hex": "#C9B7FC",
+          "contrast": 9.91
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.sunken",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 9.85
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 5.71
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.dark.700",
+          "hex": "#C9B7FC",
+          "contrast": 8.12
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.highlight",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 9.85
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 5.71
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.dark.700",
+          "hex": "#C9B7FC",
+          "contrast": 8.12
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.pressed",
+        "primitive": "color.slate-deep.dark.200",
+        "via": "color.neutral.200",
+        "hex": "#334155",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 9.9
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 10.35
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.selected",
+        "primitive": "color.purple.dark.100",
+        "hex": "#271745",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.5
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 10.92
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.34
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 16.22
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.purple.dark.700",
+          "hex": "#C9B7FC",
+          "contrast": 9.01
+         }
+        ]
+       }
+      ],
+      "light": [
+       {
+        "fill": "color.surface.inverse",
+        "primitive": "color.slate-deep.dark.900",
+        "via": "color.neutral.900",
+        "hex": "#F8FAFC",
+        "pairs": [
+         {
+          "text": "color.text.inverse",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary",
+        "primitive": "color.purple.dark.600",
+        "hex": "#B79DF7",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.8
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.8
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary.hover",
+        "primitive": "color.purple.dark.700",
+        "hex": "#C9B7FC",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.91
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.91
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger",
+        "primitive": "color.red.dark.600",
+        "hex": "#F28B8B",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.52
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.52
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger.hover",
+        "primitive": "color.red.dark.700",
+        "hex": "#FAA9A8",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.61
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.61
+         }
+        ]
+       }
+      ],
+      "dark": [
+       {
+        "fill": "color.action.secondary",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.secondary.hover",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         }
+        ]
+       },
+       {
+        "fill": "color.status.info.subtle",
+        "primitive": "color.blue.dark.100",
+        "hex": "#0D2244",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.1
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.8
+         },
+         {
+          "text": "color.text.info-on-dark",
+          "primitive": "color.blue.light.100",
+          "hex": "#D3E4FF",
+          "contrast": 12.27
+         }
+        ]
+       },
+       {
+        "fill": "color.status.warning.subtle",
+        "primitive": "color.amber.dark.100",
+        "hex": "#332201",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 14.65
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.33
+         },
+         {
+          "text": "color.text.warning-on-dark",
+          "primitive": "color.amber.light.100",
+          "hex": "#FEE8CF",
+          "contrast": 12.89
+         }
+        ]
+       },
+       {
+        "fill": "color.status.danger.subtle",
+        "primitive": "color.red.dark.100",
+        "hex": "#410C11",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.61
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 16.34
+         },
+         {
+          "text": "color.text.danger-on-dark",
+          "primitive": "color.red.light.100",
+          "hex": "#FFDBD8",
+          "contrast": 12.74
+         }
+        ]
+       },
+       {
+        "fill": "color.status.success.subtle",
+        "primitive": "color.green.dark.100",
+        "hex": "#012A14",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 14.95
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.64
+         },
+         {
+          "text": "color.text.success-on-dark",
+          "primitive": "color.green.light.100",
+          "hex": "#DBF7DF",
+          "contrast": 13.69
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "coral": {
+   "floor": 4.5,
+   "modes": [
+    {
+     "mode": "light",
+     "fills": {
+      "page": [
+       {
+        "fill": "color.surface.canvas",
+        "primitive": "color.slate-deep.light.50",
+        "via": "color.neutral.50",
+        "hex": "#F8FAFC",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.9
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.71
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.light.700",
+          "hex": "#942D02",
+          "contrast": 7.62
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.default",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 10.35
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 7.02
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.light.700",
+          "hex": "#942D02",
+          "contrast": 7.97
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.raised",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 10.35
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 7.02
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.light.700",
+          "hex": "#942D02",
+          "contrast": 7.97
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.sunken",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.45
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.41
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.light.700",
+          "hex": "#942D02",
+          "contrast": 7.27
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.highlight",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 9.45
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.41
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.light.700",
+          "hex": "#942D02",
+          "contrast": 7.27
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.pressed",
+        "primitive": "color.slate-deep.light.200",
+        "via": "color.neutral.200",
+        "hex": "#E2E8F0",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 14.48
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 8.4
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 14.48
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.selected",
+        "primitive": "color.orange.light.100",
+        "hex": "#FEEBE4",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.49
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.light.700",
+          "via": "color.neutral.700",
+          "hex": "#334155",
+          "contrast": 8.98
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.light.600",
+          "via": "color.neutral.600",
+          "hex": "#4B5A6F",
+          "contrast": 6.09
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.49
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.light.700",
+          "hex": "#942D02",
+          "contrast": 6.91
+         }
+        ]
+       }
+      ],
+      "light": [
+       {
+        "fill": "color.action.secondary",
+        "primitive": "color.slate-deep.light.0",
+        "via": "color.neutral.0",
+        "hex": "#FFFFFF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.secondary.hover",
+        "primitive": "color.slate-deep.light.100",
+        "via": "color.neutral.100",
+        "hex": "#F1F5F9",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 16.3
+         }
+        ]
+       },
+       {
+        "fill": "color.status.info.subtle",
+        "primitive": "color.blue.light.100",
+        "hex": "#D3E4FF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 13.87
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 13.87
+         },
+         {
+          "text": "color.text.info-on-light",
+          "primitive": "color.blue.light.800",
+          "hex": "#001A4E",
+          "contrast": 12.97
+         }
+        ]
+       },
+       {
+        "fill": "color.status.warning.subtle",
+        "primitive": "color.amber.light.100",
+        "hex": "#FEE8CF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.01
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.01
+         },
+         {
+          "text": "color.text.warning-on-light",
+          "primitive": "color.amber.light.800",
+          "hex": "#462A02",
+          "contrast": 11.09
+         }
+        ]
+       },
+       {
+        "fill": "color.status.danger.subtle",
+        "primitive": "color.red.light.100",
+        "hex": "#FFDBD8",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 13.92
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 13.92
+         },
+         {
+          "text": "color.text.danger-on-light",
+          "primitive": "color.red.light.800",
+          "hex": "#6D0008",
+          "contrast": 9.9
+         }
+        ]
+       },
+       {
+        "fill": "color.status.success.subtle",
+        "primitive": "color.green.light.100",
+        "hex": "#DBF7DF",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.light.900",
+          "via": "color.neutral.900",
+          "hex": "#0F172A",
+          "contrast": 15.63
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 15.63
+         },
+         {
+          "text": "color.text.success-on-light",
+          "primitive": "color.green.light.800",
+          "hex": "#023E17",
+          "contrast": 10.79
+         }
+        ]
+       }
+      ],
+      "dark": [
+       {
+        "fill": "color.surface.inverse",
+        "primitive": "color.slate-deep.light.900",
+        "via": "color.neutral.900",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.inverse",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary",
+        "primitive": "color.orange.light.600",
+        "hex": "#C2410C",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.18
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.18
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary.hover",
+        "primitive": "color.orange.light.700",
+        "hex": "#942D02",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 7.97
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 7.97
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger",
+        "primitive": "color.red.light.600",
+        "hex": "#C42B2B",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.63
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 5.63
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger.hover",
+        "primitive": "color.red.light.700",
+        "hex": "#981519",
+        "pairs": [
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.55
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 8.55
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "mode": "dark",
+     "fills": {
+      "page": [
+       {
+        "fill": "color.surface.canvas",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 19.28
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 13.59
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 7.88
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 20.17
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.dark.700",
+          "hex": "#FCBD9F",
+          "contrast": 12.41
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.default",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 12.02
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.dark.700",
+          "hex": "#FCBD9F",
+          "contrast": 10.98
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.raised",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 12.02
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.dark.700",
+          "hex": "#FCBD9F",
+          "contrast": 10.98
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.sunken",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 9.85
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 5.71
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.dark.700",
+          "hex": "#FCBD9F",
+          "contrast": 9
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.highlight",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 9.85
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 5.71
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.dark.700",
+          "hex": "#FCBD9F",
+          "contrast": 9
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.pressed",
+        "primitive": "color.slate-deep.dark.200",
+        "via": "color.neutral.200",
+        "hex": "#334155",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 9.9
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 6.97
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 10.35
+         }
+        ]
+       },
+       {
+        "fill": "color.surface.selected",
+        "primitive": "color.orange.dark.100",
+        "hex": "#3F1702",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.04
+         },
+         {
+          "text": "color.text.secondary",
+          "primitive": "color.slate-deep.dark.500",
+          "via": "color.neutral.500",
+          "hex": "#CBD5E1",
+          "contrast": 10.6
+         },
+         {
+          "text": "color.text.muted",
+          "primitive": "color.slate-deep.dark.400",
+          "via": "color.neutral.400",
+          "hex": "#96A3B5",
+          "contrast": 6.15
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.73
+         },
+         {
+          "text": "color.text.link",
+          "primitive": "color.orange.dark.700",
+          "hex": "#FCBD9F",
+          "contrast": 9.68
+         }
+        ]
+       }
+      ],
+      "light": [
+       {
+        "fill": "color.surface.inverse",
+        "primitive": "color.slate-deep.dark.900",
+        "via": "color.neutral.900",
+        "hex": "#F8FAFC",
+        "pairs": [
+         {
+          "text": "color.text.inverse",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 17.06
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary",
+        "primitive": "color.orange.dark.600",
+        "hex": "#F7A67F",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.11
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.11
+         }
+        ]
+       },
+       {
+        "fill": "color.action.primary.hover",
+        "primitive": "color.orange.dark.700",
+        "hex": "#FCBD9F",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 10.98
+         },
+         {
+          "text": "color.text.on-action",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 10.98
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger",
+        "primitive": "color.red.dark.600",
+        "hex": "#F28B8B",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.52
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 7.52
+         }
+        ]
+       },
+       {
+        "fill": "color.action.danger.hover",
+        "primitive": "color.red.dark.700",
+        "hex": "#FAA9A8",
+        "pairs": [
+         {
+          "text": "color.text.on-light",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.61
+         },
+         {
+          "text": "color.text.on-danger",
+          "primitive": "color.slate-deep.light.900",
+          "hex": "#0F172A",
+          "contrast": 9.61
+         }
+        ]
+       }
+      ],
+      "dark": [
+       {
+        "fill": "color.action.secondary",
+        "primitive": "color.slate-deep.dark.50",
+        "via": "color.neutral.50",
+        "hex": "#0F172A",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 17.06
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 17.85
+         }
+        ]
+       },
+       {
+        "fill": "color.action.secondary.hover",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 13.98
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 14.63
+         }
+        ]
+       },
+       {
+        "fill": "color.status.info.subtle",
+        "primitive": "color.blue.dark.100",
+        "hex": "#0D2244",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.1
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.8
+         },
+         {
+          "text": "color.text.info-on-dark",
+          "primitive": "color.blue.light.100",
+          "hex": "#D3E4FF",
+          "contrast": 12.27
+         }
+        ]
+       },
+       {
+        "fill": "color.status.warning.subtle",
+        "primitive": "color.amber.dark.100",
+        "hex": "#332201",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 14.65
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.33
+         },
+         {
+          "text": "color.text.warning-on-dark",
+          "primitive": "color.amber.light.100",
+          "hex": "#FEE8CF",
+          "contrast": 12.89
+         }
+        ]
+       },
+       {
+        "fill": "color.status.danger.subtle",
+        "primitive": "color.red.dark.100",
+        "hex": "#410C11",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 15.61
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 16.34
+         },
+         {
+          "text": "color.text.danger-on-dark",
+          "primitive": "color.red.light.100",
+          "hex": "#FFDBD8",
+          "contrast": 12.74
+         }
+        ]
+       },
+       {
+        "fill": "color.status.success.subtle",
+        "primitive": "color.green.dark.100",
+        "hex": "#012A14",
+        "pairs": [
+         {
+          "text": "color.text.primary",
+          "primitive": "color.slate-deep.dark.900",
+          "via": "color.neutral.900",
+          "hex": "#F8FAFC",
+          "contrast": 14.95
+         },
+         {
+          "text": "color.text.on-dark",
+          "primitive": "color.slate-deep.light.0",
+          "hex": "#FFFFFF",
+          "contrast": 15.64
+         },
+         {
+          "text": "color.text.success-on-dark",
+          "primitive": "color.green.light.100",
+          "hex": "#DBF7DF",
+          "contrast": 13.69
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "fill-tones": {
+  "aster": {
+   "modes": [
+    "light",
+    "dark"
+   ],
+   "fills": [
+    {
+     "fill": "color.surface.canvas",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.50",
+       "via": "color.neutral.50"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.default",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.raised",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.sunken",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.highlight",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.pressed",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.200",
+       "via": "color.neutral.200"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "via": "color.neutral.200"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.selected",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.teal.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.teal.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.inverse",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.slate-deep.light.900",
+       "via": "color.neutral.900"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.slate-deep.dark.900",
+       "via": "color.neutral.900"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.teal.light.600"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.teal.dark.600"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.teal.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.teal.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.600"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.600"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.info.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.blue.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.blue.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.warning.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.amber.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.amber.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.danger.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.red.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.red.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.success.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.green.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.green.dark.100"
+      }
+     ]
+    }
+   ]
+  },
+  "birch": {
+   "modes": [
+    "light",
+    "dark"
+   ],
+   "fills": [
+    {
+     "fill": "color.surface.canvas",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.50",
+       "via": "color.neutral.50"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.default",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.raised",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.sunken",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.highlight",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.pressed",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.200",
+       "via": "color.neutral.200"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "via": "color.neutral.200"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.selected",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.purple.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.purple.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.inverse",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.slate-deep.light.900",
+       "via": "color.neutral.900"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.slate-deep.dark.900",
+       "via": "color.neutral.900"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.purple.light.600"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.purple.dark.600"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.purple.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.purple.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.600"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.600"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.info.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.blue.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.blue.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.warning.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.amber.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.amber.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.danger.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.red.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.red.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.success.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.green.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.green.dark.100"
+      }
+     ]
+    }
+   ]
+  },
+  "coral": {
+   "modes": [
+    "light",
+    "dark"
+   ],
+   "fills": [
+    {
+     "fill": "color.surface.canvas",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.50",
+       "via": "color.neutral.50"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.default",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.raised",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.sunken",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.highlight",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.pressed",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.200",
+       "via": "color.neutral.200"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "via": "color.neutral.200"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.selected",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.orange.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.orange.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.surface.inverse",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.slate-deep.light.900",
+       "via": "color.neutral.900"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.slate-deep.dark.900",
+       "via": "color.neutral.900"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.orange.light.600",
+       "waits": "OD-225"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.orange.dark.600",
+       "waits": "OD-225"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.primary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.orange.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.orange.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.600"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.600"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.danger.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "dark",
+       "primitive": "color.red.light.700"
+      },
+      {
+       "mode": "dark",
+       "tone": "light",
+       "primitive": "color.red.dark.700"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.0",
+       "via": "color.neutral.0"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.50",
+       "via": "color.neutral.50"
+      }
+     ]
+    },
+    {
+     "fill": "color.action.secondary.hover",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.slate-deep.light.100",
+       "via": "color.neutral.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.info.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.blue.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.blue.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.warning.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.amber.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.amber.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.danger.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.red.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.red.dark.100"
+      }
+     ]
+    },
+    {
+     "fill": "color.status.success.subtle",
+     "tones": [
+      {
+       "mode": "light",
+       "tone": "light",
+       "primitive": "color.green.light.100"
+      },
+      {
+       "mode": "dark",
+       "tone": "dark",
+       "primitive": "color.green.dark.100"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

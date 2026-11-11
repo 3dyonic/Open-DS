@@ -1,0 +1,100 @@
+{
+ "anatomy-legend": {
+  "icon": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Glyph",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Contained shape",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "icon/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How many icon sizes exist?",
+     "answer": "One",
+     "why": "One size next to text."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text size."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "icon/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What icon style and stroke?",
+     "answer": "Outline",
+     "why": "Outline icons stay quiet beside text, at a 1.5px stroke."
+    }
+   ]
+  },
+  "icon/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What icon style and stroke?",
+     "answer": "Outline",
+     "why": "Outline icons stay quiet beside text, at a 1.5px stroke."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "contained.radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Rounded corners feel friendly.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "contained.tint.background",
+     "value": "#E0E9F5",
+     "darkValue": "#202B3B",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "navy.light.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "navy.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    }
+   ]
+  }
+ }
+}

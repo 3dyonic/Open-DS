@@ -15,7 +15,7 @@ export const Playground: Story = {
   render: (args) => (
     <ResizablePanelGroup
       {...args}
-      className="max-w-lg rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+      className="max-w-lg rounded-[var(--radius-surface)] border border-[var(--color-border-default)]"
     >
       <ResizablePanel defaultSize={50}>
         <div className="p-[var(--space-inset-container)]">One</div>
@@ -34,7 +34,7 @@ export const Examples: Story = {
       {(s) => (
         <ResizablePanelGroup
           orientation="horizontal"
-          className="min-h-40 max-w-2xl rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+          className="min-h-40 max-w-2xl rounded-[var(--radius-surface)] border border-[var(--color-border-default)]"
         >
           <ResizablePanel defaultSize={60}>
             <div className="p-[var(--space-inset-container)] [font-weight:var(--type-heading-font-weight)]">

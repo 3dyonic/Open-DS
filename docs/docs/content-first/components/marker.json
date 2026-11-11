@@ -1,0 +1,157 @@
+{
+ "preview": {
+  "marker/live": {
+   "title": "Marker examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-marker--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-marker--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Marker in Storybook",
+     "href": "/storybook/?path=/docs/components-marker--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/marker": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the marker, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./marker/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "marker": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Marker",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.marker.gap",
+      "alias": "component-spacing-map.x3",
+      "variable": "marker-gap"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Marker",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.marker.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "marker-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Marker",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.marker.label",
+      "alias": "color.text.muted",
+      "variable": "marker-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#61594D"
+       },
+       "token": "stone.light.600",
+       "text": "#61594D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A39A8B"
+       },
+       "token": "stone.dark.400",
+       "text": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "group": "Line",
+     "part": "Thickness",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.marker.line.thickness",
+      "alias": "border-width.default",
+      "variable": "marker-line-thickness"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Line",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.marker.line.background",
+      "alias": "color.border.default",
+      "variable": "marker-line-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E4DDD0"
+       },
+       "token": "stone.light.200",
+       "text": "#E4DDD0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4A4339"
+       },
+       "token": "stone.dark.200",
+       "text": "#4A4339"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

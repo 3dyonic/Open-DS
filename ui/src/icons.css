@@ -1,0 +1,8 @@
+/* Every Lucide icon, in the components and in Icon, draws its line at the scheme's stroke (OD-285).
+   A rule beats the stroke-width attribute Lucide writes, so no component has to pass it. The icon's
+   size comes from each component's own icon-size key, which points at size.icon. */
+@layer base {
+  .lucide {
+    stroke-width: var(--icon-stroke-width);
+  }
+}

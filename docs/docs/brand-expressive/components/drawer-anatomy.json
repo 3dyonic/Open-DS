@@ -1,0 +1,392 @@
+{
+ "anatomy-legend": {
+  "drawer": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 1,
+     "label": "Scrim",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Layering"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Panel",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Layering"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Handle",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Header",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 5,
+       "label": "Title",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Description",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "label": "Footer",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Reach"
+     ],
+     "children": [
+      {
+       "label": "Actions",
+       "need": "optional",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Affordance",
+        "Emphasis"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "drawer/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Cards too",
+     "why": "Cards lift to feel like objects."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Pronounced",
+     "why": "Pronounced shadows add depth."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.scrim",
+     "key": "overlay.background",
+     "value": "#0000008C",
+     "darkValue": "#000000B3",
+     "byScheme": false,
+     "rule": "The see-through layer behind a modal.",
+     "pick": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "darkPick": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "content.background",
+     "value": "#FFF8F3",
+     "darkValue": "#120B09",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "content.shadow",
+     "value": "0px 24px 48px, #1F141133",
+     "darkValue": "0px 24px 48px, #00000099",
+     "byScheme": true,
+     "pick": "shadow.overlay: Pronounced shadows add depth.",
+     "darkPick": "shadow.overlay-dark: Pronounced shadows add depth.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "content.radius",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "radius.24: Pill controls feel playful.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#F2DCCF",
+     "darkValue": "#4D3A33",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    }
+   ]
+  },
+  "drawer/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "handle.background",
+     "value": "#FCEFE6",
+     "darkValue": "#33241F",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.pill",
+     "key": "handle.radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": false,
+     "pick": "radius.pill",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "handle.margin-top",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "drawer/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and expressive display",
+     "why": "A big expressive display role carries the brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body; the display does the shouting."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, short",
+     "not": "long paragraphs",
+     "why": "Short copy keeps the energy."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Air keeps big type readable."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-family",
+     "key": "title.font-family",
+     "value": "\"Bricolage Grotesque\", system-ui, sans-serif",
+     "byScheme": true,
+     "pick": "bricolage-grotesque for heading text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-size",
+     "key": "title.font-size",
+     "value": "1.75rem",
+     "byScheme": true,
+     "pick": "font.size.28",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-weight",
+     "key": "title.font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "description.font-size",
+     "value": "1.0625rem",
+     "byScheme": true,
+     "pick": "font.size.17",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "description.label",
+     "value": "#4D3A33",
+     "darkValue": "#E2C4B3",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.hairline",
+     "key": "header.gap",
+     "value": "0.125rem",
+     "byScheme": false,
+     "pick": "space.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "header.padding",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "drawer/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "the action that completes the task",
+     "use": "Button primary, large, one per section",
+     "not": "two primaries",
+     "why": "One loud call to action per section."
+    },
+    {
+     "kind": "rule",
+     "situation": "an alternative or cancel",
+     "use": "Button ghost",
+     "not": "a second primary",
+     "why": "The alternative must not compete."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "footer.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "footer.padding",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

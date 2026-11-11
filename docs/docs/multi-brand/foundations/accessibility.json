@@ -1,0 +1,122 @@
+{
+ "token-groups": {
+  "accessibility": {
+   "groups": [
+    {
+     "title": "size.control.default",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-default)"
+     },
+     "api": [
+      {
+       "token": "size.control.default",
+       "value": "44px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The smallest clickable thing",
+       "detail": "size.control.default (touch)",
+       "why": "Customers are often on phones."
+      },
+      {
+       "kind": "use",
+       "situation": "Most buttons and inputs",
+       "why": "Customers sign up on phones, so every control fits a thumb in every brand."
+      },
+      {
+       "kind": "not",
+       "situation": "A button inside a field",
+       "detail": "use size.control.compact",
+       "why": "A clear or show-password button fits inside the field in every brand."
+      }
+     ]
+    },
+    {
+     "title": "size.control.compact",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-compact)"
+     },
+     "api": [
+      {
+       "token": "size.control.compact",
+       "value": "36px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A button inside a field",
+       "why": "A clear or show-password button fits inside the field in every brand."
+      },
+      {
+       "kind": "not",
+       "situation": "Most buttons and inputs",
+       "detail": "use size.control.default",
+       "why": "Customers sign up on phones, so every control fits a thumb in every brand."
+      }
+     ]
+    },
+    {
+     "title": "size.control.large",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-large)"
+     },
+     "api": [
+      {
+       "token": "size.control.large",
+       "value": "44px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The main action on a screen",
+       "why": "It is the same height as the default here. Brand color marks the main action. One height keeps every brand's forms the same."
+      }
+     ]
+    },
+    {
+     "title": "opacity.disabled",
+     "sample": {
+      "kind": "opacity",
+      "value": "var(--opacity-disabled)"
+     },
+     "api": [
+      {
+       "token": "opacity.disabled",
+       "value": "0.4"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A control that is not available yet",
+       "why": "One fade level works on every brand color, so no brand needs its own disabled color."
+      }
+     ]
+    },
+    {
+     "title": "color.border.focus",
+     "sample": {
+      "kind": "color",
+      "value": "var(--color-border-focus)"
+     },
+     "api": [
+      {
+       "token": "color.border.focus",
+       "primitive": "color.teal.light.600",
+       "value": "#0F766E",
+       "dark": "#7FCFC6"
+      }
+     ],
+     "rules": []
+    }
+   ]
+  }
+ }
+}

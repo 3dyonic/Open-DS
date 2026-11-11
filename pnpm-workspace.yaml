@@ -7,4 +7,5 @@ packages:
   - ui
   - storybook
   - docs
+  - doc-composites
   - e2e/app

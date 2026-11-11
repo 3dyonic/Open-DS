@@ -4,6 +4,7 @@
 
 import { themeTokens } from "../cli/src/tokens.mjs";
 import { pairsIn, toneOf } from "../cli/src/tones.mjs";
+import { follow } from "../cli/src/scale-map.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -699,7 +700,7 @@ export const CHECKS = {
             .replace(/\.tsx$/, ""),
         )
         .filter((x) => !["sheet", "drawer", "tooltip"].includes(x));
-      const want = { radius: "radius.container", shadow: "elevation.overlay" };
+      const want = { radius: "radius.surface", shadow: "elevation.overlay" };
       const gaps = [];
       let n = 0;
       for (const comp of floats) {
@@ -2470,8 +2471,9 @@ export const CHECKS = {
       const text = Object.values(
         docsPages(loadScheme("dense-data", roots), grammar(roots), roots, { all: true, robots: true, base: "/docs/" }),
       ).join("\n");
-      if (/src="\/robots\//.test(text) || !text.includes('src="/docs/robots/'))
-        gaps.push("robot pictures ignore the base URL");
+      // Robot pictures in the pages' data (OD-284) carry the base URL; a directive names its robot and
+      // the docs resolve it with the base URL when the page renders.
+      if (/"\/robots\//.test(text) || !text.includes('"/docs/robots/')) gaps.push("robot pictures ignore the base URL");
       if (!/<DocsLink \/>\s*$/.test(read("storybook/.storybook/component-docs.mdx")))
         gaps.push("Storybook's component page does not end with the docs link");
       const blocks = read("storybook/src/docs-blocks.tsx");
@@ -2485,6 +2487,326 @@ export const CHECKS = {
       return gaps.length
         ? bad(gaps.join("; "))
         : ok("site links docs and Storybook; docs honour /docs/; Storybook ends each component page with a docs link");
+    },
+  },
+  // The docs' composites (OD-284) use the scheme's ui components through their props only, with
+  // scheme tokens for their own layout, so each scheme draws its docs in its own design system.
+  "doc-composites-props-only": {
+    requires: ["doc-composites/src"],
+    run: (c) => {
+      const dir = "doc-composites/src";
+      const gaps = [];
+      const files = readdirSync(c.p(dir)).filter((f) => f.endsWith(".tsx"));
+      for (const f of files) {
+        const text = c.read(`${dir}/${f}`);
+        const ui = [...text.matchAll(/import \{([^}]+)\} from "@open-ds\/ui\/components\/[\w-]+"/g)]
+          .flatMap((m) => m[1].split(","))
+          .map((n) =>
+            n
+              .trim()
+              .split(/\s+as\s+/)
+              .pop(),
+          )
+          .filter((n) => /^[A-Z]/.test(n));
+        for (const n of ui)
+          if (new RegExp(`<${n}\\b[^>]*\\bclassName=`).test(text))
+            gaps.push(`${f}: <${n}> gets a className; set it through its props`);
+        for (const m of text.matchAll(/className="([^"]*)"/g))
+          if (/#[0-9a-f]{3,8}\b|\[-?\d+(\.\d+)?(px|rem|em|%)\]/i.test(m[1]))
+            gaps.push(`${f}: a raw value in "${m[1]}"; use a scheme token`);
+      }
+      if (!files.length) return bad(`${dir} has no composites`);
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`${files.length} composites use the ui components through their props and the scheme's tokens`);
+    },
+  },
+  // The docs rules (OD-284, Orchestra "rules for building the Open DS docs pages"), 3 to 7: a composite
+  // styles itself with Tailwind classes scoped to it, reads every value from a CSS variable and never
+  // knows which scheme it is in. No page-wide classes, no stylesheet of its own, no fixed values.
+  "doc-composites-scoped-styles": {
+    requires: ["doc-composites/src", "schemes"],
+    run: (c) => {
+      const dir = "doc-composites/src";
+      const walk = (d) =>
+        readdirSync(c.p(d), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${d}/${e.name}`) : /\.tsx?$/.test(e.name) ? [`${d}/${e.name}`] : [],
+        );
+      const schemeIds = readdirSync(c.p("schemes"))
+        .filter((f) => f.endsWith(".json") && f !== "grammar.json")
+        .map((f) => f.replace(/\.json$/, ""));
+      const gaps = [];
+      for (const f of walk(dir)) {
+        const text = c.read(f);
+        const name = f.slice(dir.length + 1);
+        if (/import\s+["'][^"']+\.css["']/.test(text)) gaps.push(`${name}: imports a stylesheet; style with scoped Tailwind classes`);
+        for (const m of text.matchAll(/className=(?:"([^"]*)"|\{`([^`]*)`\})/g)) {
+          const cls = m[1] ?? m[2];
+          if (/(^|\s)(odv|ods)-/.test(cls)) gaps.push(`${name}: page-wide class in "${cls.slice(0, 60)}"`);
+          if (/#[0-9a-f]{3,8}\b|\[-?\d+(\.\d+)?(px|rem|em|%)\]/i.test(cls))
+            gaps.push(`${name}: a fixed value in "${cls.slice(0, 60)}"; read a CSS variable`);
+        }
+        // An inline style may draw a value from the data, never a literal color or length.
+        for (const m of text.matchAll(/style=\{\{([^}]*)\}\}/g))
+          if (/["'`]#[0-9a-f]{3,8}\b|["'`]-?\d+(\.\d+)?(px|rem|em)["'`]/i.test(m[1]))
+            gaps.push(`${name}: a fixed value in an inline style; read a CSS variable or the data`);
+        for (const id of schemeIds)
+          if (new RegExp(`["'\`]${id}["'\`]`).test(text)) gaps.push(`${name}: names the scheme ${id}; a composite never knows its scheme`);
+      }
+      return gaps.length
+        ? bad(`${gaps.length} styling gaps; ${gaps.slice(0, 4).join("; ")}`)
+        : ok("every composite styles itself with scoped Tailwind classes and reads every value from a CSS variable");
+    },
+  },
+  // Rules 8 to 10: a few base forms (doc-composites/src/base/), each composite built on one, and props
+  // that name real choices. A composite takes its content in one data prop; any other prop is a
+  // choice from a fixed list (a union of words) or a yes/no.
+  "doc-composites-base-forms": {
+    requires: ["doc-composites/src"],
+    run: (c) => {
+      const dir = "doc-composites/src";
+      const base = existsSync(c.p(`${dir}/base`))
+        ? readdirSync(c.p(`${dir}/base`)).filter((f) => f.endsWith(".tsx"))
+        : [];
+      if (!base.length) return bad(`no base forms in ${dir}/base; build the shared forms the composites extend`);
+      // A composite is a file whose name starts with a capital letter; lowercase files are helpers.
+      const composites = readdirSync(c.p(dir)).filter((f) => /^[A-Z].*\.tsx$/.test(f));
+      const gaps = [];
+      for (const f of composites) {
+        const text = c.read(`${dir}/${f}`);
+        if (!/from "\.\/base\//.test(text)) gaps.push(`${f}: builds on no base form`);
+        const sig = text.match(/export default function \w+\(\s*\{[^}]*\}\s*:\s*\{([^}]*)\}/);
+        if (!sig) continue;
+        for (const [, prop, type] of sig[1].matchAll(/(\w+)\??:\s*([^;]+);?/g)) {
+          if (["data", "children"].includes(prop)) continue;
+          if (!/^\s*("[^"]+"\s*\|\s*)*"[^"]+"\s*$|^\s*boolean\s*$/.test(type))
+            gaps.push(`${f}: prop ${prop} is ${type.trim()}; content goes in data, a prop names one choice`);
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} gaps; ${gaps.slice(0, 4).join("; ")}`)
+        : ok(`${composites.length} composites built on ${base.length} base forms, each prop a named choice`);
+    },
+  },
+  // Rules 11 to 13: a page's JSON holds facts a person can read without the page: names, values,
+  // numbers, token paths. No text formatted for display, no class names, no markup.
+  "doc-composites-facts": {
+    requires: ["docs/docs"],
+    run: (c) => {
+      const walk = (d) =>
+        readdirSync(c.p(d), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory()
+            ? walk(`${d}/${e.name}`)
+            : e.name.endsWith(".json") && !e.name.startsWith("_")
+              ? [`${d}/${e.name}`]
+              : [],
+        );
+      const SIGNS = [
+        [/\b\d+(\.\d+)?:1\b/, "a ratio written as text; store the number"],
+        [/ · /, "values joined for display; store each one"],
+        [/(^|\s)(odv|ods)-[a-z]/, "a class name"],
+        [/<\/?[a-z][^>]*>/i, "markup"],
+      ];
+      const found = {};
+      let files = 0;
+      const visit = (v, f) => {
+        if (typeof v === "string") {
+          for (const [re, what] of SIGNS) if (re.test(v)) (found[what] ??= []).push(`${f}: "${v.slice(0, 50)}"`);
+        } else if (v && typeof v === "object") for (const x of Object.values(v)) visit(x, f);
+      };
+      for (const f of walk("docs/docs")) {
+        files++;
+        visit(c.json(f), f.replace(/^docs\/docs\//, ""));
+      }
+      const kinds = Object.entries(found);
+      return kinds.length
+        ? bad(kinds.map(([what, hits]) => `${hits.length}× ${what}, such as ${hits[0]}`).join("; "))
+        : ok(`the data in ${files} page files holds facts only`);
+    },
+  },
+  // OD-285: icons follow each scheme. The style answer names its stroke and icon.stroke-width holds it;
+  // icons.css gives every Lucide icon that stroke; the large size differs only where the scheme answers
+  // two sizes. The docs' own visuals draw icons through Icon, and an icon-only button has a name.
+  "icons-follow-scheme": {
+    requires: [...SCHEMES.map((s) => `schemes/${s}.json`), "ui/src/icons.css", "doc-composites/src", "storybook/stories"],
+    run: (c) => {
+      const gaps = [];
+      if (!/\.lucide\s*\{[^}]*stroke-width:\s*var\(--icon-stroke-width\)/.test(c.read("ui", "src", "icons.css")))
+        gaps.push("ui/src/icons.css does not give .lucide the icon stroke");
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const ref = String(s.tokens.semantic.icon?.["stroke-width"]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
+        const stroke = ref?.split(".").reduce((n, k) => n?.[k], s.tokens.primitive)?.$value;
+        const answer = s.answers.find((a) => a.question === "iconography.definition");
+        if (stroke === undefined) gaps.push(`${id}: icon.stroke-width does not resolve to a primitive`);
+        else if (!answer?.why?.includes(`${stroke}px`)) gaps.push(`${id}: the style answer does not name its ${stroke}px stroke`);
+        const two = s.answers.find((a) => a.question === "iconography.count")?.option === "two";
+        const large = s.tokens.component.icon?.["size-large"]?.$value;
+        if (two === (large === "{size.icon}"))
+          gaps.push(`${id}: the large icon size ${two ? "matches the default though the scheme answers two sizes" : "differs though the scheme answers one size"}`);
+      }
+      // The docs' own visuals draw a Lucide icon only through Icon.
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${dir}/${e.name}`) : e.name.endsWith(".tsx") ? [`${dir}/${e.name}`] : [],
+        );
+      for (const f of walk("doc-composites/src")) {
+        const text = c.read(f);
+        const names = (text.match(/import \{([^}]*)\} from "lucide-react"/)?.[1] ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+        for (const n of names) if (new RegExp(`<${n}[\\s/>]`).test(text)) gaps.push(`${f}: draws ${n} directly; use Icon`);
+      }
+      // An icon-only button names itself, on the button or the Icon.
+      for (const f of [...walk("doc-composites/src"), ...walk("storybook/stories")]) {
+        for (const m of c.read(f).matchAll(/<Button\b([^>]*)>\s*<Icon\b([^>]*?)\/>\s*<\/Button>/g))
+          if (!/aria-label=/.test(m[1]) && !/\blabel=/.test(m[2])) gaps.push(`${f}: an icon-only button has no name`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${SCHEMES.length} schemes name their icon stroke and every Lucide icon reads it; the docs draw icons through Icon, and every icon-only button has a name`);
+    },
+  },
+  // Rule 15 (OD-284): a color fact names the step it reads. Where the docs show what a color token
+  // resolves to, the data carries the neutral step it goes through as via, so the page shows
+  // neutral.600, not the gray primitive behind it. Each entry is traced again through the scheme.
+  "doc-composites-steps": {
+    requires: [...SCHEMES.map((s) => `schemes/${s}.json`), "docs/docs"],
+    run: (c) => {
+      const gaps = [];
+      let facts = 0;
+      for (const s of SCHEMES) {
+        const tokens = c.json(`schemes/${s}.json`).tokens;
+        const page = `docs/docs/${s}/foundations/color.json`;
+        if (!existsSync(c.p(page))) continue;
+        const d = c.json(page);
+        const trace = (b, mode, token) =>
+          follow(tokens, b, mode, token) ?? follow(tokens, b, mode, `${token}.@`);
+        const expect = (where, b, mode, token, x) => {
+          const f = trace(b, mode, token);
+          if (!f) return;
+          facts++;
+          if ((x.via ?? null) !== (f.via ?? null))
+            gaps.push(`${s} ${where} ${token} in ${mode}: via is ${x.via ?? "missing"}, the scheme reads ${f.via ?? "no neutral step"}`);
+          if (x.primitive && x.primitive !== f.prim)
+            gaps.push(`${s} ${where} ${token} in ${mode}: primitive is ${x.primitive}, the scheme reads ${f.prim}`);
+        };
+        for (const [b, chart] of Object.entries(d["pairs-chart"] ?? {}))
+          for (const m of chart.modes)
+            for (const f of Object.values(m.fills).flat()) {
+              expect("pairs chart", b, m.mode, f.fill, f);
+              for (const p of f.pairs) expect("pairs chart", b, m.mode, p.text, p);
+            }
+        for (const [b, t] of Object.entries(d["fill-tones"] ?? {}))
+          for (const f of t.fills) for (const x of f.tones) expect("fill tones", b, x.mode, f.fill, x);
+        const theming = `docs/docs/${s}/foundations/theming.json`;
+        if (existsSync(c.p(theming)))
+          for (const [b, t] of Object.entries(c.json(theming)["mode-changes"] ?? {}))
+            for (const g of t.groups)
+              for (const r of g.rows)
+                for (const x of r.cells) if (x.primitive) expect("mode changes", b, x.mode, r.token, x);
+      }
+      return gaps.length
+        ? bad(`${gaps.length} color facts name the wrong step; ${gaps.slice(0, 3).join("; ")}`)
+        : ok(`${facts} color facts in ${SCHEMES.length} schemes name the step they read`);
+    },
+  },
+  // The committed docs hold no local address (OD-284): pages and their data files link Storybook and
+  // the site by path, so what an agent reads in the repo is what the site serves.
+  "docs-no-localhost": {
+    requires: ["docs/docs"],
+    run: (c) => {
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${dir}/${e.name}`) : /\.(md|json)$/.test(e.name) ? [`${dir}/${e.name}`] : [],
+        );
+      const hits = walk("docs/docs").filter((f) => /localhost|127\.0\.0\.1/.test(c.read(f)));
+      return hits.length
+        ? bad(`${hits.length} docs files hold a local address, such as ${hits[0]}; link by site path`)
+        : ok("no docs page or data file holds a local address");
+    },
+  },
+  // The docs pages are semantic Markdown (OD-284): visuals are directives, and their data sits in
+  // <page>.json beside them. Every HTML tag left in a page counts; the count only goes down, to zero.
+  "docs-no-html": {
+    requires: ["docs/docs", "harness/docs-html-baseline.json"],
+    run: (c) => {
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory() ? walk(`${dir}/${e.name}`) : e.name.endsWith(".md") ? [`${dir}/${e.name}`] : [],
+        );
+      const tags = (text) =>
+        text
+          .replace(/^---\n[\s\S]*?\n---\n/, "")
+          .replace(/```[\s\S]*?```/g, "")
+          .replace(/`[^`\n]*`/g, "")
+          .match(/<\/?[a-zA-Z][^>]*>|<!--/g)?.length ?? 0;
+      const pages = walk("docs/docs").map((f) => [f, tags(c.read(f))]);
+      const total = pages.reduce((a, [, n]) => a + n, 0);
+      const clean = pages.filter(([, n]) => !n).length;
+      const { tags: baseline } = c.json("harness/docs-html-baseline.json");
+      if (total > baseline)
+        return bad(`${total} HTML tags in the docs pages, up from ${baseline}; write a directive and its data instead`);
+      return total
+        ? ok(
+            `${total} HTML tags left in the docs pages (baseline ${baseline}); ${clean} of ${pages.length} pages have none`,
+          )
+        : ok(`no HTML in the ${pages.length} docs pages`);
+    },
+  },
+  // Each docs page's data (<page>.json, OD-284) matches the schema of the composite it feeds
+  // (doc-composites/schemas/<kind>.schema.json): facts only, every field described for an agent.
+  "doc-composites-data": {
+    requires: ["docs/docs", "doc-composites/schemas"],
+    run: (c) => {
+      const a = ajv();
+      const schemas = Object.fromEntries(
+        readdirSync(c.p("doc-composites/schemas"))
+          .filter((f) => f.endsWith(".schema.json"))
+          .map((f) => [f.replace(/\.schema\.json$/, ""), a.compile(c.json(`doc-composites/schemas/${f}`))]),
+      );
+      const walk = (dir) =>
+        readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
+          e.isDirectory()
+            ? walk(`${dir}/${e.name}`)
+            : e.name.endsWith(".json") && !e.name.startsWith("_")
+              ? [`${dir}/${e.name}`]
+              : [],
+        );
+      const gaps = [];
+      const missing = {};
+      let checked = 0;
+      // Rule 14: every field of every schema says what it holds.
+      const undescribed = [];
+      const look = (node, at, file) => {
+        if (!node || typeof node !== "object") return;
+        for (const [k, v] of Object.entries(node.properties ?? {})) {
+          if (!v.description && !v.$ref) undescribed.push(`${file} ${at}${k}`);
+          look(v, `${at}${k}.`, file);
+        }
+        if (node.items) look(node.items, at, file);
+        for (const [k, v] of Object.entries(node.$defs ?? {})) look(v, `${k}.`, file);
+      };
+      for (const f of readdirSync(c.p("doc-composites/schemas")).filter((x) => x.endsWith(".schema.json")))
+        look(c.json(`doc-composites/schemas/${f}`), "", f);
+      for (const f of walk("docs/docs"))
+        for (const [kind, entries] of Object.entries(c.json(f))) {
+          const valid = schemas[kind];
+          if (!valid) {
+            (missing[kind] ??= f);
+            continue;
+          }
+          for (const [id, data] of Object.entries(entries)) {
+            checked++;
+            if (!valid(data)) gaps.push(`${f} ${kind} ${id}: ${a.errorsText(valid.errors)}`);
+          }
+        }
+      const kinds = Object.keys(missing);
+      if (kinds.length)
+        gaps.unshift(`${kinds.length} data kinds have no schema (${kinds.join(", ")}); write doc-composites/schemas/<kind>.schema.json`);
+      if (undescribed.length)
+        gaps.unshift(`${undescribed.length} schema fields have no description, such as ${undescribed[0]}`);
+      return gaps.length
+        ? bad(`${gaps.length} gaps; ${gaps.slice(0, 3).join("; ")}`)
+        : ok(`${checked} composite entries match their ${Object.keys(schemas).length} schemas; every field described`);
     },
   },
   "docs-docusaurus": {
@@ -2545,16 +2867,17 @@ export const CHECKS = {
         // OD-182: the docs lead with visuals. The home shows a product screen and the answers, the
         // color page shows its colors in use, component pages show each variant live.
         const visual = [
-          ["index.md", "odv-hero"],
-          ["index.md", "odv-tile"],
-          ["foundations/color.md", "odv-band"],
-          ["foundations/color.md", "odv-stack"],
-          ["primitives/color.md", "odv-scale"],
-          ["components/button.md", "odv-variant"],
-          ["components/button.md", "odv-trail"],
+          ["index.md", ":::hero{"],
+          ["index.md", '::card-grid{id="home/sections"}'],
+          ["foundations/color.md", '::color-keys{id="'],
+          ["foundations/color.md", "::surface-stack{"],
+          ["primitives/color.md", "::color-scale{"],
+          ["components/button.md", ":::panel{"],
+          ["components/button.md", "::reason-chain{"],
+          ["components/button.md", "::token-table{"],
         ];
         for (const [pg, cls] of visual)
-          if (pages[pg] && !pages[pg].includes(cls)) gaps.push(`${id} ${pg}: no ${cls} block`);
+          if (pages[pg] && !pages[pg].includes(cls)) gaps.push(`${id} ${pg}: no ${cls.replace(/\{$/, "")} block`);
         // OD-184, OD-195: the Primitives section counts every primitive.
         const prim = pages["primitives/index.md"] ?? "";
         const count = (function n(x) {

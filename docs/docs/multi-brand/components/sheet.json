@@ -1,0 +1,994 @@
+{
+ "preview": {
+  "sheet/live": {
+   "title": "Sheet examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "/storybook/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Sheet in Storybook",
+     "href": "/storybook/?path=/docs/components-sheet--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/sheet": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the sheet, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./sheet/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "sheet": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Transition panels duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.panels-duration",
+      "alias": "motion.duration.panels",
+      "variable": "transition-panels-duration"
+     },
+     "values": [
+      {
+       "token": "duration.relaxed",
+       "text": "320ms"
+      }
+     ]
+    },
+    {
+     "group": "Overlay",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.overlay.background",
+      "alias": "color.surface.scrim",
+      "variable": "sheet-overlay-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0000008C"
+       },
+       "token": "black.light.scrim",
+       "text": "#0000008C"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#000000B3"
+       },
+       "token": "black.dark.scrim",
+       "text": "#000000B3"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0000008C"
+       },
+       "token": "black.light.scrim",
+       "text": "#0000008C"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#000000B3"
+       },
+       "token": "black.dark.scrim",
+       "text": "#000000B3"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0000008C"
+       },
+       "token": "black.light.scrim",
+       "text": "#0000008C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#000000B3"
+       },
+       "token": "black.dark.scrim",
+       "text": "#000000B3"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.content.gap",
+      "alias": "space.gap.group",
+      "variable": "sheet-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.content.background",
+      "alias": "color.surface.canvas",
+      "variable": "sheet-content-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.content.shadow",
+      "alias": "elevation.overlay",
+      "variable": "sheet-content-shadow"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #0F172A29"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #0F172A29"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #0F172A29"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.content.border",
+      "alias": "color.border.default",
+      "variable": "sheet-content-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.content.border-width",
+      "alias": "border-width.default",
+      "variable": "sheet-content-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.header.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "sheet-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.header.padding",
+      "alias": "space.inset.container",
+      "variable": "sheet-header-padding"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.footer.gap",
+      "alias": "space.gap.default",
+      "variable": "sheet-footer-gap"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.footer.padding",
+      "alias": "space.inset.container",
+      "variable": "sheet-footer-padding"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.title.font-weight",
+      "alias": "type.heading.font-weight",
+      "variable": "sheet-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.title.label",
+      "alias": "color.text.primary",
+      "variable": "sheet-title-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Font family",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.title.font-family",
+      "alias": "type.heading.font-family",
+      "variable": "sheet-title-font-family"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "token": "font.family.inter",
+       "text": "Inter, system-ui, sans-serif"
+      },
+      {
+       "theme": "Aster Dark",
+       "token": "font.family.inter",
+       "text": "Inter, system-ui, sans-serif"
+      },
+      {
+       "theme": "Birch Light",
+       "token": "font.family.plus-jakarta-sans",
+       "text": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+      },
+      {
+       "theme": "Birch Dark",
+       "token": "font.family.plus-jakarta-sans",
+       "text": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+      },
+      {
+       "theme": "Coral Light",
+       "token": "font.family.poppins",
+       "text": "Poppins, system-ui, sans-serif"
+      },
+      {
+       "theme": "Coral Dark",
+       "token": "font.family.poppins",
+       "text": "Poppins, system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.title.font-size",
+      "alias": "type.heading.font-size",
+      "variable": "sheet-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "sheet-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.description.label",
+      "alias": "color.text.secondary",
+      "variable": "sheet-description-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.light.700",
+       "text": "#334155"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.light.700",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.light.700",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "sheet-close-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.radius",
+      "alias": "radius.control",
+      "variable": "sheet-close-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus ring width",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.focus-ring.width",
+      "alias": "border-width.focus",
+      "variable": "sheet-close-focus-ring-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus ring color",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.focus-ring.color",
+      "alias": "color.border.focus",
+      "variable": "sheet-close-focus-ring-color"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F766E"
+       },
+       "token": "teal.light.600",
+       "text": "#0F766E"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#7FCFC6"
+       },
+       "token": "teal.dark.600",
+       "text": "#7FCFC6"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#6D28D9"
+       },
+       "token": "purple.light.600",
+       "text": "#6D28D9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#B79DF7"
+       },
+       "token": "purple.dark.600",
+       "text": "#B79DF7"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C2410C"
+       },
+       "token": "orange.light.600",
+       "text": "#C2410C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F7A67F"
+       },
+       "token": "orange.dark.600",
+       "text": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Focus ring offset color",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.focus-ring.offset-color",
+      "alias": "color.surface.canvas",
+      "variable": "sheet-close-focus-ring-offset-color"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.light.50",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#020617"
+       },
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "sheet-close-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.icon-size",
+      "alias": "size.icon",
+      "variable": "sheet-close-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.sheet.close.label",
+      "alias": "color.text.secondary",
+      "variable": "sheet-close-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.light.700",
+       "text": "#334155"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.light.700",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.light.700",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      }
+     ]
+    },
+    {
+     "group": "Close",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.sheet.close.padding",
+      "alias": "component-spacing-map.x1",
+      "variable": "sheet-close-padding"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

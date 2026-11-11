@@ -3,6 +3,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 import { readFileSync } from "node:fs";
 import { themes as prismThemes } from "prism-react-renderer";
 import { decisionMenu } from "./src/decisionMenu";
+import composites from "./src/remark/composites.mjs";
 
 // The docs of this design system. The pages in docs/docs come from its scheme (scheme.json).
 // The site wears the system: build/docusaurus.css holds its tokens, and build/brand/ (npm run
@@ -29,10 +30,23 @@ const config: Config = {
   onBrokenLinks: "throw",
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
+  // Lightning CSS minifies the scheme's CSS: the default minifier cannot read radius.pill's
+  // calc(infinity * 1px) and warns on it (OD-286). The Open DS docs use the same minifier.
+  future: { faster: { lightningCssMinimizer: true } },
   // The live Storybook embeds follow the docs theme (OD-213).
   clientModules: [
     "./src/clientModules/embed-mode.ts",
     "./src/clientModules/scales.ts",
+  ],
+  plugins: [
+    // Tailwind 4 compiles the classes the pages' composites use (src/css/tailwind.css).
+    () => ({
+      name: "tailwind",
+      configurePostCss(options) {
+        options.plugins.push(require("@tailwindcss/postcss"));
+        return options;
+      },
+    }),
   ],
   presets: [
     [
@@ -42,9 +56,11 @@ const config: Config = {
           routeBasePath: "/",
           sidebarPath: "./sidebars.ts",
           sidebarItemsGenerator: decisionMenu(process.env.DOCS_BASE_URL ?? "/"),
+          // A directive in a page (::token-table{component="field"}) becomes the composite it names.
+          remarkPlugins: [composites],
         },
         blog: false,
-        theme: { customCss: "./src/css/custom.css" },
+        theme: { customCss: ["./src/css/tailwind.css", "./src/css/custom.css"] },
       } satisfies Preset.Options,
     ],
   ],

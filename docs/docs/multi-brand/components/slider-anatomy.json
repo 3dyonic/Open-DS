@@ -1,0 +1,309 @@
+{
+ "anatomy-legend": {
+  "slider": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Track",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Range",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Thumb",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Focus ring",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Focus"
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Disabled slider",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "label": "Label",
+     "need": "required",
+     "note": "shown by Label",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "slider/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "track.background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.pill",
+     "key": "track.radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": false,
+     "pick": "radius.pill",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "range.background",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.",
+     "darkPick": "teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    }
+   ]
+  },
+  "slider/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Customers sign up on phones."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Soft",
+     "why": "Soft shadows fit every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "thumb.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.round",
+     "key": "thumb.radius",
+     "value": "50%",
+     "byScheme": false,
+     "pick": "radius.round",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "thumb.border",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.",
+     "darkPick": "teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.default",
+     "key": "thumb.background",
+     "value": "#FFFFFF",
+     "darkValue": "#0F172A",
+     "byScheme": true,
+     "rule": "The base fill for content.",
+     "pick": "neutral.0: the base for content; body text reads 17.85:1 on it, above the 4.5:1 floor.",
+     "darkPick": "neutral.50: the base for content; body text reads 17.06:1 on it, above the 4.5:1 floor.",
+     "shares": [
+      "surface.raised",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.card",
+     "key": "thumb.shadow",
+     "value": "0px 2px 8px, #0F172A14",
+     "darkValue": "0px 2px 8px, #00000066",
+     "byScheme": true,
+     "pick": "shadow.card: Cards lift slightly to group offers.",
+     "darkPick": "shadow.card-dark: Cards lift slightly to group offers.",
+     "shares": []
+    }
+   ]
+  },
+  "slider/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA in every brand and mode."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring (from the brand)",
+     "not": "removing the outline",
+     "why": "Focus follows the brand but always shows."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "thumb.focus-ring-focus",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "thumb.focus",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "thumb.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "thumb.focus-ring-offset-focus",
+     "value": "#F8FAFC",
+     "darkValue": "#020617",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    }
+   ]
+  },
+  "slider/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "disabled-opacity-disabled",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "thumb.disabled-opacity-disabled",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,628 @@
+{
+ "preview": {
+  "alert/live": {
+   "title": "Alert examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Alert in Storybook",
+     "href": "/storybook/?path=/docs/components-alert--docs"
+    }
+   ]
+  },
+  "alert/variant/default": {
+   "title": "Alert default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=variant:default"
+   }
+  },
+  "alert/variant/destructive": {
+   "title": "Alert destructive",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:dense-data;mode:light&args=variant:destructive"
+   }
+  }
+ },
+ "card-grid": {
+  "anatomy-link/alert": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the alert, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./alert/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "alert/outcomes.q2": {
+   "anchor": "why-outcomes-q2",
+   "question": "What is a costly mistake?",
+   "key": "outcomes.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Acting on the wrong record",
+     "why": "Acting on the wrong row is the costly error."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Alerts here are for problems that stay on the page; news goes in a toast or a badge."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "destructive",
+       "text": "A record that was not saved or an action that failed: name the record, then the fix, with an icon."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: primary",
+       "Button: secondary",
+       "Button: danger",
+       "Toast: danger"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Alert decisions would reopen",
+     "text": "and 2 answers that follow from it: Status in tables, Errors and empty states."
+    }
+   ]
+  },
+  "alert/tasks.q2": {
+   "anchor": "why-tasks-q2",
+   "question": "How often do people repeat actions?",
+   "key": "tasks.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Constantly",
+     "why": "The same actions repeat many times an hour."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Alerts here are for problems that stay on the page; news goes in a toast or a badge."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: ghost",
+       "Input group: inline-end",
+       "Sidebar: default",
+       "Toast: success",
+       "Toggle: default"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Alert decision would reopen",
+     "text": "and 11 answers that follow from it: Time on task, All day, Three, and 8 more."
+    }
+   ]
+  },
+  "alert/accessibility.count": {
+   "anchor": "why-accessibility-count",
+   "question": "How many signals carry each meaning?",
+   "key": "accessibility.count",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Three: color, icon and word",
+     "why": "Many statuses share one table; color alone is not enough."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "destructive",
+       "text": "A record that was not saved or an action that failed: name the record, then the fix, with an icon."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Badge: neutral",
+       "Badge: info",
+       "Badge: success",
+       "Badge: warning",
+       "Badge: danger"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Alert decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "alert/voice.values": {
+   "anchor": "why-voice-values",
+   "question": "How does it sound?",
+   "key": "voice.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Terse",
+     "why": "Experts want short labels and short messages."
+    },
+    {
+     "kind": "decided",
+     "title": "So Alert",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "destructive",
+       "text": "A record that was not saved or an action that failed: name the record, then the fix, with an icon."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Toast: neutral",
+       "Toast: success",
+       "Toast: danger"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Alert decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "alert": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Alert",
+     "part": "Gap y",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.gap-y",
+      "alias": "component-spacing-map.hairline",
+      "variable": "alert-gap-y"
+     },
+     "values": [
+      {
+       "token": "space.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.radius",
+      "alias": "radius.surface",
+      "variable": "alert-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.padding-x",
+      "alias": "space.inset.container",
+      "variable": "alert-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.padding-y",
+      "alias": "component-spacing-map.x3",
+      "variable": "alert-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.font-size",
+      "alias": "type.body.font-size",
+      "variable": "alert-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Gap x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.gap-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "alert-gap-x"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.icon-size",
+      "alias": "size.icon",
+      "variable": "alert-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.border",
+      "alias": "color.border.default",
+      "variable": "alert-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Alert",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.border-width",
+      "alias": "border-width.default",
+      "variable": "alert-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Default",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.default.background",
+      "alias": "color.surface.default",
+      "variable": "alert-default-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Default",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.default.label",
+      "alias": "color.text.primary",
+      "variable": "alert-default-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Destructive",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.destructive.background",
+      "alias": "color.surface.default",
+      "variable": "alert-destructive-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Destructive",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.destructive.label",
+      "alias": "color.status.danger",
+      "variable": "alert-destructive-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Destructive",
+     "part": "Description label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.destructive.description.label",
+      "alias": "color.status.danger",
+      "variable": "alert-destructive-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.title.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "alert-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.description.gap",
+      "alias": "space.gap.tight",
+      "variable": "alert-description-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.alert.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "alert-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.alert.description.label",
+      "alias": "color.text.muted",
+      "variable": "alert-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#535D6D"
+       },
+       "token": "slate.light.600",
+       "text": "#535D6D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

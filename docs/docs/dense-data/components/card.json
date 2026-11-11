@@ -1,0 +1,390 @@
+{
+ "preview": {
+  "card/live": {
+   "title": "Card examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Card in Storybook",
+     "href": "/storybook/?path=/docs/components-card--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/card": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the card, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./card/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "card": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Card",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.card.background",
+      "alias": "color.surface.default",
+      "variable": "card-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Card",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.card.border",
+      "alias": "color.border.default",
+      "variable": "card-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Card",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.radius",
+      "alias": "radius.surface",
+      "variable": "card-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Card",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.padding",
+      "alias": "space.inset.container",
+      "variable": "card-padding"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Card",
+     "part": "Shadow",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.shadow",
+      "alias": "elevation.card",
+      "variable": "card-shadow"
+     },
+     "values": [
+      {
+       "swatch": {
+        "shadow": "0px 0px 0px 0px #00000000"
+       },
+       "text": "shadow.none"
+      }
+     ]
+    },
+    {
+     "group": "Card",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.gap",
+      "alias": "space.gap.default",
+      "variable": "card-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Card",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.card.label",
+      "alias": "color.text.primary",
+      "variable": "card-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Card",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.border-width",
+      "alias": "border-width.default",
+      "variable": "card-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.header.gap",
+      "alias": "space.gap.tight",
+      "variable": "card-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.title.font-family",
+      "alias": "type.heading.font-family",
+      "variable": "card-title-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.ibm-plex-sans",
+       "text": "\"IBM Plex Sans\", system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.title.font-size",
+      "alias": "type.heading.font-size",
+      "variable": "card-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.title.font-weight",
+      "alias": "type.heading.font-weight",
+      "variable": "card-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Line height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.title.line-height",
+      "alias": "type.heading.line-height",
+      "variable": "card-title-line-height"
+     },
+     "values": [
+      {
+       "token": "font.line-height.1_2",
+       "text": "1.2"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.card.description.label",
+      "alias": "color.text.secondary",
+      "variable": "card-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.light.700",
+       "text": "#3D4655"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "card-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.content.gap",
+      "alias": "space.gap.default",
+      "variable": "card-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.card.footer.gap",
+      "alias": "space.gap.default",
+      "variable": "card-footer-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

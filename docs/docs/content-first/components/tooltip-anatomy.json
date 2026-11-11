@@ -1,0 +1,206 @@
+{
+ "anatomy-legend": {
+  "tooltip": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 1,
+     "label": "Surface",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Layering"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Hint",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Offset",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "tooltip/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Reading needs few color roles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded corners feel friendly."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "shape of a status badge",
+     "use": "radius.badge (pill)",
+     "not": "a rectangle",
+     "why": "Pills sit softly next to text."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.inverse",
+     "key": "content.background",
+     "value": "#1F1B16",
+     "darkValue": "#FFFDF8",
+     "byScheme": true,
+     "rule": "A reversed fill for small, short-lived messages.",
+     "pick": "neutral.900: the reverse of content for short messages; its text reads, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 16.84:1 on surface.inverse, above the 4.5:1 floor.",
+     "shares": [
+      "text.primary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.badge",
+     "key": "content.radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": true,
+     "pick": "radius.pill: Rounded corners feel friendly.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "content.padding-x",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x1",
+     "key": "content.padding-y",
+     "value": "0.25rem",
+     "byScheme": false,
+     "pick": "space.4",
+     "shares": []
+    }
+   ]
+  },
+  "tooltip/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What do icons do?",
+     "answer": "Actions, status and navigation",
+     "why": "Occasional readers need icons for save, share and navigation."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Not used: always add a word",
+     "not": "an icon button",
+     "why": "Occasional visitors do not know icons."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.inverse",
+     "key": "content.label",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1B16",
+     "byScheme": true,
+     "rule": "Text on an inverse fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 16.84:1 on surface.inverse, above the 4.5:1 floor.",
+     "shares": [
+      "text.on-action",
+      "text.on-danger"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "content.font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-family",
+     "key": "content.font-family",
+     "value": "Inter, system-ui, sans-serif",
+     "byScheme": true,
+     "pick": "inter for caption text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.",
+     "shares": []
+    }
+   ]
+  },
+  "tooltip/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Text needs air even inside a group."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "overlay.offset",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

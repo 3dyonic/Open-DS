@@ -10,8 +10,9 @@ import {
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
-import { componentsFor, packagesFor, withImports } from "./components.mjs";
+import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
+import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import {
   assetRoots,
@@ -113,6 +114,20 @@ function componentSource(roots, name) {
   );
 }
 
+// How a team registers the docs' composites in its own Docusaurus site.
+const DOC_SITE_README = `# The docs' composites
+
+The pages in docs/ draw their visuals with directives, such as \`::token-table{component="field"}\`.
+Each directive's data sits in the page's JSON file beside it. Register these files in your Docusaurus config:
+
+1. Add \`remark/composites.mjs\` to the docs plugin's \`remarkPlugins\`.
+2. Copy \`theme/MDXComponents.tsx\` to \`src/theme/MDXComponents.tsx\`, and point its imports at \`docs/_open-ds/composites\`.
+3. Add \`css/tailwind.css\` to \`customCss\`, and add \`@tailwindcss/postcss\` to PostCSS.
+4. Install \`unist-util-visit\`, \`tailwindcss\` and \`@tailwindcss/postcss\`.
+
+The composites import the components from src/components/ui.
+`;
+
 /** Copies a scheme into a project. Returns what it wrote. */
 export function deploy(
   schemeId,
@@ -147,7 +162,7 @@ export function deploy(
     readFileSync(join(tokenDir, "tokens.css"), "utf8"),
     readFileSync(join(tokenDir, "theme.css"), "utf8"),
     readFileSync(join(tokenDir, "shadcn.css"), "utf8"),
-    readFileSync(join(roots.ui, "styles.css"), "utf8"),
+    baseCss(roots.ui),
   ].join("\n");
   write(dir, "src/styles/open-ds.css", css, files);
   for (const lib of readdirSync(join(roots.ui, "lib")))
@@ -157,10 +172,17 @@ export function deploy(
       readFileSync(join(roots.ui, "lib", lib), "utf8"),
       files,
     );
-  // The scheme's inventory, plus the components those import.
+  // The scheme's inventory, plus the components those import. With the docs, also the components
+  // the docs' composites draw with (OD-284).
   const components = componentsFor(scheme, roots);
-  const packages = packagesFor(components, roots);
-  for (const name of components)
+  const written = docs
+    ? withImports([...new Set([...components, ...compositeComponents(roots)])], roots)
+    : components;
+  const packages = {
+    ...packagesFor(written, roots),
+    ...(docs && compositePackages(roots)),
+  };
+  for (const name of written)
     write(
       dir,
       `src/components/ui/${name}.tsx`,
@@ -214,6 +236,15 @@ export function deploy(
     for (const [rel, text] of Object.entries(pages))
       write(dir, `docs/${rel}`, text, files);
     write(dir, "docs/llms.txt", docsLlms(scheme, pages), files);
+    // The pages' directives become composites through a remark plugin. docs/_open-ds holds it, the
+    // composites, the MDX component map and a Tailwind entry; Docusaurus does not read _ folders as pages.
+    // The README there says how to register them.
+    const site = docSiteFiles(roots, {
+      components: withImports(compositeComponents(roots), roots),
+    });
+    for (const [rel, text] of Object.entries(site))
+      write(dir, `docs/_open-ds/${rel}`, text, files);
+    write(dir, "docs/_open-ds/README.md", DOC_SITE_README, files);
   }
   const record = {
     $comment:

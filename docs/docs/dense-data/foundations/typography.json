@@ -1,0 +1,304 @@
+{
+ "token-groups": {
+  "typography": {
+   "groups": [
+    {
+     "title": "display",
+     "sample": {
+      "kind": "type",
+      "role": "display",
+      "text": "Open alerts"
+     },
+     "api": [
+      {
+       "token": "type.display.font-family",
+       "primitive": "font.family.ibm-plex-sans",
+       "value": "IBM Plex Sans"
+      },
+      {
+       "token": "type.display.font-size",
+       "value": "24px"
+      },
+      {
+       "token": "type.display.line-height",
+       "value": "1.2"
+      },
+      {
+       "token": "type.display.font-weight",
+       "value": "600"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Hero line or key number",
+       "why": "It is for the one key number at the top of a dashboard. One big total gives analysts the headline at a glance. Everything below it stays small so more rows fit."
+      },
+      {
+       "kind": "not",
+       "situation": "Page title",
+       "detail": "use type.title",
+       "why": "Titles stay small so the table starts higher on the screen."
+      },
+      {
+       "kind": "not",
+       "situation": "Title of a form page",
+       "detail": "use type.title",
+       "why": "Settings and form pages keep the same small title as every page. Experts find the fields higher up."
+      }
+     ]
+    },
+    {
+     "title": "title",
+     "sample": {
+      "kind": "type",
+      "role": "title",
+      "text": "Open alerts"
+     },
+     "api": [
+      {
+       "token": "type.title.font-family",
+       "primitive": "font.family.ibm-plex-sans",
+       "value": "IBM Plex Sans"
+      },
+      {
+       "token": "type.title.font-size",
+       "value": "20px"
+      },
+      {
+       "token": "type.title.line-height",
+       "value": "1.2"
+      },
+      {
+       "token": "type.title.font-weight",
+       "value": "600"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Page title",
+       "why": "Titles stay small so the table starts higher on the screen."
+      },
+      {
+       "kind": "use",
+       "situation": "Title of a form page",
+       "why": "Settings and form pages keep the same small title as every page. Experts find the fields higher up."
+      },
+      {
+       "kind": "not",
+       "situation": "Section heading",
+       "detail": "use type.heading",
+       "why": "Panel and card headings sit one step above body. They name a block without taking rows from the data."
+      }
+     ]
+    },
+    {
+     "title": "heading",
+     "sample": {
+      "kind": "type",
+      "role": "heading",
+      "text": "Alert ALR-2043"
+     },
+     "api": [
+      {
+       "token": "type.heading.font-family",
+       "primitive": "font.family.ibm-plex-sans",
+       "value": "IBM Plex Sans"
+      },
+      {
+       "token": "type.heading.font-size",
+       "value": "16px"
+      },
+      {
+       "token": "type.heading.line-height",
+       "value": "1.2"
+      },
+      {
+       "token": "type.heading.font-weight",
+       "value": "600"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Section heading",
+       "why": "Panel and card headings sit one step above body. They name a block without taking rows from the data."
+      },
+      {
+       "kind": "not",
+       "situation": "Field label or column header",
+       "detail": "use type.label",
+       "why": "Headers repeat on every column; a heavy style would compete with the data."
+      }
+     ]
+    },
+    {
+     "title": "body",
+     "sample": {
+      "kind": "type",
+      "role": "body",
+      "text": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats."
+     },
+     "api": [
+      {
+       "token": "type.body.font-family",
+       "primitive": "font.family.ibm-plex-sans",
+       "value": "IBM Plex Sans"
+      },
+      {
+       "token": "type.body.font-size",
+       "value": "14px"
+      },
+      {
+       "token": "type.body.line-height",
+       "value": "1.45"
+      },
+      {
+       "token": "type.body.font-weight",
+       "value": "400"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Paragraph or help text",
+       "why": "Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences."
+      },
+      {
+       "kind": "not",
+       "situation": "A number in a table",
+       "detail": "use type.data",
+       "why": "Mono digits line up in columns, so values compare at a glance."
+      },
+      {
+       "kind": "not",
+       "situation": "Supporting text",
+       "detail": "use type.caption",
+       "why": "Timestamps and hints step back, so the values stay the hero."
+      },
+      {
+       "kind": "not",
+       "situation": "Text in a table cell",
+       "detail": "use type.data",
+       "why": "Every cell shares the mono face, so IDs, times and values line up down each column."
+      }
+     ]
+    },
+    {
+     "title": "label",
+     "sample": {
+      "kind": "type",
+      "role": "label",
+      "text": "Investigate"
+     },
+     "api": [
+      {
+       "token": "type.label.font-family",
+       "primitive": "font.family.ibm-plex-sans",
+       "value": "IBM Plex Sans"
+      },
+      {
+       "token": "type.label.font-size",
+       "value": "12px"
+      },
+      {
+       "token": "type.label.line-height",
+       "value": "1.2"
+      },
+      {
+       "token": "type.label.font-weight",
+       "value": "500"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Field label or column header",
+       "why": "Headers repeat on every column; a heavy style would compete with the data."
+      },
+      {
+       "kind": "not",
+       "situation": "Paragraph or help text",
+       "detail": "use type.body",
+       "why": "Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences."
+      }
+     ]
+    },
+    {
+     "title": "caption",
+     "sample": {
+      "kind": "type",
+      "role": "caption",
+      "text": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats."
+     },
+     "api": [
+      {
+       "token": "type.caption.font-family",
+       "primitive": "font.family.ibm-plex-sans",
+       "value": "IBM Plex Sans"
+      },
+      {
+       "token": "type.caption.font-size",
+       "value": "12px"
+      },
+      {
+       "token": "type.caption.line-height",
+       "value": "1.45"
+      },
+      {
+       "token": "type.caption.font-weight",
+       "value": "400"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Supporting text",
+       "why": "Timestamps and hints step back, so the values stay the hero."
+      }
+     ]
+    },
+    {
+     "title": "data",
+     "sample": {
+      "kind": "type",
+      "role": "data",
+      "text": "Open alerts 142 · Escalated 7 · Model precision 96.4% · Mean time to contain 38 min"
+     },
+     "api": [
+      {
+       "token": "type.data.font-family",
+       "primitive": "font.family.ibm-plex-mono",
+       "value": "IBM Plex Mono"
+      },
+      {
+       "token": "type.data.font-size",
+       "value": "13px"
+      },
+      {
+       "token": "type.data.line-height",
+       "value": "1.45"
+      },
+      {
+       "token": "type.data.font-weight",
+       "value": "400"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A number in a table",
+       "why": "Mono digits line up in columns, so values compare at a glance."
+      },
+      {
+       "kind": "use",
+       "situation": "Text in a table cell",
+       "why": "Every cell shares the mono face, so IDs, times and values line up down each column."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "anatomy-legend": {
+  "marker": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Line",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Label",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Hierarchy"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "marker/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Cards",
+     "why": "Cards hold each offer."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "between page sections",
+     "use": "space.gap.section and a color block",
+     "not": "a thin line",
+     "why": "Big space and color make each section a moment."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "line.thickness",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "line.background",
+     "value": "#F2DCCF",
+     "darkValue": "#4D3A33",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "gap",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  },
+  "marker/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and expressive display",
+     "why": "A big expressive display role carries the brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA, checked on every vivid color."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#6B544A",
+     "darkValue": "#B5988A",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.line-height",
+     "key": "line-height",
+     "value": "1.55",
+     "byScheme": true,
+     "pick": "font.line-height.1_55",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

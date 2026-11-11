@@ -1,0 +1,94 @@
+{
+ "preview": {
+  "date-picker/live": {
+   "title": "Date picker examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-date-picker--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "/storybook/iframe.html?id=components-date-picker--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Date picker in Storybook",
+     "href": "/storybook/?path=/docs/components-date-picker--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/date-picker": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the date picker, the job it does, and the decisions behind it. 4 parts.",
+     "href": "./date-picker/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "date-picker": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Date picker",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.date-picker.font-weight",
+      "alias": "type.body.font-weight",
+      "variable": "date-picker-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.400",
+       "text": "400"
+      }
+     ]
+    },
+    {
+     "group": "Date picker",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.date-picker.label",
+      "alias": "color.text.muted",
+      "variable": "date-picker-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

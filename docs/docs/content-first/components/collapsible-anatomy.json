@@ -1,0 +1,32 @@
+{
+ "anatomy-legend": {
+  "collapsible": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 1,
+     "label": "Content",
+     "need": "state",
+     "noToken": true,
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "collapsible/card-1": {
+   "steps": []
+  }
+ }
+}

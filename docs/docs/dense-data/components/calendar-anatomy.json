@@ -1,0 +1,567 @@
+{
+ "anatomy-legend": {
+  "calendar": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Surface",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Month caption",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Hierarchy",
+      "Readability"
+     ]
+    },
+    {
+     "label": "Month buttons",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 3,
+       "label": "Previous month",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Next month",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Weekday",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Hierarchy"
+     ]
+    },
+    {
+     "label": "Day",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Reach",
+      "Readability",
+      "Affordance"
+     ],
+     "children": [
+      {
+       "n": 6,
+       "label": "Day",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Reach",
+        "Readability"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Today",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 8,
+       "label": "Selected day",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Emphasis"
+       ]
+      },
+      {
+       "n": 9,
+       "label": "Selected range",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 10,
+       "label": "Day of another month",
+       "need": "optional",
+       "noToken": true,
+       "byScheme": false,
+       "roles": [
+        "Hierarchy"
+       ]
+      },
+      {
+       "n": 11,
+       "label": "Day that cannot be picked",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "n": 12,
+       "label": "Focus ring",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Focus"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "calendar/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "background",
+     "value": "#F7F8FA",
+     "darkValue": "#0D1117",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "padding",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    }
+   ]
+  },
+  "calendar/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and data",
+     "why": "A data role keeps numbers in aligned columns."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the label so they do not outweigh it."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Icon button with a tooltip",
+     "not": "a bare icon",
+     "why": "Experts learn icons; the tooltip covers the first uses."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "font-weight",
+     "value": "500",
+     "byScheme": true,
+     "pick": "font.weight.500",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "calendar/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and data",
+     "why": "A data role keeps numbers in aligned columns."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "rule",
+     "situation": "field label or column header",
+     "use": "type.label",
+     "not": "type.heading",
+     "why": "Headers repeat on every column; a heavy style would compete with the data."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "label",
+     "value": "#535D6D",
+     "darkValue": "#969FAD",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-weight",
+     "key": "font-weight-2",
+     "value": "400",
+     "byScheme": false,
+     "pick": "font.weight.400",
+     "shares": []
+    }
+   ]
+  },
+  "calendar/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.compact",
+     "not": "anything smaller",
+     "why": "Compact still fits a mouse. Touch is not this product's input."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control",
+     "not": "radius.round",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.element",
+     "key": "radius",
+     "value": "0.125rem",
+     "byScheme": true,
+     "pick": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "week.margin-top",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "calendar/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "rule",
+     "situation": "a selected row or item",
+     "use": "color.surface.selected",
+     "not": "color.action.primary as a fill",
+     "why": "A light tint shows selection without hiding the data."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "day.today.background",
+     "value": "#E8ECFF",
+     "darkValue": "#2A244F",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "violet.light.100: a tint of the brand, 1.17:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "violet.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "day.selected.background",
+     "value": "#4B3FD9",
+     "darkValue": "#A9A3F6",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "violet.light.600: the primary action's fill; its label reads, 6.97:1, above the 4.5:1 floor.",
+     "darkPick": "violet.dark.600: the primary action's fill; its label reads, 7.62:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.on-action",
+     "key": "day.selected.label",
+     "value": "#FFFFFF",
+     "darkValue": "#161B23",
+     "byScheme": true,
+     "rule": "Text and icons on the main action's fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 6.97:1 on action.primary, above the 4.5:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 7.62:1 on action.primary, above the 4.5:1 floor.",
+     "shares": [
+      "text.inverse",
+      "text.on-danger"
+     ]
+    }
+   ]
+  },
+  "calendar/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "rule",
+     "situation": "a selected row or item",
+     "use": "color.surface.selected",
+     "not": "color.action.primary as a fill",
+     "why": "A light tint shows selection without hiding the data."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "day.range.background",
+     "value": "#E8ECFF",
+     "darkValue": "#2A244F",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "violet.light.100: a tint of the brand, 1.17:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "violet.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "day.range.label",
+     "value": "#161B23",
+     "darkValue": "#F7F8FA",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "day.range-ends.background",
+     "value": "#4B3FD9",
+     "darkValue": "#A9A3F6",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "violet.light.600: the primary action's fill; its label reads, 6.97:1, above the 4.5:1 floor.",
+     "darkPick": "violet.dark.600: the primary action's fill; its label reads, 7.62:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.on-action",
+     "key": "day.range-ends.label",
+     "value": "#FFFFFF",
+     "darkValue": "#161B23",
+     "byScheme": true,
+     "rule": "Text and icons on the main action's fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 6.97:1 on action.primary, above the 4.5:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 7.62:1 on action.primary, above the 4.5:1 floor.",
+     "shares": [
+      "text.inverse",
+      "text.on-danger"
+     ]
+    }
+   ]
+  },
+  "calendar/card-7": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Hover, focus, disabled",
+     "why": "Pressed reuses hover; experts do not need more."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "day.disabled-opacity",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  },
+  "calendar/card-8": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast for every text."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Keyboard users must always see where they are."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "focus",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "focus-ring",
+     "value": "#4B3FD9",
+     "darkValue": "#A9A3F6",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "focus-ring-offset",
+     "value": "#F7F8FA",
+     "darkValue": "#0D1117",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

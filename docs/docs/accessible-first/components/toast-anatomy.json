@@ -1,0 +1,315 @@
+{
+ "anatomy-legend": {
+  "toast": {
+   "parts": [
+    {
+     "label": "Toast",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Containment"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Surface",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Shadow",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Title",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Description",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Tone edge",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "label": "Action",
+       "need": "optional",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Affordance"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "toast/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Nothing",
+     "why": "Flat is easier to read at high zoom."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "No shadows",
+     "why": "No shadows; borders do the work."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "Which shape roles does it need?",
+     "answer": "Controls, badges and containers",
+     "why": "Badges keep a clear rectangle."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "background",
+     "value": "#FFFFFF",
+     "darkValue": "#141414",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Clear, slightly rounded controls.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "neutral.border",
+     "value": "#D6D6D6",
+     "darkValue": "#333333",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "shadow",
+     "value": "0px 0px 0px, #00000000",
+     "byScheme": true,
+     "pick": "shadow.none: No shadows; borders do the work.",
+     "shares": [
+      "elevation.card"
+     ]
+    }
+   ]
+  },
+  "toast/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Voice and tone",
+     "question": "How is the voice defined?",
+     "answer": "Rules and a word list",
+     "why": "A word list of common words, with terms to avoid."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "rule",
+     "situation": "a success message",
+     "use": "Confirm what happened and what comes next",
+     "not": "a confirmation with no next step",
+     "why": "People need to know the task is finished and what happens now."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "title.font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "title.font-size",
+     "value": "1.1875rem",
+     "byScheme": true,
+     "pick": "font.size.19",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "label",
+     "value": "#141414",
+     "darkValue": "#F7F7F7",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    }
+   ]
+  },
+  "toast/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Voice and tone",
+     "question": "How is the voice defined?",
+     "answer": "Rules and a word list",
+     "why": "A word list of common words, with terms to avoid."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large text is readable for more people."
+    },
+    {
+     "kind": "rule",
+     "situation": "the words of an error",
+     "use": "Say what is wrong, where, and exactly how to fix it",
+     "not": "\"Invalid input\"",
+     "why": "People must be able to fix the error without help."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "description.label",
+     "value": "#333333",
+     "darkValue": "#D6D6D6",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "description.font-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "font.size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "content.gap",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    }
+   ]
+  },
+  "toast/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Three: color, icon and word",
+     "why": "Never color alone."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Where does color carry meaning first?",
+     "answer": "Links and actions",
+     "why": "Links and actions must be found by everyone."
+    },
+    {
+     "kind": "rule",
+     "situation": "a status",
+     "use": "Badge with an icon and a word",
+     "not": "color alone",
+     "why": "Status must survive no color and a screen reader."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.success",
+     "key": "success.edge",
+     "value": "#1F7A3A",
+     "darkValue": "#5CC283",
+     "byScheme": false,
+     "rule": "Confirmation that something worked. It sits outside the urgency order.",
+     "pick": "green.light.600: success marks icons and edges, 5.38:1 on surface.default, over 3:1; its text uses success-on-light, which reads at the floor.",
+     "darkPick": "green.dark.600: success reads as text and icons, 8.33:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "category.3"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "danger.edge",
+     "value": "#981519",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,292 @@
+{
+ "anatomy-legend": {
+  "bubble": {
+   "parts": [
+    {
+     "label": "Bubble",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Byline",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Their message",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Meaning"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Your message",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Meaning",
+        "Emphasis"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Message text",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "bubble/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and editorial display",
+     "why": "A lead and a display role open articles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Text needs air even inside a group."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "byline.label",
+     "value": "#61594D",
+     "darkValue": "#A39A8B",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "byline.font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.line-height",
+     "key": "byline.line-height",
+     "value": "1.45",
+     "byScheme": true,
+     "pick": "font.line-height.1_45",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "bubble/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Reading needs few color roles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "Which shape roles does it need?",
+     "answer": "Controls, badges and containers",
+     "why": "Pill badges differ from controls."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "body.them.background",
+     "value": "#F6F2EA",
+     "darkValue": "#2E2A24",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "body.them.label",
+     "value": "#1F1B16",
+     "darkValue": "#FFFDF8",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "body.radius",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "radius.12: Rounded corners feel friendly.",
+     "shares": []
+    }
+   ]
+  },
+  "bubble/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "How many emphasis levels do actions need?",
+     "answer": "Three",
+     "why": "Primary, secondary and a text link."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast, with large text helping further."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "body.me.background",
+     "value": "#1E3A5F",
+     "darkValue": "#8FA6C4",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.",
+     "darkPick": "navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.on-action",
+     "key": "body.me.label",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1B16",
+     "byScheme": true,
+     "rule": "Text and icons on the main action's fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 11.5:1 on action.primary, above the 4.5:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 6.86:1 on action.primary, above the 4.5:1 floor.",
+     "shares": [
+      "text.inverse",
+      "text.on-danger"
+     ]
+    }
+   ]
+  },
+  "bubble/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, at most 65 characters a line",
+     "not": "type.caption",
+     "why": "A large size and short lines make long text easy on the eyes."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "body.font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "body.line-height",
+     "value": "1.65",
+     "byScheme": true,
+     "pick": "font.line-height.1_65",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "body.padding-x",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "body.padding-y",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

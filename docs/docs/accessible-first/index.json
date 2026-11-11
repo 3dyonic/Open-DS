@@ -1,0 +1,255 @@
+{
+ "sample-screen": {
+  "home": {
+   "table": {
+    "caption": "Your application",
+    "columns": [
+     {
+      "label": "Step"
+     },
+     {
+      "label": "Questions",
+      "numeric": true
+     },
+     {
+      "label": "Time it takes"
+     },
+     {
+      "label": "Status"
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "About you",
+       "6",
+       "About 2 minutes"
+      ],
+      "status": {
+       "text": "Completed",
+       "tone": "success"
+      }
+     },
+     {
+      "cells": [
+       "Your home",
+       "8",
+       "About 3 minutes"
+      ],
+      "status": {
+       "text": "Check your answers",
+       "tone": "warning"
+      }
+     },
+     {
+      "cells": [
+       "Your money",
+       "10",
+       "About 4 minutes"
+      ],
+      "status": {
+       "text": "Not started",
+       "tone": "neutral"
+      }
+     },
+     {
+      "cells": [
+       "Your documents",
+       "3",
+       "About 5 minutes"
+      ],
+      "status": {
+       "text": "Upload failed",
+       "tone": "danger"
+      }
+     },
+     {
+      "cells": [
+       "Check and send",
+       "1",
+       "About 2 minutes"
+      ],
+      "status": {
+       "text": "Not started",
+       "tone": "neutral"
+      }
+     }
+    ]
+   },
+   "actions": {
+    "primary": "Continue",
+    "secondary": "Save and come back later"
+   }
+  }
+ },
+ "card-grid": {
+  "home/answers": {
+   "cards": [
+    {
+     "eyebrow": "Who uses it most?",
+     "title": "Everyone, including people with disabilities",
+     "text": "Everyone, including people with low vision, motor and cognitive needs.",
+     "code": "people.q1"
+    },
+    {
+     "eyebrow": "What must the interface protect?",
+     "title": "Low effort to understand",
+     "text": "Low effort to understand each step.",
+     "code": "human.q1"
+    },
+    {
+     "eyebrow": "What accessibility level do we commit to?",
+     "title": "AAA",
+     "text": "AAA where it applies; nobody is left out.",
+     "code": "people.q2"
+    }
+   ]
+  },
+  "home/sections": {
+   "cards": [
+    {
+     "href": "primitives/",
+     "title": "Primitives",
+     "text": "All 176 raw values, and the tokens that point to each.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#FFFFFF"
+      },
+      {
+       "kind": "color",
+       "value": "#F7F7F7"
+      },
+      {
+       "kind": "color",
+       "value": "#EDEDED"
+      },
+      {
+       "kind": "color",
+       "value": "#D6D6D6"
+      },
+      {
+       "kind": "color",
+       "value": "#949494"
+      },
+      {
+       "kind": "color",
+       "value": "#767676"
+      },
+      {
+       "kind": "color",
+       "value": "#595959"
+      },
+      {
+       "kind": "color",
+       "value": "#464646"
+      },
+      {
+       "kind": "color",
+       "value": "#333333"
+      },
+      {
+       "kind": "color",
+       "value": "#222222"
+      },
+      {
+       "kind": "color",
+       "value": "#141414"
+      },
+      {
+       "kind": "color",
+       "value": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "href": "foundations/",
+     "title": "Foundations",
+     "text": "Color, type, spacing, shape and motion, each with the answer behind it.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "var(--color-action-primary)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-success)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-warning)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-danger)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-info)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-text-primary)"
+      },
+      {
+       "kind": "text",
+       "value": "Aa"
+      }
+     ]
+    },
+    {
+     "href": "components/inventory",
+     "title": "Components",
+     "text": "42 components, each with when to use it and how Accessible first decided.",
+     "samples": [
+      {
+       "kind": "text",
+       "value": "Continue"
+      },
+      {
+       "kind": "text",
+       "value": "Check your answers"
+      }
+     ]
+    },
+    {
+     "href": "voice",
+     "title": "Voice and tone",
+     "text": "Plain and direct. Every sentence is easy to read on the first try.",
+     "samples": [
+      {
+       "kind": "text",
+       "value": "Use common words. Explain any term you must use."
+      }
+     ]
+    },
+    {
+     "href": "themes",
+     "title": "Themes",
+     "text": "2 themes. Only semantic tokens change; components never do.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#F7F7F7"
+      },
+      {
+       "kind": "color",
+       "value": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "href": "agents",
+     "title": "For agents",
+     "text": "AGENTS.md, the skill and the MCP: an AI builds the way the system would.",
+     "samples": [
+      {
+       "kind": "code",
+       "value": "open-ds why accessible-first button"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

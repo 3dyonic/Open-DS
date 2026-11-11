@@ -1,0 +1,294 @@
+{
+ "anatomy-legend": {
+  "popover": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "label": "Panel",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Containment"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Surface",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Layering"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Border",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Shadow",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Header",
+     "need": "optional",
+     "byScheme": false,
+     "roles": [
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 4,
+       "label": "Title",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Description",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "label": "Offset",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "popover/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Only what floats",
+     "why": "Only menus and dialogs float; cards use lines."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Subtle",
+     "why": "Subtle shadows keep the grid crisp."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page for dialogs",
+     "not": "a border only",
+     "why": "Floating things need a shadow so they read as on top."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "content.background",
+     "value": "#FFFFFF",
+     "darkValue": "#161B23",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "content.radius",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "radius.4: Small corners keep dense rows straight.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#DDE2EA",
+     "darkValue": "#3D4655",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "content.border-width",
+     "value": "1px",
+     "byScheme": true,
+     "pick": "border-width.1",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "content.shadow",
+     "value": "0px 8px 24px, #0D111729",
+     "darkValue": "0px 8px 24px, #00000080",
+     "byScheme": true,
+     "pick": "shadow.overlay: Subtle shadows keep the grid crisp.",
+     "darkPick": "shadow.overlay-dark: Subtle shadows keep the grid crisp.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "content.padding",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  },
+  "popover/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and data",
+     "why": "A data role keeps numbers in aligned columns."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Small",
+     "why": "Small body text fits more rows on the screen."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body",
+     "not": "type.label",
+     "why": "Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "header.font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "header.line-height",
+     "value": "1.45",
+     "byScheme": true,
+     "pick": "font.line-height.1_45",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "header.gap",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "space.4",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "title.font-weight",
+     "value": "500",
+     "byScheme": true,
+     "pick": "font.weight.500",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "description.label",
+     "value": "#535D6D",
+     "darkValue": "#969FAD",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "popover/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.tight",
+     "not": "space.gap.group",
+     "why": "Things that belong together sit close."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "overlay.offset",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "space.4",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

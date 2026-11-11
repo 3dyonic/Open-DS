@@ -1,0 +1,722 @@
+{
+ "preview": {
+  "empty/live": {
+   "title": "Empty examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "/storybook/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Empty in Storybook",
+     "href": "/storybook/?path=/docs/components-empty--docs"
+    }
+   ]
+  },
+  "empty/variant/default": {
+   "title": "Empty default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-empty--playground&viewMode=story&globals=scheme:multi-brand--aster;mode:light&args=variant:default"
+   }
+  },
+  "empty/variant/icon": {
+   "title": "Empty icon",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-empty--playground&viewMode=story&globals=scheme:multi-brand--aster;mode:light&args=variant:icon"
+   }
+  }
+ },
+ "card-grid": {
+  "anatomy-link/empty": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the empty state, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./empty/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "empty/voice.definition": {
+   "anchor": "why-voice-definition",
+   "question": "How is the voice defined?",
+   "key": "voice.definition",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "A shared core, brand tone on top",
+     "why": "Errors and confirmations are shared; brand tone sits on top."
+    },
+    {
+     "kind": "decided",
+     "title": "So Empty",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Shared structure in every brand: no brand pictures in empty states."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Alert: destructive",
+       "Toast: neutral",
+       "Toast: danger"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Empty decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "empty/theming.definition": {
+   "anchor": "why-theming-definition",
+   "question": "How are brands handled?",
+   "key": "theming.definition",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Brands as modes",
+     "why": "Brands are theme modes over shared semantics."
+    },
+    {
+     "kind": "decided",
+     "title": "So Empty",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "default",
+       "text": "Shared structure in every brand: no brand pictures in empty states."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Sidebar: default",
+       "Sidebar: outline",
+       "Item: muted",
+       "Toggle: outline"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Empty decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "empty/iconography.definition": {
+   "anchor": "why-iconography-definition",
+   "question": "What icon style and stroke?",
+   "key": "iconography.definition",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Outline",
+     "why": "One outline set for every brand, at a 1.5px stroke."
+    },
+    {
+     "kind": "decided",
+     "title": "So Empty",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "icon",
+       "text": "An icon in a small tile, from the one outline set every brand shares."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Input group: inline-start",
+       "Icon: plain",
+       "Icon: contained-tint",
+       "Icon: contained-solid"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Empty decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "empty": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Empty",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.gap",
+      "alias": "space.gap.section",
+      "variable": "empty-gap"
+     },
+     "values": [
+      {
+       "token": "space.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.radius",
+      "alias": "radius.surface",
+      "variable": "empty-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.padding",
+      "alias": "component-spacing-map.x6",
+      "variable": "empty-padding"
+     },
+     "values": [
+      {
+       "token": "space.36",
+       "text": "2.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Padding 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.padding-2",
+      "alias": "component-spacing-map.x12",
+      "variable": "empty-padding-2"
+     },
+     "values": [
+      {
+       "token": "space.64",
+       "text": "4rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.header.gap",
+      "alias": "space.gap.default",
+      "variable": "empty-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.icon.radius",
+      "alias": "radius.surface",
+      "variable": "empty-icon-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "1rem"
+       },
+       "token": "radius.16",
+       "text": "1rem"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.icon.background",
+      "alias": "color.surface.sunken",
+      "variable": "empty-icon-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.icon.label",
+      "alias": "color.text.primary",
+      "variable": "empty-icon-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Margin bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.icon.margin-bottom",
+      "alias": "component-spacing-map.x2",
+      "variable": "empty-icon-margin-bottom"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.title.font-size",
+      "alias": "type.heading.font-size",
+      "variable": "empty-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.title.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "empty-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "empty-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.description.label",
+      "alias": "color.text.muted",
+      "variable": "empty-description-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#4B5A6F"
+       },
+       "token": "slate-deep.light.600",
+       "text": "#4B5A6F"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#96A3B5"
+       },
+       "token": "slate-deep.dark.400",
+       "text": "#96A3B5"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Label 2",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.empty.description.label-2",
+      "alias": "color.action.primary",
+      "variable": "empty-description-label-2"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F766E"
+       },
+       "token": "teal.light.600",
+       "text": "#0F766E"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#7FCFC6"
+       },
+       "token": "teal.dark.600",
+       "text": "#7FCFC6"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#6D28D9"
+       },
+       "token": "purple.light.600",
+       "text": "#6D28D9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#B79DF7"
+       },
+       "token": "purple.dark.600",
+       "text": "#B79DF7"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#C2410C"
+       },
+       "token": "orange.light.600",
+       "text": "#C2410C"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F7A67F"
+       },
+       "token": "orange.dark.600",
+       "text": "#F7A67F"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.content.gap",
+      "alias": "space.gap.group",
+      "variable": "empty-content-gap"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.empty.content.font-size",
+      "alias": "type.body.font-size",
+      "variable": "empty-content-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

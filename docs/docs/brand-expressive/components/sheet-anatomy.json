@@ -1,0 +1,511 @@
+{
+ "anatomy-legend": {
+  "sheet": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 1,
+     "label": "Scrim",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Layering"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Panel",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Layering"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Header",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 4,
+       "label": "Title",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Description",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "label": "Footer",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "label": "Actions",
+       "need": "optional",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Affordance",
+        "Emphasis"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "label": "Close button",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "n": 8,
+     "label": "Close hover fill",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "n": 9,
+     "label": "Close focus ring",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Focus"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "sheet/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Cards too",
+     "why": "Cards lift to feel like objects."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Pronounced",
+     "why": "Pronounced shadows add depth."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.scrim",
+     "key": "overlay.background",
+     "value": "#0000008C",
+     "darkValue": "#000000B3",
+     "byScheme": false,
+     "rule": "The see-through layer behind a modal.",
+     "pick": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "darkPick": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "content.background",
+     "value": "#FFF8F3",
+     "darkValue": "#120B09",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "content.shadow",
+     "value": "0px 24px 48px, #1F141133",
+     "darkValue": "0px 24px 48px, #00000099",
+     "byScheme": true,
+     "pick": "shadow.overlay: Pronounced shadows add depth.",
+     "darkPick": "shadow.overlay-dark: Pronounced shadows add depth.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#F2DCCF",
+     "darkValue": "#4D3A33",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    }
+   ]
+  },
+  "sheet/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Air keeps big type readable."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.group",
+     "key": "content.gap",
+     "value": "2.5rem",
+     "byScheme": true,
+     "pick": "space.40",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "header.padding",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "footer.padding",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "sheet/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and expressive display",
+     "why": "A big expressive display role carries the brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body; the display does the shouting."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, short",
+     "not": "long paragraphs",
+     "why": "Short copy keeps the energy."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-family",
+     "key": "title.font-family",
+     "value": "\"Bricolage Grotesque\", system-ui, sans-serif",
+     "byScheme": true,
+     "pick": "bricolage-grotesque for heading text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-size",
+     "key": "title.font-size",
+     "value": "1.75rem",
+     "byScheme": true,
+     "pick": "font.size.28",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-weight",
+     "key": "title.font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "title.label",
+     "value": "#1F1411",
+     "darkValue": "#FFF8F3",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "description.font-size",
+     "value": "1.0625rem",
+     "byScheme": true,
+     "pick": "font.size.17",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "description.label",
+     "value": "#4D3A33",
+     "darkValue": "#E2C4B3",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "header.gap",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "sheet/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "the action that completes the task",
+     "use": "Button primary, large, one per section",
+     "not": "two primaries",
+     "why": "One loud call to action per section."
+    },
+    {
+     "kind": "rule",
+     "situation": "an alternative or cancel",
+     "use": "Button ghost",
+     "not": "a second primary",
+     "why": "The alternative must not compete."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "footer.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "footer.padding",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "sheet/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Larger than the text",
+     "why": "Larger icons hold their own next to big type."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Not used: always add a word",
+     "not": "an icon button with a hover hint",
+     "why": "On phones, hover hints never show; a word says what will happen."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (fast)",
+     "not": "an instant change",
+     "why": "Fast feedback, on the brand's spring. An instant change drops the brand's motion."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Focus must show on vivid color."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "close.radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": true,
+     "pick": "radius.pill: Pill controls feel playful.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "close.icon-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "close.label",
+     "value": "#4D3A33",
+     "darkValue": "#E2C4B3",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "close.background.hover",
+     "value": "#FCEFE6",
+     "darkValue": "#33241F",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "close.focus-ring.color",
+     "value": "#D61F7A",
+     "darkValue": "#F59ACA",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "close.focus-ring.width",
+     "value": "3px",
+     "byScheme": true,
+     "pick": "border-width.3",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "close.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

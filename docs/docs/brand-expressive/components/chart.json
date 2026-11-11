@@ -1,0 +1,560 @@
+{
+ "preview": {
+  "chart/live": {
+   "title": "Chart examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-chart--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "/storybook/iframe.html?id=components-chart--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Chart in Storybook",
+     "href": "/storybook/?path=/docs/components-chart--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/chart": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the chart, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./chart/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "chart": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Chart",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "chart-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Chart",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "chart-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Chart",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "chart-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Chart",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.gap-2",
+      "alias": "space.gap.default",
+      "variable": "chart-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Chart",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.label",
+      "alias": "color.text.muted",
+      "variable": "chart-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Chart",
+     "part": "Label 2",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.label-2",
+      "alias": "color.text.primary",
+      "variable": "chart-label-2"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Grid",
+     "part": "Line",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.grid.line",
+      "alias": "color.border.default",
+      "variable": "chart-grid-line"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Track",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.track.fill",
+      "alias": "color.surface.sunken",
+      "variable": "chart-track-fill"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Cursor",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.cursor.fill",
+      "alias": "color.surface.highlight",
+      "variable": "chart-cursor-fill"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Cursor",
+     "part": "Line",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.cursor.line",
+      "alias": "color.border.default",
+      "variable": "chart-cursor-line"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Axis",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.axis.label",
+      "alias": "color.text.muted",
+      "variable": "chart-axis-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.tooltip.border",
+      "alias": "color.border.default",
+      "variable": "chart-tooltip-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.tooltip.border-width",
+      "alias": "border-width.default",
+      "variable": "chart-tooltip-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.tooltip.radius",
+      "alias": "radius.surface",
+      "variable": "chart-tooltip-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "1.5rem"
+       },
+       "token": "radius.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.tooltip.background",
+      "alias": "color.surface.canvas",
+      "variable": "chart-tooltip-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.light.50",
+       "text": "#FFF8F3"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#120B09"
+       },
+       "token": "taupe.dark.0",
+       "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.tooltip.padding-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "chart-tooltip-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.tooltip.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "chart-tooltip-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.chart.tooltip.shadow",
+      "alias": "elevation.overlay",
+      "variable": "chart-tooltip-shadow"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "shadow": "0px 24px 48px 0px #1F141133"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "shadow": "0px 24px 48px 0px #00000099"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.tooltip.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "chart-tooltip-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Tooltip",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.tooltip.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "chart-tooltip-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Legend",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.legend.gap",
+      "alias": "space.gap.group",
+      "variable": "chart-legend-gap"
+     },
+     "values": [
+      {
+       "token": "space.40",
+       "text": "2.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Legend",
+     "part": "Padding, bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.legend.padding-bottom",
+      "alias": "component-spacing-map.x3",
+      "variable": "chart-legend-padding-bottom"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Legend",
+     "part": "Padding, top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.chart.legend.padding-top",
+      "alias": "component-spacing-map.x3",
+      "variable": "chart-legend-padding-top"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

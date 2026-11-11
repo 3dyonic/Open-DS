@@ -1,0 +1,376 @@
+{
+ "anatomy-legend": {
+  "input-otp": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Slot",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach",
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Focus ring",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Focus"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Caret",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Focus",
+      "Feedback"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Separator",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Invalid slots",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Feedback"
+     ]
+    },
+    {
+     "n": 6,
+     "label": "Disabled slots",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "label": "Digit",
+     "need": "required",
+     "note": "not in this example",
+     "byScheme": true,
+     "roles": [
+      "Readability"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "input-otp/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Customers sign up on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control (set by the brand)",
+     "not": "a hard-coded radius",
+     "why": "Each brand sets its own corner through the theme."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "slot.size",
+     "value": "2.75rem",
+     "byScheme": true,
+     "pick": "size.44",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "slot.radius",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "radius.4: Rounded by default; each brand sets its own corner.",
+     "shares": []
+    }
+   ]
+  },
+  "input-otp/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA in every brand and mode."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring (from the brand)",
+     "not": "removing the outline",
+     "why": "Focus follows the brand but always shows."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "slot.focus-ring.highlight",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "slot.focus-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "slot.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  },
+  "input-otp/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Moderate",
+     "why": "Moderate speed across brands."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring (from the brand)",
+     "not": "removing the outline",
+     "why": "Focus follows the brand but always shows."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "caret.height",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "caret.width",
+     "value": "1px",
+     "byScheme": true,
+     "pick": "border-width.1",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "caret.background",
+     "value": "#0F172A",
+     "darkValue": "#F8FAFC",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "motion.duration.feedback",
+     "key": "caret.duration",
+     "value": "200ms",
+     "byScheme": true,
+     "pick": "duration.moderate",
+     "shares": []
+    }
+   ]
+  },
+  "input-otp/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "brand-specific spacing",
+     "why": "Spacing is shared across brands."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "separator.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "gap",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    }
+   ]
+  },
+  "input-otp/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Brand colors vary, so meaning needs a word."
+    },
+    {
+     "kind": "rule",
+     "situation": "an error message",
+     "use": "color.status.danger and a sentence",
+     "not": "the brand color",
+     "why": "Status colors are shared, never branded."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "slot.border-invalid",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "slot.focus-ring-invalid",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    }
+   ]
+  },
+  "input-otp/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.disabled.surface",
+     "key": "slot.disabled.background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "The fill of a control that cannot be used right now.",
+     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.disabled.border",
+     "key": "slot.disabled.border",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "The edge of a control that cannot be used right now.",
+     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "surface.pressed",
+      "border.default"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.disabled.text",
+     "key": "slot.disabled.text",
+     "value": "#64748B",
+     "darkValue": "#CBD5E1",
+     "byScheme": true,
+     "rule": "Text and icons of a control that cannot be used right now.",
+     "pick": "neutral.500: 4.76:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "darkPick": "neutral.500: 12.02:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "shares": [
+      "border.strong"
+     ]
+    }
+   ]
+  }
+ }
+}

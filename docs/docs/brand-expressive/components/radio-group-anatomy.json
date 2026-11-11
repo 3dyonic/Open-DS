@@ -1,0 +1,350 @@
+{
+ "anatomy-legend": {
+  "radio-group": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Group",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Option",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 2,
+       "label": "Circle",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Dot",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Focus ring",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Focus"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Invalid option",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Disabled option",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "label": "Option label",
+       "need": "required",
+       "note": "shown by Label",
+       "byScheme": false,
+       "roles": [
+        "Readability",
+        "Reach"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "radio-group/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Air keeps big type readable."
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "gap",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  },
+  "radio-group/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Visitors come from social posts on phones."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Most visitors arrive on phones, and a compact control is too small for a thumb."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "item.icon-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.round",
+     "key": "item.radius",
+     "value": "50%",
+     "byScheme": false,
+     "pick": "radius.round",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.strong",
+     "key": "item.border",
+     "value": "#8A6F63",
+     "darkValue": "#B5988A",
+     "byScheme": true,
+     "rule": "The edge of a control people must find.",
+     "pick": "neutral.500: the edge of a control people must find, 4.63:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.400: the edge of a control people must find, 6.71:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "item.border-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  },
+  "radio-group/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Color and word."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "icon",
+     "value": "#D61F7A",
+     "darkValue": "#F59ACA",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.",
+     "darkPick": "pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    }
+   ]
+  },
+  "radio-group/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA, checked on every vivid color."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Focus must show on vivid color."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "item.focus-ring-focus",
+     "value": "#D61F7A",
+     "darkValue": "#F59ACA",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "item.focus",
+     "value": "3px",
+     "byScheme": true,
+     "pick": "border-width.3",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "item.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "item.focus-ring-offset-focus",
+     "value": "#FFF8F3",
+     "darkValue": "#120B09",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    }
+   ]
+  },
+  "radio-group/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Color and word."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "rule",
+     "situation": "an error message",
+     "use": "color.status.danger and a short sentence",
+     "not": "the brand magenta",
+     "why": "Errors must not look like the brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "item.border-invalid",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.58:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger.subtle",
+     "key": "item.focus-ring-invalid",
+     "value": "#FFDBD8",
+     "darkValue": "#481316",
+     "byScheme": true,
+     "rule": "The fill behind danger status.",
+     "pick": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+     "darkPick": "red.dark.100: a quiet tint behind danger; its text, 11.86:1, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "radio-group/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "item.disabled-opacity-disabled",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

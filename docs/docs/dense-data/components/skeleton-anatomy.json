@@ -1,0 +1,125 @@
+{
+ "anatomy-legend": {
+  "skeleton": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Placeholder",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Feedback"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Pulse",
+     "need": "state",
+     "noToken": true,
+     "byScheme": false,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "skeleton/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "Which shape roles does it need?",
+     "answer": "Controls, badges and containers",
+     "why": "Badges sit in columns and need their own corner."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control",
+     "not": "radius.round",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.element",
+     "key": "radius",
+     "value": "0.125rem",
+     "byScheme": true,
+     "pick": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
+     "shares": []
+    }
+   ]
+  },
+  "skeleton/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "How saturated is the palette?",
+     "answer": "Muted",
+     "why": "Muted color keeps attention on the data."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "background",
+     "value": "#EEF1F5",
+     "darkValue": "#262D38",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "surface.pressed",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "skeleton/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Fast",
+     "why": "Fast feedback keeps up with experts."
+    },
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "Where does motion show?",
+     "answer": "State changes only",
+     "why": "Only state changes move."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "No motion",
+     "not": "a shorter version of the motion",
+     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,422 @@
+{
+ "anatomy-legend": {
+  "dropdown-menu": {
+   "parts": [
+    {
+     "label": "Menu",
+     "need": "required",
+     "byScheme": false,
+     "roles": [],
+     "children": [
+      {
+       "n": 1,
+       "label": "Surface",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Layering"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Shadow",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Item",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability",
+      "Reach",
+      "Affordance"
+     ],
+     "children": [
+      {
+       "n": 3,
+       "label": "Item label",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability",
+        "Hierarchy"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Item icon",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Shortcut",
+       "need": "optional",
+       "noToken": true,
+       "byScheme": false,
+       "roles": [
+        "Hierarchy"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Submenu chevron",
+       "need": "optional",
+       "noToken": true,
+       "byScheme": false,
+       "roles": [
+        "Affordance"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Highlight fill",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "n": 8,
+       "label": "Focus ring",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Focus"
+       ]
+      },
+      {
+       "n": 9,
+       "label": "Disabled item",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "n": 10,
+       "label": "Destructive item",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Emphasis"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "label": "Separator",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Group label",
+     "need": "optional",
+     "note": "not in this example",
+     "byScheme": false,
+     "roles": [
+      "Hierarchy",
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "dropdown-menu/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Cards too",
+     "why": "Cards lift to feel like objects."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Pronounced",
+     "why": "Pronounced shadows add depth."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "overlay.background",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1411",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "overlay.shadow",
+     "value": "0px 24px 48px, #1F141133",
+     "darkValue": "0px 24px 48px, #00000099",
+     "byScheme": true,
+     "pick": "shadow.overlay: Pronounced shadows add depth.",
+     "darkPick": "shadow.overlay-dark: Pronounced shadows add depth.",
+     "shares": []
+    }
+   ]
+  },
+  "dropdown-menu/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body; the display does the shouting."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Visitors come from social posts on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Most visitors arrive on phones, and a compact control is too small for a thumb."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "item.font-size",
+     "value": "1.0625rem",
+     "byScheme": true,
+     "pick": "font.size.17",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.cell-x",
+     "key": "item.padding-x",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "overlay.item-height",
+     "value": "3.25rem",
+     "byScheme": true,
+     "pick": "size.52",
+     "shares": []
+    }
+   ]
+  },
+  "dropdown-menu/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Fast",
+     "why": "Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (fast)",
+     "not": "an instant change",
+     "why": "Fast feedback, on the brand's spring. An instant change drops the brand's motion."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "item.background.highlight",
+     "value": "#FCEFE6",
+     "darkValue": "#33241F",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "dropdown-menu/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA, checked on every vivid color."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Focus must show on vivid color."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "value": "#D61F7A",
+     "darkValue": "#F59ACA",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "value": "3px",
+     "byScheme": true,
+     "pick": "border-width.3",
+     "shares": []
+    }
+   ]
+  },
+  "dropdown-menu/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "item.disabled",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  },
+  "dropdown-menu/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Color and word."
+    },
+    {
+     "kind": "rule",
+     "situation": "delete or remove",
+     "use": "Button secondary, then confirm with Button danger",
+     "not": "button primary",
+     "why": "Confirm before destroying data."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "item.label.destructive",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.58:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    }
+   ]
+  },
+  "dropdown-menu/card-7": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Cards",
+     "why": "Cards hold each offer."
+    },
+    {
+     "kind": "rule",
+     "situation": "between page sections",
+     "use": "space.gap.section and a color block",
+     "not": "a thin line",
+     "why": "Big space and color make each section a moment."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "separator.background",
+     "value": "#F2DCCF",
+     "darkValue": "#4D3A33",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    }
+   ]
+  }
+ }
+}

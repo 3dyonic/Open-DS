@@ -1,0 +1,67 @@
+{
+ "anatomy-legend": {
+  "separator": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Line",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "separator/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Lines",
+     "why": "Thin lines guide the eye along rows."
+    },
+    {
+     "kind": "rule",
+     "situation": "between page sections",
+     "use": "space.gap.section and a hairline",
+     "not": "a card around every section",
+     "why": "Lines separate without taking room from the data."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.tight",
+     "not": "space.gap.group",
+     "why": "Things that belong together sit close."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "thickness",
+     "value": "1px",
+     "byScheme": true,
+     "pick": "border-width.1",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "background",
+     "value": "#DDE2EA",
+     "darkValue": "#3D4655",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "disabled.border"
+     ]
+    }
+   ]
+  }
+ }
+}

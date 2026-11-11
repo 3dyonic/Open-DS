@@ -1,0 +1,110 @@
+{
+ "token-groups": {
+  "accessibility": {
+   "groups": [
+    {
+     "title": "size.control.default",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-default)"
+     },
+     "api": [
+      {
+       "token": "size.control.default",
+       "value": "52px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The smallest clickable thing",
+       "detail": "size.control.default (large)",
+       "why": "Large targets help people with motor needs."
+      },
+      {
+       "kind": "use",
+       "situation": "Most buttons and inputs",
+       "why": "Large controls help people with tremor and low vision."
+      }
+     ]
+    },
+    {
+     "title": "size.control.compact",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-compact)"
+     },
+     "api": [
+      {
+       "token": "size.control.compact",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A button inside a field",
+       "why": "It still meets the large target size and fits inside the field."
+      }
+     ]
+    },
+    {
+     "title": "size.control.large",
+     "sample": {
+      "kind": "target",
+      "value": "var(--size-control-large)"
+     },
+     "api": [
+      {
+       "token": "size.control.large",
+       "value": "52px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The main action on a screen",
+       "why": "It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable."
+      }
+     ]
+    },
+    {
+     "title": "opacity.disabled",
+     "sample": {
+      "kind": "opacity",
+      "value": "var(--opacity-disabled)"
+     },
+     "api": [
+      {
+       "token": "opacity.disabled",
+       "value": "0.5"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A control that is not available yet",
+       "why": "It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step."
+      }
+     ]
+    },
+    {
+     "title": "color.border.focus",
+     "sample": {
+      "kind": "color",
+      "value": "var(--color-border-focus)"
+     },
+     "api": [
+      {
+       "token": "color.border.focus",
+       "primitive": "color.blue.light.600",
+       "value": "#0B4FC0",
+       "dark": "#8AB4F8"
+      }
+     ],
+     "rules": []
+    }
+   ]
+  }
+ }
+}

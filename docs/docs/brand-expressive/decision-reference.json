@@ -1,0 +1,4789 @@
+{
+ "steps": {
+  "flow": {
+   "steps": [
+    "Question",
+    "Answer",
+    "Why, and what it came from",
+    "Design values",
+    "In the UI"
+   ]
+  }
+ },
+ "decision-tree": {
+  "start": {
+   "roots": [
+    {
+     "answer": "Sells and converts",
+     "question": "What does the product do for the business?",
+     "children": [
+      {
+       "answer": "Customers who choose us",
+       "question": "Who uses it most?",
+       "children": [
+        {
+         "answer": "AA",
+         "question": "What accessibility level do we commit to?"
+        },
+        {
+         "answer": "They see it fresh each time",
+         "question": "How do people recall the interface?"
+        },
+        {
+         "answer": "On the move",
+         "question": "Where do people use it?",
+         "children": [
+          {
+           "answer": "Touch size",
+           "scope": {
+            "title": "accessibility",
+            "href": "foundations/accessibility",
+            "token": "size.control.default",
+            "primitive": "size.52",
+            "value": "3.25rem"
+           }
+          }
+         ]
+        },
+        {
+         "answer": "Light and dark",
+         "scope": {
+          "title": "theming",
+          "href": "foundations/theming"
+         }
+        }
+       ]
+      },
+      {
+       "answer": "Images and campaigns",
+       "question": "What is the main content?",
+       "children": [
+        {
+         "answer": "One idea at a time",
+         "question": "How much is on one screen?",
+         "children": [
+          {
+           "answer": "Regular",
+           "scope": {
+            "title": "typography",
+            "href": "foundations/typography",
+            "token": "type.body.font-size",
+            "primitive": "font.size.17",
+            "value": "1.0625rem"
+           }
+          },
+          {
+           "answer": "Spacious",
+           "scope": {
+            "title": "spacing",
+            "href": "foundations/spacing",
+            "token": "space.gap.tight",
+            "primitive": "space.8",
+            "value": "0.5rem"
+           }
+          }
+         ]
+        },
+        {
+         "answer": "Browse and explore",
+         "question": "What is the main task?"
+        }
+       ]
+      },
+      {
+       "answer": "Rarely",
+       "question": "How often do people repeat actions?"
+      },
+      {
+       "answer": "Delight",
+       "question": "What must the interface protect?",
+       "children": [
+        {
+         "answer": "Fast",
+         "scope": {
+          "title": "motion",
+          "href": "foundations/motion",
+          "token": "motion.duration.feedback",
+          "primitive": "duration.fast",
+          "value": "120ms"
+         }
+        }
+       ]
+      },
+      {
+       "answer": "Engagement",
+       "question": "Which outcome matters most?",
+       "children": [
+        {
+         "answer": "A few minutes",
+         "question": "How long is one visit?"
+        }
+       ]
+      },
+      {
+       "answer": "Looking off-brand",
+       "question": "What is a costly mistake?"
+      },
+      {
+       "answer": "Bold",
+       "question": "What should the brand feel like?",
+       "children": [
+        {
+         "answer": "Loud",
+         "question": "How visible is the brand in the interface?",
+         "children": [
+          {
+           "answer": "Vivid",
+           "scope": {
+            "title": "color",
+            "href": "foundations/color",
+            "token": "color.neutral.0",
+            "primitive": "color.taupe.dark.0",
+            "value": "#120B09"
+           }
+          },
+          {
+           "answer": "Pronounced",
+           "scope": {
+            "title": "elevation",
+            "href": "foundations/elevation",
+            "token": "elevation.card",
+            "primitive": "shadow.card-dark",
+            "value": "0px 12px 32px 0px #00000080"
+           }
+          }
+         ]
+        },
+        {
+         "answer": "A display face for brand moments, with a sans for text",
+         "question": "Which typefaces carry the product, and why?",
+         "also": [
+          "Loud",
+          "Images and campaigns"
+         ]
+        },
+        {
+         "answer": "Pill",
+         "scope": {
+          "title": "shape",
+          "href": "foundations/shape",
+          "token": "radius.option",
+          "primitive": "radius.20",
+          "value": "1.25rem"
+         }
+        },
+        {
+         "answer": "Playful",
+         "scope": {
+          "title": "voice and tone",
+          "href": "foundations/voice"
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "answer": "One",
+     "question": "How many brands or products share the system?"
+    },
+    {
+     "answer": "An agency",
+     "question": "Who maintains the system?",
+     "children": [
+      {
+       "answer": "Every campaign",
+       "question": "How fast does it change?",
+       "children": [
+        {
+         "answer": "Also for emphasis and size",
+         "scope": {
+          "title": "components",
+          "href": "foundations/components"
+         }
+        }
+       ]
+      },
+      {
+       "answer": "Lowercase words in paths",
+       "scope": {
+        "title": "naming",
+        "href": "foundations/naming"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "decision-answer": {
+  "business-q1": {
+   "answer": "Sells and converts",
+   "why": "A launch site that must win attention and sign-ups.",
+   "because": [],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Who uses it most? → Customers who choose us"
+       },
+       {
+        "text": "What is the main content? → Images and campaigns"
+       },
+       {
+        "text": "How often do people repeat actions? → Rarely"
+       },
+       {
+        "text": "What must the interface protect? → Delight"
+       },
+       {
+        "text": "Which outcome matters most? → Engagement"
+       },
+       {
+        "text": "What is a costly mistake? → Looking off-brand"
+       },
+       {
+        "text": "What should the brand feel like? → Bold"
+       },
+       {
+        "text": "Voice and tone · Which kinds of copy does it need? → Labels, messages and headlines",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.title. It is for every hero and section opener. Each section is one big idea. The biggest line sells it in the brand's loudest voice.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use motion.duration.hero. Don't use motion.duration.panels. Hero and launch moments move slowest, so every visitor sees the launch.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use size.control.default. The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "business-q2": {
+   "answer": "One",
+   "why": "One brand, loudly.",
+   "because": [],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Shape · How are corners set? → Fixed for the product",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Theming · What can a theme change? → Mode only",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       },
+       {
+        "text": "Theming · How are brands handled? → One brand",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "people-q1": {
+   "answer": "Customers who choose us",
+   "why": "New customers deciding if they care.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "What accessibility level do we commit to? → AA"
+       },
+       {
+        "text": "How do people recall the interface? → They see it fresh each time"
+       },
+       {
+        "text": "Where do people use it? → On the move"
+       },
+       {
+        "text": "Theming · Which modes ship? → Light and dark",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "people-q2": {
+   "answer": "AA",
+   "why": "AA, even when loud.",
+   "because": [
+    "Who uses it most? → Customers who choose us"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Accessibility · How many signals carry each meaning? → Two: color and word",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "Accessibility · What contrast floor do we hold? → AA",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a field label or column header, use type.label. Don't use type.caption. Labels stay readable on vivid color.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a link, use color.text.link, underlined. Don't use color only. Underline keeps links clear on vivid color.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline. Focus must show on vivid color.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the ring visible on vivid fills.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's focus state. Always shows, even on vivid color.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's disabled state. Only with a visible reason next to it.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "content-q1": {
+   "answer": "Images and campaigns",
+   "why": "Images, campaigns and short punchy copy.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "How much is on one screen? → One idea at a time"
+       },
+       {
+        "text": "What is the main task? → Browse and explore"
+       },
+       {
+        "text": "Which typefaces carry the product, and why? → A display face for brand moments, with a sans for text"
+       },
+       {
+        "text": "Spacing · Which spacing roles does it need? → Gaps and insets",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Spacing · Where does spacing matter most? → Between big sections",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Elevation · What separates groups on the page? → Cards",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Components · Which component families does it need? → Core, plus media",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       },
+       {
+        "text": "Components · Where do components do the most work? → Campaign sections",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a number in a table, use type.body. Don't use a mono font. Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.body. Fine print stays small, so the headlines keep the attention that wins sign-ups.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a text in a table cell, use type.data. Don't use a mono font. It equals body here. Tables are rare and short. Cells keep the brand's text face, so they sound like the rest of the page.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a parts of one item, use space.gap.tight. Don't use space.gap.default. An icon and its word sit close, so a call to action reads as one bold unit.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Air between items keeps big type readable.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a table cell, use space.inset.cell-x. Don't use narrow cell padding. Tables are rare, so cells keep the page's airy rhythm.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.control. A pill corner breaks when a text area grows to many lines. The element corner stays round at any height.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Badge's info tone isn't used. Campaign labels are a state or a nudge; there are no plain news labels.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Empty's default variant. A campaign image or illustration beside the playful words and a clear next step.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       },
+       {
+        "text": "Input group's block-start align isn't used. Copy is short and sign-up is the one action, so fields stay one line.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Input group's block-end align isn't used. Copy is short and sign-up is the one action, so fields stay one line.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "content-q2": {
+   "answer": "One idea at a time",
+   "why": "One big idea per section.",
+   "because": [
+    "What is the main content? → Images and campaigns"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Typography · How large is body text? → Regular",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Spacing · How many densities exist? → One",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Spacing · How dense is the layout? → Spacious",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.title. It is for every hero and section opener. Each section is one big idea. The biggest line sells it in the brand's loudest voice.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. Big gaps give each group its own moment inside a section.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "tasks-q1": {
+   "answer": "Browse and explore",
+   "why": "People browse and explore the story.",
+   "because": [
+    "What is the main content? → Images and campaigns"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Components · Where do components do the most work? → Campaign sections",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "tasks-q2": {
+   "answer": "Rarely",
+   "why": "One action: sign up.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Color · How many emphasis levels do actions need? → Three",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Components · How far does the inventory reach? → Only what today's screens use",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. The sign-up form is the one action. A smaller title keeps the form in view on a phone.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use size.control.default. The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Alert's default variant isn't used. Alerts here only report a sign-up that did not go through; confirmations go in a toast.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Input group's block-start align isn't used. Copy is short and sign-up is the one action, so fields stay one line.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Input group's block-end align isn't used. Copy is short and sign-up is the one action, so fields stay one line.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Toggle's lg size isn't used. Large is for the one call to action per section, and a toggle is not that action.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "human-q1": {
+   "answer": "Delight",
+   "why": "Delight is the point.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Motion · How fast does feedback feel? → Fast",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Air between items keeps big type readable.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. Big gaps give each group its own moment inside a section.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the card edge. Generous padding lets each card hold its moment.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. Round options nest inside the round menu, so a menu feels as playful as the buttons.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use small corners. Big round corners make cards feel like friendly objects.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a flat fade. Panels open on the brand's spring, so people feel the brand in every menu.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a plain ease-out. The overshoot makes each move feel alive and playful.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use motion.duration.hero. Don't use motion.duration.panels. Hero and launch moments move slowest, so every visitor sees the launch.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Empty's default variant. A campaign image or illustration beside the playful words and a clear next step.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "human-q2": {
+   "answer": "They see it fresh each time",
+   "why": "Every visit should feel fresh.",
+   "because": [
+    "Who uses it most? → Customers who choose us"
+   ],
+   "decided": {
+    "groups": []
+   }
+  },
+  "outcomes-q1": {
+   "answer": "Engagement",
+   "why": "Engagement and sign-ups.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "How long is one visit? → A few minutes"
+       },
+       {
+        "text": "Color · Where does color carry meaning first? → Brand moments",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Motion · Where does motion show? → Hero and launch moments",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "Iconography · Where do icons work hardest? → Buttons and calls to action",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "Voice and tone · Where do the words matter most? → Headlines and buttons",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Components · How does a component earn its place? → It gives the brand a moment",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the action that completes the task, use button primary, large, one per section. Don't use two primaries. One loud call to action per section.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a success message, use celebrate, briefly. Don't use a long thank-you. A short celebration is remembered.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.body. Fine print stays small, so the headlines keep the attention that wins sign-ups.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a control that is not available yet, use opacity.disabled. Don't use hiding the button. A faded button keeps the layout. The vivid color returns when the visitor can sign up.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's primary variant. One loud call to action per section.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's large size. The one loud call to action per section.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Badge's warning tone. Almost gone: few left, act soon.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Toast's success tone. Celebrate, briefly: You're on the list. See you at launch.",
+        "link": {
+         "label": "Toast",
+         "href": "components/toast"
+        }
+       },
+       {
+        "text": "Toggle's lg size isn't used. Large is for the one call to action per section, and a toggle is not that action.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "outcomes-q2": {
+   "answer": "Looking off-brand",
+   "why": "A bland page is the costly mistake.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Voice and tone · How many tones does it use? → One per moment",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an error message, use color.status.danger and a short sentence. Don't use the brand magenta. Errors must not look like the brand.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a delete or remove, use button secondary, then confirm with Button danger. Don't use button primary. Confirm before destroying data.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's secondary variant. The first step of a delete, before the confirm.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's danger variant. The confirm of a delete. It stays red, apart from the brand's pink.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Alert's destructive variant. A sign-up that did not go through: plain first, then how to recover, with a word beside the color.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Item's muted variant isn't used. A quiet fill reads as bland on a loud page; color blocks already mark each section.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "brand-q1": {
+   "answer": "Bold",
+   "why": "Bold and confident.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "How visible is the brand in the interface? → Loud"
+       },
+       {
+        "text": "Which typefaces carry the product, and why? → A display face for brand moments, with a sans for text"
+       },
+       {
+        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Shape · Which shape roles does it need? → Controls and containers",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Shape · What should control corners say? → Pill",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Motion · How is easing defined? → A spring",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "Voice and tone · How does it sound? → Playful",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Components · How does a component earn its place? → It gives the brand a moment",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding makes pill buttons bold and easy to hit with a thumb.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the card edge. Generous padding lets each card hold its moment.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. Round options nest inside the round menu, so a menu feels as playful as the buttons.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.control. A pill corner breaks when a text area grows to many lines. The element corner stays round at any height.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use small corners. Big round corners make cards feel like friendly objects.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a hairline. A bold edge matches the bold type and vivid color.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a plain ease-out. The overshoot makes each move feel alive and playful.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a thin icon at text size. Larger icons hold their own next to big type. The thicker line carries the brand's warmth.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "brand-q2": {
+   "answer": "Loud",
+   "why": "The brand is loud everywhere.",
+   "because": [
+    "What should the brand feel like? → Bold"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Which typefaces carry the product, and why? → A display face for brand moments, with a sans for text"
+       },
+       {
+        "text": "Typography · Which text roles does it need? → Core and expressive display",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Typography · How many steps does the type scale take? → Fine steps, so pages can set their own rhythm",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Typography · Where does type do the most work? → Headlines and hero",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Color · Which color roles does it need? → Those and brand accents",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Color · How saturated is the palette? → Vivid",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Spacing · How are spacing steps defined? → Big, even steps",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Shape · Where does shape show most? → Buttons and badges",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Elevation · What rises above the page? → Cards too",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Elevation · How soft are shadows? → Pronounced",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Motion · What is motion for? → Feedback and expression",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "Iconography · What do icons do? → Those and decoration",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "Voice and tone · How does it sound? → Playful",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Components · Which component families does it need? → Core, plus media",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       },
+       {
+        "text": "Components · When does a component get another look? → Also for emphasis and size",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a page title, use type.display. Don't use type.title. The display role carries the brand in every hero.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.title. It is for every hero and section opener. Each section is one big idea. The biggest line sells it in the brand's loudest voice.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Headings carry the brand's display face into cards and dialogs.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a hairline. A bold edge matches the bold type and vivid color.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a flat fade. Panels open on the brand's spring, so people feel the brand in every menu.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a thin icon at text size. Larger icons hold their own next to big type. The thicker line carries the brand's warmth.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Item's muted variant isn't used. A quiet fill reads as bland on a loud page; color blocks already mark each section.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "brand-q3": {
+   "answer": "A display face for brand moments, with a sans for text",
+   "why": "Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+   "weighs": [
+    {
+     "group": "Reading",
+     "items": [
+      {
+       "label": "Readability",
+       "text": "Body text sits in DM Sans, a low-contrast sans that reads easily in short copy."
+      },
+      {
+       "label": "Legibility",
+       "text": "DM Sans keeps simple, open shapes at small sizes; the display face never sets small text."
+      }
+     ]
+    },
+    {
+     "group": "Range",
+     "items": [
+      {
+       "label": "Scalability",
+       "text": "Both are variable: Bricolage Grotesque has optical size, width and weight axes, and DM Sans optical size and weight."
+      },
+      {
+       "label": "Numerals",
+       "text": "Numbers are few and set in DM Sans, in short copy rather than tables."
+      },
+      {
+       "label": "Scripts and languages",
+       "text": "Latin, with accents; other scripts need faces chosen for the same voice."
+      }
+     ]
+    },
+    {
+     "group": "Brand",
+     "items": [
+      {
+       "label": "Recognition",
+       "text": "Bricolage Grotesque's character is the brand's: people know it by its headlines."
+      },
+      {
+       "label": "Familiarity",
+       "text": "DM Sans for text keeps reading familiar while the display face takes the risks."
+      },
+      {
+       "label": "Personality",
+       "text": "Bold and confident, as the brand answer asks."
+      }
+     ]
+    },
+    {
+     "group": "Delivery",
+     "items": [
+      {
+       "label": "Performance",
+       "text": "Two variable families, one file each."
+      },
+      {
+       "label": "Licensing",
+       "text": "SIL Open Font License, both: free to embed in apps and on the web."
+      },
+      {
+       "label": "Fallback and pairing",
+       "text": "Falls back to system-ui, as its tokens say; DM Sans is the display face's text pair."
+      }
+     ]
+    }
+   ],
+   "because": [
+    "What should the brand feel like? → Bold",
+    "How visible is the brand in the interface? → Loud",
+    "What is the main content? → Images and campaigns"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Headings carry the brand's display face into cards and dialogs.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "type.display.font-family: bricolage-grotesque for display text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.title.font-family: bricolage-grotesque for title text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.heading.font-family: bricolage-grotesque for heading text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.body.font-family: dm-sans for body text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.label.font-family: dm-sans for label text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.caption.font-family: dm-sans for caption text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.data.font-family: dm-sans for data text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "scenarios-q1": {
+   "answer": "On the move",
+   "why": "Visitors come from social posts on their phones.",
+   "because": [
+    "Who uses it most? → Customers who choose us"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Accessibility · What is the smallest target? → Touch size",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. The sign-up form is the one action. A smaller title keeps the form in view on a phone.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding makes pill buttons bold and easy to hit with a thumb.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a most buttons and inputs, use size.control.default. Don't use size.control.compact. Most visitors arrive on phones, so every control fits a thumb.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use size.control.default. The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a button inside a field, use size.control.compact. Don't use a small icon button. It still fits a thumb and sits inside the pill field.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Field's vertical orientation. The sign-up form: the label above the field.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       },
+       {
+        "text": "Field's horizontal orientation isn't used. Phones first: there is no room beside the field.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       },
+       {
+        "text": "Field's responsive orientation isn't used. Phones first: one stacked layout.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "scenarios-q2": {
+   "answer": "A few minutes",
+   "why": "A visit lasts a few minutes at most.",
+   "because": [
+    "Which outcome matters most? → Engagement"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a first visit, use one bold line and one button. Don't use a paragraph of copy. Visitors from a social post give a few seconds.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "team-q1": {
+   "answer": "An agency",
+   "why": "An agency runs campaigns.",
+   "because": [],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "How fast does it change? → Every campaign"
+       },
+       {
+        "text": "Naming · How are names written? → Lowercase words in paths",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Voice and tone · How is the voice defined? → Principles and examples",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Components · How far does the inventory reach? → Only what today's screens use",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "team-q2": {
+   "answer": "Every campaign",
+   "why": "Every campaign changes the look a little.",
+   "because": [
+    "Who maintains the system? → An agency"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Naming · What gets a name? → Tokens and component keys",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Naming · How many token tiers? → Three",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Naming · How are decisions named? → By role",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Naming · What do components read? → Component keys",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Components · When does a component get another look? → Also for emphasis and size",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "When no component in the inventory fits, use a section built from the inventory with campaign tokens. Don't use a new component for one campaign. Campaigns change the look through tokens; new parts every drop are hard to keep working.",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "typography-roles": {
+   "answer": "Core and expressive display",
+   "why": "A big expressive display role carries the brand.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Typography · How are sizes and line heights defined? → A ratio, line heights in proportion",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Iconography · How big are icons next to text? → Larger than the text",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a page title, use type.display. Don't use type.title. The display role carries the brand in every hero.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "typography-count": {
+   "answer": "Fine steps, so pages can set their own rhythm",
+   "why": "Fine steps give big moments room.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "typography-definition": {
+   "answer": "A ratio, line heights in proportion",
+   "why": "Ratios suit the big display sizes.",
+   "because": [
+    "Typography · Which text roles does it need? → Core and expressive display"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "typography-values": {
+   "answer": "Regular",
+   "why": "Regular body; the display does the shouting.",
+   "because": [
+    "How much is on one screen? → One idea at a time"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "typography-lands": {
+   "answer": "Headlines and hero",
+   "why": "Type does its work in headlines.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "color-roles": {
+   "answer": "Those and brand accents",
+   "why": "Brand accents are part of the message.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Color",
+     "href": "foundations/color"
+    }
+   }
+  },
+  "color-count": {
+   "answer": "Three",
+   "why": "Primary, secondary, ghost.",
+   "because": [
+    "How often do people repeat actions? → Rarely"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an alternative or cancel, use button ghost. Don't use a second primary. The alternative must not compete.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's ghost variant. The alternative next to the primary, and row actions with a word.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.action.primary in light: pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in light: neutral.0: the secondary action's fill; its label reads, 18.0:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in light: red.light.600: the danger action's fill; its label reads, 5.63:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in light: pink.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 4.84:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1.subtle in light: pink.light.100: a tag's tint; text on it reads, 15.67:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in light: blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.11:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2.subtle in light: blue.light.100: a tag's tint; text on it reads, 13.98:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in light: green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3.subtle in light: green.light.100: a tag's tint; text on it reads, 15.76:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in light: amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4.subtle in light: amber.light.100: a tag's tint; text on it reads, 15.14:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in light: neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 4.63:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5.subtle in light: neutral.100: a tag's tint; text on it reads, 15.97:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in dark: pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in dark: neutral.50: the secondary action's fill; its label reads, 17.12:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in dark: red.dark.600: the danger action's fill; its label reads, 7.58:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in dark: pink.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.88:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1.subtle in dark: pink.dark.100: a tag's tint; text on it reads, 14.07:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in dark: blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.54:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2.subtle in dark: blue.dark.100: a tag's tint; text on it reads, 13.94:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in dark: green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.14:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3.subtle in dark: green.dark.100: a tag's tint; text on it reads, 13.74:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in dark: amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.06:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4.subtle in dark: amber.dark.100: a tag's tint; text on it reads, 13.53:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in dark: neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 13.64:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5.subtle in dark: neutral.100: a tag's tint; text on it reads, 14.14:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "color-definition": {
+   "answer": "Neutrals and one brand ramp",
+   "why": "Warm neutrals and one vivid ramp.",
+   "because": [
+    "What should the brand feel like? → Bold"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.neutral.0 in light: taupe.light.0: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.50 in light: taupe.light.50: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.100 in light: taupe.light.100: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.200 in light: taupe.light.200: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.300 in light: taupe.light.300: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.400 in light: taupe.light.400: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.500 in light: taupe.light.500: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.600 in light: taupe.light.600: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.700 in light: taupe.light.700: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.800 in light: taupe.light.800: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.900 in light: taupe.light.900: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.950 in light: taupe.light.950: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.canvas in light: neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in light: neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.highlight in light: neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in light: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in light: pink.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in light: pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.0 in dark: taupe.dark.0: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.50 in dark: taupe.dark.50: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.100 in dark: taupe.dark.100: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.200 in dark: taupe.dark.200: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.300 in dark: taupe.dark.300: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.400 in dark: taupe.dark.400: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.500 in dark: taupe.dark.500: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.600 in dark: taupe.dark.600: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.700 in dark: taupe.dark.700: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.800 in dark: taupe.dark.800: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.900 in dark: taupe.dark.900: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.950 in dark: taupe.dark.950: the scheme's neutral is taupe. Warm neutrals and one vivid ramp.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.canvas in dark: neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in dark: neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.highlight in dark: neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in dark: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in dark: pink.dark.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in dark: pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "color-values": {
+   "answer": "Vivid",
+   "why": "Vivid color is the brand.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Iconography · What icon style and stroke? → Contained",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "Accessibility · Where are the floors hardest to hold? → Brand color",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a selected row or item, use color.surface.selected (brand tint). Don't use grey. Selection carries the brand.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the ring visible on vivid fills.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Item's outline variant. Rows on a color block, with a border so each holds its edge on vivid color.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Toggle's default variant isn't used. Sections lead with media and color blocks, not toolbars; a toggle with no border is lost on vivid color.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       },
+       {
+        "text": "Toggle's outline variant. A pill with a border, so the toggle reads as a control on vivid color.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "color-lands": {
+   "answer": "Brand moments",
+   "why": "Color makes the launch moment.",
+   "because": [
+    "Which outcome matters most? → Engagement"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.status.info in light: blue.light.600: info reads as text and icons, 10.11:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in light: blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in light: green.light.600: success reads as text and icons, 5.38:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in light: green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in light: amber.light.600: warning reads as text and icons, 6.16:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in light: amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in light: red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in light: red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in light: pink.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 4.84:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in light: blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.11:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in light: green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in light: amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in light: neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 4.63:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info in dark: blue.dark.600: info reads as text and icons, 8.54:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in dark: blue.dark.100: a quiet tint behind info; its text, 11.38:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in dark: green.dark.600: success reads as text and icons, 8.14:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in dark: green.dark.100: a quiet tint behind success; its text, 12.64:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in dark: amber.dark.600: warning reads as text and icons, 10.06:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in dark: amber.dark.100: a quiet tint behind warning; its text, 11.96:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in dark: red.dark.600: danger reads as text and icons, 7.58:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in dark: red.dark.100: a quiet tint behind danger; its text, 11.86:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in dark: pink.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.88:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in dark: blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.54:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in dark: green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.14:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in dark: amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.06:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in dark: neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 13.64:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "spacing-roles": {
+   "answer": "Gaps and insets",
+   "why": "Few tables; no row role needed.",
+   "because": [
+    "What is the main content? → Images and campaigns"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Spacing",
+     "href": "foundations/spacing"
+    }
+   }
+  },
+  "spacing-count": {
+   "answer": "One",
+   "why": "One generous density.",
+   "because": [
+    "How much is on one screen? → One idea at a time"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Spacing",
+     "href": "foundations/spacing"
+    }
+   }
+  },
+  "spacing-definition": {
+   "answer": "Big, even steps",
+   "why": "Big, even steps make big moments.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Spacing",
+     "href": "foundations/spacing"
+    }
+   }
+  },
+  "spacing-values": {
+   "answer": "Spacious",
+   "why": "Big space makes big moments.",
+   "because": [
+    "How much is on one screen? → One idea at a time"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Air keeps big type readable.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a table row height, use size.row (comfortable). Don't use a compact row. Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.option: radius.20: the panel's 24px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "spacing-lands": {
+   "answer": "Between big sections",
+   "why": "Space works between big sections.",
+   "because": [
+    "What is the main content? → Images and campaigns"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Spacing",
+     "href": "foundations/spacing"
+    }
+   }
+  },
+  "shape-roles": {
+   "answer": "Controls and containers",
+   "why": "Pills everywhere; badges share the control corner.",
+   "because": [
+    "What should the brand feel like? → Bold"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Shape · How many corner sizes exist? → Two",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the shape of a status badge, use radius.badge (pill). Don't use a rectangle. Pills match the controls.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.pill: Pill controls feel playful.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.badge: radius.pill: Pill controls feel playful.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.option: radius.20: the panel's 24px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.24: Pill controls feel playful.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shape-count": {
+   "answer": "Two",
+   "why": "Pill controls and large container corners.",
+   "because": [
+    "Shape · Which shape roles does it need? → Controls and containers"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
+   }
+  },
+  "shape-definition": {
+   "answer": "Fixed for the product",
+   "why": "One brand, one set of corners.",
+   "because": [
+    "How many brands or products share the system? → One"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
+   }
+  },
+  "shape-values": {
+   "answer": "Pill",
+   "why": "Pill controls feel playful.",
+   "because": [
+    "What should the brand feel like? → Bold"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the corners of buttons and inputs, use radius.control (pill). Don't use sharp corners. Pills match the brand's round, playful shapes. Sharp corners would feel corporate.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Toggle's outline variant. A pill with a border, so the toggle reads as a control on vivid color.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.pill: Pill controls feel playful.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.badge: radius.pill: Pill controls feel playful.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.24: Pill controls feel playful.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shape-lands": {
+   "answer": "Buttons and badges",
+   "why": "Pill buttons are the signature shape.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
+   }
+  },
+  "elevation-roles": {
+   "answer": "Cards too",
+   "why": "Cards lift to feel like objects.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Elevation · How many shadow levels exist? → Two",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Elevation · Where does elevation show? → Cards, menus and dialogs",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a card on the page, use elevation.card (pronounced). Don't use a flat card. Cards float to feel tactile.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.surface.raised in light: neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.scrim in light: black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "elevation.card in light: shadow.card: Cards lift to feel like objects.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in light: shadow.overlay: Pronounced shadows add depth.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "color.surface.raised in dark: neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.scrim in dark: black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "elevation.card in dark: shadow.card-dark: Cards lift to feel like objects.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: Pronounced shadows add depth.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "elevation-count": {
+   "answer": "Two",
+   "why": "One shadow for cards, one for overlays.",
+   "because": [
+    "Elevation · What rises above the page? → Cards too"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Elevation",
+     "href": "foundations/elevation"
+    }
+   }
+  },
+  "elevation-definition": {
+   "answer": "Cards",
+   "why": "Cards hold each offer.",
+   "because": [
+    "What is the main content? → Images and campaigns"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "Between page sections, use space.gap.section and a color block. Don't use a thin line. Big space and color make each section a moment.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Item's default variant. Rows inside a card, which already gives the frame.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.surface.canvas in light: neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.raised in light: neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in light: neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in light: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.canvas in dark: neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.raised in dark: neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in dark: neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in dark: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "elevation-values": {
+   "answer": "Pronounced",
+   "why": "Pronounced shadows add depth.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a card on the page, use elevation.card (pronounced). Don't use a flat card. Cards float to feel tactile.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow. Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.card in light: shadow.card: Cards lift to feel like objects.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in light: shadow.overlay: Pronounced shadows add depth.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.card in dark: shadow.card-dark: Cards lift to feel like objects.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: Pronounced shadows add depth.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "elevation-lands": {
+   "answer": "Cards, menus and dialogs",
+   "why": "Cards, menus and dialogs rise.",
+   "because": [
+    "Elevation · What rises above the page? → Cards too"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Elevation",
+     "href": "foundations/elevation"
+    }
+   }
+  },
+  "motion-roles": {
+   "answer": "Feedback and expression",
+   "why": "Motion carries personality.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Motion · How many speeds exist? → Three",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For hover and press feedback, use motion.duration.feedback (fast). Don't use an instant change. Fast feedback, on the brand's spring. An instant change drops the brand's motion.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "When someone asks for less motion, use reduced motion. Don't use full motion. Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's hover state. Relaxed, springy feedback: motion is part of the brand.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "motion-count": {
+   "answer": "Three",
+   "why": "Fast feedback, moderate panels, relaxed hero.",
+   "because": [
+    "Motion · What is motion for? → Feedback and expression"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Motion",
+     "href": "foundations/motion"
+    }
+   }
+  },
+  "motion-definition": {
+   "answer": "A spring",
+   "why": "A spring that overshoots feels alive.",
+   "because": [
+    "What should the brand feel like? → Bold"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Motion",
+     "href": "foundations/motion"
+    }
+   }
+  },
+  "motion-values": {
+   "answer": "Fast",
+   "why": "Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring.",
+   "because": [
+    "What must the interface protect? → Delight"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For hover and press feedback, use motion.duration.feedback (fast). Don't use an instant change. Fast feedback, on the brand's spring. An instant change drops the brand's motion.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's hover state. Relaxed, springy feedback: motion is part of the brand.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "motion-lands": {
+   "answer": "Hero and launch moments",
+   "why": "Motion shows in hero and launch moments.",
+   "because": [
+    "Which outcome matters most? → Engagement"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Motion",
+     "href": "foundations/motion"
+    }
+   }
+  },
+  "iconography-roles": {
+   "answer": "Those and decoration",
+   "why": "Icons also decorate campaign pages.",
+   "because": [
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Iconography · How many icon sizes exist? → Two",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an icon with no label, use not used: always add a word. Don't use an icon button with a hover hint. On phones, hover hints never show; a word says what will happen.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "For an action on one row or item, use button ghost with a word. Don't use an icon alone. Visitors come rarely, so they never learn an icon. A word says what will happen.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's ghost variant. The alternative next to the primary, and row actions with a word.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's icon size isn't used. Phones first: hover hints never show, so every button has a word.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Empty's icon variant. A two-tone icon in a tile, for a small region where a picture would push the words away.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       },
+       {
+        "text": "Input group's inline-start align. The search icon before the text.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-count": {
+   "answer": "Two",
+   "why": "One size next to text, one for decoration.",
+   "because": [
+    "Iconography · What do icons do? → Those and decoration"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. 20px, beside the text in buttons and lists.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's large size. 28px, for the icon that leads a feature card.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-definition": {
+   "answer": "Contained",
+   "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth.",
+   "because": [
+    "Color · How saturated is the palette? → Vivid"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Empty's icon variant. A two-tone icon in a tile, for a small region where a picture would push the words away.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       },
+       {
+        "text": "Icon's plain variant. Beside a word in a button or a list.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-tint variant. A feature card or list item that leads with its icon, in a tinted shape.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-solid variant isn't used. The tint carries the brand; a solid shape would compete with the primary action.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-values": {
+   "answer": "Larger than the text",
+   "why": "Larger icons hold their own next to big type.",
+   "because": [
+    "Typography · Which text roles does it need? → Core and expressive display"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. 20px, beside the text in buttons and lists.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-lands": {
+   "answer": "Buttons and calls to action",
+   "why": "Icons sit in calls to action.",
+   "because": [
+    "Which outcome matters most? → Engagement"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Iconography",
+     "href": "foundations/iconography"
+    }
+   }
+  },
+  "theming-roles": {
+   "answer": "Mode only",
+   "why": "One brand, so only the mode changes.",
+   "because": [
+    "How many brands or products share the system? → One"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Theming · What changes when the theme changes? → Colors only",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "theming-count": {
+   "answer": "Two",
+   "why": "Light and dark.",
+   "because": [
+    "Theming · Which modes ship? → Light and dark"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Theming",
+     "href": "foundations/theming"
+    }
+   }
+  },
+  "theming-definition": {
+   "answer": "One brand",
+   "why": "One brand per campaign.",
+   "because": [
+    "How many brands or products share the system? → One"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Theming",
+     "href": "foundations/theming"
+    }
+   }
+  },
+  "theming-values": {
+   "answer": "Light and dark",
+   "why": "Light and dark ship as standard.",
+   "because": [
+    "Who uses it most? → Customers who choose us"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Theming · How many themes ship? → Two",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "When someone switches to dark, use the dark semantic mode. Don't use a separate campaign palette. Dark ships as standard; campaigns change values, not structure.",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "theming-lands": {
+   "answer": "Colors only",
+   "why": "Only colors change.",
+   "because": [
+    "Theming · What can a theme change? → Mode only"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Theming",
+     "href": "foundations/theming"
+    }
+   }
+  },
+  "accessibility-roles": {
+   "answer": "Those and pressed",
+   "why": "Pressed for touch.",
+   "because": [
+    "Accessibility · What is the smallest target? → Touch size"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.surface.highlight in light: neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in light: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in light: pink.light.700: one step from the primary action (pink.light.600), so the pointer shows; its label still reads 7.55:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in light: neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.97:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in light: red.light.700: one step from the danger action (red.light.600), so the pointer shows; its label still reads 8.55:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.text in light: neutral.500: 4.63:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.surface in light: neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.border in light: neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.highlight in dark: neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in dark: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in dark: pink.dark.700: one step from the primary action (pink.dark.600), so the pointer shows; its label still reads 10.82:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in dark: neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.14:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in dark: red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.69:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.text in dark: neutral.500: 10.96:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.surface in dark: neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.border in dark: neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-count": {
+   "answer": "Two: color and word",
+   "why": "Color and word.",
+   "because": [
+    "What accessibility level do we commit to? → AA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an error message, use color.status.danger and a short sentence. Don't use the brand magenta. Errors must not look like the brand.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a status, use badge pill with a word. Don't use color alone. A word keeps meaning on vivid backgrounds.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Badge's neutral tone. New: a label, not a state to fix.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Badge's success tone. On the list: you joined and your place is saved.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Badge's warning tone. Almost gone: few left, act soon.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Alert's destructive variant. A sign-up that did not go through: plain first, then how to recover, with a word beside the color.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.text.info-on-light: blue.light.800: info text on its own tint, 12.97:1 on status.info.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.info-on-dark: blue.light.100: info text on its own tint, 11.38:1 on status.info.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-light: green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-dark: green.light.100: success text on its own tint, 12.64:1 on status.success.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-light: amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-dark: amber.light.100: warning text on its own tint, 11.96:1 on status.warning.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-light: red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-dark: red.light.100: danger text on its own tint, 11.86:1 on status.danger.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in light: pink.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in light: blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in light: green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in light: amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in light: red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in dark: pink.dark.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in dark: blue.dark.100: a quiet tint behind info; its text, 11.38:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in dark: green.dark.100: a quiet tint behind success; its text, 12.64:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in dark: amber.dark.100: a quiet tint behind warning; its text, 11.96:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in dark: red.dark.100: a quiet tint behind danger; its text, 11.86:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-definition": {
+   "answer": "AA",
+   "why": "AA, checked on every vivid color.",
+   "because": [
+    "What accessibility level do we commit to? → AA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.text.on-light: taupe.light.900: the text for every light fill, 18.0:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-dark: taupe.light.0: the text for every dark fill, 4.84:1 on action.primary, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.info-on-light: blue.light.800: info text on its own tint, 12.97:1 on status.info.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.info-on-dark: blue.light.100: info text on its own tint, 11.38:1 on status.info.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-light: green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-dark: green.light.100: success text on its own tint, 12.64:1 on status.success.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-light: amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-dark: amber.light.100: warning text on its own tint, 11.96:1 on status.warning.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-light: red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-dark: red.light.100: danger text on its own tint, 11.86:1 on status.danger.subtle, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.default in light: neutral.0: the base for content; body text reads 18.0:1 on it, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.inverse in light: neutral.900: the reverse of content for short messages; its text reads, 18.0:1 on surface.inverse, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.primary in light: neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.secondary in light: neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.muted in light: neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.inverse in light: text.on-dark: the text its fill's tone picks, 18.0:1 on surface.inverse, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-action in light: text.on-dark: the text its fill's tone picks, 4.84:1 on action.primary, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.link in light: pink.light.700: a link, set apart by its hue, 7.55:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-danger in light: text.on-dark: the text its fill's tone picks, 5.63:1 on action.danger, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in light: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.strong in light: neutral.500: the edge of a control people must find, 4.63:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in light: pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.selected in light: pink.light.600: the edge beside a selected fill, so selection is never color alone, 4.84:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in light: pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in light: pink.light.700: one step from the primary action (pink.light.600), so the pointer shows; its label still reads 7.55:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in light: neutral.0: the secondary action's fill; its label reads, 18.0:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in light: neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.97:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in light: red.light.600: the danger action's fill; its label reads, 5.63:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in light: red.light.700: one step from the danger action (red.light.600), so the pointer shows; its label still reads 8.55:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info in light: blue.light.600: info reads as text and icons, 10.11:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in light: green.light.600: success reads as text and icons, 5.38:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in light: amber.light.600: warning reads as text and icons, 6.16:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in light: red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.default in dark: neutral.50: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.inverse in dark: neutral.900: the reverse of content for short messages; its text reads, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.primary in dark: neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.secondary in dark: neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.muted in dark: neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.inverse in dark: text.on-light: the text its fill's tone picks, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-action in dark: text.on-light: the text its fill's tone picks, 8.88:1 on action.primary, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.link in dark: pink.dark.700: a link, set apart by its hue, 10.82:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-danger in dark: text.on-light: the text its fill's tone picks, 7.58:1 on action.danger, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in dark: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.strong in dark: neutral.400: the edge of a control people must find, 6.71:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in dark: pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.selected in dark: pink.dark.600: the edge beside a selected fill, so selection is never color alone, 8.88:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in dark: pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in dark: pink.dark.700: one step from the primary action (pink.dark.600), so the pointer shows; its label still reads 10.82:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in dark: neutral.50: the secondary action's fill; its label reads, 17.12:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in dark: neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.14:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in dark: red.dark.600: the danger action's fill; its label reads, 7.58:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in dark: red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.69:1, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info in dark: blue.dark.600: info reads as text and icons, 8.54:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in dark: green.dark.600: success reads as text and icons, 8.14:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in dark: amber.dark.600: warning reads as text and icons, 10.06:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in dark: red.dark.600: danger reads as text and icons, 7.58:1 on surface.default, above the 4.5:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-values": {
+   "answer": "Touch size",
+   "why": "Visitors come from social posts on phones.",
+   "because": [
+    "Where do people use it? → On the move"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Accessibility · Which states get their own visible value? → Those and pressed",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an icon with no label, use not used: always add a word. Don't use an icon button with a hover hint. On phones, hover hints never show; a word says what will happen.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "For the smallest clickable thing, use size.control.default (touch). Don't use a compact control. Most visitors arrive on phones, and a compact control is too small for a thumb.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's default size. Every button, at touch size: phones first.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's compact size isn't used. Phones first: no compact controls.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's icon size isn't used. Phones first: hover hints never show, so every button has a word.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Field's horizontal orientation isn't used. Phones first: there is no room beside the field.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       },
+       {
+        "text": "Input group's inline-end align. The unit after the value, or the clear button with a word: hover hints never show on phones.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Item's default size. Every row, at touch size: phones first.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Item's sm size isn't used. Phones first: no compact rows.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Toggle's default size. Every toggle, at touch size: phones first.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       },
+       {
+        "text": "Toggle's sm size isn't used. Phones first: no compact controls.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-lands": {
+   "answer": "Brand color",
+   "why": "Vivid brand color is the hardest to keep readable.",
+   "because": [
+    "Color · How saturated is the palette? → Vivid"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Accessibility",
+     "href": "foundations/accessibility"
+    }
+   }
+  },
+  "naming-roles": {
+   "answer": "Tokens and component keys",
+   "why": "Components get their own keys.",
+   "because": [
+    "How fast does it change? → Every campaign"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-count": {
+   "answer": "Three",
+   "why": "Primitives, semantics and component keys.",
+   "because": [
+    "How fast does it change? → Every campaign"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-definition": {
+   "answer": "By role",
+   "why": "Role names survive each campaign.",
+   "because": [
+    "How fast does it change? → Every campaign"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-values": {
+   "answer": "Lowercase words in paths",
+   "why": "Lowercase paths read the same everywhere.",
+   "because": [
+    "Who maintains the system? → An agency"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-lands": {
+   "answer": "Component keys",
+   "why": "Campaigns change primitives, never components.",
+   "because": [
+    "How fast does it change? → Every campaign"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a value with no token, use the closest semantic token, then ask for a new one. Don't use a raw value in the component. The next campaign changes primitives; raw values would stay behind.",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "voice-roles": {
+   "answer": "Labels, messages and headlines",
+   "why": "Headlines carry the campaign.",
+   "because": [
+    "What does the product do for the business? → Sells and converts"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Voice and tone",
+     "href": "foundations/voice"
+    }
+   }
+  },
+  "voice-count": {
+   "answer": "One per moment",
+   "why": "Playful in headlines, plain in errors.",
+   "because": [
+    "What is a costly mistake? → Looking off-brand"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the words of an error, use plain first, a light touch after. Don't use a joke before the fix. Playful copy must never hide what went wrong.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a confirmation question, use Plain. No jokes when something is lost. Don't use playful copy. Loss is never the moment for a joke.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Badge's danger tone isn't used. Nothing on a launch page is labeled as failed; errors are plain sentences.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Toast's neutral tone. A light note that something changed.",
+        "link": {
+         "label": "Toast",
+         "href": "components/toast"
+        }
+       },
+       {
+        "text": "Toast's danger tone. Plain first, a light touch after: That didn't go through.",
+        "link": {
+         "label": "Toast",
+         "href": "components/toast"
+        }
+       },
+       {
+        "text": "Alert's default variant isn't used. Alerts here only report a sign-up that did not go through; confirmations go in a toast.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Alert's destructive variant. A sign-up that did not go through: plain first, then how to recover, with a word beside the color.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "voice-definition": {
+   "answer": "Principles and examples",
+   "why": "Principles and examples guide each campaign's writers.",
+   "because": [
+    "Who maintains the system? → An agency"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Voice and tone",
+     "href": "foundations/voice"
+    }
+   }
+  },
+  "voice-values": {
+   "answer": "Playful",
+   "why": "Big words, few of them.",
+   "because": [
+    "What should the brand feel like? → Bold",
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a paragraph or help text, use type.body, short. Don't use long paragraphs. Short copy keeps the energy.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a button label, use a short verb that moves: Join, Try, Go. Don't use \"Learn more\". Big moments need verbs with energy.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a success message, use celebrate, briefly. Don't use a long thank-you. A short celebration is remembered.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For an empty state, use playful, with a clear next step. Don't use a dead end. Playful words still need a way forward.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a first visit, use one bold line and one button. Don't use a paragraph of copy. Visitors from a social post give a few seconds.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Toast's success tone. Celebrate, briefly: You're on the list. See you at launch.",
+        "link": {
+         "label": "Toast",
+         "href": "components/toast"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "voice-lands": {
+   "answer": "Headlines and buttons",
+   "why": "Words work hardest in headlines and buttons.",
+   "because": [
+    "Which outcome matters most? → Engagement"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a button label, use a short verb that moves: Join, Try, Go. Don't use \"Learn more\". Big moments need verbs with energy.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "components-roles": {
+   "answer": "Core, plus media",
+   "why": "Campaigns lead with media and big sections.",
+   "because": [
+    "What is the main content? → Images and campaigns",
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Toggle's default variant isn't used. Sections lead with media and color blocks, not toolbars; a toggle with no border is lost on vivid color.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "components-count": {
+   "answer": "Only what today's screens use",
+   "why": "One action and a story need only the parts in use; an agency keeps them fresh.",
+   "because": [
+    "How often do people repeat actions? → Rarely",
+    "Who maintains the system? → An agency"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Components",
+     "href": "foundations/components"
+    }
+   }
+  },
+  "components-definition": {
+   "answer": "It gives the brand a moment",
+   "why": "A component joins when it gives the campaign a moment.",
+   "because": [
+    "What should the brand feel like? → Bold",
+    "Which outcome matters most? → Engagement"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "When no component in the inventory fits, use a section built from the inventory with campaign tokens. Don't use a new component for one campaign. Campaigns change the look through tokens; new parts every drop are hard to keep working.",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "components-values": {
+   "answer": "Also for emphasis and size",
+   "why": "Variants for emphasis and size let each campaign look a little different.",
+   "because": [
+    "How fast does it change? → Every campaign",
+    "How visible is the brand in the interface? → Loud"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Components",
+     "href": "foundations/components"
+    }
+   }
+  },
+  "components-lands": {
+   "answer": "Campaign sections",
+   "why": "Components sit inside big campaign sections.",
+   "because": [
+    "What is the main content? → Images and campaigns",
+    "What is the main task? → Browse and explore"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Components",
+     "href": "foundations/components"
+    }
+   }
+  }
+ }
+}

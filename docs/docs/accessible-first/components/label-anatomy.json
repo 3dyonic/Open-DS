@@ -1,0 +1,174 @@
+{
+ "anatomy-legend": {
+  "label": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Label text",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Hierarchy"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Gap to its mark",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Field",
+     "need": "required",
+     "note": "shown by Input",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "label": "Checkbox",
+     "need": "optional",
+     "note": "shown by Checkbox",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "label/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large text is readable for more people."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "rule",
+     "situation": "field label or column header",
+     "use": "type.label, above the field, always visible",
+     "not": "a placeholder as the label",
+     "why": "Labels must stay visible while typing."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-size",
+     "key": "font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-family",
+     "key": "font-family",
+     "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
+     "byScheme": true,
+     "pick": "atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.line-height",
+     "key": "line-height",
+     "value": "1.6",
+     "byScheme": true,
+     "pick": "font.line-height.1_6",
+     "shares": []
+    }
+   ]
+  },
+  "label/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AAA for text",
+     "why": "AAA contrast for text."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Few color roles, each with one clear meaning."
+    },
+    {
+     "kind": "rule",
+     "situation": "field label or column header",
+     "use": "type.label, above the field, always visible",
+     "not": "a placeholder as the label",
+     "why": "Labels must stay visible while typing."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "label",
+     "value": "#141414",
+     "darkValue": "#F7F7F7",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    }
+   ]
+  },
+  "label/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Generous space lowers mis-taps."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

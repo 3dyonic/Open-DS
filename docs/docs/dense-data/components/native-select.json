@@ -1,0 +1,741 @@
+{
+ "preview": {
+  "native-select/live": {
+   "title": "Native select examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-native-select--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-native-select--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Native select in Storybook",
+     "href": "/storybook/?path=/docs/components-native-select--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/native-select": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the native select, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./native-select/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "native-select": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Native select",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.radius",
+      "alias": "radius.control",
+      "variable": "native-select-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.125rem"
+       },
+       "token": "radius.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.border",
+      "alias": "color.border.strong",
+      "variable": "native-select-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.padding-x",
+      "alias": "space.inset.control-x",
+      "variable": "native-select-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "native-select-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Padding right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.padding-right",
+      "alias": "component-spacing-map.x8",
+      "variable": "native-select-padding-right"
+     },
+     "values": [
+      {
+       "token": "space.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.font-size",
+      "alias": "type.body.font-size",
+      "variable": "native-select-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Label placeholder",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.label-placeholder",
+      "alias": "color.text.muted",
+      "variable": "native-select-label-placeholder"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#535D6D"
+       },
+       "token": "slate.light.600",
+       "text": "#535D6D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.height",
+      "alias": "size.control.default",
+      "variable": "native-select-height"
+     },
+     "values": [
+      {
+       "token": "size.32",
+       "text": "2rem"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Border focus",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.border-focus",
+      "alias": "color.border.focus",
+      "variable": "native-select-border-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.focus",
+      "alias": "border-width.focus",
+      "variable": "native-select-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "native-select-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "native-select-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Border invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.border-invalid",
+      "alias": "color.status.danger",
+      "variable": "native-select-border-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Focus ring invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.focus-ring-invalid",
+      "alias": "color.status.danger",
+      "variable": "native-select-focus-ring-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.icon-size",
+      "alias": "size.icon",
+      "variable": "native-select-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "native-select-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.border-width",
+      "alias": "border-width.default",
+      "variable": "native-select-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "native-select-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Native select",
+     "part": "Easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.easing",
+      "alias": "motion.easing.standard",
+      "variable": "native-select-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.icon.label",
+      "alias": "color.text.muted",
+      "variable": "native-select-icon-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#535D6D"
+       },
+       "token": "slate.light.600",
+       "text": "#535D6D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Inset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.icon.inset",
+      "alias": "space.inset.control-x",
+      "variable": "native-select-icon-inset"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Disabled",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.icon.disabled",
+      "alias": "color.disabled.text",
+      "variable": "native-select-icon-disabled"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.sm.height",
+      "alias": "size.control.compact",
+      "variable": "native-select-sm-height"
+     },
+     "values": [
+      {
+       "token": "size.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.native-select.sm.padding-y",
+      "alias": "component-spacing-map.x1",
+      "variable": "native-select-sm-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Selection",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.selection.background",
+      "alias": "color.action.primary",
+      "variable": "native-select-selection-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Selection",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.selection.label",
+      "alias": "color.text.on-action",
+      "variable": "native-select-selection-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Field",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.field.background",
+      "alias": "color.surface.default",
+      "variable": "native-select-field-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Fill",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "native-select-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "native-select-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.native-select.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "native-select-disabled-text"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

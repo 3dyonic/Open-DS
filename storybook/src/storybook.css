@@ -6,6 +6,7 @@
 @import "../../tokens/dist/brand-expressive/tokens.scoped.css";
 @import "../../tokens/dist/dense-data/theme.css";
 @import "../../tokens/dist/dense-data/shadcn.css";
+@import "../../ui/src/icons.css";
 
 @source "../../ui/src";
 @source "../stories";

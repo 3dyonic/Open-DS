@@ -1,0 +1,327 @@
+{
+ "preview": {
+  "checkbox/live": {
+   "title": "Checkbox examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Checkbox in Storybook",
+     "href": "/storybook/?path=/docs/components-checkbox--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/checkbox": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the checkbox, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./checkbox/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "checkbox": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Checkbox",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.size",
+      "alias": "size.icon",
+      "variable": "checkbox-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.border-width",
+      "alias": "border-width.default",
+      "variable": "checkbox-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.focus",
+      "alias": "border-width.focus",
+      "variable": "checkbox-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.disabled",
+      "alias": "opacity.disabled",
+      "variable": "checkbox-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "checkbox-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Focus ring",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "checkbox-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Focus ring offset",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "checkbox-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.border",
+      "alias": "color.border.strong",
+      "variable": "checkbox-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.radius",
+      "alias": "radius.badge",
+      "variable": "checkbox-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0rem"
+       },
+       "token": "radius.0",
+       "text": "0rem"
+      }
+     ]
+    },
+    {
+     "group": "Fill",
+     "part": "Color",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.background",
+      "alias": "color.surface.default",
+      "variable": "checkbox-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.dark.50",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Fill",
+     "part": "Checked",
+     "when": "when on",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.background.checked",
+      "alias": "color.action.primary",
+      "variable": "checkbox-background-checked"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4B3FD9"
+       },
+       "token": "violet.light.600",
+       "text": "#4B3FD9"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A9A3F6"
+       },
+       "token": "violet.dark.600",
+       "text": "#A9A3F6"
+      }
+     ]
+    },
+    {
+     "group": "Indicator",
+     "part": "Icon",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.indicator.icon",
+      "alias": "color.text.on-action",
+      "variable": "checkbox-indicator-icon"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

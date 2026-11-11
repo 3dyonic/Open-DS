@@ -1,0 +1,156 @@
+{
+ "preview": {
+  "carousel/live": {
+   "title": "Carousel examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-carousel--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "/storybook/iframe.html?id=components-carousel--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Carousel in Storybook",
+     "href": "/storybook/?path=/docs/components-carousel--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/carousel": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the carousel, the job it does, and the decisions behind it. 4 parts.",
+     "href": "./carousel/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "carousel": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Item",
+     "part": "Padding left",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.carousel.item.padding-left",
+      "alias": "component-spacing-map.x4",
+      "variable": "carousel-item-padding-left"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Padding, top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.carousel.item.padding-top",
+      "alias": "component-spacing-map.x4",
+      "variable": "carousel-item-padding-top"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Previous",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.carousel.previous.size",
+      "alias": "size.control.default",
+      "variable": "carousel-previous-size"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Previous",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.carousel.previous.radius",
+      "alias": "radius.round",
+      "variable": "carousel-previous-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "50%"
+       },
+       "token": "radius.round",
+       "text": "50%"
+      }
+     ]
+    },
+    {
+     "group": "Next",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.carousel.next.size",
+      "alias": "size.control.default",
+      "variable": "carousel-next-size"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Next",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.carousel.next.radius",
+      "alias": "radius.round",
+      "variable": "carousel-next-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "50%"
+       },
+       "token": "radius.round",
+       "text": "50%"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

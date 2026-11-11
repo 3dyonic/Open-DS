@@ -1,0 +1,205 @@
+{
+ "card-grid": {
+  "primitives/color": {
+   "cards": [
+    {
+     "title": "Color",
+     "text": "136 primitives · 54 in use",
+     "href": "./color",
+     "robot": {
+      "day": "/robots/swatch.webp",
+      "night": "/robots/swatch-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#535D6D"
+      },
+      {
+       "kind": "color",
+       "value": "#4B3FD9"
+      },
+      {
+       "kind": "color",
+       "value": "#1F7A3A"
+      },
+      {
+       "kind": "color",
+       "value": "#8A5600"
+      },
+      {
+       "kind": "color",
+       "value": "#C42B2B"
+      },
+      {
+       "kind": "color",
+       "value": "#0000008C"
+      },
+      {
+       "kind": "color",
+       "value": "#083C93"
+      }
+     ],
+     "meter": {
+      "value": 54,
+      "max": 136,
+      "label": "54 of 136 in use"
+     }
+    }
+   ]
+  },
+  "primitives/space-and-shape": {
+   "cards": [
+    {
+     "title": "Space and size",
+     "text": "11 primitives · 11 in use",
+     "href": "./space-and-size",
+     "robot": {
+      "day": "/robots/measure.webp",
+      "night": "/robots/measure-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "column",
+       "value": "2px"
+      },
+      {
+       "kind": "column",
+       "value": "4px"
+      },
+      {
+       "kind": "column",
+       "value": "8px"
+      },
+      {
+       "kind": "column",
+       "value": "12px"
+      },
+      {
+       "kind": "column",
+       "value": "16px"
+      },
+      {
+       "kind": "column",
+       "value": "24px"
+      },
+      {
+       "kind": "column",
+       "value": "32px"
+      }
+     ],
+     "meter": {
+      "value": 11,
+      "max": 11,
+      "label": "11 of 11 in use"
+     }
+    },
+    {
+     "title": "Shape",
+     "text": "8 primitives · 8 in use",
+     "href": "./shape",
+     "robot": {
+      "day": "/robots/scopes/shape.webp",
+      "night": "/robots/scopes/shape-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "radius",
+       "value": "0rem"
+      },
+      {
+       "kind": "radius",
+       "value": "0.125rem"
+      },
+      {
+       "kind": "radius",
+       "value": "0.25rem"
+      }
+     ],
+     "meter": {
+      "value": 8,
+      "max": 8,
+      "label": "8 of 8 in use"
+     }
+    }
+   ]
+  },
+  "primitives/type-motion-and-effects": {
+   "cards": [
+    {
+     "title": "Type",
+     "text": "13 primitives · 13 in use",
+     "href": "./type",
+     "robot": {
+      "day": "/robots/scopes/typography.webp",
+      "night": "/robots/scopes/typography-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "font",
+       "value": "'IBM Plex Sans', system-ui, sans-serif"
+      },
+      {
+       "kind": "font",
+       "value": "'IBM Plex Mono', ui-monospace, monospace"
+      },
+      {
+       "kind": "text",
+       "value": "IBM Plex Sans · IBM Plex Mono"
+      }
+     ],
+     "meter": {
+      "value": 13,
+      "max": 13,
+      "label": "13 of 13 in use"
+     }
+    },
+    {
+     "title": "Motion",
+     "text": "2 primitives · 2 in use",
+     "href": "./motion",
+     "robot": {
+      "day": "/robots/scopes/motion.webp",
+      "night": "/robots/scopes/motion-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "duration",
+       "value": "120ms",
+       "note": "120ms"
+      }
+     ],
+     "meter": {
+      "value": 2,
+      "max": 2,
+      "label": "2 of 2 in use"
+     }
+    },
+    {
+     "title": "Effects",
+     "text": "4 primitives · 4 in use",
+     "href": "./effects",
+     "robot": {
+      "day": "/robots/scopes/elevation.webp",
+      "night": "/robots/scopes/elevation-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "shadow",
+       "value": "0px 8px 24px 0px #0D111729"
+      },
+      {
+       "kind": "shadow",
+       "value": "0px 8px 24px 0px #00000080"
+      }
+     ],
+     "meter": {
+      "value": 4,
+      "max": 4,
+      "label": "4 of 4 in use"
+     }
+    }
+   ]
+  }
+ }
+}

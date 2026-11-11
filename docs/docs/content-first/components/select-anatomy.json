@@ -1,0 +1,558 @@
+{
+ "anatomy-legend": {
+  "select": {
+   "parts": [
+    {
+     "label": "Label",
+     "need": "required",
+     "note": "shown by Label",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "label": "Trigger",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Field",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Value",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Chevron",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Focus ring",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Focus"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Invalid border",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Disabled trigger",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "List",
+     "need": "required",
+     "byScheme": false,
+     "roles": [],
+     "children": [
+      {
+       "n": 7,
+       "label": "Surface",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Layering"
+       ]
+      },
+      {
+       "n": 8,
+       "label": "Shadow",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Option",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 9,
+       "label": "Option label",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 10,
+       "label": "Highlight fill",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback",
+        "Focus"
+       ]
+      },
+      {
+       "n": 11,
+       "label": "Selected check",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "select/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded corners feel friendly."
+    },
+    {
+     "kind": "rule",
+     "situation": "field label or column header",
+     "use": "type.label",
+     "not": "type.caption",
+     "why": "Caption is too faint for a label people must read."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Many readers are on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control (rounded)",
+     "not": "sharp corners",
+     "why": "Rounded corners match the warm reading tone. Sharp corners feel technical next to long text."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "trigger.height",
+     "value": "3rem",
+     "byScheme": true,
+     "pick": "size.48",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.control-x",
+     "key": "trigger.padding-x",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "trigger.radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Rounded corners feel friendly.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "trigger.icon",
+     "value": "#61594D",
+     "darkValue": "#A39A8B",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "select/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast, with large text helping further."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Keyboard users must always see where they are."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "trigger.border.focus",
+     "value": "#1E3A5F",
+     "darkValue": "#8FA6C4",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "trigger.focus-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "trigger.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  },
+  "select/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Reading needs few color roles."
+    },
+    {
+     "kind": "rule",
+     "situation": "an error message",
+     "use": "color.status.danger and a plain sentence",
+     "not": "color alone",
+     "why": "The sentence says what to fix; color only draws the eye."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "trigger.border.invalid",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    }
+   ]
+  },
+  "select/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed gets its own value for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.disabled.surface",
+     "key": "trigger.disabled.background",
+     "value": "#F6F2EA",
+     "darkValue": "#2E2A24",
+     "byScheme": true,
+     "rule": "The fill of a control that cannot be used right now.",
+     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.disabled.border",
+     "key": "trigger.disabled.border",
+     "value": "#E4DDD0",
+     "darkValue": "#4A4339",
+     "byScheme": true,
+     "rule": "The edge of a control that cannot be used right now.",
+     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "surface.pressed",
+      "border.default"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.disabled.text",
+     "key": "trigger.disabled.text",
+     "value": "#7A7062",
+     "darkValue": "#CFC6B6",
+     "byScheme": true,
+     "rule": "Text and icons of a control that cannot be used right now.",
+     "pick": "neutral.500: 4.86:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "darkPick": "neutral.500: 10.11:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "shares": [
+      "border.strong",
+      "category.5"
+     ]
+    }
+   ]
+  },
+  "select/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Only what floats",
+     "why": "Only menus and dialogs float."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Soft",
+     "why": "Soft shadows suit warm paper."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "The dimmed page focuses the reader on the dialog."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "overlay.background",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1B16",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "overlay.shadow",
+     "value": "0px 12px 32px, #1F1B1629",
+     "darkValue": "0px 12px 32px, #00000080",
+     "byScheme": true,
+     "pick": "shadow.overlay: Soft shadows suit warm paper.",
+     "darkPick": "shadow.overlay-dark: Soft shadows suit warm paper.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "overlay.radius",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "radius.12: Rounded corners feel friendly.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#E4DDD0",
+     "darkValue": "#4A4339",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    }
+   ]
+  },
+  "select/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Many readers are on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "overlay.item-height",
+     "value": "3rem",
+     "byScheme": true,
+     "pick": "size.48",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "item.font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "item.padding-left",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "select/card-7": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed gets its own value for touch."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (moderate)",
+     "not": "a fast flash",
+     "why": "Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Keyboard users must always see where they are."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "item.background.highlight",
+     "value": "#F6F2EA",
+     "darkValue": "#2E2A24",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    }
+   ]
+  }
+ }
+}

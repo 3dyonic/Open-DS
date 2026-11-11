@@ -1,0 +1,262 @@
+{
+ "anatomy-legend": {
+  "pagination": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Previous",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "label": "Pages",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 2,
+       "label": "Page",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Current page",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Ellipsis",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Grouping"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Gap",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Grouping",
+        "Reach"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "label": "Next",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "label": "Page links",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "pagination/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Visitors come from social posts on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Most visitors arrive on phones, and a compact control is too small for a thumb."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "link.gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "link.padding-x",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "previous.padding-left",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "next.padding-right",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  },
+  "pagination/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Visitors come from social posts on phones."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "rule",
+     "situation": "an alternative or cancel",
+     "use": "Button ghost",
+     "not": "a second primary",
+     "why": "The alternative must not compete."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Most visitors arrive on phones, and a compact control is too small for a thumb."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.link",
+     "key": "button.ghost.label",
+     "value": "#A6025B",
+     "darkValue": "#FBB4D8",
+     "byScheme": true,
+     "rule": "Links in running text.",
+     "pick": "pink.light.700: a link, set apart by its hue, 7.55:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "pink.dark.700: a link, set apart by its hue, 10.82:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.primary.hover"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.strong",
+     "key": "button.secondary.border",
+     "value": "#8A6F63",
+     "darkValue": "#B5988A",
+     "byScheme": true,
+     "rule": "The edge of a control people must find.",
+     "pick": "neutral.500: the edge of a control people must find, 4.63:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.400: the edge of a control people must find, 6.71:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "button.height",
+     "value": "3.25rem",
+     "byScheme": true,
+     "pick": "size.52",
+     "shares": []
+    }
+   ]
+  },
+  "pagination/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Larger than the text",
+     "why": "Larger icons hold their own next to big type."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Air keeps big type readable."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "ellipsis.icon-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "content.gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

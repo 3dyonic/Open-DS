@@ -553,6 +553,50 @@
       {
         "id": "table",
         "why": "A summary like the steps of an application, with large rows and numbers in body text. Not compact rows or small fonts."
+      },
+      {
+        "id": "icon",
+        "why": "Status and messages, always beside a word.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "Larger than the text beside it, so it is easy to see.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Accessible first has one icon size, already larger than the text.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: a bold 2px stroke, easy to see.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "A bold stroke carries the icon; a shape adds nothing people need.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "A bold stroke carries the icon.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
       }
     ],
     "out": [
@@ -1440,8 +1484,8 @@
     },
     {
       "question": "iconography.definition",
-      "option": "filled",
-      "why": "Filled icons stay visible at low vision.",
+      "option": "bold",
+      "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens.",
       "because": [
         "people.q1"
       ]
@@ -2020,6 +2064,241 @@
       "because": [
         "people.q1",
         "components.definition"
+      ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "type.display on step pages",
+      "why": "It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size.",
+      "because": [
+        "content.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Clear headings split a page into short parts that people can find again.",
+      "because": [
+        "human.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "type.caption for a hint sentence",
+      "why": "It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size.",
+      "because": [
+        "people.q1",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A small or mono font",
+      "why": "It equals body here. Every cell stays as large and plain as body text, for people with low vision.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "Every step page has the same title size, so people always know where they are.",
+      "because": [
+        "human.q1",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "parts-of-one-item",
+      "use": "space.gap.tight",
+      "not": "No gap",
+      "why": "Parts sit close enough to read as one item, with room to tell them apart at high zoom.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "siblings-in-a-row",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Space between fields lowers mis-taps for people with tremor.",
+      "because": [
+        "people.q1",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "between-groups",
+      "use": "space.gap.group",
+      "not": "space.gap.default",
+      "why": "A clear break shows where one group of questions ends and the next begins.",
+      "because": [
+        "content.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-control",
+      "use": "space.inset.control-x",
+      "not": "Padding set by eye",
+      "why": "Wide padding makes each button a bigger target that is easy to hit.",
+      "because": [
+        "people.q1",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-container",
+      "use": "space.inset.container",
+      "not": "Text that touches the edge",
+      "why": "Wide padding keeps content clear of the strong border at any zoom.",
+      "because": [
+        "people.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-cell",
+      "use": "space.inset.cell-x",
+      "not": "Narrow cell padding",
+      "why": "Clear space between columns keeps values apart at high zoom.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "radius.control",
+      "why": "The option corner nests inside the menu, so the highlighted option reads as one clear box.",
+      "because": [
+        "brand.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.surface",
+      "why": "Text areas and list items keep the control corner, so people know they can type or pick there.",
+      "because": [
+        "human.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "A pill",
+      "why": "Slightly rounded panels read as one clear box at any zoom.",
+      "because": [
+        "brand.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A hairline",
+      "why": "A strong edge stays visible at high zoom and for people with low vision.",
+      "because": [
+        "people.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "border-width.focus-offset",
+      "not": "A ring that touches the control",
+      "why": "The gap keeps the thick ring clear of the control, so focus shows on any fill.",
+      "because": [
+        "people.q2",
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "panel-opens",
+      "use": "motion.duration.panels",
+      "not": "A long slide",
+      "why": "A moderate open is easy to follow and shows where the panel came from.",
+      "because": [
+        "human.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "any-transition",
+      "use": "motion.easing.standard",
+      "not": "A spring that overshoots",
+      "why": "A plain ease-out is calm and clear. An overshoot can confuse and distract.",
+      "because": [
+        "brand.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "hero-motion",
+      "use": "No hero motion",
+      "not": "An animated start page",
+      "why": "Moving content distracts people with attention needs and slows the task.",
+      "because": [
+        "people.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A thin icon at text size",
+      "why": "Larger icons with a bold line stay easy to see for people with low vision.",
+      "because": [
+        "people.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "A touch-minimum size",
+      "why": "Large controls help people with tremor and low vision.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "A taller button for the main action",
+      "why": "It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.",
+      "because": [
+        "human.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "A small icon button",
+      "why": "It still meets the large target size and fits inside the field.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "opacity.disabled",
+      "not": "A faded control with no reason",
+      "why": "It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.",
+      "because": [
+        "outcomes.q2",
+        "human.q1"
       ]
     }
   ],
@@ -2775,10 +3054,15 @@
           "$value": "0.5rem"
         },
         "$description": "Corner options.",
-        "full": {
+        "round": {
           "$type": "dimension",
-          "$value": "9999px",
-          "$description": "Fully round."
+          "$value": "50%",
+          "$description": "A circle of a square: avatars, radio dots, thumbs and round buttons."
+        },
+        "pill": {
+          "$type": "dimension",
+          "$value": "calc(infinity * 1px)",
+          "$description": "A capsule of any box: tracks, progress, the scroll thumb and pill controls."
         }
       },
       "border-width": {
@@ -2889,6 +3173,14 @@
           },
           "$description": "No shadow: flat surfaces."
         }
+      },
+      "stroke-width": {
+        "200": {
+          "$type": "number",
+          "$value": 2,
+          "$description": "An icon stroke width option, on Lucide's 24px grid."
+        },
+        "$description": "Icon stroke width options."
       }
     },
     "brands": {
@@ -2940,7 +3232,20 @@
                   }
                 }
               },
-              "container": {
+              "element": {
+                "$type": "dimension",
+                "$value": "{radius.6}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.6: the control corner; it is not a pill, so a growing box keeps it.",
+                    "because": [
+                      "shape.roles",
+                      "shape.values"
+                    ]
+                  }
+                }
+              },
+              "surface": {
                 "$type": "dimension",
                 "$value": "{radius.8}",
                 "$extensions": {
@@ -3667,8 +3972,8 @@
                         "because": [
                           "accessibility.definition",
                           "color.count",
-                        "color.definition",
-                        "color.lands"
+                          "color.definition",
+                          "color.lands"
                         ]
                       }
                     }
@@ -4553,8 +4858,8 @@
                         "because": [
                           "accessibility.definition",
                           "color.count",
-                        "color.definition",
-                        "color.lands"
+                          "color.definition",
+                          "color.lands"
                         ]
                       }
                     }
@@ -5086,15 +5391,21 @@
           "$value": "{theme.radius.option}",
           "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
         },
-        "container": {
+        "element": {
           "$type": "dimension",
-          "$value": "{theme.radius.container}",
+          "$value": "{theme.radius.element}",
+          "$description": "Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media."
+        },
+        "surface": {
+          "$type": "dimension",
+          "$value": "{theme.radius.surface}",
           "$description": "Corner of cards, menus and dialogs."
         },
-        "round": {
+        "container": {
           "$type": "dimension",
-          "$value": "{radius.full}",
-          "$description": "Fully round: avatars and dots."
+          "$value": "{radius.surface}",
+          "$description": "Deprecated: use radius.surface.",
+          "$deprecated": "Use radius.surface. Removed in the next minor release."
         }
       },
       "border-width": {
@@ -5753,6 +6064,13 @@
             }
           }
         }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.200}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid."
+        }
       }
     },
     "component": {
@@ -6137,7 +6455,7 @@
           "$description": "Card border."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Card corner radius."
         },
         "padding": {
@@ -6392,7 +6710,7 @@
           "$description": "Fill of a dialog, menu or toast."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner radius of overlays."
         },
         "shadow": {
@@ -6501,7 +6819,7 @@
             "$description": "Space between the trigger's text and its icon."
           },
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "The trigger's corner, seen on focus."
           },
           "focus-ring-offset-focus": {
@@ -6603,7 +6921,7 @@
             "$description": "Content gap of the alert dialog."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the alert dialog."
           },
           "background": {
@@ -6681,7 +6999,7 @@
         },
         "media": {
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "Media radius of the alert dialog."
           },
           "background": {
@@ -6704,7 +7022,7 @@
           "$description": "Gap y of the alert."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Radius of the alert."
         },
         "padding-x": {
@@ -6796,7 +7114,7 @@
           "$description": "Gap of the attachment."
         },
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the attachment."
         },
         "background": {
@@ -6895,7 +7213,7 @@
             "$description": "The size of the square that holds the file icon."
           },
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "Corner of the attachment's file tile: a media tile, like the item's."
           },
           "background": {
@@ -7215,7 +7533,7 @@
         },
         "body": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Body radius of the bubble."
           },
           "padding-x": {
@@ -7362,7 +7680,7 @@
           "$description": "Font weight of the calendar."
         },
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the calendar."
         },
         "border": {
@@ -7687,7 +8005,7 @@
             "$description": "Width of the border of the chart's tooltip."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the chart's tooltip."
           },
           "background": {
@@ -7812,7 +8130,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the combobox."
           },
           "background": {
@@ -8148,7 +8466,7 @@
       },
       "command": {
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels."
         },
         "background": {
@@ -8440,7 +8758,7 @@
           },
           "content": {
             "radius": {
-              "$value": "{radius.container}",
+              "$value": "{radius.surface}",
               "$description": "Sub content radius of the context menu."
             },
             "background": {
@@ -8471,7 +8789,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the context menu."
           },
           "background": {
@@ -8819,7 +9137,7 @@
             "$description": "Width of the table frame's edge, of the data table."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the table frame, of the data table."
           }
         }
@@ -8857,7 +9175,7 @@
             "$description": "Width of the dialog panel's edge."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers."
           },
           "shadow": {
@@ -9040,7 +9358,7 @@
             "$description": "Content background of the drawer."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Corner of the drawer panel on the side away from the screen edge: a container corner."
           },
           "border": {
@@ -9128,7 +9446,7 @@
         },
         "handle": {
           "radius": {
-            "$value": "{radius.round}",
+            "$value": "{radius.pill}",
             "$description": "Corner of the drawer handle: fully round."
           },
           "background": {
@@ -9234,7 +9552,7 @@
           "$description": "Gap of the empty."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Radius of the empty."
         },
         "padding": {
@@ -9253,7 +9571,7 @@
         },
         "icon": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Icon radius of the empty."
           },
           "background": {
@@ -9574,7 +9892,7 @@
       "hover-card": {
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content corner of the hover card, like every floating panel's."
           },
           "background": {
@@ -10136,7 +10454,7 @@
       },
       "item": {
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the item."
         },
         "font-size": {
@@ -10344,7 +10662,7 @@
           },
           "image": {
             "radius": {
-              "$value": "{radius.control}",
+              "$value": "{radius.element}",
               "$description": "Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile."
             }
           }
@@ -10479,7 +10797,7 @@
           "$description": "Gap of the menubar."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the menubar: a panel that holds its triggers."
         },
         "background": {
@@ -10545,7 +10863,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content radius of the menubar."
           },
           "background": {
@@ -10892,7 +11210,7 @@
           },
           "content": {
             "radius": {
-              "$value": "{radius.container}",
+              "$value": "{radius.surface}",
               "$description": "Sub content radius of the menubar."
             },
             "background": {
@@ -10940,7 +11258,7 @@
           "$description": "Gap of the message scroller."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the message scroller: the region that holds a conversation is a container, not a control."
         },
         "focus": {
@@ -11317,7 +11635,7 @@
             "$description": "Content shadow of the navigation menu: it floats, like a menu."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content corner of the navigation menu, like every floating panel's."
           },
           "border": {
@@ -11346,7 +11664,7 @@
         },
         "viewport": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Viewport corner of the navigation menu, like every floating panel's."
           },
           "background": {
@@ -11661,7 +11979,7 @@
       "popover": {
         "content": {
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Content corner of the popover, like every floating panel's."
           },
           "background": {
@@ -11722,7 +12040,7 @@
       },
       "progress": {
         "radius": {
-          "$value": "{radius.round}",
+          "$value": "{radius.pill}",
           "$description": "Radius of the progress."
         },
         "background": {
@@ -11890,7 +12208,7 @@
         },
         "thumb": {
           "radius": {
-            "$value": "{radius.round}",
+            "$value": "{radius.pill}",
             "$description": "Thumb radius of the scroll area."
           },
           "background": {
@@ -12285,7 +12603,7 @@
             "$description": "Inner background of the sidebar."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Inner radius of the sidebar."
           },
           "border": {
@@ -12335,7 +12653,7 @@
             "$description": "Inset background of the sidebar."
           },
           "radius": {
-            "$value": "{radius.container}",
+            "$value": "{radius.surface}",
             "$description": "Inset radius of the sidebar."
           },
           "shadow": {
@@ -13082,7 +13400,7 @@
       },
       "skeleton": {
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the skeleton."
         },
         "background": {
@@ -13097,7 +13415,7 @@
         },
         "track": {
           "radius": {
-            "$value": "{radius.round}",
+            "$value": "{radius.pill}",
             "$description": "Track radius of the slider."
           },
           "background": {
@@ -13179,7 +13497,7 @@
           "$description": "Width of the switch."
         },
         "radius": {
-          "$value": "{radius.round}",
+          "$value": "{radius.pill}",
           "$description": "Radius of the switch."
         },
         "padding": {
@@ -13254,7 +13572,7 @@
       },
       "textarea": {
         "radius": {
-          "$value": "{radius.control}",
+          "$value": "{radius.element}",
           "$description": "Radius of the textarea."
         },
         "border": {
@@ -13463,7 +13781,7 @@
           "$description": "Fill of the toast, like every floating panel's: surface.raised (menus, dialogs, toasts)."
         },
         "radius": {
-          "$value": "{radius.container}",
+          "$value": "{radius.surface}",
           "$description": "Corner of the toast, like every floating panel's."
         },
         "shadow": {
@@ -13635,6 +13953,46 @@
           "on": {
             "$value": "{border-width.default}",
             "$description": "Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width."
+          }
+        }
+      },
+      "icon": {
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the icon next to text."
+        },
+        "size-large": {
+          "$value": "{size.icon}",
+          "$description": "Size of the large icon, where the scheme has two sizes."
+        },
+        "contained": {
+          "padding": {
+            "$value": "{space.gap.tight}",
+            "$description": "Space between a contained icon and its shape."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the shape a contained icon sits in."
+          },
+          "tint": {
+            "background": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of the tinted shape."
+            },
+            "color": {
+              "$value": "{color.text.link}",
+              "$description": "Icon color on the tinted shape."
+            }
+          },
+          "solid": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the solid shape."
+            },
+            "color": {
+              "$value": "{color.text.on-action}",
+              "$description": "Icon color on the solid shape."
+            }
           }
         }
       }

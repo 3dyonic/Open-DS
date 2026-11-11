@@ -1,0 +1,192 @@
+{
+ "token-groups": {
+  "spacing": {
+   "groups": [
+    {
+     "title": "space.gap.tight",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-tight)"
+     },
+     "api": [
+      {
+       "token": "space.gap.tight",
+       "value": "12px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Parts of one item",
+       "why": "Parts sit close enough to read as one item, with room to tell them apart at high zoom."
+      },
+      {
+       "kind": "not",
+       "situation": "Items that belong together",
+       "detail": "use space.gap.default",
+       "why": "Generous space lowers mis-taps."
+      },
+      {
+       "kind": "not",
+       "situation": "Items in a list or a form row",
+       "detail": "use space.gap.default",
+       "why": "Space between fields lowers mis-taps for people with tremor."
+      }
+     ]
+    },
+    {
+     "title": "space.gap.default",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-default)"
+     },
+     "api": [
+      {
+       "token": "space.gap.default",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Items that belong together",
+       "why": "Generous space lowers mis-taps."
+      },
+      {
+       "kind": "use",
+       "situation": "Items in a list or a form row",
+       "why": "Space between fields lowers mis-taps for people with tremor."
+      },
+      {
+       "kind": "not",
+       "situation": "Between groups",
+       "detail": "use space.gap.group",
+       "why": "A clear break shows where one group of questions ends and the next begins."
+      }
+     ]
+    },
+    {
+     "title": "space.gap.group",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-group)"
+     },
+     "api": [
+      {
+       "token": "space.gap.group",
+       "value": "32px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between groups",
+       "why": "A clear break shows where one group of questions ends and the next begins."
+      }
+     ]
+    },
+    {
+     "title": "space.gap.section",
+     "sample": {
+      "kind": "gap",
+      "value": "var(--space-gap-section)"
+     },
+     "api": [
+      {
+       "token": "space.gap.section",
+       "value": "48px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Between page sections",
+       "why": "Space is easy to see; thin lines are not."
+      }
+     ]
+    },
+    {
+     "title": "space.inset.control-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-control-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.control-x",
+       "value": "24px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a button or input",
+       "why": "Wide padding makes each button a bigger target that is easy to hit."
+      }
+     ]
+    },
+    {
+     "title": "space.inset.container",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-container)"
+     },
+     "api": [
+      {
+       "token": "space.inset.container",
+       "value": "24px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a card, panel or dialog",
+       "why": "Wide padding keeps content clear of the strong border at any zoom."
+      }
+     ]
+    },
+    {
+     "title": "space.inset.cell-x",
+     "sample": {
+      "kind": "inset",
+      "value": "var(--space-inset-cell-x)"
+     },
+     "api": [
+      {
+       "token": "space.inset.cell-x",
+       "value": "16px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Inside a table cell",
+       "why": "Clear space between columns keeps values apart at high zoom."
+      }
+     ]
+    },
+    {
+     "title": "size.row",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-row)"
+     },
+     "api": [
+      {
+       "token": "size.row",
+       "value": "56px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Table row height",
+       "detail": "size.row (large)",
+       "why": "Large rows are easy to read and tap."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

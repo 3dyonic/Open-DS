@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/anatomy-legend.schema.json",
+  "title": "Anatomy legend",
+  "description": "Every part of one component, as a tree, with its number on the drawing and its jobs. Drawn by the AnatomyLegend composite on a component's Anatomy reference.",
+  "type": "object",
+  "required": ["parts"],
+  "additionalProperties": false,
+  "properties": {
+    "parts": { "$ref": "#/$defs/parts", "description": "The component's top-level parts, in order." }
+  },
+  "$defs": {
+    "parts": {
+      "type": "array",
+      "description": "Parts at one level of the tree.",
+      "items": {
+        "type": "object",
+        "required": ["label", "need", "byScheme", "roles"],
+        "additionalProperties": false,
+        "properties": {
+          "n": { "type": "integer", "minimum": 1, "description": "The part's number on the drawing. Absent when the example does not show the part." },
+          "label": { "type": "string", "minLength": 1, "description": "The part's name, such as Panel." },
+          "need": { "type": "string", "enum": ["required", "optional", "state"], "description": "Whether the component always has the part." },
+          "note": { "type": "string", "minLength": 1, "description": "A short note on the part, such as shown by Button." },
+          "noToken": { "const": true, "description": "The part has no token of its own yet." },
+          "byScheme": { "type": "boolean", "description": "Whether the part's value changes by scheme." },
+          "roles": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "description": "The design roles the part plays, such as Layering."
+          },
+          "children": { "$ref": "#/$defs/parts", "description": "The parts inside this one." }
+        }
+      }
+    }
+  }
+}

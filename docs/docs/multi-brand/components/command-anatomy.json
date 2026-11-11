@@ -1,0 +1,492 @@
+{
+ "anatomy-legend": {
+  "command": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Panel",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "label": "Dialog",
+     "need": "optional",
+     "note": "shown by Dialog",
+     "byScheme": false,
+     "roles": [
+      "Layering"
+     ]
+    },
+    {
+     "label": "Search",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 2,
+       "label": "Search field",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Search icon",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Placeholder",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Group heading",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Hierarchy",
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Item",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 6,
+       "label": "Item label",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Item icon",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 8,
+       "label": "Highlight fill",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback",
+        "Focus"
+       ]
+      },
+      {
+       "label": "Shortcut",
+       "need": "optional",
+       "note": "not in this example",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "label": "Separator",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Empty message",
+     "need": "state",
+     "note": "not in this example",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "command/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Cards too",
+     "why": "Cards lift slightly to group offers."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "background",
+     "value": "#FFFFFF",
+     "darkValue": "#0F172A",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Rounded by default; each brand sets its own corner.",
+     "shares": []
+    }
+   ]
+  },
+  "command/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body size suits all brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Customers sign up on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "input.wrapper.height",
+     "value": "2.75rem",
+     "byScheme": true,
+     "pick": "size.44",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "input.wrapper.padding-x",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "input.wrapper.border",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "input.wrapper.icon",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "input.label-placeholder",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "command/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "One set of roles across brands."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "brand-specific spacing",
+     "why": "Spacing is shared across brands."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "group.label-2",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "group.font-size",
+     "value": "0.8125rem",
+     "byScheme": true,
+     "pick": "font.size.13",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "group.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    }
+   ]
+  },
+  "command/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body size suits all brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "item.font-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "font.size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "item.padding-x",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "item.padding-y",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "item.icon",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "item.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "command/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (moderate)",
+     "not": "brand-specific motion",
+     "why": "Motion is shared, so one component library behaves the same in every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring (from the brand)",
+     "not": "removing the outline",
+     "why": "Focus follows the brand but always shows."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "item.background.highlight",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "command/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Cards",
+     "why": "Cards group plans and offers."
+    },
+    {
+     "kind": "rule",
+     "situation": "between page sections",
+     "use": "space.gap.section and cards",
+     "not": "lines",
+     "why": "Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "separator.background",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "separator.thickness",
+     "value": "1px",
+     "byScheme": true,
+     "pick": "border-width.1",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

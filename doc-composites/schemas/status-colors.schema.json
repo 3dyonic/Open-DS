@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/status-colors.schema.json",
+  "title": "Status colors",
+  "description": "Each status a scheme's product shows: its label, its tone, what it means, and the contrast of its color on its subtle fill in each mode. Drawn by the StatusColors composite on Foundations › Color.",
+  "type": "object",
+  "required": ["statuses"],
+  "additionalProperties": false,
+  "properties": {
+    "statuses": {
+      "type": "array",
+      "description": "Each status, one per tone.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "tone", "meaning", "contrast"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string", "minLength": 1, "description": "The status label the product shows, such as Escalated." },
+          "tone": { "type": "string", "enum": ["info", "success", "warning", "danger"], "description": "The status tone, which sets its color tokens." },
+          "meaning": { "type": "string", "minLength": 1, "description": "What the status tells the reader, in a sentence." },
+          "contrast": {
+            "type": "array",
+            "description": "The WCAG contrast of color.status.<tone> on color.status.<tone>.subtle, in each mode.",
+            "items": {
+              "type": "object",
+              "required": ["mode", "ratio"],
+              "additionalProperties": false,
+              "properties": {
+                "mode": { "type": "string", "description": "The theme, such as light or dark." },
+                "ratio": { "type": "number", "minimum": 1, "maximum": 21, "description": "The contrast ratio, to one decimal." }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

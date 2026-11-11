@@ -1,0 +1,348 @@
+{
+ "anatomy-legend": {
+  "alert": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Panel",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Icon",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Title",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Hierarchy"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Description",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Destructive alert",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Emphasis"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "alert/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Clear, slightly rounded controls."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Few color roles, each with one clear meaning."
+    },
+    {
+     "kind": "rule",
+     "situation": "a card on the page",
+     "use": "A strong border, no shadow",
+     "not": "a shadow",
+     "why": "Shadows are hard to see; borders are not."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.default",
+     "key": "default.background",
+     "value": "#FFFFFF",
+     "darkValue": "#141414",
+     "byScheme": true,
+     "rule": "The base fill for content.",
+     "pick": "neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
+     "darkPick": "neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+     "shares": [
+      "surface.raised",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "border",
+     "value": "#D6D6D6",
+     "darkValue": "#333333",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "border-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Clear, slightly rounded controls.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "padding-y",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    }
+   ]
+  },
+  "alert/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Larger than the text",
+     "why": "Larger icons are easier to see."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "icon-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "gap-x",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    }
+   ]
+  },
+  "alert/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "rule",
+     "situation": "a status",
+     "use": "Badge with an icon and a word",
+     "not": "color alone",
+     "why": "Status must survive no color and a screen reader."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "title.font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "default.label",
+     "value": "#141414",
+     "darkValue": "#F7F7F7",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    }
+   ]
+  },
+  "alert/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "answer",
+     "scope": "Voice and tone",
+     "question": "Where do the words matter most?",
+     "answer": "Form steps and errors",
+     "why": "Words decide whether a form gets finished."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, short sentences",
+     "not": "type.caption",
+     "why": "Large text and short lines lower effort."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "description.label",
+     "value": "#595959",
+     "darkValue": "#B4B4B4",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "border.strong",
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "description.font-size",
+     "value": "1.1875rem",
+     "byScheme": true,
+     "pick": "font.size.19",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.line-height",
+     "key": "description.line-height",
+     "value": "1.6",
+     "byScheme": true,
+     "pick": "font.line-height.1_6",
+     "shares": []
+    }
+   ]
+  },
+  "alert/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Few color roles, each with one clear meaning."
+    },
+    {
+     "kind": "answer",
+     "question": "What is a costly mistake?",
+     "answer": "A task that fails",
+     "why": "A failed form can cost someone a benefit."
+    },
+    {
+     "kind": "rule",
+     "situation": "an error message",
+     "use": "color.status.danger, an icon and a sentence next to the field",
+     "not": "color alone",
+     "why": "People must know what went wrong and where."
+    },
+    {
+     "kind": "rule",
+     "situation": "the words of an error",
+     "use": "Say what is wrong, where, and exactly how to fix it",
+     "not": "\"Invalid input\"",
+     "why": "People must be able to fix the error without help."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "destructive.label",
+     "value": "#981519",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "destructive.description.label",
+     "value": "#981519",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.default",
+     "key": "destructive.background",
+     "value": "#FFFFFF",
+     "darkValue": "#141414",
+     "byScheme": true,
+     "rule": "The base fill for content.",
+     "pick": "neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
+     "darkPick": "neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+     "shares": [
+      "surface.raised",
+      "action.secondary"
+     ]
+    }
+   ]
+  }
+ }
+}

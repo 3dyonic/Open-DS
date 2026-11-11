@@ -1,0 +1,162 @@
+{
+ "preview": {
+  "label/live": {
+   "title": "Label examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "/storybook/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Label in Storybook",
+     "href": "/storybook/?path=/docs/components-label--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/label": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the label, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./label/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "label": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Label",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.label.gap",
+      "alias": "space.gap.default",
+      "variable": "label-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Label",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.label.label",
+      "alias": "color.text.primary",
+      "variable": "label-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Label",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.label.font-family",
+      "alias": "type.label.font-family",
+      "variable": "label-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.dm-sans",
+       "text": "\"DM Sans\", system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Label",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.label.font-size",
+      "alias": "type.label.font-size",
+      "variable": "label-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.15",
+       "text": "0.9375rem"
+      }
+     ]
+    },
+    {
+     "group": "Label",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.label.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "label-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Label",
+     "part": "Line height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.label.line-height",
+      "alias": "type.label.line-height",
+      "variable": "label-line-height"
+     },
+     "values": [
+      {
+       "token": "font.line-height.1_1",
+       "text": "1.1"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

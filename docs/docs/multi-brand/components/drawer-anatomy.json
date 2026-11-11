@@ -1,0 +1,391 @@
+{
+ "anatomy-legend": {
+  "drawer": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 1,
+     "label": "Scrim",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Layering"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Panel",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Layering"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Handle",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Header",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 5,
+       "label": "Title",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Description",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "label": "Footer",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Reach"
+     ],
+     "children": [
+      {
+       "label": "Actions",
+       "need": "optional",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Affordance",
+        "Emphasis"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "drawer/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Cards too",
+     "why": "Cards lift slightly to group offers."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Soft",
+     "why": "Soft shadows fit every brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.scrim",
+     "key": "overlay.background",
+     "value": "#0000008C",
+     "darkValue": "#000000B3",
+     "byScheme": false,
+     "rule": "The see-through layer behind a modal.",
+     "pick": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "darkPick": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "content.background",
+     "value": "#F8FAFC",
+     "darkValue": "#020617",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "content.shadow",
+     "value": "0px 12px 32px, #0F172A29",
+     "darkValue": "0px 12px 32px, #00000080",
+     "byScheme": true,
+     "pick": "shadow.overlay: Soft shadows fit every brand.",
+     "darkPick": "shadow.overlay-dark: Soft shadows fit every brand.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "content.radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Rounded by default; each brand sets its own corner.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    }
+   ]
+  },
+  "drawer/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "handle.background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.pill",
+     "key": "handle.radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": false,
+     "pick": "radius.pill",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "handle.margin-top",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  },
+  "drawer/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "One set of roles across brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body size suits all brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body",
+     "not": "type.caption",
+     "why": "Regular body size suits every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "brand-specific spacing",
+     "why": "Spacing is shared across brands."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-family",
+     "key": "title.font-family",
+     "value": "Inter, system-ui, sans-serif",
+     "byScheme": true,
+     "pick": "inter for heading text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-size",
+     "key": "title.font-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "font.size.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-weight",
+     "key": "title.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "description.font-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "font.size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "description.label",
+     "value": "#334155",
+     "darkValue": "#CBD5E1",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 10.35:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 12.02:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.hairline",
+     "key": "header.gap",
+     "value": "0.125rem",
+     "byScheme": false,
+     "pick": "space.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "header.padding",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  },
+  "drawer/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "the action that completes the task",
+     "use": "Button primary, one per view",
+     "not": "two primaries",
+     "why": "One clear action per view. Two primaries split attention."
+    },
+    {
+     "kind": "rule",
+     "situation": "an alternative or cancel",
+     "use": "Button secondary",
+     "not": "a second primary",
+     "why": "The alternative steps back, so the one primary stays clear. A second primary would compete with it."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "footer.gap",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "footer.padding",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

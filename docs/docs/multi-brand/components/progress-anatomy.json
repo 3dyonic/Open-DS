@@ -1,0 +1,126 @@
+{
+ "anatomy-legend": {
+  "progress": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Track",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Indicator",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Feedback"
+     ]
+    },
+    {
+     "label": "Label and value",
+     "need": "optional",
+     "note": "shown by the page, beside the bar",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "progress/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "progress/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.pill",
+     "key": "radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": false,
+     "pick": "radius.pill",
+     "shares": []
+    }
+   ]
+  },
+  "progress/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Moderate",
+     "why": "Moderate speed across brands."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "Reduced motion",
+     "not": "full motion",
+     "why": "Motion is reduced, not removed: a fade keeps the change visible, and nothing slides."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "indicator.background",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.",
+     "darkPick": "teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    }
+   ]
+  }
+ }
+}

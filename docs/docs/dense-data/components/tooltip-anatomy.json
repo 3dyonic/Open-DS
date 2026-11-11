@@ -1,0 +1,206 @@
+{
+ "anatomy-legend": {
+  "tooltip": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "n": 1,
+     "label": "Surface",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Layering"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Hint",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Offset",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "tooltip/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "shape of a status badge",
+     "use": "radius.badge (rectangle)",
+     "not": "a pill",
+     "why": "Rectangles line up in a column."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.inverse",
+     "key": "content.background",
+     "value": "#161B23",
+     "darkValue": "#F7F8FA",
+     "byScheme": true,
+     "rule": "A reversed fill for small, short-lived messages.",
+     "pick": "neutral.900: the reverse of content for short messages; its text reads, 17.28:1 on surface.inverse, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 16.26:1 on surface.inverse, above the 4.5:1 floor.",
+     "shares": [
+      "text.primary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.badge",
+     "key": "content.radius",
+     "value": "0rem",
+     "byScheme": true,
+     "pick": "radius.0: Small corners keep dense rows straight.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "content.padding-x",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x1",
+     "key": "content.padding-y",
+     "value": "0.25rem",
+     "byScheme": false,
+     "pick": "space.4",
+     "shares": []
+    }
+   ]
+  },
+  "tooltip/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Small",
+     "why": "Small body text fits more rows on the screen."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What do icons do?",
+     "answer": "Actions and status",
+     "why": "Icons mark row actions and status."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Icon button with a tooltip",
+     "not": "a bare icon",
+     "why": "Experts learn icons; the tooltip covers the first uses."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.inverse",
+     "key": "content.label",
+     "value": "#FFFFFF",
+     "darkValue": "#161B23",
+     "byScheme": true,
+     "rule": "Text on an inverse fill.",
+     "pick": "text.on-dark: the text its fill's tone picks, 17.28:1 on surface.inverse, above the 4.5:1 floor.",
+     "darkPick": "text.on-light: the text its fill's tone picks, 16.26:1 on surface.inverse, above the 4.5:1 floor.",
+     "shares": [
+      "text.on-action",
+      "text.on-danger"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "content.font-size",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "font.size.12",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-family",
+     "key": "content.font-family",
+     "value": "\"IBM Plex Sans\", system-ui, sans-serif",
+     "byScheme": true,
+     "pick": "ibm-plex-sans for caption text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+     "shares": []
+    }
+   ]
+  },
+  "tooltip/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.tight",
+     "not": "space.gap.group",
+     "why": "Things that belong together sit close."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "overlay.offset",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "space.4",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,179 @@
+{
+ "token-groups": {
+  "shape": {
+   "groups": [
+    {
+     "title": "radius.control",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-control)"
+     },
+     "api": [
+      {
+       "token": "radius.control",
+       "primitive": "radius.pill",
+       "value": "calc(infinity * 1px)"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of buttons and inputs",
+       "detail": "radius.control (pill)",
+       "why": "Pills match the brand's round, playful shapes. Sharp corners would feel corporate."
+      },
+      {
+       "kind": "not",
+       "situation": "An option in a menu or list",
+       "detail": "use radius.option",
+       "why": "Round options nest inside the round menu, so a menu feels as playful as the buttons."
+      },
+      {
+       "kind": "not",
+       "situation": "Something that grows past one line",
+       "detail": "use radius.element",
+       "why": "A pill corner breaks when a text area grows to many lines. The element corner stays round at any height."
+      }
+     ]
+    },
+    {
+     "title": "radius.badge",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-badge)"
+     },
+     "api": [
+      {
+       "token": "radius.badge",
+       "primitive": "radius.pill",
+       "value": "calc(infinity * 1px)"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Shape of a status badge",
+       "detail": "radius.badge (pill)",
+       "why": "Pills match the controls."
+      }
+     ]
+    },
+    {
+     "title": "radius.option",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-option)"
+     },
+     "api": [
+      {
+       "token": "radius.option",
+       "value": "20px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "An option in a menu or list",
+       "why": "Round options nest inside the round menu, so a menu feels as playful as the buttons."
+      }
+     ]
+    },
+    {
+     "title": "radius.element",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-element)"
+     },
+     "api": [
+      {
+       "token": "radius.element",
+       "value": "12px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Something that grows past one line",
+       "why": "A pill corner breaks when a text area grows to many lines. The element corner stays round at any height."
+      }
+     ]
+    },
+    {
+     "title": "radius.surface",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-surface)"
+     },
+     "api": [
+      {
+       "token": "radius.surface",
+       "value": "24px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of cards, menus and dialogs",
+       "why": "Big round corners make cards feel like friendly objects."
+      }
+     ]
+    },
+    {
+     "title": "border-width.default",
+     "sample": {
+      "kind": "line",
+      "value": "var(--border-width-default)"
+     },
+     "api": [
+      {
+       "token": "border-width.default",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Edges and dividers",
+       "why": "A bold edge matches the bold type and vivid color."
+      }
+     ]
+    },
+    {
+     "title": "Focus ring",
+     "sample": {
+      "kind": "focus"
+     },
+     "api": [
+      {
+       "token": "border-width.focus",
+       "value": "3px"
+      },
+      {
+       "token": "border-width.focus-offset",
+       "value": "2px"
+      },
+      {
+       "token": "color.border.focus",
+       "primitive": "color.pink.light.600",
+       "value": "#D61F7A",
+       "dark": "#F59ACA"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring at border-width.focus",
+       "why": "Focus must show on vivid color."
+      },
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The gap keeps the ring visible on vivid fills."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

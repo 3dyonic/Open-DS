@@ -1,0 +1,97 @@
+{
+ "preview": {
+  "skeleton/live": {
+   "title": "Skeleton examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Skeleton in Storybook",
+     "href": "/storybook/?path=/docs/components-skeleton--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/skeleton": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the skeleton, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./skeleton/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "skeleton": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Skeleton",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.skeleton.radius",
+      "alias": "radius.element",
+      "variable": "skeleton-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Skeleton",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.skeleton.background",
+      "alias": "color.surface.sunken",
+      "variable": "skeleton-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

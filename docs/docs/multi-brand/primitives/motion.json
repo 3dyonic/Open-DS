@@ -1,0 +1,54 @@
+{
+ "primitive-table": {
+  "duration": {
+   "rows": [
+    {
+     "primitive": "duration.moderate",
+     "value": "200ms",
+     "sample": {
+      "kind": "duration",
+      "value": "200ms"
+     },
+     "usedBy": [
+      {
+       "token": "motion.duration.feedback",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "duration.relaxed",
+     "value": "320ms",
+     "sample": {
+      "kind": "duration",
+      "value": "320ms"
+     },
+     "usedBy": [
+      {
+       "token": "motion.duration.panels",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "easing": {
+   "rows": [
+    {
+     "primitive": "easing.standard",
+     "value": "cubic-bezier(0.2, 0, 0, 1)",
+     "sample": {
+      "kind": "easing",
+      "value": "cubic-bezier(0.2,0,0,1)"
+     },
+     "usedBy": [
+      {
+       "token": "motion.easing.standard",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,310 @@
+{
+ "anatomy-legend": {
+  "table": {
+   "parts": [
+    {
+     "label": "Header",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Header row",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Header label",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Row",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 3,
+       "label": "Row and its line",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Reach",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Cell",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Selected row",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Feedback"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Status",
+     "need": "optional",
+     "note": "shown by Badge",
+     "byScheme": false,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "label": "Row action",
+     "need": "optional",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "table/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "What is the main content?",
+     "answer": "Forms and tasks",
+     "why": "Most screens are forms and steps."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "rule",
+     "situation": "field label or column header",
+     "use": "type.label, above the field, always visible",
+     "not": "a placeholder as the label",
+     "why": "Labels must stay visible while typing."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "header-background",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "head.label",
+     "value": "#333333",
+     "darkValue": "#D6D6D6",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "head.font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.cell-x",
+     "key": "head.padding-x",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  },
+  "table/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "How much is on one screen?",
+     "answer": "One idea at a time",
+     "why": "One question per screen lowers effort."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "rule",
+     "situation": "table row height",
+     "use": "size.row (large)",
+     "not": "a compact row",
+     "why": "Large rows are easy to read and tap."
+    },
+    {
+     "kind": "rule",
+     "situation": "a number in a table",
+     "use": "type.body",
+     "not": "a small or mono font",
+     "why": "Every number must be readable at large size."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.row",
+     "key": "row-height",
+     "value": "3.5rem",
+     "byScheme": true,
+     "pick": "size.56",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "row-border",
+     "value": "#D6D6D6",
+     "darkValue": "#333333",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "label",
+     "value": "#141414",
+     "darkValue": "#F7F7F7",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.data.font-family",
+     "key": "cell.font-family",
+     "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
+     "byScheme": true,
+     "pick": "atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "shares": []
+    }
+   ]
+  },
+  "table/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "What is the main task?",
+     "answer": "Complete a form",
+     "why": "People must finish the form."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Three: color, icon and word",
+     "why": "Never color alone."
+    },
+    {
+     "kind": "rule",
+     "situation": "a selected row or item",
+     "use": "color.surface.selected and a check icon",
+     "not": "color alone",
+     "why": "Selection never relies on color alone."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "row-selected",
+     "value": "#E2EDFF",
+     "darkValue": "#102547",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.selected",
+     "key": "row-selected-edge",
+     "value": "#0B4FC0",
+     "darkValue": "#8AB4F8",
+     "byScheme": true,
+     "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
+     "pick": "blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.focus",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "row.focus",
+     "value": "3px",
+     "byScheme": true,
+     "pick": "border-width.3",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

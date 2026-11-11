@@ -1,0 +1,493 @@
+{
+ "preview": {
+  "drawer/live": {
+   "title": "Drawer examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-drawer--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-drawer--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Drawer in Storybook",
+     "href": "/storybook/?path=/docs/components-drawer--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/drawer": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the drawer, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./drawer/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "drawer": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Transition panels duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.panels-duration",
+      "alias": "motion.duration.panels",
+      "variable": "transition-panels-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Overlay",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.drawer.overlay.background",
+      "alias": "color.surface.scrim",
+      "variable": "drawer-overlay-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#0000008C"
+       },
+       "token": "black.light.scrim",
+       "text": "#0000008C"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#000000B3"
+       },
+       "token": "black.dark.scrim",
+       "text": "#000000B3"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.drawer.content.background",
+      "alias": "color.surface.canvas",
+      "variable": "drawer-content-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.light.50",
+       "text": "#F7F8FA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0D1117"
+       },
+       "token": "slate.dark.0",
+       "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.content.radius",
+      "alias": "radius.surface",
+      "variable": "drawer-content-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.drawer.content.border",
+      "alias": "color.border.default",
+      "variable": "drawer-content-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.content.border-width",
+      "alias": "border-width.default",
+      "variable": "drawer-content-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.drawer.content.shadow",
+      "alias": "elevation.overlay",
+      "variable": "drawer-content-shadow"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "shadow": "0px 8px 24px 0px #0D111729"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "shadow": "0px 8px 24px 0px #00000080"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.header.gap",
+      "alias": "component-spacing-map.hairline",
+      "variable": "drawer-header-gap"
+     },
+     "values": [
+      {
+       "token": "space.2",
+       "text": "0.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.header.padding",
+      "alias": "space.inset.container",
+      "variable": "drawer-header-padding"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Header",
+     "part": "Gap 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.header.gap-2",
+      "alias": "component-spacing-map.x2",
+      "variable": "drawer-header-gap-2"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.footer.gap",
+      "alias": "space.gap.default",
+      "variable": "drawer-footer-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Footer",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.footer.padding",
+      "alias": "space.inset.container",
+      "variable": "drawer-footer-padding"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.title.font-weight",
+      "alias": "type.heading.font-weight",
+      "variable": "drawer-title-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.drawer.title.label",
+      "alias": "color.text.primary",
+      "variable": "drawer-title-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.title.font-family",
+      "alias": "type.heading.font-family",
+      "variable": "drawer-title-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.ibm-plex-sans",
+       "text": "\"IBM Plex Sans\", system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Title",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.title.font-size",
+      "alias": "type.heading.font-size",
+      "variable": "drawer-title-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.description.font-size",
+      "alias": "type.body.font-size",
+      "variable": "drawer-description-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Description",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.drawer.description.label",
+      "alias": "color.text.secondary",
+      "variable": "drawer-description-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.light.700",
+       "text": "#3D4655"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
+      }
+     ]
+    },
+    {
+     "group": "Handle",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.handle.radius",
+      "alias": "radius.pill",
+      "variable": "drawer-handle-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Handle",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.drawer.handle.background",
+      "alias": "color.surface.sunken",
+      "variable": "drawer-handle-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Handle",
+     "part": "Margin top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.drawer.handle.margin-top",
+      "alias": "space.inset.container",
+      "variable": "drawer-handle-margin-top"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

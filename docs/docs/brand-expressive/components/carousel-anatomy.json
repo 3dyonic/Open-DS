@@ -1,0 +1,190 @@
+{
+ "anatomy-legend": {
+  "carousel": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Viewport",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Slide",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Slide content",
+     "need": "required",
+     "note": "shown by Card",
+     "byScheme": false,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "label": "Controls",
+     "need": "optional",
+     "byScheme": false,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ],
+     "children": [
+      {
+       "n": 3,
+       "label": "Previous button",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Next button",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "label": "Disabled control",
+       "need": "state",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "label": "Focus ring",
+       "need": "state",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Focus"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "carousel/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Air keeps big type readable."
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x4",
+     "key": "item.padding-left",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x4",
+     "key": "item.padding-top",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "carousel/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Visitors come from social posts on phones."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Most visitors arrive on phones, and a compact control is too small for a thumb."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Not used: always add a word",
+     "not": "an icon button with a hover hint",
+     "why": "On phones, hover hints never show; a word says what will happen."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "previous.size",
+     "value": "3.25rem",
+     "byScheme": true,
+     "pick": "size.52",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.round",
+     "key": "previous.radius",
+     "value": "50%",
+     "byScheme": false,
+     "pick": "radius.round",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "next.size",
+     "value": "3.25rem",
+     "byScheme": true,
+     "pick": "size.52",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.round",
+     "key": "next.radius",
+     "value": "50%",
+     "byScheme": false,
+     "pick": "radius.round",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

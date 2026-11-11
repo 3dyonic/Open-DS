@@ -1,0 +1,94 @@
+{
+ "preview": {
+  "separator/live": {
+   "title": "Separator examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Separator in Storybook",
+     "href": "/storybook/?path=/docs/components-separator--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/separator": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the separator, the job it does, and the decisions behind it. 1 parts.",
+     "href": "./separator/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "separator": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Accessible first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Accessible first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Separator",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.separator.background",
+      "alias": "color.border.default",
+      "variable": "separator-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D6D6D6"
+       },
+       "token": "gray.light.200",
+       "text": "#D6D6D6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#333333"
+       },
+       "token": "gray.dark.200",
+       "text": "#333333"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Thickness",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.separator.thickness",
+      "alias": "border-width.default",
+      "variable": "separator-thickness"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

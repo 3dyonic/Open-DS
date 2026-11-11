@@ -1,0 +1,308 @@
+{
+ "anatomy-legend": {
+  "avatar": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Avatar",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Containment"
+     ]
+    },
+    {
+     "label": "Image",
+     "need": "optional",
+     "note": "not in this example",
+     "byScheme": false,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Initials",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Meaning"
+     ]
+    },
+    {
+     "label": "Status badge",
+     "need": "optional",
+     "byScheme": false,
+     "roles": [
+      "Meaning"
+     ],
+     "children": [
+      {
+       "n": 3,
+       "label": "Badge",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Badge ring",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Group",
+     "need": "optional",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 5,
+       "label": "Overlap",
+       "need": "optional",
+       "byScheme": false,
+       "roles": [
+        "Grouping"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Group ring",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      },
+      {
+       "label": "Count",
+       "need": "optional",
+       "note": "not in this example",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "avatar/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Clear, slightly rounded controls."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large text is readable for more people."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Few color roles, each with one clear meaning."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "size",
+     "value": "3.25rem",
+     "byScheme": true,
+     "pick": "size.52",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.round",
+     "key": "radius",
+     "value": "50%",
+     "byScheme": false,
+     "pick": "radius.round",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "fallback.background",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "fallback.label",
+     "value": "#595959",
+     "darkValue": "#B4B4B4",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "shares": [
+      "border.strong",
+      "category.5",
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "fallback.font-size",
+     "value": "1.1875rem",
+     "byScheme": true,
+     "pick": "font.size.19",
+     "shares": []
+    }
+   ]
+  },
+  "avatar/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Few color roles, each with one clear meaning."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Lines",
+     "why": "Strong borders separate groups at any zoom."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "badge.background",
+     "value": "#0B4FC0",
+     "darkValue": "#8AB4F8",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+     "darkPick": "blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.round",
+     "key": "badge.radius",
+     "value": "50%",
+     "byScheme": false,
+     "pick": "radius.round",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "badge.ring",
+     "value": "#F7F7F7",
+     "darkValue": "#0A0A0A",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "badge.ring-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  },
+  "avatar/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Lines",
+     "why": "Strong borders separate groups at any zoom."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Generous space lowers mis-taps."
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "group.overlap",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "group.ring",
+     "value": "#F7F7F7",
+     "darkValue": "#0A0A0A",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "group.ring-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

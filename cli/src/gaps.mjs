@@ -286,6 +286,9 @@ export function componentGaps(scheme, g, roots) {
 function componentGapsNow(scheme, g, roots) {
   const comps = builtComponents(roots);
   const catalogue = new Set(g.catalogue.items.map((i) => i.id));
+  // A token a scope owns by its own name is that scope's shared role, not a component's: size.icon
+  // belongs to iconography, for every icon (OD-285), even though Icon is also a component.
+  const scopeOwned = new Set(g.scopes.flatMap((x) => x.owns ?? []));
   const rule = new Map(
     g.semantics.keys.map((k) => [
       k.id.replace(/\.@$/, ""),
@@ -400,10 +403,13 @@ function componentGapsNow(scheme, g, roots) {
         says: `${comp} draws its own empty state; the Empty component (why it is empty and the one action that fills it) is not used.`,
       });
     // Nested corners: an option's corner against its container's corner less the padding between them.
+    // radius.pill is calc(infinity * 1px): read it as the 9999px pill the message names.
     const px = (v) =>
       typeof v !== "string"
         ? null
-        : /rem$/.test(v)
+        : /infinity/.test(v)
+          ? 9999
+          : /rem$/.test(v)
           ? parseFloat(v) * 16
           : /px$/.test(v)
             ? parseFloat(v)
@@ -551,6 +557,7 @@ function componentGapsNow(scheme, g, roots) {
       if (
         role &&
         catalogue.has(role) &&
+        !scopeOwned.has(t.aliases) &&
         role !== comp &&
         !comp.startsWith(role) &&
         !named

@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   render: (args) => (
     <div className="max-w-md">
-      <AspectRatio {...args} className="rounded-[var(--radius-container)] bg-[var(--color-surface-sunken)]" />
+      <AspectRatio {...args} className="rounded-[var(--radius-surface)] bg-[var(--color-surface-sunken)]" />
     </div>
   ),
 };
@@ -26,7 +26,7 @@ export const Examples: Story = {
         <div className="max-w-md">
           <AspectRatio
             ratio={16 / 9}
-            className="flex items-end rounded-[var(--radius-container)] bg-[var(--color-surface-sunken)] p-[var(--space-inset-container)]"
+            className="flex items-end rounded-[var(--radius-surface)] bg-[var(--color-surface-sunken)] p-[var(--space-inset-container)]"
           >
             <span className="[font-weight:var(--type-heading-font-weight)]">{s.screen}</span>
           </AspectRatio>

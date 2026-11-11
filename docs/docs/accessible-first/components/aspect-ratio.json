@@ -1,0 +1,31 @@
+{
+ "preview": {
+  "aspect-ratio/live": {
+   "title": "Aspect ratio examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Aspect ratio in Storybook",
+     "href": "/storybook/?path=/docs/components-aspect-ratio--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/aspect-ratio": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the aspect ratio, the job it does, and the decisions behind it. 2 parts.",
+     "href": "./aspect-ratio/anatomy",
+     "go": true
+    }
+   ]
+  }
+ }
+}

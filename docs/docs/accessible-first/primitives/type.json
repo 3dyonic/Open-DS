@@ -1,0 +1,282 @@
+{
+ "primitive-table": {
+  "font.size": {
+   "rows": [
+    {
+     "primitive": "font.size.16",
+     "value": "1rem (16px)",
+     "sample": {
+      "kind": "size",
+      "value": "1rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.caption.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.18",
+     "value": "1.125rem (18px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.125rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.label.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.19",
+     "value": "1.1875rem (19px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.1875rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.font-size",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.22",
+     "value": "1.375rem (22px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.375rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.heading.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.28",
+     "value": "1.75rem (28px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.title.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.36",
+     "value": "2.25rem (36px)",
+     "sample": {
+      "kind": "size",
+      "value": "2.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-size",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.weight": {
+   "rows": [
+    {
+     "primitive": "font.weight.400",
+     "value": "400",
+     "sample": {
+      "kind": "weight",
+      "value": "400"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.font-weight",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.weight.700",
+     "value": "700",
+     "sample": {
+      "kind": "weight",
+      "value": "700"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.title.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.heading.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.label.font-weight",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.line-height": {
+   "rows": [
+    {
+     "primitive": "font.line-height.1_25",
+     "value": "1.25",
+     "sample": {
+      "kind": "leading",
+      "value": "1.25",
+      "note": "20px"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.title.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.heading.line-height",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.line-height.1_6",
+     "value": "1.6",
+     "sample": {
+      "kind": "leading",
+      "value": "1.6",
+      "note": "26px"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.label.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.line-height",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.family": {
+   "rows": [
+    {
+     "primitive": "font.family.atkinson-hyperlegible",
+     "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
+     "sample": {
+      "kind": "font",
+      "value": "'Atkinson Hyperlegible', Verdana, sans-serif"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.title.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.heading.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.body.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.label.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.caption.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.data.font-family",
+       "where": "every mode"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "specimen": {
+  "type/fonts": {
+   "items": [
+    {
+     "font": "'Atkinson Hyperlegible', Verdana, sans-serif",
+     "big": "Aa",
+     "token": "font.family.atkinson-hyperlegible",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 700,
+       "name": "Bold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family",
+       "type.data.font-family"
+      ]
+     },
+     "foot": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
+    }
+   ]
+  }
+ }
+}

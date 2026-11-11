@@ -1,0 +1,443 @@
+{
+ "anatomy-legend": {
+  "alert-dialog": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Scrim",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Layering"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Panel",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Layering"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Header",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 4,
+       "label": "Media",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Emphasis"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Title",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Description",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "label": "Footer",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "label": "Cancel",
+       "need": "required",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Affordance"
+       ]
+      },
+      {
+       "label": "Action",
+       "need": "required",
+       "note": "shown by Button",
+       "byScheme": false,
+       "roles": [
+        "Affordance",
+        "Emphasis",
+        "Meaning"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "alert-dialog/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Only what floats",
+     "why": "Only menus and dialogs float."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Soft",
+     "why": "Soft shadows suit warm paper."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded corners feel friendly."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "The dimmed page focuses the reader on the dialog."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.scrim",
+     "key": "overlay.background",
+     "value": "#0000008C",
+     "darkValue": "#000000B3",
+     "byScheme": false,
+     "rule": "The see-through layer behind a modal.",
+     "pick": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "darkPick": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "content.background",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1B16",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "content.shadow",
+     "value": "0px 12px 32px, #1F1B1629",
+     "darkValue": "0px 12px 32px, #00000080",
+     "byScheme": true,
+     "pick": "shadow.overlay: Soft shadows suit warm paper.",
+     "darkPick": "shadow.overlay-dark: Soft shadows suit warm paper.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "content.radius",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "radius.12: Rounded corners feel friendly.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#E4DDD0",
+     "darkValue": "#4A4339",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    }
+   ]
+  },
+  "alert-dialog/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Text needs air even inside a group."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "content.padding",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.group",
+     "key": "content.gap",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "alert-dialog/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text size."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded corners feel friendly."
+    },
+    {
+     "kind": "rule",
+     "situation": "delete or remove",
+     "use": "Button secondary with the full verb, then confirm with Button danger",
+     "not": "button primary",
+     "why": "Naming the verb and confirming prevents a mistake."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "media.background",
+     "value": "#F6F2EA",
+     "darkValue": "#2E2A24",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.element",
+     "key": "media.radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: the control corner; it is not a pill, so a growing box keeps it.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "media.size",
+     "value": "3rem",
+     "byScheme": true,
+     "pick": "size.48",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "media.margin-bottom",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "alert-dialog/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and editorial display",
+     "why": "A lead and a display role open articles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large body text is easy on the eyes."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Reading needs few color roles."
+    },
+    {
+     "kind": "answer",
+     "question": "How much is on one screen?",
+     "answer": "One idea at a time",
+     "why": "One idea per screen keeps reading calm."
+    },
+    {
+     "kind": "rule",
+     "situation": "a confirmation question",
+     "use": "Gentle and clear about what changes",
+     "not": "guilt or pressure",
+     "why": "Readers come back when leaving felt respectful."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, at most 65 characters a line",
+     "not": "type.caption",
+     "why": "A large size and short lines make long text easy on the eyes."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-family",
+     "key": "title.font-family",
+     "value": "\"Source Serif 4\", Georgia, serif",
+     "byScheme": true,
+     "pick": "source-serif-4 for heading text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-size",
+     "key": "title.font-size",
+     "value": "1.75rem",
+     "byScheme": true,
+     "pick": "font.size.28",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-weight",
+     "key": "title.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "description.font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "description.label",
+     "value": "#4A4339",
+     "darkValue": "#CFC6B6",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "header.gap",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "alert-dialog/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "the action that completes the task",
+     "use": "Button primary, one per section",
+     "not": "two primaries side by side",
+     "why": "One clear action per section. Two primaries make the reader choose before they have read."
+    },
+    {
+     "kind": "rule",
+     "situation": "an alternative or cancel",
+     "use": "Button ghost as a text link",
+     "not": "a second boxed button",
+     "why": "A link feels lighter and does not compete."
+    },
+    {
+     "kind": "rule",
+     "situation": "delete or remove",
+     "use": "Button secondary with the full verb, then confirm with Button danger",
+     "not": "button primary",
+     "why": "Naming the verb and confirming prevents a mistake."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "footer.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,184 @@
+{
+ "primitive-table": {
+  "radius": {
+   "rows": [
+    {
+     "primitive": "radius.4",
+     "value": "0.25rem (4px)",
+     "sample": {
+      "kind": "radius",
+      "value": "0.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.badge",
+       "where": "every mode"
+      },
+      {
+       "token": "radius.option",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.6",
+     "value": "0.375rem (6px)",
+     "sample": {
+      "kind": "radius",
+      "value": "0.375rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.control",
+       "where": "every mode"
+      },
+      {
+       "token": "radius.element",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.8",
+     "value": "0.5rem (8px)",
+     "sample": {
+      "kind": "radius",
+      "value": "0.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "radius.surface",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.round",
+     "value": "50%",
+     "sample": {
+      "kind": "radius",
+      "value": "50%"
+     },
+     "usedBy": [
+      {
+       "token": "avatar.radius",
+       "where": "component key"
+      },
+      {
+       "token": "avatar.fallback.radius",
+       "where": "component key"
+      },
+      {
+       "token": "avatar.badge.radius",
+       "where": "component key"
+      },
+      {
+       "token": "avatar.group.count.radius",
+       "where": "component key"
+      },
+      {
+       "token": "carousel.previous.radius",
+       "where": "component key"
+      },
+      {
+       "token": "carousel.next.radius",
+       "where": "component key"
+      },
+      {
+       "token": "radio-group.item.radius",
+       "where": "component key"
+      },
+      {
+       "token": "slider.thumb.radius",
+       "where": "component key"
+      },
+      {
+       "token": "switch.thumb.radius",
+       "where": "component key"
+      }
+     ]
+    },
+    {
+     "primitive": "radius.pill",
+     "value": "calc(infinity * 1px)",
+     "sample": {
+      "kind": "radius",
+      "value": "calc(infinity * 1px)"
+     },
+     "usedBy": [
+      {
+       "token": "drawer.handle.radius",
+       "where": "component key"
+      },
+      {
+       "token": "progress.radius",
+       "where": "component key"
+      },
+      {
+       "token": "scroll-area.thumb.radius",
+       "where": "component key"
+      },
+      {
+       "token": "slider.track.radius",
+       "where": "component key"
+      },
+      {
+       "token": "switch.radius",
+       "where": "component key"
+      }
+     ]
+    }
+   ]
+  },
+  "border-width": {
+   "rows": [
+    {
+     "primitive": "border-width.2",
+     "value": "2px",
+     "sample": {
+      "kind": "line",
+      "value": "2px"
+     },
+     "usedBy": [
+      {
+       "token": "border-width.default",
+       "where": "semantic"
+      },
+      {
+       "token": "border-width.focus-offset",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "border-width.3",
+     "value": "3px",
+     "sample": {
+      "kind": "line",
+      "value": "3px"
+     },
+     "usedBy": [
+      {
+       "token": "border-width.focus",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "stroke-width": {
+   "rows": [
+    {
+     "primitive": "stroke-width.200",
+     "value": "2",
+     "usedBy": [
+      {
+       "token": "icon.stroke-width",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,250 @@
+{
+ "anatomy-legend": {
+  "hover-card": {
+   "parts": [
+    {
+     "label": "Trigger",
+     "need": "required",
+     "note": "a link of the page",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "label": "Panel",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Containment"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Surface",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Layering"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Border",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Shadow",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Content",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability"
+     ]
+    },
+    {
+     "label": "Avatar",
+     "need": "optional",
+     "note": "shown by Avatar",
+     "byScheme": false,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Offset",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "hover-card/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Cards too",
+     "why": "Cards lift to feel like objects."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Pronounced",
+     "why": "Pronounced shadows add depth."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "content.background",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1411",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "content.radius",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "radius.24: Pill controls feel playful.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#F2DCCF",
+     "darkValue": "#4D3A33",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "content.border-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "content.shadow",
+     "value": "0px 24px 48px, #1F141133",
+     "darkValue": "0px 24px 48px, #00000099",
+     "byScheme": true,
+     "pick": "shadow.overlay: Pronounced shadows add depth.",
+     "darkPick": "shadow.overlay-dark: Pronounced shadows add depth.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "content.padding",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "hover-card/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body; the display does the shouting."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, short",
+     "not": "long paragraphs",
+     "why": "Short copy keeps the energy."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "content.label",
+     "value": "#1F1411",
+     "darkValue": "#FFF8F3",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    }
+   ]
+  },
+  "hover-card/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Air keeps big type readable."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "overlay.offset",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,540 @@
+{
+ "preview": {
+  "textarea/live": {
+   "title": "Textarea examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "/storybook/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Textarea in Storybook",
+     "href": "/storybook/?path=/docs/components-textarea--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/textarea": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the textarea, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./textarea/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "textarea": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Textarea",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.radius",
+      "alias": "radius.element",
+      "variable": "textarea-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.75rem"
+       },
+       "token": "radius.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.border",
+      "alias": "color.border.strong",
+      "variable": "textarea-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.padding-x",
+      "alias": "space.inset.control-x",
+      "variable": "textarea-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.28",
+       "text": "1.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "textarea-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.font-size",
+      "alias": "type.body.font-size",
+      "variable": "textarea-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Label placeholder",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.label-placeholder",
+      "alias": "color.text.muted",
+      "variable": "textarea-label-placeholder"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Border focus",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.border-focus",
+      "alias": "color.border.focus",
+      "variable": "textarea-border-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Border invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.border-invalid",
+      "alias": "color.status.danger",
+      "variable": "textarea-border-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Focus ring invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.focus-ring-invalid",
+      "alias": "color.status.danger",
+      "variable": "textarea-focus-ring-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.focus",
+      "alias": "border-width.focus",
+      "variable": "textarea-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "textarea-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "textarea-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.light.50",
+       "text": "#FFF8F3"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#120B09"
+       },
+       "token": "taupe.dark.0",
+       "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "textarea-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.border-width",
+      "alias": "border-width.default",
+      "variable": "textarea-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Min height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.min-height",
+      "alias": "size.control.default",
+      "variable": "textarea-min-height"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "textarea-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.textarea.easing",
+      "alias": "motion.easing.standard",
+      "variable": "textarea-easing"
+     },
+     "values": [
+      {
+       "token": "easing.spring",
+       "text": "cubic-bezier(0.34,1.56,0.64,1)"
+      }
+     ]
+    },
+    {
+     "group": "Textarea",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.background",
+      "alias": "color.surface.default",
+      "variable": "textarea-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "taupe.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.dark.50",
+       "text": "#1F1411"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Fill",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "textarea-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "textarea-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.textarea.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "textarea-disabled-text"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

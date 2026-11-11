@@ -1,0 +1,264 @@
+{
+ "anatomy-legend": {
+  "badge": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Fill",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment",
+      "Meaning"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Label",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Readability",
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Tone",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Meaning",
+      "Emphasis"
+     ]
+    },
+    {
+     "label": "Icon",
+     "need": "optional",
+     "note": "not in this example",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "badge/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Pill",
+     "why": "Pill controls feel playful."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Big space makes big moments."
+    },
+    {
+     "kind": "rule",
+     "situation": "shape of a status badge",
+     "use": "radius.badge (pill)",
+     "not": "a rectangle",
+     "why": "Pills match the controls."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.badge",
+     "key": "radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": true,
+     "pick": "radius.pill: Pill controls feel playful.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "padding-x",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.hairline",
+     "key": "padding-y",
+     "value": "0.125rem",
+     "byScheme": false,
+     "pick": "space.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "neutral.background",
+     "value": "#FCEFE6",
+     "darkValue": "#33241F",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "badge/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body; the display does the shouting."
+    },
+    {
+     "kind": "rule",
+     "situation": "a status",
+     "use": "Badge pill with a word",
+     "not": "color alone",
+     "why": "A word keeps meaning on vivid backgrounds."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-family",
+     "key": "font-family",
+     "value": "\"DM Sans\", system-ui, sans-serif",
+     "byScheme": true,
+     "pick": "dm-sans for caption text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "neutral.label",
+     "value": "#4D3A33",
+     "darkValue": "#E2C4B3",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "badge/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Brand accents are part of the message."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Color and word."
+    },
+    {
+     "kind": "rule",
+     "situation": "a status",
+     "use": "Badge pill with a word",
+     "not": "color alone",
+     "why": "A word keeps meaning on vivid backgrounds."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.info.subtle",
+     "key": "info.background",
+     "value": "#D3E4FF",
+     "darkValue": "#13284B",
+     "byScheme": true,
+     "rule": "The fill behind info status.",
+     "pick": "blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
+     "darkPick": "blue.dark.100: a quiet tint behind info; its text, 11.38:1, above the 4.5:1 floor.",
+     "shares": [
+      "category.2.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.success.subtle",
+     "key": "success.background",
+     "value": "#DBF7DF",
+     "darkValue": "#013118",
+     "byScheme": true,
+     "rule": "The fill behind success status.",
+     "pick": "green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
+     "darkPick": "green.dark.100: a quiet tint behind success; its text, 12.64:1, above the 4.5:1 floor.",
+     "shares": [
+      "category.3.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.warning.subtle",
+     "key": "warning.background",
+     "value": "#FEE8CF",
+     "darkValue": "#3B2701",
+     "byScheme": true,
+     "rule": "The fill behind warning status.",
+     "pick": "amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
+     "darkPick": "amber.dark.100: a quiet tint behind warning; its text, 11.96:1, above the 4.5:1 floor.",
+     "shares": [
+      "category.4.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger.subtle",
+     "key": "danger.background",
+     "value": "#FFDBD8",
+     "darkValue": "#481316",
+     "byScheme": true,
+     "rule": "The fill behind danger status.",
+     "pick": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+     "darkPick": "red.dark.100: a quiet tint behind danger; its text, 11.86:1, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.warning-on-light",
+     "key": "warning.label",
+     "value": "#462A02",
+     "byScheme": false,
+     "rule": "The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).",
+     "pick": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

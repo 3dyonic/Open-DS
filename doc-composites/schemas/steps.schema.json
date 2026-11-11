@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/steps.schema.json",
+  "title": "Steps",
+  "description": "A short flow read left to right, such as the path from a question to the UI. Drawn by the Steps composite.",
+  "type": "object",
+  "required": ["steps"],
+  "additionalProperties": false,
+  "properties": {
+    "steps": {
+      "type": "array",
+      "description": "Each step's name, in order.",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1, "description": "The step's name." }
+    }
+  }
+}

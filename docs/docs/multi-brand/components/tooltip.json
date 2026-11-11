@@ -1,0 +1,359 @@
+{
+ "preview": {
+  "tooltip/live": {
+   "title": "Tooltip examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light",
+    "dark": "/storybook/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Tooltip in Storybook",
+     "href": "/storybook/?path=/docs/components-tooltip--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/tooltip": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the tooltip, the job it does, and the decisions behind it. 3 parts.",
+     "href": "./tooltip/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "tooltip": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Multi-brand decides what changes when you switch theme. Here a switch changes colors, type and shape, so the marked rows differ between its brands and between light and dark; everything else holds steady.",
+    "title": "Multi-brand gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Overlay offset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.overlay.offset",
+      "alias": "space.gap.tight",
+      "variable": "overlay-offset"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Corner",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tooltip.content.radius",
+      "alias": "radius.badge",
+      "variable": "tooltip-content-radius"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tooltip.content.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "tooltip-content-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tooltip.content.padding-y",
+      "alias": "component-spacing-map.x1",
+      "variable": "tooltip-content-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tooltip.content.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "tooltip-content-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.13",
+       "text": "0.8125rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Font family",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tooltip.content.font-family",
+      "alias": "type.caption.font-family",
+      "variable": "tooltip-content-font-family"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "token": "font.family.inter",
+       "text": "Inter, system-ui, sans-serif"
+      },
+      {
+       "theme": "Aster Dark",
+       "token": "font.family.inter",
+       "text": "Inter, system-ui, sans-serif"
+      },
+      {
+       "theme": "Birch Light",
+       "token": "font.family.plus-jakarta-sans",
+       "text": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+      },
+      {
+       "theme": "Birch Dark",
+       "token": "font.family.plus-jakarta-sans",
+       "text": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+      },
+      {
+       "theme": "Coral Light",
+       "token": "font.family.poppins",
+       "text": "Poppins, system-ui, sans-serif"
+      },
+      {
+       "theme": "Coral Dark",
+       "token": "font.family.poppins",
+       "text": "Poppins, system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tooltip.content.background",
+      "alias": "color.surface.inverse",
+      "variable": "tooltip-content-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#F8FAFC"
+       },
+       "token": "slate-deep.dark.900",
+       "text": "#F8FAFC"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.tooltip.content.label",
+      "alias": "color.text.inverse",
+      "variable": "tooltip-content-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate-deep.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#0F172A"
+       },
+       "token": "slate-deep.light.900",
+       "text": "#0F172A"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.tooltip.content.duration",
+      "alias": "motion.duration.panels",
+      "variable": "tooltip-content-duration"
+     },
+     "values": [
+      {
+       "token": "duration.relaxed",
+       "text": "320ms"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

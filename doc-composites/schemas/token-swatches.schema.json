@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/token-swatches.schema.json",
+  "title": "Token swatches",
+  "description": "The semantic tokens of one foundation, each drawn as its own value. Drawn by the TokenSwatches composite at the top of a Foundations page.",
+  "type": "object",
+  "required": [
+    "tokens"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "tokens": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Every token of the foundation that has a drawing, in the scheme's order.",
+      "items": {
+        "type": "object",
+        "required": [
+          "token",
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+            "description": "The token's full name, such as color.neutral.0. The composite draws it through its CSS variable."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "color",
+              "dimension",
+              "shadow",
+              "duration",
+              "cubicBezier",
+              "number",
+              "fontFamily",
+              "fontWeight"
+            ],
+            "description": "The token's DTCG type, which with its name sets how it is drawn."
+          },
+          "px": {
+            "type": "number",
+            "description": "For a line height or a control size: its size in pixels, which the page prints beside it."
+          },
+          "resolves": {
+            "type": "object",
+            "description": "For any token but a color: the primitive it ends at and that primitive's value. The row prints them.",
+            "required": ["primitive", "value"],
+            "additionalProperties": false,
+            "properties": {
+              "primitive": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                "description": "The primitive, such as radius.pill."
+              },
+              "value": {
+                "type": "string",
+                "description": "The primitive's value, such as 1.5rem or calc(infinity * 1px)."
+              }
+            }
+          },
+          "modes": {
+            "type": "array",
+            "description": "For a color: what it resolves to in each mode of the first brand. The row prints it.",
+            "items": {
+              "type": "object",
+              "required": [
+                "mode",
+                "primitive",
+                "hex"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "light",
+                    "dark"
+                  ],
+                  "description": "The mode."
+                },
+                "primitive": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                  "description": "The primitive the color ends at in this mode, such as color.slate.light.50."
+                },
+                "via": {
+                  "type": "string",
+                  "pattern": "^color\\.neutral\\.[0-9]+$",
+                  "description": "The neutral step a gray goes through in this mode, such as color.neutral.50. Absent for a neutral step itself or a color that points at its primitive directly."
+                },
+                "hex": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-F]{6}([0-9A-F]{2})?$",
+                  "description": "The primitive's value in this mode, with its alpha when it has one, which the row prints."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

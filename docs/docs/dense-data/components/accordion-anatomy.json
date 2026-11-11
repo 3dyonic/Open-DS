@@ -1,0 +1,341 @@
+{
+ "anatomy-legend": {
+  "accordion": {
+   "parts": [
+    {
+     "label": "Item",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Item and its divider",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Grouping"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Trigger",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Hierarchy",
+        "Reach"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Chevron",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Open item",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback",
+        "Meaning"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Content",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Focus ring",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Focus"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Disabled trigger",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "accordion/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Surface, text, action and status cover an operations tool."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Small corners keep dense rows straight."
+    },
+    {
+     "kind": "rule",
+     "situation": "between page sections",
+     "use": "space.gap.section and a hairline",
+     "not": "a card around every section",
+     "why": "Lines separate without taking room from the data."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "item.divider.width",
+     "value": "1px",
+     "byScheme": true,
+     "pick": "border-width.1",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and data",
+     "why": "A data role keeps numbers in aligned columns."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.compact",
+     "not": "anything smaller",
+     "why": "Compact still fits a mouse. Touch is not this product's input."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "trigger.label",
+     "value": "#161B23",
+     "darkValue": "#F7F8FA",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "trigger.font-weight",
+     "value": "500",
+     "byScheme": true,
+     "pick": "font.weight.500",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "trigger.padding-y",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.group",
+     "key": "trigger.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the label so they do not outweigh it."
+    },
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Fast",
+     "why": "Fast feedback keeps up with experts."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "No motion",
+     "not": "a shorter version of the motion",
+     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "icon.size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "motion.duration.feedback",
+     "key": "icon.duration",
+     "value": "120ms",
+     "byScheme": true,
+     "pick": "duration.fast",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and data",
+     "why": "A data role keeps numbers in aligned columns."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Compact",
+     "why": "Compact spacing shows more records."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body",
+     "not": "type.label",
+     "why": "Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "content.font-size",
+     "value": "0.875rem",
+     "byScheme": true,
+     "pick": "font.size.14",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "content.padding-bottom",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast for every text."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Keyboard users must always see where they are."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "trigger.focus-ring.width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "trigger.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "trigger.focus-ring-offset-focus",
+     "value": "#F7F8FA",
+     "darkValue": "#0D1117",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Hover, focus, disabled",
+     "why": "Pressed reuses hover; experts do not need more."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "trigger.disabled.opacity",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

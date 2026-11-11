@@ -22,7 +22,7 @@ export const Playground: Story = {
   render: (args) => (
     <Command
       {...args}
-      className="max-w-md rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+      className="max-w-md rounded-[var(--radius-surface)] border border-[var(--color-border-default)]"
     >
       <CommandInput placeholder="Search" />
       <CommandList>
@@ -36,7 +36,7 @@ export const Examples: Story = {
   render: () => (
     <Show component="command">
       {(s) => (
-        <Command className="max-w-md rounded-[var(--radius-container)] border border-[var(--color-border-default)]">
+        <Command className="max-w-md rounded-[var(--radius-surface)] border border-[var(--color-border-default)]">
           <CommandInput placeholder={s.icon_action ?? s.field.label} />
           <CommandList>
             <CommandEmpty>No match.</CommandEmpty>

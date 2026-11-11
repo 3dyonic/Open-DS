@@ -20,6 +20,8 @@ export function assetRoots() {
       ui: join(packed, "ui"),
       skills: join(packed, "skills"),
       stories: join(packed, "stories"),
+      composites: join(packed, "doc-composites"),
+      docsSrc: join(packed, "docs-src"),
       templates: join(here, "..", "templates"),
     };
   }
@@ -30,6 +32,8 @@ export function assetRoots() {
     ui: join(repo, "ui", "src"),
     skills: join(repo, "skills"),
     stories: join(repo, "storybook", "stories"),
+    composites: join(repo, "doc-composites", "src"),
+    docsSrc: join(repo, "docs", "src"),
     templates: join(here, "..", "templates"),
   };
 }

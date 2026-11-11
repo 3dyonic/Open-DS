@@ -4,6 +4,7 @@
 //   - the switcher keeps the page: /<a>/components/button becomes /<b>/components/button
 //   - a component a scheme leaves out has the regular page, with a "Left out of" badge and what to use instead
 //   - no uncaught page error
+//   - the rebuilt pages reflow in every scheme, light and dark: no sideways scroll, no empty composite (OD-284)
 // Prints one JSON line: { pages, failed: [{ id, problem }] } or { missing } or { error }.
 // Usage: node harness/docs-renders.cjs <docs dir>
 
@@ -104,6 +105,25 @@ server.listen(0, async () => {
         failed.push({ id: "dense-data/carousel", problem: "no component to use instead" });
       if (!(await page.locator("h2:text('See it live')").count()))
         failed.push({ id: "dense-data/carousel", problem: "not the regular component page" });
+    }
+    // Rule 2 (OD-284): the docs take every scheme's values and each layout reflows; it never breaks.
+    // On each scheme's rebuilt pages, in light and dark: no sideways scroll and no composite with no size.
+    const REFLOW = ["decision-reference", "primitives/", "primitives/color", "foundations/", "foundations/color", "foundations/theming"];
+    for (const mode of ["light", "dark"]) {
+      await page.evaluate((m) => localStorage.setItem("theme", m), mode);
+      for (const s of schemes)
+        for (const path of REFLOW) {
+          await page.goto(`${base}/${s.id}/${path}`, { waitUntil: "networkidle" });
+          pages++;
+          const r = await page.evaluate(() => ({
+            wide: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+            empty: [...document.querySelectorAll("[data-composite]")]
+              .filter((e) => e.offsetParent !== null && (e.offsetWidth === 0 || e.offsetHeight === 0))
+              .map((e) => e.dataset.composite),
+          }));
+          if (r.wide) failed.push({ id: `${s.id}/${path} ${mode}`, problem: "the page scrolls sideways" });
+          if (r.empty.length) failed.push({ id: `${s.id}/${path} ${mode}`, problem: `empty composite: ${r.empty.join(", ")}` });
+        }
     }
     for (const e of errors) failed.push({ id: "page", problem: e.slice(0, 160) });
   } catch (e) {

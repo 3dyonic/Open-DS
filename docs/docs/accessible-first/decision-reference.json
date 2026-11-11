@@ -1,0 +1,4789 @@
+{
+ "steps": {
+  "flow": {
+   "steps": [
+    "Question",
+    "Answer",
+    "Why, and what it came from",
+    "Design values",
+    "In the UI"
+   ]
+  }
+ },
+ "decision-tree": {
+  "start": {
+   "roots": [
+    {
+     "answer": "Serves the public",
+     "question": "What does the product do for the business?",
+     "children": [
+      {
+       "answer": "Everyone, including people with disabilities",
+       "question": "Who uses it most?",
+       "children": [
+        {
+         "answer": "AAA",
+         "question": "What accessibility level do we commit to?",
+         "children": [
+          {
+           "answer": "Light and dark",
+           "scope": {
+            "title": "theming",
+            "href": "foundations/theming"
+           }
+          }
+         ]
+        },
+        {
+         "answer": "One idea at a time",
+         "question": "How much is on one screen?"
+        },
+        {
+         "answer": "Low effort to understand",
+         "question": "What must the interface protect?",
+         "children": [
+          {
+           "answer": "Calm and clear",
+           "question": "What should the brand feel like?",
+           "children": [
+            {
+             "answer": "One face drawn for legibility",
+             "question": "Which typefaces carry the product, and why?",
+             "also": [
+              "AAA",
+              "Forms and tasks"
+             ]
+            },
+            {
+             "answer": "Balanced",
+             "scope": {
+              "title": "color",
+              "href": "foundations/color",
+              "token": "color.neutral.0",
+              "primitive": "color.gray.dark.0",
+              "value": "#0A0A0A"
+             }
+            },
+            {
+             "answer": "Slightly rounded",
+             "scope": {
+              "title": "shape",
+              "href": "foundations/shape",
+              "token": "radius.control",
+              "primitive": "radius.6",
+              "value": "0.375rem"
+             }
+            }
+           ]
+          },
+          {
+           "answer": "Quiet",
+           "question": "How visible is the brand in the interface?"
+          },
+          {
+           "answer": "Spacious",
+           "scope": {
+            "title": "spacing",
+            "href": "foundations/spacing",
+            "token": "space.gap.tight",
+            "primitive": "space.12",
+            "value": "0.75rem"
+           }
+          }
+         ]
+        },
+        {
+         "answer": "Anywhere, on any device",
+         "question": "Where do people use it?"
+        },
+        {
+         "answer": "Large",
+         "scope": {
+          "title": "typography",
+          "href": "foundations/typography",
+          "token": "type.body.font-size",
+          "primitive": "font.size.19",
+          "value": "1.1875rem"
+         }
+        },
+        {
+         "answer": "Moderate",
+         "scope": {
+          "title": "motion",
+          "href": "foundations/motion",
+          "token": "motion.duration.feedback",
+          "primitive": "duration.moderate",
+          "value": "200ms"
+         }
+        },
+        {
+         "answer": "Larger than the text",
+         "scope": {
+          "title": "iconography",
+          "href": "foundations/iconography",
+          "token": "size.icon",
+          "primitive": "size.20",
+          "value": "1.25rem"
+         }
+        },
+        {
+         "answer": "Large",
+         "scope": {
+          "title": "accessibility",
+          "href": "foundations/accessibility",
+          "token": "size.control.default",
+          "primitive": "size.52",
+          "value": "3.25rem"
+         }
+        },
+        {
+         "answer": "Plain and direct",
+         "scope": {
+          "title": "voice and tone",
+          "href": "foundations/voice"
+         }
+        },
+        {
+         "answer": "Only when the meaning changes",
+         "scope": {
+          "title": "components",
+          "href": "foundations/components"
+         }
+        }
+       ]
+      },
+      {
+       "answer": "Forms and tasks",
+       "question": "What is the main content?",
+       "children": [
+        {
+         "answer": "Complete a form",
+         "question": "What is the main task?",
+         "children": [
+          {
+           "answer": "Completion without errors",
+           "question": "Which outcome matters most?"
+          },
+          {
+           "answer": "A task that fails",
+           "question": "What is a costly mistake?"
+          },
+          {
+           "answer": "One sitting",
+           "question": "How long is one visit?"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "answer": "Rarely",
+       "question": "How often do people repeat actions?",
+       "children": [
+        {
+         "answer": "They see it fresh each time",
+         "question": "How do people recall the interface?"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "answer": "One",
+     "question": "How many brands or products share the system?"
+    },
+    {
+     "answer": "A platform team",
+     "question": "Who maintains the system?",
+     "children": [
+      {
+       "answer": "Lowercase words in paths",
+       "scope": {
+        "title": "naming",
+        "href": "foundations/naming"
+       }
+      }
+     ]
+    },
+    {
+     "answer": "Rarely",
+     "question": "How fast does it change?"
+    }
+   ]
+  }
+ },
+ "decision-answer": {
+  "business-q1": {
+   "answer": "Serves the public",
+   "why": "A public service everyone must be able to use.",
+   "because": [],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Who uses it most? → Everyone, including people with disabilities"
+       },
+       {
+        "text": "What is the main content? → Forms and tasks"
+       },
+       {
+        "text": "How often do people repeat actions? → Rarely"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "business-q2": {
+   "answer": "One",
+   "why": "One service, one brand.",
+   "because": [],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Shape · How are corners set? → Fixed for the product",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Theming · What can a theme change? → Mode only",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       },
+       {
+        "text": "Theming · How are brands handled? → One brand",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "people-q1": {
+   "answer": "Everyone, including people with disabilities",
+   "why": "Everyone, including people with low vision, motor and cognitive needs.",
+   "because": [
+    "What does the product do for the business? → Serves the public"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "What accessibility level do we commit to? → AAA"
+       },
+       {
+        "text": "How much is on one screen? → One idea at a time"
+       },
+       {
+        "text": "What must the interface protect? → Low effort to understand"
+       },
+       {
+        "text": "Where do people use it? → Anywhere, on any device"
+       },
+       {
+        "text": "Typography · How large is body text? → Large",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Spacing · Which spacing roles does it need? → Gaps, insets and row heights",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Spacing · How many densities exist? → One",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Motion · What is motion for? → Feedback only",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "Motion · How is easing defined? → Standard ease-out",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "Motion · How fast does feedback feel? → Moderate",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "Iconography · What icon style and stroke? → Bold stroke",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "Iconography · How big are icons next to text? → Larger than the text",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "Accessibility · What is the smallest target? → Large",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "Voice and tone · How is the voice defined? → Rules and a word list",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Voice and tone · How does it sound? → Plain and direct",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Components · Which component families does it need? → Actions, forms, feedback, overlays, layout and navigation",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       },
+       {
+        "text": "Components · How does a component earn its place? → It works for everyone, with any device and assistive technology",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       },
+       {
+        "text": "Components · When does a component get another look? → Only when the meaning changes",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a number in a table, use type.body. Don't use a small or mono font. Every number must be readable at large size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "When no component in the inventory fits, use a native HTML element with a label and a hint. Don't use a custom widget that needs hover, drag or precise pointing. Native elements work with every assistive technology without extra work.",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.caption for a hint sentence. It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a text in a table cell, use type.data. Don't use a small or mono font. It equals body here. Every cell stays as large and plain as body text, for people with low vision.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a parts of one item, use space.gap.tight. Don't use no gap. Parts sit close enough to read as one item, with room to tell them apart at high zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Space between fields lowers mis-taps for people with tremor.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding makes each button a bigger target that is easy to hit.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the edge. Wide padding keeps content clear of the strong border at any zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a table cell, use space.inset.cell-x. Don't use narrow cell padding. Clear space between columns keeps values apart at high zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use a pill. Slightly rounded panels read as one clear box at any zoom.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a hairline. A strong edge stays visible at high zoom and for people with low vision.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the thick ring clear of the control, so focus shows on any fill.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a long slide. A moderate open is easy to follow and shows where the panel came from.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a spring that overshoots. A plain ease-out is calm and clear. An overshoot can confuse and distract.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use no hero motion. Don't use an animated start page. Moving content distracts people with attention needs and slows the task.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a thin icon at text size. Larger icons with a bold line stay easy to see for people with low vision.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       },
+       {
+        "text": "For a most buttons and inputs, use size.control.default. Don't use a touch-minimum size. Large controls help people with tremor and low vision.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a button inside a field, use size.control.compact. Don't use a small icon button. It still meets the large target size and fits inside the field.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "people-q2": {
+   "answer": "AAA",
+   "why": "AAA where it applies; nobody is left out.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Which typefaces carry the product, and why? → One face drawn for legibility"
+       },
+       {
+        "text": "Typography · How are sizes and line heights defined? → A ratio, line heights in proportion",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Elevation · What rises above the page? → Nothing",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Elevation · What separates groups on the page? → Lines",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Theming · Which modes ship? → Light and dark",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       },
+       {
+        "text": "Accessibility · Which states get their own visible value? → All, including loading",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "Accessibility · How many signals carry each meaning? → Three: color, icon and word",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "Accessibility · What contrast floor do we hold? → AAA for text",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "Components · How far does the inventory reach? → Only what today's screens use",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       },
+       {
+        "text": "Components · How does a component earn its place? → It works for everyone, with any device and assistive technology",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a field label or column header, use type.label, above the field, always visible. Don't use a placeholder as the label. Labels must stay visible while typing.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a link, use color.text.link, underlined. Don't use color only. Underline works without color perception.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For keyboard focus, use button/focus-ring at border-width.focus, with an offset. Don't use a thin or faint outline. Focus must be seen by everyone.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a edges and dividers, use border-width.default. Don't use a hairline. A strong edge stays visible at high zoom and for people with low vision.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The gap keeps the thick ring clear of the control, so focus shows on any fill.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For an icon beside text, use size.icon and icon.stroke-width. Don't use a thin icon at text size. Larger icons with a bold line stay easy to see for people with low vision.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's danger variant. The confirm of a delete, always with the verb and an icon, so color is never the only cue.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's focus state. Seen by everyone: the focus ring with an offset.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's disabled state isn't used. Keep it enabled and explain on press: nobody is left out, and nobody remembers the interface from last time.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Field's vertical orientation. Every question: the label above the field, always visible.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       },
+       {
+        "text": "Field's horizontal orientation isn't used. Labels stay above the field, visible while typing and in the same place on any screen.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       },
+       {
+        "text": "Input group's inline-start align. A currency sign before the amount, with the label still above the field.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Input group's inline-end align. A unit after the value, as a word people can read, with the label still above the field.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Input group's block-start align isn't used. The label stays above the field, outside it, always visible.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Input group's block-end align isn't used. Hints and errors sit in the field layout, in the same place on every question.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "content-q1": {
+   "answer": "Forms and tasks",
+   "why": "Most screens are forms and steps.",
+   "because": [
+    "What does the product do for the business? → Serves the public"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "What is the main task? → Complete a form"
+       },
+       {
+        "text": "Which typefaces carry the product, and why? → One face drawn for legibility"
+       },
+       {
+        "text": "Typography · Where does type do the most work? → Forms and labels",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Spacing · Where does spacing matter most? → Between fields",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Shape · Where does shape show most? → Controls and cards",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Accessibility · Where are the floors hardest to hold? → Forms",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "Voice and tone · Which kinds of copy does it need? → Labels, messages and help",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Components · Which component families does it need? → Actions, forms, feedback, overlays, layout and navigation",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       },
+       {
+        "text": "Components · Where do components do the most work? → Forms and steps",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Clear headings split a page into short parts that people can find again.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. A clear break shows where one group of questions ends and the next begins.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Text areas and list items keep the control corner, so people know they can type or pick there.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "content-q2": {
+   "answer": "One idea at a time",
+   "why": "One question per screen lowers effort.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display on step pages. It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Every step page has the same title size, so people always know where they are.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "tasks-q1": {
+   "answer": "Complete a form",
+   "why": "People must finish the form.",
+   "because": [
+    "What is the main content? → Forms and tasks"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Which outcome matters most? → Completion without errors"
+       },
+       {
+        "text": "What is a costly mistake? → A task that fails"
+       },
+       {
+        "text": "How long is one visit? → One sitting"
+       },
+       {
+        "text": "Components · Where do components do the most work? → Forms and steps",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a field label or column header, use type.label, above the field, always visible. Don't use a placeholder as the label. Labels must stay visible while typing.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Field's vertical orientation. Every question: the label above the field, always visible.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       },
+       {
+        "text": "Input group's inline-start align. A currency sign before the amount, with the label still above the field.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "tasks-q2": {
+   "answer": "Rarely",
+   "why": "People do this once or twice a year.",
+   "because": [
+    "What does the product do for the business? → Serves the public"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "How do people recall the interface? → They see it fresh each time"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "human-q1": {
+   "answer": "Low effort to understand",
+   "why": "Low effort to understand each step.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "What should the brand feel like? → Calm and clear"
+       },
+       {
+        "text": "How visible is the brand in the interface? → Quiet"
+       },
+       {
+        "text": "Typography · Which text roles does it need? → Core: heading, body, label",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Typography · How many steps does the type scale take? → Only the steps the screens need",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Color · Which color roles does it need? → Surface, text, action and status",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Color · How many emphasis levels do actions need? → Two",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Spacing · How are spacing steps defined? → Big, even steps",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Spacing · How dense is the layout? → Spacious",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Shape · Which shape roles does it need? → Controls, badges and containers",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Voice and tone · How many tones does it use? → One",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a page title, use type.title. Don't use type.display. The same title size on every page tells people where they are. The display size changes from page to page and pushes the content down.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a paragraph or help text, use type.body, short sentences. Don't use type.caption. Large text and short lines lower effort.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a first visit, use say how many steps there are and how long it takes. Don't use marketing copy. Knowing the length lowers effort and anxiety.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a hero line or key number, use type.display. Don't use type.display on step pages. It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a section heading, use type.heading. Don't use bold body text. Clear headings split a page into short parts that people can find again.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a title of a form page, use type.title. Don't use type.display. Every step page has the same title size, so people always know where they are.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "Between groups, use space.gap.group. Don't use space.gap.default. A clear break shows where one group of questions ends and the next begins.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "Inside a card, panel or dialog, use space.inset.container. Don't use text that touches the edge. Wide padding keeps content clear of the strong border at any zoom.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. The option corner nests inside the menu, so the highlighted option reads as one clear box.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a something that grows past one line, use radius.element. Don't use radius.surface. Text areas and list items keep the control corner, so people know they can type or pick there.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a panel opens, use motion.duration.panels. Don't use a long slide. A moderate open is easy to follow and shows where the panel came from.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For a hero or launch moment, use no hero motion. Don't use an animated start page. Moving content distracts people with attention needs and slows the task.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "For the main action on a screen, use size.control.large. Don't use a taller button for the main action. It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       },
+       {
+        "text": "For a control that is not available yet, use opacity.disabled. Don't use a faded control with no reason. It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Alert's default variant. Important notes that stay on the page while people answer.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Empty's default variant isn't used. The brand stays out of the way: words say what will appear and how to start.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "human-q2": {
+   "answer": "They see it fresh each time",
+   "why": "Nobody remembers the interface from last time.",
+   "because": [
+    "How often do people repeat actions? → Rarely"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Iconography · What do icons do? → Actions and status",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an alternative or cancel, use button secondary. Don't use a text link. Every action looks like a button people can find.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For an action on one row or item, use button secondary with a word. Don't use an icon on its own. A word says what will happen.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's secondary variant. Every other action, always with a word: alternatives, row actions, and the first step of a delete.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's ghost variant isn't used. Every action looks like a button people can find.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's disabled state isn't used. Keep it enabled and explain on press: nobody is left out, and nobody remembers the interface from last time.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Field's responsive orientation isn't used. One layout on every device, so people meet the same form every time.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       },
+       {
+        "text": "Toggle's default variant isn't used. Every action looks like a control people can find, so the toggle keeps its border.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "outcomes-q1": {
+   "answer": "Completion without errors",
+   "why": "Completion without errors is the measure.",
+   "because": [
+    "What is the main task? → Complete a form"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Color · Where does color carry meaning first? → Links and actions",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Voice and tone · Where do the words matter most? → Form steps and errors",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a success message, use confirm what happened and what comes next. Don't use a confirmation with no next step. People need to know the task is finished and what happens now.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Inside a button or input, use space.inset.control-x. Don't use padding set by eye. Wide padding makes each button a bigger target that is easy to hit.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Alert's default variant. Important notes that stay on the page while people answer.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Badge's success tone. A finished task, with a filled icon and a word.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "outcomes-q2": {
+   "answer": "A task that fails",
+   "why": "A failed form can cost someone a benefit.",
+   "because": [
+    "What is the main task? → Complete a form"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an error message, use color.status.danger, an icon and a sentence next to the field. Don't use color alone. People must know what went wrong and where.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a delete or remove, use button secondary, then a confirm page with Button danger. Don't use button primary. A confirm step prevents a costly error.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a confirmation question, use say what will happen in plain words, and offer a way back. Don't use a double negative. Plain words prevent a choice people did not mean.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a supporting text, use type.caption. Don't use type.caption for a hint sentence. It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "For a items in a list or a form row, use space.gap.default. Don't use space.gap.tight. Space between fields lowers mis-taps for people with tremor.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For a control that is not available yet, use opacity.disabled. Don't use a faded control with no reason. It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's secondary variant. Every other action, always with a word: alternatives, row actions, and the first step of a delete.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's danger variant. The confirm of a delete, always with the verb and an icon, so color is never the only cue.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Alert's destructive variant. Errors, with what went wrong, where, and exactly how to fix it, next to the field.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Badge's warning tone. A risk people can still fix before they finish, with an icon and a word.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Badge's danger tone. A failure that blocks the task, with a filled icon and a word; an alert says how to fix it.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "brand-q1": {
+   "answer": "Calm and clear",
+   "why": "Calm and clear, never clever.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Which typefaces carry the product, and why? → One face drawn for legibility"
+       },
+       {
+        "text": "Color · How saturated is the palette? → Balanced",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "Shape · What should control corners say? → Slightly rounded",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "Voice and tone · How does it sound? → Plain and direct",
+        "link": {
+         "label": "Voice and tone",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "Components · When does a component get another look? → Only when the meaning changes",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an option in a menu or list, use radius.option. Don't use radius.control. The option corner nests inside the menu, so the highlighted option reads as one clear box.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use a pill. Slightly rounded panels read as one clear box at any zoom.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "For the curve of any move, use motion.easing.standard. Don't use a spring that overshoots. A plain ease-out is calm and clear. An overshoot can confuse and distract.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "brand-q2": {
+   "answer": "Quiet",
+   "why": "The brand stays out of the way.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Empty's default variant isn't used. The brand stays out of the way: words say what will appear and how to start.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "brand-q3": {
+   "answer": "One face drawn for legibility",
+   "why": "Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+   "weighs": [
+    {
+     "group": "Reading",
+     "items": [
+      {
+       "label": "Readability",
+       "text": "Atkinson Hyperlegible was designed by the Braille Institute for readers with low vision."
+      },
+      {
+       "label": "Legibility",
+       "text": "Its letters are drawn to stay apart: I, l and 1, 0 and O, b and d don't look alike."
+      }
+     ]
+    },
+    {
+     "group": "Range",
+     "items": [
+      {
+       "label": "Scalability",
+       "text": "Regular and bold carry the hierarchy; size does the rest, so every role stays readable."
+      },
+      {
+       "label": "Numerals",
+       "text": "Its digits are drawn to be told apart; figures line up when columns align to the right."
+      },
+      {
+       "label": "Scripts and languages",
+       "text": "Latin, with accents for many languages; other scripts need a face chosen for the same legibility."
+      }
+     ]
+    },
+    {
+     "group": "Brand",
+     "items": [
+      {
+       "label": "Recognition",
+       "text": "Accessibility is the brand promise, and the face says it."
+      },
+      {
+       "label": "Familiarity",
+       "text": "A plain, open sans feels familiar and calm in forms and steps."
+      },
+      {
+       "label": "Personality",
+       "text": "Calm and clear, never clever, as the brand answer asks."
+      }
+     ]
+    },
+    {
+     "group": "Delivery",
+     "items": [
+      {
+       "label": "Performance",
+       "text": "One family, two weights: the lightest load of all five schemes."
+      },
+      {
+       "label": "Licensing",
+       "text": "SIL Open Font License: free to embed in apps and on the web."
+      },
+      {
+       "label": "Fallback and pairing",
+       "text": "Falls back to Verdana, a wide, legible system face, as its token says; no second face is needed."
+      }
+     ]
+    }
+   ],
+   "because": [
+    "What should the brand feel like? → Calm and clear",
+    "What accessibility level do we commit to? → AAA",
+    "What is the main content? → Forms and tasks"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "type.display.font-family: atkinson-hyperlegible for display text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.title.font-family: atkinson-hyperlegible for title text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.heading.font-family: atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.body.font-family: atkinson-hyperlegible for body text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.label.font-family: atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.caption.font-family: atkinson-hyperlegible for caption text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       },
+       {
+        "text": "type.data.font-family: atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "link": {
+         "label": "Typography",
+         "href": "foundations/typography"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "scenarios-q1": {
+   "answer": "Anywhere, on any device",
+   "why": "Public services are used on any device, with any assistive technology.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Field's responsive orientation isn't used. One layout on every device, so people meet the same form every time.",
+        "link": {
+         "label": "Field",
+         "href": "components/field"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "scenarios-q2": {
+   "answer": "One sitting",
+   "why": "An application is finished in one sitting, or saved and resumed.",
+   "because": [
+    "What is the main task? → Complete a form"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a first visit, use say how many steps there are and how long it takes. Don't use marketing copy. Knowing the length lowers effort and anxiety.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Badge's neutral tone. A waiting state, such as an application saved to resume later, with an icon and a word.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "team-q1": {
+   "answer": "A platform team",
+   "why": "A platform team serves many services.",
+   "because": [],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Naming · How are decisions named? → By role",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Naming · How are names written? → Lowercase words in paths",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "team-q2": {
+   "answer": "Rarely",
+   "why": "Changes are rare and tested.",
+   "because": [],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Naming · What gets a name? → Tokens and component keys",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Naming · How many token tiers? → Three",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Naming · What do components read? → Component keys",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       },
+       {
+        "text": "Components · How far does the inventory reach? → Only what today's screens use",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "typography-roles": {
+   "answer": "Core: heading, body, label",
+   "why": "Few roles keep pages predictable.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "typography-count": {
+   "answer": "Only the steps the screens need",
+   "why": "Only the sizes the screens need, each clearly different.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "typography-definition": {
+   "answer": "A ratio, line heights in proportion",
+   "why": "Line height grows with text size for zoom users.",
+   "because": [
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "typography-values": {
+   "answer": "Large",
+   "why": "Large text is readable for more people.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "typography-lands": {
+   "answer": "Forms and labels",
+   "why": "Type matters most in form labels and hints.",
+   "because": [
+    "What is the main content? → Forms and tasks"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Typography",
+     "href": "foundations/typography"
+    }
+   }
+  },
+  "color-roles": {
+   "answer": "Surface, text, action and status",
+   "why": "Few color roles, each with one clear meaning.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Color",
+     "href": "foundations/color"
+    }
+   }
+  },
+  "color-count": {
+   "answer": "Two",
+   "why": "Primary and secondary only; fewer choices, fewer errors.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the action that completes the task, use button primary, one per page. Don't use two primaries. One clear next step. Two primaries make people stop and compare, which adds effort.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's primary variant. The one next step on a page.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in light: neutral.0: the secondary action's fill; its label reads, 18.42:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in light: red.light.700: the danger action's fill; its label reads, 8.55:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in light: blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.26:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1.subtle in light: blue.light.100: a tag's tint; text on it reads, 15.61:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in light: teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.95:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2.subtle in light: teal.light.100: a tag's tint; text on it reads, 15.61:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in light: green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3.subtle in light: green.light.100: a tag's tint; text on it reads, 16.13:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in light: amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4.subtle in light: amber.light.100: a tag's tint; text on it reads, 15.49:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in light: neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 7.0:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5.subtle in light: neutral.100: a tag's tint; text on it reads, 15.74:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in dark: neutral.50: the secondary action's fill; its label reads, 17.2:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in dark: red.dark.600: the danger action's fill; its label reads, 7.76:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in dark: blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.74:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1.subtle in dark: blue.dark.100: a tag's tint; text on it reads, 14.23:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in dark: teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.21:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2.subtle in dark: teal.dark.100: a tag's tint; text on it reads, 13.57:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in dark: green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.33:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3.subtle in dark: green.dark.100: a tag's tint; text on it reads, 13.96:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in dark: amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.29:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4.subtle in dark: amber.dark.100: a tag's tint; text on it reads, 13.74:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in dark: neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 12.68:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5.subtle in dark: neutral.100: a tag's tint; text on it reads, 14.85:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "color-definition": {
+   "answer": "Neutrals and one brand ramp",
+   "why": "True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+   "because": [
+    "What accessibility level do we commit to? → AAA",
+    "Who uses it most? → Everyone, including people with disabilities",
+    "Color · Where does color carry meaning first? → Links and actions"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.neutral.0 in light: gray.light.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.50 in light: gray.light.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.100 in light: gray.light.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.200 in light: gray.light.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.300 in light: gray.light.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.400 in light: gray.light.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.500 in light: gray.light.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.600 in light: gray.light.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.700 in light: gray.light.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.800 in light: gray.light.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.900 in light: gray.light.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.950 in light: gray.light.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.canvas in light: neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in light: neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.highlight in light: neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in light: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in light: blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in light: blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.0 in dark: gray.dark.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.50 in dark: gray.dark.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.100 in dark: gray.dark.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.200 in dark: gray.dark.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.300 in dark: gray.dark.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.400 in dark: gray.dark.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.500 in dark: gray.dark.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.600 in dark: gray.dark.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.700 in dark: gray.dark.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.800 in dark: gray.dark.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.900 in dark: gray.dark.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.950 in dark: gray.dark.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.canvas in dark: neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in dark: neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.highlight in dark: neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in dark: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in dark: blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in dark: blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "color-values": {
+   "answer": "Balanced",
+   "why": "Strong but not loud color.",
+   "because": [
+    "What should the brand feel like? → Calm and clear"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Color",
+     "href": "foundations/color"
+    }
+   }
+  },
+  "color-lands": {
+   "answer": "Links and actions",
+   "why": "Links and actions must be found by everyone.",
+   "because": [
+    "Which outcome matters most? → Completion without errors"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info in light: teal.light.600: info reads as text and icons, 7.95:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in light: teal.light.100: a quiet tint behind info; its text, 12.76:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in light: green.light.600: success marks icons and edges, 5.38:1 on surface.default, over 3:1; its text uses success-on-light, which reads at the floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in light: green.light.100: a quiet tint behind success; its text, 10.79:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in light: amber.light.600: warning marks icons and edges, 6.16:1 on surface.default, over 3:1; its text uses warning-on-light, which reads at the floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in light: amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in light: red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in light: red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in light: blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.26:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in light: teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.95:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in light: green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in light: amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in light: neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 7.0:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info in dark: teal.dark.600: info reads as text and icons, 10.21:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in dark: teal.dark.100: a quiet tint behind info; its text, 12.32:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in dark: green.dark.600: success reads as text and icons, 8.33:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in dark: green.dark.100: a quiet tint behind success; its text, 13.1:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in dark: amber.dark.600: warning reads as text and icons, 10.29:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in dark: amber.dark.100: a quiet tint behind warning; its text, 12.37:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in dark: red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in dark: red.dark.100: a quiet tint behind danger; its text, 12.25:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.1 in dark: blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.74:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.2 in dark: teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.21:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.3 in dark: green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.33:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.4 in dark: amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.29:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.category.5 in dark: neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 12.68:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "spacing-roles": {
+   "answer": "Gaps, insets and row heights",
+   "why": "Large rows matter for touch and zoom.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Spacing",
+     "href": "foundations/spacing"
+    }
+   }
+  },
+  "spacing-count": {
+   "answer": "One",
+   "why": "One density; no compact mode to fail people.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Item's sm size isn't used. Large targets help people with motor needs; nothing smaller.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "spacing-definition": {
+   "answer": "Big, even steps",
+   "why": "Big, even steps lower effort.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Spacing",
+     "href": "foundations/spacing"
+    }
+   }
+  },
+  "spacing-values": {
+   "answer": "Spacious",
+   "why": "Space lowers effort and mis-taps.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Generous space lowers mis-taps.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "spacing-lands": {
+   "answer": "Between fields",
+   "why": "Space between fields prevents mis-taps.",
+   "because": [
+    "What is the main content? → Forms and tasks"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Spacing",
+     "href": "foundations/spacing"
+    }
+   }
+  },
+  "shape-roles": {
+   "answer": "Controls, badges and containers",
+   "why": "Badges keep a clear rectangle.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Shape · How many corner sizes exist? → Three",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the shape of a status badge, use radius.badge (rectangle). Don't use a pill. Clear shapes with a word inside.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.6: Clear, slightly rounded controls.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.badge: radius.4: Clear, slightly rounded controls.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.6: the control corner; it is not a pill, so a growing box keeps it.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.8: Clear, slightly rounded controls.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shape-count": {
+   "answer": "Three",
+   "why": "Control, badge and container corners differ.",
+   "because": [
+    "Shape · Which shape roles does it need? → Controls, badges and containers"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
+   }
+  },
+  "shape-definition": {
+   "answer": "Fixed for the product",
+   "why": "One brand, one set of corners.",
+   "because": [
+    "How many brands or products share the system? → One"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
+   }
+  },
+  "shape-values": {
+   "answer": "Slightly rounded",
+   "why": "Clear, slightly rounded controls.",
+   "because": [
+    "What should the brand feel like? → Calm and clear"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the corners of buttons and inputs, use radius.control. Don't use a pill. Clear rectangles read as fields and buttons.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.6: Clear, slightly rounded controls.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.badge: radius.4: Clear, slightly rounded controls.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.6: the control corner; it is not a pill, so a growing box keeps it.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.8: Clear, slightly rounded controls.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "shape-lands": {
+   "answer": "Controls and cards",
+   "why": "Corners show on controls and step cards.",
+   "because": [
+    "What is the main content? → Forms and tasks"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
+   }
+  },
+  "elevation-roles": {
+   "answer": "Nothing",
+   "why": "Flat is easier to read at high zoom.",
+   "because": [
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Elevation · How many shadow levels exist? → None",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Elevation · How soft are shadows? → No shadows",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "Elevation · Where does elevation show? → Dialogs only",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a card on the page, use a strong border, no shadow. Don't use a shadow. Shadows are hard to see; borders are not.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.surface.raised in light: neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.scrim in light: black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "elevation.card in light: shadow.none: Flat is easier to read at high zoom.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in light: shadow.none: No shadows; borders do the work.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "color.surface.raised in dark: neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.scrim in dark: black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "elevation.card in dark: shadow.none: Flat is easier to read at high zoom.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.none: No shadows; borders do the work.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "elevation-count": {
+   "answer": "None",
+   "why": "No shadows.",
+   "because": [
+    "Elevation · What rises above the page? → Nothing"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Elevation",
+     "href": "foundations/elevation"
+    }
+   }
+  },
+  "elevation-definition": {
+   "answer": "Lines",
+   "why": "Strong borders separate groups at any zoom.",
+   "because": [
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "Between page sections, use space.gap.section. Don't use a thin line. Space is easy to see; thin lines are not.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Item's default variant isn't used. A row with no border is hard to see at high zoom; borders do the work.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Item's outline variant. Each saved application, with a strong border that separates it at any zoom.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Toggle's default variant isn't used. Every action looks like a control people can find, so the toggle keeps its border.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       },
+       {
+        "text": "Toggle's outline variant. Every toggle, with a strong border and a word, so it reads as a control at any zoom.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.surface.canvas in light: neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.raised in light: neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in light: neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in light: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.canvas in dark: neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.raised in dark: neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.sunken in dark: neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in dark: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "elevation-values": {
+   "answer": "No shadows",
+   "why": "No shadows; borders do the work.",
+   "because": [
+    "Elevation · What rises above the page? → Nothing"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Item's default variant isn't used. A row with no border is hard to see at high zoom; borders do the work.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Item's outline variant. Each saved application, with a strong border that separates it at any zoom.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.card in light: shadow.none: Flat is easier to read at high zoom.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in light: shadow.none: No shadows; borders do the work.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.card in dark: shadow.none: Flat is easier to read at high zoom.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.none: No shadows; borders do the work.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "elevation-lands": {
+   "answer": "Dialogs only",
+   "why": "Only dialogs separate, with a dimmed page and a border.",
+   "because": [
+    "Elevation · What rises above the page? → Nothing"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a menu or dialog, use a strong border and a dimmed page. Don't use a shadow only. The dimmed page makes the dialog obvious.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "motion-roles": {
+   "answer": "Feedback only",
+   "why": "Motion only confirms an action.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Motion · How many speeds exist? → One",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       },
+       {
+        "text": "Motion · Where does motion show? → State changes only",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "When someone asks for less motion, use no motion. Don't use reduced motion. A shorter motion still moves. When people ask for less motion, nothing moves.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "motion-count": {
+   "answer": "One",
+   "why": "One speed.",
+   "because": [
+    "Motion · What is motion for? → Feedback only"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Motion",
+     "href": "foundations/motion"
+    }
+   }
+  },
+  "motion-definition": {
+   "answer": "Standard ease-out",
+   "why": "A standard ease-out is easy to follow.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Motion",
+     "href": "foundations/motion"
+    }
+   }
+  },
+  "motion-values": {
+   "answer": "Moderate",
+   "why": "Moderate speed is easy to follow.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For hover and press feedback, use motion.duration.feedback (moderate). Don't use fast flicker. Moderate speed is easy to follow.",
+        "link": {
+         "label": "Motion",
+         "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's hover state. Moderate feedback that is easy to follow.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "motion-lands": {
+   "answer": "State changes only",
+   "why": "Only state changes move.",
+   "because": [
+    "Motion · What is motion for? → Feedback only"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Motion",
+     "href": "foundations/motion"
+    }
+   }
+  },
+  "iconography-roles": {
+   "answer": "Actions and status",
+   "why": "Icons support words; they never replace them.",
+   "because": [
+    "How do people recall the interface? → They see it fresh each time"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For an icon with no label, use not used: always add a word. Don't use an icon button. Icons alone are guesswork.",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's icon size isn't used. Icons alone are guesswork: always add a word.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Input group's inline-end align. A unit after the value, as a word people can read, with the label still above the field.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       },
+       {
+        "text": "Toggle's outline variant. Every toggle, with a strong border and a word, so it reads as a control at any zoom.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-count": {
+   "answer": "One",
+   "why": "One size, larger than the text.",
+   "because": [
+    "Iconography · How big are icons next to text? → Larger than the text"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. Larger than the text beside it, so it is easy to see.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's large size isn't used. Accessible first has one icon size, already larger than the text.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-definition": {
+   "answer": "Bold stroke",
+   "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Empty's icon variant. A filled icon in a tile, beside words that say what will appear here and how to start.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       },
+       {
+        "text": "Icon's plain variant. Every icon: a bold 2px stroke, easy to see.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-tint variant isn't used. A bold stroke carries the icon; a shape adds nothing people need.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       },
+       {
+        "text": "Icon's contained-solid variant isn't used. A bold stroke carries the icon.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-values": {
+   "answer": "Larger than the text",
+   "why": "Larger icons are easier to see.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Iconography · How many icon sizes exist? → One",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Icon's default size. Larger than the text beside it, so it is easy to see.",
+        "link": {
+         "label": "Icon",
+         "href": "components/icon"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "iconography-lands": {
+   "answer": "Status and messages",
+   "why": "Icons work hardest beside status words and errors.",
+   "because": [
+    "Accessibility · How many signals carry each meaning? → Three: color, icon and word"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Iconography",
+     "href": "foundations/iconography"
+    }
+   }
+  },
+  "theming-roles": {
+   "answer": "Mode only",
+   "why": "One brand, so only the mode changes.",
+   "because": [
+    "How many brands or products share the system? → One"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Theming · What changes when the theme changes? → Colors only",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "theming-count": {
+   "answer": "Two",
+   "why": "Light and dark.",
+   "because": [
+    "Theming · Which modes ship? → Light and dark"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Theming",
+     "href": "foundations/theming"
+    }
+   }
+  },
+  "theming-definition": {
+   "answer": "One brand",
+   "why": "One service, one brand.",
+   "because": [
+    "How many brands or products share the system? → One"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Theming",
+     "href": "foundations/theming"
+    }
+   }
+  },
+  "theming-values": {
+   "answer": "Light and dark",
+   "why": "Light and dark ship as standard; both hold AAA text.",
+   "because": [
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Theming · How many themes ship? → Two",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "When someone switches to dark, use the dark semantic mode, or high contrast. Don't use one mode only. People pick the mode they can read.",
+        "link": {
+         "label": "Theming",
+         "href": "foundations/theming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "theming-lands": {
+   "answer": "Colors only",
+   "why": "Only colors change.",
+   "because": [
+    "Theming · What can a theme change? → Mode only"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Theming",
+     "href": "foundations/theming"
+    }
+   }
+  },
+  "accessibility-roles": {
+   "answer": "All, including loading",
+   "why": "Every state, including loading, gets its own value.",
+   "because": [
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.surface.highlight in light: neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in light: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in light: blue.light.700: one step from the primary action (blue.light.600), so the pointer shows; its label still reads 10.5:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in light: neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.74:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in light: red.light.800: one step from the danger action (red.light.700), so the pointer shows; its label still reads 12.7:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.text in light: neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.surface in light: neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.border in light: neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.highlight in dark: neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.pressed in dark: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in dark: blue.dark.700: one step from the primary action (blue.dark.600), so the pointer shows; its label still reads 10.8:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in dark: neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.85:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in dark: red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.92:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.text in dark: neutral.500: 6.07:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.surface in dark: neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.disabled.border in dark: neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-count": {
+   "answer": "Three: color, icon and word",
+   "why": "Never color alone.",
+   "because": [
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "answers",
+      "items": [
+       {
+        "text": "Iconography · Where do icons work hardest? → Status and messages",
+        "link": {
+         "label": "Iconography",
+         "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a selected row or item, use color.surface.selected and a check icon. Don't use color alone. Selection never relies on color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For an error message, use color.status.danger, an icon and a sentence next to the field. Don't use color alone. People must know what went wrong and where.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "For a status, use badge with an icon and a word. Don't use color alone. Status must survive no color and a screen reader.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Alert's destructive variant. Errors, with what went wrong, where, and exactly how to fix it, next to the field.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Badge's neutral tone. A waiting state, such as an application saved to resume later, with an icon and a word.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Badge's success tone. A finished task, with a filled icon and a word.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Badge's warning tone. A risk people can still fix before they finish, with an icon and a word.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Badge's danger tone. A failure that blocks the task, with a filled icon and a word; an alert says how to fix it.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       },
+       {
+        "text": "Item's muted variant isn't used. A fill alone marks a row by color; status goes in a badge with an icon and a word.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.text.info-on-light: teal.light.800: info text on its own tint, 12.76:1 on status.info.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.info-on-dark: teal.light.100: info text on its own tint, 12.32:1 on status.info.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-light: green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-dark: green.light.100: success text on its own tint, 13.1:1 on status.success.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-light: amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-dark: amber.light.100: warning text on its own tint, 12.37:1 on status.warning.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-light: red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-dark: red.light.100: danger text on its own tint, 12.25:1 on status.danger.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in light: blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in light: teal.light.100: a quiet tint behind info; its text, 12.76:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in light: green.light.100: a quiet tint behind success; its text, 10.79:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in light: amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in light: red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.selected in dark: blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info.subtle in dark: teal.dark.100: a quiet tint behind info; its text, 12.32:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success.subtle in dark: green.dark.100: a quiet tint behind success; its text, 13.1:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning.subtle in dark: amber.dark.100: a quiet tint behind warning; its text, 12.37:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger.subtle in dark: red.dark.100: a quiet tint behind danger; its text, 12.25:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-definition": {
+   "answer": "AAA for text",
+   "why": "AAA contrast for text.",
+   "because": [
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a value with no token, use the closest semantic token, then ask for a new one. Don't use a raw value in the component. A raw value skips the contrast checks every token passed.",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "color.text.on-light: gray.light.900: the text for every light fill, 18.42:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-dark: gray.light.0: the text for every dark fill, 7.26:1 on action.primary, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.info-on-light: teal.light.800: info text on its own tint, 12.76:1 on status.info.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.info-on-dark: teal.light.100: info text on its own tint, 12.32:1 on status.info.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-light: green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.success-on-dark: green.light.100: success text on its own tint, 13.1:1 on status.success.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-light: amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.warning-on-dark: amber.light.100: warning text on its own tint, 12.37:1 on status.warning.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-light: red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.danger-on-dark: red.light.100: danger text on its own tint, 12.25:1 on status.danger.subtle, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.default in light: neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.inverse in light: neutral.900: the reverse of content for short messages; its text reads, 18.42:1 on surface.inverse, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.primary in light: neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.secondary in light: neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.muted in light: neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.inverse in light: text.on-dark: the text its fill's tone picks, 18.42:1 on surface.inverse, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-action in light: text.on-dark: the text its fill's tone picks, 7.26:1 on action.primary, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.link in light: blue.light.700: a link, set apart by its hue, 10.5:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-danger in light: text.on-dark: the text its fill's tone picks, 8.55:1 on action.danger, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in light: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.strong in light: neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in light: blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.selected in light: blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in light: blue.light.700: one step from the primary action (blue.light.600), so the pointer shows; its label still reads 10.5:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in light: neutral.0: the secondary action's fill; its label reads, 18.42:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in light: neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.74:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in light: red.light.700: the danger action's fill; its label reads, 8.55:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in light: red.light.800: one step from the danger action (red.light.700), so the pointer shows; its label still reads 12.7:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info in light: teal.light.600: info reads as text and icons, 7.95:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in light: green.light.600: success marks icons and edges, 5.38:1 on surface.default, over 3:1; its text uses success-on-light, which reads at the floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in light: amber.light.600: warning marks icons and edges, 6.16:1 on surface.default, over 3:1; its text uses warning-on-light, which reads at the floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in light: red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.default in dark: neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.surface.inverse in dark: neutral.900: the reverse of content for short messages; its text reads, 17.2:1 on surface.inverse, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.primary in dark: neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.secondary in dark: neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.muted in dark: neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.inverse in dark: text.on-light: the text its fill's tone picks, 17.2:1 on surface.inverse, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-action in dark: text.on-light: the text its fill's tone picks, 8.74:1 on action.primary, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.link in dark: blue.dark.700: a link, set apart by its hue, 10.8:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.text.on-danger in dark: text.on-light: the text its fill's tone picks, 7.76:1 on action.danger, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.default in dark: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.strong in dark: neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.focus in dark: blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.border.selected in dark: blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.primary.hover in dark: blue.dark.700: one step from the primary action (blue.dark.600), so the pointer shows; its label still reads 10.8:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary in dark: neutral.50: the secondary action's fill; its label reads, 17.2:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.secondary.hover in dark: neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.85:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger in dark: red.dark.600: the danger action's fill; its label reads, 7.76:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.action.danger.hover in dark: red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.92:1, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.info in dark: teal.dark.600: info reads as text and icons, 10.21:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.success in dark: green.dark.600: success reads as text and icons, 8.33:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.warning in dark: amber.dark.600: warning reads as text and icons, 10.29:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.status.danger in dark: red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-values": {
+   "answer": "Large",
+   "why": "Large targets for tremor and touch.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a table row height, use size.row (large). Don't use a compact row. Large rows are easy to read and tap.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       },
+       {
+        "text": "For the smallest clickable thing, use size.control.default (large). Don't use touch-minimum size. Large targets help people with motor needs.",
+        "link": {
+         "label": "Accessibility",
+         "href": "foundations/accessibility"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Button's default size. Every button. Large targets help people with motor needs.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's compact size isn't used. Large targets help people with motor needs; nothing smaller.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Button's large size isn't used. The default size is already large for motor needs; a bigger one adds nothing.",
+        "link": {
+         "label": "Button",
+         "href": "components/button"
+        }
+       },
+       {
+        "text": "Item's default size. Every row. Large targets help people with motor needs.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Item's sm size isn't used. Large targets help people with motor needs; nothing smaller.",
+        "link": {
+         "label": "Item",
+         "href": "components/item"
+        }
+       },
+       {
+        "text": "Toggle's default size. Every toggle. Large targets help people with motor needs.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       },
+       {
+        "text": "Toggle's sm size isn't used. Large targets help people with motor needs; nothing smaller.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       },
+       {
+        "text": "Toggle's lg size isn't used. The default size is already large for motor needs; a bigger one adds nothing.",
+        "link": {
+         "label": "Toggle",
+         "href": "components/toggle"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "accessibility-lands": {
+   "answer": "Forms",
+   "why": "Forms are where people are blocked.",
+   "because": [
+    "What is the main content? → Forms and tasks"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Accessibility",
+     "href": "foundations/accessibility"
+    }
+   }
+  },
+  "naming-roles": {
+   "answer": "Tokens and component keys",
+   "why": "Components get their own keys.",
+   "because": [
+    "How fast does it change? → Rarely"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-count": {
+   "answer": "Three",
+   "why": "Primitives, semantics and component keys.",
+   "because": [
+    "How fast does it change? → Rarely"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-definition": {
+   "answer": "By role",
+   "why": "Role names survive a redesign.",
+   "because": [
+    "Who maintains the system? → A platform team"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-values": {
+   "answer": "Lowercase words in paths",
+   "why": "Lowercase paths read the same everywhere.",
+   "because": [
+    "Who maintains the system? → A platform team"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Naming",
+     "href": "foundations/naming"
+    }
+   }
+  },
+  "naming-lands": {
+   "answer": "Component keys",
+   "why": "A component API keeps changes local.",
+   "because": [
+    "How fast does it change? → Rarely"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a value with no token, use the closest semantic token, then ask for a new one. Don't use a raw value in the component. A raw value skips the contrast checks every token passed.",
+        "link": {
+         "label": "Naming",
+         "href": "foundations/naming"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "voice-roles": {
+   "answer": "Labels, messages and help",
+   "why": "Hints and help text carry people through each step.",
+   "because": [
+    "What is the main content? → Forms and tasks"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Input group's block-end align isn't used. Hints and errors sit in the field layout, in the same place on every question.",
+        "link": {
+         "label": "Input group",
+         "href": "components/input-group"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "voice-count": {
+   "answer": "One",
+   "why": "One plain tone everywhere; no surprises.",
+   "because": [
+    "What must the interface protect? → Low effort to understand"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Voice and tone",
+     "href": "foundations/voice"
+    }
+   }
+  },
+  "voice-definition": {
+   "answer": "Rules and a word list",
+   "why": "A word list of common words, with terms to avoid.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a button label, use a common verb that says what happens next. Don't use \"Submit\" or \"Proceed\". Common words are understood by the most people.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "voice-values": {
+   "answer": "Plain and direct",
+   "why": "Every sentence is easy to read on the first try.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities",
+    "What should the brand feel like? → Calm and clear"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For a button label, use a common verb that says what happens next. Don't use \"Submit\" or \"Proceed\". Common words are understood by the most people.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For the words of an error, use say what is wrong, where, and exactly how to fix it. Don't use \"Invalid input\". People must be able to fix the error without help.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a success message, use confirm what happened and what comes next. Don't use a confirmation with no next step. People need to know the task is finished and what happens now.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For an empty state, use explain what will appear here and how to start. Don't use a blank page. A blank page leaves people unsure if something failed.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       },
+       {
+        "text": "For a confirmation question, use say what will happen in plain words, and offer a way back. Don't use a double negative. Plain words prevent a choice people did not mean.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Alert's destructive variant. Errors, with what went wrong, where, and exactly how to fix it, next to the field.",
+        "link": {
+         "label": "Alert",
+         "href": "components/alert"
+        }
+       },
+       {
+        "text": "Empty's icon variant. A filled icon in a tile, beside words that say what will appear here and how to start.",
+        "link": {
+         "label": "Empty",
+         "href": "components/empty"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "voice-lands": {
+   "answer": "Form steps and errors",
+   "why": "Words decide whether a form gets finished.",
+   "because": [
+    "Which outcome matters most? → Completion without errors"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For the words of an error, use say what is wrong, where, and exactly how to fix it. Don't use \"Invalid input\". People must be able to fix the error without help.",
+        "link": {
+         "label": "Voice",
+         "href": "foundations/voice"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "components-roles": {
+   "answer": "Actions, forms, feedback, overlays, layout and navigation",
+   "why": "Forms, steps and feedback are all a public service needs.",
+   "because": [
+    "What is the main content? → Forms and tasks",
+    "Who uses it most? → Everyone, including people with disabilities"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Components",
+     "href": "foundations/components"
+    }
+   }
+  },
+  "components-count": {
+   "answer": "Only what today's screens use",
+   "why": "Only the parts in use, each tested with assistive technology.",
+   "because": [
+    "What accessibility level do we commit to? → AAA",
+    "How fast does it change? → Rarely"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Components",
+     "href": "foundations/components"
+    }
+   }
+  },
+  "components-definition": {
+   "answer": "It works for everyone, with any device and assistive technology",
+   "why": "A component joins only when it works with any device and assistive technology.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities",
+    "What accessibility level do we commit to? → AAA"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "When no component in the inventory fits, use a native HTML element with a label and a hint. Don't use a custom widget that needs hover, drag or precise pointing. Native elements work with every assistive technology without extra work.",
+        "link": {
+         "label": "Components",
+         "href": "foundations/components"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "components-values": {
+   "answer": "Only when the meaning changes",
+   "why": "One clear way to do each thing.",
+   "because": [
+    "Who uses it most? → Everyone, including people with disabilities",
+    "What should the brand feel like? → Calm and clear"
+   ],
+   "decided": {
+    "groups": [
+     {
+      "kind": "variants",
+      "items": [
+       {
+        "text": "Badge's info tone isn't used. Neutral covers news with nothing to do: one clear way to do each thing.",
+        "link": {
+         "label": "Badge",
+         "href": "components/badge"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "components-lands": {
+   "answer": "Forms and steps",
+   "why": "Components do their work in forms and steps.",
+   "because": [
+    "What is the main content? → Forms and tasks",
+    "What is the main task? → Complete a form"
+   ],
+   "decided": {
+    "groups": [],
+    "values": {
+     "label": "Components",
+     "href": "foundations/components"
+    }
+   }
+  }
+ }
+}

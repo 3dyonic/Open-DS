@@ -1,0 +1,92 @@
+{
+ "anatomy-legend": {
+  "spinner": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Spinner",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Spin",
+     "need": "state",
+     "noToken": true,
+     "byScheme": false,
+     "roles": [
+      "Feedback"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "spinner/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Larger than the text",
+     "why": "Larger icons hold their own next to big type."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "What icon style and stroke?",
+     "answer": "Contained",
+     "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth."
+    },
+    {
+     "kind": "rule",
+     "situation": "an icon with no label",
+     "use": "Not used: always add a word",
+     "not": "an icon button with a hover hint",
+     "why": "On phones, hover hints never show; a word says what will happen."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "icon-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "size.20",
+     "shares": []
+    }
+   ]
+  },
+  "spinner/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Larger than the text",
+     "why": "Larger icons hold their own next to big type."
+    }
+   ]
+  },
+  "spinner/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Fast",
+     "why": "Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "Reduced motion",
+     "not": "full motion",
+     "why": "Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "anatomy-legend": {
+  "toggle-group": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Group",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Item",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "End corners",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Containment"
+     ]
+    },
+    {
+     "label": "On, hover and focus of an item",
+     "need": "state",
+     "note": "shown by Toggle",
+     "byScheme": false,
+     "roles": [
+      "Meaning",
+      "Feedback",
+      "Focus"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "toggle-group/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Generous space lowers mis-taps."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "radius",
+     "value": "0.375rem",
+     "byScheme": true,
+     "pick": "radius.6: Clear, slightly rounded controls.",
+     "shares": []
+    }
+   ]
+  },
+  "toggle-group/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Large",
+     "why": "Large targets for tremor and touch."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (large)",
+     "not": "touch-minimum size",
+     "why": "Large targets help people with motor needs."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.control-x",
+     "key": "item.padding-x",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  },
+  "toggle-group/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Clear, slightly rounded controls."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control",
+     "not": "a pill",
+     "why": "Clear rectangles read as fields and buttons."
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "item.radius",
+     "value": "0.375rem",
+     "byScheme": true,
+     "pick": "radius.6: Clear, slightly rounded controls.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "item.border-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

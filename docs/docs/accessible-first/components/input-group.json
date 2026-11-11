@@ -1,0 +1,1289 @@
+{
+ "preview": {
+  "input-group/live": {
+   "title": "Input group examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:accessible-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:accessible-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Input group in Storybook",
+     "href": "/storybook/?path=/docs/components-input-group--docs"
+    }
+   ]
+  },
+  "input-group/align/inline-start": {
+   "title": "Input group inline-start",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=align:inline-start"
+   }
+  },
+  "input-group/align/inline-end": {
+   "title": "Input group inline-end",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=align:inline-end"
+   }
+  },
+  "input-group/align/block-start": {
+   "title": "Input group block-start",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=align:block-start"
+   }
+  },
+  "input-group/align/block-end": {
+   "title": "Input group block-end",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:accessible-first;mode:light&args=align:block-end"
+   }
+  }
+ },
+ "card-grid": {
+  "anatomy-link/input-group": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the input group, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./input-group/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "input-group/people.q2": {
+   "anchor": "why-people-q2",
+   "question": "What accessibility level do we commit to?",
+   "key": "people.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "AAA",
+     "why": "AAA where it applies; nobody is left out."
+    },
+    {
+     "kind": "decided",
+     "title": "So Input group",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "inline-start",
+       "text": "A currency sign before the amount, with the label still above the field."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "inline-end",
+       "text": "A unit after the value, as a word people can read, with the label still above the field."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "block-start",
+       "text": "The label stays above the field, outside it, always visible."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "block-end",
+       "text": "Hints and errors sit in the field layout, in the same place on every question."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: danger",
+       "Button: focus",
+       "Button: disabled",
+       "Field: vertical",
+       "Field: horizontal"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 4,
+     "caption": "Input group decisions would reopen",
+     "text": "and 16 answers that follow from it: One face drawn for legibility, A ratio, line heights in proportion, Neutrals and one brand ramp, and 13 more."
+    }
+   ]
+  },
+  "input-group/tasks.q1": {
+   "anchor": "why-tasks-q1",
+   "question": "What is the main task?",
+   "key": "tasks.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Complete a form",
+     "why": "People must finish the form."
+    },
+    {
+     "kind": "decided",
+     "title": "So Input group",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "inline-start",
+       "text": "A currency sign before the amount, with the label still above the field."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: vertical"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Input group decision would reopen",
+     "text": "and 7 answers that follow from it: Completion without errors, A task that fails, One sitting, and 4 more."
+    }
+   ]
+  },
+  "input-group/iconography.roles": {
+   "anchor": "why-iconography-roles",
+   "question": "What do icons do?",
+   "key": "iconography.roles",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Actions and status",
+     "why": "Icons support words; they never replace them."
+    },
+    {
+     "kind": "decided",
+     "title": "So Input group",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "inline-end",
+       "text": "A unit after the value, as a word people can read, with the label still above the field."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Button: icon",
+       "Toggle: outline"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Input group decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "input-group/voice.roles": {
+   "anchor": "why-voice-roles",
+   "question": "Which kinds of copy does it need?",
+   "key": "voice.roles",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Labels, messages and help",
+     "why": "Hints and help text carry people through each step."
+    },
+    {
+     "kind": "decided",
+     "title": "So Input group",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "block-end",
+       "text": "Hints and errors sit in the field layout, in the same place on every question."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Input group decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "input-group": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Accessible first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Accessible first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Input group",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.radius",
+      "alias": "radius.control",
+      "variable": "input-group-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.375rem"
+       },
+       "token": "radius.6",
+       "text": "0.375rem"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Padding left",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.padding-left",
+      "alias": "component-spacing-map.x2",
+      "variable": "input-group-padding-left"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Padding right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.padding-right",
+      "alias": "component-spacing-map.x2",
+      "variable": "input-group-padding-right"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Padding, bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.padding-bottom",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-padding-bottom"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Padding, top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.padding-top",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-padding-top"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Border invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.border-invalid",
+      "alias": "color.status.danger",
+      "variable": "input-group-border-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#981519"
+       },
+       "token": "red.light.700",
+       "text": "#981519"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Focus ring invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.focus-ring-invalid",
+      "alias": "color.status.danger",
+      "variable": "input-group-focus-ring-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#981519"
+       },
+       "token": "red.light.700",
+       "text": "#981519"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.border-width",
+      "alias": "border-width.default",
+      "variable": "input-group-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Focus width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.focus-width",
+      "alias": "border-width.focus",
+      "variable": "input-group-focus-width"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Focus offset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "input-group-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Focus ring offset",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "input-group-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F7F7F7"
+       },
+       "token": "gray.light.50",
+       "text": "#F7F7F7"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#0A0A0A"
+       },
+       "token": "gray.dark.0",
+       "text": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.height",
+      "alias": "size.control.default",
+      "variable": "input-group-height"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "input-group-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.easing",
+      "alias": "motion.easing.standard",
+      "variable": "input-group-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Input group",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.background",
+      "alias": "color.surface.default",
+      "variable": "input-group-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "gray.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#141414"
+       },
+       "token": "gray.dark.50",
+       "text": "#141414"
+      }
+     ]
+    },
+    {
+     "group": "Border",
+     "part": "Color",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.border",
+      "alias": "color.border.strong",
+      "variable": "input-group-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
+      }
+     ]
+    },
+    {
+     "group": "Border",
+     "part": "Focus",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.border.focus",
+      "alias": "color.border.focus",
+      "variable": "input-group-border-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#0B4FC0"
+       },
+       "token": "blue.light.600",
+       "text": "#0B4FC0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8AB4F8"
+       },
+       "token": "blue.dark.600",
+       "text": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "group": "Focus ring",
+     "part": "Highlight",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.focus-ring.highlight",
+      "alias": "color.border.focus",
+      "variable": "input-group-focus-ring-highlight"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#0B4FC0"
+       },
+       "token": "blue.light.600",
+       "text": "#0B4FC0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8AB4F8"
+       },
+       "token": "blue.dark.600",
+       "text": "#8AB4F8"
+      }
+     ]
+    },
+    {
+     "group": "Xs",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.xs.height",
+      "alias": "size.control.compact",
+      "variable": "input-group-xs-height"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Xs",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.xs.gap",
+      "alias": "space.gap.tight",
+      "variable": "input-group-xs-gap"
+     },
+     "values": [
+      {
+       "token": "space.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Xs",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.xs.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "input-group-xs-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Xs",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.xs.radius",
+      "alias": "radius.option",
+      "variable": "input-group-xs-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.25rem"
+       },
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Xs",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.xs.icon-size",
+      "alias": "size.icon",
+      "variable": "input-group-xs-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.sm.height",
+      "alias": "size.control.default",
+      "variable": "input-group-sm-height"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.sm.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "input-group-sm-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.sm.radius",
+      "alias": "radius.control",
+      "variable": "input-group-sm-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.375rem"
+       },
+       "token": "radius.6",
+       "text": "0.375rem"
+      }
+     ]
+    },
+    {
+     "group": "Sm",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.sm.padding-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-sm-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Sm size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.icon.sm.size",
+      "alias": "size.control.default",
+      "variable": "input-group-icon-sm-size"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Xs size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.icon.xs.size",
+      "alias": "size.control.compact",
+      "variable": "input-group-icon-xs-size"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Icon",
+     "part": "Xs radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.icon.xs.radius",
+      "alias": "radius.option",
+      "variable": "input-group-icon-xs-radius"
+     },
+     "values": [
+      {
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Control",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.control.padding-y",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-control-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block end padding bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.end.padding-bottom",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-addon-block-end-padding-bottom"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block end padding bottom 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.end.padding-bottom-2",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-addon-block-end-padding-bottom-2"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block end padding top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.end.padding-top",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-addon-block-end-padding-top"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block end padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.end.padding-x",
+      "alias": "space.inset.control-x",
+      "variable": "input-group-addon-block-end-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block start padding bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.start.padding-bottom",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-addon-block-start-padding-bottom"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block start padding top",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.start.padding-top",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-addon-block-start-padding-top"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block start padding top 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.start.padding-top-2",
+      "alias": "component-spacing-map.x3",
+      "variable": "input-group-addon-block-start-padding-top-2"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Block start padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.block.start.padding-x",
+      "alias": "space.inset.control-x",
+      "variable": "input-group-addon-block-start-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.font-size",
+      "alias": "type.body.font-size",
+      "variable": "input-group-addon-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.19",
+       "text": "1.1875rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "input-group-addon-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.gap",
+      "alias": "space.gap.default",
+      "variable": "input-group-addon-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.icon-size",
+      "alias": "size.icon",
+      "variable": "input-group-addon-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Inline end padding right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.inline.end.padding-right",
+      "alias": "space.inset.control-x",
+      "variable": "input-group-addon-inline-end-padding-right"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Inline start padding left",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.inline.start.padding-left",
+      "alias": "space.inset.control-x",
+      "variable": "input-group-addon-inline-start-padding-left"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.addon.label",
+      "alias": "color.text.muted",
+      "variable": "input-group-addon-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B4B4B4"
+       },
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "input-group-addon-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Button inset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.button.inset",
+      "alias": "component-spacing-map.x1",
+      "variable": "input-group-addon-button-inset"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Kbd inset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.kbd.inset",
+      "alias": "component-spacing-map.x1",
+      "variable": "input-group-addon-kbd-inset"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Kbd radius",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-group.addon.kbd.radius",
+      "alias": "radius.option",
+      "variable": "input-group-addon-kbd-radius"
+     },
+     "values": [
+      {
+       "token": "radius.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Addon",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.addon.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "input-group-addon-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Fill",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "input-group-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-group.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "input-group-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D6D6D6"
+       },
+       "token": "gray.light.200",
+       "text": "#D6D6D6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#333333"
+       },
+       "token": "gray.dark.200",
+       "text": "#333333"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

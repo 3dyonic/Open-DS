@@ -1,0 +1,72 @@
+{
+ "token-groups": {
+  "motion": {
+   "groups": [
+    {
+     "title": "motion.duration.feedback",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-feedback)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.feedback",
+       "primitive": "duration.fast",
+       "value": "120ms"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Hover and press feedback",
+       "detail": "motion.duration.feedback (fast)",
+       "why": "Fast feedback confirms the pointer without slowing experts."
+      }
+     ]
+    },
+    {
+     "title": "motion.duration.panels",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-panels)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.panels",
+       "primitive": "duration.fast",
+       "value": "120ms"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A panel opens",
+       "why": "Panels open at the feedback speed, so experts never wait for a menu."
+      }
+     ]
+    },
+    {
+     "title": "motion.easing.standard",
+     "sample": {
+      "kind": "easing",
+      "value": "var(--motion-easing-standard)"
+     },
+     "api": [
+      {
+       "token": "motion.easing.standard",
+       "primitive": "easing.standard",
+       "value": "cubic-bezier(0.2"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The curve of any move",
+       "why": "A plain ease-out starts fast and settles quietly. Nothing pulls the eye from the data."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

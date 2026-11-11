@@ -1,0 +1,363 @@
+{
+ "preview": {
+  "table/live": {
+   "title": "Table examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-table--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "/storybook/iframe.html?id=components-table--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Table in Storybook",
+     "href": "/storybook/?path=/docs/components-table--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/table": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the table, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./table/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "table": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Table",
+     "part": "Header background",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.table.header-background",
+      "alias": "color.surface.sunken",
+      "variable": "table-header-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Table",
+     "part": "Row height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.row-height",
+      "alias": "size.row",
+      "variable": "table-row-height"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Table",
+     "part": "Cell padding x",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.cell-padding-x",
+      "alias": "space.inset.cell-x",
+      "variable": "table-cell-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Table",
+     "part": "Row border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.table.row-border",
+      "alias": "color.border.default",
+      "variable": "table-row-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Table",
+     "part": "Row selected",
+     "when": "when selected",
+     "themed": true,
+     "chain": {
+      "token": "component.table.row-selected",
+      "alias": "color.surface.selected",
+      "variable": "table-row-selected"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFEAF0"
+       },
+       "token": "pink.light.100",
+       "text": "#FFEAF0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#451731"
+       },
+       "token": "pink.dark.100",
+       "text": "#451731"
+      }
+     ]
+    },
+    {
+     "group": "Table",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.font-size",
+      "alias": "type.data.font-size",
+      "variable": "table-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Table",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.table.label",
+      "alias": "color.text.primary",
+      "variable": "table-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Row",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.row.border-width",
+      "alias": "border-width.default",
+      "variable": "table-row-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Row",
+     "part": "Focus",
+     "when": "when selected",
+     "themed": false,
+     "chain": {
+      "token": "component.table.row.focus",
+      "alias": "border-width.focus",
+      "variable": "table-row-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Head",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.table.head.label",
+      "alias": "color.text.secondary",
+      "variable": "table-head-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.light.700",
+       "text": "#4D3A33"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
+      }
+     ]
+    },
+    {
+     "group": "Head",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.head.font-family",
+      "alias": "type.label.font-family",
+      "variable": "table-head-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.dm-sans",
+       "text": "\"DM Sans\", system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Head",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.head.font-size",
+      "alias": "type.label.font-size",
+      "variable": "table-head-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.15",
+       "text": "0.9375rem"
+      }
+     ]
+    },
+    {
+     "group": "Head",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.head.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "table-head-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Head",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.head.padding-x",
+      "alias": "space.inset.cell-x",
+      "variable": "table-head-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Cell",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.table.cell.font-family",
+      "alias": "type.data.font-family",
+      "variable": "table-cell-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.dm-sans",
+       "text": "\"DM Sans\", system-ui, sans-serif"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

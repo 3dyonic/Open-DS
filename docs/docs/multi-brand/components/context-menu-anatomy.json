@@ -1,0 +1,445 @@
+{
+ "anatomy-legend": {
+  "context-menu": {
+   "parts": [
+    {
+     "label": "Menu",
+     "need": "required",
+     "byScheme": false,
+     "roles": [],
+     "children": [
+      {
+       "n": 1,
+       "label": "Surface",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Layering"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Shadow",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Item",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Readability",
+      "Reach",
+      "Affordance"
+     ],
+     "children": [
+      {
+       "n": 3,
+       "label": "Item label",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability",
+        "Hierarchy"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Item icon",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Highlight fill",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback",
+        "Focus"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Submenu chevron",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Affordance"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Destructive item",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Emphasis"
+       ]
+      },
+      {
+       "label": "Disabled item",
+       "need": "state",
+       "note": "not in this example",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      },
+      {
+       "label": "Shortcut",
+       "need": "optional",
+       "note": "not in this example",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy"
+       ]
+      },
+      {
+       "label": "Checkbox and radio items",
+       "need": "optional",
+       "note": "not in this example",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "label": "Separator",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Group label",
+     "need": "optional",
+     "note": "not in this example",
+     "byScheme": true,
+     "roles": [
+      "Hierarchy",
+      "Grouping"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "context-menu/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Cards too",
+     "why": "Cards lift slightly to group offers."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Soft",
+     "why": "Soft shadows fit every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "a menu or dialog",
+     "use": "elevation.overlay and a dimmed page",
+     "not": "no shadow",
+     "why": "The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.raised",
+     "key": "content.background",
+     "value": "#FFFFFF",
+     "darkValue": "#0F172A",
+     "byScheme": true,
+     "rule": "Fills that float above content.",
+     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "shares": [
+      "surface.default",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.overlay",
+     "key": "content.shadow",
+     "value": "0px 12px 32px, #0F172A29",
+     "darkValue": "0px 12px 32px, #00000080",
+     "byScheme": true,
+     "pick": "shadow.overlay: Soft shadows fit every brand.",
+     "darkPick": "shadow.overlay-dark: Soft shadows fit every brand.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "content.border",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "content.radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Rounded by default; each brand sets its own corner.",
+     "shares": []
+    }
+   ]
+  },
+  "context-menu/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body size suits all brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "item.font-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "font.size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "item.padding-x",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "item.padding-y",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "item.icon",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "item.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "context-menu/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (moderate)",
+     "not": "brand-specific motion",
+     "why": "Motion is shared, so one component library behaves the same in every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring (from the brand)",
+     "not": "removing the outline",
+     "why": "Focus follows the brand but always shows."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "item.background.highlight",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    }
+   ]
+  },
+  "context-menu/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "sub.trigger.icon",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "sub.trigger.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    }
+   ]
+  },
+  "context-menu/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Brand colors vary, so meaning needs a word."
+    },
+    {
+     "kind": "rule",
+     "situation": "delete or remove",
+     "use": "Button secondary, then confirm with Button danger",
+     "not": "button primary",
+     "why": "Confirm before destroying data."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.status.danger",
+     "key": "item.label.destructive",
+     "value": "#C42B2B",
+     "darkValue": "#F28B8B",
+     "byScheme": true,
+     "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.danger"
+     ]
+    }
+   ]
+  },
+  "context-menu/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Cards",
+     "why": "Cards group plans and offers."
+    },
+    {
+     "kind": "rule",
+     "situation": "between page sections",
+     "use": "space.gap.section and cards",
+     "not": "lines",
+     "why": "Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "separator.background",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "separator.thickness",
+     "value": "1px",
+     "byScheme": true,
+     "pick": "border-width.1",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

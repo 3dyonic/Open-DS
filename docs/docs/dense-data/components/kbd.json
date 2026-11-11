@@ -1,0 +1,269 @@
+{
+ "preview": {
+  "kbd/live": {
+   "title": "Kbd examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-kbd--examples&viewMode=story&globals=scheme:dense-data;mode:light",
+    "dark": "/storybook/iframe.html?id=components-kbd--examples&viewMode=story&globals=scheme:dense-data;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Kbd in Storybook",
+     "href": "/storybook/?path=/docs/components-kbd--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/kbd": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the keyboard key, the job it does, and the decisions behind it. 3 parts.",
+     "href": "./kbd/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "kbd": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Dense data decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Dense data gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Kbd",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.kbd.gap",
+      "alias": "space.gap.tight",
+      "variable": "kbd-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Kbd",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.kbd.radius",
+      "alias": "radius.badge",
+      "variable": "kbd-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0rem"
+       },
+       "token": "radius.0",
+       "text": "0rem"
+      }
+     ]
+    },
+    {
+     "group": "Kbd",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.kbd.background",
+      "alias": "color.surface.sunken",
+      "variable": "kbd-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Kbd",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.kbd.padding-x",
+      "alias": "component-spacing-map.x1",
+      "variable": "kbd-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Kbd",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.kbd.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "kbd-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.12",
+       "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Kbd",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.kbd.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "kbd-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.500",
+       "text": "500"
+      }
+     ]
+    },
+    {
+     "group": "Kbd",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.kbd.label",
+      "alias": "color.text.muted",
+      "variable": "kbd-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#535D6D"
+       },
+       "token": "slate.light.600",
+       "text": "#535D6D"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#969FAD"
+       },
+       "token": "slate.dark.400",
+       "text": "#969FAD"
+      }
+     ]
+    },
+    {
+     "group": "Group",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.kbd.group.gap",
+      "alias": "space.gap.tight",
+      "variable": "kbd-group-gap"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Inverse",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.kbd.inverse.label",
+      "alias": "color.text.inverse",
+      "variable": "kbd-inverse-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "slate.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      }
+     ]
+    },
+    {
+     "group": "Inverse",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.kbd.inverse.background",
+      "alias": "color.surface.inverse",
+      "variable": "kbd-inverse-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#161B23"
+       },
+       "token": "slate.light.900",
+       "text": "#161B23"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F7F8FA"
+       },
+       "token": "slate.dark.900",
+       "text": "#F7F8FA"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

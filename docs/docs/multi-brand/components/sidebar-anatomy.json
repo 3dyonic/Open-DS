@@ -1,0 +1,466 @@
+{
+ "anatomy-legend": {
+  "sidebar": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Panel",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "label": "Group",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 2,
+       "label": "Group label",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "label": "Menu",
+       "need": "required",
+       "byScheme": false,
+       "roles": [
+        "Grouping"
+       ],
+       "children": [
+        {
+         "n": 3,
+         "label": "Menu button",
+         "need": "required",
+         "byScheme": true,
+         "roles": [
+          "Affordance",
+          "Reach",
+          "Readability"
+         ]
+        },
+        {
+         "n": 4,
+         "label": "Current item",
+         "need": "state",
+         "byScheme": true,
+         "roles": [
+          "Meaning",
+          "Emphasis"
+         ]
+        },
+        {
+         "n": 5,
+         "label": "Hover and pressed fill",
+         "need": "state",
+         "byScheme": true,
+         "roles": [
+          "Feedback"
+         ]
+        },
+        {
+         "n": 6,
+         "label": "Focus ring",
+         "need": "state",
+         "byScheme": true,
+         "roles": [
+          "Focus"
+         ]
+        },
+        {
+         "n": 7,
+         "label": "Disabled button",
+         "need": "state",
+         "byScheme": true,
+         "roles": [
+          "Feedback"
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "sidebar/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Cards",
+     "why": "Cards group plans and offers."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.default",
+     "key": "background",
+     "value": "#FFFFFF",
+     "darkValue": "#0F172A",
+     "byScheme": true,
+     "rule": "The base fill for content.",
+     "pick": "neutral.0: the base for content; body text reads 17.85:1 on it, above the 4.5:1 floor.",
+     "darkPick": "neutral.50: the base for content; body text reads 17.06:1 on it, above the 4.5:1 floor.",
+     "shares": [
+      "surface.raised",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "label",
+     "value": "#0F172A",
+     "darkValue": "#F8FAFC",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    }
+   ]
+  },
+  "sidebar/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "One set of roles across brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "group.label.label",
+     "value": "#334155",
+     "darkValue": "#CBD5E1",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 10.35:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.500: supporting text, 12.02:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.caption.font-size",
+     "key": "group.label.font-size",
+     "value": "0.8125rem",
+     "byScheme": true,
+     "pick": "font.size.13",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "group.label.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    }
+   ]
+  },
+  "sidebar/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Customers sign up on phones."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Regular",
+     "why": "Regular body size suits all brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "a link",
+     "use": "color.text.link (from the brand)",
+     "not": "a fixed blue",
+     "why": "Links take the brand's color, so they look native in each brand. A fixed blue would clash with some brands."
+    },
+    {
+     "kind": "rule",
+     "situation": "corners of buttons and inputs",
+     "use": "radius.control (set by the brand)",
+     "not": "a hard-coded radius",
+     "why": "Each brand sets its own corner through the theme."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "menu-button.default.height",
+     "value": "2.75rem",
+     "byScheme": true,
+     "pick": "size.44",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "menu-button.padding",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "menu-button.font-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "font.size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.control",
+     "key": "menu-button.radius",
+     "value": "0.25rem",
+     "byScheme": true,
+     "pick": "radius.4: Rounded by default; each brand sets its own corner.",
+     "shares": []
+    }
+   ]
+  },
+  "sidebar/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Two: color and word",
+     "why": "Brand colors vary, so meaning needs a word."
+    },
+    {
+     "kind": "rule",
+     "situation": "a selected row or item",
+     "use": "color.surface.selected (from the brand)",
+     "not": "a fixed blue",
+     "why": "Selection follows the brand color."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.selected",
+     "key": "menu-button.background.current",
+     "value": "#DEF3F0",
+     "darkValue": "#012C28",
+     "byScheme": true,
+     "rule": "The fill of a selected or current item, or a toggle that is on.",
+     "pick": "teal.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "teal.dark.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "shares": [
+      "category.1.subtle"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.selected",
+     "key": "menu-button.edge.current",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
+     "pick": "teal.light.600: the edge beside a selected fill, so selection is never color alone, 5.47:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "teal.dark.600: the edge beside a selected fill, so selection is never color alone, 9.9:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.focus",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "menu-button.edge-width.current",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  },
+  "sidebar/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "rule",
+     "situation": "hover and press feedback",
+     "use": "motion.duration.feedback (moderate)",
+     "not": "brand-specific motion",
+     "why": "Motion is shared, so one component library behaves the same in every brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.highlight",
+     "key": "menu-button.background.hover",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "shares": [
+      "surface.sunken",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.pressed",
+     "key": "menu-button.background.pressed",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
+     "byScheme": true,
+     "rule": "The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step.",
+     "pick": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+     "darkPick": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+     "shares": [
+      "border.default",
+      "disabled.border"
+     ]
+    }
+   ]
+  },
+  "sidebar/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA in every brand and mode."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring (from the brand)",
+     "not": "removing the outline",
+     "why": "Focus follows the brand but always shows."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "menu-button.focus-ring",
+     "value": "#0F766E",
+     "darkValue": "#7FCFC6",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "menu-button.focus-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "menu-button.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    }
+   ]
+  },
+  "sidebar/card-7": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "menu-button.opacity.disabled",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

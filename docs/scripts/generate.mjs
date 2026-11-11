@@ -11,6 +11,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { docsLlms, docsPages } from "../../cli/src/docs.mjs";
 import { assetRoots, grammar, loadScheme, schemeIds } from "../../cli/src/schemes.mjs";
+import { withImports } from "../../cli/src/components.mjs";
+import { compositeComponents } from "../../cli/src/doc-site.mjs";
 import { tokenMapView } from "../../cli/src/token-map-view.mjs";
 
 const docs = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -35,7 +37,7 @@ const codeFont = (scheme) => {
   const b = Object.values(scheme.tokens.brands)[0];
   const ref = b?.theme?.base?.type?.data?.["font-family"]?.$value ?? "";
   const key = ref.match(/^\{font\.family\.([a-z0-9-]+)\}$/)?.[1];
-  const stack = key ? scheme.tokens.primitive?.font?.family?.[key]?.$value ?? "" : "";
+  const stack = key ? (scheme.tokens.primitive?.font?.family?.[key]?.$value ?? "") : "";
   return /monospace\s*$/.test(stack) ? "var(--type-data-font-family)" : MONO;
 };
 
@@ -70,7 +72,7 @@ const INFIMA = {
   "--ifm-heading-font-family": "type-heading-font-family",
   "--ifm-heading-font-weight": "type-heading-font-weight",
   "--ifm-font-weight-bold": "type-label-font-weight",
-  "--ifm-global-radius": "radius-container",
+  "--ifm-global-radius": "radius-surface",
   "--ifm-button-border-radius": "button-radius",
   "--ifm-code-border-radius": "radius-control",
   "--ifm-global-border-width": "border-width-default",
@@ -145,7 +147,8 @@ function onSelected(scheme, scope) {
       ["light", "dark"].map((mode) => {
         const c = def.theme?.[mode]?.color ?? {};
         const vars = [];
-        if (tone(c.surface?.selected)) vars.push(`--ods-text-on-selected: var(--color-text-on-${tone(c.surface.selected)});`);
+        if (tone(c.surface?.selected))
+          vars.push(`--ods-text-on-selected: var(--color-text-on-${tone(c.surface.selected)});`);
         for (const st of ["info", "success", "warning", "danger"])
           if (tone(c.status?.[st]?.subtle))
             vars.push(`--ods-text-on-${st}-subtle: var(--color-text-${st}-on-${tone(c.status[st].subtle)});`);
@@ -157,6 +160,28 @@ function onSelected(scheme, scope) {
     .join("");
 }
 
+/**
+ * The scheme's tokens, scoped to its pages. :root becomes html[data-scheme="<id>"], and the dark
+ * class becomes Docusaurus's data-theme="dark" on the same element. Each selector also gets a mode
+ * scope, so a composite shows one mode on any page: data-mode="light" or data-mode="dark" on an
+ * element repaints the scheme's own components inside it. The mode attribute is written twice on
+ * purpose: a mode scope must outrank the page's mode when both match the same element.
+ */
+function modeScopes(css, scope) {
+  const page = (sel) =>
+    sel.replace(/(^|[\s,]):root\b/, `$1${scope}`).replace(/(^|[\s,])\.dark\b/, `$1${scope}[data-theme="dark"]`);
+  const inMode = (sel) =>
+    /\.dark\b/.test(sel)
+      ? sel.replace(/(^|\s)\.dark\b/, `$1${scope} [data-mode="dark"][data-mode]`)
+      : sel.replace(/(^|\s):root\b/, `$1${scope} [data-mode="light"][data-mode]`);
+  return css.replace(/^([^{}\n][^{}]*)\{/gm, (_, prelude) => {
+    const sels = prelude
+      .split(",")
+      .map((x) => x.trim())
+      .filter(Boolean);
+    return `${[...sels.map(page), ...sels.map(inMode)].join(",\n")} {`;
+  });
+}
 // The Token map page (OD-274), for every scheme: from an area to its scales and steps, the decisions
 // that use a step, and the components that show a decision (cli/src/token-map-view.mjs). One file per
 // brand under static/token-map/; each holds light and dark. The component code is read here, once, so
@@ -197,11 +222,24 @@ Press an area, then a scale and a step. The step shows what it gives and why it 
 };
 
 const files = {};
+// Tailwind reads only the ui components the composites draw with (OD-284). The others carry selectors
+// that the dev server's CSS step warns about, and the docs never show them. This keeps the list current.
+{
+  const roots = assetRoots();
+  const list = withImports(compositeComponents(roots), roots).join(",");
+  const css = readFileSync(join(docs, "src/css/tailwind.css"), "utf8");
+  files["src/css/tailwind.css"] = css.replace(
+    /^@source "\.\.\/\.\.\/\.\.\/ui\/src\/components[^"]*";$/m,
+    `@source "../../../ui/src/components/{${list}}.tsx";`,
+  );
+}
 const index = [];
 for (const id of ids) {
   const scheme = loadScheme(id, roots);
   const pages = docsPages(scheme, g, roots, {
-    storybook: process.env.STORYBOOK_URL,
+    // Storybook sits next to the docs on the site, at /storybook (site/src/lib/places.ts). No host:
+    // the pages and their data files hold the site path. A local run sets STORYBOOK_URL.
+    storybook: (process.env.STORYBOOK_URL ?? "/storybook").replace(/\/$/, ""),
     all: true,
     robots: true,
     base: BASE,
@@ -209,10 +247,10 @@ for (const id of ids) {
   // The tokens, scoped to this scheme's pages: :root becomes html[data-scheme="<id>"], and the dark
   // class becomes Docusaurus's data-theme="dark" on the same element.
   const scope = `html[data-scheme="${id}"]`;
-  const tokenCss = readFileSync(join(roots.tokens, id, "tokens.css"), "utf8")
-    .replace(/^\/\*.*?\*\/\n/s, "")
-    .replaceAll(/(^|[\s,]):root\b/gm, `$1${scope}`)
-    .replaceAll(/(^|[\s,])\.dark\b/gm, `$1${scope}[data-theme="dark"]`);
+  const tokenCss = modeScopes(
+    readFileSync(join(roots.tokens, id, "tokens.css"), "utf8").replace(/^\/\*.*?\*\/\n/s, ""),
+    scope,
+  );
   const built = readdirSync(join(roots.tokens, id))
     .filter((f) => f.endsWith(".tokens.json"))
     .sort();
@@ -221,7 +259,7 @@ for (const id of ids) {
   files[`src/css/schemes/${id}.css`] =
     `/* Generated by scripts/generate.mjs from the ${scheme.name} tokens. Do not edit by hand. */\n` +
     tokenCss +
-    `${scope} {\n${Object.entries(INFIMA)
+    `${scope},\n${scope} [data-mode],\n${scope} [data-mode] [data-brand] {\n${Object.entries(INFIMA)
       .map(([k, v]) => `  ${k}: var(--${v});`)
       .join("\n")}\n  --ifm-font-family-monospace: ${codeFont(scheme)};\n}\n` +
     // OD-222: text on a fill follows the fill's tone. The docs' own selected rows (the pickers, the

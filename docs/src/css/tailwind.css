@@ -1,0 +1,59 @@
+/* Tailwind 4 for the design system components the docs render (OD-284). No preflight: Docusaurus keeps
+   its own base styles, and only the theme and the utilities the components use are loaded. Dark mode
+   follows the docs' own switch (data-theme), not the operating system. */
+@layer theme, base, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "../../../ui/src/components/{badge,button,card,empty,icon,input,item,progress,separator,table,tabs}.tsx";
+@source "../components";
+@source "../../../doc-composites/src";
+@import "../../../ui/src/icons.css";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Tailwind's own palette shares names with the scheme's tokens (--color-neutral-100 …) and would
+   replace them. The components read only Open DS tokens, so the palette is not needed. */
+@theme {
+  --color-*: initial;
+}
+/* "container" appears in component code; as a Tailwind class it would widen the docs' layout. */
+@source not inline("container");
+
+/* The ui components expect Tailwind's reset, which the docs leave out. Inside a composite only, the
+   few base rules they rely on put the browser's own button (on the ui components' buttons only), paragraph and list spacing back to none. */
+@layer base {
+  [data-composite] button[data-slot] {
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+}
+
+/* Inside a composite the Card spaces its contents, so headings, paragraphs and lists add no margin.
+   Outside a layer, because the docs' own margins are outside one too. */
+[data-composite] :is(h1, h2, h3, h4, h5, h6, p, ul, ol) {
+  margin: 0;
+}
+
+/* A duration drawn as a dot that moves once, there and back, at that duration (OD-220). Never a loop. */
+@media (prefers-reduced-motion: no-preference) {
+  .ods-slide {
+    animation: ods-slide calc(var(--ods-d, 120ms) * 6) ease-in-out 2 alternate;
+  }
+  a:hover .ods-slide {
+    animation-name: ods-slide-again;
+  }
+}
+@keyframes ods-slide {
+  to {
+    transform: translateX(4rem);
+  }
+}
+@keyframes ods-slide-again {
+  to {
+    transform: translateX(4rem);
+  }
+}

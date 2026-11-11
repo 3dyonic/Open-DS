@@ -1,0 +1,335 @@
+{
+ "anatomy-legend": {
+  "card": {
+   "parts": [
+    {
+     "label": "Card",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Containment",
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Surface",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment",
+        "Grouping"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Border",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Containment"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Shadow",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Layering"
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Header",
+     "need": "optional",
+     "byScheme": false,
+     "roles": [
+      "Hierarchy"
+     ],
+     "children": [
+      {
+       "n": 4,
+       "label": "Title",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy",
+        "Readability"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Description",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "label": "Content",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping"
+     ]
+    },
+    {
+     "label": "Status",
+     "need": "optional",
+     "note": "shown by Badge",
+     "byScheme": false,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 7,
+     "label": "Footer",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Grouping",
+      "Affordance"
+     ]
+    },
+    {
+     "label": "Actions",
+     "need": "optional",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "card/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Nothing",
+     "why": "Flat is easier to read at high zoom."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "What separates groups on the page?",
+     "answer": "Lines",
+     "why": "Strong borders separate groups at any zoom."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Slightly rounded",
+     "why": "Clear, slightly rounded controls."
+    },
+    {
+     "kind": "rule",
+     "situation": "a card on the page",
+     "use": "A strong border, no shadow",
+     "not": "a shadow",
+     "why": "Shadows are hard to see; borders are not."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.default",
+     "key": "background",
+     "value": "#FFFFFF",
+     "darkValue": "#141414",
+     "byScheme": true,
+     "rule": "The base fill for content.",
+     "pick": "neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
+     "darkPick": "neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+     "shares": [
+      "surface.raised",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.surface",
+     "key": "radius",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "radius.8: Clear, slightly rounded controls.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "padding",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.default",
+     "key": "border",
+     "value": "#D6D6D6",
+     "darkValue": "#333333",
+     "byScheme": true,
+     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "shares": [
+      "surface.pressed",
+      "disabled.border"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "border-width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.card",
+     "key": "shadow",
+     "value": "0px 0px 0px, #00000000",
+     "byScheme": true,
+     "pick": "shadow.none: Flat is easier to read at high zoom.",
+     "shares": [
+      "elevation.overlay"
+     ]
+    }
+   ]
+  },
+  "card/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "Few roles keep pages predictable."
+    },
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "How large is body text?",
+     "answer": "Large",
+     "why": "Large text is readable for more people."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-family",
+     "key": "title.font-family",
+     "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
+     "byScheme": true,
+     "pick": "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-size",
+     "key": "title.font-size",
+     "value": "1.375rem",
+     "byScheme": true,
+     "pick": "font.size.22",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-weight",
+     "key": "title.font-weight",
+     "value": "700",
+     "byScheme": true,
+     "pick": "font.weight.700",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "header.gap",
+     "value": "0.75rem",
+     "byScheme": true,
+     "pick": "space.12",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.secondary",
+     "key": "description.label",
+     "value": "#333333",
+     "darkValue": "#D6D6D6",
+     "byScheme": true,
+     "rule": "Supporting text.",
+     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "description.font-size",
+     "value": "1.1875rem",
+     "byScheme": true,
+     "pick": "font.size.19",
+     "shares": []
+    }
+   ]
+  },
+  "card/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Space lowers effort and mis-taps."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "space.gap.tight",
+     "why": "Generous space lowers mis-taps."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "content.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.default",
+     "key": "footer.gap",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "space.16",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

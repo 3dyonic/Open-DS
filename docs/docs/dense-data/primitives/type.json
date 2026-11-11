@@ -1,0 +1,327 @@
+{
+ "primitive-table": {
+  "font.size": {
+   "rows": [
+    {
+     "primitive": "font.size.12",
+     "value": "0.75rem (12px)",
+     "sample": {
+      "kind": "size",
+      "value": "0.75rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.label.font-size",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.13",
+     "value": "0.8125rem (13px)",
+     "sample": {
+      "kind": "size",
+      "value": "0.8125rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.data.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.14",
+     "value": "0.875rem (14px)",
+     "sample": {
+      "kind": "size",
+      "value": "0.875rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.16",
+     "value": "1rem (16px)",
+     "sample": {
+      "kind": "size",
+      "value": "1rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.heading.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.20",
+     "value": "1.25rem (20px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.25rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.title.font-size",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.size.24",
+     "value": "1.5rem (24px)",
+     "sample": {
+      "kind": "size",
+      "value": "1.5rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-size",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.weight": {
+   "rows": [
+    {
+     "primitive": "font.weight.400",
+     "value": "400",
+     "sample": {
+      "kind": "weight",
+      "value": "400"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.font-weight",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.weight.500",
+     "value": "500",
+     "sample": {
+      "kind": "weight",
+      "value": "500"
+     },
+     "usedBy": [
+      {
+       "token": "type.label.font-weight",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.weight.600",
+     "value": "600",
+     "sample": {
+      "kind": "weight",
+      "value": "600"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.title.font-weight",
+       "where": "semantic"
+      },
+      {
+       "token": "type.heading.font-weight",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.line-height": {
+   "rows": [
+    {
+     "primitive": "font.line-height.1_2",
+     "value": "1.2",
+     "sample": {
+      "kind": "leading",
+      "value": "1.2",
+      "note": "19px"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.title.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.heading.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.label.line-height",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.line-height.1_45",
+     "value": "1.45",
+     "sample": {
+      "kind": "leading",
+      "value": "1.45",
+      "note": "23px"
+     },
+     "usedBy": [
+      {
+       "token": "type.body.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.data.line-height",
+       "where": "semantic"
+      }
+     ]
+    }
+   ]
+  },
+  "font.family": {
+   "rows": [
+    {
+     "primitive": "font.family.ibm-plex-sans",
+     "value": "\"IBM Plex Sans\", system-ui, sans-serif",
+     "sample": {
+      "kind": "font",
+      "value": "'IBM Plex Sans', system-ui, sans-serif"
+     },
+     "usedBy": [
+      {
+       "token": "type.display.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.title.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.heading.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.body.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.label.font-family",
+       "where": "every mode"
+      },
+      {
+       "token": "type.caption.font-family",
+       "where": "every mode"
+      }
+     ]
+    },
+    {
+     "primitive": "font.family.ibm-plex-mono",
+     "value": "\"IBM Plex Mono\", ui-monospace, monospace",
+     "sample": {
+      "kind": "font",
+      "value": "'IBM Plex Mono', ui-monospace, monospace"
+     },
+     "usedBy": [
+      {
+       "token": "type.data.font-family",
+       "where": "every mode"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "specimen": {
+  "type/fonts": {
+   "items": [
+    {
+     "font": "'IBM Plex Sans', system-ui, sans-serif",
+     "big": "Aa",
+     "token": "font.family.ibm-plex-sans",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      },
+      {
+       "weight": 500,
+       "name": "Medium"
+      },
+      {
+       "weight": 600,
+       "name": "Semibold"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.display.font-family",
+       "type.title.font-family",
+       "type.heading.font-family",
+       "type.body.font-family",
+       "type.label.font-family",
+       "type.caption.font-family"
+      ]
+     },
+     "foot": "\"IBM Plex Sans\", system-ui, sans-serif"
+    },
+    {
+     "font": "'IBM Plex Mono', ui-monospace, monospace",
+     "big": "Aa",
+     "token": "font.family.ibm-plex-mono",
+     "sample": [
+      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
+      "0123456789 · & ? !"
+     ],
+     "weights": [
+      {
+       "weight": 400,
+       "name": "Regular"
+      }
+     ],
+     "read": {
+      "label": "Read by",
+      "codes": [
+       "type.data.font-family"
+      ]
+     },
+     "foot": "\"IBM Plex Mono\", ui-monospace, monospace"
+    }
+   ]
+  }
+ }
+}

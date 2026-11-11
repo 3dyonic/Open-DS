@@ -1,0 +1,308 @@
+{
+ "anatomy-legend": {
+  "slider": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Track",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "n": 2,
+     "label": "Range",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Meaning"
+     ]
+    },
+    {
+     "n": 3,
+     "label": "Thumb",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "n": 4,
+     "label": "Focus ring",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Focus"
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Disabled slider",
+     "need": "state",
+     "byScheme": true,
+     "roles": [
+      "Feedback"
+     ]
+    },
+    {
+     "label": "Label",
+     "need": "required",
+     "note": "shown by Label",
+     "byScheme": false,
+     "roles": [
+      "Readability"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "slider/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Reading needs few color roles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded corners feel friendly."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "track.background",
+     "value": "#F6F2EA",
+     "darkValue": "#2E2A24",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.pill",
+     "key": "track.radius",
+     "value": "calc(infinity * 1px)",
+     "byScheme": false,
+     "pick": "radius.pill",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "range.background",
+     "value": "#1E3A5F",
+     "darkValue": "#8FA6C4",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.",
+     "darkPick": "navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    }
+   ]
+  },
+  "slider/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Readers are often on phones."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded corners feel friendly."
+    },
+    {
+     "kind": "answer",
+     "scope": "Elevation",
+     "question": "How soft are shadows?",
+     "answer": "Soft",
+     "why": "Soft shadows suit warm paper."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Many readers are on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "thumb.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "radius.round",
+     "key": "thumb.radius",
+     "value": "50%",
+     "byScheme": false,
+     "pick": "radius.round",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.action.primary",
+     "key": "thumb.border",
+     "value": "#1E3A5F",
+     "darkValue": "#8FA6C4",
+     "byScheme": true,
+     "rule": "The one main action in a view.",
+     "pick": "navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.",
+     "darkPick": "navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.",
+     "shares": [
+      "border.focus",
+      "border.selected",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.default",
+     "key": "thumb.background",
+     "value": "#FFFFFF",
+     "darkValue": "#1F1B16",
+     "byScheme": true,
+     "rule": "The base fill for content.",
+     "pick": "neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.",
+     "darkPick": "neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.",
+     "shares": [
+      "surface.raised",
+      "action.secondary"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "elevation.card",
+     "key": "thumb.shadow",
+     "value": "0px 0px 0px, #00000000",
+     "byScheme": true,
+     "pick": "shadow.none: Only menus and dialogs float.",
+     "shares": []
+    }
+   ]
+  },
+  "slider/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast, with large text helping further."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Keyboard users must always see where they are."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.focus",
+     "key": "thumb.focus-ring-focus",
+     "value": "#1E3A5F",
+     "darkValue": "#8FA6C4",
+     "byScheme": true,
+     "rule": "The focus ring.",
+     "pick": "navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "border.selected",
+      "action.primary",
+      "category.1"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "thumb.focus",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "thumb.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "thumb.focus-ring-offset-focus",
+     "value": "#FFFDF8",
+     "darkValue": "#14110D",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    }
+   ]
+  },
+  "slider/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed gets its own value for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "disabled-opacity-disabled",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "thumb.disabled-opacity-disabled",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

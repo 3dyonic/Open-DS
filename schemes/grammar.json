@@ -686,7 +686,12 @@
         "page-title",
         "number-in-table",
         "paragraph",
-        "field-label"
+        "field-label",
+        "hero-line",
+        "section-heading",
+        "supporting-text",
+        "table-cell",
+        "form-page-title"
       ],
       "questions": [
         {
@@ -835,6 +840,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -1090,6 +1096,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -1117,7 +1124,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["related-items", "between-sections", "table-row"],
+      "situations": ["related-items", "between-sections", "table-row", "parts-of-one-item", "siblings-in-a-row", "between-groups", "inside-a-control", "inside-a-container", "inside-a-cell"],
       "questions": [
         {
           "id": "spacing.roles",
@@ -1268,6 +1275,7 @@
         "empty",
         "field",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -1298,7 +1306,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["control-corner", "status-shape"],
+      "situations": ["control-corner", "status-shape", "option-in-list", "growing-element", "surface-corner", "edges-and-dividers", "focus-gap"],
       "questions": [
         {
           "id": "shape.roles",
@@ -1560,7 +1568,7 @@
         "textarea",
         "tooltip"
       ],
-      "situations": ["hover-feedback", "reduced-motion"],
+      "situations": ["hover-feedback", "reduced-motion", "panel-opens", "any-transition", "hero-motion"],
       "questions": [
         {
           "id": "motion.roles",
@@ -1665,7 +1673,7 @@
       "kind": "scope",
       "title": "Iconography",
       "description": "When icons appear and how they look.",
-      "owns": ["size.icon"],
+      "owns": ["size.icon", "icon.stroke-width"],
       "lands_in": [
         "accordion",
         "alert",
@@ -1681,6 +1689,7 @@
         "context-menu",
         "dialog",
         "dropdown-menu",
+        "icon",
         "input-group",
         "input-otp",
         "item",
@@ -1698,7 +1707,7 @@
         "switch",
         "toggle"
       ],
-      "situations": ["icon-alone", "row-action"],
+      "situations": ["icon-alone", "row-action", "icon-beside-text"],
       "questions": [
         {
           "id": "iconography.roles",
@@ -1739,20 +1748,20 @@
         {
           "id": "iconography.definition",
           "method": "definition",
-          "text": "What icon style?",
-          "description": "Stroke or fill.",
+          "text": "What icon style and stroke?",
+          "description": "Open DS draws every icon with one open-source set, Lucide, which draws in lines. The style sets how heavy the line is, or whether the icon sits in a contained shape; the answer names the stroke width.",
           "options": [
             {
               "id": "outline",
               "label": "Outline"
             },
             {
-              "id": "filled",
-              "label": "Filled"
+              "id": "bold",
+              "label": "Bold stroke"
             },
             {
-              "id": "duotone",
-              "label": "Two-tone"
+              "id": "contained",
+              "label": "Contained"
             }
           ]
         },
@@ -1831,6 +1840,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -1993,7 +2003,7 @@
         "textarea",
         "toggle"
       ],
-      "situations": ["keyboard-focus", "smallest-target"],
+      "situations": ["keyboard-focus", "smallest-target", "most-controls", "main-action", "control-inside-field", "unavailable-control"],
       "questions": [
         {
           "id": "accessibility.roles",
@@ -2127,6 +2137,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -2281,6 +2292,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -2472,6 +2484,7 @@
         "field",
         "form",
         "hover-card",
+        "icon",
         "input",
         "input-group",
         "input-otp",
@@ -2839,6 +2852,150 @@
       "title": "No component in the inventory fits",
       "lead": "When no component in the inventory fits",
       "description": "You need a component this design system does not carry."
+    },
+    {
+      "id": "hero-line",
+      "scope": "typography",
+      "title": "Hero line or key number",
+      "description": "The one biggest line on a screen: a landing headline or a dashboard total."
+    },
+    {
+      "id": "section-heading",
+      "scope": "typography",
+      "title": "Section heading",
+      "description": "The heading of a page section, a card or a dialog."
+    },
+    {
+      "id": "supporting-text",
+      "scope": "typography",
+      "title": "Supporting text",
+      "description": "A timestamp, a hint under a field or a footnote."
+    },
+    {
+      "id": "table-cell",
+      "scope": "typography",
+      "title": "Text in a table cell",
+      "description": "Every value in a table body: names, IDs, dates and numbers."
+    },
+    {
+      "id": "form-page-title",
+      "scope": "typography",
+      "title": "Title of a form page",
+      "description": "The title of a page that holds a task: sign-up, checkout, settings."
+    },
+    {
+      "id": "parts-of-one-item",
+      "scope": "spacing",
+      "title": "Parts of one item",
+      "description": "An icon and its word, or a title and the line under it."
+    },
+    {
+      "id": "siblings-in-a-row",
+      "scope": "spacing",
+      "title": "Items in a list or a form row",
+      "description": "The gap between items of the same kind, one after the other."
+    },
+    {
+      "id": "between-groups",
+      "scope": "spacing",
+      "title": "Between groups",
+      "description": "The gap between two groups inside one section."
+    },
+    {
+      "id": "inside-a-control",
+      "scope": "spacing",
+      "title": "Inside a button or input",
+      "description": "The space from the edge of a control to its text."
+    },
+    {
+      "id": "inside-a-container",
+      "scope": "spacing",
+      "title": "Inside a card, panel or dialog",
+      "description": "The space from the edge of a container to its content."
+    },
+    {
+      "id": "inside-a-cell",
+      "scope": "spacing",
+      "title": "Inside a table cell",
+      "description": "The space from the edge of a cell to its value."
+    },
+    {
+      "id": "option-in-list",
+      "scope": "shape",
+      "title": "An option in a menu or list",
+      "description": "One choice inside a menu, a select or a command list."
+    },
+    {
+      "id": "growing-element",
+      "scope": "shape",
+      "title": "Something that grows past one line",
+      "description": "A list item, an accordion row, a text area, a calendar or media."
+    },
+    {
+      "id": "surface-corner",
+      "scope": "shape",
+      "title": "Corners of cards, menus and dialogs",
+      "description": "The corner shape of a container."
+    },
+    {
+      "id": "edges-and-dividers",
+      "scope": "shape",
+      "title": "Edges and dividers",
+      "description": "The width of a border or a line between two parts."
+    },
+    {
+      "id": "focus-gap",
+      "scope": "shape",
+      "title": "The gap around a focus ring",
+      "description": "The space between a control and its focus ring."
+    },
+    {
+      "id": "panel-opens",
+      "scope": "motion",
+      "title": "A panel opens",
+      "description": "A dialog, sheet, popover or menu opens or closes."
+    },
+    {
+      "id": "any-transition",
+      "scope": "motion",
+      "title": "The curve of any move",
+      "description": "How a change speeds up and slows down."
+    },
+    {
+      "id": "hero-motion",
+      "scope": "motion",
+      "title": "A hero or launch moment",
+      "description": "The motion of a landing hero or a launch reveal."
+    },
+    {
+      "id": "icon-beside-text",
+      "scope": "iconography",
+      "title": "An icon beside text",
+      "description": "An icon next to a word, in a button or in a menu."
+    },
+    {
+      "id": "most-controls",
+      "scope": "accessibility",
+      "title": "Most buttons and inputs",
+      "description": "The height of a normal button or field."
+    },
+    {
+      "id": "main-action",
+      "scope": "accessibility",
+      "title": "The main action on a screen",
+      "description": "The one button the screen exists for."
+    },
+    {
+      "id": "control-inside-field",
+      "scope": "accessibility",
+      "title": "A button inside a field",
+      "description": "A clear, show-password or step button that sits inside an input."
+    },
+    {
+      "id": "unavailable-control",
+      "scope": "accessibility",
+      "title": "A control that is not available yet",
+      "description": "A control people cannot use until they do something first."
     }
   ],
   "components": [
@@ -3847,6 +4004,20 @@
         "hover-card/content/border",
         "hover-card/content/border-width",
         "hover-card/content/duration"
+      ]
+    },
+    {
+      "id": "icon",
+      "description": "The icon component: one Lucide icon at the scheme's size and stroke.",
+      "keys": [
+        "icon/size",
+        "icon/size-large",
+        "icon/contained/padding",
+        "icon/contained/radius",
+        "icon/contained/tint/background",
+        "icon/contained/tint/color",
+        "icon/contained/solid/background",
+        "icon/contained/solid/color"
       ]
     },
     {
@@ -5211,7 +5382,7 @@
       "id": "card/radius",
       "component": "card",
       "description": "Card corner radius.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "card/padding",
@@ -5310,7 +5481,7 @@
       "id": "overlay/radius",
       "component": "overlay",
       "description": "Corner radius of overlays.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "overlay/shadow",
@@ -5428,7 +5599,7 @@
       "id": "accordion/trigger/radius",
       "component": "accordion",
       "description": "The trigger's corner, seen on focus.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "accordion/trigger/focus-ring/@",
@@ -5540,7 +5711,7 @@
       "id": "alert-dialog/content/radius",
       "component": "alert-dialog",
       "description": "Content radius of the alert dialog.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "alert-dialog/content/background",
@@ -5618,7 +5789,7 @@
       "id": "alert-dialog/media/radius",
       "component": "alert-dialog",
       "description": "Media radius of the alert dialog.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "alert-dialog/media/background",
@@ -5672,7 +5843,7 @@
       "id": "alert/radius",
       "component": "alert",
       "description": "Radius of the alert.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "alert/padding-x",
@@ -5792,7 +5963,7 @@
       "id": "attachment/radius",
       "component": "attachment",
       "description": "Radius of the attachment.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "attachment/background/@",
@@ -5865,7 +6036,7 @@
       "id": "attachment/media/radius",
       "component": "attachment",
       "description": "Corner of the attachment's file tile: a media tile, like the item's.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "attachment/radius-2",
@@ -6408,7 +6579,7 @@
       "id": "bubble/body/radius",
       "component": "bubble",
       "description": "Body radius of the bubble.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "bubble/body/padding-x",
@@ -6625,7 +6796,7 @@
       "id": "calendar/radius",
       "component": "calendar",
       "description": "Radius of the calendar.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "calendar/border",
@@ -7020,13 +7191,13 @@
       "id": "chart/tooltip/radius",
       "component": "chart",
       "description": "Corner of the chart's tooltip.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "chart/radius",
       "component": "chart",
       "description": "Deprecated: use chart/tooltip/radius (OD-243). Radius of the chart.",
-      "default": "radius.container",
+      "default": "radius.surface",
       "replaced_by": "chart/tooltip/radius"
     },
     {
@@ -7288,7 +7459,7 @@
       "id": "combobox/content/radius",
       "component": "combobox",
       "description": "Content radius of the combobox.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "combobox/content/background",
@@ -7745,7 +7916,7 @@
       "id": "command/radius",
       "component": "command",
       "description": "Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "command/background",
@@ -8141,7 +8312,7 @@
       "id": "context-menu/sub/content/radius",
       "component": "context-menu",
       "description": "Sub content radius of the context menu.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "context-menu/sub/content/background",
@@ -8171,7 +8342,7 @@
       "id": "context-menu/content/radius",
       "component": "context-menu",
       "description": "Content radius of the context menu.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "context-menu/content/background",
@@ -8653,7 +8824,7 @@
       "id": "data-table/container/radius",
       "component": "data-table",
       "description": "Corner of the table frame, of the data table.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "date-picker/font-weight",
@@ -8858,7 +9029,7 @@
       "id": "dialog/content/radius",
       "component": "dialog",
       "description": "Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "dialog/content/shadow",
@@ -8936,13 +9107,13 @@
       "id": "drawer/handle/radius",
       "component": "drawer",
       "description": "Corner of the drawer handle: fully round.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "drawer/radius",
       "component": "drawer",
       "description": "Deprecated: use drawer/handle/radius (OD-243). Radius of the drawer.",
-      "default": "radius.round",
+      "default": "radius.pill",
       "replaced_by": "drawer/handle/radius"
     },
     {
@@ -9028,7 +9199,7 @@
       "id": "drawer/content/radius",
       "component": "drawer",
       "description": "Corner of the drawer panel on the side away from the screen edge: a container corner.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "drawer/content/border",
@@ -9187,7 +9358,7 @@
       "id": "empty/radius",
       "component": "empty",
       "description": "Radius of the empty.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "empty/padding",
@@ -9211,7 +9382,7 @@
       "id": "empty/icon/radius",
       "component": "empty",
       "description": "Icon radius of the empty.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "empty/icon/background",
@@ -9624,7 +9795,7 @@
       "id": "hover-card/content/radius",
       "component": "hover-card",
       "description": "Content corner of the hover card, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "hover-card/content/background",
@@ -9667,6 +9838,54 @@
       "component": "hover-card",
       "description": "How long the hover card takes to open and close: the panel speed, like every floating panel.",
       "default": "motion.duration.panels"
+    },
+    {
+      "id": "icon/size",
+      "component": "icon",
+      "description": "Size of the icon next to text.",
+      "default": "size.icon"
+    },
+    {
+      "id": "icon/size-large",
+      "component": "icon",
+      "description": "Size of the large icon, where the scheme has two sizes.",
+      "default": "size.icon"
+    },
+    {
+      "id": "icon/contained/padding",
+      "component": "icon",
+      "description": "Space between a contained icon and its shape.",
+      "default": "space.gap.tight"
+    },
+    {
+      "id": "icon/contained/radius",
+      "component": "icon",
+      "description": "Corner of the shape a contained icon sits in.",
+      "default": "radius.control"
+    },
+    {
+      "id": "icon/contained/tint/background",
+      "component": "icon",
+      "description": "Fill of the tinted shape.",
+      "default": "color.surface.selected"
+    },
+    {
+      "id": "icon/contained/tint/color",
+      "component": "icon",
+      "description": "Icon color on the tinted shape.",
+      "default": "color.text.link"
+    },
+    {
+      "id": "icon/contained/solid/background",
+      "component": "icon",
+      "description": "Fill of the solid shape.",
+      "default": "color.action.primary.@"
+    },
+    {
+      "id": "icon/contained/solid/color",
+      "component": "icon",
+      "description": "Icon color on the solid shape.",
+      "default": "color.text.on-action"
     },
     {
       "id": "input-group/radius",
@@ -10411,7 +10630,7 @@
       "id": "item/radius",
       "component": "item",
       "description": "Radius of the item.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "item/font-size",
@@ -10572,7 +10791,7 @@
       "id": "item/media/image/radius",
       "component": "item",
       "description": "Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "item/image/radius",
@@ -10852,7 +11071,7 @@
       "id": "menubar/radius",
       "component": "menubar",
       "description": "Corner of the menubar: a panel that holds its triggers.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "menubar/background",
@@ -10943,7 +11162,7 @@
       "id": "menubar/content/radius",
       "component": "menubar",
       "description": "Content radius of the menubar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "menubar/content/background",
@@ -11383,7 +11602,7 @@
       "id": "menubar/sub/content/radius",
       "component": "menubar",
       "description": "Sub content radius of the menubar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "menubar/sub/content/background",
@@ -11479,7 +11698,7 @@
       "id": "message-scroller/radius",
       "component": "message-scroller",
       "description": "Corner of the message scroller: the region that holds a conversation is a container, not a control.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "message-scroller/focus",
@@ -12122,7 +12341,7 @@
       "id": "navigation-menu/viewport/radius",
       "component": "navigation-menu",
       "description": "Viewport corner of the navigation menu, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "navigation-menu/viewport/background",
@@ -12328,7 +12547,7 @@
       "id": "navigation-menu/content/radius",
       "component": "navigation-menu",
       "description": "Content corner of the navigation menu, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "navigation-menu/link/edge-width/current",
@@ -12441,7 +12660,7 @@
       "id": "popover/content/radius",
       "component": "popover",
       "description": "Content corner of the popover, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "popover/content/background",
@@ -12519,7 +12738,7 @@
       "id": "progress/radius",
       "component": "progress",
       "description": "Radius of the progress.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "progress/background",
@@ -12549,7 +12768,7 @@
       "id": "radio-group/item/radius",
       "component": "radio-group",
       "description": "Item radius of the radio group.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "radio-group/item/border",
@@ -12738,7 +12957,7 @@
       "id": "scroll-area/thumb/radius",
       "component": "scroll-area",
       "description": "Thumb radius of the scroll area.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "scroll-area/thumb/background",
@@ -13240,7 +13459,7 @@
       "id": "sidebar/inner/radius",
       "component": "sidebar",
       "description": "Inner radius of the sidebar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "sidebar/inner/border",
@@ -13290,7 +13509,7 @@
       "id": "sidebar/inset/radius",
       "component": "sidebar",
       "description": "Inset radius of the sidebar.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "sidebar/inset/shadow",
@@ -14297,7 +14516,7 @@
       "id": "skeleton/radius",
       "component": "skeleton",
       "description": "Radius of the skeleton.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "skeleton/background",
@@ -14315,7 +14534,7 @@
       "id": "slider/track/radius",
       "component": "slider",
       "description": "Track radius of the slider.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "slider/track/background",
@@ -14339,7 +14558,7 @@
       "id": "slider/thumb/radius",
       "component": "slider",
       "description": "Thumb radius of the slider.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "slider/thumb/border",
@@ -14424,7 +14643,7 @@
       "id": "switch/radius",
       "component": "switch",
       "description": "Radius of the switch.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "switch/padding",
@@ -14499,7 +14718,7 @@
       "id": "switch/thumb/radius",
       "component": "switch",
       "description": "Corner of the switch's thumb: round, as the track is.",
-      "default": "radius.round"
+      "default": "radius.pill"
     },
     {
       "id": "switch/thumb/background",
@@ -14681,7 +14900,7 @@
       "id": "textarea/radius",
       "component": "textarea",
       "description": "Radius of the textarea.",
-      "default": "radius.control"
+      "default": "radius.element"
     },
     {
       "id": "textarea/border",
@@ -14966,7 +15185,7 @@
       "id": "toast/radius",
       "component": "toast",
       "description": "Corner of the toast, like every floating panel's.",
-      "default": "radius.container"
+      "default": "radius.surface"
     },
     {
       "id": "toast/shadow",
@@ -17481,7 +17700,7 @@
               "w": 320,
               "h": 180,
               "clip": true,
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "fill": "color.surface.sunken",
               "n": 1,
               "at": "corner",
@@ -23807,7 +24026,7 @@
               "layout": "none",
               "w": 340,
               "h": 270,
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "stroke": "color.border.strong",
               "strokeW": "border-width.default",
               "dash": [4, 4],
@@ -27157,6 +27376,208 @@
               "answers": ["spacing.values"],
               "rules": ["related-items"],
               "tokens": ["component.overlay.offset"]
+            }
+          ]
+        }
+      },
+      {
+        "id": "icon",
+        "family": "media",
+        "description": "One icon at the scheme's size and stroke.",
+        "overview": "One small picture that marks an action or a status, beside its word. Open DS draws every icon with one open-source set, Lucide; the scheme sets its size and stroke.",
+        "apply_when": "An icon in content or new UI: beside a word, in an icon button with a label, at the large size, or in a contained shape.",
+        "not_when": "Inside a component that already draws its icon, such as Select or Accordion: those draw Lucide directly and follow the same tokens.",
+        "vs": [
+          {
+            "id": "badge",
+            "why": "A status label, with a word."
+          },
+          {
+            "id": "button",
+            "why": "Something to press; it can hold an Icon."
+          }
+        ],
+        "variants": {
+          "size": [
+            {
+              "id": "default",
+              "overview": "The size of the text the icon sits beside.",
+              "apply_when": "Almost always: beside a word, in a row or a toolbar.",
+              "not_when": "A feature that leads a section, where the scheme has a large size."
+            },
+            {
+              "id": "large",
+              "overview": "A larger step, for schemes that answer two icon sizes.",
+              "apply_when": "An icon that leads a card or a section on its own.",
+              "not_when": "Beside running text or in a row."
+            }
+          ],
+          "variant": [
+            {
+              "id": "plain",
+              "overview": "The icon alone, in the color of the text beside it.",
+              "apply_when": "Every icon by default.",
+              "not_when": "The scheme's style answer asks for a contained look."
+            },
+            {
+              "id": "contained-tint",
+              "overview": "The icon in a tinted shape.",
+              "apply_when": "The scheme answers a contained style: a feature or a list item that leads with its icon.",
+              "not_when": "Beside running text, or many times in one row."
+            },
+            {
+              "id": "contained-solid",
+              "overview": "The icon on a solid fill, in the on-action color.",
+              "apply_when": "One strong mark per view, where the scheme answers a contained style.",
+              "not_when": "More than once in a view: it competes with the primary action."
+            }
+          ]
+        },
+        "situations": [
+          "icon-alone",
+          "row-action"
+        ],
+        "accessibility": [
+          {
+            "id": "decorative",
+            "overview": "Hidden from screen readers by default: the word beside it carries the meaning."
+          },
+          {
+            "id": "label",
+            "overview": "With no word on screen, the label is its accessible name."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        },
+        "anatomy": {
+          "intro": "the icon",
+          "drawing": {
+            "kind": "tree",
+            "stage": {
+              "t": "frame",
+              "name": "Icons",
+              "gap": "space.gap.section",
+              "children": [
+                {
+                  "t": "frame",
+                  "name": "Notify me",
+                  "gap": "space.gap.tight",
+                  "children": [
+                    {
+                      "t": "icon",
+                      "name": "Bell",
+                      "icon": "bell",
+                      "size": "component.icon.size",
+                      "color": "color.text.primary",
+                      "n": 1
+                    },
+                    {
+                      "t": "text",
+                      "text": "Notify me",
+                      "size": "type.body.font-size",
+                      "color": "color.text.primary"
+                    }
+                  ]
+                },
+                {
+                  "t": "frame",
+                  "name": "Contained",
+                  "pad": "component.icon.contained.padding",
+                  "radius": "component.icon.contained.radius",
+                  "fill": "component.icon.contained.tint.background",
+                  "n": 2,
+                  "children": [
+                    {
+                      "t": "icon",
+                      "name": "Bell",
+                      "icon": "bell",
+                      "size": "component.icon.size",
+                      "color": "component.icon.contained.tint.color"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "parts": [
+            {
+              "n": 1,
+              "id": "glyph",
+              "label": "Glyph",
+              "need": "required",
+              "roles": [
+                "meaning"
+              ],
+              "tokens": [
+                "component.icon.size"
+              ]
+            },
+            {
+              "n": 2,
+              "id": "shape",
+              "label": "Contained shape",
+              "need": "optional",
+              "roles": [
+                "containment"
+              ],
+              "tokens": [
+                "component.icon.contained.padding",
+                "component.icon.contained.radius",
+                "component.icon.contained.tint.background",
+                "component.icon.contained.tint.color"
+              ]
+            }
+          ],
+          "cards": [
+            {
+              "title": "Size",
+              "parts": [
+                1
+              ],
+              "roles": [
+                "meaning"
+              ],
+              "answers": [
+                "iconography.count",
+                "iconography.values"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.icon.size"
+              ]
+            },
+            {
+              "title": "Stroke",
+              "parts": [
+                1
+              ],
+              "roles": [
+                "readability"
+              ],
+              "answers": [
+                "iconography.definition"
+              ],
+              "rules": [],
+              "tokens": []
+            },
+            {
+              "title": "Contained shape",
+              "parts": [
+                2
+              ],
+              "roles": [
+                "containment"
+              ],
+              "answers": [
+                "iconography.definition"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.icon.contained.radius",
+                "component.icon.contained.tint.background"
+              ]
             }
           ]
         }
@@ -32782,7 +33203,7 @@
               "align": "start",
               "stroke": "color.border.default",
               "strokeW": "border-width.default",
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "clip": true,
               "children": [
                 {
@@ -33036,7 +33457,7 @@
               "align": "start",
               "stroke": "color.border.default",
               "strokeW": "border-width.default",
-              "radius": "radius.container",
+              "radius": "radius.surface",
               "clip": true,
               "children": [
                 {
@@ -33312,13 +33733,13 @@
                   "w": 180,
                   "stroke": "color.border.default",
                   "strokeW": "border-width.default",
-                  "radius": "radius.container",
+                  "radius": "radius.surface",
                   "ring": {
                     "color": "component.scroll-area.viewport.focus-ring-focus",
                     "width": "component.scroll-area.viewport.focus",
                     "offset": "component.scroll-area.viewport.focus-offset",
                     "fill": "component.scroll-area.viewport.focus-ring-offset-focus",
-                    "radius": "radius.container",
+                    "radius": "radius.surface",
                     "n": 3
                   }
                 }

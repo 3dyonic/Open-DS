@@ -1,0 +1,1471 @@
+{
+ "preview": {
+  "combobox/live": {
+   "title": "Combobox examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:brand-expressive;mode:light",
+    "dark": "/storybook/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Combobox in Storybook",
+     "href": "/storybook/?path=/docs/components-combobox--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/combobox": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the combobox, the job it does, and the decisions behind it. 11 parts.",
+     "href": "./combobox/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "combobox": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Brand expressive decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Brand expressive gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Shared",
+     "part": "Overlay offset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.overlay.offset",
+      "alias": "space.gap.tight",
+      "variable": "overlay-offset"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition panels duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.panels-duration",
+      "alias": "motion.duration.panels",
+      "variable": "transition-panels-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.trigger.icon-size",
+      "alias": "size.icon",
+      "variable": "combobox-trigger-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Icon icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.trigger.icon.icon-size",
+      "alias": "size.icon",
+      "variable": "combobox-trigger-icon-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Icon label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.trigger.icon.label",
+      "alias": "color.text.muted",
+      "variable": "combobox-trigger-icon-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.content.radius",
+      "alias": "radius.surface",
+      "variable": "combobox-content-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "1.5rem"
+       },
+       "token": "radius.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.content.background",
+      "alias": "color.surface.raised",
+      "variable": "combobox-content-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "taupe.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.dark.50",
+       "text": "#1F1411"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.content.label",
+      "alias": "color.text.primary",
+      "variable": "combobox-content-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.content.shadow",
+      "alias": "elevation.overlay",
+      "variable": "combobox-content-shadow"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "shadow": "0px 24px 48px 0px #1F141133"
+       },
+       "text": "shadow.overlay"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "shadow": "0px 24px 48px 0px #00000099"
+       },
+       "text": "shadow.overlay-dark"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.content.border-width",
+      "alias": "border-width.default",
+      "variable": "combobox-content-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Content",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.content.border",
+      "alias": "color.border.default",
+      "variable": "combobox-content-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "List",
+     "part": "Padding",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.list.padding",
+      "alias": "component-spacing-map.x1",
+      "variable": "combobox-list-padding"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.gap",
+      "alias": "space.gap.default",
+      "variable": "combobox-item-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.radius",
+      "alias": "radius.option",
+      "variable": "combobox-item-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "1.25rem"
+       },
+       "token": "radius.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-item-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Padding right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.padding-right",
+      "alias": "component-spacing-map.x8",
+      "variable": "combobox-item-padding-right"
+     },
+     "values": [
+      {
+       "token": "space.64",
+       "text": "4rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Padding left",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.padding-left",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-item-padding-left"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.font-size",
+      "alias": "type.body.font-size",
+      "variable": "combobox-item-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Background highlight",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.item.background.highlight",
+      "alias": "color.surface.highlight",
+      "variable": "combobox-item-background-highlight"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Label highlight",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.item.label.highlight",
+      "alias": "color.text.primary",
+      "variable": "combobox-item-label-highlight"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.disabled-opacity-disabled",
+      "alias": "opacity.disabled",
+      "variable": "combobox-item-disabled-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.item.icon-size",
+      "alias": "size.icon",
+      "variable": "combobox-item-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Combobox",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.icon-size",
+      "alias": "size.icon",
+      "variable": "combobox-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.label.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-label-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.label.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-label-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.label.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "combobox-label-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.label.label",
+      "alias": "color.text.muted",
+      "variable": "combobox-label-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Padding x 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.label.padding-x-2",
+      "alias": "space.inset.control-x",
+      "variable": "combobox-label-padding-x-2"
+     },
+     "values": [
+      {
+       "token": "space.28",
+       "text": "1.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Font size 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.label.font-size-2",
+      "alias": "type.body.font-size",
+      "variable": "combobox-label-font-size-2"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.empty.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-empty-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.empty.font-size",
+      "alias": "type.body.font-size",
+      "variable": "combobox-empty-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Empty",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.empty.label",
+      "alias": "color.text.muted",
+      "variable": "combobox-empty-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.separator.background",
+      "alias": "color.border.default",
+      "variable": "combobox-separator-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Margin y",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.separator.margin-y",
+      "alias": "component-spacing-map.x1",
+      "variable": "combobox-separator-margin-y"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Thickness",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.separator.thickness",
+      "alias": "border-width.default",
+      "variable": "combobox-separator-thickness"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.gap",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-chips-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.radius",
+      "alias": "radius.control",
+      "variable": "combobox-chips-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chips.border",
+      "alias": "color.border.strong",
+      "variable": "combobox-chips-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.padding-x",
+      "alias": "component-spacing-map.x3",
+      "variable": "combobox-chips-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Padding, top and bottom",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.padding-y",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-chips-padding-y"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.font-size",
+      "alias": "type.body.font-size",
+      "variable": "combobox-chips-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.17",
+       "text": "1.0625rem"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Shadow",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chips.shadow",
+      "alias": "elevation.card",
+      "variable": "combobox-chips-shadow"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #1F141124"
+       },
+       "text": "shadow.card"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "shadow": "0px 12px 32px 0px #00000080"
+       },
+       "text": "shadow.card-dark"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Border focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chips.border-focus",
+      "alias": "color.border.focus",
+      "variable": "combobox-chips-border-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Border invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chips.border-invalid",
+      "alias": "color.status.danger",
+      "variable": "combobox-chips-border-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Focus ring invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chips.focus-ring-invalid",
+      "alias": "color.status.danger",
+      "variable": "combobox-chips-focus-ring-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Padding x 2",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.padding-x-2",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-chips-padding-x-2"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Focus ring highlight",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chips.focus-ring.highlight",
+      "alias": "color.border.focus",
+      "variable": "combobox-chips-focus-ring-highlight"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D61F7A"
+       },
+       "token": "pink.light.600",
+       "text": "#D61F7A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F59ACA"
+       },
+       "token": "pink.dark.600",
+       "text": "#F59ACA"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Focus width",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.focus-width",
+      "alias": "border-width.focus",
+      "variable": "combobox-chips-focus-width"
+     },
+     "values": [
+      {
+       "token": "border-width.3",
+       "text": "3px"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.border-width",
+      "alias": "border-width.default",
+      "variable": "combobox-chips-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "combobox-chips-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Focus ring offset",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chips.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "combobox-chips-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.light.50",
+       "text": "#FFF8F3"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#120B09"
+       },
+       "token": "taupe.dark.0",
+       "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Chips",
+     "part": "Halo width invalid",
+     "when": "when invalid",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chips.halo-width.invalid",
+      "alias": "border-width.default",
+      "variable": "combobox-chips-halo-width-invalid"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chip.gap",
+      "alias": "space.gap.tight",
+      "variable": "combobox-chip-gap"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chip.radius",
+      "alias": "radius.badge",
+      "variable": "combobox-chip-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.background",
+      "alias": "color.surface.sunken",
+      "variable": "combobox-chip-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chip.padding-x",
+      "alias": "component-spacing-map.x2",
+      "variable": "combobox-chip-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chip.font-size",
+      "alias": "type.caption.font-size",
+      "variable": "combobox-chip-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.14",
+       "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chip.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "combobox-chip-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.700",
+       "text": "700"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.label",
+      "alias": "color.text.primary",
+      "variable": "combobox-chip-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Disabled opacity",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chip.disabled-opacity",
+      "alias": "opacity.disabled",
+      "variable": "combobox-chip-disabled-opacity"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Remove pull",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.chip.remove.pull",
+      "alias": "component-spacing-map.x1",
+      "variable": "combobox-chip-remove-pull"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Remove label",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.remove.label",
+      "alias": "color.text.muted",
+      "variable": "combobox-chip-remove-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B544A"
+       },
+       "token": "taupe.light.600",
+       "text": "#6B544A"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#B5988A"
+       },
+       "token": "taupe.dark.400",
+       "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Remove label hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.remove.label-hover",
+      "alias": "color.text.primary",
+      "variable": "combobox-chip-remove-label-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1411"
+       },
+       "token": "taupe.light.900",
+       "text": "#1F1411"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFF8F3"
+       },
+       "token": "taupe.dark.900",
+       "text": "#FFF8F3"
+      }
+     ]
+    },
+    {
+     "group": "Input",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.input.border",
+      "alias": "color.border.default",
+      "variable": "combobox-input-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Input",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.input.background",
+      "alias": "color.surface.sunken",
+      "variable": "combobox-input-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Input",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.input.height",
+      "alias": "size.control.default",
+      "variable": "combobox-input-height"
+     },
+     "values": [
+      {
+       "token": "size.52",
+       "text": "3.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Input",
+     "part": "Margin",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.combobox.input.margin",
+      "alias": "component-spacing-map.x1",
+      "variable": "combobox-input-margin"
+     },
+     "values": [
+      {
+       "token": "space.4",
+       "text": "0.25rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

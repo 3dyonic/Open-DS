@@ -1,0 +1,591 @@
+{
+ "preview": {
+  "input-otp/live": {
+   "title": "Input otp examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Input otp in Storybook",
+     "href": "/storybook/?path=/docs/components-input-otp--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/input-otp": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the code input, the job it does, and the decisions behind it. 7 parts.",
+     "href": "./input-otp/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "input-otp": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Input otp",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.gap",
+      "alias": "space.gap.default",
+      "variable": "input-otp-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.border",
+      "alias": "color.border.strong",
+      "variable": "input-otp-slot-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A39A8B"
+       },
+       "token": "stone.dark.400",
+       "text": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border highlight",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.border.highlight",
+      "alias": "color.border.focus",
+      "variable": "input-otp-slot-border-highlight"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.font-size",
+      "alias": "type.body.font-size",
+      "variable": "input-otp-slot-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.18",
+       "text": "1.125rem"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.border-invalid",
+      "alias": "color.status.danger",
+      "variable": "input-otp-slot-border-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus ring highlight",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.focus-ring.highlight",
+      "alias": "color.border.focus",
+      "variable": "input-otp-slot-focus-ring-highlight"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus ring invalid",
+     "when": "when invalid",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.focus-ring-invalid",
+      "alias": "color.status.danger",
+      "variable": "input-otp-slot-focus-ring-invalid"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.border-width",
+      "alias": "border-width.default",
+      "variable": "input-otp-slot-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.radius",
+      "alias": "radius.control",
+      "variable": "input-otp-slot-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.focus-width",
+      "alias": "border-width.focus",
+      "variable": "input-otp-slot-focus-width"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.size",
+      "alias": "size.control.default",
+      "variable": "input-otp-slot-size"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus offset",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "input-otp-slot-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Focus ring offset",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "input-otp-slot-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.light.50",
+       "text": "#FFFDF8"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#14110D"
+       },
+       "token": "stone.dark.0",
+       "text": "#14110D"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "input-otp-slot-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.slot.easing",
+      "alias": "motion.easing.standard",
+      "variable": "input-otp-slot-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.background",
+      "alias": "color.surface.default",
+      "variable": "input-otp-slot-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.dark.50",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "input-otp-slot-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "input-otp-slot-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E4DDD0"
+       },
+       "token": "stone.light.200",
+       "text": "#E4DDD0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4A4339"
+       },
+       "token": "stone.dark.200",
+       "text": "#4A4339"
+      }
+     ]
+    },
+    {
+     "group": "Slot",
+     "part": "Disabled text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.slot.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "input-otp-slot-disabled-text"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.caret.width",
+      "alias": "border-width.default",
+      "variable": "input-otp-caret-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.caret.height",
+      "alias": "size.icon",
+      "variable": "input-otp-caret-height"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.input-otp.caret.background",
+      "alias": "color.text.primary",
+      "variable": "input-otp-caret-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.dark.900",
+       "text": "#FFFDF8"
+      }
+     ]
+    },
+    {
+     "group": "Caret",
+     "part": "Speed",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.caret.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "input-otp-caret-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Separator",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.input-otp.separator.icon-size",
+      "alias": "size.icon",
+      "variable": "input-otp-separator-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

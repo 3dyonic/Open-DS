@@ -1,0 +1,176 @@
+{
+ "token-groups": {
+  "shape": {
+   "groups": [
+    {
+     "title": "radius.control",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-control)"
+     },
+     "api": [
+      {
+       "token": "radius.control",
+       "value": "6px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of buttons and inputs",
+       "why": "Clear rectangles read as fields and buttons."
+      },
+      {
+       "kind": "not",
+       "situation": "An option in a menu or list",
+       "detail": "use radius.option",
+       "why": "The option corner nests inside the menu, so the highlighted option reads as one clear box."
+      }
+     ]
+    },
+    {
+     "title": "radius.badge",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-badge)"
+     },
+     "api": [
+      {
+       "token": "radius.badge",
+       "value": "4px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Shape of a status badge",
+       "detail": "radius.badge (rectangle)",
+       "why": "Clear shapes with a word inside."
+      }
+     ]
+    },
+    {
+     "title": "radius.option",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-option)"
+     },
+     "api": [
+      {
+       "token": "radius.option",
+       "value": "4px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "An option in a menu or list",
+       "why": "The option corner nests inside the menu, so the highlighted option reads as one clear box."
+      }
+     ]
+    },
+    {
+     "title": "radius.element",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-element)"
+     },
+     "api": [
+      {
+       "token": "radius.element",
+       "value": "6px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Something that grows past one line",
+       "why": "Text areas and list items keep the control corner, so people know they can type or pick there."
+      }
+     ]
+    },
+    {
+     "title": "radius.surface",
+     "sample": {
+      "kind": "radius",
+      "value": "var(--radius-surface)"
+     },
+     "api": [
+      {
+       "token": "radius.surface",
+       "value": "8px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Corners of cards, menus and dialogs",
+       "why": "Slightly rounded panels read as one clear box at any zoom."
+      },
+      {
+       "kind": "not",
+       "situation": "Something that grows past one line",
+       "detail": "use radius.element",
+       "why": "Text areas and list items keep the control corner, so people know they can type or pick there."
+      }
+     ]
+    },
+    {
+     "title": "border-width.default",
+     "sample": {
+      "kind": "line",
+      "value": "var(--border-width-default)"
+     },
+     "api": [
+      {
+       "token": "border-width.default",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Edges and dividers",
+       "why": "A strong edge stays visible at high zoom and for people with low vision."
+      }
+     ]
+    },
+    {
+     "title": "Focus ring",
+     "sample": {
+      "kind": "focus"
+     },
+     "api": [
+      {
+       "token": "border-width.focus",
+       "value": "3px"
+      },
+      {
+       "token": "border-width.focus-offset",
+       "value": "2px"
+      },
+      {
+       "token": "color.border.focus",
+       "primitive": "color.blue.light.600",
+       "value": "#0B4FC0",
+       "dark": "#8AB4F8"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring at border-width.focus, with an offset",
+       "why": "Focus must be seen by everyone."
+      },
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The gap keeps the thick ring clear of the control, so focus shows on any fill."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

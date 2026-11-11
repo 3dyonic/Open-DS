@@ -1,0 +1,383 @@
+{
+ "preview": {
+  "slider/live": {
+   "title": "Slider examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Slider in Storybook",
+     "href": "/storybook/?path=/docs/components-slider--docs"
+    }
+   ]
+  }
+ },
+ "card-grid": {
+  "anatomy-link/slider": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the slider, the job it does, and the decisions behind it. 5 parts.",
+     "href": "./slider/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "slider": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Slider",
+     "part": "Disabled opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.disabled-opacity-disabled",
+      "alias": "opacity.disabled",
+      "variable": "slider-disabled-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Track",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.track.radius",
+      "alias": "radius.pill",
+      "variable": "slider-track-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "calc(infinity * 1px)"
+       },
+       "token": "radius.pill",
+       "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Track",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.track.background",
+      "alias": "color.surface.sunken",
+      "variable": "slider-track-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Range",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.range.background",
+      "alias": "color.action.primary",
+      "variable": "slider-range-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.icon-size",
+      "alias": "size.icon",
+      "variable": "slider-thumb-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.radius",
+      "alias": "radius.round",
+      "variable": "slider-thumb-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "50%"
+       },
+       "token": "radius.round",
+       "text": "50%"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.border",
+      "alias": "color.action.primary",
+      "variable": "slider-thumb-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Shadow",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.shadow",
+      "alias": "elevation.card",
+      "variable": "slider-thumb-shadow"
+     },
+     "values": [
+      {
+       "swatch": {
+        "shadow": "0px 0px 0px 0px #00000000"
+       },
+       "text": "shadow.none"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Disabled opacity disabled",
+     "when": "when disabled",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.disabled-opacity-disabled",
+      "alias": "opacity.disabled",
+      "variable": "slider-thumb-disabled-opacity-disabled"
+     },
+     "values": [
+      {
+       "token": "opacity.40",
+       "text": "0.4"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.focus",
+      "alias": "border-width.focus",
+      "variable": "slider-thumb-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Focus ring focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.focus-ring-focus",
+      "alias": "color.border.focus",
+      "variable": "slider-thumb-focus-ring-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Focus ring offset focus",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.focus-ring-offset-focus",
+      "alias": "color.surface.canvas",
+      "variable": "slider-thumb-focus-ring-offset-focus"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.light.50",
+       "text": "#FFFDF8"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#14110D"
+       },
+       "token": "stone.dark.0",
+       "text": "#14110D"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "slider-thumb-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.border-width",
+      "alias": "border-width.default",
+      "variable": "slider-thumb-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.background",
+      "alias": "color.surface.default",
+      "variable": "slider-thumb-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.dark.50",
+       "text": "#1F1B16"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

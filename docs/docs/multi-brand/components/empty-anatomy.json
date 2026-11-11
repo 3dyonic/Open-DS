@@ -1,0 +1,251 @@
+{
+ "anatomy-legend": {
+  "empty": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Frame",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Containment"
+     ]
+    },
+    {
+     "label": "Header",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Hierarchy",
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 2,
+       "label": "Icon",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Meaning"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Title",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Hierarchy"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Why it is empty",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "label": "Action area",
+     "need": "optional",
+     "byScheme": true,
+     "roles": [
+      "Affordance"
+     ]
+    },
+    {
+     "label": "The one action that fills it",
+     "need": "optional",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "empty/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded by default; each brand sets its own corner."
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x6",
+     "key": "padding",
+     "value": "2.25rem",
+     "byScheme": true,
+     "pick": "space.36",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x12",
+     "key": "padding-2",
+     "value": "4rem",
+     "byScheme": true,
+     "pick": "space.64",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.section",
+     "key": "gap",
+     "value": "3rem",
+     "byScheme": true,
+     "pick": "space.48",
+     "shares": []
+    }
+   ]
+  },
+  "empty/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.sunken",
+     "key": "icon.background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
+     "byScheme": true,
+     "rule": "A recessed fill, a step below content.",
+     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "shares": [
+      "surface.highlight",
+      "action.secondary.hover",
+      "disabled.surface"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "icon.label",
+     "value": "#0F172A",
+     "darkValue": "#F8FAFC",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x2",
+     "key": "icon.margin-bottom",
+     "value": "0.5rem",
+     "byScheme": false,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  },
+  "empty/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core: heading, body, label",
+     "why": "One set of roles across brands."
+    },
+    {
+     "kind": "answer",
+     "scope": "Voice and tone",
+     "question": "Where do the words matter most?",
+     "answer": "Headlines and buttons",
+     "why": "Brand tone shows in headlines and buttons."
+    },
+    {
+     "kind": "rule",
+     "situation": "an empty state",
+     "use": "Shared structure, brand words",
+     "not": "a different structure per brand",
+     "why": "The structure is the shared core; words carry the brand."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.heading.font-size",
+     "key": "title.font-size",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "font.size.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "title.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.muted",
+     "key": "description.label",
+     "value": "#4B5A6F",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The quietest text.",
+     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "shares": []
+    }
+   ]
+  },
+  "empty/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "question": "What is the main task?",
+     "answer": "Complete a form",
+     "why": "Customers sign up and buy."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.group",
+     "key": "content.gap",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

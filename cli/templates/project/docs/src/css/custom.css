@@ -139,7 +139,7 @@ code {
 }
 .alert,
 .theme-admonition {
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   border-width: var(--border-width-default);
   box-shadow: none;
 }
@@ -152,7 +152,7 @@ code {
   padding: var(--space-inset-container, 1rem);
   margin-bottom: var(--space-gap-section, 1.5rem);
   border: var(--border-width-default, 1px) solid var(--color-border-default);
-  border-radius: var(--radius-container, 0.375rem);
+  border-radius: var(--radius-surface, 0.375rem);
   background: var(--color-surface-default);
 }
 .ods-item {

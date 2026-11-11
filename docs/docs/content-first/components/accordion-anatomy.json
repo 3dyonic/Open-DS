@@ -1,0 +1,341 @@
+{
+ "anatomy-legend": {
+  "accordion": {
+   "parts": [
+    {
+     "label": "Item",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 1,
+       "label": "Item and its divider",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Grouping"
+       ]
+      },
+      {
+       "n": 2,
+       "label": "Trigger",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Hierarchy",
+        "Reach"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Chevron",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Open item",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback",
+        "Meaning"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Content",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Readability"
+       ]
+      },
+      {
+       "n": 6,
+       "label": "Focus ring",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Focus"
+       ]
+      },
+      {
+       "n": 7,
+       "label": "Disabled trigger",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Feedback"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "accordion/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Surface, text, action and status",
+     "why": "Reading needs few color roles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Shape",
+     "question": "What should control corners say?",
+     "answer": "Rounded",
+     "why": "Rounded corners feel friendly."
+    },
+    {
+     "kind": "rule",
+     "situation": "between page sections",
+     "use": "space.gap.section, no line",
+     "not": "a divider line",
+     "why": "Space alone separates sections; lines add noise."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.default",
+     "key": "item.divider.width",
+     "value": "1px",
+     "byScheme": true,
+     "pick": "border-width.1",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and editorial display",
+     "why": "A lead and a display role open articles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Many readers are on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.primary",
+     "key": "trigger.label",
+     "value": "#1F1B16",
+     "darkValue": "#FFFDF8",
+     "byScheme": true,
+     "rule": "Body text and headings.",
+     "pick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "surface.inverse"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "type.label.font-weight",
+     "key": "trigger.font-weight",
+     "value": "600",
+     "byScheme": true,
+     "pick": "font.weight.600",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "trigger.padding-y",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.group",
+     "key": "trigger.gap",
+     "value": "2rem",
+     "byScheme": true,
+     "pick": "space.32",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text size."
+    },
+    {
+     "kind": "answer",
+     "scope": "Motion",
+     "question": "How fast does feedback feel?",
+     "answer": "Moderate",
+     "why": "Moderate speed feels calm."
+    },
+    {
+     "kind": "rule",
+     "situation": "someone asked for less motion",
+     "use": "No motion",
+     "not": "reduced motion",
+     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "icon.size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "motion.duration.feedback",
+     "key": "icon.duration",
+     "value": "200ms",
+     "byScheme": true,
+     "pick": "duration.moderate",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-4": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Typography",
+     "question": "Which text roles does it need?",
+     "answer": "Core and editorial display",
+     "why": "A lead and a display role open articles."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Spacious",
+     "why": "Room around the text helps reading."
+    },
+    {
+     "kind": "rule",
+     "situation": "paragraph or help text",
+     "use": "type.body, at most 65 characters a line",
+     "not": "type.caption",
+     "why": "A large size and short lines make long text easy on the eyes."
+    },
+    {
+     "kind": "token",
+     "semantic": "type.body.font-size",
+     "key": "content.font-size",
+     "value": "1.125rem",
+     "byScheme": true,
+     "pick": "font.size.18",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.inset.container",
+     "key": "content.padding-bottom",
+     "value": "1.5rem",
+     "byScheme": true,
+     "pick": "space.24",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-5": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What contrast floor do we hold?",
+     "answer": "AA",
+     "why": "AA contrast, with large text helping further."
+    },
+    {
+     "kind": "rule",
+     "situation": "keyboard focus",
+     "use": "button/focus-ring at border-width.focus",
+     "not": "removing the outline",
+     "why": "Keyboard users must always see where they are."
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus",
+     "key": "trigger.focus-ring.width",
+     "value": "2px",
+     "byScheme": true,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "border-width.focus-offset",
+     "key": "trigger.focus-offset",
+     "value": "2px",
+     "byScheme": false,
+     "pick": "border-width.2",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "color.surface.canvas",
+     "key": "trigger.focus-ring-offset-focus",
+     "value": "#FFFDF8",
+     "darkValue": "#14110D",
+     "byScheme": true,
+     "rule": "The page background behind everything.",
+     "pick": "neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "shares": []
+    }
+   ]
+  },
+  "accordion/card-6": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "Which states get their own visible value?",
+     "answer": "Those and pressed",
+     "why": "Pressed gets its own value for touch."
+    },
+    {
+     "kind": "token",
+     "semantic": "opacity.disabled",
+     "key": "trigger.disabled.opacity",
+     "value": "0.4",
+     "byScheme": true,
+     "pick": "opacity.40",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

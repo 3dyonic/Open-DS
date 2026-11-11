@@ -1,0 +1,99 @@
+{
+ "token-groups": {
+  "motion": {
+   "groups": [
+    {
+     "title": "motion.duration.feedback",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-feedback)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.feedback",
+       "primitive": "duration.fast",
+       "value": "120ms"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Hover and press feedback",
+       "detail": "motion.duration.feedback (fast)",
+       "why": "Fast feedback, on the brand's spring. An instant change drops the brand's motion."
+      }
+     ]
+    },
+    {
+     "title": "motion.duration.panels",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-panels)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.panels",
+       "primitive": "duration.moderate",
+       "value": "200ms"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A panel opens",
+       "why": "Panels open on the brand's spring, so people feel the brand in every menu."
+      },
+      {
+       "kind": "not",
+       "situation": "A hero or launch moment",
+       "detail": "use motion.duration.hero",
+       "why": "Hero and launch moments move slowest, so every visitor sees the launch."
+      }
+     ]
+    },
+    {
+     "title": "motion.duration.hero",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-hero)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.hero",
+       "primitive": "duration.relaxed",
+       "value": "320ms"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "A hero or launch moment",
+       "why": "Hero and launch moments move slowest, so every visitor sees the launch."
+      }
+     ]
+    },
+    {
+     "title": "motion.easing.standard",
+     "sample": {
+      "kind": "easing",
+      "value": "var(--motion-easing-standard)"
+     },
+     "api": [
+      {
+       "token": "motion.easing.standard",
+       "primitive": "easing.spring",
+       "value": "cubic-bezier(0.34"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The curve of any move",
+       "why": "The overshoot makes each move feel alive and playful."
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

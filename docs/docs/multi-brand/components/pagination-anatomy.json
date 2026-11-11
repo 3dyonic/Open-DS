@@ -1,0 +1,261 @@
+{
+ "anatomy-legend": {
+  "pagination": {
+   "parts": [
+    {
+     "n": 1,
+     "label": "Previous",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "label": "Pages",
+     "need": "required",
+     "byScheme": false,
+     "roles": [
+      "Grouping"
+     ],
+     "children": [
+      {
+       "n": 2,
+       "label": "Page",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Affordance",
+        "Reach"
+       ]
+      },
+      {
+       "n": 3,
+       "label": "Current page",
+       "need": "state",
+       "byScheme": true,
+       "roles": [
+        "Meaning",
+        "Feedback"
+       ]
+      },
+      {
+       "n": 4,
+       "label": "Ellipsis",
+       "need": "optional",
+       "byScheme": true,
+       "roles": [
+        "Grouping"
+       ]
+      },
+      {
+       "n": 5,
+       "label": "Gap",
+       "need": "required",
+       "byScheme": true,
+       "roles": [
+        "Grouping",
+        "Reach"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "label": "Next",
+     "need": "required",
+     "byScheme": true,
+     "roles": [
+      "Affordance",
+      "Reach"
+     ]
+    },
+    {
+     "label": "Page links",
+     "need": "required",
+     "note": "shown by Button",
+     "byScheme": false,
+     "roles": [
+      "Affordance"
+     ]
+    }
+   ]
+  }
+ },
+ "anatomy-steps": {
+  "pagination/card-1": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Customers sign up on phones."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "link.gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "link.padding-x",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "previous.padding-left",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "component-spacing-map.x3",
+     "key": "next.padding-right",
+     "value": "1.25rem",
+     "byScheme": true,
+     "pick": "space.20",
+     "shares": []
+    }
+   ]
+  },
+  "pagination/card-2": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Accessibility",
+     "question": "What is the smallest target?",
+     "answer": "Touch size",
+     "why": "Customers sign up on phones."
+    },
+    {
+     "kind": "answer",
+     "scope": "Color",
+     "question": "Which color roles does it need?",
+     "answer": "Those and brand accents",
+     "why": "Each brand brings its own accent ramp."
+    },
+    {
+     "kind": "rule",
+     "situation": "an alternative or cancel",
+     "use": "Button secondary",
+     "not": "a second primary",
+     "why": "The alternative steps back, so the one primary stays clear. A second primary would compete with it."
+    },
+    {
+     "kind": "rule",
+     "situation": "the smallest clickable thing",
+     "use": "size.control.default (touch)",
+     "not": "a compact control",
+     "why": "Customers are often on phones."
+    },
+    {
+     "kind": "token",
+     "semantic": "color.text.link",
+     "key": "button.ghost.label",
+     "value": "#015852",
+     "darkValue": "#A1DCD4",
+     "byScheme": true,
+     "rule": "Links in running text.",
+     "pick": "teal.light.700: a link, set apart by its hue, 8.34:1 on surface.default, above the 4.5:1 floor.",
+     "darkPick": "teal.dark.700: a link, set apart by its hue, 11.65:1 on surface.default, above the 4.5:1 floor.",
+     "shares": [
+      "action.primary.hover"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "color.border.strong",
+     "key": "button.secondary.border",
+     "value": "#64748B",
+     "darkValue": "#96A3B5",
+     "byScheme": true,
+     "rule": "The edge of a control people must find.",
+     "pick": "neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.",
+     "shares": [
+      "disabled.text"
+     ]
+    },
+    {
+     "kind": "token",
+     "semantic": "size.control.default",
+     "key": "button.height",
+     "value": "2.75rem",
+     "byScheme": true,
+     "pick": "size.44",
+     "shares": []
+    }
+   ]
+  },
+  "pagination/card-3": {
+   "steps": [
+    {
+     "kind": "answer",
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Match the text",
+     "why": "Icons match the text."
+    },
+    {
+     "kind": "answer",
+     "scope": "Spacing",
+     "question": "How dense is the layout?",
+     "answer": "Comfortable",
+     "why": "Comfortable spacing in every brand."
+    },
+    {
+     "kind": "rule",
+     "situation": "items that belong together",
+     "use": "space.gap.default",
+     "not": "brand-specific spacing",
+     "why": "Spacing is shared across brands."
+    },
+    {
+     "kind": "token",
+     "semantic": "size.icon",
+     "key": "ellipsis.icon-size",
+     "value": "1rem",
+     "byScheme": true,
+     "pick": "size.16",
+     "shares": []
+    },
+    {
+     "kind": "token",
+     "semantic": "space.gap.tight",
+     "key": "content.gap",
+     "value": "0.5rem",
+     "byScheme": true,
+     "pick": "space.8",
+     "shares": []
+    }
+   ]
+  }
+ }
+}

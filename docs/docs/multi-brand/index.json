@@ -1,0 +1,282 @@
+{
+ "sample-screen": {
+  "home": {
+   "table": {
+    "caption": "Your subscriptions",
+    "columns": [
+     {
+      "label": "Subscription"
+     },
+     {
+      "label": "Started"
+     },
+     {
+      "label": "Per month",
+      "numeric": true
+     },
+     {
+      "label": "Status"
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "Standard plan",
+       "14 Mar 2024",
+       "12.00"
+      ],
+      "status": {
+       "text": "Active",
+       "tone": "success"
+      }
+     },
+     {
+      "cells": [
+       "Cloud storage",
+       "2 Jan 2025",
+       "3.00"
+      ],
+      "status": {
+       "text": "Renews in 3 days",
+       "tone": "info"
+      }
+     },
+     {
+      "cells": [
+       "Device cover",
+       "20 May 2025",
+       "5.00"
+      ],
+      "status": {
+       "text": "Card declined",
+       "tone": "danger"
+      }
+     },
+     {
+      "cells": [
+       "Music add-on",
+       "1 Jun 2025",
+       "4.00"
+      ],
+      "status": {
+       "text": "Trial",
+       "tone": "neutral"
+      }
+     },
+     {
+      "cells": [
+       "Family member",
+       "9 Feb 2025",
+       "6.00"
+      ],
+      "status": {
+       "text": "Active",
+       "tone": "success"
+      }
+     },
+     {
+      "cells": [
+       "Extra data",
+       "18 Apr 2025",
+       "2.00"
+      ],
+      "status": {
+       "text": "Active",
+       "tone": "success"
+      }
+     }
+    ]
+   },
+   "actions": {
+    "primary": "Get started",
+    "secondary": "Compare plans"
+   }
+  }
+ },
+ "card-grid": {
+  "home/answers": {
+   "cards": [
+    {
+     "eyebrow": "How many brands or products share the system?",
+     "title": "Many",
+     "text": "Three brands share one system today, more tomorrow.",
+     "code": "business.q2"
+    },
+    {
+     "eyebrow": "What is the main content?",
+     "title": "Forms and tasks",
+     "text": "Product pages, sign-up and account forms.",
+     "code": "content.q1"
+    },
+    {
+     "eyebrow": "How are brands handled?",
+     "title": "Brands as modes",
+     "text": "Brands are theme modes over shared semantics.",
+     "code": "theming.definition"
+    }
+   ]
+  },
+  "home/sections": {
+   "cards": [
+    {
+     "href": "primitives/",
+     "title": "Primitives",
+     "text": "All 226 raw values, and the tokens that point to each.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#FFFFFF"
+      },
+      {
+       "kind": "color",
+       "value": "#F8FAFC"
+      },
+      {
+       "kind": "color",
+       "value": "#F1F5F9"
+      },
+      {
+       "kind": "color",
+       "value": "#E2E8F0"
+      },
+      {
+       "kind": "color",
+       "value": "#CBD5E1"
+      },
+      {
+       "kind": "color",
+       "value": "#96A3B5"
+      },
+      {
+       "kind": "color",
+       "value": "#64748B"
+      },
+      {
+       "kind": "color",
+       "value": "#4B5A6F"
+      },
+      {
+       "kind": "color",
+       "value": "#334155"
+      },
+      {
+       "kind": "color",
+       "value": "#1E293B"
+      },
+      {
+       "kind": "color",
+       "value": "#0F172A"
+      },
+      {
+       "kind": "color",
+       "value": "#020617"
+      }
+     ]
+    },
+    {
+     "href": "foundations/",
+     "title": "Foundations",
+     "text": "Color, type, spacing, shape and motion, each with the answer behind it.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "var(--color-action-primary)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-success)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-warning)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-danger)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-info)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-text-primary)"
+      },
+      {
+       "kind": "text",
+       "value": "Aa"
+      }
+     ]
+    },
+    {
+     "href": "components/inventory",
+     "title": "Components",
+     "text": "50 components, each with when to use it and how Multi-brand decided.",
+     "samples": [
+      {
+       "kind": "text",
+       "value": "Get started"
+      },
+      {
+       "kind": "text",
+       "value": "Renews in 3 days"
+      }
+     ]
+    },
+    {
+     "href": "voice",
+     "title": "Voice and tone",
+     "text": "A plain shared voice. Each brand adds its own tone on top, never its own structure.",
+     "samples": [
+      {
+       "kind": "text",
+       "value": "Shared structure: object, state, next step."
+      }
+     ]
+    },
+    {
+     "href": "themes",
+     "title": "Themes",
+     "text": "6 themes. Only semantic tokens change; components never do.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#F8FAFC"
+      },
+      {
+       "kind": "color",
+       "value": "#020617"
+      },
+      {
+       "kind": "color",
+       "value": "#F8FAFC"
+      },
+      {
+       "kind": "color",
+       "value": "#020617"
+      },
+      {
+       "kind": "color",
+       "value": "#F8FAFC"
+      },
+      {
+       "kind": "color",
+       "value": "#020617"
+      }
+     ]
+    },
+    {
+     "href": "agents",
+     "title": "For agents",
+     "text": "AGENTS.md, the skill and the MCP: an AI builds the way the system would.",
+     "samples": [
+      {
+       "kind": "code",
+       "value": "open-ds why multi-brand button"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

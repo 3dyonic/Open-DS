@@ -1,0 +1,1240 @@
+{
+ "preview": {
+  "button/live": {
+   "title": "Button examples in Storybook",
+   "wait": "Start Storybook to see it live: npm run storybook",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:content-first;mode:light",
+    "dark": "/storybook/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:content-first;mode:dark"
+   },
+   "caption": "Live from Storybook",
+   "links": [
+    {
+     "text": "Open Button in Storybook",
+     "href": "/storybook/?path=/docs/components-button--docs"
+    }
+   ]
+  },
+  "button/variant/primary": {
+   "title": "Button primary",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=variant:primary"
+   }
+  },
+  "button/variant/secondary": {
+   "title": "Button secondary",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=variant:secondary"
+   }
+  },
+  "button/variant/danger": {
+   "title": "Button danger",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=variant:danger"
+   }
+  },
+  "button/variant/ghost": {
+   "title": "Button ghost",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=variant:ghost"
+   }
+  },
+  "button/size/default": {
+   "title": "Button default",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=size:default"
+   }
+  },
+  "button/size/compact": {
+   "title": "Button compact",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=size:compact"
+   }
+  },
+  "button/size/icon": {
+   "title": "Button icon",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=size:icon"
+   }
+  },
+  "button/size/large": {
+   "title": "Button large",
+   "wait": "Start Storybook to see it live",
+   "frames": {
+    "light": "/storybook/iframe.html?id=components-button--playground&viewMode=story&globals=scheme:content-first;mode:light&args=size:large"
+   }
+  }
+ },
+ "card-grid": {
+  "anatomy-link/button": {
+   "cards": [
+    {
+     "title": "Anatomy reference",
+     "text": "Every part of the button, the job it does, and the decisions behind it. 6 parts.",
+     "href": "./button/anatomy",
+     "go": true
+    }
+   ]
+  }
+ },
+ "reason-chain": {
+  "button/tasks.q2": {
+   "anchor": "why-tasks-q2",
+   "question": "How often do people repeat actions?",
+   "key": "tasks.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Rarely",
+     "why": "Actions are rare: subscribe, share, save."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "primary",
+       "text": "One clear action per section."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "large",
+       "text": "Attention belongs to the text: one clear action per section, at the normal size."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: horizontal",
+       "Input group: block-start",
+       "Input group: block-end"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "and 2 answers that follow from it: Three, Only what today's screens use."
+    }
+   ]
+  },
+  "button/outcomes.q2": {
+   "anchor": "why-outcomes-q2",
+   "question": "What is a costly mistake?",
+   "key": "outcomes.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Losing your place",
+     "why": "Losing your place in an article breaks the read."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "secondary",
+       "text": "The first step of a delete, with the full verb, before the confirm."
+      },
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "danger",
+       "text": "The confirm of a delete, with the full verb. Deleting a draft is rare and final."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/brand.q1": {
+   "anchor": "why-brand-q1",
+   "question": "What should the brand feel like?",
+   "key": "brand.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Warm",
+     "why": "Warm and considered, like a good magazine."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "ghost",
+       "text": "Alternatives as a text link, and row actions with a word."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "and 12 answers that follow from it: Present, A reading serif, with a sans for the interface, Neutrals and one brand ramp, and 9 more."
+    }
+   ]
+  },
+  "button/human.q2": {
+   "anchor": "why-human-q2",
+   "question": "How do people recall the interface?",
+   "key": "human.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "They see it fresh each time",
+     "why": "Visitors see the interface fresh each time."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "ghost",
+       "text": "Alternatives as a text link, and row actions with a word."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "icon",
+       "text": "Occasional visitors do not know icons: always add a word."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "disabled",
+       "text": "Keep it enabled and explain on press: visitors see the interface fresh each time."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Input group: inline-start",
+       "Input group: inline-end"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 3,
+     "caption": "Button decisions would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/accessibility.values": {
+   "anchor": "why-accessibility-values",
+   "question": "What is the smallest target?",
+   "key": "accessibility.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Touch size",
+     "why": "Readers are often on phones."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "default",
+       "text": "Every button, at touch size: many readers are on phones."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "compact",
+       "text": "Many readers are on phones: no compact controls."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Item: default",
+       "Item: sm"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "and 1 answer that follow from it: Those and pressed."
+    }
+   ]
+  },
+  "button/iconography.roles": {
+   "anchor": "why-iconography-roles",
+   "question": "What do icons do?",
+   "key": "iconography.roles",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Actions, status and navigation",
+     "why": "Occasional readers need icons for save, share and navigation."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "icon",
+       "text": "Occasional visitors do not know icons: always add a word."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Input group: inline-start"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Button decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/human.q1": {
+   "anchor": "why-human-q1",
+   "question": "What must the interface protect?",
+   "key": "human.q1",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Attention on the content",
+     "why": "Attention belongs to the text."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "large",
+       "text": "Attention belongs to the text: one clear action per section, at the normal size."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: horizontal",
+       "Empty: default",
+       "Item: muted"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Button decision would reopen",
+     "text": "and 8 answers that follow from it: Surface, text, action and status, Only what floats, One, and 5 more."
+    }
+   ]
+  },
+  "button/motion.values": {
+   "anchor": "why-motion-values",
+   "question": "How fast does feedback feel?",
+   "key": "motion.values",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "Moderate",
+     "why": "Moderate speed feels calm."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "hover",
+       "text": "Moderate feedback that feels calm."
+      }
+     ]
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 1,
+     "caption": "Button decision would reopen",
+     "text": "No other answer follows from it."
+    }
+   ]
+  },
+  "button/people.q2": {
+   "anchor": "why-people-q2",
+   "question": "What accessibility level do we commit to?",
+   "key": "people.q2",
+   "steps": [
+    {
+     "kind": "answer",
+     "title": "The answer",
+     "answer": "AA",
+     "why": "AA is the commitment for a public site."
+    },
+    {
+     "kind": "decided",
+     "title": "So Button",
+     "lines": [
+      {
+       "used": true,
+       "verb": "uses",
+       "subject": "focus",
+       "text": "Always visible."
+      },
+      {
+       "used": false,
+       "verb": "does not use",
+       "subject": "disabled",
+       "text": "Keep it enabled and explain on press: visitors see the interface fresh each time."
+      }
+     ],
+     "also": {
+      "label": "It also shapes",
+      "items": [
+       "Field: vertical"
+      ]
+     }
+    },
+    {
+     "kind": "change",
+     "title": "If it changed",
+     "count": 2,
+     "caption": "Button decisions would reopen",
+     "text": "and 3 answers that follow from it: A ratio, line heights in proportion, Two: color and word, AA."
+    }
+   ]
+  }
+ },
+ "token-table": {
+  "button": {
+   "kind": "own",
+   "legend": {
+    "label": "Changes with theme",
+    "text": "Content first decides what changes when you switch theme. Here a switch changes colors only, so the marked rows differ between light and dark; everything else holds steady.",
+    "title": "Content first gives it a different value in each theme"
+   },
+   "head": [
+    "Part",
+    "Its token and the semantic it aliases",
+    "Value"
+   ],
+   "rows": [
+    {
+     "group": "Primary",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.primary.background",
+      "alias": "color.action.primary",
+      "variable": "button-primary-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Primary",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.primary.background.hover",
+      "alias": "color.action.primary.hover",
+      "variable": "button-primary-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#122948"
+       },
+       "token": "navy.light.700",
+       "text": "#122948"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#ACBDD5"
+       },
+       "token": "navy.dark.700",
+       "text": "#ACBDD5"
+      }
+     ]
+    },
+    {
+     "group": "Primary",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.primary.label",
+      "alias": "color.text.on-action",
+      "variable": "button-primary-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.background",
+      "alias": "color.action.secondary",
+      "variable": "button-secondary-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.dark.50",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.background.hover",
+      "alias": "color.action.secondary.hover",
+      "variable": "button-secondary-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.label",
+      "alias": "color.text.primary",
+      "variable": "button-secondary-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.dark.900",
+       "text": "#FFFDF8"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Border",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.secondary.border",
+      "alias": "color.border.strong",
+      "variable": "button-secondary-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#A39A8B"
+       },
+       "token": "stone.dark.400",
+       "text": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "group": "Secondary",
+     "part": "Border width",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.secondary.border-width",
+      "alias": "border-width.default",
+      "variable": "button-secondary-border-width"
+     },
+     "values": [
+      {
+       "token": "border-width.1",
+       "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Fill",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.danger.background",
+      "alias": "color.action.danger",
+      "variable": "button-danger-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#C42B2B"
+       },
+       "token": "red.light.600",
+       "text": "#C42B2B"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#F28B8B"
+       },
+       "token": "red.dark.600",
+       "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.danger.background.hover",
+      "alias": "color.action.danger.hover",
+      "variable": "button-danger-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#981519"
+       },
+       "token": "red.light.700",
+       "text": "#981519"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#FAA9A8"
+       },
+       "token": "red.dark.700",
+       "text": "#FAA9A8"
+      }
+     ]
+    },
+    {
+     "group": "Danger",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.danger.label",
+      "alias": "color.text.on-danger",
+      "variable": "button-danger-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFFFF"
+       },
+       "token": "stone.light.0",
+       "text": "#FFFFFF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#1F1B16"
+       },
+       "token": "stone.light.900",
+       "text": "#1F1B16"
+      }
+     ]
+    },
+    {
+     "group": "Ghost",
+     "part": "Text",
+     "when": "",
+     "themed": true,
+     "chain": {
+      "token": "component.button.ghost.label",
+      "alias": "color.text.link",
+      "variable": "button-ghost-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#122948"
+       },
+       "token": "navy.light.700",
+       "text": "#122948"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#ACBDD5"
+       },
+       "token": "navy.dark.700",
+       "text": "#ACBDD5"
+      }
+     ]
+    },
+    {
+     "group": "Ghost",
+     "part": "Background hover",
+     "when": "on hover",
+     "themed": true,
+     "chain": {
+      "token": "component.button.ghost.background.hover",
+      "alias": "color.surface.highlight",
+      "variable": "button-ghost-background-hover"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.height",
+      "alias": "size.control.default",
+      "variable": "button-height"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.padding-x",
+      "alias": "space.inset.control-x",
+      "variable": "button-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.20",
+       "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Corner",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.radius",
+      "alias": "radius.control",
+      "variable": "button-radius"
+     },
+     "values": [
+      {
+       "swatch": {
+        "corner": "0.5rem"
+       },
+       "token": "radius.8",
+       "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Text size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.font-size",
+      "alias": "type.label.font-size",
+      "variable": "button-font-size"
+     },
+     "values": [
+      {
+       "token": "font.size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Weight",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.font-weight",
+      "alias": "type.label.font-weight",
+      "variable": "button-font-weight"
+     },
+     "values": [
+      {
+       "token": "font.weight.600",
+       "text": "600"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus ring",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.button.focus-ring",
+      "alias": "color.border.focus",
+      "variable": "button-focus-ring"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#1E3A5F"
+       },
+       "token": "navy.light.600",
+       "text": "#1E3A5F"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#8FA6C4"
+       },
+       "token": "navy.dark.600",
+       "text": "#8FA6C4"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Icon size",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.icon-size",
+      "alias": "size.icon",
+      "variable": "button-icon-size"
+     },
+     "values": [
+      {
+       "token": "size.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Gap",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.gap",
+      "alias": "space.gap.default",
+      "variable": "button-gap"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Font family",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.font-family",
+      "alias": "type.label.font-family",
+      "variable": "button-font-family"
+     },
+     "values": [
+      {
+       "token": "font.family.inter",
+       "text": "Inter, system-ui, sans-serif"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.button.focus",
+      "alias": "border-width.focus",
+      "variable": "button-focus"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus offset",
+     "when": "on focus",
+     "themed": false,
+     "chain": {
+      "token": "component.button.focus-offset",
+      "alias": "border-width.focus-offset",
+      "variable": "button-focus-offset"
+     },
+     "values": [
+      {
+       "token": "border-width.2",
+       "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Button",
+     "part": "Focus ring offset",
+     "when": "on focus",
+     "themed": true,
+     "chain": {
+      "token": "component.button.focus-ring-offset",
+      "alias": "color.surface.canvas",
+      "variable": "button-focus-ring-offset"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FFFDF8"
+       },
+       "token": "stone.light.50",
+       "text": "#FFFDF8"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#14110D"
+       },
+       "token": "stone.dark.0",
+       "text": "#14110D"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Fill",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.button.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "button-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.button.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "button-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E4DDD0"
+       },
+       "token": "stone.light.200",
+       "text": "#E4DDD0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4A4339"
+       },
+       "token": "stone.dark.200",
+       "text": "#4A4339"
+      }
+     ]
+    },
+    {
+     "group": "Compact",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.compact.height",
+      "alias": "size.control.compact",
+      "variable": "button-compact-height"
+     },
+     "values": [
+      {
+       "token": "size.40",
+       "text": "2.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Compact",
+     "part": "Padding, left and right",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.compact.padding-x",
+      "alias": "space.inset.cell-x",
+      "variable": "button-compact-padding-x"
+     },
+     "values": [
+      {
+       "token": "space.16",
+       "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Large",
+     "part": "Height",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.button.large.height",
+      "alias": "size.control.large",
+      "variable": "button-large-height"
+     },
+     "values": [
+      {
+       "token": "size.48",
+       "text": "3rem"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.duration",
+      "alias": "motion.duration.feedback",
+      "variable": "transition-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "200ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.easing",
+      "alias": "motion.easing.standard",
+      "variable": "transition-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
