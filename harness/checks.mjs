@@ -5,6 +5,7 @@
 import { themeTokens } from "../cli/src/tokens.mjs";
 import { pairsIn, toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
+import { grammar as loadGrammar, loadScheme } from "../cli/src/schemes.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -95,7 +96,11 @@ export function makeContext(root) {
     });
     return { code: r.status ?? 1, out: `${r.stdout ?? ""}${r.stderr ?? ""}`.trim() };
   };
-  return { root, p, has, read, json, walk, sh };
+  // Schemes load through cli/src/schemes.mjs, the one path (OD-289), from this root's schemes/.
+  const roots = { schemes: p("schemes") };
+  const grammar = () => loadGrammar(roots);
+  const scheme = (id) => loadScheme(id, roots);
+  return { root, p, has, read, json, walk, sh, grammar, scheme };
 }
 
 const ok = (detail = "") => ({ ok: true, detail });
@@ -206,11 +211,11 @@ export const CHECKS = {
   "schemes-answer-every-question": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      const g = c.json("schemes/grammar.json");
+      const g = c.grammar();
       const qids = [...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id));
       const gaps = [];
       for (const s of SCHEMES) {
-        const answered = new Set(c.json("schemes", `${s}.json`).answers.map((a) => a.question));
+        const answered = new Set(c.scheme(s).answers.map((a) => a.question));
         const miss = qids.filter((q) => !answered.has(q));
         if (miss.length) gaps.push(`${s}: ${miss.length} unanswered (${miss.slice(0, 3).join(", ")}…)`);
       }
@@ -220,11 +225,11 @@ export const CHECKS = {
   "schemes-because-resolves": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      const g = c.json("schemes/grammar.json");
+      const g = c.grammar();
       const qids = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
       const broken = [];
       for (const s of SCHEMES) {
-        const sch = c.json("schemes", `${s}.json`);
+        const sch = c.scheme(s);
         for (const a of sch.answers)
           for (const b of a.because ?? []) if (!qids.has(b)) broken.push(`${s}:${a.question}→${b}`);
         for (const u of sch.usage ?? [])
@@ -238,10 +243,10 @@ export const CHECKS = {
   "schemes-usage-rules": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      const sits = c.json("schemes/grammar.json").situations.map((s) => s.id);
+      const sits = c.grammar().situations.map((s) => s.id);
       const gaps = [];
       for (const s of SCHEMES) {
-        const have = new Set((c.json("schemes", `${s}.json`).usage ?? []).filter((u) => u.why).map((u) => u.situation));
+        const have = new Set((c.scheme(s).usage ?? []).filter((u) => u.why).map((u) => u.situation));
         const miss = sits.filter((x) => !have.has(x));
         if (miss.length) gaps.push(`${s}: ${miss.length} situations without a rule and a why`);
       }
@@ -254,7 +259,7 @@ export const CHECKS = {
     run: (c) => {
       const problems = [];
       for (const s of SCHEMES) {
-        const t = c.json("schemes", `${s}.json`).tokens;
+        const t = c.scheme(s).tokens;
         for (const brand of Object.keys(t.brands)) {
           const th = t.brands[brand].theme;
           if (Object.keys(flatten(th.light)).sort().join() !== Object.keys(flatten(th.dark)).sort().join())
@@ -301,7 +306,7 @@ export const CHECKS = {
     run: (c) => {
       // Every color semantic has guidance in the grammar; every key it names exists; every pair keeps
       // its contrast in every brand and mode. No exceptions: a failing pair fails the check.
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
       const gaps = [];
       const lum = (hex) => {
@@ -319,7 +324,7 @@ export const CHECKS = {
       let pairs = 0;
       const waiting = new Set();
       for (const s of SCHEMES) {
-        const t = c.json("schemes", `${s}.json`).tokens;
+        const t = c.scheme(s).tokens;
         const semantic = Object.keys(flatten(t.semantic)).filter((p) => p.startsWith("color."));
         // OD-228: the neutral steps are one scale with one entry, the grammar's semantics.neutral.
         const scaleOk = (p) => p.startsWith("color.neutral.") && g.semantics.neutral?.steps.includes(p.split(".")[2]);
@@ -390,7 +395,7 @@ export const CHECKS = {
           for (const [k, v] of Object.entries(node)) if (!k.startsWith("$")) walk(v, path ? `${path}.${k}` : k, out);
       };
       for (const id of SCHEMES) {
-        const t = c.json("schemes", `${id}.json`).tokens;
+        const t = c.scheme(id).tokens;
         const raw = [];
         walk(t.semantic, "", raw);
         for (const b of Object.values(t.brands)) walk(b.theme, "", raw);
@@ -452,11 +457,11 @@ export const CHECKS = {
     run: (c) => {
       // OD-221: the grammar's options rules. In every scheme, each step of a covered option set has the
       // rule's type and sits at least min_gap from every other step, so no two options look the same.
-      const rules = c.json("schemes", "grammar.json").options?.rules ?? [];
+      const rules = c.grammar().options?.rules ?? [];
       if (!rules.length) return bad("the grammar has no options rules");
       const gaps = [];
       for (const id of SCHEMES) {
-        const prim = c.json("schemes", `${id}.json`).tokens.primitive;
+        const prim = c.scheme(id).tokens.primitive;
         for (const r of rules) {
           const set = r.applies_to.split(".").reduce((o, k) => o?.[k], prim) ?? {};
           const steps = Object.entries(set).filter(([k]) => !k.startsWith("$"));
@@ -482,11 +487,11 @@ export const CHECKS = {
     run: (c) => {
       // OD-222: outside the groups kept whole (color ramps), every primitive is read by a semantic, a theme,
       // a component key or another primitive. An option nothing reads is a choice nobody made.
-      const used = c.json("schemes", "grammar.json").options?.used;
+      const used = c.grammar().options?.used;
       if (!used) return bad("the grammar's options say nothing about unused options");
       const gaps = [];
       for (const id of SCHEMES) {
-        const t = c.json("schemes", `${id}.json`).tokens;
+        const t = c.scheme(id).tokens;
         const prim = flatten(t.primitive);
         const readers = JSON.stringify([t.semantic, t.component, t.brands, Object.values(prim).map((x) => x.$value)]);
         for (const p of Object.keys(prim))
@@ -507,7 +512,7 @@ export const CHECKS = {
       const N = { one: 1, two: 2, three: 3 };
       const gaps = [];
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const count = N[s.answers.find((a) => a.question === "motion.count")?.option];
         const prim = flatten(s.tokens.primitive);
         const durs = Object.values(flatten(s.tokens.semantic.motion?.duration ?? {})).map(
@@ -532,7 +537,7 @@ export const CHECKS = {
       const { steps, STEP_IDS } = await import(pathToFileURL(c.p("cli/src/spacing-map.mjs")).href);
       const gaps = [];
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const map = s.tokens.semantic["component-spacing-map"];
         const spec = map?.$extensions?.["open-ds"];
         if (!spec) {
@@ -592,7 +597,7 @@ export const CHECKS = {
       let pairs = 0;
       let lowest = Infinity;
       for (const s of SCHEMES) {
-        const t = c.json("schemes", `${s}.json`).tokens;
+        const t = c.scheme(s).tokens;
         for (const brand of Object.keys(t.brands))
           for (const mode of ["light", "dark"]) {
             const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
@@ -629,12 +634,12 @@ export const CHECKS = {
       // scalability, numerals, scripts, recognition, familiarity, personality, performance, licensing,
       // fallback) gets an answer that meets each one in words. A skipped consideration is a decision
       // nobody made.
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const qs = [...g.reasons, ...g.scopes].flatMap((x) => x.questions).filter((q) => q.considers?.length);
       const gaps = [];
       let n = 0;
       for (const s of SCHEMES) {
-        const answers = c.json("schemes", `${s}.json`).answers;
+        const answers = c.scheme(s).answers;
         for (const q of qs) {
           const a = answers.find((x) => x.question === q.id);
           if (!a) continue;
@@ -658,7 +663,7 @@ export const CHECKS = {
       // OD-229: an Anatomy reference drawn as Figma assets ships every image it shows, for every
       // scheme: the stage and one per card, each exported from a frame whose node id the parts layer
       // records, so the drawing can be opened and changed in Figma.
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const gaps = [];
       let n = 0;
       for (const item of g.catalogue.items.filter((i) => i.anatomy?.drawing?.kind === "asset")) {
@@ -689,7 +694,7 @@ export const CHECKS = {
       // surface, so it reads one decision: the overlay corner, the overlay elevation and a border of
       // its own. shadcn decided each one apart, and they drifted (control corners, card shadows). A
       // sheet or a drawer sits on an edge, and a tooltip is a label: they decide their own.
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const floats = c
         .walk("ui/src/components", (x) => x.endsWith(".tsx"))
         .filter((f) => /Portal|Viewport/.test(c.read(f)))
@@ -739,7 +744,7 @@ export const CHECKS = {
         for (const [k, v] of Object.entries(o)) if (k[0] !== "$") walk(v, [...p, k], cb);
       };
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const answered = new Set(s.answers.map((a) => a.question));
         for (const [brand, def] of Object.entries(s.tokens.brands))
           for (const mode of ["base", "light", "dark"])
@@ -818,7 +823,7 @@ export const CHECKS = {
     run: (c) => {
       // One order everywhere: the grammar's scheme_order. The CLI, MCP, docs and website sort by it in
       // code; Storybook's toolbar and the website's home list are written by hand, so check them.
-      const order = c.json("schemes", "grammar.json").scheme_order?.order ?? [];
+      const order = c.grammar().scheme_order?.order ?? [];
       const ids = readdirSync(c.p("schemes"))
         .filter((f) => f.endsWith(".json") && f !== "grammar.json")
         .map((f) => f.replace(/\.json$/, ""));
@@ -847,7 +852,7 @@ export const CHECKS = {
       // color.text.* (link, secondary, primary) for the page's own surfaces; on any other fill (a
       // selected row, an action, a status, the inverse surface) the text is on-light or on-dark by the
       // fill's tone. A link-colored label on the selected fill passed contrast and still read as mush.
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const page = new Set([
         "color.surface.canvas",
         "color.surface.default",
@@ -926,7 +931,7 @@ export const CHECKS = {
       // is the one exception.
       const gaps = [];
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
         const walk = (o, path) => {
           for (const [k, v] of Object.entries(o ?? {})) {
@@ -956,7 +961,7 @@ export const CHECKS = {
       const gaps = [];
       let n = 0;
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "dark"));
         const canvas = String(resolve(all, "color.surface.canvas").value).slice(0, 7).toUpperCase();
         for (const [hue, g] of Object.entries(s.tokens.primitive.color)) {
@@ -987,7 +992,7 @@ export const CHECKS = {
       // target, OD-231); and status text on dark shows its hue (chroma 0.04+) at 7:1 or more.
       const { scale, lch, contrast } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
       const { follow } = await import(pathToFileURL(c.p("cli/src/scale-map.mjs")).href);
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const hints = g.scopes.flatMap((s) => (s.hints ?? []).map((h) => ({ ...h, scope: s.id })));
       const gaps = [];
       if (!hints.length) gaps.push("the grammar has no decision hints");
@@ -996,7 +1001,7 @@ export const CHECKS = {
       let moves = 0;
       let texts = 0;
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const at = (p) =>
           String(p.split(".").reduce((n, k) => n && n[k], s.tokens.primitive)?.$value ?? "").slice(0, 7);
         for (const [hue, grp] of Object.entries(s.tokens.primitive.color)) {
@@ -1042,12 +1047,12 @@ export const CHECKS = {
     run: (c) => {
       // OD-228: roles read color.neutral, color.neutral points at one gray from the grammar's menu, and the
       // theme says which gray and why.
-      const g = c.json("schemes", "grammar.json").semantics?.neutral;
+      const g = c.grammar().semantics?.neutral;
       if (!g) return bad("the grammar has no neutral menu");
       const menu = new Map(g.grays.map((x) => [x.id, x]));
       const gaps = [];
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const sem = s.tokens.semantic.color?.neutral;
         for (const st of g.steps) if (!sem?.[st]) gaps.push(`${id}: no color.neutral.${st}`);
         const grays = g.grays.map((x) => x.id);
@@ -1123,7 +1128,7 @@ export const CHECKS = {
     requires: ["schemes/grammar.json"],
     run: (c) => {
       // OD-222: the primary and danger fills stay clearly apart in every brand and mode.
-      const rule = c.json("schemes", "grammar.json").semantics?.danger_apart;
+      const rule = c.grammar().semantics?.danger_apart;
       if (!rule) return bad("the grammar has no danger_apart rule");
       const lab = (hex) => {
         const [r, g, b] = [1, 3, 5]
@@ -1142,7 +1147,7 @@ export const CHECKS = {
       const gaps = [];
       const waiting = [];
       for (const s of SCHEMES) {
-        const t = c.json("schemes", `${s}.json`).tokens;
+        const t = c.scheme(s).tokens;
         for (const brand of Object.keys(t.brands))
           for (const mode of ["light", "dark"]) {
             const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
@@ -1170,7 +1175,7 @@ export const CHECKS = {
     run: (c) => {
       // OD-214: a component is In or Left out, nothing else. Every catalogue component is built, with
       // its stories, so every scheme can carry it, render it and document it.
-      const items = c.json("schemes", "grammar.json").catalogue.items.map((i) => i.id);
+      const items = c.grammar().catalogue.items.map((i) => i.id);
       const built = new Set(readdirSync(c.p("ui/src/components")).map((f) => f.replace(/\.tsx$/, "")));
       const stories = new Set(readdirSync(c.p("storybook/stories")).map((f) => f.replace(/\.stories\.tsx$/, "")));
       const gaps = [
@@ -1189,10 +1194,10 @@ export const CHECKS = {
       // OD-211: every catalogue item is decided in every scheme. It is in, with why (a limited use
       // says where it fits), or out, with the reason argued from the scheme's answers and what to use
       // instead. Nothing falls out by default.
-      const items = c.json("schemes", "grammar.json").catalogue.items.map((i) => i.id);
+      const items = c.grammar().catalogue.items.map((i) => i.id);
       const gaps = [];
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const inn = new Map(s.inventory.in.map((x) => [x.id, x]));
         const out = new Map(s.inventory.out.map((x) => [x.id, x]));
         const answers = new Set(s.answers.map((a) => a.question));
@@ -1274,7 +1279,7 @@ export const CHECKS = {
       const gaps = [];
       const seen = new Map();
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const smp = s.samples;
         if (!smp) {
           gaps.push(`${id}: no samples`);
@@ -1310,7 +1315,7 @@ export const CHECKS = {
       // OD-185. The reference says what each component and variant is for, the same in every design
       // system; each scheme decides every variant of what it carries. Applies to every catalogue item
       // with a reference, so it widens as components are filled in.
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const items = g.catalogue?.items ?? [];
       const ids = new Set(items.map((i) => i.id));
       const sits = new Set(g.situations.map((s) => s.id));
@@ -1357,7 +1362,7 @@ export const CHECKS = {
       }
       const byId = Object.fromEntries(ref.map((i) => [i.id, i]));
       for (const sid of SCHEMES) {
-        const s = c.json("schemes", `${sid}.json`);
+        const s = c.scheme(sid);
         const answered = new Set(s.answers.map((a) => a.question));
         const carried = Object.fromEntries(s.inventory.in.map((x) => [x.id, x]));
         const decided = (comp, axis, v) => carried[comp]?.variants?.[axis]?.[v];
@@ -1403,13 +1408,13 @@ export const CHECKS = {
       // Each scheme's inventory is an output of its components answers: real catalogue items. The
       // roles answer names the families it draws from first; a component from another family can be in
       // when its entry says where it fits (OD-214, less rigid). The count answer describes the size.
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const items = Object.fromEntries((g.catalogue?.items ?? []).map((i) => [i.id, i]));
       // The families each roles option admits live in the grammar, so the site and this check agree.
       const ROLES = g.catalogue?.roles ?? {};
       const gaps = [];
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const inv = s.inventory;
         if (!inv?.in?.length) {
           gaps.push(`${id}: no inventory`);
@@ -1444,9 +1449,9 @@ export const CHECKS = {
     run: (c) => {
       const gaps = [];
       for (const s of SCHEMES) {
-        const sch = c.json("schemes", `${s}.json`);
+        const sch = c.scheme(s);
         const v = sch.voice;
-        const g = c.json("schemes", "grammar.json");
+        const g = c.grammar();
         const voiceSits = g.situations.filter((x) => x.scope === "voice").map((x) => x.id);
         const withExample = sch.usage.filter((u) => voiceSits.includes(u.situation) && u.example);
         if (!v?.summary?.text || voiceSits.length < 5 || withExample.length !== voiceSits.length)
@@ -1456,7 +1461,7 @@ export const CHECKS = {
             if (!sch.themes.some((t) => t.brand === b && t.mode === m)) gaps.push(`${s}: ${b} has no ${m}`);
         }
       }
-      const brands = Object.keys(c.json("schemes", "multi-brand.json").tokens.brands);
+      const brands = Object.keys(c.scheme("multi-brand").tokens.brands);
       if (brands.length < 3) gaps.push(`multi-brand has ${brands.length} brands; a real setup needs at least 3`);
       return gaps.length
         ? bad(gaps.join("; "))
@@ -1467,7 +1472,7 @@ export const CHECKS = {
   "scopes-uniform-template": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const gaps = [];
       const methods = (g.methods ?? []).map((m) => m.id);
       if (methods.join() !== "roles,count,definition,values,lands")
@@ -1476,7 +1481,7 @@ export const CHECKS = {
       if (!g.scopes.some((x) => x.id === "voice")) gaps.push("voice and tone is not a scope");
       const comps = new Map(g.components.map((x) => [x.id, x]));
       const keyDefault = new Map(g.component_keys.map((k) => [k.id, k.default]));
-      const schemes = SCHEMES.map((id) => c.json("schemes", `${id}.json`));
+      const schemes = SCHEMES.map((id) => c.scheme(id));
       const has = (tree, path) =>
         path.split(".").reduce((n, p) => (n && typeof n === "object" ? n[p] : undefined), tree) !== undefined;
       const semantic = (sch) => sch.tokens.semantic;
@@ -1519,7 +1524,7 @@ export const CHECKS = {
       // of a semantic), never a system token or a shadcn utility directly; and a fixed Tailwind spacing
       // or size is allowed only while it waits, listed, for a semantic of the same value.
       const { componentApi } = await import(pathToFileURL(c.p("cli/src/lands.mjs")).href);
-      const scheme = c.json("schemes", "dense-data.json");
+      const scheme = c.scheme("dense-data");
       const fixed = new Set(c.json("harness", "component-api-fixed.json").values.map((x) => x.split(" (")[0]));
       // OD-235: spacing is never fixed any more; only sizes may wait on the list
       const gaps = [];
@@ -1564,8 +1569,8 @@ export const CHECKS = {
       // OD-233: where each scope lands is traced from the components' own code, never hand-written.
       // Every component that reads a token the scope owns is listed, and nothing else.
       const { landsIn } = await import(pathToFileURL(c.p("cli/src/lands.mjs")).href);
-      const g = c.json("schemes", "grammar.json");
-      const schemes = SCHEMES.map((id) => c.json("schemes", `${id}.json`));
+      const g = c.grammar();
+      const schemes = SCHEMES.map((id) => c.scheme(id));
       const want = landsIn(schemes, g, { ui: c.p("ui/src"), stories: c.p("storybook/stories") });
       const gaps = [];
       for (const sc of g.scopes) {
@@ -1581,13 +1586,13 @@ export const CHECKS = {
   "outputs-follow-answers": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      const g = c.json("schemes", "grammar.json");
+      const g = c.grammar();
       const qids = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
       const gaps = [];
       if (!g.reasons.some((r) => r.id === "scenarios")) gaps.push("no use scenario questions");
       let n = 0;
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const extra = Object.keys(s.voice).filter((k) => !["summary", "principles", "words", "brands"].includes(k));
         if (extra.length) gaps.push(`${id}: free voice text outside the outputs: ${extra.join(", ")}`);
         const outputs = [
@@ -1640,17 +1645,14 @@ export const CHECKS = {
     run: (c) => {
       const a = ajv();
       const targets = [
-        ["schemes/grammar.json", "schema/grammar.schema.json"],
-        ...SCHEMES.filter((s) => c.has("schemes", `${s}.json`)).map((s) => [
-          `schemes/${s}.json`,
-          "schema/scheme.schema.json",
-        ]),
-        ["harness/specs.json", "harness/harness.schema.json"],
+        ["grammar", c.grammar(), "schema/grammar.schema.json"],
+        ...SCHEMES.filter((s) => c.has("schemes", `${s}.json`)).map((s) => [s, c.scheme(s), "schema/scheme.schema.json"]),
+        ["harness/specs.json", c.json("harness/specs.json"), "harness/harness.schema.json"],
       ];
       const errs = [];
-      for (const [file, schema] of targets) {
+      for (const [name, data, schema] of targets) {
         const validate = a.compile(c.json(schema));
-        if (!validate(c.json(file))) errs.push(`${file}: ${a.errorsText(validate.errors).slice(0, 200)}`);
+        if (!validate(data)) errs.push(`${name}: ${a.errorsText(validate.errors).slice(0, 200)}`);
         a.removeSchema();
       }
       return errs.length ? bad(errs.join(" | ")) : ok(`${targets.length} files valid`);
@@ -1678,14 +1680,14 @@ export const CHECKS = {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
       const missing = [];
-      const g = c.json("schemes/grammar.json");
+      const g = c.grammar();
       for (const layer of [...g.reasons, ...g.scopes]) {
         if (!layer.description) missing.push(`grammar ${layer.id}`);
         for (const q of layer.questions) if (!q.description) missing.push(`grammar ${q.id}`);
       }
       for (const s of g.situations) if (!s.description) missing.push(`grammar ${s.id}`);
       for (const s of SCHEMES) {
-        const sch = c.json("schemes", `${s}.json`);
+        const sch = c.scheme(s);
         if (!sch.description || !sch.ai?.use_when) missing.push(`${s} root`);
         for (const a of sch.answers) if (!a.why) missing.push(`${s} ${a.question}`);
       }
@@ -2107,7 +2109,7 @@ export const CHECKS = {
     run: (c) => {
       const err = ensureTokens(c);
       if (err) return bad(tail(err));
-      const keys = c.json("schemes/grammar.json").component_keys.map(
+      const keys = c.grammar().component_keys.map(
         (k) =>
           `--${k.id
             .split("/")
@@ -2634,7 +2636,7 @@ export const CHECKS = {
       if (!/\.lucide\s*\{[^}]*stroke-width:\s*var\(--icon-stroke-width\)/.test(c.read("ui", "src", "icons.css")))
         gaps.push("ui/src/icons.css does not give .lucide the icon stroke");
       for (const id of SCHEMES) {
-        const s = c.json("schemes", `${id}.json`);
+        const s = c.scheme(id);
         const ref = String(s.tokens.semantic.icon?.["stroke-width"]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
         const stroke = ref?.split(".").reduce((n, k) => n?.[k], s.tokens.primitive)?.$value;
         const answer = s.answers.find((a) => a.question === "iconography.definition");
@@ -2674,7 +2676,7 @@ export const CHECKS = {
       const gaps = [];
       let facts = 0;
       for (const s of SCHEMES) {
-        const tokens = c.json(`schemes/${s}.json`).tokens;
+        const tokens = c.scheme(s).tokens;
         const page = `docs/docs/${s}/foundations/color.json`;
         if (!existsSync(c.p(page))) continue;
         const d = c.json(page);
@@ -2711,6 +2713,48 @@ export const CHECKS = {
   },
   // The committed docs hold no local address (OD-284): pages and their data files link Storybook and
   // the site by path, so what an agent reads in the repo is what the site serves.
+  // OD-289: one load and save path. Only cli/src/schemes.mjs reads or writes schemes/*.json; each
+  // bundled app (site, Storybook) reads them in one module. The packaging scripts copy the folder.
+  "schemes-one-path": {
+    requires: ["cli/src/schemes.mjs"],
+    run: (c) => {
+      const ALLOWED = new Set([
+        "cli/src/schemes.mjs",
+        "site/src/lib/schemes.ts",
+        "storybook/src/schemes.ts",
+        "cli/scripts/bundle.mjs",
+        "scripts/test-package.mjs",
+              ]);
+      const DIRS = ["cli/src", "cli/scripts", "cli/test", "docs/scripts", "docs/src", "harness", "scripts", "site/src", "storybook/src", "storybook/stories", "storybook/.storybook", "tokens", "mcp/src", "mcp/test", "doc-composites/src"];
+      const SKIP = /node_modules|\/dist\/|\/build\/|\.next|\.docusaurus/;
+      const walk = (d) =>
+        !existsSync(c.p(d)) || SKIP.test(d)
+          ? []
+          : readdirSync(c.p(d), { withFileTypes: true }).flatMap((e) =>
+              e.isDirectory() ? walk(`${d}/${e.name}`) : /\.(mjs|js|cjs|ts|tsx)$/.test(e.name) ? [`${d}/${e.name}`] : [],
+            );
+      // A file name in a read, a write or an import; a message that names the file is not a read.
+      const FILE = /schemes\/(grammar|\$\{[^}]+\}|[a-z][a-z-]*)\.json/;
+      const ACCESS = /readFileSync|writeFileSync|\bread\(|\bwrite\(|import\s|from\s+["']|require\(|new URL\(|\.json\(/;
+      const hits = [];
+      for (const f of [...new Set(DIRS.flatMap(walk))]) {
+        if (ALLOWED.has(f)) continue;
+        c.read(f).split("\n").forEach((line, i) => {
+          if (/^\s*(\/\/|\*)/.test(line)) return;
+          // A path string that starts at schemes/ (or ../schemes/), even when the read is on another line.
+          // requires: lists only say a file must exist; .includes() tests text, not a path.
+          if (/requires:|\.includes\(/.test(line)) return;
+          const path = /["'`](\.\.\/|\.\/)*schemes\/([^"'`\s]*\.json)?["'`]/.test(line);
+          const joined = /\.json\(\s*["'`]schemes["'`]|join\(\s*roots\.schemes\s*,\s*[`"'][^`"']*\.json/.test(line);
+          if (path || joined || (FILE.test(line) && ACCESS.test(line)))
+            hits.push(`${f}:${i + 1}`);
+        });
+      }
+      return hits.length
+        ? bad(`${hits.length} direct reads or writes of schemes/*.json, such as ${hits.slice(0, 4).join(", ")}; use loadScheme, grammar, saveScheme and saveGrammar from cli/src/schemes.mjs`)
+        : ok("every read and write of a scheme goes through cli/src/schemes.mjs, or the one schemes module of its app");
+    },
+  },
   "docs-no-localhost": {
     requires: ["docs/docs"],
     run: (c) => {
@@ -2975,7 +3019,7 @@ export const CHECKS = {
       // OD-209: the home page shows each scheme's robot, the Foundations page each scope's, the
       // inventory Shelf and the 404 Slumber, each in a day and a night edition.
       const scopeRobot = { color: "swatch", spacing: "measure", components: "shelf" };
-      const g = c.json("schemes/grammar.json");
+      const g = c.grammar();
       const names = [...ids, "slumber", ...g.scopes.map((sc) => scopeRobot[sc.id] ?? `scopes/${sc.id}`)];
       for (const n of new Set(names))
         for (const f of [`${n}.webp`, `${n}-dark.webp`])

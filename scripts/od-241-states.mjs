@@ -3,13 +3,14 @@
 // whose pick follows each scheme's answer to "Which states get their own visible value?".
 // Idempotent.
 import { readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
 const write = (p, o) => writeFileSync(ROOT + p, `${JSON.stringify(o, null, 2)}\n`);
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 const keys = g.semantics.keys;
 const key = (id) => keys.find((k) => k.id === id);
 const hl = key("color.surface.highlight");
@@ -33,12 +34,12 @@ if (!key("color.surface.pressed")) {
   const f = fills.findIndex((x) => x.id === "color.surface.highlight");
   fills.splice(f + 1, 0, { id: "color.surface.pressed", carries: ["text.primary", "text.secondary", "icon", "border", "focus"] });
 }
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 const steps = g.semantics.neutral.steps;
 const step = (ref) => ref.match(/^\{color\.neutral\.(\d+)\}$/)?.[1];
 for (const id of SCHEMES) {
-  const s = read(`schemes/${id}.json`);
+  const s = loadScheme(id);
   const roles = s.answers.find((a) => a.question === "accessibility.roles");
   const own = roles.option !== "hover-focus-disabled";
   const surface = s.tokens.semantic.color.surface;
@@ -69,6 +70,6 @@ for (const id of SCHEMES) {
       ]);
       def.theme[mode].color.surface = Object.fromEntries(e);
     }
-  write(`schemes/${id}.json`, s);
+  saveScheme(s);
 }
 console.log("State rules written; color.surface.pressed picked in every scheme from its answer.");

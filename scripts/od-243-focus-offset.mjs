@@ -4,6 +4,7 @@
 // source reads the key. Idempotent.
 import { execFileSync } from "node:child_process";
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -12,16 +13,16 @@ const write = (p, o) => writeFileSync(ROOT + p, `${JSON.stringify(o, null, 2)}\n
 const DESC = "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.";
 
 for (const id of SCHEMES) {
-  const s = read(`schemes/${id}.json`);
+  const s = loadScheme(id);
   const bw = s.tokens.semantic["border-width"];
   if (!bw["focus-offset"]) {
     bw["focus-offset"] = { $type: "dimension", $value: "{border-width.2}", $description: DESC };
-    write(`schemes/${id}.json`, s);
+    saveScheme(s);
   }
 }
 
 const dir = `${ROOT}ui/src/components/`;
-const g = read("schemes/grammar.json");
+const g = grammar();
 let n = 0;
 for (const f of readdirSync(dir).filter((x) => x.endsWith(".tsx"))) {
   const comp = f.replace(/\.tsx$/, "");

@@ -1,7 +1,6 @@
 // Shows the active scheme's when-to-use rules for the situations a component serves.
-import grammar from "../../schemes/grammar.json";
 import { useScheme } from "./scheme-context";
-import { SCHEMES } from "./schemes";
+import { grammar, SCHEMES } from "./schemes";
 
 const TITLES = Object.fromEntries(grammar.situations.map((s) => [s.id, s.title]));
 

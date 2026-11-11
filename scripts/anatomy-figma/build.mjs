@@ -7,13 +7,14 @@
 //   node scripts/anatomy-figma/build.mjs <component> [scheme] > /tmp/anatomy-<component>.js
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { grammar, loadScheme } from "../../cli/src/schemes.mjs";
 
 const ROOT = new URL("../..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
 export const RECIPES = { menu: "menu", table: "table", tree: "tree" };
 /** The components with a parts layer the renderer has a recipe for. */
 export function drawable() {
-  return read("schemes/grammar.json").catalogue.items.filter((i) => RECIPES[layer(i)?.drawing?.kind]).map((i) => i.id);
+  return grammar().catalogue.items.filter((i) => RECIPES[layer(i)?.drawing?.kind]).map((i) => i.id);
 }
 // A parts layer: the grammar's, or one being drafted in ANATOMY_LAYERS (anatomy-<component>.json).
 function layer(item) {
@@ -30,8 +31,8 @@ function layer(item) {
 export const kitLibrary = (s) => `Open DS · ${s.name} · Figma kit`;
 
 export function anatomySpec(component, schemeId = "dense-data") {
-const g = read("schemes/grammar.json");
-const s = read(`schemes/${schemeId}.json`);
+const g = grammar();
+const s = loadScheme(schemeId);
 const item = g.catalogue.items.find((i) => i.id === component);
 const spec = item && layer(item);
 if (!spec) throw new Error(`${component} has no parts layer.`);

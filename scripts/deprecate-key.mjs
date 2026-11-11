@@ -4,6 +4,7 @@
 //
 //   node scripts/deprecate-key.mjs <old-id> --by <new-id> [--ticket OD-243]
 import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -16,7 +17,7 @@ if (!id || !by) throw new Error("Usage: deprecate-key.mjs <old-id> --by <new-id>
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
 const write = (p, o) => writeFileSync(ROOT + p, `${JSON.stringify(o, null, 2)}\n`);
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 const e = g.component_keys.find((x) => x.id === id);
 if (!e) throw new Error(`No key ${id}.`);
 if (!g.component_keys.some((x) => x.id === by)) throw new Error(`No key ${by}; add it first.`);
@@ -26,16 +27,16 @@ const tokenAt = (sc) => {
   return n?.$value !== undefined ? n : n?.["@"]?.$value !== undefined ? n["@"] : null;
 };
 // Every scheme is checked before anything is written, so a failure leaves no half-deprecated key.
-const schemes = SCHEMES.map((s) => [s, read(`schemes/${s}.json`)]);
+const schemes = SCHEMES.map((s) => [s, loadScheme(s)]);
 for (const [s, sc] of schemes) if (!tokenAt(sc)) throw new Error(`${s}: no token at ${id}`);
 e.replaced_by = by;
 if (!e.description.startsWith("Deprecated")) e.description = `Deprecated: use ${by} (${ticket}). ${e.description}`;
-write("schemes/grammar.json", g);
+saveGrammar(g);
 for (const [s, sc] of schemes) {
   const n = tokenAt(sc);
   n.$description = e.description;
   n.$deprecated = `Use component.${by.replaceAll("/", ".")}. Removed in the next minor release.`;
-  write(`schemes/${s}.json`, sc);
+  saveScheme(sc);
 }
 if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "deprecate", id, by })}\n`);
 console.log(`${id}: deprecated, replaced by ${by}; it keeps its own value until the next minor release.`);

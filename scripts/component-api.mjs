@@ -6,6 +6,7 @@
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { SHADCN, SHADCN_SCALE } from "../cli/src/shadcn.mjs";
 import { stepFor } from "../cli/src/spacing-map.mjs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const UI = `${ROOT}ui/src/components/`;
@@ -18,9 +19,9 @@ const SCHEMES = [
 ];
 const dry = process.argv.includes("--dry");
 const read = (p) => readFileSync(ROOT + p, "utf8");
-const g = JSON.parse(read("schemes/grammar.json"));
+const g = grammar();
 const schemes = Object.fromEntries(
-  SCHEMES.map((id) => [id, JSON.parse(read(`schemes/${id}.json`))]),
+  SCHEMES.map((id) => [id, loadScheme(id)]),
 );
 const ref = schemes["dense-data"].tokens;
 
@@ -524,15 +525,8 @@ for (const f of files) {
   }
 }
 if (!dry) {
-  writeFileSync(
-    ROOT + "schemes/grammar.json",
-    JSON.stringify(g, null, 2) + "\n",
-  );
-  for (const [id, s] of Object.entries(schemes))
-    writeFileSync(
-      ROOT + `schemes/${id}.json`,
-      JSON.stringify(s, null, 2) + "\n",
-    );
+  saveGrammar(g);
+  for (const s of Object.values(schemes)) saveScheme(s);
 }
 const fixed = [...new Set(report.fixed)];
 console.log(

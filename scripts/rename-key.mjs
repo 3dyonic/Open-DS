@@ -7,6 +7,7 @@
 // Ids are grammar key ids (dropdown-menu/item/sunken). It edits the grammar, every scheme and the
 // component's source. Run the tokens and docs builds after.
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -29,7 +30,7 @@ const tokenPath = (id) => `component.${segs(id).join(".")}`;
 const ref = (id) => segs(id).join(".");
 
 // Grammar: the new key beside the old, which now says what replaces it.
-const g = JSON.parse(read("schemes/grammar.json"));
+const g = grammar();
 const entries = g.component_keys;
 const newId = entries.some((e) => e.id.startsWith(`${newId0}/`) && !e.id.endsWith("/@")) ? `${newId0}/@` : newId0;
 const entry = entries.find((e) => e.id === oldId);
@@ -72,13 +73,13 @@ if (newId.startsWith(`${oldId}/`)) {
   entry.id = `${oldId}/@`;
 }
 entry.description = `Deprecated: use ${newId} (${ticket}). ${entry.description}`;
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 // Schemes: the new token links the semantic; the old one aliases the new one, marked deprecated.
 const at = (tree, path, make = false) =>
   path.reduce((n, k) => (n == null ? n : (n[k] ??= make ? {} : undefined)), tree);
 for (const id of SCHEMES) {
-  const s = JSON.parse(read(`schemes/${id}.json`));
+  const s = loadScheme(id);
   const tree = s.tokens.component;
   const op = segs(oldId);
   const parent = at(tree, op.slice(0, -1));
@@ -110,7 +111,7 @@ for (const id of SCHEMES) {
     $description: `Deprecated: use ${tokenPath(newId)} (${ticket}). ${was.$description}`,
     $deprecated: `Use ${tokenPath(newId)}. Removed in the next minor release.`,
   };
-  write(`schemes/${id}.json`, s);
+  saveScheme(s);
 }
 
 if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "rename", from: oldId, id: newId0, ...(to && { to }), ...(description && { description }) })}\n`);

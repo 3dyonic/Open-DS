@@ -3,6 +3,7 @@
 // Adds the grammar guidance and, in every scheme and brand, the semantic and its theme picks, each
 // with its why (from the surfaces it meets) and the answers it follows from. Idempotent.
 import { readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -12,7 +13,7 @@ const ID = "color.surface.highlight";
 const INTENT =
   "The fill of the item the pointer or the keyboard is on. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.";
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 const keys = g.semantics.keys;
 if (!keys.some((k) => k.id === ID)) {
   const at = keys.findIndex((k) => k.id === "color.surface.sunken");
@@ -30,12 +31,12 @@ if (!keys.some((k) => k.id === ID)) {
   const fills = g.semantics.tones.fills;
   const f = fills.findIndex((x) => x.id === "color.surface.sunken");
   fills.splice(f + 1, 0, { id: ID, carries: [...fills[f].carries] });
-  write("schemes/grammar.json", g);
+  saveGrammar(g);
 }
 
 const step = (ref) => ref.match(/^\{color\.neutral\.(\d+)\}$/)?.[1];
 for (const id of SCHEMES) {
-  const s = read(`schemes/${id}.json`);
+  const s = loadScheme(id);
   const surface = s.tokens.semantic.color.surface;
   if (!surface.highlight) {
     // After sunken, so the semantic file reads in the grammar's order.
@@ -78,6 +79,6 @@ for (const id of SCHEMES) {
       ]);
       def.theme[mode].color.surface = Object.fromEntries(entries);
     }
-  write(`schemes/${id}.json`, s);
+  saveScheme(s);
 }
 console.log(`${ID}: grammar guidance and tone, and a reasoned pick in every scheme, brand and mode.`);

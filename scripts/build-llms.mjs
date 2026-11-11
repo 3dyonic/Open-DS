@@ -6,17 +6,18 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { sitsOn } from "../cli/src/tones.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { grammar, loadScheme } from "../cli/src/schemes.mjs";
 
 const REPO_URL = "https://raw.githubusercontent.com/3dyonic/Open-DS/RC1";
 
 export function buildLlms(repo) {
   const read = (p) => JSON.parse(readFileSync(join(repo, p), "utf8"));
-  const g = read("schemes/grammar.json");
+  const g = grammar();
   const ids = readdirSync(join(repo, "schemes"))
     .filter((f) => f.endsWith(".json") && f !== "grammar.json")
     .map((f) => f.replace(/\.json$/, ""))
     .sort();
-  const schemes = ids.map((id) => read(`schemes/${id}.json`));
+  const schemes = ids.map((id) => loadScheme(id));
   const qs = Object.fromEntries(
     [...g.reasons, ...g.scopes].flatMap((x) =>
       x.questions.map((q) => [q.id, q]),

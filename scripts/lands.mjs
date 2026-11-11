@@ -2,6 +2,7 @@
 // reads a token the scope owns. The harness (lands-in-traced) fails when the grammar is out of date.
 import { readFileSync, writeFileSync } from "node:fs";
 import { landsIn } from "../cli/src/lands.mjs";
+import { grammar, loadScheme } from "../cli/src/schemes.mjs";
 
 const SCHEMES = [
   "dense-data",
@@ -10,13 +11,8 @@ const SCHEMES = [
   "brand-expressive",
   "multi-brand",
 ];
-const p = new URL("../schemes/grammar.json", import.meta.url);
-const g = JSON.parse(readFileSync(p, "utf8"));
-const schemes = SCHEMES.map((id) =>
-  JSON.parse(
-    readFileSync(new URL(`../schemes/${id}.json`, import.meta.url), "utf8"),
-  ),
-);
+const g = grammar();
+const schemes = SCHEMES.map((id) => loadScheme(id));
 const out = landsIn(schemes, g, {
   ui: new URL("../ui/src", import.meta.url).pathname,
   stories: new URL("../storybook/stories", import.meta.url).pathname,

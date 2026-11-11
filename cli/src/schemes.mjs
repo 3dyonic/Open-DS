@@ -1,7 +1,7 @@
 // Data access for the scheme commands. The CLI reads its assets from cli/assets when it is
 // packed (pnpm --dir cli bundle), and from the repository when it runs from a checkout.
 
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { guidanceFor } from "./guidance.mjs";
@@ -52,6 +52,46 @@ export function schemeIds(roots = assetRoots()) {
     .filter((f) => f.endsWith(".json") && f !== "grammar.json")
     .map((f) => f.replace(/\.json$/, ""))
     .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
+}
+
+/**
+ * The grammar file's one layout (OD-289): two-space indents, and a list of plain values on one line
+ * when that line fits in 80 characters. saveGrammar writes it, so an edit changes only its own lines.
+ */
+export function formatGrammar(value) {
+  const plain = (v) => v === null || typeof v !== "object";
+  const out = (v, indent, lead) => {
+    if (plain(v)) return JSON.stringify(v);
+    const inner = `${indent}  `;
+    if (Array.isArray(v)) {
+      if (!v.length) return "[]";
+      if (v.every(plain)) {
+        const line = `[${v.map((x) => JSON.stringify(x)).join(", ")}]`;
+        if (lead + line.length + 1 <= 80) return line;
+        return `[\n${v.map((x) => inner + JSON.stringify(x)).join(",\n")}\n${indent}]`;
+      }
+      return `[\n${v.map((x) => inner + out(x, inner, inner.length)).join(",\n")}\n${indent}]`;
+    }
+    const entries = Object.entries(v);
+    if (!entries.length) return "{}";
+    const lines = entries.map(([k, x]) => {
+      const key = `${inner}${JSON.stringify(k)}: `;
+      return key + out(x, inner, key.length);
+    });
+    return `{\n${lines.join(",\n")}\n${indent}}`;
+  };
+  return `${out(value, "", 0)}\n`;
+}
+
+/** Write the grammar. The one way to change schemes/grammar.json (OD-289). */
+export function saveGrammar(g, roots = assetRoots()) {
+  writeFileSync(join(roots.schemes, "grammar.json"), formatGrammar(g));
+}
+
+/** Write a scheme, by its id. The one way to change schemes/<id>.json (OD-289). */
+export function saveScheme(scheme, roots = assetRoots()) {
+  if (!scheme?.id) throw new Error("saveScheme needs a scheme with an id. Load it with loadScheme first.");
+  writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(scheme, null, 2)}\n`);
 }
 
 export function loadScheme(id, roots = assetRoots()) {

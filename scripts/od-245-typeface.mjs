@@ -2,6 +2,7 @@
 // lists what a typeface decision must consider. Every scheme answers it, and its answer says how its
 // faces meet each consideration, so the font picks have a reason to quote. Idempotent.
 import { readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
@@ -123,7 +124,7 @@ const ANSWERS = {
 };
 
 // Grammar: the question and what it considers.
-const g = read("schemes/grammar.json");
+const g = grammar();
 const brand = g.reasons.find((r) => r.id === "brand");
 if (!brand.questions.some((q) => q.id === "brand.q3"))
   brand.questions.push({
@@ -133,13 +134,13 @@ if (!brand.questions.some((q) => q.id === "brand.q3"))
     options: OPTIONS,
     considers: CONSIDERS,
   });
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 for (const [id, a] of Object.entries(ANSWERS)) {
-  const s = read(`schemes/${id}.json`);
+  const s = loadScheme(id);
   s.answers = s.answers.filter((x) => x.question !== "brand.q3");
   const at = s.answers.findIndex((x) => x.question === "brand.q2") + 1;
   s.answers.splice(at, 0, { question: "brand.q3", ...a });
-  write(`schemes/${id}.json`, s);
+  saveScheme(s);
 }
 console.log("brand.q3: the typeface question, with 11 considerations, answered in 5 schemes.");

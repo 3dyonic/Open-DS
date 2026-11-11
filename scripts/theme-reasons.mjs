@@ -7,7 +7,7 @@
 //   node scripts/theme-reasons.mjs          write
 //   node scripts/theme-reasons.mjs --dry    print, write nothing
 import { readFileSync, writeFileSync } from "node:fs";
-import { loadScheme, assetRoots } from "../cli/src/schemes.mjs";
+import { loadScheme, saveScheme, assetRoots } from "../cli/src/schemes.mjs";
 import { tokenIndex, aliasChain } from "../cli/src/lands.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
@@ -241,8 +241,7 @@ const preview = {};
 let added = 0;
 const broke = [];
 for (const id of SCHEMES) {
-  const file = `schemes/${id}.json`;
-  const raw = JSON.parse(readFileSync(ROOT + file, "utf8"));
+  const raw = loadScheme(id, roots);
   const s = loadScheme(id, roots);
   const answers = Object.fromEntries(raw.answers.map((a) => [a.question, a]));
   const floor = { aa: 4.5, "aaa-text": 7, aaa: 7 }[answers["accessibility.definition"]?.option] ?? 4.5;
@@ -282,7 +281,7 @@ for (const id of SCHEMES) {
         added++;
         (preview[`${id}/${brand}/${mode}`] ??= {})[path] = why;
       }
-  if (!dry) writeFileSync(ROOT + file, `${JSON.stringify(raw, null, 2)}\n`);
+  if (!dry) saveScheme(raw, roots);
 }
 if (dry) console.log(JSON.stringify(preview, null, 1));
 else console.log(`Reasons on ${added} theme picks.`);

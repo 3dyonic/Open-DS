@@ -1124,7 +1124,17 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["related-items", "between-sections", "table-row", "parts-of-one-item", "siblings-in-a-row", "between-groups", "inside-a-control", "inside-a-container", "inside-a-cell"],
+      "situations": [
+        "related-items",
+        "between-sections",
+        "table-row",
+        "parts-of-one-item",
+        "siblings-in-a-row",
+        "between-groups",
+        "inside-a-control",
+        "inside-a-container",
+        "inside-a-cell"
+      ],
       "questions": [
         {
           "id": "spacing.roles",
@@ -1306,7 +1316,15 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["control-corner", "status-shape", "option-in-list", "growing-element", "surface-corner", "edges-and-dividers", "focus-gap"],
+      "situations": [
+        "control-corner",
+        "status-shape",
+        "option-in-list",
+        "growing-element",
+        "surface-corner",
+        "edges-and-dividers",
+        "focus-gap"
+      ],
       "questions": [
         {
           "id": "shape.roles",
@@ -1568,7 +1586,13 @@
         "textarea",
         "tooltip"
       ],
-      "situations": ["hover-feedback", "reduced-motion", "panel-opens", "any-transition", "hero-motion"],
+      "situations": [
+        "hover-feedback",
+        "reduced-motion",
+        "panel-opens",
+        "any-transition",
+        "hero-motion"
+      ],
       "questions": [
         {
           "id": "motion.roles",
@@ -2003,7 +2027,14 @@
         "textarea",
         "toggle"
       ],
-      "situations": ["keyboard-focus", "smallest-target", "most-controls", "main-action", "control-inside-field", "unavailable-control"],
+      "situations": [
+        "keyboard-focus",
+        "smallest-target",
+        "most-controls",
+        "main-action",
+        "control-inside-field",
+        "unavailable-control"
+      ],
       "questions": [
         {
           "id": "accessibility.roles",
@@ -23106,7 +23137,9 @@
                   "shadow": "component.combobox.content.shadow",
                   "n": 2,
                   "at": "corner",
-                  "marks": [[3, "shadow"]],
+                  "marks": [
+                    [3, "shadow"]
+                  ],
                   "children": [
                     {
                       "t": "frame",
@@ -23355,7 +23388,9 @@
             },
             {
               "title": "Surface and shadow",
-              "title_when": { "elevation.count=none": "Surface and edge" },
+              "title_when": {
+                "elevation.count=none": "Surface and edge"
+              },
               "parts": [2, 3],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -24291,7 +24326,9 @@
                   "label": "Highlight fill",
                   "need": "state",
                   "roles": ["feedback", "focus"],
-                  "tokens": ["component.context-menu.item.background.highlight"]
+                  "tokens": [
+                    "component.context-menu.item.background.highlight"
+                  ]
                 },
                 {
                   "n": 6,
@@ -24365,7 +24402,9 @@
           "cards": [
             {
               "title": "Surface and shadow",
-              "title_when": { "elevation.count=none": "Surface and edge" },
+              "title_when": {
+                "elevation.count=none": "Surface and edge"
+              },
               "parts": [1, 2],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -26064,7 +26103,9 @@
           "cards": [
             {
               "title": "Surface and shadow",
-              "title_when": { "elevation.count=none": "Surface and edge" },
+              "title_when": {
+                "elevation.count=none": "Surface and edge"
+              },
               "parts": [1, 2],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -27436,10 +27477,7 @@
             }
           ]
         },
-        "situations": [
-          "icon-alone",
-          "row-action"
-        ],
+        "situations": ["icon-alone", "row-action"],
         "accessibility": [
           {
             "id": "decorative",
@@ -27510,21 +27548,15 @@
               "id": "glyph",
               "label": "Glyph",
               "need": "required",
-              "roles": [
-                "meaning"
-              ],
-              "tokens": [
-                "component.icon.size"
-              ]
+              "roles": ["meaning"],
+              "tokens": ["component.icon.size"]
             },
             {
               "n": 2,
               "id": "shape",
               "label": "Contained shape",
               "need": "optional",
-              "roles": [
-                "containment"
-              ],
+              "roles": ["containment"],
               "tokens": [
                 "component.icon.contained.padding",
                 "component.icon.contained.radius",
@@ -27536,46 +27568,25 @@
           "cards": [
             {
               "title": "Size",
-              "parts": [
-                1
-              ],
-              "roles": [
-                "meaning"
-              ],
-              "answers": [
-                "iconography.count",
-                "iconography.values"
-              ],
+              "parts": [1],
+              "roles": ["meaning"],
+              "answers": ["iconography.count", "iconography.values"],
               "rules": [],
-              "tokens": [
-                "component.icon.size"
-              ]
+              "tokens": ["component.icon.size"]
             },
             {
               "title": "Stroke",
-              "parts": [
-                1
-              ],
-              "roles": [
-                "readability"
-              ],
-              "answers": [
-                "iconography.definition"
-              ],
+              "parts": [1],
+              "roles": ["readability"],
+              "answers": ["iconography.definition"],
               "rules": [],
               "tokens": []
             },
             {
               "title": "Contained shape",
-              "parts": [
-                2
-              ],
-              "roles": [
-                "containment"
-              ],
-              "answers": [
-                "iconography.definition"
-              ],
+              "parts": [2],
+              "roles": ["containment"],
+              "answers": ["iconography.definition"],
               "rules": [],
               "tokens": [
                 "component.icon.contained.radius",
@@ -30489,7 +30500,9 @@
             },
             {
               "title": "Surface and shadow",
-              "title_when": { "elevation.count=none": "Surface and edge" },
+              "title_when": {
+                "elevation.count=none": "Surface and edge"
+              },
               "parts": [4, 5],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values"],
@@ -32059,7 +32072,9 @@
               "t": "frame",
               "name": "Pagination",
               "gap": "component.pagination.content.gap",
-              "marks": [[5, "corner"]],
+              "marks": [
+                [5, "corner"]
+              ],
               "children": [
                 {
                   "t": "frame",
@@ -33167,7 +33182,9 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": ["component.radio-group.item.disabled-opacity-disabled"]
+              "tokens": [
+                "component.radio-group.item.disabled-opacity-disabled"
+              ]
             }
           ]
         }
@@ -33866,7 +33883,9 @@
                   "shadow": "component.overlay.shadow",
                   "n": 7,
                   "at": "corner",
-                  "marks": [[8, "shadow"]],
+                  "marks": [
+                    [8, "shadow"]
+                  ],
                   "children": [
                     {
                       "t": "frame",
@@ -37999,7 +38018,9 @@
                   "gap": "component.toast.gap",
                   "n": 1,
                   "at": "corner",
-                  "marks": [[2, "shadow"]],
+                  "marks": [
+                    [2, "shadow"]
+                  ],
                   "children": [
                     {
                       "t": "frame",
@@ -38181,7 +38202,9 @@
           "cards": [
             {
               "title": "Surface and shadow",
-              "title_when": { "elevation.count=none": "Surface and edge" },
+              "title_when": {
+                "elevation.count=none": "Surface and edge"
+              },
               "parts": [1, 2],
               "roles": ["containment", "layering"],
               "answers": ["elevation.roles", "elevation.values", "shape.roles"],

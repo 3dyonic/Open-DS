@@ -3,8 +3,7 @@
 // component in the scheme being viewed.
 import { useOf } from "@storybook/addon-docs/blocks";
 import { useEffect, useState } from "react";
-import grammar from "../../schemes/grammar.json";
-import { SCHEMES, type SchemeData } from "./schemes";
+import { grammar, SCHEMES, type SchemeData } from "./schemes";
 
 type Meta = { component: string; situations: string[] };
 type Tree = Record<string, unknown>;

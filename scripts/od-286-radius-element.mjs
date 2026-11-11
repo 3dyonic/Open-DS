@@ -2,7 +2,7 @@
 // accordion rows, text areas, calendars, attachments, skeletons and media. Where a theme's control
 // corner is a pill, a box that grows past one line turns into an oval, so element takes a moderate 12px
 // there; everywhere else it is the control corner, and nothing changes. Idempotent.
-import { readFileSync, writeFileSync } from "node:fs";
+import { formatGrammar, grammar as loadGrammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const SCHEMES = ["accessible-first", "brand-expressive", "content-first", "dense-data", "multi-brand"];
 // The keys on boxes that grow with their content; buttons, inputs, toggles and badges keep the control corner.
@@ -24,8 +24,7 @@ const WHY_SAME = (ref) => `${ref}: the control corner; it is not a pill, so a gr
 const get = (o, path) => path.split("/").reduce((n, k) => n?.[k], o);
 
 function scheme(name) {
-  const file = `schemes/${name}.json`;
-  const t = JSON.parse(readFileSync(file, "utf8"));
+  const t = loadScheme(name);
   const tok = t.tokens;
   let needs12 = false;
   for (const brand of Object.values(tok.brands ?? {}))
@@ -65,19 +64,18 @@ function scheme(name) {
     if (!k) throw new Error(`${name}: no component key ${id}`);
     k.$value = "{radius.element}";
   }
-  writeFileSync(file, JSON.stringify(t, null, 2) + "\n");
+  saveScheme(t);
 }
 
-// The grammar does not round-trip through JSON.stringify, so its edits are text edits.
 function grammar() {
-  const file = "schemes/grammar.json";
-  let s = readFileSync(file, "utf8");
+  // The edits are text edits on the grammar's one layout (formatGrammar).
+  let s = formatGrammar(loadGrammar());
   for (const id of BLOCK) {
     const re = new RegExp(`("id": "${id.replaceAll("/", "\\/")}",[^}]*?"default": )"radius\\.[a-z]+"`);
     if (!re.test(s)) throw new Error(`grammar: ${id} has no default to change`);
     s = s.replace(re, '$1"radius.element"');
   }
-  writeFileSync(file, s);
+  saveGrammar(JSON.parse(s));
   const g = JSON.parse(s);
   for (const k of g.component_keys)
     if (BLOCK.includes(k.id) && k.default !== "radius.element") throw new Error(`grammar: ${k.id} reads ${k.default}`);

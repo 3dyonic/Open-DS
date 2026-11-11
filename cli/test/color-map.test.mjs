@@ -3,8 +3,8 @@
 // Run on the real Accessible first scheme, so the numbers are the ones the docs page shows.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { tokenMap } from "../src/token-graph.mjs";
+import { loadScheme } from "../src/schemes.mjs";
 import {
   colorIndex,
   componentsShowing,
@@ -17,7 +17,7 @@ import {
   selectionFor,
 } from "../src/color-map.mjs";
 
-const scheme = JSON.parse(readFileSync(new URL("../../schemes/accessible-first.json", import.meta.url), "utf8"));
+const scheme = loadScheme("accessible-first");
 const map = tokenMap({ scheme });
 const light = colorIndex(map.graphs["default/light"], "light");
 const dark = colorIndex(map.graphs["default/dark"], "dark");
