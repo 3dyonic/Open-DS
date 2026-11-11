@@ -17,7 +17,7 @@ const leaves = (o, p = []) =>
       ? [[p.join("."), o]]
       : Object.entries(o).flatMap(([k, v]) => (k[0] === "$" ? [] : leaves(v, [...p, k])));
 const name = (ref) => String(ref ?? "").replace(/^\{(color\.)?|\}$/g, "");
-const shown = (v) =>
+export const shown = (v) =>
   v == null
     ? ""
     : typeof v === "object"

@@ -1,0 +1,336 @@
+/* The Token map (OD-274), in the scheme's own tokens: every color, size and corner is a variable the
+   scheme's CSS sets on this page (src/css/schemes/<scheme>.css). */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-gap-default);
+  margin-block: var(--space-gap-group);
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-gap-default);
+}
+
+.fieldLabel {
+  font-size: var(--type-label-font-size);
+  font-weight: var(--type-label-font-weight);
+  line-height: var(--type-label-line-height);
+  color: var(--color-text-primary);
+}
+.toggle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-gap-tight);
+  margin-inline-start: auto;
+}
+.toggleButtons {
+  display: inline-flex;
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+.toggleButton {
+  min-height: var(--input-height, 2.75rem);
+  padding-inline: var(--space-inset-control-x);
+  font: inherit;
+  font-weight: var(--type-label-font-weight);
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  border: 0;
+  cursor: pointer;
+}
+.toggleButton + .toggleButton {
+  border-inline-start: var(--border-width-default) solid var(--color-border-strong);
+}
+.toggleOn {
+  background: var(--color-surface-selected);
+}
+
+.status {
+  color: var(--color-text-secondary);
+}
+.error {
+  padding: var(--space-inset-container);
+  background: var(--color-status-danger-subtle);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-container);
+}
+.error p:last-child,
+.empty p {
+  margin-bottom: 0;
+}
+.empty {
+  padding: var(--space-inset-container);
+  background: var(--color-surface-sunken);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-container);
+}
+
+.canvas {
+  height: clamp(32rem, 80vh, 56rem);
+  background: var(--color-surface-canvas);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  --xy-edge-stroke-width: 1.5;
+}
+
+/* Boxes */
+.slot {
+  position: relative;
+}
+.node {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  text-align: start;
+  font: inherit;
+  font-size: var(--type-caption-font-size, 0.875rem);
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+}
+.button {
+  cursor: pointer;
+}
+.button:focus-visible {
+  outline: var(--border-width-focus) solid var(--color-border-focus);
+  outline-offset: var(--border-width-focus-offset);
+}
+.closed {
+  background: var(--color-surface-sunken);
+  border-color: var(--color-border-default);
+}
+.open {
+  background: var(--color-surface-default);
+}
+.selected {
+  background: var(--color-surface-selected);
+  border-color: var(--color-border-selected);
+  border-width: var(--border-width-focus);
+}
+.title {
+  font-weight: var(--type-label-font-weight);
+  font-size: var(--type-body-font-size, 1rem);
+  overflow-wrap: anywhere;
+}
+.mono {
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  overflow-wrap: anywhere;
+}
+.id {
+  color: var(--color-text-secondary);
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+}
+.line {
+  color: var(--color-text-secondary);
+}
+
+/* The value */
+.word {
+  border-width: var(--border-width-focus);
+  border-color: var(--color-border-selected);
+}
+.swatchRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-gap-tight);
+}
+.swatchBig {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: var(--radius-badge);
+  border: var(--border-width-default) solid var(--color-border-default);
+}
+.impact {
+  font-weight: var(--type-label-font-weight);
+  margin-top: 0.25rem;
+}
+.try {
+  margin-top: 0.25rem;
+}
+
+/* Checks */
+.met,
+.missed {
+  font-weight: var(--type-label-font-weight);
+  border-radius: var(--radius-badge);
+  padding: 0.15rem 0.4rem;
+}
+.met {
+  color: var(--color-text-primary);
+  background: var(--color-status-success-subtle);
+}
+.missed {
+  color: var(--color-text-primary);
+  background: var(--color-status-danger-subtle);
+}
+
+/* Components, one row per component token */
+.component {
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+.componentHead {
+  padding: 0.5rem 0.75rem;
+  font-weight: var(--type-label-font-weight);
+  background: var(--color-surface-sunken);
+}
+.row {
+  position: relative;
+  padding: 0.35rem 0.75rem;
+  border-top: var(--border-width-default) solid var(--color-border-default);
+}
+
+/* The reasons behind a decision */
+.reason {
+  border-style: dashed;
+  border-color: var(--color-border-strong);
+}
+.reasonGroup {
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+}
+
+/* Lines */
+.handle {
+  opacity: 0;
+  pointer-events: none;
+}
+.edge :global(.react-flow__edge-path) {
+  stroke: var(--color-border-strong);
+  opacity: 0.45;
+}
+.edgeLit :global(.react-flow__edge-path) {
+  stroke: var(--color-border-selected);
+  stroke-width: 2.5;
+}
+.edgeReason :global(.react-flow__edge-path) {
+  stroke: var(--color-text-secondary);
+  stroke-dasharray: 6 4;
+}
+
+/* Toolbar on the selected decision */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-gap-tight);
+}
+.toolButton {
+  min-height: 2rem;
+  padding-inline: var(--space-inset-control-x);
+  font: inherit;
+  font-weight: var(--type-label-font-weight);
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.toolNote {
+  font-size: var(--type-caption-font-size, 0.875rem);
+  color: var(--color-text-secondary);
+}
+
+/* Canvas furniture */
+.legend {
+  max-width: 22rem;
+  padding: 0.5rem 0.75rem;
+  font-size: var(--type-caption-font-size, 0.875rem);
+  color: var(--color-text-secondary);
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-control);
+}
+.legend p {
+  margin: 0;
+}
+.controls :global(button) {
+  background: var(--color-surface-default);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+}
+.controls :global(button svg) {
+  fill: currentColor;
+}
+.minimap {
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-default);
+}
+
+/* The boxes cannot be dragged or selected, so React Flow turns their pointer events off (inline, on
+   its own wrapper): the boxes inside, which open, select and pick, must still take clicks. */
+.node,
+.toolButton,
+.try {
+  pointer-events: all;
+}
+
+/* The left-to-right map (OD-274 v2) */
+.cap {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+}
+.chip {
+  width: 1.4rem;
+  height: 1.4rem;
+  flex: none;
+  border-radius: var(--radius-badge);
+  border: var(--border-width-default) solid var(--color-border-default);
+}
+/* The one line a box leads with: the value's or the decision's recorded reason. */
+.key {
+  font-weight: var(--type-label-font-weight);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-badge);
+  background: var(--color-surface-selected);
+  border-inline-start: var(--border-width-focus) solid var(--color-border-selected);
+}
+.qa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin-block: 0.15rem 0.35rem;
+  padding-inline-start: 0.6rem;
+  border-inline-start: var(--border-width-default) solid var(--color-border-default);
+  font-size: 0.8rem;
+}
+.more {
+  align-self: flex-start;
+  padding: 0.2rem 0;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--color-border-selected);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.more:focus-visible {
+  outline: var(--border-width-focus) solid var(--color-border-focus);
+  outline-offset: var(--border-width-focus-offset);
+}
+.pick {
+  cursor: pointer;
+}
+.rowOn {
+  background: var(--color-surface-selected);
+}
+.tokenRow {
+  padding: 0.2rem 0 0.2rem 0.9rem;
+}
+.more,
+.pick {
+  pointer-events: all;
+}
