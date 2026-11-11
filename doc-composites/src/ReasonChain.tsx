@@ -1,16 +1,13 @@
 /**
  * ReasonChain: one answer and what follows from it. The question, the scheme's answer and why, then
- * what that answer decided and what would move if it changed. Built from the scheme's Item and Badge
- * (through Label), used through their props only. The docs generator writes the steps
+ * what that answer decided and what would move if it changed. Built on the Frame base form, so its
+ * box takes the scheme's surface corner (a pill Item drew it as an oval in Brand expressive, OD-286),
+ * and the scheme's Badge (through Label), used through its props only. The docs generator writes the steps
  * (_composites.json); the page holds one line: ::reason-chain{id="field/people.q1"}
  */
 import * as React from "react";
-import {
-  Item,
-  ItemContent,
-  ItemHeader,
-  ItemTitle,
-} from "@open-ds/ui/components/item";
+import Frame from "./base/Frame";
+import { Check, Minus } from "lucide-react";
 import Label from "./Label";
 
 export type ReasonLine = {
@@ -46,11 +43,14 @@ const stack = "flex flex-col items-start gap-[var(--space-gap-tight)]";
 
 function Step({ step, n }: { step: ReasonStep; n: number }) {
   return (
-    <ItemContent>
-      <ItemTitle>
-        <Label>{n}</Label>
+    <div className="flex min-w-0 flex-col gap-[var(--space-gap-tight)]">
+      <div className="flex items-center gap-[var(--space-gap-tight)] font-semibold text-[color:var(--color-text-primary)]">
+        {/* The step's number in a small circle, as on RC1. */}
+        <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-surface-sunken)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
+          {n}
+        </span>
         {step.title}
-      </ItemTitle>
+      </div>
       {step.kind === "answer" && (
         <div className={stack}>
           <Label tone="info">{step.answer}</Label>
@@ -61,9 +61,16 @@ function Step({ step, n }: { step: ReasonStep; n: number }) {
         <div className={stack}>
           <ul className={`${stack} list-none pl-0`}>
             {step.lines.map((l, i) => (
-              <li key={i}>
-                <span aria-hidden="true">{l.used ? "✓" : "–"}</span> {l.verb}{" "}
-                <b>{l.subject}</b>: {l.text}
+              <li key={i} className="flex items-start gap-[var(--space-gap-tight)]">
+                {/* Used: a check in the success color. Not used: a dash in the muted color. */}
+                {l.used ? (
+                  <Check aria-label="used" className="mt-[calc((1lh_-_var(--size-icon))/2)] size-[var(--size-icon)] shrink-0 text-[color:var(--color-status-success)]" />
+                ) : (
+                  <Minus aria-label="not used" className="mt-[calc((1lh_-_var(--size-icon))/2)] size-[var(--size-icon)] shrink-0 text-[color:var(--color-text-muted)]" />
+                )}
+                <span>
+                  {l.verb} <b>{l.subject}</b>: {l.text}
+                </span>
               </li>
             ))}
           </ul>
@@ -86,24 +93,24 @@ function Step({ step, n }: { step: ReasonStep; n: number }) {
           <p>{step.text}</p>
         </div>
       )}
-    </ItemContent>
+    </div>
   );
 }
 
 export default function ReasonChain({ data }: { data: ReasonChainData }) {
   return (
-    <Item variant="outline" asChild>
-      <section id={data.anchor} data-composite="reason-chain">
-        <ItemHeader>
-          <ItemTitle>{data.question}</ItemTitle>
+    <section id={data.anchor} data-composite="reason-chain" className="mb-[var(--space-gap-default)]">
+      <Frame>
+        <div className="mb-[var(--space-gap-default)] flex flex-wrap items-center justify-between gap-[var(--space-gap-tight)]">
+          <b className="text-[color:var(--color-text-primary)]">{data.question}</b>
           <code>{data.key}</code>
-        </ItemHeader>
-        <div className="grid basis-full gap-[var(--space-gap-default)] sm:grid-cols-3">
+        </div>
+        <div className="grid gap-[var(--space-gap-default)] sm:grid-cols-3">
           {data.steps.map((s, i) => (
             <Step key={i} step={s} n={i + 1} />
           ))}
         </div>
-      </section>
-    </Item>
+      </Frame>
+    </section>
   );
 }
