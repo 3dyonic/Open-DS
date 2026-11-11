@@ -134,8 +134,12 @@
      "darkValue": "#000000B3",
      "byScheme": false,
      "rule": "The see-through layer behind a modal.",
-     "pick": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
-     "darkPick": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "pick": [
+      "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+     ],
+     "darkPick": [
+      "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+     ],
      "shares": []
     },
     {
@@ -146,8 +150,20 @@
      "darkValue": "#0D1117",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.06
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.1
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     },
     {
@@ -157,8 +173,12 @@
      "value": "0px 8px 24px, #0D111729",
      "darkValue": "0px 8px 24px, #00000080",
      "byScheme": true,
-     "pick": "shadow.overlay: Subtle shadows keep the grid crisp.",
-     "darkPick": "shadow.overlay-dark: Subtle shadows keep the grid crisp.",
+     "pick": [
+      "shadow.overlay: Subtle shadows keep the grid crisp."
+     ],
+     "darkPick": [
+      "shadow.overlay-dark: Subtle shadows keep the grid crisp."
+     ],
      "shares": []
     },
     {
@@ -167,7 +187,9 @@
      "key": "content.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Small corners keep dense rows straight.",
+     "pick": [
+      "radius.4: Small corners keep dense rows straight."
+     ],
      "shares": []
     },
     {
@@ -178,8 +200,20 @@
      "darkValue": "#3D4655",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.22
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.82
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "disabled.border"
      ]
@@ -210,8 +244,20 @@
      "darkValue": "#262D38",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.25
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "surface.pressed",
@@ -226,7 +272,9 @@
      "key": "handle.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     },
     {
@@ -235,7 +283,9 @@
      "key": "handle.margin-top",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -283,7 +333,9 @@
      "key": "title.font-family",
      "value": "\"IBM Plex Sans\", system-ui, sans-serif",
      "byScheme": true,
-     "pick": "ibm-plex-sans for heading text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+     "pick": [
+      "ibm-plex-sans for heading text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero."
+     ],
      "shares": []
     },
     {
@@ -292,7 +344,9 @@
      "key": "title.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -301,7 +355,9 @@
      "key": "title.font-weight",
      "value": "600",
      "byScheme": true,
-     "pick": "font.weight.600",
+     "pick": [
+      "font.weight.600"
+     ],
      "shares": []
     },
     {
@@ -310,7 +366,9 @@
      "key": "description.font-size",
      "value": "0.875rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": [
+      "font.size.14"
+     ],
      "shares": []
     },
     {
@@ -321,8 +379,28 @@
      "darkValue": "#C4CBD6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 9.52:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.500: supporting text, 10.58:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 9.52
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: supporting text, ",
+      {
+       "ratio": 10.58
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -331,7 +409,9 @@
      "key": "header.gap",
      "value": "0.125rem",
      "byScheme": false,
-     "pick": "space.2",
+     "pick": [
+      "space.2"
+     ],
      "shares": []
     },
     {
@@ -340,7 +420,9 @@
      "key": "header.padding",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -374,7 +456,9 @@
      "key": "footer.gap",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -383,7 +467,9 @@
      "key": "footer.padding",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]

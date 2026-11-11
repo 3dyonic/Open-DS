@@ -15,7 +15,7 @@ A short hint on hover or focus.
 
 ## See it live
 
-::preview{robot="slumber" id="tooltip/live"}
+::preview{id="tooltip/live"}
 
 ## When to use it
 

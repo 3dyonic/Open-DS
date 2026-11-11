@@ -14,7 +14,7 @@ A short message that confirms an action and goes away.
 
 ## See it live
 
-::preview{robot="slumber" id="toast/live"}
+::preview{id="toast/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Multi-brand decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="neutral" note="tone" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="toast/tone/neutral"}
+::preview{id="toast/tone/neutral"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ A shared line with brand words.
 :::
 
 :::panel{title="success" note="tone" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="toast/tone/success"}
+::preview{id="toast/tone/success"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Brand tone allowed: Aster calm, Birch friendly, Coral upbeat.
 :::
 
 :::panel{title="danger" note="tone" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="toast/tone/danger"}
+::preview{id="toast/tone/danger"}
 
 **What it is for**
 

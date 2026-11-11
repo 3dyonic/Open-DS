@@ -9,7 +9,7 @@ import * as React from "react";
 import Frame from "./base/Frame";
 import { Check, Minus } from "lucide-react";
 import { Icon } from "@open-ds/ui/components/icon";
-import Label from "./Label";
+import Label from "./base/Label";
 
 export type ReasonLine = {
   used: boolean;

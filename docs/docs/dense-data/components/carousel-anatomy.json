@@ -104,7 +104,9 @@
      "key": "item.padding-left",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     },
     {
@@ -113,7 +115,9 @@
      "key": "item.padding-top",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -154,7 +158,9 @@
      "key": "previous.size",
      "value": "2rem",
      "byScheme": true,
-     "pick": "size.32",
+     "pick": [
+      "size.32"
+     ],
      "shares": []
     },
     {
@@ -163,7 +169,9 @@
      "key": "previous.radius",
      "value": "50%",
      "byScheme": false,
-     "pick": "radius.round",
+     "pick": [
+      "radius.round"
+     ],
      "shares": []
     },
     {
@@ -172,7 +180,9 @@
      "key": "next.size",
      "value": "2rem",
      "byScheme": true,
-     "pick": "size.32",
+     "pick": [
+      "size.32"
+     ],
      "shares": []
     },
     {
@@ -181,7 +191,9 @@
      "key": "next.radius",
      "value": "50%",
      "byScheme": false,
-     "pick": "radius.round",
+     "pick": [
+      "radius.round"
+     ],
      "shares": []
     }
    ]

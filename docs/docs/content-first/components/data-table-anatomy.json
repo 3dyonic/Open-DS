@@ -192,7 +192,9 @@
      "key": "input.height",
      "value": "3rem",
      "byScheme": true,
-     "pick": "size.48",
+     "pick": [
+      "size.48"
+     ],
      "shares": []
     },
     {
@@ -203,8 +205,28 @@
      "darkValue": "#A39A8B",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 4.86:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.400: the edge of a control people must find, 6.16:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 4.86
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the edge of a control people must find, ",
+      {
+       "ratio": 6.16
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "category.5",
       "disabled.text"
@@ -218,8 +240,28 @@
      "darkValue": "#A39A8B",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 6.9
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.16
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -247,8 +289,20 @@
      "darkValue": "#2E2A24",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.12
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.2
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -264,8 +318,28 @@
      "darkValue": "#CFC6B6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 9.75
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: supporting text, ",
+      {
+       "ratio": 10.11
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -276,8 +350,28 @@
      "darkValue": "#FFFDF8",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 16.84
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -319,7 +413,9 @@
      "key": "table.row-height",
      "value": "3rem",
      "byScheme": true,
-     "pick": "size.48",
+     "pick": [
+      "size.48"
+     ],
      "shares": []
     },
     {
@@ -330,8 +426,20 @@
      "darkValue": "#4A4339",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.33
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.76
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "surface.pressed",
       "disabled.border"
@@ -345,8 +453,28 @@
      "darkValue": "#FFFDF8",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 16.84
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -357,7 +485,9 @@
      "key": "table.cell.font-family",
      "value": "\"Source Serif 4\", Georgia, serif",
      "byScheme": true,
-     "pick": "source-serif-4 for data text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.",
+     "pick": [
+      "source-serif-4 for data text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface."
+     ],
      "shares": []
     }
    ]
@@ -386,8 +516,12 @@
      "darkValue": "#2E2A24",
      "byScheme": true,
      "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+     ],
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -427,8 +561,20 @@
      "darkValue": "#202B3B",
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
-     "pick": "navy.light.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "navy.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "pick": [
+      "navy.light.100: a tint of the brand, ",
+      {
+       "ratio": 1.22
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
+     "darkPick": [
+      "navy.dark.100: a tint of the brand, ",
+      {
+       "ratio": 1.2
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
      "shares": [
       "category.1.subtle"
      ]
@@ -441,8 +587,28 @@
      "darkValue": "#8FA6C4",
      "byScheme": true,
      "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
-     "pick": "navy.light.600: the edge beside a selected fill, so selection is never color alone, 11.5:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "navy.dark.600: the edge beside a selected fill, so selection is never color alone, 6.86:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "navy.light.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 11.5
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "navy.dark.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 6.86
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "action.primary",
@@ -455,7 +621,9 @@
      "key": "checkbox.size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     }
    ]

@@ -55,7 +55,9 @@
      "key": "radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+     "pick": [
+      "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval."
+     ],
      "shares": []
     }
    ]
@@ -84,8 +86,20 @@
      "darkValue": "#33241F",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.21
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",

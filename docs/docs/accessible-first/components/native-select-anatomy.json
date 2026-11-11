@@ -117,7 +117,9 @@
      "key": "height",
      "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.52",
+     "pick": [
+      "size.52"
+     ],
      "shares": []
     },
     {
@@ -126,7 +128,9 @@
      "key": "radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: Clear, slightly rounded controls.",
+     "pick": [
+      "radius.6: Clear, slightly rounded controls."
+     ],
      "shares": []
     },
     {
@@ -137,8 +141,28 @@
      "darkValue": "#949494",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 6.07
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "text.muted",
       "category.5",
@@ -151,7 +175,9 @@
      "key": "padding-x",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     }
    ]
@@ -178,7 +204,9 @@
      "key": "font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -187,7 +215,9 @@
      "key": "line-height",
      "value": "1.6",
      "byScheme": true,
-     "pick": "font.line-height.1_6",
+     "pick": [
+      "font.line-height.1_6"
+     ],
      "shares": []
     }
    ]
@@ -214,7 +244,9 @@
      "key": "icon-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -225,8 +257,28 @@
      "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.500: the quietest text that still reads, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 8.89
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "border.strong",
       "category.5",
@@ -239,7 +291,9 @@
      "key": "icon.inset",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     }
    ]
@@ -268,8 +322,28 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 8.74
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -282,7 +356,9 @@
      "key": "focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
@@ -291,7 +367,9 @@
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
@@ -320,8 +398,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "red.light.700: danger reads as text and icons, ",
+      {
+       "ratio": 8.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.76
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -334,8 +432,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "red.light.700: danger reads as text and icons, ",
+      {
+       "ratio": 8.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.76
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -359,8 +477,12 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "The fill of a control that cannot be used right now.",
-     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.sunken",
       "surface.highlight",
@@ -376,8 +498,12 @@
      "darkValue": "#333333",
      "byScheme": true,
      "rule": "The edge of a control that cannot be used right now.",
-     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.pressed",
       "border.default"
@@ -391,8 +517,20 @@
      "darkValue": "#949494",
      "byScheme": true,
      "rule": "Text and icons of a control that cannot be used right now.",
-     "pick": "neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
-     "darkPick": "neutral.500: 6.07:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "pick": [
+      "neutral.500: ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.500: ",
+      {
+       "ratio": 6.07
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
      "shares": [
       "text.muted",
       "border.strong",
@@ -407,8 +545,20 @@
      "darkValue": "#949494",
      "byScheme": true,
      "rule": "Text and icons of a control that cannot be used right now.",
-     "pick": "neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
-     "darkPick": "neutral.500: 6.07:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "pick": [
+      "neutral.500: ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.500: ",
+      {
+       "ratio": 6.07
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
      "shares": [
       "text.muted",
       "border.strong",
@@ -446,7 +596,9 @@
      "key": "sm.height",
      "value": "3rem",
      "byScheme": true,
-     "pick": "size.48",
+     "pick": [
+      "size.48"
+     ],
      "shares": []
     },
     {
@@ -455,7 +607,9 @@
      "key": "sm.padding-y",
      "value": "0.25rem",
      "byScheme": false,
-     "pick": "space.4",
+     "pick": [
+      "space.4"
+     ],
      "shares": []
     }
    ]

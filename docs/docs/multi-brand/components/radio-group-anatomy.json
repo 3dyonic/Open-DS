@@ -105,7 +105,9 @@
      "key": "gap",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     }
    ]
@@ -139,7 +141,9 @@
      "key": "item.icon-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     },
     {
@@ -148,7 +152,9 @@
      "key": "item.radius",
      "value": "50%",
      "byScheme": false,
-     "pick": "radius.round",
+     "pick": [
+      "radius.round"
+     ],
      "shares": []
     },
     {
@@ -159,8 +165,28 @@
      "darkValue": "#96A3B5",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 4.76
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the edge of a control people must find, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "disabled.text"
      ]
@@ -171,7 +197,9 @@
      "key": "item.border-width",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     }
    ]
@@ -200,8 +228,28 @@
      "darkValue": "#7FCFC6",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.",
-     "darkPick": "teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.",
+     "pick": [
+      "teal.light.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 5.47
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "teal.dark.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 9.9
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
@@ -234,8 +282,28 @@
      "darkValue": "#7FCFC6",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "teal.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 5.47
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "teal.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 9.9
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -248,7 +316,9 @@
      "key": "item.focus",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -257,7 +327,9 @@
      "key": "item.focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -268,8 +340,20 @@
      "darkValue": "#020617",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.05
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.13
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -305,8 +389,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.600: danger reads as text and icons, ",
+      {
+       "ratio": 5.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.52
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -319,8 +423,28 @@
      "darkValue": "#410C11",
      "byScheme": true,
      "rule": "The fill behind danger status.",
-     "pick": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
-     "darkPick": "red.dark.100: a quiet tint behind danger; its text, 12.74:1, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 9.9
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 12.74
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -340,7 +464,9 @@
      "key": "item.disabled-opacity-disabled",
      "value": "0.4",
      "byScheme": true,
-     "pick": "opacity.40",
+     "pick": [
+      "opacity.40"
+     ],
      "shares": []
     }
    ]

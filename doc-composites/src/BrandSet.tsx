@@ -1,27 +1,26 @@
 /**
  * BrandSet: what one brand shows, in a scheme with several. The brand picked in the docs' top bar
- * shows; the others hide (docs/scripts/generate.mjs writes that rule for odv-brandset). The words
+ * shows; the others hide (docs/scripts/generate.mjs writes that rule for each brand). Built on the
+ * Caption base form, which names the brand. The docs pass the brand's id and name as data; the words
  * stay Markdown in the page:
  *
- *   ::::brand{id="aster" name="Aster"}
+ *   ::::brand{id="aster"}
  *   …
  *   ::::
  */
 import * as React from "react";
+import Caption from "./base/Caption";
 
-export default function BrandSet({
-  id,
-  name,
-  children,
-}: {
-  id: string;
-  name: string;
-  children?: React.ReactNode;
-}) {
+export type BrandSetData = { brand: string; name: string };
+
+export default function BrandSet({ data, children }: { data: BrandSetData; children?: React.ReactNode }) {
   return (
-    <div data-composite="brand" className="odv-brandset" data-for-brand={id}>
-      <p className="odv-brandname">{name}</p>
-      {children}
+    // The layout sits inside, so the rule that hides another brand's set never meets a display class.
+    <div data-composite="brand" data-for-brand={data.brand}>
+      <div className="grid gap-4 [&>h3:not(:first-child)]:mt-2!">
+        <Caption>{data.name}</Caption>
+        {children}
+      </div>
     </div>
   );
 }

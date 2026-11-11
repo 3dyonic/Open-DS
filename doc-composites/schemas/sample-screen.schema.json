@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/sample-screen.schema.json",
+  "title": "Sample screen",
+  "description": "The scheme's own sample screen on its home page, built from its real components with its own sample content. Drawn by the SampleScreen composite.",
+  "type": "object",
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "screen": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The screen's name, shown in its bar."
+    },
+    "brands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Each brand's name, when the same card shows once per brand."
+    },
+    "eyebrow": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A line above the title."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The screen's title."
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The status's words."
+        },
+        "tone": {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "info",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "description": "The Badge tone that draws it."
+        }
+      },
+      "description": "A status shown as the scheme's Badge."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A line under the title."
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The screen's running text."
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "description": "A few counts.",
+      "items": {
+        "type": "object",
+        "required": [
+          "value",
+          "label"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The count."
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What it counts."
+          }
+        }
+      }
+    },
+    "field": {
+      "type": "object",
+      "required": [
+        "label"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The field's label."
+        },
+        "hint": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A hint under the field."
+        },
+        "placeholder": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The field's placeholder."
+        }
+      },
+      "description": "A form field."
+    },
+    "table": {
+      "type": "object",
+      "required": [
+        "caption",
+        "columns",
+        "rows"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "caption": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The table's caption."
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Each column, in order.",
+          "items": {
+            "type": "object",
+            "required": [
+              "label"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The column's heading."
+              },
+              "numeric": {
+                "type": "boolean",
+                "description": "Whether the column holds numbers, set to the right."
+              }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Each row.",
+          "items": {
+            "type": "object",
+            "required": [
+              "cells",
+              "status"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "cells": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "The row's cells before its status, one per column."
+              },
+              "status": {
+                "type": "object",
+                "required": [
+                  "text"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The status's words."
+                  },
+                  "tone": {
+                    "type": "string",
+                    "enum": [
+                      "neutral",
+                      "info",
+                      "success",
+                      "warning",
+                      "danger"
+                    ],
+                    "description": "The Badge tone that draws it."
+                  }
+                },
+                "description": "A status shown as the scheme's Badge."
+              }
+            }
+          }
+        }
+      },
+      "description": "A table of the scheme's sample rows."
+    },
+    "actions": {
+      "type": "object",
+      "required": [],
+      "additionalProperties": false,
+      "properties": {
+        "primary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The main action's words."
+        },
+        "secondary": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The second action's words."
+        },
+        "link": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A quiet link's words."
+        }
+      },
+      "description": "The screen's actions."
+    }
+  }
+}
