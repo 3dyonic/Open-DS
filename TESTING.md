@@ -125,7 +125,7 @@ Open http://localhost:3000. The pages follow the Figma frames:
 pnpm --dir storybook dev
 ```
 
-Open http://localhost:6006. Use the Scheme and Mode switches in the toolbar.
+Open http://127.0.0.1:6006. Use the Scheme and Mode switches in the toolbar.
 
 ### Docs of a delivered design system
 

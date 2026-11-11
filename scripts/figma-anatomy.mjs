@@ -79,6 +79,7 @@ figma.ui.onmessage = async (msg) => {
       figma.ui.postMessage({ type: "progress", text: (i + 1) + " of " + msg.components.length + ": " + id });
       const r = await renderAnatomy(scheme.components[id], kit);
       for (const [role, why] of Object.entries(r.fallback)) missing[id + " · " + role] = why;
+      for (const [role, why] of Object.entries(r.stale ?? {})) missing[id + " · " + role + " (stale in the kit)"] = why;
       frames.push([id, "stage", r.ids.stage], ...r.ids.cards.map((c, i) => [id, "card-" + (i + 1), c]));
     }
     // The images the docs show: every frame as a PNG at 2x, zipped by the UI as

@@ -37,6 +37,20 @@ const spec = item && layer(item);
 if (!spec) throw new Error(`${component} has no parts layer.`);
 const recipe = RECIPES[spec.drawing?.kind];
 if (!recipe) throw new Error(`${component}: no recipe for drawing kind ${spec.drawing?.kind} yet.`);
+// A text node may name the scheme's own content (OD-135): "sample": "metrics.0.label" reads
+// samples.metrics[0].label from this scheme, so each scheme's drawing says what its Storybook says.
+const sampled = (node) => {
+  if (!node || typeof node !== "object") return;
+  if (Array.isArray(node)) return node.forEach(sampled);
+  if (node.t === "text" && node.sample) {
+    const v = node.sample.split(".").reduce((o, k) => o?.[k], s.samples);
+    if (typeof v !== "string") throw new Error(`${component}: ${schemeId} has no samples.${node.sample} for the drawing's text.`);
+    node.text = v;
+  }
+  for (const v of Object.values(node)) if (v && typeof v === "object") sampled(v);
+};
+sampled(spec.drawing);
+for (const c of spec.cards ?? []) sampled(c.image);
 
 // Token chain: a path resolves through component → semantic → theme → primitive, the same order as
 // the build. Each step is a name the kit may carry as a variable.
@@ -88,7 +102,11 @@ const kitName = ({ tier, path }) =>
     : tier === "semantic"
       ? `Semantic/${path.replaceAll(".", "/").replace(/\/@$/, "/default")}`
       : null;
-const px = (v) => (typeof v === "number" ? v : /rem$/.test(v) ? parseFloat(v) * 16 : /px$/.test(v) ? parseFloat(v) : parseFloat(v));
+// The two shape radii are CSS-only (OD-286): Figma caps a corner at half the shorter side, so 9999
+// draws radius.pill on any box and radius.round (50%) on a square, as the kit writes them.
+const SHAPE = new Set(["calc(infinity * 1px)", "50%"]);
+const px = (v) =>
+  typeof v === "number" ? v : SHAPE.has(String(v).trim()) ? 9999 : /rem$/.test(v) ? parseFloat(v) * 16 : parseFloat(v);
 const hex = (v) => {
   const m = String(v).match(/^#([0-9a-f]{6})([0-9a-f]{2})?$/i);
   if (!m) return null;
@@ -127,7 +145,7 @@ function treeNodes(sp) {
 }
 function treeBindings(sp) {
   const out = { canvas: bind("color.surface.canvas", "color"), font: bind("type.body.font-family", "font"), __ink: bind("color.text.primary", "color") };
-  const WORDS = new Set(["t", "id", "name", "text", "icon", "layout", "align", "justify", "at", "strokeAlign", "sides", "abs", "dash", "corners", "marks", "children", "ring", "n", "grow", "clip", "__ring"]);
+  const WORDS = new Set(["t", "id", "name", "text", "sample", "icon", "layout", "align", "justify", "at", "strokeAlign", "sides", "abs", "dash", "corners", "marks", "children", "ring", "n", "grow", "clip", "__ring"]);
   for (const d of treeNodes(sp))
     for (const [k, raw] of Object.entries(d)) {
       if (WORDS.has(k)) continue;
