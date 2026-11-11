@@ -1,119 +1,202 @@
 ---
-title: "ADR-002: Scoped, modular schemes (proposal)"
-description: "OD-288 spike: split each scheme and the grammar into one file per scope and per component, joined by one loader."
+title: "ADR-002: Scheme layers, a build step, and distribution (proposal)"
+description: "OD-288: split a scheme by owner (source, overlay, output), join it at build time, and ship one package for every channel."
 ---
 
-# ADR-002: Scoped, modular schemes
+# ADR-002: Scheme layers, a build step, and distribution
 
-Status: proposed (OD-288). Nothing in this note is built yet.
+Status: decided (OD-288). Nothing in this note is built yet.
 
 ## Problem
 
-Each scheme is one JSON file of about 530 KB. The grammar is one file of about 1.4 MB. The next stages need three things that one big file blocks:
+A scheme is one JSON file of about 530 KB, and the grammar is one file of about 1.4 MB. The next stages need three things that this layout blocks:
 
-- **Distribution:** a project installs one scheme, or one scope of it, such as a new color scope.
-- **Editing:** a person or an agent changes one scope and sees one small diff.
-- **Ownership:** each scope has an owner, a version and its own checks.
+- **User edits that survive upgrades.** `open-ds create` copies the whole `scheme.json` into a project. A user's edit then mixes with Open DS values, so a new release cannot tell an edit from an old value.
+- **Distribution.** A person answers the questions, gets a scheme, downloads it and generates a project from it. The site, the MCP and the CLI must give the same result.
+- **Small changes.** A change to one scope must be one small diff, with its own version and checks.
 
-Measured on Dense data (bytes of JSON):
+## What the data shows
 
-| Part | Size | Share |
-|---|---|---|
-| `tokens.component` | 230,493 | 56% |
-| `tokens.brands` | 39,785 | 10% |
-| `tokens.semantic` | 15,430 | 4% |
-| `tokens.primitive` | 12,242 | 3% |
-| `usage` (57 rules) | 12,688 | 3% |
-| `inventory` | 12,399 | 3% |
-| `answers` | 11,649 | 3% |
-| everything else | about 6,000 | 1% |
+Measured on RC1, 2026-11-11.
 
-In the grammar, `catalogue` (410 KB) and `component_keys` (277 KB) are half of the file.
+| Fact | Measure |
+|---|---|
+| Component tokens are copies of the grammar's defaults | 1,385 of 1,414 equal `component_keys.default` in every scheme; 7 or 8 differ; 22 have no default |
+| Component tokens are most of a scheme | 230 KB of 410 KB of JSON in Dense data (56%) |
+| Semantics and primitives are partly shared | Content first shares 101 of 133 semantics with Dense data; Accessible first shares 92 |
+| Some values are already generated from inputs | Color scales (from key colors, `scales-generated`) and the component spacing map (`spacing-map-generated`) |
+| A changed answer moves no value | `planChange` returns a list of what to review: rules, variants and the scope's tokens. Open DS records decisions; it does not compute values from answers. |
+| A project records its source | `open-ds.json` holds the scheme id and version. Old source versions are not kept anywhere a project can reach. |
+| Load time is not a cost | Dense data in one file: 3.4 ms. The same data in 68 files: 2.1 ms. The grammar: 11.6 ms. |
+| Scheme checks run only in this repo | `open-ds check` checks a project's UI code. Contrast, grid and citation checks live in `harness/checks.mjs`. |
 
-About 40 files read the scheme JSON files directly: the CLI, the docs generator, the harness, Storybook, the site, the token build and 25 one-off scripts in `scripts/`.
+## Decision
 
-## The pack decision of 2026-10-29
+### 1. Three layers, by owner
 
-That decision said: a pack holds one scheme dictionary per scope, and each answer is global or scoped. Both parts still hold, and the data already has the shape:
-
-- **Global answers** are the 9 reason questions (business, people, content, tasks, human, outcomes, brand, scenarios, team). Dense data answers them 19 times. Usage rules and theme picks in every scope cite them.
-- **Scoped answers** are the 5 method questions of each of the 12 scopes: 60 answers per scheme.
-
-What changed since then: a scope now also owns semantic tokens (`owns`), usage rules and component keys. A scope file must carry those too, not only answers.
-
-## Options
-
-| | A. Status quo | B. Split by scope, one global file | C. Packs installed on their own |
+| Layer | Owner | Holds | Edited by hand |
 |---|---|---|---|
-| Layout | One file per scheme | A folder per scheme: `scheme.json` (global answers), `scopes/<scope>.json`, `components/<id>.json` | B, plus each scope file is a versioned package that a project installs alone |
-| Edit one scope | A diff in a 530 KB file | A diff in one small file | Same as B |
-| Install one scope | Not possible | Copy one file into an installed scheme | `open-ds add` with a version check against the grammar |
-| Cost: CLI, MCP | None | The loader joins files; callers do not change | B, plus version resolution |
-| Cost: tokens build, docs generator, Storybook, site | None | None after the readers move to the loader | Same as B |
-| Cost: harness | None | One new check: no direct reads | B, plus a check per scope version |
-| Risk | Grows with every scope rule | Cross-scope token names; more files | B, plus mixed versions in one project |
+| **Source** | Open DS | The grammar and the five ready-made schemes, each scope versioned | Only by Open DS |
+| **Overlay** | The user | Changed answers, then changed picks, rules and tokens, each with a why and a because | Yes, and nowhere else |
+| **Output** | The build | The resolved scheme, tokens, components, Storybook, docs and agent files | No: rebuild it |
 
-**Recommendation: B now, C later.** B gives small diffs and one load path at low cost. C needs B first, and it needs a real user who installs one scope. Build C when that user exists.
+A scheme is its source plus an overlay. With an empty overlay, it is the source scheme itself. Open DS never writes into an overlay. A user never writes into a source.
 
-## Proposal (option B)
+### 2. A source stores only what a person decided
 
-### 1. One folder per scheme, one file per scope
+- A component key stores a value only where it differs from the grammar's default. That is about 8 per scheme, not 1,414. The 22 keys with no default get one in the grammar.
+- Color scales store their key colors and adjustments, not the steps.
+- The component spacing map stores its rule, not its steps.
 
+The build generates the rest. This removes more than half of each scheme file, and it removes the copies that can drift.
+
+### 3. One build step joins and checks
+
+`open-ds build` (and the same function in this repo):
+
+1. reads the source at the versions in the lockfile, plus the overlay;
+2. generates the derived values: component defaults, scales and the spacing map;
+3. checks the result:
+   - every token name resolves;
+   - every pick and override cites an answer the scheme gives;
+   - contrast pairs pass;
+   - spacing is on the grid;
+4. writes `build/scheme.json`, the resolved scheme, with a content hash.
+
+Every reader reads only the built file: the CLI, MCP, docs, Storybook, site and token build. A built file older than its sources fails with "Out of date … Run: open-ds build", like the docs checks today.
+
+The scheme checks move from `harness/checks.mjs` into `cli/src`. The harness and the package call the same functions, so a user's project runs the same checks as this repo.
+
+### 4. The overlay
+
+```json
+{
+  "source": { "scheme": "dense-data", "version": "0.4.0" },
+  "answers": [{ "question": "shape.values", "option": "round", "why": "Our users are new to the tool." }],
+  "picks": [{ "brand": "default", "mode": "base", "token": "theme.radius.control", "value": "{radius.8}", "because": ["shape.values"], "why": "Rounder controls read as friendly." }],
+  "usage": [{ "situation": "card", "use": "space.inset.container", "because": ["layout.q2"], "why": "…" }],
+  "tokens": [{ "path": "component.button.radius", "value": "{radius.pill}", "because": ["shape.values"], "why": "…" }],
+  "reviewed": ["usage:hover-feedback"]
+}
 ```
-schemes/
-  grammar/
-    grammar.json            # id, version, layers, options, methods, reasons, order
-    scopes/<scope>.json     # questions, situations, owns, lands_in
-    components/<id>.json    # component keys and the catalogue entry
-  dense-data/
-    scheme.json             # id, name, version, status, summary, ai, scenarios, voice, themes
-    scopes/<scope>.json     # this scope's answers, usage rules, semantic tokens
-    primitives.json         # the primitive scales
-    brands/<brand>.json     # theme picks per mode
-    components/<id>.json    # component tokens and inventory entry
-```
 
-The grammar names 12 scopes: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming, voice and components. A scope file holds everything that scope decides. `owns` in the grammar already says which semantic tokens belong to which scope, so the split is computed, not hand-made.
+- Paths name a brand and a mode, so Multi-brand works the same way.
+- Every entry cites an answer. An entry with no because is rejected, as in a source.
+- A JSON Schema validates the file where it enters the build.
 
-### 2. One loader joins the files
+### 5. A changed answer opens a review
 
-`loadScheme(id)` and `grammar()` in `cli/src/schemes.mjs` join the folder into today's object. Callers see the same shape. The same function serves the CLI, MCP, docs, Storybook, the site and the token build.
+A changed answer moves no value by itself. The build runs `planChange` for each changed answer and lists every rule, variant and token that cites it. Each item stays open until the user does one of two things:
+- edits it in the overlay;
+- confirms it, which adds it to `reviewed`.
 
-A write goes through one function, `saveScheme(id, scheme)`. It splits the object by `owns` and writes each file with `JSON.stringify(x, null, 2) + "\n"`. The grammar gets the same pair. This also ends the text edits that `grammar.json` needs today.
+The build reports the open count. `open-ds build --strict` fails while any item is open. An agent closes the list with the user.
 
-### 3. Each scope file carries a version (the start of option C)
+### 6. The lockfile
 
-A scope file has `version` and `requires` (the grammar version it was written for). A scheme's version is the highest of its scope versions. The harness fails when a scope changes and its version does not.
+`open-ds.lock` holds the grammar version, the source scheme version, each scope's version and hash, and the built file's hash. A download checks these hashes.
 
-### 4. Distribution
+### 7. Upgrades
 
-- `open-ds add <scheme>` copies the scheme folder.
-- `open-ds add <scheme> --scope color` copies one scope file. The loader fills the other scopes from the installed scheme.
-- The npm package ships the folders unchanged. `cli/scripts/bundle.mjs` copies folders in place of files.
+`open-ds upgrade` moves the source to a new version, one scope at a time. It compares three things: the old source, the new source and the overlay.
 
-## Migration
+- A source change that the overlay does not touch applies quietly.
+- An overlay entry on a value the source also changed is a conflict. The tool shows both and asks.
+- A source rename (such as `radius.container` to `radius.surface`) ships as a numbered migration. The migration also rewrites overlays, and the old name stays as a deprecated alias for one minor release.
+- A new grammar question takes the source's answer. It goes on the review list as "new question".
 
-Each step is one PR to RC1, and the harness stays green after each one.
+Each released source version is kept in the npm package history, so an upgrade can always read the old source.
 
-1. Add `saveScheme` and `saveGrammar`. Move every write in `scripts/` onto them. The files do not change yet.
-2. Move every direct reader onto `loadScheme` and `grammar()`. A new harness check fails when a file outside `cli/src/schemes.mjs` reads `schemes/*.json`.
-3. Write the numbered migration `scripts/migrate-002-split.mjs`. It splits the files, and `saveScheme` then writes folders. A test loads both layouts and compares the objects.
-4. Add the scope versions and their harness check.
-5. Add `--scope` to `open-ds add`.
+**Projects created before this change.** `open-ds upgrade` reads the scheme id and version from `open-ds.json`. It fetches that source version, compares it with the project's `scheme.json` and writes the differences as an overlay. Every difference gets a "why: carried over from scheme.json" until the user writes a real one. Those entries go on the review list.
 
-Steps 1 and 2 are useful without the split: they remove the 40 direct readers.
+### 8. The journey, end to end
+
+1. **Answer the questions** on the site, through the MCP or with the CLI. The result is a source (the closest of the five, by the number of matching answers) plus an overlay of the answers that differ.
+2. **Get the scheme.** The build joins and checks it, and the review list says what the changed answers touch.
+3. **Download it.** The package is one folder: the manifest, the overlay, the lockfile and the built file. The site offers it as a zip; the CLI gets sources from npm (section 11).
+4. **Generate.** `open-ds create` builds the project from the folder. Generated files carry a header, and the drift check flags a hand edit.
+5. **Edit.** The user changes the overlay, then rebuilds.
+6. **Upgrade.** `open-ds upgrade`, as in section 7.
+
+Exports such as DTCG tokens, CSS, the Figma kit and the docs are output. They come from the built file.
+
+### 9. Identity: a renamed scheme is a new scheme
+
+A scheme with an empty overlay is its source: same id, same name. An overlay may set its own `id` and `name`. Then it is a new scheme that the user owns:
+
+- It keeps `source` (scheme and version) as a link, not a copy.
+- Upgrades from the source are opt in: `open-ds upgrade` lists what changed in the source, and the user takes all of it, part of it or none.
+- With no `id` in the overlay, the scheme stays the source's, and upgrades follow the source by default.
+
+This is the ownership hook. A team that renames owns a scheme of its own, and it still gets the source's fixes when it wants them. Later, the same hook can let a team with an existing design system describe it as a scheme (see Later).
+
+### 10. Folder split of a source
+
+A source splits by scope: `scheme.json` (identity and global answers), `scopes/<scope>.json` (that scope's answers, rules and semantics), `brands/<brand>.json` and `components.json` (only the values that differ). The grammar splits the same way. Users never see this layout, because they read the built file and write the overlay.
+
+### 11. Distribution
+
+- **npm first.** The CLI gets sources from npm. npm keeps every released version, which upgrades need.
+- **The zip comes later, but the format is set now.** The package folder in section 8 is the zip's content. `open-ds create --from <folder or zip>` reads it. The site's questions and its Download button come later.
+- **No registry by URL.** A CDN registry costs hosting and care, and nothing needs it yet.
+
+## Gaps found in the second pass, and how the plan closes them
+
+| Gap | How it is closed |
+|---|---|
+| A source copies 1,385 grammar defaults per scheme | Section 2: store only the differences; the build generates the rest |
+| A changed answer moves no value, so an overlay of answers alone changes nothing | Section 5: a review list from `planChange`, closed by an edit or a confirm |
+| A source rename breaks an overlay's paths | Section 7: migrations rewrite overlays; aliases stay one minor release |
+| A new grammar question has no answer in an old overlay | Section 7: it takes the source's answer and goes on the review list |
+| An upgrade needs the old source, which is not kept | Section 7: each released source stays in the npm package history; the lockfile names it |
+| Existing projects hold a full `scheme.json` copy | Section 7: `upgrade` extracts an overlay from it |
+| Scheme checks run only in this repo | Section 3: the checks move to `cli/src`; the build runs them in every project |
+| Multi-brand picks differ per brand and mode | Section 4: overlay paths name the brand and the mode |
+| A custom scheme from answers alone has no values | Section 8: start from the closest source; the review list covers what differs |
+| A renamed scheme loses its link to the source | Section 9: the overlay keeps `source` as a link; upgrades from it are opt in |
+| A downloaded package may be changed or truncated | Section 6: the lockfile's hashes are checked on download |
+| A stale built file misleads every reader | Section 3: an out-of-date check, and `create`, `docs` and the tests build first |
 
 ## Risks
 
-- **Two layouts for one release.** The loader reads both until step 3 lands everywhere. The compare test keeps them equal.
-- **Cross-scope references.** A usage rule in spacing names `size.row`, which accessibility owns. References stay by token name, so a split does not break them. A scope installed alone can name a token that its scheme lacks; the loader reports each one.
-- **More files.** About 70 files per scheme in place of 1. Git diffs get smaller; a full read gets slower. Measure the load time before and after, and keep it under 200 ms per scheme.
+| Risk | Handling |
+|---|---|
+| An upgrade loses user edits | Edits live only in the overlay; upgrades compare three ways and ask on a conflict |
+| An edit breaks a rule (contrast, grid) | The build runs the same checks as this repo and names the fix |
+| A rule names a token another scope owns | References stay by name; the build lists each name that does not resolve |
+| Mixed versions across scopes | The lockfile pins them; a scope installs only for its grammar version |
+| A renamed scheme drifts far from its source | Upgrades are opt in and per scope, so the team takes only what it wants |
+| Two layouts during the move | The loader reads both; a test loads each layout and compares the objects |
+| The review list grows long and users ignore it | It is grouped by answer, an agent works through it with the user, and `--strict` blocks a release |
+
+## Order of work
+
+Each step is one PR to RC1. The harness stays green after each step. Steps 1 to 3 change nothing a user sees.
+
+1. One load and save path. A harness check fails on any direct read of `schemes/*.json`. 40 files move to it.
+2. Component defaults at build time. A source stores only the differences. Defaults are added for the 22 keys. Measure the size change.
+3. The build step and the built file, with the scheme checks moved into `cli/src` and the out-of-date check.
+4. The overlay format, its schema, the review list and the lockfile. `create` writes these in place of a copied `scheme.json`.
+5. `open-ds upgrade`: the three-way compare, migrations on overlays, and the import from old projects.
+6. The source folder split by scope.
+7. Packaging: the npm package, and `create --from` reading the package folder or a zip. Installing one scope alone (`--scope`) comes after a real user needs it.
 
 ## Not in scope
 
 - A new token format. The tokens stay DTCG.
-- A change to the grammar's questions or to any value.
+- Computing values from answers. Open DS records decisions; a person or an agent sets each value, and the review list keeps them honest.
+- Upgrades of component code the user copied into a project. The user owns that code, as with shadcn; `upgrade` shows the diff only.
 
-## Decision asked
+## Later
 
-Approve steps 1 and 2 now; they pay for themselves. Decide on the folder split (step 3) after step 2 shows the reader count at zero.
+- **Existing design systems as schemes.** A team describes its own design system as a scheme: its answers, then its values. The rename hook (section 9) is the start. This needs its own plan.
+- **The site's questions and its zip download.** The architecture supports both now.
+
+## Decided (Yonatan, 2026-11-11)
+
+1. User edits live only in the overlay.
+2. The scheme is joined at build time, and every reader reads only the built file.
+3. A source stores only what a person decided; the build generates defaults, scales and the spacing map.
+4. Component code copied into a project belongs to the user; upgrades show a diff only.
+5. npm first. The zip format is set now and built later. No registry by URL.
+6. "Scheme" is the one name, with or without an overlay. A renamed overlay makes a new scheme that keeps a link to its source for opt-in upgrades.
