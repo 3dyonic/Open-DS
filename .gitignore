@@ -34,3 +34,4 @@ figma/anatomy-plugin/
 
 # Agent worktrees (parallel work, merged through scripts/apply-ops.mjs)
 .claude/worktrees/
+/build/

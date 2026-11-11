@@ -6,6 +6,7 @@ import { themeTokens } from "../cli/src/tokens.mjs";
 import { pairsIn, toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
 import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "../cli/src/schemes.mjs";
+import { flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -126,17 +127,8 @@ function* objects(value, path = "$") {
   }
 }
 
-// Flatten a DTCG group into { "a.b.c": token }.
-export function flatten(group, prefix = "") {
-  const out = {};
-  for (const [k, v] of Object.entries(group ?? {})) {
-    if (k.startsWith("$")) continue;
-    const path = prefix ? `${prefix}.${k}` : k;
-    if (v && typeof v === "object" && "$value" in v) out[path] = v;
-    else if (v && typeof v === "object") Object.assign(out, flatten(v, path));
-  }
-  return out;
-}
+// The token helpers live with the scheme rules (OD-292); the harness re-exports them.
+export { flatten, resolve } from "../cli/src/scheme-checks.mjs";
 
 // Merge DTCG trees the way Style Dictionary does: a token replaces a group with the same path.
 export function mergeTrees(...trees) {
@@ -148,18 +140,6 @@ export function mergeTrees(...trees) {
     }
   }
   return out;
-}
-
-// Follow {references} to a literal value.
-export function resolve(all, path, seen = new Set()) {
-  if (seen.has(path)) return { error: "is part of a reference cycle" };
-  const t = all[path];
-  if (!t) return { error: "does not exist" };
-  const m = typeof t.$value === "string" && t.$value.match(/^\{([^}]+)\}$/);
-  if (!m) return { value: t.$value };
-  seen.add(path);
-  const r = resolve(all, m[1], seen);
-  return r.error ? { error: `→ ${m[1]} ${r.error}` } : r;
 }
 
 function frontMatter(text) {
@@ -258,22 +238,8 @@ export const CHECKS = {
   "schemes-tokens-resolve": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      const problems = [];
-      for (const s of SCHEMES) {
-        const t = c.scheme(s).tokens;
-        for (const brand of Object.keys(t.brands)) {
-          const th = t.brands[brand].theme;
-          if (Object.keys(flatten(th.light)).sort().join() !== Object.keys(flatten(th.dark)).sort().join())
-            problems.push(`${s}/${brand}: the light and dark themes have different keys`);
-          for (const mode of ["light", "dark"]) {
-            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
-            for (const path of Object.keys(all)) {
-              const r = resolve(all, path);
-              if (r.error) problems.push(`${s}/${brand}/${mode}: ${path} ${r.error}`);
-            }
-          }
-        }
-      }
+      // The rule lives in cli/src/scheme-checks.mjs (OD-292), so the build runs it too.
+      const problems = SCHEMES.flatMap((s) => tokensResolve(c.scheme(s)));
       return problems.length
         ? bad(`${problems.length} problems: ${problems.slice(0, 4).join("; ")}`)
         : ok("every token resolves in every brand and mode");
@@ -384,30 +350,16 @@ export const CHECKS = {
   "tokens-semantics-are-links": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
-      // Raw values live only on primitives. Every semantic and component token points to another token.
-      const gaps = [];
-      const walk = (node, path, out) => {
-        if (node && typeof node === "object" && "$value" in node) {
-          const v = node.$value;
-          if (!(typeof v === "string" && /^\{[^}]+\}$/.test(v))) out.push(path);
-          return;
-        }
-        if (node && typeof node === "object")
-          for (const [k, v] of Object.entries(node)) if (!k.startsWith("$")) walk(v, path ? `${path}.${k}` : k, out);
-      };
-      for (const id of SCHEMES) {
-        const t = c.scheme(id).tokens;
-        const raw = [];
-        walk(t.semantic, "", raw);
-        for (const b of Object.values(t.brands)) walk(b.theme, "", raw);
-        walk(t.component, "", raw);
-        if (raw.length) gaps.push(`${id}: raw values on ${raw.slice(0, 4).join(", ")}`);
-      }
+      // Raw values live only on primitives (cli/src/scheme-checks.mjs, OD-292).
+      const gaps = SCHEMES.map((id) => [id, rawValues(c.scheme(id))])
+        .filter(([, raw]) => raw.length)
+        .map(([id, raw]) => `${id}: raw values on ${raw.slice(0, 4).join(", ")}`);
       return gaps.length
         ? bad(gaps.join("; "))
         : ok("every semantic and component token is a link; values live on primitives");
     },
   },
+
 
   "components-tokens-mapped": {
     requires: ["cli/src/shadcn.mjs", "ui/src/components", "cli/templates/project/tokens/build.mjs"],
@@ -734,34 +686,16 @@ export const CHECKS = {
   "picks-cite-answers": {
     requires: SCHEMES.map((s) => `schemes/${s}.json`),
     run: (c) => {
-      // A theme pick's reason cites the answers it follows from (because). Each must be a question this
-      // scheme answers, or the trace from answer to value breaks where nobody looks. The schema only
-      // checks the shape of the id (it once refused brand.q3); this checks that it lands.
-      const gaps = [];
-      let n = 0;
-      const walk = (o, p, cb) => {
-        if (!o || typeof o !== "object") return;
-        if ("$value" in o) return cb(p, o);
-        for (const [k, v] of Object.entries(o)) if (k[0] !== "$") walk(v, [...p, k], cb);
-      };
-      for (const id of SCHEMES) {
-        const s = c.scheme(id);
-        const answered = new Set(s.answers.map((a) => a.question));
-        for (const [brand, def] of Object.entries(s.tokens.brands))
-          for (const mode of ["base", "light", "dark"])
-            walk(def.theme[mode], [], (p, node) => {
-              for (const q of node.$extensions?.["open-ds"]?.because ?? []) {
-                n++;
-                if (!answered.has(q))
-                  gaps.push(`${id}/${brand}/${mode} ${p.join(".")} cites ${q}, which this scheme does not answer`);
-              }
-            });
-      }
+      // A pick's because must name a question this scheme answers (cli/src/scheme-checks.mjs, OD-292).
+      const results = SCHEMES.map((id) => picksCiteAnswers(c.scheme(id)));
+      const gaps = results.flatMap((r) => r.gaps);
+      const n = results.reduce((sum, r) => sum + r.cited, 0);
       return gaps.length
         ? bad(`${gaps.length} broken: ${gaps.slice(0, 5).join("; ")}`)
         : ok(`${n} answers cited by theme picks, each one this scheme answers`);
     },
   },
+
   "gaps-only-go-down": {
     requires: ["schemes/grammar.json", "cli/src/gaps.mjs", "harness/gaps-baseline.json"],
     run: async (c) => {
@@ -928,31 +862,14 @@ export const CHECKS = {
 
   "spacing-on-grid": {
     run: async (c) => {
-      // OD-235: every spacing a scheme decides is a multiple of 4px and at most 64px; the hairline (2px)
-      // is the one exception.
-      const gaps = [];
-      for (const id of SCHEMES) {
-        const s = c.scheme(id);
-        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
-        const walk = (o, path) => {
-          for (const [k, v] of Object.entries(o ?? {})) {
-            if (k.startsWith("$")) continue;
-            const p = path ? `${path}.${k}` : k;
-            if (v && typeof v === "object" && "$value" in v) {
-              if (p === "component-spacing-map.hairline") continue;
-              const px = Math.round(parseFloat(String(resolve(all, p)?.value ?? "")) * 16 * 1000) / 1000;
-              if (!(px % 4 === 0 && px <= 64)) gaps.push(`${id}: ${p} is ${px}px`);
-            } else if (v && typeof v === "object") walk(v, p);
-          }
-        };
-        walk(s.tokens.semantic.space, "space");
-        walk(s.tokens.semantic["component-spacing-map"], "component-spacing-map");
-      }
+      // OD-235: on the 4px grid, at most 64px, the hairline aside (cli/src/scheme-checks.mjs, OD-292).
+      const gaps = SCHEMES.flatMap((id) => spacingOffGrid(c.scheme(id)));
       return gaps.length
         ? bad(`off the 4px grid or over 64px: ${gaps.join("; ")}`)
         : ok("every spacing in every scheme is a multiple of 4px, at most 64px (the 2px hairline aside)");
     },
   },
+
   "scales-generated": {
     requires: ["cli/src/ramps.mjs"],
     run: async (c) => {
