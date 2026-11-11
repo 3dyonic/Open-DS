@@ -8,9 +8,9 @@
     "node": ">=22"
   },
   "scripts": {
-    "generate": "node scripts/generate.mjs",
-    "start": "node scripts/generate.mjs && docusaurus start",
-    "build": "node scripts/generate.mjs && docusaurus build",
+    "generate": "pnpm --dir ../tokens build && node scripts/generate.mjs",
+    "start": "pnpm run generate && docusaurus start",
+    "build": "pnpm run generate && docusaurus build",
     "serve": "docusaurus serve",
     "test": "node scripts/generate.mjs --check",
     "lint": "prettier --check ."
