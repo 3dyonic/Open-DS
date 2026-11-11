@@ -5,11 +5,12 @@
 //   node scripts/apply-anatomy.mjs anatomy-sidebar.json [anatomy-field.json …]
 import { readFileSync, writeFileSync } from "node:fs";
 import { basename } from "node:path";
+import { grammar, loadScheme, saveGrammar } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
-const g = read("schemes/grammar.json");
-const scheme = read("schemes/dense-data.json");
+const g = grammar();
+const scheme = loadScheme("dense-data");
 const roles = new Set(g.anatomy.roles.map((r) => r.id));
 const rules = new Set(g.situations.map((s) => s.id));
 const questions = new Set(scheme.answers.map((a) => a.question));
@@ -83,9 +84,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
       `${component}: parts layer in the grammar (${spec.cards.length} cards).`,
     );
   }
-  writeFileSync(
-    `${ROOT}schemes/grammar.json`,
-    `${JSON.stringify(g, null, 2)}\n`,
-  );
+  saveGrammar(g);
   if (bad) process.exit(1);
 }

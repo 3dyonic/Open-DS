@@ -1,6 +1,7 @@
 // OD-229: the data table's parts layer, in the pattern of the menu's approved Anatomy reference.
 // The parts people see, their roles, and the answers, rules and tokens each card follows. Idempotent.
 import { readFileSync, writeFileSync } from "node:fs";
+import { grammar, saveGrammar } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
@@ -62,7 +63,7 @@ const TABLE = {
   ],
 };
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 g.catalogue.items.find((i) => i.id === "data-table").anatomy = TABLE;
-write("schemes/grammar.json", g);
+saveGrammar(g);
 console.log("The data table's parts layer, 13 parts, in the grammar.");

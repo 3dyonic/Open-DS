@@ -3,6 +3,7 @@
 // and tokens each card follows. The words and values come from each scheme, so every scheme gets its
 // own page from this one description. Idempotent.
 import { readFileSync, writeFileSync } from "node:fs";
+import { grammar, saveGrammar } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
@@ -69,14 +70,14 @@ const MENU = {
   ],
 };
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 g.anatomy = {
   description: "The parts layer (OD-229): the jobs a part does for a person, as the questions it answers. A catalogue component that describes its parts gets an Anatomy reference page.",
   roles: ROLES,
 };
 const item = g.catalogue.items.find((i) => i.id === "dropdown-menu");
 item.anatomy = MENU;
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 // The schema admits the parts layer.
 const sp = "schema/grammar.schema.json";

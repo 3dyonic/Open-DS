@@ -4,6 +4,7 @@
 // which goes back to badges and checkboxes. The panels that hold options read the overlay corner,
 // radius.container, as the dropdown menu and the select already do. Idempotent.
 import { readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -41,18 +42,18 @@ const DESC = {
 };
 
 // 1. The grammar: option keys and panel keys follow the new defaults.
-const g = read("schemes/grammar.json");
+const g = grammar();
 for (const e of g.component_keys) {
   if (OPTIONS.includes(e.id)) e.default = "radius.option";
   if (PANELS.includes(e.id)) e.default = "radius.container";
 }
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 // 2. Every scheme and brand.
 const px = (v) => (/rem$/.test(v) ? parseFloat(v) * 16 : /px$/.test(v) ? parseFloat(v) : NaN);
 const ref = (v) => v.match(/^\{(.+)\}$/)?.[1];
 for (const id of SCHEMES) {
-  const s = read(`schemes/${id}.json`);
+  const s = loadScheme(id);
   const t = s.tokens;
   const prim = t.primitive.radius;
   // A reference resolves in the semantic tier first, then the primitive tier.
@@ -114,7 +115,7 @@ for (const id of SCHEMES) {
   };
   for (const k of OPTIONS) set(k, "radius.option");
   for (const k of PANELS) set(k, "radius.container");
-  write(`schemes/${id}.json`, s);
+  saveScheme(s);
   console.log(`${id}: radius.option = ${Object.values(t.brands).map((d) => d.theme.base.radius.option.$value).join(", ")}`);
 }
 console.log(`radius.option on ${OPTIONS.length} option keys; ${PANELS.length} panels on the overlay corner.`);

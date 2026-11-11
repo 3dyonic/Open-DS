@@ -4,7 +4,7 @@
 // The semantic radius.round goes: a shape that every scheme sets the same is a constant, so its
 // component keys read the primitive. radius.container becomes radius.surface; the old name stays as
 // a deprecated alias for one minor release. Idempotent: a second run changes nothing.
-import { readFileSync, writeFileSync } from "node:fs";
+import { formatGrammar, grammar as loadGrammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const SCHEMES = ["accessible-first", "brand-expressive", "content-first", "dense-data", "multi-brand"];
 const PILL = new Set(["drawer/handle/radius", "drawer/radius", "progress/radius", "scroll-area/thumb/radius", "slider/track/radius", "switch/radius"]);
@@ -29,8 +29,7 @@ const swap = (text) =>
     .replaceAll("{radius.container}", "{radius.surface}");
 
 function scheme(name) {
-  const file = `schemes/${name}.json`;
-  const t = JSON.parse(swap(readFileSync(file, "utf8")));
+  const t = JSON.parse(swap(JSON.stringify(loadScheme(name), null, 2)));
   const tok = t.tokens;
   // Primitives: the two shapes, in place of full and 999.
   const { full, 999: nines, ...steps } = tok.primitive.radius;
@@ -66,18 +65,17 @@ function scheme(name) {
     }
   };
   walk(tok.component, []);
-  writeFileSync(file, JSON.stringify(t, null, 2) + "\n");
+  saveScheme(t);
 }
 
-// The grammar does not round-trip through JSON.stringify, so its edits are text edits.
 function grammar() {
-  const file = "schemes/grammar.json";
-  let s = readFileSync(file, "utf8").replaceAll('"radius.container"', '"radius.surface"');
+  // The edits are text edits on the grammar's one layout (formatGrammar).
+  let s = formatGrammar(loadGrammar()).replaceAll('"radius.container"', '"radius.surface"');
   for (const id of PILL) {
     const re = new RegExp(`("id": "${id.replaceAll("/", "\\/")}",[\\s\\S]*?"default": )"radius\\.round"`);
     s = s.replace(re, '$1"radius.pill"');
   }
-  writeFileSync(file, s);
+  saveGrammar(JSON.parse(s));
   const g = JSON.parse(s);
   for (const k of g.component_keys)
     if (PILL.has(k.id) && k.default !== "radius.pill") throw new Error(`grammar: ${k.id} still reads ${k.default}`);

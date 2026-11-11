@@ -2,14 +2,11 @@
 // so the docs and Storybook scale views show every token and nothing is lost.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
-import { join } from "node:path";
-import { laneOf, scaleMap } from "../src/scale-map.mjs";
 
-const dir = new URL("../../schemes/", import.meta.url).pathname;
-const schemes = readdirSync(dir)
-  .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-  .map((f) => JSON.parse(readFileSync(join(dir, f), "utf8")));
+import { laneOf, scaleMap } from "../src/scale-map.mjs";
+import { loadScheme, schemeIds } from "../src/schemes.mjs";
+
+const schemes = schemeIds().map((id) => loadScheme(id));
 
 const colorPaths = (node, path = []) =>
   !node || typeof node !== "object"

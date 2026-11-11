@@ -8,6 +8,7 @@
 import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { anatomySpec, drawable, renderer } from "./anatomy-figma/build.mjs";
+import { loadScheme, schemeIds } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 
@@ -15,7 +16,7 @@ const ROOT = new URL("..", import.meta.url).pathname;
 export function anatomyData(ids) {
   const out = {};
   for (const id of ids) {
-    const s = JSON.parse(readFileSync(join(ROOT, `schemes/${id}.json`), "utf8"));
+    const s = loadScheme(id);
     const components = Object.fromEntries(drawable().map((c) => [c, anatomySpec(c, id)]));
     out[id] = { name: s.name, library: Object.values(components)[0]?.library, components };
   }
@@ -144,10 +145,7 @@ document.getElementById("run").onclick = () => (files = [], document.getElementB
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   // The schemes: every scheme file beside the grammar.
-  const all = readdirSync(join(ROOT, "schemes"))
-    .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-    .map((f) => f.replace(/\.json$/, ""))
-    .filter((id) => JSON.parse(readFileSync(join(ROOT, `schemes/${id}.json`), "utf8")).tokens);
+  const all = schemeIds().filter((id) => loadScheme(id).tokens);
   const ids = process.argv[2] && process.argv[2] !== "all" ? [process.argv[2]] : all;
   const data = writePlugin(join(ROOT, "figma/anatomy-plugin"), ids);
   for (const [id, s] of Object.entries(data)) console.log(`${id}: ${Object.keys(s.components).length} components → ${s.library}`);

@@ -3,9 +3,8 @@
 // its scheme.json instead (cli/templates/project/stories/guide/guide-data.ts). open-ds create copies guide.tsx and the guide stories, never this file..
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from "react";
-import grammar from "../../../schemes/grammar.json";
 import { NO_CHOICE, SchemeContext } from "../../src/scheme-context";
-import { SCHEMES } from "../../src/schemes";
+import { grammar, SCHEMES } from "../../src/schemes";
 
 /** The scheme on <html>, which the story decorator writes; docs pages render outside the decorator. */
 function useHtmlScheme() {

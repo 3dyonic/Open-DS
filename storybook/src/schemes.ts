@@ -1,9 +1,13 @@
-// The five schemes, by id, for the stories.
+// The five schemes and the grammar, for the stories. The one module in Storybook that reads
+// schemes/ (OD-289); every other file imports from here.
 import accessible from "../../schemes/accessible-first.json";
 import expressive from "../../schemes/brand-expressive.json";
 import content from "../../schemes/content-first.json";
 import dense from "../../schemes/dense-data.json";
 import multi from "../../schemes/multi-brand.json";
+import grammarJson from "../../schemes/grammar.json";
+
+export const grammar = grammarJson;
 
 export const SCHEMES = {
   "dense-data": dense,

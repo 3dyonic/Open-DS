@@ -5,6 +5,7 @@
 //
 // Ids are grammar key ids (menubar/trigger/radius). Run the tokens and docs builds after.
 import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -17,22 +18,22 @@ if (!id || !to) throw new Error('Usage: link-key.mjs <id> --to <semantic> [--des
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
 const write = (p, o) => writeFileSync(ROOT + p, `${JSON.stringify(o, null, 2)}\n`);
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 const e = g.component_keys.find((x) => x.id === id);
 if (!e) throw new Error(`No key ${id} in the grammar.`);
 if (e.replaced_by) throw new Error(`${id} is deprecated; link ${e.replaced_by} instead.`);
 const from = e.default;
 e.default = to;
 if (description) e.description = description;
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 for (const s of SCHEMES) {
-  const sc = read(`schemes/${s}.json`);
+  const sc = loadScheme(s);
   const n = id.split("/").reduce((o, k) => o?.[k], sc.tokens.component);
   if (!n?.$value) throw new Error(`${s}: no token at component.${id.replaceAll("/", ".")}`);
   n.$value = `{${to}}`;
   if (description) n.$description = description;
-  write(`schemes/${s}.json`, sc);
+  saveScheme(sc);
 }
 if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "link", id, to, ...(description && { description }) })}\n`);
 console.log(`${id}: ${from} → ${to}, grammar and ${SCHEMES.length} schemes.`);

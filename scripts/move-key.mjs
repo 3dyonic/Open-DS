@@ -5,6 +5,7 @@
 //
 // Edits the grammar, every scheme and the component's source.
 import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -19,17 +20,17 @@ const write = (p, o) => writeFileSync(ROOT + p, `${JSON.stringify(o, null, 2)}\n
 const cssVar = (id) => `--${id.split("/").filter((s) => s !== "@").join("-")}`;
 const comp = oldId.split("/")[0];
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 const e = g.component_keys.find((x) => x.id === oldId);
 if (!e) throw new Error(`No key ${oldId}.`);
 if (g.component_keys.some((x) => x.id === newId)) throw new Error(`${newId} exists already.`);
 e.id = newId;
 if (description) e.description = description;
 for (const c of g.components) c.keys = c.keys.map((k) => (k === oldId ? newId : k));
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 for (const s of SCHEMES) {
-  const sc = read(`schemes/${s}.json`);
+  const sc = loadScheme(s);
   const from = oldId.split("/");
   const parent = from.slice(0, -1).reduce((o, k) => o?.[k], sc.tokens.component);
   const node = parent?.[from.at(-1)];
@@ -40,7 +41,7 @@ for (const s of SCHEMES) {
   for (const k of to.slice(0, -1)) n = n[k] ??= {};
   if (description) node.$description = description;
   n[to.at(-1)] = node;
-  write(`schemes/${s}.json`, sc);
+  saveScheme(sc);
 }
 
 if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "move", from: oldId, id: newId, ...(description && { description }) })}\n`);

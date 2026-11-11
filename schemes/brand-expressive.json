@@ -3011,6 +3011,10 @@
           "$type": "dimension",
           "$value": "1.25rem"
         },
+        "28": {
+          "$type": "dimension",
+          "$value": "1.75rem"
+        },
         "44": {
           "$type": "dimension",
           "$value": "2.75rem"
@@ -3023,11 +3027,7 @@
           "$type": "dimension",
           "$value": "3.75rem"
         },
-        "$description": "Size options for controls, rows and icons.",
-        "28": {
-          "$type": "dimension",
-          "$value": "1.75rem"
-        }
+        "$description": "Size options for controls, rows and icons."
       },
       "radius": {
         "12": {

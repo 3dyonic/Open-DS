@@ -5,6 +5,7 @@
 //
 // It edits the grammar and every scheme. The component's source then reads var(--<id with - for />).
 import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
+import { grammar, loadScheme, saveGrammar, saveScheme } from "../cli/src/schemes.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -18,23 +19,23 @@ const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
 const write = (p, o) => writeFileSync(ROOT + p, `${JSON.stringify(o, null, 2)}\n`);
 const comp = id.split("/")[0];
 
-const g = read("schemes/grammar.json");
+const g = grammar();
 if (g.component_keys.some((e) => e.id === id)) throw new Error(`${id} exists already.`);
 const c = g.components.find((x) => x.id === comp);
 if (!c) throw new Error(`No component ${comp} in the grammar.`);
 c.keys.push(id);
 const last = g.component_keys.map((e) => e.component).lastIndexOf(comp);
 g.component_keys.splice(last + 1, 0, { id, component: comp, description, default: to });
-write("schemes/grammar.json", g);
+saveGrammar(g);
 
 for (const s of SCHEMES) {
-  const sc = read(`schemes/${s}.json`);
+  const sc = loadScheme(s);
   const path = id.split("/");
   let n = sc.tokens.component;
   for (const k of path.slice(0, -1)) n = n[k] ??= {};
   if (n[path.at(-1)]?.$value) throw new Error(`${s}: a token is at ${id} already.`);
   n[path.at(-1)] = { $value: `{${to}}`, $description: description };
-  write(`schemes/${s}.json`, sc);
+  saveScheme(sc);
 }
 if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "add", id, to, description })}\n`);
 console.log(`${id} → ${to}: grammar and ${SCHEMES.length} schemes. Read it as var(--${id.split("/").filter((x) => x !== "@").join("-")}).`);
