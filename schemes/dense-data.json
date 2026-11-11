@@ -8473,7 +8473,7 @@
             "$description": "Chips gap of the combobox."
           },
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "Chips radius of the combobox."
           },
           "border": {
@@ -9859,7 +9859,7 @@
             "$description": "Label disabled opacity disabled of the field."
           },
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "Label radius of the field."
           },
           "padding": {
@@ -12884,7 +12884,7 @@
               "$description": "Group label height of the sidebar."
             },
             "radius": {
-              "$value": "{radius.control}",
+              "$value": "{radius.element}",
               "$description": "Group label radius of the sidebar."
             },
             "padding-x": {
@@ -13044,7 +13044,7 @@
           },
           "badge": {
             "radius": {
-              "$value": "{radius.control}",
+              "$value": "{radius.badge}",
               "$description": "Menu badge radius of the sidebar."
             },
             "padding-x": {
@@ -13078,7 +13078,7 @@
               "$description": "Menu skeleton gap of the sidebar."
             },
             "radius": {
-              "$value": "{radius.control}",
+              "$value": "{radius.element}",
               "$description": "Menu skeleton radius of the sidebar."
             },
             "padding-x": {
@@ -13113,7 +13113,7 @@
                 "$description": "Menu sub button gap of the sidebar."
               },
               "radius": {
-                "$value": "{radius.control}",
+                "$value": "{radius.element}",
                 "$description": "Menu sub button radius of the sidebar."
               },
               "padding-x": {
@@ -13541,7 +13541,7 @@
             "$description": "Right padding of a menu button that has a menu action, so the label clears the action."
           },
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.element}",
             "$description": "Corner of the menu button, of the sidebar."
           },
           "edge": {

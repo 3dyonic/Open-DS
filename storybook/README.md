@@ -3,7 +3,7 @@
 Every Open DS component, in every scheme, brand and mode.
 
 ```bash
-pnpm --dir storybook dev     # http://localhost:6006
+pnpm --dir storybook dev     # http://127.0.0.1:6006
 pnpm --dir storybook build   # static build in storybook/storybook-static
 ```
 

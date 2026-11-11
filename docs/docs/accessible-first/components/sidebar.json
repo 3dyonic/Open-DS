@@ -753,7 +753,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.label.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "sidebar-group-label-radius"
      },
      "values": [
@@ -1465,13 +1465,13 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.badge.radius",
-      "alias": "radius.control",
+      "alias": "radius.badge",
       "variable": "sidebar-menu-badge-radius"
      },
      "values": [
       {
-       "token": "radius.6",
-       "text": "0.375rem"
+       "token": "radius.4",
+       "text": "0.25rem"
       }
      ]
     },
@@ -1596,7 +1596,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.skeleton.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "sidebar-menu-skeleton-radius"
      },
      "values": [
@@ -1744,7 +1744,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "sidebar-menu-sub-button-radius"
      },
      "values": [
@@ -2645,7 +2645,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.radius",
-      "alias": "radius.control",
+      "alias": "radius.element",
       "variable": "sidebar-menu-button-radius"
      },
      "values": [

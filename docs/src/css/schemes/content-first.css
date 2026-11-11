@@ -1024,7 +1024,7 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
   --combobox-content-height: var(--combobox-input-height); /** Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox. */
   --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
-  --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
+  --combobox-chips-radius: var(--radius-element); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
   --combobox-chips-border-invalid: var(--color-status-danger); /** Chips border invalid of the combobox. */
@@ -1071,7 +1071,7 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --empty-icon-radius: var(--radius-surface); /** Icon radius of the empty. */
   --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
   --field-label-invalid: var(--color-status-danger); /** Label invalid of the field. */
-  --field-label-radius: var(--radius-control); /** Label radius of the field. */
+  --field-label-radius: var(--radius-element); /** Label radius of the field. */
   --field-label-border-checked: var(--color-border-selected); /** Border of a choice card (a field label that holds a field) when its checkbox or radio is checked: the edge that marks the choice beside its fill, so it is never color alone. */
   --field-label-background-checked: var(--color-surface-selected); /** Fill of a choice card (a field label that holds a field) when its checkbox or radio is checked: the selected fill, a toggle that is on. */
   --field-border-checked: var(--color-action-primary); /** Deprecated: use field/label/border/checked (OD-243). Border checked of the field. */
@@ -1212,7 +1212,7 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
   --sidebar-inset-radius: var(--radius-surface); /** Inset radius of the sidebar. */
   --sidebar-inset-shadow: var(--elevation-card); /** Inset shadow of the sidebar. */
-  --sidebar-group-label-radius: var(--radius-control); /** Group label radius of the sidebar. */
+  --sidebar-group-label-radius: var(--radius-element); /** Group label radius of the sidebar. */
   --sidebar-group-label-focus-ring: var(--color-border-focus); /** Group label focus ring of the sidebar. */
   --sidebar-group-label-focus-ring-focus: var(--color-border-focus); /** Group label focus ring focus of the sidebar. */
   --sidebar-group-action-radius: var(--radius-control); /** Group action radius of the sidebar. */
@@ -1221,9 +1221,9 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --sidebar-menu-action-radius: var(--radius-control); /** Menu action radius of the sidebar. */
   --sidebar-menu-action-focus-ring: var(--color-border-focus); /** Menu action focus ring of the sidebar. */
   --sidebar-menu-action-focus-ring-focus: var(--color-border-focus); /** Menu action focus ring focus of the sidebar. */
-  --sidebar-menu-badge-radius: var(--radius-control); /** Menu badge radius of the sidebar. */
-  --sidebar-menu-skeleton-radius: var(--radius-control); /** Menu skeleton radius of the sidebar. */
-  --sidebar-menu-sub-button-radius: var(--radius-control); /** Menu sub button radius of the sidebar. */
+  --sidebar-menu-badge-radius: var(--radius-badge); /** Menu badge radius of the sidebar. */
+  --sidebar-menu-skeleton-radius: var(--radius-element); /** Menu skeleton radius of the sidebar. */
+  --sidebar-menu-sub-button-radius: var(--radius-element); /** Menu sub button radius of the sidebar. */
   --sidebar-menu-sub-button-focus-ring: var(--color-border-focus); /** Menu sub button focus ring of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-focus: var(--color-border-focus); /** Menu sub button focus ring focus of the sidebar. */
   --sidebar-menu-sub-button-background-current: var(--color-surface-selected); /** Background of the submenu button for the current page, of the sidebar. */
@@ -1249,7 +1249,7 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --sidebar-line-height-2: var(--sidebar-menu-sub-button-sm-line-height); /** Deprecated: use component.sidebar.menu.sub.button.sm.line-height (OD-243). Line height 2 of the sidebar. */
   --sidebar-menu-button-background-current: var(--color-surface-selected); /** Background of the menu button for the current page, of the sidebar. */
   --sidebar-menu-button-focus-ring: var(--color-border-focus); /** Color of the menu button's keyboard focus ring, at full strength, of the sidebar. */
-  --sidebar-menu-button-radius: var(--radius-control); /** Corner of the menu button, of the sidebar. */
+  --sidebar-menu-button-radius: var(--radius-element); /** Corner of the menu button, of the sidebar. */
   --sidebar-menu-button-edge-current: var(--color-border-selected); /** Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
   --skeleton-radius: var(--radius-element); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
@@ -2847,7 +2847,7 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
   --combobox-content-height: var(--combobox-input-height); /** Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox. */
   --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
-  --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
+  --combobox-chips-radius: var(--radius-element); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
   --combobox-chips-border-invalid: var(--color-status-danger); /** Chips border invalid of the combobox. */
@@ -2894,7 +2894,7 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --empty-icon-radius: var(--radius-surface); /** Icon radius of the empty. */
   --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
   --field-label-invalid: var(--color-status-danger); /** Label invalid of the field. */
-  --field-label-radius: var(--radius-control); /** Label radius of the field. */
+  --field-label-radius: var(--radius-element); /** Label radius of the field. */
   --field-label-border-checked: var(--color-border-selected); /** Border of a choice card (a field label that holds a field) when its checkbox or radio is checked: the edge that marks the choice beside its fill, so it is never color alone. */
   --field-label-background-checked: var(--color-surface-selected); /** Fill of a choice card (a field label that holds a field) when its checkbox or radio is checked: the selected fill, a toggle that is on. */
   --field-border-checked: var(--color-action-primary); /** Deprecated: use field/label/border/checked (OD-243). Border checked of the field. */
@@ -3035,7 +3035,7 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
   --sidebar-inset-radius: var(--radius-surface); /** Inset radius of the sidebar. */
   --sidebar-inset-shadow: var(--elevation-card); /** Inset shadow of the sidebar. */
-  --sidebar-group-label-radius: var(--radius-control); /** Group label radius of the sidebar. */
+  --sidebar-group-label-radius: var(--radius-element); /** Group label radius of the sidebar. */
   --sidebar-group-label-focus-ring: var(--color-border-focus); /** Group label focus ring of the sidebar. */
   --sidebar-group-label-focus-ring-focus: var(--color-border-focus); /** Group label focus ring focus of the sidebar. */
   --sidebar-group-action-radius: var(--radius-control); /** Group action radius of the sidebar. */
@@ -3044,9 +3044,9 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --sidebar-menu-action-radius: var(--radius-control); /** Menu action radius of the sidebar. */
   --sidebar-menu-action-focus-ring: var(--color-border-focus); /** Menu action focus ring of the sidebar. */
   --sidebar-menu-action-focus-ring-focus: var(--color-border-focus); /** Menu action focus ring focus of the sidebar. */
-  --sidebar-menu-badge-radius: var(--radius-control); /** Menu badge radius of the sidebar. */
-  --sidebar-menu-skeleton-radius: var(--radius-control); /** Menu skeleton radius of the sidebar. */
-  --sidebar-menu-sub-button-radius: var(--radius-control); /** Menu sub button radius of the sidebar. */
+  --sidebar-menu-badge-radius: var(--radius-badge); /** Menu badge radius of the sidebar. */
+  --sidebar-menu-skeleton-radius: var(--radius-element); /** Menu skeleton radius of the sidebar. */
+  --sidebar-menu-sub-button-radius: var(--radius-element); /** Menu sub button radius of the sidebar. */
   --sidebar-menu-sub-button-focus-ring: var(--color-border-focus); /** Menu sub button focus ring of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-focus: var(--color-border-focus); /** Menu sub button focus ring focus of the sidebar. */
   --sidebar-menu-sub-button-background-current: var(--color-surface-selected); /** Background of the submenu button for the current page, of the sidebar. */
@@ -3072,7 +3072,7 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --sidebar-line-height-2: var(--sidebar-menu-sub-button-sm-line-height); /** Deprecated: use component.sidebar.menu.sub.button.sm.line-height (OD-243). Line height 2 of the sidebar. */
   --sidebar-menu-button-background-current: var(--color-surface-selected); /** Background of the menu button for the current page, of the sidebar. */
   --sidebar-menu-button-focus-ring: var(--color-border-focus); /** Color of the menu button's keyboard focus ring, at full strength, of the sidebar. */
-  --sidebar-menu-button-radius: var(--radius-control); /** Corner of the menu button, of the sidebar. */
+  --sidebar-menu-button-radius: var(--radius-element); /** Corner of the menu button, of the sidebar. */
   --sidebar-menu-button-edge-current: var(--color-border-selected); /** Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
   --skeleton-radius: var(--radius-element); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */

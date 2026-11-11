@@ -579,7 +579,7 @@ export function docsPages(
   g,
   roots,
   {
-    storybook = "http://localhost:6006",
+    storybook = "http://127.0.0.1:6006",
     all = false,
     robots = false,
     base = "/",

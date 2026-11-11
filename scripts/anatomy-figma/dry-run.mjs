@@ -134,7 +134,11 @@ export async function dryRun(component, scheme = "dense-data", shared = null) {
       getVariablesInLibraryCollectionAsync: async () => Object.values(SPEC.bind).filter((b) => b.kit[0]).map((b) => ({ name: b.kit[0].split("/").slice(1).join("/"), key: b.kit[0] })),
     },
     variables: {
-      importVariableByKeyAsync: async (key) => ({ name: key }),
+      // ANATOMY_STALE=<kit variable> makes that variable give 9999, as a kit that lags the scheme would.
+      importVariableByKeyAsync: async (key) => ({
+        name: key,
+        resolveForConsumer: () => ({ value: process.env.ANATOMY_STALE === key ? 9999 : undefined }),
+      }),
       setBoundVariableForPaint: (p, _f, v) => ({ ...p, boundVariables: { color: v.name } }),
     },
   };
@@ -181,7 +185,7 @@ export async function dryRun(component, scheme = "dense-data", shared = null) {
   const onStage = new Set(stage.children.filter((k) => k.name.startsWith("Number ")).map((k) => +k.name.slice(7)));
   const cardNums = new Set(SPEC.cards.flatMap((c) => c.parts));
   for (const p of SPEC.parts) if (!onStage.has(p.n) && !cardNums.has(p.n)) problems.push(`part ${p.n} ${p.label} is numbered nowhere`);
-  return { frames: drawn.children.length, bound: Object.keys(result.bound).length, fallback: result.fallback, problems };
+  return { frames: drawn.children.length, bound: Object.keys(result.bound).length, fallback: result.fallback, stale: result.stale, boundTo: process.env.ANATOMY_STALE ? result.bound : undefined, problems };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

@@ -95,7 +95,8 @@
   color: var(--color-text-primary);
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-strong);
-  border-radius: var(--radius-control);
+  /* A box holds content and can grow past one line: the scheme's element corner. */
+  border-radius: var(--radius-element);
 }
 .button {
   cursor: pointer;
@@ -250,7 +251,7 @@
   color: var(--color-text-secondary);
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-control);
+  border-radius: var(--radius-element);
 }
 .legend p {
   margin: 0;
@@ -294,7 +295,7 @@
 .key {
   font-weight: var(--type-label-font-weight);
   padding: 0.4rem 0.6rem;
-  border-radius: var(--radius-badge);
+  border-radius: var(--radius-element);
   background: var(--color-surface-selected);
   border-inline-start: var(--border-width-focus) solid var(--color-border-selected);
 }
@@ -333,4 +334,13 @@
 .more,
 .pick {
   pointer-events: all;
+}
+
+/* A decision or a value with no recorded reason: a visible gap. */
+.gap {
+  align-self: flex-start;
+}
+.gapCount {
+  color: var(--color-status-warning);
+  font-weight: var(--type-label-font-weight);
 }
