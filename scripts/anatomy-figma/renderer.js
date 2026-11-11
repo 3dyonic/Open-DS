@@ -28,6 +28,16 @@ async function loadKit(library) {
   if (!mine.length) mine = all.filter((c) => norm(c.libraryName).includes(scheme) && norm(c.libraryName).includes("kit"));
   for (const c of mine)
     for (const v of await figma.teamLibrary.getVariablesInLibraryCollectionAsync(c.key)) vars.set(`${c.name}/${v.name}`, v.key);
+  if (vars.size) return vars;
+  // No library variables reach this file: use the file's own Semantic and Component collections, as in
+  // the kit file itself. A local variable is named "local:<id>" and read by id, not imported by key.
+  for (const c of await figma.variables.getLocalVariableCollectionsAsync()) {
+    if (!["Semantic", "Component"].includes(c.name)) continue;
+    for (const id of c.variableIds) {
+      const v = await figma.variables.getVariableByIdAsync(id);
+      if (v) vars.set(`${c.name}/${v.name}`, `local:${v.id}`);
+    }
+  }
   return vars;
 }
 async function renderAnatomy(SPEC, vars) {
@@ -53,7 +63,8 @@ async function kitVar(role) {
   for (const n of b.kit) {
     const key = vars.get(n);
     if (!key) continue;
-    if (!imported.has(key)) imported.set(key, await figma.variables.importVariableByKeyAsync(key));
+    if (!imported.has(key))
+      imported.set(key, key.startsWith("local:") ? await figma.variables.getVariableByIdAsync(key.slice(6)) : await figma.variables.importVariableByKeyAsync(key));
     const kit = kitValue(imported.get(key));
     if (differs(kit, b.value)) {
       report.stale[role] = `${n} gives ${typeof kit === "number" ? kit : JSON.stringify(kit)}; the scheme says ${typeof b.value === "number" ? b.value : JSON.stringify(b.value)}. Republish the kit.`;

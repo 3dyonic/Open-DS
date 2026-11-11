@@ -75,7 +75,7 @@ figma.ui.onmessage = async (msg) => {
     if (!kit.size) {
       const seen = await kitLibraries();
       unbound =
-        "Drawn with the scheme's own values: none of " + scheme.library + "'s variables reach this file, so nothing is bound to the kit. " +
+        "Drawn with the scheme's own values: none of " + scheme.library + "'s variables reach this file, and it has no Semantic or Component collection of its own, so nothing is bound. Run it in the kit file, or enable the kit library here. " +
         (seen.length ? "Variable libraries this file can see: " + seen.join("; ") + "." : "This file can see no variable libraries.");
       // What Figma returns for the kit's collections, so the cause can be found from the report.
       const cols = (await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()).filter((c) => c.libraryName === scheme.library);
