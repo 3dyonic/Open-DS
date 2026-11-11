@@ -12,3 +12,4 @@ Read `CONTRIBUTING.md` and `AGENTS.md` at the repository root first.
 - The architecture decision is in [ADR-001](adr/001-architecture.md).
 - The proposal for scoped, modular schemes is in [ADR-002](adr/002-scoped-schemes.md).
 - The plan for curating a scheme chunk by chunk is in [Curating a scheme](curation-plan.md).
+- What is open now, the PRs that wait for review and the known issues are in [Status](status.md).
