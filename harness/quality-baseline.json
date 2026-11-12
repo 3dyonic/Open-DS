@@ -1,0 +1,139 @@
+{
+  "$description": "The quality gate's baseline (OD-298): each criterion's value on the ref below and the way it may move (down: may only go down; up: may only go up; report: not gated). Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
+  "ref": "origin/master",
+  "sha": "48ded0add08ced52e4dd24076a799156578bd449",
+  "criteria": {
+    "traceability.traced-share": {
+      "value": 0.8034,
+      "direction": "up"
+    },
+    "traceability.untraced": {
+      "value": 129,
+      "direction": "down"
+    },
+    "traceability.weak": {
+      "value": 204,
+      "direction": "down"
+    },
+    "traceability.weak.own": {
+      "value": 21,
+      "direction": "down"
+    },
+    "traceability.weak.exact-rule": {
+      "value": 6,
+      "direction": "down"
+    },
+    "traceability.weak.borrowed": {
+      "value": 48,
+      "direction": "down"
+    },
+    "traceability.weak.linked": {
+      "value": 0,
+      "direction": "down"
+    },
+    "traceability.weak.none": {
+      "value": 129,
+      "direction": "down"
+    },
+    "derived.share": {
+      "value": 0.6176,
+      "direction": "up"
+    },
+    "derived.literal-values": {
+      "value": 702,
+      "direction": "down"
+    },
+    "derived.component-literals": {
+      "value": 8,
+      "direction": "down"
+    },
+    "invariants.failures": {
+      "value": 18,
+      "direction": "down"
+    },
+    "invariants.spacing-map": {
+      "value": 0,
+      "direction": "down"
+    },
+    "invariants.color-scale": {
+      "value": 0,
+      "direction": "down"
+    },
+    "invariants.focus-ring": {
+      "value": 0,
+      "direction": "down"
+    },
+    "invariants.compact-step": {
+      "value": 0,
+      "direction": "down"
+    },
+    "invariants.nested-radius": {
+      "value": 4,
+      "direction": "down"
+    },
+    "invariants.dark-ladder": {
+      "value": 14,
+      "direction": "down"
+    },
+    "blast-radius.answer-orphans": {
+      "value": 814,
+      "direction": "down"
+    },
+    "blast-radius.answer-orphan-share": {
+      "value": 1,
+      "direction": "report"
+    },
+    "blast-radius.anchor-orphans": {
+      "value": 76,
+      "direction": "down"
+    },
+    "blast-radius.hidden-couplings": {
+      "value": 0,
+      "direction": "down"
+    },
+    "accessibility.wcag-failures": {
+      "value": 0,
+      "direction": "down"
+    },
+    "accessibility.wcag-waiting": {
+      "value": 0,
+      "direction": "report"
+    },
+    "accessibility.apca-warnings": {
+      "value": 108,
+      "direction": "down"
+    },
+    "accessibility.hit-area": {
+      "value": 0,
+      "direction": "down"
+    },
+    "accessibility.text-not-rem": {
+      "value": 0,
+      "direction": "down"
+    },
+    "motion.reduced-motion-transforms": {
+      "value": 0,
+      "direction": "down"
+    },
+    "motion.duration-caps": {
+      "value": 5,
+      "direction": "down"
+    },
+    "repetition.repeated-sentences": {
+      "value": 719,
+      "direction": "down"
+    },
+    "size.tokens": {
+      "value": 9046,
+      "direction": "report"
+    },
+    "size.css-bytes": {
+      "value": 2954890,
+      "direction": "report"
+    },
+    "size.unused-semantics": {
+      "value": 52,
+      "direction": "down"
+    }
+  }
+}
