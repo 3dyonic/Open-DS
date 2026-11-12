@@ -242,3 +242,66 @@ export function weakReasons(trace) {
   }
   return weak;
 }
+
+// ---------- The reason form (OD-294) ----------
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const markerOf = (marker) => new RegExp(`(^|[^a-z])${escapeRe(marker)}([^a-z]|$)`, "i");
+
+/** The grammar property (corner, line width, focus ring, shadow) whose tokens include this one, or null. */
+export function propertyOf(g, name) {
+  for (const scope of g.scopes ?? [])
+    for (const p of scope.properties ?? []) if (p.tokens.some((pattern) => matches(pattern, name))) return p;
+  return null;
+}
+
+/**
+ * What a reason misses of the grammar's reason form: the id of each part whose marker it lacks (job:
+ * "in order to", how: "does this by", effect: "so", decision: "because"), "answer" when it cites no
+ * answer, and "job name" when the token's property lists jobs and the reason names none of them.
+ * [] when the reason has every part.
+ */
+export function formGaps(g, name, why, because) {
+  const parts = g.reason_form?.parts ?? [];
+  const text = sentenceOf(why);
+  if (!text) return [...parts.map((p) => p.id), "answer"];
+  const gaps = parts.filter((p) => !markerOf(p.marker).test(text)).map((p) => p.id);
+  if (!because?.length) gaps.push("answer");
+  const jobs = propertyOf(g, name)?.jobs ?? [];
+  if (jobs.length && !jobs.some((j) => markerOf(j.id).test(text))) gaps.push("job name");
+  return gaps;
+}
+
+/**
+ * The values whose reason (the one reasonOf finds) is not in the reason form, with the parts it
+ * misses. A value with no reason of its own misses every part. [{ token, missing }]
+ */
+export function formReasons(trace, g) {
+  return trace.tokens
+    .map((t) => {
+      const r = reasonOf(t);
+      return { token: t.token, missing: formGaps(g, t.token, r.why, r.because) };
+    })
+    .filter((x) => x.missing.length);
+}
+
+/**
+ * Every reason a scheme writes on its semantic tokens and its theme picks, in every brand and mode.
+ * [{ token, where, why, because }]; where is "own" or "<brand>/<mode>".
+ */
+export function writtenReasons(scheme) {
+  const out = [];
+  for (const [path, node] of flatTokens(scheme.tokens.semantic)) {
+    const ext = extOf(node);
+    if (ext.why) out.push({ token: shortName(path), where: "own", why: ext.why, because: ext.because ?? [] });
+  }
+  for (const [brand, def] of Object.entries(scheme.tokens.brands ?? {}))
+    for (const [mode, theme] of Object.entries(def.theme ?? {})) {
+      if (mode.startsWith("$")) continue;
+      for (const [path, node] of flatTokens(theme)) {
+        const ext = extOf(node);
+        if (ext.why) out.push({ token: shortName(path), where: `${brand}/${mode}`, why: ext.why, because: ext.because ?? [] });
+      }
+    }
+  return out;
+}

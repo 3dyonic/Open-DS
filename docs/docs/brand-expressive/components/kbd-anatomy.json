@@ -58,7 +58,9 @@
      "key": "group.gap",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -94,8 +96,20 @@
      "darkValue": "#33241F",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.21
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -111,8 +125,28 @@
      "darkValue": "#B5988A",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 7.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.71
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -121,7 +155,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
+     "pick": [
+      "radius.pill: We use the pill control corner for badges in order to keep one role family by the badge relation: badges share the control's corner. The same full radius does this by giving a status the capsule of the buttons beside it. So a status pill matches the buttons and the page keeps one shape, because badges get no corner of their own (shape.roles) and controls are pills (shape.values)."
+     ],
      "shares": []
     },
     {
@@ -130,7 +166,9 @@
      "key": "font-size",
      "value": "0.875rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": [
+      "font.size.14"
+     ],
      "shares": []
     }
    ]
@@ -152,8 +190,28 @@
      "darkValue": "#FFF8F3",
      "byScheme": true,
      "rule": "A reversed fill for small, short-lived messages.",
-     "pick": "neutral.900: the reverse of content for short messages; its text reads, 18.0:1 on surface.inverse, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 18
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.primary"
      ]
@@ -166,8 +224,28 @@
      "darkValue": "#1F1411",
      "byScheme": true,
      "rule": "Text on an inverse fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 18.0:1 on surface.inverse, above the 4.5:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 18
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.on-action",
       "text.on-danger"

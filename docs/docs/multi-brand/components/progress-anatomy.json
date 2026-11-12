@@ -51,8 +51,20 @@
      "darkValue": "#1E293B",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.1
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.22
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -76,7 +88,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     }
    ]
@@ -112,8 +126,28 @@
      "darkValue": "#7FCFC6",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.",
-     "darkPick": "teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.",
+     "pick": [
+      "teal.light.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 5.47
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "teal.dark.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 9.9
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "border.selected",

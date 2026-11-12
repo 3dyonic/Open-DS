@@ -15,7 +15,7 @@ Panels people resize by dragging the line between them.
 
 ## See it live
 
-::preview{robot="slumber" id="resizable/live"}
+::preview{id="resizable/live"}
 
 ## When to use it
 

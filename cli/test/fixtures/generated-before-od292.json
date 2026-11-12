@@ -1,0 +1,1578 @@
+{
+  "$comment": "The color scales and component spacing maps as each scheme stored them before OD-292, with the inputs that made them. cli/test/scheme-generated.test.mjs checks that the generators still give these values.",
+  "dense-data": {
+    "canvas": "#0D1117",
+    "hues": {
+      "violet": {
+        "light": {
+          "from": {
+            "key": "#4B3FD9"
+          },
+          "steps": {
+            "50": "#F7F8FE",
+            "100": "#E8ECFF",
+            "200": "#D6DCFE",
+            "300": "#C8D0FF",
+            "400": "#919BFF",
+            "500": "#5F60E9",
+            "600": "#4B3FD9",
+            "700": "#3729AA",
+            "800": "#24147C",
+            "900": "#140455",
+            "950": "#06002C"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#A9A3F6"
+          },
+          "steps": {
+            "50": "#1C173D",
+            "100": "#2A244F",
+            "200": "#3C3768",
+            "300": "#514C84",
+            "400": "#6A65A5",
+            "500": "#8681C9",
+            "600": "#A9A3F6",
+            "700": "#BEBBFB",
+            "800": "#D1CFFE",
+            "900": "#E3E2FE",
+            "950": "#F4F4FE"
+          }
+        }
+      },
+      "green": {
+        "light": {
+          "from": {
+            "key": "#1F7A3A",
+            "adjust": {
+              "100": {
+                "C": 0.008
+              }
+            }
+          },
+          "steps": {
+            "50": "#F1FDF2",
+            "100": "#DBF7DF",
+            "200": "#CBE9CF",
+            "300": "#BCE0C1",
+            "400": "#82BA8B",
+            "500": "#448F54",
+            "600": "#1F7A3A",
+            "700": "#0B5C27",
+            "800": "#023E17",
+            "900": "#01260B",
+            "950": "#001003"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#5CC283"
+          },
+          "steps": {
+            "50": "#012510",
+            "100": "#01351A",
+            "200": "#034A27",
+            "300": "#136238",
+            "400": "#2A7E4D",
+            "500": "#419C65",
+            "600": "#5CC283",
+            "700": "#8AD3A2",
+            "800": "#ADE2BD",
+            "900": "#CBEFD5",
+            "950": "#E8FBED"
+          }
+        }
+      },
+      "amber": {
+        "light": {
+          "from": {
+            "key": "#8A5600",
+            "adjust": {
+              "100": {
+                "L": -0.005,
+                "C": 0.013
+              }
+            }
+          },
+          "steps": {
+            "50": "#FFF7EF",
+            "100": "#FEE8CF",
+            "200": "#F1DBC3",
+            "300": "#EACFB3",
+            "400": "#C7A074",
+            "500": "#9E6E32",
+            "600": "#8A5600",
+            "700": "#673F01",
+            "800": "#462A02",
+            "900": "#2B1800",
+            "950": "#130800"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F2B84B"
+          },
+          "steps": {
+            "50": "#2B1C00",
+            "100": "#3F2B02",
+            "200": "#5A3F01",
+            "300": "#795501",
+            "400": "#9E710D",
+            "500": "#C4912C",
+            "600": "#F2B84B",
+            "700": "#F6CA7F",
+            "800": "#FAD9A3",
+            "900": "#FDE7C3",
+            "950": "#FFF4E2"
+          }
+        }
+      },
+      "red": {
+        "light": {
+          "from": {
+            "key": "#C42B2B",
+            "adjust": {
+              "100": {
+                "L": -0.03,
+                "C": 0.017
+              }
+            }
+          },
+          "steps": {
+            "50": "#FEF7F7",
+            "100": "#FFDBD8",
+            "200": "#FED7D2",
+            "300": "#FEC8C2",
+            "400": "#F68C82",
+            "500": "#D64F48",
+            "600": "#C42B2B",
+            "700": "#981519",
+            "800": "#6D0008",
+            "900": "#450003",
+            "950": "#210001"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F28B8B"
+          },
+          "steps": {
+            "50": "#3A0A0E",
+            "100": "#4C171A",
+            "200": "#65282A",
+            "300": "#803B3D",
+            "400": "#A15253",
+            "500": "#C66C6C",
+            "600": "#F28B8B",
+            "700": "#FAA9A8",
+            "800": "#FEC3C1",
+            "900": "#FEDBDA",
+            "950": "#FEF2F1"
+          }
+        }
+      },
+      "blue": {
+        "light": {
+          "from": {
+            "key": "#083C93",
+            "adjust": {
+              "100": {
+                "L": -0.02,
+                "C": 0.011
+              }
+            }
+          },
+          "steps": {
+            "50": "#F4F7FE",
+            "100": "#D3E4FF",
+            "200": "#C3D9FE",
+            "300": "#B2CCF8",
+            "400": "#6F95D6",
+            "500": "#2C5AAA",
+            "600": "#083C93",
+            "700": "#012A72",
+            "800": "#001A4E",
+            "900": "#000D31",
+            "950": "#000316"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#8AB4F8"
+          },
+          "steps": {
+            "50": "#0A1D3C",
+            "100": "#162C4F",
+            "200": "#274068",
+            "300": "#3A5684",
+            "400": "#5171A6",
+            "500": "#6B8FCB",
+            "600": "#8AB4F8",
+            "700": "#A7C8FC",
+            "800": "#C1D8FE",
+            "900": "#D9E7FE",
+            "950": "#F0F6FF"
+          }
+        }
+      }
+    },
+    "spacingMap": {
+      "from": {
+        "rhythm": 1,
+        "fixed": [
+          "x1",
+          "x2"
+        ]
+      },
+      "group": {
+        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
+        "hairline": {
+          "$type": "dimension",
+          "$value": "{space.2}",
+          "$description": "A fixed 2px optical nudge, the same in every scheme."
+        },
+        "x1": {
+          "$type": "dimension",
+          "$value": "{space.4}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 1,
+              "fixed": true
+            }
+          }
+        },
+        "x2": {
+          "$type": "dimension",
+          "$value": "{space.8}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 2,
+              "fixed": true
+            }
+          }
+        },
+        "x3": {
+          "$type": "dimension",
+          "$value": "{space.12}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 3
+            }
+          }
+        },
+        "x4": {
+          "$type": "dimension",
+          "$value": "{space.16}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 4
+            }
+          }
+        },
+        "x6": {
+          "$type": "dimension",
+          "$value": "{space.24}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 6
+            }
+          }
+        },
+        "x8": {
+          "$type": "dimension",
+          "$value": "{space.32}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 8
+            }
+          }
+        },
+        "x12": {
+          "$type": "dimension",
+          "$value": "{space.48}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 12
+            }
+          }
+        }
+      }
+    }
+  },
+  "content-first": {
+    "canvas": "#14110D",
+    "hues": {
+      "navy": {
+        "light": {
+          "from": {
+            "key": "#1E3A5F"
+          },
+          "steps": {
+            "50": "#F2F7FE",
+            "100": "#E0E9F5",
+            "200": "#CAD7E8",
+            "300": "#BAC9DD",
+            "400": "#7B90AE",
+            "500": "#3B5679",
+            "600": "#1E3A5F",
+            "700": "#122948",
+            "800": "#081A32",
+            "900": "#020D1F",
+            "950": "#00030D"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#8FA6C4"
+          },
+          "steps": {
+            "50": "#141E2C",
+            "100": "#202B3B",
+            "200": "#303D4F",
+            "300": "#425266",
+            "400": "#586A81",
+            "500": "#71859F",
+            "600": "#8FA6C4",
+            "700": "#ACBDD5",
+            "800": "#C4D1E3",
+            "900": "#DBE4F0",
+            "950": "#F1F6FC"
+          }
+        }
+      },
+      "green": {
+        "light": {
+          "from": {
+            "key": "#1F7A3A",
+            "adjust": {
+              "100": {
+                "C": 0.008
+              }
+            }
+          },
+          "steps": {
+            "50": "#F1FDF2",
+            "100": "#DBF7DF",
+            "200": "#CBE9CF",
+            "300": "#BCE0C1",
+            "400": "#82BA8B",
+            "500": "#448F54",
+            "600": "#1F7A3A",
+            "700": "#0B5C27",
+            "800": "#023E17",
+            "900": "#01260B",
+            "950": "#001003"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#5CC283"
+          },
+          "steps": {
+            "50": "#002611",
+            "100": "#02351B",
+            "200": "#004B27",
+            "300": "#146338",
+            "400": "#2A7E4E",
+            "500": "#419D66",
+            "600": "#5CC283",
+            "700": "#8AD3A2",
+            "800": "#ADE2BD",
+            "900": "#CBEFD5",
+            "950": "#E8FBED"
+          }
+        }
+      },
+      "amber": {
+        "light": {
+          "from": {
+            "key": "#8A5600",
+            "adjust": {
+              "100": {
+                "L": -0.005,
+                "C": 0.013
+              }
+            }
+          },
+          "steps": {
+            "50": "#FFF7EF",
+            "100": "#FEE8CF",
+            "200": "#F1DBC3",
+            "300": "#EACFB3",
+            "400": "#C7A074",
+            "500": "#9E6E32",
+            "600": "#8A5600",
+            "700": "#673F01",
+            "800": "#462A02",
+            "900": "#2B1800",
+            "950": "#130800"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F2B84B"
+          },
+          "steps": {
+            "50": "#2C1D01",
+            "100": "#402B00",
+            "200": "#5B3F02",
+            "300": "#7A5602",
+            "400": "#9E710E",
+            "500": "#C4912D",
+            "600": "#F2B84B",
+            "700": "#F6CA7F",
+            "800": "#FAD9A3",
+            "900": "#FDE7C3",
+            "950": "#FFF4E2"
+          }
+        }
+      },
+      "red": {
+        "light": {
+          "from": {
+            "key": "#C42B2B",
+            "adjust": {
+              "100": {
+                "L": -0.03,
+                "C": 0.017
+              }
+            }
+          },
+          "steps": {
+            "50": "#FEF7F7",
+            "100": "#FFDBD8",
+            "200": "#FED7D2",
+            "300": "#FEC8C2",
+            "400": "#F68C82",
+            "500": "#D64F48",
+            "600": "#C42B2B",
+            "700": "#981519",
+            "800": "#6D0008",
+            "900": "#450003",
+            "950": "#210001"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F28B8B"
+          },
+          "steps": {
+            "50": "#3A0A0F",
+            "100": "#4D181A",
+            "200": "#65292B",
+            "300": "#813C3D",
+            "400": "#A25354",
+            "500": "#C66C6C",
+            "600": "#F28B8B",
+            "700": "#FAA9A8",
+            "800": "#FEC3C1",
+            "900": "#FEDBDA",
+            "950": "#FEF2F1"
+          }
+        }
+      },
+      "blue": {
+        "light": {
+          "from": {
+            "key": "#083C93",
+            "adjust": {
+              "100": {
+                "L": -0.02,
+                "C": 0.011
+              }
+            }
+          },
+          "steps": {
+            "50": "#F4F7FE",
+            "100": "#D3E4FF",
+            "200": "#C3D9FE",
+            "300": "#B2CCF8",
+            "400": "#6F95D6",
+            "500": "#2C5AAA",
+            "600": "#083C93",
+            "700": "#012A72",
+            "800": "#001A4E",
+            "900": "#000D31",
+            "950": "#000316"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#8AB4F8"
+          },
+          "steps": {
+            "50": "#0B1E3D",
+            "100": "#172C4F",
+            "200": "#284068",
+            "300": "#3B5784",
+            "400": "#5172A6",
+            "500": "#6B8FCB",
+            "600": "#8AB4F8",
+            "700": "#A7C8FC",
+            "800": "#C1D8FE",
+            "900": "#D9E7FE",
+            "950": "#F0F6FF"
+          }
+        }
+      }
+    },
+    "spacingMap": {
+      "from": {
+        "rhythm": 1.5,
+        "fixed": [
+          "x1",
+          "x2"
+        ]
+      },
+      "group": {
+        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
+        "hairline": {
+          "$type": "dimension",
+          "$value": "{space.2}",
+          "$description": "A fixed 2px optical nudge, the same in every scheme."
+        },
+        "x1": {
+          "$type": "dimension",
+          "$value": "{space.4}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 1,
+              "fixed": true
+            }
+          }
+        },
+        "x2": {
+          "$type": "dimension",
+          "$value": "{space.8}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 2,
+              "fixed": true
+            }
+          }
+        },
+        "x3": {
+          "$type": "dimension",
+          "$value": "{space.20}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 3
+            }
+          }
+        },
+        "x4": {
+          "$type": "dimension",
+          "$value": "{space.24}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 4
+            }
+          }
+        },
+        "x6": {
+          "$type": "dimension",
+          "$value": "{space.36}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 6
+            }
+          }
+        },
+        "x8": {
+          "$type": "dimension",
+          "$value": "{space.48}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 8
+            }
+          }
+        },
+        "x12": {
+          "$type": "dimension",
+          "$value": "{space.64}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 12
+            }
+          }
+        }
+      }
+    }
+  },
+  "accessible-first": {
+    "canvas": "#0A0A0A",
+    "hues": {
+      "blue": {
+        "light": {
+          "from": {
+            "key": "#0B4FC0"
+          },
+          "steps": {
+            "50": "#F5F8FE",
+            "100": "#E2EDFF",
+            "200": "#CBDEFF",
+            "300": "#B8D3FF",
+            "400": "#73A2F3",
+            "500": "#316BD2",
+            "600": "#0B4FC0",
+            "700": "#013895",
+            "800": "#002567",
+            "900": "#001442",
+            "950": "#000620"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#8AB4F8"
+          },
+          "steps": {
+            "50": "#051634",
+            "100": "#102547",
+            "200": "#223A61",
+            "300": "#36527F",
+            "400": "#4E6EA2",
+            "500": "#698DC9",
+            "600": "#8AB4F8",
+            "700": "#A7C8FC",
+            "800": "#C1D8FE",
+            "900": "#D9E7FE",
+            "950": "#F0F6FF"
+          }
+        }
+      },
+      "green": {
+        "light": {
+          "from": {
+            "key": "#1F7A3A",
+            "adjust": {
+              "100": {
+                "C": 0.008
+              }
+            }
+          },
+          "steps": {
+            "50": "#F1FDF2",
+            "100": "#DBF7DF",
+            "200": "#CBE9CF",
+            "300": "#BCE0C1",
+            "400": "#82BA8B",
+            "500": "#448F54",
+            "600": "#1F7A3A",
+            "700": "#0B5C27",
+            "800": "#023E17",
+            "900": "#01260B",
+            "950": "#001003"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#5CC283"
+          },
+          "steps": {
+            "50": "#001D0C",
+            "100": "#012E16",
+            "200": "#004423",
+            "300": "#0A5D33",
+            "400": "#267A4A",
+            "500": "#3F9B64",
+            "600": "#5CC283",
+            "700": "#8AD3A2",
+            "800": "#ADE2BD",
+            "900": "#CBEFD5",
+            "950": "#E8FBED"
+          }
+        }
+      },
+      "amber": {
+        "light": {
+          "from": {
+            "key": "#8A5600",
+            "adjust": {
+              "100": {
+                "L": -0.005,
+                "C": 0.013
+              }
+            }
+          },
+          "steps": {
+            "50": "#FFF7EF",
+            "100": "#FEE8CF",
+            "200": "#F1DBC3",
+            "300": "#EACFB3",
+            "400": "#C7A074",
+            "500": "#9E6E32",
+            "600": "#8A5600",
+            "700": "#673F01",
+            "800": "#462A02",
+            "900": "#2B1800",
+            "950": "#130800"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F2B84B"
+          },
+          "steps": {
+            "50": "#231600",
+            "100": "#372500",
+            "200": "#533900",
+            "300": "#735102",
+            "400": "#9A6E04",
+            "500": "#C28F2A",
+            "600": "#F2B84B",
+            "700": "#F6CA7F",
+            "800": "#FAD9A3",
+            "900": "#FDE7C3",
+            "950": "#FFF4E2"
+          }
+        }
+      },
+      "red": {
+        "light": {
+          "from": {
+            "key": "#C42B2B",
+            "adjust": {
+              "100": {
+                "L": -0.03,
+                "C": 0.017
+              }
+            }
+          },
+          "steps": {
+            "50": "#FEF7F7",
+            "100": "#FFDBD8",
+            "200": "#FED7D2",
+            "300": "#FEC8C2",
+            "400": "#F68C82",
+            "500": "#D64F48",
+            "600": "#C42B2B",
+            "700": "#981519",
+            "800": "#6D0008",
+            "900": "#450003",
+            "950": "#210001"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F28B8B"
+          },
+          "steps": {
+            "50": "#320308",
+            "100": "#451014",
+            "200": "#5E2225",
+            "300": "#7B3738",
+            "400": "#9E4F50",
+            "500": "#C46A6A",
+            "600": "#F28B8B",
+            "700": "#FAA9A8",
+            "800": "#FEC3C1",
+            "900": "#FEDBDA",
+            "950": "#FEF2F1"
+          }
+        }
+      },
+      "teal": {
+        "light": {
+          "from": {
+            "key": "#0B5B55",
+            "adjust": {
+              "100": {
+                "C": 0.023
+              }
+            }
+          },
+          "steps": {
+            "50": "#F1FAF9",
+            "100": "#CDF4F0",
+            "200": "#C8E1DD",
+            "300": "#B8D5D1",
+            "400": "#79A6A0",
+            "500": "#36736D",
+            "600": "#0B5B55",
+            "700": "#02433F",
+            "800": "#022C29",
+            "900": "#011A17",
+            "950": "#000907"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#7FCFC6"
+          },
+          "steps": {
+            "50": "#011E1B",
+            "100": "#012F2C",
+            "200": "#104742",
+            "300": "#27615B",
+            "400": "#41817A",
+            "500": "#5DA49C",
+            "600": "#7FCFC6",
+            "700": "#A1DCD4",
+            "800": "#BCE6E1",
+            "900": "#D3F0EC",
+            "950": "#EAF9F7"
+          }
+        }
+      }
+    },
+    "spacingMap": {
+      "from": {
+        "rhythm": 1.75,
+        "fixed": [
+          "x1",
+          "x2"
+        ]
+      },
+      "group": {
+        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
+        "hairline": {
+          "$type": "dimension",
+          "$value": "{space.2}",
+          "$description": "A fixed 2px optical nudge, the same in every scheme."
+        },
+        "x1": {
+          "$type": "dimension",
+          "$value": "{space.4}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 1,
+              "fixed": true
+            }
+          }
+        },
+        "x2": {
+          "$type": "dimension",
+          "$value": "{space.8}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 2,
+              "fixed": true
+            }
+          }
+        },
+        "x3": {
+          "$type": "dimension",
+          "$value": "{space.20}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 3
+            }
+          }
+        },
+        "x4": {
+          "$type": "dimension",
+          "$value": "{space.28}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 4
+            }
+          }
+        },
+        "x6": {
+          "$type": "dimension",
+          "$value": "{space.44}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 6
+            }
+          }
+        },
+        "x8": {
+          "$type": "dimension",
+          "$value": "{space.56}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 8
+            }
+          }
+        },
+        "x12": {
+          "$type": "dimension",
+          "$value": "{space.64}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 12
+            }
+          }
+        }
+      }
+    }
+  },
+  "brand-expressive": {
+    "canvas": "#120B09",
+    "hues": {
+      "pink": {
+        "light": {
+          "from": {
+            "key": "#D61F7A"
+          },
+          "steps": {
+            "50": "#FEF8FA",
+            "100": "#FFEAF0",
+            "200": "#FED9E4",
+            "300": "#FFCBDB",
+            "400": "#FE8BB5",
+            "500": "#E64A8D",
+            "600": "#D61F7A",
+            "700": "#A6025B",
+            "800": "#73013E",
+            "900": "#4A0025",
+            "950": "#24000F"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F59ACA"
+          },
+          "steps": {
+            "50": "#310821",
+            "100": "#451731",
+            "200": "#5F2A47",
+            "300": "#7C4061",
+            "400": "#9F5A7F",
+            "500": "#C676A1",
+            "600": "#F59ACA",
+            "700": "#FBB4D8",
+            "800": "#FEC9E3",
+            "900": "#FFDDED",
+            "950": "#FEF1F7"
+          }
+        }
+      },
+      "green": {
+        "light": {
+          "from": {
+            "key": "#1F7A3A",
+            "adjust": {
+              "100": {
+                "C": 0.008
+              }
+            }
+          },
+          "steps": {
+            "50": "#F1FDF2",
+            "100": "#DBF7DF",
+            "200": "#CBE9CF",
+            "300": "#BCE0C1",
+            "400": "#82BA8B",
+            "500": "#448F54",
+            "600": "#1F7A3A",
+            "700": "#0B5C27",
+            "800": "#023E17",
+            "900": "#01260B",
+            "950": "#001003"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#5CC283"
+          },
+          "steps": {
+            "50": "#01210E",
+            "100": "#013118",
+            "200": "#014724",
+            "300": "#0E5F35",
+            "400": "#287C4C",
+            "500": "#409B64",
+            "600": "#5CC283",
+            "700": "#8AD3A2",
+            "800": "#ADE2BD",
+            "900": "#CBEFD5",
+            "950": "#E8FBED"
+          }
+        }
+      },
+      "amber": {
+        "light": {
+          "from": {
+            "key": "#8A5600",
+            "adjust": {
+              "100": {
+                "L": -0.005,
+                "C": 0.013
+              }
+            }
+          },
+          "steps": {
+            "50": "#FFF7EF",
+            "100": "#FEE8CF",
+            "200": "#F1DBC3",
+            "300": "#EACFB3",
+            "400": "#C7A074",
+            "500": "#9E6E32",
+            "600": "#8A5600",
+            "700": "#673F01",
+            "800": "#462A02",
+            "900": "#2B1800",
+            "950": "#130800"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F2B84B"
+          },
+          "steps": {
+            "50": "#261901",
+            "100": "#3B2701",
+            "200": "#563C00",
+            "300": "#765301",
+            "400": "#9C6F08",
+            "500": "#C3902B",
+            "600": "#F2B84B",
+            "700": "#F6CA7F",
+            "800": "#FAD9A3",
+            "900": "#FDE7C3",
+            "950": "#FFF4E2"
+          }
+        }
+      },
+      "red": {
+        "light": {
+          "from": {
+            "key": "#C42B2B",
+            "adjust": {
+              "100": {
+                "L": -0.03,
+                "C": 0.017
+              }
+            }
+          },
+          "steps": {
+            "50": "#FEF7F7",
+            "100": "#FFDBD8",
+            "200": "#FED7D2",
+            "300": "#FEC8C2",
+            "400": "#F68C82",
+            "500": "#D64F48",
+            "600": "#C42B2B",
+            "700": "#981519",
+            "800": "#6D0008",
+            "900": "#450003",
+            "950": "#210001"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F28B8B"
+          },
+          "steps": {
+            "50": "#35060A",
+            "100": "#481316",
+            "200": "#612527",
+            "300": "#7D393A",
+            "400": "#9F5051",
+            "500": "#C46B6B",
+            "600": "#F28B8B",
+            "700": "#FAA9A8",
+            "800": "#FEC3C1",
+            "900": "#FEDBDA",
+            "950": "#FEF2F1"
+          }
+        }
+      },
+      "blue": {
+        "light": {
+          "from": {
+            "key": "#083C93",
+            "adjust": {
+              "100": {
+                "L": -0.02,
+                "C": 0.011
+              }
+            }
+          },
+          "steps": {
+            "50": "#F4F7FE",
+            "100": "#D3E4FF",
+            "200": "#C3D9FE",
+            "300": "#B2CCF8",
+            "400": "#6F95D6",
+            "500": "#2C5AAA",
+            "600": "#083C93",
+            "700": "#012A72",
+            "800": "#001A4E",
+            "900": "#000D31",
+            "950": "#000316"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#8AB4F8"
+          },
+          "steps": {
+            "50": "#071938",
+            "100": "#13284B",
+            "200": "#243C64",
+            "300": "#385481",
+            "400": "#4F6FA3",
+            "500": "#6A8EC9",
+            "600": "#8AB4F8",
+            "700": "#A7C8FC",
+            "800": "#C1D8FE",
+            "900": "#D9E7FE",
+            "950": "#F0F6FF"
+          }
+        }
+      }
+    },
+    "spacingMap": {
+      "from": {
+        "rhythm": 2,
+        "fixed": [
+          "x1",
+          "x2"
+        ]
+      },
+      "group": {
+        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
+        "hairline": {
+          "$type": "dimension",
+          "$value": "{space.2}",
+          "$description": "A fixed 2px optical nudge, the same in every scheme."
+        },
+        "x1": {
+          "$type": "dimension",
+          "$value": "{space.4}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 1,
+              "fixed": true
+            }
+          }
+        },
+        "x2": {
+          "$type": "dimension",
+          "$value": "{space.8}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 2,
+              "fixed": true
+            }
+          }
+        },
+        "x3": {
+          "$type": "dimension",
+          "$value": "{space.24}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 3
+            }
+          }
+        },
+        "x4": {
+          "$type": "dimension",
+          "$value": "{space.32}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 4
+            }
+          }
+        },
+        "x6": {
+          "$type": "dimension",
+          "$value": "{space.48}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 6
+            }
+          }
+        },
+        "x8": {
+          "$type": "dimension",
+          "$value": "{space.64}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 8
+            }
+          }
+        },
+        "x12": {
+          "$type": "dimension",
+          "$value": "{space.64}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 12
+            }
+          }
+        }
+      }
+    }
+  },
+  "multi-brand": {
+    "canvas": "#020617",
+    "hues": {
+      "teal": {
+        "light": {
+          "from": {
+            "key": "#0F766E"
+          },
+          "steps": {
+            "50": "#F0FCFA",
+            "100": "#DEF3F0",
+            "200": "#C9E7E3",
+            "300": "#BADED9",
+            "400": "#7EB6AF",
+            "500": "#3D8B83",
+            "600": "#0F766E",
+            "700": "#015852",
+            "800": "#003C37",
+            "900": "#012421",
+            "950": "#000E0D"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#7FCFC6"
+          },
+          "steps": {
+            "50": "#001A18",
+            "100": "#012C28",
+            "200": "#0C443F",
+            "300": "#255F59",
+            "400": "#3F7F78",
+            "500": "#5CA39B",
+            "600": "#7FCFC6",
+            "700": "#A1DCD4",
+            "800": "#BCE6E1",
+            "900": "#D3F0EC",
+            "950": "#EAF9F7"
+          }
+        }
+      },
+      "purple": {
+        "light": {
+          "from": {
+            "key": "#6D28D9"
+          },
+          "steps": {
+            "50": "#F8F7FF",
+            "100": "#EDEAFE",
+            "200": "#DFD9FF",
+            "300": "#D4CCFE",
+            "400": "#AA91FF",
+            "500": "#8050E9",
+            "600": "#6D28D9",
+            "700": "#5212AA",
+            "800": "#38017B",
+            "900": "#22014E",
+            "950": "#0D0027"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#B79DF7"
+          },
+          "steps": {
+            "50": "#190831",
+            "100": "#271745",
+            "200": "#3C2A5F",
+            "300": "#53417D",
+            "400": "#705BA0",
+            "500": "#9079C7",
+            "600": "#B79DF7",
+            "700": "#C9B7FC",
+            "800": "#D9CCFF",
+            "900": "#E7E0FE",
+            "950": "#F6F3FF"
+          }
+        }
+      },
+      "orange": {
+        "light": {
+          "from": {
+            "key": "#C2410C"
+          },
+          "steps": {
+            "50": "#FFF8F5",
+            "100": "#FEEBE4",
+            "200": "#FED9CD",
+            "300": "#FFCBBB",
+            "400": "#F29578",
+            "500": "#D35E38",
+            "600": "#C2410C",
+            "700": "#942D02",
+            "800": "#661D01",
+            "900": "#410F01",
+            "950": "#1F0400"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F7A67F"
+          },
+          "steps": {
+            "50": "#270B00",
+            "100": "#3F1702",
+            "200": "#5A2C13",
+            "300": "#784328",
+            "400": "#9D5F41",
+            "500": "#C57F5D",
+            "600": "#F7A67F",
+            "700": "#FCBD9F",
+            "800": "#FFD0B9",
+            "900": "#FFE1D4",
+            "950": "#FFF2EC"
+          }
+        }
+      },
+      "green": {
+        "light": {
+          "from": {
+            "key": "#1F7A3A",
+            "adjust": {
+              "100": {
+                "C": 0.008
+              }
+            }
+          },
+          "steps": {
+            "50": "#F1FDF2",
+            "100": "#DBF7DF",
+            "200": "#CBE9CF",
+            "300": "#BCE0C1",
+            "400": "#82BA8B",
+            "500": "#448F54",
+            "600": "#1F7A3A",
+            "700": "#0B5C27",
+            "800": "#023E17",
+            "900": "#01260B",
+            "950": "#001003"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#5CC283"
+          },
+          "steps": {
+            "50": "#001A0A",
+            "100": "#012A14",
+            "200": "#024121",
+            "300": "#065B31",
+            "400": "#247948",
+            "500": "#3E9A63",
+            "600": "#5CC283",
+            "700": "#8AD3A2",
+            "800": "#ADE2BD",
+            "900": "#CBEFD5",
+            "950": "#E8FBED"
+          }
+        }
+      },
+      "amber": {
+        "light": {
+          "from": {
+            "key": "#8A5600",
+            "adjust": {
+              "100": {
+                "L": -0.005,
+                "C": 0.013
+              }
+            }
+          },
+          "steps": {
+            "50": "#FFF7EF",
+            "100": "#FEE8CF",
+            "200": "#F1DBC3",
+            "300": "#EACFB3",
+            "400": "#C7A074",
+            "500": "#9E6E32",
+            "600": "#8A5600",
+            "700": "#673F01",
+            "800": "#462A02",
+            "900": "#2B1800",
+            "950": "#130800"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F2B84B"
+          },
+          "steps": {
+            "50": "#1F1301",
+            "100": "#332201",
+            "200": "#503700",
+            "300": "#704F03",
+            "400": "#986C06",
+            "500": "#C18E28",
+            "600": "#F2B84B",
+            "700": "#F6CA7F",
+            "800": "#FAD9A3",
+            "900": "#FDE7C3",
+            "950": "#FFF4E2"
+          }
+        }
+      },
+      "red": {
+        "light": {
+          "from": {
+            "key": "#C42B2B",
+            "adjust": {
+              "100": {
+                "L": -0.03,
+                "C": 0.017
+              }
+            }
+          },
+          "steps": {
+            "50": "#FEF7F7",
+            "100": "#FFDBD8",
+            "200": "#FED7D2",
+            "300": "#FEC8C2",
+            "400": "#F68C82",
+            "500": "#D64F48",
+            "600": "#C42B2B",
+            "700": "#981519",
+            "800": "#6D0008",
+            "900": "#450003",
+            "950": "#210001"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#F28B8B"
+          },
+          "steps": {
+            "50": "#2E0105",
+            "100": "#410C11",
+            "200": "#5B1F22",
+            "300": "#783436",
+            "400": "#9C4D4E",
+            "500": "#C26969",
+            "600": "#F28B8B",
+            "700": "#FAA9A8",
+            "800": "#FEC3C1",
+            "900": "#FEDBDA",
+            "950": "#FEF2F1"
+          }
+        }
+      },
+      "blue": {
+        "light": {
+          "from": {
+            "key": "#083C93",
+            "adjust": {
+              "100": {
+                "L": -0.02,
+                "C": 0.011
+              }
+            }
+          },
+          "steps": {
+            "50": "#F4F7FE",
+            "100": "#D3E4FF",
+            "200": "#C3D9FE",
+            "300": "#B2CCF8",
+            "400": "#6F95D6",
+            "500": "#2C5AAA",
+            "600": "#083C93",
+            "700": "#012A72",
+            "800": "#001A4E",
+            "900": "#000D31",
+            "950": "#000316"
+          }
+        },
+        "dark": {
+          "from": {
+            "key": "#8AB4F8"
+          },
+          "steps": {
+            "50": "#031331",
+            "100": "#0D2244",
+            "200": "#1F375E",
+            "300": "#344F7C",
+            "400": "#4C6CA0",
+            "500": "#688CC8",
+            "600": "#8AB4F8",
+            "700": "#A7C8FC",
+            "800": "#C1D8FE",
+            "900": "#D9E7FE",
+            "950": "#F0F6FF"
+          }
+        }
+      }
+    },
+    "spacingMap": {
+      "from": {
+        "rhythm": 1.5,
+        "fixed": [
+          "x1",
+          "x2"
+        ]
+      },
+      "group": {
+        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
+        "hairline": {
+          "$type": "dimension",
+          "$value": "{space.2}",
+          "$description": "A fixed 2px optical nudge, the same in every scheme."
+        },
+        "x1": {
+          "$type": "dimension",
+          "$value": "{space.4}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 1,
+              "fixed": true
+            }
+          }
+        },
+        "x2": {
+          "$type": "dimension",
+          "$value": "{space.8}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 2,
+              "fixed": true
+            }
+          }
+        },
+        "x3": {
+          "$type": "dimension",
+          "$value": "{space.20}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 3
+            }
+          }
+        },
+        "x4": {
+          "$type": "dimension",
+          "$value": "{space.24}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 4
+            }
+          }
+        },
+        "x6": {
+          "$type": "dimension",
+          "$value": "{space.36}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 6
+            }
+          }
+        },
+        "x8": {
+          "$type": "dimension",
+          "$value": "{space.48}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 8
+            }
+          }
+        },
+        "x12": {
+          "$type": "dimension",
+          "$value": "{space.64}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 12
+            }
+          }
+        }
+      }
+    }
+  }
+}

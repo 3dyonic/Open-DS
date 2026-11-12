@@ -72,7 +72,9 @@
      "key": "font-size",
      "value": "0.9375rem",
      "byScheme": true,
-     "pick": "font.size.15",
+     "pick": [
+      "font.size.15"
+     ],
      "shares": []
     },
     {
@@ -81,7 +83,9 @@
      "key": "font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -90,7 +94,9 @@
      "key": "font-family",
      "value": "\"DM Sans\", system-ui, sans-serif",
      "byScheme": true,
-     "pick": "dm-sans for label text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+     "pick": [
+      "dm-sans for label text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read."
+     ],
      "shares": []
     },
     {
@@ -99,7 +105,9 @@
      "key": "line-height",
      "value": "1.1",
      "byScheme": true,
-     "pick": "font.line-height.1_1",
+     "pick": [
+      "font.line-height.1_1"
+     ],
      "shares": []
     }
    ]
@@ -135,8 +143,28 @@
      "darkValue": "#FFF8F3",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 18
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -165,7 +193,9 @@
      "key": "gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]

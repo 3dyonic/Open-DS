@@ -14,7 +14,7 @@ One section that opens and closes.
 
 ## See it live
 
-::preview{robot="slumber" id="collapsible/live"}
+::preview{id="collapsible/live"}
 
 ## When to use it
 

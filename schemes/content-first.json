@@ -1017,7 +1017,8 @@
       "placeholder": "you@example.com",
       "hint": "One letter a week. Leave any time.",
       "error": "We could not save your email. Check it and try again.",
-      "invalid": "reader-at-home"
+      "invalid": "reader-at-home",
+      "value": "reader@example.com"
     },
     "checkbox": [
       "Home and garden",
@@ -1035,7 +1036,8 @@
     },
     "switches": [
       "Larger text",
-      "Email me the weekly letter"
+      "Email me the weekly letter",
+      "Show reading time"
     ],
     "messages": {
       "success": "You're in. The next issue arrives on Friday.",
@@ -1082,7 +1084,45 @@
       ],
       "destructive": "Remove from your list"
     },
-    "icon_action": "Save for later"
+    "icon_action": "Save for later",
+    "choices": [
+      {
+        "label": "Weekly letter",
+        "description": "One email on Friday with new guides."
+      },
+      {
+        "label": "Reading reminders",
+        "description": "A note when a saved guide waits a week."
+      }
+    ],
+    "search": {
+      "placeholder": "Search your guides",
+      "query": "garden",
+      "total": "4 guides",
+      "results": "1 guide",
+      "none": "No guides"
+    },
+    "chart": {
+      "series": [
+        "Saved",
+        "Finished"
+      ],
+      "ticks": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov"
+      ],
+      "point": {
+        "label": "Aug",
+        "values": [
+          "9",
+          "6"
+        ]
+      }
+    }
   },
   "themes": [
     {
@@ -1742,6 +1782,63 @@
       "because": [
         "content.q1"
       ]
+    }
+  ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "border-width.focus",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "border-width.focus-offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
     }
   ],
   "usage": [
@@ -2420,98 +2517,6 @@
         "navy": {
           "$type": "color",
           "$description": "The navy hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F2F7FE"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#E0E9F5"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#CAD7E8"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#BAC9DD"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#7B90AE"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#3B5679"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#1E3A5F"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#122948"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#081A32"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#020D1F"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#00030D"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#141E2C"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#202B3B"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#303D4F"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#425266"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#586A81"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#71859F"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#8FA6C4"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#ACBDD5"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#C4D1E3"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#DBE4F0"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#F1F6FC"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2527,98 +2532,6 @@
         "green": {
           "$type": "color",
           "$description": "The green hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F1FDF2"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#DBF7DF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#CBE9CF"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#BCE0C1"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#82BA8B"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#448F54"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#1F7A3A"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#0B5C27"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#023E17"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#01260B"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#001003"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#002611"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#02351B"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#004B27"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#146338"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#2A7E4E"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#419D66"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#5CC283"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#8AD3A2"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#ADE2BD"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#CBEFD5"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#E8FBED"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2640,98 +2553,6 @@
         "amber": {
           "$type": "color",
           "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FFF7EF"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FEE8CF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#F1DBC3"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#EACFB3"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#C7A074"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#9E6E32"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#8A5600"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#673F01"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#462A02"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#2B1800"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#130800"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#2C1D01"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#402B00"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#5B3F02"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#7A5602"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#9E710E"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C4912D"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F2B84B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#F6CA7F"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FAD9A3"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FDE7C3"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FFF4E2"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2754,98 +2575,6 @@
         "red": {
           "$type": "color",
           "$description": "The red hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FEF7F7"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FFDBD8"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#FED7D2"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#FEC8C2"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#F68C82"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#D64F48"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#C42B2B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#981519"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#6D0008"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#450003"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#210001"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#3A0A0F"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#4D181A"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#65292B"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#813C3D"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#A25354"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C66C6C"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F28B8B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#FAA9A8"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FEC3C1"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FEDBDA"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FEF2F1"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2882,98 +2611,6 @@
         "blue": {
           "$type": "color",
           "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F4F7FE"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#D3E4FF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#C3D9FE"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#B2CCF8"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#6F95D6"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#2C5AAA"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#083C93"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#012A72"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#001A4E"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#000D31"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#000316"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#0B1E3D"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#172C4F"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#284068"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#3B5784"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#5172A6"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#6B8FCB"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#8AB4F8"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#A7C8FC"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#C1D8FE"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#D9E7FE"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#F0F6FF"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -3106,9 +2743,9 @@
             "$type": "dimension",
             "$value": "2.25rem"
           },
-          "44": {
+          "45": {
             "$type": "dimension",
-            "$value": "2.75rem"
+            "$value": "2.8125rem"
           },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
@@ -3126,11 +2763,6 @@
           "1_15": {
             "$type": "number",
             "$value": 1.15,
-            "$description": "A ratio of the text size."
-          },
-          "1_45": {
-            "$type": "number",
-            "$value": 1.45,
             "$description": "A ratio of the text size."
           },
           "1_65": {
@@ -3240,11 +2872,11 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+                    "why": "radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2).",
                     "because": [
-                      "shape.roles",
                       "shape.values",
-                      "brand.q1"
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3254,11 +2886,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+                    "why": "radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
                     "because": [
                       "shape.roles",
                       "shape.values",
-                      "shape.count"
+                      "brand.q1"
                     ]
                   }
                 }
@@ -3268,9 +2900,11 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: the panel's 12px corner less its 4px padding, so an option's corner nests inside the menu's.",
+                    "why": "radius.8: We use an 8px corner for menu options in order to keep nesting by the relation: the 12px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 12px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
                     "because": [
                       "shape.roles",
+                      "shape.count",
+                      "brand.q1",
                       "spacing.values"
                     ]
                   }
@@ -3281,10 +2915,11 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: the control corner; it is not a pill, so a growing box keeps it.",
+                    "why": "radius.8: We use the 8px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because the control corner is rounded, not a pill (shape.values), and the brand is warm (brand.q1).",
                     "because": [
-                      "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3294,11 +2929,11 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+                    "why": "radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1).",
                     "because": [
                       "shape.roles",
-                      "shape.values",
-                      "shape.lands"
+                      "shape.count",
+                      "brand.q1"
                     ]
                   }
                 }
@@ -4424,11 +4059,10 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.definition"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -4438,12 +4072,10 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
+                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by a 12px offset and a 32px blur in a 16% warm brown. So a menu lifts off warm paper without a hard edge, because only what floats rises (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.lands",
-                      "elevation.count"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -5310,11 +4942,10 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.definition"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -5324,12 +4955,10 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+                    "why": "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16% brown. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships for night reading (theming.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values",
-                      "elevation.lands",
-                      "elevation.count",
                       "theming.values"
                     ]
                   }
@@ -5351,47 +4980,179 @@
     },
     "semantic": {
       "space": {
+        "$extensions": {
+          "open-ds": {
+            "base": 8,
+            "use-cases": {
+              "gap.tight": {
+                "level": "component",
+                "relation": "inner",
+                "reach": "inline",
+                "multiple": 1
+              },
+              "gap.default": {
+                "level": "component",
+                "relation": "inner",
+                "multiple": 2
+              },
+              "gap.group": {
+                "level": "layout",
+                "relation": "inner",
+                "multiple": 4
+              },
+              "gap.section": {
+                "level": "layout",
+                "relation": "inner",
+                "reach": "section",
+                "multiple": 8
+              },
+              "inset.control-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 2.5
+              },
+              "inset.cell-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 2
+              },
+              "inset.container": {
+                "level": "layout",
+                "relation": "container",
+                "multiple": 3
+              }
+            },
+            "follows": [
+              "spacing.definition",
+              "spacing.values"
+            ],
+            "why": "Big, even steps give an 8px base. Spacious density doubles each gap: tight, default, group and section are 1, 2, 4 and 8 steps."
+          }
+        },
         "gap": {
           "tight": {
             "$type": "dimension",
             "$value": "{space.8}",
-            "$description": "Between things that belong together."
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 8px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 8px), the smallest of the big even steps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So occasional readers see one item, not two, because steps are big and even (spacing.definition) and visitors see the interface fresh each time (human.q2).",
+                "because": [
+                  "spacing.definition",
+                  "human.q2"
+                ]
+              }
+            }
           },
           "default": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Between items in one group."
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each item in a list reads on its own, because the layout is spacious (spacing.values) and reading comfort is the measure (outcomes.q1).",
+                "because": [
+                  "spacing.values",
+                  "outcomes.q1"
+                ]
+              }
+            }
           },
           "group": {
             "$type": "dimension",
             "$value": "{space.32}",
-            "$description": "Between groups."
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 8px), twice the default gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So the reader gets a place to pause between groups, because the layout is spacious (spacing.values) and people read from start to end (tasks.q1).",
+                "because": [
+                  "spacing.values",
+                  "tasks.q1"
+                ]
+              }
+            }
           },
           "section": {
             "$type": "dimension",
             "$value": "{space.64}",
-            "$description": "Between page sections."
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 64px for the section gap between page sections in order to group and separate: eight base steps (8 × 8px), twice the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So space alone separates sections, with no line to add noise, because the layout is spacious (spacing.values) and space is spent between paragraphs and sections (spacing.lands).",
+                "because": [
+                  "spacing.values",
+                  "spacing.lands"
+                ]
+              }
+            }
           }
         },
         "inset": {
           "control-x": {
             "$type": "dimension",
             "$value": "{space.20}",
-            "$description": "Horizontal padding inside controls."
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 20px for the inline padding inside controls in order to give content room inside its box: two and a half base steps (2.5 × 8px), wider than a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So each rare action has room and a button feels as calm as the text, because actions are rare (tasks.q2) and the brand is warm (brand.q1).",
+                "because": [
+                  "tasks.q2",
+                  "brand.q1"
+                ]
+              }
+            }
           },
           "container": {
             "$type": "dimension",
             "$value": "{space.24}",
-            "$description": "Padding inside cards and dialogs."
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: three base steps (3 × 8px), half again the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So each card is framed like a page in a magazine, because the brand is warm (brand.q1) and reading comfort is the measure (outcomes.q1).",
+                "because": [
+                  "brand.q1",
+                  "outcomes.q1"
+                ]
+              }
+            }
           },
           "cell-x": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Horizontal padding inside table cells."
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So cells get room like text does, and each row reads one by one, because people read from start to end (tasks.q1) and the layout is spacious (spacing.values).",
+                "because": [
+                  "tasks.q1",
+                  "spacing.values"
+                ]
+              }
+            }
           }
         }
       },
       "size": {
+        "$extensions": {
+          "open-ds": {
+            "default": 48,
+            "step": 8,
+            "steps": {
+              "compact": -1,
+              "large": 0
+            },
+            "row": {
+              "plus": 0
+            },
+            "follows": [
+              "accessibility.values",
+              "spacing.roles"
+            ],
+            "why": "A touch target sets the 48px default. Compact is one 8px step below it; large equals the default, as actions are rare and calm. The scheme has no row role, so a row takes the default."
+          }
+        },
         "control": {
           "default": {
             "$type": "dimension",
@@ -5399,7 +5160,7 @@
             "$description": "Height of buttons and inputs, and the smallest target.",
             "$extensions": {
               "open-ds": {
-                "why": "48px is the touch height for buttons and inputs, because readers are often on phones; it is also the smallest target.",
+                "why": "We use 48px for buttons and inputs in order to make a hit target: the touch target size, step 0 of the control scale, a 48px hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So readers on phones get a full touch target on every control, because the smallest target is touch size (accessibility.values) and readers arrive on any device (scenarios.q1).",
                 "because": [
                   "accessibility.values",
                   "scenarios.q1"
@@ -5410,12 +5171,30 @@
           "compact": {
             "$type": "dimension",
             "$value": "{size.40}",
-            "$description": "Height of compact controls."
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 40px for compact controls, such as a clear or show button inside a field, in order to make a hit target: one 8px step below the 48px default on the control scale; the 40px box relies on the padding of the field around it for a touch-size hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a small button fits inside the field around it, because the content is long-form text (content.q1) and the smallest target is touch size (accessibility.values).",
+                "because": [
+                  "content.q1",
+                  "accessibility.values"
+                ]
+              }
+            }
           },
           "large": {
             "$type": "dimension",
             "$value": "{size.48}",
-            "$description": "Height of large controls. Not used in this system, so it equals the default."
+            "$description": "Height of large controls. Not used in this system, so it equals the default.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 48px for large controls in order to make a hit target: the default's step on the control scale and the default's 48px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a main action never shouts over the text, and color marks it, because actions are rare (tasks.q2) and attention belongs on the content (human.q1).",
+                "because": [
+                  "tasks.q2",
+                  "human.q1"
+                ]
+              }
+            }
           }
         },
         "row": {
@@ -5424,10 +5203,9 @@
           "$description": "Height of one table row.",
           "$extensions": {
             "open-ds": {
-              "why": "48px gives each table row the comfortable touch height, because rows are read one by one, not scanned.",
+              "why": "We use 48px for one table row in order to keep the eye on its row: by inheritance, as the scheme has no row role and a row holds controls, so size.row takes size.control.default, one 48px control tall. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So a control fits in its row, and each row reads one by one, because spacing has gaps and insets only (spacing.roles) and the smallest target is touch size (accessibility.values).",
               "because": [
-                "tasks.q1",
-                "spacing.values",
+                "spacing.roles",
                 "accessibility.values"
               ]
             }
@@ -5486,20 +5264,87 @@
         "default": {
           "$type": "dimension",
           "$value": "{border-width.1}",
-          "$description": "Every border."
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 1px default line for card and panel borders in order to give grouping where space alone does not, not separation: space separates groups here. A thin stroke does this by drawing a shared region with the least weight that still reads. So the lines stay quiet beside long text, because space separates groups (elevation.definition) and AA is the floor (accessibility.definition).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
         },
         "focus": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "The focus ring."
+          "$description": "The focus ring.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 2px focus ring in order to show focus, one step heavier than the 1px default line by the focus relation. A heavier stroke does this by standing out from the thin edges around it. So readers who use a keyboard always see where they are, because focus has its own look (accessibility.roles) and lines are thin (elevation.definition).",
+              "because": [
+                "accessibility.roles",
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
         },
         "focus-offset": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill."
+          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So readers see the ring on any fill, even a filled button, because focus has its own look (accessibility.roles).",
+              "because": [
+                "accessibility.roles"
+              ]
+            }
+          }
         }
       },
       "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 18,
+            "ratio": 1.12,
+            "steps": {
+              "display": 8,
+              "title": 6,
+              "heading": 4,
+              "body": 0,
+              "label": -1,
+              "caption": -2,
+              "data": 0
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.15,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "open": {
+                "ratio": 1.65,
+                "roles": [
+                  "body",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "Many fine steps: a large 18px body and a 1.12 ratio, with two steps between the headings, so long pages can set their own hierarchy. Short lines sit tight at 1.15; text that wraps opens to 1.65 for reading."
+          }
+        },
         "display": {
           "font-family": {
             "$type": "fontFamily",
@@ -5507,10 +5352,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.44}",
+            "$value": "{font.size.45}",
             "$extensions": {
               "open-ds": {
-                "why": "44px is the top step, kept for the landing moment and the lead that opens an article, above the 36px title.",
+                "why": "45px is eight fine steps above the 18px body (18 × 1.12^8), two steps over the 36px title, kept for the landing moment and the lead that opens an article.",
                 "because": [
                   "typography.roles",
                   "typography.count"
@@ -5523,7 +5368,7 @@
             "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
-                "why": "1.15 sets 44px display text on about 51px lines, so a two-line opener reads as one tight block.",
+                "why": "1.15 sets 45px display text on about 52px lines, so a two-line opener reads as one tight block.",
                 "because": [
                   "typography.definition",
                   "typography.roles"
@@ -5556,7 +5401,7 @@
             "$value": "{font.size.36}",
             "$extensions": {
               "open-ds": {
-                "why": "36px sits one step under the 44px display, so article titles stay large but calm.",
+                "why": "36px is six fine steps above body and two under the 45px display, so article titles stay large but calm.",
                 "because": [
                   "typography.roles",
                   "typography.count"
@@ -5601,7 +5446,7 @@
             "$value": "{font.size.28}",
             "$extensions": {
               "open-ds": {
-                "why": "28px marks section headings: well above the 18px body, below the 36px title, so readers find their place in a long guide.",
+                "why": "28px is four fine steps above the 18px body and two under the 36px title, so readers find their place in a long guide.",
                 "because": [
                   "typography.count",
                   "outcomes.q2"
@@ -5648,7 +5493,7 @@
             "$value": "{font.size.18}",
             "$extensions": {
               "open-ds": {
-                "why": "18px is the large reading size the values answer picks, so long articles stay easy on the eyes.",
+                "why": "18px is the large reading size and step 0 of the scale: every other role is a 1.12 ratio step from it, so long articles stay easy on the eyes.",
                 "because": [
                   "typography.values",
                   "outcomes.q1"
@@ -5695,7 +5540,7 @@
             "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
-                "why": "16px sets Inter labels one step under the 18px body, still large enough for a field label people must read.",
+                "why": "16px sets Inter labels one step under the 18px body (18 ÷ 1.12), still large enough for a field label people must read.",
                 "because": [
                   "brand.q3",
                   "people.q2"
@@ -5705,10 +5550,10 @@
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}",
+            "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
-                "why": "1.45 gives a 16px label about 23px lines, tighter than body, because a label names a field and never runs as a paragraph.",
+                "why": "1.15, the tight ratio of the headings, gives a 16px label about 18px lines, because a label names a field on one line and never runs as a paragraph.",
                 "because": [
                   "typography.definition",
                   "brand.q3"
@@ -5741,7 +5586,7 @@
             "$value": "{font.size.14}",
             "$extensions": {
               "open-ds": {
-                "why": "14px is the smallest step, for Inter captions that sit quietly under the text and never compete with the 18px body.",
+                "why": "14px is two steps under the 18px body and one under the 16px label, for Inter captions that sit quietly under the text.",
                 "because": [
                   "human.q1",
                   "brand.q3"
@@ -5751,13 +5596,13 @@
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}",
+            "$value": "{font.line-height.1_65}",
             "$extensions": {
               "open-ds": {
-                "why": "1.45 sets a 14px caption on about 20px lines, the same ratio as label, since both are short Inter interface text.",
+                "why": "1.65, the open ratio of body, sets a 14px caption on about 23px lines, because a caption under a figure or a quote wraps like body text.",
                 "because": [
                   "typography.definition",
-                  "brand.q3"
+                  "content.q1"
                 ]
               }
             }
@@ -5786,7 +5631,7 @@
             "$value": "{font.size.18}",
             "$extensions": {
               "open-ds": {
-                "why": "18px matches body, because numbers sit in running text rather than table columns, so data reads at the reading size.",
+                "why": "18px shares step 0 with body, because numbers sit in running text rather than table columns, so data reads at the reading size.",
                 "because": [
                   "brand.q3",
                   "tasks.q1"
@@ -6241,7 +6086,6 @@
         }
       },
       "component-spacing-map": {
-        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
         "$extensions": {
           "open-ds": {
             "rhythm": 1.5,
@@ -6253,76 +6097,6 @@
               "spacing.values"
             ],
             "why": "Spacious: room around the text helps reading, so panels and fields breathe; rows stay tight."
-          }
-        },
-        "hairline": {
-          "$type": "dimension",
-          "$value": "{space.2}",
-          "$description": "A fixed 2px optical nudge, the same in every scheme."
-        },
-        "x1": {
-          "$type": "dimension",
-          "$value": "{space.4}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 1,
-              "fixed": true
-            }
-          }
-        },
-        "x2": {
-          "$type": "dimension",
-          "$value": "{space.8}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 2,
-              "fixed": true
-            }
-          }
-        },
-        "x3": {
-          "$type": "dimension",
-          "$value": "{space.20}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 3
-            }
-          }
-        },
-        "x4": {
-          "$type": "dimension",
-          "$value": "{space.24}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 4
-            }
-          }
-        },
-        "x6": {
-          "$type": "dimension",
-          "$value": "{space.36}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 6
-            }
-          }
-        },
-        "x8": {
-          "$type": "dimension",
-          "$value": "{space.48}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 8
-            }
-          }
-        },
-        "x12": {
-          "$type": "dimension",
-          "$value": "{space.64}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 12
-            }
           }
         }
       },

@@ -14,7 +14,7 @@ The trail of pages above this one, so people know where they are.
 
 ## See it live
 
-::preview{robot="slumber" id="breadcrumb/live"}
+::preview{id="breadcrumb/live"}
 
 ## When to use it
 

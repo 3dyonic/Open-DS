@@ -212,6 +212,14 @@
    ]
   }
  },
+ "group": {
+  "reasons": {
+   "title": "Reasons"
+  },
+  "scopes": {
+   "title": "Scopes"
+  }
+ },
  "decision-answer": {
   "business-q1": {
    "answer": "Serves the public",
@@ -223,13 +231,16 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Who uses it most? → Everyone, including people with disabilities"
+        "question": "Who uses it most?",
+        "answer": "Everyone, including people with disabilities"
        },
        {
-        "text": "What is the main content? → Forms and tasks"
+        "question": "What is the main content?",
+        "answer": "Forms and tasks"
        },
        {
-        "text": "How often do people repeat actions? → Rarely"
+        "question": "How often do people repeat actions?",
+        "answer": "Rarely"
        }
       ]
      }
@@ -246,21 +257,27 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Shape · How are corners set? → Fixed for the product",
+        "scope": "Shape",
+        "question": "How are corners set?",
+        "answer": "Fixed for the product",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "Theming · What can a theme change? → Mode only",
+        "scope": "Theming",
+        "question": "What can a theme change?",
+        "answer": "Mode only",
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
         }
        },
        {
-        "text": "Theming · How are brands handled? → One brand",
+        "scope": "Theming",
+        "question": "How are brands handled?",
+        "answer": "One brand",
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
@@ -275,7 +292,10 @@
    "answer": "Everyone, including people with disabilities",
    "why": "Everyone, including people with low vision, motor and cognitive needs.",
    "because": [
-    "What does the product do for the business? → Serves the public"
+    {
+     "question": "What does the product do for the business?",
+     "answer": "Serves the public"
+    }
    ],
    "decided": {
     "groups": [
@@ -283,117 +303,151 @@
       "kind": "answers",
       "items": [
        {
-        "text": "What accessibility level do we commit to? → AAA"
+        "question": "What accessibility level do we commit to?",
+        "answer": "AAA"
        },
        {
-        "text": "How much is on one screen? → One idea at a time"
+        "question": "How much is on one screen?",
+        "answer": "One idea at a time"
        },
        {
-        "text": "What must the interface protect? → Low effort to understand"
+        "question": "What must the interface protect?",
+        "answer": "Low effort to understand"
        },
        {
-        "text": "Where do people use it? → Anywhere, on any device"
+        "question": "Where do people use it?",
+        "answer": "Anywhere, on any device"
        },
        {
-        "text": "Typography · How large is body text? → Large",
+        "scope": "Typography",
+        "question": "How large is body text?",
+        "answer": "Large",
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "scope": "Color",
+        "question": "How is the palette defined?",
+        "answer": "Neutrals and one brand ramp",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "Spacing · Which spacing roles does it need? → Gaps, insets and row heights",
+        "scope": "Spacing",
+        "question": "Which spacing roles does it need?",
+        "answer": "Gaps, insets and row heights",
         "link": {
          "label": "Spacing",
          "href": "foundations/spacing"
         }
        },
        {
-        "text": "Spacing · How many densities exist? → One",
+        "scope": "Spacing",
+        "question": "How many densities exist?",
+        "answer": "One",
         "link": {
          "label": "Spacing",
          "href": "foundations/spacing"
         }
        },
        {
-        "text": "Motion · What is motion for? → Feedback only",
+        "scope": "Motion",
+        "question": "What is motion for?",
+        "answer": "Feedback only",
         "link": {
          "label": "Motion",
          "href": "foundations/motion"
         }
        },
        {
-        "text": "Motion · How is easing defined? → Standard ease-out",
+        "scope": "Motion",
+        "question": "How is easing defined?",
+        "answer": "Standard ease-out",
         "link": {
          "label": "Motion",
          "href": "foundations/motion"
         }
        },
        {
-        "text": "Motion · How fast does feedback feel? → Moderate",
+        "scope": "Motion",
+        "question": "How fast does feedback feel?",
+        "answer": "Moderate",
         "link": {
          "label": "Motion",
          "href": "foundations/motion"
         }
        },
        {
-        "text": "Iconography · What icon style and stroke? → Bold stroke",
+        "scope": "Iconography",
+        "question": "What icon style and stroke?",
+        "answer": "Bold stroke",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
         }
        },
        {
-        "text": "Iconography · How big are icons next to text? → Larger than the text",
+        "scope": "Iconography",
+        "question": "How big are icons next to text?",
+        "answer": "Larger than the text",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
         }
        },
        {
-        "text": "Accessibility · What is the smallest target? → Large",
+        "scope": "Accessibility",
+        "question": "What is the smallest target?",
+        "answer": "Large",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
         }
        },
        {
-        "text": "Voice and tone · How is the voice defined? → Rules and a word list",
+        "scope": "Voice and tone",
+        "question": "How is the voice defined?",
+        "answer": "Rules and a word list",
         "link": {
          "label": "Voice and tone",
          "href": "foundations/voice"
         }
        },
        {
-        "text": "Voice and tone · How does it sound? → Plain and direct",
+        "scope": "Voice and tone",
+        "question": "How does it sound?",
+        "answer": "Plain and direct",
         "link": {
          "label": "Voice and tone",
          "href": "foundations/voice"
         }
        },
        {
-        "text": "Components · Which component families does it need? → Actions, forms, feedback, overlays, layout and navigation",
+        "scope": "Components",
+        "question": "Which component families does it need?",
+        "answer": "Actions, forms, feedback, overlays, layout and navigation",
         "link": {
          "label": "Components",
          "href": "foundations/components"
         }
        },
        {
-        "text": "Components · How does a component earn its place? → It works for everyone, with any device and assistive technology",
+        "scope": "Components",
+        "question": "How does a component earn its place?",
+        "answer": "It works for everyone, with any device and assistive technology",
         "link": {
          "label": "Components",
          "href": "foundations/components"
         }
        },
        {
-        "text": "Components · When does a component get another look? → Only when the meaning changes",
+        "scope": "Components",
+        "question": "When does a component get another look?",
+        "answer": "Only when the meaning changes",
         "link": {
          "label": "Components",
          "href": "foundations/components"
@@ -546,7 +600,10 @@
    "answer": "AAA",
    "why": "AAA where it applies; nobody is left out.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -554,73 +611,94 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Which typefaces carry the product, and why? → One face drawn for legibility"
+        "question": "Which typefaces carry the product, and why?",
+        "answer": "One face drawn for legibility"
        },
        {
-        "text": "Typography · How are sizes and line heights defined? → A ratio, line heights in proportion",
+        "scope": "Typography",
+        "question": "How are sizes and line heights defined?",
+        "answer": "A ratio, line heights in proportion",
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "scope": "Color",
+        "question": "How is the palette defined?",
+        "answer": "Neutrals and one brand ramp",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "Elevation · What rises above the page? → Nothing",
+        "scope": "Elevation",
+        "question": "What rises above the page?",
+        "answer": "Nothing",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "Elevation · What separates groups on the page? → Lines",
+        "scope": "Elevation",
+        "question": "What separates groups on the page?",
+        "answer": "Lines",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "Theming · Which modes ship? → Light and dark",
+        "scope": "Theming",
+        "question": "Which modes ship?",
+        "answer": "Light and dark",
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
         }
        },
        {
-        "text": "Accessibility · Which states get their own visible value? → All, including loading",
+        "scope": "Accessibility",
+        "question": "Which states get their own visible value?",
+        "answer": "All, including loading",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
         }
        },
        {
-        "text": "Accessibility · How many signals carry each meaning? → Three: color, icon and word",
+        "scope": "Accessibility",
+        "question": "How many signals carry each meaning?",
+        "answer": "Three: color, icon and word",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
         }
        },
        {
-        "text": "Accessibility · What contrast floor do we hold? → AAA for text",
+        "scope": "Accessibility",
+        "question": "What contrast floor do we hold?",
+        "answer": "AAA for text",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
         }
        },
        {
-        "text": "Components · How far does the inventory reach? → Only what today's screens use",
+        "scope": "Components",
+        "question": "How far does the inventory reach?",
+        "answer": "Only what today's screens use",
         "link": {
          "label": "Components",
          "href": "foundations/components"
         }
        },
        {
-        "text": "Components · How does a component earn its place? → It works for everyone, with any device and assistive technology",
+        "scope": "Components",
+        "question": "How does a component earn its place?",
+        "answer": "It works for everyone, with any device and assistive technology",
         "link": {
          "label": "Components",
          "href": "foundations/components"
@@ -750,7 +828,10 @@
    "answer": "Forms and tasks",
    "why": "Most screens are forms and steps.",
    "because": [
-    "What does the product do for the business? → Serves the public"
+    {
+     "question": "What does the product do for the business?",
+     "answer": "Serves the public"
+    }
    ],
    "decided": {
     "groups": [
@@ -758,55 +839,71 @@
       "kind": "answers",
       "items": [
        {
-        "text": "What is the main task? → Complete a form"
+        "question": "What is the main task?",
+        "answer": "Complete a form"
        },
        {
-        "text": "Which typefaces carry the product, and why? → One face drawn for legibility"
+        "question": "Which typefaces carry the product, and why?",
+        "answer": "One face drawn for legibility"
        },
        {
-        "text": "Typography · Where does type do the most work? → Forms and labels",
+        "scope": "Typography",
+        "question": "Where does type do the most work?",
+        "answer": "Forms and labels",
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "Spacing · Where does spacing matter most? → Between fields",
+        "scope": "Spacing",
+        "question": "Where does spacing matter most?",
+        "answer": "Between fields",
         "link": {
          "label": "Spacing",
          "href": "foundations/spacing"
         }
        },
        {
-        "text": "Shape · Where does shape show most? → Controls and cards",
+        "scope": "Shape",
+        "question": "Where does shape show most?",
+        "answer": "Controls and cards",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "Accessibility · Where are the floors hardest to hold? → Forms",
+        "scope": "Accessibility",
+        "question": "Where are the floors hardest to hold?",
+        "answer": "Forms",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
         }
        },
        {
-        "text": "Voice and tone · Which kinds of copy does it need? → Labels, messages and help",
+        "scope": "Voice and tone",
+        "question": "Which kinds of copy does it need?",
+        "answer": "Labels, messages and help",
         "link": {
          "label": "Voice and tone",
          "href": "foundations/voice"
         }
        },
        {
-        "text": "Components · Which component families does it need? → Actions, forms, feedback, overlays, layout and navigation",
+        "scope": "Components",
+        "question": "Which component families does it need?",
+        "answer": "Actions, forms, feedback, overlays, layout and navigation",
         "link": {
          "label": "Components",
          "href": "foundations/components"
         }
        },
        {
-        "text": "Components · Where do components do the most work? → Forms and steps",
+        "scope": "Components",
+        "question": "Where do components do the most work?",
+        "answer": "Forms and steps",
         "link": {
          "label": "Components",
          "href": "foundations/components"
@@ -847,7 +944,10 @@
    "answer": "One idea at a time",
    "why": "One question per screen lowers effort.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -869,6 +969,35 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "radius.control",
+        "mode": "every mode",
+        "pick": "radius.6",
+        "why": [
+         "radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.element",
+        "mode": "every mode",
+        "pick": "radius.6",
+        "why": [
+         "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -877,7 +1006,10 @@
    "answer": "Complete a form",
    "why": "People must finish the form.",
    "because": [
-    "What is the main content? → Forms and tasks"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    }
    ],
    "decided": {
     "groups": [
@@ -885,16 +1017,21 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Which outcome matters most? → Completion without errors"
+        "question": "Which outcome matters most?",
+        "answer": "Completion without errors"
        },
        {
-        "text": "What is a costly mistake? → A task that fails"
+        "question": "What is a costly mistake?",
+        "answer": "A task that fails"
        },
        {
-        "text": "How long is one visit? → One sitting"
+        "question": "How long is one visit?",
+        "answer": "One sitting"
        },
        {
-        "text": "Components · Where do components do the most work? → Forms and steps",
+        "scope": "Components",
+        "question": "Where do components do the most work?",
+        "answer": "Forms and steps",
         "link": {
          "label": "Components",
          "href": "foundations/components"
@@ -940,7 +1077,10 @@
    "answer": "Rarely",
    "why": "People do this once or twice a year.",
    "because": [
-    "What does the product do for the business? → Serves the public"
+    {
+     "question": "What does the product do for the business?",
+     "answer": "Serves the public"
+    }
    ],
    "decided": {
     "groups": [
@@ -948,7 +1088,8 @@
       "kind": "answers",
       "items": [
        {
-        "text": "How do people recall the interface? → They see it fresh each time"
+        "question": "How do people recall the interface?",
+        "answer": "They see it fresh each time"
        }
       ]
      }
@@ -959,7 +1100,10 @@
    "answer": "Low effort to understand",
    "why": "Low effort to understand each step.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -967,62 +1111,80 @@
       "kind": "answers",
       "items": [
        {
-        "text": "What should the brand feel like? → Calm and clear"
+        "question": "What should the brand feel like?",
+        "answer": "Calm and clear"
        },
        {
-        "text": "How visible is the brand in the interface? → Quiet"
+        "question": "How visible is the brand in the interface?",
+        "answer": "Quiet"
        },
        {
-        "text": "Typography · Which text roles does it need? → Core: heading, body, label",
+        "scope": "Typography",
+        "question": "Which text roles does it need?",
+        "answer": "Core: heading, body, label",
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "Typography · How many steps does the type scale take? → Only the steps the screens need",
+        "scope": "Typography",
+        "question": "How many steps does the type scale take?",
+        "answer": "Only the steps the screens need",
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "Color · Which color roles does it need? → Surface, text, action and status",
+        "scope": "Color",
+        "question": "Which color roles does it need?",
+        "answer": "Surface, text, action and status",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "Color · How many emphasis levels do actions need? → Two",
+        "scope": "Color",
+        "question": "How many emphasis levels do actions need?",
+        "answer": "Two",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "Spacing · How are spacing steps defined? → Big, even steps",
+        "scope": "Spacing",
+        "question": "How are spacing steps defined?",
+        "answer": "Big, even steps",
         "link": {
          "label": "Spacing",
          "href": "foundations/spacing"
         }
        },
        {
-        "text": "Spacing · How dense is the layout? → Spacious",
+        "scope": "Spacing",
+        "question": "How dense is the layout?",
+        "answer": "Spacious",
         "link": {
          "label": "Spacing",
          "href": "foundations/spacing"
         }
        },
        {
-        "text": "Shape · Which shape roles does it need? → Controls, badges and containers",
+        "scope": "Shape",
+        "question": "Which shape roles does it need?",
+        "answer": "Controls, badges and containers",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "Voice and tone · How many tones does it use? → One",
+        "scope": "Voice and tone",
+        "question": "How many tones does it use?",
+        "answer": "One",
         "link": {
          "label": "Voice and tone",
          "href": "foundations/voice"
@@ -1159,7 +1321,10 @@
    "answer": "They see it fresh each time",
    "why": "Nobody remembers the interface from last time.",
    "because": [
-    "How often do people repeat actions? → Rarely"
+    {
+     "question": "How often do people repeat actions?",
+     "answer": "Rarely"
+    }
    ],
    "decided": {
     "groups": [
@@ -1167,7 +1332,9 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Iconography · What do icons do? → Actions and status",
+        "scope": "Iconography",
+        "question": "What do icons do?",
+        "answer": "Actions and status",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -1241,7 +1408,10 @@
    "answer": "Completion without errors",
    "why": "Completion without errors is the measure.",
    "because": [
-    "What is the main task? → Complete a form"
+    {
+     "question": "What is the main task?",
+     "answer": "Complete a form"
+    }
    ],
    "decided": {
     "groups": [
@@ -1249,14 +1419,18 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Color · Where does color carry meaning first? → Links and actions",
+        "scope": "Color",
+        "question": "Where does color carry meaning first?",
+        "answer": "Links and actions",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "Voice and tone · Where do the words matter most? → Form steps and errors",
+        "scope": "Voice and tone",
+        "question": "Where do the words matter most?",
+        "answer": "Form steps and errors",
         "link": {
          "label": "Voice and tone",
          "href": "foundations/voice"
@@ -1309,7 +1483,10 @@
    "answer": "A task that fails",
    "why": "A failed form can cost someone a benefit.",
    "because": [
-    "What is the main task? → Complete a form"
+    {
+     "question": "What is the main task?",
+     "answer": "Complete a form"
+    }
    ],
    "decided": {
     "groups": [
@@ -1407,7 +1584,10 @@
    "answer": "Calm and clear",
    "why": "Calm and clear, never clever.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [
@@ -1415,31 +1595,40 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Which typefaces carry the product, and why? → One face drawn for legibility"
+        "question": "Which typefaces carry the product, and why?",
+        "answer": "One face drawn for legibility"
        },
        {
-        "text": "Color · How saturated is the palette? → Balanced",
+        "scope": "Color",
+        "question": "How saturated is the palette?",
+        "answer": "Balanced",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "Shape · What should control corners say? → Slightly rounded",
+        "scope": "Shape",
+        "question": "What should control corners say?",
+        "answer": "Slightly rounded",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "Voice and tone · How does it sound? → Plain and direct",
+        "scope": "Voice and tone",
+        "question": "How does it sound?",
+        "answer": "Plain and direct",
         "link": {
          "label": "Voice and tone",
          "href": "foundations/voice"
         }
        },
        {
-        "text": "Components · When does a component get another look? → Only when the meaning changes",
+        "scope": "Components",
+        "question": "When does a component get another look?",
+        "answer": "Only when the meaning changes",
         "link": {
          "label": "Components",
          "href": "foundations/components"
@@ -1472,6 +1661,71 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "radius.control",
+        "mode": "every mode",
+        "pick": "radius.6",
+        "why": [
+         "radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.badge",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.option",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.element",
+        "mode": "every mode",
+        "pick": "radius.6",
+        "why": [
+         "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.surface",
+        "mode": "every mode",
+        "pick": "radius.8",
+        "why": [
+         "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -1480,7 +1734,10 @@
    "answer": "Quiet",
    "why": "The brand stays out of the way.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [
@@ -1569,9 +1826,18 @@
     }
    ],
    "because": [
-    "What should the brand feel like? → Calm and clear",
-    "What accessibility level do we commit to? → AAA",
-    "What is the main content? → Forms and tasks"
+    {
+     "question": "What should the brand feel like?",
+     "answer": "Calm and clear"
+    },
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    },
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    }
    ],
    "decided": {
     "groups": [
@@ -1579,49 +1845,84 @@
       "kind": "picks",
       "items": [
        {
-        "text": "type.display.font-family: atkinson-hyperlegible for display text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "token": "type.display.font-family",
+        "mode": "every mode",
+        "pick": "font.family.atkinson-hyperlegible",
+        "why": [
+         "atkinson-hyperlegible for display text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+        ],
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "type.title.font-family: atkinson-hyperlegible for title text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "token": "type.title.font-family",
+        "mode": "every mode",
+        "pick": "font.family.atkinson-hyperlegible",
+        "why": [
+         "atkinson-hyperlegible for title text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+        ],
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "type.heading.font-family: atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "token": "type.heading.font-family",
+        "mode": "every mode",
+        "pick": "font.family.atkinson-hyperlegible",
+        "why": [
+         "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+        ],
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "type.body.font-family: atkinson-hyperlegible for body text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "token": "type.body.font-family",
+        "mode": "every mode",
+        "pick": "font.family.atkinson-hyperlegible",
+        "why": [
+         "atkinson-hyperlegible for body text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+        ],
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "type.label.font-family: atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "token": "type.label.font-family",
+        "mode": "every mode",
+        "pick": "font.family.atkinson-hyperlegible",
+        "why": [
+         "atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+        ],
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "type.caption.font-family: atkinson-hyperlegible for caption text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "token": "type.caption.font-family",
+        "mode": "every mode",
+        "pick": "font.family.atkinson-hyperlegible",
+        "why": [
+         "atkinson-hyperlegible for caption text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+        ],
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
         }
        },
        {
-        "text": "type.data.font-family: atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+        "token": "type.data.font-family",
+        "mode": "every mode",
+        "pick": "font.family.atkinson-hyperlegible",
+        "why": [
+         "atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+        ],
         "link": {
          "label": "Typography",
          "href": "foundations/typography"
@@ -1636,7 +1937,10 @@
    "answer": "Anywhere, on any device",
    "why": "Public services are used on any device, with any assistive technology.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -1659,7 +1963,10 @@
    "answer": "One sitting",
    "why": "An application is finished in one sitting, or saved and resumed.",
    "because": [
-    "What is the main task? → Complete a form"
+    {
+     "question": "What is the main task?",
+     "answer": "Complete a form"
+    }
    ],
    "decided": {
     "groups": [
@@ -1700,14 +2007,18 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Naming · How are decisions named? → By role",
+        "scope": "Naming",
+        "question": "How are decisions named?",
+        "answer": "By role",
         "link": {
          "label": "Naming",
          "href": "foundations/naming"
         }
        },
        {
-        "text": "Naming · How are names written? → Lowercase words in paths",
+        "scope": "Naming",
+        "question": "How are names written?",
+        "answer": "Lowercase words in paths",
         "link": {
          "label": "Naming",
          "href": "foundations/naming"
@@ -1728,28 +2039,36 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Naming · What gets a name? → Tokens and component keys",
+        "scope": "Naming",
+        "question": "What gets a name?",
+        "answer": "Tokens and component keys",
         "link": {
          "label": "Naming",
          "href": "foundations/naming"
         }
        },
        {
-        "text": "Naming · How many token tiers? → Three",
+        "scope": "Naming",
+        "question": "How many token tiers?",
+        "answer": "Three",
         "link": {
          "label": "Naming",
          "href": "foundations/naming"
         }
        },
        {
-        "text": "Naming · What do components read? → Component keys",
+        "scope": "Naming",
+        "question": "What do components read?",
+        "answer": "Component keys",
         "link": {
          "label": "Naming",
          "href": "foundations/naming"
         }
        },
        {
-        "text": "Components · How far does the inventory reach? → Only what today's screens use",
+        "scope": "Components",
+        "question": "How far does the inventory reach?",
+        "answer": "Only what today's screens use",
         "link": {
          "label": "Components",
          "href": "foundations/components"
@@ -1764,7 +2083,10 @@
    "answer": "Core: heading, body, label",
    "why": "Few roles keep pages predictable.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [],
@@ -1778,7 +2100,10 @@
    "answer": "Only the steps the screens need",
    "why": "Only the sizes the screens need, each clearly different.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [],
@@ -1792,7 +2117,10 @@
    "answer": "A ratio, line heights in proportion",
    "why": "Line height grows with text size for zoom users.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [],
@@ -1806,7 +2134,10 @@
    "answer": "Large",
    "why": "Large text is readable for more people.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [],
@@ -1820,7 +2151,10 @@
    "answer": "Forms and labels",
    "why": "Type matters most in form labels and hints.",
    "because": [
-    "What is the main content? → Forms and tasks"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    }
    ],
    "decided": {
     "groups": [],
@@ -1834,7 +2168,10 @@
    "answer": "Surface, text, action and status",
    "why": "Few color roles, each with one clear meaning.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [],
@@ -1848,7 +2185,10 @@
    "answer": "Two",
    "why": "Primary and secondary only; fewer choices, fewer errors.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [
@@ -1880,182 +2220,512 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "token": "color.action.primary",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: brand blue marks the main action, with AAA white text (",
+         {
+          "ratio": 7.26
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary in light: neutral.0: the secondary action's fill; its label reads, 18.42:1, above the 7:1 floor.",
+        "token": "color.action.secondary",
+        "mode": "light",
+        "pick": "color.neutral.0",
+        "why": [
+         "neutral.0: the secondary action's fill; its label reads, ",
+         {
+          "ratio": 18.42
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger in light: red.light.700: the danger action's fill; its label reads, 8.55:1, above the 7:1 floor.",
+        "token": "color.action.danger",
+        "mode": "light",
+        "pick": "color.red.light.700",
+        "why": [
+         "red.light.700: the danger action's fill; its label reads, ",
+         {
+          "ratio": 8.55
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.1 in light: blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.26:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.1",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 7.26
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.1.subtle in light: blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
+        "token": "color.category.1.subtle",
+        "mode": "light",
+        "pick": "color.blue.light.100",
+        "why": [
+         "blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
+         {
+          "ratio": 15.61
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.2 in light: teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.95:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.2",
+        "mode": "light",
+        "pick": "color.teal.light.600",
+        "why": [
+         "teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 7.95
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.2.subtle in light: teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
+        "token": "color.category.2.subtle",
+        "mode": "light",
+        "pick": "color.teal.light.100",
+        "why": [
+         "teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
+         {
+          "ratio": 15.61
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.3 in light: green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.3",
+        "mode": "light",
+        "pick": "color.green.light.600",
+        "why": [
+         "green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 5.38
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.3.subtle in light: green.light.100: a tag's tint; text on it reads, 16.13:1, above the 7:1 floor.",
+        "token": "color.category.3.subtle",
+        "mode": "light",
+        "pick": "color.green.light.100",
+        "why": [
+         "green.light.100: a tag's tint; text on it reads, ",
+         {
+          "ratio": 16.13
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.4 in light: amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.4",
+        "mode": "light",
+        "pick": "color.amber.light.600",
+        "why": [
+         "amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 6.16
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.4.subtle in light: amber.light.100: a tag's tint; text on it reads, 15.49:1, above the 7:1 floor.",
+        "token": "color.category.4.subtle",
+        "mode": "light",
+        "pick": "color.amber.light.100",
+        "why": [
+         "amber.light.100: a tag's tint; text on it reads, ",
+         {
+          "ratio": 15.49
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.5 in light: neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 7.0:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.5",
+        "mode": "light",
+        "pick": "color.neutral.500",
+        "why": [
+         "neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 7
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.5.subtle in light: neutral.100: a tag's tint; text on it reads, 15.74:1, above the 7:1 floor.",
+        "token": "color.category.5.subtle",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: a tag's tint; text on it reads, ",
+         {
+          "ratio": 15.74
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "token": "color.action.primary",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+         {
+          "ratio": 8.74
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary in dark: neutral.50: the secondary action's fill; its label reads, 17.2:1, above the 7:1 floor.",
+        "token": "color.action.secondary",
+        "mode": "dark",
+        "pick": "color.neutral.50",
+        "why": [
+         "neutral.50: the secondary action's fill; its label reads, ",
+         {
+          "ratio": 17.2
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger in dark: red.dark.600: the danger action's fill; its label reads, 7.76:1, above the 7:1 floor.",
+        "token": "color.action.danger",
+        "mode": "dark",
+        "pick": "color.red.dark.600",
+        "why": [
+         "red.dark.600: the danger action's fill; its label reads, ",
+         {
+          "ratio": 7.76
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.1 in dark: blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.74:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.1",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 8.74
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.1.subtle in dark: blue.dark.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 14.23:1, above the 7:1 floor.",
+        "token": "color.category.1.subtle",
+        "mode": "dark",
+        "pick": "color.blue.dark.100",
+        "why": [
+         "blue.dark.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
+         {
+          "ratio": 14.23
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.2 in dark: teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.21:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.2",
+        "mode": "dark",
+        "pick": "color.teal.dark.600",
+        "why": [
+         "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 10.21
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.2.subtle in dark: teal.dark.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 13.57:1, above the 7:1 floor.",
+        "token": "color.category.2.subtle",
+        "mode": "dark",
+        "pick": "color.teal.dark.100",
+        "why": [
+         "teal.dark.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
+         {
+          "ratio": 13.57
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.3 in dark: green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.33:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.3",
+        "mode": "dark",
+        "pick": "color.green.dark.600",
+        "why": [
+         "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 8.33
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.3.subtle in dark: green.dark.100: a tag's tint; text on it reads, 13.96:1, above the 7:1 floor.",
+        "token": "color.category.3.subtle",
+        "mode": "dark",
+        "pick": "color.green.dark.100",
+        "why": [
+         "green.dark.100: a tag's tint; text on it reads, ",
+         {
+          "ratio": 13.96
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.4 in dark: amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.29:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.4",
+        "mode": "dark",
+        "pick": "color.amber.dark.600",
+        "why": [
+         "amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 10.29
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.4.subtle in dark: amber.dark.100: a tag's tint; text on it reads, 13.74:1, above the 7:1 floor.",
+        "token": "color.category.4.subtle",
+        "mode": "dark",
+        "pick": "color.amber.dark.100",
+        "why": [
+         "amber.dark.100: a tag's tint; text on it reads, ",
+         {
+          "ratio": 13.74
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.5 in dark: neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 12.68:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.5",
+        "mode": "dark",
+        "pick": "color.neutral.700",
+        "why": [
+         "neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 12.68
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.5.subtle in dark: neutral.100: a tag's tint; text on it reads, 14.85:1, above the 7:1 floor.",
+        "token": "color.category.5.subtle",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: a tag's tint; text on it reads, ",
+         {
+          "ratio": 14.85
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2070,9 +2740,19 @@
    "answer": "Neutrals and one brand ramp",
    "why": "True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
    "because": [
-    "What accessibility level do we commit to? → AAA",
-    "Who uses it most? → Everyone, including people with disabilities",
-    "Color · Where does color carry meaning first? → Links and actions"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    },
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    },
+    {
+     "scope": "Color",
+     "question": "Where does color carry meaning first?",
+     "answer": "Links and actions"
+    }
    ],
    "decided": {
     "groups": [
@@ -2080,266 +2760,504 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.neutral.0 in light: gray.light.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.0",
+        "mode": "light",
+        "pick": "color.gray.light.0",
+        "why": [
+         "gray.light.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.50 in light: gray.light.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.50",
+        "mode": "light",
+        "pick": "color.gray.light.50",
+        "why": [
+         "gray.light.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.100 in light: gray.light.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.100",
+        "mode": "light",
+        "pick": "color.gray.light.100",
+        "why": [
+         "gray.light.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.200 in light: gray.light.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.200",
+        "mode": "light",
+        "pick": "color.gray.light.200",
+        "why": [
+         "gray.light.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.300 in light: gray.light.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.300",
+        "mode": "light",
+        "pick": "color.gray.light.300",
+        "why": [
+         "gray.light.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.400 in light: gray.light.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.400",
+        "mode": "light",
+        "pick": "color.gray.light.400",
+        "why": [
+         "gray.light.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.500 in light: gray.light.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.500",
+        "mode": "light",
+        "pick": "color.gray.light.500",
+        "why": [
+         "gray.light.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.600 in light: gray.light.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.600",
+        "mode": "light",
+        "pick": "color.gray.light.600",
+        "why": [
+         "gray.light.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.700 in light: gray.light.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.700",
+        "mode": "light",
+        "pick": "color.gray.light.700",
+        "why": [
+         "gray.light.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.800 in light: gray.light.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.800",
+        "mode": "light",
+        "pick": "color.gray.light.800",
+        "why": [
+         "gray.light.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.900 in light: gray.light.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.900",
+        "mode": "light",
+        "pick": "color.gray.light.900",
+        "why": [
+         "gray.light.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.950 in light: gray.light.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.950",
+        "mode": "light",
+        "pick": "color.gray.light.950",
+        "why": [
+         "gray.light.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.canvas in light: neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "token": "color.surface.canvas",
+        "mode": "light",
+        "pick": "color.neutral.50",
+        "why": [
+         "neutral.50, under content: ",
+         {
+          "ratio": 1.07
+         },
+         " from surface.default, so cards and panels stand forward."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.sunken in light: neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+        "token": "color.surface.sunken",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, a step below content (",
+         {
+          "ratio": 1.17
+         },
+         " on surface.default), so table headers and wells read as recessed."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.highlight in light: neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+        "token": "color.surface.highlight",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.pressed in light: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "token": "color.surface.pressed",
+        "mode": "light",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.selected in light: blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "token": "color.surface.selected",
+        "mode": "light",
+        "pick": "color.blue.light.100",
+        "why": [
+         "blue.light.100: a tint of the brand, ",
+         {
+          "ratio": 1.18
+         },
+         " from content, always beside its edge (border.selected), so selection is never color alone."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.focus in light: blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.focus",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+         {
+          "ratio": 7.26
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "token": "color.action.primary",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: brand blue marks the main action, with AAA white text (",
+         {
+          "ratio": 7.26
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.0 in dark: gray.dark.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.0",
+        "mode": "dark",
+        "pick": "color.gray.dark.0",
+        "why": [
+         "gray.dark.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.50 in dark: gray.dark.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.50",
+        "mode": "dark",
+        "pick": "color.gray.dark.50",
+        "why": [
+         "gray.dark.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.100 in dark: gray.dark.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.100",
+        "mode": "dark",
+        "pick": "color.gray.dark.100",
+        "why": [
+         "gray.dark.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.200 in dark: gray.dark.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.200",
+        "mode": "dark",
+        "pick": "color.gray.dark.200",
+        "why": [
+         "gray.dark.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.300 in dark: gray.dark.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.300",
+        "mode": "dark",
+        "pick": "color.gray.dark.300",
+        "why": [
+         "gray.dark.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.400 in dark: gray.dark.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.400",
+        "mode": "dark",
+        "pick": "color.gray.dark.400",
+        "why": [
+         "gray.dark.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.500 in dark: gray.dark.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.500",
+        "mode": "dark",
+        "pick": "color.gray.dark.500",
+        "why": [
+         "gray.dark.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.600 in dark: gray.dark.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.600",
+        "mode": "dark",
+        "pick": "color.gray.dark.600",
+        "why": [
+         "gray.dark.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.700 in dark: gray.dark.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.700",
+        "mode": "dark",
+        "pick": "color.gray.dark.700",
+        "why": [
+         "gray.dark.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.800 in dark: gray.dark.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.800",
+        "mode": "dark",
+        "pick": "color.gray.dark.800",
+        "why": [
+         "gray.dark.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.900 in dark: gray.dark.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.900",
+        "mode": "dark",
+        "pick": "color.gray.dark.900",
+        "why": [
+         "gray.dark.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.neutral.950 in dark: gray.dark.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+        "token": "color.neutral.950",
+        "mode": "dark",
+        "pick": "color.gray.dark.950",
+        "why": [
+         "gray.dark.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.canvas in dark: neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "token": "color.surface.canvas",
+        "mode": "dark",
+        "pick": "color.neutral.0",
+        "why": [
+         "neutral.0, under content: ",
+         {
+          "ratio": 1.07
+         },
+         " from surface.default, so cards and panels stand forward."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.sunken in dark: neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+        "token": "color.surface.sunken",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, a step below content (",
+         {
+          "ratio": 1.16
+         },
+         " on surface.default), so table headers and wells read as recessed."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.highlight in dark: neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+        "token": "color.surface.highlight",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.pressed in dark: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "token": "color.surface.pressed",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.selected in dark: blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "token": "color.surface.selected",
+        "mode": "dark",
+        "pick": "color.blue.dark.100",
+        "why": [
+         "blue.dark.100: a tint of the brand, ",
+         {
+          "ratio": 1.21
+         },
+         " from content, always beside its edge (border.selected), so selection is never color alone."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.focus in dark: blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.focus",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+         {
+          "ratio": 8.74
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "token": "color.action.primary",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+         {
+          "ratio": 8.74
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2354,7 +3272,10 @@
    "answer": "Balanced",
    "why": "Strong but not loud color.",
    "because": [
-    "What should the brand feel like? → Calm and clear"
+    {
+     "question": "What should the brand feel like?",
+     "answer": "Calm and clear"
+    }
    ],
    "decided": {
     "groups": [],
@@ -2368,7 +3289,10 @@
    "answer": "Links and actions",
    "why": "Links and actions must be found by everyone.",
    "because": [
-    "Which outcome matters most? → Completion without errors"
+    {
+     "question": "Which outcome matters most?",
+     "answer": "Completion without errors"
+    }
    ],
    "decided": {
     "groups": [
@@ -2376,7 +3300,9 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Color · How is the palette defined? → Neutrals and one brand ramp",
+        "scope": "Color",
+        "question": "How is the palette defined?",
+        "answer": "Neutrals and one brand ramp",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2388,196 +3314,552 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "token": "color.action.primary",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: brand blue marks the main action, with AAA white text (",
+         {
+          "ratio": 7.26
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info in light: teal.light.600: info reads as text and icons, 7.95:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.info",
+        "mode": "light",
+        "pick": "color.teal.light.600",
+        "why": [
+         "teal.light.600: info reads as text and icons, ",
+         {
+          "ratio": 7.95
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info.subtle in light: teal.light.100: a quiet tint behind info; its text, 12.76:1, above the 7:1 floor.",
+        "token": "color.status.info.subtle",
+        "mode": "light",
+        "pick": "color.teal.light.100",
+        "why": [
+         "teal.light.100: a quiet tint behind info; its text, ",
+         {
+          "ratio": 12.76
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success in light: green.light.600: success marks icons and edges, 5.38:1 on surface.default, over 3:1; its text uses success-on-light, which reads at the floor.",
+        "token": "color.status.success",
+        "mode": "light",
+        "pick": "color.green.light.600",
+        "why": [
+         "green.light.600: success marks icons and edges, ",
+         {
+          "ratio": 5.38
+         },
+         " on surface.default, over ",
+         {
+          "ratio": 3
+         },
+         "; its text uses success-on-light, which reads at the floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success.subtle in light: green.light.100: a quiet tint behind success; its text, 10.79:1, above the 7:1 floor.",
+        "token": "color.status.success.subtle",
+        "mode": "light",
+        "pick": "color.green.light.100",
+        "why": [
+         "green.light.100: a quiet tint behind success; its text, ",
+         {
+          "ratio": 10.79
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning in light: amber.light.600: warning marks icons and edges, 6.16:1 on surface.default, over 3:1; its text uses warning-on-light, which reads at the floor.",
+        "token": "color.status.warning",
+        "mode": "light",
+        "pick": "color.amber.light.600",
+        "why": [
+         "amber.light.600: warning marks icons and edges, ",
+         {
+          "ratio": 6.16
+         },
+         " on surface.default, over ",
+         {
+          "ratio": 3
+         },
+         "; its text uses warning-on-light, which reads at the floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning.subtle in light: amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 7:1 floor.",
+        "token": "color.status.warning.subtle",
+        "mode": "light",
+        "pick": "color.amber.light.100",
+        "why": [
+         "amber.light.100: a quiet tint behind warning; its text, ",
+         {
+          "ratio": 11.09
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger in light: red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.danger",
+        "mode": "light",
+        "pick": "color.red.light.700",
+        "why": [
+         "red.light.700: danger reads as text and icons, ",
+         {
+          "ratio": 8.55
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger.subtle in light: red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 7:1 floor.",
+        "token": "color.status.danger.subtle",
+        "mode": "light",
+        "pick": "color.red.light.100",
+        "why": [
+         "red.light.100: a quiet tint behind danger; its text, ",
+         {
+          "ratio": 9.9
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.1 in light: blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.26:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.1",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 7.26
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.2 in light: teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.95:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.2",
+        "mode": "light",
+        "pick": "color.teal.light.600",
+        "why": [
+         "teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 7.95
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.3 in light: green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.3",
+        "mode": "light",
+        "pick": "color.green.light.600",
+        "why": [
+         "green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 5.38
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.4 in light: amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.4",
+        "mode": "light",
+        "pick": "color.amber.light.600",
+        "why": [
+         "amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 6.16
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.5 in light: neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 7.0:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.5",
+        "mode": "light",
+        "pick": "color.neutral.500",
+        "why": [
+         "neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 7
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "token": "color.action.primary",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+         {
+          "ratio": 8.74
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info in dark: teal.dark.600: info reads as text and icons, 10.21:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.info",
+        "mode": "dark",
+        "pick": "color.teal.dark.600",
+        "why": [
+         "teal.dark.600: info reads as text and icons, ",
+         {
+          "ratio": 10.21
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info.subtle in dark: teal.dark.100: a quiet tint behind info; its text, 12.32:1, above the 7:1 floor.",
+        "token": "color.status.info.subtle",
+        "mode": "dark",
+        "pick": "color.teal.dark.100",
+        "why": [
+         "teal.dark.100: a quiet tint behind info; its text, ",
+         {
+          "ratio": 12.32
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success in dark: green.dark.600: success reads as text and icons, 8.33:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.success",
+        "mode": "dark",
+        "pick": "color.green.dark.600",
+        "why": [
+         "green.dark.600: success reads as text and icons, ",
+         {
+          "ratio": 8.33
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success.subtle in dark: green.dark.100: a quiet tint behind success; its text, 13.1:1, above the 7:1 floor.",
+        "token": "color.status.success.subtle",
+        "mode": "dark",
+        "pick": "color.green.dark.100",
+        "why": [
+         "green.dark.100: a quiet tint behind success; its text, ",
+         {
+          "ratio": 13.1
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning in dark: amber.dark.600: warning reads as text and icons, 10.29:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.warning",
+        "mode": "dark",
+        "pick": "color.amber.dark.600",
+        "why": [
+         "amber.dark.600: warning reads as text and icons, ",
+         {
+          "ratio": 10.29
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning.subtle in dark: amber.dark.100: a quiet tint behind warning; its text, 12.37:1, above the 7:1 floor.",
+        "token": "color.status.warning.subtle",
+        "mode": "dark",
+        "pick": "color.amber.dark.100",
+        "why": [
+         "amber.dark.100: a quiet tint behind warning; its text, ",
+         {
+          "ratio": 12.37
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger in dark: red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.danger",
+        "mode": "dark",
+        "pick": "color.red.dark.600",
+        "why": [
+         "red.dark.600: danger reads as text and icons, ",
+         {
+          "ratio": 7.76
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger.subtle in dark: red.dark.100: a quiet tint behind danger; its text, 12.25:1, above the 7:1 floor.",
+        "token": "color.status.danger.subtle",
+        "mode": "dark",
+        "pick": "color.red.dark.100",
+        "why": [
+         "red.dark.100: a quiet tint behind danger; its text, ",
+         {
+          "ratio": 12.25
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.1 in dark: blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.74:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.1",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 8.74
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.2 in dark: teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.21:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.2",
+        "mode": "dark",
+        "pick": "color.teal.dark.600",
+        "why": [
+         "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 10.21
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.3 in dark: green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.33:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.3",
+        "mode": "dark",
+        "pick": "color.green.dark.600",
+        "why": [
+         "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 8.33
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.4 in dark: amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.29:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.4",
+        "mode": "dark",
+        "pick": "color.amber.dark.600",
+        "why": [
+         "amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 10.29
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.category.5 in dark: neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 12.68:1 on surface.default, above the 3:1 floor.",
+        "token": "color.category.5",
+        "mode": "dark",
+        "pick": "color.neutral.700",
+        "why": [
+         "neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, ",
+         {
+          "ratio": 12.68
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2592,7 +3874,10 @@
    "answer": "Gaps, insets and row heights",
    "why": "Large rows matter for touch and zoom.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [],
@@ -2606,7 +3891,10 @@
    "answer": "One",
    "why": "One density; no compact mode to fail people.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -2629,7 +3917,10 @@
    "answer": "Big, even steps",
    "why": "Big, even steps lower effort.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [],
@@ -2643,7 +3934,10 @@
    "answer": "Spacious",
    "why": "Space lowers effort and mis-taps.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [
@@ -2663,7 +3957,12 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "token": "radius.option",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2678,7 +3977,10 @@
    "answer": "Between fields",
    "why": "Space between fields prevents mis-taps.",
    "because": [
-    "What is the main content? → Forms and tasks"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    }
    ],
    "decided": {
     "groups": [
@@ -2701,7 +4003,10 @@
    "answer": "Controls, badges and containers",
    "why": "Badges keep a clear rectangle.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [
@@ -2709,7 +4014,9 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Shape · How many corner sizes exist? → Three",
+        "scope": "Shape",
+        "question": "How many corner sizes exist?",
+        "answer": "Three",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2733,35 +4040,36 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
+        "token": "radius.badge",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
+        "token": "radius.option",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.element: radius.6: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "token": "radius.surface",
+        "mode": "every mode",
+        "pick": "radius.8",
+        "why": [
+         "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2776,7 +4084,11 @@
    "answer": "Three",
    "why": "Control, badge and container corners differ.",
    "because": [
-    "Shape · Which shape roles does it need? → Controls, badges and containers"
+    {
+     "scope": "Shape",
+     "question": "Which shape roles does it need?",
+     "answer": "Controls, badges and containers"
+    }
    ],
    "decided": {
     "groups": [
@@ -2784,7 +4096,24 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "token": "radius.option",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.surface",
+        "mode": "every mode",
+        "pick": "radius.8",
+        "why": [
+         "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2799,7 +4128,10 @@
    "answer": "Fixed for the product",
    "why": "One brand, one set of corners.",
    "because": [
-    "How many brands or products share the system? → One"
+    {
+     "question": "How many brands or products share the system?",
+     "answer": "One"
+    }
    ],
    "decided": {
     "groups": [],
@@ -2813,7 +4145,10 @@
    "answer": "Slightly rounded",
    "why": "Clear, slightly rounded controls.",
    "because": [
-    "What should the brand feel like? → Calm and clear"
+    {
+     "question": "What should the brand feel like?",
+     "answer": "Calm and clear"
+    }
    ],
    "decided": {
     "groups": [
@@ -2833,28 +4168,36 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
+        "token": "radius.control",
+        "mode": "every mode",
+        "pick": "radius.6",
+        "why": [
+         "radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
+        "token": "radius.badge",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.element: radius.6: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "token": "radius.element",
+        "mode": "every mode",
+        "pick": "radius.6",
+        "why": [
+         "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1)."
+        ],
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2869,30 +4212,27 @@
    "answer": "Controls and cards",
    "why": "Corners show on controls and step cards.",
    "because": [
-    "What is the main content? → Forms and tasks"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    }
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
    }
   },
   "elevation-roles": {
    "answer": "Nothing",
    "why": "Flat is easier to read at high zoom.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [
@@ -2900,21 +4240,27 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Elevation · How many shadow levels exist? → None",
+        "scope": "Elevation",
+        "question": "How many shadow levels exist?",
+        "answer": "None",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "Elevation · How soft are shadows? → No shadows",
+        "scope": "Elevation",
+        "question": "How soft are shadows?",
+        "answer": "No shadows",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "Elevation · Where does elevation show? → Dialogs only",
+        "scope": "Elevation",
+        "question": "Where does elevation show?",
+        "answer": "Dialogs only",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2938,56 +4284,96 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.surface.raised in light: neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
+        "token": "color.surface.raised",
+        "mode": "light",
+        "pick": "color.neutral.0",
+        "why": [
+         "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.scrim in light: black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+        "token": "color.surface.scrim",
+        "mode": "light",
+        "pick": "color.black.light.scrim",
+        "why": [
+         "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "elevation.card in light: shadow.none: Flat is easier to read at high zoom.",
+        "token": "elevation.card",
+        "mode": "light",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.none: No shadows; borders do the work.",
+        "token": "elevation.overlay",
+        "mode": "light",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "color.surface.raised in dark: neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+        "token": "color.surface.raised",
+        "mode": "dark",
+        "pick": "color.neutral.50",
+        "why": [
+         "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.scrim in dark: black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+        "token": "color.surface.scrim",
+        "mode": "dark",
+        "pick": "color.black.dark.scrim",
+        "why": [
+         "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: Flat is easier to read at high zoom.",
+        "token": "elevation.card",
+        "mode": "dark",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.none: No shadows; borders do the work.",
+        "token": "elevation.overlay",
+        "mode": "dark",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3002,7 +4388,11 @@
    "answer": "None",
    "why": "No shadows.",
    "because": [
-    "Elevation · What rises above the page? → Nothing"
+    {
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Nothing"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3016,7 +4406,10 @@
    "answer": "Lines",
    "why": "Strong borders separate groups at any zoom.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [
@@ -3069,56 +4462,120 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.surface.canvas in light: neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "token": "color.surface.canvas",
+        "mode": "light",
+        "pick": "color.neutral.50",
+        "why": [
+         "neutral.50, under content: ",
+         {
+          "ratio": 1.07
+         },
+         " from surface.default, so cards and panels stand forward."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.raised in light: neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
+        "token": "color.surface.raised",
+        "mode": "light",
+        "pick": "color.neutral.0",
+        "why": [
+         "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.sunken in light: neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+        "token": "color.surface.sunken",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, a step below content (",
+         {
+          "ratio": 1.17
+         },
+         " on surface.default), so table headers and wells read as recessed."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.default in light: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+        "token": "color.border.default",
+        "mode": "light",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+         {
+          "ratio": 1.36
+         },
+         ", on surface.canvas). It decorates, so it holds no contrast minimum."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.canvas in dark: neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+        "token": "color.surface.canvas",
+        "mode": "dark",
+        "pick": "color.neutral.0",
+        "why": [
+         "neutral.0, under content: ",
+         {
+          "ratio": 1.07
+         },
+         " from surface.default, so cards and panels stand forward."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.raised in dark: neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+        "token": "color.surface.raised",
+        "mode": "dark",
+        "pick": "color.neutral.50",
+        "why": [
+         "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.sunken in dark: neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+        "token": "color.surface.sunken",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, a step below content (",
+         {
+          "ratio": 1.16
+         },
+         " on surface.default), so table headers and wells read as recessed."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.default in dark: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+        "token": "color.border.default",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+         {
+          "ratio": 1.46
+         },
+         ", on surface.default). It decorates, so it holds no contrast minimum."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3133,7 +4590,11 @@
    "answer": "No shadows",
    "why": "No shadows; borders do the work.",
    "because": [
-    "Elevation · What rises above the page? → Nothing"
+    {
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Nothing"
+    }
    ],
    "decided": {
     "groups": [
@@ -3160,28 +4621,48 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.card in light: shadow.none: Flat is easier to read at high zoom.",
+        "token": "elevation.card",
+        "mode": "light",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.none: No shadows; borders do the work.",
+        "token": "elevation.overlay",
+        "mode": "light",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: Flat is easier to read at high zoom.",
+        "token": "elevation.card",
+        "mode": "dark",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.none: No shadows; borders do the work.",
+        "token": "elevation.overlay",
+        "mode": "dark",
+        "pick": "shadow.none",
+        "why": [
+         "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3196,7 +4677,11 @@
    "answer": "Dialogs only",
    "why": "Only dialogs separate, with a dimmed page and a border.",
    "because": [
-    "Elevation · What rises above the page? → Nothing"
+    {
+     "scope": "Elevation",
+     "question": "What rises above the page?",
+     "answer": "Nothing"
+    }
    ],
    "decided": {
     "groups": [
@@ -3219,7 +4704,10 @@
    "answer": "Feedback only",
    "why": "Motion only confirms an action.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -3227,14 +4715,18 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Motion · How many speeds exist? → One",
+        "scope": "Motion",
+        "question": "How many speeds exist?",
+        "answer": "One",
         "link": {
          "label": "Motion",
          "href": "foundations/motion"
         }
        },
        {
-        "text": "Motion · Where does motion show? → State changes only",
+        "scope": "Motion",
+        "question": "Where does motion show?",
+        "answer": "State changes only",
         "link": {
          "label": "Motion",
          "href": "foundations/motion"
@@ -3261,7 +4753,11 @@
    "answer": "One",
    "why": "One speed.",
    "because": [
-    "Motion · What is motion for? → Feedback only"
+    {
+     "scope": "Motion",
+     "question": "What is motion for?",
+     "answer": "Feedback only"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3275,7 +4771,10 @@
    "answer": "Standard ease-out",
    "why": "A standard ease-out is easy to follow.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3289,7 +4788,10 @@
    "answer": "Moderate",
    "why": "Moderate speed is easy to follow.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -3324,7 +4826,11 @@
    "answer": "State changes only",
    "why": "Only state changes move.",
    "because": [
-    "Motion · What is motion for? → Feedback only"
+    {
+     "scope": "Motion",
+     "question": "What is motion for?",
+     "answer": "Feedback only"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3338,7 +4844,10 @@
    "answer": "Actions and status",
    "why": "Icons support words; they never replace them.",
    "because": [
-    "How do people recall the interface? → They see it fresh each time"
+    {
+     "question": "How do people recall the interface?",
+     "answer": "They see it fresh each time"
+    }
    ],
    "decided": {
     "groups": [
@@ -3387,7 +4896,11 @@
    "answer": "One",
    "why": "One size, larger than the text.",
    "because": [
-    "Iconography · How big are icons next to text? → Larger than the text"
+    {
+     "scope": "Iconography",
+     "question": "How big are icons next to text?",
+     "answer": "Larger than the text"
+    }
    ],
    "decided": {
     "groups": [
@@ -3417,7 +4930,10 @@
    "answer": "Bold stroke",
    "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -3461,7 +4977,10 @@
    "answer": "Larger than the text",
    "why": "Larger icons are easier to see.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -3469,7 +4988,9 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Iconography · How many icon sizes exist? → One",
+        "scope": "Iconography",
+        "question": "How many icon sizes exist?",
+        "answer": "One",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -3496,7 +5017,11 @@
    "answer": "Status and messages",
    "why": "Icons work hardest beside status words and errors.",
    "because": [
-    "Accessibility · How many signals carry each meaning? → Three: color, icon and word"
+    {
+     "scope": "Accessibility",
+     "question": "How many signals carry each meaning?",
+     "answer": "Three: color, icon and word"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3510,7 +5035,10 @@
    "answer": "Mode only",
    "why": "One brand, so only the mode changes.",
    "because": [
-    "How many brands or products share the system? → One"
+    {
+     "question": "How many brands or products share the system?",
+     "answer": "One"
+    }
    ],
    "decided": {
     "groups": [
@@ -3518,7 +5046,9 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Theming · What changes when the theme changes? → Colors only",
+        "scope": "Theming",
+        "question": "What changes when the theme changes?",
+        "answer": "Colors only",
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
@@ -3533,7 +5063,11 @@
    "answer": "Two",
    "why": "Light and dark.",
    "because": [
-    "Theming · Which modes ship? → Light and dark"
+    {
+     "scope": "Theming",
+     "question": "Which modes ship?",
+     "answer": "Light and dark"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3547,7 +5081,10 @@
    "answer": "One brand",
    "why": "One service, one brand.",
    "because": [
-    "How many brands or products share the system? → One"
+    {
+     "question": "How many brands or products share the system?",
+     "answer": "One"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3561,7 +5098,10 @@
    "answer": "Light and dark",
    "why": "Light and dark ship as standard; both hold AAA text.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [
@@ -3569,7 +5109,9 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Theming · How many themes ship? → Two",
+        "scope": "Theming",
+        "question": "How many themes ship?",
+        "answer": "Two",
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
@@ -3596,7 +5138,11 @@
    "answer": "Colors only",
    "why": "Only colors change.",
    "because": [
-    "Theming · What can a theme change? → Mode only"
+    {
+     "scope": "Theming",
+     "question": "What can a theme change?",
+     "answer": "Mode only"
+    }
    ],
    "decided": {
     "groups": [],
@@ -3610,7 +5156,10 @@
    "answer": "All, including loading",
    "why": "Every state, including loading, gets its own value.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [
@@ -3618,112 +5167,248 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.surface.highlight in light: neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+        "token": "color.surface.highlight",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.pressed in light: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "token": "color.surface.pressed",
+        "mode": "light",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary.hover in light: blue.light.700: one step from the primary action (blue.light.600), so the pointer shows; its label still reads 10.5:1, above the 7:1 floor.",
+        "token": "color.action.primary.hover",
+        "mode": "light",
+        "pick": "color.blue.light.700",
+        "why": [
+         "blue.light.700: one step from the primary action (blue.light.600), so the pointer shows; its label still reads ",
+         {
+          "ratio": 10.5
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary.hover in light: neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.74:1, above the 7:1 floor.",
+        "token": "color.action.secondary.hover",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads ",
+         {
+          "ratio": 15.74
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger.hover in light: red.light.800: one step from the danger action (red.light.700), so the pointer shows; its label still reads 12.7:1, above the 7:1 floor.",
+        "token": "color.action.danger.hover",
+        "mode": "light",
+        "pick": "color.red.light.800",
+        "why": [
+         "red.light.800: one step from the danger action (red.light.700), so the pointer shows; its label still reads ",
+         {
+          "ratio": 12.7
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.disabled.text in light: neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+        "token": "color.disabled.text",
+        "mode": "light",
+        "pick": "color.neutral.500",
+        "why": [
+         "neutral.500: ",
+         {
+          "ratio": 7
+         },
+         " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.disabled.surface in light: neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "token": "color.disabled.surface",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.disabled.border in light: neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "token": "color.disabled.border",
+        "mode": "light",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.highlight in dark: neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+        "token": "color.surface.highlight",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.pressed in dark: neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+        "token": "color.surface.pressed",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary.hover in dark: blue.dark.700: one step from the primary action (blue.dark.600), so the pointer shows; its label still reads 10.8:1, above the 7:1 floor.",
+        "token": "color.action.primary.hover",
+        "mode": "dark",
+        "pick": "color.blue.dark.700",
+        "why": [
+         "blue.dark.700: one step from the primary action (blue.dark.600), so the pointer shows; its label still reads ",
+         {
+          "ratio": 10.8
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary.hover in dark: neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.85:1, above the 7:1 floor.",
+        "token": "color.action.secondary.hover",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads ",
+         {
+          "ratio": 14.85
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger.hover in dark: red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.92:1, above the 7:1 floor.",
+        "token": "color.action.danger.hover",
+        "mode": "dark",
+        "pick": "color.red.dark.700",
+        "why": [
+         "red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads ",
+         {
+          "ratio": 9.92
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.disabled.text in dark: neutral.500: 6.07:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+        "token": "color.disabled.text",
+        "mode": "dark",
+        "pick": "color.neutral.500",
+        "why": [
+         "neutral.500: ",
+         {
+          "ratio": 6.07
+         },
+         " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.disabled.surface in dark: neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "token": "color.disabled.surface",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.disabled.border in dark: neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+        "token": "color.disabled.border",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3738,7 +5423,10 @@
    "answer": "Three: color, icon and word",
    "why": "Never color alone.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [
@@ -3746,7 +5434,9 @@
       "kind": "answers",
       "items": [
        {
-        "text": "Iconography · Where do icons work hardest? → Status and messages",
+        "scope": "Iconography",
+        "question": "Where do icons work hardest?",
+        "answer": "Status and messages",
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
@@ -3831,126 +5521,352 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.text.info-on-light: teal.light.800: info text on its own tint, 12.76:1 on status.info.subtle, above the 7:1 floor.",
+        "token": "color.text.info-on-light",
+        "mode": "every mode",
+        "pick": "color.teal.light.800",
+        "why": [
+         "teal.light.800: info text on its own tint, ",
+         {
+          "ratio": 12.76
+         },
+         " on status.info.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.info-on-dark: teal.light.100: info text on its own tint, 12.32:1 on status.info.subtle, above the 7:1 floor.",
+        "token": "color.text.info-on-dark",
+        "mode": "every mode",
+        "pick": "color.teal.light.100",
+        "why": [
+         "teal.light.100: info text on its own tint, ",
+         {
+          "ratio": 12.32
+         },
+         " on status.info.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.success-on-light: green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 7:1 floor.",
+        "token": "color.text.success-on-light",
+        "mode": "every mode",
+        "pick": "color.green.light.800",
+        "why": [
+         "green.light.800: success text on its own tint, ",
+         {
+          "ratio": 10.79
+         },
+         " on status.success.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.success-on-dark: green.light.100: success text on its own tint, 13.1:1 on status.success.subtle, above the 7:1 floor.",
+        "token": "color.text.success-on-dark",
+        "mode": "every mode",
+        "pick": "color.green.light.100",
+        "why": [
+         "green.light.100: success text on its own tint, ",
+         {
+          "ratio": 13.1
+         },
+         " on status.success.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.warning-on-light: amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 7:1 floor.",
+        "token": "color.text.warning-on-light",
+        "mode": "every mode",
+        "pick": "color.amber.light.800",
+        "why": [
+         "amber.light.800: warning text on its own tint, ",
+         {
+          "ratio": 11.09
+         },
+         " on status.warning.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.warning-on-dark: amber.light.100: warning text on its own tint, 12.37:1 on status.warning.subtle, above the 7:1 floor.",
+        "token": "color.text.warning-on-dark",
+        "mode": "every mode",
+        "pick": "color.amber.light.100",
+        "why": [
+         "amber.light.100: warning text on its own tint, ",
+         {
+          "ratio": 12.37
+         },
+         " on status.warning.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.danger-on-light: red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 7:1 floor.",
+        "token": "color.text.danger-on-light",
+        "mode": "every mode",
+        "pick": "color.red.light.800",
+        "why": [
+         "red.light.800: danger text on its own tint, ",
+         {
+          "ratio": 9.9
+         },
+         " on status.danger.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.danger-on-dark: red.light.100: danger text on its own tint, 12.25:1 on status.danger.subtle, above the 7:1 floor.",
+        "token": "color.text.danger-on-dark",
+        "mode": "every mode",
+        "pick": "color.red.light.100",
+        "why": [
+         "red.light.100: danger text on its own tint, ",
+         {
+          "ratio": 12.25
+         },
+         " on status.danger.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.selected in light: blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "token": "color.surface.selected",
+        "mode": "light",
+        "pick": "color.blue.light.100",
+        "why": [
+         "blue.light.100: a tint of the brand, ",
+         {
+          "ratio": 1.18
+         },
+         " from content, always beside its edge (border.selected), so selection is never color alone."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info.subtle in light: teal.light.100: a quiet tint behind info; its text, 12.76:1, above the 7:1 floor.",
+        "token": "color.status.info.subtle",
+        "mode": "light",
+        "pick": "color.teal.light.100",
+        "why": [
+         "teal.light.100: a quiet tint behind info; its text, ",
+         {
+          "ratio": 12.76
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success.subtle in light: green.light.100: a quiet tint behind success; its text, 10.79:1, above the 7:1 floor.",
+        "token": "color.status.success.subtle",
+        "mode": "light",
+        "pick": "color.green.light.100",
+        "why": [
+         "green.light.100: a quiet tint behind success; its text, ",
+         {
+          "ratio": 10.79
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning.subtle in light: amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 7:1 floor.",
+        "token": "color.status.warning.subtle",
+        "mode": "light",
+        "pick": "color.amber.light.100",
+        "why": [
+         "amber.light.100: a quiet tint behind warning; its text, ",
+         {
+          "ratio": 11.09
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger.subtle in light: red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 7:1 floor.",
+        "token": "color.status.danger.subtle",
+        "mode": "light",
+        "pick": "color.red.light.100",
+        "why": [
+         "red.light.100: a quiet tint behind danger; its text, ",
+         {
+          "ratio": 9.9
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.selected in dark: blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+        "token": "color.surface.selected",
+        "mode": "dark",
+        "pick": "color.blue.dark.100",
+        "why": [
+         "blue.dark.100: a tint of the brand, ",
+         {
+          "ratio": 1.21
+         },
+         " from content, always beside its edge (border.selected), so selection is never color alone."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info.subtle in dark: teal.dark.100: a quiet tint behind info; its text, 12.32:1, above the 7:1 floor.",
+        "token": "color.status.info.subtle",
+        "mode": "dark",
+        "pick": "color.teal.dark.100",
+        "why": [
+         "teal.dark.100: a quiet tint behind info; its text, ",
+         {
+          "ratio": 12.32
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success.subtle in dark: green.dark.100: a quiet tint behind success; its text, 13.1:1, above the 7:1 floor.",
+        "token": "color.status.success.subtle",
+        "mode": "dark",
+        "pick": "color.green.dark.100",
+        "why": [
+         "green.dark.100: a quiet tint behind success; its text, ",
+         {
+          "ratio": 13.1
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning.subtle in dark: amber.dark.100: a quiet tint behind warning; its text, 12.37:1, above the 7:1 floor.",
+        "token": "color.status.warning.subtle",
+        "mode": "dark",
+        "pick": "color.amber.dark.100",
+        "why": [
+         "amber.dark.100: a quiet tint behind warning; its text, ",
+         {
+          "ratio": 12.37
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger.subtle in dark: red.dark.100: a quiet tint behind danger; its text, 12.25:1, above the 7:1 floor.",
+        "token": "color.status.danger.subtle",
+        "mode": "dark",
+        "pick": "color.red.dark.100",
+        "why": [
+         "red.dark.100: a quiet tint behind danger; its text, ",
+         {
+          "ratio": 12.25
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3965,7 +5881,10 @@
    "answer": "AAA for text",
    "why": "AAA contrast for text.",
    "because": [
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [
@@ -3985,392 +5904,1104 @@
       "kind": "picks",
       "items": [
        {
-        "text": "color.text.on-light: gray.light.900: the text for every light fill, 18.42:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.on-light",
+        "mode": "every mode",
+        "pick": "color.gray.light.900",
+        "why": [
+         "gray.light.900: the text for every light fill, ",
+         {
+          "ratio": 18.42
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.on-dark: gray.light.0: the text for every dark fill, 7.26:1 on action.primary, above the 7:1 floor.",
+        "token": "color.text.on-dark",
+        "mode": "every mode",
+        "pick": "color.gray.light.0",
+        "why": [
+         "gray.light.0: the text for every dark fill, ",
+         {
+          "ratio": 7.26
+         },
+         " on action.primary, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.info-on-light: teal.light.800: info text on its own tint, 12.76:1 on status.info.subtle, above the 7:1 floor.",
+        "token": "color.text.info-on-light",
+        "mode": "every mode",
+        "pick": "color.teal.light.800",
+        "why": [
+         "teal.light.800: info text on its own tint, ",
+         {
+          "ratio": 12.76
+         },
+         " on status.info.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.info-on-dark: teal.light.100: info text on its own tint, 12.32:1 on status.info.subtle, above the 7:1 floor.",
+        "token": "color.text.info-on-dark",
+        "mode": "every mode",
+        "pick": "color.teal.light.100",
+        "why": [
+         "teal.light.100: info text on its own tint, ",
+         {
+          "ratio": 12.32
+         },
+         " on status.info.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.success-on-light: green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 7:1 floor.",
+        "token": "color.text.success-on-light",
+        "mode": "every mode",
+        "pick": "color.green.light.800",
+        "why": [
+         "green.light.800: success text on its own tint, ",
+         {
+          "ratio": 10.79
+         },
+         " on status.success.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.success-on-dark: green.light.100: success text on its own tint, 13.1:1 on status.success.subtle, above the 7:1 floor.",
+        "token": "color.text.success-on-dark",
+        "mode": "every mode",
+        "pick": "color.green.light.100",
+        "why": [
+         "green.light.100: success text on its own tint, ",
+         {
+          "ratio": 13.1
+         },
+         " on status.success.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.warning-on-light: amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 7:1 floor.",
+        "token": "color.text.warning-on-light",
+        "mode": "every mode",
+        "pick": "color.amber.light.800",
+        "why": [
+         "amber.light.800: warning text on its own tint, ",
+         {
+          "ratio": 11.09
+         },
+         " on status.warning.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.warning-on-dark: amber.light.100: warning text on its own tint, 12.37:1 on status.warning.subtle, above the 7:1 floor.",
+        "token": "color.text.warning-on-dark",
+        "mode": "every mode",
+        "pick": "color.amber.light.100",
+        "why": [
+         "amber.light.100: warning text on its own tint, ",
+         {
+          "ratio": 12.37
+         },
+         " on status.warning.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.danger-on-light: red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 7:1 floor.",
+        "token": "color.text.danger-on-light",
+        "mode": "every mode",
+        "pick": "color.red.light.800",
+        "why": [
+         "red.light.800: danger text on its own tint, ",
+         {
+          "ratio": 9.9
+         },
+         " on status.danger.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.danger-on-dark: red.light.100: danger text on its own tint, 12.25:1 on status.danger.subtle, above the 7:1 floor.",
+        "token": "color.text.danger-on-dark",
+        "mode": "every mode",
+        "pick": "color.red.light.100",
+        "why": [
+         "red.light.100: danger text on its own tint, ",
+         {
+          "ratio": 12.25
+         },
+         " on status.danger.subtle, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.default in light: neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
+        "token": "color.surface.default",
+        "mode": "light",
+        "pick": "color.neutral.0",
+        "why": [
+         "neutral.0: the base for content; body text reads ",
+         {
+          "ratio": 18.42
+         },
+         " on it, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.inverse in light: neutral.900: the reverse of content for short messages; its text reads, 18.42:1 on surface.inverse, above the 7:1 floor.",
+        "token": "color.surface.inverse",
+        "mode": "light",
+        "pick": "color.neutral.900",
+        "why": [
+         "neutral.900: the reverse of content for short messages; its text reads, ",
+         {
+          "ratio": 18.42
+         },
+         " on surface.inverse, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.primary in light: neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.primary",
+        "mode": "light",
+        "pick": "color.neutral.900",
+        "why": [
+         "neutral.900: the strongest text step, ",
+         {
+          "ratio": 18.42
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.secondary in light: neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.secondary",
+        "mode": "light",
+        "pick": "color.neutral.700",
+        "why": [
+         "neutral.700: supporting text, ",
+         {
+          "ratio": 12.63
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.muted in light: neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.muted",
+        "mode": "light",
+        "pick": "color.neutral.500",
+        "why": [
+         "neutral.500: the quietest text that still reads, ",
+         {
+          "ratio": 7
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.inverse in light: text.on-dark: the text its fill's tone picks, 18.42:1 on surface.inverse, above the 7:1 floor.",
+        "token": "color.text.inverse",
+        "mode": "light",
+        "pick": "color.text.on-dark",
+        "why": [
+         "text.on-dark: the text its fill's tone picks, ",
+         {
+          "ratio": 18.42
+         },
+         " on surface.inverse, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.on-action in light: text.on-dark: the text its fill's tone picks, 7.26:1 on action.primary, above the 7:1 floor.",
+        "token": "color.text.on-action",
+        "mode": "light",
+        "pick": "color.text.on-dark",
+        "why": [
+         "text.on-dark: the text its fill's tone picks, ",
+         {
+          "ratio": 7.26
+         },
+         " on action.primary, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.link in light: blue.light.700: a link, set apart by its hue, 10.5:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.link",
+        "mode": "light",
+        "pick": "color.blue.light.700",
+        "why": [
+         "blue.light.700: a link, set apart by its hue, ",
+         {
+          "ratio": 10.5
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.on-danger in light: text.on-dark: the text its fill's tone picks, 8.55:1 on action.danger, above the 7:1 floor.",
+        "token": "color.text.on-danger",
+        "mode": "light",
+        "pick": "color.text.on-dark",
+        "why": [
+         "text.on-dark: the text its fill's tone picks, ",
+         {
+          "ratio": 8.55
+         },
+         " on action.danger, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.default in light: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+        "token": "color.border.default",
+        "mode": "light",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+         {
+          "ratio": 1.36
+         },
+         ", on surface.canvas). It decorates, so it holds no contrast minimum."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.strong in light: neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.strong",
+        "mode": "light",
+        "pick": "color.neutral.500",
+        "why": [
+         "neutral.500: the edge of a control people must find, ",
+         {
+          "ratio": 7
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.focus in light: blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.focus",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+         {
+          "ratio": 7.26
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.selected in light: blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.selected",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: the edge beside a selected fill, so selection is never color alone, ",
+         {
+          "ratio": 7.26
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary in light: blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+        "token": "color.action.primary",
+        "mode": "light",
+        "pick": "color.blue.light.600",
+        "why": [
+         "blue.light.600: brand blue marks the main action, with AAA white text (",
+         {
+          "ratio": 7.26
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary.hover in light: blue.light.700: one step from the primary action (blue.light.600), so the pointer shows; its label still reads 10.5:1, above the 7:1 floor.",
+        "token": "color.action.primary.hover",
+        "mode": "light",
+        "pick": "color.blue.light.700",
+        "why": [
+         "blue.light.700: one step from the primary action (blue.light.600), so the pointer shows; its label still reads ",
+         {
+          "ratio": 10.5
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary in light: neutral.0: the secondary action's fill; its label reads, 18.42:1, above the 7:1 floor.",
+        "token": "color.action.secondary",
+        "mode": "light",
+        "pick": "color.neutral.0",
+        "why": [
+         "neutral.0: the secondary action's fill; its label reads, ",
+         {
+          "ratio": 18.42
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary.hover in light: neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.74:1, above the 7:1 floor.",
+        "token": "color.action.secondary.hover",
+        "mode": "light",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads ",
+         {
+          "ratio": 15.74
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger in light: red.light.700: the danger action's fill; its label reads, 8.55:1, above the 7:1 floor.",
+        "token": "color.action.danger",
+        "mode": "light",
+        "pick": "color.red.light.700",
+        "why": [
+         "red.light.700: the danger action's fill; its label reads, ",
+         {
+          "ratio": 8.55
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger.hover in light: red.light.800: one step from the danger action (red.light.700), so the pointer shows; its label still reads 12.7:1, above the 7:1 floor.",
+        "token": "color.action.danger.hover",
+        "mode": "light",
+        "pick": "color.red.light.800",
+        "why": [
+         "red.light.800: one step from the danger action (red.light.700), so the pointer shows; its label still reads ",
+         {
+          "ratio": 12.7
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info in light: teal.light.600: info reads as text and icons, 7.95:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.info",
+        "mode": "light",
+        "pick": "color.teal.light.600",
+        "why": [
+         "teal.light.600: info reads as text and icons, ",
+         {
+          "ratio": 7.95
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success in light: green.light.600: success marks icons and edges, 5.38:1 on surface.default, over 3:1; its text uses success-on-light, which reads at the floor.",
+        "token": "color.status.success",
+        "mode": "light",
+        "pick": "color.green.light.600",
+        "why": [
+         "green.light.600: success marks icons and edges, ",
+         {
+          "ratio": 5.38
+         },
+         " on surface.default, over ",
+         {
+          "ratio": 3
+         },
+         "; its text uses success-on-light, which reads at the floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning in light: amber.light.600: warning marks icons and edges, 6.16:1 on surface.default, over 3:1; its text uses warning-on-light, which reads at the floor.",
+        "token": "color.status.warning",
+        "mode": "light",
+        "pick": "color.amber.light.600",
+        "why": [
+         "amber.light.600: warning marks icons and edges, ",
+         {
+          "ratio": 6.16
+         },
+         " on surface.default, over ",
+         {
+          "ratio": 3
+         },
+         "; its text uses warning-on-light, which reads at the floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger in light: red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.danger",
+        "mode": "light",
+        "pick": "color.red.light.700",
+        "why": [
+         "red.light.700: danger reads as text and icons, ",
+         {
+          "ratio": 8.55
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.default in dark: neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+        "token": "color.surface.default",
+        "mode": "dark",
+        "pick": "color.neutral.50",
+        "why": [
+         "neutral.50: the base for content; body text reads ",
+         {
+          "ratio": 17.2
+         },
+         " on it, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.inverse in dark: neutral.900: the reverse of content for short messages; its text reads, 17.2:1 on surface.inverse, above the 7:1 floor.",
+        "token": "color.surface.inverse",
+        "mode": "dark",
+        "pick": "color.neutral.900",
+        "why": [
+         "neutral.900: the reverse of content for short messages; its text reads, ",
+         {
+          "ratio": 17.2
+         },
+         " on surface.inverse, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.primary in dark: neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.primary",
+        "mode": "dark",
+        "pick": "color.neutral.900",
+        "why": [
+         "neutral.900: the strongest text step, ",
+         {
+          "ratio": 17.2
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.secondary in dark: neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.secondary",
+        "mode": "dark",
+        "pick": "color.neutral.700",
+        "why": [
+         "neutral.700: supporting text, ",
+         {
+          "ratio": 12.68
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.muted in dark: neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.muted",
+        "mode": "dark",
+        "pick": "color.neutral.600",
+        "why": [
+         "neutral.600: the quietest text that still reads, ",
+         {
+          "ratio": 8.89
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.inverse in dark: text.on-light: the text its fill's tone picks, 17.2:1 on surface.inverse, above the 7:1 floor.",
+        "token": "color.text.inverse",
+        "mode": "dark",
+        "pick": "color.text.on-light",
+        "why": [
+         "text.on-light: the text its fill's tone picks, ",
+         {
+          "ratio": 17.2
+         },
+         " on surface.inverse, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.on-action in dark: text.on-light: the text its fill's tone picks, 8.74:1 on action.primary, above the 7:1 floor.",
+        "token": "color.text.on-action",
+        "mode": "dark",
+        "pick": "color.text.on-light",
+        "why": [
+         "text.on-light: the text its fill's tone picks, ",
+         {
+          "ratio": 8.74
+         },
+         " on action.primary, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.link in dark: blue.dark.700: a link, set apart by its hue, 10.8:1 on surface.default, above the 7:1 floor.",
+        "token": "color.text.link",
+        "mode": "dark",
+        "pick": "color.blue.dark.700",
+        "why": [
+         "blue.dark.700: a link, set apart by its hue, ",
+         {
+          "ratio": 10.8
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.text.on-danger in dark: text.on-light: the text its fill's tone picks, 7.76:1 on action.danger, above the 7:1 floor.",
+        "token": "color.text.on-danger",
+        "mode": "dark",
+        "pick": "color.text.on-light",
+        "why": [
+         "text.on-light: the text its fill's tone picks, ",
+         {
+          "ratio": 7.76
+         },
+         " on action.danger, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.default in dark: neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+        "token": "color.border.default",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+         {
+          "ratio": 1.46
+         },
+         ", on surface.default). It decorates, so it holds no contrast minimum."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.strong in dark: neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.strong",
+        "mode": "dark",
+        "pick": "color.neutral.500",
+        "why": [
+         "neutral.500: the edge of a control people must find, ",
+         {
+          "ratio": 6.07
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.focus in dark: blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.focus",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+         {
+          "ratio": 8.74
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.border.selected in dark: blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+        "token": "color.border.selected",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: the edge beside a selected fill, so selection is never color alone, ",
+         {
+          "ratio": 8.74
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 3
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary in dark: blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+        "token": "color.action.primary",
+        "mode": "dark",
+        "pick": "color.blue.dark.600",
+        "why": [
+         "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+         {
+          "ratio": 8.74
+         },
+         ")."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.primary.hover in dark: blue.dark.700: one step from the primary action (blue.dark.600), so the pointer shows; its label still reads 10.8:1, above the 7:1 floor.",
+        "token": "color.action.primary.hover",
+        "mode": "dark",
+        "pick": "color.blue.dark.700",
+        "why": [
+         "blue.dark.700: one step from the primary action (blue.dark.600), so the pointer shows; its label still reads ",
+         {
+          "ratio": 10.8
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary in dark: neutral.50: the secondary action's fill; its label reads, 17.2:1, above the 7:1 floor.",
+        "token": "color.action.secondary",
+        "mode": "dark",
+        "pick": "color.neutral.50",
+        "why": [
+         "neutral.50: the secondary action's fill; its label reads, ",
+         {
+          "ratio": 17.2
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.secondary.hover in dark: neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.85:1, above the 7:1 floor.",
+        "token": "color.action.secondary.hover",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads ",
+         {
+          "ratio": 14.85
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger in dark: red.dark.600: the danger action's fill; its label reads, 7.76:1, above the 7:1 floor.",
+        "token": "color.action.danger",
+        "mode": "dark",
+        "pick": "color.red.dark.600",
+        "why": [
+         "red.dark.600: the danger action's fill; its label reads, ",
+         {
+          "ratio": 7.76
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.action.danger.hover in dark: red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.92:1, above the 7:1 floor.",
+        "token": "color.action.danger.hover",
+        "mode": "dark",
+        "pick": "color.red.dark.700",
+        "why": [
+         "red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads ",
+         {
+          "ratio": 9.92
+         },
+         ", above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.info in dark: teal.dark.600: info reads as text and icons, 10.21:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.info",
+        "mode": "dark",
+        "pick": "color.teal.dark.600",
+        "why": [
+         "teal.dark.600: info reads as text and icons, ",
+         {
+          "ratio": 10.21
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.success in dark: green.dark.600: success reads as text and icons, 8.33:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.success",
+        "mode": "dark",
+        "pick": "color.green.dark.600",
+        "why": [
+         "green.dark.600: success reads as text and icons, ",
+         {
+          "ratio": 8.33
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.warning in dark: amber.dark.600: warning reads as text and icons, 10.29:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.warning",
+        "mode": "dark",
+        "pick": "color.amber.dark.600",
+        "why": [
+         "amber.dark.600: warning reads as text and icons, ",
+         {
+          "ratio": 10.29
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.status.danger in dark: red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+        "token": "color.status.danger",
+        "mode": "dark",
+        "pick": "color.red.dark.600",
+        "why": [
+         "red.dark.600: danger reads as text and icons, ",
+         {
+          "ratio": 7.76
+         },
+         " on surface.default, above the ",
+         {
+          "ratio": 7
+         },
+         " floor."
+        ],
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -4385,7 +7016,10 @@
    "answer": "Large",
    "why": "Large targets for tremor and touch.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -4476,7 +7110,10 @@
    "answer": "Forms",
    "why": "Forms are where people are blocked.",
    "because": [
-    "What is the main content? → Forms and tasks"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4490,7 +7127,10 @@
    "answer": "Tokens and component keys",
    "why": "Components get their own keys.",
    "because": [
-    "How fast does it change? → Rarely"
+    {
+     "question": "How fast does it change?",
+     "answer": "Rarely"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4504,7 +7144,10 @@
    "answer": "Three",
    "why": "Primitives, semantics and component keys.",
    "because": [
-    "How fast does it change? → Rarely"
+    {
+     "question": "How fast does it change?",
+     "answer": "Rarely"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4518,7 +7161,10 @@
    "answer": "By role",
    "why": "Role names survive a redesign.",
    "because": [
-    "Who maintains the system? → A platform team"
+    {
+     "question": "Who maintains the system?",
+     "answer": "A platform team"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4532,7 +7178,10 @@
    "answer": "Lowercase words in paths",
    "why": "Lowercase paths read the same everywhere.",
    "because": [
-    "Who maintains the system? → A platform team"
+    {
+     "question": "Who maintains the system?",
+     "answer": "A platform team"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4546,7 +7195,10 @@
    "answer": "Component keys",
    "why": "A component API keeps changes local.",
    "because": [
-    "How fast does it change? → Rarely"
+    {
+     "question": "How fast does it change?",
+     "answer": "Rarely"
+    }
    ],
    "decided": {
     "groups": [
@@ -4569,7 +7221,10 @@
    "answer": "Labels, messages and help",
    "why": "Hints and help text carry people through each step.",
    "because": [
-    "What is the main content? → Forms and tasks"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    }
    ],
    "decided": {
     "groups": [
@@ -4592,7 +7247,10 @@
    "answer": "One",
    "why": "One plain tone everywhere; no surprises.",
    "because": [
-    "What must the interface protect? → Low effort to understand"
+    {
+     "question": "What must the interface protect?",
+     "answer": "Low effort to understand"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4606,7 +7264,10 @@
    "answer": "Rules and a word list",
    "why": "A word list of common words, with terms to avoid.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [
@@ -4629,8 +7290,14 @@
    "answer": "Plain and direct",
    "why": "Every sentence is easy to read on the first try.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities",
-    "What should the brand feel like? → Calm and clear"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    },
+    {
+     "question": "What should the brand feel like?",
+     "answer": "Calm and clear"
+    }
    ],
    "decided": {
     "groups": [
@@ -4700,7 +7367,10 @@
    "answer": "Form steps and errors",
    "why": "Words decide whether a form gets finished.",
    "because": [
-    "Which outcome matters most? → Completion without errors"
+    {
+     "question": "Which outcome matters most?",
+     "answer": "Completion without errors"
+    }
    ],
    "decided": {
     "groups": [
@@ -4723,8 +7393,14 @@
    "answer": "Actions, forms, feedback, overlays, layout and navigation",
    "why": "Forms, steps and feedback are all a public service needs.",
    "because": [
-    "What is the main content? → Forms and tasks",
-    "Who uses it most? → Everyone, including people with disabilities"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    },
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4738,8 +7414,14 @@
    "answer": "Only what today's screens use",
    "why": "Only the parts in use, each tested with assistive technology.",
    "because": [
-    "What accessibility level do we commit to? → AAA",
-    "How fast does it change? → Rarely"
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    },
+    {
+     "question": "How fast does it change?",
+     "answer": "Rarely"
+    }
    ],
    "decided": {
     "groups": [],
@@ -4753,8 +7435,14 @@
    "answer": "It works for everyone, with any device and assistive technology",
    "why": "A component joins only when it works with any device and assistive technology.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities",
-    "What accessibility level do we commit to? → AAA"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    },
+    {
+     "question": "What accessibility level do we commit to?",
+     "answer": "AAA"
+    }
    ],
    "decided": {
     "groups": [
@@ -4777,8 +7465,14 @@
    "answer": "Only when the meaning changes",
    "why": "One clear way to do each thing.",
    "because": [
-    "Who uses it most? → Everyone, including people with disabilities",
-    "What should the brand feel like? → Calm and clear"
+    {
+     "question": "Who uses it most?",
+     "answer": "Everyone, including people with disabilities"
+    },
+    {
+     "question": "What should the brand feel like?",
+     "answer": "Calm and clear"
+    }
    ],
    "decided": {
     "groups": [
@@ -4801,8 +7495,14 @@
    "answer": "Forms and steps",
    "why": "Components do their work in forms and steps.",
    "because": [
-    "What is the main content? → Forms and tasks",
-    "What is the main task? → Complete a form"
+    {
+     "question": "What is the main content?",
+     "answer": "Forms and tasks"
+    },
+    {
+     "question": "What is the main task?",
+     "answer": "Complete a form"
+    }
    ],
    "decided": {
     "groups": [],

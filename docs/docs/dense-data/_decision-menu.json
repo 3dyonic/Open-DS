@@ -17,7 +17,7 @@
         {
           "id": "content",
           "title": "Content and data",
-          "count": 64
+          "count": 65
         },
         {
           "id": "tasks",
@@ -37,7 +37,7 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 25
+          "count": 28
         },
         {
           "id": "scenarios",
@@ -72,7 +72,7 @@
         {
           "id": "shape",
           "title": "Shape",
-          "count": 13
+          "count": 11
         },
         {
           "id": "elevation",
@@ -92,7 +92,7 @@
         {
           "id": "theming",
           "title": "Theming",
-          "count": 2
+          "count": 3
         },
         {
           "id": "accessibility",

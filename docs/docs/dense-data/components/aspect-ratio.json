@@ -1,6 +1,10 @@
 {
  "preview": {
   "aspect-ratio/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Aspect ratio examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {

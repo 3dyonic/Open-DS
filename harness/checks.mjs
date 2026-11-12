@@ -3,10 +3,10 @@
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
 import { themeTokens } from "../cli/src/tokens.mjs";
-import { pairsIn, toneOf } from "../cli/src/tones.mjs";
+import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
 import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "../cli/src/schemes.mjs";
-import { flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
+import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -276,16 +276,6 @@ export const CHECKS = {
       const g = c.grammar();
       const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
       const gaps = [];
-      const lum = (hex) => {
-        const [r, gr, b] = [1, 3, 5]
-          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
-          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
-        return 0.2126 * r + 0.7152 * gr + 0.0722 * b;
-      };
-      const ratio = (a, b) => {
-        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
-        return (x + 0.05) / (y + 0.05);
-      };
       for (const id of g.semantics.urgency.order)
         if (!guide.has(id)) gaps.push(`urgency names ${id}, which has no guidance`);
       let pairs = 0;
@@ -326,17 +316,12 @@ export const CHECKS = {
               if (tn && hex(name) !== hex(`color.text.on-${tn}`))
                 gaps.push(`${s}/${brand}/${mode}: ${name} is not color.text.on-${tn}, the text for ${fill}'s tone`);
             }
-            for (const p of pairsIn(g, { id: s, tokens: t }, brand, mode)) {
-              const [a, b] = [hex(p.key), hex(p.on)];
-              if (!a || !b) continue;
-              pairs++;
-              const r = ratio(a, b);
-              if (r >= p.contrast) continue;
-              const what = `${s}/${brand}/${mode}: ${p.key} on ${p.on} is ${r.toFixed(2)}:1, needs ${p.contrast}:1`;
-              if (p.waits) waiting.add(`${s}/${brand}/${mode} ${p.on} (${p.waits.for})`);
-              else gaps.push(what);
-            }
           }
+        // The contrast pairs are a build rule (cli/src/scheme-checks.mjs, OD-292).
+        const contrast = contrastPairs({ id: s, tokens: t }, g);
+        pairs += contrast.pairs;
+        gaps.push(...contrast.gaps);
+        for (const w of contrast.waiting) waiting.add(w);
       }
       return gaps.length
         ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
@@ -513,6 +498,123 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "spacing-use-cases-generated": {
+    requires: ["cli/src/spacing-use-cases.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-294: every scheme's space tokens equal base × multiple from its spacing record, and its
+      // control heights and row equal its control scale. Every reason names its value, its job from
+      // the grammar's spacing jobs, and its use case or mechanism. A hand-edited value fails.
+      const { spaceValues, spaceProblems, controlHeights, controlProblems } = await import(
+        pathToFileURL(c.p("cli/src/spacing-use-cases.mjs")).href
+      );
+      const { matches } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const spacing = c.grammar().scopes.find((sc) => sc.id === "spacing");
+      const jobs = spacing?.jobs ?? [];
+      const gaps = [];
+      if (!spacing?.use_cases) gaps.push("the spacing scope names no use-case words");
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const semantic = s.tokens.semantic;
+        const answer = (q) => s.answers.find((a) => a.question === q)?.option;
+        const space = semantic.space?.$extensions?.["open-ds"];
+        const size = semantic.size?.$extensions?.["open-ds"];
+        if (!space?.["use-cases"] || !size?.steps) {
+          gaps.push(`${id}: no spacing record on space or no control scale on size`);
+          continue;
+        }
+        const rowRole = answer("spacing.roles") === "gap-inset-row";
+        gaps.push(
+          ...spaceProblems(space, { vocabulary: spacing?.use_cases, definition: answer("spacing.definition") }).map((p) => `${id}: ${p}`),
+          ...controlProblems(size, { rowRole }).map((p) => `${id}: ${p}`),
+        );
+        for (const q of [...(space.follows ?? []), ...(size.follows ?? [])])
+          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: a record follows ${q}, which is not an answer`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        const px = (name) => Math.round(parseFloat(String(resolve(all, name)?.value ?? "")) * 16 * 100) / 100;
+        const want = {
+          ...Object.fromEntries(Object.entries(spaceValues(space)).map(([k, v]) => [`space.${k}`, v])),
+          ...Object.fromEntries(Object.entries(controlHeights(size)).map(([k, v]) => [`size.${k}`, v])),
+        };
+        for (const group of ["gap", "inset"])
+          for (const k of Object.keys(semantic.space[group] ?? {}).filter((k) => !k.startsWith("$")))
+            if (!(`space.${group}.${k}` in want)) gaps.push(`${id}: space.${group}.${k} has no use case`);
+        for (const [name, value] of Object.entries(want)) {
+          if (px(name) !== value) gaps.push(`${id}: ${name} is ${px(name)}px, the record gives ${value}px`);
+          const token = name.split(".").reduce((n, k) => n?.[k], semantic);
+          const why = token?.$extensions?.["open-ds"]?.why ?? "";
+          const job = jobs.find((j) => j.tokens.some((p) => matches(p, name)));
+          const says = (text, what) => {
+            if (!why.includes(text)) gaps.push(`${id}: the reason of ${name} does not name ${what ?? text}`);
+          };
+          says(`${value}px`);
+          if (!job) gaps.push(`${id}: ${name} has no job in the grammar's spacing jobs`);
+          else says(job.job, `its job (${job.job})`);
+          // The use case or mechanism: a multiple of the base, a step on the control scale, or inheritance.
+          if (name.startsWith("space.")) {
+            const useCase = space["use-cases"][name.slice("space.".length)];
+            says(`${useCase.multiple} × ${space.base}px`, `its multiple (${useCase.multiple} × ${space.base}px)`);
+          } else if (name === "size.row") says(rowRole ? "decision of their own" : "inheritance", rowRole ? "the row decision" : "its inheritance");
+          else {
+            says("control scale");
+            // WCAG measures the hit area, not the drawn box: a control's reason names its hit area.
+            says("hit area");
+          }
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`the space tokens, control heights and rows in ${SCHEMES.length} schemes match their records and name their use case`);
+    },
+  },
+  "type-scale-generated": {
+    requires: ["cli/src/type-scale.mjs"],
+    run: async (c) => {
+      // OD-294: every scheme's type sizes and line heights equal the generator's output from its
+      // scale: base × ratio^step, and the tight or open line height. A hand-edited size fails, and so
+      // does a reason that names an old number.
+      const { sizes, lineHeights, specProblems } = await import(pathToFileURL(c.p("cli/src/type-scale.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const type = s.tokens.semantic.type;
+        const spec = type?.$extensions?.["open-ds"];
+        if (!spec?.steps) {
+          gaps.push(`${id}: no type scale on the type group`);
+          continue;
+        }
+        gaps.push(...specProblems(spec).map((p) => `${id}: ${p}`));
+        for (const q of spec.follows ?? [])
+          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: the type scale follows ${q}, which is not an answer`);
+        const roles = Object.keys(type).filter((k) => !k.startsWith("$"));
+        for (const role of roles) if (!(role in spec.steps)) gaps.push(`${id}: type.${role} has no step on the scale`);
+        const px = sizes(spec);
+        const lh = lineHeights(spec);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        for (const role of roles.filter((r) => r in spec.steps)) {
+          const size = Math.round(parseFloat(String(resolve(all, `type.${role}.font-size`)?.value ?? "")) * 16 * 100) / 100;
+          if (size !== px[role]) gaps.push(`${id}: type.${role}.font-size is ${size}px, the scale gives ${px[role]}px`);
+          const line = Number(resolve(all, `type.${role}.line-height`)?.value);
+          if (line !== lh[role]) gaps.push(`${id}: type.${role}.line-height is ${line}, the scale gives ${lh[role]}`);
+          // A reason that names its value keeps up with the scale: the size in px, the line height ratio.
+          const why = (key) => type[role][key]?.$extensions?.["open-ds"]?.why ?? "";
+          if (!why("font-size").includes(`${px[role]}px`))
+            gaps.push(`${id}: the reason of type.${role}.font-size does not name ${px[role]}px`);
+          if (!why("line-height").includes(String(lh[role])))
+            gaps.push(`${id}: the reason of type.${role}.line-height does not name ${lh[role]}`);
+        }
+        // The scale owns the size and line height primitives: no primitive it does not use.
+        const want = new Set(Object.values(px).map(String));
+        const have = Object.keys(s.tokens.primitive.font.size).filter((k) => !k.startsWith("$"));
+        for (const k of have) if (!want.has(k)) gaps.push(`${id}: font.size.${k} is not on the scale`);
+        const ratios = new Set(Object.values(lh));
+        for (const [k, t] of Object.entries(s.tokens.primitive.font["line-height"]))
+          if (!k.startsWith("$") && !ratios.has(t.$value)) gaps.push(`${id}: font.line-height.${k} is not on the scale`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`the type sizes and line heights in ${SCHEMES.length} schemes match their scale`);
+    },
+  },
   "visible-where-it-meets": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
@@ -638,6 +740,37 @@ export const CHECKS = {
       return gaps.length
         ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
         : ok(`${n} anatomy images, each exported from a Figma frame, in ${SCHEMES.length} schemes`);
+    },
+  },
+  "anatomy-text-from-samples": {
+    requires: ["schemes/grammar.json", "scripts/anatomy-figma/sample-text.mjs"],
+    run: async (c) => {
+      // OD-135: each scheme shows its UI with its own content, as Storybook does. Every text in a tree
+      // drawing reads a sample path that resolves in every scheme, or says why it keeps its own text.
+      const { sampleText, textNodes } = await import(pathToFileURL(c.p("scripts/anatomy-figma/sample-text.mjs")).href);
+      const samples = SCHEMES.map((id) => [id, c.scheme(id).samples]);
+      const gaps = [];
+      let read = 0;
+      let kept = 0;
+      for (const item of c.grammar().catalogue.items.filter((i) => i.anatomy?.drawing?.kind === "tree")) {
+        for (const node of textNodes(item.anatomy)) {
+          if (!node.sample) {
+            if (typeof node.fixed === "string" && node.fixed.trim() && typeof node.text === "string") kept++;
+            else gaps.push(`${item.id}: "${node.text}" reads no sample`);
+            continue;
+          }
+          read++;
+          for (const [id, smp] of samples) {
+            const { missing } = sampleText(node, smp);
+            if (missing) gaps.push(`${item.id}: ${id} has no samples.${missing.join(", samples.")}`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok(
+            `${read} anatomy texts read a sample in all ${SCHEMES.length} schemes; ${kept} keep their own text, each with a reason`,
+          );
     },
   },
   "floating-panels-agree": {
@@ -799,6 +932,78 @@ export const CHECKS = {
           (r.better.length ? `; better: ${r.better.slice(0, 4).join("; ")}` : "") +
           (r.missing.length ? `; not in the baseline yet: ${r.missing.join(", ")} (open-ds compare --base ${baseline.ref} --write-baseline)` : ""),
       );
+    },
+  },
+  "reasons-say-why": {
+    requires: ["cli/src/trace.mjs", "scripts/reason-form.mjs", "harness/reason-form-baseline.json"],
+    run: async (c) => {
+      // OD-294: a reason states its job ("in order to"), how the property does it ("does this by"), what
+      // people get ("so") and the decision ("because"), and cites an answer. Scopes convert in rounds:
+      // the count of values not yet in the form, per scheme, may only go down. Shape and elevation are
+      // converted: every reason they write, in every brand and mode, must be in the form now.
+      const { formOfSchemes } = await import(pathToFileURL(c.p("scripts/reason-form.mjs")).href);
+      const { formGaps, writtenReasons } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const g = c.grammar();
+      const base = c.json("harness", "reason-form-baseline.json").counts;
+      const rose = [];
+      const fell = [];
+      const lines = [];
+      for (const f of formOfSchemes()) {
+        const n = f.off.length;
+        const was = base[f.scheme];
+        if (was === undefined) rose.push(`${f.scheme} has ${n}, and the baseline does not list it`);
+        else if (n > was) rose.push(`${f.scheme} went from ${was} to ${n}`);
+        else if (n < was) fell.push(`${f.scheme} went from ${was} to ${n}`);
+        lines.push(`${f.scheme} ${n} of ${f.total}`);
+      }
+      const converted = /^(radius|border-width|elevation)\./;
+      const off = [];
+      for (const id of SCHEMES)
+        for (const r of writtenReasons(c.scheme(id)))
+          if (converted.test(r.token)) {
+            const missing = formGaps(g, r.token, r.why, r.because);
+            if (missing.length) off.push(`${id} ${r.where} ${r.token} misses ${missing.join(", ")}`);
+          }
+      const counts = `Values whose reason is not in the form yet: ${lines.join("; ")}`;
+      if (off.length) return bad(`${off.length} shape or elevation reasons are not in the reason form: ${off.slice(0, 4).join("; ")}`);
+      if (rose.length)
+        return bad(`more reasons are out of the form: ${rose.join("; ")}. Write them in the grammar's reason_form; node scripts/reason-form.mjs lists them. ${counts}.`);
+      if (fell.length)
+        return ok(`fewer reasons are out of the form (good): ${fell.join("; ")}. Lower the baseline: node scripts/reason-form.mjs --baseline. ${counts}.`);
+      return ok(`every shape and elevation reason is in the form. ${counts}. Each count may only go down.`);
+    },
+  },
+  "shape-elevation-relations": {
+    requires: ["cli/src/shape-elevation.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-294: control and surface corners are decisions; option, element and badge follow them by a
+      // relation; the focus ring follows the default line; shadows are one scale by layer, and dark
+      // keeps the light shape. A record that is missing or cannot be checked fails. Where today's values
+      // break a relation, the check lists it as a finding and passes: the user decides those.
+      const { checkRelations, elevationScale } = await import(pathToFileURL(c.p("cli/src/shape-elevation.mjs")).href);
+      const g = c.grammar();
+      const errors = [];
+      // Findings by token, so one cause reads as one line however many themes it shows in.
+      const findings = new Map();
+      let held = 0;
+      const schemes = SCHEMES.map((id) => c.scheme(id));
+      for (const s of schemes) {
+        const r = checkRelations(s, g);
+        errors.push(...r.errors);
+        for (const x of r.results)
+          if (x.holds) held++;
+          else {
+            const f = findings.get(x.token) ?? { themes: [], says: x.says };
+            f.themes.push(`${s.id}/${x.brand}/${x.mode}`);
+            findings.set(x.token, f);
+          }
+      }
+      for (const row of elevationScale(schemes, g))
+        if (!row.same)
+          findings.set(`elevation.values ${row.values} step ${row.step}`, { themes: row.shapes.map((x) => x.scheme), says: row.shapes.map((x) => `${x.scheme} ${x.shape}`).join(", ") });
+      if (errors.length) return bad(`${errors.length} relation records cannot be checked: ${errors.slice(0, 4).join("; ")}`);
+      const list = [...findings].map(([token, f]) => `${token} in ${f.themes.length} themes (first ${f.themes[0]}: ${f.says})`);
+      return ok(`${held} relations hold${list.length ? `; findings for the user to decide (warnings): ${list.join("; ")}` : ""}`);
     },
   },
   "decisions-cover-values": {
@@ -2760,6 +2965,23 @@ export const CHECKS = {
       return hits.length
         ? bad(`${hits.length} direct reads or writes of schemes/*.json, such as ${hits.slice(0, 4).join(", ")}; use loadScheme, grammar, saveScheme and saveGrammar from cli/src/schemes.mjs`)
         : ok("every read and write of a scheme goes through cli/src/schemes.mjs, or the one schemes module of its app");
+    },
+  },
+  // OD-292: a scheme file stores the key colors and the spacing rhythm, not what they generate. A stored
+  // scale or spacing map step equal to the generator's output is a copy that can drift: saveScheme leaves it out.
+  "generated-not-stored": {
+    requires: ["cli/src/scheme-generated.mjs"],
+    run: async (c) => {
+      const { withoutGenerated } = await import(pathToFileURL(c.p("cli/src/scheme-generated.mjs")).href);
+      const copies = [];
+      for (const id of SCHEMES) {
+        const stored = c.storedScheme(id);
+        const n = (o) => JSON.stringify(o).length;
+        if (n(withoutGenerated(stored)) !== n(stored)) copies.push(id);
+      }
+      return copies.length
+        ? bad(`${copies.join(", ")} store color scales or spacing map steps that the generator makes; load and save each with loadScheme and saveScheme`)
+        : ok(`${SCHEMES.length} schemes store key colors and spacing rhythms, not the scales and steps they generate`);
     },
   },
   // OD-291: a scheme file stores only the component values it decides. A token equal to the grammar's

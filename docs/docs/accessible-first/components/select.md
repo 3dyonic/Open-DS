@@ -15,7 +15,7 @@ One choice from a list, in a menu.
 
 ## See it live
 
-::preview{robot="slumber" id="select/live"}
+::preview{id="select/live"}
 
 ## When to use it
 

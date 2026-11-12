@@ -25,7 +25,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --type-display-font-size: 2rem;
   --type-display-line-height: 1.2;
   --type-display-font-weight: 700;
-  --type-title-font-size: 1.5rem;
+  --type-title-font-size: 1.5625rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1.25rem;
@@ -34,7 +34,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --type-body-font-size: 1rem;
   --type-body-line-height: 1.5;
   --type-body-font-weight: 400;
-  --type-label-font-size: 0.875rem;
+  --type-label-font-size: 0.8125rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.8125rem;
@@ -1854,7 +1854,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --type-display-font-size: 2rem;
   --type-display-line-height: 1.2;
   --type-display-font-weight: 700;
-  --type-title-font-size: 1.5rem;
+  --type-title-font-size: 1.5625rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1.25rem;
@@ -1863,7 +1863,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --type-body-font-size: 1rem;
   --type-body-line-height: 1.5;
   --type-body-font-weight: 400;
-  --type-label-font-size: 0.875rem;
+  --type-label-font-size: 0.8125rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.8125rem;
@@ -3679,7 +3679,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --type-display-font-size: 2rem;
   --type-display-line-height: 1.2;
   --type-display-font-weight: 700;
-  --type-title-font-size: 1.5rem;
+  --type-title-font-size: 1.5625rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1.25rem;
@@ -3688,7 +3688,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --type-body-font-size: 1rem;
   --type-body-line-height: 1.5;
   --type-body-font-weight: 400;
-  --type-label-font-size: 0.875rem;
+  --type-label-font-size: 0.8125rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.8125rem;
@@ -5506,7 +5506,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --type-display-font-size: 2rem;
   --type-display-line-height: 1.2;
   --type-display-font-weight: 700;
-  --type-title-font-size: 1.5rem;
+  --type-title-font-size: 1.5625rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1.25rem;
@@ -5515,7 +5515,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --type-body-font-size: 1rem;
   --type-body-line-height: 1.5;
   --type-body-font-weight: 400;
-  --type-label-font-size: 0.875rem;
+  --type-label-font-size: 0.8125rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.8125rem;
@@ -7331,7 +7331,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --type-display-font-size: 2rem;
   --type-display-line-height: 1.2;
   --type-display-font-weight: 700;
-  --type-title-font-size: 1.5rem;
+  --type-title-font-size: 1.5625rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1.25rem;
@@ -7340,7 +7340,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --type-body-font-size: 1rem;
   --type-body-line-height: 1.5;
   --type-body-font-weight: 400;
-  --type-label-font-size: 0.875rem;
+  --type-label-font-size: 0.8125rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.8125rem;
@@ -9158,7 +9158,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --type-display-font-size: 2rem;
   --type-display-line-height: 1.2;
   --type-display-font-weight: 700;
-  --type-title-font-size: 1.5rem;
+  --type-title-font-size: 1.5625rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1.25rem;
@@ -9167,7 +9167,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --type-body-font-size: 1rem;
   --type-body-line-height: 1.5;
   --type-body-font-weight: 400;
-  --type-label-font-size: 0.875rem;
+  --type-label-font-size: 0.8125rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.8125rem;
@@ -11047,6 +11047,6 @@ html[data-scheme="multi-brand"] .navbar__logo img { content: url("/logo-multi-br
 html[data-scheme="multi-brand"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/multi-brand.webp"); }
 html[data-scheme="multi-brand"][data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/multi-brand-dark.webp"); }
 html[data-scheme="multi-brand"][data-theme="dark"] .navbar__logo img { content: url("/logo-multi-brand-dark.svg"); }
-html[data-scheme="multi-brand"][data-brand="aster"] .odv-brandset:not([data-for-brand="aster"]) { display: none; }
-html[data-scheme="multi-brand"][data-brand="birch"] .odv-brandset:not([data-for-brand="birch"]) { display: none; }
-html[data-scheme="multi-brand"][data-brand="coral"] .odv-brandset:not([data-for-brand="coral"]) { display: none; }
+html[data-scheme="multi-brand"][data-brand="aster"] [data-composite="brand"]:not([data-for-brand="aster"]) { display: none; }
+html[data-scheme="multi-brand"][data-brand="birch"] [data-composite="brand"]:not([data-for-brand="birch"]) { display: none; }
+html[data-scheme="multi-brand"][data-brand="coral"] [data-composite="brand"]:not([data-for-brand="coral"]) { display: none; }

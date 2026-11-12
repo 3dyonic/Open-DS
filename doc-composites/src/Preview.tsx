@@ -1,6 +1,7 @@
 /**
  * Preview: a live frame, such as a Storybook story, with a caption and links. With a dark frame it
- * shows Light and Dark tabs. Built from the scheme's Card, Tabs and Empty, used through their props only.
+ * shows Light and Dark tabs. Built from the scheme's Card, Tabs and Empty, used through their props only;
+ * the robot that waits for Storybook is the Robot base form.
  * The docs generator writes the frames (<page>.json beside the page); the page holds one line:
  * ::preview{id="button/live"}
  */
@@ -19,8 +20,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@open-ds/ui/components/tabs";
+import Robot, { type RobotPics } from "./base/Robot";
 
 export type PreviewData = {
+  // The robot that sleeps while the frame is not live.
+  robot?: RobotPics;
   title: string;
   // Shown behind the frame until it loads, so a reader knows what to start.
   wait: string;
@@ -33,7 +37,6 @@ export type PreviewData = {
 // answer instead: the built site with its 404 page, the dev server with a page and a 200. So a frame on
 // the docs' own host must hold Storybook's root element. A frame on another host can't be read; it shows
 // when that host answers at all.
-type RobotPics = { day: string; night: string };
 
 function Frame({
   src,
@@ -71,8 +74,7 @@ function Frame({
             <EmptyHeader>
               {robot && (
                 <EmptyMedia>
-                  <img src={robot.day} alt="" loading="lazy" className="h-20 dark:hidden" />
-                  <img src={robot.night} alt="" loading="lazy" className="hidden h-20 dark:block" />
+                  <Robot robot={robot} className="contents [&_img]:h-20" />
                 </EmptyMedia>
               )}
               <EmptyTitle>Storybook is not running</EmptyTitle>
@@ -93,8 +95,9 @@ function Frame({
   return <iframe src={src} title={title} loading="lazy" className="aspect-video w-full border-0" />;
 }
 
-export default function Preview({ data, robot }: { data: PreviewData; robot?: RobotPics }) {
+export default function Preview({ data }: { data: PreviewData }) {
   const { dark } = data.frames;
+  const robot = data.robot;
   const links = data.links ?? [];
   return (
     <div data-composite="preview">

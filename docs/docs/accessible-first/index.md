@@ -9,7 +9,7 @@ hide_title: true
 hide_table_of_contents: true
 ---
 
-:::hero{robot="accessible-first" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="42 components|176 primitives|2 themes"}
+:::hero{robot="accessible-first" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="42 components|175 primitives|2 themes"}
 # Accessible first
 
 Large text, large targets and AAA contrast, so everyone can finish the task.

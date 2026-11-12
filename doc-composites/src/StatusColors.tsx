@@ -8,7 +8,7 @@
 import * as React from "react";
 import Frame from "./base/Frame";
 import Rows from "./base/Rows";
-import Label from "./Label";
+import Label from "./base/Label";
 
 type Tone = "info" | "success" | "warning" | "danger";
 export type StatusColorsData = {

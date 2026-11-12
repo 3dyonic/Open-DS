@@ -14,7 +14,7 @@ A small indicator that work is in progress when the time is unknown.
 
 ## See it live
 
-::preview{robot="slumber" id="spinner/live"}
+::preview{id="spinner/live"}
 
 ## When to use it
 

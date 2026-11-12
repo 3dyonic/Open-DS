@@ -14,7 +14,8 @@ import {
   CardTitle,
 } from "@open-ds/ui/components/card";
 import { Progress } from "@open-ds/ui/components/progress";
-import Label, { type LabelProps } from "./Label";
+import Label, { type LabelProps } from "./base/Label";
+import Robot, { type RobotPics } from "./base/Robot";
 import Sample from "./Sample";
 import Drawn from "./drawn";
 
@@ -23,13 +24,16 @@ export type CardItem = {
   eyebrow?: string;
   title: string;
   text: string;
-  label?: { text: string; tone?: LabelProps["tone"] };
+  // A second fact beside the text, such as "53 in use".
+  note?: string;
+  // A state, and a detail of it shown after it, such as In, built.
+  label?: { text: string; note?: string; tone?: LabelProps["tone"] };
   // The answer that sets the card's values, such as "Values: Large".
   answer?: { label: string; text: string };
   // A picture for the card: a robot's day and night editions.
-  robot?: { day: string; night: string };
+  robot?: RobotPics;
   // A few values drawn small (kind and value), or a short line of text or code.
-  samples?: { kind: string; value: string; note?: string }[];
+  samples?: { kind: string; value?: string; note?: string; names?: string[] }[];
   // How much of a set is in use, as the scheme's Progress.
   meter?: { value: number; max: number; label: string };
   // A key the card cites, shown as code at its foot.
@@ -39,6 +43,8 @@ export type CardItem = {
   go?: boolean;
 };
 export type CardGridData = { cards: CardItem[] };
+
+const cardText = (card: CardItem) => (card.note ? `${card.text} · ${card.note}` : card.text);
 
 function Samples({ list }: { list: NonNullable<CardItem["samples"]> }) {
   return (
@@ -50,8 +56,12 @@ function Samples({ list }: { list: NonNullable<CardItem["samples"]> }) {
           </span>
         ) : x.kind === "code" ? (
           <code key={i}>{x.value}</code>
+        ) : x.kind === "names" ? (
+          <span key={i} className="text-[length:var(--type-caption-font-size)]">
+            {x.names?.join(" · ")}
+          </span>
         ) : (
-          <Sample key={i} kind={x.kind} value={x.value} />
+          <Sample key={i} kind={x.kind} value={x.value ?? ""} />
         ),
       )}
     </div>
@@ -64,10 +74,10 @@ function ScopeCard({ card }: { card: CardItem }) {
   const lifted = !card.answer && card.samples?.some((x) => x.kind === "shadow");
   return (
     <Card>
-      <span aria-hidden="true" className="mx-[calc(var(--card-padding)*-1)] mt-[calc(var(--card-padding)*-1)] flex h-42 min-w-0 justify-center overflow-hidden rounded-t-[var(--card-radius)] bg-[var(--color-surface-sunken)] p-[var(--space-gap-default)] [&_img]:max-h-full [&_img]:min-w-0 [&_img]:object-contain">
-        <img src={card.robot!.day} alt="" loading="lazy" className="dark:hidden" />
-        <img src={card.robot!.night} alt="" loading="lazy" className="hidden dark:block" />
-      </span>
+      <Robot
+        robot={card.robot!}
+        className="mx-[calc(var(--card-padding)*-1)] mt-[calc(var(--card-padding)*-1)] flex h-42 min-w-0 justify-center overflow-hidden rounded-t-[var(--card-radius)] bg-[var(--color-surface-sunken)] p-[var(--space-gap-default)] [&_img]:max-h-full [&_img]:min-w-0 [&_img]:object-contain"
+      />
       <CardHeader>
         <CardTitle>{card.title}</CardTitle>
       </CardHeader>
@@ -89,7 +99,7 @@ function ScopeCard({ card }: { card: CardItem }) {
             ))}
           </div>
         )}
-        {!card.answer && <CardDescription>{card.text}</CardDescription>}
+        {!card.answer && <CardDescription>{cardText(card)}</CardDescription>}
         {card.meter && (
           <Progress value={(card.meter.value / card.meter.max) * 100} aria-label={card.meter.label} />
         )}
@@ -114,7 +124,7 @@ function OneCard({ card }: { card: CardItem }) {
             <Label tone="info">{card.answer.text}</Label>
           </span>
         )}
-        <CardDescription>{card.text}</CardDescription>
+        <CardDescription>{cardText(card)}</CardDescription>
         {card.samples && <Samples list={card.samples} />}
         {card.meter && (
           <Progress
@@ -126,7 +136,9 @@ function OneCard({ card }: { card: CardItem }) {
       {(card.label || card.code || card.go) && (
         <CardFooter>
           {card.label && (
-            <Label tone={card.label.tone}>{card.label.text}</Label>
+            <Label tone={card.label.tone}>
+              {card.label.note ? `${card.label.text} · ${card.label.note}` : card.label.text}
+            </Label>
           )}
           {card.code && <code>{card.code}</code>}
           {card.go && <span aria-hidden="true">→</span>}

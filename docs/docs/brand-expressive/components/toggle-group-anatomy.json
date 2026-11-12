@@ -68,7 +68,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+     "pick": [
+      "radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2)."
+     ],
      "shares": []
     }
    ]
@@ -102,7 +104,9 @@
      "key": "item.padding-x",
      "value": "1.75rem",
      "byScheme": true,
-     "pick": "space.28",
+     "pick": [
+      "space.28"
+     ],
      "shares": []
     }
    ]
@@ -129,7 +133,9 @@
      "key": "item.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+     "pick": [
+      "radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2)."
+     ],
      "shares": []
     },
     {
@@ -138,7 +144,9 @@
      "key": "item.border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
