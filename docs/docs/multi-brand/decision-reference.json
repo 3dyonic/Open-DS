@@ -3138,18 +3138,6 @@
         }
        },
        {
-        "token": "color.surface.pressed",
-        "mode": "dark",
-        "pick": "color.neutral.200",
-        "why": [
-         "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch."
-        ],
-        "link": {
-         "label": "Color",
-         "href": "foundations/color"
-        }
-       },
-       {
         "token": "color.surface.selected",
         "mode": "dark",
         "pick": "color.teal.dark.100",
@@ -5110,6 +5098,18 @@
       "kind": "picks",
       "items": [
        {
+        "token": "color.surface.pressed",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: We use Aster's light pick for Aster's dark pressed surface in order to keep what it sets, and the step does this by the same means, so Aster's dark pressed surface and Aster's light pick never differ, because the step reads the same in dark (theming.values)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "elevation.card",
         "mode": "dark",
         "pick": "shadow.card-dark",
@@ -5301,18 +5301,6 @@
         "pick": "color.neutral.100",
         "why": [
          "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
-        ],
-        "link": {
-         "label": "Color",
-         "href": "foundations/color"
-        }
-       },
-       {
-        "token": "color.surface.pressed",
-        "mode": "dark",
-        "pick": "color.neutral.200",
-        "why": [
-         "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch."
         ],
         "link": {
          "label": "Color",

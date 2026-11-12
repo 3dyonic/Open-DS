@@ -152,7 +152,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="typography-lands"}
 :::
 
-:::fold{id="color" title="Color" note="5 answers, 95 decisions, and the values of its tokens"}
+:::fold{id="color" title="Color" note="5 answers, 94 decisions, and the values of its tokens"}
 #### Which color roles does it need? {#color-roles}
 
 ::decision-answer{id="color-roles"}
@@ -218,7 +218,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="shape-lands"}
 :::
 
-:::fold{id="elevation" title="Elevation" note="5 answers, 32 decisions, and the values of its tokens"}
+:::fold{id="elevation" title="Elevation" note="5 answers, 28 decisions, and the values of its tokens"}
 #### What rises above the page? {#elevation-roles}
 
 ::decision-answer{id="elevation-roles"}
@@ -284,7 +284,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="iconography-lands"}
 :::
 
-:::fold{id="theming" title="Theming" note="5 answers, 3 decisions, and the values of its tokens"}
+:::fold{id="theming" title="Theming" note="5 answers, 6 decisions, and the values of its tokens"}
 #### What can a theme change? {#theming-roles}
 
 ::decision-answer{id="theming-roles"}
@@ -306,7 +306,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="theming-lands"}
 :::
 
-:::fold{id="accessibility" title="Accessibility" note="5 answers, 111 decisions, and the values of its tokens"}
+:::fold{id="accessibility" title="Accessibility" note="5 answers, 110 decisions, and the values of its tokens"}
 #### Which states get their own visible value? {#accessibility-roles}
 
 ::decision-answer{id="accessibility-roles"}

@@ -101,6 +101,16 @@ export function saveScheme(scheme, roots = assetRoots()) {
   writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(stored, null, 2)}\n`);
 }
 
+/**
+ * Write a scheme file exactly as given, defaults and all. For a scratch copy of another checkout's
+ * schemes, which its own loader then reads (open-ds compare, OD-298); a scheme of this checkout
+ * changes through saveScheme.
+ */
+export function saveStoredScheme(stored, roots) {
+  if (!stored?.id) throw new Error("saveStoredScheme needs a stored scheme with an id. Read it with storedScheme first.");
+  writeFileSync(join(roots.schemes, `${stored.id}.json`), `${JSON.stringify(stored)}\n`);
+}
+
 /** A scheme as its file stores it, without defaults or generated values: for the checks that guard the file. */
 export function storedScheme(id, roots = assetRoots()) {
   return readJson(join(roots.schemes, `${id}.json`));

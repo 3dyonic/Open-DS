@@ -363,6 +363,9 @@
      "pick": [
       "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
      ],
+     "darkPick": [
+      "shadow.none: We use the light pick for the dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so the dark overlay elevation and the light pick never differ, because the step reads the same in dark (theming.values)."
+     ],
      "shares": [
       "elevation.card"
      ]

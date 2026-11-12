@@ -4322,10 +4322,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed gets its own value for touch.",
+                      "why": "neutral.200: We use the light pick for the dark pressed surface in order to keep what it sets, and the step does this by the same means, so the dark pressed surface and the light pick never differ, because the step reads the same in dark (theming.values).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "theming.values"
                       ]
                     }
                   }
@@ -4942,10 +4941,9 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
+                    "why": "shadow.none: We use the light pick for the dark card elevation in order to keep the height it sets, and the step does this by the same means, so the dark card elevation and the light pick never differ, because the step reads the same in dark (theming.values).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values"
+                      "theming.values"
                     ]
                   }
                 }
@@ -5052,7 +5050,7 @@
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each item in a list reads on its own, because the layout is spacious (spacing.values) and reading comfort is the measure (outcomes.q1).",
+                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap, and it does this by the means stated in the reason of space.gap.tight. So each item in a list reads on its own, because the layout is spacious (spacing.values) and reading comfort is the measure (outcomes.q1).",
                 "because": [
                   "spacing.values",
                   "outcomes.q1"
@@ -5066,7 +5064,7 @@
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 32px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 8px), twice the default gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So the reader gets a place to pause between groups, because the layout is spacious (spacing.values) and people read from start to end (tasks.q1).",
+                "why": "We use 32px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 8px), twice the default gap, and it does this by the means stated in the reason of space.gap.tight. So the reader gets a place to pause between groups, because the layout is spacious (spacing.values) and people read from start to end (tasks.q1).",
                 "because": [
                   "spacing.values",
                   "tasks.q1"
@@ -5080,7 +5078,7 @@
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 64px for the section gap between page sections in order to group and separate: eight base steps (8 × 8px), twice the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So space alone separates sections, with no line to add noise, because the layout is spacious (spacing.values) and space is spent between paragraphs and sections (spacing.lands).",
+                "why": "We use 64px for the section gap between page sections in order to group and separate: eight base steps (8 × 8px), twice the group gap, and it does this by the means stated in the reason of space.gap.tight. So space alone separates sections, with no line to add noise, because the layout is spacious (spacing.values) and space is spent between paragraphs and sections (spacing.lands).",
                 "because": [
                   "spacing.values",
                   "spacing.lands"
@@ -5110,7 +5108,7 @@
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: three base steps (3 × 8px), half again the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So each card is framed like a page in a magazine, because the brand is warm (brand.q1) and reading comfort is the measure (outcomes.q1).",
+                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: three base steps (3 × 8px), half again the default gap, and it does this by the means stated in the reason of space.inset.control-x. So each card is framed like a page in a magazine, because the brand is warm (brand.q1) and reading comfort is the measure (outcomes.q1).",
                 "because": [
                   "brand.q1",
                   "outcomes.q1"
@@ -5124,7 +5122,7 @@
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So cells get room like text does, and each row reads one by one, because people read from start to end (tasks.q1) and the layout is spacious (spacing.values).",
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap, and it does this by the means stated in the reason of space.inset.control-x. So cells get room like text does, and each row reads one by one, because people read from start to end (tasks.q1) and the layout is spacious (spacing.values).",
                 "because": [
                   "tasks.q1",
                   "spacing.values"
@@ -5174,7 +5172,7 @@
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 40px for compact controls, such as a clear or show button inside a field, in order to make a hit target: one 8px step below the 48px default on the control scale; the 40px box relies on the padding of the field around it for a touch-size hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a small button fits inside the field around it, because the content is long-form text (content.q1) and the smallest target is touch size (accessibility.values).",
+                "why": "We use 40px for compact controls, such as a clear or show button inside a field, in order to make a hit target: one 8px step below the 48px default on the control scale; the 40px box relies on the padding of the field around it for a touch-size hit area, and it does this by the means stated in the reason of size.control.default. So a small button fits inside the field around it, because the content is long-form text (content.q1) and the smallest target is touch size (accessibility.values).",
                 "because": [
                   "content.q1",
                   "accessibility.values"
@@ -5188,7 +5186,7 @@
             "$description": "Height of large controls. Not used in this system, so it equals the default.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 48px for large controls in order to make a hit target: the default's step on the control scale and the default's 48px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a main action never shouts over the text, and color marks it, because actions are rare (tasks.q2) and attention belongs on the content (human.q1).",
+                "why": "We use 48px for large controls in order to make a hit target: the default's step on the control scale and the default's 48px hit area, as the scheme has no hero action, and it does this by the means stated in the reason of size.control.default. So a main action never shouts over the text, and color marks it, because actions are rare (tasks.q2) and attention belongs on the content (human.q1).",
                 "because": [
                   "tasks.q2",
                   "human.q1"
