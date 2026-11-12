@@ -498,6 +498,74 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "spacing-use-cases-generated": {
+    requires: ["cli/src/spacing-use-cases.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-294: every scheme's space tokens equal base × multiple from its spacing record, and its
+      // control heights and row equal its control scale. Every reason names its value, its job from
+      // the grammar's spacing jobs, and its use case or mechanism. A hand-edited value fails.
+      const { spaceValues, spaceProblems, controlHeights, controlProblems } = await import(
+        pathToFileURL(c.p("cli/src/spacing-use-cases.mjs")).href
+      );
+      const { matches } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const spacing = c.grammar().scopes.find((sc) => sc.id === "spacing");
+      const jobs = spacing?.jobs ?? [];
+      const gaps = [];
+      if (!spacing?.use_cases) gaps.push("the spacing scope names no use-case words");
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const semantic = s.tokens.semantic;
+        const answer = (q) => s.answers.find((a) => a.question === q)?.option;
+        const space = semantic.space?.$extensions?.["open-ds"];
+        const size = semantic.size?.$extensions?.["open-ds"];
+        if (!space?.["use-cases"] || !size?.steps) {
+          gaps.push(`${id}: no spacing record on space or no control scale on size`);
+          continue;
+        }
+        const rowRole = answer("spacing.roles") === "gap-inset-row";
+        gaps.push(
+          ...spaceProblems(space, { vocabulary: spacing?.use_cases, definition: answer("spacing.definition") }).map((p) => `${id}: ${p}`),
+          ...controlProblems(size, { rowRole }).map((p) => `${id}: ${p}`),
+        );
+        for (const q of [...(space.follows ?? []), ...(size.follows ?? [])])
+          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: a record follows ${q}, which is not an answer`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        const px = (name) => Math.round(parseFloat(String(resolve(all, name)?.value ?? "")) * 16 * 100) / 100;
+        const want = {
+          ...Object.fromEntries(Object.entries(spaceValues(space)).map(([k, v]) => [`space.${k}`, v])),
+          ...Object.fromEntries(Object.entries(controlHeights(size)).map(([k, v]) => [`size.${k}`, v])),
+        };
+        for (const group of ["gap", "inset"])
+          for (const k of Object.keys(semantic.space[group] ?? {}).filter((k) => !k.startsWith("$")))
+            if (!(`space.${group}.${k}` in want)) gaps.push(`${id}: space.${group}.${k} has no use case`);
+        for (const [name, value] of Object.entries(want)) {
+          if (px(name) !== value) gaps.push(`${id}: ${name} is ${px(name)}px, the record gives ${value}px`);
+          const token = name.split(".").reduce((n, k) => n?.[k], semantic);
+          const why = token?.$extensions?.["open-ds"]?.why ?? "";
+          const job = jobs.find((j) => j.tokens.some((p) => matches(p, name)));
+          const says = (text, what) => {
+            if (!why.includes(text)) gaps.push(`${id}: the reason of ${name} does not name ${what ?? text}`);
+          };
+          says(`${value}px`);
+          if (!job) gaps.push(`${id}: ${name} has no job in the grammar's spacing jobs`);
+          else says(job.job, `its job (${job.job})`);
+          // The use case or mechanism: a multiple of the base, a step on the control scale, or inheritance.
+          if (name.startsWith("space.")) {
+            const useCase = space["use-cases"][name.slice("space.".length)];
+            says(`${useCase.multiple} × ${space.base}px`, `its multiple (${useCase.multiple} × ${space.base}px)`);
+          } else if (name === "size.row") says(rowRole ? "decision of their own" : "inheritance", rowRole ? "the row decision" : "its inheritance");
+          else {
+            says("control scale");
+            // WCAG measures the hit area, not the drawn box: a control's reason names its hit area.
+            says("hit area");
+          }
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`the space tokens, control heights and rows in ${SCHEMES.length} schemes match their records and name their use case`);
+    },
+  },
   "type-scale-generated": {
     requires: ["cli/src/type-scale.mjs"],
     run: async (c) => {

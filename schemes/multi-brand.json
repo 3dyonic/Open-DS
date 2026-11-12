@@ -9259,11 +9259,71 @@
     },
     "semantic": {
       "space": {
+        "$extensions": {
+          "open-ds": {
+            "base": 4,
+            "use-cases": {
+              "gap.tight": {
+                "level": "component",
+                "relation": "inner",
+                "reach": "inline",
+                "multiple": 2
+              },
+              "gap.default": {
+                "level": "component",
+                "relation": "inner",
+                "multiple": 3
+              },
+              "gap.group": {
+                "level": "layout",
+                "relation": "inner",
+                "multiple": 6
+              },
+              "gap.section": {
+                "level": "layout",
+                "relation": "inner",
+                "reach": "section",
+                "multiple": 12
+              },
+              "inset.control-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 4
+              },
+              "inset.cell-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 4
+              },
+              "inset.container": {
+                "level": "layout",
+                "relation": "container",
+                "multiple": 6
+              }
+            },
+            "follows": [
+              "spacing.definition",
+              "spacing.values"
+            ],
+            "why": "Every brand shares small steps on a 4px grid, so the base is 4px. Comfortable density sets each multiple, with big steps for product pages."
+          }
+        },
         "gap": {
           "tight": {
             "$type": "dimension",
             "$value": "{space.8}",
-            "$description": "Between things that belong together."
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 8px for the tight gap between the parts of one item in order to group and separate: two base steps (2 × 4px) on the shared grid. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So the shared parts look the same in every brand, because the brands share one set of steps on a 4px grid (spacing.definition) and three brands share one system (business.q2).",
+                "because": [
+                  "spacing.definition",
+                  "business.q2"
+                ]
+              }
+            }
           },
           "default": {
             "$type": "dimension",
@@ -9271,11 +9331,10 @@
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
-                "why": "12px sits between fields in one form group, wider than the 8px tight gap, so customers on phones tap the right field.",
+                "why": "We use 12px for the default gap between the fields of one form group in order to group and separate: three base steps (3 × 4px), one step wider than the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So customers on phones tap the right field, because the layout is comfortable (spacing.values) and customers sign up on phones (scenarios.q1).",
                 "because": [
-                  "content.q1",
-                  "scenarios.q1",
-                  "spacing.definition"
+                  "spacing.values",
+                  "scenarios.q1"
                 ]
               }
             }
@@ -9283,33 +9342,96 @@
           "group": {
             "$type": "dimension",
             "$value": "{space.24}",
-            "$description": "Between groups."
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the group gap between groups in a form in order to group and separate: six base steps (6 × 4px), twice the default gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So sign-up forms keep the same shape in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
+                "because": [
+                  "business.q2",
+                  "spacing.values"
+                ]
+              }
+            }
           },
           "section": {
             "$type": "dimension",
             "$value": "{space.48}",
-            "$description": "Between page sections."
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 48px for the section gap between page sections in order to group and separate: twelve base steps (12 × 4px), twice the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each offer card stands apart on a product page, because the layout is comfortable (spacing.values) and the 4px grid holds big steps for product pages (spacing.definition).",
+                "because": [
+                  "spacing.values",
+                  "spacing.definition"
+                ]
+              }
+            }
           }
         },
         "inset": {
           "control-x": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Horizontal padding inside controls."
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the inline padding inside controls in order to give content room inside its box: four base steps (4 × 4px), the same as a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So buttons are the same size in every brand, because three brands share one system (business.q2) and steps sit on a 4px grid (spacing.definition).",
+                "because": [
+                  "business.q2",
+                  "spacing.definition"
+                ]
+              }
+            }
           },
           "container": {
             "$type": "dimension",
             "$value": "{space.24}",
-            "$description": "Padding inside cards and dialogs."
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: six base steps (6 × 4px), the same as the group gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So cards hold offers the same way in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
+                "because": [
+                  "business.q2",
+                  "spacing.values"
+                ]
+              }
+            }
           },
           "cell-x": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Horizontal padding inside table cells."
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: four base steps (4 × 4px), the same as a control. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So account tables keep room between columns on a phone, because customers sign up on phones (scenarios.q1) and the layout is comfortable (spacing.values).",
+                "because": [
+                  "scenarios.q1",
+                  "spacing.values"
+                ]
+              }
+            }
           }
         }
       },
       "size": {
+        "$extensions": {
+          "open-ds": {
+            "default": 44,
+            "step": 8,
+            "steps": {
+              "compact": -1,
+              "large": 0
+            },
+            "row": {
+              "plus": 4
+            },
+            "follows": [
+              "accessibility.values",
+              "spacing.roles"
+            ],
+            "why": "A touch target sets the 44px default. Compact is one 8px step below it; large equals the default, as brand color marks the main action. Rows are a decision of their own, 4px taller than a control."
+          }
+        },
         "control": {
           "default": {
             "$type": "dimension",
@@ -9317,7 +9439,7 @@
             "$description": "Height of buttons and inputs, and the smallest target.",
             "$extensions": {
               "open-ds": {
-                "why": "44px makes every button and input a touch target, because customers sign up on phones in every brand.",
+                "why": "We use 44px for buttons and inputs in order to make a hit target: the touch target size, step 0 of the control scale, a 44px hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a thumb in every brand, because the smallest target is touch size (accessibility.values) and customers sign up on phones (scenarios.q1).",
                 "because": [
                   "accessibility.values",
                   "scenarios.q1"
@@ -9328,18 +9450,45 @@
           "compact": {
             "$type": "dimension",
             "$value": "{size.36}",
-            "$description": "Height of compact controls."
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 36px for compact controls, such as a show-password button inside a field, in order to make a hit target: one 8px step below the 44px default on the control scale; the 36px box relies on the padding of the field around it for a touch-size hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So the button fits inside the field in every brand, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
+                "because": [
+                  "business.q2",
+                  "accessibility.values"
+                ]
+              }
+            }
           },
           "large": {
             "$type": "dimension",
             "$value": "{size.44}",
-            "$description": "Height of large controls. Not used in this system, so it equals the default."
+            "$description": "Height of large controls. Not used in this system, so it equals the default.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 44px for large controls in order to make a hit target: the default's step on the control scale and the default's 44px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every brand's forms keep one height, and brand color marks the main action, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
+                "because": [
+                  "business.q2",
+                  "accessibility.values"
+                ]
+              }
+            }
           }
         },
         "row": {
           "$type": "dimension",
           "$value": "{size.48}",
-          "$description": "Height of one table row."
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 48px for one table row in order to keep the eye on its row: a row one 44px default control tall plus 4px, as rows are a decision of their own here. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So rows stay easy to tap on a phone, a little taller than the control they hold, because account tables need a row height (spacing.roles) and the layout is comfortable (spacing.values).",
+              "because": [
+                "spacing.roles",
+                "spacing.values"
+              ]
+            }
+          }
         },
         "icon": {
           "$type": "dimension",

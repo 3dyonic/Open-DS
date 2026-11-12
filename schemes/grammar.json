@@ -1229,6 +1229,85 @@
           ]
         }
       ],
+      "use_cases": {
+        "description": "A space token's use case names where the space sits, what it does and which way it runs. Each scheme gives every space token one use case and a multiple of its base. A use case with no reach runs both along a line and between blocks.",
+        "level": {
+          "description": "Where the space sits.",
+          "options": [
+            {
+              "id": "component",
+              "description": "Inside one component: between its parts or around its content."
+            },
+            {
+              "id": "layout",
+              "description": "Between components: the space that arranges them on a screen."
+            }
+          ]
+        },
+        "relation": {
+          "description": "What the space does.",
+          "options": [
+            {
+              "id": "inner",
+              "description": "Between the parts of one thing: a gap."
+            },
+            {
+              "id": "container",
+              "description": "The padding of a box around things: an inset."
+            }
+          ]
+        },
+        "reach": {
+          "description": "Which way the space runs.",
+          "options": [
+            {
+              "id": "inline",
+              "description": "Along one line: parts that sit side by side."
+            },
+            {
+              "id": "section",
+              "description": "Between blocks: parts that stack into sections."
+            }
+          ]
+        }
+      },
+      "jobs": [
+        {
+          "id": "gap",
+          "tokens": ["space.gap.*"],
+          "property": "Distance",
+          "job": "group and separate",
+          "how": "grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one"
+        },
+        {
+          "id": "inset",
+          "tokens": ["space.inset.*"],
+          "property": "Padding",
+          "job": "give content room inside its box",
+          "how": "keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content"
+        },
+        {
+          "id": "control-height",
+          "tokens": ["size.control.*"],
+          "property": "Height",
+          "job": "make a hit target",
+          "how": "setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box"
+        },
+        {
+          "id": "row-height",
+          "tokens": ["size.row"],
+          "property": "Row height",
+          "job": "keep the eye on its row",
+          "how": "making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px)"
+        },
+        {
+          "id": "grow-with-text",
+          "tokens": ["size.control.*", "size.row", "space.inset.*"],
+          "property": "A minimum height",
+          "job": "grow with the text",
+          "how": "letting the box grow when people override text spacing (WCAG 1.4.12), so a label never clips; a fixed height breaks this"
+        }
+      ],
       "hints": [
         {
           "id": "never-a-number",
@@ -16629,12 +16708,12 @@
     {
       "tokens": ["space.gap.*", "space.inset.*"],
       "follows": ["spacing.roles", "spacing.definition", "spacing.values"],
-      "says": "Gaps and insets are the spacing roles; the definition answer sets the size of the steps; the values answer sets the base density."
+      "says": "Gaps and insets are the spacing roles; the definition answer sets the base step; the values answer sets the density, and so each use case's multiple of the base."
     },
     {
       "tokens": ["size.row"],
-      "follows": ["spacing.roles", "spacing.values"],
-      "says": "A row height exists when the roles answer names rows; the values answer sets the density it follows."
+      "follows": ["spacing.roles", "spacing.values", "accessibility.values"],
+      "says": "A row holds controls, so it is one default control tall (the target size answer); the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow."
     },
     {
       "tokens": ["border-width.default"],
@@ -16669,7 +16748,7 @@
     {
       "tokens": ["size.control.*"],
       "follows": ["accessibility.values"],
-      "says": "The values answer sets the smallest target, and control heights grow from it."
+      "says": "The values answer sets the target size, and the default control height follows it; compact and large are steps on the control scale below and above the default."
     },
     {
       "tokens": ["size.icon"],
