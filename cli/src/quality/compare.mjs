@@ -22,8 +22,8 @@ function git(repo, args) {
 /** The repository root that holds a path, or an error that says what to do. */
 export function repoRoot(from) {
   const r = git(from, ["rev-parse", "--show-toplevel"]);
-  if (r.code !== 0 || !existsSync(join(r.out, "schemes", "grammar.json")))
-    throw new Error("open-ds compare runs inside a git checkout of Open DS (it needs schemes/grammar.json and git).");
+  if (r.code !== 0 || !existsSync(join(r.out, "cli", "src", "schemes.mjs")))
+    throw new Error("open-ds compare runs inside a git checkout of Open DS: it needs git and cli/src/schemes.mjs. Run it from the repository.");
   return r.out;
 }
 

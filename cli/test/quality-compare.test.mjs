@@ -9,6 +9,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compareRefs, repoRoot } from "../src/quality/compare.mjs";
+import { saveGrammar, saveStoredScheme } from "../src/schemes.mjs";
 import { fixtureGrammar, fixtureScheme } from "./quality-fixture.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -17,14 +18,15 @@ const git = (repo, ...args) => {
   assert.equal(r.status, 0, r.stderr);
   return r.stdout.trim();
 };
-const writeScheme = (repo, scheme) => writeFileSync(join(repo, "schemes", "fixture.json"), `${JSON.stringify(scheme, null, 2)}\n`);
+const roots = (repo) => ({ schemes: join(repo, "schemes") });
+const writeScheme = (repo, scheme) => saveStoredScheme(scheme, roots(repo));
 
 function makeRepo() {
   const repo = mkdtempSync(join(tmpdir(), "open-ds-compare-test-"));
   cpSync(join(here, "..", "src"), join(repo, "cli", "src"), { recursive: true });
   writeFileSync(join(repo, "cli", "package.json"), JSON.stringify({ type: "module" }));
   mkdirSync(join(repo, "schemes"));
-  writeFileSync(join(repo, "schemes", "grammar.json"), JSON.stringify(fixtureGrammar()));
+  saveGrammar(fixtureGrammar(), roots(repo));
   writeScheme(repo, fixtureScheme());
   git(repo, "init", "-q");
   git(repo, "add", "-A");

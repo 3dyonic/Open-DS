@@ -3,10 +3,11 @@
 // them. Run as a child process, one per ref, so two refs' modules never share a process:
 //
 //   node cli/src/quality/extract.mjs --root <checkout> --out <file.json> [--ref <name>] [--sha <sha>]
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, relative } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { saveGrammar, saveStoredScheme, storedScheme } from "../schemes.mjs";
 import { componentLiterals, cssVarReads, reducedMotionTransforms } from "./sources.mjs";
 import { snapshotScheme } from "./snapshot.mjs";
 
@@ -57,14 +58,15 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
   const scratch = mkdtempSync(join(tmpdir(), "open-ds-quality-"));
   const scratchRoots = { ...roots, schemes: join(scratch, "schemes") };
   mkdirSync(scratchRoots.schemes);
-  copyFileSync(join(roots.schemes, "grammar.json"), join(scratchRoots.schemes, "grammar.json"));
+  // The files go through this checkout's one path (OD-289); the ref's own loader reads them back.
+  saveGrammar(grammar, scratchRoots);
   try {
     const schemes = {};
     for (const id of list) {
-      const stored = JSON.parse(readFileSync(join(roots.schemes, `${id}.json`), "utf8"));
+      const stored = storedScheme(id, roots);
       const scheme = schemesModule.loadScheme(id, roots);
       const reload = (changed) => {
-        writeFileSync(join(scratchRoots.schemes, `${id}.json`), JSON.stringify(changed));
+        saveStoredScheme(changed, scratchRoots);
         return schemesModule.loadScheme(id, scratchRoots);
       };
       const dist = join(root, "tokens", "dist", id);
