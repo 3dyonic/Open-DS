@@ -14,7 +14,7 @@ A row with media, a title, a description and actions.
 
 ## See it live
 
-::preview{robot="slumber" id="item/live"}
+::preview{id="item/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Content first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Content first" tone="success"}
-::preview{robot="slumber" id="item/variant/default"}
+::preview{id="item/variant/default"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ Rows in the reading list, separated by space, not lines.
 :::
 
 :::panel{title="outline" note="variant" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="item/variant/outline"}
+::preview{id="item/variant/outline"}
 
 **What it is for**
 
@@ -72,7 +72,7 @@ Borders would interrupt reading; space separates the rows.
 :::
 
 :::panel{title="muted" note="variant" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="item/variant/muted"}
+::preview{id="item/variant/muted"}
 
 **What it is for**
 
@@ -91,7 +91,7 @@ Every row in the reading list weighs the same; attention belongs to the text.
 :::
 
 :::panel{title="default" note="size" label="Used in Content first" tone="success"}
-::preview{robot="slumber" id="item/size/default"}
+::preview{id="item/size/default"}
 
 **What it is for**
 
@@ -110,7 +110,7 @@ Every row, at touch size: many readers are on phones.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="item/size/sm"}
+::preview{id="item/size/sm"}
 
 **What it is for**
 

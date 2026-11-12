@@ -14,7 +14,7 @@ A button that stays pressed or not.
 
 ## See it live
 
-::preview{robot="slumber" id="toggle/live"}
+::preview{id="toggle/live"}
 
 ## When to use it
 
@@ -34,7 +34,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Accessible first" tone="neutral"}
-::preview{robot="slumber" id="toggle/variant/default"}
+::preview{id="toggle/variant/default"}
 
 **What it is for**
 
@@ -54,7 +54,7 @@ Every action looks like a control people can find, so the toggle keeps its borde
 :::
 
 :::panel{title="outline" note="variant" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="toggle/variant/outline"}
+::preview{id="toggle/variant/outline"}
 
 **What it is for**
 
@@ -74,7 +74,7 @@ Every toggle, with a strong border and a word, so it reads as a control at any z
 :::
 
 :::panel{title="default" note="size" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="toggle/size/default"}
+::preview{id="toggle/size/default"}
 
 **What it is for**
 
@@ -93,7 +93,7 @@ Every toggle. Large targets help people with motor needs.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Accessible first" tone="neutral"}
-::preview{robot="slumber" id="toggle/size/sm"}
+::preview{id="toggle/size/sm"}
 
 **What it is for**
 
@@ -112,7 +112,7 @@ Large targets help people with motor needs; nothing smaller.
 :::
 
 :::panel{title="lg" note="size" label="Not used in Accessible first" tone="neutral"}
-::preview{robot="slumber" id="toggle/size/lg"}
+::preview{id="toggle/size/lg"}
 
 **What it is for**
 

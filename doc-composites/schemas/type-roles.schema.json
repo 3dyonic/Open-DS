@@ -4,7 +4,9 @@
   "title": "Type roles",
   "description": "Each type role of a scheme, as a line set in the role's own tokens with its values. Drawn by the TypeRoles composite on Foundations › Typography.",
   "type": "object",
-  "required": ["roles"],
+  "required": [
+    "roles"
+  ],
   "additionalProperties": false,
   "properties": {
     "roles": {
@@ -13,7 +15,9 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["role", "text"],
+        "required": [
+          "role"
+        ],
         "additionalProperties": false,
         "properties": {
           "role": {
@@ -25,10 +29,40 @@
             "type": "string",
             "description": "The line set in the role: the scheme's own content for that role."
           },
-          "size": { "type": "string", "description": "type.<role>.font-size, in pixels when known." },
-          "lineHeight": { "type": "string", "description": "type.<role>.line-height, in pixels when known." },
-          "weight": { "type": "string", "description": "type.<role>.font-weight." }
-        }
+          "parts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "For a line of several values, such as the data role's metrics: each value. The composite joins them."
+          },
+          "size": {
+            "type": "string",
+            "description": "type.<role>.font-size, in pixels when known."
+          },
+          "lineHeight": {
+            "type": "string",
+            "description": "type.<role>.line-height, in pixels when known."
+          },
+          "weight": {
+            "type": "string",
+            "description": "type.<role>.font-weight."
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "text"
+            ]
+          },
+          {
+            "required": [
+              "parts"
+            ]
+          }
+        ]
       }
     }
   }

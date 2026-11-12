@@ -7,7 +7,7 @@
  * ::anatomy-legend{id="alert-dialog"}
  */
 import * as React from "react";
-import Label from "./Label";
+import Label from "./base/Label";
 import { Tree, Twig } from "./base/Tree";
 
 export type LegendPart = {

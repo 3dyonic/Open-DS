@@ -14,7 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@open-ds/ui/components/card";
-import Label, { type LabelProps } from "./Label";
+import Label, { type LabelProps } from "./base/Label";
 
 export type PanelProps = {
   // A link target, such as part-1-2 on an Anatomy reference.

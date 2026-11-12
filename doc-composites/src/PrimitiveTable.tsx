@@ -1,7 +1,7 @@
 /**
  * PrimitiveTable: one group of a scheme's primitives, each with its value drawn and every token that
  * uses it, one per line. Built from the scheme's Table, used through its props only; Sample draws each
- * value. The data follows doc-composites/schemas/primitive-table.schema.json; the page holds one line:
+ * value, and a primitive no token uses yet says so with the Label base form. The data follows doc-composites/schemas/primitive-table.schema.json; the page holds one line:
  * ::primitive-table{id="space"}
  */
 import * as React from "react";
@@ -13,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@open-ds/ui/components/table";
+import Label from "./base/Label";
 import Sample from "./Sample";
 
 export type PrimitiveRow = {
@@ -60,7 +61,7 @@ export default function PrimitiveTable({ data }: { data: PrimitiveTableData }) {
                     ))}
                   </span>
                 ) : (
-                  <span className={muted}>Not used yet</span>
+                  <Label>Not used yet</Label>
                 )}
               </TableCell>
             </TableRow>

@@ -12,15 +12,15 @@ How color carries action, state and brand.
 
 ::token-swatches{id="color"}
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::color-keys{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::color-keys{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::color-keys{id="coral"}
 ::::
 
@@ -28,15 +28,15 @@ How color carries action, state and brand.
 
 The canvas, then the surfaces content sits on, in aster-light and aster-dark and birch-light and birch-dark and coral-light and coral-dark.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::surface-stack{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::surface-stack{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::surface-stack{id="coral"}
 ::::
 
@@ -44,15 +44,15 @@ The canvas, then the surfaces content sits on, in aster-light and aster-dark and
 
 Each status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::status-colors{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::status-colors{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::status-colors{id="coral"}
 ::::
 
@@ -70,7 +70,7 @@ Each status label always gets the same color, with its dot, so color is never th
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `color.neutral.0` | light | `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -213,7 +213,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `aster.theme.dark.color.disabled.border` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `color.neutral.0` | light | `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -356,7 +356,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `birch.theme.dark.color.disabled.border` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `color.neutral.0` | light | `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -601,15 +601,15 @@ A surface tells people where they are in depth, or which item they are on. Each 
 
 Which text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take `color.text.on-light`, dark fills take `color.text.on-dark`. The harness checks every pair.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::pairs-chart{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::pairs-chart{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::pairs-chart{id="coral"}
 ::::
 
@@ -617,19 +617,19 @@ Which text may sit on which fill, and the contrast it keeps there. Each fill is 
 
 Every fill says whether it is light or dark, in each mode, and that picks the text on it. A fill can change tone between modes: the same token, the other text.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 **Every fill changes tone between light and dark mode.**
 
 ::fill-tones{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 **Every fill changes tone between light and dark mode.**
 
 ::fill-tones{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 **Every fill changes tone between light and dark mode.**
 
 ::fill-tones{id="coral"}

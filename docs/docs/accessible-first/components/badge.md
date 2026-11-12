@@ -14,7 +14,7 @@ A short label for a status, category or count, next to what it describes.
 
 ## See it live
 
-::preview{robot="slumber" id="badge/live"}
+::preview{id="badge/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="neutral" note="tone" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="badge/tone/neutral"}
+::preview{id="badge/tone/neutral"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ A waiting state, such as an application saved to resume later, with an icon and 
 :::
 
 :::panel{title="info" note="tone" label="Not used in Accessible first" tone="neutral"}
-::preview{robot="slumber" id="badge/tone/info"}
+::preview{id="badge/tone/info"}
 
 **What it is for**
 
@@ -72,7 +72,7 @@ Neutral covers news with nothing to do: one clear way to do each thing.
 :::
 
 :::panel{title="success" note="tone" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="badge/tone/success"}
+::preview{id="badge/tone/success"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ A finished task, with a filled icon and a word.
 :::
 
 :::panel{title="warning" note="tone" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="badge/tone/warning"}
+::preview{id="badge/tone/warning"}
 
 **What it is for**
 
@@ -112,7 +112,7 @@ A risk people can still fix before they finish, with an icon and a word.
 :::
 
 :::panel{title="danger" note="tone" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="badge/tone/danger"}
+::preview{id="badge/tone/danger"}
 
 **What it is for**
 

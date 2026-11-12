@@ -58,7 +58,9 @@
      "key": "group.gap",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -94,8 +96,20 @@
      "darkValue": "#1E293B",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.1
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.22
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -110,8 +124,28 @@
      "darkValue": "#96A3B5",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 7.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -120,7 +154,9 @@
      "key": "radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag.",
+     "pick": [
+      "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag."
+     ],
      "shares": []
     },
     {
@@ -129,7 +165,9 @@
      "key": "font-size",
      "value": "0.8125rem",
      "byScheme": true,
-     "pick": "font.size.13",
+     "pick": [
+      "font.size.13"
+     ],
      "shares": []
     }
    ]
@@ -151,8 +189,28 @@
      "darkValue": "#F8FAFC",
      "byScheme": true,
      "rule": "A reversed fill for small, short-lived messages.",
-     "pick": "neutral.900: the reverse of content for short messages; its text reads, 17.85:1 on surface.inverse, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 17.06:1 on surface.inverse, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 17.85
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 17.06
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.primary"
      ]
@@ -165,8 +223,28 @@
      "darkValue": "#0F172A",
      "byScheme": true,
      "rule": "Text on an inverse fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 17.85:1 on surface.inverse, above the 4.5:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 17.06:1 on surface.inverse, above the 4.5:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 17.85
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 17.06
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.on-action",
       "text.on-danger"

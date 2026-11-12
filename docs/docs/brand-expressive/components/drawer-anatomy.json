@@ -134,8 +134,12 @@
      "darkValue": "#000000B3",
      "byScheme": false,
      "rule": "The see-through layer behind a modal.",
-     "pick": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
-     "darkPick": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "pick": [
+      "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+     ],
+     "darkPick": [
+      "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+     ],
      "shares": []
     },
     {
@@ -146,8 +150,20 @@
      "darkValue": "#120B09",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.05
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.08
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     },
     {
@@ -157,8 +173,12 @@
      "value": "0px 24px 48px, #1F141133",
      "darkValue": "0px 24px 48px, #00000099",
      "byScheme": true,
-     "pick": "shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
-     "darkPick": "shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
+     "pick": [
+      "shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections."
+     ],
+     "darkPick": [
+      "shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections."
+     ],
      "shares": []
     },
     {
@@ -167,7 +187,9 @@
      "key": "content.radius",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+     "pick": [
+      "radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape."
+     ],
      "shares": []
     },
     {
@@ -178,8 +200,20 @@
      "darkValue": "#4D3A33",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.26
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.69
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "surface.pressed",
       "disabled.border"
@@ -211,8 +245,20 @@
      "darkValue": "#33241F",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.21
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -226,7 +272,9 @@
      "key": "handle.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     },
     {
@@ -235,7 +283,9 @@
      "key": "handle.margin-top",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     }
    ]
@@ -283,7 +333,9 @@
      "key": "title.font-family",
      "value": "\"Bricolage Grotesque\", system-ui, sans-serif",
      "byScheme": true,
-     "pick": "bricolage-grotesque for heading text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+     "pick": [
+      "bricolage-grotesque for heading text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read."
+     ],
      "shares": []
     },
     {
@@ -292,7 +344,9 @@
      "key": "title.font-size",
      "value": "1.75rem",
      "byScheme": true,
-     "pick": "font.size.28",
+     "pick": [
+      "font.size.28"
+     ],
      "shares": []
     },
     {
@@ -301,7 +355,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -310,7 +366,9 @@
      "key": "description.font-size",
      "value": "1.0625rem",
      "byScheme": true,
-     "pick": "font.size.17",
+     "pick": [
+      "font.size.17"
+     ],
      "shares": []
     },
     {
@@ -321,8 +379,28 @@
      "darkValue": "#E2C4B3",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 10.67
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: supporting text, ",
+      {
+       "ratio": 10.96
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -331,7 +409,9 @@
      "key": "header.gap",
      "value": "0.125rem",
      "byScheme": false,
-     "pick": "space.2",
+     "pick": [
+      "space.2"
+     ],
      "shares": []
     },
     {
@@ -340,7 +420,9 @@
      "key": "header.padding",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     }
    ]
@@ -374,7 +456,9 @@
      "key": "footer.gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     },
     {
@@ -383,7 +467,9 @@
      "key": "footer.padding",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     }
    ]

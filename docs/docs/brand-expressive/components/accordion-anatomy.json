@@ -112,7 +112,9 @@
      "key": "item.divider.width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
@@ -148,8 +150,28 @@
      "darkValue": "#FFF8F3",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 18
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -160,7 +182,9 @@
      "key": "trigger.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -169,7 +193,9 @@
      "key": "trigger.padding-y",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     },
     {
@@ -178,7 +204,9 @@
      "key": "trigger.gap",
      "value": "2.5rem",
      "byScheme": true,
-     "pick": "space.40",
+     "pick": [
+      "space.40"
+     ],
      "shares": []
     }
    ]
@@ -212,7 +240,9 @@
      "key": "icon.size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -221,7 +251,9 @@
      "key": "icon.duration",
      "value": "120ms",
      "byScheme": true,
-     "pick": "duration.fast",
+     "pick": [
+      "duration.fast"
+     ],
      "shares": []
     }
    ]
@@ -255,7 +287,9 @@
      "key": "content.font-size",
      "value": "1.0625rem",
      "byScheme": true,
-     "pick": "font.size.17",
+     "pick": [
+      "font.size.17"
+     ],
      "shares": []
     },
     {
@@ -264,7 +298,9 @@
      "key": "content.padding-bottom",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     }
    ]
@@ -291,7 +327,9 @@
      "key": "trigger.focus-ring.width",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
@@ -300,7 +338,9 @@
      "key": "trigger.focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -311,8 +351,20 @@
      "darkValue": "#120B09",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.05
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.08
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -332,7 +384,9 @@
      "key": "trigger.disabled.opacity",
      "value": "0.4",
      "byScheme": true,
-     "pick": "opacity.40",
+     "pick": [
+      "opacity.40"
+     ],
      "shares": []
     }
    ]

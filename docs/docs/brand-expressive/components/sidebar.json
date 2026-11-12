@@ -1,6 +1,10 @@
 {
  "preview": {
   "sidebar/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "sidebar/variant/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "sidebar/variant/outline": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar outline",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "sidebar/size/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -37,6 +53,10 @@
    }
   },
   "sidebar/size/sm": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar sm",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -44,6 +64,10 @@
    }
   },
   "sidebar/size/lg": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar lg",
    "wait": "Start Storybook to see it live",
    "frames": {

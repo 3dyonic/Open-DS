@@ -20,6 +20,14 @@ Each scheme holds:
 - `themes`: every brand in light and dark.
 - `tokens`: DTCG tokens in three tiers. Primitives are the options. Semantics are the decisions (`base`, `light`, `dark`). Component keys point to semantics.
 
+A scheme file stores only what a person decided. `loadScheme` in `cli/src/schemes.mjs` fills the rest, and `saveScheme` leaves it out again:
+
+- Component keys: the file keeps a key only where it differs from the grammar's default.
+- Color scales: a colored hue keeps its key colors and adjustments in `$extensions.open-ds`. The loader generates its light and dark steps.
+- The component spacing map: the file keeps its rhythm and fixed steps in `$extensions.open-ds`. The loader generates its steps.
+
+`open-ds build` writes the filled scheme and checks it against the schema and the scheme rules.
+
 Options must look clearly different from each other: two steps you cannot tell apart are one step. The rules, with the smallest gap per kind of option, are in `grammar.json` under `options`; the harness checks every scheme against them, and the agent context carries them. Keep only the options something reads: outside color ramps, which stay whole, every primitive is read by a semantic, a theme or a component key. A count answer has that many tokens: `motion.count` "two" means two speeds.
 
 Text pairs with fills by tone. Every fill in a theme states its tone, light or dark, in `$extensions.open-ds.tone`: a decision, like a value. The text on a fill is `color.text.on-light` (the light mode's body text) on a light fill and `color.text.on-dark` (white) on a dark one, the same two colors in both modes. `color.text.inverse`, `color.text.on-action` and `color.text.on-danger` point at the one their fill's tone picks. `color.text.*` is the mode's own set, for the page's own surfaces. The grammar's `semantics.tones` lists the roles, their contrast and what each fill carries, and the harness checks every fill. A known shortfall can wait on its fill with the ticket that fixes it (`waits`); the check names it.
