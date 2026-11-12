@@ -8,7 +8,7 @@ description: "Type primitives in Multi-brand."
 
 # Type
 
-14 primitives, 14 used.
+13 primitives, 13 used.
 
 ## `font.size`
 

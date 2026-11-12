@@ -108,7 +108,7 @@
       },
       {
        "token": "type.heading.font-size",
-       "value": "16px"
+       "value": "17px"
       },
       {
        "token": "type.heading.line-height",
@@ -274,7 +274,7 @@
       },
       {
        "token": "type.data.font-size",
-       "value": "13px"
+       "value": "14px"
       },
       {
        "token": "type.data.line-height",

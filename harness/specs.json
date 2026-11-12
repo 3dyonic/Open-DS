@@ -585,6 +585,17 @@
       "checks": ["values-traced", "reasons-explain-values", "decisions-cover-values", "json-files-validate"]
     },
     {
+      "id": "OD-294",
+      "title": "The type scale: sizes from a base and a ratio, line heights by role kind",
+      "in": [
+        "each scheme records on its type group the body size, a ratio, each role's step, and a tight and an open line height with the roles that take each",
+        "a role's size is base × ratio^step, rounded to whole px, and links to the font.size primitive of that size; the scale owns the size and line height primitives",
+        "the values are computed once when the scheme is written (scripts/type-scale.mjs); the harness compares them with the generator",
+        "every size and line height keeps a reason that names its value and relates it to its siblings"
+      ],
+      "checks": ["type-scale-generated", "reasons-explain-values", "json-files-validate"]
+    },
+    {
       "id": "OD-285",
       "title": "Icons follow each scheme: one Lucide set, the scheme's size and stroke, and an Icon component for content",
       "in": [

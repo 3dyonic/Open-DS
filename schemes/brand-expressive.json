@@ -3079,9 +3079,9 @@
             "$type": "dimension",
             "$value": "1.0625rem"
           },
-          "28": {
+          "29": {
             "$type": "dimension",
-            "$value": "1.75rem"
+            "$value": "1.8125rem"
           },
           "40": {
             "$type": "dimension",
@@ -5488,6 +5488,46 @@
         }
       },
       "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 17,
+            "ratio": 1.114,
+            "steps": {
+              "display": 11,
+              "title": 8,
+              "heading": 5,
+              "body": 0,
+              "label": -1,
+              "caption": -2,
+              "data": 0
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.1,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "open": {
+                "ratio": 1.55,
+                "roles": [
+                  "body",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "Many fine steps: a regular 17px body and a 1.114 ratio, with wide gaps up to the display, so big moments have room. Headlines and labels sit tight at 1.1; text that wraps opens to 1.55."
+          }
+        },
         "display": {
           "font-family": {
             "$type": "fontFamily",
@@ -5498,7 +5538,7 @@
             "$value": "{font.size.56}",
             "$extensions": {
               "open-ds": {
-                "why": "Display sets 56px, the largest step, because every hero opens with one big idea in the brand's loudest voice.",
+                "why": "Display sets 56px, eleven fine steps above the 17px body (17 × 1.114^11), the top of the scale, because every hero opens with one big idea in the brand's loudest voice.",
                 "because": [
                   "typography.roles",
                   "content.q2",
@@ -5546,7 +5586,7 @@
             "$value": "{font.size.40}",
             "$extensions": {
               "open-ds": {
-                "why": "Title sets 40px, one step below display, so the sign-up form's title stays big and keeps the form in view on a phone.",
+                "why": "Title sets 40px, eight steps above body and three under display, so the sign-up form's title stays big and keeps the form in view on a phone.",
                 "because": [
                   "tasks.q2",
                   "scenarios.q1",
@@ -5589,10 +5629,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.28}",
+            "$value": "{font.size.29}",
             "$extensions": {
               "open-ds": {
-                "why": "Heading sets 28px, the smallest headline step, so it carries the display face into cards and dialogs without competing with the hero.",
+                "why": "Heading sets 29px, five steps above body and three under the 40px title, the smallest headline step, so it carries the display face into cards and dialogs.",
                 "because": [
                   "brand.q3",
                   "content.q2",
@@ -5639,7 +5679,7 @@
             "$value": "{font.size.17}",
             "$extensions": {
               "open-ds": {
-                "why": "Body sets 17px in DM Sans, so short punchy copy reads easily on the phones visitors arrive on.",
+                "why": "Body sets 17px in DM Sans, step 0 of the scale, so short punchy copy reads easily on the phones visitors arrive on.",
                 "because": [
                   "brand.q3",
                   "content.q1",
@@ -5686,7 +5726,7 @@
             "$value": "{font.size.15}",
             "$extensions": {
               "open-ds": {
-                "why": "Label sets 15px, between caption and body, so field labels stay readable on vivid color.",
+                "why": "Label sets 15px, one step under body and one over the 14px caption, so field labels stay readable on vivid color.",
                 "because": [
                   "people.q2"
                 ]
@@ -5731,7 +5771,7 @@
             "$value": "{font.size.14}",
             "$extensions": {
               "open-ds": {
-                "why": "Caption sets 14px, the smallest step, so fine print stays small and headlines keep the attention that wins sign-ups.",
+                "why": "Caption sets 14px, two steps under the 17px body, the smallest step, so fine print stays small and headlines keep the attention that wins sign-ups.",
                 "because": [
                   "outcomes.q1",
                   "content.q1"
@@ -5777,7 +5817,7 @@
             "$value": "{font.size.17}",
             "$extensions": {
               "open-ds": {
-                "why": "Data equals body at 17px, because tables are rare and short, so cells read like the rest of the page.",
+                "why": "Data shares step 0 with body at 17px, because tables are rare and short, so cells read like the rest of the page.",
                 "because": [
                   "content.q1"
                 ]
