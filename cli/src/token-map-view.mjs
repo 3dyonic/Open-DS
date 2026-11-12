@@ -146,7 +146,7 @@ const stepOrder = (a, b) => {
  * other area, the same in both modes. Decisions are keyed by token id; a decision's answers are ids
  * into answers.
  */
-export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "" }) {
+export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "", waiting = {} }) {
   const reasons = reasonsOf(scheme, grammar);
   // A decision without a theme pick says why through its own, its group's or a usage rule's reason
   // (trace.mjs). A grammar trace rule links answers but says no why of the scheme's: none is invented.
@@ -168,7 +168,13 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
   const tokenIndexes = Object.fromEntries(["light", "dark"].map((m) => [m, tokenIndex(scheme, { brand, mode: m })]));
   // A color token's decision graph, in the order the card reads it: role → jobs → property → answers →
   // rule → connections → value, and the reason sentence the engine writes from those fields.
-  const graphOf = (tree) => {
+  // A check that does not hold waits when the scheme records a fix for it, or when the connection's
+  // baseline (waiting, the harness's connections-baseline.json counts) keeps gaps for this scheme.
+  const waits = (n, x) => !x.holds && (!!x.waits || (waiting[n.name]?.[scheme.id] ?? 0) > 0);
+  // A hue clash names the other token: "shares the amber hue with color.status.warning".
+  const waitText = (n, x, mine) =>
+    x.hue ? `shares the ${x.hue} hue with ${x.tokens.find((t) => t !== mine) ?? x.tokens[1]}` : x.says;
+  const graphOf = (tree, name) => {
     const role = tree.find((n) => n.level === "role");
     if (!role) return null;
     const reason = tree.find((n) => n.level === "reason")?.says ?? null;
@@ -179,10 +185,24 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       gets: role.gets,
       // The role's jobs by title; the decision's mapping holds each job's how once.
       jobs: role.jobs.map((j) => j.title),
+      // Why the token exists: the answers that create its role, or the reason every scheme ships it.
+      made: { always: role.always, creates: role.creates, shapes: role.shapes },
       rules: tree.filter((n) => n.level === "rule").map((n) => ({ name: n.name, says: n.says, holds: n.holds })),
       connections: tree
         .filter((n) => n.level === "connection")
-        .map((n) => ({ id: n.name, holds: n.holds, checks: n.checks.length, off: n.checks.filter((c) => !c.holds).map((c) => c.says) })),
+        .map((n) => {
+          const mine = n.via ?? name.replace(/\.@$/, "");
+          return {
+            id: n.name,
+            ...(n.via && { via: n.via }),
+            holds: n.holds,
+            checks: n.checks.length,
+            // A pairs-with shows each pair it measures: the text, the ratio and the step promise.
+            pairs: n.kind === "pairs-with" ? n.checks.filter((c) => c.holds).map((c) => c.says) : [],
+            off: n.checks.filter((c) => !c.holds && !waits(n, c)).map((c) => c.says),
+            waits: n.checks.filter((c) => waits(n, c)).map((c) => waitText(n, c, mine)),
+          };
+        }),
       value: value ? { name: value.name, hex: value.says } : null,
       reason,
     };
@@ -202,7 +222,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       .filter((n) => (n.level === "group" || n.level === "variant") && n.says)
       .map((n) => ({ level: n.level, name: n.name, says: n.says }));
     const property = tree.find((n) => n.level === "property");
-    const graph = graphOf(tree);
+    const graph = graphOf(tree, tokenName(d));
     if (property)
       return {
         ...(graph && { graph }),

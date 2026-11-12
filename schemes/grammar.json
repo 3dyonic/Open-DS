@@ -890,11 +890,35 @@
           "options": [
             {
               "id": "core",
-              "label": "Surface, text, action and status"
+              "label": "Surface, text, action and status",
+              "creates": [
+                "page-text",
+                "text-on-fill",
+                "line",
+                "raised-edge",
+                "action-fill",
+                "status-mark",
+                "status-tint",
+                "status-text",
+                "surface-ladder",
+                "inverse-surface"
+              ]
             },
             {
               "id": "core-brand",
-              "label": "Those and brand accents"
+              "label": "Those and brand accents",
+              "creates": [
+                "page-text",
+                "text-on-fill",
+                "line",
+                "raised-edge",
+                "action-fill",
+                "status-mark",
+                "status-tint",
+                "status-text",
+                "surface-ladder",
+                "inverse-surface"
+              ]
             }
           ]
         },
@@ -906,15 +930,18 @@
           "options": [
             {
               "id": "two",
-              "label": "Two"
+              "label": "Two",
+              "creates": []
             },
             {
               "id": "three",
-              "label": "Three"
+              "label": "Three",
+              "creates": []
             },
             {
               "id": "four",
-              "label": "Four"
+              "label": "Four",
+              "creates": []
             }
           ]
         },
@@ -926,11 +953,13 @@
           "options": [
             {
               "id": "neutral-brand",
-              "label": "Neutrals and one brand ramp"
+              "label": "Neutrals and one brand ramp",
+              "creates": ["neutral-step"]
             },
             {
               "id": "ramp-per-brand",
-              "label": "Shared neutrals, a ramp per brand"
+              "label": "Shared neutrals, a ramp per brand",
+              "creates": ["neutral-step"]
             }
           ]
         },
@@ -942,15 +971,18 @@
           "options": [
             {
               "id": "muted",
-              "label": "Muted"
+              "label": "Muted",
+              "creates": []
             },
             {
               "id": "balanced",
-              "label": "Balanced"
+              "label": "Balanced",
+              "creates": []
             },
             {
               "id": "vivid",
-              "label": "Vivid"
+              "label": "Vivid",
+              "creates": []
             }
           ]
         },
@@ -962,15 +994,18 @@
           "options": [
             {
               "id": "status",
-              "label": "Status in tables"
+              "label": "Status in tables",
+              "creates": []
             },
             {
               "id": "links-actions",
-              "label": "Links and actions"
+              "label": "Links and actions",
+              "creates": []
             },
             {
               "id": "brand-moments",
-              "label": "Brand moments"
+              "label": "Brand moments",
+              "creates": []
             }
           ]
         }
@@ -1722,15 +1757,18 @@
           "options": [
             {
               "id": "floating-only",
-              "label": "Only what floats"
+              "label": "Only what floats",
+              "creates": []
             },
             {
               "id": "cards-too",
-              "label": "Cards too"
+              "label": "Cards too",
+              "creates": []
             },
             {
               "id": "nothing",
-              "label": "Nothing"
+              "label": "Nothing",
+              "creates": []
             }
           ]
         },
@@ -1806,15 +1844,18 @@
           "options": [
             {
               "id": "menus-dialogs",
-              "label": "Menus and dialogs"
+              "label": "Menus and dialogs",
+              "creates": ["scrim"]
             },
             {
               "id": "cards-menus",
-              "label": "Cards, menus and dialogs"
+              "label": "Cards, menus and dialogs",
+              "creates": ["scrim"]
             },
             {
               "id": "dialogs-only",
-              "label": "Dialogs only"
+              "label": "Dialogs only",
+              "creates": ["scrim"]
             }
           ]
         }
@@ -2462,15 +2503,18 @@
           "options": [
             {
               "id": "hover-focus-disabled",
-              "label": "Hover, focus, disabled"
+              "label": "Hover, focus, disabled",
+              "creates": ["hover", "state", "focus", "disabled"]
             },
             {
               "id": "plus-pressed",
-              "label": "Those and pressed"
+              "label": "Those and pressed",
+              "creates": ["hover", "state", "focus", "disabled"]
             },
             {
               "id": "all",
-              "label": "All, including loading"
+              "label": "All, including loading",
+              "creates": ["hover", "state", "focus", "disabled"]
             }
           ]
         },
@@ -2498,11 +2542,13 @@
           "options": [
             {
               "id": "aa",
-              "label": "AA"
+              "label": "AA",
+              "creates": []
             },
             {
               "id": "aaa-text",
-              "label": "AAA for text"
+              "label": "AAA for text",
+              "creates": []
             }
           ]
         },
@@ -17398,7 +17444,14 @@
               "contrast": 7
             }
           ],
-          "says": "Every fill pairs with the text on it, by tone, and the pair keeps its contrast floor. A step number makes a promise: steps 400 apart give 3:1, 500 apart give 4.5:1, 700 apart give 7:1, in every hue of a scheme."
+          "says": "Every fill pairs with the text on it, by tone, and the pair keeps its contrast floor. A step number makes a promise: steps 400 apart give 3:1, 500 apart give 4.5:1, 700 apart give 7:1, in every hue of a scheme.",
+          "also": [
+            {
+              "fills": ["color.category.*.subtle"],
+              "text": "color.text.primary",
+              "says": "A tag's text on a category tint is the page's own text."
+            }
+          ]
         },
         {
           "id": "category-apart-from-status",
@@ -40513,7 +40566,11 @@
           "tokens": ["color.category.*.@"],
           "jobs": ["hue-set", "tell-apart"],
           "to": "tell series and tags apart with no meaning attached",
-          "gets": "people match a series to its legend at once"
+          "gets": "people match a series to its legend at once",
+          "always_on": {
+            "why": "a design system ships category colors for the products teams build",
+            "shaped_by": ["color.definition", "accessibility.definition"]
+          }
         },
         {
           "id": "category-tint",
@@ -40521,7 +40578,11 @@
           "tokens": ["color.category.*.subtle"],
           "jobs": ["hue-set", "tell-apart"],
           "to": "group a tag or a block by color at low weight",
-          "gets": "tags stay quiet beside the content"
+          "gets": "tags stay quiet beside the content",
+          "always_on": {
+            "why": "a design system ships category colors for the products teams build",
+            "shaped_by": ["color.definition", "accessibility.definition"]
+          }
         }
       ]
     },

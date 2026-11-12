@@ -2155,6 +2155,53 @@ export const CHECKS = {
       );
     },
   },
+  // OD-304: answers create choices. Each shipped color role is created by an option the scheme chose, or
+  // the grammar marks it always-on with a reason and the answers that shape it. Each option of a question a
+  // color role depends on lists what it creates, and each listed role exists.
+  "color-roles-created": {
+    requires: ["cli/src/color-graph.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      const { creatorsOf, roleOf } = await import(pathToFileURL(c.p("cli/src/color-graph.mjs")).href);
+      const { questions } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
+      const { flatTokens } = await import(pathToFileURL(c.p("cli/src/tokens.mjs")).href);
+      const g = c.grammar();
+      const asked = questions(g);
+      const roles = (g.mapping ?? []).flatMap((e) => (e.roles ?? []).map((r) => ({ ...r, question: e.question })));
+      const ids = new Set(roles.map((r) => r.id));
+      const off = [];
+      // The questions a color role depends on: the color scope's, each role's deciding question, and each always-on role's shaping ones.
+      const depends = new Set([
+        ...Object.keys(asked).filter((id) => id.startsWith("color.")),
+        ...roles.map((r) => r.question),
+        ...roles.flatMap((r) => r.always_on?.shaped_by ?? []),
+      ]);
+      for (const id of depends) {
+        if (!asked[id]) off.push(`${id} is not a question`);
+        for (const o of asked[id]?.options ?? []) {
+          if (!Array.isArray(o.creates)) off.push(`${id} option ${o.id} lists nothing it creates`);
+          for (const r of o.creates ?? []) if (!ids.has(r)) off.push(`${id} option ${o.id} creates ${r}, which is no color role`);
+        }
+      }
+      let n = 0;
+      for (const id of SCHEMES) {
+        const scheme = c.scheme(id);
+        const shipped = new Map();
+        for (const [path, t] of flatTokens(scheme.tokens.semantic))
+          if (path.startsWith("color.") && !t.$deprecated) {
+            const r = roleOf(g, path)?.role;
+            if (r && !shipped.has(r.id)) shipped.set(r.id, { role: r, token: path });
+          }
+        for (const { role, token } of shipped.values()) {
+          n++;
+          if (!role.always_on && !creatorsOf(scheme, g, role.id).length)
+            off.push(`${id} ships ${role.id} (${token}), but no option it chose creates it and the role is not always-on`);
+        }
+      }
+      return off.length
+        ? bad(`${off.length} color roles have no answer that creates them: ${off.slice(0, 5).join("; ")}`)
+        : ok(`${n} shipped color roles in ${SCHEMES.length} schemes are created by a chosen option or always-on; ${depends.size} questions list what each option creates`);
+    },
+  },
   "json-sources-one-layout": {
     requires: ["cli/src/schemes.mjs", "schemes/grammar.json", "schema/grammar.schema.json", "schema/scheme.schema.json"],
     run: async (c) => {
