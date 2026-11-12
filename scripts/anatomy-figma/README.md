@@ -44,7 +44,7 @@ A NODE:
 | `radius`, `corners`, `shadow`, `opacity`, `clip` | corner (`corners` limits it: `["tl", "tr"]`), elevation token, opacity, clip children |
 | `ring` | focus ring around the node: `{ "color", "width", "offset", "radius", "fill", "n" }`; `fill` is the gap's color; a ringed node with `w: "fill"` stretches with its ring |
 | `size`, `color`, `weight`, `lh`, `font`, `align` | text nodes; `weight` is a weight token or `"bold"`; `lh` a line-height token |
-| `sample`, `initials`, `absent` | what a text node shows: a path in the scheme's samples (`"card.title"`), or a list of paths joined with " · "; `initials: true` shows the first letters; `absent` is the text when a scheme has nothing at the path. `sample-text.mjs` has the path rules |
+| `sample`, `initials`, `absent` | what a text node shows: a path in the scheme's samples (`"card.title"`), or a list of paths joined with " · "; `initials: true` shows the first letters; `absent` is the text when a scheme has nothing at the path. `sample-text.mjs` has the path rules. A field that its sample object lists in `illustrative` shows with " (sample)" |
 | `text`, `fixed` | a text that is not scheme content (a key cap, a day number) keeps its `text` and says why in `fixed` |
 | `icon`, `size`, `color` | icon nodes: a Lucide icon name (as in `lucide-react`, kebab case) |
 | `children` | the nodes inside |

@@ -10,8 +10,11 @@
 // "initials": true shows the first letters of the first two words, as Storybook's avatars do.
 // "absent" is the text when the scheme has nothing at the path: a badge tone the scheme leaves out.
 // "fixed" keeps the node's own text, with the reason: a key cap, a day number, a state caption.
+// A sample object may list fields in "illustrative": that copy is not an owner fact (a price term, a
+// delivery promise). The drawing adds SAMPLE_MARK to it, so no reader takes it for a real offer.
 
 export const JOIN = " · ";
+export const SAMPLE_MARK = " (sample)";
 
 /** The value at one path in the samples, or undefined. */
 export function atPath(samples, path) {
@@ -37,6 +40,16 @@ export function atPath(samples, path) {
   return node;
 }
 
+/** True when the path ends on a field that its object lists in "illustrative". */
+export function isIllustrative(samples, path) {
+  const keys = path.split(".");
+  const field = keys.pop();
+  const owner = keys.length ? atPath(samples, keys.join(".")) : samples;
+  return (
+    Array.isArray(owner?.illustrative) && owner.illustrative.includes(field)
+  );
+}
+
 const initials = (text) =>
   text
     .split(" ")
@@ -47,7 +60,7 @@ const initials = (text) =>
 
 /**
  * The text a node shows in a scheme: { text } when every path resolves, { missing } with the paths that
- * do not. A node without a sample keeps its own text.
+ * do not. A node without a sample keeps its own text. Illustrative copy ends with SAMPLE_MARK.
  */
 export function sampleText(node, samples) {
   if (!node.sample) return { text: node.text };
@@ -58,8 +71,9 @@ export function sampleText(node, samples) {
     return typeof node.absent === "string"
       ? { text: node.absent }
       : { missing };
-  const text = values.join(JOIN);
-  return { text: node.initials ? initials(text) : text };
+  const text = node.initials ? initials(values.join(JOIN)) : values.join(JOIN);
+  const illustrative = paths.some((p) => isIllustrative(samples, p));
+  return { text: illustrative ? text + SAMPLE_MARK : text };
 }
 
 /** Every text node in a parts layer: the drawing and each card's own drawing. */

@@ -1041,7 +1041,10 @@
     "choices": [
       {
         "label": "Ship to me",
-        "description": "We send it on drop day."
+        "description": "We send it on drop day.",
+        "illustrative": [
+          "description"
+        ]
       },
       {
         "label": "Pick up in store",

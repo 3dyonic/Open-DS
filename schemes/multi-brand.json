@@ -1076,7 +1076,10 @@
     "choices": [
       {
         "label": "Monthly",
-        "description": "12.00 a month. Cancel any time."
+        "description": "12.00 a month. Cancel any time.",
+        "illustrative": [
+          "description"
+        ]
       },
       {
         "label": "Yearly",
