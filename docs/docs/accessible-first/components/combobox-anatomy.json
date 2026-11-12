@@ -252,7 +252,7 @@
      "key": "content.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Clear, slightly rounded controls.",
+     "pick": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
      "shares": []
     }
    ]
@@ -271,7 +271,7 @@
      "situation": "items that belong together",
      "use": "space.gap.default",
      "not": "space.gap.tight",
-     "why": "Generous space lowers mis-taps."
+     "why": "Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps."
     },
     {
      "kind": "token",
@@ -483,7 +483,7 @@
      "key": "chip.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Clear, slightly rounded controls.",
+     "pick": "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
      "shares": []
     },
     {

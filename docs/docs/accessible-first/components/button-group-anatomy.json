@@ -57,7 +57,7 @@
      "situation": "items that belong together",
      "use": "space.gap.default",
      "not": "space.gap.tight",
-     "why": "Generous space lowers mis-taps."
+     "why": "Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps."
     },
     {
      "kind": "token",
@@ -172,7 +172,7 @@
      "key": "text.radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: Clear, slightly rounded controls.",
+     "pick": "radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
      "shares": []
     },
     {

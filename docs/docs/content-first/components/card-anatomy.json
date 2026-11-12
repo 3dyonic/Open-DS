@@ -162,7 +162,7 @@
      "key": "radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: Rounded corners feel friendly.",
+     "pick": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
      "shares": []
     },
     {
@@ -204,7 +204,7 @@
      "key": "shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: Only menus and dialogs float.",
+     "pick": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
      "shares": []
     }
    ]

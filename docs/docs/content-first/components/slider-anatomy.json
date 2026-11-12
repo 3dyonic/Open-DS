@@ -206,7 +206,7 @@
      "key": "thumb.shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: Only menus and dialogs float.",
+     "pick": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
      "shares": []
     }
    ]

@@ -127,7 +127,7 @@
      "key": "radius",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "radius.24: Pill controls feel playful.",
+     "pick": "radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
      "shares": []
     },
     {

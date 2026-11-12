@@ -74,7 +74,7 @@
      "key": "radius",
      "value": "0rem",
      "byScheme": true,
-     "pick": "radius.0: Small corners keep dense rows straight.",
+     "pick": "radius.0: square badges are rectangles, so status badges line up down a column in the table.",
      "shares": []
     },
     {

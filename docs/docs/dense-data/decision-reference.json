@@ -917,6 +917,18 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.surface: radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -1051,6 +1063,18 @@
         "link": {
          "label": "Item",
          "href": "components/item"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.badge: radius.0: square badges are rectangles, so status badges line up down a column in the table.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
         }
        }
       ]
@@ -1583,6 +1607,18 @@
        },
        {
         "text": "For a corners of cards, menus and dialogs, use radius.surface. Don't use radius.control. Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.surface: radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2961,14 +2997,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.2: Small corners keep dense rows straight.",
+        "text": "radius.control: radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.0: Small corners keep dense rows straight.",
+        "text": "radius.badge: radius.0: square badges are rectangles, so status badges line up down a column in the table.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2989,7 +3025,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.4: Small corners keep dense rows straight.",
+        "text": "radius.surface: radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -3052,14 +3088,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.2: Small corners keep dense rows straight.",
+        "text": "radius.control: radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.0: Small corners keep dense rows straight.",
+        "text": "radius.badge: radius.0: square badges are rectangles, so status badges line up down a column in the table.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -3073,7 +3109,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.4: Small corners keep dense rows straight.",
+        "text": "radius.surface: radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -3091,11 +3127,20 @@
     "How much is on one screen? → A lot"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "elevation-roles": {

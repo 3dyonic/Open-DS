@@ -579,9 +579,10 @@
         "one engine (cli/src/trace.mjs) links a value by its theme pick, its own reason, its group's reason, a usage rule or a grammar trace rule",
         "a grammar trace rule names one kind of token and the questions that decide it, never a whole scope",
         "coverage, the Token map and open-ds trace read the engine, so they never disagree",
-        "the Token map shows a why only where the scheme records one"
+        "the Token map shows a why only where the scheme records one",
+        "every semantic value has a reason of its own: 6 words or more, citing an answer, not another value's sentence"
       ],
-      "checks": ["values-traced", "decisions-cover-values", "json-files-validate"]
+      "checks": ["values-traced", "reasons-explain-values", "decisions-cover-values", "json-files-validate"]
     },
     {
       "id": "OD-285",

@@ -1908,7 +1908,7 @@
         }
        },
        {
-        "text": "color.category.1.subtle in light: blue.light.100: a tag's tint; text on it reads, 15.61:1, above the 7:1 floor.",
+        "text": "color.category.1.subtle in light: blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -1922,7 +1922,7 @@
         }
        },
        {
-        "text": "color.category.2.subtle in light: teal.light.100: a tag's tint; text on it reads, 15.61:1, above the 7:1 floor.",
+        "text": "color.category.2.subtle in light: teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -1999,7 +1999,7 @@
         }
        },
        {
-        "text": "color.category.1.subtle in dark: blue.dark.100: a tag's tint; text on it reads, 14.23:1, above the 7:1 floor.",
+        "text": "color.category.1.subtle in dark: blue.dark.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 14.23:1, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2013,7 +2013,7 @@
         }
        },
        {
-        "text": "color.category.2.subtle in dark: teal.dark.100: a tag's tint; text on it reads, 13.57:1, above the 7:1 floor.",
+        "text": "color.category.2.subtle in dark: teal.dark.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 13.57:1, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2651,7 +2651,7 @@
       "kind": "rules",
       "items": [
        {
-        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Generous space lowers mis-taps.",
+        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps.",
         "link": {
          "label": "Spacing",
          "href": "foundations/spacing"
@@ -2681,11 +2681,20 @@
     "What is the main content? → Forms and tasks"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Spacing",
-     "href": "foundations/spacing"
-    }
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-roles": {
@@ -2724,14 +2733,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.6: Clear, slightly rounded controls.",
+        "text": "radius.control: radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Clear, slightly rounded controls.",
+        "text": "radius.badge: radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2752,7 +2761,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.8: Clear, slightly rounded controls.",
+        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2770,11 +2779,20 @@
     "Shape · Which shape roles does it need? → Controls, badges and containers"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-definition": {
@@ -2815,14 +2833,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.6: Clear, slightly rounded controls.",
+        "text": "radius.control: radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Clear, slightly rounded controls.",
+        "text": "radius.badge: radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2836,7 +2854,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.8: Clear, slightly rounded controls.",
+        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2854,11 +2872,20 @@
     "What is the main content? → Forms and tasks"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "elevation-roles": {

@@ -185,8 +185,8 @@
      "value": "0px 24px 48px, #1F141133",
      "darkValue": "0px 24px 48px, #00000099",
      "byScheme": true,
-     "pick": "shadow.overlay: Pronounced shadows add depth.",
-     "darkPick": "shadow.overlay-dark: Pronounced shadows add depth.",
+     "pick": "shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
+     "darkPick": "shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
      "shares": []
     }
    ]

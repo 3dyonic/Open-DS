@@ -171,7 +171,7 @@
      "key": "content.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Clear, slightly rounded controls.",
+     "pick": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
      "shares": []
     },
     {
@@ -205,7 +205,7 @@
      "situation": "items that belong together",
      "use": "space.gap.default",
      "not": "space.gap.tight",
-     "why": "Generous space lowers mis-taps."
+     "why": "Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps."
     },
     {
      "kind": "token",

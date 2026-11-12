@@ -3362,12 +3362,12 @@
                 "$value": "{radius.2}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.2: Small corners keep dense rows straight.",
+                    "why": "radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "shape.lands"
+                    ]
                   }
                 }
               },
@@ -3376,12 +3376,12 @@
                 "$value": "{radius.0}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.0: Small corners keep dense rows straight.",
+                    "why": "radius.0: square badges are rectangles, so status badges line up down a column in the table.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "tasks.q1"
+                    ]
                   }
                 }
               },
@@ -3416,12 +3416,13 @@
                 "$value": "{radius.4}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.4: Small corners keep dense rows straight.",
+                    "why": "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
+                    ]
                   }
                 }
               }
@@ -5536,7 +5537,17 @@
         "icon": {
           "$type": "dimension",
           "$value": "{size.16}",
-          "$description": "Icon size next to text."
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "16px icons match the small text, so an icon and its label in a toolbar read as one line.",
+              "because": [
+                "iconography.values",
+                "iconography.count",
+                "tasks.q2"
+              ]
+            }
+          }
         }
       },
       "radius": {
@@ -5597,15 +5608,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.24}"
+            "$value": "{font.size.24}",
+            "$extensions": {
+              "open-ds": {
+                "why": "24px is the largest step, kept for the one key number at the top of a dashboard. Everything below it stays small.",
+                "because": [
+                  "tasks.q1",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_2}"
+            "$value": "{font.line-height.1_2}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step, because display holds one short number, not wrapped lines. The tight box keeps rows close below it.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.600}"
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600, the heaviest weight in the scale, makes the one display number the headline at a glance.",
+                "because": [
+                  "tasks.q1",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The display text role."
         },
@@ -5616,15 +5654,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.20}"
+            "$value": "{font.size.20}",
+            "$extensions": {
+              "open-ds": {
+                "why": "20px, one step under display, keeps page titles small so the table starts higher on the screen.",
+                "because": [
+                  "content.q2",
+                  "human.q2"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_2}"
+            "$value": "{font.line-height.1_2}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step: a page title is one short line, so a tight box saves height above the table.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.600}"
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 lets the small 20px title stand above the table by weight, not by a larger size.",
+                "because": [
+                  "content.q2",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The title text role."
         },
@@ -5635,15 +5700,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.16}"
+            "$value": "{font.size.16}",
+            "$extensions": {
+              "open-ds": {
+                "why": "16px sits one step above the 14px body. Panel and card headings name a block without taking rows from the data.",
+                "because": [
+                  "content.q2",
+                  "brand.q2"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_2}"
+            "$value": "{font.line-height.1_2}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step for headings, keeps a panel heading in a short box, so the block below starts sooner.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.600}"
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 separates a 16px heading from 14px body by weight, because the size gap is only 2px.",
+                "because": [
+                  "brand.q3",
+                  "typography.count"
+                ]
+              }
+            }
           },
           "$description": "The heading text role."
         },
@@ -5654,15 +5746,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.14}"
+            "$value": "{font.size.14}",
+            "$extensions": {
+              "open-ds": {
+                "why": "14px is the small body size: help text reads in passing, and more rows fit on the screen.",
+                "because": [
+                  "typography.values",
+                  "outcomes.q1",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}"
+            "$value": "{font.line-height.1_45}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.45, the open step, because body is help text that wraps to several lines. The ratio gives 14px text a 20.3px line.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400, the regular weight, keeps help sentences quiet beside the data, so the brand steps back.",
+                "because": [
+                  "brand.q2"
+                ]
+              }
+            }
           },
           "$description": "The body text role."
         },
@@ -5673,15 +5791,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.12}"
+            "$value": "{font.size.12}",
+            "$extensions": {
+              "open-ds": {
+                "why": "12px keeps column headers small. Headers repeat on every column, so a large style would compete with the data.",
+                "because": [
+                  "tasks.q1",
+                  "typography.values"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_2}"
+            "$value": "{font.line-height.1_2}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step for labels: a column header is one short name, so a 14.4px line keeps the header row low.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.500}"
+            "$value": "{font.weight.500}",
+            "$extensions": {
+              "open-ds": {
+                "why": "500 sets a 12px label apart from the 12px caption by weight alone, without a heavy 600 that competes with data.",
+                "because": [
+                  "tasks.q1",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The label text role."
         },
@@ -5692,15 +5837,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.12}"
+            "$value": "{font.size.12}",
+            "$extensions": {
+              "open-ds": {
+                "why": "12px, the smallest size, lets timestamps and hints step back, so the values stay the hero.",
+                "because": [
+                  "brand.q2",
+                  "content.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}"
+            "$value": "{font.line-height.1_45}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.45, the open step for captions: hints and timestamps can wrap, and the ratio gives 12px text a 17.4px line.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400, the regular weight, so supporting text steps back behind the 500 labels and the data.",
+                "because": [
+                  "brand.q2",
+                  "content.q1"
+                ]
+              }
+            }
           },
           "$description": "The caption text role."
         },
@@ -5711,15 +5882,43 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.13}"
+            "$value": "{font.size.13}",
+            "$extensions": {
+              "open-ds": {
+                "why": "13px, one pixel under body, fits more columns of Plex Mono values into each table row.",
+                "because": [
+                  "typography.roles",
+                  "content.q2",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}"
+            "$value": "{font.line-height.1_45}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.45, the open step for data, gives 13px cells an 18.9px line. The eye keeps its row while it scans a long table.",
+                "because": [
+                  "typography.definition",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 keeps table values regular, so the mono digits stay even and columns compare at a glance.",
+                "because": [
+                  "tasks.q1",
+                  "typography.roles"
+                ]
+              }
+            }
           },
           "$description": "The data text role."
         }
@@ -6231,7 +6430,16 @@
         "stroke-width": {
           "$type": "number",
           "$value": "{stroke-width.150}",
-          "$description": "The line weight of every icon, on Lucide's 24px grid."
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "A 1.5px stroke width on Lucide's 24px grid keeps outline icons light, so they never outweigh the dense text beside them.",
+              "because": [
+                "iconography.definition",
+                "brand.q2"
+              ]
+            }
+          }
         }
       }
     },

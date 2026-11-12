@@ -834,6 +834,18 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -1168,6 +1180,25 @@
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
         }
        }
       ]
@@ -2718,14 +2749,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.pill: Pill controls feel playful.",
+        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: Pill controls feel playful.",
+        "text": "radius.badge: radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2746,7 +2777,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.24: Pill controls feel playful.",
+        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2764,11 +2795,20 @@
     "Shape · Which shape roles does it need? → Controls and containers"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-definition": {
@@ -2821,14 +2861,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.pill: Pill controls feel playful.",
+        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: Pill controls feel playful.",
+        "text": "radius.badge: radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2842,7 +2882,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.24: Pill controls feel playful.",
+        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2860,11 +2900,20 @@
     "How visible is the brand in the interface? → Loud"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "elevation-roles": {
@@ -2924,14 +2973,14 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.card: Cards lift to feel like objects.",
+        "text": "elevation.card in light: shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: Pronounced shadows add depth.",
+        "text": "elevation.overlay in light: shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2952,14 +3001,14 @@
         }
        },
        {
-        "text": "elevation.card in dark: shadow.card-dark: Cards lift to feel like objects.",
+        "text": "elevation.card in dark: shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: Pronounced shadows add depth.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3048,6 +3097,13 @@
         }
        },
        {
+        "text": "elevation.card in light: shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
         "text": "color.surface.canvas in dark: neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
         "link": {
          "label": "Color",
@@ -3073,6 +3129,13 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
+        }
+       },
+       {
+        "text": "elevation.card in dark: shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
         }
        }
       ]
@@ -3111,28 +3174,28 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.card in light: shadow.card: Cards lift to feel like objects.",
+        "text": "elevation.card in light: shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: Pronounced shadows add depth.",
+        "text": "elevation.overlay in light: shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.card-dark: Cards lift to feel like objects.",
+        "text": "elevation.card in dark: shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: Pronounced shadows add depth.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3150,11 +3213,27 @@
     "Elevation · What rises above the page? → Cards too"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Elevation",
-     "href": "foundations/elevation"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.overlay in light: shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "motion-roles": {

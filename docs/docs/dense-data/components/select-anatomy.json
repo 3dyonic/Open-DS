@@ -217,7 +217,7 @@
      "key": "trigger.radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: Small corners keep dense rows straight.",
+     "pick": "radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows.",
      "shares": []
     },
     {
@@ -431,7 +431,7 @@
      "key": "overlay.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Small corners keep dense rows straight.",
+     "pick": "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
      "shares": []
     },
     {

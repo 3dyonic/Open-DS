@@ -1372,6 +1372,18 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -2669,14 +2681,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.8: Rounded corners feel friendly.",
+        "text": "radius.control: radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: Rounded corners feel friendly.",
+        "text": "radius.badge: radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2697,7 +2709,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.12: Rounded corners feel friendly.",
+        "text": "radius.surface: radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2715,11 +2727,20 @@
     "Shape · Which shape roles does it need? → Controls, badges and containers"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.badge: radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-definition": {
@@ -2760,14 +2781,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.8: Rounded corners feel friendly.",
+        "text": "radius.control: radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: Rounded corners feel friendly.",
+        "text": "radius.badge: radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2781,7 +2802,7 @@
         }
        },
        {
-        "text": "radius.surface: radius.12: Rounded corners feel friendly.",
+        "text": "radius.surface: radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2799,11 +2820,20 @@
     "What is the main content? → Long-form text"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.surface: radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "elevation-roles": {
@@ -2863,14 +2893,14 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.none: Only menus and dialogs float.",
+        "text": "elevation.card in light: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: Soft shadows suit warm paper.",
+        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2891,14 +2921,14 @@
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: Only menus and dialogs float.",
+        "text": "elevation.card in dark: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: Soft shadows suit warm paper.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2916,11 +2946,27 @@
     "Elevation · What rises above the page? → Only what floats"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Elevation",
-     "href": "foundations/elevation"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "elevation-definition": {
@@ -2994,6 +3040,13 @@
         }
        },
        {
+        "text": "elevation.card in light: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
         "text": "color.surface.canvas in dark: neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
         "link": {
          "label": "Color",
@@ -3020,6 +3073,13 @@
          "label": "Color",
          "href": "foundations/color"
         }
+       },
+       {
+        "text": "elevation.card in dark: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
        }
       ]
      }
@@ -3038,28 +3098,28 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.card in light: shadow.none: Only menus and dialogs float.",
+        "text": "elevation.card in light: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: Soft shadows suit warm paper.",
+        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: Only menus and dialogs float.",
+        "text": "elevation.card in dark: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: Soft shadows suit warm paper.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3083,6 +3143,25 @@
       "items": [
        {
         "text": "For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow. The dimmed page focuses the reader on the dialog.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3456,6 +3535,18 @@
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
         }
        }
       ]

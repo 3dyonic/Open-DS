@@ -755,6 +755,26 @@ export const CHECKS = {
         : ok(`${values} semantic values in ${SCHEMES.length} schemes reach their answers; the Token map shows a reason for all ${decisions} decisions`);
     },
   },
+  "reasons-explain-values": {
+    requires: ["cli/src/trace.mjs"],
+    run: async (c) => {
+      // OD-293: a link to an answer is not a reason. Every semantic value carries a reason of its own (its
+      // pick, its own words, the group that generates it, or a usage rule that names exactly it). The
+      // reason is 6 words or more, cites an answer, and is not another value's sentence.
+      const { traceScheme, weakReasons } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const g = c.grammar();
+      const gaps = [];
+      let total = 0;
+      for (const id of SCHEMES) {
+        const trace = traceScheme(c.scheme(id), g);
+        total += trace.total;
+        for (const w of weakReasons(trace)) gaps.push(`${id}: ${w.token}, ${w.problem}`);
+      }
+      return gaps.length
+        ? bad(`${gaps.length} values lack a reason that explains them; ${gaps.slice(0, 4).join("; ")}. Run open-ds trace <scheme> --weak.`)
+        : ok(`${total} semantic values in ${SCHEMES.length} schemes each have a reason that explains them`);
+    },
+  },
   "decisions-cover-values": {
     requires: ["schemes/grammar.json", "cli/src/coverage.mjs", "harness/coverage-baseline.json"],
     run: async (c) => {

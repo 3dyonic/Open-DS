@@ -77,7 +77,7 @@
      "key": "contained.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Rounded by default; each brand sets its own corner.",
+     "pick": "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
      "shares": []
     },
     {

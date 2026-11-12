@@ -167,8 +167,8 @@
      "value": "0px 12px 32px, #1F1B1629",
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
-     "pick": "shadow.overlay: Soft shadows suit warm paper.",
-     "darkPick": "shadow.overlay-dark: Soft shadows suit warm paper.",
+     "pick": "shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
+     "darkPick": "shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
      "shares": []
     },
     {
@@ -177,7 +177,7 @@
      "key": "content.radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: Rounded corners feel friendly.",
+     "pick": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
      "shares": []
     },
     {
@@ -420,7 +420,7 @@
      "key": "close.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Rounded corners feel friendly.",
+     "pick": "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
      "shares": []
     },
     {

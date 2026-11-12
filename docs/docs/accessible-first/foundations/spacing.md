@@ -62,7 +62,7 @@ Between things and on the page, use a role instead: `*-tight` (12px), `*-default
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Items that belong together | space.gap.default | space.gap.tight | Generous space lowers mis-taps. |
+| Items that belong together | space.gap.default | space.gap.tight | Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps. |
 | Between page sections | space.gap.section | A thin line | Space is easy to see; thin lines are not. |
 | Table row height | size.row (large) | A compact row | Large rows are easy to read and tap. |
 | Parts of one item | space.gap.tight | No gap | Parts sit close enough to read as one item, with room to tell them apart at high zoom. |

@@ -27,7 +27,7 @@
         {
           "id": "human",
           "title": "Human factors",
-          "count": 10
+          "count": 11
         },
         {
           "id": "outcomes",
@@ -37,7 +37,7 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 46
+          "count": 48
         },
         {
           "id": "scenarios",
@@ -72,12 +72,12 @@
         {
           "id": "shape",
           "title": "Shape",
-          "count": 13
+          "count": 15
         },
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 27
+          "count": 31
         },
         {
           "id": "motion",
