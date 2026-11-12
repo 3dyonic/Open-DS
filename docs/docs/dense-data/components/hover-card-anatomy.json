@@ -118,8 +118,12 @@
      "darkValue": "#161B23",
      "byScheme": true,
      "rule": "Fills that float above content.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -131,7 +135,9 @@
      "key": "content.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1).",
+     "pick": [
+      "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -142,8 +148,20 @@
      "darkValue": "#3D4655",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.22
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.82
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "disabled.border"
      ]
@@ -154,7 +172,9 @@
      "key": "content.border-width",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     },
     {
@@ -164,8 +184,12 @@
      "value": "0px 8px 24px, #0D111729",
      "darkValue": "0px 8px 24px, #00000080",
      "byScheme": true,
-     "pick": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by an 8px offset and a 24px blur at 16% under the panel's edge. So a menu reads as above the grid without a heavy edge, because only what floats rises (elevation.roles) and shadows are subtle (elevation.values).",
-     "darkPick": "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 8px offset and 24px blur, at 50% black instead of 16%. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships as standard (theming.values).",
+     "pick": [
+      "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by an 8px offset and a 24px blur at 16% under the panel's edge. So a menu reads as above the grid without a heavy edge, because only what floats rises (elevation.roles) and shadows are subtle (elevation.values)."
+     ],
+     "darkPick": [
+      "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 8px offset and 24px blur, at 50% black instead of 16%. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships as standard (theming.values)."
+     ],
      "shares": []
     },
     {
@@ -174,7 +198,9 @@
      "key": "content.padding",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -210,8 +236,28 @@
      "darkValue": "#F7F8FA",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.28
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 16.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -240,7 +286,9 @@
      "key": "overlay.offset",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "space.4",
+     "pick": [
+      "space.4"
+     ],
      "shares": []
     }
    ]

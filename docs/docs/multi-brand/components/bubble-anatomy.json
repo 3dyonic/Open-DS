@@ -87,8 +87,28 @@
      "darkValue": "#96A3B5",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 7.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -97,7 +117,9 @@
      "key": "byline.font-size",
      "value": "0.8125rem",
      "byScheme": true,
-     "pick": "font.size.13",
+     "pick": [
+      "font.size.13"
+     ],
      "shares": []
     },
     {
@@ -106,7 +128,9 @@
      "key": "byline.line-height",
      "value": "1.5",
      "byScheme": true,
-     "pick": "font.line-height.1_5",
+     "pick": [
+      "font.line-height.1_5"
+     ],
      "shares": []
     },
     {
@@ -115,7 +139,9 @@
      "key": "gap",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -144,8 +170,20 @@
      "darkValue": "#1E293B",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.1
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.22
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -160,8 +198,28 @@
      "darkValue": "#F8FAFC",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.85
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.06
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -172,7 +230,9 @@
      "key": "body.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
+     "pick": [
+      "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1)."
+     ],
      "shares": []
     }
    ]
@@ -201,8 +261,28 @@
      "darkValue": "#7FCFC6",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.",
-     "darkPick": "teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.",
+     "pick": [
+      "teal.light.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 5.47
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "teal.dark.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 9.9
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
@@ -217,8 +297,28 @@
      "darkValue": "#0F172A",
      "byScheme": true,
      "rule": "Text and icons on the main action's fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 5.47:1 on action.primary, above the 4.5:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 9.9:1 on action.primary, above the 4.5:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 5.47
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 9.9
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.inverse",
       "text.on-danger"
@@ -255,7 +355,9 @@
      "key": "body.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -264,7 +366,9 @@
      "key": "body.line-height",
      "value": "1.5",
      "byScheme": true,
-     "pick": "font.line-height.1_5",
+     "pick": [
+      "font.line-height.1_5"
+     ],
      "shares": []
     },
     {
@@ -273,7 +377,9 @@
      "key": "body.padding-x",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     },
     {
@@ -282,7 +388,9 @@
      "key": "body.padding-y",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]

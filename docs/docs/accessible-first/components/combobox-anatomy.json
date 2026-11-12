@@ -163,8 +163,28 @@
      "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.500: the quietest text that still reads, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 8.89
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "border.strong",
       "category.5",
@@ -177,7 +197,9 @@
      "key": "trigger.icon.icon-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     }
    ]
@@ -213,8 +235,12 @@
      "darkValue": "#141414",
      "byScheme": true,
      "rule": "Fills that float above content.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -226,7 +252,9 @@
      "key": "content.shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
+     "pick": [
+      "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+     ],
      "shares": [
       "elevation.card"
      ]
@@ -239,8 +267,20 @@
      "darkValue": "#333333",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.36
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.46
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "surface.pressed",
       "disabled.border"
@@ -252,7 +292,9 @@
      "key": "content.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1).",
+     "pick": [
+      "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1)."
+     ],
      "shares": []
     }
    ]
@@ -281,8 +323,28 @@
      "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.500: the quietest text that still reads, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 8.89
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "border.strong",
       "category.5",
@@ -295,7 +357,9 @@
      "key": "label.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -304,7 +368,9 @@
      "key": "label.padding-x",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -338,7 +404,9 @@
      "key": "item.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -347,7 +415,9 @@
      "key": "item.padding-y",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -356,7 +426,9 @@
      "key": "item.padding-left",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -365,7 +437,9 @@
      "key": "icon-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     }
    ]
@@ -401,8 +475,12 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+     ],
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -443,8 +521,28 @@
      "darkValue": "#949494",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 6.07
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "text.muted",
       "category.5",
@@ -457,7 +555,9 @@
      "key": "chips.radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1).",
+     "pick": [
+      "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -468,8 +568,20 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.17
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -483,7 +595,9 @@
      "key": "chip.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1).",
+     "pick": [
+      "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -494,8 +608,28 @@
      "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.500: the quietest text that still reads, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 8.89
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "border.strong",
       "category.5",

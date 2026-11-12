@@ -93,7 +93,9 @@
      "key": "padding",
      "value": "3rem",
      "byScheme": true,
-     "pick": "space.48",
+     "pick": [
+      "space.48"
+     ],
      "shares": []
     },
     {
@@ -102,7 +104,9 @@
      "key": "padding-2",
      "value": "4rem",
      "byScheme": true,
-     "pick": "space.64",
+     "pick": [
+      "space.64"
+     ],
      "shares": []
     },
     {
@@ -111,7 +115,9 @@
      "key": "gap",
      "value": "4rem",
      "byScheme": true,
-     "pick": "space.64",
+     "pick": [
+      "space.64"
+     ],
      "shares": []
     }
    ]
@@ -140,8 +146,20 @@
      "darkValue": "#33241F",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.21
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -157,8 +175,28 @@
      "darkValue": "#FFF8F3",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 18
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -169,7 +207,9 @@
      "key": "icon.margin-bottom",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -201,9 +241,11 @@
      "kind": "token",
      "semantic": "type.heading.font-size",
      "key": "title.font-size",
-     "value": "1.75rem",
+     "value": "1.8125rem",
      "byScheme": true,
-     "pick": "font.size.28",
+     "pick": [
+      "font.size.29"
+     ],
      "shares": []
     },
     {
@@ -212,7 +254,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -223,8 +267,28 @@
      "darkValue": "#B5988A",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 7.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.71
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -243,7 +307,9 @@
      "key": "content.gap",
      "value": "2.5rem",
      "byScheme": true,
-     "pick": "space.40",
+     "pick": [
+      "space.40"
+     ],
      "shares": []
     }
    ]

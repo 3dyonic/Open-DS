@@ -37,7 +37,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.title.line-height` | `font.line-height.1_1` |
 | `type.title.font-weight` | `font.weight.800` |
 | `type.heading.font-family` | `brand-expressive.theme.base.type.heading.font-family` → `font.family.bricolage-grotesque` |
-| `type.heading.font-size` | `font.size.28` |
+| `type.heading.font-size` | `font.size.29` |
 | `type.heading.line-height` | `font.line-height.1_1` |
 | `type.heading.font-weight` | `font.weight.700` |
 | `type.body.font-family` | `brand-expressive.theme.base.type.body.font-family` → `font.family.dm-sans` |

@@ -26,7 +26,7 @@ How text is set: roles, sizes and line height.
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `aster.theme.base.type.display.font-family` → `font.family.inter` |
@@ -34,7 +34,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `aster.theme.base.type.title.font-family` → `font.family.inter` |
-| `type.title.font-size` | `font.size.24` |
+| `type.title.font-size` | `font.size.25` |
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `aster.theme.base.type.heading.font-family` → `font.family.inter` |
@@ -46,7 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.line-height` | `font.line-height.1_5` |
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `aster.theme.base.type.label.font-family` → `font.family.inter` |
-| `type.label.font-size` | `font.size.14` |
+| `type.label.font-size` | `font.size.13` |
 | `type.label.line-height` | `font.line-height.1_2` |
 | `type.label.font-weight` | `font.weight.600` |
 | `type.caption.font-family` | `aster.theme.base.type.caption.font-family` → `font.family.inter` |
@@ -59,7 +59,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.font-weight` | `font.weight.400` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `birch.theme.base.type.display.font-family` → `font.family.plus-jakarta-sans` |
@@ -67,7 +67,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `birch.theme.base.type.title.font-family` → `font.family.plus-jakarta-sans` |
-| `type.title.font-size` | `font.size.24` |
+| `type.title.font-size` | `font.size.25` |
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `birch.theme.base.type.heading.font-family` → `font.family.plus-jakarta-sans` |
@@ -79,7 +79,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.line-height` | `font.line-height.1_5` |
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `birch.theme.base.type.label.font-family` → `font.family.plus-jakarta-sans` |
-| `type.label.font-size` | `font.size.14` |
+| `type.label.font-size` | `font.size.13` |
 | `type.label.line-height` | `font.line-height.1_2` |
 | `type.label.font-weight` | `font.weight.600` |
 | `type.caption.font-family` | `birch.theme.base.type.caption.font-family` → `font.family.plus-jakarta-sans` |
@@ -92,7 +92,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.font-weight` | `font.weight.400` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `coral.theme.base.type.display.font-family` → `font.family.poppins` |
@@ -100,7 +100,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `coral.theme.base.type.title.font-family` → `font.family.poppins` |
-| `type.title.font-size` | `font.size.24` |
+| `type.title.font-size` | `font.size.25` |
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `coral.theme.base.type.heading.font-family` → `font.family.poppins` |
@@ -112,7 +112,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.line-height` | `font.line-height.1_5` |
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `coral.theme.base.type.label.font-family` → `font.family.poppins` |
-| `type.label.font-size` | `font.size.14` |
+| `type.label.font-size` | `font.size.13` |
 | `type.label.line-height` | `font.line-height.1_2` |
 | `type.label.font-weight` | `font.weight.600` |
 | `type.caption.font-family` | `coral.theme.base.type.caption.font-family` → `font.family.poppins` |

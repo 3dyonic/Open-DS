@@ -1,6 +1,8 @@
 // Reads the grammar and the five schemes from schemes/ at build time.
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+// A scheme file stores key colors and the spacing rhythm; the scales and steps come from them (OD-292).
+import { withGenerated } from "../../../cli/src/scheme-generated.mjs";
 
 const dir = join(process.cwd(), "..", "schemes");
 const read = <T>(file: string): T => JSON.parse(readFileSync(join(dir, file), "utf8")) as T;
@@ -107,7 +109,7 @@ export const uiComponents = (): string[] =>
     .filter((f) => f.endsWith(".tsx"))
     .map((f) => f.replace(/\.tsx$/, ""));
 
-export const scheme = (id: string): Scheme => read<Scheme>(`${id}.json`);
+export const scheme = (id: string): Scheme => withGenerated(read<Scheme>(`${id}.json`)) as Scheme;
 
 export const schemes = (): Scheme[] => schemeIds().map(scheme);
 

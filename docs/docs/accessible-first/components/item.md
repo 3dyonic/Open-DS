@@ -14,7 +14,7 @@ A row with media, a title, a description and actions.
 
 ## See it live
 
-::preview{robot="slumber" id="item/live"}
+::preview{id="item/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Accessible first" tone="neutral"}
-::preview{robot="slumber" id="item/variant/default"}
+::preview{id="item/variant/default"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ A row with no border is hard to see at high zoom; borders do the work.
 :::
 
 :::panel{title="outline" note="variant" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="item/variant/outline"}
+::preview{id="item/variant/outline"}
 
 **What it is for**
 
@@ -73,7 +73,7 @@ Each saved application, with a strong border that separates it at any zoom.
 :::
 
 :::panel{title="muted" note="variant" label="Not used in Accessible first" tone="neutral"}
-::preview{robot="slumber" id="item/variant/muted"}
+::preview{id="item/variant/muted"}
 
 **What it is for**
 
@@ -92,7 +92,7 @@ A fill alone marks a row by color; status goes in a badge with an icon and a wor
 :::
 
 :::panel{title="default" note="size" label="Used in Accessible first" tone="success"}
-::preview{robot="slumber" id="item/size/default"}
+::preview{id="item/size/default"}
 
 **What it is for**
 
@@ -111,7 +111,7 @@ Every row. Large targets help people with motor needs.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Accessible first" tone="neutral"}
-::preview{robot="slumber" id="item/size/sm"}
+::preview{id="item/size/sm"}
 
 **What it is for**
 

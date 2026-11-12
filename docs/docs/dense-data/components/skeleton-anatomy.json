@@ -55,7 +55,9 @@
      "key": "radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2).",
+     "pick": [
+      "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2)."
+     ],
      "shares": []
     }
    ]
@@ -84,8 +86,20 @@
      "darkValue": "#262D38",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.25
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "surface.pressed",

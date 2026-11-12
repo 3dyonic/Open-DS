@@ -1,6 +1,10 @@
 {
  "preview": {
   "table/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Table examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -175,8 +179,8 @@
      },
      "values": [
       {
-       "token": "font.size.13",
-       "text": "0.8125rem"
+       "token": "font.size.14",
+       "text": "0.875rem"
       }
      ]
     },

@@ -16,6 +16,8 @@ if (!existsSync(join(repo, "tokens", "dist", "index.json"))) {
 }
 rmSync(assets, { recursive: true, force: true });
 cpSync(join(repo, "schemes"), join(assets, "schemes"), { recursive: true, filter: (p) => !p.endsWith(".md") });
+// The scheme schema, for the build's schema rule (OD-292).
+cpSync(join(repo, "schema", "scheme.schema.json"), join(assets, "schema", "scheme.schema.json"));
 cpSync(join(repo, "tokens", "dist"), join(assets, "tokens"), { recursive: true });
 for (const part of ["components", "lib", "styles.css", "icons.css"]) {
   cpSync(join(repo, "ui", "src", part), join(assets, "ui", part), { recursive: true });

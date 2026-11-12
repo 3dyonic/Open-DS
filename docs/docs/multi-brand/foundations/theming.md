@@ -12,7 +12,7 @@ Modes and brands.
 
 Multi-brand has **2 modes** and **3 brands**. A mode swaps the colors; corners and type stay the same in every mode. Pick a brand in the top bar to see its set.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::mode-preview{id="aster"}
 
 ### What a mode changes
@@ -26,7 +26,7 @@ Multi-brand has **2 modes** and **3 brands**. A mode swaps the colors; corners a
 
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::mode-preview{id="birch"}
 
 ### What a mode changes
@@ -40,7 +40,7 @@ Multi-brand has **2 modes** and **3 brands**. A mode swaps the colors; corners a
 
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::mode-preview{id="coral"}
 
 ### What a mode changes

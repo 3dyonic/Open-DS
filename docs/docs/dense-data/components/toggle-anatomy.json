@@ -116,7 +116,9 @@
      "key": "radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: We use a 2px corner for buttons and inputs in order to mark their role as controls and keep density. A small radius does this by softening the edge just enough to read as an object, while it keeps straight lines that align in rows. So a dense toolbar reads as one line of actions, because the product is dense (content.q2) and precise (brand.q1), with slightly rounded controls (shape.values).",
+     "pick": [
+      "radius.2: We use a 2px corner for buttons and inputs in order to mark their role as controls and keep density. A small radius does this by softening the edge just enough to read as an object, while it keeps straight lines that align in rows. So a dense toolbar reads as one line of actions, because the product is dense (content.q2) and precise (brand.q1), with slightly rounded controls (shape.values)."
+     ],
      "shares": []
     },
     {
@@ -125,7 +127,9 @@
      "key": "default.padding-x",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -147,8 +151,28 @@
      "darkValue": "#F7F8FA",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.28:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 16.26:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.28
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 16.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -159,7 +183,9 @@
      "key": "font-size",
      "value": "0.875rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": [
+      "font.size.14"
+     ],
      "shares": []
     },
     {
@@ -168,7 +194,9 @@
      "key": "font-weight",
      "value": "500",
      "byScheme": true,
-     "pick": "font.weight.500",
+     "pick": [
+      "font.weight.500"
+     ],
      "shares": []
     }
    ]
@@ -204,8 +232,20 @@
      "darkValue": "#2A244F",
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
-     "pick": "violet.light.100: a tint of the brand, 1.17:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "violet.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "pick": [
+      "violet.light.100: a tint of the brand, ",
+      {
+       "ratio": 1.17
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
+     "darkPick": [
+      "violet.dark.100: a tint of the brand, ",
+      {
+       "ratio": 1.2
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
      "shares": [
       "category.1.subtle"
      ]
@@ -218,8 +258,28 @@
      "darkValue": "#A9A3F6",
      "byScheme": true,
      "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
-     "pick": "violet.light.600: the edge beside a selected fill, so selection is never color alone, 6.97:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "violet.dark.600: the edge beside a selected fill, so selection is never color alone, 7.62:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "violet.light.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "violet.dark.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 7.62
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "action.primary",
@@ -232,7 +292,9 @@
      "key": "edge-width.on",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     }
    ]
@@ -268,8 +330,12 @@
      "darkValue": "#262D38",
      "byScheme": true,
      "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+     ],
      "shares": [
       "surface.sunken",
       "surface.pressed",
@@ -302,7 +368,9 @@
      "key": "focus",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -313,8 +381,28 @@
      "darkValue": "#A9A3F6",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "violet.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "violet.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.62
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -327,7 +415,9 @@
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -338,8 +428,20 @@
      "darkValue": "#0D1117",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.06
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.1
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]

@@ -32,7 +32,7 @@ To keep things simple, Open DS uses one open-source icon set, Lucide, in every s
 
 ## See it live
 
-::preview{robot="slumber" id="icon/live"}
+::preview{id="icon/live"}
 
 ## When to use it
 
@@ -51,7 +51,7 @@ Instead:
 What each variant is for in any design system, then what Content first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="size" label="Used in Content first" tone="success"}
-::preview{robot="slumber" id="icon/size/default"}
+::preview{id="icon/size/default"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ The size of the text beside it.
 :::
 
 :::panel{title="large" note="size" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="icon/size/large"}
+::preview{id="icon/size/large"}
 
 **What it is for**
 
@@ -90,7 +90,7 @@ Content first has one icon size.
 :::
 
 :::panel{title="plain" note="variant" label="Used in Content first" tone="success"}
-::preview{robot="slumber" id="icon/variant/plain"}
+::preview{id="icon/variant/plain"}
 
 **What it is for**
 
@@ -109,7 +109,7 @@ Every icon: outline at a 1.5px stroke, quiet beside text.
 :::
 
 :::panel{title="contained-tint" note="variant" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="icon/variant/contained-tint"}
+::preview{id="icon/variant/contained-tint"}
 
 **What it is for**
 
@@ -128,7 +128,7 @@ Icons stay quiet beside reading text.
 :::
 
 :::panel{title="contained-solid" note="variant" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="icon/variant/contained-solid"}
+::preview{id="icon/variant/contained-solid"}
 
 **What it is for**
 

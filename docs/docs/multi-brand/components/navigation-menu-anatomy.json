@@ -166,7 +166,9 @@
      "key": "trigger.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -175,7 +177,9 @@
      "key": "trigger.font-weight",
      "value": "600",
      "byScheme": true,
-     "pick": "font.weight.600",
+     "pick": [
+      "font.weight.600"
+     ],
      "shares": []
     },
     {
@@ -184,7 +188,9 @@
      "key": "trigger.padding-x",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     },
     {
@@ -193,7 +199,9 @@
      "key": "trigger.padding-y",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -202,7 +210,9 @@
      "key": "trigger.icon-gap",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -224,8 +234,12 @@
      "darkValue": "#1E293B",
      "byScheme": true,
      "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+     ],
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -265,8 +279,12 @@
      "darkValue": "#0F172A",
      "byScheme": true,
      "rule": "Fills that float above content.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -280,8 +298,20 @@
      "darkValue": "#334155",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.18
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.72
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "surface.pressed",
       "disabled.border"
@@ -293,7 +323,9 @@
      "key": "viewport.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
+     "pick": [
+      "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -303,8 +335,12 @@
      "value": "0px 12px 32px, #0F172A29",
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
-     "pick": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
-     "darkPick": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
+     "pick": [
+      "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values)."
+     ],
+     "darkPick": [
+      "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values)."
+     ],
      "shares": []
     }
    ]
@@ -345,7 +381,9 @@
      "key": "link.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -354,7 +392,9 @@
      "key": "link.padding",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -363,7 +403,9 @@
      "key": "link.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: We use a 4px corner for Aster's menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Aster's surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+     "pick": [
+      "radius.4: We use a 4px corner for Aster's menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Aster's surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values)."
+     ],
      "shares": []
     }
    ]
@@ -399,8 +441,20 @@
      "darkValue": "#012C28",
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
-     "pick": "teal.light.100: a tint of the brand, 1.15:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "teal.dark.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "pick": [
+      "teal.light.100: a tint of the brand, ",
+      {
+       "ratio": 1.15
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
+     "darkPick": [
+      "teal.dark.100: a tint of the brand, ",
+      {
+       "ratio": 1.18
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
      "shares": [
       "category.1.subtle"
      ]
@@ -413,8 +467,28 @@
      "darkValue": "#7FCFC6",
      "byScheme": true,
      "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
-     "pick": "teal.light.600: the edge beside a selected fill, so selection is never color alone, 5.47:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "teal.dark.600: the edge beside a selected fill, so selection is never color alone, 9.9:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "teal.light.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 5.47
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "teal.dark.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 9.9
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "action.primary",
@@ -427,7 +501,9 @@
      "key": "link.edge-width.current",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
@@ -456,8 +532,12 @@
      "darkValue": "#1E293B",
      "byScheme": true,
      "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+     ],
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -490,8 +570,28 @@
      "darkValue": "#7FCFC6",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "teal.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 5.47
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "teal.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 9.9
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -504,7 +604,9 @@
      "key": "link.focus-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -513,7 +615,9 @@
      "key": "link.focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]

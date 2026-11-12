@@ -65,7 +65,9 @@
      "key": "gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]
@@ -87,8 +89,28 @@
      "darkValue": "#96A3B5",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 4.76
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the edge of a control people must find, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "disabled.text"
      ]
@@ -140,8 +162,20 @@
      "darkValue": "#1E293B",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.1:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.22:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.1
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.22
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -156,8 +190,20 @@
      "darkValue": "#334155",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.18:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.72:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.18
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.72
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "surface.pressed",
       "disabled.border"
@@ -169,7 +215,9 @@
      "key": "text.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: We use a 4px corner for Aster's buttons and inputs in order to mark their role as controls in a calm, precise tone, by brand convention. A small radius does this by softening the edge just enough while the sides stay straight. So Aster feels exact and steady, the least round of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
+     "pick": [
+      "radius.4: We use a 4px corner for Aster's buttons and inputs in order to mark their role as controls in a calm, precise tone, by brand convention. A small radius does this by softening the edge just enough while the sides stay straight. So Aster feels exact and steady, the least round of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -178,7 +226,9 @@
      "key": "text.padding-x",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     },
     {
@@ -187,7 +237,9 @@
      "key": "text.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     }
    ]

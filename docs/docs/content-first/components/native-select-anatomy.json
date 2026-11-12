@@ -117,7 +117,9 @@
      "key": "height",
      "value": "3rem",
      "byScheme": true,
-     "pick": "size.48",
+     "pick": [
+      "size.48"
+     ],
      "shares": []
     },
     {
@@ -126,7 +128,9 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2).",
+     "pick": [
+      "radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2)."
+     ],
      "shares": []
     },
     {
@@ -137,8 +141,28 @@
      "darkValue": "#A39A8B",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 4.86:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.400: the edge of a control people must find, 6.16:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 4.86
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the edge of a control people must find, ",
+      {
+       "ratio": 6.16
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "category.5",
       "disabled.text"
@@ -150,7 +174,9 @@
      "key": "padding-x",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     }
    ]
@@ -177,7 +203,9 @@
      "key": "font-size",
      "value": "1.125rem",
      "byScheme": true,
-     "pick": "font.size.18",
+     "pick": [
+      "font.size.18"
+     ],
      "shares": []
     },
     {
@@ -186,7 +214,9 @@
      "key": "line-height",
      "value": "1.65",
      "byScheme": true,
-     "pick": "font.line-height.1_65",
+     "pick": [
+      "font.line-height.1_65"
+     ],
      "shares": []
     }
    ]
@@ -213,7 +243,9 @@
      "key": "icon-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     },
     {
@@ -224,8 +256,28 @@
      "darkValue": "#A39A8B",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 6.9
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.16
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -234,7 +286,9 @@
      "key": "icon.inset",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     }
    ]
@@ -263,8 +317,28 @@
      "darkValue": "#8FA6C4",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "navy.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 11.5
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "navy.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 6.86
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -277,7 +351,9 @@
      "key": "focus",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -286,7 +362,9 @@
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
@@ -315,8 +393,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.600: danger reads as text and icons, ",
+      {
+       "ratio": 5.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.21
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -329,8 +427,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.600: danger reads as text and icons, ",
+      {
+       "ratio": 5.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.21
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -354,8 +472,12 @@
      "darkValue": "#2E2A24",
      "byScheme": true,
      "rule": "The fill of a control that cannot be used right now.",
-     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.sunken",
       "surface.highlight",
@@ -371,8 +493,12 @@
      "darkValue": "#4A4339",
      "byScheme": true,
      "rule": "The edge of a control that cannot be used right now.",
-     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.pressed",
       "border.default"
@@ -386,8 +512,20 @@
      "darkValue": "#CFC6B6",
      "byScheme": true,
      "rule": "Text and icons of a control that cannot be used right now.",
-     "pick": "neutral.500: 4.86:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
-     "darkPick": "neutral.500: 10.11:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "pick": [
+      "neutral.500: ",
+      {
+       "ratio": 4.86
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.500: ",
+      {
+       "ratio": 10.11
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
      "shares": [
       "border.strong",
       "category.5"
@@ -401,8 +539,20 @@
      "darkValue": "#CFC6B6",
      "byScheme": true,
      "rule": "Text and icons of a control that cannot be used right now.",
-     "pick": "neutral.500: 4.86:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
-     "darkPick": "neutral.500: 10.11:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "pick": [
+      "neutral.500: ",
+      {
+       "ratio": 4.86
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.500: ",
+      {
+       "ratio": 10.11
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
      "shares": [
       "border.strong",
       "category.5"
@@ -439,7 +589,9 @@
      "key": "sm.height",
      "value": "2.5rem",
      "byScheme": true,
-     "pick": "size.40",
+     "pick": [
+      "size.40"
+     ],
      "shares": []
     },
     {
@@ -448,7 +600,9 @@
      "key": "sm.padding-y",
      "value": "0.25rem",
      "byScheme": false,
-     "pick": "space.4",
+     "pick": [
+      "space.4"
+     ],
      "shares": []
     }
    ]

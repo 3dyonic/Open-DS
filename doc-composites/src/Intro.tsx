@@ -1,6 +1,6 @@
 /**
  * Intro: how to read a page. An optional robot, a title, the page's own words and links, and a few
- * counts. With a title it is the scheme's Card, used through its props only; without one it is layout. The words stay Markdown in the
+ * counts. The robot is the Robot base form. With a title it is the scheme's Card, used through its props only; without one it is layout. The words stay Markdown in the
  * page, inside the directive:
  *
  *   :::intro{robot="anatomy" title="Look closer, when you want to" stats="6 Parts|3 Jobs"}
@@ -14,24 +14,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@open-ds/ui/components/card";
+import Robot, { type RobotPics } from "./base/Robot";
 
 export type IntroProps = {
   title?: string;
   // "44 Primitives|30 In use": each count and what it counts.
   stats?: string;
   // The robot's day and night pictures; the docs resolve them from the robot's name.
-  robot?: { day: string; night: string };
+  robot?: RobotPics;
   children?: React.ReactNode;
 };
-
-function Robot({ robot, className }: { robot: { day: string; night: string }; className: string }) {
-  return (
-    <span aria-hidden="true" className={className}>
-      <img src={robot.day} alt="" loading="lazy" className="dark:hidden" />
-      <img src={robot.night} alt="" loading="lazy" className="hidden dark:block" />
-    </span>
-  );
-}
 
 export default function Intro({ title, stats, robot, children }: IntroProps) {
   const counts = (stats ?? "")

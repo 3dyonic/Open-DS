@@ -143,9 +143,11 @@
      "kind": "token",
      "semantic": "type.label.font-size",
      "key": "label.font-size",
-     "value": "1.125rem",
+     "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.18",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -154,7 +156,9 @@
      "key": "label.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     }
    ]
@@ -195,7 +199,9 @@
      "key": "description.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -206,8 +212,28 @@
      "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.500: the quietest text that still reads, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 8.89
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "border.strong",
       "category.5",
@@ -220,7 +246,9 @@
      "key": "description.margin-top",
      "value": "0.25rem",
      "byScheme": false,
-     "pick": "space.4",
+     "pick": [
+      "space.4"
+     ],
      "shares": []
     }
    ]
@@ -263,8 +291,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "red.light.700: danger reads as text and icons, ",
+      {
+       "ratio": 8.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.76
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -275,7 +323,9 @@
      "key": "error.font-weight",
      "value": "400",
      "byScheme": false,
-     "pick": "font.weight.400",
+     "pick": [
+      "font.weight.400"
+     ],
      "shares": []
     }
    ]
@@ -311,8 +361,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "red.light.700: danger reads as text and icons, ",
+      {
+       "ratio": 8.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.76
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -355,7 +425,9 @@
      "key": "label.radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1).",
+     "pick": [
+      "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -364,7 +436,9 @@
      "key": "label.padding",
      "value": "1.75rem",
      "byScheme": true,
-     "pick": "space.28",
+     "pick": [
+      "space.28"
+     ],
      "shares": []
     },
     {
@@ -373,7 +447,9 @@
      "key": "label.border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
@@ -402,8 +478,28 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
-     "pick": "blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 8.74
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "action.primary",
@@ -418,8 +514,20 @@
      "darkValue": "#102547",
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
-     "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "pick": [
+      "blue.light.100: a tint of the brand, ",
+      {
+       "ratio": 1.18
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
+     "darkPick": [
+      "blue.dark.100: a tint of the brand, ",
+      {
+       "ratio": 1.21
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
      "shares": [
       "category.1.subtle"
      ]
@@ -448,7 +556,9 @@
      "key": "separator.margin-y",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]

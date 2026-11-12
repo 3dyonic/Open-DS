@@ -586,15 +586,19 @@
     },
     {
       "id": "OD-294",
-      "title": "Shape and elevation as decisions and relations, and reasons that say why",
+      "title": "The type scale: sizes from a base and a ratio, line heights by role kind; shape and elevation as decisions and relations, and reasons that say why",
       "in": [
+        "each scheme records on its type group the body size, a ratio, each role's step, and a tight and an open line height with the roles that take each",
+        "a role's size is base × ratio^step, rounded to whole px, and links to the font.size primitive of that size; the scale owns the size and line height primitives",
+        "the values are computed once when the scheme is written (scripts/type-scale.mjs); the harness compares them with the generator",
+        "every size and line height keeps a reason that names its value and relates it to its siblings",
         "the grammar records each property's jobs and how it does each: corner, line width, focus ring and shadow",
         "control and surface corners are decisions; option, element and badge follow them by a relation that each scheme records and a check verifies",
         "the focus ring is one step heavier than the default line, with a fixed 2px gap; shadows are one scale by layer, and dark keeps the light shape",
         "where today's values break a relation, the check lists a finding and changes no value",
         "every reason states its job, how the property does it, what people get and the decision; the count of reasons out of the form may only go down"
       ],
-      "checks": ["shape-elevation-relations", "reasons-say-why", "reasons-explain-values", "json-files-validate"]
+      "checks": ["type-scale-generated", "reasons-explain-values", "json-files-validate", "shape-elevation-relations", "reasons-say-why"]
     },
     {
       "id": "OD-285",

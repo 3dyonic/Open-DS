@@ -11,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@open-ds/ui/components/card";
-import Label, { type LabelProps } from "./Label";
+import Label, { type LabelProps } from "./base/Label";
 
 export type SpecimenItem = {
   // The value drawn: a fill, a corner or a shadow.
@@ -23,8 +23,8 @@ export type SpecimenItem = {
   // A status shown as the scheme's Badge, before its lines.
   label?: { text: string; tone?: LabelProps["tone"] };
   lines?: string[];
-  // Text set in the item's typeface.
-  sample?: string[];
+  // Lines set in the item's typeface, each a few groups of characters.
+  sample?: string[][];
   weights?: { weight: number; name: string }[];
   read?: { label: string; codes: string[] };
   foot?: string;
@@ -79,8 +79,8 @@ function Item({ item }: { item: SpecimenItem }) {
         </div>
       )}
       {item.sample?.map((l) => (
-        <span key={l} className="text-lg" style={face}>
-          {l}
+        <span key={l.join()} className="text-lg" style={face}>
+          {l.join(" · ")}
         </span>
       ))}
       {item.weights && (
