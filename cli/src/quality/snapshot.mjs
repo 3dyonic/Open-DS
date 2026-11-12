@@ -94,7 +94,7 @@ function factsOf(scheme, themes, values, generateScale) {
 
 /**
  * Where a value comes from: "relation" (a recorded relation gives it and holds), "alias" (it names
- * another semantic), "scale" (it ends on a step of a color scale, or on a scale step whose value is its
+ * another semantic), "scale" (it ends on a step of a color scale or the easing set, or on a scale step whose value is its
  * name) or "literal" (a raw value someone typed, such as a hex in place of a step).
  */
 export function originOf({ token, chain, semantics, heldRelations, primitives }) {
@@ -103,6 +103,8 @@ export function originOf({ token, chain, semantics, heldRelations, primitives })
   if (first && semantics.has(shortName(first))) return "alias";
   if (!chain.hops.length || !primitives.has(chain.end)) return "literal";
   if (chain.end.startsWith("color.")) return "scale";
+  // An easing curve has no number to name it by: a named step of the easing set is a scale step, not a typed value.
+  if (chain.end.startsWith("easing.")) return "scale";
   return namedStep(chain.end, primitives.get(chain.end).$value) ? "scale" : "literal";
 }
 

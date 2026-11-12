@@ -37,7 +37,7 @@ function run(edit) {
 }
 
 test("CLI exits 1 on a focus ring defect in the working tree", { timeout: 300000 }, () => {
-  const { status, stdout, card } = run((s) => { s.tokens.semantic["border-width"].focus.$value = "{border-width.1}"; });
+  const { status, stdout, card } = run((s) => { s.tokens.semantic.focus.ring.width.$value = "{border-width.1}"; });
   assert.equal(status, 1, stdout.slice(-2000));
   assert.ok(card.failed.includes("invariants.focus-ring"), JSON.stringify(card.failed));
 });

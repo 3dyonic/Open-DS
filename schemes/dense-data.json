@@ -5762,7 +5762,7 @@
             "$value": "{font.size.12}",
             "$extensions": {
               "open-ds": {
-                "why": "12px sits one ratio step under body (14 ÷ 1.2), on the caption's step, the smallest legible step, because experts scan many records at a short reading distance. Column headers repeat on every column, so a large style would compete with the data. The size does this by keeping IBM Plex Sans's x-height at 6.2px (0.516 of the em); at 11px it would drop to 5.7px.",
+                "why": "We use 12px for column headers and field labels in order to keep labels at the smallest legible step: one ratio step under the 14px body (14 ÷ 1.2), on the caption’s step. The size does this by keeping IBM Plex Sans’s x-height at 6.2px (0.516 of the em); at 11px it would drop to 5.7px. So a header repeats on every column without competing with the data, and still reads, because experts scan many records at a short reading distance (tasks.q1) and the type scale is small (typography.values).",
                 "because": [
                   "tasks.q1",
                   "typography.values"
@@ -5808,7 +5808,7 @@
             "$value": "{font.size.12}",
             "$extensions": {
               "open-ds": {
-                "why": "12px, one ratio step under body and the same step as label, lets timestamps and hints step back, so the values stay the hero. The caption size does this by holding the lowercase letters of IBM Plex Sans at a 6.2px x-height, open enough to tell a 6 from a b at a glance.",
+                "why": "We use 12px for timestamps and hints in order to let secondary text step back: one ratio step under the 14px body, the same step as label. The caption size does this by holding the lowercase letters of IBM Plex Sans at a 6.2px x-height, open enough to tell a 6 from a b at a glance. So experts read a timestamp across many rows while the values stay the hero, because the brand is quiet (brand.q2) and the content is numbers (content.q1).",
                 "because": [
                   "brand.q2",
                   "content.q1"
