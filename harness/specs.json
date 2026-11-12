@@ -598,7 +598,7 @@
       "title": "Spacing by use case and the control scale: values from a base, a multiple and a step",
       "in": [
         "the grammar's spacing scope names the use-case words (level, relation, reach) and the job of each spacing property",
-        "each scheme records on its space group a base and, per space token, a use case and a multiple; the value is base × multiple",
+        "each scheme records on its space group, per space token, a use case and a multiple; the spacing.definition answer sets the base, and the value is base × multiple",
         "each scheme records on its size group the control scale: the default height, the step, and the steps of compact and large"
       ],
       "checks": ["spacing-use-cases-generated", "reasons-explain-values", "json-files-validate"]
@@ -613,7 +613,7 @@
         "a row is one default control tall in every scheme; compact and large are steps on the control scale",
         "each generated value has a generated reason that states the rule, the numbers and the answers its record follows",
         "open-ds build fails a scheme that sets a type or space value by hand next to its record",
-        "changing a base, a ratio, a step or a multiple moves exactly the values it generates (cli/test/type-space-generated.test.mjs)"
+        "changing a base, a ratio, a step, a multiple or the spacing.definition answer moves exactly the values it generates (cli/test/type-space-generated.test.mjs)"
       ],
       "checks": ["type-scale-generated", "spacing-use-cases-generated", "reasons-explain-values", "json-files-validate"]
     },

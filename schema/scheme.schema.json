@@ -1405,14 +1405,9 @@
     "spacingUseCaseSpec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["base", "use-cases", "follows", "why"],
-      "description": "On the space group (OD-294, OD-301): the spacing record the loader generates the gaps and insets from. Each space token has a use case and a multiple; its value is base × multiple. The scheme file stores no value next to it.",
+      "required": ["use-cases", "follows", "why"],
+      "description": "On the space group (OD-294, OD-301): the spacing record the loader generates the gaps and insets from. Each space token has a use case and a multiple; its value is base × multiple. The spacing.definition answer sets the base: 4px for small steps on a 4px grid, 8px for big even steps. The scheme file stores no value next to it.",
       "properties": {
-        "base": {
-          "type": "integer",
-          "enum": [4, 8],
-          "description": "The base step in px. The spacing.definition answer sets it: small steps on a 4px grid take 4, big even steps take 8."
-        },
         "use-cases": {
           "type": "object",
           "minProperties": 1,

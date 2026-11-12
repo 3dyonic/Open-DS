@@ -33,13 +33,14 @@ function resolvedAll(scheme) {
 }
 
 /**
- * Change one record of a scheme and return what moves: the generated values whose resolved value
- * changed, by path, and every other token that changed.
+ * Change one record or answer of a scheme and return what moves: the generated values whose resolved
+ * value changed, by path, and every other token that changed. change gets the semantic tokens and the
+ * scheme.
  */
 function moves(id, change) {
   const stored = storedScheme(id, roots);
   const changed = structuredClone(stored);
-  change(changed.tokens.semantic);
+  change(changed.tokens.semantic, changed);
   const before = resolvedAll(load(stored));
   const after = resolvedAll(load(changed));
   const generated = new Set();
@@ -111,8 +112,8 @@ test("a new multiple moves that space token only", () => {
   onlyReaders(m);
 });
 
-test("a new space base moves every gap and inset", () => {
-  const m = moves("multi-brand", (s) => (space(s).base = 8));
+test("a new spacing.definition answer sets a new base and moves every gap and inset", () => {
+  const m = moves("multi-brand", (_, scheme) => (scheme.answers.find((a) => a.question === "spacing.definition").option = "coarse"));
   assert.deepEqual(m.generated, [
     "space.gap.default",
     "space.gap.group",

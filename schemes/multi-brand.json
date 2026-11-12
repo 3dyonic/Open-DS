@@ -9829,7 +9829,6 @@
       "space": {
         "$extensions": {
           "open-ds": {
-            "base": 4,
             "use-cases": {
               "gap.tight": {
                 "level": "component",

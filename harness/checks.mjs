@@ -555,10 +555,10 @@ export const CHECKS = {
     requires: ["cli/src/spacing-use-cases.mjs", "cli/src/type-space-generated.mjs", "schemes/grammar.json"],
     run: async (c) => {
       // OD-294, OD-301: each scheme stores its spacing record and its control scale, and the loader
-      // generates every gap, inset, control height and row from them. The file stores none of those
-      // values by hand, every gap and inset has a use case, a row is one default control tall, and each
-      // generated reason names its own value.
-      const { spaceValues, spaceProblems, controlHeights, controlProblems } = await import(
+      // generates every gap, inset, control height and row from them; the spacing.definition answer sets
+      // the space base. The file stores none of those values by hand, every gap and inset has a use case,
+      // a row is one default control tall, and each generated reason names its own value.
+      const { baseOf, spaceValues, spaceProblems, controlHeights, controlProblems } = await import(
         pathToFileURL(c.p("cli/src/spacing-use-cases.mjs")).href
       );
       const { generatedProblems } = await import(pathToFileURL(c.p("cli/src/type-space-generated.mjs")).href);
@@ -586,7 +586,7 @@ export const CHECKS = {
           for (const k of Object.keys(semantic.space[group] ?? {}).filter((k) => !k.startsWith("$")))
             if (!(`${group}.${k}` in space["use-cases"])) gaps.push(`${id}: space.${group}.${k} has no use case`);
         const want = {
-          ...Object.fromEntries(Object.entries(spaceValues(space)).map(([k, v]) => [`space.${k}`, v])),
+          ...Object.fromEntries(Object.entries(spaceValues(space, baseOf(answer("spacing.definition")))).map(([k, v]) => [`space.${k}`, v])),
           ...Object.fromEntries(Object.entries(controlHeights(size)).map(([k, v]) => [`size.${k}`, v])),
         };
         for (const [name, value] of Object.entries(want)) {

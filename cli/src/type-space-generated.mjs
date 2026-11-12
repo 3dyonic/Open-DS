@@ -2,9 +2,9 @@
 // group stores its scale; withTypeAndSpace fills each role's font size and line height, and the font
 // size, line height and line box options. The space group stores its spacing record and the size group
 // its control scale; withTypeAndSpace fills the gaps, insets, control heights and the row, and adds any
-// space or size option they need. withoutTypeAndSpace takes out each value that equals its generated
+// space or size option they need. The spacing.definition answer sets the space base. withoutTypeAndSpace takes out each value that equals its generated
 // value. No file access, so the loader, the build and the bundled apps (Storybook, the site) share it.
-import { controlTokens, spaceTokens } from "./spacing-use-cases.mjs";
+import { baseOf, controlTokens, spaceTokens } from "./spacing-use-cases.mjs";
 import { typeTokens } from "./type-scale.mjs";
 
 const recordOf = (group) => group?.$extensions?.["open-ds"];
@@ -37,6 +37,7 @@ export function recordsOf(scheme) {
  */
 export function generatedValues(scheme) {
   const { type, space, size } = recordsOf(scheme);
+  const base = baseOf((scheme.answers ?? []).find((a) => a.question === "spacing.definition")?.option);
   const out = [];
   if (type) {
     const { roles, primitives } = typeTokens(type);
@@ -44,7 +45,8 @@ export function generatedValues(scheme) {
       for (const [key, token] of Object.entries(keys)) out.push({ path: `semantic.type.${role}.${key}`, token });
     for (const [name, group] of Object.entries(primitives)) out.push({ path: `primitive.font.${name}`, group });
   }
-  if (space) for (const [path, token] of Object.entries(spaceTokens(space))) out.push({ path: `semantic.space.${path}`, token });
+  // With no base (no spacing.definition answer), the gaps stay as stored, and the spacing rule says why.
+  if (space && base) for (const [path, token] of Object.entries(spaceTokens(space, base))) out.push({ path: `semantic.space.${path}`, token });
   if (size) for (const [path, token] of Object.entries(controlTokens(size))) out.push({ path: `semantic.size.${path}`, token });
   return out;
 }
