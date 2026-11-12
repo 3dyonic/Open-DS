@@ -7,7 +7,7 @@ import { scale as rampScale } from "../ramps.mjs";
 import { pairsIn } from "../tones.mjs";
 import { reasonOf, traceScheme, weakReasons } from "../trace.mjs";
 import { blastRadius } from "./blast.mjs";
-import { RELATION_TOKENS, evaluateRelations, relationLinks } from "./relations.mjs";
+import { RELATION_TOKENS, evaluateRelations, ladderOf, relationLinks } from "./relations.mjs";
 import { flatMap, hex6, namedStep, px, resolveTree, shortName } from "./values.mjs";
 
 const REF = /\{([^}]+)\}/g;
@@ -56,7 +56,7 @@ export function resolveScheme(scheme, themeTokens) {
 }
 
 // The facts the relations read.
-function factsOf(scheme, themes, values, generateScale) {
+function factsOf(scheme, themes, values, generateScale, grammar) {
   const prim = scheme.tokens?.primitive ?? {};
   const scaleOf = (group) =>
     [...flatMap(at(prim, group))].map(([p, t]) => ({ path: `${group}.${p}`, px: px(t.$value) })).filter((s) => s.px !== null && Number.isFinite(s.px));
@@ -89,6 +89,7 @@ function factsOf(scheme, themes, values, generateScale) {
     baseStep: base ? { path: `space.${base[0]}`, px: 4 } : null,
     colorScales,
     darkCanvas: /^#[0-9a-f]{6}$/i.test(canvas) ? canvas : null,
+    ladder: ladderOf(grammar),
   };
 }
 
@@ -190,7 +191,7 @@ function referencedNames(scheme) {
 export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, generateScale = rampScale, css = null, uiPairs = [] }) {
   const themes = themesOf(scheme);
   const { values, chains, errors } = resolveScheme(scheme, themeTokens);
-  const facts = factsOf(scheme, themes, values, generateScale);
+  const facts = factsOf(scheme, themes, values, generateScale, grammar);
   const relations = evaluateRelations(facts);
   const links = relationLinks(facts);
 
@@ -258,6 +259,7 @@ export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, g
     trace: traced,
     pairs,
     relations,
+    ladder: facts.ladder.tokens,
     blast,
     reasons: reasonsOf(scheme),
     tokens: {

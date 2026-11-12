@@ -20,6 +20,7 @@ import {
   rowLabel,
   tokenName,
 } from "./color-map.mjs";
+import { tokenIndex } from "./lands.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
 import { decidersOf, decisionTree, mappingOf, traceScheme } from "./trace.mjs";
@@ -163,7 +164,30 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     rows.map((id) => ({ id: tokenName(id), label: rowLabel(id), better: betterName(id, componentSource) }));
   const componentsOf = (index, d) =>
     componentsShowing(index, d).map((c) => ({ component: c.component, rows: rowsOf(c.rows) }));
-  const chainOf = (index, d) => {
+  // One token index per mode, so the color graph (OD-304) resolves each value once.
+  const tokenIndexes = Object.fromEntries(["light", "dark"].map((m) => [m, tokenIndex(scheme, { brand, mode: m })]));
+  // A color token's decision graph, in the order the card reads it: role → jobs → property → answers →
+  // rule → connections → value, and the reason sentence the engine writes from those fields.
+  const graphOf = (tree) => {
+    const role = tree.find((n) => n.level === "role");
+    if (!role) return null;
+    const reason = tree.find((n) => n.level === "reason")?.says ?? null;
+    const value = tree.find((n) => n.level === "value");
+    return {
+      role: role.says,
+      to: role.to,
+      gets: role.gets,
+      // The role's jobs by title; the decision's mapping holds each job's how once.
+      jobs: role.jobs.map((j) => j.title),
+      rules: tree.filter((n) => n.level === "rule").map((n) => ({ name: n.name, says: n.says, holds: n.holds })),
+      connections: tree
+        .filter((n) => n.level === "connection")
+        .map((n) => ({ id: n.name, holds: n.holds, checks: n.checks.length, off: n.checks.filter((c) => !c.holds).map((c) => c.says) })),
+      value: value ? { name: value.name, hex: value.says } : null,
+      reason,
+    };
+  };
+  const chainOf = (index, d, mode = "light") => {
     const { steps, links } = reasonChain(index, reasons, d);
     const direct = links.filter((l) => l.to === "decision").map((l) => l.from);
     // OD-303: a mapped token shows the one answer that decides it, its property and the property's jobs.
@@ -173,12 +197,15 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     const key = (grammar.semantics?.keys ?? []).find((k) => k.id === tokenName(d));
     const guide = key && { intent: key.intent ?? null, useFor: key.use_for ?? [], notFor: (key.not_for ?? []).map((n) => ({ when: n.when, use: n.use })) };
     // What each part of the name means: the semantic group and the variant, from the scheme and the grammar.
-    const meaning = decisionTree(scheme, grammar, d, { brand })
+    const tree = decisionTree(scheme, grammar, d, { brand, mode, index: tokenIndexes[mode] });
+    const meaning = tree
       .filter((n) => (n.level === "group" || n.level === "variant") && n.says)
       .map((n) => ({ level: n.level, name: n.name, says: n.says }));
-    const property = decisionTree(scheme, grammar, d, { brand }).find((n) => n.level === "property");
+    const property = tree.find((n) => n.level === "property");
+    const graph = graphOf(tree);
     if (property)
       return {
+        ...(graph && { graph }),
         // The questions the engine says decide this kind of token, the mapping's first (decidersOf).
         answers: property.decided_by.map((a) => a.id).filter((id) => reasons[id]),
         direct,
@@ -247,7 +274,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     const addDecision = (d, extra = {}) => {
       if (decisions[tokenName(d)]) return;
       const pick = pickOf(scheme, brand, mode, tokenName(d));
-      const chain = chainOf(index, d);
+      const chain = chainOf(index, d, mode);
       decisions[tokenName(d)] = {
         id: tokenName(d),
         group: groupOf(d),
@@ -258,6 +285,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         ...(chain.mapping && { mapping: chain.mapping }),
         ...(chain.meaning && { meaning: chain.meaning }),
         ...(chain.guide && { guide: chain.guide }),
+        ...(chain.graph && { graph: chain.graph }),
         components: componentsOf(index, d),
         ...extra,
       };
@@ -351,6 +379,8 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     brands: Object.keys(scheme.tokens.brands),
     areas: AREAS.filter((a) => [...modes.light.families, ...shared.families].some((f) => f.area === a)),
     answers,
+    // What each color connection says, by id, once: a decision's graph names its connections by id.
+    connections: Object.fromEntries((grammar.semantics?.connections?.items ?? []).map((c) => [c.id, { kind: c.kind, says: c.says }])),
     shared,
     modes,
   };

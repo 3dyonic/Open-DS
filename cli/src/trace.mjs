@@ -10,6 +10,7 @@
 // A grammar trace rule names one kind of token, never a whole scope: a scope-wide fallback once tied
 // the button's height to the contrast answer (OD-273). No file access: the caller passes the scheme
 // and the grammar.
+import { colorNodes } from "./color-graph.mjs";
 import { tokenIndex } from "./lands.mjs";
 import { questions } from "./schemes.mjs";
 import { flatTokens } from "./tokens.mjs";
@@ -406,10 +407,13 @@ export function writtenReasons(scheme) {
  * the grammar and the scheme record for it. Nothing is typed per token: the walk reads the grammar's
  * dictionary (semantics.groups, semantics.variants, semantics.keys), the decision mapping and trace rules
  * (the property and the answers that decide it), the theme pick, and the primitive hue and step.
- * Levels, in order: group (each group of the name), variant (the name's last part), property (what kind of
- * value, decided_by and jobs), token, pick, hue, step. [{ level, name, says, ... }]
+ * Levels, in order: group (each group of the name), variant (the name's last part), role (a color token's
+ * role and jobs, OD-304), property (what kind of value, decided_by and jobs), rule (the slot and its step),
+ * connection (each with its checks), value, reason (the sentence written from the grammar's fields),
+ * token, pick, hue, step. [{ level, name, says, ... }]. index is the scheme's token index for this brand
+ * and mode, when the caller has one.
  */
-export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.tokens.brands)[0], mode = "light" } = {}) {
+export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.tokens.brands)[0], mode = "light", index } = {}) {
   const at = (tree, path) => path.split(".").reduce((n, k) => n?.[k], tree);
   const od = (node) => node?.$extensions?.["open-ds"] ?? {};
   const answerOf = (q) => {
@@ -434,6 +438,9 @@ export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.token
   const short = name.replace(/\.@$/, "");
   const entry = mappingOf(g, short);
   const decided = decidersOf(g, short).map(answerOf).filter(Boolean);
+  // A color token's role, rule, connections, value and reason (OD-304): the role sits before its property.
+  const color = name.startsWith("color.") ? colorNodes(scheme, g, name, { brand, mode, ...(index && { index }) }) : [];
+  nodes.push(...color.filter((n) => n.level === "role"));
   if (entry || decided.length)
     nodes.push({
       level: "property",
@@ -442,6 +449,7 @@ export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.token
       decided_by: decided,
       jobs: (entry?.jobs ?? []).map((j) => ({ title: j.title, how: j.how })),
     });
+  nodes.push(...color.filter((n) => n.level !== "role"));
   // The token itself: its intent and uses from the grammar's semantics.
   const key = (g.semantics?.keys ?? []).find((k) => k.id === name || k.id === short);
   const token = at(scheme.tokens.semantic, name);
