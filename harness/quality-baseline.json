@@ -1,155 +1,528 @@
 {
-  "$description": "The quality gate's baseline (OD-298): each criterion's value on the ref below and the way it may move (down: may only go down; up: may only go up; report: not gated). Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
+  "$description": "The quality gate's baseline (OD-298): each criterion's value on the ref below, its value per part (scheme, scheme/theme or file), and the way it may move (down: may only go down; up: may only go up; report: not gated). gated: false is shown, not gated. Each part is gated on its own. Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
   "ref": "origin/master",
   "sha": "48ded0add08ced52e4dd24076a799156578bd449",
   "criteria": {
     "traceability.traced-share": {
       "value": 0.8034,
-      "direction": "up"
+      "direction": "up",
+      "gated": true,
+      "parts": {
+        "dense-data": 0.8244,
+        "content-first": 0.8015,
+        "accessible-first": 0.8015,
+        "brand-expressive": 0.7955,
+        "multi-brand": 0.7939
+      }
     },
     "traceability.untraced": {
       "value": 129,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 23,
+        "content-first": 26,
+        "accessible-first": 26,
+        "brand-expressive": 27,
+        "multi-brand": 27
+      }
     },
     "traceability.weak": {
       "value": 204,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 38,
+        "content-first": 42,
+        "accessible-first": 41,
+        "brand-expressive": 41,
+        "multi-brand": 42
+      }
     },
     "traceability.weak.own": {
       "value": 21,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 3,
+        "content-first": 5,
+        "accessible-first": 5,
+        "brand-expressive": 4,
+        "multi-brand": 4
+      }
     },
     "traceability.weak.exact-rule": {
       "value": 6,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 2,
+        "accessible-first": 1,
+        "brand-expressive": 1,
+        "multi-brand": 2
+      }
     },
     "traceability.weak.borrowed": {
       "value": 48,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 12,
+        "content-first": 9,
+        "accessible-first": 9,
+        "brand-expressive": 9,
+        "multi-brand": 9
+      }
     },
     "traceability.weak.linked": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "traceability.weak.none": {
       "value": 129,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 23,
+        "content-first": 26,
+        "accessible-first": 26,
+        "brand-expressive": 27,
+        "multi-brand": 27
+      }
     },
     "derived.share": {
-      "value": 0.6176,
-      "direction": "up"
+      "value": 0.8932,
+      "direction": "up",
+      "gated": true,
+      "parts": {
+        "dense-data": 0.9008,
+        "content-first": 0.8931,
+        "accessible-first": 0.9008,
+        "brand-expressive": 0.8788,
+        "multi-brand": 0.8931
+      }
     },
     "derived.literal-values": {
-      "value": 702,
-      "direction": "down"
+      "value": 196,
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data/light": 13,
+        "dense-data/dark": 13,
+        "content-first/light": 14,
+        "content-first/dark": 14,
+        "accessible-first/light": 13,
+        "accessible-first/dark": 13,
+        "brand-expressive/light": 16,
+        "brand-expressive/dark": 16,
+        "multi-brand/aster-light": 13,
+        "multi-brand/aster-dark": 13,
+        "multi-brand/birch-light": 14,
+        "multi-brand/birch-dark": 14,
+        "multi-brand/coral-light": 15,
+        "multi-brand/coral-dark": 15
+      }
     },
     "derived.component-literals": {
       "value": 8,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "ui/src/components/chart.tsx": 3,
+        "ui/src/components/command.tsx": 1,
+        "ui/src/components/drawer.tsx": 1,
+        "ui/src/components/navigation-menu.tsx": 1,
+        "ui/src/styles.css": 2
+      }
     },
     "invariants.failures": {
       "value": 18,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 2,
+        "content-first": 3,
+        "accessible-first": 3,
+        "brand-expressive": 3,
+        "multi-brand": 7
+      }
     },
     "invariants.spacing-map": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "invariants.color-scale": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "invariants.focus-ring": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "invariants.compact-step": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "invariants.nested-radius": {
       "value": 4,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 1,
+        "accessible-first": 1,
+        "brand-expressive": 1,
+        "multi-brand": 1
+      }
     },
     "invariants.dark-ladder": {
       "value": 14,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 2,
+        "content-first": 2,
+        "accessible-first": 2,
+        "brand-expressive": 2,
+        "multi-brand": 6
+      }
+    },
+    "invariants.floating-not-defined": {
+      "value": 5,
+      "direction": "report",
+      "gated": false,
+      "parts": {
+        "dense-data": 1,
+        "content-first": 1,
+        "accessible-first": 1,
+        "brand-expressive": 1,
+        "multi-brand": 1
+      }
+    },
+    "blast-radius.answers-generate-nothing": {
+      "value": 395,
+      "direction": "report",
+      "gated": false,
+      "parts": {
+        "dense-data": 79,
+        "content-first": 79,
+        "accessible-first": 79,
+        "brand-expressive": 79,
+        "multi-brand": 79
+      }
     },
     "blast-radius.answer-orphans": {
-      "value": 814,
-      "direction": "down"
+      "value": 0,
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "blast-radius.answer-orphan-share": {
-      "value": 1,
-      "direction": "report"
+      "value": null,
+      "direction": "report",
+      "gated": false,
+      "parts": {}
     },
     "blast-radius.anchor-orphans": {
-      "value": 76,
-      "direction": "down"
+      "value": 37,
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 7,
+        "content-first": 7,
+        "accessible-first": 7,
+        "brand-expressive": 8,
+        "multi-brand": 8
+      }
     },
     "blast-radius.hidden-couplings": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "accessibility.wcag-failures": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data/light": 0,
+        "dense-data/dark": 0,
+        "content-first/light": 0,
+        "content-first/dark": 0,
+        "accessible-first/light": 0,
+        "accessible-first/dark": 0,
+        "brand-expressive/light": 0,
+        "brand-expressive/dark": 0,
+        "multi-brand/aster-light": 0,
+        "multi-brand/aster-dark": 0,
+        "multi-brand/birch-light": 0,
+        "multi-brand/birch-dark": 0,
+        "multi-brand/coral-light": 0,
+        "multi-brand/coral-dark": 0
+      }
     },
     "accessibility.wcag-waiting": {
       "value": 0,
-      "direction": "report"
+      "direction": "report",
+      "gated": false,
+      "parts": {}
     },
     "accessibility.apca-warnings": {
       "value": 108,
-      "direction": "down"
+      "direction": "down",
+      "gated": false,
+      "parts": {
+        "dense-data/light": 0,
+        "dense-data/dark": 15,
+        "content-first/light": 0,
+        "content-first/dark": 20,
+        "accessible-first/light": 0,
+        "accessible-first/dark": 16,
+        "brand-expressive/light": 0,
+        "brand-expressive/dark": 13,
+        "multi-brand/aster-light": 0,
+        "multi-brand/aster-dark": 14,
+        "multi-brand/birch-light": 0,
+        "multi-brand/birch-dark": 16,
+        "multi-brand/coral-light": 0,
+        "multi-brand/coral-dark": 14
+      }
     },
     "accessibility.hit-area": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "accessibility.text-not-rem": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
     },
     "motion.reduced-motion-transforms": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {}
     },
     "motion.duration-caps": {
       "value": 5,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 2,
+        "accessible-first": 1,
+        "brand-expressive": 0,
+        "multi-brand": 2
+      }
     },
     "repetition.repeated-sentences": {
       "value": 719,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 75,
+        "content-first": 73,
+        "accessible-first": 76,
+        "brand-expressive": 73,
+        "multi-brand": 422
+      }
     },
     "size.tokens": {
       "value": 9046,
-      "direction": "report"
+      "direction": "report",
+      "gated": false,
+      "parts": {
+        "dense-data": 1809,
+        "content-first": 1809,
+        "accessible-first": 1809,
+        "brand-expressive": 1810,
+        "multi-brand": 1809
+      }
     },
     "size.css-bytes": {
       "value": 2954890,
-      "direction": "report"
+      "direction": "report",
+      "gated": false,
+      "parts": {
+        "dense-data": 422088,
+        "content-first": 422049,
+        "accessible-first": 422302,
+        "brand-expressive": 422232,
+        "multi-brand": 1266219
+      }
     },
     "size.unused-semantics": {
       "value": 52,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data": 10,
+        "content-first": 10,
+        "accessible-first": 11,
+        "brand-expressive": 11,
+        "multi-brand": 10
+      }
     },
     "relations.contrast-margin": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {}
     },
     "relations.state-gap": {
       "value": 0,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {}
     },
     "curves.min-gap": {
       "value": 25,
-      "direction": "down"
+      "direction": "down",
+      "gated": true,
+      "parts": {
+        "dense-data/slate.light": 2,
+        "dense-data/slate.dark": 2,
+        "dense-data/red.light": 1,
+        "content-first/stone.light": 1,
+        "content-first/stone.dark": 1,
+        "content-first/red.light": 1,
+        "accessible-first/gray.light": 1,
+        "accessible-first/gray.dark": 1,
+        "accessible-first/red.light": 1,
+        "brand-expressive/taupe.light": 2,
+        "brand-expressive/taupe.dark": 2,
+        "brand-expressive/pink.light": 2,
+        "brand-expressive/red.light": 1,
+        "multi-brand/slate-deep.light": 2,
+        "multi-brand/slate-deep.dark": 3,
+        "multi-brand/orange.light": 1,
+        "multi-brand/red.light": 1
+      }
     },
     "curves.grades": {
       "value": 119,
-      "direction": "report"
+      "direction": "report",
+      "gated": false,
+      "parts": {
+        "dense-data/slate.light": 1,
+        "dense-data/slate.dark": 7,
+        "dense-data/violet.dark": 2,
+        "dense-data/green.dark": 2,
+        "dense-data/amber.dark": 4,
+        "dense-data/red.light": 1,
+        "dense-data/red.dark": 2,
+        "dense-data/blue.light": 1,
+        "dense-data/blue.dark": 2,
+        "content-first/stone.light": 1,
+        "content-first/stone.dark": 6,
+        "content-first/navy.light": 2,
+        "content-first/navy.dark": 2,
+        "content-first/green.dark": 2,
+        "content-first/amber.dark": 4,
+        "content-first/red.light": 1,
+        "content-first/red.dark": 2,
+        "content-first/blue.light": 1,
+        "content-first/blue.dark": 3,
+        "accessible-first/gray.light": 4,
+        "accessible-first/gray.dark": 2,
+        "accessible-first/blue.dark": 2,
+        "accessible-first/green.dark": 2,
+        "accessible-first/amber.dark": 4,
+        "accessible-first/red.light": 1,
+        "accessible-first/red.dark": 2,
+        "accessible-first/teal.dark": 4,
+        "brand-expressive/taupe.light": 1,
+        "brand-expressive/taupe.dark": 7,
+        "brand-expressive/pink.light": 1,
+        "brand-expressive/pink.dark": 3,
+        "brand-expressive/green.dark": 2,
+        "brand-expressive/amber.dark": 4,
+        "brand-expressive/red.light": 1,
+        "brand-expressive/red.dark": 2,
+        "brand-expressive/blue.light": 1,
+        "brand-expressive/blue.dark": 2,
+        "multi-brand/slate-deep.light": 1,
+        "multi-brand/slate-deep.dark": 6,
+        "multi-brand/teal.dark": 4,
+        "multi-brand/purple.dark": 2,
+        "multi-brand/orange.light": 1,
+        "multi-brand/orange.dark": 3,
+        "multi-brand/green.dark": 2,
+        "multi-brand/amber.dark": 4,
+        "multi-brand/red.light": 1,
+        "multi-brand/red.dark": 1,
+        "multi-brand/blue.light": 1,
+        "multi-brand/blue.dark": 2
+      }
     }
   }
 }
