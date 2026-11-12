@@ -497,7 +497,7 @@
       "neutral.100, the highlight's step: pressed reuses hover; experts do not need more."
      ],
      "darkPick": [
-      "neutral.100, the highlight's step: pressed reuses hover; experts do not need more."
+      "neutral.100: We use the light pick for the dark pressed surface in order to keep what it sets, and the step does this by the same means, so the dark pressed surface and the light pick never differ, because the step reads the same in dark (theming.values)."
      ],
      "shares": [
       "surface.sunken",

@@ -4416,10 +4416,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+                      "why": "neutral.200: We use Aster's light pick for Aster's dark pressed surface in order to keep what it sets, and the step does this by the same means, so Aster's dark pressed surface and Aster's light pick never differ, because the step reads the same in dark (theming.values).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "theming.values"
                       ]
                     }
                   }
@@ -5637,10 +5636,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "light",
-                      "why": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+                      "why": "neutral.100: We use Aster's light pick for Birch's light highlight surface in order to keep what it sets, and the step does this by the same means, so Birch's light highlight surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2"
                       ]
                     }
                   }
@@ -5651,10 +5649,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "light",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+                      "why": "neutral.200: We use Aster's light pick for Birch's light pressed surface in order to keep what it sets, and the step does this by the same means, so Birch's light pressed surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2"
                       ]
                     }
                   }
@@ -6271,10 +6268,9 @@
                 "$value": "{shadow.card}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
+                    "why": "shadow.card: We use Aster's light pick for Birch's light card elevation in order to keep the height it sets, and the step does this by the same means, so Birch's light card elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -6284,10 +6280,9 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
+                    "why": "shadow.overlay: We use Aster's light pick for Birch's light overlay elevation in order to keep the height it sets, and the step does this by the same means, so Birch's light overlay elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -6520,10 +6515,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+                      "why": "neutral.100: We use Aster's dark pick for Birch's dark highlight surface in order to keep what it sets, and the step does this by the same means, so Birch's dark highlight surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2"
                       ]
                     }
                   }
@@ -6534,10 +6528,10 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+                      "why": "neutral.200: We use Aster's light pick for Birch's dark pressed surface in order to keep what it sets, and the step does this by the same means, so Birch's dark pressed surface and Aster's light pick never differ, because the three brands share this step in light and dark (business.q2, theming.values).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2",
+                        "theming.values"
                       ]
                     }
                   }
@@ -7154,11 +7148,9 @@
                 "$value": "{shadow.card-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
+                    "why": "shadow.card-dark: We use Aster's dark pick for Birch's dark card elevation in order to keep the height it sets, and the step does this by the same means, so Birch's dark card elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values",
-                      "theming.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -7168,11 +7160,9 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
+                    "why": "shadow.overlay-dark: We use Aster's dark pick for Birch's dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so Birch's dark overlay elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values",
-                      "theming.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -7756,10 +7746,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "light",
-                      "why": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+                      "why": "neutral.100: We use Aster's light pick for Coral's light highlight surface in order to keep what it sets, and the step does this by the same means, so Coral's light highlight surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2"
                       ]
                     }
                   }
@@ -7770,10 +7759,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "light",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+                      "why": "neutral.200: We use Aster's light pick for Coral's light pressed surface in order to keep what it sets, and the step does this by the same means, so Coral's light pressed surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2"
                       ]
                     }
                   }
@@ -8394,10 +8382,9 @@
                 "$value": "{shadow.card}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
+                    "why": "shadow.card: We use Aster's light pick for Coral's light card elevation in order to keep the height it sets, and the step does this by the same means, so Coral's light card elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -8407,10 +8394,9 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
+                    "why": "shadow.overlay: We use Aster's light pick for Coral's light overlay elevation in order to keep the height it sets, and the step does this by the same means, so Coral's light overlay elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -8643,10 +8629,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+                      "why": "neutral.100: We use Aster's dark pick for Coral's dark highlight surface in order to keep what it sets, and the step does this by the same means, so Coral's dark highlight surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2"
                       ]
                     }
                   }
@@ -8657,10 +8642,10 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+                      "why": "neutral.200: We use Aster's light pick for Coral's dark pressed surface in order to keep what it sets, and the step does this by the same means, so Coral's dark pressed surface and Aster's light pick never differ, because the three brands share this step in light and dark (business.q2, theming.values).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "business.q2",
+                        "theming.values"
                       ]
                     }
                   }
@@ -9281,11 +9266,9 @@
                 "$value": "{shadow.card-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
+                    "why": "shadow.card-dark: We use Aster's dark pick for Coral's dark card elevation in order to keep the height it sets, and the step does this by the same means, so Coral's dark card elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values",
-                      "theming.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -9295,11 +9278,9 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
+                    "why": "shadow.overlay-dark: We use Aster's dark pick for Coral's dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so Coral's dark overlay elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values",
-                      "theming.values"
+                      "business.q2"
                     ]
                   }
                 }
@@ -9392,7 +9373,7 @@
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 12px for the default gap between the fields of one form group in order to group and separate: three base steps (3 × 4px), one step wider than the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So customers on phones tap the right field, because the layout is comfortable (spacing.values) and customers sign up on phones (scenarios.q1).",
+                "why": "We use 12px for the default gap between the fields of one form group in order to group and separate: three base steps (3 × 4px), one step wider than the tight gap, and it does this by the means stated in the reason of space.gap.tight. So customers on phones tap the right field, because the layout is comfortable (spacing.values) and customers sign up on phones (scenarios.q1).",
                 "because": [
                   "spacing.values",
                   "scenarios.q1"
@@ -9406,7 +9387,7 @@
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 24px for the group gap between groups in a form in order to group and separate: six base steps (6 × 4px), twice the default gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So sign-up forms keep the same shape in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
+                "why": "We use 24px for the group gap between groups in a form in order to group and separate: six base steps (6 × 4px), twice the default gap, and it does this by the means stated in the reason of space.gap.tight. So sign-up forms keep the same shape in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
                 "because": [
                   "business.q2",
                   "spacing.values"
@@ -9420,7 +9401,7 @@
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 48px for the section gap between page sections in order to group and separate: twelve base steps (12 × 4px), twice the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each offer card stands apart on a product page, because the layout is comfortable (spacing.values) and the 4px grid holds big steps for product pages (spacing.definition).",
+                "why": "We use 48px for the section gap between page sections in order to group and separate: twelve base steps (12 × 4px), twice the group gap, and it does this by the means stated in the reason of space.gap.tight. So each offer card stands apart on a product page, because the layout is comfortable (spacing.values) and the 4px grid holds big steps for product pages (spacing.definition).",
                 "because": [
                   "spacing.values",
                   "spacing.definition"
@@ -9450,7 +9431,7 @@
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: six base steps (6 × 4px), the same as the group gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So cards hold offers the same way in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
+                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: six base steps (6 × 4px), the same as the group gap, and it does this by the means stated in the reason of space.inset.control-x. So cards hold offers the same way in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
                 "because": [
                   "business.q2",
                   "spacing.values"
@@ -9464,7 +9445,7 @@
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: four base steps (4 × 4px), the same as a control. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So account tables keep room between columns on a phone, because customers sign up on phones (scenarios.q1) and the layout is comfortable (spacing.values).",
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: four base steps (4 × 4px), the same as a control, and it does this by the means stated in the reason of space.inset.control-x. So account tables keep room between columns on a phone, because customers sign up on phones (scenarios.q1) and the layout is comfortable (spacing.values).",
                 "because": [
                   "scenarios.q1",
                   "spacing.values"
@@ -9514,7 +9495,7 @@
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 36px for compact controls, such as a show-password button inside a field, in order to make a hit target: one 8px step below the 44px default on the control scale; the 36px box relies on the padding of the field around it for a touch-size hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So the button fits inside the field in every brand, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
+                "why": "We use 36px for compact controls, such as a show-password button inside a field, in order to make a hit target: one 8px step below the 44px default on the control scale; the 36px box relies on the padding of the field around it for a touch-size hit area, and it does this by the means stated in the reason of size.control.default. So the button fits inside the field in every brand, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
                 "because": [
                   "business.q2",
                   "accessibility.values"
@@ -9528,7 +9509,7 @@
             "$description": "Height of large controls. Not used in this system, so it equals the default.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 44px for large controls in order to make a hit target: the default's step on the control scale and the default's 44px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every brand's forms keep one height, and brand color marks the main action, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
+                "why": "We use 44px for large controls in order to make a hit target: the default's step on the control scale and the default's 44px hit area, as the scheme has no hero action, and it does this by the means stated in the reason of size.control.default. So every brand's forms keep one height, and brand color marks the main action, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
                 "because": [
                   "business.q2",
                   "accessibility.values"
