@@ -5763,7 +5763,7 @@
             "$value": "{font.size.12}",
             "$extensions": {
               "open-ds": {
-                "why": "12px sits one ratio step under body (14 ÷ 1.2), on the caption's step. Column headers repeat on every column, so a large style would compete with the data. The size does this by keeping IBM Plex Sans's x-height at 6.2px (0.516 of the em); at 11px it would drop to 5.7px.",
+                "why": "12px sits one ratio step under body (14 ÷ 1.2), on the caption's step, the smallest legible step, because experts scan many records at a short reading distance. Column headers repeat on every column, so a large style would compete with the data. The size does this by keeping IBM Plex Sans's x-height at 6.2px (0.516 of the em); at 11px it would drop to 5.7px.",
                 "because": [
                   "tasks.q1",
                   "typography.values"

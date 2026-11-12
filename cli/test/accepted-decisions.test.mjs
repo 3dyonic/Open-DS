@@ -263,7 +263,7 @@ test("every uppercase label where a scheme is drawn tracks 0.05 to 0.12em", () =
 
 test("dense data keeps 12px labels and captions, the smallest step, and the reasons say why", () => {
   const s = loadScheme("dense-data");
-  const sizes = Object.keys(s.tokens.semantic.type).map((role) => px(light(s, `type.${role}.font-size`)));
+  const sizes = Object.keys(s.tokens.semantic.type).filter((role) => !role.startsWith("$")).map((role) => px(light(s, `type.${role}.font-size`)));
   assert.equal(Math.min(...sizes), 12);
   assert.equal(px(light(s, "type.label.font-size")), 12);
   assert.equal(px(light(s, "type.caption.font-size")), 12);
