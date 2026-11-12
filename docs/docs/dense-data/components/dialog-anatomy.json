@@ -282,9 +282,9 @@
      "kind": "token",
      "semantic": "type.heading.font-size",
      "key": "title.font-size",
-     "value": "1rem",
+     "value": "1.0625rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": "font.size.17",
      "shares": []
     },
     {

@@ -17,7 +17,7 @@
       },
       {
        "token": "type.display.font-size",
-       "value": "36px"
+       "value": "35px"
       },
       {
        "token": "type.display.line-height",
@@ -102,7 +102,7 @@
       },
       {
        "token": "type.heading.font-size",
-       "value": "22px"
+       "value": "23px"
       },
       {
        "token": "type.heading.line-height",
@@ -176,7 +176,7 @@
       },
       {
        "token": "type.label.font-size",
-       "value": "18px"
+       "value": "19px"
       },
       {
        "token": "type.label.line-height",

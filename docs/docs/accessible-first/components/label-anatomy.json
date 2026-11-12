@@ -70,9 +70,9 @@
      "kind": "token",
      "semantic": "type.label.font-size",
      "key": "font-size",
-     "value": "1.125rem",
+     "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.18",
+     "pick": "font.size.19",
      "shares": []
     },
     {

@@ -181,9 +181,9 @@
      "kind": "token",
      "semantic": "type.label.font-size",
      "key": "trigger.font-size",
-     "value": "0.875rem",
+     "value": "0.8125rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": "font.size.13",
      "shares": []
     }
    ]

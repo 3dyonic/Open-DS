@@ -8,7 +8,7 @@ description: "Type primitives in Accessible first."
 
 # Type
 
-11 primitives, 11 used.
+10 primitives, 10 used.
 
 ## `font.size`
 

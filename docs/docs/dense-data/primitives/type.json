@@ -21,20 +21,6 @@
      ]
     },
     {
-     "primitive": "font.size.13",
-     "value": "0.8125rem (13px)",
-     "sample": {
-      "kind": "size",
-      "value": "0.8125rem"
-     },
-     "usedBy": [
-      {
-       "token": "type.data.font-size",
-       "where": "semantic"
-      }
-     ]
-    },
-    {
      "primitive": "font.size.14",
      "value": "0.875rem (14px)",
      "sample": {
@@ -45,15 +31,19 @@
       {
        "token": "type.body.font-size",
        "where": "semantic"
+      },
+      {
+       "token": "type.data.font-size",
+       "where": "semantic"
       }
      ]
     },
     {
-     "primitive": "font.size.16",
-     "value": "1rem (16px)",
+     "primitive": "font.size.17",
+     "value": "1.0625rem (17px)",
      "sample": {
       "kind": "size",
-      "value": "1rem"
+      "value": "1.0625rem"
      },
      "usedBy": [
       {

@@ -3106,9 +3106,9 @@
             "$type": "dimension",
             "$value": "2.25rem"
           },
-          "44": {
+          "45": {
             "$type": "dimension",
-            "$value": "2.75rem"
+            "$value": "2.8125rem"
           },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
@@ -3126,11 +3126,6 @@
           "1_15": {
             "$type": "number",
             "$value": 1.15,
-            "$description": "A ratio of the text size."
-          },
-          "1_45": {
-            "$type": "number",
-            "$value": 1.45,
             "$description": "A ratio of the text size."
           },
           "1_65": {
@@ -5500,6 +5495,46 @@
         }
       },
       "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 18,
+            "ratio": 1.12,
+            "steps": {
+              "display": 8,
+              "title": 6,
+              "heading": 4,
+              "body": 0,
+              "label": -1,
+              "caption": -2,
+              "data": 0
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.15,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "open": {
+                "ratio": 1.65,
+                "roles": [
+                  "body",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "Many fine steps: a large 18px body and a 1.12 ratio, with two steps between the headings, so long pages can set their own hierarchy. Short lines sit tight at 1.15; text that wraps opens to 1.65 for reading."
+          }
+        },
         "display": {
           "font-family": {
             "$type": "fontFamily",
@@ -5507,10 +5542,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.44}",
+            "$value": "{font.size.45}",
             "$extensions": {
               "open-ds": {
-                "why": "44px is the top step, kept for the landing moment and the lead that opens an article, above the 36px title.",
+                "why": "45px is eight fine steps above the 18px body (18 × 1.12^8), two steps over the 36px title, kept for the landing moment and the lead that opens an article.",
                 "because": [
                   "typography.roles",
                   "typography.count"
@@ -5523,7 +5558,7 @@
             "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
-                "why": "1.15 sets 44px display text on about 51px lines, so a two-line opener reads as one tight block.",
+                "why": "1.15 sets 45px display text on about 52px lines, so a two-line opener reads as one tight block.",
                 "because": [
                   "typography.definition",
                   "typography.roles"
@@ -5556,7 +5591,7 @@
             "$value": "{font.size.36}",
             "$extensions": {
               "open-ds": {
-                "why": "36px sits one step under the 44px display, so article titles stay large but calm.",
+                "why": "36px is six fine steps above body and two under the 45px display, so article titles stay large but calm.",
                 "because": [
                   "typography.roles",
                   "typography.count"
@@ -5601,7 +5636,7 @@
             "$value": "{font.size.28}",
             "$extensions": {
               "open-ds": {
-                "why": "28px marks section headings: well above the 18px body, below the 36px title, so readers find their place in a long guide.",
+                "why": "28px is four fine steps above the 18px body and two under the 36px title, so readers find their place in a long guide.",
                 "because": [
                   "typography.count",
                   "outcomes.q2"
@@ -5648,7 +5683,7 @@
             "$value": "{font.size.18}",
             "$extensions": {
               "open-ds": {
-                "why": "18px is the large reading size the values answer picks, so long articles stay easy on the eyes.",
+                "why": "18px is the large reading size and step 0 of the scale: every other role is a 1.12 ratio step from it, so long articles stay easy on the eyes.",
                 "because": [
                   "typography.values",
                   "outcomes.q1"
@@ -5695,7 +5730,7 @@
             "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
-                "why": "16px sets Inter labels one step under the 18px body, still large enough for a field label people must read.",
+                "why": "16px sets Inter labels one step under the 18px body (18 ÷ 1.12), still large enough for a field label people must read.",
                 "because": [
                   "brand.q3",
                   "people.q2"
@@ -5705,10 +5740,10 @@
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}",
+            "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
-                "why": "1.45 gives a 16px label about 23px lines, tighter than body, because a label names a field and never runs as a paragraph.",
+                "why": "1.15, the tight ratio of the headings, gives a 16px label about 18px lines, because a label names a field on one line and never runs as a paragraph.",
                 "because": [
                   "typography.definition",
                   "brand.q3"
@@ -5741,7 +5776,7 @@
             "$value": "{font.size.14}",
             "$extensions": {
               "open-ds": {
-                "why": "14px is the smallest step, for Inter captions that sit quietly under the text and never compete with the 18px body.",
+                "why": "14px is two steps under the 18px body and one under the 16px label, for Inter captions that sit quietly under the text.",
                 "because": [
                   "human.q1",
                   "brand.q3"
@@ -5751,13 +5786,13 @@
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}",
+            "$value": "{font.line-height.1_65}",
             "$extensions": {
               "open-ds": {
-                "why": "1.45 sets a 14px caption on about 20px lines, the same ratio as label, since both are short Inter interface text.",
+                "why": "1.65, the open ratio of body, sets a 14px caption on about 23px lines, because a caption under a figure or a quote wraps like body text.",
                 "because": [
                   "typography.definition",
-                  "brand.q3"
+                  "content.q1"
                 ]
               }
             }
@@ -5786,7 +5821,7 @@
             "$value": "{font.size.18}",
             "$extensions": {
               "open-ds": {
-                "why": "18px matches body, because numbers sit in running text rather than table columns, so data reads at the reading size.",
+                "why": "18px shares step 0 with body, because numbers sit in running text rather than table columns, so data reads at the reading size.",
                 "because": [
                   "brand.q3",
                   "tasks.q1"
