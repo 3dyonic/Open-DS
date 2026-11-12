@@ -190,10 +190,10 @@
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
      "pick": [
-      "shadow.overlay: Soft shadows suit warm paper."
+      "shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge."
      ],
      "darkPick": [
-      "shadow.overlay-dark: Soft shadows suit warm paper."
+      "shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page."
      ],
      "shares": []
     }

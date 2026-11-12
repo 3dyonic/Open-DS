@@ -185,10 +185,10 @@
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
      "pick": [
-      "shadow.overlay: Soft shadows fit every brand."
+      "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards."
      ],
      "darkPick": [
-      "shadow.overlay-dark: Soft shadows fit every brand."
+      "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page."
      ],
      "shares": []
     },
@@ -523,7 +523,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: Rounded by default; each brand sets its own corner."
+      "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone."
      ],
      "shares": []
     },

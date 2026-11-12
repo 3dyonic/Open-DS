@@ -233,7 +233,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: Small corners keep dense rows straight."
+      "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly."
      ],
      "shares": []
     }

@@ -37,7 +37,7 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 33
+          "count": 34
         },
         {
           "id": "scenarios",
@@ -72,12 +72,12 @@
         {
           "id": "shape",
           "title": "Shape",
-          "count": 12
+          "count": 14
         },
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 27
+          "count": 33
         },
         {
           "id": "motion",
@@ -92,7 +92,7 @@
         {
           "id": "theming",
           "title": "Theming",
-          "count": 3
+          "count": 4
         },
         {
           "id": "accessibility",

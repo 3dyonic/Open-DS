@@ -174,7 +174,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="color-lands"}
 :::
 
-:::fold{id="spacing" title="Spacing" note="5 answers, 3 decisions, and the values of its tokens"}
+:::fold{id="spacing" title="Spacing" note="5 answers, 4 decisions, and the values of its tokens"}
 #### Which spacing roles does it need? {#spacing-roles}
 
 ::decision-answer{id="spacing-roles"}
@@ -196,7 +196,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="spacing-lands"}
 :::
 
-:::fold{id="shape" title="Shape" note="5 answers, 12 decisions, and the values of its tokens"}
+:::fold{id="shape" title="Shape" note="5 answers, 14 decisions, and the values of its tokens"}
 #### Which shape roles does it need? {#shape-roles}
 
 ::decision-answer{id="shape-roles"}

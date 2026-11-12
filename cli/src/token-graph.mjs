@@ -11,6 +11,7 @@ import { shown } from "./anatomy.mjs";
 import { aliasChain, refPath, tokenIndex } from "./lands.mjs";
 import { grammar as readGrammar, questions } from "./schemes.mjs";
 import { flatTokens } from "./tokens.mjs";
+import { traceScheme } from "./trace.mjs";
 
 /** The tiers, left to right, as the map lays them out. */
 export const TIERS = ["primitive", "semantic", "component-key"];
@@ -77,13 +78,16 @@ const extOf = (token) => token?.$extensions?.["open-ds"] ?? {};
  * questions its own because and its theme picks' because name, each with the option the scheme
  * chose. A question the scheme does not answer is left out.
  */
-function answersOf({ index, path, scheme, asked }) {
+function answersOf({ index, path, scheme, asked, traced }) {
   const token = index.byPath.get(path);
   const picks = refsIn(token?.$value)
     .map((r) => refPath(index, r))
     .filter(isTheme)
     .map((p) => index.byPath.get(p));
-  const ids = [...new Set([token, ...picks].flatMap((t) => extOf(t).because ?? []))];
+  // This brand and mode's picks first, then every other link the trace engine finds.
+  const ids = [
+    ...new Set([...[token, ...picks].flatMap((t) => extOf(t).because ?? []), ...(traced.get(labelOf(path))?.because ?? [])]),
+  ];
   return ids.flatMap((id) => {
     const q = asked[id];
     const chosen = scheme.answers?.find((a) => a.question === id);
@@ -128,11 +132,13 @@ function toneOf(index, path) {
  * description, theme?, answers?, tone? }], edges: [{ from, to }] }. An edge runs from the token a
  * value comes from to its reader. theme marks a token whose value goes through the brand theme.
  * description is the token's own $description. A semantic token holds answers, the grammar answers
- * its pick records ([{ question, answer }]), and tone, the tone its fill records, when it has one.
+ * its pick records and the trace engine finds ([{ question, answer }]), and tone, the tone its fill
+ * records, when it has one. Pass trace (traceScheme) when building several graphs of one scheme.
  */
-export function tokenGraph({ scheme, brand, mode, grammar = readGrammar() }) {
+export function tokenGraph({ scheme, brand, mode, grammar = readGrammar(), trace = traceScheme(scheme, grammar) }) {
   const index = tokenIndex(scheme, { brand, mode });
   const asked = questions(grammar);
+  const traced = new Map(trace.tokens.map((t) => [t.token, t]));
   const primitives = new Set(flatTokens(scheme.tokens.primitive).map(([p]) => p));
   const nodes = new Map();
   const edges = [];
@@ -145,7 +151,7 @@ export function tokenGraph({ scheme, brand, mode, grammar = readGrammar() }) {
     const type = token.$type ?? index.byPath.get(end)?.$type ?? (COLOR.test(value) ? "color" : null);
     const refs = refsIn(token.$value).map((r) => refPath(index, r));
     const tier = tierOf(path, primitives);
-    const answers = tier === "semantic" ? answersOf({ index, path, scheme, asked }) : [];
+    const answers = tier === "semantic" ? answersOf({ index, path, scheme, asked, traced }) : [];
     const tone = tier === "semantic" ? toneOf(index, path) : null;
     nodes.set(path, {
       id: path,
@@ -180,8 +186,9 @@ export function tokenGraph({ scheme, brand, mode, grammar = readGrammar() }) {
  */
 export function tokenMap({ scheme, brands = Object.keys(scheme.tokens.brands), grammar = readGrammar() }) {
   const graphs = {};
+  const trace = traceScheme(scheme, grammar);
   for (const brand of brands)
-    for (const mode of ["light", "dark"]) graphs[`${brand}/${mode}`] = tokenGraph({ scheme, brand, mode, grammar });
+    for (const mode of ["light", "dark"]) graphs[`${brand}/${mode}`] = tokenGraph({ scheme, brand, mode, grammar, trace });
   return {
     scheme: scheme.id,
     name: scheme.name,

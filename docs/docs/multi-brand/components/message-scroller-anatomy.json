@@ -85,7 +85,7 @@
      "value": "0.5rem",
      "byScheme": true,
      "pick": [
-      "radius.8: Rounded by default; each brand sets its own corner."
+      "radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding."
      ],
      "shares": []
     }

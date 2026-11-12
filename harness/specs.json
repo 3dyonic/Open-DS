@@ -566,11 +566,23 @@
       "id": "OD-273",
       "title": "Every semantic value rests on a decision",
       "in": [
-        "a semantic is linked when its theme pick, or a usage rule that names it, cites an answer the grammar asks and the scheme gives",
+        "a semantic is linked when its theme pick, its own or its group's reason, a usage rule that names it, or a grammar trace rule for its kind cites an answer the grammar asks and the scheme gives",
         "the owning scope's answers do not count as a link",
         "the harness counts the values with no decision per scheme, and each count may only go down"
       ],
       "checks": ["decisions-cover-values"]
+    },
+    {
+      "id": "OD-293",
+      "title": "Trace engine: every value reaches the answers that decide it, from one source",
+      "in": [
+        "one engine (cli/src/trace.mjs) links a value by its theme pick, its own reason, its group's reason, a usage rule or a grammar trace rule",
+        "a grammar trace rule names one kind of token and the questions that decide it, never a whole scope",
+        "coverage, the Token map and open-ds trace read the engine, so they never disagree",
+        "the Token map shows a why only where the scheme records one",
+        "every semantic value has a reason of its own: 6 words or more, citing an answer, not another value's sentence"
+      ],
+      "checks": ["values-traced", "reasons-explain-values", "decisions-cover-values", "json-files-validate"]
     },
     {
       "id": "OD-285",

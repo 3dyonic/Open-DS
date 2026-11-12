@@ -148,7 +148,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: Rounded by default; each brand sets its own corner."
+      "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag."
      ],
      "shares": []
     }

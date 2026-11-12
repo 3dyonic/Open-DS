@@ -117,7 +117,7 @@
      "value": "calc(infinity * 1px)",
      "byScheme": true,
      "pick": [
-      "radius.pill: Pill controls feel playful."
+      "radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold."
      ],
      "shares": []
     },

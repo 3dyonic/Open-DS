@@ -2206,7 +2206,7 @@
         "mode": "light",
         "pick": "color.blue.light.100",
         "why": [
-         "blue.light.100: a tag's tint; text on it reads, ",
+         "blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
          {
           "ratio": 15.61
          },
@@ -2246,7 +2246,7 @@
         "mode": "light",
         "pick": "color.teal.light.100",
         "why": [
-         "teal.light.100: a tag's tint; text on it reads, ",
+         "teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
          {
           "ratio": 15.61
          },
@@ -2462,7 +2462,7 @@
         "mode": "dark",
         "pick": "color.blue.dark.100",
         "why": [
-         "blue.dark.100: a tag's tint; text on it reads, ",
+         "blue.dark.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
          {
           "ratio": 14.23
          },
@@ -2502,7 +2502,7 @@
         "mode": "dark",
         "pick": "color.teal.dark.100",
         "why": [
-         "teal.dark.100: a tag's tint; text on it reads, ",
+         "teal.dark.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads ",
          {
           "ratio": 13.57
          },
@@ -3851,7 +3851,7 @@
       "kind": "rules",
       "items": [
        {
-        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Generous space lowers mis-taps.",
+        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps.",
         "link": {
          "label": "Spacing",
          "href": "foundations/spacing"
@@ -3889,11 +3889,20 @@
     }
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Spacing",
-     "href": "foundations/spacing"
-    }
+    "groups": [
+     {
+      "kind": "rules",
+      "items": [
+       {
+        "text": "For items that belong together, use space.gap.default. Don't use space.gap.tight. Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps.",
+        "link": {
+         "label": "Spacing",
+         "href": "foundations/spacing"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-roles": {
@@ -3941,7 +3950,7 @@
         "mode": "every mode",
         "pick": "radius.6",
         "why": [
-         "radius.6: Clear, slightly rounded controls."
+         "radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons."
         ],
         "link": {
          "label": "Shape",
@@ -3953,7 +3962,7 @@
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: Clear, slightly rounded controls."
+         "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill."
         ],
         "link": {
          "label": "Shape",
@@ -3989,7 +3998,7 @@
         "mode": "every mode",
         "pick": "radius.8",
         "why": [
-         "radius.8: Clear, slightly rounded controls."
+         "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it."
         ],
         "link": {
          "label": "Shape",
@@ -4012,11 +4021,25 @@
     }
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "radius.surface",
+        "mode": "every mode",
+        "pick": "radius.8",
+        "why": [
+         "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-definition": {
@@ -4067,7 +4090,7 @@
         "mode": "every mode",
         "pick": "radius.6",
         "why": [
-         "radius.6: Clear, slightly rounded controls."
+         "radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons."
         ],
         "link": {
          "label": "Shape",
@@ -4079,7 +4102,7 @@
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: Clear, slightly rounded controls."
+         "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill."
         ],
         "link": {
          "label": "Shape",
@@ -4103,7 +4126,7 @@
         "mode": "every mode",
         "pick": "radius.8",
         "why": [
-         "radius.8: Clear, slightly rounded controls."
+         "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it."
         ],
         "link": {
          "label": "Shape",
@@ -4125,11 +4148,25 @@
     }
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "radius.surface",
+        "mode": "every mode",
+        "pick": "radius.8",
+        "why": [
+         "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "elevation-roles": {

@@ -2776,12 +2776,13 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Pill controls feel playful.",
+                    "why": "radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "shape.lands",
+                      "brand.q1"
+                    ]
                   }
                 }
               },
@@ -2790,12 +2791,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Pill controls feel playful.",
+                    "why": "radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
                     "because": [
                       "shape.roles",
                       "shape.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -2830,12 +2830,14 @@
                 "$value": "{radius.24}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.24: Pill controls feel playful.",
+                    "why": "radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "shape.count",
+                      "brand.q1",
+                      "human.q1"
+                    ]
                   }
                 }
               }
@@ -3960,12 +3962,12 @@
                 "$value": "{shadow.card}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card: Cards lift to feel like objects.",
+                    "why": "shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.definition"
+                    ]
                   }
                 }
               },
@@ -3974,12 +3976,12 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: Pronounced shadows add depth.",
+                    "why": "shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.lands"
+                    ]
                   }
                 }
               }
@@ -4849,12 +4851,12 @@
                 "$value": "{shadow.card-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: Cards lift to feel like objects.",
+                    "why": "shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.definition"
+                    ]
                   }
                 }
               },
@@ -4863,12 +4865,12 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: Pronounced shadows add depth.",
+                    "why": "shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.lands"
+                    ]
                   }
                 }
               }
@@ -4897,7 +4899,16 @@
           "default": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Between items in one group."
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "The default gap is 16px between items in one group, so air keeps big type readable.",
+                "because": [
+                  "spacing.values",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "group": {
             "$type": "dimension",
@@ -4954,7 +4965,16 @@
         "icon": {
           "$type": "dimension",
           "$value": "{size.20}",
-          "$description": "Icon size next to text."
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "Icons beside text are 20px, larger than the 17px body, so they hold their own next to big type.",
+              "because": [
+                "brand.q1",
+                "brand.q2"
+              ]
+            }
+          }
         }
       },
       "radius": {
@@ -5015,15 +5035,44 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.56}"
+            "$value": "{font.size.56}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display sets 56px, the largest step, because every hero opens with one big idea in the brand's loudest voice.",
+                "because": [
+                  "typography.roles",
+                  "content.q2",
+                  "brand.q2"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_1}"
+            "$value": "{font.line-height.1_1}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display lines use 1.1, the tight ratio the scheme gives its big sizes, so a 56px headline stacks as one bold block.",
+                "because": [
+                  "typography.definition",
+                  "brand.q1"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.800}"
+            "$value": "{font.weight.800}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display sets weight 800, the heaviest step, because the hero headline carries the bold, loud brand.",
+                "because": [
+                  "brand.q1",
+                  "brand.q2",
+                  "typography.lands"
+                ]
+              }
+            }
           },
           "$description": "The display text role."
         },
@@ -5034,15 +5083,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.40}"
+            "$value": "{font.size.40}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title sets 40px, one step below display, so the sign-up form's title stays big and keeps the form in view on a phone.",
+                "because": [
+                  "tasks.q2",
+                  "scenarios.q1",
+                  "typography.count"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_1}"
+            "$value": "{font.line-height.1_1}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title lines use 1.1 like display, because a 40px title is still a headline size in the proportional scale.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.800}"
+            "$value": "{font.weight.800}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title keeps weight 800 from display, so the form page still speaks in the brand's bold headline voice.",
+                "because": [
+                  "brand.q1",
+                  "typography.lands"
+                ]
+              }
+            }
           },
           "$description": "The title text role."
         },
@@ -5053,15 +5129,43 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.28}"
+            "$value": "{font.size.28}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading sets 28px, the smallest headline step, so it carries the display face into cards and dialogs without competing with the hero.",
+                "because": [
+                  "brand.q3",
+                  "content.q2",
+                  "typography.count"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_1}"
+            "$value": "{font.line-height.1_1}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading lines use 1.1, the headline ratio, because headings stay short: three to six words, as the voice asks.",
+                "because": [
+                  "typography.definition",
+                  "voice.lands"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.700}"
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading drops to weight 700, one step under display and title, so cards stay bold without shouting over the hero.",
+                "because": [
+                  "brand.q1",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "$description": "The heading text role."
         },
@@ -5072,15 +5176,43 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.17}"
+            "$value": "{font.size.17}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body sets 17px in DM Sans, so short punchy copy reads easily on the phones visitors arrive on.",
+                "because": [
+                  "brand.q3",
+                  "content.q1",
+                  "scenarios.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_55}"
+            "$value": "{font.line-height.1_55}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body lines open to 1.55, the relaxed ratio, so DM Sans copy reads easily while display lines sit tight at 1.1.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body stays at weight 400, regular, because the display does the shouting and the text only has to read.",
+                "because": [
+                  "typography.values",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The body text role."
         },
@@ -5091,15 +5223,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.15}"
+            "$value": "{font.size.15}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Label sets 15px, between caption and body, so field labels stay readable on vivid color.",
+                "because": [
+                  "people.q2"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_1}"
+            "$value": "{font.line-height.1_1}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Labels use the tight 1.1 ratio, because a label is one short line beside a pill control.",
+                "because": [
+                  "typography.definition",
+                  "shape.values"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.700}"
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Labels set weight 700, bold DM Sans, so a field label holds on vivid color and matches the bold brand.",
+                "because": [
+                  "people.q2",
+                  "brand.q1"
+                ]
+              }
+            }
           },
           "$description": "The label text role."
         },
@@ -5110,15 +5268,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.14}"
+            "$value": "{font.size.14}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption sets 14px, the smallest step, so fine print stays small and headlines keep the attention that wins sign-ups.",
+                "because": [
+                  "outcomes.q1",
+                  "content.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_55}"
+            "$value": "{font.line-height.1_55}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Captions keep the 1.55 body ratio, so small fine print in DM Sans stays easy to read across lines.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Captions stay at weight 400, regular, so fine print never pulls the eye from the bold headlines.",
+                "because": [
+                  "typography.values",
+                  "outcomes.q1"
+                ]
+              }
+            }
           },
           "$description": "The caption text role."
         },
@@ -5129,15 +5314,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.17}"
+            "$value": "{font.size.17}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data equals body at 17px, because tables are rare and short, so cells read like the rest of the page.",
+                "because": [
+                  "content.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_55}"
+            "$value": "{font.line-height.1_55}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data cells keep the body's 1.55 ratio, so a rare table keeps the page's airy rhythm.",
+                "because": [
+                  "content.q1",
+                  "spacing.values"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data stays at weight 400, regular DM Sans, so numbers in short copy keep the brand's text voice.",
+                "because": [
+                  "content.q1",
+                  "brand.q3",
+                  "typography.values"
+                ]
+              }
+            }
           },
           "$description": "The data text role."
         }
@@ -5582,7 +5794,16 @@
         "stroke-width": {
           "$type": "number",
           "$value": "{stroke-width.175}",
-          "$description": "The line weight of every icon, on Lucide's 24px grid."
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "Icons use a 1.75 stroke width on Lucide's 24px grid, a firm line that carries the brand's bold warmth.",
+              "because": [
+                "brand.q1",
+                "brand.q2"
+              ]
+            }
+          }
         }
       }
     },
