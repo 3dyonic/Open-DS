@@ -2623,25 +2623,21 @@
             "$type": "dimension",
             "$value": "1rem"
           },
-          "18": {
-            "$type": "dimension",
-            "$value": "1.125rem"
-          },
           "19": {
             "$type": "dimension",
             "$value": "1.1875rem"
           },
-          "22": {
+          "23": {
             "$type": "dimension",
-            "$value": "1.375rem"
+            "$value": "1.4375rem"
           },
           "28": {
             "$type": "dimension",
             "$value": "1.75rem"
           },
-          "36": {
+          "35": {
             "$type": "dimension",
-            "$value": "2.25rem"
+            "$value": "2.1875rem"
           },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
@@ -4971,6 +4967,47 @@
         }
       },
       "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 19,
+            "ratio": 1.22,
+            "steps": {
+              "display": 3,
+              "title": 2,
+              "heading": 1,
+              "body": 0,
+              "label": 0,
+              "caption": -1,
+              "data": 0
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.25,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading"
+                ]
+              },
+              "open": {
+                "ratio": 1.6,
+                "roles": [
+                  "body",
+                  "label",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition",
+              "people.q1"
+            ],
+            "why": "Few sizes: a large 19px body and a 1.22 ratio, each role on the next step, and no step under 16px. Headings sit tight at 1.25; every other role wraps at 1.6, labels too, because a label wraps when people zoom."
+          }
+        },
         "display": {
           "font-family": {
             "$type": "fontFamily",
@@ -4978,10 +5015,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.36}",
+            "$value": "{font.size.35}",
             "$extensions": {
               "open-ds": {
-                "why": "Display is the largest step, 36px, kept off page titles: it changes from page to page and pushes the content down.",
+                "why": "Display is 35px, three ratio steps above the 19px body (19 × 1.22^3), kept off page titles: it changes from page to page and pushes the content down.",
                 "because": [
                   "typography.count",
                   "human.q1"
@@ -4994,7 +5031,7 @@
             "$value": "{font.line-height.1_25}",
             "$extensions": {
               "open-ds": {
-                "why": "Display lines are 1.25 times its 36px size, 45px; as a ratio, the line height grows with the text when people zoom.",
+                "why": "Display lines are 1.25 times its 35px size, about 44px; as a ratio, the line height grows with the text when people zoom.",
                 "because": [
                   "typography.definition"
                 ]
@@ -5006,7 +5043,7 @@
             "$value": "{font.weight.700}",
             "$extensions": {
               "open-ds": {
-                "why": "Display is bold, 700, one of the two weights the scheme loads; bold and the 36px size together mark the top of the page.",
+                "why": "Display is bold, 700, one of the two weights the scheme loads; bold and the 35px size together mark the top of the page.",
                 "because": [
                   "brand.q3"
                 ]
@@ -5025,7 +5062,7 @@
             "$value": "{font.size.28}",
             "$extensions": {
               "open-ds": {
-                "why": "Title is 28px, one clear step below display, and the same on every page, so people always know where they are.",
+                "why": "Title is 28px, two ratio steps above body and one clear step under display, the same on every page, so people always know where they are.",
                 "because": [
                   "typography.count",
                   "human.q1"
@@ -5067,10 +5104,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.22}",
+            "$value": "{font.size.23}",
             "$extensions": {
               "open-ds": {
-                "why": "Heading is 22px, a clear step between the 28px title and the 19px body, so a section inside a form step stands out.",
+                "why": "Heading is 23px, one ratio step above the 19px body and one under the 28px title, so a section inside a form step stands out.",
                 "because": [
                   "typography.count",
                   "typography.lands"
@@ -5083,7 +5120,7 @@
             "$value": "{font.line-height.1_25}",
             "$extensions": {
               "open-ds": {
-                "why": "Heading lines are 1.25 times its 22px size, 27.5px: the smallest role on the tight ratio, while text from 19px down takes 1.6.",
+                "why": "Heading lines are 1.25 times its 23px size, about 29px: the smallest role on the tight ratio, while text from 19px down takes 1.6.",
                 "because": [
                   "typography.definition"
                 ]
@@ -5095,7 +5132,7 @@
             "$value": "{font.weight.700}",
             "$extensions": {
               "open-ds": {
-                "why": "Heading is bold, 700: at 22px it sits only 3px above body, so weight, not size alone, sets it apart.",
+                "why": "Heading is bold, 700: at 23px it sits only one ratio step above body, so weight, not size alone, sets it apart.",
                 "because": [
                   "brand.q3",
                   "typography.count"
@@ -5115,7 +5152,7 @@
             "$value": "{font.size.19}",
             "$extensions": {
               "open-ds": {
-                "why": "Body is 19px, three pixels above the 16px caption, because large text is readable for more people.",
+                "why": "Body is 19px, step 0 of the scale and one ratio step above the 16px caption, because large text is readable for more people.",
                 "because": [
                   "typography.values",
                   "people.q1"
@@ -5157,10 +5194,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.18}",
+            "$value": "{font.size.19}",
             "$extensions": {
               "open-ds": {
-                "why": "Label is 18px, one pixel under body, because form labels and hints are where type matters most.",
+                "why": "Label shares step 0 with body at 19px, because form labels and hints are where type matters most; weight, not size, sets it apart.",
                 "because": [
                   "typography.lands",
                   "typography.values"
@@ -5173,7 +5210,7 @@
             "$value": "{font.line-height.1_6}",
             "$extensions": {
               "open-ds": {
-                "why": "Label lines are 1.6 times its 18px size, 28.8px, so a label that wraps above its field keeps the open spacing of body.",
+                "why": "Label lines are 1.6 times its 19px size, 30.4px, so a label that wraps above its field keeps the open spacing of body.",
                 "because": [
                   "typography.definition",
                   "typography.lands"
@@ -5186,7 +5223,7 @@
             "$value": "{font.weight.700}",
             "$extensions": {
               "open-ds": {
-                "why": "Label is bold, 700: at 18px it is close to the body size, so bold marks it as the field's always visible label.",
+                "why": "Label is bold, 700: at 19px it shares the body size, so bold marks it as the field's always visible label.",
                 "because": [
                   "brand.q3",
                   "typography.lands"
@@ -5206,7 +5243,7 @@
             "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
-                "why": "Caption is the smallest step, 16px, exactly 1rem: even secondary text never drops below the reader's own default size.",
+                "why": "Caption is one ratio step under body (19 ÷ 1.22), 16px, exactly 1rem: even secondary text never drops below the reader's own default size.",
                 "because": [
                   "typography.values",
                   "typography.count"
@@ -5251,7 +5288,7 @@
             "$value": "{font.size.19}",
             "$extensions": {
               "open-ds": {
-                "why": "Data uses the 19px body size, not a small or mono size, because every number must be readable at large size.",
+                "why": "Data shares step 0 with body at 19px, not a small or mono size, because every number must be readable at large size.",
                 "because": [
                   "people.q1",
                   "typography.values"

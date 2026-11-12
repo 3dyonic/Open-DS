@@ -143,10 +143,10 @@
      "kind": "token",
      "semantic": "type.label.font-size",
      "key": "label.font-size",
-     "value": "0.875rem",
+     "value": "0.8125rem",
      "byScheme": true,
      "pick": [
-      "font.size.14"
+      "font.size.13"
      ],
      "shares": []
     },

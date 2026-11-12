@@ -57,7 +57,7 @@
       },
       {
        "token": "type.title.font-size",
-       "value": "24px"
+       "value": "25px"
       },
       {
        "token": "type.title.line-height",
@@ -170,7 +170,7 @@
       },
       {
        "token": "type.label.font-size",
-       "value": "14px"
+       "value": "13px"
       },
       {
        "token": "type.label.line-height",
