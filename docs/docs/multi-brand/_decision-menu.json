@@ -62,7 +62,7 @@
         {
           "id": "color",
           "title": "Color",
-          "count": 92
+          "count": 91
         },
         {
           "id": "spacing",
@@ -92,12 +92,12 @@
         {
           "id": "theming",
           "title": "Theming",
-          "count": 24
+          "count": 25
         },
         {
           "id": "accessibility",
           "title": "Accessibility",
-          "count": 111
+          "count": 110
         },
         {
           "id": "naming",

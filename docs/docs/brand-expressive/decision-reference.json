@@ -3187,22 +3187,6 @@
         }
        },
        {
-        "token": "color.surface.pressed",
-        "mode": "dark",
-        "pick": "color.neutral.200",
-        "why": [
-         "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, ",
-         {
-          "ratio": 1.91
-         },
-         " from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
-        ],
-        "link": {
-         "label": "Color",
-         "href": "foundations/color"
-        }
-       },
-       {
         "token": "color.surface.selected",
         "mode": "dark",
         "pick": "color.pink.dark.100",
@@ -5234,6 +5218,22 @@
         }
        },
        {
+        "token": "color.surface.pressed",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, ",
+         {
+          "ratio": 1.91
+         },
+         " from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "color.border.raised",
         "mode": "dark",
         "pick": "color.neutral.200",
@@ -5457,22 +5457,6 @@
           "ratio": 7.59
          },
          " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
-        ],
-        "link": {
-         "label": "Color",
-         "href": "foundations/color"
-        }
-       },
-       {
-        "token": "color.surface.pressed",
-        "mode": "dark",
-        "pick": "color.neutral.200",
-        "why": [
-         "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, ",
-         {
-          "ratio": 1.91
-         },
-         " from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
         ],
         "link": {
          "label": "Color",

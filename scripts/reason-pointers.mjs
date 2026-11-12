@@ -95,11 +95,42 @@ export function pointRepeats(scheme) {
   return rewritten;
 }
 
+/**
+ * Say each mechanism once per token group (OD-298 repetition). Where tokens of one group (space.gap,
+ * space.inset, size.control) repeat a sentence of the group's first token, the later ones drop it and
+ * their first sentence points to the first token instead. The pointer sits inside a sentence that names
+ * the token's own value, so it is not a repeated sentence itself.
+ */
+export function pointGroupMechanisms(scheme) {
+  const groups = ["space.gap", "space.inset", "size.control"];
+  const split = (why) => why.split(/(?<=\.)\s+(?=[A-Z])/);
+  let rewritten = 0;
+  for (const group of groups) {
+    const node = group.split(".").reduce((n, k) => n?.[k], scheme.tokens.semantic);
+    if (!node) continue;
+    const keys = Object.keys(node).filter((k) => !k.startsWith("$") && node[k]?.$extensions?.["open-ds"]?.why);
+    if (keys.length < 2) continue;
+    const anchor = `${group}.${keys[0]}`;
+    const anchorSentences = new Set(split(node[keys[0]].$extensions["open-ds"].why).slice(1));
+    for (const k of keys.slice(1)) {
+      const od = node[k].$extensions["open-ds"];
+      const parts = split(od.why);
+      const kept = parts.filter((s, i) => i === 0 || !anchorSentences.has(s));
+      if (kept.length === parts.length) continue;
+      kept[0] = kept[0].replace(/\.$/, `, and it does this by the means stated in the reason of ${anchor}.`);
+      od.why = kept.join(" ");
+      rewritten++;
+    }
+  }
+  return rewritten;
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   for (const id of schemeIds()) {
     const s = loadScheme(id);
     const n = pointRepeats(s);
+    const m = pointGroupMechanisms(s);
     saveScheme(s);
-    console.log(`${id}: ${n} picks point to an earlier pick.`);
+    console.log(`${id}: ${n} picks point to an earlier pick; ${m} group tokens point to their group's mechanism.`);
   }
 }

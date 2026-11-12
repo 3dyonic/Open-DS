@@ -4402,8 +4402,7 @@
                       "tone": "dark",
                       "why": "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 1.91:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "theming.values"
                       ]
                     }
                   }

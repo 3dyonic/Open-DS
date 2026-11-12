@@ -913,6 +913,32 @@ export const CHECKS = {
         : ok(`${total} semantic values in ${SCHEMES.length} schemes each have a reason that explains them`);
     },
   },
+  "scheme-quality": {
+    requires: ["cli/src/quality/extract.mjs", "cli/src/quality/scorecard.mjs", "harness/quality-baseline.json"],
+    run: async (c) => {
+      // OD-298: the scheme quality gate. Every criterion is a number computed by code: traceability,
+      // derived against literal values, invariants, blast radius, accessibility, motion, repetition and
+      // size. The baseline holds each number on origin/master with the way it may move; a gated number
+      // that moves the wrong way fails. open-ds compare --base origin/master shows the detail.
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
+      const { extractRef } = await import(pathToFileURL(c.p("cli/src/quality/extract.mjs")).href);
+      const { gateAgainstBaseline } = await import(pathToFileURL(c.p("cli/src/quality/scorecard.mjs")).href);
+      const baseline = c.json("harness", "quality-baseline.json");
+      const r = gateAgainstBaseline(await extractRef({ root: c.root }), baseline);
+      const against = `${baseline.ref} (${String(baseline.sha).slice(0, 10)})`;
+      if (!r.ok)
+        return bad(
+          `${r.worse.length} criteria are worse than ${against}: ${r.worse.slice(0, 6).join("; ")}. Run open-ds compare --base ${baseline.ref} for the detail.`,
+        );
+      const gated = Object.values(baseline.criteria).filter((x) => x.direction !== "report").length;
+      return ok(
+        `${gated} gated criteria hold against ${against}` +
+          (r.better.length ? `; better: ${r.better.slice(0, 4).join("; ")}` : "") +
+          (r.missing.length ? `; not in the baseline yet: ${r.missing.join(", ")} (open-ds compare --base ${baseline.ref} --write-baseline)` : ""),
+      );
+    },
+  },
   "reasons-say-why": {
     requires: ["cli/src/trace.mjs", "scripts/reason-form.mjs", "harness/reason-form-baseline.json"],
     run: async (c) => {
@@ -3069,7 +3095,12 @@ export const CHECKS = {
         "storybook/src/schemes.ts",
         "cli/scripts/bundle.mjs",
         "scripts/test-package.mjs",
-              ]);
+        // OD-298's independent seeded-defect tests: each edits a temporary copy of schemes/, never the real files.
+        "cli/test/verify-a-harness.mjs",
+        "cli/test/verify-b-cli.test.mjs",
+        "cli/test/verify-b-helpers.mjs",
+        "cli/test/verify-c-fixture.mjs",
+      ]);
       const DIRS = ["cli/src", "cli/scripts", "cli/test", "docs/scripts", "docs/src", "harness", "scripts", "site/src", "storybook/src", "storybook/stories", "storybook/.storybook", "tokens", "mcp/src", "mcp/test", "doc-composites/src", "ui/scripts", "e2e", "site/scripts"];
       const SKIP = /node_modules|\/dist\/|\/build\/|\.next|\.docusaurus/;
       const walk = (d) =>

@@ -3492,18 +3492,6 @@
         }
        },
        {
-        "token": "color.surface.pressed",
-        "mode": "dark",
-        "pick": "color.neutral.floor",
-        "why": [
-         "neutral.floor: We use the highlight's step for a pressed item in dark in order to keep press and hover one state. The fill does this by staying where the hover put it. So experts get one plain signal and nothing more to learn, because the states are hover, focus and disabled, with no pressed look of its own (accessibility.roles), and the neutral ramp sets the steps (color.definition)."
-        ],
-        "link": {
-         "label": "Color",
-         "href": "foundations/color"
-        }
-       },
-       {
         "token": "color.surface.selected",
         "mode": "dark",
         "pick": "color.violet.dark.100",
@@ -5424,6 +5412,18 @@
         }
        },
        {
+        "token": "color.surface.pressed",
+        "mode": "dark",
+        "pick": "color.neutral.floor",
+        "why": [
+         "neutral.floor: We use the highlight's step for a pressed item in dark in order to keep press and hover one state. The fill does this by staying where the hover put it. So experts get one plain signal and nothing more to learn, because the states are hover, focus and disabled, with no pressed look of its own (accessibility.roles), and the neutral ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "color.border.raised",
         "mode": "dark",
         "pick": "color.neutral.200",
@@ -5645,18 +5645,6 @@
           "ratio": 7.46
          },
          " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
-        ],
-        "link": {
-         "label": "Color",
-         "href": "foundations/color"
-        }
-       },
-       {
-        "token": "color.surface.pressed",
-        "mode": "dark",
-        "pick": "color.neutral.floor",
-        "why": [
-         "neutral.floor: We use the highlight's step for a pressed item in dark in order to keep press and hover one state. The fill does this by staying where the hover put it. So experts get one plain signal and nothing more to learn, because the states are hover, focus and disabled, with no pressed look of its own (accessibility.roles), and the neutral ramp sets the steps (color.definition)."
         ],
         "link": {
          "label": "Color",

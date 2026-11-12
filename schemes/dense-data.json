@@ -4506,8 +4506,7 @@
                       "tone": "dark",
                       "why": "neutral.floor: We use the highlight's step for a pressed item in dark in order to keep press and hover one state. The fill does this by staying where the hover put it. So experts get one plain signal and nothing more to learn, because the states are hover, focus and disabled, with no pressed look of its own (accessibility.roles), and the neutral ramp sets the steps (color.definition).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "theming.values"
                       ]
                     }
                   }
