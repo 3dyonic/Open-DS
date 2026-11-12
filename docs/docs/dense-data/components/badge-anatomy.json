@@ -252,22 +252,22 @@
      "byScheme": true,
      "rule": "The fill behind info status.",
      "pick": [
-      "blue.light.100: a quiet tint behind info; its text, ",
+      "blue.light.100: the soft info fill behind a message, and its text reads ",
       {
        "ratio": 12.97
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "blue.dark.100: a quiet tint behind info; its text, ",
+      "blue.dark.100: the soft info fill behind a message, and its text reads ",
       {
        "ratio": 10.82
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
@@ -286,22 +286,22 @@
      "byScheme": true,
      "rule": "The fill behind success status.",
      "pick": [
-      "green.light.100: a quiet tint behind success; its text, ",
+      "green.light.100: the soft success fill behind a message, and its text reads ",
       {
        "ratio": 10.79
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "green.dark.100: a quiet tint behind success; its text, ",
+      "green.dark.100: the soft success fill behind a message, and its text reads ",
       {
        "ratio": 12.05
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
@@ -320,22 +320,22 @@
      "byScheme": true,
      "rule": "The fill behind warning status.",
      "pick": [
-      "amber.light.100: a quiet tint behind warning; its text, ",
+      "amber.light.100: the soft warning fill behind a message, and its text reads ",
       {
        "ratio": 11.09
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "amber.dark.100: a quiet tint behind warning; its text, ",
+      "amber.dark.100: the soft warning fill behind a message, and its text reads ",
       {
        "ratio": 11.34
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
@@ -354,22 +354,22 @@
      "byScheme": true,
      "rule": "The fill behind danger status.",
      "pick": [
-      "red.light.100: a quiet tint behind danger; its text, ",
+      "red.light.100: the soft danger fill behind a message, and its text reads ",
       {
        "ratio": 9.9
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "red.dark.100: a quiet tint behind danger; its text, ",
+      "red.dark.100: the soft danger fill behind a message, and its text reads ",
       {
        "ratio": 11.33
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },

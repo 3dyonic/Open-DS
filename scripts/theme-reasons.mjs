@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { loadScheme, saveScheme, assetRoots } from "../cli/src/schemes.mjs";
 import { tokenIndex, aliasChain } from "../cli/src/lands.mjs";
 import { grammar } from "../cli/src/schemes.mjs";
-import { decidingQuestion } from "../cli/src/trace.mjs";
+import { citationsOf, decidingQuestion } from "../cli/src/trace.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -40,6 +40,13 @@ const contrast = (c, a, b, floor, what) => {
   const r = ratio(x, y);
   if (r < floor) return BROKE;
   return `${c.pick}: ${what}, ${r1(r)} on ${short(b)}, above the ${floor}:1 floor.`;
+};
+// A fill reason: "<pick>: <what>, and its text reads R:1 on it, above the F:1 floor." The text is what the
+// fill must hold, so the measure is of the text on the fill. One sentence, so the measure makes it its own.
+const onFill = (c, text, fill, what, label = "its text") => {
+  const r = contrast(c, text, fill, c.floor, "x");
+  if (r === BROKE || r === null) return r;
+  return `${c.pick}: ${what}, and ${label} reads ${r1(ratio(c.v(text), c.v(fill)))} on it, above the ${c.floor}:1 floor.`;
 };
 const step = (ref) => ref?.match(/\.(\d+)\}?$/)?.[1];
 
@@ -137,7 +144,7 @@ const RULES = [
     why: (c) => {
       const kind = c.path.split(".")[2];
       const label = { primary: "color.text.on-action", secondary: "color.text.primary", danger: "color.text.on-danger" }[kind];
-      return contrast(c, label, c.path, c.floor, `the ${kind} action's fill; its label reads`)?.toString().replace(` on ${short(c.path)}`, "") ?? null;
+      return onFill(c, label, c.path, `the ${kind} action's fill`, "its label");
     },
   },
   {
@@ -168,7 +175,7 @@ const RULES = [
     why: (c) => {
       const s = c.path.split(".")[2];
       const t = c.mode === "light" ? `color.text.${s}-on-light` : `color.text.${s}-on-dark`;
-      return contrast(c, t, c.path, c.floor, `a quiet tint behind ${s}; its text`)?.toString().replace(` on ${short(c.path)}`, "") ?? null;
+      return onFill(c, t, c.path, `the soft ${s} fill behind a message`);
     },
   },
   {
@@ -177,7 +184,7 @@ const RULES = [
   },
   {
     test: /^color\.category\.\d\.subtle$/,
-    why: (c) => contrast(c, "color.text.primary", c.path, c.floor, "a tag's tint; text on it reads")?.toString().replace(` on ${short(c.path)}`, "") ?? null,
+    why: (c) => onFill(c, "color.text.primary", c.path, "the soft fill of a category, for tags, labels and blocks that carry no meaning"),
   },
   {
     test: /^color\.disabled\.(text|surface|border)$/,
@@ -217,15 +224,46 @@ const leaves = (o, p = []) =>
 const preview = {};
 let added = 0;
 const broke = [];
+const moved = [];
 for (const id of SCHEMES) {
   const raw = loadScheme(id, roots);
   const s = loadScheme(id, roots);
   const answers = Object.fromEntries(raw.answers.map((a) => [a.question, a]));
   const floor = { aa: 4.5, "aaa-text": 7, aaa: 7 }[answers["accessibility.definition"]?.option] ?? 4.5;
+  // The answer that decides a value comes from the grammar's decision mapping, never from the rule: a token
+  // the mapping does not cover keeps no citation and shows as untraced. A reason measured against the
+  // scheme's text floor also cites the floor's answer; a 3:1 floor for marks is fixed by WCAG, not an answer.
+  // The answers a reason names in its text ("(brand.q1)") are cited too (citationsOf).
+  const cite = (od, sem, why) => {
+    const question = decidingQuestion(g, sem);
+    const floorCited = why.includes(`above the ${floor}:1 floor`) ? ["accessibility.definition"] : [];
+    const because = citationsOf(raw, g, sem.replace(/\.@$/, ""), [...(question ? [question] : []), ...floorCited], why);
+    if (because.length) od.because = because;
+    else delete od.because;
+  };
+  // A semantic token's own reason, written by hand, keeps only the citations the engine allows.
+  for (const [path, node] of leaves(raw.tokens.semantic)) {
+    const own = node.$extensions?.["open-ds"];
+    if (!own?.because?.length) continue;
+    const token = path.replace(/\.@$/, "");
+    const next = citationsOf(raw, g, token, own.because, own.why);
+    const dropped = own.because.filter((id) => !next.includes(id));
+    if (dropped.length) moved.push(`${id} ${token}: dropped ${dropped.join(", ")}`);
+    own.because = next;
+  }
   for (const [brand, def] of Object.entries(raw.tokens.brands))
     for (const mode of ["base", "light", "dark"])
       for (const [path, node] of leaves(def.theme[mode] ?? {})) {
         const sem = path;
+        const od0 = node.$extensions?.["open-ds"];
+        // Every reason, authored or generated, cites what the grammar's mapping says decides the token (OD-303).
+        if (od0?.why && !od0.generated) {
+          // A hand-written pick keeps its own citations, as far as the engine allows them.
+          const next = citationsOf(raw, g, sem.replace(/\.@$/, ""), od0.because ?? [], od0.why);
+          const dropped = (od0.because ?? []).filter((q) => !next.includes(q));
+          if (dropped.length) moved.push(`${id} ${brand}/${mode} ${sem}: dropped ${dropped.join(", ")}`);
+          od0.because = next;
+        }
         const rule = RULES.find((r) => r.test.test(path));
         if (!rule) continue;
         // A mode-free pick (base) is checked in the mode it serves.
@@ -253,14 +291,7 @@ for (const id of SCHEMES) {
         }
         if (!why) continue;
         od.why = why;
-        // The answer that decides a value comes from the grammar's decision mapping (OD-303), never from
-        // the rule: a token the mapping does not cover keeps no citation and shows as untraced.
-        const question = decidingQuestion(g, sem);
-        // A pick measured against the contrast floor is also decided by the floor's answer.
-        const floorCited = /floor/.test(why) ? ["accessibility.definition"] : [];
-        const because = [...new Set([...(question ? [question] : []), ...floorCited])];
-        if (because.length) od.because = because;
-        else delete od.because;
+        cite(od, sem, why);
         od.generated = true;
         added++;
         (preview[`${id}/${brand}/${mode}`] ??= {})[path] = why;
@@ -269,4 +300,5 @@ for (const id of SCHEMES) {
 }
 if (dry) console.log(JSON.stringify(preview, null, 1));
 else console.log(`Reasons on ${added} theme picks.`);
+if (moved.length) console.log(`Citations the engine does not allow, dropped:\n  ${moved.join("\n  ")}`);
 if (broke.length) console.error(`Left without a reason, because they break their scheme's floor:\n  ${broke.join("\n  ")}`);

@@ -446,22 +446,22 @@
      "byScheme": true,
      "rule": "The fill behind danger status.",
      "pick": [
-      "red.light.100: a quiet tint behind danger; its text, ",
+      "red.light.100: the soft danger fill behind a message, and its text reads ",
       {
        "ratio": 9.9
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 7
       },
       " floor."
      ],
      "darkPick": [
-      "red.dark.100: a quiet tint behind danger; its text, ",
+      "red.dark.100: the soft danger fill behind a message, and its text reads ",
       {
        "ratio": 12.25
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 7
       },

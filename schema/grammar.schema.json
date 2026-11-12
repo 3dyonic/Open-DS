@@ -558,7 +558,8 @@
           "properties": {
             "description": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "description": "What the list holds, in one sentence."
             },
             "items": {
               "type": "array",
@@ -569,14 +570,53 @@
                 "properties": {
                   "id": {
                     "type": "string",
-                    "minLength": 1
+                    "minLength": 1,
+                    "description": "The last part of a semantic name, such as subtle or @."
                   },
                   "says": {
                     "type": "string",
-                    "minLength": 1
+                    "minLength": 1,
+                    "description": "What the part means, in plain words. The token map shows it."
                   }
-                }
-              }
+                },
+                "description": "One name ending and its meaning."
+              },
+              "description": "One entry for each name ending."
+            }
+          }
+        },
+        "groups": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "items"],
+          "description": "The meaning of each group of a semantic name, such as color.category (OD-303).",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the list holds, in one sentence."
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "says"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A group of a semantic name, such as color.category."
+                  },
+                  "says": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "What the part means, in plain words. The token map shows it."
+                  }
+                },
+                "description": "One name group and its meaning."
+              },
+              "description": "One entry for each name group."
             }
           }
         }
@@ -1107,11 +1147,13 @@
               "properties": {
                 "id": {
                   "type": "string",
-                  "pattern": "^[a-z0-9-]+$"
+                  "pattern": "^[a-z0-9-]+$",
+                  "description": "The job id, unique in its property, such as group-and-separate."
                 },
                 "title": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "description": "The job in a few plain words. The token map shows it."
                 },
                 "how": {
                   "type": "string",
@@ -1122,7 +1164,8 @@
                   "type": "array",
                   "items": {
                     "type": "string"
-                  }
+                  },
+                  "description": "Other names the research gives the same job."
                 }
               }
             }

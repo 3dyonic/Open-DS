@@ -62,7 +62,7 @@
         {
           "id": "color",
           "title": "Color",
-          "count": 91
+          "count": 109
         },
         {
           "id": "spacing",
@@ -77,7 +77,7 @@
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 27
+          "count": 28
         },
         {
           "id": "motion",
@@ -97,7 +97,7 @@
         {
           "id": "accessibility",
           "title": "Accessibility",
-          "count": 104
+          "count": 97
         },
         {
           "id": "naming",

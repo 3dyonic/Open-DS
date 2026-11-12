@@ -35,11 +35,13 @@ test("blue 600 is the brand hue, with the checks it passes and the decisions tha
   assert.deepEqual(s.checks.map((c) => c.what), ["White text on it is easy to read", "Visible on every surface"]);
 });
 
-test("a decision carries the scheme's recorded reason, without the pick's prefix or ratio", () => {
+test("a decision carries the scheme's recorded reason, without the pick's prefix", () => {
   const p = light.decisions["color.action.primary"];
-  assert.equal(p.why, "brand blue marks the main action, with AAA white text.");
+  assert.equal(p.why, "brand blue marks the main action, with AAA white text (7.26:1).");
   assert.equal(p.stepWhy, "The lightest blue where white text reads at AAA.");
-  assert.ok(p.answers.includes("color.definition"));
+  // OD-303: "Decided by" is the engine's answer for chroma; the palette answer stays in the reason chain.
+  assert.deepEqual(p.answers, ["color.values"]);
+  assert.equal(p.mapping.property, "Chroma");
   assert.ok(af.answers["color.definition"].why.startsWith("True neutrals and blue 600 as the brand"));
 });
 
@@ -74,11 +76,14 @@ test("nothing on the map is invented: no sample data, and a why only where the s
   assert.equal(gap.description, "Between items in one group.");
 });
 
-test("the pick's why loses its prefix and its measured tail", () => {
+// OD-303: the card showed "a tag's tint; text on it reads" with the measure and the because clause cut off.
+test("the pick's why loses only its pick prefix: the measure and the because clause stay", () => {
   assert.equal(
     plainWhy("blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor."),
-    "the focus ring, so the keyboard's place is never lost",
+    "the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
   );
+  const authored = "neutral.200: We use the default line's step for the edge, in order to separate. So experts see where a menu ends, because raised layers keep an edge (elevation.definition).";
+  assert.match(plainWhy(authored), /because raised layers keep an edge \(elevation\.definition\)\.$/);
   assert.equal(plainWhy(null), null);
 });
 

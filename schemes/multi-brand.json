@@ -3131,6 +3131,7 @@
                     "open-ds": {
                       "why": "slate-deep.light.900: the text for every light fill, 17.85:1 on surface.default, above the 4.5:1 floor.",
                       "because": [
+                        "color.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3145,6 +3146,7 @@
                     "open-ds": {
                       "why": "slate-deep.light.0: the text for every dark fill, 5.47:1 on action.primary, above the 4.5:1 floor.",
                       "because": [
+                        "color.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3159,6 +3161,7 @@
                     "open-ds": {
                       "why": "blue.light.800: info text on its own tint, 12.97:1 on status.info.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3173,6 +3176,7 @@
                     "open-ds": {
                       "why": "blue.light.100: info text on its own tint, 12.27:1 on status.info.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3187,6 +3191,7 @@
                     "open-ds": {
                       "why": "green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3201,6 +3206,7 @@
                     "open-ds": {
                       "why": "green.light.100: success text on its own tint, 13.69:1 on status.success.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3215,6 +3221,7 @@
                     "open-ds": {
                       "why": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3229,6 +3236,7 @@
                     "open-ds": {
                       "why": "amber.light.100: warning text on its own tint, 12.89:1 on status.warning.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3243,6 +3251,7 @@
                     "open-ds": {
                       "why": "red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3257,6 +3266,7 @@
                     "open-ds": {
                       "why": "red.light.100: danger text on its own tint, 12.74:1 on status.danger.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -3702,8 +3712,7 @@
                     "open-ds": {
                       "why": "neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "color.definition",
-                        "accessibility.definition"
+                        "color.definition"
                       ],
                       "generated": true
                     }
@@ -3716,8 +3725,7 @@
                     "open-ds": {
                       "why": "teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -3730,8 +3738,7 @@
                     "open-ds": {
                       "why": "teal.light.600: the edge beside a selected fill, so selection is never color alone, 5.47:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -3746,7 +3753,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "teal.light.600: the primary action's fill; its label reads, 5.47:1, above the 4.5:1 floor.",
+                        "why": "teal.light.600: the primary action's fill, and its label reads 5.47:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -3778,7 +3785,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "neutral.0: the secondary action's fill; its label reads, 17.85:1, above the 4.5:1 floor.",
+                        "why": "neutral.0: the secondary action's fill, and its label reads 17.85:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -3810,7 +3817,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "red.light.600: the danger action's fill; its label reads, 5.63:1, above the 4.5:1 floor.",
+                        "why": "red.light.600: the danger action's fill, and its label reads 5.63:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -3859,7 +3866,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
+                        "why": "blue.light.100: the soft info fill behind a message, and its text reads 12.97:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -3890,7 +3897,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
+                        "why": "green.light.100: the soft success fill behind a message, and its text reads 10.79:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -3921,7 +3928,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
+                        "why": "amber.light.100: the soft warning fill behind a message, and its text reads 11.09:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -3952,7 +3959,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+                        "why": "red.light.100: the soft danger fill behind a message, and its text reads 9.9:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -3972,8 +3979,7 @@
                       "open-ds": {
                         "why": "teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.47:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -3984,7 +3990,7 @@
                     "$value": "{color.teal.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.light.100: a tag's tint; text on it reads, 15.46:1, above the 4.5:1 floor.",
+                        "why": "teal.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.46:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4002,8 +4008,7 @@
                       "open-ds": {
                         "why": "purple.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.1:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4014,7 +4019,7 @@
                     "$value": "{color.purple.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "purple.light.100: a tag's tint; text on it reads, 15.13:1, above the 4.5:1 floor.",
+                        "why": "purple.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.13:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4032,8 +4037,7 @@
                       "open-ds": {
                         "why": "orange.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.18:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4044,7 +4048,7 @@
                     "$value": "{color.orange.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "orange.light.100: a tag's tint; text on it reads, 15.49:1, above the 4.5:1 floor.",
+                        "why": "orange.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.49:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4062,8 +4066,7 @@
                       "open-ds": {
                         "why": "blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.11:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4074,7 +4077,7 @@
                     "$value": "{color.blue.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.light.100: a tag's tint; text on it reads, 13.87:1, above the 4.5:1 floor.",
+                        "why": "blue.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 13.87:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4092,8 +4095,7 @@
                       "open-ds": {
                         "why": "green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4104,7 +4106,7 @@
                     "$value": "{color.green.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.light.100: a tag's tint; text on it reads, 15.63:1, above the 4.5:1 floor.",
+                        "why": "green.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.63:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4123,8 +4125,7 @@
                     "open-ds": {
                       "why": "neutral.500: 4.76:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -4442,7 +4443,9 @@
                       "tone": "dark",
                       "why": "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 2.01:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
-                        "theming.values"
+                        "theming.values",
+                        "accessibility.roles",
+                        "color.definition"
                       ]
                     }
                   }
@@ -4625,8 +4628,7 @@
                     "open-ds": {
                       "why": "neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "color.definition",
-                        "accessibility.definition"
+                        "color.definition"
                       ],
                       "generated": true
                     }
@@ -4639,8 +4641,7 @@
                     "open-ds": {
                       "why": "teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -4653,8 +4654,7 @@
                     "open-ds": {
                       "why": "teal.dark.600: the edge beside a selected fill, so selection is never color alone, 9.9:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -4669,7 +4669,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "teal.dark.600: the primary action's fill; its label reads, 9.9:1, above the 4.5:1 floor.",
+                        "why": "teal.dark.600: the primary action's fill, and its label reads 9.9:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -4701,7 +4701,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "neutral.50: the secondary action's fill; its label reads, 17.06:1, above the 4.5:1 floor.",
+                        "why": "neutral.50: the secondary action's fill, and its label reads 17.06:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -4733,7 +4733,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "red.dark.600: the danger action's fill; its label reads, 7.52:1, above the 4.5:1 floor.",
+                        "why": "red.dark.600: the danger action's fill, and its label reads 7.52:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -4782,7 +4782,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "blue.dark.100: a quiet tint behind info; its text, 12.27:1, above the 4.5:1 floor.",
+                        "why": "blue.dark.100: the soft info fill behind a message, and its text reads 12.27:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -4813,7 +4813,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "green.dark.100: a quiet tint behind success; its text, 13.69:1, above the 4.5:1 floor.",
+                        "why": "green.dark.100: the soft success fill behind a message, and its text reads 13.69:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -4844,7 +4844,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "amber.dark.100: a quiet tint behind warning; its text, 12.89:1, above the 4.5:1 floor.",
+                        "why": "amber.dark.100: the soft warning fill behind a message, and its text reads 12.89:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -4875,7 +4875,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "red.dark.100: a quiet tint behind danger; its text, 12.74:1, above the 4.5:1 floor.",
+                        "why": "red.dark.100: the soft danger fill behind a message, and its text reads 12.74:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -4895,8 +4895,7 @@
                       "open-ds": {
                         "why": "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 9.9:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4907,7 +4906,7 @@
                     "$value": "{color.teal.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.dark.100: a tag's tint; text on it reads, 14.42:1, above the 4.5:1 floor.",
+                        "why": "teal.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.42:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4925,8 +4924,7 @@
                       "open-ds": {
                         "why": "purple.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.8:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4937,7 +4935,7 @@
                     "$value": "{color.purple.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "purple.dark.100: a tag's tint; text on it reads, 15.5:1, above the 4.5:1 floor.",
+                        "why": "purple.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.5:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4955,8 +4953,7 @@
                       "open-ds": {
                         "why": "orange.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 9.11:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4967,7 +4964,7 @@
                     "$value": "{color.orange.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "orange.dark.100: a tag's tint; text on it reads, 15.04:1, above the 4.5:1 floor.",
+                        "why": "orange.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.04:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -4985,8 +4982,7 @@
                       "open-ds": {
                         "why": "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.47:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -4997,7 +4993,7 @@
                     "$value": "{color.blue.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.dark.100: a tag's tint; text on it reads, 15.1:1, above the 4.5:1 floor.",
+                        "why": "blue.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.1:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -5015,8 +5011,7 @@
                       "open-ds": {
                         "why": "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.08:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -5027,7 +5022,7 @@
                     "$value": "{color.green.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.dark.100: a tag's tint; text on it reads, 14.95:1, above the 4.5:1 floor.",
+                        "why": "green.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.95:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -5046,8 +5041,7 @@
                     "open-ds": {
                       "why": "neutral.500: 12.02:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -5318,6 +5312,7 @@
                     "open-ds": {
                       "why": "slate-deep.light.900: the text for every light fill, 17.85:1 on surface.default, above the 4.5:1 floor.",
                       "because": [
+                        "color.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5332,6 +5327,7 @@
                     "open-ds": {
                       "why": "slate-deep.light.0: the text for every dark fill, 7.1:1 on action.primary, above the 4.5:1 floor.",
                       "because": [
+                        "color.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5346,6 +5342,7 @@
                     "open-ds": {
                       "why": "blue.light.800: info text on its own tint, 12.97:1 on status.info.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5360,6 +5357,7 @@
                     "open-ds": {
                       "why": "blue.light.100: info text on its own tint, 12.27:1 on status.info.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5374,6 +5372,7 @@
                     "open-ds": {
                       "why": "green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5388,6 +5387,7 @@
                     "open-ds": {
                       "why": "green.light.100: success text on its own tint, 13.69:1 on status.success.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5402,6 +5402,7 @@
                     "open-ds": {
                       "why": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5416,6 +5417,7 @@
                     "open-ds": {
                       "why": "amber.light.100: warning text on its own tint, 12.89:1 on status.warning.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5430,6 +5432,7 @@
                     "open-ds": {
                       "why": "red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5444,6 +5447,7 @@
                     "open-ds": {
                       "why": "red.light.100: danger text on its own tint, 12.74:1 on status.danger.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -5619,6 +5623,8 @@
                     "open-ds": {
                       "why": "slate-deep.light.0: We use Aster's light pick for Birch's light floor neutral in order to keep what it sets, and the step does this by the same means, so Birch's light floor neutral and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -5691,6 +5697,11 @@
                       "tone": "light",
                       "why": "neutral.100: We use Aster's light pick for Birch's light highlight surface in order to keep what it sets, and the step does this by the same means, so Birch's light highlight surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -5704,6 +5715,11 @@
                       "tone": "light",
                       "why": "neutral.200: We use Aster's light pick for Birch's light pressed surface in order to keep what it sets, and the step does this by the same means, so Birch's light pressed surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -5873,6 +5889,11 @@
                     "open-ds": {
                       "why": "neutral.200: We use Aster's light pick for Birch's light raised border in order to keep what it sets, and the step does this by the same means, so Birch's light raised border and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "color.definition",
+                        "elevation.definition",
+                        "theming.values",
+                        "accessibility.definition",
                         "business.q2"
                       ]
                     }
@@ -5885,8 +5906,7 @@
                     "open-ds": {
                       "why": "neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "color.definition",
-                        "accessibility.definition"
+                        "color.definition"
                       ],
                       "generated": true
                     }
@@ -5899,8 +5919,7 @@
                     "open-ds": {
                       "why": "purple.light.600: the focus ring, so the keyboard's place is never lost, 7.1:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -5913,8 +5932,7 @@
                     "open-ds": {
                       "why": "purple.light.600: the edge beside a selected fill, so selection is never color alone, 7.1:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -5929,7 +5947,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "purple.light.600: the primary action's fill; its label reads, 7.1:1, above the 4.5:1 floor.",
+                        "why": "purple.light.600: the primary action's fill, and its label reads 7.1:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -5961,7 +5979,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "neutral.0: the secondary action's fill; its label reads, 17.85:1, above the 4.5:1 floor.",
+                        "why": "neutral.0: the secondary action's fill, and its label reads 17.85:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -5993,7 +6011,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "red.light.600: the danger action's fill; its label reads, 5.63:1, above the 4.5:1 floor.",
+                        "why": "red.light.600: the danger action's fill, and its label reads 5.63:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -6042,7 +6060,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
+                        "why": "blue.light.100: the soft info fill behind a message, and its text reads 12.97:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -6073,7 +6091,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
+                        "why": "green.light.100: the soft success fill behind a message, and its text reads 10.79:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -6104,7 +6122,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
+                        "why": "amber.light.100: the soft warning fill behind a message, and its text reads 11.09:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -6135,7 +6153,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+                        "why": "red.light.100: the soft danger fill behind a message, and its text reads 9.9:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -6155,8 +6173,7 @@
                       "open-ds": {
                         "why": "teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.47:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -6167,7 +6184,7 @@
                     "$value": "{color.teal.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.light.100: a tag's tint; text on it reads, 15.46:1, above the 4.5:1 floor.",
+                        "why": "teal.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.46:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -6185,8 +6202,7 @@
                       "open-ds": {
                         "why": "purple.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.1:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -6197,7 +6213,7 @@
                     "$value": "{color.purple.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "purple.light.100: a tag's tint; text on it reads, 15.13:1, above the 4.5:1 floor.",
+                        "why": "purple.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.13:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -6215,8 +6231,7 @@
                       "open-ds": {
                         "why": "orange.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.18:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -6227,7 +6242,7 @@
                     "$value": "{color.orange.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "orange.light.100: a tag's tint; text on it reads, 15.49:1, above the 4.5:1 floor.",
+                        "why": "orange.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.49:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -6245,8 +6260,7 @@
                       "open-ds": {
                         "why": "blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.11:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -6257,7 +6271,7 @@
                     "$value": "{color.blue.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.light.100: a tag's tint; text on it reads, 13.87:1, above the 4.5:1 floor.",
+                        "why": "blue.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 13.87:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -6275,8 +6289,7 @@
                       "open-ds": {
                         "why": "green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -6287,7 +6300,7 @@
                     "$value": "{color.green.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.light.100: a tag's tint; text on it reads, 15.63:1, above the 4.5:1 floor.",
+                        "why": "green.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.63:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -6306,8 +6319,7 @@
                     "open-ds": {
                       "why": "neutral.500: 4.76:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -6349,6 +6361,10 @@
                   "open-ds": {
                     "why": "shadow.card: We use Aster's light pick for Birch's light card elevation in order to keep the height it sets, and the step does this by the same means, so Birch's light card elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -6361,6 +6377,10 @@
                   "open-ds": {
                     "why": "shadow.overlay: We use Aster's light pick for Birch's light overlay elevation in order to keep the height it sets, and the step does this by the same means, so Birch's light overlay elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -6534,6 +6554,8 @@
                     "open-ds": {
                       "why": "slate-deep.dark.floor: We use Aster's dark pick for Birch's dark floor neutral in order to keep what it sets, and the step does this by the same means, so Birch's dark floor neutral and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -6578,6 +6600,10 @@
                       "tone": "dark",
                       "why": "neutral.100: We use Aster's dark pick for Birch's dark raised surface in order to keep what it sets, and the step does this by the same means, so Birch's dark raised surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -6591,6 +6617,10 @@
                       "tone": "dark",
                       "why": "neutral.floor: We use Aster's dark pick for Birch's dark sunken surface in order to keep what it sets, and the step does this by the same means, so Birch's dark sunken surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -6604,6 +6634,11 @@
                       "tone": "dark",
                       "why": "neutral.floor: We use Aster's dark pick for Birch's dark highlight surface in order to keep what it sets, and the step does this by the same means, so Birch's dark highlight surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -6617,6 +6652,11 @@
                       "tone": "dark",
                       "why": "neutral.200: We use Aster's dark pick for Birch's dark pressed surface in order to keep what it sets, and the step does this by the same means, so Birch's dark pressed surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -6786,6 +6826,11 @@
                     "open-ds": {
                       "why": "neutral.200: We use Aster's dark pick for Birch's dark raised border in order to keep what it sets, and the step does this by the same means, so Birch's dark raised border and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "color.definition",
+                        "elevation.definition",
+                        "theming.values",
+                        "accessibility.definition",
                         "business.q2"
                       ]
                     }
@@ -6798,8 +6843,7 @@
                     "open-ds": {
                       "why": "neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "color.definition",
-                        "accessibility.definition"
+                        "color.definition"
                       ],
                       "generated": true
                     }
@@ -6812,8 +6856,7 @@
                     "open-ds": {
                       "why": "purple.dark.600: the focus ring, so the keyboard's place is never lost, 7.8:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -6826,8 +6869,7 @@
                     "open-ds": {
                       "why": "purple.dark.600: the edge beside a selected fill, so selection is never color alone, 7.8:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -6842,7 +6884,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "purple.dark.600: the primary action's fill; its label reads, 7.8:1, above the 4.5:1 floor.",
+                        "why": "purple.dark.600: the primary action's fill, and its label reads 7.8:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -6874,7 +6916,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "neutral.50: the secondary action's fill; its label reads, 17.06:1, above the 4.5:1 floor.",
+                        "why": "neutral.50: the secondary action's fill, and its label reads 17.06:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -6906,7 +6948,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "red.dark.600: the danger action's fill; its label reads, 7.52:1, above the 4.5:1 floor.",
+                        "why": "red.dark.600: the danger action's fill, and its label reads 7.52:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -6955,7 +6997,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "blue.dark.100: a quiet tint behind info; its text, 12.27:1, above the 4.5:1 floor.",
+                        "why": "blue.dark.100: the soft info fill behind a message, and its text reads 12.27:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -6986,7 +7028,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "green.dark.100: a quiet tint behind success; its text, 13.69:1, above the 4.5:1 floor.",
+                        "why": "green.dark.100: the soft success fill behind a message, and its text reads 13.69:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -7017,7 +7059,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "amber.dark.100: a quiet tint behind warning; its text, 12.89:1, above the 4.5:1 floor.",
+                        "why": "amber.dark.100: the soft warning fill behind a message, and its text reads 12.89:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -7048,7 +7090,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "red.dark.100: a quiet tint behind danger; its text, 12.74:1, above the 4.5:1 floor.",
+                        "why": "red.dark.100: the soft danger fill behind a message, and its text reads 12.74:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -7068,8 +7110,7 @@
                       "open-ds": {
                         "why": "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 9.9:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -7080,7 +7121,7 @@
                     "$value": "{color.teal.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.dark.100: a tag's tint; text on it reads, 14.42:1, above the 4.5:1 floor.",
+                        "why": "teal.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.42:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -7098,8 +7139,7 @@
                       "open-ds": {
                         "why": "purple.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.8:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -7110,7 +7150,7 @@
                     "$value": "{color.purple.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "purple.dark.100: a tag's tint; text on it reads, 15.5:1, above the 4.5:1 floor.",
+                        "why": "purple.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.5:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -7128,8 +7168,7 @@
                       "open-ds": {
                         "why": "orange.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 9.11:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -7140,7 +7179,7 @@
                     "$value": "{color.orange.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "orange.dark.100: a tag's tint; text on it reads, 15.04:1, above the 4.5:1 floor.",
+                        "why": "orange.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.04:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -7158,8 +7197,7 @@
                       "open-ds": {
                         "why": "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.47:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -7170,7 +7208,7 @@
                     "$value": "{color.blue.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.dark.100: a tag's tint; text on it reads, 15.1:1, above the 4.5:1 floor.",
+                        "why": "blue.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.1:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -7188,8 +7226,7 @@
                       "open-ds": {
                         "why": "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.08:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -7200,7 +7237,7 @@
                     "$value": "{color.green.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.dark.100: a tag's tint; text on it reads, 14.95:1, above the 4.5:1 floor.",
+                        "why": "green.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.95:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -7219,8 +7256,7 @@
                     "open-ds": {
                       "why": "neutral.500: 12.02:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -7262,6 +7298,10 @@
                   "open-ds": {
                     "why": "shadow.none: We use Aster's dark pick for Birch's dark card elevation in order to keep the height it sets, and the step does this by the same means, so Birch's dark card elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -7274,6 +7314,10 @@
                   "open-ds": {
                     "why": "shadow.overlay-dark: We use Aster's dark pick for Birch's dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so Birch's dark overlay elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -7322,8 +7366,7 @@
                     "because": [
                       "shape.roles",
                       "shape.values",
-                      "brand.q1",
-                      "accessibility.count"
+                      "brand.q1"
                     ]
                   }
                 }
@@ -7489,6 +7532,7 @@
                     "open-ds": {
                       "why": "slate-deep.light.900: the text for every light fill, 17.85:1 on surface.default, above the 4.5:1 floor.",
                       "because": [
+                        "color.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7503,6 +7547,7 @@
                     "open-ds": {
                       "why": "slate-deep.light.0: the text for every dark fill, 5.18:1 on action.primary, above the 4.5:1 floor.",
                       "because": [
+                        "color.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7517,6 +7562,7 @@
                     "open-ds": {
                       "why": "blue.light.800: info text on its own tint, 12.97:1 on status.info.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7531,6 +7577,7 @@
                     "open-ds": {
                       "why": "blue.light.100: info text on its own tint, 12.27:1 on status.info.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7545,6 +7592,7 @@
                     "open-ds": {
                       "why": "green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7559,6 +7607,7 @@
                     "open-ds": {
                       "why": "green.light.100: success text on its own tint, 13.69:1 on status.success.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7573,6 +7622,7 @@
                     "open-ds": {
                       "why": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7587,6 +7637,7 @@
                     "open-ds": {
                       "why": "amber.light.100: warning text on its own tint, 12.89:1 on status.warning.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7601,6 +7652,7 @@
                     "open-ds": {
                       "why": "red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7615,6 +7667,7 @@
                     "open-ds": {
                       "why": "red.light.100: danger text on its own tint, 12.74:1 on status.danger.subtle, above the 4.5:1 floor.",
                       "because": [
+                        "color.lands",
                         "accessibility.definition"
                       ],
                       "generated": true
@@ -7790,6 +7843,8 @@
                     "open-ds": {
                       "why": "slate-deep.light.0: We use Aster's light pick for Coral's light floor neutral in order to keep what it sets, and the step does this by the same means, so Coral's light floor neutral and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -7862,6 +7917,11 @@
                       "tone": "light",
                       "why": "neutral.100: We use Aster's light pick for Coral's light highlight surface in order to keep what it sets, and the step does this by the same means, so Coral's light highlight surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -7875,6 +7935,11 @@
                       "tone": "light",
                       "why": "neutral.200: We use Aster's light pick for Coral's light pressed surface in order to keep what it sets, and the step does this by the same means, so Coral's light pressed surface and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -8044,6 +8109,11 @@
                     "open-ds": {
                       "why": "neutral.200: We use Aster's light pick for Coral's light raised border in order to keep what it sets, and the step does this by the same means, so Coral's light raised border and Aster's light pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "color.definition",
+                        "elevation.definition",
+                        "theming.values",
+                        "accessibility.definition",
                         "business.q2"
                       ]
                     }
@@ -8056,8 +8126,7 @@
                     "open-ds": {
                       "why": "neutral.500: the edge of a control people must find, 4.76:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "color.definition",
-                        "accessibility.definition"
+                        "color.definition"
                       ],
                       "generated": true
                     }
@@ -8070,8 +8139,7 @@
                     "open-ds": {
                       "why": "orange.light.600: the focus ring, so the keyboard's place is never lost, 5.18:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -8084,8 +8152,7 @@
                     "open-ds": {
                       "why": "orange.light.600: the edge beside a selected fill, so selection is never color alone, 5.18:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -8104,7 +8171,7 @@
                           "for": "OD-225",
                           "why": "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision."
                         },
-                        "why": "orange.light.600: the primary action's fill; its label reads, 5.18:1, above the 4.5:1 floor.",
+                        "why": "orange.light.600: the primary action's fill, and its label reads 5.18:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -8136,7 +8203,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "neutral.0: the secondary action's fill; its label reads, 17.85:1, above the 4.5:1 floor.",
+                        "why": "neutral.0: the secondary action's fill, and its label reads 17.85:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -8168,7 +8235,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "red.light.600: the danger action's fill; its label reads, 5.63:1, above the 4.5:1 floor.",
+                        "why": "red.light.600: the danger action's fill, and its label reads 5.63:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -8217,7 +8284,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
+                        "why": "blue.light.100: the soft info fill behind a message, and its text reads 12.97:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -8248,7 +8315,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
+                        "why": "green.light.100: the soft success fill behind a message, and its text reads 10.79:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -8279,7 +8346,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
+                        "why": "amber.light.100: the soft warning fill behind a message, and its text reads 11.09:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -8310,7 +8377,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+                        "why": "red.light.100: the soft danger fill behind a message, and its text reads 9.9:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -8330,8 +8397,7 @@
                       "open-ds": {
                         "why": "teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.47:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -8342,7 +8408,7 @@
                     "$value": "{color.teal.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.light.100: a tag's tint; text on it reads, 15.46:1, above the 4.5:1 floor.",
+                        "why": "teal.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.46:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -8360,8 +8426,7 @@
                       "open-ds": {
                         "why": "purple.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.1:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -8372,7 +8437,7 @@
                     "$value": "{color.purple.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "purple.light.100: a tag's tint; text on it reads, 15.13:1, above the 4.5:1 floor.",
+                        "why": "purple.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.13:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -8390,8 +8455,7 @@
                       "open-ds": {
                         "why": "orange.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.18:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -8402,7 +8466,7 @@
                     "$value": "{color.orange.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "orange.light.100: a tag's tint; text on it reads, 15.49:1, above the 4.5:1 floor.",
+                        "why": "orange.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.49:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -8420,8 +8484,7 @@
                       "open-ds": {
                         "why": "blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.11:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -8432,7 +8495,7 @@
                     "$value": "{color.blue.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.light.100: a tag's tint; text on it reads, 13.87:1, above the 4.5:1 floor.",
+                        "why": "blue.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 13.87:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -8450,8 +8513,7 @@
                       "open-ds": {
                         "why": "green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -8462,7 +8524,7 @@
                     "$value": "{color.green.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.light.100: a tag's tint; text on it reads, 15.63:1, above the 4.5:1 floor.",
+                        "why": "green.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.63:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -8481,8 +8543,7 @@
                     "open-ds": {
                       "why": "neutral.500: 4.76:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -8524,6 +8585,10 @@
                   "open-ds": {
                     "why": "shadow.card: We use Aster's light pick for Coral's light card elevation in order to keep the height it sets, and the step does this by the same means, so Coral's light card elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -8536,6 +8601,10 @@
                   "open-ds": {
                     "why": "shadow.overlay: We use Aster's light pick for Coral's light overlay elevation in order to keep the height it sets, and the step does this by the same means, so Coral's light overlay elevation and Aster's light pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -8709,6 +8778,8 @@
                     "open-ds": {
                       "why": "slate-deep.dark.floor: We use Aster's dark pick for Coral's dark floor neutral in order to keep what it sets, and the step does this by the same means, so Coral's dark floor neutral and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -8753,6 +8824,10 @@
                       "tone": "dark",
                       "why": "neutral.100: We use Aster's dark pick for Coral's dark raised surface in order to keep what it sets, and the step does this by the same means, so Coral's dark raised surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -8766,6 +8841,10 @@
                       "tone": "dark",
                       "why": "neutral.floor: We use Aster's dark pick for Coral's dark sunken surface in order to keep what it sets, and the step does this by the same means, so Coral's dark sunken surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -8779,6 +8858,11 @@
                       "tone": "dark",
                       "why": "neutral.floor: We use Aster's dark pick for Coral's dark highlight surface in order to keep what it sets, and the step does this by the same means, so Coral's dark highlight surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -8792,6 +8876,11 @@
                       "tone": "dark",
                       "why": "neutral.200: We use Aster's dark pick for Coral's dark pressed surface in order to keep what it sets, and the step does this by the same means, so Coral's dark pressed surface and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "accessibility.roles",
+                        "elevation.roles",
+                        "elevation.definition",
+                        "color.definition",
+                        "theming.values",
                         "business.q2"
                       ]
                     }
@@ -8961,6 +9050,11 @@
                     "open-ds": {
                       "why": "neutral.200: We use Aster's dark pick for Coral's dark raised border in order to keep what it sets, and the step does this by the same means, so Coral's dark raised border and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                       "because": [
+                        "elevation.roles",
+                        "color.definition",
+                        "elevation.definition",
+                        "theming.values",
+                        "accessibility.definition",
                         "business.q2"
                       ]
                     }
@@ -8973,8 +9067,7 @@
                     "open-ds": {
                       "why": "neutral.400: the edge of a control people must find, 6.97:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "color.definition",
-                        "accessibility.definition"
+                        "color.definition"
                       ],
                       "generated": true
                     }
@@ -8987,8 +9080,7 @@
                     "open-ds": {
                       "why": "orange.dark.600: the focus ring, so the keyboard's place is never lost, 9.11:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -9001,8 +9093,7 @@
                     "open-ds": {
                       "why": "orange.dark.600: the edge beside a selected fill, so selection is never color alone, 9.11:1 on surface.default, above the 3:1 floor.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -9021,7 +9112,7 @@
                           "for": "OD-225",
                           "why": "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision."
                         },
-                        "why": "orange.dark.600: the primary action's fill; its label reads, 9.11:1, above the 4.5:1 floor.",
+                        "why": "orange.dark.600: the primary action's fill, and its label reads 9.11:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -9053,7 +9144,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "neutral.50: the secondary action's fill; its label reads, 17.06:1, above the 4.5:1 floor.",
+                        "why": "neutral.50: the secondary action's fill, and its label reads 17.06:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -9085,7 +9176,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "red.dark.600: the danger action's fill; its label reads, 7.52:1, above the 4.5:1 floor.",
+                        "why": "red.dark.600: the danger action's fill, and its label reads 7.52:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "accessibility.definition"
@@ -9134,7 +9225,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "blue.dark.100: a quiet tint behind info; its text, 12.27:1, above the 4.5:1 floor.",
+                        "why": "blue.dark.100: the soft info fill behind a message, and its text reads 12.27:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -9165,7 +9256,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "green.dark.100: a quiet tint behind success; its text, 13.69:1, above the 4.5:1 floor.",
+                        "why": "green.dark.100: the soft success fill behind a message, and its text reads 13.69:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -9196,7 +9287,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "amber.dark.100: a quiet tint behind warning; its text, 12.89:1, above the 4.5:1 floor.",
+                        "why": "amber.dark.100: the soft warning fill behind a message, and its text reads 12.89:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -9227,7 +9318,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "red.dark.100: a quiet tint behind danger; its text, 12.74:1, above the 4.5:1 floor.",
+                        "why": "red.dark.100: the soft danger fill behind a message, and its text reads 12.74:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.lands",
                           "accessibility.definition"
@@ -9247,8 +9338,7 @@
                       "open-ds": {
                         "why": "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 9.9:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -9259,7 +9349,7 @@
                     "$value": "{color.teal.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.dark.100: a tag's tint; text on it reads, 14.42:1, above the 4.5:1 floor.",
+                        "why": "teal.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.42:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -9277,8 +9367,7 @@
                       "open-ds": {
                         "why": "purple.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.8:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -9289,7 +9378,7 @@
                     "$value": "{color.purple.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "purple.dark.100: a tag's tint; text on it reads, 15.5:1, above the 4.5:1 floor.",
+                        "why": "purple.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.5:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -9307,8 +9396,7 @@
                       "open-ds": {
                         "why": "orange.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 9.11:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -9319,7 +9407,7 @@
                     "$value": "{color.orange.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "orange.dark.100: a tag's tint; text on it reads, 15.04:1, above the 4.5:1 floor.",
+                        "why": "orange.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.04:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -9337,8 +9425,7 @@
                       "open-ds": {
                         "why": "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.47:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -9349,7 +9436,7 @@
                     "$value": "{color.blue.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.dark.100: a tag's tint; text on it reads, 15.1:1, above the 4.5:1 floor.",
+                        "why": "blue.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.1:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -9367,8 +9454,7 @@
                       "open-ds": {
                         "why": "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.08:1 on surface.default, above the 3:1 floor.",
                         "because": [
-                          "color.roles",
-                          "accessibility.definition"
+                          "color.roles"
                         ],
                         "generated": true
                       }
@@ -9379,7 +9465,7 @@
                     "$value": "{color.green.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.dark.100: a tag's tint; text on it reads, 14.95:1, above the 4.5:1 floor.",
+                        "why": "green.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.95:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
                           "accessibility.definition"
@@ -9398,8 +9484,7 @@
                     "open-ds": {
                       "why": "neutral.500: 12.02:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
                       "because": [
-                        "accessibility.roles",
-                        "accessibility.definition"
+                        "accessibility.roles"
                       ],
                       "generated": true
                     }
@@ -9441,6 +9526,10 @@
                   "open-ds": {
                     "why": "shadow.none: We use Aster's dark pick for Coral's dark card elevation in order to keep the height it sets, and the step does this by the same means, so Coral's dark card elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -9453,6 +9542,10 @@
                   "open-ds": {
                     "why": "shadow.overlay-dark: We use Aster's dark pick for Coral's dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so Coral's dark overlay elevation and Aster's dark pick never differ, because the three brands share this step (business.q2).",
                     "because": [
+                      "elevation.count",
+                      "elevation.roles",
+                      "elevation.values",
+                      "theming.values",
                       "business.q2"
                     ]
                   }
@@ -9913,6 +10006,7 @@
               "open-ds": {
                 "why": "1.2 keeps a 25px page title tight above its form, so a title that wraps still reads as one title.",
                 "because": [
+                  "typography.definition",
                   "typography.lands",
                   "content.q1"
                 ]
@@ -9955,6 +10049,7 @@
               "open-ds": {
                 "why": "1.2 holds a 20px section heading close to the fields it names, as one shared role in every brand face.",
                 "because": [
+                  "typography.definition",
                   "typography.roles",
                   "brand.q3"
                 ]
@@ -9997,6 +10092,7 @@
               "open-ds": {
                 "why": "1.5 gives 16px body text 24px lines, the same in Inter, Plus Jakarta Sans and Poppins, so paragraphs stay readable.",
                 "because": [
+                  "typography.definition",
                   "typography.values",
                   "brand.q3"
                 ]
@@ -10028,6 +10124,9 @@
               "open-ds": {
                 "why": "13px names every field, one ratio step under the 16px text inside it (16 ÷ 1.26), so the label and the entry stay apart.",
                 "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
                   "typography.lands",
                   "people.q2"
                 ]
@@ -10039,6 +10138,7 @@
               "open-ds": {
                 "why": "1.2 keeps a 13px field label one tight line, directly above its input in sign-up and checkout forms.",
                 "because": [
+                  "typography.definition",
                   "typography.lands",
                   "people.q2"
                 ]
@@ -10081,6 +10181,7 @@
               "open-ds": {
                 "why": "1.5 gives 13px captions 20px lines, so a hint or fee note that wraps stays easy to read.",
                 "because": [
+                  "typography.definition",
                   "content.q1",
                   "people.q2"
                 ]
@@ -10094,6 +10195,9 @@
               "open-ds": {
                 "why": "400 keeps a 13px caption quiet beside the 600 label, so hints and fees support a field without naming it.",
                 "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
                   "typography.roles",
                   "content.q1"
                 ]
@@ -10112,6 +10216,9 @@
               "open-ds": {
                 "why": "16px shares step 0 with body: plan and order tables hold prices in sentences and offers, not columns of figures to compare.",
                 "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
                   "content.q1"
                 ]
               }
@@ -10122,6 +10229,7 @@
               "open-ds": {
                 "why": "1.5 matches body, so a 16px price in a plan table sits on the same 24px line as the text beside it.",
                 "because": [
+                  "typography.definition",
                   "content.q1",
                   "brand.q3"
                 ]

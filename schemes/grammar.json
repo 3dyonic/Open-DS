@@ -17377,6 +17377,143 @@
           "says": "The same color one step on, so the pointer shows without a new meaning."
         }
       ]
+    },
+    "groups": {
+      "description": "What each group of a semantic name means (OD-303). A token takes the meaning of every group in its name.",
+      "items": [
+        {
+          "id": "color",
+          "says": "The colors a product uses, named by job, never by hue."
+        },
+        {
+          "id": "color.neutral",
+          "says": "The gray ramp. Surfaces, lines and text take their steps from it."
+        },
+        {
+          "id": "color.surface",
+          "says": "The fills content sits on. Their lightness shows what is above what."
+        },
+        {
+          "id": "color.text",
+          "says": "The colors of words and icons, each with the fill it sits on."
+        },
+        {
+          "id": "color.border",
+          "says": "The colors of lines: dividers, control edges, the focus ring and selection."
+        },
+        {
+          "id": "color.action",
+          "says": "The fills of things a person can do, by emphasis: primary, secondary and danger."
+        },
+        {
+          "id": "color.action.primary",
+          "says": "The main action of a view. One per view."
+        },
+        {
+          "id": "color.action.secondary",
+          "says": "An action beside the main one, with less weight."
+        },
+        {
+          "id": "color.action.danger",
+          "says": "An action that destroys or cannot be undone."
+        },
+        {
+          "id": "color.status",
+          "says": "Colors with a meaning: they tell a person the state of something."
+        },
+        {
+          "id": "color.status.info",
+          "says": "Neutral news: something a person should know."
+        },
+        {
+          "id": "color.status.success",
+          "says": "A task worked."
+        },
+        {
+          "id": "color.status.warning",
+          "says": "Something needs care before it goes wrong."
+        },
+        {
+          "id": "color.status.danger",
+          "says": "Something went wrong, or an action will destroy."
+        },
+        {
+          "id": "color.category",
+          "says": "Colors with no meaning, for content that needs telling apart: decorative accents and non-semantic blocks such as tags, labels and chart series."
+        },
+        {
+          "id": "color.disabled",
+          "says": "The shared look of controls that cannot be used right now."
+        },
+        {
+          "id": "type",
+          "says": "The text roles. Each role sets its size, line height, weight and typeface."
+        },
+        {
+          "id": "space",
+          "says": "The distances between and inside things."
+        },
+        {
+          "id": "space.gap",
+          "says": "The distance between items: it groups what is near and separates what is far."
+        },
+        {
+          "id": "space.inset",
+          "says": "The padding inside a box: it keeps content off the edge."
+        },
+        {
+          "id": "size",
+          "says": "The fixed sizes of controls, rows, icons and hit areas."
+        },
+        {
+          "id": "size.control",
+          "says": "The heights of controls: buttons, inputs and selects."
+        },
+        {
+          "id": "radius",
+          "says": "The corners: how round a shape is, by the job of the shape."
+        },
+        {
+          "id": "border-width",
+          "says": "The thickness of lines."
+        },
+        {
+          "id": "focus",
+          "says": "How the keyboard's place shows."
+        },
+        {
+          "id": "focus.ring",
+          "says": "The ring around the focused element: its width and its gap from the element."
+        },
+        {
+          "id": "elevation",
+          "says": "The shadows that lift a layer above the page."
+        },
+        {
+          "id": "motion",
+          "says": "How things move: how long and on which curve."
+        },
+        {
+          "id": "motion.duration",
+          "says": "How long a movement takes, by its job."
+        },
+        {
+          "id": "motion.easing",
+          "says": "The curve of a movement: how it starts and how it stops."
+        },
+        {
+          "id": "opacity",
+          "says": "How much shows through."
+        },
+        {
+          "id": "icon",
+          "says": "How icons are drawn."
+        },
+        {
+          "id": "component-spacing-map",
+          "says": "The steps components space by: the base step times a multiplier, at this scheme's rhythm."
+        }
+      ]
     }
   },
   "reason_form": {
@@ -17424,7 +17561,12 @@
     },
     {
       "tokens": ["space.gap.*", "space.inset.*"],
-      "follows": ["spacing.roles", "spacing.definition", "spacing.values"],
+      "follows": [
+        "spacing.roles",
+        "spacing.definition",
+        "spacing.values",
+        "spacing.lands"
+      ],
       "says": "Gaps and insets are the spacing roles; the definition answer sets the base step; the values answer sets the density, and so each use case's multiple of the base."
     },
     {
@@ -17478,22 +17620,22 @@
     },
     {
       "tokens": ["elevation.card", "elevation.overlay"],
-      "follows": ["elevation.roles", "elevation.values"],
+      "follows": ["elevation.roles", "elevation.values", "theming.values"],
       "says": "The roles answer names the layers that rise, each one step up the scale; the values answer sets the size of a step."
     },
     {
       "tokens": ["motion.duration.feedback"],
-      "follows": ["motion.values"],
+      "follows": ["motion.values", "motion.roles"],
       "says": "The values answer names how fast feedback feels."
     },
     {
       "tokens": ["motion.duration.*"],
-      "follows": ["motion.roles", "motion.count"],
+      "follows": ["motion.roles", "motion.count", "motion.lands"],
       "says": "A speed exists because the roles answer names its job; the count answer sets how many speeds there are."
     },
     {
       "tokens": ["motion.easing.*"],
-      "follows": ["motion.definition"],
+      "follows": ["motion.definition", "motion.roles"],
       "says": "The definition answer sets the easing: a standard ease-out or a spring."
     },
     {
@@ -17515,6 +17657,35 @@
       "tokens": ["icon.stroke-width"],
       "follows": ["iconography.definition"],
       "says": "The definition answer sets the icon style, and it names the stroke width."
+    },
+    {
+      "tokens": ["color.surface.*"],
+      "follows": [
+        "elevation.roles",
+        "elevation.definition",
+        "color.definition",
+        "theming.values"
+      ],
+      "says": "A surface's step comes from the neutral ramp (the palette answer). The roles answer says what rises; the definition answer says if depth shows by tone or by lines; the modes answer sets the dark ladder."
+    },
+    {
+      "tokens": ["color.neutral.*"],
+      "follows": ["color.definition", "theming.values"],
+      "says": "A neutral step is a step of the neutral ramp (the palette answer); the modes answer sets the dark ramp."
+    },
+    {
+      "tokens": [
+        "color.border.default",
+        "color.border.strong",
+        "color.border.raised"
+      ],
+      "follows": [
+        "color.definition",
+        "elevation.definition",
+        "theming.values",
+        "accessibility.definition"
+      ],
+      "says": "A line's color is a neutral step (the palette answer). The definition answer says if lines separate groups; the modes answer sets the dark step; the contrast floor sets how strong a line that carries meaning is."
     }
   ],
   "catalogue": {
@@ -39940,7 +40111,7 @@
       "title": "Font size",
       "scope": "typography",
       "question": "typography.values",
-      "tokens": [],
+      "tokens": ["type.*.font-size"],
       "jobs": [
         {
           "id": "body-size",
@@ -39972,7 +40143,7 @@
       "title": "Line height",
       "scope": "typography",
       "question": "typography.definition",
-      "tokens": [],
+      "tokens": ["type.*.line-height"],
       "jobs": [
         {
           "id": "open",
@@ -40001,7 +40172,7 @@
       "title": "Letter spacing",
       "scope": "typography",
       "question": "typography.definition",
-      "tokens": [],
+      "tokens": ["type.*.letter-spacing"],
       "jobs": [
         {
           "id": "uppercase-labels",
@@ -40015,7 +40186,7 @@
       "title": "Font weight",
       "scope": "typography",
       "question": "typography.count",
-      "tokens": [],
+      "tokens": ["type.*.font-weight"],
       "jobs": [
         {
           "id": "rank-the-roles",
@@ -40050,7 +40221,9 @@
         "color.text.on-danger",
         "color.border.default",
         "color.border.strong",
-        "color.action.*.hover"
+        "color.action.*.hover",
+        "color.text.on-light",
+        "color.text.on-dark"
       ],
       "jobs": [
         {
@@ -40152,7 +40325,18 @@
       "title": "Status color",
       "scope": "color",
       "question": "color.lands",
-      "tokens": ["color.status.*.@", "color.status.*.subtle"],
+      "tokens": [
+        "color.status.*.@",
+        "color.status.*.subtle",
+        "color.text.info-on-light",
+        "color.text.info-on-dark",
+        "color.text.success-on-light",
+        "color.text.success-on-dark",
+        "color.text.warning-on-light",
+        "color.text.warning-on-dark",
+        "color.text.danger-on-light",
+        "color.text.danger-on-dark"
+      ],
       "jobs": [
         {
           "id": "convention-hue",
@@ -40203,7 +40387,7 @@
       "title": "Gap, inset and padding",
       "scope": "spacing",
       "question": "spacing.values",
-      "tokens": [],
+      "tokens": ["space.gap.*", "space.inset.*", "component-spacing-map.*"],
       "jobs": [
         {
           "id": "gap-inside-a-group",
@@ -40236,7 +40420,7 @@
       "title": "Row height",
       "scope": "spacing",
       "question": "spacing.roles",
-      "tokens": [],
+      "tokens": ["size.row"],
       "jobs": [
         {
           "id": "default-row",
@@ -40327,7 +40511,7 @@
       "title": "Line width",
       "scope": "elevation",
       "question": "elevation.definition",
-      "tokens": [],
+      "tokens": ["border-width.default"],
       "jobs": [
         {
           "id": "default-line",
@@ -40378,7 +40562,8 @@
         "color.surface.default",
         "color.surface.raised",
         "color.surface.sunken",
-        "color.surface.inverse"
+        "color.surface.inverse",
+        "color.border.raised"
       ],
       "jobs": [
         {
@@ -40428,7 +40613,7 @@
       "title": "Motion family",
       "scope": "motion",
       "question": "motion.roles",
-      "tokens": [],
+      "tokens": ["motion.duration.*"],
       "jobs": [
         {
           "id": "productive",
@@ -40447,7 +40632,7 @@
       "title": "Duration",
       "scope": "motion",
       "question": "motion.values",
-      "tokens": [],
+      "tokens": ["motion.duration.feedback"],
       "jobs": [
         {
           "id": "feedback",
@@ -40471,7 +40656,7 @@
       "title": "Easing",
       "scope": "motion",
       "question": "motion.definition",
-      "tokens": [],
+      "tokens": ["motion.easing.*"],
       "jobs": [
         {
           "id": "enter",
@@ -40522,7 +40707,7 @@
       "title": "Icon size",
       "scope": "iconography",
       "question": "iconography.values",
-      "tokens": [],
+      "tokens": ["size.icon"],
       "jobs": [
         {
           "id": "match-the-label",
@@ -40546,7 +40731,7 @@
       "title": "Icon stroke",
       "scope": "iconography",
       "question": "iconography.definition",
-      "tokens": [],
+      "tokens": ["icon.stroke-width"],
       "jobs": [
         {
           "id": "one-family",
@@ -40573,7 +40758,7 @@
       "title": "Control height",
       "scope": "accessibility",
       "question": "accessibility.values",
-      "tokens": [],
+      "tokens": ["size.control.*", "size.hit-area"],
       "jobs": [
         {
           "id": "default-height",
@@ -40664,7 +40849,7 @@
       "title": "Focus ring",
       "scope": "accessibility",
       "question": "accessibility.roles",
-      "tokens": ["color.border.focus"],
+      "tokens": ["color.border.focus", "focus.ring.width", "focus.ring.offset"],
       "jobs": [
         {
           "id": "ring-width",
