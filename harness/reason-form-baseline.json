@@ -1,0 +1,10 @@
+{
+  "$description": "Semantic values per scheme whose reason is not yet in the reason form (OD-294). Each may only go down: node scripts/reason-form.mjs --baseline after a round converts more reasons.",
+  "counts": {
+    "dense-data": 122,
+    "content-first": 122,
+    "accessible-first": 122,
+    "brand-expressive": 123,
+    "multi-brand": 122
+  }
+}

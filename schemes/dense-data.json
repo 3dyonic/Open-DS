@@ -1840,6 +1840,63 @@
       ]
     }
   ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "border-width.focus",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "border-width.focus-offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
+    }
+  ],
   "usage": [
     {
       "situation": "page-title",
@@ -3362,11 +3419,11 @@
                 "$value": "{radius.2}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows.",
+                    "why": "radius.2: We use a 2px corner for buttons and inputs in order to mark their role as controls and keep density. A small radius does this by softening the edge just enough to read as an object, while it keeps straight lines that align in rows. So a dense toolbar reads as one line of actions, because the product is dense (content.q2) and precise (brand.q1), with slightly rounded controls (shape.values).",
                     "because": [
-                      "shape.roles",
                       "shape.values",
-                      "shape.lands"
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3376,7 +3433,7 @@
                 "$value": "{radius.0}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.0: square badges are rectangles, so status badges line up down a column in the table.",
+                    "why": "radius.0: We use a square corner for badges in order to give status a role of its own, apart from the 2px controls. A zero radius does this by keeping the badge a plain rectangle with no curve. So status badges line up down a table column, because badges get their own corner (shape.roles) and people scan and compare rows (tasks.q1).",
                     "because": [
                       "shape.roles",
                       "shape.values",
@@ -3390,9 +3447,11 @@
                 "$value": "{radius.0}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.0: square, because the panel's 4px corner is used up by its 4px padding.",
+                    "why": "radius.0: We use a square corner for menu options in order to keep nesting by the relation: the 4px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance, and here no curve is left. So an option's edge runs parallel to its menu's edge, because surfaces take 4px (shape.roles, brand.q1) and the layout is compact (spacing.values).",
                     "because": [
                       "shape.roles",
+                      "shape.count",
+                      "brand.q1",
                       "spacing.values"
                     ]
                   }
@@ -3403,10 +3462,11 @@
                 "$value": "{radius.2}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
+                    "why": "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2).",
                     "because": [
-                      "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3416,12 +3476,11 @@
                 "$value": "{radius.4}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
+                    "why": "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1).",
                     "because": [
                       "shape.roles",
-                      "shape.values",
-                      "brand.q1",
-                      "content.q2"
+                      "shape.count",
+                      "brand.q1"
                     ]
                   }
                 }
@@ -4547,12 +4606,11 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: Only menus and dialogs float; cards use lines.",
+                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, framed by its line. So the page reads as one flat grid, because only menus and dialogs float (elevation.roles) and shadows are subtle (elevation.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -4561,12 +4619,11 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: Subtle shadows keep the grid crisp.",
+                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by an 8px offset and a 24px blur at 16% under the panel's edge. So a menu reads as above the grid without a heavy edge, because only what floats rises (elevation.roles) and shadows are subtle (elevation.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               }
@@ -5432,12 +5489,11 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: Only menus and dialogs float; cards use lines.",
+                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, framed by its line. So the page reads as one flat grid, because only menus and dialogs float (elevation.roles) and shadows are subtle (elevation.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -5446,12 +5502,12 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: Subtle shadows keep the grid crisp.",
+                    "why": "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 8px offset and 24px blur, at 50% black instead of 16%. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships as standard (theming.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "theming.values"
+                    ]
                   }
                 }
               }
@@ -5587,17 +5643,44 @@
         "default": {
           "$type": "dimension",
           "$value": "{border-width.1}",
-          "$description": "Every border."
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 1px default line for dividers and card borders in order to give separation between rows. A thin stroke does this by breaking the surface with the least weight a line can have; as a divider it decorates, so it has no contrast floor. So rows and cards stay apart without taking room from the data, because lines separate groups (elevation.definition) and AA is the floor (accessibility.definition).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
         },
         "focus": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "The focus ring."
+          "$description": "The focus ring.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 2px focus ring in order to show focus, one step heavier than the 1px default line by the focus relation. A heavier stroke does this by standing out from every border around it. So keyboard users always see which row has focus, because focus has its own look (accessibility.roles) and lines are thin (elevation.definition).",
+              "because": [
+                "accessibility.roles",
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
         },
         "focus-offset": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill."
+          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So keyboard users see the ring on any fill, even a selected row, because focus has its own look (accessibility.roles).",
+              "because": [
+                "accessibility.roles"
+              ]
+            }
+          }
         }
       },
       "type": {

@@ -938,6 +938,25 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.4: We use a 4px corner for Aster's buttons and inputs in order to mark their role as controls in a calm, precise tone, by brand convention. A small radius does this by softening the edge just enough while the sides stay straight. So Aster feels exact and steady, the least round of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.4: We use the 4px control corner for Aster's growing boxes in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because Aster's control corner is small, not a pill (shape.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -1287,6 +1306,46 @@
         "link": {
          "label": "Iconography",
          "href": "foundations/iconography"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.4: We use a 4px corner for Aster's buttons and inputs in order to mark their role as controls in a calm, precise tone, by brand convention. A small radius does this by softening the edge just enough while the sides stay straight. So Aster feels exact and steady, the least round of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.badge: radius.4: We use the 4px control corner for Aster's badges in order to keep one role family by the badge relation: here badges share the control's corner. The same small radius does this by giving a plan status the box shape of the buttons. So a status reads as a small square tag, because each brand sets its three corners (shape.roles) and Aster's are small (shape.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.option: radius.4: We use a 4px corner for Aster's menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Aster's surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.4: We use the 4px control corner for Aster's growing boxes in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because Aster's control corner is small, not a pill (shape.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
         }
        }
       ]
@@ -2616,14 +2675,7 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding.",
+        "text": "radius.option: radius.4: We use a 4px corner for Aster's menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Aster's surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2672,35 +2724,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
+        "text": "radius.badge: radius.4: We use the 4px control corner for Aster's badges in order to keep one role family by the badge relation: here badges share the control's corner. The same small radius does this by giving a plan status the box shape of the buttons. So a status reads as a small square tag, because each brand sets its three corners (shape.roles) and Aster's are small (shape.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag.",
+        "text": "radius.option: radius.4: We use a 4px corner for Aster's menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Aster's surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.element: radius.4: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding.",
+        "text": "radius.surface: radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2718,11 +2756,27 @@
     "Shape · Which shape roles does it need? → Controls, badges and containers"
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.option: radius.4: We use a 4px corner for Aster's menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Aster's surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-definition": {
@@ -2772,28 +2826,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
+        "text": "radius.control: radius.4: We use a 4px corner for Aster's buttons and inputs in order to mark their role as controls in a calm, precise tone, by brand convention. A small radius does this by softening the edge just enough while the sides stay straight. So Aster feels exact and steady, the least round of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag.",
+        "text": "radius.badge: radius.4: We use the 4px control corner for Aster's badges in order to keep one role family by the badge relation: here badges share the control's corner. The same small radius does this by giving a plan status the box shape of the buttons. So a status reads as a small square tag, because each brand sets its three corners (shape.roles) and Aster's are small (shape.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.element: radius.4: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding.",
+        "text": "radius.element: radius.4: We use the 4px control corner for Aster's growing boxes in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because Aster's control corner is small, not a pill (shape.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2811,20 +2858,11 @@
     "How visible is the brand in the interface? → Present"
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "radius.badge: radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
    }
   },
   "elevation-roles": {
@@ -2884,14 +2922,14 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.card: Cards lift slightly to group offers.",
+        "text": "elevation.card in light: shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards.",
+        "text": "elevation.overlay in light: shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2912,14 +2950,14 @@
         }
        },
        {
-        "text": "elevation.card in dark: shadow.card-dark: Cards lift slightly to group offers.",
+        "text": "elevation.card in dark: shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3064,28 +3102,28 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.card in light: shadow.card: Cards lift slightly to group offers.",
+        "text": "elevation.card in light: shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards.",
+        "text": "elevation.overlay in light: shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.card-dark: Cards lift slightly to group offers.",
+        "text": "elevation.card in dark: shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3109,25 +3147,6 @@
       "items": [
        {
         "text": "For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow. The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       }
-      ]
-     },
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "elevation.overlay in light: shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3600,6 +3619,25 @@
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.card in dark: shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
         }
        }
       ]
@@ -4629,18 +4667,6 @@
         "link": {
          "label": "Toast",
          "href": "components/toast"
-        }
-       }
-      ]
-     },
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "radius.control: radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
         }
        }
       ]

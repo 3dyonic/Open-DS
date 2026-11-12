@@ -127,7 +127,7 @@
      "key": "grip.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
+     "pick": "radius.4: We use a 4px corner for Aster's buttons and inputs in order to mark their role as controls in a calm, precise tone, by brand convention. A small radius does this by softening the edge just enough while the sides stay straight. So Aster feels exact and steady, the least round of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
      "shares": []
     },
     {

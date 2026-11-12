@@ -585,6 +585,18 @@
       "checks": ["values-traced", "reasons-explain-values", "decisions-cover-values", "json-files-validate"]
     },
     {
+      "id": "OD-294",
+      "title": "Shape and elevation as decisions and relations, and reasons that say why",
+      "in": [
+        "the grammar records each property's jobs and how it does each: corner, line width, focus ring and shadow",
+        "control and surface corners are decisions; option, element and badge follow them by a relation that each scheme records and a check verifies",
+        "the focus ring is one step heavier than the default line, with a fixed 2px gap; shadows are one scale by layer, and dark keeps the light shape",
+        "where today's values break a relation, the check lists a finding and changes no value",
+        "every reason states its job, how the property does it, what people get and the decision; the count of reasons out of the form may only go down"
+      ],
+      "checks": ["shape-elevation-relations", "reasons-say-why", "reasons-explain-values", "json-files-validate"]
+    },
+    {
       "id": "OD-285",
       "title": "Icons follow each scheme: one Lucide set, the scheme's size and stroke, and an Icon component for content",
       "in": [

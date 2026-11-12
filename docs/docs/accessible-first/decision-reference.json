@@ -869,6 +869,25 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -1469,6 +1488,46 @@
         "link": {
          "label": "Motion",
          "href": "foundations/motion"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.badge: radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.option: radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
         }
        }
       ]
@@ -2663,7 +2722,7 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "text": "radius.option: radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2733,35 +2792,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
+        "text": "radius.badge: radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
+        "text": "radius.option: radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.option: radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.element: radius.6: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "text": "radius.surface: radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2784,7 +2829,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "text": "radius.option: radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2833,28 +2885,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
+        "text": "radius.control: radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
+        "text": "radius.badge: radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.element: radius.6: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+        "text": "radius.element: radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2872,20 +2917,11 @@
     "What is the main content? → Forms and tasks"
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "radius.surface: radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
    }
   },
   "elevation-roles": {
@@ -2952,14 +2988,14 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.none: Flat is easier to read at high zoom.",
+        "text": "elevation.card in light: shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.none: No shadows; borders do the work.",
+        "text": "elevation.overlay in light: shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2980,14 +3016,14 @@
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: Flat is easier to read at high zoom.",
+        "text": "elevation.card in dark: shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.none: No shadows; borders do the work.",
+        "text": "elevation.overlay in dark: shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3160,28 +3196,28 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.card in light: shadow.none: Flat is easier to read at high zoom.",
+        "text": "elevation.card in light: shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.none: No shadows; borders do the work.",
+        "text": "elevation.overlay in light: shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: Flat is easier to read at high zoom.",
+        "text": "elevation.card in dark: shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.none: No shadows; borders do the work.",
+        "text": "elevation.overlay in dark: shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"

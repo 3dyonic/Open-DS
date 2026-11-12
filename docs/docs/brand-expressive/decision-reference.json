@@ -633,6 +633,25 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.12: We use the 12px box corner for boxes that grow in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area or a list item stays a box, not an oval, because controls are pills (shape.values) and the brand is bold (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -831,18 +850,6 @@
         "link": {
          "label": "Empty",
          "href": "components/empty"
-        }
-       }
-      ]
-     },
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
         }
        }
       ]
@@ -1188,14 +1195,35 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+        "text": "radius.control: radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+        "text": "radius.badge: radius.pill: We use the pill control corner for badges in order to keep one role family by the badge relation: badges share the control's corner. The same full radius does this by giving a status the capsule of the buttons beside it. So a status pill matches the buttons and the page keeps one shape, because badges get no corner of their own (shape.roles) and controls are pills (shape.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.option: radius.20: We use a 20px corner for menu options in order to keep nesting by the relation: the 24px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 24px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.12: We use the 12px box corner for boxes that grow in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area or a list item stays a box, not an oval, because controls are pills (shape.values) and the brand is bold (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.24: We use a 24px corner for cards, menus and dialogs in order to make each offer read as a separate object, in a bold tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So each offer reads as one friendly object, because containers get their own corner (shape.count) and the brand is bold (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2688,7 +2716,7 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.option: radius.20: the panel's 24px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "text": "radius.option: radius.20: We use a 20px corner for menu options in order to keep nesting by the relation: the 24px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 24px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2749,35 +2777,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+        "text": "radius.badge: radius.pill: We use the pill control corner for badges in order to keep one role family by the badge relation: badges share the control's corner. The same full radius does this by giving a status the capsule of the buttons beside it. So a status pill matches the buttons and the page keeps one shape, because badges get no corner of their own (shape.roles) and controls are pills (shape.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
+        "text": "radius.option: radius.20: We use a 20px corner for menu options in order to keep nesting by the relation: the 24px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 24px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.option: radius.20: the panel's 24px corner less its 4px padding, so an option's corner nests inside the menu's.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.element: radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+        "text": "radius.surface: radius.24: We use a 24px corner for cards, menus and dialogs in order to make each offer read as a separate object, in a bold tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So each offer reads as one friendly object, because containers get their own corner (shape.count) and the brand is bold (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2800,7 +2814,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+        "text": "radius.option: radius.20: We use a 20px corner for menu options in order to keep nesting by the relation: the 24px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 24px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.24: We use a 24px corner for cards, menus and dialogs in order to make each offer read as a separate object, in a bold tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So each offer reads as one friendly object, because containers get their own corner (shape.count) and the brand is bold (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2861,28 +2882,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+        "text": "radius.control: radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
+        "text": "radius.badge: radius.pill: We use the pill control corner for badges in order to keep one role family by the badge relation: badges share the control's corner. The same full radius does this by giving a status the capsule of the buttons beside it. So a status pill matches the buttons and the page keeps one shape, because badges get no corner of their own (shape.roles) and controls are pills (shape.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.element: radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+        "text": "radius.element: radius.12: We use the 12px box corner for boxes that grow in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area or a list item stays a box, not an oval, because controls are pills (shape.values) and the brand is bold (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2900,20 +2914,11 @@
     "How visible is the brand in the interface? → Loud"
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "radius.control: radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
    }
   },
   "elevation-roles": {
@@ -2973,14 +2978,14 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
+        "text": "elevation.card in light: shadow.card: We use step 1 of the shadow scale for cards in order to show their height as objects above the page. The cast shade does this by a 12px offset and a 32px blur at 14%. So each offer feels like an object you can pick up, because cards rise too (elevation.roles) and shadows are pronounced (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
+        "text": "elevation.overlay in light: shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 24px offset and a 48px blur at 20%, larger than the card's. So a menu sits clearly above vivid sections and cards, because cards and overlays rise (elevation.roles) and shadows are pronounced (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3001,14 +3006,14 @@
         }
        },
        {
-        "text": "elevation.card in dark: shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
+        "text": "elevation.card in dark: shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 14%. So each offer still reads as an object, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships as standard (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 24px offset and 48px blur, at 60% black instead of 20%. So a menu still sits above dark sections, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships as standard (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3097,13 +3102,6 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
         "text": "color.surface.canvas in dark: neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
         "link": {
          "label": "Color",
@@ -3129,13 +3127,6 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
-        }
-       },
-       {
-        "text": "elevation.card in dark: shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
         }
        }
       ]
@@ -3174,28 +3165,28 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.card in light: shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
+        "text": "elevation.card in light: shadow.card: We use step 1 of the shadow scale for cards in order to show their height as objects above the page. The cast shade does this by a 12px offset and a 32px blur at 14%. So each offer feels like an object you can pick up, because cards rise too (elevation.roles) and shadows are pronounced (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
+        "text": "elevation.overlay in light: shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 24px offset and a 48px blur at 20%, larger than the card's. So a menu sits clearly above vivid sections and cards, because cards and overlays rise (elevation.roles) and shadows are pronounced (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
+        "text": "elevation.card in dark: shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 14%. So each offer still reads as an object, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships as standard (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 24px offset and 48px blur, at 60% black instead of 20%. So a menu still sits above dark sections, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships as standard (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3213,27 +3204,11 @@
     "Elevation · What rises above the page? → Cards too"
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "elevation.overlay in light: shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Elevation",
+     "href": "foundations/elevation"
+    }
    }
   },
   "motion-roles": {
@@ -3632,6 +3607,25 @@
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "elevation.card in dark: shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 14%. So each offer still reads as an object, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships as standard (theming.values).",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 24px offset and 48px blur, at 60% black instead of 20%. So a menu still sits above dark sections, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships as standard (theming.values).",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
         }
        }
       ]
