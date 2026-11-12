@@ -5,12 +5,14 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { sandbox, drop, REPO } from "./verify-b-helpers.mjs";
-import { cpSync } from "node:fs";
+import { cpSync, symlinkSync } from "node:fs";
 
 let root;
 before(() => {
   root = sandbox();
   for (const f of ["package.json", "harness/quality-baseline.json", "cli/bin"]) cpSync(join(REPO, f), join(root, f), { recursive: true });
+  // The CLI's build reads its schema checker (ajv) from cli/node_modules; the sandbox copies no packages.
+  symlinkSync(join(REPO, "cli", "node_modules"), join(root, "cli", "node_modules"), "dir");
   const git = (...a) => execFileSync("git", a, { cwd: root, stdio: "pipe" });
   git("init", "-q");
   git("add", "-A");
