@@ -102,8 +102,16 @@
      "darkValue": "#33241F",
      "byScheme": true,
      "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
-     "darkPick": "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, 1.21:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So visitors see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, ",
+      {
+       "ratio": 1.21
+      },
+      " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So visitors see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -115,7 +123,9 @@
      "key": "radius",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "radius.24: We use a 24px corner for cards, menus and dialogs in order to make each offer read as a separate object, in a bold tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So each offer reads as one friendly object, because containers get their own corner (shape.count) and the brand is bold (brand.q1).",
+     "pick": [
+      "radius.24: We use a 24px corner for cards, menus and dialogs in order to make each offer read as a separate object, in a bold tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So each offer reads as one friendly object, because containers get their own corner (shape.count) and the brand is bold (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -126,8 +136,20 @@
      "darkValue": "#4D3A33",
      "byScheme": true,
      "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
-     "pick": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.32:1 on surface.raised, beside the light shadow that does most of the lift. So visitors see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
-     "darkPick": "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.39:1 on surface.raised (#4D3A33, no alpha), so its contrast can be checked. So visitors see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+     "pick": [
+      "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
+      {
+       "ratio": 1.32
+      },
+      " on surface.raised, beside the light shadow that does most of the lift. So visitors see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
+     "darkPick": [
+      "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
+      {
+       "ratio": 1.39
+      },
+      " on surface.raised (#4D3A33, no alpha), so its contrast can be checked. So visitors see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
      "shares": [
       "surface.pressed",
       "border.default",
@@ -141,8 +163,12 @@
      "value": "0px 24px 48px, #1F141133",
      "darkValue": "0px 24px 48px, #00000099",
      "byScheme": true,
-     "pick": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 24px offset and a 48px blur at 20%, larger than the card's. So a menu sits clearly above vivid sections and cards, because cards and overlays rise (elevation.roles) and shadows are pronounced (elevation.values).",
-     "darkPick": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 24px offset and 48px blur, at 60% black instead of 20%. So a menu still sits above dark sections, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships as standard (theming.values).",
+     "pick": [
+      "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 24px offset and a 48px blur at 20%, larger than the card's. So a menu sits clearly above vivid sections and cards, because cards and overlays rise (elevation.roles) and shadows are pronounced (elevation.values)."
+     ],
+     "darkPick": [
+      "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 24px offset and 48px blur, at 60% black instead of 20%. So a menu still sits above dark sections, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships as standard (theming.values)."
+     ],
      "shares": []
     }
    ]
@@ -176,7 +202,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -185,7 +213,9 @@
      "key": "title.font-size",
      "value": "1.0625rem",
      "byScheme": true,
-     "pick": "font.size.17",
+     "pick": [
+      "font.size.17"
+     ],
      "shares": []
     },
     {
@@ -196,8 +226,28 @@
      "darkValue": "#FFF8F3",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 18.0:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 18
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -235,8 +285,28 @@
      "darkValue": "#E2C4B3",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 10.67:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.500: supporting text, 10.96:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 10.67
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: supporting text, ",
+      {
+       "ratio": 10.96
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -245,7 +315,9 @@
      "key": "description.font-size",
      "value": "0.875rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": [
+      "font.size.14"
+     ],
      "shares": []
     },
     {
@@ -254,7 +326,9 @@
      "key": "content.gap",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -290,8 +364,28 @@
      "darkValue": "#5CC283",
      "byScheme": false,
      "rule": "Confirmation that something worked. It sits outside the urgency order.",
-     "pick": "green.light.600: success reads as text and icons, 5.38:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "green.dark.600: success reads as text and icons, 8.14:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "green.light.600: success reads as text and icons, ",
+      {
+       "ratio": 5.38
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "green.dark.600: success reads as text and icons, ",
+      {
+       "ratio": 8.14
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "category.3"
      ]
@@ -304,8 +398,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.58:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.600: danger reads as text and icons, ",
+      {
+       "ratio": 5.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.58
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]

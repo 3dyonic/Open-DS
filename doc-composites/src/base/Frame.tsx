@@ -2,7 +2,8 @@
  * Frame: a bordered box that holds a composite's content. A base form: composites extend it.
  * variant "card" sits on the page's default surface; "sunken" on the sunken surface; "canvas" is the
  * page itself, for a mode drawn in its own colors; "plain" has no
- * fill, for a box drawn in colors the data gives. Every value is the scheme's: radius, border, inset.
+ * fill, for a box drawn in colors the data gives. inset false leaves the padding to the content, for a
+ * box whose header spans its width. Every value is the scheme's: radius, border, inset.
  */
 import * as React from "react";
 
@@ -15,17 +16,19 @@ const VARIANT = {
 
 export default function Frame({
   variant = "card",
+  inset = true,
   style,
   children,
 }: {
   variant?: keyof typeof VARIANT;
+  inset?: boolean;
   // A box drawn in colors from the data (a mode's canvas) passes them here.
   style?: React.CSSProperties;
   children: React.ReactNode;
 }) {
   return (
     <div
-      className={`min-w-0 rounded-[var(--radius-surface)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] p-[var(--space-inset-container)] ${VARIANT[variant]}`}
+      className={`min-w-0 rounded-[var(--radius-surface)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] ${inset ? "p-[var(--space-inset-container)]" : ""} ${VARIANT[variant]}`}
       style={style}
     >
       {children}

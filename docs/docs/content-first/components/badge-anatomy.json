@@ -74,7 +74,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
+     "pick": [
+      "radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -83,7 +85,9 @@
      "key": "padding-x",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -92,7 +96,9 @@
      "key": "padding-y",
      "value": "0.125rem",
      "byScheme": false,
-     "pick": "space.2",
+     "pick": [
+      "space.2"
+     ],
      "shares": []
     },
     {
@@ -103,8 +109,24 @@
      "darkValue": "#0B0906",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, 1.16:1 under content and 1.06:1 under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.12
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.16
+      },
+      " under content and ",
+      {
+       "ratio": 1.06
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -136,7 +158,9 @@
      "key": "font-size",
      "value": "0.875rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": [
+      "font.size.14"
+     ],
      "shares": []
     },
     {
@@ -145,7 +169,9 @@
      "key": "font-weight",
      "value": "600",
      "byScheme": true,
-     "pick": "font.weight.600",
+     "pick": [
+      "font.weight.600"
+     ],
      "shares": []
     },
     {
@@ -154,7 +180,9 @@
      "key": "font-family",
      "value": "Inter, system-ui, sans-serif",
      "byScheme": true,
-     "pick": "inter for caption text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.",
+     "pick": [
+      "inter for caption text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface."
+     ],
      "shares": []
     },
     {
@@ -165,8 +193,28 @@
      "darkValue": "#CFC6B6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 9.75
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: supporting text, ",
+      {
+       "ratio": 10.11
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -202,8 +250,28 @@
      "darkValue": "#172C4F",
      "byScheme": true,
      "rule": "The fill behind info status.",
-     "pick": "blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
-     "darkPick": "blue.dark.100: a quiet tint behind info; its text, 10.8:1, above the 4.5:1 floor.",
+     "pick": [
+      "blue.light.100: a quiet tint behind info; its text, ",
+      {
+       "ratio": 12.97
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.100: a quiet tint behind info; its text, ",
+      {
+       "ratio": 10.8
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "category.2.subtle"
      ]
@@ -216,8 +284,28 @@
      "darkValue": "#02351B",
      "byScheme": true,
      "rule": "The fill behind success status.",
-     "pick": "green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
-     "darkPick": "green.dark.100: a quiet tint behind success; its text, 12.03:1, above the 4.5:1 floor.",
+     "pick": [
+      "green.light.100: a quiet tint behind success; its text, ",
+      {
+       "ratio": 10.79
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "green.dark.100: a quiet tint behind success; its text, ",
+      {
+       "ratio": 12.03
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "category.3.subtle"
      ]
@@ -230,8 +318,28 @@
      "darkValue": "#402B00",
      "byScheme": true,
      "rule": "The fill behind warning status.",
-     "pick": "amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
-     "darkPick": "amber.dark.100: a quiet tint behind warning; its text, 11.29:1, above the 4.5:1 floor.",
+     "pick": [
+      "amber.light.100: a quiet tint behind warning; its text, ",
+      {
+       "ratio": 11.09
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "amber.dark.100: a quiet tint behind warning; its text, ",
+      {
+       "ratio": 11.29
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "category.4.subtle"
      ]
@@ -244,8 +352,28 @@
      "darkValue": "#4D181A",
      "byScheme": true,
      "rule": "The fill behind danger status.",
-     "pick": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
-     "darkPick": "red.dark.100: a quiet tint behind danger; its text, 11.21:1, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 9.9
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 11.21
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -255,7 +383,17 @@
      "value": "#462A02",
      "byScheme": false,
      "rule": "The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).",
-     "pick": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
+     "pick": [
+      "amber.light.800: warning text on its own tint, ",
+      {
+       "ratio": 11.09
+      },
+      " on status.warning.subtle, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]

@@ -26,7 +26,7 @@ Corners and borders.
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `aster.theme.base.radius.control` → `radius.4` |
@@ -40,7 +40,7 @@ Each token points to another token. Values live only on primitives, below.
 | `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `birch.theme.base.radius.control` → `radius.12` |
@@ -54,7 +54,7 @@ Each token points to another token. Values live only on primitives, below.
 | `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `coral.theme.base.radius.control` → `radius.pill` |

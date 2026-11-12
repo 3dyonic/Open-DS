@@ -101,7 +101,9 @@
      "key": "height",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     },
     {
@@ -110,7 +112,9 @@
      "key": "width",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     },
     {
@@ -119,7 +123,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     }
    ]
@@ -153,7 +159,9 @@
      "key": "thumb.size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     },
     {
@@ -162,7 +170,9 @@
      "key": "thumb.radius",
      "value": "50%",
      "byScheme": false,
-     "pick": "radius.round",
+     "pick": [
+      "radius.round"
+     ],
      "shares": []
     },
     {
@@ -173,8 +183,28 @@
      "darkValue": "#161B23",
      "byScheme": true,
      "rule": "The base fill for content.",
-     "pick": "neutral.0: the base for content; body text reads 17.28:1 on it, above the 4.5:1 floor.",
-     "darkPick": "neutral.50: the base for content; body text reads 16.26:1 on it, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.0: the base for content; body text reads ",
+      {
+       "ratio": 17.28
+      },
+      " on it, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.50: the base for content; body text reads ",
+      {
+       "ratio": 16.26
+      },
+      " on it, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.raised",
       "action.secondary"
@@ -213,8 +243,28 @@
      "darkValue": "#A9A3F6",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "violet.light.600: the primary action's fill; its label reads, 6.97:1, above the 4.5:1 floor.",
-     "darkPick": "violet.dark.600: the primary action's fill; its label reads, 7.62:1, above the 4.5:1 floor.",
+     "pick": [
+      "violet.light.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 6.97
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "violet.dark.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 7.62
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
@@ -227,7 +277,9 @@
      "key": "thumb.travel",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     }
    ]
@@ -256,8 +308,28 @@
      "darkValue": "#A9A3F6",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "violet.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "violet.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.62
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -270,7 +342,9 @@
      "key": "focus",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -279,7 +353,9 @@
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -290,8 +366,20 @@
      "darkValue": "#0D1117",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.06
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.1
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -313,8 +401,12 @@
      "darkValue": "#3D4655",
      "byScheme": true,
      "rule": "The edge of a control that cannot be used right now.",
-     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "border.default",
       "border.raised"

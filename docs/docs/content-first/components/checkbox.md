@@ -14,7 +14,7 @@ One or many independent on or off choices, usually sent with a form.
 
 ## See it live
 
-::preview{robot="slumber" id="checkbox/live"}
+::preview{id="checkbox/live"}
 
 ## When to use it
 

@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@open-ds/ui/components/table";
-import Label from "./Label";
+import Label from "./base/Label";
 import ChainBase from "./base/Chain";
 
 type Swatch = { color?: string; corner?: string; shadow?: string };

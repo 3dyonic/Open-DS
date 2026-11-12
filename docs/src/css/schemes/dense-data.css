@@ -25,7 +25,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --type-title-font-size: 1.25rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
-  --type-heading-font-size: 1rem;
+  --type-heading-font-size: 1.0625rem;
   --type-heading-line-height: 1.2;
   --type-heading-font-weight: 600;
   --type-body-font-size: 0.875rem;
@@ -37,7 +37,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --type-caption-font-size: 0.75rem;
   --type-caption-line-height: 1.45;
   --type-caption-font-weight: 400;
-  --type-data-font-size: 0.8125rem;
+  --type-data-font-size: 0.875rem;
   --type-data-line-height: 1.45;
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Hover, press and toggle feedback. At most 150ms in a productive family. */
@@ -1899,7 +1899,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --type-title-font-size: 1.25rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
-  --type-heading-font-size: 1rem;
+  --type-heading-font-size: 1.0625rem;
   --type-heading-line-height: 1.2;
   --type-heading-font-weight: 600;
   --type-body-font-size: 0.875rem;
@@ -1911,7 +1911,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --type-caption-font-size: 0.75rem;
   --type-caption-line-height: 1.45;
   --type-caption-font-weight: 400;
-  --type-data-font-size: 0.8125rem;
+  --type-data-font-size: 0.875rem;
   --type-data-line-height: 1.45;
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Hover, press and toggle feedback. At most 150ms in a productive family. */

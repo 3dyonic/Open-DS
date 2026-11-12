@@ -149,8 +149,16 @@
      "darkValue": "#1E293B",
      "byScheme": true,
      "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
-     "darkPick": "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, 1.22:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So customers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, ",
+      {
+       "ratio": 1.22
+      },
+      " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So customers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -162,7 +170,9 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
+     "pick": [
+      "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -171,7 +181,9 @@
      "key": "padding",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     },
     {
@@ -182,8 +194,20 @@
      "darkValue": "#334155",
      "byScheme": true,
      "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
-     "pick": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.23:1 on surface.raised, beside the light shadow that does most of the lift. So customers see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
-     "darkPick": "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.41:1 on surface.raised (#334155, no alpha), so its contrast can be checked. So customers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+     "pick": [
+      "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
+      {
+       "ratio": 1.23
+      },
+      " on surface.raised, beside the light shadow that does most of the lift. So customers see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
+     "darkPick": [
+      "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
+      {
+       "ratio": 1.41
+      },
+      " on surface.raised (#334155, no alpha), so its contrast can be checked. So customers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
      "shares": [
       "surface.pressed",
       "border.default",
@@ -196,7 +220,9 @@
      "key": "border-width",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     },
     {
@@ -206,8 +232,12 @@
      "value": "0px 2px 8px, #0F172A14",
      "darkValue": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
-     "darkPick": "shadow.none: We use no shadow for cards in dark in order to keep shadows on floating layers only: menus, popovers, dialogs, toasts and tooltips. The missing shade does this by leaving the card's height to tone: the lighter raised surface and its 1px light ring. So cards still read as lifted on a dark page, without a shade that cannot be seen, because dark ships as standard (theming.values) and cards rise by shadow in light (elevation.roles).",
+     "pick": [
+      "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values)."
+     ],
+     "darkPick": [
+      "shadow.none: We use no shadow for cards in dark in order to keep shadows on floating layers only: menus, popovers, dialogs, toasts and tooltips. The missing shade does this by leaving the card's height to tone: the lighter raised surface and its 1px light ring. So cards still read as lifted on a dark page, without a shade that cannot be seen, because dark ships as standard (theming.values) and cards rise by shadow in light (elevation.roles)."
+     ],
      "shares": []
     }
    ]
@@ -234,7 +264,9 @@
      "key": "title.font-family",
      "value": "Inter, system-ui, sans-serif",
      "byScheme": true,
-     "pick": "inter for heading text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+     "pick": [
+      "inter for heading text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one."
+     ],
      "shares": []
     },
     {
@@ -243,7 +275,9 @@
      "key": "title.font-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "font.size.20",
+     "pick": [
+      "font.size.20"
+     ],
      "shares": []
     },
     {
@@ -252,7 +286,9 @@
      "key": "title.font-weight",
      "value": "600",
      "byScheme": true,
-     "pick": "font.weight.600",
+     "pick": [
+      "font.weight.600"
+     ],
      "shares": []
     },
     {
@@ -261,7 +297,9 @@
      "key": "header.gap",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -272,8 +310,28 @@
      "darkValue": "#CBD5E1",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 10.35:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.500: supporting text, 12.02:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 10.35
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: supporting text, ",
+      {
+       "ratio": 12.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -282,7 +340,9 @@
      "key": "description.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     }
    ]
@@ -309,7 +369,9 @@
      "key": "gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     },
     {
@@ -318,7 +380,9 @@
      "key": "content.gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     },
     {
@@ -327,7 +391,9 @@
      "key": "footer.gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]

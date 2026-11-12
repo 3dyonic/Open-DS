@@ -9,7 +9,7 @@ hide_title: true
 hide_table_of_contents: true
 ---
 
-:::hero{robot="multi-brand" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="50 components|228 primitives|6 themes"}
+:::hero{robot="multi-brand" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="50 components|227 primitives|6 themes"}
 # Multi-brand
 
 Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.

@@ -101,7 +101,9 @@
      "key": "height",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -110,7 +112,9 @@
      "key": "width",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -119,7 +123,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     }
    ]
@@ -153,7 +159,9 @@
      "key": "thumb.size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -162,7 +170,9 @@
      "key": "thumb.radius",
      "value": "50%",
      "byScheme": false,
-     "pick": "radius.round",
+     "pick": [
+      "radius.round"
+     ],
      "shares": []
     },
     {
@@ -173,8 +183,32 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "The base fill for content.",
-     "pick": "neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
-     "darkPick": "neutral.100: We use the step above the page for content in dark in order to leave a darker step free for wells, as the gray's two darkest steps are too close to tell apart. The fill does this by moving content one step up: sunken reads 1.16:1 below it and raised 1.26:1 above it. So people tell wells and menus from content, and body text still reads 14.85:1, because dark ships as standard (theming.values), text keeps the AAA floor (accessibility.definition) and depth reads from tone and lines (elevation.definition).",
+     "pick": [
+      "neutral.0: the base for content; body text reads ",
+      {
+       "ratio": 18.42
+      },
+      " on it, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.100: We use the step above the page for content in dark in order to leave a darker step free for wells, as the gray's two darkest steps are too close to tell apart. The fill does this by moving content one step up: sunken reads ",
+      {
+       "ratio": 1.16
+      },
+      " below it and raised ",
+      {
+       "ratio": 1.26
+      },
+      " above it. So people tell wells and menus from content, and body text still reads ",
+      {
+       "ratio": 14.85
+      },
+      ", because dark ships as standard (theming.values), text keeps the AAA floor (accessibility.definition) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.raised",
       "action.secondary"
@@ -213,8 +247,20 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
-     "darkPick": "blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+     "pick": [
+      "blue.light.600: brand blue marks the main action, with AAA white text (",
+      {
+       "ratio": 7.26
+      },
+      ")."
+     ],
+     "darkPick": [
+      "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+      {
+       "ratio": 8.74
+      },
+      ")."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
@@ -227,7 +273,9 @@
      "key": "thumb.travel",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     }
    ]
@@ -256,8 +304,36 @@
      "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at 7:1 where focus moves through menus and dialogs. The ring does this by reading 9.33:1 on surface.default and 7.41:1 on surface.raised, where the key step (blue.dark.600) gave 6.0:1 on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition).",
+     "pick": [
+      "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at ",
+      {
+       "ratio": 7
+      },
+      " where focus moves through menus and dialogs. The ring does this by reading ",
+      {
+       "ratio": 9.33
+      },
+      " on surface.default and ",
+      {
+       "ratio": 7.41
+      },
+      " on surface.raised, where the key step (blue.dark.600) gave ",
+      {
+       "ratio": 6
+      },
+      " on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition)."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -270,7 +346,9 @@
      "key": "focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
@@ -279,7 +357,9 @@
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -290,8 +370,20 @@
      "darkValue": "#0A0A0A",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.07
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.24
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -313,8 +405,12 @@
      "darkValue": "#333333",
      "byScheme": true,
      "rule": "The edge of a control that cannot be used right now.",
-     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.pressed",
       "border.default",

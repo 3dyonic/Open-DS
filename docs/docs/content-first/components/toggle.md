@@ -15,7 +15,7 @@ A button that stays pressed or not.
 
 ## See it live
 
-::preview{robot="slumber" id="toggle/live"}
+::preview{id="toggle/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Content first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="toggle/variant/default"}
+::preview{id="toggle/variant/default"}
 
 **What it is for**
 
@@ -49,7 +49,7 @@ Not decided yet.
 :::
 
 :::panel{title="outline" note="variant" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="toggle/variant/outline"}
+::preview{id="toggle/variant/outline"}
 
 **What it is for**
 
@@ -65,7 +65,7 @@ Not decided yet.
 :::
 
 :::panel{title="default" note="size" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="toggle/size/default"}
+::preview{id="toggle/size/default"}
 
 **What it is for**
 
@@ -81,7 +81,7 @@ Not decided yet.
 :::
 
 :::panel{title="sm" note="size" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="toggle/size/sm"}
+::preview{id="toggle/size/sm"}
 
 **What it is for**
 
@@ -97,7 +97,7 @@ Not decided yet.
 :::
 
 :::panel{title="lg" note="size" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="toggle/size/lg"}
+::preview{id="toggle/size/lg"}
 
 **What it is for**
 

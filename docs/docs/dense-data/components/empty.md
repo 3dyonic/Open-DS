@@ -14,7 +14,7 @@ What a region shows when it loaded and has nothing: why, and what to do next.
 
 ## See it live
 
-::preview{robot="slumber" id="empty/live"}
+::preview{id="empty/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Dense data" tone="neutral"}
-::preview{robot="slumber" id="empty/variant/default"}
+::preview{id="empty/variant/default"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ No pictures: an empty table needs the reason and the one action that fills it.
 :::
 
 :::panel{title="icon" note="variant" label="Used in Dense data" tone="success"}
-::preview{robot="slumber" id="empty/variant/icon"}
+::preview{id="empty/variant/icon"}
 
 **What it is for**
 

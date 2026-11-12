@@ -1,6 +1,10 @@
 {
  "preview": {
   "bubble/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Bubble examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {

@@ -15,7 +15,7 @@ A dialog that interrupts to confirm an action that cannot be undone.
 
 ## See it live
 
-::preview{robot="slumber" id="alert-dialog/live"}
+::preview{id="alert-dialog/live"}
 
 ## When to use it
 

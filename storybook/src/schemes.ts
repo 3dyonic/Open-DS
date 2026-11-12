@@ -6,11 +6,13 @@ import content from "../../schemes/content-first.json";
 import dense from "../../schemes/dense-data.json";
 import multi from "../../schemes/multi-brand.json";
 import grammarJson from "../../schemes/grammar.json";
-// A scheme file stores only the component values it decides (OD-291); the rest are the grammar's.
+// A scheme file stores only what it decides: the grammar gives the other component values (OD-291), and
+// the color scales and the spacing map come from their recorded rules (OD-292).
 import { withDefaults } from "../../cli/src/scheme-defaults.mjs";
+import { withGenerated } from "../../cli/src/scheme-generated.mjs";
 
 export const grammar = grammarJson;
-const full = (s: unknown) => withDefaults(s, grammarJson);
+const full = (s: unknown) => withGenerated(withDefaults(s, grammarJson));
 
 export const SCHEMES = {
   "dense-data": full(dense),
@@ -31,7 +33,10 @@ export interface Samples {
     rows: { cells: string[]; status: string }[];
   };
   metrics: { label: string; value: string }[];
-  field: { label: string; placeholder: string; hint: string; error: string; invalid: string };
+  field: { label: string; placeholder: string; hint: string; error: string; invalid: string; value?: string };
+  choices?: { label: string; description: string; illustrative?: ("label" | "description")[] }[];
+  search?: { placeholder: string; query: string; total: string; results: string; none: string };
+  chart?: { series: string[]; ticks: string[]; point: { label: string; values: string[] } };
   checkbox?: string[];
   select?: { label: string; options: string[]; value: string };
   switches?: string[];

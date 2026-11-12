@@ -1,6 +1,10 @@
 {
  "preview": {
   "select/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Select examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {

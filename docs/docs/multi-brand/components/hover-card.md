@@ -15,7 +15,7 @@ A preview card that appears on hover or focus.
 
 ## See it live
 
-::preview{robot="slumber" id="hover-card/live"}
+::preview{id="hover-card/live"}
 
 ## When to use it
 

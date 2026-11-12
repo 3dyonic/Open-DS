@@ -1,6 +1,10 @@
 {
  "preview": {
   "navigation-menu/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Navigation menu examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {

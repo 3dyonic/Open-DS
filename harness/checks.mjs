@@ -3,10 +3,10 @@
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
 import { themeTokens } from "../cli/src/tokens.mjs";
-import { pairsIn, toneOf } from "../cli/src/tones.mjs";
+import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
 import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "../cli/src/schemes.mjs";
-import { flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
+import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -276,16 +276,6 @@ export const CHECKS = {
       const g = c.grammar();
       const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
       const gaps = [];
-      const lum = (hex) => {
-        const [r, gr, b] = [1, 3, 5]
-          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
-          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
-        return 0.2126 * r + 0.7152 * gr + 0.0722 * b;
-      };
-      const ratio = (a, b) => {
-        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
-        return (x + 0.05) / (y + 0.05);
-      };
       for (const id of g.semantics.urgency.order)
         if (!guide.has(id)) gaps.push(`urgency names ${id}, which has no guidance`);
       let pairs = 0;
@@ -327,17 +317,12 @@ export const CHECKS = {
               if (tn && hex(name) !== hex(`color.text.on-${tn}`))
                 gaps.push(`${s}/${brand}/${mode}: ${name} is not color.text.on-${tn}, the text for ${fill}'s tone`);
             }
-            for (const p of pairsIn(g, { id: s, tokens: t }, brand, mode)) {
-              const [a, b] = [hex(p.key), hex(p.on)];
-              if (!a || !b) continue;
-              pairs++;
-              const r = ratio(a, b);
-              if (r >= p.contrast) continue;
-              const what = `${s}/${brand}/${mode}: ${p.key} on ${p.on} is ${r.toFixed(2)}:1, needs ${p.contrast}:1`;
-              if (p.waits) waiting.add(`${s}/${brand}/${mode} ${p.on} (${p.waits.for})`);
-              else gaps.push(what);
-            }
           }
+        // The contrast pairs are a build rule (cli/src/scheme-checks.mjs, OD-292).
+        const contrast = contrastPairs({ id: s, tokens: t }, g);
+        pairs += contrast.pairs;
+        gaps.push(...contrast.gaps);
+        for (const w of contrast.waiting) waiting.add(w);
       }
       return gaps.length
         ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
@@ -586,6 +571,55 @@ export const CHECKS = {
         : ok(`the space tokens, control heights and rows in ${SCHEMES.length} schemes match their records and name their use case`);
     },
   },
+  "type-scale-generated": {
+    requires: ["cli/src/type-scale.mjs"],
+    run: async (c) => {
+      // OD-294: every scheme's type sizes and line heights equal the generator's output from its
+      // scale: base × ratio^step, and the tight or open line height. A hand-edited size fails, and so
+      // does a reason that names an old number.
+      const { sizes, lineHeights, specProblems } = await import(pathToFileURL(c.p("cli/src/type-scale.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const type = s.tokens.semantic.type;
+        const spec = type?.$extensions?.["open-ds"];
+        if (!spec?.steps) {
+          gaps.push(`${id}: no type scale on the type group`);
+          continue;
+        }
+        gaps.push(...specProblems(spec).map((p) => `${id}: ${p}`));
+        for (const q of spec.follows ?? [])
+          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: the type scale follows ${q}, which is not an answer`);
+        const roles = Object.keys(type).filter((k) => !k.startsWith("$"));
+        for (const role of roles) if (!(role in spec.steps)) gaps.push(`${id}: type.${role} has no step on the scale`);
+        const px = sizes(spec);
+        const lh = lineHeights(spec);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        for (const role of roles.filter((r) => r in spec.steps)) {
+          const size = Math.round(parseFloat(String(resolve(all, `type.${role}.font-size`)?.value ?? "")) * 16 * 100) / 100;
+          if (size !== px[role]) gaps.push(`${id}: type.${role}.font-size is ${size}px, the scale gives ${px[role]}px`);
+          const line = Number(resolve(all, `type.${role}.line-height`)?.value);
+          if (line !== lh[role]) gaps.push(`${id}: type.${role}.line-height is ${line}, the scale gives ${lh[role]}`);
+          // A reason that names its value keeps up with the scale: the size in px, the line height ratio.
+          const why = (key) => type[role][key]?.$extensions?.["open-ds"]?.why ?? "";
+          if (!why("font-size").includes(`${px[role]}px`))
+            gaps.push(`${id}: the reason of type.${role}.font-size does not name ${px[role]}px`);
+          if (!why("line-height").includes(String(lh[role])))
+            gaps.push(`${id}: the reason of type.${role}.line-height does not name ${lh[role]}`);
+        }
+        // The scale owns the size and line height primitives: no primitive it does not use.
+        const want = new Set(Object.values(px).map(String));
+        const have = Object.keys(s.tokens.primitive.font.size).filter((k) => !k.startsWith("$"));
+        for (const k of have) if (!want.has(k)) gaps.push(`${id}: font.size.${k} is not on the scale`);
+        const ratios = new Set(Object.values(lh));
+        for (const [k, t] of Object.entries(s.tokens.primitive.font["line-height"]))
+          if (!k.startsWith("$") && !ratios.has(t.$value)) gaps.push(`${id}: font.line-height.${k} is not on the scale`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`the type sizes and line heights in ${SCHEMES.length} schemes match their scale`);
+    },
+  },
   "visible-where-it-meets": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
@@ -711,6 +745,37 @@ export const CHECKS = {
       return gaps.length
         ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
         : ok(`${n} anatomy images, each exported from a Figma frame, in ${SCHEMES.length} schemes`);
+    },
+  },
+  "anatomy-text-from-samples": {
+    requires: ["schemes/grammar.json", "scripts/anatomy-figma/sample-text.mjs"],
+    run: async (c) => {
+      // OD-135: each scheme shows its UI with its own content, as Storybook does. Every text in a tree
+      // drawing reads a sample path that resolves in every scheme, or says why it keeps its own text.
+      const { sampleText, textNodes } = await import(pathToFileURL(c.p("scripts/anatomy-figma/sample-text.mjs")).href);
+      const samples = SCHEMES.map((id) => [id, c.scheme(id).samples]);
+      const gaps = [];
+      let read = 0;
+      let kept = 0;
+      for (const item of c.grammar().catalogue.items.filter((i) => i.anatomy?.drawing?.kind === "tree")) {
+        for (const node of textNodes(item.anatomy)) {
+          if (!node.sample) {
+            if (typeof node.fixed === "string" && node.fixed.trim() && typeof node.text === "string") kept++;
+            else gaps.push(`${item.id}: "${node.text}" reads no sample`);
+            continue;
+          }
+          read++;
+          for (const [id, smp] of samples) {
+            const { missing } = sampleText(node, smp);
+            if (missing) gaps.push(`${item.id}: ${id} has no samples.${missing.join(", samples.")}`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok(
+            `${read} anatomy texts read a sample in all ${SCHEMES.length} schemes; ${kept} keep their own text, each with a reason`,
+          );
     },
   },
   "floating-panels-agree": {
@@ -3038,6 +3103,23 @@ export const CHECKS = {
       return hits.length
         ? bad(`${hits.length} direct reads or writes of schemes/*.json, such as ${hits.slice(0, 4).join(", ")}; use loadScheme, grammar, saveScheme and saveGrammar from cli/src/schemes.mjs`)
         : ok("every read and write of a scheme goes through cli/src/schemes.mjs, or the one schemes module of its app");
+    },
+  },
+  // OD-292: a scheme file stores the key colors and the spacing rhythm, not what they generate. A stored
+  // scale or spacing map step equal to the generator's output is a copy that can drift: saveScheme leaves it out.
+  "generated-not-stored": {
+    requires: ["cli/src/scheme-generated.mjs"],
+    run: async (c) => {
+      const { withoutGenerated } = await import(pathToFileURL(c.p("cli/src/scheme-generated.mjs")).href);
+      const copies = [];
+      for (const id of SCHEMES) {
+        const stored = c.storedScheme(id);
+        const n = (o) => JSON.stringify(o).length;
+        if (n(withoutGenerated(stored)) !== n(stored)) copies.push(id);
+      }
+      return copies.length
+        ? bad(`${copies.join(", ")} store color scales or spacing map steps that the generator makes; load and save each with loadScheme and saveScheme`)
+        : ok(`${SCHEMES.length} schemes store key colors and spacing rhythms, not the scales and steps they generate`);
     },
   },
   // OD-291: a scheme file stores only the component values it decides. A token equal to the grammar's

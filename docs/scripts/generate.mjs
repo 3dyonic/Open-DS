@@ -274,7 +274,9 @@ for (const id of ids) {
     // OD-211: with several brands, the Theming page shows the set of the brand picked in the top bar.
     Object.keys(scheme.tokens.brands ?? {})
       .filter((_, i, all) => all.length > 1)
-      .map((b) => `${scope}[data-brand="${b}"] .odv-brandset:not([data-for-brand="${b}"]) { display: none; }\n`)
+      .map(
+        (b) => `${scope}[data-brand="${b}"] [data-composite="brand"]:not([data-for-brand="${b}"]) { display: none; }\n`,
+      )
       .join("");
   files[`static/logo-${id}.svg`] = logo(modeTokens("light"));
   files[`static/logo-${id}-dark.svg`] = logo(modeTokens("dark"));

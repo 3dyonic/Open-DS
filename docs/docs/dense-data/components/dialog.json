@@ -1,6 +1,10 @@
 {
  "preview": {
   "dialog/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Dialog examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -489,8 +493,8 @@
      },
      "values": [
       {
-       "token": "font.size.16",
-       "text": "1rem"
+       "token": "font.size.17",
+       "text": "1.0625rem"
       }
      ]
     },

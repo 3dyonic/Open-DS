@@ -4,7 +4,8 @@
    "cards": [
     {
      "title": "Color",
-     "text": "137 primitives · 55 in use",
+     "text": "137 primitives",
+     "note": "55 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -52,7 +53,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "13 primitives · 13 in use",
+     "text": "13 primitives",
+     "note": "13 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -96,7 +98,8 @@
     },
     {
      "title": "Shape",
-     "text": "7 primitives · 7 in use",
+     "text": "7 primitives",
+     "note": "7 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -124,7 +127,8 @@
    "cards": [
     {
      "title": "Type",
-     "text": "13 primitives · 13 in use",
+     "text": "12 primitives",
+     "note": "12 in use",
      "href": "./type",
      "robot": {
       "day": "/robots/scopes/typography.webp",
@@ -140,19 +144,23 @@
        "value": "Inter, system-ui, sans-serif"
       },
       {
-       "kind": "text",
-       "value": "Source Serif 4 · Inter"
+       "kind": "names",
+       "names": [
+        "Source Serif 4",
+        "Inter"
+       ]
       }
      ],
      "meter": {
-      "value": 13,
-      "max": 13,
-      "label": "13 of 13 in use"
+      "value": 12,
+      "max": 12,
+      "label": "12 of 12 in use"
      }
     },
     {
      "title": "Motion",
-     "text": "4 primitives · 4 in use",
+     "text": "4 primitives",
+     "note": "4 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -173,7 +181,8 @@
     },
     {
      "title": "Effects",
-     "text": "4 primitives · 4 in use",
+     "text": "4 primitives",
+     "note": "4 in use",
      "href": "./effects",
      "robot": {
       "day": "/robots/scopes/elevation.webp",

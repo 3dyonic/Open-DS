@@ -17,7 +17,8 @@ export type TokenGroup = {
   title: string;
   // A short line under the title, such as the icon style the scheme answers.
   note?: string;
-  sample: { kind: string; value?: string; role?: string; text?: string; note?: string };
+  // A type sample's line is one text, or (for data) its values, each a part of its own.
+  sample: { kind: string; value?: string; role?: string; text?: string; parts?: string[]; note?: string };
   api: ApiRow[];
   rules: RuleLine[];
 };
@@ -39,7 +40,7 @@ export default function TokenGroups({ data }: { data: TokenGroupsData }) {
                 <div className="flex min-h-[var(--size-control-default)] items-center">
                   {g.sample.kind === "type" ? (
                     <Sample kind="type" role={g.sample.role}>
-                      {g.sample.text}
+                      {g.sample.parts ? g.sample.parts.join(" · ") : g.sample.text}
                     </Sample>
                   ) : (
                     <Sample kind={g.sample.kind} value={g.sample.value} note={g.sample.note} />

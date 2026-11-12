@@ -1,6 +1,10 @@
 {
  "preview": {
   "card/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Card examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -273,8 +277,8 @@
      },
      "values": [
       {
-       "token": "font.size.28",
-       "text": "1.75rem"
+       "token": "font.size.29",
+       "text": "1.8125rem"
       }
      ]
     },

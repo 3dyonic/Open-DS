@@ -1005,7 +1005,8 @@
       "placeholder": "1234 5678 9012 3456",
       "hint": "We never store the full number.",
       "error": "Your card was declined. Try another card or contact your bank.",
-      "invalid": "1234"
+      "invalid": "1234",
+      "value": "4242 4242 4242 4242"
     },
     "checkbox": [
       "Email me about my orders",
@@ -1023,7 +1024,8 @@
     },
     "switches": [
       "Renew automatically",
-      "Paperless invoices"
+      "Paperless invoices",
+      "Payment reminders"
     ],
     "messages": {
       "success": "Your plan is active.",
@@ -1070,7 +1072,48 @@
       ],
       "destructive": "Cancel plan"
     },
-    "icon_action": "Download invoice"
+    "icon_action": "Download invoice",
+    "choices": [
+      {
+        "label": "Monthly",
+        "description": "12.00 a month. Cancel any time.",
+        "illustrative": [
+          "description"
+        ]
+      },
+      {
+        "label": "Yearly",
+        "description": "Pay once a year."
+      }
+    ],
+    "search": {
+      "placeholder": "Search invoices",
+      "query": "October",
+      "total": "9 invoices",
+      "results": "1 invoice",
+      "none": "No invoices"
+    },
+    "chart": {
+      "series": [
+        "Plan",
+        "Add-ons"
+      ],
+      "ticks": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov"
+      ],
+      "point": {
+        "label": "Aug",
+        "values": [
+          "12.00",
+          "7.00"
+        ]
+      }
+    }
   },
   "themes": [
     {
@@ -2511,98 +2554,6 @@
         "teal": {
           "$type": "color",
           "$description": "The teal hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F0FCFA"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#DEF3F0"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#C9E7E3"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#BADED9"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#7EB6AF"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#3D8B83"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#0F766E"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#015852"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#003C37"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#012421"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#000E0D"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#001A18"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#012C28"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#0C443F"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#255F59"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#3F7F78"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#5CA39B"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#7FCFC6"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#A1DCD4"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#BCE6E1"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#D3F0EC"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#EAF9F7"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2618,98 +2569,6 @@
         "purple": {
           "$type": "color",
           "$description": "The purple hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F8F7FF"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#EDEAFE"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#DFD9FF"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#D4CCFE"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#AA91FF"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#8050E9"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#6D28D9"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#5212AA"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#38017B"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#22014E"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#0D0027"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#190831"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#271745"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#3C2A5F"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#53417D"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#705BA0"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#9079C7"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#B79DF7"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#C9B7FC"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#D9CCFF"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#E7E0FE"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#F6F3FF"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2725,98 +2584,6 @@
         "orange": {
           "$type": "color",
           "$description": "The orange hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FFF8F5"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FEEBE4"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#FED9CD"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#FFCBBB"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#F29578"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#D35E38"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#C2410C"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#942D02"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#661D01"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#410F01"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#1F0400"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#270B00"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#3F1702"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#5A2C13"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#784328"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#9D5F41"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C57F5D"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F7A67F"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#FCBD9F"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FFD0B9"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FFE1D4"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FFF2EC"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2832,98 +2599,6 @@
         "green": {
           "$type": "color",
           "$description": "The green hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F1FDF2"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#DBF7DF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#CBE9CF"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#BCE0C1"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#82BA8B"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#448F54"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#1F7A3A"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#0B5C27"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#023E17"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#01260B"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#001003"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#001A0A"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#012A14"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#024121"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#065B31"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#247948"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#3E9A63"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#5CC283"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#8AD3A2"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#ADE2BD"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#CBEFD5"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#E8FBED"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2945,98 +2620,6 @@
         "amber": {
           "$type": "color",
           "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FFF7EF"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FEE8CF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#F1DBC3"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#EACFB3"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#C7A074"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#9E6E32"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#8A5600"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#673F01"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#462A02"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#2B1800"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#130800"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#1F1301"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#332201"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#503700"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#704F03"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#986C06"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C18E28"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F2B84B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#F6CA7F"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FAD9A3"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FDE7C3"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FFF4E2"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -3059,98 +2642,6 @@
         "red": {
           "$type": "color",
           "$description": "The red hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FEF7F7"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FFDBD8"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#FED7D2"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#FEC8C2"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#F68C82"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#D64F48"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#C42B2B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#981519"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#6D0008"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#450003"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#210001"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#2E0105"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#410C11"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#5B1F22"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#783436"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#9C4D4E"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C26969"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F28B8B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#FAA9A8"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FEC3C1"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FEDBDA"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FEF2F1"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -3187,98 +2678,6 @@
         "blue": {
           "$type": "color",
           "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F4F7FE"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#D3E4FF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#C3D9FE"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#B2CCF8"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#6F95D6"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#2C5AAA"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#083C93"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#012A72"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#001A4E"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#000D31"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#000316"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#031331"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#0D2244"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#1F375E"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#344F7C"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#4C6CA0"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#688CC8"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#8AB4F8"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#A7C8FC"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#C1D8FE"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#D9E7FE"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#F0F6FF"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -3411,10 +2810,6 @@
             "$type": "dimension",
             "$value": "0.8125rem"
           },
-          "14": {
-            "$type": "dimension",
-            "$value": "0.875rem"
-          },
           "16": {
             "$type": "dimension",
             "$value": "1rem"
@@ -3423,9 +2818,9 @@
             "$type": "dimension",
             "$value": "1.25rem"
           },
-          "24": {
+          "25": {
             "$type": "dimension",
-            "$value": "1.5rem"
+            "$value": "1.5625rem"
           },
           "32": {
             "$type": "dimension",
@@ -10413,6 +9808,46 @@
         }
       },
       "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 16,
+            "ratio": 1.26,
+            "steps": {
+              "display": 3,
+              "title": 2,
+              "heading": 1,
+              "body": 0,
+              "label": -1,
+              "caption": -1,
+              "data": 0
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.2,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "open": {
+                "ratio": 1.5,
+                "roles": [
+                  "body",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "One size per kind of text: a regular 16px body and a 1.26 ratio, each kind on the next step, so the scale suits every brand face. Short lines sit tight at 1.2; text that wraps opens to 1.5."
+          }
+        },
         "display": {
           "font-family": {
             "$type": "fontFamily",
@@ -10423,7 +9858,7 @@
             "$value": "{font.size.32}",
             "$extensions": {
               "open-ds": {
-                "why": "32px, the top of the shared scale, sets the product-page headline, where each brand speaks loudest in its own face.",
+                "why": "32px is three ratio steps above the 16px body (16 × 1.26^3), the top of the shared scale, for the product-page headline where each brand speaks loudest.",
                 "because": [
                   "brand.q2",
                   "typography.count"
@@ -10466,10 +9901,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.24}",
+            "$value": "{font.size.25}",
             "$extensions": {
               "open-ds": {
-                "why": "24px titles each sign-up and account page: one step under the 32px product headline, because forms carry most text here.",
+                "why": "25px titles each sign-up and account page: two ratio steps above body and one under the 32px headline, because forms carry most text here.",
                 "because": [
                   "typography.lands",
                   "typography.count"
@@ -10482,7 +9917,7 @@
             "$value": "{font.line-height.1_2}",
             "$extensions": {
               "open-ds": {
-                "why": "1.2 keeps a 24px page title tight above its form, so a title that wraps still reads as one title.",
+                "why": "1.2 keeps a 25px page title tight above its form, so a title that wraps still reads as one title.",
                 "because": [
                   "typography.lands",
                   "content.q1"
@@ -10515,7 +9950,7 @@
             "$value": "{font.size.20}",
             "$extensions": {
               "open-ds": {
-                "why": "20px heads the sections inside a page: one step under the 24px title and 4px over the 16px body.",
+                "why": "20px heads the sections inside a page: one ratio step above the 16px body and one under the 25px title.",
                 "because": [
                   "typography.count",
                   "typography.roles"
@@ -10541,7 +9976,7 @@
             "$value": "{font.weight.600}",
             "$extensions": {
               "open-ds": {
-                "why": "600 matches the page title, so size alone ranks a 20px section heading under the 24px title in every brand.",
+                "why": "600 matches the page title, so size alone ranks a 20px section heading under the 25px title in every brand.",
                 "because": [
                   "typography.roles",
                   "brand.q3"
@@ -10561,7 +9996,7 @@
             "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
-                "why": "16px is the regular body size the shared scale grows from; every brand face sets product and form text at it.",
+                "why": "16px is the regular body size and step 0 of the shared scale; every brand face sets product and form text at it.",
                 "because": [
                   "typography.values",
                   "brand.q3"
@@ -10604,10 +10039,10 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.14}",
+            "$value": "{font.size.13}",
             "$extensions": {
               "open-ds": {
-                "why": "14px names every field, 2px under the 16px text inside it, so the label and the entry stay apart.",
+                "why": "13px names every field, one ratio step under the 16px text inside it (16 ÷ 1.26), so the label and the entry stay apart.",
                 "because": [
                   "typography.lands",
                   "people.q2"
@@ -10620,7 +10055,7 @@
             "$value": "{font.line-height.1_2}",
             "$extensions": {
               "open-ds": {
-                "why": "1.2 keeps a 14px field label one tight line, directly above its input in sign-up and checkout forms.",
+                "why": "1.2 keeps a 13px field label one tight line, directly above its input in sign-up and checkout forms.",
                 "because": [
                   "typography.lands",
                   "people.q2"
@@ -10633,7 +10068,7 @@
             "$value": "{font.weight.600}",
             "$extensions": {
               "open-ds": {
-                "why": "600 keeps a 14px field label readable in every brand face, though it is smaller than the body.",
+                "why": "600 keeps a 13px field label readable in every brand face and sets it apart from the 400 caption on the same step.",
                 "because": [
                   "people.q2",
                   "brand.q3"
@@ -10653,7 +10088,7 @@
             "$value": "{font.size.13}",
             "$extensions": {
               "open-ds": {
-                "why": "13px, the smallest size in the scale, holds fees, dates and hints, one step under the 14px label.",
+                "why": "13px, the smallest size, holds fees, dates and hints on the label's step, one ratio step under the 16px body.",
                 "because": [
                   "content.q1",
                   "typography.count"
@@ -10699,7 +10134,7 @@
             "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
-                "why": "16px equals body: plan and order tables hold prices in sentences and offers, not columns of figures to compare.",
+                "why": "16px shares step 0 with body: plan and order tables hold prices in sentences and offers, not columns of figures to compare.",
                 "because": [
                   "content.q1"
                 ]
@@ -11259,7 +10694,6 @@
         }
       },
       "component-spacing-map": {
-        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
         "$extensions": {
           "open-ds": {
             "rhythm": 1.5,
@@ -11271,76 +10705,6 @@
               "spacing.values"
             ],
             "why": "Comfortable in every brand: panels and fields breathe; rows stay tight."
-          }
-        },
-        "hairline": {
-          "$type": "dimension",
-          "$value": "{space.2}",
-          "$description": "A fixed 2px optical nudge, the same in every scheme."
-        },
-        "x1": {
-          "$type": "dimension",
-          "$value": "{space.4}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 1,
-              "fixed": true
-            }
-          }
-        },
-        "x2": {
-          "$type": "dimension",
-          "$value": "{space.8}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 2,
-              "fixed": true
-            }
-          }
-        },
-        "x3": {
-          "$type": "dimension",
-          "$value": "{space.20}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 3
-            }
-          }
-        },
-        "x4": {
-          "$type": "dimension",
-          "$value": "{space.24}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 4
-            }
-          }
-        },
-        "x6": {
-          "$type": "dimension",
-          "$value": "{space.36}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 6
-            }
-          }
-        },
-        "x8": {
-          "$type": "dimension",
-          "$value": "{space.48}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 8
-            }
-          }
-        },
-        "x12": {
-          "$type": "dimension",
-          "$value": "{space.64}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 12
-            }
           }
         }
       },

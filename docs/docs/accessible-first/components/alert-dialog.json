@@ -1,6 +1,10 @@
 {
  "preview": {
   "alert-dialog/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Alert dialog examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -379,8 +383,8 @@
      },
      "values": [
       {
-       "token": "font.size.22",
-       "text": "1.375rem"
+       "token": "font.size.23",
+       "text": "1.4375rem"
       }
      ]
     },

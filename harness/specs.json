@@ -202,9 +202,10 @@
         "samples in every scheme: screen, actions, statuses with meaning and why, table, figures, field, messages, confirm, card, tabs, menu",
         "danger only where something failed or will be lost",
         "Storybook stories and the site preview read the active scheme's samples; every component renders in every scheme, and its docs page says when the scheme leaves it out (OD-192)",
-        "no shared fixtures between schemes"
+        "no shared fixtures between schemes",
+        "every text in an anatomy drawing reads a sample path that resolves in every scheme, or keeps its own text with a reason"
       ],
-      "checks": ["schemes-samples", "json-files-validate", "storybook-build", "site-build"]
+      "checks": ["schemes-samples", "json-files-validate", "storybook-build", "site-build", "anatomy-text-from-samples"]
     },
     {
       "id": "OD-138",
@@ -586,8 +587,12 @@
     },
     {
       "id": "OD-294",
-      "title": "Spacing by use case and the control scale; shape and elevation as decisions and relations, and reasons that say why",
+      "title": "The type scale: sizes from a base and a ratio, line heights by role kind; spacing by use case and the control scale: values from a base, a multiple and a step; shape and elevation as decisions and relations, and reasons that say why",
       "in": [
+        "each scheme records on its type group the body size, a ratio, each role's step, and a tight and an open line height with the roles that take each",
+        "a role's size is base × ratio^step, rounded to whole px, and links to the font.size primitive of that size; the scale owns the size and line height primitives",
+        "the values are computed once when the scheme is written (scripts/type-scale.mjs); the harness compares them with the generator",
+        "every size and line height keeps a reason that names its value and relates it to its siblings",
         "the grammar's spacing scope names the use-case words (level, relation, reach) and the job of each spacing property",
         "each scheme records on its space group a base and, per space token, a use case and a multiple; the value is base × multiple",
         "each scheme records on its size group the control scale: the default height, the step, the steps of compact and large, and the row",
@@ -599,7 +604,7 @@
         "where today's values break a relation, the check lists a finding and changes no value",
         "every reason states its job, how the property does it, what people get and the decision; the count of reasons out of the form may only go down"
       ],
-      "checks": ["spacing-use-cases-generated", "shape-elevation-relations", "reasons-say-why", "reasons-explain-values", "json-files-validate"]
+      "checks": ["type-scale-generated", "reasons-explain-values", "json-files-validate", "spacing-use-cases-generated", "shape-elevation-relations", "reasons-say-why"]
     },
     {
       "id": "OD-297",

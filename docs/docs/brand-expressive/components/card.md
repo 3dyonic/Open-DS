@@ -14,7 +14,7 @@ A bordered container for one item or group, with its title, content and actions.
 
 ## See it live
 
-::preview{robot="slumber" id="card/live"}
+::preview{id="card/live"}
 
 ## When to use it
 

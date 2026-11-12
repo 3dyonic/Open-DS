@@ -51,8 +51,24 @@
      "darkValue": "#090403",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, 1.13:1 under content and 1.05:1 under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.13
+      },
+      " under content and ",
+      {
+       "ratio": 1.05
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -77,7 +93,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     }
    ]
@@ -113,8 +131,28 @@
      "darkValue": "#F59ACA",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.",
-     "darkPick": "pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.",
+     "pick": [
+      "pink.light.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 4.84
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "pink.dark.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 8.88
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
