@@ -25,7 +25,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 
 ## Rules
 
-1. Change a scheme in `schemes/*.json`, then run `pnpm --dir tokens build`, `node scripts/build-llms.mjs` and `pnpm --dir docs generate`.
+1. Change a scheme in `schemes/*.json`, then run `pnpm generate` and `node scripts/build-llms.mjs`. Git keeps `llms.txt` and `llms-full.txt`. Git does not keep the other generated files: the docs pages, the token build and `ui/registry.json`.
 2. Every JSON object gets a `description` (or `why`) written for an agent. Every schema property gets a `description`.
 3. Scope answers are words ("fast", "compact"), never raw values. Values live in tokens.
 4. Components read only component keys and semantic variables. No raw colors.
@@ -37,7 +37,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 
 ```bash
 pnpm install
-pnpm --dir tokens build   # the CLI, site and Storybook read tokens/dist
+pnpm generate         # tokens/dist, the docs pages and ui/registry.json, which git does not keep
 pnpm harness          # fast checks
 pnpm harness:full     # with builds and test suites
 pnpm e2e              # the local end-to-end run

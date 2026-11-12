@@ -4,6 +4,10 @@
 //   node harness/run.mjs            fast checks; slow builds are listed as skipped
 //   node harness/run.mjs --full     also runs builds and test suites
 //   node harness/run.mjs --only OD-117 one requirement
+//   node harness/run.mjs --no-generate  read the generated files as they are
+//
+// The docs pages and the registry are not in git (OD-302), so a run writes them first
+// (scripts/generate.mjs).
 //
 // Statuses: pass, fail, not built (the layer does not exist yet), skipped (slow, run --full).
 // The exit code is 1 only when a check that can run fails.
@@ -11,6 +15,7 @@
 import { writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { generate } from "../scripts/generate.mjs";
 import { CHECKS, makeContext } from "./checks.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -106,6 +111,14 @@ export function toMarkdown(report) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
   const onlyAt = args.indexOf("--only");
+  if (!args.includes("--no-generate")) {
+    try {
+      generate({ repo: root });
+    } catch (e) {
+      console.error(e.message);
+      process.exit(1);
+    }
+  }
   const report = await runHarness({ full: args.includes("--full"), only: onlyAt >= 0 ? args[onlyAt + 1] : null });
   if (onlyAt >= 0 && !report.sections.some((sec) => sec.rows.length)) {
     console.error(`No spec with id ${args[onlyAt + 1]}.`);

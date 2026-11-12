@@ -111,3 +111,40 @@ jobs:
         run: pnpm test:package
       - name: Create a design system project from the packed file, install and build it
         run: pnpm test:create
+
+  # What a pull request changes (OD-302): the docs pages it adds, removes or changes, and the quality
+  # scorecard against the base, in the job summary. Git does not keep the docs pages, so the owner
+  # reads the change here without the docs server. This job reports; the harness gates quality.
+  changes:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          # Both scripts check out the base in a temporary worktree.
+          fetch-depth: 0
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        with:
+          version: 10.33.4
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Docs pages that change
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: node scripts/docs-changes.mjs --base "$BASE_SHA" >> "$GITHUB_STEP_SUMMARY"
+      - name: Quality scorecard
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          node cli/bin/open-ds.js compare --base "$BASE_SHA" --out build/quality \
+            || echo "::warning::A gated quality number moved the wrong way. The scorecard in the job summary shows which."
+          if [ -f build/quality/scorecard.md ]; then
+            { echo; cat build/quality/scorecard.md; } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "The scorecard was not written. The step log shows the error." >> "$GITHUB_STEP_SUMMARY"
+          fi

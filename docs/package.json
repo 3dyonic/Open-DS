@@ -12,7 +12,7 @@
     "start": "pnpm run generate && docusaurus start",
     "build": "pnpm run generate && docusaurus build",
     "serve": "docusaurus serve",
-    "test": "node scripts/generate.mjs --check",
+    "test": "pnpm run generate && node scripts/generate.mjs --check",
     "lint": "prettier --check ."
   },
   "dependencies": {
