@@ -249,6 +249,16 @@ const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const markerOf = (marker) => new RegExp(`(^|[^a-z])${escapeRe(marker)}([^a-z]|$)`, "i");
 
 /** The grammar property (corner, line width, focus ring, shadow) whose tokens include this one, or null. */
+/** The decision mapping entry that covers a token (OD-303): { property, title, question, jobs }, or null. */
+export function mappingOf(g, name) {
+  return (g.mapping ?? []).find((entry) => entry.tokens.some((pattern) => matches(pattern, name))) ?? null;
+}
+
+/** The grammar question that decides a token, from the decision mapping (OD-303); null when no entry covers it. */
+export function decidingQuestion(g, name) {
+  return mappingOf(g, name)?.question ?? null;
+}
+
 export function propertyOf(g, name) {
   for (const scope of g.scopes ?? [])
     for (const p of scope.properties ?? []) if (p.tokens.some((pattern) => matches(pattern, name))) return p;
@@ -304,4 +314,60 @@ export function writtenReasons(scheme) {
       }
     }
   return out;
+}
+
+/**
+ * A token's decision tree (OD-303): the path from the semantic group down to the primitive step its value
+ * ends on, one node per design property, each with what the scheme and the grammar record for it. Nothing
+ * is typed per token: the walk reads the group descriptions, the grammar's semantics, the decision mapping,
+ * the theme pick and the primitive hue and step.
+ * [{ level, name, says, decided_by?, jobs? }]
+ */
+export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.tokens.brands)[0], mode = "light" } = {}) {
+  const at = (tree, path) => path.split(".").reduce((n, k) => n?.[k], tree);
+  const od = (node) => node?.$extensions?.["open-ds"] ?? {};
+  const answerOf = (q) => {
+    const a = (scheme.answers ?? []).find((x) => x.question === q);
+    const question = (g.scopes ?? []).flatMap((s) => s.questions ?? []).find((x) => x.id === q);
+    const option = question?.options?.find((o) => o.id === a?.option);
+    return a ? { question: question?.text ?? q, answer: option?.label ?? a.option, why: a.why ?? null } : null;
+  };
+  const nodes = [];
+  // The semantic groups, outermost first: what each says, and the mapping entry that decides it.
+  const parts = name.split(".");
+  for (let i = 2; i < parts.length; i++) {
+    const path = parts.slice(0, i).join(".");
+    const node = at(scheme.tokens.semantic, path);
+    const entry = (g.mapping ?? []).find((e) => e.tokens.some((p) => matches(p, `${path}.x`) || matches(p, `${path}.x.y`) || matches(p, name)));
+    if (!node?.$description && !(i === 2 && entry)) continue;
+    nodes.push({
+      level: "group",
+      name: path,
+      says: node?.$description ?? null,
+      ...(i === 2 && entry && { property: entry.title, decided_by: answerOf(entry.question), jobs: entry.jobs.map((j) => ({ title: j.title, how: j.how })) }),
+    });
+  }
+  // The token itself: its intent and uses from the grammar's semantics.
+  const key = (g.semantics?.keys ?? []).find((k) => k.id === name);
+  const token = at(scheme.tokens.semantic, name);
+  // The variant: what the name's last part means, from the grammar's vocabulary.
+  const variant = (g.semantics?.variants?.items ?? []).find((v) => v.id === parts.at(-1));
+  if (variant) nodes.push({ level: "variant", name: variant.id, says: variant.says });
+  nodes.push({ level: "token", name, says: key?.intent ?? token?.$description ?? null, use_for: key?.use_for ?? [], not_for: key?.not_for ?? [] });
+  // The theme pick: the step this brand and mode picks, and why.
+  const themePath = (token?.$value ?? "").match(/^\{theme\.(.+)\}$/)?.[1];
+  const theme = scheme.tokens.brands[brand]?.theme ?? {};
+  const pick = themePath && (at(theme[mode], themePath) ?? at(theme.base, themePath));
+  if (pick) nodes.push({ level: "pick", name: `${brand}/${mode}`, value: pick.$value, says: od(pick).why ?? null });
+  // The primitive hue and step the value ends on: the hue's record and the step's own adjustment, if any.
+  const ref = (pick?.$value ?? token?.$value ?? "").match(/^\{(color\.([a-z-]+)\.(light|dark)\.([0-9a-z]+))\}$/);
+  if (ref) {
+    const [, , hue, side, step] = ref;
+    const group = at(scheme.tokens.primitive, `color.${hue}`);
+    const rec = od(group)[side];
+    nodes.push({ level: "hue", name: hue, says: group?.$description ?? null, key: rec?.key ?? null });
+    const adjust = rec?.adjust?.[step];
+    nodes.push({ level: "step", name: `${hue}.${side}.${step}`, says: adjust?.why ?? (rec?.key ? `Generated from the ${hue} key color ${rec.key} by the scheme's step curve.` : null) });
+  }
+  return nodes;
 }

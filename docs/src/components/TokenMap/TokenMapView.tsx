@@ -45,6 +45,8 @@ type Decision = {
   components: Component[];
   via?: string | null;
   stepWhy?: string | null;
+  mapping?: { property: string; jobs: { title: string; how: string }[] };
+  guide?: { intent: string | null; useFor: string[]; notFor: { when: string; use: string }[] };
 };
 type Check = { what: string; ratio: number };
 type Step = {
@@ -295,15 +297,32 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
       <div className={styles.cap}>Decision</div>
       <div className={`${styles.title} ${styles.mono}`}>{d.id}</div>
       {d.why ? <div className={styles.key}>{sentence(d.why)}</div> : d.description && <div>{d.description}</div>}
+      {d.guide?.intent && <div>{d.guide.intent}</div>}
+      {d.guide && d.guide.useFor.length > 0 && <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>}
+      {d.guide?.notFor.map((n) => (
+        <div key={n.when} className={styles.line}>
+          Not for {n.when.toLowerCase()}: use {n.use}
+        </div>
+      ))}
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
-      {used === 0 && !d.via && <div className={styles.line}>No component uses it.</div>}
+      {used === 0 && !d.via && !(d.guide && d.guide.useFor.length) && <div className={styles.line}>No component uses it.</div>}
       {!hasReason(d) && <NoReason />}
       {(d.stepWhy || d.answers.length > 0) && <More open={open} onToggle={() => setOpen(!open)} closed="Why" />}
       {open && (
         <>
           {d.stepWhy && <div>{d.stepWhy}</div>}
-          {d.answers.length > 0 && <div className={styles.cap}>The answers behind it</div>}
+          {d.answers.length > 0 && <div className={styles.cap}>{d.mapping ? "Decided by" : "The answers behind it"}</div>}
           <Answers ids={d.answers} answers={data.answers} />
+          {d.mapping && (
+            <>
+              <div className={styles.cap}>Property: {d.mapping.property}</div>
+              {d.mapping.jobs.map((j) => (
+                <div key={j.title} className={styles.qa}>
+                  <b>{j.title}</b> <span className={styles.line}>{j.how}</span>
+                </div>
+              ))}
+            </>
+          )}
         </>
       )}
     </div>

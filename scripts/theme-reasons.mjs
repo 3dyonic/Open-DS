@@ -9,10 +9,13 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { loadScheme, saveScheme, assetRoots } from "../cli/src/schemes.mjs";
 import { tokenIndex, aliasChain } from "../cli/src/lands.mjs";
+import { grammar } from "../cli/src/schemes.mjs";
+import { decidingQuestion } from "../cli/src/trace.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
 const roots = assetRoots();
+const g = grammar(roots);
 const dry = process.argv.includes("--dry");
 const hex = (x) => typeof x === "string" && /^#[0-9a-f]{6}/i.test(x);
 const lum = (h) =>
@@ -44,12 +47,10 @@ const step = (ref) => ref?.match(/\.(\d+)\}?$/)?.[1];
 const RULES = [
   {
     test: /^color\.neutral\.\d+$/,
-    because: ["color.definition"],
     why: (c) => `${c.pick}: the scheme's neutral is ${c.pick.split(".")[0]}. ${c.answer("color.definition")}`,
   },
   {
     test: /^color\.surface\.raised$/,
-    because: ["elevation.roles", "elevation.definition"],
     why: (c) => {
       const same = c.v("color.surface.raised") === c.v("color.surface.default");
       const sh = c.v("elevation.overlay");
@@ -61,7 +62,6 @@ const RULES = [
   },
   {
     test: /^color\.border\.default$/,
-    because: ["elevation.definition", "accessibility.definition"],
     why: (c) => {
       const on = ["color.surface.canvas", "color.surface.default", "color.surface.raised"].map((x) => [x, ratio(c.v("color.border.default"), c.v(x))]);
       const [low, r] = on.sort((a, b) => a[1] - b[1])[0];
@@ -70,22 +70,18 @@ const RULES = [
   },
   {
     test: /^color\.text\.primary$/,
-    because: ["accessibility.definition"],
     why: (c) => contrast(c, c.path, "color.surface.default", c.floor, "the strongest text step"),
   },
   {
     test: /^color\.border\.focus$/,
-    because: ["accessibility.definition", "color.definition"],
     why: (c) => contrast(c, c.path, "color.surface.default", 3, "the focus ring, so the keyboard's place is never lost"),
   },
   {
     test: /^color\.surface\.canvas$/,
-    because: ["elevation.definition", "color.definition"],
     why: (c) => `${c.pick}, under content: ${r1(ratio(c.v("color.surface.canvas"), c.v("color.surface.default")))} from surface.default, so cards and panels stand forward.`,
   },
   {
     test: /^color\.surface\.default$/,
-    because: ["accessibility.definition"],
     why: (c) => {
       const r = ratio(c.v("color.text.primary"), c.v("color.surface.default"));
       return r < c.floor ? BROKE : `${c.pick}: the base for content; body text reads ${r1(r)} on it, above the ${c.floor}:1 floor.`;
@@ -93,32 +89,26 @@ const RULES = [
   },
   {
     test: /^color\.surface\.sunken$/,
-    because: ["elevation.definition", "color.definition"],
     why: (c) => `${c.pick}, a step below content (${r1(ratio(c.v("color.surface.sunken"), c.v("color.surface.default")))} on surface.default), so table headers and wells read as recessed.`,
   },
   {
     test: /^color\.surface\.selected$/,
-    because: ["color.definition", "accessibility.count"],
     why: (c) => `${c.pick}: a tint of the brand, ${r1(ratio(c.v("color.surface.selected"), c.v("color.surface.default")))} from content, always beside its edge (border.selected), so selection is never color alone.`,
   },
   {
     test: /^color\.surface\.inverse$/,
-    because: ["accessibility.definition"],
     why: (c) => contrast(c, "color.text.inverse", "color.surface.inverse", c.floor, "the reverse of content for short messages; its text reads"),
   },
   {
     test: /^color\.surface\.scrim$/,
-    because: ["elevation.roles"],
     why: (c) => `${c.pick}: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.`,
   },
   {
     test: /^color\.text\.(secondary|muted|link)$/,
-    because: ["accessibility.definition"],
     why: (c) => contrast(c, c.path, "color.surface.default", c.floor, { "color.text.secondary": "supporting text", "color.text.muted": "the quietest text that still reads", "color.text.link": "a link, set apart by its hue" }[c.path]),
   },
   {
     test: /^color\.text\.(inverse|on-action|on-danger)$/,
-    because: ["accessibility.definition"],
     why: (c) => {
       const fill = { "color.text.inverse": "color.surface.inverse", "color.text.on-action": "color.action.primary.@", "color.text.on-danger": "color.action.danger.@" }[c.path];
       return contrast(c, c.path, fill, c.floor, `the text its fill's tone picks`);
@@ -128,13 +118,11 @@ const RULES = [
     test: /^color\.text\.on-(light|dark)$/,
     // Both are checked in light: there the page is light and the primary action is a dark fill.
     modeOf: () => "light",
-    because: ["accessibility.definition"],
     why: (c) => contrast(c, c.path, c.path.endsWith("on-light") ? "color.surface.default" : "color.action.primary.@", c.floor, c.path.endsWith("on-light") ? "the text for every light fill" : "the text for every dark fill"),
   },
   {
     test: /^color\.text\.(info|success|warning|danger)-on-(light|dark)$/,
     modeOf: (p) => (p.endsWith("on-light") ? "light" : "dark"),
-    because: ["accessibility.definition", "accessibility.count"],
     why: (c) => {
       const s = c.path.match(/text\.([a-z]+)-on/)[1];
       return contrast(c, c.path, `color.status.${s}.subtle`, c.floor, `${s} text on its own tint`);
@@ -142,12 +130,10 @@ const RULES = [
   },
   {
     test: /^color\.border\.(strong|selected)$/,
-    because: ["accessibility.definition"],
     why: (c) => contrast(c, c.path, "color.surface.default", 3, c.path.endsWith("strong") ? "the edge of a control people must find" : "the edge beside a selected fill, so selection is never color alone"),
   },
   {
     test: /^color\.action\.(primary|secondary|danger)\.@$/,
-    because: ["accessibility.definition", "color.count"],
     why: (c) => {
       const kind = c.path.split(".")[2];
       const label = { primary: "color.text.on-action", secondary: "color.text.primary", danger: "color.text.on-danger" }[kind];
@@ -156,7 +142,6 @@ const RULES = [
   },
   {
     test: /^color\.action\.(primary|secondary|danger)\.hover$/,
-    because: ["accessibility.roles", "accessibility.definition"],
     why: (c) => {
       const kind = c.path.split(".")[2];
       const label = { primary: "color.text.on-action", secondary: "color.text.primary", danger: "color.text.on-danger" }[kind];
@@ -168,7 +153,6 @@ const RULES = [
   },
   {
     test: /^color\.status\.(info|success|warning|danger)\.@$/,
-    because: ["accessibility.definition", "color.lands"],
     why: (c) => {
       const s = c.path.split(".")[2];
       // Status reads as text and icons; an icon or a mark needs 3:1, text the scheme's floor.
@@ -181,7 +165,6 @@ const RULES = [
   },
   {
     test: /^color\.status\.(info|success|warning|danger)\.subtle$/,
-    because: ["accessibility.count", "color.lands"],
     why: (c) => {
       const s = c.path.split(".")[2];
       const t = c.mode === "light" ? `color.text.${s}-on-light` : `color.text.${s}-on-dark`;
@@ -190,17 +173,14 @@ const RULES = [
   },
   {
     test: /^color\.category\.\d\.@$/,
-    because: ["color.count", "color.lands"],
     why: (c) => contrast(c, c.path, "color.surface.default", 3, "a series color: a distinct hue with no meaning, for tags and chart marks"),
   },
   {
     test: /^color\.category\.\d\.subtle$/,
-    because: ["color.count"],
     why: (c) => contrast(c, "color.text.primary", c.path, c.floor, "a tag's tint; text on it reads")?.toString().replace(` on ${short(c.path)}`, "") ?? null,
   },
   {
     test: /^color\.disabled\.(text|surface|border)$/,
-    because: ["accessibility.roles"],
     why: (c) => {
       const part = c.path.split(".")[2];
       if (part === "text")
@@ -211,7 +191,6 @@ const RULES = [
   {
     // OD-245: the typeface is the brand.q3 answer; the pick quotes it, with the role it serves.
     test: /^type\.[a-z]+\.font-family$/,
-    because: ["brand.q3"],
     why: (c) => {
       const a = c.answers["brand.q3"];
       if (!a) return null;
@@ -221,12 +200,10 @@ const RULES = [
   },
   {
     test: /^radius\.(control|badge|container)$/,
-    because: ["shape.roles", "shape.values"],
     why: (c) => `${c.pick}: ${c.answer("shape.values")}`,
   },
   {
     test: /^elevation\.(card|overlay)$/,
-    because: ["elevation.roles", "elevation.values"],
     why: (c) => `${c.pick}: ${c.answer(c.path.endsWith("card") ? "elevation.roles" : "elevation.values")}`,
   },
 ];
@@ -276,7 +253,14 @@ for (const id of SCHEMES) {
         }
         if (!why) continue;
         od.why = why;
-        od.because = rule.because;
+        // The answer that decides a value comes from the grammar's decision mapping (OD-303), never from
+        // the rule: a token the mapping does not cover keeps no citation and shows as untraced.
+        const question = decidingQuestion(g, sem);
+        // A pick measured against the contrast floor is also decided by the floor's answer.
+        const floorCited = /floor/.test(why) ? ["accessibility.definition"] : [];
+        const because = [...new Set([...(question ? [question] : []), ...floorCited])];
+        if (because.length) od.because = because;
+        else delete od.because;
         od.generated = true;
         added++;
         (preview[`${id}/${brand}/${mode}`] ??= {})[path] = why;

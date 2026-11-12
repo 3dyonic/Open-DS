@@ -17360,6 +17360,23 @@
         "step": "floor",
         "description": "One step below 0, for a scheme whose dark canvas sits on step 0: in dark, wells and the hover band take it, so they sit below the page. It is step 0 at 0.04 lower OKLab lightness, hue and chroma kept. In light it names step 0, as nothing sits above white, and no light role reads it."
       }
+    },
+    "variants": {
+      "description": "What the last part of a semantic name means (OD-303). Every token ending in that part shares the meaning.",
+      "items": [
+        {
+          "id": "@",
+          "says": "The color itself, at full strength: the mark, line or text that carries the role."
+        },
+        {
+          "id": "subtle",
+          "says": "The soft, low-hierarchy version of a color: it sits quietly beside the other options and carries the palette's harmony into where it is used."
+        },
+        {
+          "id": "hover",
+          "says": "The same color one step on, so the pointer shows without a new meaning."
+        }
+      ]
     }
   },
   "reason_form": {
@@ -39916,5 +39933,772 @@
         "ask": "Can you hit it?"
       }
     ]
-  }
+  },
+  "mapping": [
+    {
+      "property": "font-size",
+      "title": "Font size",
+      "scope": "typography",
+      "question": "typography.values",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "body-size",
+          "title": "Body size",
+          "how": "Visual acuity → Body text sits where long reading stays effortless for this audience."
+        },
+        {
+          "id": "other-sizes",
+          "title": "Other sizes",
+          "how": "follows body size: size(n) = body × ratio^n, rounded to whole px",
+          "also": [
+            "Weber's law → A ratio keeps each step equally easy to notice at any size."
+          ]
+        },
+        {
+          "id": "smallest-text",
+          "title": "Smallest text (dense data)",
+          "how": "Visual acuity → 12px resolves at desk distance; dense data trades size for rows."
+        },
+        {
+          "id": "contrast-floor-by-size",
+          "title": "Contrast floor by size",
+          "how": "Contrast sensitivity → From 24px, or 18.66px bold, text needs 3:1 instead of 4.5:1."
+        }
+      ]
+    },
+    {
+      "property": "line-height",
+      "title": "Line height",
+      "scope": "typography",
+      "question": "typography.definition",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "open",
+          "title": "Open (body, data, captions)",
+          "how": "Return sweep → Open leading lets the eye land on the right next line."
+        },
+        {
+          "id": "tight",
+          "title": "Tight (headings, labels)",
+          "how": "Proximity → Heading lines closer than the space around them read as one unit."
+        },
+        {
+          "id": "follow-the-size",
+          "title": "Follow the size",
+          "how": "follows typography.definition: line height = size × the role kind's ratio"
+        },
+        {
+          "id": "survive-user-spacing",
+          "title": "Survive user spacing",
+          "how": "follows text content: text box height = its content; no fixed heights"
+        }
+      ]
+    },
+    {
+      "property": "letter-spacing",
+      "title": "Letter spacing",
+      "scope": "typography",
+      "question": "typography.definition",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "uppercase-labels",
+          "title": "Uppercase labels",
+          "how": "Crowding → 5–12% extra space keeps capitals from crowding each other."
+        }
+      ]
+    },
+    {
+      "property": "font-weight",
+      "title": "Font weight",
+      "scope": "typography",
+      "question": "typography.count",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "rank-the-roles",
+          "title": "Rank the roles",
+          "how": "Visual weight → Pair weight with size, so rank shows where sizes are close."
+        },
+        {
+          "id": "weights-the-family-draws",
+          "title": "Weights the family draws",
+          "how": "follows brand.q3 (typeface): weight steps = the family's drawn weights"
+        },
+        {
+          "id": "legible-at-small-sizes",
+          "title": "Legible at small sizes",
+          "how": "Visual acuity → Avoid thin weights at small sizes, where hairlines break up."
+        }
+      ]
+    },
+    {
+      "property": "color-step",
+      "title": "Color step",
+      "scope": "color",
+      "question": "color.definition",
+      "tokens": [
+        "color.neutral.*",
+        "color.text.primary",
+        "color.text.secondary",
+        "color.text.muted",
+        "color.text.link",
+        "color.text.inverse",
+        "color.text.on-action",
+        "color.text.on-danger",
+        "color.border.default",
+        "color.border.strong",
+        "color.action.*.hover"
+      ],
+      "jobs": [
+        {
+          "id": "text-step",
+          "title": "Text step",
+          "how": "Luminance contrast → Text steps are picked by contrast with their surface, never by hue.",
+          "also": [
+            "follows accessibility.definition: first step with 4.5:1 (AA) or 7:1 (AAA) on its surface"
+          ]
+        },
+        {
+          "id": "control-edge-and-graphics",
+          "title": "Control edge and graphics",
+          "how": "follows accessibility.definition: first step with 3:1 against its neighbours"
+        },
+        {
+          "id": "hover-and-pressed",
+          "title": "Hover and pressed",
+          "how": "follows the resting step: hover and pressed move along the same ramp"
+        },
+        {
+          "id": "minimum-step-gap",
+          "title": "Minimum step gap",
+          "how": "Perceptual uniformity → A minimum OKLCH lightness gap keeps two steps from looking alike."
+        },
+        {
+          "id": "step-curve-convention",
+          "title": "Step curve convention",
+          "how": "follows accessibility.definition: 400 steps apart = 3:1, 500 = 4.5:1, 700 = 7:1",
+          "also": [
+            "Weber's law → Tight end steps give subtle tints; wide middle steps keep fills distinct."
+          ]
+        },
+        {
+          "id": "second-contrast-check",
+          "title": "Second contrast check",
+          "how": "Contrast sensitivity → APCA weighs size, weight and polarity; the WCAG 2 ratio does not."
+        }
+      ]
+    },
+    {
+      "property": "chroma",
+      "title": "Chroma",
+      "scope": "color",
+      "question": "color.values",
+      "tokens": ["color.action.*.@"],
+      "jobs": [
+        {
+          "id": "main-action",
+          "title": "Main action",
+          "how": "Pre-attentive pop-out → High chroma on few elements finds them; overuse cancels it."
+        },
+        {
+          "id": "chroma-curve",
+          "title": "Chroma curve",
+          "how": "follows color.values: chroma per step follows the muted, balanced or vivid curve"
+        }
+      ]
+    },
+    {
+      "property": "category-color",
+      "title": "Category color",
+      "scope": "color",
+      "question": "color.roles",
+      "tokens": ["color.category.*.@", "color.category.*.subtle"],
+      "jobs": [
+        {
+          "id": "hue-set",
+          "title": "Hue set",
+          "how": "follows brand hue: hues = brand hue + the scheme's harmony angles",
+          "also": [
+            "Hue harmony → Set angles keep a chart inside the brand's color family."
+          ]
+        },
+        {
+          "id": "tell-apart",
+          "title": "Tell apart",
+          "how": "Pre-attentive pop-out → A hue no other series uses lets the eye find a series at once."
+        },
+        {
+          "id": "lightness-steps",
+          "title": "Lightness steps (accessible first)",
+          "how": "Redundant coding → A lightness step keeps pairs apart when hue fails."
+        },
+        {
+          "id": "color-difference",
+          "title": "Color difference",
+          "how": "follows accent and status colors: ΔE ≥ threshold in 4 vision modes; measured, not set"
+        },
+        {
+          "id": "dashes-and-patterns",
+          "title": "Dashes and patterns",
+          "how": "Redundant coding → A dash and a pattern separate series without any color."
+        }
+      ]
+    },
+    {
+      "property": "status-color",
+      "title": "Status color",
+      "scope": "color",
+      "question": "color.lands",
+      "tokens": ["color.status.*.@", "color.status.*.subtle"],
+      "jobs": [
+        {
+          "id": "convention-hue",
+          "title": "Convention hue",
+          "how": "Learned convention → Red for danger and green for success register before the word."
+        },
+        {
+          "id": "second-cue",
+          "title": "Second cue",
+          "how": "Redundant coding → An icon or a word carries status when hue fails.",
+          "also": [
+            "follows accessibility.count: cues = color + word, or color + icon + word"
+          ]
+        },
+        {
+          "id": "status-steps",
+          "title": "Status steps",
+          "how": "follows color-step: status steps meet the text and edge contrast rules"
+        }
+      ]
+    },
+    {
+      "property": "base-step",
+      "title": "Base step",
+      "scope": "spacing",
+      "question": "spacing.definition",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "shared-lines",
+          "title": "Shared lines",
+          "how": "Good continuation → One base step puts edges on shared lines, so layouts read ordered."
+        },
+        {
+          "id": "density",
+          "title": "Density",
+          "how": "Proximity → A smaller step fits more, until groups stop separating."
+        },
+        {
+          "id": "units",
+          "title": "Units",
+          "how": "follows the user's text size: text-bound values in rem; drawn detail in px"
+        }
+      ]
+    },
+    {
+      "property": "gap-inset-and-padding",
+      "title": "Gap, inset and padding",
+      "scope": "spacing",
+      "question": "spacing.values",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "gap-inside-a-group",
+          "title": "Gap inside a group",
+          "how": "follows base step: gap.default = base × k; k grows from compact to spacious"
+        },
+        {
+          "id": "gap-between-groups",
+          "title": "Gap between groups",
+          "how": "Proximity → The gap between groups is clearly larger than the gap inside one.",
+          "also": [
+            "follows gap.default: group ≥ 2 × default; section ≥ 1.5 × group"
+          ]
+        },
+        {
+          "id": "control-and-cell-inset",
+          "title": "Control and cell inset",
+          "how": "follows base step: inset = base × k, sized to the label's line height"
+        },
+        {
+          "id": "container-padding",
+          "title": "Container padding",
+          "how": "Common region → Content sits nearer its own edge than the next box.",
+          "also": ["follows gap.group: inset.container ≤ gap.group"]
+        }
+      ]
+    },
+    {
+      "property": "row-height",
+      "title": "Row height",
+      "scope": "spacing",
+      "question": "spacing.roles",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "default-row",
+          "title": "Default row",
+          "how": "follows size.control.default: row = control default, unless the scheme sets its own"
+        },
+        {
+          "id": "compact-row",
+          "title": "Compact row (scanning)",
+          "how": "Working memory → Short rows put more records in view, so comparison needs no scroll."
+        },
+        {
+          "id": "stay-on-the-row",
+          "title": "Stay on the row",
+          "how": "Good continuation → A clear row band leads the eye along one record."
+        },
+        {
+          "id": "row-as-target",
+          "title": "Row as target",
+          "how": "follows hit area: a clickable row meets the scheme's minimum target"
+        }
+      ]
+    },
+    {
+      "property": "control-corner",
+      "title": "Control corner",
+      "scope": "shape",
+      "question": "shape.values",
+      "tokens": ["radius.control"],
+      "jobs": [
+        {
+          "id": "mark-controls",
+          "title": "Mark controls",
+          "how": "Similarity → One corner per kind makes controls a family the eye spots."
+        },
+        {
+          "id": "tone",
+          "title": "Tone",
+          "how": "Curvature preference → Rounder controls read softer; the brand words are convention."
+        }
+      ]
+    },
+    {
+      "property": "surface-corner",
+      "title": "Surface corner",
+      "scope": "shape",
+      "question": "shape.roles",
+      "tokens": ["radius.container", "radius.surface"],
+      "jobs": [
+        {
+          "id": "object-or-cell",
+          "title": "Object or cell",
+          "how": "Uniform connectedness → Rounded surfaces read as separate objects; square ones tile."
+        }
+      ]
+    },
+    {
+      "property": "option-element-and-badge-corners",
+      "title": "Option, element and badge corners",
+      "scope": "shape",
+      "question": "shape.roles",
+      "tokens": ["radius.badge", "radius.option", "radius.element"],
+      "jobs": [
+        {
+          "id": "option",
+          "title": "Option",
+          "how": "follows radius.surface: option = surface − panel padding − border, floor 0"
+        },
+        {
+          "id": "element",
+          "title": "Element",
+          "how": "follows radius.control: element = control; a moderate step if control is a pill"
+        },
+        {
+          "id": "badge",
+          "title": "Badge",
+          "how": "follows radius.control: badge = control, one step below, or pill"
+        },
+        {
+          "id": "nested-formula",
+          "title": "Nested formula",
+          "how": "follows radius.surface: outer = inner + padding + border; at 24px+ padding, own corner"
+        }
+      ]
+    },
+    {
+      "property": "line-width",
+      "title": "Line width",
+      "scope": "elevation",
+      "question": "elevation.definition",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "default-line",
+          "title": "Default line",
+          "how": "Common region → Where lines group, the line must show; where space groups, it stays thin."
+        },
+        {
+          "id": "control-edge",
+          "title": "Control edge",
+          "how": "follows color-step (edge): a control's only edge takes the 3:1 edge step"
+        },
+        {
+          "id": "selected-and-invalid",
+          "title": "Selected and invalid",
+          "how": "Redundant coding → A thicker or colored edge adds a cue besides hue."
+        }
+      ]
+    },
+    {
+      "property": "shadow",
+      "title": "Shadow",
+      "scope": "elevation",
+      "question": "elevation.count",
+      "tokens": ["elevation.*"],
+      "jobs": [
+        {
+          "id": "depth-order",
+          "title": "Depth order",
+          "how": "Light from above → A larger offset and blur read as a higher layer.",
+          "also": [
+            "follows layer order: each layer up takes the next shadow step"
+          ]
+        },
+        {
+          "id": "separate-same-color-surfaces",
+          "title": "Separate same-color surfaces",
+          "how": "Figure and ground → A shade makes a same-color card the figure on its ground."
+        }
+      ]
+    },
+    {
+      "property": "surface-lightness",
+      "title": "Surface lightness",
+      "scope": "elevation",
+      "question": "elevation.roles",
+      "tokens": [
+        "color.surface.canvas",
+        "color.surface.default",
+        "color.surface.raised",
+        "color.surface.sunken",
+        "color.surface.inverse"
+      ],
+      "jobs": [
+        {
+          "id": "lightness-ladder",
+          "title": "Lightness ladder",
+          "how": "follows surface.default: sunken < default < raised < floating, one step each",
+          "also": [
+            "Lit surfaces → In dark mode, each higher surface is one step lighter."
+          ]
+        },
+        {
+          "id": "dark-raised-edge",
+          "title": "Dark raised edge",
+          "how": "Luminance contrast → A 1px light ring draws the edge a dark shadow cannot."
+        },
+        {
+          "id": "dark-mode-shadow",
+          "title": "Dark-mode shadow",
+          "how": "follows shadow: dark mode keeps shadows on floating layers only"
+        }
+      ]
+    },
+    {
+      "property": "layer-order-and-scrim",
+      "title": "Layer order and scrim",
+      "scope": "elevation",
+      "question": "elevation.lands",
+      "tokens": ["color.surface.scrim"],
+      "jobs": [
+        {
+          "id": "layer-order",
+          "title": "Layer order",
+          "how": "follows layer order: base < raised < sticky < overlay < modal < toast < tooltip"
+        },
+        {
+          "id": "scrim",
+          "title": "Scrim",
+          "how": "Figure and ground → A dim layer behind a modal makes the dialog the figure.",
+          "also": [
+            "follows surface ladder: scrim darkness comes from the scheme's surface ladder"
+          ]
+        }
+      ]
+    },
+    {
+      "property": "motion-family",
+      "title": "Motion family",
+      "scope": "motion",
+      "question": "motion.roles",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "productive",
+          "title": "Productive",
+          "how": "Response-time limits → Productive motion confirms the action and gets out of the way."
+        },
+        {
+          "id": "expressive",
+          "title": "Expressive",
+          "how": "Motion capture → Expressive motion draws the eye, so it is kept for brand moments."
+        }
+      ]
+    },
+    {
+      "property": "duration",
+      "title": "Duration",
+      "scope": "motion",
+      "question": "motion.values",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "feedback",
+          "title": "Feedback",
+          "how": "Response-time limits → At 150ms or less, feedback still feels caused by the click."
+        },
+        {
+          "id": "panels",
+          "title": "Panels",
+          "how": "Object constancy → Up to 300ms lets the eye track a panel from origin to place."
+        },
+        {
+          "id": "expressive-moves",
+          "title": "Expressive moves",
+          "how": "follows panel duration: expressive ≤ 500ms, the step above panels"
+        }
+      ]
+    },
+    {
+      "property": "easing",
+      "title": "Easing",
+      "scope": "motion",
+      "question": "motion.definition",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "enter",
+          "title": "Enter",
+          "how": "Physical motion → An arriving element decelerates to rest: ease-out."
+        },
+        {
+          "id": "exit",
+          "title": "Exit",
+          "how": "follows feedback duration: productive: ease-out ~150ms; expressive: ease-in off-screen",
+          "also": [
+            "Response-time limits → A strong ease-out does most of the move at once; it feels instant."
+          ]
+        },
+        {
+          "id": "transition",
+          "title": "Transition",
+          "how": "Object constancy → An ease-in-out keeps the element trackable from start to end."
+        },
+        {
+          "id": "emphasize",
+          "title": "Emphasize",
+          "how": "Motion capture → Overshoot draws the eye, so only the emphasize move uses it."
+        }
+      ]
+    },
+    {
+      "property": "motion-safety",
+      "title": "Motion safety",
+      "scope": "motion",
+      "question": "motion.lands",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "reduced-motion",
+          "title": "Reduced motion",
+          "how": "Vestibular response → Remove travel and scale; fades and color changes stay."
+        },
+        {
+          "id": "frequency-gate",
+          "title": "Frequency gate",
+          "how": "Habituation → No motion on keyboard actions or actions used 100+ times a day."
+        }
+      ]
+    },
+    {
+      "property": "icon-size",
+      "title": "Icon size",
+      "scope": "iconography",
+      "question": "iconography.values",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "match-the-label",
+          "title": "Match the label",
+          "how": "follows label line height: icon = label line height, or the next size step"
+        },
+        {
+          "id": "recognize",
+          "title": "Recognize",
+          "how": "Optical size → Use icons near the grid sizes they are drawn for: 16, 20 or 24px."
+        },
+        {
+          "id": "meaningful-icon",
+          "title": "Meaningful icon",
+          "how": "follows color-step (edge): a meaningful icon takes a 3:1 step"
+        }
+      ]
+    },
+    {
+      "property": "icon-stroke",
+      "title": "Icon stroke",
+      "scope": "iconography",
+      "question": "iconography.definition",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "one-family",
+          "title": "One family",
+          "how": "Similarity → One stroke, cap and join across the set make one family."
+        },
+        {
+          "id": "rendered-stroke",
+          "title": "Rendered stroke",
+          "how": "follows size.icon: rendered = stroke × icon size ÷ 24, never under 1px",
+          "also": [
+            "Visual acuity → Thinner rendered lines break up and lose contrast."
+          ]
+        },
+        {
+          "id": "stroke-by-text-weight",
+          "title": "Stroke by text weight",
+          "how": "follows text weight: 1.5px regular; 2px medium or semibold; 2.5px bold"
+        }
+      ]
+    },
+    {
+      "property": "control-height",
+      "title": "Control height",
+      "scope": "accessibility",
+      "question": "accessibility.values",
+      "tokens": [],
+      "jobs": [
+        {
+          "id": "default-height",
+          "title": "Default height",
+          "how": "Fitts's law → The default sets the target for the scheme's main input device."
+        },
+        {
+          "id": "compact",
+          "title": "Compact",
+          "how": "follows size.control.default: compact = one step below default on the control scale"
+        },
+        {
+          "id": "large",
+          "title": "Large",
+          "how": "follows size.control.default: large = one step above default, or equal"
+        },
+        {
+          "id": "hit-area",
+          "title": "Hit area",
+          "how": "follows drawn size: hit = max(drawn, min target), no overlap; ≥ 24px, touch-first 44px"
+        },
+        {
+          "id": "align-in-a-row",
+          "title": "Align in a row",
+          "how": "Good continuation → Controls of one height share edges, so a form row reads as one line."
+        },
+        {
+          "id": "hold-the-text",
+          "title": "Hold the text",
+          "how": "follows label line height: min-height, not height: box = label line + inset"
+        }
+      ]
+    },
+    {
+      "property": "state-channels",
+      "title": "State channels",
+      "scope": "accessibility",
+      "question": "accessibility.roles",
+      "tokens": [
+        "color.surface.selected",
+        "color.border.selected",
+        "color.surface.highlight",
+        "color.surface.pressed"
+      ],
+      "jobs": [
+        {
+          "id": "map-states-to-channels",
+          "title": "Map states to channels",
+          "how": "Redundant coding → Selected and invalid add weight, an edge or an icon to the hue."
+        },
+        {
+          "id": "read-only",
+          "title": "Read-only",
+          "how": "Luminance contrast → Read-only text keeps full contrast, because people still read it.",
+          "also": [
+            "Common region → No field fill, so the value no longer reads as an input."
+          ]
+        }
+      ]
+    },
+    {
+      "property": "disabled-and-opacity",
+      "title": "Disabled and opacity",
+      "scope": "accessibility",
+      "question": "accessibility.roles",
+      "tokens": ["color.disabled.*"],
+      "jobs": [
+        {
+          "id": "disabled",
+          "title": "Disabled",
+          "how": "Visual weight → Lower contrast reads as unavailable, with no opacity.",
+          "also": [
+            "follows color-step: disabled = fixed muted steps, checked once per surface"
+          ]
+        },
+        {
+          "id": "loading-and-dragging",
+          "title": "Loading and dragging",
+          "how": "Perceptual transparency → A see-through item reads as lifted above the page.",
+          "also": [
+            "follows opacity: size stays; progress shows; opacity allowed"
+          ]
+        }
+      ]
+    },
+    {
+      "property": "focus-ring",
+      "title": "Focus ring",
+      "scope": "accessibility",
+      "question": "accessibility.roles",
+      "tokens": ["color.border.focus"],
+      "jobs": [
+        {
+          "id": "ring-width",
+          "title": "Ring width",
+          "how": "follows border-width.default: focus = one step heavier than the default line",
+          "also": [
+            "Visual weight → The heaviest edge on the page draws the eye to focus."
+          ]
+        },
+        {
+          "id": "two-color-gap",
+          "title": "Two-color gap",
+          "how": "Luminance contrast → The gap takes the page color, so the ring keeps 3:1 on any fill."
+        },
+        {
+          "id": "ring-corner",
+          "title": "Ring corner",
+          "how": "follows radius.control: ring radius = control radius + offset"
+        }
+      ]
+    },
+    {
+      "property": "typeface",
+      "title": "Typeface",
+      "scope": "typography",
+      "question": "brand.q3",
+      "tokens": ["type.*.font-family"],
+      "jobs": [
+        {
+          "id": "carry-the-product",
+          "title": "Carry the product",
+          "how": "The scheme's answer names the faces and why they fit its readers."
+        }
+      ]
+    }
+  ]
 }

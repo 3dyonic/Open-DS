@@ -2001,6 +2001,23 @@ export const CHECKS = {
     },
   },
 
+  "json-sources-one-layout": {
+    requires: ["cli/src/schemes.mjs", "schemes/grammar.json", "schema/grammar.schema.json", "schema/scheme.schema.json"],
+    run: async (c) => {
+      // The grammar and the schemas have one layout (formatGrammar), so an edit changes only its own lines
+      // and two branches that touch different parts never conflict on whitespace.
+      const { formatGrammar } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
+      const files = ["schemes/grammar.json", "schema/grammar.schema.json", "schema/scheme.schema.json"];
+      const off = files.filter((f) => {
+        const raw = readFileSync(c.p(f), "utf8");
+        return formatGrammar(JSON.parse(raw)) !== raw;
+      });
+      return off.length
+        ? bad(`not in the one layout: ${off.join(", ")}. Write them with saveGrammar or formatGrammar from cli/src/schemes.mjs.`)
+        : ok(`${files.length} source JSON files are in the one layout`);
+    },
+  },
+
   // LLM context
   "llm-schema-descriptions": {
     requires: ["schema/scheme.schema.json"],

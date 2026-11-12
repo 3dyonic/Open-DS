@@ -22,7 +22,7 @@ import {
 } from "./color-map.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
-import { traceScheme } from "./trace.mjs";
+import { mappingOf, traceScheme } from "./trace.mjs";
 
 export const AREAS = ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Motion", "Opacity"];
 
@@ -172,7 +172,21 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     componentsShowing(index, d).map((c) => ({ component: c.component, rows: rowsOf(c.rows) }));
   const chainOf = (index, d) => {
     const { steps, links } = reasonChain(index, reasons, d);
-    return { answers: steps.map((s) => s.id).filter((id) => reasons[id]), direct: links.filter((l) => l.to === "decision").map((l) => l.from) };
+    const direct = links.filter((l) => l.to === "decision").map((l) => l.from);
+    // OD-303: a mapped token shows the one answer that decides it, its property and the property's jobs.
+    // The answers behind that answer belong to the answer, not to this token.
+    const entry = mappingOf(grammar, tokenName(d));
+    // What the token is for, from the grammar's semantics: its intent, uses and the token to use instead.
+    const key = (grammar.semantics?.keys ?? []).find((k) => k.id === tokenName(d));
+    const guide = key && { intent: key.intent ?? null, useFor: key.use_for ?? [], notFor: (key.not_for ?? []).map((n) => ({ when: n.when, use: n.use })) };
+    if (entry)
+      return {
+        answers: reasons[entry.question] ? [entry.question] : [],
+        direct,
+        mapping: { property: entry.title, jobs: entry.jobs.map((j) => ({ title: j.title, how: j.how })) },
+        ...(guide && { guide }),
+      };
+    return { answers: steps.map((s) => s.id).filter((id) => reasons[id]), direct, ...(guide && { guide }) };
   };
 
   // Every area but color is the same in both modes: built once, from the light graph.
@@ -202,6 +216,8 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
           description: indexes.light.nodes.get(d)?.description ?? null,
           answers: chain.answers,
           direct: chain.direct,
+          ...(chain.mapping && { mapping: chain.mapping }),
+          ...(chain.guide && { guide: chain.guide }),
           components: componentsOf(indexes.light, d),
         };
       }
@@ -238,6 +254,8 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         description: index.nodes.get(d)?.description ?? null,
         answers: chain.answers,
         direct: chain.direct,
+        ...(chain.mapping && { mapping: chain.mapping }),
+        ...(chain.guide && { guide: chain.guide }),
         components: componentsOf(index, d),
         ...extra,
       };
