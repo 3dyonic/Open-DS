@@ -4,6 +4,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { measure } from "../src/quality/criteria/blast-radius.mjs";
 import { compareSnapshots } from "../src/quality/scorecard.mjs";
+import { fromLch, lch } from "../src/ramps.mjs";
 import { px } from "../src/quality/values.mjs";
 import { fixtureScheme, snapshotOf, valueOf, violet } from "./quality-fixture.mjs";
 
@@ -90,6 +91,47 @@ test("answer-driven: one answer that generates two tokens gives 2, and a fall fa
   assert.ok(card.failed.includes("generation.answer-driven"));
   assert.ok(card.failed.includes("generation.answer-driven-share"));
   assert.ok(!compareSnapshots(snapshotOf(fixtureScheme()), gen).failed.includes("generation.answer-driven"));
+});
+
+// A loader that stores only the violet keys and generates the scale on load (OD-292): the file holds the
+// decision, the loader makes the steps.
+const keysOnly = () => {
+  const s = fixtureScheme();
+  delete s.tokens.primitive.color.violet.light;
+  delete s.tokens.primitive.color.violet.dark;
+  return s;
+};
+function generateScales(stored) {
+  const s = structuredClone(stored);
+  const v = s.tokens.primitive.color.violet;
+  for (const mode of ["light", "dark"]) v[mode] ??= Object.fromEntries(Object.entries(violet(mode, v.$extensions["open-ds"])).map(([k, hex]) => [k, { $type: "color", $value: hex }]));
+  return s;
+}
+
+test("a scale generated on load: the key color moves exactly the tokens that point at its steps", () => {
+  const snap = snapshotOf(keysOnly(), { load: generateScales });
+  const key = blastOf(snap, "key-color");
+  assert.deepEqual(key.moved, ["color.action.primary"]);
+  assert.deepEqual(key.expected, ["color.action.primary"]);
+  assert.deepEqual([key.orphans, key.hidden], [[], []]);
+  assert.equal(valueOf(measure(snap), "blast-radius.hidden-couplings"), 0);
+});
+
+test("a token outside the hue's scale that the loader ties to the key is still a hidden coupling", () => {
+  // the loader also tints the raised surface from the violet key: no step, no reference, no record
+  const tinted = (stored) => {
+    const s = generateScales(stored);
+    const [L, C, H] = lch(s.tokens.primitive.color.violet.$extensions["open-ds"].light.key);
+    s.tokens.brands.default.theme.light.color.surface.raised.$value = fromLch(0.97, C / 10, H);
+    return s;
+  };
+  const base = snapshotOf(keysOnly(), { load: generateScales });
+  const cand = snapshotOf(keysOnly(), { load: tinted });
+  const key = blastOf(cand, "key-color");
+  assert.deepEqual(key.hidden, ["color.surface.raised"]);
+  assert.deepEqual(key.orphans, []);
+  assert.equal(valueOf(measure(cand), "blast-radius.hidden-couplings"), 1);
+  assert.ok(compareSnapshots(base, cand).failed.includes("blast-radius.hidden-couplings"));
 });
 
 test("an answer orphan: a value that cites an answer which moves other values, but not this one", () => {

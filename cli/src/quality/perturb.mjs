@@ -96,7 +96,7 @@ function repoint(stored, id, semantic) {
 
 // The key turned 40° in hue, and every step the generator made from the old key made again from the new
 // one, as the scheme writer does. A step stored by hand (not the generator's output) stays.
-function turnKey(stored, hue, modes, canvas) {
+function turnKey(stored, hue, modes, canvas, generateScale) {
   const turn = (k) => {
     const [L, C, H] = lch(k);
     return fromLch(L, C, (H + 40) % 360);
@@ -110,9 +110,9 @@ function turnKey(stored, hue, modes, canvas) {
       const group = next.tokens.primitive.color[hue];
       const x = group.$extensions["open-ds"];
       for (const m of modes) {
-        const was = regenerable(m) ? rampScale(x[m], m, canvas) : {};
+        const was = regenerable(m) ? generateScale(x[m], m, canvas) : {};
         x[m].key = turn(x[m].key);
-        const now = regenerable(m) ? rampScale(x[m], m, canvas) : {};
+        const now = regenerable(m) ? generateScale(x[m], m, canvas) : {};
         for (const [step, hex] of Object.entries(was)) {
           const t = group[m]?.[step];
           if (t && String(t.$value).toUpperCase() === String(hex).toUpperCase()) t.$value = now[step];
@@ -127,13 +127,15 @@ function turnKey(stored, hue, modes, canvas) {
  * The anchors a scheme's values hang from, each moved once: the base step (the 4px space step), the
  * key color of the primary action's hue, the default control height and the default radius.
  * primaryHue: the hue of the primary action's color scale. darkCanvas: the dark canvas the dark scales
- * are generated over.
+ * are generated over. colorScales: each step of the loaded scheme with the generator's output for it
+ * ({ hue, mode, step, stored, generated }), the record of what the key generates. generateScale: the
+ * ref's own generator.
  * [{ kind, id, change, derives, apply }] or { kind, id, notPresent } when the scheme stores no such anchor.
  * derives is what the scheme records as derived from the anchor: { tokens } named outright, { family,
- * px } every token of a family at the anchor's value, { hue, steps } every color at a step of the hue,
- * and inputs, where the relations' links start.
+ * px } every token of a family at the anchor's value, { stepPaths, steps } the steps the key generates
+ * (a token that points at one, or copies its value), and inputs, where the relations' links start.
  */
-export function anchorPerturbations(stored, { primaryHue = null, darkCanvas = null } = {}) {
+export function anchorPerturbations(stored, { primaryHue = null, darkCanvas = null, colorScales = [], generateScale = rampScale } = {}) {
   const out = [];
   const space = stored.tokens?.primitive?.space ?? {};
   const base = Object.entries(space).find(([k, v]) => !k.startsWith("$") && px(v?.$value) === 4);
@@ -162,8 +164,16 @@ export function anchorPerturbations(stored, { primaryHue = null, darkCanvas = nu
   if (!spec?.light?.key) out.push({ kind: "anchor", id: "key-color", notPresent: hue ? `the ${hue} hue records no key color` : "the primary action ends on no color scale" });
   else {
     const modes = ["light", "dark"].filter((m) => spec[m]?.key);
-    const steps = ["light", "dark"].flatMap((m) => Object.entries(group[m] ?? {}).filter(([k]) => !k.startsWith("$")).map(([, t]) => String(t?.$value ?? "").toUpperCase()));
-    out.push({ kind: "anchor", id: "key-color", hue, ...turnKey(stored, hue, modes, darkCanvas), derives: { hue, steps: [...new Set(steps)], inputs: [] } });
+    // The generated scale is the record: each step of the hue that is the generator's output from its key.
+    // A step stored by hand overrides the generator, so nothing records it as following the key.
+    const generated = colorScales.filter((c) => c.hue === hue && String(c.stored).toUpperCase() === String(c.generated).toUpperCase());
+    out.push({
+      kind: "anchor",
+      id: "key-color",
+      hue,
+      ...turnKey(stored, hue, modes, darkCanvas, generateScale),
+      derives: { stepPaths: generated.map((c) => `color.${hue}.${c.mode}.${c.step}`), steps: [...new Set(generated.map((c) => String(c.stored).toUpperCase()))], inputs: [] },
+    });
   }
 
   out.push(repoint(stored, "control-height", "size.control.default"));

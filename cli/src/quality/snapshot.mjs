@@ -56,7 +56,7 @@ export function resolveScheme(scheme, themeTokens) {
 }
 
 // The facts the relations read.
-function factsOf(scheme, themes, values) {
+function factsOf(scheme, themes, values, generateScale) {
   const prim = scheme.tokens?.primitive ?? {};
   const scaleOf = (group) =>
     [...flatMap(at(prim, group))].map(([p, t]) => ({ path: `${group}.${p}`, px: px(t.$value) })).filter((s) => s.px !== null && Number.isFinite(s.px));
@@ -75,7 +75,7 @@ function factsOf(scheme, themes, values) {
     if (!spec.light?.key && !spec.dark?.key) continue;
     for (const mode of ["light", "dark"]) {
       if (!spec[mode]?.key || (mode === "dark" && !/^#[0-9a-f]{6}$/i.test(canvas))) continue;
-      const want = rampScale(spec[mode], mode, canvas);
+      const want = generateScale(spec[mode], mode, canvas);
       for (const [step, generated] of Object.entries(want))
         colorScales.push({ hue, mode, step, key: spec[mode].key, stored: group[mode]?.[step]?.$value ?? null, generated });
     }
@@ -182,12 +182,13 @@ function referencedNames(scheme) {
 /**
  * The snapshot of one scheme. scheme is the scheme as the ref's loader gives it; stored is its file;
  * themeTokens(scheme, brand, mode) is the ref's token builder; reload(stored) loads a changed file with
- * the ref's loader (omit it to skip the blast radius); css is { tokens, theme, shadcn } text or null.
+ * the ref's loader (omit it to skip the blast radius); generateScale(spec, mode, canvas) is the ref's
+ * color scale generator; css is { tokens, theme, shadcn } text or null.
  */
-export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, css = null, uiPairs = [] }) {
+export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, generateScale = rampScale, css = null, uiPairs = [] }) {
   const themes = themesOf(scheme);
   const { values, chains, errors } = resolveScheme(scheme, themeTokens);
-  const facts = factsOf(scheme, themes, values);
+  const facts = factsOf(scheme, themes, values, generateScale);
   const relations = evaluateRelations(facts);
   const links = relationLinks(facts);
 
@@ -228,9 +229,12 @@ export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, c
         grammar,
         trace,
         values,
+        chains,
         links,
         primaryHue: primaryHueOf(scheme, themes, chains, values),
         darkCanvas: facts.darkCanvas,
+        colorScales: facts.colorScales,
+        generateScale,
         reload,
         resolve: (changed) => resolveScheme(changed, themeTokens),
       })

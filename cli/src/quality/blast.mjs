@@ -5,7 +5,9 @@
 // both sides together and never show:
 //   an answer   the tokens whose trace cites it (the trace engine's links);
 //   an anchor   the tokens the scheme records as derived from it (perturb.mjs, derives), and what the
-//               relations tie to those.
+//               relations tie to those. For the key color, the record is the generated scale: the key
+//               gives every step the generator makes, and a token that points at one of those steps
+//               (or copies its value, an orphan if it stays) is expected to move.
 // An expected token that does not move is an orphan; a token that moves with no such record is a
 // hidden coupling. An answer that moves no value at all is counted apart: answers do not generate
 // values yet, and that is a finding about the loader, not an orphan per token. Pure: the caller passes
@@ -47,10 +49,12 @@ function throughLinks(seeds, links) {
 
 /**
  * The tokens an anchor should move in each theme, from what the scheme records as derived from it:
- * { theme: Set }. derives: { tokens, family, px, hue, steps, inputs } (see anchorPerturbations).
+ * { theme: Set }. derives: { tokens, family, px, steps, stepPaths, inputs } (see anchorPerturbations).
+ * chains: { theme: { token: { end } } }, to find the tokens that point at a generated step.
  */
-export function expectedForAnchor(derives, values, links) {
+export function expectedForAnchor(derives, values, links, chains = {}) {
   const steps = new Set(derives.steps ?? []);
+  const stepPaths = new Set(derives.stepPaths ?? []);
   const out = {};
   for (const [theme, byToken] of Object.entries(values)) {
     const set = new Set();
@@ -58,7 +62,7 @@ export function expectedForAnchor(derives, values, links) {
       if (isComponent(token) || v === null || v === undefined) continue;
       if (derives.tokens?.includes(token)) set.add(token);
       else if (derives.family && derives.family.some((f) => token.startsWith(f)) && px(v) === derives.px) set.add(token);
-      else if (derives.hue && token.startsWith("color.") && steps.has(colorOf(v))) set.add(token);
+      else if (token.startsWith("color.") && (stepPaths.has(chains[theme]?.[token]?.end) || steps.has(colorOf(v)))) set.add(token);
     }
     for (const t of throughLinks([...(derives.inputs ?? []), ...set], links)) if (t in byToken) set.add(t);
     out[theme] = set;
@@ -83,13 +87,14 @@ const union = (byTheme) => [...new Set(Object.values(byTheme).flatMap((s) => [..
 /**
  * Every perturbation of one scheme and what it moved: [{ kind, id, change, expected, moved, orphans,
  * hidden, generates? }], or { kind, id, notPresent } / { kind, id, change, error }. reload(stored) loads
- * a changed file; resolve(scheme) gives { values } per theme.
+ * a changed file; resolve(scheme) gives { values } per theme. colorScales are the loaded scheme's steps
+ * with the generator's output (snapshot facts); generateScale is the ref's own generator.
  */
-export function blastRadius({ stored, grammar, trace, values, links, primaryHue, darkCanvas, reload, resolve }) {
+export function blastRadius({ stored, grammar, trace, values, chains, links, primaryHue, darkCanvas, colorScales, generateScale, reload, resolve }) {
   const linkedTo = new Map();
   for (const t of trace.tokens) for (const id of t.because) linkedTo.set(id, [...(linkedTo.get(id) ?? []), t.token]);
   const out = [];
-  for (const p of [...answerPerturbations(stored, grammar), ...anchorPerturbations(stored, { primaryHue, darkCanvas })]) {
+  for (const p of [...answerPerturbations(stored, grammar), ...anchorPerturbations(stored, { primaryHue, darkCanvas, colorScales, generateScale })]) {
     if (p.notPresent) {
       out.push({ kind: p.kind, id: p.id, notPresent: p.notPresent });
       continue;
@@ -118,7 +123,7 @@ export function blastRadius({ stored, grammar, trace, values, links, primaryHue,
       });
       continue;
     }
-    const expected = expectedForAnchor(p.derives, values, links);
+    const expected = expectedForAnchor(p.derives, values, links, chains);
     out.push({ kind: "anchor", id: p.id, change: p.change, expected: union(expected), moved: union(moved), ...compareSets(expected, moved) });
   }
   return out;

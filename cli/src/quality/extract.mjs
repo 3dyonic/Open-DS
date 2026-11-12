@@ -57,6 +57,8 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
   const load = (rel) => import(pathToFileURL(join(root, rel)).href);
   const schemesModule = await load("cli/src/schemes.mjs");
   const { themeTokens } = await load("cli/src/tokens.mjs");
+  // The ref's own color scale generator, so a ref reads its generated scales as its own code makes them.
+  const generateScale = existsSync(join(root, "cli", "src", "ramps.mjs")) ? (await load("cli/src/ramps.mjs")).scale : undefined;
   const roots = { ...(schemesModule.assetRoots?.() ?? {}), schemes: join(root, "schemes") };
   const grammar = schemesModule.grammar(roots);
   const list = ids ?? schemesModule.schemeIds(roots);
@@ -82,7 +84,7 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
       const css = readCss && existsSync(join(dist, "tokens.css"))
         ? { tokens: readText(join(dist, "tokens.css")), theme: readText(join(dist, "theme.css")), shadcn: readText(join(dist, "shadcn.css")) }
         : null;
-      schemes[id] = snapshotScheme({ scheme, stored, grammar, themeTokens, reload: blast ? reload : null, css, uiPairs: ui.pairs });
+      schemes[id] = snapshotScheme({ scheme, stored, grammar, themeTokens, reload: blast ? reload : null, generateScale, css, uiPairs: ui.pairs });
     }
     return {
       ref,
