@@ -882,6 +882,166 @@ export const CHECKS = {
       return ok(`every shape and elevation reason is in the form. ${counts}. Each count may only go down.`);
     },
   },
+  // OD-297: the design decisions the owner accepted, each checked where it lives.
+  "motion-families": {
+    requires: ["cli/src/motion.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // Each scheme's family follows motion.roles; its durations keep the family's limits, and each move
+      // type's easing is a curve kind the family allows. Only the expressive emphasize move overshoots.
+      const { checkMotion } = await import(pathToFileURL(c.p("cli/src/motion.mjs")).href);
+      const g = c.grammar();
+      const gaps = [];
+      const families = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const r = checkMotion(c.scheme(id), g);
+        gaps.push(...r.errors);
+        for (const x of r.results) {
+          n++;
+          if (!x.holds) gaps.push(`${id}: ${x.token}: ${x.says}`);
+        }
+        families.push(`${id} ${r.family}`);
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(`${n} durations and move easings keep their family's limits (${families.join(", ")})`);
+    },
+  },
+  "reduced-motion-keeps-fades": {
+    requires: ["ui/src/styles.css", "cli/src/style-rules.mjs"],
+    run: async (c) => {
+      // Under prefers-reduced-motion nothing moves, and a change still shows: no cut to zero.
+      const { reducedMotion } = await import(pathToFileURL(c.p("cli/src/style-rules.mjs")).href);
+      const r = reducedMotion(c.read("ui/src/styles.css"));
+      const gaps = [];
+      if (!r.found) gaps.push("ui/src/styles.css has no prefers-reduced-motion: reduce block");
+      else {
+        if (r.instant) gaps.push("it cuts motion to zero, so a change no longer shows");
+        if (r.movesTransform) gaps.push("transitions may still move: transform or layout is in transition-property");
+        if (!r.keepsFade) gaps.push("it drops fades or color changes");
+        if (!r.stopsSlides) gaps.push("enter and exit animations still slide or zoom");
+      }
+      return gaps.length
+        ? bad(`ui/src/styles.css: ${gaps.join("; ")}`)
+        : ok("under reduced motion nothing moves; fades and color changes stay, at the feedback duration");
+    },
+  },
+  "disabled-by-color": {
+    requires: ["ui/src/components", "cli/src/style-rules.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // Disabled reads muted colors and keeps its label readable; opacity is for loading and dragging.
+      const { disabledOpacity } = await import(pathToFileURL(c.p("cli/src/style-rules.mjs")).href);
+      const gaps = [];
+      for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
+        for (const h of disabledOpacity(c.read(f))) gaps.push(`${f}:${h.line} ${h.cls}`);
+      for (const k of c.grammar().component_keys)
+        if (!k.replaced_by && k.default === "opacity.disabled") gaps.push(`${k.id} reads opacity.disabled`);
+      for (const id of SCHEMES)
+        if (!c.scheme(id).tokens.semantic.opacity?.disabled?.$deprecated) gaps.push(`${id}: opacity.disabled is not deprecated`);
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok("no component dims a disabled state with opacity; disabled parts read color.disabled.*");
+    },
+  },
+  "dark-depth": {
+    requires: ["cli/src/shape-elevation.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // In dark, raised is lighter than content with a solid, lighter ring; sunken is darker; only
+      // floating layers cast a shade. Unlike the OD-294 findings, a break here fails.
+      const { checkRelations } = await import(pathToFileURL(c.p("cli/src/shape-elevation.mjs")).href);
+      const g = c.grammar();
+      const gaps = [];
+      let n = 0;
+      for (const id of SCHEMES)
+        for (const x of checkRelations(c.scheme(id), g).results) {
+          const depth = ["color.surface.raised", "color.border.raised"].includes(x.token) || x.says.includes("not a floating layer");
+          if (x.relation !== "dark-shade" || x.mode !== "dark" || !depth) continue;
+          n++;
+          if (!x.holds) gaps.push(`${id}/${x.brand}: ${x.says}`);
+        }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(`${n} dark depth results hold: raised lighter with a solid lighter ring, sunken darker, shades on floating layers only`);
+    },
+  },
+  "hit-area": {
+    requires: ["ui/src/components", "cli/src/style-rules.mjs", "cli/src/shape-elevation.mjs"],
+    run: async (c) => {
+      // size.hit-area is 24px for a pointer and 44px for touch (accessibility.values). The controls drawn
+      // under 24px grow a pseudo-element to it, and the groups keep two hit areas from overlapping.
+      const { readsHitArea } = await import(pathToFileURL(c.p("cli/src/style-rules.mjs")).href);
+      const { px } = await import(pathToFileURL(c.p("cli/src/shape-elevation.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const target = s.answers.find((a) => a.question === "accessibility.values")?.option;
+        const want = target === "pointer" ? 24 : 44;
+        const ref = /^\{(.+)\}$/.exec(s.tokens.semantic.size?.["hit-area"]?.$value ?? "")?.[1];
+        const got = ref ? px(ref.split(".").reduce((n, k) => n?.[k], s.tokens.primitive)?.$value) : null;
+        if (got !== want) gaps.push(`${id}: size.hit-area is ${got ?? "missing"}, the ${target} answer asks ${want}px`);
+      }
+      const reads = {
+        "checkbox.tsx": ["--checkbox-hit-area"],
+        "radio-group.tsx": ["--radio-group-item-hit-area"],
+        "switch.tsx": ["--switch-hit-area"],
+        "slider.tsx": ["--slider-thumb-hit-area"],
+      };
+      for (const [file, vars] of Object.entries(reads)) {
+        const text = c.read(`ui/src/components/${file}`);
+        for (const v of vars) if (!readsHitArea(text, v)) gaps.push(`${file} does not grow its hit area from ${v}`);
+      }
+      if (!c.read("ui/src/components/radio-group.tsx").includes("calc(var(--radio-group-item-hit-area)-var(--radio-group-item-icon-size))"))
+        gaps.push("radio-group.tsx: the gap does not keep two radios' hit areas apart");
+      if (!c.read("ui/src/components/field.tsx").includes("min-h-[var(--field-group-hit-area)]"))
+        gaps.push("field.tsx: a checkbox group's rows are not one hit area tall");
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("size.hit-area is 24px for a pointer and 44px for touch; 4 small controls grow to it, and their groups keep rows apart");
+    },
+  },
+  "focus-ring-token": {
+    requires: ["cli/src/shape-elevation.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // The focus ring is its own token, not a third border width, and one step heavier than the line.
+      const { checkRelations } = await import(pathToFileURL(c.p("cli/src/shape-elevation.mjs")).href);
+      const g = c.grammar();
+      const gaps = [];
+      for (const k of g.component_keys)
+        if (!k.replaced_by && /^border-width\.focus/.test(k.default)) gaps.push(`${k.id} reads ${k.default}`);
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const ring = s.tokens.semantic.focus?.ring ?? {};
+        for (const leaf of ["width", "offset"]) if (!ring[leaf] || ring[leaf].$deprecated) gaps.push(`${id}: no focus.ring.${leaf}`);
+        for (const leaf of ["focus", "focus-offset"])
+          if (s.tokens.semantic["border-width"]?.[leaf] && !s.tokens.semantic["border-width"][leaf].$deprecated)
+            gaps.push(`${id}: border-width.${leaf} is still a border width`);
+        for (const x of checkRelations(s, g).results)
+          if (x.token === "focus.ring.width" && !x.holds) gaps.push(`${id}/${x.brand}: ${x.says}`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("focus.ring.width and focus.ring.offset are their own tokens; the ring is one step heavier than the default line in every scheme");
+    },
+  },
+  "uppercase-tracking": {
+    requires: ["cli/src/style-rules.mjs"],
+    run: async (c) => {
+      // Uppercase labels use 0.05 to 0.12em of letter spacing, wherever a scheme is drawn.
+      const { trackingOutOfRange, uppercaseLabels, UPPERCASE_TRACKING } = await import(pathToFileURL(c.p("cli/src/style-rules.mjs")).href);
+      const roots = ["ui/src", "doc-composites/src", "docs/src", "storybook/stories", "storybook/src", "cli/templates"];
+      const gaps = [];
+      let n = 0;
+      for (const root of roots.filter((r) => c.has(r)))
+        for (const f of c.walk(root, (x) => /\.(tsx?|css)$/.test(x))) {
+          const text = c.read(f);
+          n += uppercaseLabels(text).length;
+          for (const x of trackingOutOfRange(text)) gaps.push(`${f}:${x.line} tracks ${x.em === null ? "in a unit other than em" : `${x.em}em`}`);
+        }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok(`${n} uppercase labels track ${UPPERCASE_TRACKING.min}–${UPPERCASE_TRACKING.max}em`);
+    },
+  },
   "shape-elevation-relations": {
     requires: ["cli/src/shape-elevation.mjs", "schemes/grammar.json"],
     run: async (c) => {
@@ -1215,7 +1375,7 @@ export const CHECKS = {
         }
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
-        : ok("every focus ring keeps its gap from the control, read from border-width.focus-offset");
+        : ok("every focus ring keeps its gap from the control, read from focus.ring.offset");
     },
   },
 
