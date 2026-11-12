@@ -66,6 +66,12 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds build [<scheme>] [--out build/schemes]
                                        check each scheme against its rules and write the built scheme
                                        with its sha256 hash; when a rule fails, writes nothing and exits 1
+  open-ds compare --base <ref> [--candidate <ref>] [--out build/quality] [--write-baseline]
+                                       measure a scheme change against a base ref (origin/master):
+                                       traceability, derived values, invariants, blast radius,
+                                       accessibility, motion, repetition and size; writes scorecard.json
+                                       and scorecard.md; the candidate defaults to the working tree;
+                                       exits 1 when a gated criterion moves the wrong way
   open-ds trace <scheme> [<token>] [--weak]
                                        how each value reaches the answers that decide it: a theme
                                        pick, its own or its group's reason, a usage rule or a grammar
@@ -368,6 +374,28 @@ export async function run(argv) {
         console.log(r.ok ? `Built ${r.built.length} schemes into ${r.out}.` : `${broken.length} rule failures; nothing written.`);
       });
       return r.ok ? 0 : 1;
+    }
+    if (cmd === "compare") {
+      // Loaded on demand: it spawns git and node, which no other command needs.
+      const { compareRefs, repoRoot } = await import("./quality/compare.mjs");
+      const r = compareRefs({
+        repo: repoRoot(process.cwd()),
+        base: flag(args, "--base", null),
+        candidate: flag(args, "--candidate", null),
+        out: flag(args, "--out", "build/quality"),
+        writeBaseline: args.includes("--write-baseline"),
+        css: !args.includes("--no-css"),
+        blast: !args.includes("--no-blast"),
+        log: (line) => console.error(line),
+      });
+      out(r.card, () => {
+        for (const c of r.card.criteria)
+          if (c.direction !== "report" || c.base !== c.candidate)
+            console.log(`${c.direction === "report" ? "·" : c.pass ? "✓" : "✗"} ${c.id}: ${c.base ?? "not present"} → ${c.candidate ?? "not present"}`);
+        console.log(r.card.pass ? "Pass: no gated criterion moved the wrong way." : `Fail: ${r.card.failed.join(", ")}.`);
+        console.log(`Wrote ${r.files.md} and ${r.files.json}.${r.files.baseline ? ` Wrote the baseline to ${r.files.baseline}.` : ""}`);
+      });
+      return r.card.pass ? 0 : 1;
     }
     if (cmd === "trace") {
       const [id, token] = args.filter((a) => !a.startsWith("--"));
