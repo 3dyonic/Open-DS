@@ -46,7 +46,9 @@
      "key": "size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     }
    ]
@@ -77,7 +79,9 @@
      "key": "contained.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Rounded corners feel friendly.",
+     "pick": [
+      "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges."
+     ],
      "shares": []
     },
     {
@@ -88,8 +92,20 @@
      "darkValue": "#202B3B",
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
-     "pick": "navy.light.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "navy.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "pick": [
+      "navy.light.100: a tint of the brand, ",
+      {
+       "ratio": 1.22
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
+     "darkPick": [
+      "navy.dark.100: a tint of the brand, ",
+      {
+       "ratio": 1.2
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
      "shares": [
       "category.1.subtle"
      ]

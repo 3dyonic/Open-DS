@@ -4,7 +4,8 @@
    "cards": [
     {
      "title": "Color",
-     "text": "136 primitives · 54 in use",
+     "text": "136 primitives",
+     "note": "54 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -52,7 +53,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "15 primitives · 15 in use",
+     "text": "15 primitives",
+     "note": "15 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -96,7 +98,8 @@
     },
     {
      "title": "Shape",
-     "text": "8 primitives · 8 in use",
+     "text": "8 primitives",
+     "note": "8 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -128,7 +131,8 @@
    "cards": [
     {
      "title": "Type",
-     "text": "13 primitives · 13 in use",
+     "text": "13 primitives",
+     "note": "13 in use",
      "href": "./type",
      "robot": {
       "day": "/robots/scopes/typography.webp",
@@ -144,8 +148,11 @@
        "value": "'DM Sans', system-ui, sans-serif"
       },
       {
-       "kind": "text",
-       "value": "Bricolage Grotesque · DM Sans"
+       "kind": "names",
+       "names": [
+        "Bricolage Grotesque",
+        "DM Sans"
+       ]
       }
      ],
      "meter": {
@@ -156,7 +163,8 @@
     },
     {
      "title": "Motion",
-     "text": "4 primitives · 4 in use",
+     "text": "4 primitives",
+     "note": "4 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -177,7 +185,8 @@
     },
     {
      "title": "Effects",
-     "text": "5 primitives · 5 in use",
+     "text": "5 primitives",
+     "note": "5 in use",
      "href": "./effects",
      "robot": {
       "day": "/robots/scopes/elevation.webp",

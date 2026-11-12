@@ -15,7 +15,7 @@ A scrolling list of messages that keeps the newest in view.
 
 ## See it live
 
-::preview{robot="slumber" id="message-scroller/live"}
+::preview{id="message-scroller/live"}
 
 ## When to use it
 

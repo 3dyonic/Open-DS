@@ -18,19 +18,19 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --border-width-focus: 3px; /** The focus ring. */
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.5; /** Disabled controls. */
-  --type-display-font-size: 2.25rem;
+  --type-display-font-size: 2.1875rem;
   --type-display-line-height: 1.25;
   --type-display-font-weight: 700;
   --type-title-font-size: 1.75rem;
   --type-title-line-height: 1.25;
   --type-title-font-weight: 700;
-  --type-heading-font-size: 1.375rem;
+  --type-heading-font-size: 1.4375rem;
   --type-heading-line-height: 1.25;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.1875rem;
   --type-body-line-height: 1.6;
   --type-body-font-weight: 400;
-  --type-label-font-size: 1.125rem;
+  --type-label-font-size: 1.1875rem;
   --type-label-line-height: 1.6;
   --type-label-font-weight: 700;
   --type-caption-font-size: 1rem;
@@ -1841,19 +1841,19 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --border-width-focus: 3px; /** The focus ring. */
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.5; /** Disabled controls. */
-  --type-display-font-size: 2.25rem;
+  --type-display-font-size: 2.1875rem;
   --type-display-line-height: 1.25;
   --type-display-font-weight: 700;
   --type-title-font-size: 1.75rem;
   --type-title-line-height: 1.25;
   --type-title-font-weight: 700;
-  --type-heading-font-size: 1.375rem;
+  --type-heading-font-size: 1.4375rem;
   --type-heading-line-height: 1.25;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.1875rem;
   --type-body-line-height: 1.6;
   --type-body-font-weight: 400;
-  --type-label-font-size: 1.125rem;
+  --type-label-font-size: 1.1875rem;
   --type-label-line-height: 1.6;
   --type-label-font-weight: 700;
   --type-caption-font-size: 1rem;

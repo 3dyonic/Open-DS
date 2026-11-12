@@ -33,7 +33,7 @@ The first answers lead to the rest. Each branch is an answer that follows from t
 
 All 79, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.
 
-::::group{title="Reasons"}
+::::group{id="reasons"}
 :::fold{id="business" title="Business and product" note="2 answers, 14 decisions"}
 #### What does the product do for the business? {#business-q1}
 
@@ -74,7 +74,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="tasks-q2"}
 :::
 
-:::fold{id="human" title="Human factors" note="2 answers, 10 decisions"}
+:::fold{id="human" title="Human factors" note="2 answers, 11 decisions"}
 #### What must the interface protect? {#human-q1}
 
 ::decision-answer{id="human-q1"}
@@ -94,7 +94,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="outcomes-q2"}
 :::
 
-:::fold{id="brand" title="Brand" note="3 answers, 46 decisions"}
+:::fold{id="brand" title="Brand" note="3 answers, 48 decisions"}
 #### What should the brand feel like? {#brand-q1}
 
 ::decision-answer{id="brand-q1"}
@@ -129,7 +129,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 :::
 ::::
 
-::::group{title="Scopes"}
+::::group{id="scopes"}
 :::fold{id="typography" title="Typography" note="5 answers, 3 decisions, and the values of its tokens"}
 #### Which text roles does it need? {#typography-roles}
 
@@ -196,7 +196,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="spacing-lands"}
 :::
 
-:::fold{id="shape" title="Shape" note="5 answers, 13 decisions, and the values of its tokens"}
+:::fold{id="shape" title="Shape" note="5 answers, 15 decisions, and the values of its tokens"}
 #### Which shape roles does it need? {#shape-roles}
 
 ::decision-answer{id="shape-roles"}
@@ -218,7 +218,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="shape-lands"}
 :::
 
-:::fold{id="elevation" title="Elevation" note="5 answers, 27 decisions, and the values of its tokens"}
+:::fold{id="elevation" title="Elevation" note="5 answers, 31 decisions, and the values of its tokens"}
 #### What rises above the page? {#elevation-roles}
 
 ::decision-answer{id="elevation-roles"}

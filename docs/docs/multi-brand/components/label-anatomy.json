@@ -70,9 +70,11 @@
      "kind": "token",
      "semantic": "type.label.font-size",
      "key": "font-size",
-     "value": "0.875rem",
+     "value": "0.8125rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": [
+      "font.size.13"
+     ],
      "shares": []
     },
     {
@@ -81,7 +83,9 @@
      "key": "font-weight",
      "value": "600",
      "byScheme": true,
-     "pick": "font.weight.600",
+     "pick": [
+      "font.weight.600"
+     ],
      "shares": []
     },
     {
@@ -90,7 +94,9 @@
      "key": "font-family",
      "value": "Inter, system-ui, sans-serif",
      "byScheme": true,
-     "pick": "inter for label text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+     "pick": [
+      "inter for label text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one."
+     ],
      "shares": []
     },
     {
@@ -99,7 +105,9 @@
      "key": "line-height",
      "value": "1.2",
      "byScheme": true,
-     "pick": "font.line-height.1_2",
+     "pick": [
+      "font.line-height.1_2"
+     ],
      "shares": []
     }
    ]
@@ -135,8 +143,28 @@
      "darkValue": "#F8FAFC",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.85
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.06
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -165,7 +193,9 @@
      "key": "gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]

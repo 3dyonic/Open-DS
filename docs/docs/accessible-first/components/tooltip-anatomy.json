@@ -82,8 +82,28 @@
      "darkValue": "#F7F7F7",
      "byScheme": true,
      "rule": "A reversed fill for small, short-lived messages.",
-     "pick": "neutral.900: the reverse of content for short messages; its text reads, 18.42:1 on surface.inverse, above the 7:1 floor.",
-     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 17.2:1 on surface.inverse, above the 7:1 floor.",
+     "pick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 18.42
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 17.2
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "text.primary"
      ]
@@ -94,7 +114,9 @@
      "key": "content.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Clear, slightly rounded controls.",
+     "pick": [
+      "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill."
+     ],
      "shares": []
     },
     {
@@ -103,7 +125,9 @@
      "key": "content.padding-x",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -112,7 +136,9 @@
      "key": "content.padding-y",
      "value": "0.25rem",
      "byScheme": false,
-     "pick": "space.4",
+     "pick": [
+      "space.4"
+     ],
      "shares": []
     }
    ]
@@ -148,8 +174,28 @@
      "darkValue": "#141414",
      "byScheme": true,
      "rule": "Text on an inverse fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 18.42:1 on surface.inverse, above the 7:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 17.2:1 on surface.inverse, above the 7:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 18.42
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 17.2
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "text.on-action",
       "text.on-danger"
@@ -161,7 +207,9 @@
      "key": "content.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -170,7 +218,9 @@
      "key": "content.font-family",
      "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
      "byScheme": true,
-     "pick": "atkinson-hyperlegible for caption text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "pick": [
+      "atkinson-hyperlegible for caption text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+     ],
      "shares": []
     }
    ]
@@ -189,7 +239,7 @@
      "situation": "items that belong together",
      "use": "space.gap.default",
      "not": "space.gap.tight",
-     "why": "Generous space lowers mis-taps."
+     "why": "Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps."
     },
     {
      "kind": "token",
@@ -197,7 +247,9 @@
      "key": "overlay.offset",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]

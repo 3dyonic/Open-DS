@@ -535,6 +535,30 @@
         }
       }
     },
+    "trace": {
+      "type": "array",
+      "description": "The trace rules: for one kind of semantic token, the grammar questions whose answers decide it. The trace engine (cli/src/trace.mjs) links every value it names to those answers, so no value rests on no decision. A rule names one kind of token, never a whole scope.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tokens", "follows", "says"],
+        "properties": {
+          "tokens": {
+            "type": "array",
+            "minItems": 1,
+            "description": "The tokens the rule names. The first rule that names a token is the one that applies.",
+            "items": { "type": "string", "pattern": "^[a-z*][a-z0-9*_-]*(\\.[a-z0-9*_@-]+)+$", "description": "A token name; * stands for one segment, for example type.*.font-size." }
+          },
+          "follows": {
+            "type": "array",
+            "minItems": 1,
+            "description": "The questions whose answers decide these tokens.",
+            "items": { "type": "string", "pattern": "^[a-z-]+\\.[a-z0-9-]+$", "description": "A grammar question id, for example typography.values." }
+          },
+          "says": { "type": "string", "minLength": 1, "description": "Why each question decides these tokens, in plain words." }
+        }
+      }
+    },
     "catalogue": {
       "type": "object",
       "additionalProperties": false,

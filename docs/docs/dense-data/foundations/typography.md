@@ -37,7 +37,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `dense-data.theme.base.type.heading.font-family` → `font.family.ibm-plex-sans` |
-| `type.heading.font-size` | `font.size.16` |
+| `type.heading.font-size` | `font.size.17` |
 | `type.heading.line-height` | `font.line-height.1_2` |
 | `type.heading.font-weight` | `font.weight.600` |
 | `type.body.font-family` | `dense-data.theme.base.type.body.font-family` → `font.family.ibm-plex-sans` |
@@ -53,7 +53,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.caption.line-height` | `font.line-height.1_45` |
 | `type.caption.font-weight` | `font.weight.400` |
 | `type.data.font-family` | `dense-data.theme.base.type.data.font-family` → `font.family.ibm-plex-mono` |
-| `type.data.font-size` | `font.size.13` |
+| `type.data.font-size` | `font.size.14` |
 | `type.data.line-height` | `font.line-height.1_45` |
 | `type.data.font-weight` | `font.weight.400` |
 

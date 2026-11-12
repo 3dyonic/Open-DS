@@ -33,7 +33,7 @@ The first answers lead to the rest. Each branch is an answer that follows from t
 
 All 79, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.
 
-::::group{title="Reasons"}
+::::group{id="reasons"}
 :::fold{id="business" title="Business and product" note="2 answers, 7 decisions"}
 #### What does the product do for the business? {#business-q1}
 
@@ -54,7 +54,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="people-q2"}
 :::
 
-:::fold{id="content" title="Content and data" note="2 answers, 63 decisions"}
+:::fold{id="content" title="Content and data" note="2 answers, 64 decisions"}
 #### What is the main content? {#content-q1}
 
 ::decision-answer{id="content-q1"}
@@ -64,7 +64,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="content-q2"}
 :::
 
-:::fold{id="tasks" title="Tasks and flows" note="2 answers, 36 decisions"}
+:::fold{id="tasks" title="Tasks and flows" note="2 answers, 37 decisions"}
 #### What is the main task? {#tasks-q1}
 
 ::decision-answer{id="tasks-q1"}
@@ -94,7 +94,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="outcomes-q2"}
 :::
 
-:::fold{id="brand" title="Brand" note="3 answers, 24 decisions"}
+:::fold{id="brand" title="Brand" note="3 answers, 25 decisions"}
 #### What should the brand feel like? {#brand-q1}
 
 ::decision-answer{id="brand-q1"}
@@ -129,7 +129,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 :::
 ::::
 
-::::group{title="Scopes"}
+::::group{id="scopes"}
 :::fold{id="typography" title="Typography" note="5 answers, 2 decisions, and the values of its tokens"}
 #### Which text roles does it need? {#typography-roles}
 
@@ -196,7 +196,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="spacing-lands"}
 :::
 
-:::fold{id="shape" title="Shape" note="5 answers, 12 decisions, and the values of its tokens"}
+:::fold{id="shape" title="Shape" note="5 answers, 13 decisions, and the values of its tokens"}
 #### Which shape roles does it need? {#shape-roles}
 
 ::decision-answer{id="shape-roles"}

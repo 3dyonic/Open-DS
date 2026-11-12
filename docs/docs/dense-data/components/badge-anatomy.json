@@ -74,7 +74,9 @@
      "key": "radius",
      "value": "0rem",
      "byScheme": true,
-     "pick": "radius.0: Small corners keep dense rows straight.",
+     "pick": [
+      "radius.0: square badges are rectangles, so status badges line up down a column in the table."
+     ],
      "shares": []
     },
     {
@@ -83,7 +85,9 @@
      "key": "padding-x",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "space.4",
+     "pick": [
+      "space.4"
+     ],
      "shares": []
     },
     {
@@ -92,7 +96,9 @@
      "key": "padding-y",
      "value": "0.125rem",
      "byScheme": false,
-     "pick": "space.2",
+     "pick": [
+      "space.2"
+     ],
      "shares": []
     },
     {
@@ -103,8 +109,20 @@
      "darkValue": "#262D38",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.25
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "surface.pressed",
@@ -137,7 +155,9 @@
      "key": "font-size",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "font.size.12",
+     "pick": [
+      "font.size.12"
+     ],
      "shares": []
     },
     {
@@ -146,7 +166,9 @@
      "key": "font-weight",
      "value": "500",
      "byScheme": true,
-     "pick": "font.weight.500",
+     "pick": [
+      "font.weight.500"
+     ],
      "shares": []
     },
     {
@@ -155,7 +177,9 @@
      "key": "font-family",
      "value": "\"IBM Plex Sans\", system-ui, sans-serif",
      "byScheme": true,
-     "pick": "ibm-plex-sans for caption text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+     "pick": [
+      "ibm-plex-sans for caption text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero."
+     ],
      "shares": []
     },
     {
@@ -166,8 +190,28 @@
      "darkValue": "#C4CBD6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 9.52:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.500: supporting text, 10.58:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 9.52
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.500: supporting text, ",
+      {
+       "ratio": 10.58
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -203,8 +247,28 @@
      "darkValue": "#162C4F",
      "byScheme": true,
      "rule": "The fill behind info status.",
-     "pick": "blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
-     "darkPick": "blue.dark.100: a quiet tint behind info; its text, 10.82:1, above the 4.5:1 floor.",
+     "pick": [
+      "blue.light.100: a quiet tint behind info; its text, ",
+      {
+       "ratio": 12.97
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.100: a quiet tint behind info; its text, ",
+      {
+       "ratio": 10.82
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "category.2.subtle"
      ]
@@ -217,8 +281,28 @@
      "darkValue": "#01351A",
      "byScheme": true,
      "rule": "The fill behind success status.",
-     "pick": "green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
-     "darkPick": "green.dark.100: a quiet tint behind success; its text, 12.05:1, above the 4.5:1 floor.",
+     "pick": [
+      "green.light.100: a quiet tint behind success; its text, ",
+      {
+       "ratio": 10.79
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "green.dark.100: a quiet tint behind success; its text, ",
+      {
+       "ratio": 12.05
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "category.3.subtle"
      ]
@@ -231,8 +315,28 @@
      "darkValue": "#3F2B02",
      "byScheme": true,
      "rule": "The fill behind warning status.",
-     "pick": "amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
-     "darkPick": "amber.dark.100: a quiet tint behind warning; its text, 11.34:1, above the 4.5:1 floor.",
+     "pick": [
+      "amber.light.100: a quiet tint behind warning; its text, ",
+      {
+       "ratio": 11.09
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "amber.dark.100: a quiet tint behind warning; its text, ",
+      {
+       "ratio": 11.34
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "category.4.subtle"
      ]
@@ -245,8 +349,28 @@
      "darkValue": "#4C171A",
      "byScheme": true,
      "rule": "The fill behind danger status.",
-     "pick": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
-     "darkPick": "red.dark.100: a quiet tint behind danger; its text, 11.33:1, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 9.9
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 11.33
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -256,7 +380,17 @@
      "value": "#462A02",
      "byScheme": false,
      "rule": "The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).",
-     "pick": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
+     "pick": [
+      "amber.light.800: warning text on its own tint, ",
+      {
+       "ratio": 11.09
+      },
+      " on status.warning.subtle, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]

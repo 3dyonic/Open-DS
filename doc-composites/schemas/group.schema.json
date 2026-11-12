@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/group.schema.json",
+  "title": "Group",
+  "description": "A run of sections under one short caption, such as the Reasons and Scopes on the Decision reference. Drawn by the Group composite; the sections stay in the page.",
+  "type": "object",
+  "required": ["title"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string", "minLength": 1, "description": "The group's caption, such as Reasons." }
+  }
+}

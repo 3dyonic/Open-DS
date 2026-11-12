@@ -22,20 +22,17 @@ test("a usage rule that names a group links every token in it", () => {
   for (const part of ["font-size", "line-height", "font-weight"]) {
     const link = linkOf(dense, `type.body.${part}`);
     assert.ok(link, `type.body.${part} is linked`);
-    assert.deepEqual(link.by, ["rule"]);
+    assert.ok(link.by.includes("rule"), link.by.join(", "));
     assert.ok(link.because.includes("outcomes.q1"));
   }
 });
 
-test("a value with no pick and no rule is unlinked, with the scope that owns it", () => {
-  // Dense data has a rule for every foundation token; the component spacing map has no question yet.
+test("a value with no pick and no rule takes its group's reason: the component spacing map's rhythm", () => {
   assert.ok(linkOf(dense, "border-width.default"));
-  assert.deepEqual(gapOf(dense, "component-spacing-map.x1"), {
-    token: "component-spacing-map.x1",
-    value: "{space.4}",
-    scope: null,
-    owns: null,
-  });
+  const link = linkOf(dense, "component-spacing-map.x1");
+  assert.ok(link.by.includes("group"), link.by.join(", "));
+  assert.ok(link.because.includes("spacing.values"));
+  assert.equal(gapOf(dense, "component-spacing-map.x1"), undefined);
   assert.equal(dense.linked.length + dense.unlinked.length, dense.total);
 });
 

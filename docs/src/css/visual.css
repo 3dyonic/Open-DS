@@ -1235,13 +1235,6 @@ a.odv-icard:hover {
   gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
-.odv-brandset {
-  display: grid;
-  gap: 1rem;
-}
-.odv-brandset h3 {
-  margin: 0.5rem 0 0;
-}
 .odv-modes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1407,14 +1400,6 @@ a.odv-icard:hover {
   background: var(--color-surface-raised, var(--color-surface-default));
 }
 
-/* OD-217: which brand a table belongs to, in a scheme with several brands. */
-.odv-brandname {
-  margin: 0 0 0.5rem;
-  font: 500 0.6875rem/1.4 var(--type-data-font-family, ui-monospace, monospace);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-}
 
 /* OD-220: anything with a hover hint shows the help cursor, so people know there is one. */
 .theme-doc-markdown [title]:not(a) {
@@ -2004,13 +1989,6 @@ tr.odv-for td {
 .odv-grp { font-family: var(--ifm-font-family-monospace); font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ifm-color-emphasis-700); margin: 12px 0 0; }
 .odv-chip { display: inline-block; font-family: var(--ifm-font-family-monospace); font-size: 12px; padding: 0 6px; border-radius: 4px; background: var(--ifm-color-emphasis-100); }
 .odv-raw { font-family: var(--ifm-font-family-monospace); font-size: 12px; }
-.odv-qsec { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; background: var(--ifm-background-surface-color); scroll-margin-top: 80px; }
-.odv-qsec-h { appearance: none; margin: 0; border: 0; background: none; font: inherit; color: inherit; text-align: start; box-sizing: border-box; width: 100%; cursor: pointer; padding: 12px 16px; display: flex; align-items: baseline; gap: 10px; border-radius: 10px; }
-.odv-qsec-h:focus-visible { outline: 2px solid var(--color-focus-ring, var(--ifm-color-primary)); outline-offset: 2px; }
-.odv-qsec-h::before { content: "▸"; color: var(--ifm-color-emphasis-600); }
-.odv-qsec-h[aria-expanded="true"]::before { content: "▾"; }
-.odv-qsec-t { font-weight: 700; flex: 1; }
-.odv-qsec-n { color: var(--ifm-color-emphasis-700); font-size: 13px; }
 .odv-qa { padding: 14px 16px; border-top: 1px solid var(--ifm-color-emphasis-200); scroll-margin-top: 80px; }
 .odv-q { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
 #where-it-starts, #every-question { scroll-margin-top: 80px; margin-bottom: 0; }
@@ -2042,89 +2020,6 @@ tr.odv-for td {
 .odv-anat-lines { margin-top: 6px; display: grid; gap: 3px; color: var(--color-text-secondary); font-size: 0.88em; }
 .odv-anat-lines b { color: var(--color-text-primary); margin-right: 6px; }
 .odv-surface-swatch { display: inline-block; width: 22px; height: 14px; margin-right: 6px; vertical-align: -2px; border: 1px solid var(--color-border-default); border-radius: 3px; }
-/* Anatomy reference (OD-229), after the approved Figma page: drawing + legend, then one card per part. */
-.odv-am-rolelist { display: flex; flex-wrap: wrap; gap: 8px; }
-.odv-am-role { display: inline-flex; align-items: center; padding: 1px 8px; border: 1px solid var(--color-border-default); border-radius: 999px; color: var(--color-text-secondary); font-size: 12px; line-height: 18px; white-space: nowrap; }
-.odv-am-role.big { padding: 4px 12px; gap: 6px; font-size: 13px; }
-.odv-am-role.big b { color: var(--color-text-primary); }
-.odv-am-n { display: inline-flex; align-items: center; justify-content: center; flex: none; min-width: 18px; height: 18px; padding: 0 4px; margin: 0 4px; border-radius: 9px; background: var(--color-action-primary); color: var(--color-text-on-action); font: 600 11px/1 var(--type-label-font-family, sans-serif); font-style: normal; }
-.odv-am-n.none { background: none; }
-.odv-am-parts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-@media (max-width: 996px) { .odv-am-parts { grid-template-columns: minmax(0, 1fr); } }
-.odv-am-stage { margin: 0; padding: 48px 24px 16px; border: 1px solid var(--color-border-default); border-radius: var(--radius-surface, 8px); background: var(--color-surface-canvas); display: flex; flex-direction: column; align-items: center; gap: 40px; }
-.odv-am-stage > .odv-at { overflow-x: auto; padding: 12px 14px 14px 0; }
-.odv-am-stage figcaption { align-self: stretch; color: var(--color-text-secondary); font-size: 12px; }
-.odv-am-menu { position: relative; min-width: 260px; padding: var(--dropdown-menu-content-padding); border: var(--dropdown-menu-content-border-width) solid var(--dropdown-menu-content-border); border-radius: var(--overlay-radius); background: var(--overlay-background); box-shadow: var(--overlay-shadow); color: var(--dropdown-menu-content-label); }
-.odv-am-menu.part { box-shadow: none; min-width: 240px; }
-.odv-am-row { position: relative; display: flex; align-items: center; gap: var(--dropdown-menu-item-gap); min-height: var(--overlay-item-height); padding: 0 var(--dropdown-menu-item-padding-x); border-radius: var(--dropdown-menu-item-radius); font-size: var(--dropdown-menu-item-font-size); }
-.odv-am-row.is-highlight { background: var(--dropdown-menu-item-background-highlight); }
-.odv-am-row.is-focus { outline: var(--border-width-focus, 2px) solid var(--color-border-focus); outline-offset: -2px; }
-.odv-am-row.is-disabled > :not(.odv-am-n):not(.odv-am-at) { opacity: var(--dropdown-menu-item-disabled); }
-.odv-am-row.is-danger { color: var(--dropdown-menu-item-label-destructive); }
-.odv-am-icon { width: var(--dropdown-menu-item-icon); height: var(--dropdown-menu-item-icon); flex: none; }
-.odv-am-label { display: inline-flex; align-items: center; white-space: nowrap; }
-.odv-am-fill { flex: 1; }
-.odv-am-key { display: inline-flex; align-items: center; white-space: nowrap; color: var(--color-text-muted); font-size: 0.85em; }
-.odv-am-sep { position: relative; height: 1px; margin: 4px 0; background: var(--dropdown-menu-separator-background); }
-.odv-am-at.sepn { right: -14px; top: -9px; }
-.odv-am-at { position: absolute; }
-.odv-am-at.top { top: -11px; left: 50%; }
-.odv-am-at.bottom { bottom: -12px; left: 50%; }
-.odv-am-at.corner { bottom: -11px; left: 18px; }
-.odv-am-at.shadow { bottom: -22px; right: -10px; }
-.odv-am-legend ul { list-style: none; margin: 0; padding: 0; }
-.odv-am-legend-t { margin: 0 0 4px; font-weight: 600; font-size: 13px; }
-.odv-am-legend-k { margin: 0 0 12px; display: flex; gap: 8px; align-items: center; color: var(--color-text-secondary); font-size: 12px; }
-.odv-am-lrow { display: flex; align-items: center; gap: 6px; padding: 6px 0; flex-wrap: wrap; }
-.odv-am-lrow.d1 { padding-left: 20px; }
-.odv-am-lrow.d2 { padding-left: 40px; }
-.odv-am-glyph { color: var(--color-text-muted); font-family: var(--ifm-font-family-monospace); }
-.odv-am-need { color: var(--color-text-secondary); font-size: 12px; }
-.odv-am-roles { margin-left: auto; display: inline-flex; gap: 6px; flex-wrap: wrap; }
-.odv-am-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; margin: 0 0 16px; padding: 18px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-surface, 8px); background: var(--color-surface-default); }
-@media (max-width: 996px) { .odv-am-card { grid-template-columns: minmax(0, 1fr); } }
-.odv-am-img { align-self: start; padding: 32px 16px; border-radius: 6px; background: var(--color-surface-canvas); display: flex; justify-content: center; overflow: hidden; }
-.odv-am-body { min-width: 0; }
-.odv-am-body > header { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-.odv-am-body > header b { margin-right: 6px; }
-.odv-am-tree { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--color-border-strong); display: grid; gap: 12px; }
-.odv-am-lbl { display: block; font-size: 12px; color: var(--color-text-secondary); }
-.odv-am-main { color: var(--color-text-primary); }
-.odv-am-why { color: var(--color-text-secondary); font-size: 13px; }
-.odv-am-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.odv-am-chain > span { color: var(--color-text-muted); }
-.odv-am-val { color: var(--color-text-secondary); font-family: var(--ifm-font-family-monospace); font-size: 0.85em; }
-.odv-am-nokey { font-size: 12px; }
-.odv-am-lines { margin-top: 4px; display: grid; gap: 2px; color: var(--color-text-secondary); font-size: 13px; }
-.odv-am-lines b { color: var(--color-text-primary); margin-right: 6px; }
-/* Anatomy reference: the table drawing (OD-229), from the table's and the data table's own variables. */
-.odv-am-img.wide { padding: 20px 16px; }
-.odv-at { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 640px; min-width: 0; color: var(--table-label); font-size: var(--table-font-size); }
-.odv-at-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--data-table-gap-2); }
-.odv-at-input { display: inline-flex; align-items: center; gap: 6px; height: var(--input-height); padding: 0 var(--input-padding-x); min-width: 160px; border: var(--input-border-width) solid var(--input-border); border-radius: var(--input-radius); background: var(--input-background); color: var(--input-placeholder); }
-.odv-at-btn { display: inline-flex; align-items: center; gap: 6px; height: var(--input-height); padding: 0 10px; border: var(--button-secondary-border-width) solid var(--button-secondary-border); border-radius: var(--radius-control); background: var(--button-secondary-background); color: var(--button-secondary-label); }
-.odv-at-count { color: var(--data-table-label); }
-.odv-at-toggle { display: inline-flex; border-radius: var(--toggle-group-radius); box-shadow: var(--toggle-group-shadow); border: 1px solid var(--color-border-default); overflow: hidden; }
-.odv-at-toggle > span { padding: 4px var(--toggle-group-item-padding-x); }
-.odv-at-toggle > span.on { background: var(--color-surface-selected); color: var(--ods-text-on-selected); }
-.odv-at-bar .odv-am-icon, .odv-at-table .odv-am-icon { width: 14px; height: 14px; }
-.odv-at-frame { position: relative; border: var(--data-table-container-border-width) solid var(--data-table-container-border); border-radius: var(--data-table-container-radius); overflow: visible; background: var(--color-surface-default); }
-.odv-at-table { display: table; width: 100%; margin: 0; border-collapse: collapse; border: 0; font-family: var(--table-cell-font-family); }
-.odv-at-table tr { border: 0; background: none; }
-.odv-at-table th, .odv-at-table td { padding: 0 var(--table-cell-padding-x); height: var(--table-row-height); border: 0; text-align: left; white-space: nowrap; }
-.odv-at-table th { background: var(--table-header-background); color: var(--table-head-label); font-family: var(--table-head-font-family); font-size: var(--table-head-font-size); font-weight: var(--table-head-font-weight); }
-.odv-at-table th .odv-am-icon { margin-left: 4px; vertical-align: -2px; color: var(--data-table-label); }
-.odv-at-table td { border-top: var(--table-row-border-width, 1px) solid var(--table-row-border); }
-.odv-at-table .num { text-align: right; font-variant-numeric: tabular-nums; }
-.odv-at-table .chk { width: 28px; }
-.odv-at-table .end { width: 28px; padding: 0 4px; }
-.odv-at-row.is-highlight td { background: var(--data-table-row-background-hover); }
-.odv-at-row.is-selected td { background: var(--table-row-selected); }
-.odv-at-row.is-selected td:first-child { box-shadow: inset var(--table-row-focus) 0 0 0 var(--table-row-selected-edge); }
-.odv-at-box { display: inline-flex; align-items: center; justify-content: center; width: var(--checkbox-size); height: var(--checkbox-size); border: var(--checkbox-border-width) solid var(--color-border-strong); border-radius: var(--radius-badge); vertical-align: middle; }
-.odv-at-box.on { background: var(--color-action-primary); border-color: var(--color-action-primary); color: var(--color-text-on-action); }
-.odv-at-box svg { width: 80%; height: 80%; }
-.odv-at-empty { text-align: center !important; color: var(--data-table-label); }
 
 /* The Anatomy reference card (OD-229), after a component's variants: a link to the parts layer. */
 .odv-anatref { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin: 8px 0 24px; border: var(--border-width-default, 1px) solid var(--color-border-default); border-radius: var(--radius-surface); background: var(--color-surface-default); color: inherit; text-decoration: none; }
@@ -2134,12 +2029,3 @@ tr.odv-for td {
 .odv-anatref-b b { font-weight: 600; color: var(--color-text-primary); }
 .odv-anatref-b span { color: var(--color-text-secondary); font-size: 0.9em; }
 .odv-anatref-go { color: var(--color-action-primary); font-size: 1.1em; }
-
-/* Anatomy drawings as Figma assets (OD-229): the exported frame, and a link back to it in Figma. */
-.odv-am-assetbox { display: grid; gap: 6px; justify-items: start; }
-.odv-am-asset { display: block; max-width: 100%; height: auto; border-radius: var(--radius-surface); }
-/* A card's image is cropped to its own parts (OD-248): it fills the card, up to a height that keeps the
-   card's text beside it in view. */
-.odv-am-img.wide .odv-am-assetbox { justify-items: stretch; width: 100%; }
-.odv-am-img.wide .odv-am-asset { width: 100%; max-height: 320px; object-fit: contain; }
-.odv-am-figma { font-size: 0.8em; color: var(--color-text-secondary); }

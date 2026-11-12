@@ -8,7 +8,7 @@ description: "Type primitives in Dense data."
 
 # Type
 
-13 primitives, 13 used.
+12 primitives, 12 used.
 
 ## `font.size`
 

@@ -17,7 +17,7 @@
       },
       {
        "token": "type.display.font-size",
-       "value": "44px"
+       "value": "45px"
       },
       {
        "token": "type.display.line-height",
@@ -186,7 +186,7 @@
       },
       {
        "token": "type.label.line-height",
-       "value": "1.45"
+       "value": "1.15"
       },
       {
        "token": "type.label.font-weight",
@@ -220,7 +220,7 @@
       },
       {
        "token": "type.caption.line-height",
-       "value": "1.45"
+       "value": "1.65"
       },
       {
        "token": "type.caption.font-weight",
@@ -252,7 +252,12 @@
      "sample": {
       "kind": "type",
       "role": "data",
-      "text": "Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday"
+      "parts": [
+       "Guides saved 4",
+       "Finished this month 11",
+       "Minutes read 186",
+       "Next issue Friday"
+      ]
      },
      "api": [
       {

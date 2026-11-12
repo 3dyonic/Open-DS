@@ -165,7 +165,7 @@ Themes: light, dark
 - An error message (error-message): use color.status.danger, an icon and a sentence next to the field; not Color alone; People must know what went wrong and where.
 - A link (link): use color.text.link, underlined; not Color only; Underline works without color perception.
 - A status (status-label): use Badge with an icon and a word; not Color alone; Status must survive no color and a screen reader.
-- Items that belong together (related-items): use space.gap.default; not space.gap.tight; Generous space lowers mis-taps.
+- Items that belong together (related-items): use space.gap.default; not space.gap.tight; Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps.
 - Between page sections (between-sections): use space.gap.section; not A thin line; Space is easy to see; thin lines are not.
 - Table row height (table-row): use size.row (large); not A compact row; Large rows are easy to read and tap.
 - Corners of buttons and inputs (control-corner): use radius.control; not A pill; Clear rectangles read as fields and buttons.

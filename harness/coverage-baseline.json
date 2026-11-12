@@ -1,10 +1,10 @@
 {
   "$description": "Semantic values per scheme that rest on no decision (OD-273). Each may only go down: node scripts/coverage.mjs --baseline after a fix.",
   "counts": {
-    "dense-data": 8,
-    "content-first": 8,
-    "accessible-first": 8,
-    "brand-expressive": 8,
-    "multi-brand": 8
+    "dense-data": 0,
+    "content-first": 0,
+    "accessible-first": 0,
+    "brand-expressive": 0,
+    "multi-brand": 0
   }
 }
