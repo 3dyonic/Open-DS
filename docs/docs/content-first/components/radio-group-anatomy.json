@@ -230,22 +230,22 @@
      "byScheme": true,
      "rule": "The one main action in a view.",
      "pick": [
-      "navy.light.600: the primary action's fill; its label reads, ",
+      "navy.light.600: the primary action's fill, and its label reads ",
       {
        "ratio": 11.5
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "navy.dark.600: the primary action's fill; its label reads, ",
+      "navy.dark.600: the primary action's fill, and its label reads ",
       {
        "ratio": 6.86
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
@@ -425,22 +425,22 @@
      "byScheme": true,
      "rule": "The fill behind danger status.",
      "pick": [
-      "red.light.100: a quiet tint behind danger; its text, ",
+      "red.light.100: the soft danger fill behind a message, and its text reads ",
       {
        "ratio": 9.9
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "red.dark.100: a quiet tint behind danger; its text, ",
+      "red.dark.100: the soft danger fill behind a message, and its text reads ",
       {
        "ratio": 11.21
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },

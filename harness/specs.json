@@ -884,6 +884,22 @@
         "components-reference",
         "inventory-decided"
       ]
+    },
+    {
+      "id": "OD-303",
+      "title": "Every semantic token traces from the scheme answers, through the grammar rules, to its value, and every part of its name means something",
+      "in": [
+        "the decision mapping and the trace rules are one rule set: every semantic token in every scheme has the answers that decide it",
+        "the grammar dictionary (semantics.groups, variants, keys) gives every part of a token name a meaning",
+        "every reason cites a question that decides its token, cites every answer its text names, and cites another scope only when its text says why",
+        "the token map card shows the engine output: the deciding answers, the name meanings and the whole reason"
+      ],
+      "checks": [
+        "decision-chain-complete",
+        "citations-follow-engine",
+        "token-map-equals-engine",
+        "json-sources-one-layout"
+      ]
     }
   ]
 }

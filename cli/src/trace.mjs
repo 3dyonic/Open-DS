@@ -113,11 +113,12 @@ export function traceScheme(scheme, g) {
     return null;
   };
 
-  const traceRules = g.trace ?? [];
+  // The grammar's rules for this kind of token: the decision mapping and the trace rules, as one (OD-303).
   const grammarLink = (name) => {
-    const rule = traceRules.find((r) => r.tokens.some((p) => matches(p, name)));
-    const ids = cited(rule?.follows);
-    return ids.length ? { by: "grammar", because: ids, why: null, says: rule.says } : null;
+    const ids = cited(decidersOf(g, name));
+    const rule = (g.trace ?? []).find((r) => r.tokens.some((p) => matches(p, name)));
+    const entry = mappingOf(g, name);
+    return ids.length ? { by: "grammar", because: ids, why: null, says: rule?.says ?? null, property: entry?.title ?? null } : null;
   };
 
   const tokens = semantics.map(([path, token]) => {
@@ -249,6 +250,100 @@ const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const markerOf = (marker) => new RegExp(`(^|[^a-z])${escapeRe(marker)}([^a-z]|$)`, "i");
 
 /** The grammar property (corner, line width, focus ring, shadow) whose tokens include this one, or null. */
+/** The decision mapping entry that covers a token (OD-303): { property, title, question, jobs }, or null. */
+export function mappingOf(g, name) {
+  // A short name ("color.action.primary") also names its default member ("color.action.primary.@"). The
+  // most specific pattern wins: "motion.duration.feedback" over "motion.duration.*".
+  const wild = (pattern) => pattern.split(".").filter((seg) => seg === "*").length;
+  let best = null;
+  for (const entry of g.mapping ?? [])
+    for (const pattern of entry.tokens)
+      if ((matches(pattern, name) || matches(pattern, `${name}.@`)) && (!best || wild(pattern) < best.wild)) best = { entry, wild: wild(pattern) };
+  return best?.entry ?? null;
+}
+
+/** The grammar question that decides a token, from the decision mapping (OD-303); null when no entry covers it. */
+export function decidingQuestion(g, name) {
+  return mappingOf(g, name)?.question ?? null;
+}
+
+/**
+ * The questions that decide a token: the decision mapping's question first, then the grammar trace
+ * rule's questions. One rule set for every scope (OD-303). [] when neither covers the token.
+ */
+export function decidersOf(g, name) {
+  const rule = (g.trace ?? []).find((r) => r.tokens.some((p) => matches(p, name) || matches(p, `${name}.@`)));
+  const question = decidingQuestion(g, name);
+  return [...new Set([...(question ? [question] : []), ...(rule?.follows ?? [])])];
+}
+
+/** The answers a scheme's answer follows from, and theirs, to the root: the scheme's own reason graph. */
+export function answerClosure(scheme, ids) {
+  const byId = new Map((scheme.answers ?? []).map((a) => [a.question, a]));
+  const seen = new Set();
+  const stack = [...ids];
+  while (stack.length) {
+    const id = stack.pop();
+    if (seen.has(id)) continue;
+    seen.add(id);
+    stack.push(...(byId.get(id)?.because ?? []));
+  }
+  return seen;
+}
+
+/** The answer ids a reason's text names in brackets: "(spacing.values)". */
+export const namedAnswers = (why) => [...String(why ?? "").matchAll(/\(([a-z]+\.[a-z0-9]+)\)/g)].map((m) => m[1]);
+
+/**
+ * What a reason may cite: the token's deciders and the other questions of their scope, the contrast floor's
+ * answer, the answers they follow from, and the context answers (business, people, tasks and the other reasons) that say why the answer applies.
+ * A scope answer that decides another kind of token is not allowed: it is a wrong link.
+ */
+export function allowedCitations(scheme, g, deciders) {
+  const context = (g.reasons ?? []).flatMap((group) => group.questions.map((q) => q.id));
+  // The other questions of a decider's own scope shape the same tokens ("Which text roles?" for a weight).
+  const scopes = new Set(deciders.map((id) => id.split(".")[0]));
+  const sameScope = (g.scopes ?? []).filter((s) => scopes.has(s.id)).flatMap((s) => s.questions.map((q) => q.id));
+  return new Set([...answerClosure(scheme, [...deciders, "accessibility.definition"]), ...context, ...sameScope]);
+}
+
+/**
+ * A reason's citations as the engine allows them (OD-303): the allowed ids (allowedCitations), and any
+ * other answer only when the reason's text names it in brackets, so a link across scopes is explicit. When none of the token's deciders
+ * is cited, the deciders the scheme answers come first. The writers use this; citationGaps checks it.
+ */
+export function citationsOf(scheme, g, token, because, why = "") {
+  const deciders = decidersOf(g, token);
+  const answered = new Set((scheme.answers ?? []).map((a) => a.question));
+  const allowed = allowedCitations(scheme, g, deciders);
+  // A link to another scope's answer stays only when the text names it and says why.
+  const named = namedAnswers(why).filter((id) => answered.has(id));
+  const kept = [...(because ?? []), ...named].filter((id) => allowed.has(id) || named.includes(id));
+  const lead = kept.some((id) => deciders.includes(id)) ? [] : deciders.filter((id) => answered.has(id));
+  return [...new Set([...lead, ...kept])];
+}
+
+/**
+ * The reasons whose citations do not follow the engine (OD-303). A reason must cite a question that
+ * decides its token (missing), may cite only what allowedCitations allows or its text names (stray), and
+ * must cite every answer its text names (uncited). [{ token, where, because, deciders, missing, stray }]
+ */
+export function citationGaps(scheme, g) {
+  const out = [];
+  for (const r of writtenReasons(scheme)) {
+    if (!r.because.length) continue;
+    const deciders = decidersOf(g, r.token);
+    const allowed = allowedCitations(scheme, g, deciders);
+    const missing = deciders.length ? !r.because.some((id) => deciders.includes(id)) : true;
+    const named = namedAnswers(r.why);
+    const stray = r.because.filter((id) => !allowed.has(id) && !named.includes(id));
+    // An answer the text names in brackets is cited, so the words and the links agree.
+    const uncited = named.filter((id) => id in questions(g) && !r.because.includes(id));
+    if (missing || stray.length || uncited.length) out.push({ token: r.token, where: r.where, because: r.because, deciders, missing, stray, uncited });
+  }
+  return out;
+}
+
 export function propertyOf(g, name) {
   for (const scope of g.scopes ?? [])
     for (const p of scope.properties ?? []) if (p.tokens.some((pattern) => matches(pattern, name))) return p;
@@ -304,4 +399,67 @@ export function writtenReasons(scheme) {
       }
     }
   return out;
+}
+
+/**
+ * A token's decision tree (OD-303): one node per part of its name and per step of its value, each with what
+ * the grammar and the scheme record for it. Nothing is typed per token: the walk reads the grammar's
+ * dictionary (semantics.groups, semantics.variants, semantics.keys), the decision mapping and trace rules
+ * (the property and the answers that decide it), the theme pick, and the primitive hue and step.
+ * Levels, in order: group (each group of the name), variant (the name's last part), property (what kind of
+ * value, decided_by and jobs), token, pick, hue, step. [{ level, name, says, ... }]
+ */
+export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.tokens.brands)[0], mode = "light" } = {}) {
+  const at = (tree, path) => path.split(".").reduce((n, k) => n?.[k], tree);
+  const od = (node) => node?.$extensions?.["open-ds"] ?? {};
+  const answerOf = (q) => {
+    const a = (scheme.answers ?? []).find((x) => x.question === q);
+    const question = questions(g)[q];
+    const option = question?.options?.find((o) => o.id === a?.option);
+    return a ? { id: q, question: question?.text ?? q, answer: option?.label ?? a.option, why: a.why ?? null } : null;
+  };
+  const nodes = [];
+  // The groups of the name, outermost first: the scheme's own description, else the grammar's dictionary.
+  const parts = name.split(".");
+  const dictionary = new Map((g.semantics?.groups?.items ?? []).map((x) => [x.id, x.says]));
+  for (let i = 1; i < parts.length; i++) {
+    const path = parts.slice(0, i).join(".");
+    const says = at(scheme.tokens.semantic, path)?.$description ?? dictionary.get(path);
+    if (says) nodes.push({ level: "group", name: path, says });
+  }
+  // The variant: what the name's last part means, from the grammar's vocabulary.
+  const variant = (g.semantics?.variants?.items ?? []).find((v) => v.id === parts.at(-1));
+  if (variant) nodes.push({ level: "variant", name: variant.id, says: variant.says });
+  // The property: what kind of value this is, the answers that decide it (decidersOf) and the jobs it does.
+  const short = name.replace(/\.@$/, "");
+  const entry = mappingOf(g, short);
+  const decided = decidersOf(g, short).map(answerOf).filter(Boolean);
+  if (entry || decided.length)
+    nodes.push({
+      level: "property",
+      name: entry?.title ?? null,
+      says: (g.trace ?? []).find((r) => r.tokens.some((p) => matches(p, short)))?.says ?? null,
+      decided_by: decided,
+      jobs: (entry?.jobs ?? []).map((j) => ({ title: j.title, how: j.how })),
+    });
+  // The token itself: its intent and uses from the grammar's semantics.
+  const key = (g.semantics?.keys ?? []).find((k) => k.id === name || k.id === short);
+  const token = at(scheme.tokens.semantic, name);
+  nodes.push({ level: "token", name, says: key?.intent ?? token?.$description ?? null, use_for: key?.use_for ?? [], not_for: key?.not_for ?? [] });
+  // The theme pick: the step this brand and mode picks, and why.
+  const themePath = (token?.$value ?? "").match(/^\{theme\.(.+)\}$/)?.[1];
+  const theme = scheme.tokens.brands[brand]?.theme ?? {};
+  const pick = themePath && (at(theme[mode], themePath) ?? at(theme.base, themePath));
+  if (pick) nodes.push({ level: "pick", name: `${brand}/${mode}`, value: pick.$value, says: od(pick).why ?? null });
+  // The primitive hue and step the value ends on: the hue's record and the step's own adjustment, if any.
+  const ref = (pick?.$value ?? token?.$value ?? "").match(/^\{(color\.([a-z-]+)\.(light|dark)\.([0-9a-z]+))\}$/);
+  if (ref) {
+    const [, , hue, side, step] = ref;
+    const group = at(scheme.tokens.primitive, `color.${hue}`);
+    const rec = od(group)[side];
+    nodes.push({ level: "hue", name: hue, says: group?.$description ?? null, key: rec?.key ?? null });
+    const adjust = rec?.adjust?.[step];
+    nodes.push({ level: "step", name: `${hue}.${side}.${step}`, says: adjust?.why ?? (rec?.key ? `Generated from the ${hue} key color ${rec.key} by the scheme's step curve.` : null) });
+  }
+  return nodes;
 }

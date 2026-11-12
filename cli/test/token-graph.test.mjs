@@ -85,10 +85,12 @@ test("the map file holds each brand in light and dark, the scopes, and each pick
   const focus = map.graphs["default/light"].nodes.find((n) => n.id === "color.border.focus");
   // The description is the token's own; the builder's why stays out.
   assert.equal(focus.description, scheme.tokens.semantic.color.border.focus.$description);
-  assert.deepEqual(focus.answers, [
-    { id: "accessibility.definition", question: "What contrast floor do we hold?", answer: "AAA for text" },
-    { id: "color.definition", question: "How is the palette defined?", answer: "Neutrals and one brand ramp" },
-  ]);
+  // OD-303: the states answer decides the focus ring (the decision mapping); the dark pick adds the floor and the palette.
+  assert.deepEqual(
+    focus.answers.map((a) => a.id),
+    ["accessibility.roles", "accessibility.definition", "color.definition"],
+  );
+  assert.deepEqual(focus.answers[0], { id: "accessibility.roles", question: "Which states get their own visible value?", answer: "All, including loading" });
   // The reasons: each answer in plain words with the answers it follows from.
   assert.deepEqual(map.reasons["color.definition"].because, ["people.q2", "people.q1", "color.lands"]);
   assert.equal(map.reasons["business.q1"].answer, "Serves the public");

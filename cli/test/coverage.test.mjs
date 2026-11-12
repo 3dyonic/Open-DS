@@ -13,7 +13,8 @@ const gapOf = (cov, token) => cov.unlinked.find((u) => u.token === token);
 test("a theme pick that cites an answer links its semantic", () => {
   const link = linkOf(dense, "color.text.primary");
   assert.ok(link, "color.text.primary is linked");
-  assert.deepEqual(link.by, ["pick"]);
+  // The pick links first; the grammar's rule for the kind of token (OD-303) links too.
+  assert.deepEqual(link.by, ["pick", "grammar"]);
   assert.ok(link.because.length > 0, "it carries the answers its pick cites");
 });
 

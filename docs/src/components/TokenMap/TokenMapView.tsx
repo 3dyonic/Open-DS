@@ -45,6 +45,10 @@ type Decision = {
   components: Component[];
   via?: string | null;
   stepWhy?: string | null;
+  mapping?: { property: string | null; says?: string | null; jobs: { title: string; how: string }[] };
+  // What each part of the name means, outermost first: the groups, then the last part (OD-303).
+  meaning?: { level: "group" | "variant"; name: string; says: string }[];
+  guide?: { intent: string | null; useFor: string[]; notFor: { when: string; use: string }[] };
 };
 type Check = { what: string; ratio: number };
 type Step = {
@@ -294,16 +298,44 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
       <Hidden type="source" pos={Position.Right} />
       <div className={styles.cap}>Decision</div>
       <div className={`${styles.title} ${styles.mono}`}>{d.id}</div>
+      {d.meaning && d.meaning.length > 0 && (
+        <>
+          <div className={styles.cap}>What the name means</div>
+          {d.meaning.map((m) => (
+            <div key={m.name} className={styles.qa}>
+              <b className={styles.mono}>{m.level === "variant" ? `.${m.name}` : m.name}</b> <span className={styles.line}>{m.says}</span>
+            </div>
+          ))}
+        </>
+      )}
       {d.why ? <div className={styles.key}>{sentence(d.why)}</div> : d.description && <div>{d.description}</div>}
+      {d.guide?.intent && <div>{d.guide.intent}</div>}
+      {d.guide && d.guide.useFor.length > 0 && <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>}
+      {d.guide?.notFor.map((n) => (
+        <div key={n.when} className={styles.line}>
+          Not for {n.when.toLowerCase()}: use {n.use}
+        </div>
+      ))}
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
-      {used === 0 && !d.via && <div className={styles.line}>No component uses it.</div>}
+      {used === 0 && !d.via && !(d.guide && d.guide.useFor.length) && <div className={styles.line}>No component uses it.</div>}
       {!hasReason(d) && <NoReason />}
       {(d.stepWhy || d.answers.length > 0) && <More open={open} onToggle={() => setOpen(!open)} closed="Why" />}
       {open && (
         <>
           {d.stepWhy && <div>{d.stepWhy}</div>}
-          {d.answers.length > 0 && <div className={styles.cap}>The answers behind it</div>}
+          {d.answers.length > 0 && <div className={styles.cap}>{d.mapping ? "Decided by" : "The answers behind it"}</div>}
           <Answers ids={d.answers} answers={data.answers} />
+          {d.mapping && (
+            <>
+              {d.mapping.property && <div className={styles.cap}>Property: {d.mapping.property}</div>}
+              {d.mapping.says && <div className={styles.line}>{d.mapping.says}</div>}
+              {d.mapping.jobs.map((j) => (
+                <div key={j.title} className={styles.qa}>
+                  <b>{j.title}</b> <span className={styles.line}>{j.how}</span>
+                </div>
+              ))}
+            </>
+          )}
         </>
       )}
     </div>

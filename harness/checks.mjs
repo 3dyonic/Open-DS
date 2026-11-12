@@ -2001,6 +2001,104 @@ export const CHECKS = {
     },
   },
 
+  // OD-303: the decision chain. Every semantic token traces from the scheme's answers, through the
+  // grammar's rules, to its value, and every part of its name means something. Plain data, no reading.
+  "decision-chain-complete": {
+    requires: ["cli/src/trace.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      const { decisionTree } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const { flatTokens } = await import(pathToFileURL(c.p("cli/src/tokens.mjs")).href);
+      const g = c.grammar();
+      const off = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const scheme = c.scheme(id);
+        for (const [path, token] of flatTokens(scheme.tokens.semantic)) {
+          if (token.$deprecated) continue;
+          n++;
+          const tree = decisionTree(scheme, g, path);
+          const group = tree.some((x) => x.level === "group" && x.says);
+          const property = tree.find((x) => x.level === "property");
+          const meaning = tree.find((x) => x.level === "token")?.says || (group && property?.name);
+          const lacks = [!group && "a group meaning", !property?.decided_by?.length && "an answer that decides it", !meaning && "a meaning"].filter(Boolean);
+          if (lacks.length) off.push(`${id} ${path} has no ${lacks.join(", ")}`);
+        }
+      }
+      return off.length
+        ? bad(`${off.length} tokens break the decision chain: ${off.slice(0, 5).join("; ")}. Add the group to grammar semantics.groups, or the token to a mapping entry or trace rule.`)
+        : ok(`${n} semantic tokens in ${SCHEMES.length} schemes each have a group meaning, a property and the answers that decide it`);
+    },
+  },
+  "citations-follow-engine": {
+    requires: ["cli/src/trace.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // A reason cites a question that decides its token, cites nothing the engine does not allow unless its
+      // text names it, cites every answer its text names, and holds what the writer would write.
+      const { citationGaps, citationsOf, writtenReasons } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const g = c.grammar();
+      const off = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const scheme = c.scheme(id);
+        for (const x of citationGaps(scheme, g))
+          off.push(`${id} ${x.where} ${x.token}${x.missing ? " cites none of " + x.deciders.join("/") : ""}${x.stray.length ? " cites " + x.stray.join(", ") + " without a rule" : ""}${x.uncited.length ? " names " + x.uncited.join(", ") + " uncited" : ""}`);
+        for (const r of writtenReasons(scheme)) {
+          if (!r.because.length) continue;
+          n++;
+          const want = citationsOf(scheme, g, r.token, r.because, r.why);
+          if (want.join() !== r.because.join()) off.push(`${id} ${r.where} ${r.token} cites ${r.because.join(", ")}, the writer gives ${want.join(", ")}`);
+        }
+      }
+      return off.length
+        ? bad(`${off.length} reasons do not follow the engine: ${off.slice(0, 5).join("; ")}. Run node scripts/theme-reasons.mjs.`)
+        : ok(`${n} reasons in ${SCHEMES.length} schemes cite what the engine says decides their token`);
+    },
+  },
+  "token-map-equals-engine": {
+    requires: ["cli/src/token-map-view.mjs", "cli/src/trace.mjs"],
+    run: async (c) => {
+      // The token map card shows the engine's output, never its own: the deciding answers, the name's
+      // meanings, and the pick's whole reason (the measure and the because clause too).
+      const { tokenMapView } = await import(pathToFileURL(c.p("cli/src/token-map-view.mjs")).href);
+      const { decisionTree } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const g = c.grammar();
+      const off = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const scheme = c.scheme(id);
+        const view = tokenMapView({ scheme, grammar: g });
+        const answered = new Set((scheme.answers ?? []).map((a) => a.question));
+        const all = { ...view.shared.decisions, ...view.modes.light.decisions };
+        for (const [name, d] of Object.entries(all)) {
+          n++;
+          const path = scheme.tokens.semantic && name.split(".").reduce((o, k) => o?.[k], scheme.tokens.semantic)?.$value !== undefined ? name : `${name}.@`;
+          const tree = decisionTree(scheme, g, path);
+          const want = (tree.find((x) => x.level === "property")?.decided_by ?? []).map((a) => a.id).filter((q) => answered.has(q));
+          if (want.join() !== (d.answers ?? []).join()) off.push(`${id} ${name} shows ${d.answers?.join(", ")}, the engine gives ${want.join(", ")}`);
+          const groups = tree.filter((x) => (x.level === "group" || x.level === "variant") && x.says).map((x) => x.name);
+          if (groups.join() !== (d.meaning ?? []).map((m) => m.name).join()) off.push(`${id} ${name} shows meanings ${(d.meaning ?? []).map((m) => m.name)}, the engine gives ${groups}`);
+          const pick = tree.find((x) => x.level === "pick")?.says;
+          if (pick && d.why && !pick.endsWith(d.why)) off.push(`${id} ${name} cuts its reason: "${d.why}"`);
+        }
+      }
+      return off.length
+        ? bad(`${off.length} token map cards differ from the engine: ${off.slice(0, 5).join("; ")}`)
+        : ok(`${n} token map cards in ${SCHEMES.length} schemes show the engine's answers, meanings and whole reasons`);
+    },
+  },
+  "json-sources-one-layout": {
+    requires: ["cli/src/schemes.mjs", "schemes/grammar.json", "schema/grammar.schema.json", "schema/scheme.schema.json"],
+    run: async (c) => {
+      // The grammar and the schemas have one layout (formatGrammar), so an edit changes only its own lines
+      // and two branches that touch different parts never conflict on whitespace.
+      const { layoutGaps } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
+      const off = layoutGaps();
+      return off.length
+        ? bad(`not in the one layout: ${off.join(", ")}. Write them with saveGrammar or formatGrammar from cli/src/schemes.mjs.`)
+        : ok("the grammar and its 2 schemas are in the one layout");
+    },
+  },
+
   // LLM context
   "llm-schema-descriptions": {
     requires: ["schema/scheme.schema.json"],
