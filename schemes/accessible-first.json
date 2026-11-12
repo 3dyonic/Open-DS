@@ -1743,12 +1743,12 @@
       "relation": "default-line"
     },
     {
-      "token": "border-width.focus",
+      "token": "focus.ring.width",
       "relation": "focus-heavier",
       "from": "border-width.default"
     },
     {
-      "token": "border-width.focus-offset",
+      "token": "focus.ring.offset",
       "relation": "focus-gap"
     },
     {
@@ -1920,9 +1920,9 @@
     },
     {
       "situation": "reduced-motion",
-      "use": "No motion",
+      "use": "Fades only; nothing moves",
       "not": "Reduced motion",
-      "why": "A shorter motion still moves. When people ask for less motion, nothing moves.",
+      "why": "Movement can make some people dizzy, so it stops. A short fade or a color change still shows that something changed.",
       "because": [
         "motion.roles"
       ]
@@ -1947,7 +1947,7 @@
     },
     {
       "situation": "keyboard-focus",
-      "use": "button/focus-ring at border-width.focus, with an offset",
+      "use": "button/focus-ring at focus.ring.width, with an offset",
       "not": "A thin or faint outline",
       "why": "Focus must be seen by everyone.",
       "because": [
@@ -2273,7 +2273,7 @@
     },
     {
       "situation": "focus-gap",
-      "use": "border-width.focus-offset",
+      "use": "focus.ring.offset",
       "not": "A ring that touches the control",
       "why": "The gap keeps the thick ring clear of the control, so focus shows on any fill.",
       "because": [
@@ -2351,9 +2351,9 @@
     },
     {
       "situation": "unavailable-control",
-      "use": "opacity.disabled",
+      "use": "color.disabled.*, never opacity",
       "not": "A faded control with no reason",
-      "why": "It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.",
+      "why": "Muted colors keep the label readable, where a fade would drop its contrast. A hint says what is missing and the next step.",
       "because": [
         "outcomes.q2",
         "human.q1"
@@ -3084,6 +3084,10 @@
           "$type": "dimension",
           "$value": "1.25rem"
         },
+        "44": {
+          "$type": "dimension",
+          "$value": "2.75rem"
+        },
         "48": {
           "$type": "dimension",
           "$value": "3rem"
@@ -3195,8 +3199,8 @@
       "duration": {
         "moderate": {
           "$type": "duration",
-          "$value": "200ms",
-          "$description": "Moderate: a calm, easy-to-follow speed, about 200ms."
+          "$value": "150ms",
+          "$description": "Moderate: a calm, easy-to-follow speed, about 150ms."
         }
       },
       "easing": {
@@ -3208,7 +3212,17 @@
             0,
             1
           ],
-          "$description": "The easing for feedback transitions."
+          "$description": "A standard ease-out: fast at the start, settling slowly, with no overshoot."
+        },
+        "strong-out": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.23,
+            1,
+            0.32,
+            1
+          ],
+          "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
         }
       },
       "opacity": {
@@ -3589,7 +3603,7 @@
                   "$value": "{color.gray.light.0}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.0: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3602,7 +3616,7 @@
                   "$value": "{color.gray.light.50}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.50: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3615,7 +3629,7 @@
                   "$value": "{color.gray.light.100}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.100: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3628,7 +3642,7 @@
                   "$value": "{color.gray.light.200}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.200: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3641,7 +3655,7 @@
                   "$value": "{color.gray.light.300}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.300: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3654,7 +3668,7 @@
                   "$value": "{color.gray.light.400}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.400: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3667,7 +3681,7 @@
                   "$value": "{color.gray.light.500}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.500: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3680,7 +3694,7 @@
                   "$value": "{color.gray.light.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.600: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3693,7 +3707,7 @@
                   "$value": "{color.gray.light.700}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.700: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3706,7 +3720,7 @@
                   "$value": "{color.gray.light.800}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.800: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3719,7 +3733,7 @@
                   "$value": "{color.gray.light.900}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.900: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3732,7 +3746,7 @@
                   "$value": "{color.gray.light.950}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.light.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.light.950: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -3977,6 +3991,19 @@
                         "accessibility.definition"
                       ],
                       "generated": true
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.45:1 on surface.raised, the layer's only edge, as nothing here casts a shadow. So people see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ]
                     }
                   }
                 },
@@ -4471,7 +4498,7 @@
                   "$value": "{color.gray.dark.0}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.0: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.0: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4484,7 +4511,7 @@
                   "$value": "{color.gray.dark.50}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.50: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.50: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4497,7 +4524,7 @@
                   "$value": "{color.gray.dark.100}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.100: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.100: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4510,7 +4537,7 @@
                   "$value": "{color.gray.dark.200}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.200: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.200: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4523,7 +4550,7 @@
                   "$value": "{color.gray.dark.300}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.300: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.300: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4536,7 +4563,7 @@
                   "$value": "{color.gray.dark.400}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.400: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.400: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4549,7 +4576,7 @@
                   "$value": "{color.gray.dark.500}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.500: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.500: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4562,7 +4589,7 @@
                   "$value": "{color.gray.dark.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.600: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.600: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4575,7 +4602,7 @@
                   "$value": "{color.gray.dark.700}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.700: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.700: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4588,7 +4615,7 @@
                   "$value": "{color.gray.dark.800}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.800: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.800: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4601,7 +4628,7 @@
                   "$value": "{color.gray.dark.900}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.900: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.900: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4614,7 +4641,7 @@
                   "$value": "{color.gray.dark.950}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "gray.dark.950: the scheme's neutral is gray. True neutrals and one strong blue, checked for contrast.",
+                      "why": "gray.dark.950: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
                       "because": [
                         "color.definition"
                       ],
@@ -4630,7 +4657,7 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+                      "why": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
                       "because": [
                         "elevation.definition",
                         "color.definition"
@@ -4641,69 +4668,70 @@
                 },
                 "default": {
                   "$type": "color",
-                  "$value": "{color.neutral.50}",
+                  "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+                      "why": "neutral.100: We use the step above the page for content in dark in order to leave a darker step free for wells, as the gray's two darkest steps are too close to tell apart. The fill does this by moving content one step up: sunken reads 1.16:1 below it and raised 1.26:1 above it. So people tell wells and menus from content, and body text still reads 14.85:1, because dark ships as standard (theming.values), text keeps the AAA floor (accessibility.definition) and depth reads from tone and lines (elevation.definition).",
                       "because": [
-                        "accessibility.definition"
-                      ],
-                      "generated": true
+                        "theming.values",
+                        "accessibility.definition",
+                        "elevation.definition"
+                      ]
                     }
                   }
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.neutral.50}",
+                  "$value": "{color.neutral.200}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+                      "why": "neutral.200: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, 1.26:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So people see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
                       "because": [
+                        "theming.values",
                         "elevation.roles",
                         "elevation.definition"
-                      ],
-                      "generated": true
+                      ]
                     }
                   }
                 },
                 "sunken": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}",
+                  "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+                      "why": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
                       "because": [
-                        "elevation.definition",
-                        "color.definition"
-                      ],
-                      "generated": true
+                        "theming.values",
+                        "elevation.definition"
+                      ]
                     }
                   }
                 },
                 "highlight": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}",
+                  "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+                      "why": "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.46:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.89:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.roles",
-                        "color.definition"
+                        "color.definition",
+                        "theming.values"
                       ]
                     }
                   }
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{color.neutral.200}",
+                  "$value": "{color.neutral.0}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+                      "why": "neutral.0: We use the darkest step for a pressed item in dark in order to show a press as a change of its own, one step past the hover band. The fill does this by stepping further from the surfaces, 1.07:1 from the highlight. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.roles",
                         "color.definition"
@@ -4717,7 +4745,7 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+                      "why": "blue.dark.100: a tint of the brand, 1.04:1 from content, always beside its edge (border.selected), so selection is never color alone.",
                       "because": [
                         "color.definition",
                         "accessibility.count"
@@ -4760,7 +4788,7 @@
                   "$value": "{color.neutral.900}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+                      "why": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -4773,7 +4801,7 @@
                   "$value": "{color.neutral.700}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+                      "why": "neutral.700: supporting text, 10.95:1 on surface.default, above the 7:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -4786,7 +4814,7 @@
                   "$value": "{color.neutral.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+                      "why": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -4825,7 +4853,7 @@
                   "$value": "{color.blue.dark.700}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "blue.dark.700: a link, set apart by its hue, 10.8:1 on surface.default, above the 7:1 floor.",
+                      "why": "blue.dark.700: a link, set apart by its hue, 9.33:1 on surface.default, above the 7:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -4850,15 +4878,28 @@
               "border": {
                 "default": {
                   "$type": "color",
-                  "$value": "{color.neutral.200}",
+                  "$value": "{color.neutral.300}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+                      "why": "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest 1.8:1, on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values).",
                       "because": [
                         "elevation.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.300}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.300: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.8:1 on surface.raised (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "theming.values",
+                        "elevation.definition",
                         "accessibility.definition"
-                      ],
-                      "generated": true
+                      ]
                     }
                   }
                 },
@@ -4867,7 +4908,7 @@
                   "$value": "{color.neutral.500}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+                      "why": "neutral.500: the edge of a control people must find, 5.24:1 on surface.default, above the 3:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -4880,7 +4921,7 @@
                   "$value": "{color.blue.dark.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+                      "why": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
                       "because": [
                         "accessibility.definition",
                         "color.definition"
@@ -4894,7 +4935,7 @@
                   "$value": "{color.blue.dark.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+                      "why": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 7.55:1 on surface.default, above the 3:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -5010,7 +5051,7 @@
                     "$value": "{color.teal.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.dark.600: info reads as text and icons, 10.21:1 on surface.default, above the 7:1 floor.",
+                        "why": "teal.dark.600: info reads as text and icons, 8.82:1 on surface.default, above the 7:1 floor.",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
@@ -5041,7 +5082,7 @@
                     "$value": "{color.green.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.dark.600: success reads as text and icons, 8.33:1 on surface.default, above the 7:1 floor.",
+                        "why": "green.dark.600: success reads as text and icons, 7.2:1 on surface.default, above the 7:1 floor.",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
@@ -5072,7 +5113,7 @@
                     "$value": "{color.amber.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "amber.dark.600: warning reads as text and icons, 10.29:1 on surface.default, above the 7:1 floor.",
+                        "why": "amber.dark.600: warning reads as text and icons, 8.89:1 on surface.default, above the 7:1 floor.",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
@@ -5103,7 +5144,7 @@
                     "$value": "{color.red.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+                        "why": "red.dark.600: danger marks icons and edges, 6.7:1 on surface.default, over 3:1; its text uses danger-on-light, which reads at the floor.",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
@@ -5136,7 +5177,7 @@
                     "$value": "{color.blue.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.74:1 on surface.default, above the 3:1 floor.",
+                        "why": "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.55:1 on surface.default, above the 3:1 floor.",
                         "because": [
                           "color.count",
                           "color.lands"
@@ -5164,7 +5205,7 @@
                     "$value": "{color.teal.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.21:1 on surface.default, above the 3:1 floor.",
+                        "why": "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.82:1 on surface.default, above the 3:1 floor.",
                         "because": [
                           "color.count",
                           "color.lands"
@@ -5192,7 +5233,7 @@
                     "$value": "{color.green.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.33:1 on surface.default, above the 3:1 floor.",
+                        "why": "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.2:1 on surface.default, above the 3:1 floor.",
                         "because": [
                           "color.count",
                           "color.lands"
@@ -5221,7 +5262,7 @@
                     "$value": "{color.amber.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.29:1 on surface.default, above the 3:1 floor.",
+                        "why": "amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.89:1 on surface.default, above the 3:1 floor.",
                         "because": [
                           "color.count",
                           "color.lands"
@@ -5250,7 +5291,7 @@
                     "$value": "{color.neutral.700}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 12.68:1 on surface.default, above the 3:1 floor.",
+                        "why": "neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 10.95:1 on surface.default, above the 3:1 floor.",
                         "because": [
                           "color.count",
                           "color.lands"
@@ -5280,7 +5321,7 @@
                   "$value": "{color.neutral.500}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.500: 6.07:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+                      "why": "neutral.500: 5.24:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
                       "because": [
                         "accessibility.roles"
                       ],
@@ -5603,6 +5644,20 @@
               ]
             }
           }
+        },
+        "hit-area": {
+          "$type": "dimension",
+          "$value": "{size.44}",
+          "$description": "The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 44px hit area for controls drawn smaller, such as a checkbox, a radio or a switch, in order to make a hit target a fingertip can find: the WCAG 2.5.5 size. The hit area does this by growing past the drawn box through a pseudo-element, and rows in a group stand at least 44px apart, so no two targets overlap. So people tap the right control on a phone, because targets are sized for large, easy hits (accessibility.values) and the layout leaves room for it (spacing.values).",
+              "because": [
+                "accessibility.values",
+                "spacing.values"
+              ]
+            }
+          }
         }
       },
       "radius": {
@@ -5655,29 +5710,45 @@
         },
         "focus": {
           "$type": "dimension",
-          "$value": "{border-width.3}",
-          "$description": "The focus ring.",
-          "$extensions": {
-            "open-ds": {
-              "why": "We use a 3px focus ring in order to show focus, one step heavier than the 2px default line by the focus relation. A heavier stroke does this by standing out even from the strong borders around it. So everyone sees where the keyboard is, because every state has its own look (accessibility.roles) and lines are strong (elevation.definition).",
-              "because": [
-                "accessibility.roles",
-                "elevation.definition",
-                "accessibility.definition"
-              ]
-            }
-          }
+          "$value": "{focus.ring.width}",
+          "$description": "Deprecated: use focus.ring.width.",
+          "$deprecated": "Use focus.ring.width. Removed in the next minor release."
         },
         "focus-offset": {
           "$type": "dimension",
-          "$value": "{border-width.2}",
-          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
-          "$extensions": {
-            "open-ds": {
-              "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So people see the ring on any fill and at any zoom, because every state has its own look (accessibility.roles).",
-              "because": [
-                "accessibility.roles"
-              ]
+          "$value": "{focus.ring.offset}",
+          "$description": "Deprecated: use focus.ring.offset.",
+          "$deprecated": "Use focus.ring.offset. Removed in the next minor release."
+        }
+      },
+      "focus": {
+        "ring": {
+          "width": {
+            "$type": "dimension",
+            "$value": "{border-width.3}",
+            "$description": "The focus ring's width: one step heavier than the default border, and not a border width.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a 3px focus ring in order to show focus, one step heavier than the 2px default line by the focus relation. A heavier stroke does this by standing out even from the strong borders around it. So everyone sees where the keyboard is, because every state has its own look (accessibility.roles) and lines are strong (elevation.definition).",
+                "because": [
+                  "accessibility.roles",
+                  "elevation.definition",
+                  "accessibility.definition"
+                ]
+              }
+            }
+          },
+          "offset": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So people see the ring on any fill and at any zoom, because every state has its own look (accessibility.roles).",
+                "because": [
+                  "accessibility.roles"
+                ]
+              }
             }
           }
         }
@@ -6005,19 +6076,116 @@
           "feedback": {
             "$type": "duration",
             "$value": "{duration.moderate}",
-            "$description": "Feedback speed: moderate. Hover, press and small state changes."
+            "$description": "Hover, press and toggle feedback. At most 150ms in a productive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 150ms (moderate) for hover, press and toggle feedback in order to confirm each action inside the productive limit of 150ms. The duration does this by ending the change before the eye leaves the control. So people see each action land and never wait for it, because motion is for feedback only, which makes the family productive (motion.roles), and feedback feels moderate (motion.values).",
+                "because": [
+                  "motion.roles",
+                  "motion.values"
+                ]
+              }
+            }
           },
           "panels": {
             "$type": "duration",
             "$value": "{duration.moderate}",
-            "$description": "Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. One speed: panels open at the feedback speed (motion.count)."
+            "$description": "Menus, popovers, dialogs and drawers opening. At most 300ms in a productive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 150ms (moderate) for menus, popovers, dialogs and other panels in order to show where a panel comes from, inside the productive limit of 300ms. The duration does this by giving the eye just enough frames to follow the panel from its trigger. So people see where a panel came from and keep their place, because the family is productive (motion.roles) and there is one speed (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "duration",
+            "$value": "{duration.moderate}",
+            "$description": "A layer closing. About 150ms, never more, in a productive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 150ms (moderate) for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So people get the page back at once, because productive exits stay short (motion.roles) and there is one speed (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
           }
         },
         "easing": {
           "standard": {
             "$type": "cubicBezier",
             "$value": "{easing.standard}",
-            "$description": "Feedback easing."
+            "$description": "The transition move: a state that changes in place, such as hover, press or toggle.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the standard easing (0.2, 0, 0, 1) for state changes in place in order to do the transition move. The curve does this by reaching its target early and settling slowly, with no overshoot. So a hover, a press or a toggle lands at once and then stays still, because easing is a standard ease-out (motion.definition) and the family is productive (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          },
+          "enter": {
+            "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "The enter move: a layer that appears.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So people can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "cubicBezier",
+            "$value": "{easing.strong-out}",
+            "$description": "The exit move: a layer that closes in place.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move of the productive family. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next click, because productive exits take a strong ease-out (motion.roles) and easing never springs here (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit-offscreen": {
+            "$type": "cubicBezier",
+            "$value": "{easing.strong-out}",
+            "$description": "The exit move of a layer that slides off the screen: a sheet or a drawer.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the strong-out easing as well for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "emphasize": {
+            "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "The emphasize move: a moment that calls for attention.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the standard easing for a moment that calls for attention in order to give the emphasize move no overshoot. The curve does this by stopping at its target without passing it. So a new message draws the eye by its change, not by a bounce, because the family is productive (motion.roles) and easing is a standard ease-out, never a spring (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
           }
         }
       },
@@ -6025,7 +6193,8 @@
         "disabled": {
           "$type": "number",
           "$value": "{opacity.50}",
-          "$description": "Disabled controls."
+          "$description": "Deprecated: disabled reads color.disabled.text, color.disabled.surface and color.disabled.border. Opacity is for loading and dragging only.",
+          "$deprecated": "Use color.disabled.text, color.disabled.surface and color.disabled.border. Removed in the next minor release."
         }
       },
       "color": {
@@ -6219,6 +6388,11 @@
             "$type": "color",
             "$description": "Row lines and card borders.",
             "$value": "{theme.color.border.default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "The 1px edge of a raised layer: menus, dialogs and toasts, and raised cards.",
+            "$value": "{theme.color.border.raised}"
           },
           "strong": {
             "$type": "color",
@@ -6663,6 +6837,15 @@
           "$description": "Deprecated: use component.accordion.item.divider.@ (OD-243). The line between items.",
           "$deprecated": "Use component.accordion.item.divider.@. Removed in the next minor release."
         },
+        "trigger": {
+          "disabled": {
+            "opacity": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use accordion/trigger/disabled/label (OD-297). How faint a disabled trigger is.",
+              "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
+            }
+          }
+        },
         "focus-ring": {
           "@": {
             "$value": "{accordion.trigger.focus-ring.@}",
@@ -6678,8 +6861,8 @@
         "disabled": {
           "opacity": {
             "$value": "{accordion.trigger.disabled.opacity}",
-            "$description": "Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is.",
-            "$deprecated": "Use component.accordion.trigger.disabled.opacity. Removed in the next minor release."
+            "$description": "Deprecated: use accordion/trigger/disabled/label (OD-243). How faint a disabled trigger is.",
+            "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
           }
         },
         "focus-offset": {
@@ -6821,6 +7004,11 @@
         }
       },
       "calendar": {
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use calendar/nav/disabled/icon (OD-297). Disabled opacity disabled of the calendar.",
+          "$deprecated": "Use component.calendar.nav.disabled.icon. Removed in the next minor release."
+        },
         "background-3": {
           "$value": "{calendar.day.range.background}",
           "$description": "Deprecated: use component.calendar.day.range.background (OD-243). Background 3 of the calendar.",
@@ -6838,8 +7026,8 @@
         },
         "disabled-opacity": {
           "$value": "{calendar.day.disabled-opacity}",
-          "$description": "Deprecated: use component.calendar.day.disabled-opacity (OD-243). Disabled opacity of the calendar.",
-          "$deprecated": "Use component.calendar.day.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use calendar/day/disabled/label (OD-243). Disabled opacity of the calendar.",
+          "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
         },
         "background-4": {
           "$value": "{calendar.day.range-ends.background}",
@@ -6860,6 +7048,13 @@
           "$value": "{calendar.day.selected.label}",
           "$description": "Deprecated: use component.calendar.day.selected.label (OD-243). Label selected 2 of the calendar.",
           "$deprecated": "Use component.calendar.day.selected.label. Removed in the next minor release."
+        },
+        "day": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use calendar/day/disabled/label (OD-297). How faint a day that cannot be picked is.",
+            "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
+          }
         }
       },
       "chart": {
@@ -6925,6 +7120,11 @@
         }
       },
       "checkbox": {
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use checkbox/disabled-background (OD-297). Disabled of the checkbox.",
+          "$deprecated": "Use component.checkbox.disabled-background. Removed in the next minor release."
+        },
         "canvas": {
           "$value": "{checkbox.focus-ring-offset}",
           "$description": "Deprecated: use component.checkbox.focus-ring-offset (OD-243). Canvas of the checkbox.",
@@ -6963,6 +7163,11 @@
               "$description": "Deprecated: use component.combobox.item.label.highlight (OD-243). Item label of the combobox.",
               "$deprecated": "Use component.combobox.item.label.highlight. Removed in the next minor release."
             }
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use combobox/item/disabled/label (OD-297). Item disabled opacity disabled of the combobox.",
+            "$deprecated": "Use component.combobox.item.disabled.label. Removed in the next minor release."
           }
         },
         "chips": {
@@ -6980,6 +7185,13 @@
             "$description": "Chips focus ring invalid of the combobox."
           }
         },
+        "chip": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use combobox/chip/disabled/label (OD-297). Chip disabled opacity of the combobox.",
+            "$deprecated": "Use component.combobox.chip.disabled.label. Removed in the next minor release."
+          }
+        },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox.",
@@ -6987,12 +7199,24 @@
         }
       },
       "command": {
+        "input": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use command/input/disabled/text (OD-297). Input disabled opacity disabled of the command.",
+            "$deprecated": "Use component.command.input.disabled.text. Removed in the next minor release."
+          }
+        },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command.",
           "$deprecated": "Use component.command.input.wrapper.icon. Removed in the next minor release."
         },
         "item": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use command/item/disabled/label (OD-297). Item disabled opacity disabled of the command.",
+            "$deprecated": "Use component.command.item.disabled.label. Removed in the next minor release."
+          },
           "background-selected": {
             "$value": "{command.item.background.highlight}",
             "$description": "Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command.",
@@ -7033,6 +7257,11 @@
             "$description": "Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu.",
             "$deprecated": "Use component.context-menu.item.background.highlight. Removed in the next minor release."
           },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use context-menu/item/disabled/label (OD-297). Item disabled opacity disabled of the context menu.",
+            "$deprecated": "Use component.context-menu.item.disabled.label. Removed in the next minor release."
+          },
           "label": {
             "@": {
               "$value": "{context-menu.item.label.destructive}",
@@ -7062,6 +7291,11 @@
               "$value": "{context-menu.checkbox.item.background.highlight}",
               "$description": "Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu.",
               "$deprecated": "Use component.context-menu.checkbox.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use context-menu/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the context menu.",
+              "$deprecated": "Use component.context-menu.checkbox.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -7071,6 +7305,11 @@
               "$value": "{context-menu.radio.item.background.highlight}",
               "$description": "Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu.",
               "$deprecated": "Use component.context-menu.radio.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use context-menu/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the context menu.",
+              "$deprecated": "Use component.context-menu.radio.item.disabled.label. Removed in the next minor release."
             }
           }
         }
@@ -7167,6 +7406,11 @@
             "$value": "{dropdown-menu.item.background.highlight}",
             "$description": "Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu.",
             "$deprecated": "Use component.dropdown-menu.item.background.highlight. Removed in the next minor release."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use dropdown-menu/item/disabled-label (OD-297). Item disabled of the dropdown menu.",
+            "$deprecated": "Use component.dropdown-menu.item.disabled-label. Removed in the next minor release."
           }
         },
         "label": {
@@ -7182,6 +7426,11 @@
       },
       "field": {
         "label": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use field/label/disabled/text (OD-297). Label disabled opacity disabled of the field.",
+            "$deprecated": "Use component.field.label.disabled.text. Removed in the next minor release."
+          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Label radius of the field."
@@ -7267,8 +7516,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{input-group.addon.disabled-opacity-disabled}",
-          "$description": "Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group.",
-          "$deprecated": "Use component.input-group.addon.disabled-opacity-disabled. Removed in the next minor release."
+          "$description": "Deprecated: use input-group/addon/disabled/label (OD-243). Disabled opacity disabled of the input group.",
+          "$deprecated": "Use component.input-group.addon.disabled.label. Removed in the next minor release."
         },
         "icon-size": {
           "$value": "{input-group.addon.icon-size}",
@@ -7459,6 +7708,11 @@
             "$description": "Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar.",
             "$deprecated": "Use component.menubar.item.background.highlight. Removed in the next minor release."
           },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use menubar/item/disabled/label (OD-297). Item disabled opacity disabled of the menubar.",
+            "$deprecated": "Use component.menubar.item.disabled.label. Removed in the next minor release."
+          },
           "label": {
             "@": {
               "$value": "{menubar.item.label.destructive}",
@@ -7488,6 +7742,11 @@
               "$value": "{menubar.checkbox.item.background.highlight}",
               "$description": "Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar.",
               "$deprecated": "Use component.menubar.checkbox.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use menubar/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the menubar.",
+              "$deprecated": "Use component.menubar.checkbox.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -7497,6 +7756,11 @@
               "$value": "{menubar.radio.item.background.highlight}",
               "$description": "Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar.",
               "$deprecated": "Use component.menubar.radio.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use menubar/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the menubar.",
+              "$deprecated": "Use component.menubar.radio.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -7525,8 +7789,8 @@
       "native-select": {
         "disabled-opacity": {
           "$value": "{native-select.wrapper.disabled-opacity}",
-          "$description": "Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select.",
-          "$deprecated": "Use component.native-select.wrapper.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use native-select/disabled/text (OD-243). Disabled opacity of the native select.",
+          "$deprecated": "Use component.native-select.disabled.text. Removed in the next minor release."
         },
         "shadow": {
           "$value": "{elevation.card}",
@@ -7623,8 +7887,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{navigation-menu.trigger.disabled-opacity}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-243). Disabled opacity disabled of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
         },
         "background-open": {
           "$value": "{navigation-menu.trigger.background.open}",
@@ -7721,6 +7985,13 @@
           "$value": "{navigation-menu.indicator.shadow}",
           "$description": "Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu.",
           "$deprecated": "Use component.navigation-menu.indicator.shadow. Removed in the next minor release."
+        },
+        "trigger": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-297). Trigger opacity when disabled, of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
+          }
         }
       },
       "pagination": {
@@ -7755,6 +8026,11 @@
           "radius": {
             "$value": "{radius.round}",
             "$description": "Item radius of the radio group."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use radio-group/item/disabled/background (OD-297). Item disabled opacity disabled of the radio group.",
+            "$deprecated": "Use component.radio-group.item.disabled.background. Removed in the next minor release."
           }
         }
       },
@@ -7791,6 +8067,11 @@
             "$value": "{select.item.background.highlight}",
             "$description": "Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select.",
             "$deprecated": "Use component.select.item.background.highlight. Removed in the next minor release."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use select/item/disabled-label (OD-297). Item disabled of the select.",
+            "$deprecated": "Use component.select.item.disabled-label. Removed in the next minor release."
           }
         }
       },
@@ -7906,6 +8187,11 @@
                 "$value": "{color.text.primary}",
                 "$description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar.",
                 "$deprecated": "Use component.sidebar.menu.sub.button.label. Removed in the next minor release."
+              },
+              "disabled-opacity-disabled": {
+                "$value": "{opacity.disabled}",
+                "$description": "Deprecated: use sidebar/menu/sub/button/disabled/label (OD-297). Menu sub button disabled opacity disabled of the sidebar.",
+                "$deprecated": "Use component.sidebar.menu.sub.button.disabled.label. Removed in the next minor release."
               }
             }
           }
@@ -7962,8 +8248,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{sidebar.menu-button.opacity.disabled}",
-          "$description": "Deprecated: use component.sidebar.menu-button.opacity.disabled (OD-243). Disabled opacity disabled of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.opacity.disabled. Removed in the next minor release."
+          "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-243). Disabled opacity disabled of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
         },
         "background-2": {
           "$value": "{sidebar.menu-button.background.current}",
@@ -8098,6 +8384,13 @@
           "$deprecated": "Use component.sidebar.menu.sub.button.sm.line-height. Removed in the next minor release."
         },
         "menu-button": {
+          "opacity": {
+            "disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-297). Opacity of a menu button that cannot be used, of the sidebar.",
+              "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
+            }
+          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Corner of the menu button, of the sidebar."
@@ -8105,6 +8398,11 @@
         }
       },
       "slider": {
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use slider/disabled/range (OD-297). Disabled opacity disabled of the slider.",
+          "$deprecated": "Use component.slider.disabled.range. Removed in the next minor release."
+        },
         "thumb": {
           "radius": {
             "$value": "{radius.round}",
@@ -8114,10 +8412,20 @@
             "$value": "{color.border.focus}",
             "$description": "Deprecated: use slider/thumb/focus-ring-focus (OD-243). Thumb focus ring of the slider.",
             "$deprecated": "Use component.slider.thumb.focus-ring-focus. Removed in the next minor release."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use slider/thumb/disabled/background (OD-297). Thumb disabled opacity disabled of the slider.",
+            "$deprecated": "Use component.slider.thumb.disabled.background. Removed in the next minor release."
           }
         }
       },
       "switch": {
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",
+          "$deprecated": "Use component.switch.disabled-track. Removed in the next minor release."
+        },
         "canvas": {
           "$value": "{switch.focus-ring-offset}",
           "$description": "Deprecated: use component.switch.focus-ring-offset (OD-243). Canvas of the switch.",
@@ -8207,6 +8515,11 @@
           "$value": "{color.border.focus}",
           "$description": "Deprecated: use toggle/focus-ring-focus (OD-243). Border focus of the toggle.",
           "$deprecated": "Use component.toggle.focus-ring-focus. Removed in the next minor release."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use toggle/disabled/label (OD-297). Disabled opacity disabled of the toggle.",
+          "$deprecated": "Use component.toggle.disabled.label. Removed in the next minor release."
         },
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",

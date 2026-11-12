@@ -1246,6 +1246,12 @@
                 "fixed": {
                   "const": true,
                   "description": "On a step of the component spacing map: it holds still in this scheme."
+                },
+                "x_height": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 1,
+                  "description": "On a font family: its x-height as a share of the em, from the typeface metrics (OD-297). A test computes the x-height of the smallest text from it."
                 }
               }
             }

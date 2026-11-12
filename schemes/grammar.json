@@ -1575,7 +1575,7 @@
           "id": "focus-ring",
           "title": "Focus ring",
           "description": "The ring around the control that has keyboard focus, and the gap between them.",
-          "tokens": ["border-width.focus", "border-width.focus-offset"],
+          "tokens": ["focus.ring.width", "focus.ring.offset"],
           "works_by": "a heavier stroke with a gap",
           "jobs": [
             {
@@ -1662,7 +1662,7 @@
         },
         {
           "id": "focus-heavier",
-          "tokens": ["border-width.focus"],
+          "tokens": ["focus.ring.width"],
           "check": "next-step",
           "follows": [
             "accessibility.roles",
@@ -1674,7 +1674,7 @@
         },
         {
           "id": "focus-gap",
-          "tokens": ["border-width.focus-offset"],
+          "tokens": ["focus.ring.offset"],
           "check": "fixed",
           "equals": "2px",
           "follows": ["accessibility.roles"],
@@ -1870,11 +1870,13 @@
           "depth": {
             "raised": "color.surface.raised",
             "base": "color.surface.default",
-            "sunken": "color.surface.sunken"
+            "sunken": "color.surface.sunken",
+            "ring": "color.border.raised"
           },
           "follows": ["elevation.roles", "elevation.values", "theming.values"],
           "jobs": ["height", "floating"],
-          "says": "Decided: dark keeps the light shape (offset and blur); only the strength changes, set by the dark surface the shade falls on so that it stays visible. Beside it, an open finding: shadows are hard to see on dark surfaces, and Material shows height in dark mode with lighter surfaces. The check reports where a raised surface is not lighter than the base, or a sunken one is not darker."
+          "says": "Decided: in dark, only floating layers (menus, popovers, dialogs, toasts, tooltips) cast a shade, and it keeps the light shape (offset and blur); only its strength changes with the dark surface it falls on. Every other layer casts none in dark. Height reads by tone: a raised surface is lighter than the base, with a solid ring lighter still; a sunken one is darker. The check reports each break.",
+          "floating": ["elevation.overlay"]
         }
       ]
     },
@@ -2011,7 +2013,96 @@
             }
           ]
         }
-      ]
+      ],
+      "families": {
+        "description": "Motion comes in two families, set by what motion is for (motion.roles). A productive family serves work: short, plain moves. An expressive family carries the brand: it may move longer, accelerates a layer that leaves the screen, and springs on emphasis only. Each move type has its own easing token, and each duration has a limit in its family.",
+        "question": "motion.roles",
+        "by_option": {
+          "feedback": "productive",
+          "feedback-guidance": "productive",
+          "expression": "expressive"
+        },
+        "moves": [
+          {
+            "id": "enter",
+            "token": "motion.easing.enter",
+            "description": "A layer appears: a menu, a popover, a dialog, a toast."
+          },
+          {
+            "id": "exit",
+            "token": "motion.easing.exit",
+            "description": "A layer closes where it stands."
+          },
+          {
+            "id": "exit-offscreen",
+            "token": "motion.easing.exit-offscreen",
+            "description": "A layer slides off the screen: a sheet or a drawer."
+          },
+          {
+            "id": "transition",
+            "token": "motion.easing.standard",
+            "description": "A state changes in place: hover, press, toggle."
+          },
+          {
+            "id": "emphasize",
+            "token": "motion.easing.emphasize",
+            "description": "A moment that calls for attention, such as a success."
+          }
+        ],
+        "curves": [
+          {
+            "id": "ease-out",
+            "says": "Decelerates: past half its progress at half its time, never past the target."
+          },
+          {
+            "id": "strong-out",
+            "says": "A strong ease-out: at least 80% of its progress at a third of its time, never past the target."
+          },
+          {
+            "id": "accelerate",
+            "says": "Speeds up: under half its progress at half its time, never past the target."
+          },
+          {
+            "id": "overshoot",
+            "says": "Passes its target and settles back: a spring."
+          }
+        ],
+        "items": [
+          {
+            "id": "productive",
+            "title": "Productive",
+            "description": "Motion for work. Feedback ends within 150ms and panels within 300ms; an exit is a strong ease-out of about 150ms, even off the screen. No move overshoots.",
+            "max_ms": {
+              "motion.duration.feedback": 150,
+              "motion.duration.panels": 300,
+              "motion.duration.exit": 150,
+              "motion.duration.*": 300
+            },
+            "curves": {
+              "enter": ["ease-out", "strong-out"],
+              "exit": ["strong-out"],
+              "exit-offscreen": ["strong-out"],
+              "transition": ["ease-out", "strong-out"],
+              "emphasize": ["ease-out", "strong-out"]
+            }
+          },
+          {
+            "id": "expressive",
+            "title": "Expressive",
+            "description": "Motion that carries the brand. Any move may take up to 500ms. An exit eases out, and accelerates only when the layer leaves the screen. Only the emphasize move overshoots.",
+            "max_ms": {
+              "motion.duration.*": 500
+            },
+            "curves": {
+              "enter": ["ease-out", "strong-out"],
+              "exit": ["ease-out", "strong-out"],
+              "exit-offscreen": ["accelerate"],
+              "transition": ["ease-out", "strong-out"],
+              "emphasize": ["overshoot", "ease-out", "strong-out"]
+            }
+          }
+        ]
+      }
     },
     {
       "id": "iconography",
@@ -2311,7 +2402,13 @@
       "kind": "scope",
       "title": "Accessibility",
       "description": "Floors the system must hold.",
-      "owns": ["size.control", "opacity", "color.border.focus"],
+      "owns": [
+        "size.control",
+        "opacity",
+        "color.border.focus",
+        "focus",
+        "size.hit-area"
+      ],
       "lands_in": [
         "accordion",
         "alert-dialog",
@@ -2324,7 +2421,6 @@
         "checkbox",
         "combobox",
         "command",
-        "context-menu",
         "dialog",
         "dropdown-menu",
         "field",
@@ -2344,6 +2440,7 @@
         "sidebar",
         "slider",
         "switch",
+        "table",
         "tabs",
         "textarea",
         "toggle"
@@ -3542,7 +3639,15 @@
     {
       "id": "transition",
       "description": "Shared transition keys for hover and press feedback.",
-      "keys": ["transition/duration", "transition/easing"]
+      "keys": [
+        "transition/duration",
+        "transition/easing",
+        "transition/enter-easing",
+        "transition/exit-easing",
+        "transition/offscreen-exit-easing",
+        "transition/emphasize-easing",
+        "transition/exit-duration"
+      ]
     },
     {
       "id": "accordion",
@@ -3570,7 +3675,8 @@
         "accordion/trigger/focus-ring-offset-focus",
         "accordion/trigger/focus-offset",
         "accordion/focus-offset",
-        "accordion/item/divider/width"
+        "accordion/item/divider/width",
+        "accordion/trigger/disabled/label"
       ]
     },
     {
@@ -3819,7 +3925,9 @@
         "calendar/day/today/background",
         "calendar/day/today/label",
         "calendar/week/margin-top",
-        "calendar/dropdown/border-width"
+        "calendar/dropdown/border-width",
+        "calendar/nav/disabled/icon",
+        "calendar/day/disabled/label"
       ]
     },
     {
@@ -3893,7 +4001,11 @@
         "checkbox/background/checked",
         "checkbox/border",
         "checkbox/indicator/icon",
-        "checkbox/radius"
+        "checkbox/radius",
+        "checkbox/hit-area",
+        "checkbox/disabled-background",
+        "checkbox/disabled-border",
+        "checkbox/disabled-indicator"
       ]
     },
     {
@@ -3977,7 +4089,10 @@
         "combobox/chip/remove/label-hover",
         "combobox/chips/focus-offset",
         "combobox/chips/focus-ring-offset",
-        "combobox/chips/halo-width/invalid"
+        "combobox/chips/halo-width/invalid",
+        "combobox/item/disabled/label",
+        "combobox/chip/disabled/label",
+        "combobox/chip/disabled/background"
       ]
     },
     {
@@ -4034,7 +4149,9 @@
         "command/input/wrapper/border-width",
         "command/separator/thickness",
         "command/input/wrapper/icon",
-        "command/input/wrapper/height"
+        "command/input/wrapper/height",
+        "command/input/disabled/text",
+        "command/item/disabled/label"
       ]
     },
     {
@@ -4126,7 +4243,10 @@
         "context-menu/sub/content/border",
         "context-menu/sub/content/border-width",
         "context-menu/separator/margin-y",
-        "context-menu/separator/thickness"
+        "context-menu/separator/thickness",
+        "context-menu/item/disabled/label",
+        "context-menu/checkbox/item/disabled/label",
+        "context-menu/radio/item/disabled/label"
       ]
     },
     {
@@ -4250,7 +4370,8 @@
         "dropdown-menu/separator/background",
         "dropdown-menu/background",
         "dropdown-menu/separator/margin-y",
-        "dropdown-menu/separator/thickness"
+        "dropdown-menu/separator/thickness",
+        "dropdown-menu/item/disabled-label"
       ]
     },
     {
@@ -4327,7 +4448,9 @@
         "field/description/margin-top",
         "field/description/legend-margin-top",
         "field/separator/margin-y",
-        "field/error/indent"
+        "field/error/indent",
+        "field/group/hit-area",
+        "field/label/disabled/text"
       ]
     },
     {
@@ -4693,7 +4816,10 @@
         "menubar/separator/margin-y",
         "menubar/separator/thickness",
         "menubar/content/align-pull",
-        "menubar/sub/trigger/icon-size"
+        "menubar/sub/trigger/icon-size",
+        "menubar/item/disabled/label",
+        "menubar/checkbox/item/disabled/label",
+        "menubar/radio/item/disabled/label"
       ]
     },
     {
@@ -4860,7 +4986,8 @@
         "navigation-menu/content/border-width",
         "navigation-menu/viewport/border",
         "navigation-menu/viewport/border-width",
-        "navigation-menu/trigger/icon-gap"
+        "navigation-menu/trigger/icon-gap",
+        "navigation-menu/trigger/disabled/label"
       ]
     },
     {
@@ -4927,7 +5054,11 @@
         "radio-group/item/focus-ring-offset-focus",
         "radio-group/icon",
         "radio-group/item/focus-offset",
-        "radio-group/item/border-width"
+        "radio-group/item/border-width",
+        "radio-group/item/hit-area",
+        "radio-group/item/disabled/background",
+        "radio-group/item/disabled/border",
+        "radio-group/item/disabled/indicator"
       ]
     },
     {
@@ -5001,7 +5132,8 @@
         "select/trigger/border/invalid",
         "select/trigger/disabled/background",
         "select/trigger/disabled/border",
-        "select/trigger/disabled/text"
+        "select/trigger/disabled/text",
+        "select/item/disabled-label"
       ]
     },
     {
@@ -5228,7 +5360,9 @@
         "sidebar/menu-button/gap",
         "sidebar/menu-button/outline/border/@",
         "sidebar/menu-button/outline/border/hover",
-        "sidebar/menu-button/outline/border-width"
+        "sidebar/menu-button/outline/border-width",
+        "sidebar/menu/sub/button/disabled/label",
+        "sidebar/menu-button/disabled/label"
       ]
     },
     {
@@ -5255,7 +5389,11 @@
         "slider/thumb/focus-ring-offset-focus",
         "slider/thumb/focus-offset",
         "slider/thumb/border-width",
-        "slider/thumb/background"
+        "slider/thumb/background",
+        "slider/thumb/hit-area",
+        "slider/disabled/range",
+        "slider/thumb/disabled/background",
+        "slider/thumb/disabled/border"
       ]
     },
     {
@@ -5284,7 +5422,9 @@
         "switch/thumb/radius",
         "switch/thumb/background",
         "switch/track/background/@",
-        "switch/track/background/checked"
+        "switch/track/background/checked",
+        "switch/hit-area",
+        "switch/disabled-track"
       ]
     },
     {
@@ -5391,7 +5531,8 @@
         "toggle/label",
         "toggle/edge/on",
         "toggle/edge-width/on",
-        "toggle/outline/border-width"
+        "toggle/outline/border-width",
+        "toggle/disabled/label"
       ]
     },
     {
@@ -5562,7 +5703,7 @@
       "id": "button/focus",
       "component": "button",
       "description": "Focus of the button.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "button/canvas",
@@ -5593,7 +5734,7 @@
       "id": "button/focus-offset",
       "component": "button",
       "description": "Gap between the button and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "button/focus-ring-offset",
@@ -5695,7 +5836,7 @@
       "id": "input/focus",
       "component": "input",
       "description": "Focus of the input.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "input/canvas",
@@ -5715,7 +5856,7 @@
       "id": "input/focus-offset",
       "component": "input",
       "description": "Gap between the input and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "input/focus-ring-offset",
@@ -6025,7 +6166,7 @@
       "id": "table/row/focus",
       "component": "table",
       "description": "Row focus of the table.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "table/head/label",
@@ -6130,7 +6271,7 @@
       "id": "tabs/trigger/focus-offset",
       "component": "tabs",
       "description": "Gap between the tabs trigger and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "tabs/trigger/label",
@@ -6166,7 +6307,7 @@
       "id": "tabs/trigger/focus-width",
       "component": "tabs",
       "description": "Width of the focus ring on a tab trigger.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "tabs/trigger/focus-ring-offset",
@@ -6184,7 +6325,7 @@
       "id": "tabs/focus",
       "component": "tabs",
       "description": "Deprecated: use tabs/trigger/focus-width (OD-243). Focus of the tabs.",
-      "default": "border-width.focus",
+      "default": "focus.ring.width",
       "replaced_by": "tabs/trigger/focus-width"
     },
     {
@@ -6318,6 +6459,36 @@
       "default": "motion.duration.panels"
     },
     {
+      "id": "transition/enter-easing",
+      "component": "transition",
+      "description": "Easing of a layer that appears: a menu, a popover, a dialog.",
+      "default": "motion.easing.enter"
+    },
+    {
+      "id": "transition/exit-easing",
+      "component": "transition",
+      "description": "Easing of a layer that closes in place.",
+      "default": "motion.easing.exit"
+    },
+    {
+      "id": "transition/offscreen-exit-easing",
+      "component": "transition",
+      "description": "Easing of a layer that slides off the screen: a sheet or a drawer.",
+      "default": "motion.easing.exit-offscreen"
+    },
+    {
+      "id": "transition/emphasize-easing",
+      "component": "transition",
+      "description": "Easing of a moment that calls for attention.",
+      "default": "motion.easing.emphasize"
+    },
+    {
+      "id": "transition/exit-duration",
+      "component": "transition",
+      "description": "Duration of a layer that closes.",
+      "default": "motion.duration.exit"
+    },
+    {
       "id": "accordion/divider",
       "component": "accordion",
       "description": "Deprecated: use accordion/item/divider/@ (OD-243). The line between items.",
@@ -6369,8 +6540,9 @@
     {
       "id": "accordion/trigger/disabled/opacity",
       "component": "accordion",
-      "description": "How faint a disabled trigger is.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use accordion/trigger/disabled/label (OD-297). How faint a disabled trigger is.",
+      "default": "opacity.disabled",
+      "replaced_by": "accordion/trigger/disabled/label"
     },
     {
       "id": "accordion/trigger/focus-ring/@",
@@ -6382,13 +6554,13 @@
       "id": "accordion/trigger/focus-ring/width",
       "component": "accordion",
       "description": "The trigger's focus ring width.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "accordion/trigger/focus-offset",
       "component": "accordion",
       "description": "Gap between the trigger and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "accordion/focus-ring/@",
@@ -6401,15 +6573,15 @@
       "id": "accordion/focus-ring/width",
       "component": "accordion",
       "description": "Deprecated: use accordion/trigger/focus-ring/width (OD-243). The focus ring's width.",
-      "default": "border-width.focus",
+      "default": "focus.ring.width",
       "replaced_by": "accordion/trigger/focus-ring/width"
     },
     {
       "id": "accordion/disabled/opacity",
       "component": "accordion",
-      "description": "Deprecated: use accordion/trigger/disabled/opacity (OD-243). How faint a disabled trigger is.",
+      "description": "Deprecated: use accordion/trigger/disabled/label (OD-243). How faint a disabled trigger is.",
       "default": "opacity.disabled",
-      "replaced_by": "accordion/trigger/disabled/opacity"
+      "replaced_by": "accordion/trigger/disabled/label"
     },
     {
       "id": "accordion/icon/@",
@@ -6445,7 +6617,7 @@
       "id": "accordion/focus-offset",
       "component": "accordion",
       "description": "Deprecated: use accordion/trigger/focus-offset (OD-243). Gap between the accordion and its focus ring.",
-      "default": "border-width.focus-offset",
+      "default": "focus.ring.offset",
       "replaced_by": "accordion/trigger/focus-offset"
     },
     {
@@ -6459,6 +6631,12 @@
       "component": "accordion",
       "description": "The width of the line between items.",
       "default": "border-width.default"
+    },
+    {
+      "id": "accordion/trigger/disabled/label",
+      "component": "accordion",
+      "description": "Label of a disabled accordion trigger.",
+      "default": "color.disabled.text"
     },
     {
       "id": "alert-dialog/overlay/background",
@@ -6500,7 +6678,7 @@
       "id": "alert-dialog/content/border",
       "component": "alert-dialog",
       "description": "Content border of the alert dialog, like every floating panel's.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "alert-dialog/content/border-width",
@@ -6770,7 +6948,7 @@
       "id": "attachment/focus",
       "component": "attachment",
       "description": "Focus of the attachment.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "attachment/focus-ring-focus",
@@ -6844,7 +7022,7 @@
       "id": "attachment/focus-offset",
       "component": "attachment",
       "description": "Gap between the attachment and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "attachment/border",
@@ -7174,7 +7352,7 @@
       "id": "breadcrumb/link/focus-width",
       "component": "breadcrumb",
       "description": "Width of the breadcrumb link's focus ring.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "breadcrumb/link/focus-ring-offset-focus",
@@ -7186,7 +7364,7 @@
       "id": "breadcrumb/link/focus-offset",
       "component": "breadcrumb",
       "description": "Gap between the breadcrumb link and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "breadcrumb/page/font-weight",
@@ -7445,8 +7623,9 @@
     {
       "id": "calendar/disabled-opacity-disabled",
       "component": "calendar",
-      "description": "Disabled opacity disabled of the calendar.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use calendar/nav/disabled/icon (OD-297). Disabled opacity disabled of the calendar.",
+      "default": "opacity.disabled",
+      "replaced_by": "calendar/nav/disabled/icon"
     },
     {
       "id": "calendar/gap-3",
@@ -7500,7 +7679,7 @@
       "id": "calendar/focus",
       "component": "calendar",
       "description": "Focus of the calendar.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "calendar/focus-ring",
@@ -7574,9 +7753,9 @@
     {
       "id": "calendar/disabled-opacity",
       "component": "calendar",
-      "description": "Deprecated: use calendar/day/disabled-opacity (OD-243). Disabled opacity of the calendar.",
+      "description": "Deprecated: use calendar/day/disabled/label (OD-243). Disabled opacity of the calendar.",
       "default": "opacity.disabled",
-      "replaced_by": "calendar/day/disabled-opacity"
+      "replaced_by": "calendar/day/disabled/label"
     },
     {
       "id": "calendar/icon-size",
@@ -7628,7 +7807,7 @@
       "id": "calendar/focus-offset",
       "component": "calendar",
       "description": "Gap between the calendar and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "calendar/day/range/background",
@@ -7669,8 +7848,9 @@
     {
       "id": "calendar/day/disabled-opacity",
       "component": "calendar",
-      "description": "How faint a day that cannot be picked is.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use calendar/day/disabled/label (OD-297). How faint a day that cannot be picked is.",
+      "default": "opacity.disabled",
+      "replaced_by": "calendar/day/disabled/label"
     },
     {
       "id": "calendar/day/today/background",
@@ -7695,6 +7875,18 @@
       "component": "calendar",
       "description": "Width of the border around the month and year dropdowns of the calendar.",
       "default": "border-width.default"
+    },
+    {
+      "id": "calendar/nav/disabled/icon",
+      "component": "calendar",
+      "description": "Icon of a disabled previous or next month button.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "calendar/day/disabled/label",
+      "component": "calendar",
+      "description": "Label of a day that cannot be picked.",
+      "default": "color.disabled.text"
     },
     {
       "id": "carousel/item/padding-left",
@@ -7982,13 +8174,14 @@
       "id": "checkbox/focus",
       "component": "checkbox",
       "description": "Focus of the checkbox.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "checkbox/disabled",
       "component": "checkbox",
-      "description": "Disabled of the checkbox.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use checkbox/disabled-background (OD-297). Disabled of the checkbox.",
+      "default": "opacity.disabled",
+      "replaced_by": "checkbox/disabled-background"
     },
     {
       "id": "checkbox/canvas",
@@ -8001,7 +8194,7 @@
       "id": "checkbox/focus-offset",
       "component": "checkbox",
       "description": "Gap between the checkbox and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "checkbox/focus-ring",
@@ -8044,6 +8237,30 @@
       "component": "checkbox",
       "description": "Corner of the checkbox: the rule for badges and checkboxes.",
       "default": "radius.badge"
+    },
+    {
+      "id": "checkbox/hit-area",
+      "component": "checkbox",
+      "description": "The checkbox's hit area: it grows past the drawn box, which keeps its size.",
+      "default": "size.hit-area"
+    },
+    {
+      "id": "checkbox/disabled-background",
+      "component": "checkbox",
+      "description": "Fill of a disabled checkbox.",
+      "default": "color.disabled.surface"
+    },
+    {
+      "id": "checkbox/disabled-border",
+      "component": "checkbox",
+      "description": "Edge of a disabled checkbox.",
+      "default": "color.disabled.border"
+    },
+    {
+      "id": "checkbox/disabled-indicator",
+      "component": "checkbox",
+      "description": "Check mark of a disabled, checked checkbox.",
+      "default": "color.disabled.text"
     },
     {
       "id": "combobox/trigger/icon-size",
@@ -8118,7 +8335,7 @@
       "id": "combobox/content/border",
       "component": "combobox",
       "description": "Content border of the combobox, like every menu's.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "combobox/list/padding",
@@ -8197,8 +8414,9 @@
     {
       "id": "combobox/item/disabled-opacity-disabled",
       "component": "combobox",
-      "description": "Item disabled opacity disabled of the combobox.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use combobox/item/disabled/label (OD-297). Item disabled opacity disabled of the combobox.",
+      "default": "opacity.disabled",
+      "replaced_by": "combobox/item/disabled/label"
     },
     {
       "id": "combobox/item/icon-size",
@@ -8391,7 +8609,7 @@
       "id": "combobox/chips/focus-width",
       "component": "combobox",
       "description": "Focus ring width of the chips field.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "combobox/chips/border-width",
@@ -8403,7 +8621,7 @@
       "id": "combobox/chips/focus-offset",
       "component": "combobox",
       "description": "Gap between the chips field and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "combobox/chips/focus-ring-offset",
@@ -8468,8 +8686,9 @@
     {
       "id": "combobox/chip/disabled-opacity",
       "component": "combobox",
-      "description": "Chip disabled opacity of the combobox.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use combobox/chip/disabled/label (OD-297). Chip disabled opacity of the combobox.",
+      "default": "opacity.disabled",
+      "replaced_by": "combobox/chip/disabled/label"
     },
     {
       "id": "combobox/chip/remove/pull",
@@ -8519,6 +8738,24 @@
       "component": "combobox",
       "description": "Inset of the search field in the combobox's panel, like a menu panel's padding.",
       "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "combobox/item/disabled/label",
+      "component": "combobox",
+      "description": "Label of a disabled combobox option.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "combobox/chip/disabled/label",
+      "component": "combobox",
+      "description": "Label of a disabled chip.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "combobox/chip/disabled/background",
+      "component": "combobox",
+      "description": "Fill of a disabled chip.",
+      "default": "color.disabled.surface"
     },
     {
       "id": "command/radius",
@@ -8631,8 +8868,9 @@
     {
       "id": "command/input/disabled-opacity-disabled",
       "component": "command",
-      "description": "Input disabled opacity disabled of the command.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use command/input/disabled/text (OD-297). Input disabled opacity disabled of the command.",
+      "default": "opacity.disabled",
+      "replaced_by": "command/input/disabled/text"
     },
     {
       "id": "command/icon-size",
@@ -8764,8 +9002,9 @@
     {
       "id": "command/item/disabled-opacity-disabled",
       "component": "command",
-      "description": "Item disabled opacity disabled of the command.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use command/item/disabled/label (OD-297). Item disabled opacity disabled of the command.",
+      "default": "opacity.disabled",
+      "replaced_by": "command/item/disabled/label"
     },
     {
       "id": "command/item/background-selected",
@@ -8829,6 +9068,18 @@
       "component": "command",
       "description": "Shortcut label of the command.",
       "default": "color.text.muted"
+    },
+    {
+      "id": "command/input/disabled/text",
+      "component": "command",
+      "description": "Text of a disabled command search field.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "command/item/disabled/label",
+      "component": "command",
+      "description": "Label of a disabled command item.",
+      "default": "color.disabled.text"
     },
     {
       "id": "context-menu/sub/trigger/radius",
@@ -8950,7 +9201,7 @@
       "id": "context-menu/sub/content/border",
       "component": "context-menu",
       "description": "Border of the context menu submenu.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "context-menu/sub/content/border-width",
@@ -8992,7 +9243,7 @@
       "id": "context-menu/content/border",
       "component": "context-menu",
       "description": "Border of the context menu content.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "context-menu/content/border-width",
@@ -9052,8 +9303,9 @@
     {
       "id": "context-menu/item/disabled-opacity-disabled",
       "component": "context-menu",
-      "description": "Item disabled opacity disabled of the context menu.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use context-menu/item/disabled/label (OD-297). Item disabled opacity disabled of the context menu.",
+      "default": "opacity.disabled",
+      "replaced_by": "context-menu/item/disabled/label"
     },
     {
       "id": "context-menu/item/padding-left",
@@ -9183,8 +9435,9 @@
     {
       "id": "context-menu/checkbox/item/disabled-opacity-disabled",
       "component": "context-menu",
-      "description": "Checkbox item disabled opacity disabled of the context menu.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use context-menu/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the context menu.",
+      "default": "opacity.disabled",
+      "replaced_by": "context-menu/checkbox/item/disabled/label"
     },
     {
       "id": "context-menu/checkbox/item/icon-size",
@@ -9262,8 +9515,9 @@
     {
       "id": "context-menu/radio/item/disabled-opacity-disabled",
       "component": "context-menu",
-      "description": "Radio item disabled opacity disabled of the context menu.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use context-menu/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the context menu.",
+      "default": "opacity.disabled",
+      "replaced_by": "context-menu/radio/item/disabled/label"
     },
     {
       "id": "context-menu/radio/item/icon-size",
@@ -9354,6 +9608,24 @@
       "component": "context-menu",
       "description": "Shortcut label of the context menu.",
       "default": "color.text.muted"
+    },
+    {
+      "id": "context-menu/item/disabled/label",
+      "component": "context-menu",
+      "description": "Label and icon of a disabled menu item.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "context-menu/checkbox/item/disabled/label",
+      "component": "context-menu",
+      "description": "Label and mark of a disabled checkbox item.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "context-menu/radio/item/disabled/label",
+      "component": "context-menu",
+      "description": "Label and mark of a disabled radio item.",
+      "default": "color.disabled.text"
     },
     {
       "id": "data-table/gap",
@@ -9468,7 +9740,7 @@
       "id": "dialog/content/border",
       "component": "dialog",
       "description": "Edge of the dialog panel: a floating panel has a border of its own.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "dialog/content/border-width",
@@ -9619,7 +9891,7 @@
       "id": "dialog/close/focus-ring/width",
       "component": "dialog",
       "description": "Width of the focus ring on the dialog close button.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "dialog/close/focus-ring/color",
@@ -9637,7 +9909,7 @@
       "id": "dialog/close/focus-offset",
       "component": "dialog",
       "description": "Gap between the dialog close button and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "dialog/overlay/background",
@@ -9867,7 +10139,7 @@
       "id": "dropdown-menu/content/border",
       "component": "dropdown-menu",
       "description": "Content border of the dropdown menu.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "dropdown-menu/item/gap",
@@ -9903,8 +10175,9 @@
     {
       "id": "dropdown-menu/item/disabled",
       "component": "dropdown-menu",
-      "description": "Item disabled of the dropdown menu.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use dropdown-menu/item/disabled-label (OD-297). Item disabled of the dropdown menu.",
+      "default": "opacity.disabled",
+      "replaced_by": "dropdown-menu/item/disabled-label"
     },
     {
       "id": "dropdown-menu/item/icon",
@@ -9955,6 +10228,12 @@
       "component": "dropdown-menu",
       "description": "Thickness of the separator of the dropdown menu: the weight of every line.",
       "default": "border-width.default"
+    },
+    {
+      "id": "dropdown-menu/item/disabled-label",
+      "component": "dropdown-menu",
+      "description": "Label and icon of a disabled menu item.",
+      "default": "color.disabled.text"
     },
     {
       "id": "empty/gap",
@@ -10145,8 +10424,9 @@
     {
       "id": "field/label/disabled-opacity-disabled",
       "component": "field",
-      "description": "Label disabled opacity disabled of the field.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use field/label/disabled/text (OD-297). Label disabled opacity disabled of the field.",
+      "default": "opacity.disabled",
+      "replaced_by": "field/label/disabled/text"
     },
     {
       "id": "field/label/radius",
@@ -10352,6 +10632,18 @@
       "default": "color.text.muted"
     },
     {
+      "id": "field/group/hit-area",
+      "component": "field",
+      "description": "The least height of each row in a checkbox group, so two checkboxes' hit areas never overlap.",
+      "default": "size.hit-area"
+    },
+    {
+      "id": "field/label/disabled/text",
+      "component": "field",
+      "description": "Label of a disabled field: muted, and still readable.",
+      "default": "color.disabled.text"
+    },
+    {
       "id": "form/item/gap",
       "component": "form",
       "description": "Item gap of the form.",
@@ -10433,7 +10725,7 @@
       "id": "hover-card/content/border",
       "component": "hover-card",
       "description": "Content border of the hover card.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "hover-card/content/border-width",
@@ -10573,9 +10865,9 @@
     {
       "id": "input-group/disabled-opacity-disabled",
       "component": "input-group",
-      "description": "Deprecated: use input-group/addon/disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group.",
+      "description": "Deprecated: use input-group/addon/disabled/label (OD-243). Disabled opacity disabled of the input group.",
       "default": "opacity.disabled",
-      "replaced_by": "input-group/addon/disabled-opacity-disabled"
+      "replaced_by": "input-group/addon/disabled/label"
     },
     {
       "id": "input-group/icon-size",
@@ -10875,13 +11167,13 @@
       "id": "input-group/focus-width",
       "component": "input-group",
       "description": "Focus ring width of the input group, like the input's.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "input-group/focus-offset",
       "component": "input-group",
       "description": "Gap between the input group and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "input-group/focus-ring-offset",
@@ -11017,7 +11309,7 @@
       "id": "input-otp/slot/focus-width",
       "component": "input-otp",
       "description": "Focus ring width of the active slot, like the input's.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "input-otp/slot/size",
@@ -11029,7 +11321,7 @@
       "id": "input-otp/slot/focus-offset",
       "component": "input-otp",
       "description": "Gap between the active slot and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "input-otp/slot/focus-ring-offset",
@@ -11158,7 +11450,7 @@
       "id": "item/focus",
       "component": "item",
       "description": "Focus of the item.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "item/focus-ring-focus",
@@ -11344,7 +11636,7 @@
       "id": "item/focus-offset",
       "component": "item",
       "description": "Gap between the item and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "item/media/gap",
@@ -11690,7 +11982,7 @@
       "id": "menubar/content/border",
       "component": "menubar",
       "description": "Border of the menubar content.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "menubar/content/border-width",
@@ -11756,8 +12048,9 @@
     {
       "id": "menubar/item/disabled-opacity-disabled",
       "component": "menubar",
-      "description": "Item disabled opacity disabled of the menubar.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use menubar/item/disabled/label (OD-297). Item disabled opacity disabled of the menubar.",
+      "default": "opacity.disabled",
+      "replaced_by": "menubar/item/disabled/label"
     },
     {
       "id": "menubar/item/padding-left",
@@ -11887,8 +12180,9 @@
     {
       "id": "menubar/checkbox/item/disabled-opacity-disabled",
       "component": "menubar",
-      "description": "Checkbox item disabled opacity disabled of the menubar.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use menubar/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the menubar.",
+      "default": "opacity.disabled",
+      "replaced_by": "menubar/checkbox/item/disabled/label"
     },
     {
       "id": "menubar/checkbox/item/icon-size",
@@ -11966,8 +12260,9 @@
     {
       "id": "menubar/radio/item/disabled-opacity-disabled",
       "component": "menubar",
-      "description": "Radio item disabled opacity disabled of the menubar.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use menubar/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the menubar.",
+      "default": "opacity.disabled",
+      "replaced_by": "menubar/radio/item/disabled/label"
     },
     {
       "id": "menubar/radio/item/icon-size",
@@ -12160,7 +12455,7 @@
       "id": "menubar/sub/content/border",
       "component": "menubar",
       "description": "Border of the menubar submenu.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "menubar/sub/content/border-width",
@@ -12187,6 +12482,24 @@
       "default": "border-width.default"
     },
     {
+      "id": "menubar/item/disabled/label",
+      "component": "menubar",
+      "description": "Label and icon of a disabled menu item.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "menubar/checkbox/item/disabled/label",
+      "component": "menubar",
+      "description": "Label and mark of a disabled checkbox item.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "menubar/radio/item/disabled/label",
+      "component": "menubar",
+      "description": "Label and mark of a disabled radio item.",
+      "default": "color.disabled.text"
+    },
+    {
       "id": "message-scroller/gap",
       "component": "message-scroller",
       "description": "Gap of the message scroller.",
@@ -12202,7 +12515,7 @@
       "id": "message-scroller/focus",
       "component": "message-scroller",
       "description": "Focus of the message scroller.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "message-scroller/focus-ring-focus",
@@ -12220,7 +12533,7 @@
       "id": "message-scroller/focus-offset",
       "component": "message-scroller",
       "description": "Gap between the message scroller and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "message/gap",
@@ -12293,9 +12606,9 @@
     {
       "id": "native-select/disabled-opacity",
       "component": "native-select",
-      "description": "Deprecated: use native-select/wrapper/disabled-opacity (OD-243). Disabled opacity of the native select.",
+      "description": "Deprecated: use native-select/disabled/text (OD-243). Disabled opacity of the native select.",
       "default": "opacity.disabled",
-      "replaced_by": "native-select/wrapper/disabled-opacity"
+      "replaced_by": "native-select/disabled/text"
     },
     {
       "id": "native-select/radius",
@@ -12389,7 +12702,7 @@
       "id": "native-select/focus",
       "component": "native-select",
       "description": "Focus of the native select.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "native-select/focus-ring-focus",
@@ -12432,7 +12745,7 @@
       "id": "native-select/focus-offset",
       "component": "native-select",
       "description": "Gap between the native select and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "native-select/border-width",
@@ -12611,9 +12924,9 @@
     {
       "id": "navigation-menu/disabled-opacity-disabled",
       "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu.",
+      "description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-243). Disabled opacity disabled of the navigation menu.",
       "default": "opacity.disabled",
-      "replaced_by": "navigation-menu/trigger/disabled-opacity"
+      "replaced_by": "navigation-menu/trigger/disabled/label"
     },
     {
       "id": "navigation-menu/background-open",
@@ -12647,7 +12960,7 @@
       "id": "navigation-menu/focus",
       "component": "navigation-menu",
       "description": "Deprecated: use navigation-menu/trigger/focus-width (OD-243). Focus of the navigation menu.",
-      "default": "border-width.focus",
+      "default": "focus.ring.width",
       "replaced_by": "navigation-menu/trigger/focus-width"
     },
     {
@@ -12710,7 +13023,7 @@
       "id": "navigation-menu/content/border",
       "component": "navigation-menu",
       "description": "Content border of the navigation menu.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "navigation-menu/content/border-width",
@@ -12853,7 +13166,7 @@
       "id": "navigation-menu/link/focus",
       "component": "navigation-menu",
       "description": "Deprecated: use navigation-menu/link/focus-width (OD-243). Link focus of the navigation menu.",
-      "default": "border-width.focus",
+      "default": "focus.ring.width",
       "replaced_by": "navigation-menu/link/focus-width"
     },
     {
@@ -12905,7 +13218,7 @@
       "id": "navigation-menu/link/focus-offset",
       "component": "navigation-menu",
       "description": "Gap between the navigation menu link and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "navigation-menu/link/edge/current",
@@ -12917,13 +13230,13 @@
       "id": "navigation-menu/link/focus-width",
       "component": "navigation-menu",
       "description": "Link focus ring width, of the navigation menu.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "navigation-menu/link/edge-width/current",
       "component": "navigation-menu",
       "description": "Width of the current link's edge.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "navigation-menu/link/icon",
@@ -12985,7 +13298,7 @@
       "id": "navigation-menu/trigger/focus-offset",
       "component": "navigation-menu",
       "description": "Gap between the navigation menu trigger and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "navigation-menu/trigger/padding-x",
@@ -13038,14 +13351,15 @@
     {
       "id": "navigation-menu/trigger/disabled-opacity",
       "component": "navigation-menu",
-      "description": "Trigger opacity when disabled, of the navigation menu.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-297). Trigger opacity when disabled, of the navigation menu.",
+      "default": "opacity.disabled",
+      "replaced_by": "navigation-menu/trigger/disabled/label"
     },
     {
       "id": "navigation-menu/trigger/focus-width",
       "component": "navigation-menu",
       "description": "Trigger focus ring width, of the navigation menu.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "navigation-menu/trigger/focus-ring",
@@ -13082,6 +13396,12 @@
       "component": "navigation-menu",
       "description": "The indicator arrow's shadow, of the navigation menu.",
       "default": "elevation.overlay"
+    },
+    {
+      "id": "navigation-menu/trigger/disabled/label",
+      "component": "navigation-menu",
+      "description": "Label of a disabled navigation trigger.",
+      "default": "color.disabled.text"
     },
     {
       "id": "pagination/content/gap",
@@ -13188,7 +13508,7 @@
       "id": "popover/content/border",
       "component": "popover",
       "description": "Content border of the popover.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "popover/content/border-width",
@@ -13295,8 +13615,9 @@
     {
       "id": "radio-group/item/disabled-opacity-disabled",
       "component": "radio-group",
-      "description": "Item disabled opacity disabled of the radio group.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use radio-group/item/disabled/background (OD-297). Item disabled opacity disabled of the radio group.",
+      "default": "opacity.disabled",
+      "replaced_by": "radio-group/item/disabled/background"
     },
     {
       "id": "radio-group/item/border-invalid",
@@ -13314,7 +13635,7 @@
       "id": "radio-group/item/focus",
       "component": "radio-group",
       "description": "Item focus of the radio group.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "radio-group/item/focus-ring-focus",
@@ -13332,7 +13653,7 @@
       "id": "radio-group/item/focus-offset",
       "component": "radio-group",
       "description": "Gap between the radio group item and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "radio-group/item/border-width",
@@ -13347,6 +13668,30 @@
       "default": "color.action.primary.@"
     },
     {
+      "id": "radio-group/item/hit-area",
+      "component": "radio-group",
+      "description": "A radio's hit area, and the least height of each row in the group, so two hit areas never overlap.",
+      "default": "size.hit-area"
+    },
+    {
+      "id": "radio-group/item/disabled/background",
+      "component": "radio-group",
+      "description": "Fill of a disabled radio.",
+      "default": "color.disabled.surface"
+    },
+    {
+      "id": "radio-group/item/disabled/border",
+      "component": "radio-group",
+      "description": "Edge of a disabled radio.",
+      "default": "color.disabled.border"
+    },
+    {
+      "id": "radio-group/item/disabled/indicator",
+      "component": "radio-group",
+      "description": "Dot of a disabled, chosen radio.",
+      "default": "color.disabled.text"
+    },
+    {
       "id": "resizable/handle/background",
       "component": "resizable",
       "description": "Handle background of the resizable.",
@@ -13356,7 +13701,7 @@
       "id": "resizable/handle/focus",
       "component": "resizable",
       "description": "Handle focus of the resizable.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "resizable/handle/focus-ring-focus",
@@ -13401,7 +13746,7 @@
       "id": "resizable/focus-offset",
       "component": "resizable",
       "description": "Gap between the resizable and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "resizable/grip/border-width",
@@ -13437,7 +13782,7 @@
       "id": "scroll-area/viewport/focus",
       "component": "scroll-area",
       "description": "Viewport focus of the scroll area.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "scroll-area/viewport/focus-ring-focus",
@@ -13455,7 +13800,7 @@
       "id": "scroll-area/viewport/focus-offset",
       "component": "scroll-area",
       "description": "Gap between the scroll area viewport and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "scroll-area/thumb/radius",
@@ -13563,13 +13908,13 @@
       "id": "select/trigger/focus-width",
       "component": "select",
       "description": "Focus ring width of the select's trigger.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "select/trigger/focus-offset",
       "component": "select",
       "description": "Gap between the select trigger and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "select/trigger/icon",
@@ -13599,7 +13944,7 @@
       "id": "select/focus",
       "component": "select",
       "description": "Deprecated: use select/trigger/focus-width (OD-243). Focus of the select.",
-      "default": "border-width.focus",
+      "default": "focus.ring.width",
       "replaced_by": "select/trigger/focus-width"
     },
     {
@@ -13637,7 +13982,7 @@
       "id": "select/content/border",
       "component": "select",
       "description": "Content border of the select.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "select/item/gap",
@@ -13679,14 +14024,21 @@
     {
       "id": "select/item/disabled",
       "component": "select",
-      "description": "Item disabled of the select.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use select/item/disabled-label (OD-297). Item disabled of the select.",
+      "default": "opacity.disabled",
+      "replaced_by": "select/item/disabled-label"
     },
     {
       "id": "select/item/background/highlight",
       "component": "select",
       "description": "Item background when highlighted, by the pointer or the keyboard, of the select.",
       "default": "color.surface.highlight"
+    },
+    {
+      "id": "select/item/disabled-label",
+      "component": "select",
+      "description": "Label of a disabled option.",
+      "default": "color.disabled.text"
     },
     {
       "id": "separator/background",
@@ -13754,7 +14106,7 @@
       "id": "sheet/focus",
       "component": "sheet",
       "description": "Deprecated: use sheet/close/focus-ring/width (OD-243). Focus of the sheet.",
-      "default": "border-width.focus",
+      "default": "focus.ring.width",
       "replaced_by": "sheet/close/focus-ring/width"
     },
     {
@@ -13854,7 +14206,7 @@
       "id": "sheet/close/focus-offset",
       "component": "sheet",
       "description": "Gap between the sheet close and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "sheet/close/radius",
@@ -13866,7 +14218,7 @@
       "id": "sheet/close/focus-ring/width",
       "component": "sheet",
       "description": "Width of the focus ring on the sheet close button.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sheet/close/focus-ring/color",
@@ -14176,7 +14528,7 @@
       "id": "sidebar/group/label/focus",
       "component": "sidebar",
       "description": "Group label focus of the sidebar.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sidebar/group/label/focus-ring-focus",
@@ -14194,7 +14546,7 @@
       "id": "sidebar/group/label/focus-offset",
       "component": "sidebar",
       "description": "Gap between the sidebar group label and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "sidebar/group/action/radius",
@@ -14231,7 +14583,7 @@
       "id": "sidebar/group/action/focus",
       "component": "sidebar",
       "description": "Group action focus of the sidebar.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sidebar/group/action/focus-ring-focus",
@@ -14255,7 +14607,7 @@
       "id": "sidebar/group/action/focus-offset",
       "component": "sidebar",
       "description": "Gap between the sidebar group action and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "sidebar/group/content/font-size",
@@ -14310,7 +14662,7 @@
       "id": "sidebar/menu/action/focus",
       "component": "sidebar",
       "description": "Menu action focus of the sidebar.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sidebar/menu/action/focus-ring-focus",
@@ -14334,7 +14686,7 @@
       "id": "sidebar/menu/action/focus-offset",
       "component": "sidebar",
       "description": "Gap between the sidebar menu action and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "sidebar/menu/badge/radius",
@@ -14480,8 +14832,9 @@
     {
       "id": "sidebar/menu/sub/button/disabled-opacity-disabled",
       "component": "sidebar",
-      "description": "Menu sub button disabled opacity disabled of the sidebar.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use sidebar/menu/sub/button/disabled/label (OD-297). Menu sub button disabled opacity disabled of the sidebar.",
+      "default": "opacity.disabled",
+      "replaced_by": "sidebar/menu/sub/button/disabled/label"
     },
     {
       "id": "sidebar/menu/sub/button/icon-size",
@@ -14493,7 +14846,7 @@
       "id": "sidebar/menu/sub/button/focus",
       "component": "sidebar",
       "description": "Menu sub button focus of the sidebar.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sidebar/menu/sub/button/focus-ring-focus",
@@ -14535,7 +14888,7 @@
       "id": "sidebar/menu/sub/button/edge-width/current",
       "component": "sidebar",
       "description": "Width of the edge that marks the submenu button for the current page.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sidebar/menu/sub/button/md/font-size",
@@ -14553,7 +14906,7 @@
       "id": "sidebar/menu/sub/button/focus-offset",
       "component": "sidebar",
       "description": "Gap between the sidebar submenu button and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "sidebar/menu/sub/button/sm/font-size",
@@ -14646,9 +14999,9 @@
     {
       "id": "sidebar/disabled-opacity-disabled",
       "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/opacity/disabled (OD-243). Disabled opacity disabled of the sidebar.",
+      "description": "Deprecated: use sidebar/menu-button/disabled/label (OD-243). Disabled opacity disabled of the sidebar.",
       "default": "opacity.disabled",
-      "replaced_by": "sidebar/menu-button/opacity/disabled"
+      "replaced_by": "sidebar/menu-button/disabled/label"
     },
     {
       "id": "sidebar/background-2",
@@ -14668,7 +15021,7 @@
       "id": "sidebar/focus",
       "component": "sidebar",
       "description": "Deprecated: use sidebar/menu-button/focus-width (OD-243). Focus of the sidebar.",
-      "default": "border-width.focus",
+      "default": "focus.ring.width",
       "replaced_by": "sidebar/menu-button/focus-width"
     },
     {
@@ -14846,13 +15199,13 @@
       "id": "sidebar/menu-button/focus-offset",
       "component": "sidebar",
       "description": "Gap between the sidebar menu button and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "sidebar/menu-button/edge-width/current",
       "component": "sidebar",
       "description": "Width of the edge that marks the menu button for the current page, beside its fill, so the current page is never color alone.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sidebar/menu-button/default/height",
@@ -14899,14 +15252,15 @@
     {
       "id": "sidebar/menu-button/opacity/disabled",
       "component": "sidebar",
-      "description": "Opacity of a menu button that cannot be used, of the sidebar.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use sidebar/menu-button/disabled/label (OD-297). Opacity of a menu button that cannot be used, of the sidebar.",
+      "default": "opacity.disabled",
+      "replaced_by": "sidebar/menu-button/disabled/label"
     },
     {
       "id": "sidebar/menu-button/focus-width",
       "component": "sidebar",
       "description": "Width of the menu button's keyboard focus ring, of the sidebar.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "sidebar/menu-button/focus-ring",
@@ -15011,6 +15365,18 @@
       "default": "space.gap.default"
     },
     {
+      "id": "sidebar/menu/sub/button/disabled/label",
+      "component": "sidebar",
+      "description": "Label and icon of a disabled sub-item.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "sidebar/menu-button/disabled/label",
+      "component": "sidebar",
+      "description": "Label and icon of a disabled menu button.",
+      "default": "color.disabled.text"
+    },
+    {
       "id": "skeleton/radius",
       "component": "skeleton",
       "description": "Radius of the skeleton.",
@@ -15025,8 +15391,9 @@
     {
       "id": "slider/disabled-opacity-disabled",
       "component": "slider",
-      "description": "Disabled opacity disabled of the slider.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use slider/disabled/range (OD-297). Disabled opacity disabled of the slider.",
+      "default": "opacity.disabled",
+      "replaced_by": "slider/disabled/range"
     },
     {
       "id": "slider/track/radius",
@@ -15080,14 +15447,15 @@
     {
       "id": "slider/thumb/disabled-opacity-disabled",
       "component": "slider",
-      "description": "Thumb disabled opacity disabled of the slider.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use slider/thumb/disabled/background (OD-297). Thumb disabled opacity disabled of the slider.",
+      "default": "opacity.disabled",
+      "replaced_by": "slider/thumb/disabled/background"
     },
     {
       "id": "slider/thumb/focus",
       "component": "slider",
       "description": "Thumb focus of the slider.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "slider/thumb/focus-ring-focus",
@@ -15105,7 +15473,7 @@
       "id": "slider/thumb/focus-offset",
       "component": "slider",
       "description": "Gap between the slider thumb and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "slider/thumb/border-width",
@@ -15118,6 +15486,30 @@
       "component": "slider",
       "description": "Fill of the slider's thumb: the base fill, as the switch's thumb has, so the thumb stands out on the track and the range.",
       "default": "color.surface.default"
+    },
+    {
+      "id": "slider/thumb/hit-area",
+      "component": "slider",
+      "description": "The slider thumb's hit area: it grows past the drawn thumb, which keeps its size.",
+      "default": "size.hit-area"
+    },
+    {
+      "id": "slider/disabled/range",
+      "component": "slider",
+      "description": "Filled part of a disabled slider's track.",
+      "default": "color.disabled.border"
+    },
+    {
+      "id": "slider/thumb/disabled/background",
+      "component": "slider",
+      "description": "Fill of a disabled slider's thumb.",
+      "default": "color.disabled.surface"
+    },
+    {
+      "id": "slider/thumb/disabled/border",
+      "component": "slider",
+      "description": "Edge of a disabled slider's thumb.",
+      "default": "color.disabled.border"
     },
     {
       "id": "spinner/icon-size",
@@ -15153,13 +15545,14 @@
       "id": "switch/focus",
       "component": "switch",
       "description": "Focus of the switch.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "switch/disabled",
       "component": "switch",
-      "description": "Disabled of the switch.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",
+      "default": "opacity.disabled",
+      "replaced_by": "switch/disabled-track"
     },
     {
       "id": "switch/canvas",
@@ -15186,7 +15579,7 @@
       "id": "switch/focus-offset",
       "component": "switch",
       "description": "Gap between the switch and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "switch/focus-ring",
@@ -15235,6 +15628,18 @@
       "component": "switch",
       "description": "Fill of the switch's track when on: the rule for checked controls. The thumb's side says on, so it is never color alone.",
       "default": "color.action.primary.@"
+    },
+    {
+      "id": "switch/hit-area",
+      "component": "switch",
+      "description": "The switch's hit area: it grows past the drawn track, which keeps its size.",
+      "default": "size.hit-area"
+    },
+    {
+      "id": "switch/disabled-track",
+      "component": "switch",
+      "description": "Track of a disabled switch, on or off; the thumb's place shows the state.",
+      "default": "color.disabled.border"
     },
     {
       "id": "textarea/radius",
@@ -15314,7 +15719,7 @@
       "id": "textarea/focus",
       "component": "textarea",
       "description": "Focus of the textarea.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "textarea/focus-ring-focus",
@@ -15332,7 +15737,7 @@
       "id": "textarea/focus-offset",
       "component": "textarea",
       "description": "Gap between the textarea and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "textarea/border-width",
@@ -15410,7 +15815,7 @@
       "id": "toast/neutral/border",
       "component": "toast",
       "description": "Neutral border of the toast.",
-      "default": "color.border.default"
+      "default": "color.border.raised"
     },
     {
       "id": "toast/success/border",
@@ -15610,8 +16015,9 @@
     {
       "id": "toggle/disabled-opacity-disabled",
       "component": "toggle",
-      "description": "Disabled opacity disabled of the toggle.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use toggle/disabled/label (OD-297). Disabled opacity disabled of the toggle.",
+      "default": "opacity.disabled",
+      "replaced_by": "toggle/disabled/label"
     },
     {
       "id": "toggle/border-invalid",
@@ -15643,7 +16049,7 @@
       "id": "toggle/focus",
       "component": "toggle",
       "description": "Focus of the toggle.",
-      "default": "border-width.focus"
+      "default": "focus.ring.width"
     },
     {
       "id": "toggle/focus-ring-focus",
@@ -15728,7 +16134,7 @@
       "id": "toggle/focus-offset",
       "component": "toggle",
       "description": "Gap between the toggle and its focus ring.",
-      "default": "border-width.focus-offset"
+      "default": "focus.ring.offset"
     },
     {
       "id": "toggle/label",
@@ -15747,6 +16153,12 @@
       "component": "toggle",
       "description": "Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width.",
       "default": "border-width.default"
+    },
+    {
+      "id": "toggle/disabled/label",
+      "component": "toggle",
+      "description": "Label and icon of a disabled toggle.",
+      "default": "color.disabled.text"
     },
     {
       "id": "icon/size",
@@ -15847,7 +16259,7 @@
       },
       {
         "id": "color.surface.raised",
-        "intent": "Fills that float above content.",
+        "intent": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
         "use_for": ["Menus", "Popovers", "Dialogs"],
         "not_for": [
           {
@@ -15873,7 +16285,7 @@
       },
       {
         "id": "color.surface.highlight",
-        "intent": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+        "intent": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
         "use_for": [
           "Highlighted menu items",
           "Highlighted options",
@@ -16217,6 +16629,21 @@
         "intent": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
         "use_for": ["Card edges", "Dividers", "Table rules"],
         "not_for": [
+          {
+            "when": "The edge of a control people must find",
+            "use": "color.border.strong"
+          }
+        ]
+      },
+      {
+        "id": "color.border.raised",
+        "intent": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
+        "use_for": ["Menus", "Popovers", "Dialogs", "Toasts", "Raised cards"],
+        "not_for": [
+          {
+            "when": "Dividers and card borders in the page flow",
+            "use": "color.border.default"
+          },
           {
             "when": "The edge of a control people must find",
             "use": "color.border.strong"
@@ -17015,7 +17442,7 @@
       "says": "The layering answer says whether lines separate groups; the contrast floor says how heavy a line must be to be seen."
     },
     {
-      "tokens": ["border-width.focus"],
+      "tokens": ["focus.ring.width"],
       "follows": [
         "accessibility.roles",
         "elevation.definition",
@@ -17024,7 +17451,7 @@
       "says": "Focus is a state with its own look (roles answer); the ring is one step heavier than the default line, so it follows that line's answers too."
     },
     {
-      "tokens": ["border-width.focus-offset"],
+      "tokens": ["focus.ring.offset"],
       "follows": ["accessibility.roles"],
       "says": "Focus is a state with its own look (roles answer); its gap is a fixed 2px in every scheme, for contrast: the page color between ring and control (W3C technique C40)."
     },
@@ -17049,9 +17476,9 @@
       "says": "The definition answer sets the easing: a standard ease-out or a spring."
     },
     {
-      "tokens": ["opacity.disabled"],
-      "follows": ["accessibility.roles"],
-      "says": "Disabled is a state with its own look; the roles answer names the states."
+      "tokens": ["size.hit-area"],
+      "follows": ["accessibility.values", "spacing.values"],
+      "says": "The target-size answer sets the hit area: 24px for a pointer, 44px for touch. A control drawn smaller keeps its size; its hit area grows past it. The density answer says how close neighbours sit."
     },
     {
       "tokens": ["size.control.*"],
@@ -17336,7 +17763,7 @@
                           "color": "component.accordion.icon"
                         }
                       ],
-                      "opacity": "component.accordion.trigger.disabled.opacity",
+                      "opacity": "component.accordion.trigger.disabled.label",
                       "n": 7
                     }
                   ]
@@ -17427,7 +17854,7 @@
                   "label": "Disabled trigger",
                   "need": "state",
                   "roles": ["feedback"],
-                  "tokens": ["component.accordion.trigger.disabled.opacity"]
+                  "tokens": ["component.accordion.trigger.disabled.label"]
                 }
               ]
             }
@@ -17499,7 +17926,7 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": ["component.accordion.trigger.disabled.opacity"]
+              "tokens": ["component.accordion.trigger.disabled.label"]
             }
           ]
         }
@@ -20704,7 +21131,7 @@
                           "h": 32,
                           "justify": "center",
                           "radius": "component.calendar.radius",
-                          "opacity": "component.calendar.day.disabled-opacity",
+                          "opacity": "component.calendar.day.disabled.label",
                           "children": [
                             {
                               "t": "text",
@@ -20723,7 +21150,7 @@
                           "h": 32,
                           "justify": "center",
                           "radius": "component.calendar.radius",
-                          "opacity": "component.calendar.day.disabled-opacity",
+                          "opacity": "component.calendar.day.disabled.label",
                           "children": [
                             {
                               "t": "text",
@@ -20743,7 +21170,7 @@
                           "h": 32,
                           "justify": "center",
                           "radius": "component.calendar.radius",
-                          "opacity": "component.calendar.day.disabled-opacity",
+                          "opacity": "component.calendar.day.disabled.label",
                           "children": [
                             {
                               "t": "text",
@@ -20762,7 +21189,7 @@
                           "h": 32,
                           "justify": "center",
                           "radius": "component.calendar.radius",
-                          "opacity": "component.calendar.day.disabled-opacity",
+                          "opacity": "component.calendar.day.disabled.label",
                           "children": [
                             {
                               "t": "text",
@@ -21421,7 +21848,7 @@
                   "roles": ["affordance", "reach"],
                   "tokens": [
                     "component.calendar.icon-size",
-                    "component.calendar.disabled-opacity-disabled"
+                    "component.calendar.nav.disabled.icon"
                   ]
                 },
                 {
@@ -21432,7 +21859,7 @@
                   "roles": ["affordance", "reach"],
                   "tokens": [
                     "component.calendar.icon-size",
-                    "component.calendar.disabled-opacity-disabled"
+                    "component.calendar.nav.disabled.icon"
                   ]
                 }
               ]
@@ -21512,7 +21939,7 @@
                   "label": "Day that cannot be picked",
                   "need": "state",
                   "roles": ["feedback"],
-                  "tokens": ["component.calendar.day.disabled-opacity"]
+                  "tokens": ["component.calendar.day.disabled.label"]
                 },
                 {
                   "n": 12,
@@ -21748,7 +22175,7 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": ["component.calendar.day.disabled-opacity"]
+              "tokens": ["component.calendar.day.disabled.label"]
             },
             {
               "title": "Focus ring",
@@ -23218,7 +23645,7 @@
                       "lh": "component.label.line-height"
                     }
                   ],
-                  "opacity": "component.checkbox.disabled",
+                  "opacity": "component.checkbox.disabled-background",
                   "n": 5,
                   "at": "right"
                 }
@@ -23275,7 +23702,7 @@
               "label": "Disabled box",
               "need": "state",
               "roles": ["feedback"],
-              "tokens": ["component.checkbox.disabled"]
+              "tokens": ["component.checkbox.disabled-background"]
             },
             {
               "id": "label",
@@ -23330,7 +23757,7 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": ["component.checkbox.disabled"]
+              "tokens": ["component.checkbox.disabled-background"]
             }
           ]
         }
@@ -24813,9 +25240,7 @@
                   "label": "Disabled item",
                   "need": "state",
                   "roles": ["feedback"],
-                  "tokens": [
-                    "component.context-menu.item.disabled-opacity-disabled"
-                  ],
+                  "tokens": ["component.context-menu.item.disabled.label"],
                   "note": "not in this example"
                 },
                 {
@@ -26522,7 +26947,7 @@
                   "label": "Focus ring",
                   "need": "state",
                   "roles": ["focus"],
-                  "tokens": ["color.border.focus", "border-width.focus"]
+                  "tokens": ["color.border.focus", "focus.ring.width"]
                 },
                 {
                   "n": 9,
@@ -26530,7 +26955,7 @@
                   "label": "Disabled item",
                   "need": "state",
                   "roles": ["feedback"],
-                  "tokens": ["component.dropdown-menu.item.disabled"]
+                  "tokens": ["component.dropdown-menu.item.disabled-label"]
                 },
                 {
                   "n": 10,
@@ -26612,7 +27037,7 @@
               "roles": ["focus"],
               "answers": ["accessibility.definition"],
               "rules": ["keyboard-focus"],
-              "tokens": ["color.border.focus", "border-width.focus"]
+              "tokens": ["color.border.focus", "focus.ring.width"]
             },
             {
               "title": "Disabled item",
@@ -26620,7 +27045,7 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": ["component.dropdown-menu.item.disabled"]
+              "tokens": ["component.dropdown-menu.item.disabled-label"]
             },
             {
               "title": "Destructive item",
@@ -30911,9 +31336,7 @@
                   "label": "Disabled item",
                   "need": "state",
                   "roles": ["feedback"],
-                  "tokens": [
-                    "component.menubar.item.disabled-opacity-disabled"
-                  ],
+                  "tokens": ["component.menubar.item.disabled.label"],
                   "note": "not in this example"
                 }
               ]
@@ -33414,7 +33837,7 @@
                       "lh": "component.label.line-height"
                     }
                   ],
-                  "opacity": "component.radio-group.item.disabled-opacity-disabled",
+                  "opacity": "component.radio-group.item.disabled.background",
                   "n": 6,
                   "at": "right"
                 }
@@ -33492,9 +33915,7 @@
                   "label": "Disabled option",
                   "need": "state",
                   "roles": ["feedback"],
-                  "tokens": [
-                    "component.radio-group.item.disabled-opacity-disabled"
-                  ]
+                  "tokens": ["component.radio-group.item.disabled.background"]
                 },
                 {
                   "id": "label",
@@ -33640,9 +34061,7 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": [
-                "component.radio-group.item.disabled-opacity-disabled"
-              ]
+              "tokens": ["component.radio-group.item.disabled.background"]
             }
           ]
         }
@@ -35857,7 +36276,7 @@
                       "need": "state",
                       "roles": ["feedback"],
                       "tokens": [
-                        "component.sidebar.menu-button.opacity.disabled"
+                        "component.sidebar.menu-button.disabled.label"
                       ]
                     }
                   ]
@@ -36204,7 +36623,7 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": ["component.sidebar.menu-button.opacity.disabled"],
+              "tokens": ["component.sidebar.menu-button.disabled.label"],
               "image": {
                 "tree": {
                   "t": "frame",
@@ -36320,7 +36739,7 @@
                                   "color": "component.sidebar.label"
                                 }
                               ],
-                              "opacity": "component.sidebar.menu-button.opacity.disabled",
+                              "opacity": "component.sidebar.menu-button.disabled.label",
                               "n": 7
                             }
                           ]
@@ -36701,7 +37120,7 @@
                       ]
                     }
                   ],
-                  "opacity": "component.slider.disabled-opacity-disabled",
+                  "opacity": "component.slider.disabled.range",
                   "n": 5,
                   "at": "right"
                 }
@@ -36763,8 +37182,8 @@
               "need": "state",
               "roles": ["feedback"],
               "tokens": [
-                "component.slider.disabled-opacity-disabled",
-                "component.slider.thumb.disabled-opacity-disabled"
+                "component.slider.disabled.range",
+                "component.slider.thumb.disabled.background"
               ]
             },
             {
@@ -36827,8 +37246,8 @@
               "answers": ["accessibility.roles"],
               "rules": [],
               "tokens": [
-                "component.slider.disabled-opacity-disabled",
-                "component.slider.thumb.disabled-opacity-disabled"
+                "component.slider.disabled.range",
+                "component.slider.thumb.disabled.background"
               ]
             }
           ]
@@ -37128,7 +37547,7 @@
                       "lh": "component.label.line-height"
                     }
                   ],
-                  "opacity": "component.switch.disabled",
+                  "opacity": "component.switch.disabled-track",
                   "n": 6,
                   "at": "right"
                 }
@@ -37197,7 +37616,7 @@
               "label": "Disabled switch",
               "need": "state",
               "roles": ["feedback"],
-              "tokens": ["component.switch.disabled"]
+              "tokens": ["component.switch.disabled-track"]
             },
             {
               "id": "label",
@@ -37264,7 +37683,7 @@
               "roles": ["feedback"],
               "answers": ["accessibility.roles"],
               "rules": [],
-              "tokens": ["component.switch.disabled"]
+              "tokens": ["component.switch.disabled-track"]
             }
           ]
         }
@@ -38994,7 +39413,7 @@
               "need": "state",
               "note": "not in this example",
               "roles": ["feedback"],
-              "tokens": ["component.toggle.disabled-opacity-disabled"]
+              "tokens": ["component.toggle.disabled.label"]
             }
           ],
           "cards": [
