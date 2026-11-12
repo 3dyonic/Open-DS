@@ -199,7 +199,7 @@
 .reasonGroup {
   color: var(--color-text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   font-size: 0.7rem;
 }
 

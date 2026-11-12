@@ -46,7 +46,7 @@ const LANES: { paints: Paints; title: string }[] = [
   { paints: "text", title: "Text" },
 ];
 const label =
-  "text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wide";
+  "text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wider";
 const small =
   "text-[length:var(--type-caption-font-size)] [font-family:var(--type-data-font-family)]";
 

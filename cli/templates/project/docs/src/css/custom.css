@@ -332,7 +332,7 @@ code {
   font-family: var(--type-label-font-family);
   font-size: var(--type-caption-font-size);
   font-weight: var(--type-label-font-weight);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 

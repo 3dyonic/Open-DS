@@ -65,7 +65,7 @@ export default function Intro({ title, stats, robot, children }: IntroProps) {
             {counts.map(([, n, what]) => (
               <span
                 key={what}
-                className="grid rounded-[var(--radius-surface)] border border-[var(--color-border-default)] px-[var(--space-gap-group)] py-[var(--space-gap-default)] [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] uppercase text-[color:var(--color-text-muted)]"
+                className="grid rounded-[var(--radius-surface)] border border-[var(--color-border-default)] px-[var(--space-gap-group)] py-[var(--space-gap-default)] [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] uppercase tracking-wider text-[color:var(--color-text-muted)]"
               >
                 <b className="[font-family:var(--type-display-font-family)] text-[length:var(--type-title-font-size)] normal-case text-[color:var(--color-text-primary)]">
                   {n}

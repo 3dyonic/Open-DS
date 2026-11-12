@@ -78,7 +78,7 @@ export default function PairsChart({ data, mode = "light" }: { data: PairsChartD
                 <div className="flex flex-col gap-[var(--space-gap-group)]">
                   {TONES.filter((t) => m.fills[t.tone]?.length).map((t) => (
                     <section key={t.tone} className="flex flex-col gap-[var(--space-gap-tight)]">
-                      <h4 className={`text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wide ${muted}`}>
+                      <h4 className={`text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wider ${muted}`}>
                         {t.title}
                       </h4>
                       <p className={`text-[length:var(--type-caption-font-size)] ${muted}`}>{t.note}</p>
