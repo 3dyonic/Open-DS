@@ -5298,68 +5298,236 @@
     },
     "semantic": {
       "space": {
+        "$extensions": {
+          "open-ds": {
+            "base": 8,
+            "use-cases": {
+              "gap.tight": {
+                "level": "component",
+                "relation": "inner",
+                "reach": "inline",
+                "multiple": 1.5
+              },
+              "gap.default": {
+                "level": "component",
+                "relation": "inner",
+                "multiple": 2
+              },
+              "gap.group": {
+                "level": "layout",
+                "relation": "inner",
+                "multiple": 4
+              },
+              "gap.section": {
+                "level": "layout",
+                "relation": "inner",
+                "reach": "section",
+                "multiple": 6
+              },
+              "inset.control-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 3
+              },
+              "inset.cell-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 2
+              },
+              "inset.container": {
+                "level": "layout",
+                "relation": "container",
+                "multiple": 3
+              }
+            },
+            "follows": [
+              "spacing.definition",
+              "spacing.values"
+            ],
+            "why": "Big, even steps give an 8px base. Spacious density starts the tight gap at one and a half steps, so even close parts stay apart at high zoom."
+          }
+        },
         "gap": {
           "tight": {
             "$type": "dimension",
             "$value": "{space.12}",
-            "$description": "Between things that belong together."
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 12px for the tight gap between the parts of one item in order to group and separate: one and a half base steps (1.5 × 8px), the smallest gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So parts read as one item and stay apart at high zoom, because steps are big and even (spacing.definition) and everyone uses it, including people with disabilities (people.q1).",
+                "because": [
+                  "spacing.definition",
+                  "people.q1"
+                ]
+              }
+            }
           },
           "default": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Between items in one group."
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the default gap between the items of one group, such as fields, in order to group and separate: two base steps (2 × 8px), 4px more than the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So people with tremor tap the field they mean, because the layout is spacious (spacing.values) and space between fields matters most (spacing.lands).",
+                "because": [
+                  "spacing.values",
+                  "spacing.lands"
+                ]
+              }
+            }
           },
           "group": {
             "$type": "dimension",
             "$value": "{space.32}",
-            "$description": "Between groups."
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for the group gap between groups of questions in order to group and separate: four base steps (4 × 8px), twice the default gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So people see where one group of questions ends and the next begins, because the layout is spacious (spacing.values) and each step must take low effort to understand (human.q1).",
+                "because": [
+                  "spacing.values",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "section": {
             "$type": "dimension",
             "$value": "{space.48}",
-            "$description": "Between page sections."
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 48px for the section gap between page sections in order to group and separate: six base steps (6 × 8px), half again the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So sections part by space, which is easy to see, and not by thin lines, because the layout is spacious (spacing.values) and steps are big and even (spacing.definition).",
+                "because": [
+                  "spacing.values",
+                  "spacing.definition"
+                ]
+              }
+            }
           }
         },
         "inset": {
           "control-x": {
             "$type": "dimension",
             "$value": "{space.24}",
-            "$description": "Horizontal padding inside controls."
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the inline padding inside controls in order to give content room inside its box: three base steps (3 × 8px), the same as a card's padding. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So each button is a bigger target that is easy to hit, because everyone uses it, including people with motor needs (people.q1), and the smallest target is large (accessibility.values).",
+                "because": [
+                  "people.q1",
+                  "accessibility.values"
+                ]
+              }
+            }
           },
           "container": {
             "$type": "dimension",
             "$value": "{space.24}",
-            "$description": "Padding inside cards and dialogs."
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: three base steps (3 × 8px), half again the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So content stays clear of the strong border at any zoom, because everyone uses it (people.q1) and each step must take low effort to understand (human.q1).",
+                "because": [
+                  "people.q1",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "cell-x": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Horizontal padding inside table cells."
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So values in two columns stay apart at high zoom, because everyone uses it, including people with low vision (people.q1), and the layout is spacious (spacing.values).",
+                "because": [
+                  "people.q1",
+                  "spacing.values"
+                ]
+              }
+            }
           }
         }
       },
       "size": {
+        "$extensions": {
+          "open-ds": {
+            "default": 52,
+            "step": 4,
+            "steps": {
+              "compact": -1,
+              "large": 0
+            },
+            "row": {
+              "plus": 4
+            },
+            "follows": [
+              "accessibility.values",
+              "spacing.roles"
+            ],
+            "why": "A large target sets the 52px default. The step is 4px, so compact stays at the 48px large target size; large equals the default, as every control is already large. Rows are a decision of their own, one step taller than a control."
+          }
+        },
         "control": {
           "default": {
             "$type": "dimension",
             "$value": "{size.52}",
-            "$description": "Height of buttons and inputs, and the smallest target."
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 52px for buttons and inputs in order to make a hit target: the large target size, step 0 of the control scale, a 52px hit area above the 44px of WCAG 2.5.5. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So people with tremor and low vision get a large control, because the smallest target is large (accessibility.values) and everyone uses it, including people with motor needs (people.q1).",
+                "because": [
+                  "accessibility.values",
+                  "people.q1"
+                ]
+              }
+            }
           },
           "compact": {
             "$type": "dimension",
             "$value": "{size.48}",
-            "$description": "Height of compact controls."
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 48px for compact controls, such as a button inside a field, in order to make a hit target: one 4px step below the 52px default on the control scale, a short step so the 48px hit area still meets the large target size. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a button fits inside a field and is still large, because the smallest target is large (accessibility.values) and everyone uses it (people.q1).",
+                "because": [
+                  "accessibility.values",
+                  "people.q1"
+                ]
+              }
+            }
           },
           "large": {
             "$type": "dimension",
             "$value": "{size.52}",
-            "$description": "Height of large controls. Not used in this system, so it equals the default."
+            "$description": "Height of large controls. Not used in this system, so it equals the default.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 52px for large controls in order to make a hit target: the default's step on the control scale and the default's 52px hit area, as every control is already large and the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every button has one height and pages stay predictable, because each step must take low effort to understand (human.q1) and the smallest target is large (accessibility.values).",
+                "because": [
+                  "human.q1",
+                  "accessibility.values"
+                ]
+              }
+            }
           }
         },
         "row": {
           "$type": "dimension",
           "$value": "{size.56}",
-          "$description": "Height of one table row."
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 56px for one table row in order to keep the eye on its row: a row one 52px default control tall plus 4px, one step up the control scale, as rows are a decision of their own here. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So rows are easy to read and tap, a little taller than the control they hold, because row heights are a spacing role, for touch and zoom (spacing.roles), and the smallest target is large (accessibility.values).",
+              "because": [
+                "spacing.roles",
+                "accessibility.values"
+              ]
+            }
+          }
         },
         "icon": {
           "$type": "dimension",
