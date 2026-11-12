@@ -16623,8 +16623,8 @@
     },
     {
       "tokens": ["type.*.font-weight"],
-      "follows": ["typography.roles"],
-      "says": "A weight belongs to its text role; the roles answer names the roles."
+      "follows": ["typography.count", "brand.q3", "accessibility.definition"],
+      "says": "Weight carries the hierarchy between roles (the scale answer), uses a weight the typeface draws well (the typeface answer), and stays legible at its size (the contrast floor)."
     },
     {
       "tokens": ["space.gap.*", "space.inset.*"],
