@@ -18,6 +18,15 @@ cli/assets/
 storybook/storybook-static/
 docs/build/
 docs/.docusaurus/
+# Generated from the schemes (OD-302). Write them with: pnpm generate
+docs/docs/
+docs/schemes.json
+docs/src/css/schemes/
+docs/src/css/schemes.css
+docs/static/token-map/
+docs/static/logo*.svg
+docs/static/*/llms.txt
+ui/registry.json
 # Written by open-ds init during the end-to-end run
 e2e/app/src/components/
 e2e/app/src/lib/

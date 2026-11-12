@@ -9,8 +9,10 @@ pnpm install
 ```
 
 ```bash
-pnpm --dir tokens build
+pnpm generate
 ```
+
+`pnpm generate` writes the tokens, the docs pages and the shadcn registry from the schemes. Git does not keep these files. The harness and the docs build write them first.
 
 ## Checks
 
@@ -26,7 +28,7 @@ pnpm --dir tokens build
 ## Change a scheme
 
 1. Edit `schemes/<scheme>.json`. Every answer needs a `why`, and `because` links to the answers it follows from.
-2. Run `pnpm --dir tokens build`, `node scripts/build-llms.mjs` and `pnpm --dir docs generate`.
+2. Run `pnpm generate` and `node scripts/build-llms.mjs`. Commit `llms.txt` and `llms-full.txt`; the other generated files stay out of git.
 3. Run `pnpm harness`.
 
 ## Propose a question

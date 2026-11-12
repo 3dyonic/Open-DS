@@ -24,6 +24,7 @@
   },
   "packageManager": "pnpm@10.33.4",
   "scripts": {
+    "generate": "node scripts/generate.mjs",
     "lint": "pnpm --dir site lint",
     "typecheck": "pnpm --dir site typecheck",
     "test": "pnpm --dir tokens build && pnpm --dir cli test && pnpm --dir harness test",
