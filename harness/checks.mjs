@@ -1469,9 +1469,10 @@ export const CHECKS = {
   "danger-apart": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
-      // OD-222: the primary and danger fills stay clearly apart in every brand and mode.
-      const rule = c.grammar().semantics?.danger_apart;
-      if (!rule) return bad("the grammar has no danger_apart rule");
+      // OD-222: the primary and danger fills stay clearly apart in every brand and mode. The rule is a
+      // stays-apart connection in the grammar (OD-304).
+      const rule = c.grammar().semantics?.connections?.items?.find((x) => x.id === "danger-apart-from-primary");
+      if (!rule) return bad("the grammar has no danger-apart-from-primary connection");
       const lab = (hex) => {
         const [r, g, b] = [1, 3, 5]
           .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
@@ -1508,7 +1509,7 @@ export const CHECKS = {
       }
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
-        : ok(`${rule.say}` + (waiting.length ? `, except where a fix waits: ${waiting.join("; ")}` : ""));
+        : ok(`${rule.says}` + (waiting.length ? `, except where a fix waits: ${waiting.join("; ")}` : ""));
     },
   },
 
@@ -2079,11 +2080,79 @@ export const CHECKS = {
           if (groups.join() !== (d.meaning ?? []).map((m) => m.name).join()) off.push(`${id} ${name} shows meanings ${(d.meaning ?? []).map((m) => m.name)}, the engine gives ${groups}`);
           const pick = tree.find((x) => x.level === "pick")?.says;
           if (pick && d.why && !pick.endsWith(d.why)) off.push(`${id} ${name} cuts its reason: "${d.why}"`);
+          // OD-304: a color card shows the engine's role, connections and the reason it writes from the fields.
+          const reason = tree.find((x) => x.level === "reason")?.says ?? null;
+          if (reason !== (d.graph?.reason ?? null)) off.push(`${id} ${name} shows the reason "${d.graph?.reason}", the engine writes "${reason}"`);
+          const links = tree.filter((x) => x.level === "connection").map((x) => x.name);
+          if (links.join() !== (d.graph?.connections ?? []).map((x) => x.id).join()) off.push(`${id} ${name} shows connections ${(d.graph?.connections ?? []).map((x) => x.id)}, the engine gives ${links}`);
         }
       }
       return off.length
         ? bad(`${off.length} token map cards differ from the engine: ${off.slice(0, 5).join("; ")}`)
-        : ok(`${n} token map cards in ${SCHEMES.length} schemes show the engine's answers, meanings and whole reasons`);
+        : ok(`${n} token map cards in ${SCHEMES.length} schemes show the engine's answers, meanings, connections and whole reasons`);
+    },
+  },
+
+  // OD-304: the color decision graph. Every color token has each link of its chain, as plain data:
+  // role, job, property, answer, rule (its slot or a connection) and value, in every brand and mode.
+  "color-links-complete": {
+    requires: ["cli/src/color-graph.mjs", "cli/src/trace.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      const { indexesOf, missingLinks } = await import(pathToFileURL(c.p("cli/src/color-graph.mjs")).href);
+      const { decisionTree } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const { flatTokens } = await import(pathToFileURL(c.p("cli/src/tokens.mjs")).href);
+      const g = c.grammar();
+      const off = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const scheme = c.scheme(id);
+        const indexOf = indexesOf(scheme);
+        const names = flatTokens(scheme.tokens.semantic)
+          .filter(([p, t]) => p.startsWith("color.") && !t.$deprecated)
+          .map(([p]) => p);
+        for (const brand of Object.keys(scheme.tokens.brands))
+          for (const mode of ["light", "dark"])
+            for (const name of names) {
+              n++;
+              const lacks = missingLinks(scheme, g, name, decisionTree(scheme, g, name, { brand, mode, index: indexOf(brand, mode) }));
+              if (lacks.length) off.push(`${id} ${brand}/${mode} ${name} has no ${lacks.join(", ")}`);
+            }
+      }
+      return off.length
+        ? bad(`${off.length} color tokens miss a link: ${off.slice(0, 5).join("; ")}. Add a role to the token's mapping entry, or a connection to semantics.connections.`)
+        : ok(`${n} color tokens in every brand and mode of ${SCHEMES.length} schemes each have a role, a job, a property, an answer, a rule and a value`);
+    },
+  },
+  "color-connections-hold": {
+    requires: ["cli/src/color-graph.mjs", "schemes/grammar.json", "harness/connections-baseline.json"],
+    run: async (c) => {
+      // Every connection holds in every brand and mode, waits for a recorded fix, or is in the baseline.
+      // The count of gaps per connection and scheme may only go down. The gaps are findings for the
+      // owner: the check changes no color.
+      const { connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/color-graph.mjs")).href);
+      const g = c.grammar();
+      const base = c.json("harness", "connections-baseline.json").counts;
+      const rose = [];
+      const fell = [];
+      const known = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const checks = evaluateConnections(c.scheme(id), g);
+        n += checks.length;
+        const gaps = connectionGaps(checks);
+        for (const conn of g.semantics.connections.items) {
+          const mine = gaps.filter((x) => x.connection === conn.id);
+          const was = base[conn.id]?.[id] ?? 0;
+          if (mine.length > was) rose.push(`${id} ${conn.id} went from ${was} to ${mine.length}: ${mine.map((x) => x.says).join("; ")}`);
+          else if (mine.length < was) fell.push(`${id} ${conn.id} went from ${was} to ${mine.length}`);
+          known.push(...mine.map((x) => `${id}: ${x.says}`));
+        }
+      }
+      if (rose.length) return bad(`${rose.length} connections break more than the baseline allows: ${rose.slice(0, 4).join(" | ")}`);
+      return ok(
+        `${n} connection checks in ${SCHEMES.length} schemes hold, wait for a fix, or are in the baseline (${known.length} known gaps: ${known.slice(0, 4).join("; ")}${known.length > 4 ? "; …" : ""})` +
+          (fell.length ? `; fewer gaps now, lower harness/connections-baseline.json: ${fell.join("; ")}` : ""),
+      );
     },
   },
   "json-sources-one-layout": {

@@ -17308,10 +17308,130 @@
         }
       ]
     },
-    "danger_apart": {
-      "min_delta_e": 10,
-      "say": "the primary and danger fills stay at least 10 apart (ΔE in OKLab, ×100) in every brand and mode",
-      "why": "A destructive commit must never look like the everyday one."
+    "connections": {
+      "description": "How the color tokens connect (OD-304). comes-from: a token takes its value or its hue from another. pairs-with: a fill and the text on it keep the contrast floor, and a step distance promises a contrast. stays-apart: two sets of colors must not look alike, or must keep an order. The harness checks each one in every brand and mode.",
+      "items": [
+        {
+          "id": "subtle-from-hue",
+          "kind": "comes-from",
+          "tokens": ["color.status.*.subtle", "color.category.*.subtle"],
+          "from": "@",
+          "match": "hue",
+          "says": "A soft fill comes from the hue of its own color: the same hue scale as its @."
+        },
+        {
+          "id": "hover-from-fill",
+          "kind": "comes-from",
+          "tokens": ["color.action.*.hover"],
+          "from": "@",
+          "match": "hue",
+          "steps": 1,
+          "says": "A hover is the hue of its fill, one step on."
+        },
+        {
+          "id": "grays-from-neutral",
+          "kind": "comes-from",
+          "tokens": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.surface.raised",
+            "color.surface.sunken",
+            "color.surface.highlight",
+            "color.surface.pressed",
+            "color.surface.inverse",
+            "color.text.primary",
+            "color.text.secondary",
+            "color.text.muted",
+            "color.border.default",
+            "color.border.raised",
+            "color.border.strong",
+            "color.action.secondary.*",
+            "color.disabled.*"
+          ],
+          "from": "color.neutral.*",
+          "match": "chain",
+          "says": "Surfaces, lines, page text, the secondary action and disabled read only steps of the neutral ramp."
+        },
+        {
+          "id": "fill-text-from-tone",
+          "kind": "comes-from",
+          "tokens": [
+            "color.text.inverse",
+            "color.text.on-action",
+            "color.text.on-danger"
+          ],
+          "from": ["color.text.on-light", "color.text.on-dark"],
+          "match": "chain",
+          "says": "The text on a fill is the text its fill's tone picks: on-light or on-dark."
+        },
+        {
+          "id": "selection-from-brand",
+          "kind": "comes-from",
+          "tokens": ["color.surface.selected", "color.border.selected"],
+          "from": "color.action.primary.@",
+          "match": "hue",
+          "says": "Selection takes the hue of the main action, so a selected item reads as the brand's."
+        },
+        {
+          "id": "scrim-from-black",
+          "kind": "comes-from",
+          "tokens": ["color.surface.scrim"],
+          "from": "color.black.*.*",
+          "match": "chain",
+          "says": "The scrim is the scheme's black, see-through, so it dims the page in both modes."
+        },
+        {
+          "id": "fill-pairs-with-text",
+          "kind": "pairs-with",
+          "pairs": "semantics.tones",
+          "promise": [
+            {
+              "apart": 400,
+              "contrast": 3
+            },
+            {
+              "apart": 500,
+              "contrast": 4.5
+            },
+            {
+              "apart": 700,
+              "contrast": 7
+            }
+          ],
+          "says": "Every fill pairs with the text on it, by tone, and the pair keeps its contrast floor. A step number makes a promise: steps 400 apart give 3:1, 500 apart give 4.5:1, 700 apart give 7:1, in every hue of a scheme."
+        },
+        {
+          "id": "category-apart-from-status",
+          "kind": "stays-apart",
+          "tokens": ["color.category.*.@"],
+          "from": ["color.status.*.@"],
+          "by": "hue",
+          "says": "A category color has no meaning, so it never takes a status hue: a category in the warning hue reads as a warning."
+        },
+        {
+          "id": "danger-apart-from-primary",
+          "kind": "stays-apart",
+          "tokens": ["color.action.danger.@"],
+          "from": ["color.action.primary.@"],
+          "by": "delta-e",
+          "min_delta_e": 10,
+          "says": "the primary and danger fills stay at least 10 apart (ΔE in OKLab, ×100) in every brand and mode",
+          "why": "A destructive commit must never look like the everyday one."
+        },
+        {
+          "id": "surface-ladder",
+          "kind": "stays-apart",
+          "tokens": [
+            "color.surface.sunken",
+            "color.surface.default",
+            "color.surface.raised",
+            "color.surface.floating"
+          ],
+          "by": "order",
+          "modes": ["dark"],
+          "says": "In dark mode the surfaces lighten as they rise: sunken, then default, then raised, then floating."
+        }
+      ]
     },
     "neutral": {
       "description": "The neutral scale (OD-228). Primitives hold the grays below, each a whole ramp in light and dark. color.neutral.<step> is a semantic scale: each scheme or brand points it at one gray, recorded in its theme as neutral { gray, temperature, why, because }. Surfaces, borders, text, the secondary button and disabled read only color.neutral steps, never a gray directly. A scheme keeps only the gray it picked; this list is the menu.",
@@ -17362,19 +17482,23 @@
       }
     },
     "variants": {
-      "description": "What the last part of a semantic name means (OD-303). Every token ending in that part shares the meaning.",
+      "description": "What the last part of a semantic name means (OD-303), and the step it sits at on its hue scale (OD-304). Every token ending in that part shares the meaning.",
       "items": [
         {
           "id": "@",
-          "says": "The color itself, at full strength: the mark, line or text that carries the role."
+          "says": "The color itself, at full strength: the mark, line or text that carries the role.",
+          "step": "600"
         },
         {
           "id": "subtle",
-          "says": "The soft, low-hierarchy version of a color: it sits quietly beside the other options and carries the palette's harmony into where it is used."
+          "says": "The soft, low-hierarchy version of a color: it sits quietly beside the other options and carries the palette's harmony into where it is used.",
+          "step": "100"
         },
         {
           "id": "hover",
-          "says": "The same color one step on, so the pointer shows without a new meaning."
+          "says": "The same color one step on, so the pointer shows without a new meaning.",
+          "from": "@",
+          "steps": 1
         }
       ]
     },
@@ -40262,6 +40386,59 @@
           "title": "Second contrast check",
           "how": "Contrast sensitivity → APCA weighs size, weight and polarity; the WCAG 2 ratio does not."
         }
+      ],
+      "roles": [
+        {
+          "id": "neutral-step",
+          "role": "a step of the neutral ramp",
+          "tokens": ["color.neutral.*"],
+          "jobs": ["step-curve-convention", "minimum-step-gap"],
+          "to": "give surfaces, lines and text one gray ramp to pick steps from",
+          "gets": "every gray in the product comes from one ramp, so no two grays clash"
+        },
+        {
+          "id": "page-text",
+          "role": "text on the page's own surfaces",
+          "tokens": [
+            "color.text.primary",
+            "color.text.secondary",
+            "color.text.muted",
+            "color.text.link"
+          ],
+          "jobs": ["text-step"],
+          "to": "keep words readable on every surface of the page",
+          "gets": "people read each line without strain"
+        },
+        {
+          "id": "text-on-fill",
+          "role": "the text on a filled color",
+          "tokens": [
+            "color.text.inverse",
+            "color.text.on-action",
+            "color.text.on-danger",
+            "color.text.on-light",
+            "color.text.on-dark"
+          ],
+          "jobs": ["text-step"],
+          "to": "keep a label readable on the fill it sits on",
+          "gets": "a label on a button or a banner reads as clearly as body text"
+        },
+        {
+          "id": "line",
+          "role": "a line or a control edge",
+          "tokens": ["color.border.default", "color.border.strong"],
+          "jobs": ["control-edge-and-graphics"],
+          "to": "show where a control or a group ends",
+          "gets": "people find the edge of each field and each group"
+        },
+        {
+          "id": "hover",
+          "role": "an action on hover",
+          "tokens": ["color.action.*.hover"],
+          "jobs": ["hover-and-pressed"],
+          "to": "show that the pointer is on an action",
+          "gets": "people see what they will press before they press it"
+        }
       ]
     },
     {
@@ -40280,6 +40457,16 @@
           "id": "chroma-curve",
           "title": "Chroma curve",
           "how": "follows color.values: chroma per step follows the muted, balanced or vivid curve"
+        }
+      ],
+      "roles": [
+        {
+          "id": "action-fill",
+          "role": "the fill of an action",
+          "tokens": ["color.action.*.@"],
+          "jobs": ["main-action", "chroma-curve"],
+          "to": "make the action of a view easy to find",
+          "gets": "people find the next step at a glance"
         }
       ]
     },
@@ -40318,6 +40505,24 @@
           "title": "Dashes and patterns",
           "how": "Redundant coding → A dash and a pattern separate series without any color."
         }
+      ],
+      "roles": [
+        {
+          "id": "category-mark",
+          "role": "a category mark",
+          "tokens": ["color.category.*.@"],
+          "jobs": ["hue-set", "tell-apart"],
+          "to": "tell series and tags apart with no meaning attached",
+          "gets": "people match a series to its legend at once"
+        },
+        {
+          "id": "category-tint",
+          "role": "a category tint",
+          "tokens": ["color.category.*.subtle"],
+          "jobs": ["hue-set", "tell-apart"],
+          "to": "group a tag or a block by color at low weight",
+          "gets": "tags stay quiet beside the content"
+        }
       ]
     },
     {
@@ -40355,6 +40560,41 @@
           "id": "status-steps",
           "title": "Status steps",
           "how": "follows color-step: status steps meet the text and edge contrast rules"
+        }
+      ],
+      "roles": [
+        {
+          "id": "status-mark",
+          "role": "a status mark",
+          "tokens": ["color.status.*.@"],
+          "jobs": ["convention-hue", "second-cue"],
+          "to": "show the state of something before the word is read",
+          "gets": "people see the risk at once, and an icon or a word carries it when hue fails"
+        },
+        {
+          "id": "status-tint",
+          "role": "the fill behind a status message",
+          "tokens": ["color.status.*.subtle"],
+          "jobs": ["convention-hue", "status-steps"],
+          "to": "mark the area of a message with its status",
+          "gets": "a banner reads as info, success, warning or danger at a glance"
+        },
+        {
+          "id": "status-text",
+          "role": "status text on its own tint",
+          "tokens": [
+            "color.text.info-on-light",
+            "color.text.info-on-dark",
+            "color.text.success-on-light",
+            "color.text.success-on-dark",
+            "color.text.warning-on-light",
+            "color.text.warning-on-dark",
+            "color.text.danger-on-light",
+            "color.text.danger-on-dark"
+          ],
+          "jobs": ["status-steps"],
+          "to": "keep status text readable on its tint",
+          "gets": "the words of a message read as clearly as body text"
         }
       ]
     },
@@ -40584,6 +40824,37 @@
           "title": "Dark-mode shadow",
           "how": "follows shadow: dark mode keeps shadows on floating layers only"
         }
+      ],
+      "roles": [
+        {
+          "id": "surface-ladder",
+          "role": "a rung of the surface ladder",
+          "tokens": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.surface.raised",
+            "color.surface.sunken"
+          ],
+          "jobs": ["lightness-ladder"],
+          "to": "show what sits above what by lightness",
+          "gets": "people see the layers of a view without extra lines"
+        },
+        {
+          "id": "inverse-surface",
+          "role": "the reversed surface for short messages",
+          "tokens": ["color.surface.inverse"],
+          "jobs": ["lightness-ladder"],
+          "to": "set a short message apart from the page",
+          "gets": "a toast or a tooltip stands out from the page"
+        },
+        {
+          "id": "raised-edge",
+          "role": "the edge of a raised surface",
+          "tokens": ["color.border.raised"],
+          "jobs": ["dark-raised-edge"],
+          "to": "draw the edge of a raised surface where a shadow does not show",
+          "gets": "menus keep their shape in dark mode"
+        }
       ]
     },
     {
@@ -40605,6 +40876,16 @@
           "also": [
             "follows surface ladder: scrim darkness comes from the scheme's surface ladder"
           ]
+        }
+      ],
+      "roles": [
+        {
+          "id": "scrim",
+          "role": "the layer behind a modal",
+          "tokens": ["color.surface.scrim"],
+          "jobs": ["scrim"],
+          "to": "dim the page behind a dialog",
+          "gets": "the dialog is the one thing to act on"
         }
       ]
     },
@@ -40817,6 +41098,21 @@
             "Common region → No field fill, so the value no longer reads as an input."
           ]
         }
+      ],
+      "roles": [
+        {
+          "id": "state",
+          "role": "a state fill or edge",
+          "tokens": [
+            "color.surface.selected",
+            "color.border.selected",
+            "color.surface.highlight",
+            "color.surface.pressed"
+          ],
+          "jobs": ["map-states-to-channels"],
+          "to": "show selection, hover and press on more than one channel",
+          "gets": "people see a state even when they cannot tell the hue"
+        }
       ]
     },
     {
@@ -40841,6 +41137,16 @@
           "also": [
             "follows opacity: size stays; progress shows; opacity allowed"
           ]
+        }
+      ],
+      "roles": [
+        {
+          "id": "disabled",
+          "role": "a control that cannot be used",
+          "tokens": ["color.disabled.*"],
+          "jobs": ["disabled"],
+          "to": "show that a control is unavailable",
+          "gets": "people do not try an action that cannot work"
         }
       ]
     },
@@ -40868,6 +41174,16 @@
           "id": "ring-corner",
           "title": "Ring corner",
           "how": "follows radius.control: ring radius = control radius + offset"
+        }
+      ],
+      "roles": [
+        {
+          "id": "focus",
+          "role": "the focus ring",
+          "tokens": ["color.border.focus"],
+          "jobs": ["two-color-gap"],
+          "to": "show where the keyboard is",
+          "gets": "keyboard users never lose their place"
         }
       ]
     },

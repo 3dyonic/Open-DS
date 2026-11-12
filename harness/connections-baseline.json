@@ -1,0 +1,19 @@
+{
+  "$description": "Color connections per scheme that do not hold today and wait for the owner's decision (OD-304). Each count may only go down. A scheme with no entry has 0 gaps.",
+  "counts": {
+    "category-apart-from-status": {
+      "dense-data": 3,
+      "content-first": 3,
+      "accessible-first": 3,
+      "multi-brand": 2,
+      "brand-expressive": 3
+    },
+    "hover-from-fill": {
+      "dense-data": 1,
+      "content-first": 1,
+      "accessible-first": 1,
+      "multi-brand": 1,
+      "brand-expressive": 1
+    }
+  }
+}

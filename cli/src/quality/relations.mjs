@@ -22,8 +22,14 @@ export const MOTION_CAPS = { feedback: 150, panels: 300, expressive: 500 };
 export const HIT_AREA = { min: 24, touch: 44 };
 /** Answers to accessibility.values that make a scheme touch-first: a large target is at least a touch one. */
 export const TOUCH_FIRST = ["touch", "large"];
-/** The dark surface ladder, lowest first: each rung is lighter than the one before it. */
-export const LADDER = ["color.surface.sunken", "color.surface.default", "color.surface.raised", "color.surface.floating"];
+/**
+ * The surface ladder, from the grammar's connections (OD-304): the stays-apart connection by order.
+ * { tokens, modes }: the rungs lowest first, and the modes where each rung is lighter than the one below.
+ */
+export function ladderOf(g) {
+  const c = (g?.semantics?.connections?.items ?? []).find((x) => x.kind === "stays-apart" && x.by === "order");
+  return { tokens: c?.tokens ?? [], modes: c?.modes ?? ["light", "dark"] };
+}
 
 const near = (a, b, tolerance = 0.01) => Math.abs(a - b) <= tolerance;
 const fmt = (n) => (n === Infinity ? "a pill" : `${+n.toFixed(3)}px`);
@@ -149,8 +155,9 @@ const RELATIONS = [
     title: "In dark mode the surfaces lighten as they rise: sunken < default < raised < floating",
     links: () => null,
     check: (f) => {
-      const dark = f.themes.filter((t) => t.mode === "dark");
-      const present = LADDER.filter((t) => dark.some((d) => typeof f.values[d.id]?.[t] === "string"));
+      const { tokens: ladder, modes } = f.ladder;
+      const dark = f.themes.filter((t) => modes.includes(t.mode));
+      const present = ladder.filter((t) => dark.some((d) => typeof f.values[d.id]?.[t] === "string"));
       if (present.length < 2 || !dark.length) return null;
       const checks = [];
       for (const d of dark) {
@@ -162,7 +169,7 @@ const RELATIONS = [
           checks.push({ subject, tokens: [lo, hi], theme: d.id, themes: [d.id], pass: a !== null && b !== null && a < b, says: `${subject}: lightness ${a?.toFixed(3)} vs ${b?.toFixed(3)}` });
         }
       }
-      const missing = LADDER.filter((t) => !present.includes(t));
+      const missing = ladder.filter((t) => !present.includes(t));
       return { checks, notPresent: missing };
     },
   },
@@ -214,7 +221,7 @@ export const RELATION_LIST = RELATIONS.map(({ id, family, kind, title }) => ({ i
 /**
  * Every relation evaluated on one scheme's facts: [{ id, family, kind, title, status, checks, notPresent }].
  * status is "pass", "fail" or "not present". facts: { themes, values, scales, spacingMap, baseStep,
- * colorScales, answers }.
+ * colorScales, answers, ladder }.
  */
 export function evaluateRelations(facts) {
   return RELATIONS.map((r) => {

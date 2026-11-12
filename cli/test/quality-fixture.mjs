@@ -22,6 +22,9 @@ export function fixtureGrammar() {
     semantics: {
       keys: [{ id: "color.text.primary", pairs: { on: ["color.surface.default", "color.surface.sunken"], contrast: 4.5 } }],
       tones: { fills: [] },
+      connections: {
+        items: [{ id: "surface-ladder", kind: "stays-apart", by: "order", modes: ["dark"], tokens: ["color.surface.sunken", "color.surface.default", "color.surface.raised", "color.surface.floating"] }],
+      },
     },
   };
 }

@@ -4,7 +4,6 @@
 // stay distinct, also under deuteranopia, protanopia and tritanopia; colors that were shared stay
 // shared. Each flag names its scheme, theme and tokens, so the owner can approve that one flag.
 import { VISIONS, oklab, oklabDistance, simulate, wcagLevel } from "../color.mjs";
-import { LADDER } from "../relations.mjs";
 import { hex6 } from "../values.mjs";
 import { measuredPairs } from "./accessibility.mjs";
 import { flagMeasure } from "./measure.mjs";
@@ -113,7 +112,8 @@ export function relative(base, candidate, params) {
       const [vb, vc] = [b.values[t], c.values[t] ?? {}];
       const both = (n) => hex6(vb[n]) && hex6(vc[n]);
       // The surface ladder keeps its order.
-      const rungs = LADDER.filter(both);
+      // The rungs come from the candidate's grammar; a base built by older code may not record them.
+      const rungs = (c.ladder ?? b.ladder ?? []).filter(both);
       const lb = Object.fromEntries(rungs.map((n) => [n, L(vb[n])]));
       const lc = Object.fromEntries(rungs.map((n) => [n, L(vc[n])]));
       for (const [x, y] of flips(rungs, lb, lc)) ladder.push({ scheme: id, themes: [t], tokens: [x, y], says: `${id}/${t}: ${x} and ${y} swap lightness order` });

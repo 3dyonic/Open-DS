@@ -268,26 +268,125 @@
           "minLength": 1,
           "description": "What this list is and how to read it."
         },
-        "danger_apart": {
+        "connections": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["min_delta_e", "say", "why"],
-          "description": "How far apart the primary and danger fills stay, in every brand and mode (OD-222).",
+          "required": ["description", "items"],
+          "description": "How the color tokens connect (OD-304): comes-from, pairs-with and stays-apart. The harness checks each one.",
           "properties": {
-            "min_delta_e": {
-              "type": "number",
-              "exclusiveMinimum": 0,
-              "description": "The smallest color difference, ΔE in OKLab ×100."
-            },
-            "say": {
+            "description": {
               "type": "string",
               "minLength": 1,
-              "description": "The rule in a few words."
+              "description": "What the list holds."
             },
-            "why": {
-              "type": "string",
-              "minLength": 1,
-              "description": "Why the rule exists."
+            "items": {
+              "type": "array",
+              "description": "One entry for each connection.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "kind", "says"],
+                "description": "One connection between color tokens.",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9-]+$",
+                    "description": "The connection's id."
+                  },
+                  "kind": {
+                    "enum": ["comes-from", "pairs-with", "stays-apart"],
+                    "description": "The kind of connection."
+                  },
+                  "tokens": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-z-]+(\\.[a-z0-9*@-]+)+$"
+                    },
+                    "description": "The tokens the connection holds for; * stands for one segment. For order, lowest first."
+                  },
+                  "from": {
+                    "description": "comes-from: the token or pattern the value comes from (@ is the token's own @). stays-apart: the tokens it stays apart from.",
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[a-z-]+(\\.[a-z0-9*@-]+)+$"
+                        }
+                      }
+                    ]
+                  },
+                  "match": {
+                    "enum": ["hue", "chain"],
+                    "description": "comes-from: hue means the same hue scale; chain means the value reads the from token on its way."
+                  },
+                  "steps": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "comes-from: how many steps on from its source it sits."
+                  },
+                  "pairs": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "pairs-with: the grammar list that names the pairs."
+                  },
+                  "promise": {
+                    "type": "array",
+                    "description": "pairs-with: the step promise. Steps this far apart give at least this contrast.",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["apart", "contrast"],
+                      "description": "One step distance and the contrast it promises.",
+                      "properties": {
+                        "apart": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "description": "The distance between two step numbers."
+                        },
+                        "contrast": {
+                          "type": "number",
+                          "minimum": 1,
+                          "description": "The WCAG contrast ratio the distance promises."
+                        }
+                      }
+                    }
+                  },
+                  "by": {
+                    "enum": ["hue", "delta-e", "order"],
+                    "description": "stays-apart: hue means no shared hue scale; delta-e means a color difference; order means a lightness order."
+                  },
+                  "min_delta_e": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "description": "stays-apart by delta-e: the smallest color difference, ΔE in OKLab ×100."
+                  },
+                  "modes": {
+                    "type": "array",
+                    "items": {
+                      "enum": ["light", "dark"]
+                    },
+                    "description": "The modes the connection holds in. All modes when left out."
+                  },
+                  "says": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The connection in plain words."
+                  },
+                  "why": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Why the connection exists."
+                  }
+                }
+              }
             }
           }
         },
@@ -577,6 +676,21 @@
                     "type": "string",
                     "minLength": 1,
                     "description": "What the part means, in plain words. The token map shows it."
+                  },
+                  "step": {
+                    "type": "string",
+                    "pattern": "^[0-9]+$",
+                    "description": "The step of its hue scale the part sits at, such as 600 (OD-304)."
+                  },
+                  "from": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The part this one moves from, such as @ for hover (OD-304)."
+                  },
+                  "steps": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "How many steps on from the from part it sits (OD-304)."
                   }
                 },
                 "description": "One name ending and its meaning."
@@ -1166,6 +1280,56 @@
                     "type": "string"
                   },
                   "description": "Other names the research gives the same job."
+                }
+              }
+            }
+          },
+          "roles": {
+            "type": "array",
+            "description": "The color roles this property serves (OD-304), each with the parts of the reason form: role, job, how (from the job), what people get.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "role", "tokens", "jobs", "to", "gets"],
+              "description": "One role and the tokens that play it.",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$",
+                  "description": "The role's id, unique in the grammar."
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The role in words, for 'We use <value> for <role>'."
+                },
+                "tokens": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z-]+(\\.[a-z0-9*@-]+)+$"
+                  },
+                  "description": "The semantic tokens that play the role; * stands for one segment."
+                },
+                "jobs": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9-]+$"
+                  },
+                  "description": "The ids of the entry's jobs this role does. The first job gives the 'how'."
+                },
+                "to": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The job as a verb phrase, for 'in order to <job>'."
+                },
+                "gets": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "What people get, for 'So <what people get>'."
                 }
               }
             }

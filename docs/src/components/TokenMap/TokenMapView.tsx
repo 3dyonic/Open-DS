@@ -49,6 +49,20 @@ type Decision = {
   // What each part of the name means, outermost first: the groups, then the last part (OD-303).
   meaning?: { level: "group" | "variant"; name: string; says: string }[];
   guide?: { intent: string | null; useFor: string[]; notFor: { when: string; use: string }[] };
+  // A color token's decision graph (OD-304): role → jobs → property → answers → rule → connections →
+  // value, and the reason sentence the engine writes from those fields.
+  graph?: Graph;
+};
+type Connection = { kind: string; says: string };
+type Graph = {
+  role: string;
+  to: string;
+  gets: string;
+  jobs: string[];
+  rules: { name: string; says: string; holds: boolean | null }[];
+  connections: { id: string; holds: boolean; checks: number; off: string[] }[];
+  value: { name: string; hex: string | null } | null;
+  reason: string | null;
 };
 type Check = { what: string; ratio: number };
 type Step = {
@@ -73,6 +87,7 @@ type MapFile = {
   brand: string;
   areas: string[];
   answers: Record<string, Answer>;
+  connections: Record<string, Connection>;
   shared: { families: Family[]; decisions: Record<string, Decision> };
   modes: Record<Mode, ModeData>;
 };
@@ -99,7 +114,7 @@ const pxOf = (v: string) => {
 };
 
 // A decision has a reason when the scheme records one: its own why, the answers behind it, or a measured fact.
-const hasReason = (d: Decision | undefined) => Boolean(d && (d.why || d.answers.length || d.stepWhy));
+const hasReason = (d: Decision | undefined) => Boolean(d && (d.graph?.reason || d.why || d.answers.length || d.stepWhy));
 // A value has a reason when some decision that reads it has one.
 const valueHasReason = (model: Model, step: Step) => step.decisions.some((d) => hasReason(model.decisions[d]));
 
@@ -287,7 +302,7 @@ function GroupNode({ data }: NodeProps<Node<GroupData>>) {
 }
 
 // A decision: its name and its recorded reason on top; the answers behind it behind "more".
-type DecisionData = { d: Decision; selected: boolean; answers: Record<string, Answer> };
+type DecisionData = { d: Decision; selected: boolean; answers: Record<string, Answer>; connections: Record<string, Connection> };
 function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
   const [open, setOpen] = useState(false);
   const d = data.d;
@@ -308,7 +323,14 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
           ))}
         </>
       )}
-      {d.why ? <div className={styles.key}>{sentence(d.why)}</div> : d.description && <div>{d.description}</div>}
+      {d.graph?.reason ? (
+        <div className={styles.key}>{d.graph.reason}</div>
+      ) : d.why ? (
+        <div className={styles.key}>{sentence(d.why)}</div>
+      ) : (
+        d.description && <div>{d.description}</div>
+      )}
+      {d.graph?.reason && d.why && <div className={styles.line}>Measured: {sentence(d.why)}</div>}
       {d.guide?.intent && <div>{d.guide.intent}</div>}
       {d.guide && d.guide.useFor.length > 0 && <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>}
       {d.guide?.notFor.map((n) => (
@@ -319,13 +341,21 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
       {used === 0 && !d.via && !(d.guide && d.guide.useFor.length) && <div className={styles.line}>No component uses it.</div>}
       {!hasReason(d) && <NoReason />}
-      {(d.stepWhy || d.answers.length > 0) && <More open={open} onToggle={() => setOpen(!open)} closed="Why" />}
+      {(d.stepWhy || d.answers.length > 0 || d.graph) && <More open={open} onToggle={() => setOpen(!open)} closed="Why" />}
       {open && (
         <>
-          {d.stepWhy && <div>{d.stepWhy}</div>}
-          {d.answers.length > 0 && <div className={styles.cap}>{d.mapping ? "Decided by" : "The answers behind it"}</div>}
-          <Answers ids={d.answers} answers={data.answers} />
-          {d.mapping && (
+          {d.graph ? (
+            <ColorGraph graph={d.graph} mapping={d.mapping} connections={data.connections}>
+              <Answers ids={d.answers} answers={data.answers} />
+            </ColorGraph>
+          ) : (
+            <>
+              {d.stepWhy && <div>{d.stepWhy}</div>}
+              {d.answers.length > 0 && <div className={styles.cap}>{d.mapping ? "Decided by" : "The answers behind it"}</div>}
+              <Answers ids={d.answers} answers={data.answers} />
+            </>
+          )}
+          {d.mapping && !d.graph && (
             <>
               {d.mapping.property && <div className={styles.cap}>Property: {d.mapping.property}</div>}
               {d.mapping.says && <div className={styles.line}>{d.mapping.says}</div>}
@@ -339,6 +369,56 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
         </>
       )}
     </div>
+  );
+}
+
+// The color decision graph of a token, in the order it inherits its reason: role, jobs, property, the
+// answers that decide it (children), rule, connections and value.
+function ColorGraph({
+  graph,
+  mapping,
+  connections,
+  children,
+}: {
+  graph: Graph;
+  mapping: Decision["mapping"];
+  connections: Record<string, Connection>;
+  children?: React.ReactNode;
+}) {
+  return (
+    <>
+      <div className={styles.cap}>Role</div>
+      <div>
+        {sentence(graph.role)}: in order to {graph.to}. So {graph.gets}.
+      </div>
+      <div className={styles.cap}>Jobs</div>
+      {graph.jobs.map((title) => (
+        <div key={title} className={styles.qa}>
+          <b>{title}</b> <span className={styles.line}>{mapping?.jobs.find((j) => j.title === title)?.how}</span>
+        </div>
+      ))}
+      {mapping?.property && <div className={styles.cap}>Property: {mapping.property}</div>}
+      <div className={styles.cap}>Decided by</div>
+      {children}
+      {graph.rules.map((r) => (
+        <div key={r.name} className={styles.qa}>
+          <b>Rule</b> <span className={styles.line}>{r.says}</span>
+          {r.holds === false && <span> (this pick differs)</span>}
+        </div>
+      ))}
+      {graph.connections.length > 0 && <div className={styles.cap}>Connections</div>}
+      {graph.connections.map((c) => (
+        <div key={c.id} className={styles.qa}>
+          <b>{connections[c.id]?.kind ?? c.id}</b> <span className={styles.line}>{connections[c.id]?.says}</span>{" "}
+          <span>{c.holds ? `Holds (${c.checks} checks).` : `Does not hold: ${c.off.join("; ")}.`}</span>
+        </div>
+      ))}
+      {graph.value && (
+        <div className={styles.qa}>
+          <b>Value</b> <span className={styles.mono}>{graph.value.name}</span> {graph.value.hex && <span className={styles.line}>{graph.value.hex}</span>}
+        </div>
+      )}
+    </>
   );
 }
 
@@ -522,7 +602,7 @@ function build(map: MapFile, model: Model, path: Path, openComp: string | null, 
         type: "decision",
         position: at(X.decision, top),
         style: { width: W.decision },
-        data: { d, selected: path.decision === id, answers: map.answers },
+        data: { d, selected: path.decision === id, answers: map.answers, connections: map.connections ?? {} },
       });
       edges.push({ id: `e:${g}:${id}`, source: `g:${g}`, target: `d:${id}`, className: styles.edgeLit });
       dy = top + 160;

@@ -900,6 +900,26 @@
         "token-map-equals-engine",
         "json-sources-one-layout"
       ]
+    },
+    {
+      "id": "OD-304",
+      "title": "Color is a decision graph: every color token inherits its reason from role, job, property, answers, rule and connections",
+      "in": [
+        "each color role in the grammar records its role, its jobs, what people get and the tokens that play it; the how comes from the job, so nothing is stored twice",
+        "the variants record the step each slot sits at: @ at 600, subtle at 100, hover one step from its fill",
+        "semantics.connections lists comes-from, pairs-with (with the step promise) and stays-apart; the gate and the danger check read the surface ladder and the danger rule from it",
+        "the decision tree and the token map card show role, jobs, property, answers, rule, connections and value, and the reason sentence written from those fields",
+        "category hues stay apart from status hues; today they do not, so the check lists the clashes and keeps a baseline that may only go down",
+        "every color token has every link in every brand and mode, and every connection holds, waits for a fix, or is in the baseline"
+      ],
+      "checks": [
+        "color-links-complete",
+        "color-connections-hold",
+        "token-map-equals-engine",
+        "danger-apart",
+        "json-files-validate",
+        "json-sources-one-layout"
+      ]
     }
   ]
 }
