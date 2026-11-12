@@ -586,15 +586,19 @@
     },
     {
       "id": "OD-294",
-      "title": "Spacing by use case and the control scale: values from a base, a multiple and a step",
+      "title": "The type scale: sizes from a base and a ratio, line heights by role kind; spacing by use case and the control scale: values from a base, a multiple and a step",
       "in": [
+        "each scheme records on its type group the body size, a ratio, each role's step, and a tight and an open line height with the roles that take each",
+        "a role's size is base × ratio^step, rounded to whole px, and links to the font.size primitive of that size; the scale owns the size and line height primitives",
+        "the values are computed once when the scheme is written (scripts/type-scale.mjs); the harness compares them with the generator",
+        "every size and line height keeps a reason that names its value and relates it to its siblings",
         "the grammar's spacing scope names the use-case words (level, relation, reach) and the job of each spacing property",
         "each scheme records on its space group a base and, per space token, a use case and a multiple; the value is base × multiple",
         "each scheme records on its size group the control scale: the default height, the step, the steps of compact and large, and the row",
         "the values are computed once when the scheme is written (scripts/spacing-use-cases.mjs); the harness compares them with the generator",
         "every space, control and row reason names its value, its job and its use case or mechanism"
       ],
-      "checks": ["spacing-use-cases-generated", "reasons-explain-values", "json-files-validate"]
+      "checks": ["type-scale-generated", "reasons-explain-values", "json-files-validate", "spacing-use-cases-generated"]
     },
     {
       "id": "OD-285",

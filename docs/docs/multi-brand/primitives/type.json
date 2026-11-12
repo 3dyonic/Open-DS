@@ -11,21 +11,11 @@
      },
      "usedBy": [
       {
-       "token": "type.caption.font-size",
-       "where": "semantic"
-      }
-     ]
-    },
-    {
-     "primitive": "font.size.14",
-     "value": "0.875rem (14px)",
-     "sample": {
-      "kind": "size",
-      "value": "0.875rem"
-     },
-     "usedBy": [
-      {
        "token": "type.label.font-size",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.font-size",
        "where": "semantic"
       }
      ]
@@ -63,11 +53,11 @@
      ]
     },
     {
-     "primitive": "font.size.24",
-     "value": "1.5rem (24px)",
+     "primitive": "font.size.25",
+     "value": "1.5625rem (25px)",
      "sample": {
       "kind": "size",
-      "value": "1.5rem"
+      "value": "1.5625rem"
      },
      "usedBy": [
       {

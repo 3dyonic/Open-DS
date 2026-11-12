@@ -29,7 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `content-first.theme.base.type.display.font-family` → `font.family.source-serif-4` |
-| `type.display.font-size` | `font.size.44` |
+| `type.display.font-size` | `font.size.45` |
 | `type.display.line-height` | `font.line-height.1_15` |
 | `type.display.font-weight` | `font.weight.600` |
 | `type.title.font-family` | `content-first.theme.base.type.title.font-family` → `font.family.source-serif-4` |
@@ -46,11 +46,11 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `content-first.theme.base.type.label.font-family` → `font.family.inter` |
 | `type.label.font-size` | `font.size.16` |
-| `type.label.line-height` | `font.line-height.1_45` |
+| `type.label.line-height` | `font.line-height.1_15` |
 | `type.label.font-weight` | `font.weight.600` |
 | `type.caption.font-family` | `content-first.theme.base.type.caption.font-family` → `font.family.inter` |
 | `type.caption.font-size` | `font.size.14` |
-| `type.caption.line-height` | `font.line-height.1_45` |
+| `type.caption.line-height` | `font.line-height.1_65` |
 | `type.caption.font-weight` | `font.weight.400` |
 | `type.data.font-family` | `content-first.theme.base.type.data.font-family` → `font.family.source-serif-4` |
 | `type.data.font-size` | `font.size.18` |
