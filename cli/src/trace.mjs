@@ -437,9 +437,11 @@ export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.token
   // The property: what kind of value this is, the answers that decide it (decidersOf) and the jobs it does.
   const short = name.replace(/\.@$/, "");
   const entry = mappingOf(g, short);
-  const decided = decidersOf(g, short).map(answerOf).filter(Boolean);
   // A color token's role, rule, connections, value and reason (OD-304): the role sits before its property.
   const color = name.startsWith("color.") ? colorNodes(scheme, g, name, { brand, mode, ...(index && { index }) }) : [];
+  // A color role is decided by the answers that create or shape it (madeBy), the same ones its reason cites.
+  const role = color.find((n) => n.level === "role");
+  const decided = (role ? [...role.creates, ...role.shapes] : decidersOf(g, short)).map(answerOf).filter(Boolean);
   nodes.push(...color.filter((n) => n.level === "role"));
   if (entry || decided.length)
     nodes.push({

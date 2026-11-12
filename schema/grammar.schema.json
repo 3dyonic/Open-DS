@@ -384,6 +384,37 @@
                     "type": "string",
                     "minLength": 1,
                     "description": "Why the connection exists."
+                  },
+                  "also": {
+                    "type": "array",
+                    "description": "pairs-with: fills that hold a text but state no tone, each with the text that sits on it.",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["fills", "text", "says"],
+                      "description": "Fills and the one text that sits on them.",
+                      "properties": {
+                        "fills": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string",
+                            "pattern": "^[a-z-]+(\\.[a-z0-9*@-]+)+$"
+                          },
+                          "description": "The fills; * stands for one segment."
+                        },
+                        "text": {
+                          "type": "string",
+                          "pattern": "^color(\\.[a-z0-9-]+)+$",
+                          "description": "The text token that sits on each fill. Its pair contrast is the floor."
+                        },
+                        "says": {
+                          "type": "string",
+                          "minLength": 1,
+                          "description": "Why this text sits on these fills."
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -1330,6 +1361,28 @@
                   "type": "string",
                   "minLength": 1,
                   "description": "What people get, for 'So <what people get>'."
+                },
+                "always_on": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["why", "shaped_by"],
+                  "description": "Marks a role that every scheme ships, whatever it answers. No option creates it; the answers in shaped_by shape it.",
+                  "properties": {
+                    "why": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Why every scheme ships the role, as a clause that follows 'because'."
+                    },
+                    "shaped_by": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "pattern": "^[a-z]+\\.[a-z0-9]+$"
+                      },
+                      "description": "The question ids whose answers shape the role. The reason cites these answers."
+                    }
+                  }
                 }
               }
             }
@@ -1423,6 +1476,14 @@
           "type": "string",
           "minLength": 1,
           "description": "What the option means when the label alone is not enough, for example the range a count word stands for."
+        },
+        "creates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "description": "The color roles this option brings, by role id (OD-304). An empty list means the option shapes roles but brings none."
         }
       }
     },

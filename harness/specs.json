@@ -910,11 +910,14 @@
         "semantics.connections lists comes-from, pairs-with (with the step promise) and stays-apart; the gate and the danger check read the surface ladder and the danger rule from it",
         "the decision tree and the token map card show role, jobs, property, answers, rule, connections and value, and the reason sentence written from those fields",
         "category hues stay apart from status hues; today they do not, so the check lists the clashes and keeps a baseline that may only go down",
-        "every color token has every link in every brand and mode, and every connection holds, waits for a fix, or is in the baseline"
+        "every color token has every link in every brand and mode, and every connection holds, waits for a fix, or is in the baseline",
+        "each option of a question a color role depends on lists the roles it creates; each shipped color role is created by a chosen option, or the grammar marks it always-on with a reason and the answers that shape it; the reason cites only answers that create or shape the role",
+        "the token map card shows every connection of a color token: comes-from, pairs-with with each measured pair and its step promise, and stays-apart, with a baseline gap shown as waits"
       ],
       "checks": [
         "color-links-complete",
         "color-connections-hold",
+        "color-roles-created",
         "token-map-equals-engine",
         "danger-apart",
         "json-files-validate",

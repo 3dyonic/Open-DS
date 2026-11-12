@@ -59,8 +59,9 @@ type Graph = {
   to: string;
   gets: string;
   jobs: string[];
+  made: { always: string | null; creates: string[]; shapes: string[] };
   rules: { name: string; says: string; holds: boolean | null }[];
-  connections: { id: string; holds: boolean; checks: number; off: string[] }[];
+  connections: { id: string; via?: string; holds: boolean; checks: number; pairs: string[]; off: string[]; waits: string[] }[];
   value: { name: string; hex: string | null } | null;
   reason: string | null;
 };
@@ -107,7 +108,8 @@ const X = { area: 0, family: 210, word: 420, group: 850, decision: 1050, list: 1
 const W = { area: 160, family: 160, step: 170, word: 370, group: 160, decision: 370, list: 300 };
 
 const ratio = (r: number) => `${Math.round(r * 10) / 10}:1`;
-const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1) + (/[.!?]$/.test(s) ? "" : ".");
+const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const sentence = (s: string) => capital(s) + (/[.!?]$/.test(s) ? "" : ".");
 const pxOf = (v: string) => {
   const m = /^([\d.]+)rem$/.exec(v);
   return m ? `${v} · ${parseFloat(m[1]) * 16}px` : v;
@@ -345,9 +347,7 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
       {open && (
         <>
           {d.graph ? (
-            <ColorGraph graph={d.graph} mapping={d.mapping} connections={data.connections}>
-              <Answers ids={d.answers} answers={data.answers} />
-            </ColorGraph>
+            <ColorGraph graph={d.graph} mapping={d.mapping} connections={data.connections} answers={data.answers} />
           ) : (
             <>
               {d.stepWhy && <div>{d.stepWhy}</div>}
@@ -373,23 +373,23 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
 }
 
 // The color decision graph of a token, in the order it inherits its reason: role, jobs, property, the
-// answers that decide it (children), rule, connections and value.
+// answers that create or shape it, rule, connections and value.
 function ColorGraph({
   graph,
   mapping,
   connections,
-  children,
+  answers,
 }: {
   graph: Graph;
   mapping: Decision["mapping"];
   connections: Record<string, Connection>;
-  children?: React.ReactNode;
+  answers: Record<string, Answer>;
 }) {
   return (
     <>
       <div className={styles.cap}>Role</div>
       <div>
-        {sentence(graph.role)}: in order to {graph.to}. So {graph.gets}.
+        {capital(graph.role)}: in order to {graph.to}. So {graph.gets}.
       </div>
       <div className={styles.cap}>Jobs</div>
       {graph.jobs.map((title) => (
@@ -398,8 +398,11 @@ function ColorGraph({
         </div>
       ))}
       {mapping?.property && <div className={styles.cap}>Property: {mapping.property}</div>}
-      <div className={styles.cap}>Decided by</div>
-      {children}
+      {graph.made.always && <div className={styles.line}>Always on: {sentence(graph.made.always)}</div>}
+      {graph.made.creates.length > 0 && <div className={styles.cap}>Created by</div>}
+      <Answers ids={graph.made.creates} answers={answers} />
+      {graph.made.shapes.length > 0 && <div className={styles.cap}>Shaped by</div>}
+      <Answers ids={graph.made.shapes} answers={answers} />
       {graph.rules.map((r) => (
         <div key={r.name} className={styles.qa}>
           <b>Rule</b> <span className={styles.line}>{r.says}</span>
@@ -410,7 +413,23 @@ function ColorGraph({
       {graph.connections.map((c) => (
         <div key={c.id} className={styles.qa}>
           <b>{connections[c.id]?.kind ?? c.id}</b> <span className={styles.line}>{connections[c.id]?.says}</span>{" "}
-          <span>{c.holds ? `Holds (${c.checks} checks).` : `Does not hold: ${c.off.join("; ")}.`}</span>
+          {c.via && <span className={styles.line}>Through {c.via}. </span>}
+          {c.holds ? (
+            <span>Holds ({c.checks} checks).</span>
+          ) : (
+            <span>
+              {c.checks - c.waits.length - c.off.length} of {c.checks} checks hold.
+            </span>
+          )}
+          {c.pairs.map((p) => (
+            <div key={p} className={styles.line}>
+              {p}
+            </div>
+          ))}
+          {c.waits.map((w) => (
+            <div key={w}>waits: {w}</div>
+          ))}
+          {c.off.length > 0 && <div>Does not hold: {c.off.join("; ")}.</div>}
         </div>
       ))}
       {graph.value && (

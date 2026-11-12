@@ -2,7 +2,7 @@
 // property, answers, slot and connections. Run on the real schemes and grammar.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { colorReason, connectionChecks, connectionGaps, evaluateConnections, indexesOf, missingLinks, roleOf } from "../src/color-graph.mjs";
+import { colorReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, roleOf } from "../src/color-graph.mjs";
 import { assetRoots, grammar, loadScheme } from "../src/schemes.mjs";
 import { decisionTree, formGaps } from "../src/trace.mjs";
 
@@ -69,13 +69,50 @@ test("each color role names jobs its mapping entry has", () => {
   assert.equal(roleOf(g, "space.gap.sm"), null);
 });
 
-test("the reason is written from the fields, in the reason form, and cites the deciding answers", () => {
+test("the reason is written from the fields, in the reason form, and cites the answers that shape an always-on role", () => {
   const scheme = loadScheme("accessible-first", roots);
   const why = colorReason(scheme, g, "color.category.4.@", { value: "amber.light.600" });
   assert.match(why, /^We use amber\.light\.600 for a category mark in order to tell series and tags apart/);
   assert.match(why, /The category color does this by following brand hue/);
-  assert.match(why, /\(color\.roles\)\.$/);
-  assert.deepEqual(formGaps(g, "color.category.4", why, ["color.roles"]), []);
+  assert.match(why, /because a design system ships category colors for the products teams build, and the scheme answers/);
+  assert.match(why, /\(color\.definition, accessibility\.definition\)\.$/);
+  // "Surface, text, action and status" does not name category, so the reason does not cite it.
+  assert.doesNotMatch(why, /color\.roles/);
+  assert.deepEqual(formGaps(g, "color.category.4", why, ["color.definition", "accessibility.definition"]), []);
+});
+
+test("an answer creates a role: the reason cites the option that brings it", () => {
+  const scheme = loadScheme("dense-data", roots);
+  assert.deepEqual(madeBy(scheme, g, "color.text.primary"), { role: "page-text", always: null, creates: ["color.roles"], shapes: ["color.definition"] });
+  assert.deepEqual(madeBy(scheme, g, "color.surface.scrim").creates, ["elevation.lands"]);
+  const why = colorReason(scheme, g, "color.text.primary", { value: "gray.light.900" });
+  assert.match(why, /"Surface, text, action and status" to "Which color roles does it need\?"/);
+});
+
+test("every shipped color role is created by a chosen option or always-on; removing a creates entry breaks it", () => {
+  const shipped = (scheme, grammarOf) =>
+    [...new Set(g.mapping.flatMap((e) => (e.roles ?? []).map((r) => r.id)))].filter((id) => {
+      const role = grammarOf.mapping.flatMap((e) => e.roles ?? []).find((r) => r.id === id);
+      return !role.always_on && !creatorsOf(scheme, grammarOf, id).length;
+    });
+  for (const id of SCHEMES) assert.deepEqual(shipped(loadScheme(id, roots), g), [], id);
+  const planted = structuredClone(g);
+  const roles = planted.scopes.flatMap((s) => s.questions).find((q) => q.id === "elevation.lands");
+  for (const o of roles.options) o.creates = [];
+  assert.deepEqual(shipped(loadScheme("dense-data", roots), planted), ["scrim"]);
+});
+
+test("a category tint shows its pair and the stays-apart of its @", () => {
+  const scheme = loadScheme("accessible-first", roots);
+  const tree = decisionTree(scheme, g, "color.category.4.subtle", { mode: "light" });
+  const links = tree.filter((n) => n.level === "connection");
+  assert.deepEqual(links.map((n) => n.name), ["subtle-from-hue", "fill-pairs-with-text", "category-apart-from-status"]);
+  const pair = links[1].checks;
+  assert.deepEqual(pair.map((x) => x.tokens), [["color.text.primary", "color.category.4.subtle"]]);
+  assert.match(pair[0].says, /800 steps apart promise 7:1/);
+  const apart = links[2];
+  assert.equal(apart.via, "color.category.4");
+  assert.deepEqual(apart.checks.filter((x) => !x.holds).map((x) => [x.tokens, x.hue]), [[["color.category.4", "color.status.warning"], "amber"]]);
 });
 
 test("the decision tree reads role → property → rule → connections → value → reason", () => {

@@ -39,8 +39,10 @@ test("a decision carries the scheme's recorded reason, without the pick's prefix
   const p = light.decisions["color.action.primary"];
   assert.equal(p.why, "brand blue marks the main action, with AAA white text (7.26:1).");
   assert.equal(p.stepWhy, "The lightest blue where white text reads at AAA.");
-  // OD-303: "Decided by" is the engine's answer for chroma; the palette answer stays in the reason chain.
-  assert.deepEqual(p.answers, ["color.values"]);
+  // OD-304: the roles answer creates the action fill; the engine's answer for chroma shapes it. The palette
+  // answer stays in the reason chain.
+  assert.deepEqual(p.answers, ["color.roles", "color.values"]);
+  assert.deepEqual(p.graph.made, { always: null, creates: ["color.roles"], shapes: ["color.values"] });
   assert.equal(p.mapping.property, "Chroma");
   assert.ok(af.answers["color.definition"].why.startsWith("True neutrals and blue 600 as the brand"));
 });

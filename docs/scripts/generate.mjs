@@ -192,12 +192,14 @@ const componentSource = readdirSync(componentDir)
   .sort()
   .map((f) => readFileSync(join(componentDir, f), "utf8"))
   .join("\n");
+// The color connections that wait for the owner's decision (OD-304): the card shows their gaps as waits.
+const waiting = JSON.parse(readFileSync(join(docs, "..", "harness", "connections-baseline.json"), "utf8")).counts;
 // { brand: { file, text } }: the file under static/ that holds each brand's map.
 function tokenMapFiles(scheme) {
   const brands = Object.keys(scheme.tokens.brands);
   const out = {};
   for (const b of brands) {
-    const text = JSON.stringify(tokenMapView({ scheme, grammar: g, brand: b, componentSource })) + "\n";
+    const text = JSON.stringify(tokenMapView({ scheme, grammar: g, brand: b, componentSource, waiting })) + "\n";
     out[b] = { file: brands.length === 1 ? `token-map/${scheme.id}.json` : `token-map/${scheme.id}/${b}.json`, text };
   }
   return out;

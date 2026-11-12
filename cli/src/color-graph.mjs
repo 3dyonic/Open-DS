@@ -34,15 +34,36 @@ export function slotOf(g, name) {
   return (g.semantics?.variants?.items ?? []).find((v) => v.id === last && (v.step || v.from)) ?? null;
 }
 
-/** The connections a token takes part in, from semantics.connections. A pairs-with holds every fill and text of the tone pairs. */
+/**
+ * The connections a token takes part in, from semantics.connections. A pairs-with holds every fill and
+ * text of the tone pairs, and the fills its also list names. A token that comes from the hue of its @
+ * also takes part in each stays-apart by hue of that @: it shares the hue, so it shares the clash. Such
+ * a connection carries via, the token it comes through.
+ */
 export function connectionsOf(g, name) {
   const keys = new Map((g.semantics?.keys ?? []).map((k) => [k.id, k]));
   const fills = new Set((g.semantics?.tones?.fills ?? []).map((f) => f.id));
-  const inPairs = (n) => fills.has(n) || toneRole(n) || keys.get(n)?.pairs?.on || [...keys.values()].some((k) => k.pairs?.on?.includes(n));
+  const items = g.semantics?.connections?.items ?? [];
+  const inAlso = (c, n) => (c.also ?? []).some((a) => covers(a.fills, n) || a.text === n);
+  const inPairs = (c, n) => fills.has(n) || toneRole(n) || keys.get(n)?.pairs?.on || [...keys.values()].some((k) => k.pairs?.on?.includes(n)) || inAlso(c, n);
   const full = keys.has(name) ? name : keys.has(`${name}.@`) ? `${name}.@` : name;
-  return (g.semantics?.connections?.items ?? []).filter((c) =>
-    c.kind === "pairs-with" ? inPairs(full) : covers(c.tokens, name) || (c.kind === "stays-apart" && covers(c.from, name)),
+  const takesPart = (c, n) => covers(c.tokens, n) || (c.kind === "stays-apart" && covers(c.from, n));
+  const own = items.filter((c) => (c.kind === "pairs-with" ? inPairs(c, full) : takesPart(c, name)));
+  const sources = items
+    .filter((c) => c.kind === "comes-from" && c.match === "hue" && c.from === "@" && covers(c.tokens, name))
+    .map(() => `${short(name).split(".").slice(0, -1).join(".")}.@`);
+  const inherited = sources.flatMap((via) =>
+    items.filter((c) => c.kind === "stays-apart" && c.by === "hue" && !own.includes(c) && takesPart(c, via)).map((c) => ({ ...c, via: short(via) })),
   );
+  return [...own, ...inherited];
+}
+
+/** The pairs an also list adds in one brand and mode: [{ key, on, contrast }]. The contrast is the text's own pair floor. */
+function alsoPairs(g, c, names) {
+  const keys = new Map((g.semantics?.keys ?? []).map((k) => [k.id, k]));
+  return (c.also ?? []).flatMap((a) =>
+    names.filter((n) => covers(a.fills, n)).map((on) => ({ key: a.text, on, contrast: keys.get(a.text)?.pairs?.contrast ?? null })),
+  ).filter((p) => p.contrast);
 }
 
 /** Where a token's value ends in one brand and mode: { value, hue, side, step, hops }. hue is null for a value off every scale. */
@@ -108,7 +129,7 @@ export function connectionChecks(scheme, g, c, { brand, mode, index, name = null
       add([short(n), short(source)], holds, `${short(n)} is ${where}${c.steps ? `, ${gap} step${gap === 1 ? "" : "s"} on` : ""}`);
     }
   } else if (c.kind === "pairs-with") {
-    for (const p of pairsIn(g, scheme, brand, mode)) {
+    for (const p of [...pairsIn(g, scheme, brand, mode), ...alsoPairs(g, c, names)]) {
       if (name && !mine(p.key) && !mine(p.on)) continue;
       const [a, b] = [place(p.key), place(p.on)];
       const ratio = contrastRatio(a.value, b.value);
@@ -138,6 +159,7 @@ export function connectionChecks(scheme, g, c, { brand, mode, index, name = null
         if (c.by === "hue") {
           const same = pa.hue !== null && pa.hue === pb.hue;
           add([short(a), short(b)], !same, same ? `${short(a)} and ${short(b)} share the ${pa.hue} hue` : `${short(a)} is ${pa.hue}, ${short(b)} is ${pb.hue}`, waitsOf(a, b));
+          if (same) out.at(-1).hue = pa.hue;
         } else if (c.by === "delta-e") {
           const d = oklabDistance(String(pa.value).slice(0, 7), String(pb.value).slice(0, 7)) * 100;
           add([short(a), short(b)], d >= c.min_delta_e, `${short(a)} and ${short(b)} are ΔE ${d.toFixed(1)} apart, need ${c.min_delta_e}`, waitsOf(a, b));
@@ -183,23 +205,55 @@ function byPhrase(how) {
   return lower(text.replace(/^follows\b/, "following"));
 }
 
+/** The option a scheme chose for a question, or null. */
+function chosen(scheme, g, id) {
+  const answer = (scheme.answers ?? []).find((a) => a.question === id);
+  return answer ? (questions(g)[id]?.options?.find((o) => o.id === answer.option) ?? null) : null;
+}
+
+/** The scheme's answers whose chosen option creates a role: question ids, in grammar order. */
+export function creatorsOf(scheme, g, roleId) {
+  return Object.keys(questions(g)).filter((id) => chosen(scheme, g, id)?.creates?.includes(roleId));
+}
+
+/**
+ * Why a color token exists in a scheme, as plain data: { role, always, creates, shapes }, or null when no
+ * role covers it. creates holds the answers whose chosen option brings the role. always is the grammar's
+ * reason when every scheme ships the role; then shapes holds the role's shaped_by answers. Else shapes holds
+ * the token's deciders (decidersOf) that do not create it. Only answered questions count.
+ */
+export function madeBy(scheme, g, name) {
+  const r = roleOf(g, name);
+  if (!r) return null;
+  const answered = new Set((scheme.answers ?? []).map((a) => a.question));
+  const creates = creatorsOf(scheme, g, r.role.id);
+  const always = r.role.always_on ?? null;
+  const shapes = (always ? always.shaped_by : decidersOf(g, short(name))).filter((id) => answered.has(id) && !creates.includes(id));
+  return { role: r.role.id, always: always?.why ?? null, creates, shapes };
+}
+
+/** The answers a color token's reason cites: those that create its role, then those that shape it. */
+export const citedBy = (made) => (made ? [...made.creates, ...made.shapes] : []);
+
 /**
  * The reason sentence of a color token, in the grammar's reason form, written from the grammar's
  * fields and the scheme's answers, never stored: "We use <value> for <role> in order to <job>. The
- * <property> does this by <how>. So <what people get>, because <decision> (<answer ids>)." Null when
- * no role covers the token.
+ * <property> does this by <how>. So <what people get>, because <decision> (<answer ids>)." The because
+ * cites only the answers that create or shape the role (madeBy). Null when no role covers the token.
  */
 export function colorReason(scheme, g, name, { value }) {
   const r = roleOf(g, name);
   if (!r) return null;
   const asked = questions(g);
-  const answers = new Map((scheme.answers ?? []).map((a) => [a.question, a]));
-  const ids = decidersOf(g, short(name)).filter((id) => answers.has(id));
-  const words = ids.map((id) => {
-    const option = asked[id]?.options?.find((o) => o.id === answers.get(id).option);
-    return `"${option?.label ?? answers.get(id).option}" to "${asked[id]?.text ?? id}"`;
-  });
-  const decision = words.length ? `because the scheme answers ${words.join(" and ")} (${ids.join(", ")})` : "because no answer decides it yet";
+  const made = madeBy(scheme, g, name);
+  const ids = citedBy(made);
+  const words = ids.map((id) => `"${chosen(scheme, g, id)?.label ?? id}" to "${asked[id]?.text ?? id}"`);
+  const answered = words.length ? `the scheme answers ${words.join(" and ")} (${ids.join(", ")})` : null;
+  const decision = made.always
+    ? `because ${made.always}${answered ? `, and ${answered}` : ""}`
+    : answered
+      ? `because ${answered}`
+      : "because no answer decides it yet";
   return `We use ${value} for ${r.role.role} in order to ${r.role.to}. The ${r.title.toLowerCase()} does this by ${byPhrase(r.jobs[0]?.how)}. So ${r.role.gets}, ${decision}.`;
 }
 
@@ -213,8 +267,19 @@ export function colorNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
   if (!r) return [];
   const at = placeOf(index, name);
   const value = at.hue ? `${at.hue}.${at.side}.${at.step}` : typeof at.value === "string" ? at.value : JSON.stringify(at.value);
+  const made = madeBy(scheme, g, name);
   const nodes = [
-    { level: "role", name: r.role.id, says: r.role.role, to: r.role.to, gets: r.role.gets, jobs: r.jobs.map((j) => ({ id: j.id, title: j.title, how: j.how })) },
+    {
+      level: "role",
+      name: r.role.id,
+      says: r.role.role,
+      to: r.role.to,
+      gets: r.role.gets,
+      jobs: r.jobs.map((j) => ({ id: j.id, title: j.title, how: j.how })),
+      always: made.always,
+      creates: made.creates,
+      shapes: made.shapes,
+    },
   ];
   const slot = slotOf(g, name);
   const connections = connectionsOf(g, name);
@@ -238,8 +303,8 @@ export function colorNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
   for (const c of connections) {
     if (!slot && c.kind === "pairs-with")
       nodes.push({ level: "rule", name: "step-promise", says: c.promise.map((p) => `${p.apart} steps apart give ${p.contrast}:1`).join(", "), step: null, picked: at.step, holds: null });
-    const checks = connectionChecks(scheme, g, c, { brand, mode, index, name });
-    nodes.push({ level: "connection", name: c.id, kind: c.kind, says: c.says, holds: checks.every((x) => x.holds), checks });
+    const checks = connectionChecks(scheme, g, c, { brand, mode, index, name: c.via ?? name });
+    nodes.push({ level: "connection", name: c.id, kind: c.kind, says: c.says, ...(c.via && { via: c.via }), holds: checks.every((x) => x.holds), checks });
   }
   nodes.push({ level: "value", name: value, says: typeof at.value === "string" ? at.value : null });
   nodes.push({ level: "reason", name: `${brand}/${mode}`, says: colorReason(scheme, g, name, { value }) });
