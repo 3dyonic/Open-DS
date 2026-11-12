@@ -3,10 +3,10 @@
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
 import { themeTokens } from "../cli/src/tokens.mjs";
-import { pairsIn, toneOf } from "../cli/src/tones.mjs";
+import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
 import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "../cli/src/schemes.mjs";
-import { flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
+import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -276,16 +276,6 @@ export const CHECKS = {
       const g = c.grammar();
       const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
       const gaps = [];
-      const lum = (hex) => {
-        const [r, gr, b] = [1, 3, 5]
-          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
-          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
-        return 0.2126 * r + 0.7152 * gr + 0.0722 * b;
-      };
-      const ratio = (a, b) => {
-        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
-        return (x + 0.05) / (y + 0.05);
-      };
       for (const id of g.semantics.urgency.order)
         if (!guide.has(id)) gaps.push(`urgency names ${id}, which has no guidance`);
       let pairs = 0;
@@ -326,17 +316,12 @@ export const CHECKS = {
               if (tn && hex(name) !== hex(`color.text.on-${tn}`))
                 gaps.push(`${s}/${brand}/${mode}: ${name} is not color.text.on-${tn}, the text for ${fill}'s tone`);
             }
-            for (const p of pairsIn(g, { id: s, tokens: t }, brand, mode)) {
-              const [a, b] = [hex(p.key), hex(p.on)];
-              if (!a || !b) continue;
-              pairs++;
-              const r = ratio(a, b);
-              if (r >= p.contrast) continue;
-              const what = `${s}/${brand}/${mode}: ${p.key} on ${p.on} is ${r.toFixed(2)}:1, needs ${p.contrast}:1`;
-              if (p.waits) waiting.add(`${s}/${brand}/${mode} ${p.on} (${p.waits.for})`);
-              else gaps.push(what);
-            }
           }
+        // The contrast pairs are a build rule (cli/src/scheme-checks.mjs, OD-292).
+        const contrast = contrastPairs({ id: s, tokens: t }, g);
+        pairs += contrast.pairs;
+        gaps.push(...contrast.gaps);
+        for (const w of contrast.waiting) waiting.add(w);
       }
       return gaps.length
         ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
@@ -2676,6 +2661,23 @@ export const CHECKS = {
       return hits.length
         ? bad(`${hits.length} direct reads or writes of schemes/*.json, such as ${hits.slice(0, 4).join(", ")}; use loadScheme, grammar, saveScheme and saveGrammar from cli/src/schemes.mjs`)
         : ok("every read and write of a scheme goes through cli/src/schemes.mjs, or the one schemes module of its app");
+    },
+  },
+  // OD-292: a scheme file stores the key colors and the spacing rhythm, not what they generate. A stored
+  // scale or spacing map step equal to the generator's output is a copy that can drift: saveScheme leaves it out.
+  "generated-not-stored": {
+    requires: ["cli/src/scheme-generated.mjs"],
+    run: async (c) => {
+      const { withoutGenerated } = await import(pathToFileURL(c.p("cli/src/scheme-generated.mjs")).href);
+      const copies = [];
+      for (const id of SCHEMES) {
+        const stored = c.storedScheme(id);
+        const n = (o) => JSON.stringify(o).length;
+        if (n(withoutGenerated(stored)) !== n(stored)) copies.push(id);
+      }
+      return copies.length
+        ? bad(`${copies.join(", ")} store color scales or spacing map steps that the generator makes; load and save each with loadScheme and saveScheme`)
+        : ok(`${SCHEMES.length} schemes store key colors and spacing rhythms, not the scales and steps they generate`);
     },
   },
   // OD-291: a scheme file stores only the component values it decides. A token equal to the grammar's
