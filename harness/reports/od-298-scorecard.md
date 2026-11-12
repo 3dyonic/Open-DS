@@ -10,6 +10,7 @@ Every number is computed by code from the two checkouts. Run `open-ds compare --
 
 - `invariants.floating-not-defined`: Floating not defined in dense-data, content-first, accessible-first, brand-expressive, multi-brand: no color.surface.floating, so the dark surface ladder is not checked above the raised surface. Not gated.
 - `blast-radius.answers-generate-nothing`: Answers do not generate values. dense-data: 79 of 79 answer changes move no value; content-first: 79 of 79 answer changes move no value; accessible-first: 79 of 79 answer changes move no value; brand-expressive: 79 of 79 answer changes move no value; multi-brand: 79 of 79 answer changes move no value. Their trace links are not counted as orphans.
+- `blast-radius.answer-orphans`: Counts only answers that move a value. No answer moves one, so it is 0 by construction, not a clean result.
 - `accessibility.apca-warnings`: APCA Lc is a warning only, by the owner's decision: shown, never gated.
 - `curves.grades`: Contrast grades are reported, not gated (gradesGated: false), by the owner's decision. They gate once OD-299 lands.
 
@@ -34,6 +35,8 @@ Every number is computed by code from the two checkouts. Run `open-ds compare --
 | `invariants.nested-radius` | 4 | 4 | 0 | ↓ lower is better | pass |
 | `invariants.dark-ladder` | 14 | 0 | -14 | ↓ lower is better | pass |
 | `invariants.floating-not-defined` | 5 | 5 | 0 | shown, not gated | — |
+| `generation.answer-driven` | 0 | 0 | 0 | ↑ higher is better | pass |
+| `generation.answer-driven-share` | 0 | 0 | 0 | ↑ higher is better | pass |
 | `blast-radius.answers-generate-nothing` | 395 | 395 | 0 | shown, not gated | — |
 | `blast-radius.answer-orphans` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `blast-radius.answer-orphan-share` | not present | not present |  | shown, not gated | — |
@@ -314,6 +317,26 @@ Per scheme (base → candidate): dense-data 1 → 1; content-first 1 → 1; acce
 - brand-expressive: floating not defined
 - multi-brand: floating not defined
 
+### `generation.answer-driven`
+
+Semantic tokens whose value changes when an answer their trace cites changes (may only rise, per scheme)
+
+Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 0; accessible-first 0 → 0; brand-expressive 0 → 0; multi-brand 0 → 0.
+
+- dense-data: 0 of 138 traced tokens
+- content-first: 0 of 138 traced tokens
+- accessible-first: 0 of 138 traced tokens
+- brand-expressive: 0 of 139 traced tokens
+- multi-brand: 0 of 138 traced tokens
+
+### `generation.answer-driven-share`
+
+Share of traced semantic tokens that an answer they cite drives (may only rise, per scheme)
+
+Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 0; accessible-first 0 → 0; brand-expressive 0 → 0; multi-brand 0 → 0.
+
+- 0 of 691 traced tokens move with an answer they cite
+
 ### `blast-radius.answers-generate-nothing`
 
 Answers that move no value when they change: answers do not generate values
@@ -328,13 +351,13 @@ Per scheme (base → candidate): dense-data 79 → 79; content-first 79 → 79; 
 
 ### `blast-radius.answer-orphans`
 
-Tokens the trace ties to an answer that do not move when that answer changes, among answers that move a value
+Only answers that move at least one value: tokens citing such an answer that do not move. Answers that move nothing are not counted, so 0 does not mean answers drive values; see generation.answer-driven
 
 Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 0; accessible-first 0 → 0; brand-expressive 0 → 0; multi-brand 0 → 0.
 
 ### `blast-radius.answer-orphan-share`
 
-Share of the answer links the trace claims that a changed answer does not move, among answers that move a value
+Only answers that move at least one value: the share of their trace links that do not move (not present when no answer moves a value)
 
 - 0 of 0 answer links do not move
 

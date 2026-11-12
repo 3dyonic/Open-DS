@@ -75,6 +75,23 @@ test("with a generating loader, only the answers it does not read are counted as
   assert.deepEqual(blastOf(snap, "control-height").moved, ["size.control.compact", "size.control.default"]);
 });
 
+test("answer-driven: one answer that generates two tokens gives 2, and a fall fails the gate per scheme", () => {
+  const plain = measure(snapshotOf(fixtureScheme()));
+  assert.equal(valueOf(plain, "generation.answer-driven"), 0);
+  assert.equal(valueOf(plain, "generation.answer-driven-share"), 0);
+  assert.match(plain.find((x) => x.id === "blast-radius.answer-orphans").notes[0], /0 by construction, not a clean result/);
+  const gen = snapshotOf(generating(), { load: generate });
+  const m = measure(gen);
+  // motion.values moves the two durations, and both cite it: 2 of 20 traced tokens
+  assert.equal(valueOf(m, "generation.answer-driven"), 2);
+  assert.equal(valueOf(m, "generation.answer-driven-share"), 0.1);
+  assert.deepEqual(m.find((x) => x.id === "generation.answer-driven").details, ["fixture: 2 of 20 traced tokens — motion.duration.feedback, motion.duration.panels"]);
+  const card = compareSnapshots(gen, snapshotOf(fixtureScheme(), { load: (x) => structuredClone(x) }));
+  assert.ok(card.failed.includes("generation.answer-driven"));
+  assert.ok(card.failed.includes("generation.answer-driven-share"));
+  assert.ok(!compareSnapshots(snapshotOf(fixtureScheme()), gen).failed.includes("generation.answer-driven"));
+});
+
 test("an answer orphan: a value that cites an answer which moves other values, but not this one", () => {
   const s = generating();
   s.tokens.semantic.type.body["font-size"].$extensions = { "open-ds": { why: "15px body text reads at a glance.", because: ["motion.values"] } };

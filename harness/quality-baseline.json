@@ -240,6 +240,30 @@
         "multi-brand": 1
       }
     },
+    "generation.answer-driven": {
+      "value": 0,
+      "direction": "up",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
+    },
+    "generation.answer-driven-share": {
+      "value": 0,
+      "direction": "up",
+      "gated": true,
+      "parts": {
+        "dense-data": 0,
+        "content-first": 0,
+        "accessible-first": 0,
+        "brand-expressive": 0,
+        "multi-brand": 0
+      }
+    },
     "blast-radius.answers-generate-nothing": {
       "value": 395,
       "direction": "report",

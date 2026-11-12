@@ -28,7 +28,7 @@ test("a snapshot against itself passes with every delta 0, and every criterion h
   // 12 families, each with at least one criterion
   assert.deepEqual(
     [...new Set(card.criteria.map((r) => r.family))],
-    ["traceability", "derived", "invariants", "blast-radius", "accessibility", "motion", "repetition", "size", "relations", "curves", "shift", "component-pairs"],
+    ["traceability", "derived", "invariants", "generation", "blast-radius", "accessibility", "motion", "repetition", "size", "relations", "curves", "shift", "component-pairs"],
   );
 });
 
@@ -67,7 +67,7 @@ test("the Markdown says the verdict, shows each criterion and each relation per 
   assert.match(md, /\*\*Fail\.\*\* 2 gated criteria moved the wrong way: invariants\.failures, invariants\.focus-ring\./);
   assert.match(md, /\| `invariants\.focus-ring` \| 0 \| 1 \| \+1 \| ↓ lower is better \| \*\*fail\*\* \|/);
   assert.match(md, /\| fixture \| `focus-ring` \| minimum \| pass \| fail \(1 of 1\) \|/);
-  assert.equal(measureAll(snapshotOf(fixtureScheme())).length, 39);
+  assert.equal(measureAll(snapshotOf(fixtureScheme())).length, 41);
 });
 
 // Two schemes in one snapshot: the fixture, and a copy named "other", each with its own scheme file.
