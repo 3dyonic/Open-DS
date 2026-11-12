@@ -134,6 +134,22 @@
     "size.unused-semantics": {
       "value": 52,
       "direction": "down"
+    },
+    "relations.contrast-margin": {
+      "value": 0,
+      "direction": "down"
+    },
+    "relations.state-gap": {
+      "value": 0,
+      "direction": "down"
+    },
+    "curves.min-gap": {
+      "value": 25,
+      "direction": "down"
+    },
+    "curves.grades": {
+      "value": 119,
+      "direction": "report"
     }
   }
 }

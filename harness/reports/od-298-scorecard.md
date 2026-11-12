@@ -41,8 +41,30 @@ Every number is computed by code from the two checkouts. Run `open-ds compare --
 | `size.tokens` | 9046 | 9091 | +45 | shown, not gated | — |
 | `size.css-bytes` | 2954890 | 2967388 | +12498 | shown, not gated | — |
 | `size.unused-semantics` | 52 | 52 | 0 | ↓ lower is better | pass |
+| `relations.contrast-margin` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.state-gap` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `curves.min-gap` | 25 | 25 | 0 | ↓ lower is better | pass |
+| `curves.grades` | 119 | 119 | 0 | shown, not gated | — |
 | `derived.new-literals` | 0 | 5 | +5 | shown, not gated | — |
 | `derived.new-literals-unreasoned` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `shift.moves` | 0 | 0 | 0 | shown, not gated | — |
+| `shift.review-unreasoned` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `shift.approval-unapproved` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `shift.hue` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `shift.key-colors` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.wcag-level-drops` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.step-order` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.ladder-order` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.state-sign` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.distinct-lost.normal` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.distinct-lost.deuteranopia` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.distinct-lost.protanopia` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.distinct-lost.tritanopia` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `relations.shared-split` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `component-pairs.level-drops` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `component-pairs.difference-shrunk` | 0 | 0 | 0 | ↓ lower is better | pass |
+| `component-pairs.moved` | 0 | 0 | 0 | shown, not gated | — |
+| `component-pairs.flagged-components` | 0 | 0 | 0 | shown, not gated | — |
 
 ## Relations per scheme
 
@@ -453,6 +475,50 @@ Per scheme (base → candidate): dense-data 10 → 10; content-first 10 → 10; 
 - brand-expressive: color.category.1.subtle, color.category.2.subtle, color.category.3.subtle, color.category.4.subtle, color.category.5.subtle, color.neutral.300, color.neutral.800, color.neutral.950, color.status.info, color.status.warning, motion.duration.hero
 - multi-brand: color.category.1.subtle, color.category.2.subtle, color.category.3.subtle, color.category.4.subtle, color.category.5.subtle, color.neutral.300, color.neutral.800, color.neutral.950, color.status.info, color.status.warning
 
+### `relations.contrast-margin`
+
+Contrast pairs less than 0.1 above their floor
+
+### `relations.state-gap`
+
+State steps (rest → hover → pressed) closer than ΔE 0.02
+
+### `curves.min-gap`
+
+Neighbouring scale steps closer than 0.03 in OKLab lightness
+
+- dense-data: slate.light 0 → 50 differ by 0.021
+- dense-data: slate.light 50 → 100 differ by 0.022
+- dense-data: slate.dark 800 → 900 differ by 0.022
+- dense-data: slate.dark 900 → 950 differ by 0.021
+- dense-data: red.light 100 → 200 differ by 0.010
+- content-first: stone.light 0 → 50 differ by 0.006
+- content-first: stone.dark 900 → 950 differ by 0.006
+- content-first: red.light 100 → 200 differ by 0.010
+- accessible-first: gray.light 0 → 50 differ by 0.024
+- accessible-first: gray.dark 900 → 950 differ by 0.024
+- accessible-first: red.light 100 → 200 differ by 0.010
+- brand-expressive: taupe.light 0 → 50 differ by 0.017
+- … 13 more in scorecard.json
+
+### `curves.grades`
+
+Step pairs under their contrast grade (400 apart 3:1, 500 apart 4.5:1, 700 apart 7:1)
+
+- dense-data: slate.light 0 and 400 are 2.67:1, need 3:1
+- dense-data: slate.dark 300 and 800 are 4.11:1, need 4.5:1
+- dense-data: slate.dark 300 and 900 are 4.38:1, need 4.5:1
+- dense-data: slate.dark 400 and 800 are 2.36:1, need 3:1
+- dense-data: slate.dark 400 and 900 are 2.51:1, need 4.5:1
+- dense-data: slate.dark 400 and 950 are 2.67:1, need 4.5:1
+- dense-data: slate.dark 500 and 900 are 1.54:1, need 3:1
+- dense-data: slate.dark 500 and 950 are 1.63:1, need 3:1
+- dense-data: violet.dark 400 and 900 are 4.13:1, need 4.5:1
+- dense-data: violet.dark 500 and 900 are 2.76:1, need 3:1
+- dense-data: green.dark 400 and 900 are 4.02:1, need 4.5:1
+- dense-data: green.dark 500 and 900 are 2.73:1, need 3:1
+- … 107 more in scorecard.json
+
 ### `derived.new-literals`
 
 Literals new in the candidate
@@ -466,4 +532,82 @@ Literals new in the candidate
 ### `derived.new-literals-unreasoned`
 
 Literals new in the candidate with no recorded reason
+
+### `shift.moves`
+
+Color tokens that moved, per scheme, brand and mode, every move listed by tier
+
+- approval: 0
+- review: 0
+- pass: 0
+
+### `shift.review-unreasoned`
+
+Moves in the review tier (ΔE 0.02 to 0.05) with no new recorded reason
+
+### `shift.approval-unapproved`
+
+Moves over ΔE 0.05 (or a role's own limit) that the owner has not approved
+
+### `shift.hue`
+
+Chromatic tokens (C > 0.05) whose hue turned more than 5°
+
+### `shift.key-colors`
+
+Brand key colors that changed with no adjustment recorded
+
+### `relations.wcag-level-drops`
+
+Contrast pairs that drop a WCAG level (under 3, 3, 4.5, 7)
+
+### `relations.step-order`
+
+Scale steps that swap their lightness order
+
+### `relations.ladder-order`
+
+Surface ladder rungs that swap their lightness order
+
+### `relations.state-sign`
+
+State steps (rest → hover → pressed) whose lightness change flips sign
+
+### `relations.distinct-lost.normal`
+
+Pairs distinct on base that are no longer distinct (ΔE 0.02), normal vision
+
+### `relations.distinct-lost.deuteranopia`
+
+Pairs distinct on base that are no longer distinct (ΔE 0.02), deuteranopia simulated
+
+### `relations.distinct-lost.protanopia`
+
+Pairs distinct on base that are no longer distinct (ΔE 0.02), protanopia simulated
+
+### `relations.distinct-lost.tritanopia`
+
+Pairs distinct on base that are no longer distinct (ΔE 0.02), tritanopia simulated
+
+### `relations.shared-split`
+
+Colors that were one color on base and are split now
+
+### `component-pairs.level-drops`
+
+Component pairs whose contrast drops a WCAG level
+
+### `component-pairs.difference-shrunk`
+
+Component pairs whose foreground-to-background ΔE fell below 0.1
+
+### `component-pairs.moved`
+
+Component pairs where a side moved past ΔE 0.02
+
+- 4256 pairs compared
+
+### `component-pairs.flagged-components`
+
+Components with a flagged pair (see component-pairs.md)
 
