@@ -39,11 +39,11 @@
      ]
     },
     {
-     "primitive": "font.size.23",
-     "value": "1.4375rem (23px)",
+     "primitive": "font.size.24",
+     "value": "1.5rem (24px)",
      "sample": {
       "kind": "size",
-      "value": "1.4375rem"
+      "value": "1.5rem"
      },
      "usedBy": [
       {
@@ -67,11 +67,11 @@
      ]
     },
     {
-     "primitive": "font.size.35",
-     "value": "2.1875rem (35px)",
+     "primitive": "font.size.36",
+     "value": "2.25rem (36px)",
      "sample": {
       "kind": "size",
-      "value": "2.1875rem"
+      "value": "2.25rem"
      },
      "usedBy": [
       {

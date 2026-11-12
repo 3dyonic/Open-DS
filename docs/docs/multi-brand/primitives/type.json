@@ -53,11 +53,11 @@
      ]
     },
     {
-     "primitive": "font.size.25",
-     "value": "1.5625rem (25px)",
+     "primitive": "font.size.24",
+     "value": "1.5rem (24px)",
      "sample": {
       "kind": "size",
-      "value": "1.5625rem"
+      "value": "1.5rem"
      },
      "usedBy": [
       {

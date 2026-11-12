@@ -77,11 +77,11 @@
      ]
     },
     {
-     "primitive": "font.size.45",
-     "value": "2.8125rem (45px)",
+     "primitive": "font.size.44",
+     "value": "2.75rem (44px)",
      "sample": {
       "kind": "size",
-      "value": "2.8125rem"
+      "value": "2.75rem"
      },
      "usedBy": [
       {
@@ -166,9 +166,24 @@
       {
        "token": "type.heading.line-height",
        "where": "semantic"
-      },
+      }
+     ]
+    },
+    {
+     "primitive": "font.line-height.1_45",
+     "value": "1.45",
+     "sample": {
+      "kind": "leading",
+      "value": "1.45",
+      "note": "23px"
+     },
+     "usedBy": [
       {
        "token": "type.label.line-height",
+       "where": "semantic"
+      },
+      {
+       "token": "type.caption.line-height",
        "where": "semantic"
       }
      ]
@@ -184,10 +199,6 @@
      "usedBy": [
       {
        "token": "type.body.line-height",
-       "where": "semantic"
-      },
-      {
-       "token": "type.caption.line-height",
        "where": "semantic"
       },
       {

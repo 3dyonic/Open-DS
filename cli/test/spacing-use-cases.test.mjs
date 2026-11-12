@@ -1,10 +1,13 @@
-// Spacing by use case and the control scale (OD-294).
+// Spacing by use case and the control scale (OD-294, OD-301).
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  baseOf,
   controlHeights,
   controlProblems,
+  controlTokens,
   spaceProblems,
+  spaceTokens,
   spaceValues,
 } from "../src/spacing-use-cases.mjs";
 
@@ -20,7 +23,6 @@ const useCase = (level, relation, reach, multiple) => ({
   multiple,
 });
 const space = {
-  base: 8,
   "use-cases": {
     "gap.tight": useCase("component", "inner", "inline", 1),
     "gap.default": useCase("component", "inner", null, 2),
@@ -32,8 +34,14 @@ const space = {
   },
 };
 
+test("the definition answer sets the base: 4px for fine steps, 8px for coarse ones", () => {
+  assert.equal(baseOf("fine"), 4);
+  assert.equal(baseOf("coarse"), 8);
+  assert.equal(baseOf("loose"), undefined);
+});
+
 test("a space value is base × multiple; a half multiple stays on the grid", () => {
-  assert.deepEqual(spaceValues(space), {
+  assert.deepEqual(spaceValues(space, 8), {
     "gap.tight": 8,
     "gap.default": 16,
     "gap.group": 32,
@@ -44,16 +52,9 @@ test("a space value is base × multiple; a half multiple stays on the grid", () 
   });
 });
 
-test("the definition answer sets the base; a word outside the grammar or a third of a step is a problem", () => {
-  assert.deepEqual(
-    spaceProblems(space, { vocabulary, definition: "coarse" }),
-    [],
-  );
-  assert.ok(
-    spaceProblems(space, { vocabulary, definition: "fine" })[0].startsWith(
-      "the base is 8px",
-    ),
-  );
+test("a definition with no base, a word outside the grammar or a third of a step is a problem", () => {
+  assert.deepEqual(spaceProblems(space, { vocabulary, definition: "coarse" }), []);
+  assert.deepEqual(spaceProblems(space, { vocabulary, definition: "loose" }), ["the spacing definition loose has no base"]);
   const bad = structuredClone(space);
   bad["use-cases"]["gap.tight"].multiple = 1.25;
   bad["use-cases"]["gap.group"].level = "page";
@@ -72,35 +73,36 @@ const control = {
   default: 52,
   step: 8,
   steps: { compact: -1, large: 1 },
-  row: { plus: 0 },
+  follows: ["accessibility.values"],
 };
 
-test("a control height is default + step × its step; the row is the default plus its px", () => {
+test("a control height is default + step × its step; a row is one default control tall", () => {
   assert.deepEqual(controlHeights(control), {
     "control.compact": 44,
     "control.default": 52,
     "control.large": 60,
     row: 52,
   });
-  assert.equal(controlHeights({ ...control, row: { plus: 4 } }).row, 56);
 });
 
-test("a scheme with no row role takes the default as its row; compact sits below default", () => {
-  assert.deepEqual(controlProblems(control, { rowRole: false }), []);
-  assert.ok(
-    controlProblems(
-      { ...control, row: { plus: 4 } },
-      { rowRole: false },
-    )[0].startsWith("the row adds 4px"),
+test("compact sits below default and large at or above it", () => {
+  assert.deepEqual(controlProblems(control), []);
+  assert.ok(controlProblems({ ...control, steps: { compact: 0, large: 0 } })[0].startsWith("the compact step 0"));
+  assert.ok(controlProblems({ ...control, steps: { compact: -1, large: -1 } })[0].startsWith("the large step -1"));
+});
+
+test("each generated token links its option and states its rule, numbers and answers", () => {
+  const spaced = spaceTokens({ ...space, follows: ["spacing.definition", "spacing.values"] }, 8);
+  assert.equal(spaced["inset.control-x"].$value, "{space.20}");
+  assert.equal(
+    spaced["inset.control-x"].$extensions["open-ds"].why,
+    "The control-x inset is 20px = 2.5 × the 8px base, for its component container inline use case (spacing.definition, spacing.values).",
   );
-  assert.deepEqual(
-    controlProblems({ ...control, row: { plus: 4 } }, { rowRole: true }),
-    [],
+  const sized = controlTokens(control);
+  assert.equal(sized.row.$value, "{size.52}");
+  assert.equal(
+    sized["control.compact"].$extensions["open-ds"].why,
+    "A compact control is 44px = 52px − 1 × the 8px step on the control scale, so its hit area follows the default (accessibility.values).",
   );
-  assert.ok(
-    controlProblems(
-      { ...control, steps: { compact: 0, large: 0 } },
-      { rowRole: true },
-    )[0].startsWith("the compact step 0"),
-  );
+  assert.deepEqual(sized.row.$extensions["open-ds"].because, ["accessibility.values"]);
 });

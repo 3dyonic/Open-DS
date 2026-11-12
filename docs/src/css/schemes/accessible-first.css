@@ -12,20 +12,20 @@ html[data-scheme="accessible-first"] [data-mode="light"][data-mode] {
   --size-control-default: 3.25rem; /** Height of buttons and inputs, and the smallest target. */
   --size-control-compact: 3rem; /** Height of compact controls. */
   --size-control-large: 3.25rem; /** Height of large controls. Not used in this system, so it equals the default. */
-  --size-row: 3.5rem; /** Height of one table row. */
+  --size-row: 3.25rem; /** Height of one table row. */
   --size-icon: 1.25rem; /** Icon size next to text. */
   --size-hit-area: 2.75rem; /** The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour. */
   --border-width-default: 2px; /** Every border. */
   --opacity-disabled: 0.5; /** Deprecated: disabled reads color.disabled.text, color.disabled.surface and color.disabled.border. Opacity is for loading and dragging only. */
   --focus-ring-width: 3px; /** The focus ring's width: one step heavier than the default border, and not a border width. */
   --focus-ring-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
-  --type-display-font-size: 2.1875rem;
+  --type-display-font-size: 2.25rem;
   --type-display-line-height: 1.25;
   --type-display-font-weight: 700;
   --type-title-font-size: 1.75rem;
   --type-title-line-height: 1.25;
   --type-title-font-weight: 700;
-  --type-heading-font-size: 1.4375rem;
+  --type-heading-font-size: 1.5rem;
   --type-heading-line-height: 1.25;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.1875rem;
@@ -1885,20 +1885,20 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --size-control-default: 3.25rem; /** Height of buttons and inputs, and the smallest target. */
   --size-control-compact: 3rem; /** Height of compact controls. */
   --size-control-large: 3.25rem; /** Height of large controls. Not used in this system, so it equals the default. */
-  --size-row: 3.5rem; /** Height of one table row. */
+  --size-row: 3.25rem; /** Height of one table row. */
   --size-icon: 1.25rem; /** Icon size next to text. */
   --size-hit-area: 2.75rem; /** The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour. */
   --border-width-default: 2px; /** Every border. */
   --opacity-disabled: 0.5; /** Deprecated: disabled reads color.disabled.text, color.disabled.surface and color.disabled.border. Opacity is for loading and dragging only. */
   --focus-ring-width: 3px; /** The focus ring's width: one step heavier than the default border, and not a border width. */
   --focus-ring-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
-  --type-display-font-size: 2.1875rem;
+  --type-display-font-size: 2.25rem;
   --type-display-line-height: 1.25;
   --type-display-font-weight: 700;
   --type-title-font-size: 1.75rem;
   --type-title-line-height: 1.25;
   --type-title-font-weight: 700;
-  --type-heading-font-size: 1.4375rem;
+  --type-heading-font-size: 1.5rem;
   --type-heading-line-height: 1.25;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.1875rem;

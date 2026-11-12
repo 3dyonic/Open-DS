@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import { scale } from "../src/ramps.mjs";
 import { mapTokens } from "../src/spacing-map.mjs";
 import { darkCanvas, withGenerated, withoutGenerated } from "../src/scheme-generated.mjs";
+import { withTypeAndSpace } from "../src/type-space-generated.mjs";
 import { withDefaults } from "../src/scheme-defaults.mjs";
 import { assetRoots, grammar, loadScheme, schemeIds, storedScheme } from "../src/schemes.mjs";
 
@@ -61,7 +62,7 @@ test("a stored scheme holds no generated scale or spacing step, and loading give
     for (const [hue, grp] of Object.entries(stored.tokens.primitive.color))
       if (grp?.$extensions?.["open-ds"]) assert.deepEqual([grp.light, grp.dark], [undefined, undefined], `${id} ${hue}`);
     assert.deepEqual(Object.keys(stored.tokens.semantic["component-spacing-map"]), ["$extensions"], id);
-    assert.equal(JSON.stringify(withGenerated(withDefaults(stored, g))), JSON.stringify(loadScheme(id, roots)), id);
+    assert.equal(JSON.stringify(withTypeAndSpace(withGenerated(withDefaults(stored, g)))), JSON.stringify(loadScheme(id, roots)), id);
   }
 });
 

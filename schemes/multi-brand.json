@@ -2754,10 +2754,6 @@
           "$type": "dimension",
           "$value": "2.75rem"
         },
-        "48": {
-          "$type": "dimension",
-          "$value": "3rem"
-        },
         "$description": "Size options for controls, rows and icons."
       },
       "radius": {
@@ -2806,26 +2802,6 @@
       },
       "font": {
         "size": {
-          "13": {
-            "$type": "dimension",
-            "$value": "0.8125rem"
-          },
-          "16": {
-            "$type": "dimension",
-            "$value": "1rem"
-          },
-          "20": {
-            "$type": "dimension",
-            "$value": "1.25rem"
-          },
-          "25": {
-            "$type": "dimension",
-            "$value": "1.5625rem"
-          },
-          "32": {
-            "$type": "dimension",
-            "$value": "2rem"
-          },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
@@ -2843,16 +2819,7 @@
           }
         },
         "line-height": {
-          "1_2": {
-            "$type": "number",
-            "$value": 1.2,
-            "$description": "A ratio of the text size."
-          },
-          "1_5": {
-            "$type": "number",
-            "$value": 1.5,
-            "$description": "A ratio of the text size."
-          }
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
         },
         "family": {
           "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
@@ -9455,7 +9422,6 @@
       "space": {
         "$extensions": {
           "open-ds": {
-            "base": 4,
             "use-cases": {
               "gap.tight": {
                 "level": "component",
@@ -9506,8 +9472,6 @@
         },
         "gap": {
           "tight": {
-            "$type": "dimension",
-            "$value": "{space.8}",
             "$description": "Between things that belong together.",
             "$extensions": {
               "open-ds": {
@@ -9520,8 +9484,6 @@
             }
           },
           "default": {
-            "$type": "dimension",
-            "$value": "{space.12}",
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
@@ -9534,8 +9496,6 @@
             }
           },
           "group": {
-            "$type": "dimension",
-            "$value": "{space.24}",
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
@@ -9548,8 +9508,6 @@
             }
           },
           "section": {
-            "$type": "dimension",
-            "$value": "{space.48}",
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
@@ -9564,8 +9522,6 @@
         },
         "inset": {
           "control-x": {
-            "$type": "dimension",
-            "$value": "{space.16}",
             "$description": "Horizontal padding inside controls.",
             "$extensions": {
               "open-ds": {
@@ -9578,8 +9534,6 @@
             }
           },
           "container": {
-            "$type": "dimension",
-            "$value": "{space.24}",
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
@@ -9592,8 +9546,6 @@
             }
           },
           "cell-x": {
-            "$type": "dimension",
-            "$value": "{space.16}",
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
@@ -9616,20 +9568,15 @@
               "compact": -1,
               "large": 0
             },
-            "row": {
-              "plus": 4
-            },
             "follows": [
               "accessibility.values",
               "spacing.roles"
             ],
-            "why": "A touch target sets the 44px default. Compact is one 8px step below it; large equals the default, as brand color marks the main action. Rows are a decision of their own, 4px taller than a control."
+            "why": "A touch target sets the 44px default. Compact is one 8px step below it; large equals the default, as brand color marks the main action. Rows are a decision of their own and stay one control tall."
           }
         },
         "control": {
           "default": {
-            "$type": "dimension",
-            "$value": "{size.44}",
             "$description": "Height of buttons and inputs, and the smallest target.",
             "$extensions": {
               "open-ds": {
@@ -9642,8 +9589,6 @@
             }
           },
           "compact": {
-            "$type": "dimension",
-            "$value": "{size.36}",
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
@@ -9656,8 +9601,6 @@
             }
           },
           "large": {
-            "$type": "dimension",
-            "$value": "{size.44}",
             "$description": "Height of large controls. Not used in this system, so it equals the default.",
             "$extensions": {
               "open-ds": {
@@ -9671,12 +9614,10 @@
           }
         },
         "row": {
-          "$type": "dimension",
-          "$value": "{size.48}",
           "$description": "Height of one table row.",
           "$extensions": {
             "open-ds": {
-              "why": "We use 48px for one table row in order to keep the eye on its row: a row one 44px default control tall plus 4px, as rows are a decision of their own here. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So rows stay easy to tap on a phone, a little taller than the control they hold, because account tables need a row height (spacing.roles) and the layout is comfortable (spacing.values).",
+              "why": "We use 44px for one table row in order to keep the eye on its row: a row is one 44px default control tall, as rows stay one control tall. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So rows stay easy to tap on a phone, and a control sits in a row with no gap, because account tables need a row height (spacing.roles) and the layout is comfortable (spacing.values).",
               "because": [
                 "spacing.roles",
                 "spacing.values"
@@ -9820,6 +9761,14 @@
               "caption": -1,
               "data": 0
             },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
             "line-height": {
               "tight": {
                 "ratio": 1.2,
@@ -9853,8 +9802,6 @@
             "$value": "{theme.type.display.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.32}",
             "$extensions": {
               "open-ds": {
                 "why": "32px is three ratio steps above the 16px body (16 × 1.26^3), the top of the shared scale, for the product-page headline where each brand speaks loudest.",
@@ -9866,8 +9813,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
             "$extensions": {
               "open-ds": {
                 "why": "1.2 gives the 32px product headline 38px lines, so a headline that wraps stays one block in every brand face.",
@@ -9899,11 +9844,9 @@
             "$value": "{theme.type.title.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.25}",
             "$extensions": {
               "open-ds": {
-                "why": "25px titles each sign-up and account page: two ratio steps above body and one under the 32px headline, because forms carry most text here.",
+                "why": "24px titles each sign-up and account page: two ratio steps above body (16 × 1.26^2 = 25.4) snapped to the 4px grid, and one under the 32px headline, because forms carry most text here.",
                 "because": [
                   "typography.lands",
                   "typography.count"
@@ -9912,8 +9855,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
             "$extensions": {
               "open-ds": {
                 "why": "1.2 keeps a 25px page title tight above its form, so a title that wraps still reads as one title.",
@@ -9945,8 +9886,6 @@
             "$value": "{theme.type.heading.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.20}",
             "$extensions": {
               "open-ds": {
                 "why": "20px heads the sections inside a page: one ratio step above the 16px body and one under the 25px title.",
@@ -9958,8 +9897,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
             "$extensions": {
               "open-ds": {
                 "why": "1.2 holds a 20px section heading close to the fields it names, as one shared role in every brand face.",
@@ -9991,8 +9928,6 @@
             "$value": "{theme.type.body.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
                 "why": "16px is the regular body size and step 0 of the shared scale; every brand face sets product and form text at it.",
@@ -10004,8 +9939,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_5}",
             "$extensions": {
               "open-ds": {
                 "why": "1.5 gives 16px body text 24px lines, the same in Inter, Plus Jakarta Sans and Poppins, so paragraphs stay readable.",
@@ -10037,8 +9970,6 @@
             "$value": "{theme.type.label.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.13}",
             "$extensions": {
               "open-ds": {
                 "why": "13px names every field, one ratio step under the 16px text inside it (16 ÷ 1.26), so the label and the entry stay apart.",
@@ -10050,8 +9981,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
             "$extensions": {
               "open-ds": {
                 "why": "1.2 keeps a 13px field label one tight line, directly above its input in sign-up and checkout forms.",
@@ -10083,8 +10012,6 @@
             "$value": "{theme.type.caption.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.13}",
             "$extensions": {
               "open-ds": {
                 "why": "13px, the smallest size, holds fees, dates and hints on the label's step, one ratio step under the 16px body.",
@@ -10096,8 +10023,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_5}",
             "$extensions": {
               "open-ds": {
                 "why": "1.5 gives 13px captions 20px lines, so a hint or fee note that wraps stays easy to read.",
@@ -10129,8 +10054,6 @@
             "$value": "{theme.type.data.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
                 "why": "16px shares step 0 with body: plan and order tables hold prices in sentences and offers, not columns of figures to compare.",
@@ -10141,8 +10064,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_5}",
             "$extensions": {
               "open-ds": {
                 "why": "1.5 matches body, so a 16px price in a plan table sits on the same 24px line as the text beside it.",

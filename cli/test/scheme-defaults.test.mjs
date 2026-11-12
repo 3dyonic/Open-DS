@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import { assetRoots, grammar, loadScheme, schemeIds, storedScheme } from "../src/schemes.mjs";
 import { withDefaults, withoutDefaults } from "../src/scheme-defaults.mjs";
 import { withGenerated, withoutGenerated } from "../src/scheme-generated.mjs";
+import { withTypeAndSpace, withoutTypeAndSpace } from "../src/type-space-generated.mjs";
 
 const roots = assetRoots();
 const g = grammar(roots);
@@ -20,8 +21,8 @@ test("loading fills every component key, and saving gives back the same file", (
     const full = loadScheme(id, roots);
     const stored = storedScheme(id, roots);
     // The file also leaves out the generated scales and spacing steps (OD-292).
-    assert.equal(JSON.stringify(withoutGenerated(withoutDefaults(full, g))), JSON.stringify(stored), id);
-    assert.equal(JSON.stringify(withGenerated(withDefaults(stored, g))), JSON.stringify(full), id);
+    assert.equal(JSON.stringify(withoutTypeAndSpace(withoutGenerated(withoutDefaults(full, g)))), JSON.stringify(stored), id);
+    assert.equal(JSON.stringify(withTypeAndSpace(withGenerated(withDefaults(stored, g)))), JSON.stringify(full), id);
   }
 });
 

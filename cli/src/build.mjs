@@ -7,7 +7,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
 import { checkScheme } from "./scheme-checks.mjs";
-import { assetRoots, grammar, loadScheme, schemeIds, schemeSchema } from "./schemes.mjs";
+import { assetRoots, grammar, loadScheme, schemeIds, schemeSchema, storedScheme } from "./schemes.mjs";
 
 /** The compiled scheme schema: a function that takes a scheme and sets .errors when it fails. */
 export function schemeValidator(roots = assetRoots()) {
@@ -23,7 +23,7 @@ export function builtText(scheme) {
 /** One scheme, loaded and checked: { id, scheme, text, hash, results, ok }. */
 export function buildScheme(id, { roots = assetRoots(), g = grammar(roots), validate = schemeValidator(roots) } = {}) {
   const scheme = loadScheme(id, roots);
-  const results = checkScheme(scheme, { grammar: g, validate });
+  const results = checkScheme(scheme, { grammar: g, validate, stored: storedScheme(id, roots) });
   const { text, hash } = builtText(scheme);
   return { id, scheme, text, hash, results, ok: results.every((r) => !r.findings.length) };
 }

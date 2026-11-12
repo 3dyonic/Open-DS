@@ -2727,30 +2727,6 @@
       },
       "font": {
         "size": {
-          "14": {
-            "$type": "dimension",
-            "$value": "0.875rem"
-          },
-          "16": {
-            "$type": "dimension",
-            "$value": "1rem"
-          },
-          "18": {
-            "$type": "dimension",
-            "$value": "1.125rem"
-          },
-          "28": {
-            "$type": "dimension",
-            "$value": "1.75rem"
-          },
-          "36": {
-            "$type": "dimension",
-            "$value": "2.25rem"
-          },
-          "45": {
-            "$type": "dimension",
-            "$value": "2.8125rem"
-          },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
@@ -2764,16 +2740,7 @@
           }
         },
         "line-height": {
-          "1_15": {
-            "$type": "number",
-            "$value": 1.15,
-            "$description": "A ratio of the text size."
-          },
-          "1_65": {
-            "$type": "number",
-            "$value": 1.65,
-            "$description": "A ratio of the text size."
-          }
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
         },
         "family": {
           "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
@@ -5047,7 +5014,6 @@
       "space": {
         "$extensions": {
           "open-ds": {
-            "base": 8,
             "use-cases": {
               "gap.tight": {
                 "level": "component",
@@ -5098,8 +5064,6 @@
         },
         "gap": {
           "tight": {
-            "$type": "dimension",
-            "$value": "{space.8}",
             "$description": "Between things that belong together.",
             "$extensions": {
               "open-ds": {
@@ -5112,8 +5076,6 @@
             }
           },
           "default": {
-            "$type": "dimension",
-            "$value": "{space.16}",
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
@@ -5126,8 +5088,6 @@
             }
           },
           "group": {
-            "$type": "dimension",
-            "$value": "{space.32}",
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
@@ -5140,8 +5100,6 @@
             }
           },
           "section": {
-            "$type": "dimension",
-            "$value": "{space.64}",
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
@@ -5156,8 +5114,6 @@
         },
         "inset": {
           "control-x": {
-            "$type": "dimension",
-            "$value": "{space.20}",
             "$description": "Horizontal padding inside controls.",
             "$extensions": {
               "open-ds": {
@@ -5170,8 +5126,6 @@
             }
           },
           "container": {
-            "$type": "dimension",
-            "$value": "{space.24}",
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
@@ -5184,8 +5138,6 @@
             }
           },
           "cell-x": {
-            "$type": "dimension",
-            "$value": "{space.16}",
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
@@ -5208,9 +5160,6 @@
               "compact": -1,
               "large": 0
             },
-            "row": {
-              "plus": 0
-            },
             "follows": [
               "accessibility.values",
               "spacing.roles"
@@ -5220,8 +5169,6 @@
         },
         "control": {
           "default": {
-            "$type": "dimension",
-            "$value": "{size.48}",
             "$description": "Height of buttons and inputs, and the smallest target.",
             "$extensions": {
               "open-ds": {
@@ -5234,8 +5181,6 @@
             }
           },
           "compact": {
-            "$type": "dimension",
-            "$value": "{size.44}",
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
@@ -5248,8 +5193,6 @@
             }
           },
           "large": {
-            "$type": "dimension",
-            "$value": "{size.48}",
             "$description": "Height of large controls. Not used in this system, so it equals the default.",
             "$extensions": {
               "open-ds": {
@@ -5263,8 +5206,6 @@
           }
         },
         "row": {
-          "$type": "dimension",
-          "$value": "{size.48}",
           "$description": "Height of one table row.",
           "$extensions": {
             "open-ds": {
@@ -5413,21 +5354,34 @@
               "caption": -2,
               "data": 0
             },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
             "line-height": {
               "tight": {
                 "ratio": 1.15,
                 "roles": [
                   "display",
                   "title",
-                  "heading",
-                  "label"
+                  "heading"
+                ]
+              },
+              "snug": {
+                "ratio": 1.45,
+                "roles": [
+                  "label",
+                  "caption"
                 ]
               },
               "open": {
                 "ratio": 1.65,
                 "roles": [
                   "body",
-                  "caption",
                   "data"
                 ]
               }
@@ -5437,7 +5391,7 @@
               "typography.values",
               "typography.definition"
             ],
-            "why": "Many fine steps: a large 18px body and a 1.12 ratio, with two steps between the headings, so long pages can set their own hierarchy. Short lines sit tight at 1.15; text that wraps opens to 1.65 for reading."
+            "why": "Many fine steps: a large 18px body and a 1.12 ratio, with two steps between the headings, so long pages can set their own hierarchy. Headings sit tight at 1.15, labels and captions snug at 1.45, and body and data open to 1.65 for reading."
           }
         },
         "display": {
@@ -5446,11 +5400,9 @@
             "$value": "{theme.type.display.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.45}",
             "$extensions": {
               "open-ds": {
-                "why": "45px is eight fine steps above the 18px body (18 × 1.12^8), two steps over the 36px title, kept for the landing moment and the lead that opens an article.",
+                "why": "Display is 44px, eight fine steps above the 18px body (18 × 1.12^8 = 44.6), snapped to the 4px grid as headings are: two steps over the 36px title, kept for the landing moment and the lead that opens an article.",
                 "because": [
                   "typography.roles",
                   "typography.count"
@@ -5459,8 +5411,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
                 "why": "1.15 sets 45px display text on about 52px lines, so a two-line opener reads as one tight block.",
@@ -5492,8 +5442,6 @@
             "$value": "{theme.type.title.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.36}",
             "$extensions": {
               "open-ds": {
                 "why": "36px is six fine steps above body and two under the 45px display, so article titles stay large but calm.",
@@ -5505,8 +5453,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
                 "why": "1.15 sets a 36px title on about 41px lines, so a long article title wraps as one unit.",
@@ -5537,8 +5483,6 @@
             "$value": "{theme.type.heading.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.28}",
             "$extensions": {
               "open-ds": {
                 "why": "28px is four fine steps above the 18px body and two under the 36px title, so readers find their place in a long guide.",
@@ -5550,8 +5494,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
                 "why": "1.15 keeps a 28px heading on about 32px lines, tighter than the 1.65 body, so it reads as one label for its section.",
@@ -5584,8 +5526,6 @@
             "$value": "{theme.type.body.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.18}",
             "$extensions": {
               "open-ds": {
                 "why": "18px is the large reading size and step 0 of the scale: every other role is a 1.12 ratio step from it, so long articles stay easy on the eyes.",
@@ -5597,8 +5537,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_65}",
             "$extensions": {
               "open-ds": {
                 "why": "1.65 gives 18px body text about 30px lines, so the eye finds the next line in a long paragraph.",
@@ -5631,8 +5569,6 @@
             "$value": "{theme.type.label.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
                 "why": "16px sets Inter labels one step under the 18px body (18 ÷ 1.12), still large enough for a field label people must read.",
@@ -5644,11 +5580,9 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_15}",
             "$extensions": {
               "open-ds": {
-                "why": "1.15, the tight ratio of the headings, gives a 16px label about 18px lines, because a label names a field on one line and never runs as a paragraph.",
+                "why": "1.45, the snug ratio between the headings' 1.15 and body's 1.65: a 16px label gets about 23px lines, enough when a label wraps under zoom, without the airy body measure.",
                 "because": [
                   "typography.definition",
                   "brand.q3"
@@ -5677,8 +5611,6 @@
             "$value": "{theme.type.caption.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.14}",
             "$extensions": {
               "open-ds": {
                 "why": "14px is two steps under the 18px body and one under the 16px label, for Inter captions that sit quietly under the text.",
@@ -5690,11 +5622,9 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_65}",
             "$extensions": {
               "open-ds": {
-                "why": "1.65, the open ratio of body, sets a 14px caption on about 23px lines, because a caption under a figure or a quote wraps like body text.",
+                "why": "1.45, the snug ratio: a 14px caption under a figure or a quote gets about 20px lines, a step tighter than body so it reads as a note to the text, not more text.",
                 "because": [
                   "typography.definition",
                   "content.q1"
@@ -5722,8 +5652,6 @@
             "$value": "{theme.type.data.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.18}",
             "$extensions": {
               "open-ds": {
                 "why": "18px shares step 0 with body, because numbers sit in running text rather than table columns, so data reads at the reading size.",
@@ -5735,8 +5663,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_65}",
             "$extensions": {
               "open-ds": {
                 "why": "1.65 matches body text, so a number set inside a paragraph keeps the 30px rhythm of the lines around it.",

@@ -53,8 +53,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "18 primitives",
-     "note": "18 in use",
+     "text": "17 primitives",
+     "note": "17 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -91,9 +91,9 @@
       }
      ],
      "meter": {
-      "value": 18,
-      "max": 18,
-      "label": "18 of 18 in use"
+      "value": 17,
+      "max": 17,
+      "label": "17 of 17 in use"
      }
     },
     {

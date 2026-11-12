@@ -10,9 +10,10 @@ import grammarJson from "../../schemes/grammar.json";
 // the color scales and the spacing map come from their recorded rules (OD-292).
 import { withDefaults } from "../../cli/src/scheme-defaults.mjs";
 import { withGenerated } from "../../cli/src/scheme-generated.mjs";
+import { withTypeAndSpace } from "../../cli/src/type-space-generated.mjs";
 
 export const grammar = grammarJson;
-const full = (s: unknown) => withGenerated(withDefaults(s, grammarJson));
+const full = (s: unknown) => withTypeAndSpace(withGenerated(withDefaults(s, grammarJson)));
 
 export const SCHEMES = {
   "dense-data": full(dense),

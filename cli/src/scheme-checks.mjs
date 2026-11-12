@@ -3,6 +3,7 @@
 import { contrast } from "./ramps.mjs";
 import { themeTokens } from "./tokens.mjs";
 import { pairsIn } from "./tones.mjs";
+import { generatedProblems } from "./type-space-generated.mjs";
 
 /** A DTCG group as { "a.b.c": token }. */
 export function flatten(group, prefix = "") {
@@ -133,9 +134,10 @@ export function schemaFindings(scheme, validate) {
 
 /**
  * Every rule for one scheme: [{ rule, findings }]. A scheme passes when every findings list is empty.
- * grammar names the contrast pairs; validate is the compiled scheme schema (schemeValidator).
+ * grammar names the contrast pairs; validate is the compiled scheme schema (schemeValidator); stored is the
+ * scheme as its file holds it: with it, a type or spacing value set by hand next to its record fails.
  */
-export function checkScheme(scheme, { grammar, validate }) {
+export function checkScheme(scheme, { grammar, validate, stored }) {
   const schema = { rule: "matches the scheme schema", findings: schemaFindings(scheme, validate) };
   // The other rules read the scheme's shape, so they run only on a scheme that matches the schema.
   if (schema.findings.length) return [schema];
@@ -146,5 +148,6 @@ export function checkScheme(scheme, { grammar, validate }) {
     { rule: "picks cite answers", findings: picksCiteAnswers(scheme).gaps },
     { rule: "spacing on the grid", findings: spacingOffGrid(scheme) },
     { rule: "contrast pairs pass", findings: contrastPairs(scheme, grammar).gaps },
+    { rule: "type and spacing come from their records", findings: generatedProblems(scheme, stored) },
   ];
 }

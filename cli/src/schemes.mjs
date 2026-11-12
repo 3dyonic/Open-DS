@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { guidanceFor } from "./guidance.mjs";
 import { withDefaults, withoutDefaults } from "./scheme-defaults.mjs";
 import { withGenerated, withoutGenerated } from "./scheme-generated.mjs";
+import { withTypeAndSpace, withoutTypeAndSpace } from "./type-space-generated.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -96,8 +97,9 @@ export function saveGrammar(g, roots = assetRoots()) {
 export function saveScheme(scheme, roots = assetRoots()) {
   if (!scheme?.id) throw new Error("saveScheme needs a scheme with an id. Load it with loadScheme first.");
   // The file keeps only what the scheme decides: its own component values (OD-291), and the key colors
-  // and spacing rhythm, not the scales and steps they generate (OD-292). loadScheme fills the rest.
-  const stored = withoutGenerated(withoutDefaults(scheme, grammar(roots)));
+  // and spacing rhythm, not the scales and steps they generate (OD-292), and the type and spacing
+  // records, not the values they generate (OD-301). loadScheme fills the rest.
+  const stored = withoutTypeAndSpace(withoutGenerated(withoutDefaults(scheme, grammar(roots))));
   writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(stored, null, 2)}\n`);
 }
 
@@ -125,7 +127,7 @@ export function loadScheme(id, roots = assetRoots()) {
   }
   // The file stores only what the scheme decides; every other component key takes the grammar's default,
   // and the scales and the spacing map come from their recorded rules.
-  return withGenerated(withDefaults(readJson(path), grammar(roots)));
+  return withTypeAndSpace(withGenerated(withDefaults(readJson(path), grammar(roots))));
 }
 
 /** Every grammar question by id, with its group. */

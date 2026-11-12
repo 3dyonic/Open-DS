@@ -36,7 +36,7 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.control-x` | `space.16` |
 | `space.inset.container` | `space.24` |
 | `space.inset.cell-x` | `space.16` |
-| `size.row` | `size.48` |
+| `size.row` | `size.44` |
 ::::
 
 ::::brand{id="birch"}
@@ -49,7 +49,7 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.control-x` | `space.16` |
 | `space.inset.container` | `space.24` |
 | `space.inset.cell-x` | `space.16` |
-| `size.row` | `size.48` |
+| `size.row` | `size.44` |
 ::::
 
 ::::brand{id="coral"}
@@ -62,7 +62,7 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.control-x` | `space.16` |
 | `space.inset.container` | `space.24` |
 | `space.inset.cell-x` | `space.16` |
-| `size.row` | `size.48` |
+| `size.row` | `size.44` |
 ::::
 
 The raw values these tokens end at are on [Primitives › Space and size](../primitives/space-and-size).

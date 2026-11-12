@@ -37,12 +37,12 @@ Each token points to another token. Values live only on primitives, below.
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `dense-data.theme.base.type.heading.font-family` → `font.family.ibm-plex-sans` |
-| `type.heading.font-size` | `font.size.17` |
+| `type.heading.font-size` | `font.size.16` |
 | `type.heading.line-height` | `font.line-height.1_2` |
 | `type.heading.font-weight` | `font.weight.600` |
 | `type.body.font-family` | `dense-data.theme.base.type.body.font-family` → `font.family.ibm-plex-sans` |
 | `type.body.font-size` | `font.size.14` |
-| `type.body.line-height` | `font.line-height.1_45` |
+| `type.body.line-height` | `font.line-box.20` |
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `dense-data.theme.base.type.label.font-family` → `font.family.ibm-plex-sans` |
 | `type.label.font-size` | `font.size.12` |
@@ -50,11 +50,11 @@ Each token points to another token. Values live only on primitives, below.
 | `type.label.font-weight` | `font.weight.500` |
 | `type.caption.font-family` | `dense-data.theme.base.type.caption.font-family` → `font.family.ibm-plex-sans` |
 | `type.caption.font-size` | `font.size.12` |
-| `type.caption.line-height` | `font.line-height.1_45` |
+| `type.caption.line-height` | `font.line-box.16` |
 | `type.caption.font-weight` | `font.weight.400` |
 | `type.data.font-family` | `dense-data.theme.base.type.data.font-family` → `font.family.ibm-plex-mono` |
 | `type.data.font-size` | `font.size.14` |
-| `type.data.line-height` | `font.line-height.1_45` |
+| `type.data.line-height` | `font.line-box.18` |
 | `type.data.font-weight` | `font.weight.400` |
 
 The raw values these tokens end at are on [Primitives › Type](../primitives/type).

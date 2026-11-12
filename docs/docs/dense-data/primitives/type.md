@@ -8,7 +8,7 @@ description: "Type primitives in Dense data."
 
 # Type
 
-12 primitives, 12 used.
+14 primitives, 14 used.
 
 ## `font.size`
 
@@ -21,6 +21,10 @@ description: "Type primitives in Dense data."
 ## `font.line-height`
 
 ::primitive-table{id="font.line-height"}
+
+## `font.line-box`
+
+::primitive-table{id="font.line-box"}
 
 ## `font.family`
 

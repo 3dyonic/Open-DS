@@ -29,7 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `accessible-first.theme.base.type.display.font-family` → `font.family.atkinson-hyperlegible` |
-| `type.display.font-size` | `font.size.35` |
+| `type.display.font-size` | `font.size.36` |
 | `type.display.line-height` | `font.line-height.1_25` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `accessible-first.theme.base.type.title.font-family` → `font.family.atkinson-hyperlegible` |
@@ -37,7 +37,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.title.line-height` | `font.line-height.1_25` |
 | `type.title.font-weight` | `font.weight.700` |
 | `type.heading.font-family` | `accessible-first.theme.base.type.heading.font-family` → `font.family.atkinson-hyperlegible` |
-| `type.heading.font-size` | `font.size.23` |
+| `type.heading.font-size` | `font.size.24` |
 | `type.heading.line-height` | `font.line-height.1_25` |
 | `type.heading.font-weight` | `font.weight.700` |
 | `type.body.font-family` | `accessible-first.theme.base.type.body.font-family` → `font.family.atkinson-hyperlegible` |

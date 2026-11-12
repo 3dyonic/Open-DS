@@ -176,7 +176,23 @@ export function anchorPerturbations(stored, { primaryHue = null, darkCanvas = nu
     });
   }
 
-  out.push(repoint(stored, "control-height", "size.control.default"));
+  // OD-301: the control scale is a record, and the loader generates the heights from it. Move the record's
+  // default one step; with no record, move the stored pick as before.
+  const controlScale = stored.tokens?.semantic?.size?.$extensions?.["open-ds"];
+  if (Number.isFinite(controlScale?.default) && Number.isFinite(controlScale?.step))
+    out.push({
+      kind: "anchor",
+      id: "control-height",
+      change: `the control scale's default: ${controlScale.default}px → ${controlScale.default + controlScale.step}px`,
+      // The record generates every control height and the row, so each one follows the default.
+      derives: { tokens: ["size.control.default", "size.control.compact", "size.control.large", "size.row"], inputs: ["size.control.default"] },
+      apply: (s) => {
+        const next = structuredClone(s);
+        next.tokens.semantic.size.$extensions["open-ds"].default += controlScale.step;
+        return next;
+      },
+    });
+  else out.push(repoint(stored, "control-height", "size.control.default"));
   out.push(repoint(stored, "default-radius", "radius.control"));
   return out;
 }

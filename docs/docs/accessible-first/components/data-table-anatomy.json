@@ -428,10 +428,10 @@
      "kind": "token",
      "semantic": "size.row",
      "key": "table.row-height",
-     "value": "3.5rem",
+     "value": "3.25rem",
      "byScheme": true,
      "pick": [
-      "size.56"
+      "size.52"
      ],
      "shares": []
     },

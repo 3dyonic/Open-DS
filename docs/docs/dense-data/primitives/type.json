@@ -39,11 +39,11 @@
      ]
     },
     {
-     "primitive": "font.size.17",
-     "value": "1.0625rem (17px)",
+     "primitive": "font.size.16",
+     "value": "1rem (16px)",
      "sample": {
       "kind": "size",
-      "value": "1.0625rem"
+      "value": "1rem"
      },
      "usedBy": [
       {
@@ -172,26 +172,49 @@
        "where": "semantic"
       }
      ]
+    }
+   ]
+  },
+  "font.line-box": {
+   "rows": [
+    {
+     "primitive": "font.line-box.16",
+     "value": "1rem (16px)",
+     "sample": {
+      "kind": "bar",
+      "value": "1rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.caption.line-height",
+       "where": "semantic"
+      }
+     ]
     },
     {
-     "primitive": "font.line-height.1_45",
-     "value": "1.45",
+     "primitive": "font.line-box.18",
+     "value": "1.125rem (18px)",
      "sample": {
-      "kind": "leading",
-      "value": "1.45",
-      "note": "23px"
+      "kind": "bar",
+      "value": "1.125rem"
+     },
+     "usedBy": [
+      {
+       "token": "type.data.line-height",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "font.line-box.20",
+     "value": "1.25rem (20px)",
+     "sample": {
+      "kind": "bar",
+      "value": "1.25rem"
      },
      "usedBy": [
       {
        "token": "type.body.line-height",
-       "where": "semantic"
-      },
-      {
-       "token": "type.caption.line-height",
-       "where": "semantic"
-      },
-      {
-       "token": "type.data.line-height",
        "where": "semantic"
       }
      ]

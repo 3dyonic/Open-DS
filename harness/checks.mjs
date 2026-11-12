@@ -503,18 +503,56 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
-  "spacing-use-cases-generated": {
-    requires: ["cli/src/spacing-use-cases.mjs", "schemes/grammar.json"],
+  "type-scale-generated": {
+    requires: ["cli/src/type-scale.mjs", "cli/src/type-space-generated.mjs"],
     run: async (c) => {
-      // OD-294: every scheme's space tokens equal base × multiple from its spacing record, and its
-      // control heights and row equal its control scale. Every reason names its value, its job from
-      // the grammar's spacing jobs, and its use case or mechanism. A hand-edited value fails.
-      const { spaceValues, spaceProblems, controlHeights, controlProblems } = await import(
+      // OD-294, OD-301: each scheme stores its type scale, and the loader generates every size and line
+      // height from it. The file stores no size, line height or font option by hand, every role has a
+      // step, and each generated reason names its own value.
+      const { sizes, lineHeights, specProblems } = await import(pathToFileURL(c.p("cli/src/type-scale.mjs")).href);
+      const { generatedProblems } = await import(pathToFileURL(c.p("cli/src/type-space-generated.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const type = s.tokens.semantic.type;
+        const spec = type?.$extensions?.["open-ds"];
+        if (!spec?.steps || !spec?.rounding) {
+          gaps.push(`${id}: no type scale with a rounding rule on the type group`);
+          continue;
+        }
+        gaps.push(...specProblems(spec).map((p) => `${id}: ${p}`));
+        for (const q of spec.follows ?? [])
+          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: the type scale follows ${q}, which is not an answer`);
+        for (const role of Object.keys(type).filter((k) => !k.startsWith("$")))
+          if (!(role in spec.steps)) gaps.push(`${id}: type.${role} has no step on the scale`);
+        const own = generatedProblems(s, c.storedScheme(id)).filter((p) => /: (type|font)\./.test(p));
+        gaps.push(...own);
+        const px = sizes(spec);
+        const lines = lineHeights(spec);
+        for (const role of Object.keys(spec.steps)) {
+          const why = (key) => type[role]?.[key]?.$extensions?.["open-ds"]?.why ?? "";
+          if (!why("font-size").includes(`${px[role]}px`)) gaps.push(`${id}: the reason of type.${role}.font-size does not name ${px[role]}px`);
+          const line = lines[role].grid ? `${lines[role].px}px` : String(lines[role].ratio);
+          if (!why("line-height").includes(line)) gaps.push(`${id}: the reason of type.${role}.line-height does not name ${line}`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`${SCHEMES.length} schemes store their type scale, and the loader generates every size and line height from it`);
+    },
+  },
+  "spacing-use-cases-generated": {
+    requires: ["cli/src/spacing-use-cases.mjs", "cli/src/type-space-generated.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-294, OD-301: each scheme stores its spacing record and its control scale, and the loader
+      // generates every gap, inset, control height and row from them; the spacing.definition answer sets
+      // the space base. The file stores none of those values by hand, every gap and inset has a use case,
+      // a row is one default control tall, and each generated reason names its own value.
+      const { baseOf, spaceValues, spaceProblems, controlHeights, controlProblems } = await import(
         pathToFileURL(c.p("cli/src/spacing-use-cases.mjs")).href
       );
-      const { matches } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const { generatedProblems } = await import(pathToFileURL(c.p("cli/src/type-space-generated.mjs")).href);
       const spacing = c.grammar().scopes.find((sc) => sc.id === "spacing");
-      const jobs = spacing?.jobs ?? [];
       const gaps = [];
       if (!spacing?.use_cases) gaps.push("the spacing scope names no use-case words");
       for (const id of SCHEMES) {
@@ -527,97 +565,30 @@ export const CHECKS = {
           gaps.push(`${id}: no spacing record on space or no control scale on size`);
           continue;
         }
-        const rowRole = answer("spacing.roles") === "gap-inset-row";
         gaps.push(
           ...spaceProblems(space, { vocabulary: spacing?.use_cases, definition: answer("spacing.definition") }).map((p) => `${id}: ${p}`),
-          ...controlProblems(size, { rowRole }).map((p) => `${id}: ${p}`),
+          ...controlProblems(size).map((p) => `${id}: ${p}`),
+          ...generatedProblems(s, c.storedScheme(id)).filter((p) => /: (space|size)\./.test(p)),
         );
         for (const q of [...(space.follows ?? []), ...(size.follows ?? [])])
           if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: a record follows ${q}, which is not an answer`);
-        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
-        const px = (name) => Math.round(parseFloat(String(resolve(all, name)?.value ?? "")) * 16 * 100) / 100;
-        const want = {
-          ...Object.fromEntries(Object.entries(spaceValues(space)).map(([k, v]) => [`space.${k}`, v])),
-          ...Object.fromEntries(Object.entries(controlHeights(size)).map(([k, v]) => [`size.${k}`, v])),
-        };
         for (const group of ["gap", "inset"])
           for (const k of Object.keys(semantic.space[group] ?? {}).filter((k) => !k.startsWith("$")))
-            if (!(`space.${group}.${k}` in want)) gaps.push(`${id}: space.${group}.${k} has no use case`);
+            if (!(`${group}.${k}` in space["use-cases"])) gaps.push(`${id}: space.${group}.${k} has no use case`);
+        const want = {
+          ...Object.fromEntries(Object.entries(spaceValues(space, baseOf(answer("spacing.definition")))).map(([k, v]) => [`space.${k}`, v])),
+          ...Object.fromEntries(Object.entries(controlHeights(size)).map(([k, v]) => [`size.${k}`, v])),
+        };
         for (const [name, value] of Object.entries(want)) {
-          if (px(name) !== value) gaps.push(`${id}: ${name} is ${px(name)}px, the record gives ${value}px`);
           const token = name.split(".").reduce((n, k) => n?.[k], semantic);
-          const why = token?.$extensions?.["open-ds"]?.why ?? "";
-          const job = jobs.find((j) => j.tokens.some((p) => matches(p, name)));
-          const says = (text, what) => {
-            if (!why.includes(text)) gaps.push(`${id}: the reason of ${name} does not name ${what ?? text}`);
-          };
-          says(`${value}px`);
-          if (!job) gaps.push(`${id}: ${name} has no job in the grammar's spacing jobs`);
-          else says(job.job, `its job (${job.job})`);
-          // The use case or mechanism: a multiple of the base, a step on the control scale, or inheritance.
-          if (name.startsWith("space.")) {
-            const useCase = space["use-cases"][name.slice("space.".length)];
-            says(`${useCase.multiple} × ${space.base}px`, `its multiple (${useCase.multiple} × ${space.base}px)`);
-          } else if (name === "size.row") says(rowRole ? "decision of their own" : "inheritance", rowRole ? "the row decision" : "its inheritance");
-          else {
-            says("control scale");
-            // WCAG measures the hit area, not the drawn box: a control's reason names its hit area.
-            says("hit area");
-          }
+          if (!(token?.$extensions?.["open-ds"]?.why ?? "").includes(`${value}px`)) gaps.push(`${id}: the reason of ${name} does not name ${value}px`);
         }
+        if (semantic.size.row?.$value !== semantic.size.control?.default?.$value)
+          gaps.push(`${id}: size.row is ${semantic.size.row?.$value}, not one default control tall (${semantic.size.control?.default?.$value})`);
       }
       return gaps.length
         ? bad(gaps.slice(0, 8).join("; "))
-        : ok(`the space tokens, control heights and rows in ${SCHEMES.length} schemes match their records and name their use case`);
-    },
-  },
-  "type-scale-generated": {
-    requires: ["cli/src/type-scale.mjs"],
-    run: async (c) => {
-      // OD-294: every scheme's type sizes and line heights equal the generator's output from its
-      // scale: base × ratio^step, and the tight or open line height. A hand-edited size fails, and so
-      // does a reason that names an old number.
-      const { sizes, lineHeights, specProblems } = await import(pathToFileURL(c.p("cli/src/type-scale.mjs")).href);
-      const gaps = [];
-      for (const id of SCHEMES) {
-        const s = c.scheme(id);
-        const type = s.tokens.semantic.type;
-        const spec = type?.$extensions?.["open-ds"];
-        if (!spec?.steps) {
-          gaps.push(`${id}: no type scale on the type group`);
-          continue;
-        }
-        gaps.push(...specProblems(spec).map((p) => `${id}: ${p}`));
-        for (const q of spec.follows ?? [])
-          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: the type scale follows ${q}, which is not an answer`);
-        const roles = Object.keys(type).filter((k) => !k.startsWith("$"));
-        for (const role of roles) if (!(role in spec.steps)) gaps.push(`${id}: type.${role} has no step on the scale`);
-        const px = sizes(spec);
-        const lh = lineHeights(spec);
-        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
-        for (const role of roles.filter((r) => r in spec.steps)) {
-          const size = Math.round(parseFloat(String(resolve(all, `type.${role}.font-size`)?.value ?? "")) * 16 * 100) / 100;
-          if (size !== px[role]) gaps.push(`${id}: type.${role}.font-size is ${size}px, the scale gives ${px[role]}px`);
-          const line = Number(resolve(all, `type.${role}.line-height`)?.value);
-          if (line !== lh[role]) gaps.push(`${id}: type.${role}.line-height is ${line}, the scale gives ${lh[role]}`);
-          // A reason that names its value keeps up with the scale: the size in px, the line height ratio.
-          const why = (key) => type[role][key]?.$extensions?.["open-ds"]?.why ?? "";
-          if (!why("font-size").includes(`${px[role]}px`))
-            gaps.push(`${id}: the reason of type.${role}.font-size does not name ${px[role]}px`);
-          if (!why("line-height").includes(String(lh[role])))
-            gaps.push(`${id}: the reason of type.${role}.line-height does not name ${lh[role]}`);
-        }
-        // The scale owns the size and line height primitives: no primitive it does not use.
-        const want = new Set(Object.values(px).map(String));
-        const have = Object.keys(s.tokens.primitive.font.size).filter((k) => !k.startsWith("$"));
-        for (const k of have) if (!want.has(k)) gaps.push(`${id}: font.size.${k} is not on the scale`);
-        const ratios = new Set(Object.values(lh));
-        for (const [k, t] of Object.entries(s.tokens.primitive.font["line-height"]))
-          if (!k.startsWith("$") && !ratios.has(t.$value)) gaps.push(`${id}: font.line-height.${k} is not on the scale`);
-      }
-      return gaps.length
-        ? bad(gaps.slice(0, 8).join("; "))
-        : ok(`the type sizes and line heights in ${SCHEMES.length} schemes match their scale`);
+        : ok(`${SCHEMES.length} schemes store their spacing records, and the loader generates every gap, inset, control height and row from them`);
     },
   },
   "visible-where-it-meets": {

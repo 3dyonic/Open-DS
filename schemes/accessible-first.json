@@ -2676,10 +2676,6 @@
           "$type": "dimension",
           "$value": "3.25rem"
         },
-        "56": {
-          "$type": "dimension",
-          "$value": "3.5rem"
-        },
         "$description": "Size options for controls, rows and icons."
       },
       "radius": {
@@ -2720,26 +2716,6 @@
       },
       "font": {
         "size": {
-          "16": {
-            "$type": "dimension",
-            "$value": "1rem"
-          },
-          "19": {
-            "$type": "dimension",
-            "$value": "1.1875rem"
-          },
-          "23": {
-            "$type": "dimension",
-            "$value": "1.4375rem"
-          },
-          "28": {
-            "$type": "dimension",
-            "$value": "1.75rem"
-          },
-          "35": {
-            "$type": "dimension",
-            "$value": "2.1875rem"
-          },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
@@ -2753,16 +2729,7 @@
           }
         },
         "line-height": {
-          "1_25": {
-            "$type": "number",
-            "$value": 1.25,
-            "$description": "A ratio of the text size."
-          },
-          "1_6": {
-            "$type": "number",
-            "$value": 1.6,
-            "$description": "A ratio of the text size."
-          }
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
         },
         "family": {
           "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
@@ -4973,7 +4940,6 @@
       "space": {
         "$extensions": {
           "open-ds": {
-            "base": 8,
             "use-cases": {
               "gap.tight": {
                 "level": "component",
@@ -5024,8 +4990,6 @@
         },
         "gap": {
           "tight": {
-            "$type": "dimension",
-            "$value": "{space.12}",
             "$description": "Between things that belong together.",
             "$extensions": {
               "open-ds": {
@@ -5038,8 +5002,6 @@
             }
           },
           "default": {
-            "$type": "dimension",
-            "$value": "{space.16}",
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
@@ -5052,8 +5014,6 @@
             }
           },
           "group": {
-            "$type": "dimension",
-            "$value": "{space.32}",
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
@@ -5066,8 +5026,6 @@
             }
           },
           "section": {
-            "$type": "dimension",
-            "$value": "{space.48}",
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
@@ -5082,8 +5040,6 @@
         },
         "inset": {
           "control-x": {
-            "$type": "dimension",
-            "$value": "{space.24}",
             "$description": "Horizontal padding inside controls.",
             "$extensions": {
               "open-ds": {
@@ -5096,8 +5052,6 @@
             }
           },
           "container": {
-            "$type": "dimension",
-            "$value": "{space.24}",
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
@@ -5110,8 +5064,6 @@
             }
           },
           "cell-x": {
-            "$type": "dimension",
-            "$value": "{space.16}",
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
@@ -5134,20 +5086,15 @@
               "compact": -1,
               "large": 0
             },
-            "row": {
-              "plus": 4
-            },
             "follows": [
               "accessibility.values",
               "spacing.roles"
             ],
-            "why": "A large target sets the 52px default. The step is 4px, so compact stays at the 48px large target size; large equals the default, as every control is already large. Rows are a decision of their own, one step taller than a control."
+            "why": "A large target sets the 52px default. The step is 4px, so compact stays at the 48px large target size; large equals the default, as every control is already large. Rows are a decision of their own and stay one control tall."
           }
         },
         "control": {
           "default": {
-            "$type": "dimension",
-            "$value": "{size.52}",
             "$description": "Height of buttons and inputs, and the smallest target.",
             "$extensions": {
               "open-ds": {
@@ -5160,8 +5107,6 @@
             }
           },
           "compact": {
-            "$type": "dimension",
-            "$value": "{size.48}",
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
@@ -5174,8 +5119,6 @@
             }
           },
           "large": {
-            "$type": "dimension",
-            "$value": "{size.52}",
             "$description": "Height of large controls. Not used in this system, so it equals the default.",
             "$extensions": {
               "open-ds": {
@@ -5189,12 +5132,10 @@
           }
         },
         "row": {
-          "$type": "dimension",
-          "$value": "{size.56}",
           "$description": "Height of one table row.",
           "$extensions": {
             "open-ds": {
-              "why": "We use 56px for one table row in order to keep the eye on its row: a row one 52px default control tall plus 4px, one step up the control scale, as rows are a decision of their own here. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So rows are easy to read and tap, a little taller than the control they hold, because row heights are a spacing role, for touch and zoom (spacing.roles), and the smallest target is large (accessibility.values).",
+              "why": "We use 52px for one table row in order to keep the eye on its row: a row is one 52px default control tall, as rows stay one control tall. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So rows are easy to read and tap, and a control sits in a row with no gap, because row heights are a spacing role, for touch and zoom (spacing.roles), and the smallest target is large (accessibility.values).",
               "because": [
                 "spacing.roles",
                 "accessibility.values"
@@ -5338,6 +5279,14 @@
               "caption": -1,
               "data": 0
             },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
             "line-height": {
               "tight": {
                 "ratio": 1.25,
@@ -5372,11 +5321,9 @@
             "$value": "{theme.type.display.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.35}",
             "$extensions": {
               "open-ds": {
-                "why": "Display is 35px, three ratio steps above the 19px body (19 × 1.22^3), kept off page titles: it changes from page to page and pushes the content down.",
+                "why": "Display is 36px, three ratio steps above the 19px body (19 × 1.22^3 = 34.5), snapped up to the 4px grid as headings are, kept off page titles: it changes from page to page and pushes the content down.",
                 "because": [
                   "typography.count",
                   "human.q1"
@@ -5385,8 +5332,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_25}",
             "$extensions": {
               "open-ds": {
                 "why": "Display lines are 1.25 times its 35px size, about 44px; as a ratio, the line height grows with the text when people zoom.",
@@ -5416,8 +5361,6 @@
             "$value": "{theme.type.title.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.28}",
             "$extensions": {
               "open-ds": {
                 "why": "Title is 28px, two ratio steps above body and one clear step under display, the same on every page, so people always know where they are.",
@@ -5429,8 +5372,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_25}",
             "$extensions": {
               "open-ds": {
                 "why": "Title lines are 1.25 times its 28px size, 35px, the same tight ratio as display, and they grow with the text on zoom.",
@@ -5461,11 +5402,9 @@
             "$value": "{theme.type.heading.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.23}",
             "$extensions": {
               "open-ds": {
-                "why": "Heading is 23px, one ratio step above the 19px body and one under the 28px title, so a section inside a form step stands out.",
+                "why": "Heading is 24px, one ratio step above the 19px body (23.2px) snapped up to the 4px grid, and one under the 28px title, so a section inside a form step stands out.",
                 "because": [
                   "typography.count",
                   "typography.lands"
@@ -5474,8 +5413,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_25}",
             "$extensions": {
               "open-ds": {
                 "why": "Heading lines are 1.25 times its 23px size, about 29px: the smallest role on the tight ratio, while text from 19px down takes 1.6.",
@@ -5506,8 +5443,6 @@
             "$value": "{theme.type.body.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.19}",
             "$extensions": {
               "open-ds": {
                 "why": "Body is 19px, step 0 of the scale and one ratio step above the 16px caption, because large text is readable for more people.",
@@ -5519,8 +5454,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_6}",
             "$extensions": {
               "open-ds": {
                 "why": "Body lines are 1.6 times its 19px size, 30.4px: the open ratio for paragraphs, so short lines of large text lower effort.",
@@ -5551,8 +5484,6 @@
             "$value": "{theme.type.label.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.19}",
             "$extensions": {
               "open-ds": {
                 "why": "Label shares step 0 with body at 19px, because form labels and hints are where type matters most; weight, not size, sets it apart.",
@@ -5564,8 +5495,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_6}",
             "$extensions": {
               "open-ds": {
                 "why": "Label lines are 1.6 times its 19px size, 30.4px, so a label that wraps above its field keeps the open spacing of body.",
@@ -5597,8 +5526,6 @@
             "$value": "{theme.type.caption.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.16}",
             "$extensions": {
               "open-ds": {
                 "why": "Caption is one ratio step under body (19 ÷ 1.22), 16px, exactly 1rem: even secondary text never drops below the reader's own default size.",
@@ -5610,8 +5537,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_6}",
             "$extensions": {
               "open-ds": {
                 "why": "Caption lines are 1.6 times its 16px size, 25.6px: the smallest text keeps the open ratio and grows with the text on zoom.",
@@ -5642,8 +5567,6 @@
             "$value": "{theme.type.data.font-family}"
           },
           "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.19}",
             "$extensions": {
               "open-ds": {
                 "why": "Data shares step 0 with body at 19px, not a small or mono size, because every number must be readable at large size.",
@@ -5655,8 +5578,6 @@
             }
           },
           "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_6}",
             "$extensions": {
               "open-ds": {
                 "why": "Data lines match body, 1.6 times 19px, 30.4px, so numbers in a table read with the same room as text.",

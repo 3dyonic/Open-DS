@@ -27,6 +27,10 @@ A scheme file stores only what a person decided. `loadScheme` in `cli/src/scheme
 - The component spacing map: the file keeps its rhythm and fixed steps in `$extensions.open-ds`. The loader generates its steps.
 
 `open-ds build` writes the filled scheme and checks it against the schema and the scheme rules.
+- Type: the type group keeps its scale in `$extensions.open-ds`: base, ratio, each role's step, the rounding rule and the line height kinds. The loader generates each role's font size and line height, and the font size, line height and line box options.
+- Spacing: the space group keeps its spacing record (each token's use case and multiple), and the size group its control scale (default, step, the steps of compact and large). The `spacing.definition` answer sets the base: 4px for fine steps, 8px for coarse ones. The loader generates the gaps, insets, control heights and the row, which is one default control tall.
+
+Each generated value carries a reason that states its rule, its numbers and the answers its record follows. To change a value, change its record. `open-ds build` fails a scheme that sets a type or space value by hand next to its record.
 
 Options must look clearly different from each other: two steps you cannot tell apart are one step. The rules, with the smallest gap per kind of option, are in `grammar.json` under `options`; the harness checks every scheme against them, and the agent context carries them. Keep only the options something reads: outside color ramps, which stay whole, every primitive is read by a semantic, a theme or a component key. A count answer has that many tokens: `motion.count` "two" means two speeds.
 
