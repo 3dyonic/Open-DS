@@ -2721,7 +2721,12 @@ export const CHECKS = {
         "storybook/src/schemes.ts",
         "cli/scripts/bundle.mjs",
         "scripts/test-package.mjs",
-              ]);
+        // OD-298's independent seeded-defect tests: each edits a temporary copy of schemes/, never the real files.
+        "cli/test/verify-a-harness.mjs",
+        "cli/test/verify-b-cli.test.mjs",
+        "cli/test/verify-b-helpers.mjs",
+        "cli/test/verify-c-fixture.mjs",
+      ]);
       const DIRS = ["cli/src", "cli/scripts", "cli/test", "docs/scripts", "docs/src", "harness", "scripts", "site/src", "storybook/src", "storybook/stories", "storybook/.storybook", "tokens", "mcp/src", "mcp/test", "doc-composites/src", "ui/scripts", "e2e", "site/scripts"];
       const SKIP = /node_modules|\/dist\/|\/build\/|\.next|\.docusaurus/;
       const walk = (d) =>
