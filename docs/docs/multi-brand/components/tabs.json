@@ -1,6 +1,10 @@
 {
  "preview": {
   "tabs/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Tabs examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {

@@ -26,7 +26,7 @@ Floors the system must hold.
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `size.control.default` | light | `size.44` |
@@ -41,7 +41,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `size.control.default` | light | `size.44` |
@@ -56,7 +56,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `size.control.default` | light | `size.44` |

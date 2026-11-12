@@ -8,7 +8,9 @@ import { Icon } from "@open-ds/ui/components/icon";
 import Sample from "./Sample";
 
 const note = "[font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)]";
-export default function Drawn({ x }: { x: { kind: string; value: string; note?: string } }) {
+export default function Drawn({ x: given }: { x: { kind: string; value?: string; note?: string; names?: string[] } }) {
+  // A list of names (such as the type families) reads as one line of text.
+  const x = { ...given, kind: given.kind === "names" ? "text" : given.kind, value: given.names?.join(" · ") ?? given.value ?? "" };
   switch (x.kind) {
     case "column":
       return <i aria-hidden="true" className="w-2 rounded-[var(--radius-badge)] bg-[var(--color-action-primary)]" style={{ height: `max(3px, ${x.value})` }} />;
@@ -44,7 +46,7 @@ export default function Drawn({ x }: { x: { kind: string; value: string; note?: 
     case "duration":
       return (
         <>
-          <i aria-hidden="true" className="ods-slide size-2.5 rounded-full bg-[var(--color-action-primary)]" style={{ ["--ods-d" as string]: x.value }} />
+          <i aria-hidden="true" className="size-2.5 rounded-full bg-[var(--color-action-primary)] motion-safe:animate-slide-dot [a:hover_&]:[animation-name:slide-dot-again]" style={{ ["--ods-d" as string]: x.value }} />
           {x.note && <span className={note}>{x.note}</span>}
         </>
       );

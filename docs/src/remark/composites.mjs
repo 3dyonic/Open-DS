@@ -76,6 +76,7 @@ const DATA_KEY = {
   "status-colors": "id",
   "mode-changes": "id",
   "mode-constants": "id",
+  group: "id",
 };
 // The name the page's data has inside the compiled page.
 const DATA = "__compositeData";

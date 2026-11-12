@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/specimen.schema.json",
+  "title": "Specimen",
+  "description": "Values shown as themselves, such as a corner, a color, a shadow or a typeface, each with its name. Drawn by the Specimen composite.",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The specimen's title."
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Each value.",
+      "items": {
+        "type": "object",
+        "required": [],
+        "additionalProperties": false,
+        "properties": {
+          "draw": {
+            "type": "object",
+            "required": [],
+            "additionalProperties": false,
+            "properties": {
+              "color": {
+                "type": "string",
+                "minLength": 1,
+                "description": "A fill."
+              },
+              "radius": {
+                "type": "string",
+                "minLength": 1,
+                "description": "A corner radius."
+              },
+              "shadow": {
+                "type": "string",
+                "minLength": 1,
+                "description": "A shadow."
+              }
+            },
+            "description": "The value drawn: a fill, a corner or a shadow."
+          },
+          "font": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A typeface, as its CSS font-family."
+          },
+          "big": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A large sample set in the typeface, such as Aa."
+          },
+          "token": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The token the value comes from."
+          },
+          "label": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The status's words."
+              },
+              "tone": {
+                "type": "string",
+                "enum": [
+                  "neutral",
+                  "info",
+                  "success",
+                  "warning",
+                  "danger"
+                ],
+                "description": "The Badge tone that draws it."
+              }
+            },
+            "description": "A status shown as the scheme's Badge."
+          },
+          "lines": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Lines of text beside the drawing."
+          },
+          "sample": {
+            "type": "array",
+            "minItems": 1,
+            "description": "Lines set in the typeface.",
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "One line: its groups of characters, such as the figures and the signs."
+            }
+          },
+          "weights": {
+            "type": "array",
+            "minItems": 1,
+            "description": "The weights the scheme uses in the typeface.",
+            "items": {
+              "type": "object",
+              "required": [
+                "weight",
+                "name"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "weight": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1000,
+                  "description": "The weight, such as 400."
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The weight's name, such as Regular."
+                }
+              }
+            }
+          },
+          "read": {
+            "type": "object",
+            "required": [
+              "label",
+              "codes"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the codes are, such as Read by."
+              },
+              "codes": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": "Each token or role that reads the value."
+              }
+            },
+            "description": "What reads the value."
+          },
+          "foot": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A line at the item's foot."
+          }
+        }
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@ The side navigation of an app, open while people work.
 
 ## See it live
 
-::preview{robot="slumber" id="sidebar/live"}
+::preview{id="sidebar/live"}
 
 ## When to use it
 
@@ -32,7 +32,7 @@ Instead:
 What each variant is for in any design system, then what Accessible first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="sidebar/variant/default"}
+::preview{id="sidebar/variant/default"}
 
 **What it is for**
 
@@ -48,7 +48,7 @@ Not decided yet.
 :::
 
 :::panel{title="outline" note="variant" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="sidebar/variant/outline"}
+::preview{id="sidebar/variant/outline"}
 
 **What it is for**
 
@@ -64,7 +64,7 @@ Not decided yet.
 :::
 
 :::panel{title="default" note="size" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="sidebar/size/default"}
+::preview{id="sidebar/size/default"}
 
 **What it is for**
 
@@ -80,7 +80,7 @@ Not decided yet.
 :::
 
 :::panel{title="sm" note="size" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="sidebar/size/sm"}
+::preview{id="sidebar/size/sm"}
 
 **What it is for**
 
@@ -96,7 +96,7 @@ Not decided yet.
 :::
 
 :::panel{title="lg" note="size" label="Not decided yet" tone="neutral"}
-::preview{robot="slumber" id="sidebar/size/lg"}
+::preview{id="sidebar/size/lg"}
 
 **What it is for**
 

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/preview.schema.json",
+  "title": "Preview",
+  "description": "A live frame, such as a Storybook story, with its caption and links. Drawn by the Preview composite on a component's page.",
+  "type": "object",
+  "required": [
+    "title",
+    "wait",
+    "frames"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "robot": {
+      "type": "object",
+      "required": [
+        "day",
+        "night"
+      ],
+      "additionalProperties": false,
+      "description": "The robot that sleeps while the frame is not live: its day and night pictures. The theme picks one.",
+      "properties": {
+        "day": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The day picture's path, from the site's base URL."
+        },
+        "night": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The night picture's path, from the site's base URL."
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What the frame shows, such as Button examples in Storybook. It names the frame for a screen reader."
+    },
+    "wait": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What to start to see the frame live, shown until it loads. A command follows the colon."
+    },
+    "frames": {
+      "type": "object",
+      "required": [
+        "light"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "light": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The frame's address in light mode, as a site path."
+        },
+        "dark": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The frame's address in dark mode. With it, the frame shows Light and Dark tabs."
+        }
+      },
+      "description": "The frame's address in each mode."
+    },
+    "caption": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A short line under the frame."
+    },
+    "links": {
+      "type": "array",
+      "description": "Links under the frame.",
+      "items": {
+        "type": "object",
+        "required": [
+          "text",
+          "href"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The link's words."
+          },
+          "href": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The link, as a site path."
+          }
+        }
+      }
+    }
+  }
+}

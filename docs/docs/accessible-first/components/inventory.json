@@ -6,7 +6,8 @@
      "title": "Button",
      "text": "Triggers an action.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./button"
@@ -15,7 +16,8 @@
      "title": "Button group",
      "text": "Related buttons joined as one control.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./button-group"
@@ -24,7 +26,8 @@
      "title": "Toggle",
      "text": "A button that stays pressed or not.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./toggle"
@@ -33,7 +36,8 @@
      "title": "Toggle group",
      "text": "A set of toggles where one or many stay pressed.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./toggle-group"
@@ -46,7 +50,8 @@
      "title": "Calendar",
      "text": "A month grid for picking dates.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./calendar"
@@ -55,7 +60,8 @@
      "title": "Checkbox",
      "text": "An on-off choice in a list or form.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./checkbox"
@@ -64,7 +70,8 @@
      "title": "Combobox",
      "text": "A text field with a filtered list of choices.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./combobox"
@@ -73,7 +80,8 @@
      "title": "Date picker",
      "text": "A button that opens a calendar, for one date or a range. Built on calendar and popover, after shadcn's Date Picker.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./date-picker"
@@ -82,7 +90,8 @@
      "title": "Field",
      "text": "A label, control, hint and error laid out together.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./field"
@@ -91,7 +100,8 @@
      "title": "Form",
      "text": "Form state and validation wired to fields.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./form"
@@ -100,7 +110,8 @@
      "title": "Input",
      "text": "Single-line text entry.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./input"
@@ -109,7 +120,8 @@
      "title": "Input group",
      "text": "An input with addons such as icons or buttons.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./input-group"
@@ -118,7 +130,8 @@
      "title": "Input otp",
      "text": "Separate boxes for a one-time code.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./input-otp"
@@ -127,7 +140,8 @@
      "title": "Label",
      "text": "The name of a form control.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./label"
@@ -136,7 +150,8 @@
      "title": "Native select",
      "text": "The browser select, styled.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./native-select"
@@ -145,7 +160,8 @@
      "title": "Radio group",
      "text": "One choice from a short list.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./radio-group"
@@ -154,7 +170,8 @@
      "title": "Textarea",
      "text": "Multi-line text entry.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./textarea"
@@ -167,7 +184,8 @@
      "title": "Chart",
      "text": "Bars, lines and areas built on Recharts.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./chart"
@@ -176,7 +194,8 @@
      "title": "Table",
      "text": "Rows and columns of records.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./table"
@@ -189,7 +208,8 @@
      "title": "Alert",
      "text": "A message that stays on the page.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./alert"
@@ -198,7 +218,8 @@
      "title": "Badge",
      "text": "A short label for a status or count.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./badge"
@@ -207,7 +228,8 @@
      "title": "Empty",
      "text": "What to show when there is nothing yet.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./empty"
@@ -216,7 +238,8 @@
      "title": "Progress",
      "text": "How far a task has come.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./progress"
@@ -225,7 +248,8 @@
      "title": "Spinner",
      "text": "A small loading indicator.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./spinner"
@@ -238,7 +262,8 @@
      "title": "Breadcrumb",
      "text": "The path to the current page.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./breadcrumb"
@@ -247,7 +272,8 @@
      "title": "Navigation menu",
      "text": "Site navigation with links and panels.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./navigation-menu"
@@ -256,7 +282,8 @@
      "title": "Pagination",
      "text": "Moves between pages of results.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./pagination"
@@ -265,7 +292,8 @@
      "title": "Tabs",
      "text": "Switches between views of the same thing.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./tabs"
@@ -278,7 +306,8 @@
      "title": "Dialog",
      "text": "A window over the page for a focused task.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./dialog"
@@ -291,7 +320,8 @@
      "title": "Card",
      "text": "A bordered container for one item or group.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./card"
@@ -300,7 +330,8 @@
      "title": "Collapsible",
      "text": "One section that opens and closes.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./collapsible"
@@ -309,7 +340,8 @@
      "title": "Item",
      "text": "A row with media, title, description and actions.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./item"
@@ -318,7 +350,8 @@
      "title": "Scroll area",
      "text": "A region with styled scrollbars.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./scroll-area"
@@ -327,7 +360,8 @@
      "title": "Separator",
      "text": "A line between groups.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./separator"
@@ -340,7 +374,8 @@
      "title": "Aspect ratio",
      "text": "Keeps an image or video at a fixed shape.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./aspect-ratio"
@@ -349,7 +384,8 @@
      "title": "Avatar",
      "text": "A small image or initials for a person.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./avatar"
@@ -358,7 +394,8 @@
      "title": "Icon",
      "text": "One icon at the scheme's size and stroke.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./icon"
@@ -371,7 +408,8 @@
      "title": "Attachment",
      "text": "A file attached to a message.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./attachment"
@@ -380,7 +418,8 @@
      "title": "Bubble",
      "text": "A chat message bubble.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./bubble"
@@ -389,7 +428,8 @@
      "title": "Marker",
      "text": "A divider or status line inside a conversation.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./marker"
@@ -398,7 +438,8 @@
      "title": "Message",
      "text": "One message with its author and time.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./message"
@@ -407,7 +448,8 @@
      "title": "Message scroller",
      "text": "A scrolling list of messages that keeps the newest in view.",
      "label": {
-      "text": "In · built",
+      "text": "In",
+      "note": "built",
       "tone": "info"
      },
      "href": "./message-scroller"

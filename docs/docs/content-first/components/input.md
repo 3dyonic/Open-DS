@@ -14,7 +14,7 @@ A labeled field for a short typed value.
 
 ## See it live
 
-::preview{robot="slumber" id="input/live"}
+::preview{id="input/live"}
 
 ## When to use it
 

@@ -38,21 +38,18 @@
   margin: 0;
 }
 
-/* A duration drawn as a dot that moves once, there and back, at that duration (OD-220). Never a loop. */
-@media (prefers-reduced-motion: no-preference) {
-  .ods-slide {
-    animation: ods-slide calc(var(--ods-d, 120ms) * 6) ease-in-out 2 alternate;
-  }
-  a:hover .ods-slide {
-    animation-name: ods-slide-again;
-  }
-}
-@keyframes ods-slide {
-  to {
-    transform: translateX(4rem);
+/* A duration drawn as a dot that moves once, there and back, at that duration (OD-220). Never a loop.
+   The composite sets --ods-d and uses animate-slide-dot; a hover on its card plays it again. */
+@theme {
+  --animate-slide-dot: slide-dot calc(var(--ods-d, 120ms) * 6) ease-in-out 2 alternate;
+  @keyframes slide-dot {
+    to {
+      transform: translateX(4rem);
+    }
   }
 }
-@keyframes ods-slide-again {
+/* The same move under another name, so a hover starts it again. */
+@keyframes slide-dot-again {
   to {
     transform: translateX(4rem);
   }
