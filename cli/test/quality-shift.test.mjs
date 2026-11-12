@@ -43,8 +43,12 @@ test("a surface moving 0.022 is over the surface limit and needs approval; an ap
   const moves = colorMoves(base(), snapshotOf(s), P);
   assert.deepEqual(moves.map((m) => [m.token, m.tier, m.role]), [["color.surface.sunken", "approval", "surface"]]);
   assert.equal(valueOf(relative(base(), snapshotOf(s), P), "shift.approval-unapproved"), 1);
-  const approvals = [{ scheme: "fixture", token: "color.surface.sunken", theme: "light", why: "Wells lighter on purpose.", approved_by: "owner" }];
+  // The approval names the value it approves: it clears that move, and no other.
+  const to = moves[0].to.toLowerCase();
+  const approvals = [{ scheme: "fixture", token: "color.surface.sunken", theme: "light", to, why: "Wells lighter on purpose.", approved_by: "owner" }];
   assert.equal(valueOf(relative(base(), snapshotOf(s, { approvals }), P), "shift.approval-unapproved"), 0);
+  const stale = [{ ...approvals[0], to: "#000000" }];
+  assert.equal(valueOf(relative(base(), snapshotOf(s, { approvals: stale }), P), "shift.approval-unapproved"), 1);
   // the same move under default limits is only a review
   const loose = paramsFrom({ shift: { roles: [] } });
   assert.equal(valueOf(relative(base(), snapshotOf(s), loose), "shift.approval-unapproved"), 0);

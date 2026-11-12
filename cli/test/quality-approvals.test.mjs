@@ -65,4 +65,11 @@ test("a bad entry stops the run with a message that names it", () => {
   bad({ ...ok, token: "x" }, /exactly one of token or pair/);
   bad({ ...ok, pair: ["x"] }, /pair must be two different token names/);
   bad({ ...ok, mode: "dark" }, /unknown field "mode"/);
+  // A color move's approval names the value it approves.
+  const move = { scheme: "s", theme: "dark", check: "shift.approval-unapproved", token: "color.surface.sunken", to: "#0b0f15", ...owner };
+  assert.deepEqual(approvalsFrom({ approvals: [move] }), [move]);
+  const { to, ...open } = move;
+  bad(open, /approves a color move, so it needs to/);
+  bad({ ...move, to: "#0B0F15" }, /approves a color move, so it needs to/);
+  bad({ ...ok, to: "#0b0f15" }, /to belongs only to a color move/);
 });

@@ -2,7 +2,10 @@
 // clears one flag: one check, in one scheme and mode, on one token or one pair. Only the owner adds an
 // entry. Pure: the caller reads the file.
 //
-//   { scheme, theme, check, token | pair, why, approved_by }
+//   { scheme, theme, check, token | pair, to?, why, approved_by }
+//
+// A color move's approval (a shift check) names the value it approves in to ("#rrggbb"): it clears that
+// move only. A later move of the same token is a new move and needs its own approval.
 //
 // theme is the mode ("light", "dark"), a brand's theme ("aster-dark") or "*" for every theme. check is
 // the criterion id that raised the flag ("relations.ladder-order", "invariants.spacing-map",
@@ -11,7 +14,8 @@
 // (["--menubar-item-label", "--menubar-content-background"]); a pair drawn on the page names the page
 // token (color.surface.canvas). A token and its variable match either way.
 
-const FIELDS = ["scheme", "theme", "check", "token", "pair", "why", "approved_by"];
+const FIELDS = ["scheme", "theme", "check", "token", "pair", "to", "why", "approved_by"];
+const isShift = (a) => "token" in a && (!a.check || String(a.check).startsWith("shift."));
 const text = (v) => typeof v === "string" && v.trim().length > 0;
 
 /** The problems of one entry, as plain lines; an empty list when it is valid. */
@@ -27,6 +31,8 @@ export function approvalProblems(a, i) {
   if ("token" in a && !text(a.token)) out.push(`${at}: token must be a token name.`);
   if (("token" in a) === ("pair" in a)) out.push(`${at} needs exactly one of token or pair.`);
   if ("pair" in a && !("check" in a)) out.push(`${at} names a pair, so it needs the check it approves.`);
+  if (isShift(a) && !/^#[0-9a-f]{6}$/.test(String(a.to ?? ""))) out.push(`${at} approves a color move, so it needs to: the approved value as #rrggbb, lower case.`);
+  if ("to" in a && !isShift(a)) out.push(`${at}: to belongs only to a color move's approval (a token and a shift check).`);
   return out;
 }
 
@@ -60,6 +66,11 @@ export function approvalFor(approvals, { scheme, themes, check, tokens }) {
   return themes.length && themes.every((t) => fits.some((a) => covers(a, t))) ? fits.find((a) => themes.some((t) => covers(a, t))) : null;
 }
 
-/** Whether the owner approved a color move: an entry with no check (or a shift check) for this scheme, token and theme. */
-export const approvedMove = (approvals, scheme, token, theme) =>
-  (approvals ?? []).some((a) => (!a.check || a.check.startsWith("shift.")) && a.scheme === scheme && a.token === token && covers(a, theme));
+/**
+ * Whether the owner approved this color move: an entry with no check (or a shift check) for this scheme,
+ * token and theme, whose to is the value the token moved to. A move to any other value is not approved.
+ */
+export const approvedMove = (approvals, scheme, token, theme, to) =>
+  (approvals ?? []).some(
+    (a) => (!a.check || a.check.startsWith("shift.")) && a.scheme === scheme && a.token === token && covers(a, theme) && String(a.to).toLowerCase() === String(to).toLowerCase(),
+  );

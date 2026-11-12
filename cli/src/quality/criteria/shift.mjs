@@ -22,7 +22,7 @@ export function tierOf(distance, { pass, review }) {
   return distance < pass ? "pass" : distance <= review ? "review" : "approval";
 }
 
-/** Whether the owner approved a move: an entry for this scheme and token, in this theme or "*". */
+/** Whether the owner approved a move: an entry for this scheme and token, in this theme or "*", to this value. */
 export const approved = approvedMove;
 
 const fmt = (n) => n.toFixed(3);
@@ -66,7 +66,7 @@ export function colorMoves(base, candidate, params) {
           role: tiers.role,
           tier: tierOf(distance, tiers),
           reasoned,
-          approved: approved(candidate.approvals, id, token, theme),
+          approved: approved(candidate.approvals, id, token, theme, to),
           hueTurn: turn,
           keyColor: key && distance > 1e-9 && !adjusts(c.keys, key.hue, key.mode) ? key : null,
         });
@@ -84,7 +84,7 @@ export function keyChanges(base, candidate) {
     for (const [hue, modes] of Object.entries(b?.keys ?? {}))
       for (const [mode, k] of Object.entries(modes)) {
         const now = c.keys?.[hue]?.[mode];
-        if (now && now.key !== k.key && !adjusts(c.keys, hue, mode) && !approved(candidate.approvals, id, `color.${hue}.${mode}.key`, mode))
+        if (now && now.key !== k.key && !adjusts(c.keys, hue, mode) && !approved(candidate.approvals, id, `color.${hue}.${mode}.key`, mode, hex6(now.key)))
           out.push({ scheme: id, hue, mode, from: k.key, to: now.key });
       }
   }
