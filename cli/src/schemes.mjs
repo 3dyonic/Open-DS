@@ -6,6 +6,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { guidanceFor } from "./guidance.mjs";
 import { withDefaults, withoutDefaults } from "./scheme-defaults.mjs";
+import { withTypeAndSpace, withoutTypeAndSpace } from "./type-space-generated.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -92,12 +93,13 @@ export function saveGrammar(g, roots = assetRoots()) {
 /** Write a scheme, by its id. The one way to change schemes/<id>.json (OD-289). */
 export function saveScheme(scheme, roots = assetRoots()) {
   if (!scheme?.id) throw new Error("saveScheme needs a scheme with an id. Load it with loadScheme first.");
-  // The file keeps only the component values the scheme decides (OD-291); loadScheme fills the rest.
-  const stored = withoutDefaults(scheme, grammar(roots));
+  // The file keeps only what the scheme decides: its own component values (OD-291), and the type and
+  // spacing records, not the values they generate (OD-301). loadScheme fills the rest.
+  const stored = withoutTypeAndSpace(withoutDefaults(scheme, grammar(roots)));
   writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(stored, null, 2)}\n`);
 }
 
-/** A scheme as its file stores it, without the grammar's defaults: for the checks that guard the file. */
+/** A scheme as its file stores it, without defaults or generated values: for the checks that guard the file. */
 export function storedScheme(id, roots = assetRoots()) {
   return readJson(join(roots.schemes, `${id}.json`));
 }
@@ -109,8 +111,9 @@ export function loadScheme(id, roots = assetRoots()) {
       `No scheme called "${id}". Run "open-ds list" to see the schemes: ${schemeIds(roots).join(", ")}.`,
     );
   }
-  // The file stores only what the scheme decides; every other component key takes the grammar's default.
-  return withDefaults(readJson(path), grammar(roots));
+  // The file stores only what the scheme decides; every other component key takes the grammar's default,
+  // and the type and spacing values come from their records.
+  return withTypeAndSpace(withDefaults(readJson(path), grammar(roots)));
 }
 
 /** Every grammar question by id, with its group. */

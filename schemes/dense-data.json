@@ -3214,26 +3214,6 @@
       },
       "font": {
         "size": {
-          "12": {
-            "$type": "dimension",
-            "$value": "0.75rem"
-          },
-          "14": {
-            "$type": "dimension",
-            "$value": "0.875rem"
-          },
-          "17": {
-            "$type": "dimension",
-            "$value": "1.0625rem"
-          },
-          "20": {
-            "$type": "dimension",
-            "$value": "1.25rem"
-          },
-          "24": {
-            "$type": "dimension",
-            "$value": "1.5rem"
-          },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
@@ -3251,16 +3231,10 @@
           }
         },
         "line-height": {
-          "1_2": {
-            "$type": "number",
-            "$value": 1.2,
-            "$description": "A ratio of the text size."
-          },
-          "1_45": {
-            "$type": "number",
-            "$value": 1.45,
-            "$description": "A ratio of the text size."
-          }
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
+        },
+        "line-box": {
+          "$description": "Line box options: one line's height, in rem. The type scale generates them."
         },
         "family": {
           "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
@@ -5520,104 +5494,27 @@
         },
         "gap": {
           "tight": {
-            "$type": "dimension",
-            "$value": "{space.4}",
-            "$description": "Between things that belong together.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 4px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 4px), the smallest gap on the 4px grid. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each item in a dense row reads as one unit, because steps are small, on a 4px grid (spacing.definition), and the layout is compact (spacing.values).",
-                "because": [
-                  "spacing.definition",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Between things that belong together."
           },
           "default": {
-            "$type": "dimension",
-            "$value": "{space.8}",
-            "$description": "Between items in one group.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 8px for the default gap between the items of one group in order to group and separate: two base steps (2 × 4px), twice the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So analysts tell one record from the next while a list stays close, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
-                "because": [
-                  "spacing.values",
-                  "content.q2"
-                ]
-              }
-            }
+            "$description": "Between items in one group."
           },
           "group": {
-            "$type": "dimension",
-            "$value": "{space.16}",
-            "$description": "Between groups.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 16px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 4px), four tight gaps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So a new group starts without pushing records off the screen, because the layout is compact (spacing.values) and people must keep their place (human.q1).",
-                "because": [
-                  "spacing.values",
-                  "human.q1"
-                ]
-              }
-            }
+            "$description": "Between groups."
           },
           "section": {
-            "$type": "dimension",
-            "$value": "{space.24}",
-            "$description": "Between page sections.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 24px for the section gap between page sections in order to group and separate: six base steps (6 × 4px), half again the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So sections part with a hairline and little space, and the data keeps the room, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
-                "because": [
-                  "spacing.values",
-                  "content.q2"
-                ]
-              }
-            }
+            "$description": "Between page sections."
           }
         },
         "inset": {
           "control-x": {
-            "$type": "dimension",
-            "$value": "{space.12}",
-            "$description": "Horizontal padding inside controls.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 12px for the inline padding inside controls in order to give content room inside its box: three base steps (3 × 4px), the same as a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So buttons stay short and a toolbar holds every action an expert repeats, because actions repeat constantly (tasks.q2) and the layout is compact (spacing.values).",
-                "because": [
-                  "tasks.q2",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Horizontal padding inside controls."
           },
           "container": {
-            "$type": "dimension",
-            "$value": "{space.16}",
-            "$description": "Padding inside cards and dialogs.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 16px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 4px), the same as the group gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So content starts close to the edge of its box, because experts want a lot on one screen (content.q2) and the layout is compact (spacing.values).",
-                "because": [
-                  "content.q2",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Padding inside cards and dialogs."
           },
           "cell-x": {
-            "$type": "dimension",
-            "$value": "{space.12}",
-            "$description": "Horizontal padding inside table cells.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 12px for the inline padding inside table cells in order to give content room inside its box: three base steps (3 × 4px), the same as a control. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So more columns fit, and values in two columns still stay apart, because people scan and compare rows (tasks.q1) and the layout is compact (spacing.values).",
-                "because": [
-                  "tasks.q1",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Horizontal padding inside table cells."
           }
         }
       },
@@ -5630,9 +5527,6 @@
               "compact": -1,
               "large": 0
             },
-            "row": {
-              "plus": 0
-            },
             "follows": [
               "accessibility.values",
               "spacing.roles"
@@ -5642,61 +5536,17 @@
         },
         "control": {
           "default": {
-            "$type": "dimension",
-            "$value": "{size.32}",
-            "$description": "Height of buttons and inputs, and the smallest target.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 32px for buttons and inputs in order to make a hit target: the pointer target size, step 0 of the control scale, a 32px hit area above the 24px WCAG 2.5.8 floor. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a mouse and toolbars stay short, because the smallest target is compact, for a pointer (accessibility.values), and experts work at a desk (scenarios.q1).",
-                "because": [
-                  "accessibility.values",
-                  "scenarios.q1"
-                ]
-              }
-            }
+            "$description": "Height of buttons and inputs, and the smallest target."
           },
           "compact": {
-            "$type": "dimension",
-            "$value": "{size.24}",
-            "$description": "Height of compact controls.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 24px for compact controls, such as a clear button inside a field, in order to make a hit target: one 8px step below the 32px default on the control scale, a 24px hit area that is exactly the WCAG 2.5.8 floor at AA, with no margin. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a small button fits inside a field, and the field keeps its row height, because the smallest target is compact, for a pointer (accessibility.values), and experts use a mouse at a desk (scenarios.q1).",
-                "because": [
-                  "accessibility.values",
-                  "scenarios.q1"
-                ]
-              }
-            }
+            "$description": "Height of compact controls."
           },
           "large": {
-            "$type": "dimension",
-            "$value": "{size.32}",
-            "$description": "Height of large controls. Not used in this system, so it equals the default.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 32px for large controls in order to make a hit target: the default's step on the control scale and the default's 32px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So toolbar buttons stay in line, and color and place mark the main action, because actions take three emphasis levels with one primary per view (color.count), and the smallest target is compact (accessibility.values).",
-                "because": [
-                  "color.count",
-                  "accessibility.values"
-                ]
-              }
-            }
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {
-          "$type": "dimension",
-          "$value": "{size.32}",
-          "$description": "Height of one table row.",
-          "$extensions": {
-            "open-ds": {
-              "why": "We use 32px for one table row in order to keep the eye on its row: a row one 32px default control tall and no more, as rows are a decision of their own here and a row holds controls. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So more records fit, and a control in a row fills its height, because row heights are a spacing role (spacing.roles) and the layout is compact (spacing.values).",
-              "because": [
-                "spacing.roles",
-                "spacing.values"
-              ]
-            }
-          }
+          "$description": "Height of one table row."
         },
         "icon": {
           "$type": "dimension",
@@ -5778,6 +5628,14 @@
               "caption": -1,
               "data": 0
             },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
             "line-height": {
               "tight": {
                 "ratio": 1.2,
@@ -5788,13 +5646,20 @@
                   "label"
                 ]
               },
+              "snug": {
+                "ratio": 1.3,
+                "roles": [
+                  "caption",
+                  "data"
+                ],
+                "grid": 2
+              },
               "open": {
                 "ratio": 1.45,
                 "roles": [
-                  "body",
-                  "caption",
-                  "data"
-                ]
+                  "body"
+                ],
+                "grid": 2
               }
             },
             "follows": [
@@ -5802,39 +5667,13 @@
               "typography.values",
               "typography.definition"
             ],
-            "why": "Few sizes: a small 14px body and a 1.2 ratio, each role on the next step, so every size is clearly apart and none is wasted. Short lines sit tight at 1.2; text that wraps opens to 1.45."
+            "why": "Few sizes: a small 14px body and a 1.2 ratio, each role on the next step, so every size is clearly apart and none is wasted. Short lines sit tight at 1.2. Body opens to 1.45, and data and captions sit snug at 1.3; their line boxes snap to a 2px grid, so rows of data keep whole-pixel lines."
           }
         },
         "display": {
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.display.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.24}",
-            "$extensions": {
-              "open-ds": {
-                "why": "24px is three ratio steps above the 14px body (14 × 1.2^3), the top of the scale, kept for the one key number on a dashboard. Everything below it stays small.",
-                "because": [
-                  "tasks.q1",
-                  "content.q2"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2, the tight step, because display holds one short number, not wrapped lines. The tight box keeps rows close below it.",
-                "because": [
-                  "typography.definition",
-                  "content.q2"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -5856,32 +5695,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.title.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.20}",
-            "$extensions": {
-              "open-ds": {
-                "why": "20px is two ratio steps above body and one under the 24px display, so page titles stay small and the table starts higher on the screen.",
-                "because": [
-                  "content.q2",
-                  "human.q2"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2, the tight step: a page title is one short line, so a tight box saves height above the table.",
-                "because": [
-                  "typography.definition",
-                  "content.q2"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.600}",
@@ -5901,32 +5714,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.heading.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.17}",
-            "$extensions": {
-              "open-ds": {
-                "why": "17px sits one ratio step above the 14px body (14 × 1.2). Panel and card headings name a block without taking rows from the data.",
-                "because": [
-                  "content.q2",
-                  "brand.q2"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2, the tight step for headings, keeps a panel heading in a short box, so the block below starts sooner.",
-                "because": [
-                  "typography.definition",
-                  "content.q2"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -5948,32 +5735,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.body.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.14}",
-            "$extensions": {
-              "open-ds": {
-                "why": "14px is the small body size and step 0 of the scale: every other role is a 1.2 ratio step from it, and more rows fit on the screen.",
-                "because": [
-                  "typography.values",
-                  "outcomes.q1",
-                  "brand.q3"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_45}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.45, the open step, because body is help text that wraps to several lines. The ratio gives 14px text a 20.3px line.",
-                "because": [
-                  "typography.definition"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.400}",
@@ -5992,32 +5753,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.label.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.12}",
-            "$extensions": {
-              "open-ds": {
-                "why": "12px sits one ratio step under body (14 ÷ 1.2), on the caption's step. Column headers repeat on every column, so a large style would compete with the data.",
-                "because": [
-                  "tasks.q1",
-                  "typography.values"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2, the tight step for labels: a column header is one short name, so a 14.4px line keeps the header row low.",
-                "because": [
-                  "typography.definition",
-                  "content.q2"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -6039,31 +5774,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.caption.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.12}",
-            "$extensions": {
-              "open-ds": {
-                "why": "12px, one ratio step under body and the same step as label, lets timestamps and hints step back, so the values stay the hero.",
-                "because": [
-                  "brand.q2",
-                  "content.q1"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_45}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.45, the open step for captions: hints and timestamps can wrap, and the ratio gives 12px text a 17.4px line.",
-                "because": [
-                  "typography.definition"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.400}",
@@ -6083,33 +5793,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.data.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.14}",
-            "$extensions": {
-              "open-ds": {
-                "why": "14px shares step 0 with body, so Plex Mono values read at the body size. The scale has no step between the 12px labels and 14px.",
-                "because": [
-                  "typography.roles",
-                  "typography.count",
-                  "brand.q3"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_45}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.45, the open step for data, gives 14px cells a 20.3px line. The eye keeps its row while it scans a long table.",
-                "because": [
-                  "typography.definition",
-                  "human.q1"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",

@@ -1,6 +1,7 @@
 // The rules every scheme keeps (OD-292, ADR-002 step 3). Each rule takes one scheme and returns what
 // breaks it, so the build, the harness and a user's project run the same rules. No file access.
 import { themeTokens } from "./tokens.mjs";
+import { generatedProblems } from "./type-space-generated.mjs";
 
 /** A DTCG group as { "a.b.c": token }. */
 export function flatten(group, prefix = "") {
@@ -95,12 +96,16 @@ export function spacingOffGrid(scheme) {
   return gaps;
 }
 
-/** Every rule for one scheme: [{ rule, findings }]. A scheme passes when every findings list is empty. */
-export function checkScheme(scheme) {
+/**
+ * Every rule for one scheme: [{ rule, findings }]. A scheme passes when every findings list is empty.
+ * stored is the scheme as its file holds it: with it, a value set by hand next to its record fails.
+ */
+export function checkScheme(scheme, { stored } = {}) {
   return [
     { rule: "tokens resolve", findings: tokensResolve(scheme) },
     { rule: "semantics are links", findings: rawValues(scheme).map((p) => `${scheme.id}: raw value on ${p}`) },
     { rule: "picks cite answers", findings: picksCiteAnswers(scheme).gaps },
     { rule: "spacing on the grid", findings: spacingOffGrid(scheme) },
+    { rule: "type and spacing come from their records", findings: generatedProblems(scheme, stored) },
   ];
 }

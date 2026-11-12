@@ -1264,8 +1264,8 @@
     "typeScaleSpec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["base", "ratio", "steps", "line-height", "follows", "why"],
-      "description": "On the type group (OD-294): the scale the text roles are generated from. A role's size is base × ratio^step, rounded to whole px. Its line height is the tight or the open ratio.",
+      "required": ["base", "ratio", "steps", "rounding", "line-height", "follows", "why"],
+      "description": "On the type group (OD-294, OD-301): the decision the loader generates each role's size and line height from. A role's size is base × ratio^step, rounded by the rounding rule. Its line height is the ratio of its kind. The scheme file stores no size or line height next to it.",
       "properties": {
         "base": {
           "type": "integer",
@@ -1286,15 +1286,38 @@
           "additionalProperties": { "type": "integer", "minimum": -6, "maximum": 12 },
           "description": "Each role's step on the scale, by role id. Body is 0. Roles can share a step, so data and body can share 0."
         },
+        "rounding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["grid", "roles"],
+          "description": "How a size rounds to px. The roles named here snap to the grid; every other role rounds to whole px.",
+          "properties": {
+            "grid": {
+              "type": "integer",
+              "enum": [2, 4, 8],
+              "description": "The grid in px that the named roles snap to."
+            },
+            "roles": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+              "description": "The role ids that snap to the grid, such as display, title and heading."
+            }
+          }
+        },
         "line-height": {
           "type": "object",
           "additionalProperties": false,
           "required": ["tight", "open"],
-          "description": "The two line heights, as ratios of the text size, and the roles that take each.",
+          "description": "The line height kinds, as ratios of the text size, and the roles that take each. Each role takes one kind.",
           "properties": {
             "tight": {
               "$ref": "#/$defs/lineHeightKind",
               "description": "For text that stays on one short line, such as headings and labels."
+            },
+            "snug": {
+              "$ref": "#/$defs/lineHeightKind",
+              "description": "Optional. For dense text that wraps rarely, such as table data and captions."
             },
             "open": {
               "$ref": "#/$defs/lineHeightKind",
@@ -1309,7 +1332,7 @@
             "type": "string",
             "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
           },
-          "description": "The answers the scale is written from. It is an output of those answers, so it gives no reason to the type tokens: each size and line height keeps its own."
+          "description": "The answers the scale follows. Each size and line height it generates cites them in its generated reason."
         },
         "why": {
           "type": "string",
@@ -1322,13 +1345,18 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["ratio", "roles"],
-      "description": "One line height: its ratio of the text size and the roles that take it.",
+      "description": "One line height kind: its ratio of the text size, the roles that take it, and an optional grid for line boxes.",
       "properties": {
         "ratio": {
           "type": "number",
           "minimum": 1,
           "maximum": 2,
           "description": "The line height as a ratio of the text size."
+        },
+        "grid": {
+          "type": "integer",
+          "enum": [2, 4],
+          "description": "Optional. With a grid, the line height is a line box: size × ratio, snapped to this grid in px, as a length in rem."
         },
         "roles": {
           "type": "array",
@@ -1378,7 +1406,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["base", "use-cases", "follows", "why"],
-      "description": "On the space group (OD-294): the spacing record. Each space token has a use case and a multiple; its value is base × multiple.",
+      "description": "On the space group (OD-294, OD-301): the spacing record the loader generates the gaps and insets from. Each space token has a use case and a multiple; its value is base × multiple. The scheme file stores no value next to it.",
       "properties": {
         "base": {
           "type": "integer",
@@ -1403,7 +1431,7 @@
             "type": "string",
             "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
           },
-          "description": "The answers the record is written from. It is an output of those answers, so it gives no reason to the space tokens: each token keeps its own."
+          "description": "The answers the record follows. Each gap and inset it generates cites them in its generated reason."
         },
         "why": {
           "type": "string",
@@ -1442,8 +1470,8 @@
     "controlScaleSpec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["default", "step", "steps", "row", "follows", "why"],
-      "description": "On the size group (OD-294): the control scale. A control height is default + step × its step; the row is the default plus its px. size.icon is not on it.",
+      "required": ["default", "step", "steps", "follows", "why"],
+      "description": "On the size group (OD-294, OD-301): the control scale the loader generates the control heights and the row from. A control height is default + step × its step. A row is one default control tall. size.icon is not on it.",
       "properties": {
         "default": {
           "type": "integer",
@@ -1477,20 +1505,6 @@
             }
           }
         },
-        "row": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["plus"],
-          "description": "How the table row relates to the control scale: one default control tall, plus some px.",
-          "properties": {
-            "plus": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 32,
-              "description": "The px the row adds to the default control height. 0 when the scheme has no row role: the row takes the default."
-            }
-          }
-        },
         "follows": {
           "type": "array",
           "minItems": 1,
@@ -1498,12 +1512,12 @@
             "type": "string",
             "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
           },
-          "description": "The answers the scale is written from. It is an output of those answers, so it gives no reason to the size tokens: each token keeps its own."
+          "description": "The answers the scale follows. Each control height and the row it generates cite them in their generated reason."
         },
         "why": {
           "type": "string",
           "minLength": 1,
-          "description": "The reason for the default, the step and the row, in plain words."
+          "description": "The reason for the default and the step, in plain words."
         }
       }
     }

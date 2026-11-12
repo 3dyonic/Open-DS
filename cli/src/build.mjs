@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { checkScheme } from "./scheme-checks.mjs";
-import { assetRoots, grammar, loadScheme, schemeIds } from "./schemes.mjs";
+import { assetRoots, grammar, loadScheme, schemeIds, storedScheme } from "./schemes.mjs";
 
 /** The built text of a scheme and its hash. */
 export function builtText(scheme) {
@@ -16,7 +16,7 @@ export function builtText(scheme) {
 /** One scheme, loaded and checked: { id, scheme, text, hash, results, ok }. */
 export function buildScheme(id, roots = assetRoots()) {
   const scheme = loadScheme(id, roots);
-  const results = checkScheme(scheme);
+  const results = checkScheme(scheme, { stored: storedScheme(id, roots) });
   const { text, hash } = builtText(scheme);
   return { id, scheme, text, hash, results, ok: results.every((r) => !r.findings.length) };
 }

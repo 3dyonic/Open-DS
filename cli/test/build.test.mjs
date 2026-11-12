@@ -48,3 +48,23 @@ test("a failed rule writes nothing", () => {
     rmSync(tmp, { recursive: true, force: true });
   }
 });
+
+test("a type value set by hand next to its record fails the build (OD-301)", () => {
+  const tmp = mkdtempSync(join(tmpdir(), "open-ds-build-"));
+  try {
+    const handSet = { ...roots, schemes: join(tmp, "schemes") };
+    cpSync(roots.schemes, handSet.schemes, { recursive: true });
+    const s = loadScheme("dense-data", handSet);
+    s.tokens.semantic.type.body["font-size"].$value = "{font.size.12}";
+    saveScheme(s, handSet);
+    const b = buildScheme("dense-data", handSet);
+    const rule = b.results.find((r) => r.rule === "type and spacing come from their records");
+    assert.equal(b.ok, false);
+    assert.deepEqual(rule.findings, [
+      "dense-data: type.body.font-size is set by hand next to its record; remove its value, the loader generates it",
+      "dense-data: type.body.font-size is {font.size.12}, and its record gives {font.size.14}",
+    ]);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});

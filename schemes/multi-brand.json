@@ -3293,10 +3293,6 @@
           "$type": "dimension",
           "$value": "2.75rem"
         },
-        "48": {
-          "$type": "dimension",
-          "$value": "3rem"
-        },
         "$description": "Size options for controls, rows and icons."
       },
       "radius": {
@@ -3345,26 +3341,6 @@
       },
       "font": {
         "size": {
-          "13": {
-            "$type": "dimension",
-            "$value": "0.8125rem"
-          },
-          "16": {
-            "$type": "dimension",
-            "$value": "1rem"
-          },
-          "20": {
-            "$type": "dimension",
-            "$value": "1.25rem"
-          },
-          "25": {
-            "$type": "dimension",
-            "$value": "1.5625rem"
-          },
-          "32": {
-            "$type": "dimension",
-            "$value": "2rem"
-          },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
@@ -3382,16 +3358,7 @@
           }
         },
         "line-height": {
-          "1_2": {
-            "$type": "number",
-            "$value": 1.2,
-            "$description": "A ratio of the text size."
-          },
-          "1_5": {
-            "$type": "number",
-            "$value": 1.5,
-            "$description": "A ratio of the text size."
-          }
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
         },
         "family": {
           "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
@@ -9913,104 +9880,27 @@
         },
         "gap": {
           "tight": {
-            "$type": "dimension",
-            "$value": "{space.8}",
-            "$description": "Between things that belong together.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 8px for the tight gap between the parts of one item in order to group and separate: two base steps (2 × 4px) on the shared grid. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So the shared parts look the same in every brand, because the brands share one set of steps on a 4px grid (spacing.definition) and three brands share one system (business.q2).",
-                "because": [
-                  "spacing.definition",
-                  "business.q2"
-                ]
-              }
-            }
+            "$description": "Between things that belong together."
           },
           "default": {
-            "$type": "dimension",
-            "$value": "{space.12}",
-            "$description": "Between items in one group.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 12px for the default gap between the fields of one form group in order to group and separate: three base steps (3 × 4px), one step wider than the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So customers on phones tap the right field, because the layout is comfortable (spacing.values) and customers sign up on phones (scenarios.q1).",
-                "because": [
-                  "spacing.values",
-                  "scenarios.q1"
-                ]
-              }
-            }
+            "$description": "Between items in one group."
           },
           "group": {
-            "$type": "dimension",
-            "$value": "{space.24}",
-            "$description": "Between groups.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 24px for the group gap between groups in a form in order to group and separate: six base steps (6 × 4px), twice the default gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So sign-up forms keep the same shape in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
-                "because": [
-                  "business.q2",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Between groups."
           },
           "section": {
-            "$type": "dimension",
-            "$value": "{space.48}",
-            "$description": "Between page sections.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 48px for the section gap between page sections in order to group and separate: twelve base steps (12 × 4px), twice the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each offer card stands apart on a product page, because the layout is comfortable (spacing.values) and the 4px grid holds big steps for product pages (spacing.definition).",
-                "because": [
-                  "spacing.values",
-                  "spacing.definition"
-                ]
-              }
-            }
+            "$description": "Between page sections."
           }
         },
         "inset": {
           "control-x": {
-            "$type": "dimension",
-            "$value": "{space.16}",
-            "$description": "Horizontal padding inside controls.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 16px for the inline padding inside controls in order to give content room inside its box: four base steps (4 × 4px), the same as a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So buttons are the same size in every brand, because three brands share one system (business.q2) and steps sit on a 4px grid (spacing.definition).",
-                "because": [
-                  "business.q2",
-                  "spacing.definition"
-                ]
-              }
-            }
+            "$description": "Horizontal padding inside controls."
           },
           "container": {
-            "$type": "dimension",
-            "$value": "{space.24}",
-            "$description": "Padding inside cards and dialogs.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: six base steps (6 × 4px), the same as the group gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So cards hold offers the same way in every brand, because three brands share one system (business.q2) and the layout is comfortable (spacing.values).",
-                "because": [
-                  "business.q2",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Padding inside cards and dialogs."
           },
           "cell-x": {
-            "$type": "dimension",
-            "$value": "{space.16}",
-            "$description": "Horizontal padding inside table cells.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: four base steps (4 × 4px), the same as a control. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So account tables keep room between columns on a phone, because customers sign up on phones (scenarios.q1) and the layout is comfortable (spacing.values).",
-                "because": [
-                  "scenarios.q1",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Horizontal padding inside table cells."
           }
         }
       },
@@ -10023,73 +9913,26 @@
               "compact": -1,
               "large": 0
             },
-            "row": {
-              "plus": 4
-            },
             "follows": [
               "accessibility.values",
               "spacing.roles"
             ],
-            "why": "A touch target sets the 44px default. Compact is one 8px step below it; large equals the default, as brand color marks the main action. Rows are a decision of their own, 4px taller than a control."
+            "why": "A touch target sets the 44px default. Compact is one 8px step below it; large equals the default, as brand color marks the main action. Rows are a decision of their own and stay one control tall."
           }
         },
         "control": {
           "default": {
-            "$type": "dimension",
-            "$value": "{size.44}",
-            "$description": "Height of buttons and inputs, and the smallest target.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 44px for buttons and inputs in order to make a hit target: the touch target size, step 0 of the control scale, a 44px hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a thumb in every brand, because the smallest target is touch size (accessibility.values) and customers sign up on phones (scenarios.q1).",
-                "because": [
-                  "accessibility.values",
-                  "scenarios.q1"
-                ]
-              }
-            }
+            "$description": "Height of buttons and inputs, and the smallest target."
           },
           "compact": {
-            "$type": "dimension",
-            "$value": "{size.36}",
-            "$description": "Height of compact controls.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 36px for compact controls, such as a show-password button inside a field, in order to make a hit target: one 8px step below the 44px default on the control scale; the 36px box relies on the padding of the field around it for a touch-size hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So the button fits inside the field in every brand, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
-                "because": [
-                  "business.q2",
-                  "accessibility.values"
-                ]
-              }
-            }
+            "$description": "Height of compact controls."
           },
           "large": {
-            "$type": "dimension",
-            "$value": "{size.44}",
-            "$description": "Height of large controls. Not used in this system, so it equals the default.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 44px for large controls in order to make a hit target: the default's step on the control scale and the default's 44px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every brand's forms keep one height, and brand color marks the main action, because three brands share one system (business.q2) and the smallest target is touch size (accessibility.values).",
-                "because": [
-                  "business.q2",
-                  "accessibility.values"
-                ]
-              }
-            }
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {
-          "$type": "dimension",
-          "$value": "{size.48}",
-          "$description": "Height of one table row.",
-          "$extensions": {
-            "open-ds": {
-              "why": "We use 48px for one table row in order to keep the eye on its row: a row one 44px default control tall plus 4px, as rows are a decision of their own here. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So rows stay easy to tap on a phone, a little taller than the control they hold, because account tables need a row height (spacing.roles) and the layout is comfortable (spacing.values).",
-              "because": [
-                "spacing.roles",
-                "spacing.values"
-              ]
-            }
-          }
+          "$description": "Height of one table row."
         },
         "icon": {
           "$type": "dimension",
@@ -10188,6 +10031,14 @@
               "caption": -1,
               "data": 0
             },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
             "line-height": {
               "tight": {
                 "ratio": 1.2,
@@ -10220,32 +10071,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.display.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.32}",
-            "$extensions": {
-              "open-ds": {
-                "why": "32px is three ratio steps above the 16px body (16 × 1.26^3), the top of the shared scale, for the product-page headline where each brand speaks loudest.",
-                "because": [
-                  "brand.q2",
-                  "typography.count"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2 gives the 32px product headline 38px lines, so a headline that wraps stays one block in every brand face.",
-                "because": [
-                  "brand.q2",
-                  "typography.definition"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.700}",
@@ -10265,32 +10090,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.title.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.25}",
-            "$extensions": {
-              "open-ds": {
-                "why": "25px titles each sign-up and account page: two ratio steps above body and one under the 32px headline, because forms carry most text here.",
-                "because": [
-                  "typography.lands",
-                  "typography.count"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2 keeps a 25px page title tight above its form, so a title that wraps still reads as one title.",
-                "because": [
-                  "typography.lands",
-                  "content.q1"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -10312,32 +10111,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.heading.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.20}",
-            "$extensions": {
-              "open-ds": {
-                "why": "20px heads the sections inside a page: one ratio step above the 16px body and one under the 25px title.",
-                "because": [
-                  "typography.count",
-                  "typography.roles"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2 holds a 20px section heading close to the fields it names, as one shared role in every brand face.",
-                "because": [
-                  "typography.roles",
-                  "brand.q3"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.600}",
@@ -10357,32 +10130,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.body.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.16}",
-            "$extensions": {
-              "open-ds": {
-                "why": "16px is the regular body size and step 0 of the shared scale; every brand face sets product and form text at it.",
-                "because": [
-                  "typography.values",
-                  "brand.q3"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_5}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.5 gives 16px body text 24px lines, the same in Inter, Plus Jakarta Sans and Poppins, so paragraphs stay readable.",
-                "because": [
-                  "typography.values",
-                  "brand.q3"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -10404,32 +10151,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.label.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.13}",
-            "$extensions": {
-              "open-ds": {
-                "why": "13px names every field, one ratio step under the 16px text inside it (16 ÷ 1.26), so the label and the entry stay apart.",
-                "because": [
-                  "typography.lands",
-                  "people.q2"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_2}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.2 keeps a 13px field label one tight line, directly above its input in sign-up and checkout forms.",
-                "because": [
-                  "typography.lands",
-                  "people.q2"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.600}",
@@ -10450,32 +10171,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.caption.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.13}",
-            "$extensions": {
-              "open-ds": {
-                "why": "13px, the smallest size, holds fees, dates and hints on the label's step, one ratio step under the 16px body.",
-                "because": [
-                  "content.q1",
-                  "typography.count"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_5}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.5 gives 13px captions 20px lines, so a hint or fee note that wraps stays easy to read.",
-                "because": [
-                  "content.q1",
-                  "people.q2"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.400}",
@@ -10495,31 +10190,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.data.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.16}",
-            "$extensions": {
-              "open-ds": {
-                "why": "16px shares step 0 with body: plan and order tables hold prices in sentences and offers, not columns of figures to compare.",
-                "because": [
-                  "content.q1"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_5}",
-            "$extensions": {
-              "open-ds": {
-                "why": "1.5 matches body, so a 16px price in a plan table sits on the same 24px line as the text beside it.",
-                "because": [
-                  "content.q1",
-                  "brand.q3"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",

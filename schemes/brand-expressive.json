@@ -3067,30 +3067,6 @@
       },
       "font": {
         "size": {
-          "14": {
-            "$type": "dimension",
-            "$value": "0.875rem"
-          },
-          "15": {
-            "$type": "dimension",
-            "$value": "0.9375rem"
-          },
-          "17": {
-            "$type": "dimension",
-            "$value": "1.0625rem"
-          },
-          "29": {
-            "$type": "dimension",
-            "$value": "1.8125rem"
-          },
-          "40": {
-            "$type": "dimension",
-            "$value": "2.5rem"
-          },
-          "56": {
-            "$type": "dimension",
-            "$value": "3.5rem"
-          },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
@@ -3108,16 +3084,7 @@
           }
         },
         "line-height": {
-          "1_1": {
-            "$type": "number",
-            "$value": 1.1,
-            "$description": "A ratio of the text size."
-          },
-          "1_55": {
-            "$type": "number",
-            "$value": 1.55,
-            "$description": "A ratio of the text size."
-          }
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
         },
         "family": {
           "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
@@ -5403,104 +5370,27 @@
         },
         "gap": {
           "tight": {
-            "$type": "dimension",
-            "$value": "{space.8}",
-            "$description": "Between things that belong together.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 8px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 8px), the smallest of the big even steps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So a call to action reads as one bold unit, because steps are big and even (spacing.definition) and the content is images and campaigns (content.q1).",
-                "because": [
-                  "spacing.definition",
-                  "content.q1"
-                ]
-              }
-            }
+            "$description": "Between things that belong together."
           },
           "default": {
-            "$type": "dimension",
-            "$value": "{space.16}",
-            "$description": "Between items in one group.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So air between items keeps big type readable, because the layout is spacious (spacing.values) and delight is the point (human.q1).",
-                "because": [
-                  "spacing.values",
-                  "human.q1"
-                ]
-              }
-            }
+            "$description": "Between items in one group."
           },
           "group": {
-            "$type": "dimension",
-            "$value": "{space.40}",
-            "$description": "Between groups.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 40px for the group gap between groups inside a section in order to group and separate: five base steps (5 × 8px), two and a half default gaps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each group has its own moment inside a section, because the layout is spacious (spacing.values) and each section holds one big idea (content.q2).",
-                "because": [
-                  "spacing.values",
-                  "content.q2"
-                ]
-              }
-            }
+            "$description": "Between groups."
           },
           "section": {
-            "$type": "dimension",
-            "$value": "{space.64}",
-            "$description": "Between page sections.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 64px for the section gap between big sections in order to group and separate: eight base steps (8 × 8px), four default gaps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each section, with its color block, is a moment of its own, because space works between big sections (spacing.lands) and the layout is spacious (spacing.values).",
-                "because": [
-                  "spacing.lands",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Between page sections."
           }
         },
         "inset": {
           "control-x": {
-            "$type": "dimension",
-            "$value": "{space.28}",
-            "$description": "Horizontal padding inside controls.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 28px for the inline padding inside controls in order to give content room inside its box: three and a half base steps (3.5 × 8px), wider than a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So pill buttons look bold and are easy to hit with a thumb, because the brand is bold (brand.q1) and visitors are on the move (scenarios.q1).",
-                "because": [
-                  "brand.q1",
-                  "scenarios.q1"
-                ]
-              }
-            }
+            "$description": "Horizontal padding inside controls."
           },
           "container": {
-            "$type": "dimension",
-            "$value": "{space.32}",
-            "$description": "Padding inside cards and dialogs.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 32px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 8px), twice the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So each card holds its moment, because delight is the point (human.q1) and the brand is bold (brand.q1).",
-                "because": [
-                  "human.q1",
-                  "brand.q1"
-                ]
-              }
-            }
+            "$description": "Padding inside cards and dialogs."
           },
           "cell-x": {
-            "$type": "dimension",
-            "$value": "{space.16}",
-            "$description": "Horizontal padding inside table cells.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So the rare table keeps the page's airy rhythm, because the content is images and campaigns, with few tables (content.q1), and the layout is spacious (spacing.values).",
-                "because": [
-                  "content.q1",
-                  "spacing.values"
-                ]
-              }
-            }
+            "$description": "Horizontal padding inside table cells."
           }
         }
       },
@@ -5513,9 +5403,6 @@
               "compact": -1,
               "large": 1
             },
-            "row": {
-              "plus": 0
-            },
             "follows": [
               "accessibility.values",
               "spacing.roles"
@@ -5525,61 +5412,17 @@
         },
         "control": {
           "default": {
-            "$type": "dimension",
-            "$value": "{size.52}",
-            "$description": "Height of buttons and inputs, and the smallest target.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 52px for buttons and inputs in order to make a hit target: the touch target size, step 0 of the control scale, a 52px hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a thumb, because the smallest target is touch size (accessibility.values) and visitors arrive on their phones (scenarios.q1).",
-                "because": [
-                  "accessibility.values",
-                  "scenarios.q1"
-                ]
-              }
-            }
+            "$description": "Height of buttons and inputs, and the smallest target."
           },
           "compact": {
-            "$type": "dimension",
-            "$value": "{size.44}",
-            "$description": "Height of compact controls.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 44px for compact controls, such as a button inside a pill field, in order to make a hit target: one 8px step below the 52px default on the control scale, a 44px hit area that still fits a thumb. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a button sits inside the pill field and still fits a thumb, because visitors are on the move (scenarios.q1) and the smallest target is touch size (accessibility.values).",
-                "because": [
-                  "scenarios.q1",
-                  "accessibility.values"
-                ]
-              }
-            }
+            "$description": "Height of compact controls."
           },
           "large": {
-            "$type": "dimension",
-            "$value": "{size.60}",
-            "$description": "Height of large controls: the one loud call to action.",
-            "$extensions": {
-              "open-ds": {
-                "why": "We use 60px for the one loud call to action in order to make a hit target: one 8px step above the 52px default on the control scale, a 60px hit area, as sign-up is the scheme's hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So the sign-up button wins the eye and the thumb, because there is one action, sign up (tasks.q2), and visitors are on the move (scenarios.q1).",
-                "because": [
-                  "tasks.q2",
-                  "scenarios.q1"
-                ]
-              }
-            }
+            "$description": "Height of large controls: the one loud call to action."
           }
         },
         "row": {
-          "$type": "dimension",
-          "$value": "{size.52}",
-          "$description": "Height of one table row.",
-          "$extensions": {
-            "open-ds": {
-              "why": "We use 52px for one table row in order to keep the eye on its row: by inheritance, as the scheme has no row role and a row holds controls, so size.row takes size.control.default, one 52px control tall. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So the rare table keeps the brand's airy rhythm, because spacing has gaps and insets only (spacing.roles) and the smallest target is touch size (accessibility.values).",
-              "because": [
-                "spacing.roles",
-                "accessibility.values"
-              ]
-            }
-          }
+          "$description": "Height of one table row."
         },
         "icon": {
           "$type": "dimension",
@@ -5660,6 +5503,14 @@
               "caption": -2,
               "data": 0
             },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
             "line-height": {
               "tight": {
                 "ratio": 1.1,
@@ -5692,33 +5543,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.display.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.56}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Display sets 56px, eleven fine steps above the 17px body (17 × 1.114^11), the top of the scale, because every hero opens with one big idea in the brand's loudest voice.",
-                "because": [
-                  "typography.roles",
-                  "content.q2",
-                  "brand.q2"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_1}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Display lines use 1.1, the tight ratio the scheme gives its big sizes, so a 56px headline stacks as one bold block.",
-                "because": [
-                  "typography.definition",
-                  "brand.q1"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.800}",
@@ -5740,32 +5564,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.title.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.40}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Title sets 40px, eight steps above body and three under display, so the sign-up form's title stays big and keeps the form in view on a phone.",
-                "because": [
-                  "tasks.q2",
-                  "scenarios.q1",
-                  "typography.count"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_1}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Title lines use 1.1 like display, because a 40px title is still a headline size in the proportional scale.",
-                "because": [
-                  "typography.definition"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.800}",
@@ -5785,33 +5583,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.heading.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.29}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Heading sets 29px, five steps above body and three under the 40px title, the smallest headline step, so it carries the display face into cards and dialogs.",
-                "because": [
-                  "brand.q3",
-                  "content.q2",
-                  "typography.count"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_1}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Heading lines use 1.1, the headline ratio, because headings stay short: three to six words, as the voice asks.",
-                "because": [
-                  "typography.definition",
-                  "voice.lands"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -5833,33 +5604,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.body.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.17}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Body sets 17px in DM Sans, step 0 of the scale, so short punchy copy reads easily on the phones visitors arrive on.",
-                "because": [
-                  "brand.q3",
-                  "content.q1",
-                  "scenarios.q1"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_55}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Body lines open to 1.55, the relaxed ratio, so DM Sans copy reads easily while display lines sit tight at 1.1.",
-                "because": [
-                  "typography.definition",
-                  "brand.q3"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.400}",
@@ -5879,31 +5623,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.label.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.15}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Label sets 15px, one step under body and one over the 14px caption, so field labels stay readable on vivid color.",
-                "because": [
-                  "people.q2"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_1}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Labels use the tight 1.1 ratio, because a label is one short line beside a pill control.",
-                "because": [
-                  "typography.definition",
-                  "shape.values"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -5925,32 +5644,6 @@
             "$type": "fontFamily",
             "$value": "{theme.type.caption.font-family}"
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.14}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Caption sets 14px, two steps under the 17px body, the smallest step, so fine print stays small and headlines keep the attention that wins sign-ups.",
-                "because": [
-                  "outcomes.q1",
-                  "content.q1"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_55}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Captions keep the 1.55 body ratio, so small fine print in DM Sans stays easy to read across lines.",
-                "because": [
-                  "typography.definition",
-                  "brand.q3"
-                ]
-              }
-            }
-          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.400}",
@@ -5970,31 +5663,6 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.data.font-family}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "{font.size.17}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Data shares step 0 with body at 17px, because tables are rare and short, so cells read like the rest of the page.",
-                "because": [
-                  "content.q1"
-                ]
-              }
-            }
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": "{font.line-height.1_55}",
-            "$extensions": {
-              "open-ds": {
-                "why": "Data cells keep the body's 1.55 ratio, so a rare table keeps the page's airy rhythm.",
-                "because": [
-                  "content.q1",
-                  "spacing.values"
-                ]
-              }
-            }
           },
           "font-weight": {
             "$type": "fontWeight",

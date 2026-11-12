@@ -1,10 +1,12 @@
-// Spacing by use case and the control scale (OD-294).
+// Spacing by use case and the control scale (OD-294, OD-301).
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   controlHeights,
   controlProblems,
+  controlTokens,
   spaceProblems,
+  spaceTokens,
   spaceValues,
 } from "../src/spacing-use-cases.mjs";
 
@@ -72,35 +74,36 @@ const control = {
   default: 52,
   step: 8,
   steps: { compact: -1, large: 1 },
-  row: { plus: 0 },
+  follows: ["accessibility.values"],
 };
 
-test("a control height is default + step × its step; the row is the default plus its px", () => {
+test("a control height is default + step × its step; a row is one default control tall", () => {
   assert.deepEqual(controlHeights(control), {
     "control.compact": 44,
     "control.default": 52,
     "control.large": 60,
     row: 52,
   });
-  assert.equal(controlHeights({ ...control, row: { plus: 4 } }).row, 56);
 });
 
-test("a scheme with no row role takes the default as its row; compact sits below default", () => {
-  assert.deepEqual(controlProblems(control, { rowRole: false }), []);
-  assert.ok(
-    controlProblems(
-      { ...control, row: { plus: 4 } },
-      { rowRole: false },
-    )[0].startsWith("the row adds 4px"),
+test("compact sits below default and large at or above it", () => {
+  assert.deepEqual(controlProblems(control), []);
+  assert.ok(controlProblems({ ...control, steps: { compact: 0, large: 0 } })[0].startsWith("the compact step 0"));
+  assert.ok(controlProblems({ ...control, steps: { compact: -1, large: -1 } })[0].startsWith("the large step -1"));
+});
+
+test("each generated token links its option and states its rule, numbers and answers", () => {
+  const spaced = spaceTokens({ ...space, follows: ["spacing.definition", "spacing.values"] });
+  assert.equal(spaced["inset.control-x"].$value, "{space.20}");
+  assert.equal(
+    spaced["inset.control-x"].$extensions["open-ds"].why,
+    "The control-x inset is 20px = 2.5 × the 8px base, for its component container inline use case (spacing.definition, spacing.values).",
   );
-  assert.deepEqual(
-    controlProblems({ ...control, row: { plus: 4 } }, { rowRole: true }),
-    [],
+  const sized = controlTokens(control);
+  assert.equal(sized.row.$value, "{size.52}");
+  assert.equal(
+    sized["control.compact"].$extensions["open-ds"].why,
+    "A compact control is 44px = 52px − 1 × the 8px step on the control scale, so its hit area follows the default (accessibility.values).",
   );
-  assert.ok(
-    controlProblems(
-      { ...control, steps: { compact: 0, large: 0 } },
-      { rowRole: true },
-    )[0].startsWith("the compact step 0"),
-  );
+  assert.deepEqual(sized.row.$extensions["open-ds"].because, ["accessibility.values"]);
 });
