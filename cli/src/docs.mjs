@@ -257,6 +257,14 @@ function sampleFact(path, type, raw) {
   const px = m ? Math.round(Number(m[1]) * (m[2] === "px" ? 1 : 16)) : "";
   return px ? { kind, value, note: `${px}px` } : { kind, value };
 }
+// A sentence with contrast ratios in it, as words and numbers (doc-composites base/Measured):
+// "…, 18.42:1 on surface.default" → ["…, ", { ratio: 18.42 }, " on surface.default"].
+const measured = (text) =>
+  String(text)
+    .split(/\b(\d+(?:\.\d+)?):1\b/)
+    .map((p, i) => (i % 2 ? { ratio: Number(p) } : p))
+    .filter((p) => p !== "");
+
 function sample(path, type, raw) {
   const f = sampleFact(path, type, raw);
   return f ? draw(f.kind, f.value, f.note ? ` note="${f.note}"` : "") : "";
@@ -270,8 +278,10 @@ const ROLE_TEXT = {
   title: (x) => x.smp.screen,
   heading: (x) => x.smp.card?.title ?? x.smp.screen,
   label: (x) => x.smp.actions?.primary,
-  data: (x) => x.smp.metrics?.map((m) => `${m.label} ${m.value}`).join(" · "),
+  data: (x) => x.smp.metrics?.map((m) => `${m.label} ${m.value}`),
 };
+// A role's sample line: one text, or for data its parts, each a value of its own ({ parts }).
+const roleLine = (line, fallback) => (Array.isArray(line) && line.length ? { parts: line } : { text: line || fallback });
 function specimen(tokens, text, x = {}) {
   const roles = [
     ...new Set(
@@ -288,10 +298,9 @@ function specimen(tokens, text, x = {}) {
       data: {
         roles: roles.map((r) => {
           const p = `type.${r}`;
-          const line = (x.smp && ROLE_TEXT[r]?.(x)) || text;
           return {
             role: r,
-            text: line,
+            ...roleLine(x.smp && ROLE_TEXT[r]?.(x), text),
             ...Object.fromEntries(
               [
                 ["size", "font-size"],
@@ -709,7 +718,7 @@ export function docsPages(
     return steps.length && isPrimitive(steps.at(-1)) ? steps.at(-1) : undefined;
   };
   // OD-217: in a scheme with several brands, a table that names tokens or values is written once per
-  // brand. The brand picked in the top bar shows (generate.mjs scopes .odv-brandset); with one brand
+  // brand. The brand picked in the top bar shows (generate.mjs hides the other brands' BrandSets); with one brand
   // the table is written once, as before. Headings stay outside, so the page's contents do not repeat.
   const brandList = Object.keys(scheme.tokens.brands ?? {});
   const pairOf = (b) => {
@@ -722,8 +731,7 @@ export function docsPages(
     ];
   };
   // One brand's set, in a scheme with several: a BrandSet around the page's own Markdown (OD-284).
-  const brandSet = (b, body) =>
-    `::::brand{id="${b}" name="${(scheme.tokens.brands[b]?.label ?? b).replaceAll('"', "'")}"}\n${body}\n::::`;
+  const brandSet = (b, body) => `::::brand{id="${b}"}\n${body}\n::::`;
   const perBrand = (fn) =>
     brandsOf.length < 2
       ? fn(first, dark)
@@ -1104,17 +1112,23 @@ export function docsPages(
     // The data comes from decisions.mjs, the same reference get_decision_reference returns.
     const lc = lower;
     const ref = decisionReference(scheme, g);
-    const lineOf = {};
+    // An earlier answer as facts: its scope (for a scope question), the question and the answer.
+    const answerFact = (id, question, answer) => ({
+      ...(secOf[id]?.scope && { scope: secOf[id].title }),
+      question,
+      answer,
+    });
+    const factOf = {};
     for (const sec of ref.sections)
       for (const q of sec.questions)
-        for (const b of q.because) lineOf[b.question] = b.line;
+        for (const b of q.because) factOf[b.question] = answerFact(b.question, b.text, b.answer);
     const made = {};
     for (const sec of ref.sections)
       for (const q of sec.questions)
         made[q.id] = [
           ...q.decided.answers.map((d) => ({
             kind: "Answer",
-            text: d.text,
+            fact: answerFact(d.question, qs[d.question].text, label(d.question)),
             href: d.page ?? `#${d.section}`,
             go: d.page_title,
           })),
@@ -1132,7 +1146,7 @@ export function docsPages(
           })),
           ...(q.decided.picks ?? []).map((d) => ({
             kind: "Pick",
-            text: d.text,
+            fact: { token: d.token, mode: d.mode, pick: d.pick, ...(d.why && { why: measured(d.why) }) },
             href: d.page,
             go: d.page_title,
           })),
@@ -1155,7 +1169,7 @@ export function docsPages(
         answer: label(q.id),
         why: sentence(a.why),
         ...(weighs.length && { weighs }),
-        because: (a.because ?? []).map((x) => lineOf[x]).filter(Boolean),
+        because: (a.because ?? []).map((x) => factOf[x]).filter(Boolean),
         decided: {
           groups: Object.entries(GROUP)
             .map(([k, kind]) => ({
@@ -1163,7 +1177,7 @@ export function docsPages(
               items: all
                 .filter((d) => d.kind === k)
                 .map((d) => ({
-                  text: d.text,
+                  ...(d.fact ?? { text: d.text }),
                   ...(d.href && d.go && { link: { label: d.go, href: d.href } }),
                 })),
             }))
@@ -1242,10 +1256,15 @@ export function docsPages(
     (compositeData["decision-tree"] ??= {}).start = { roots: roots.map((q) => branch(q)) };
     const tree = `::decision-tree{id="start"}`;
     // Every question: one fold per section, one open at a time (src/clientModules/scales.ts).
+    // A group's caption is its data (OD-284): the directive names the entry.
+    const groupOf = (grp) => {
+      (compositeData.group ??= {})[grp.toLowerCase()] = { title: grp };
+      return grp.toLowerCase();
+    };
     const every = ["Reasons", "Scopes"]
       .map(
         (grp) =>
-          `::::group{title="${grp}"}\n` +
+          `::::group{id="${groupOf(grp)}"}\n` +
           sections
             .filter((r) => r.group === grp)
             .map(
@@ -1699,7 +1718,7 @@ export function docsPages(
         own.forEach((p) => used.add(p));
         groups.push({
           title: r,
-          sample: { kind: "type", role: r, text: (smp && ROLE_TEXT[r]?.({ smp })) || scheme.scenarios[0].text },
+          sample: { kind: "type", role: r, ...roleLine(smp && ROLE_TEXT[r]?.({ smp }), scheme.scenarios[0].text) },
           api: ["font-family", "font-size", "line-height", "font-weight"].map((k) => `type.${r}.${k}`).filter((p) => own.includes(p)).map(apiRow),
           rules: rulesFor([`type.${r}`]),
         });
@@ -1901,8 +1920,8 @@ export function docsPages(
           big: "Aa",
           token: x.path,
           sample: [
-            "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-            "0123456789 · & ? !",
+            ["Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"],
+            ["0123456789", "& ? !"],
           ],
           ...(weights.length && {
             weights: weights.map((w) => ({
@@ -2006,12 +2025,10 @@ export function docsPages(
           value: String(cssValue(x.ref)).replace(/"/g, "'"),
         })),
         {
-          kind: "text",
-          value: fams
-            .map((x) =>
-              String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""),
-            )
-            .join(" · "),
+          kind: "names",
+          names: fams.map((x) =>
+            String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""),
+          ),
         },
       ];
     }
@@ -2033,7 +2050,8 @@ export function docsPages(
     const samples = primSpecimen(k);
     return {
       title: k.title,
-      text: `${k.list.length} primitives · ${n} in use`,
+      text: `${k.list.length} primitives`,
+      note: `${n} in use`,
       href: `./${k.id}`,
       ...(robots && { robot: robotPics(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other) }),
       ...(samples.length && { samples }),
@@ -2525,7 +2543,7 @@ export function docsPages(
     text: c.description ?? "",
     label: out
       ? { text: "Left out", tone: "warning" }
-      : { text: "In · built", tone: "info" },
+      : { text: "In", note: "built", tone: "info" },
     ...(hasPage(c.id) && { href: `./${c.id}` }),
   });
   const inItems = catalogue.filter((c) => c.id in inventory);
@@ -2761,8 +2779,8 @@ export function docsPages(
         ...(t.dark.value !== t.light.value && { darkValue: String(t.dark.value) }),
         byScheme: Boolean(t.by_scheme),
         ...(t.rule && { rule: t.rule }),
-        pick: t.light.why ?? t.light.pick,
-        ...((t.dark.value !== t.light.value || t.dark.why !== t.light.why) && { darkPick: t.dark.why ?? t.dark.pick }),
+        pick: measured(t.light.why ?? t.light.pick),
+        ...((t.dark.value !== t.light.value || t.dark.why !== t.light.why) && { darkPick: measured(t.dark.why ?? t.dark.pick) }),
         shares: t.shares.map((x) => x.replace(/^color\./, "")),
       })),
     ];
@@ -2906,6 +2924,7 @@ export function docsPages(
     // The live component, from Storybook (OD-183), in light and dark: a Preview composite (OD-284).
     // The link works where the embed cannot load.
     (compositeData.preview ??= {})[`${name}/live`] = {
+      ...(robots && { robot: robotPics("slumber") }),
       title: `${title(name)} examples in Storybook`,
       wait: "Start Storybook to see it live: npm run storybook",
       frames: {
@@ -2921,7 +2940,7 @@ export function docsPages(
       ],
     };
     if (name === "icon") parts.push(iconWays());
-    parts.push(`## See it live\n\n::preview{${introRobot("slumber")}id="${name}/live"}`);
+    parts.push(`## See it live\n\n::preview{id="${name}/live"}`);
     // A kept component's own use leads "When to use it" (OD-211): where this scheme uses it, then
     // what it is for in any design system.
     const ownUse = leftOut(name) ? "" : (guide?.why ?? inventory[name] ?? "");
@@ -2962,13 +2981,14 @@ export function docsPages(
               if (v.axis !== "state") {
                 const id = `${name}/${v.axis}/${v.id}`;
                 (compositeData.preview ??= {})[id] = {
+                  ...(robots && { robot: robotPics("slumber") }),
                   title: `${title(name)} ${v.id}`,
                   wait: "Start Storybook to see it live",
                   frames: {
                     light: `${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme};mode:light&args=${v.axis}:${v.id}`,
                   },
                 };
-                stage = `::preview{${introRobot("slumber")}id="${id}"}\n\n`;
+                stage = `::preview{id="${id}"}\n\n`;
               }
               const when = [
                 v.reference.apply_when
@@ -3205,18 +3225,20 @@ export function docsPages(
     steps: "id",
     "decision-tree": "id",
     "decision-answer": "id",
+    group: "id",
   };
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;
     const data = {};
-    for (const m of text.matchAll(/^::([a-z-]+)\{([^}]*)\}$/gm)) {
+    // A leaf directive (::kind{…}) or a container's opening line (::::brand{…}).
+    for (const m of text.matchAll(/^:{2,}([a-z-]+)\{([^}]*)\}$/gm)) {
       const [, kind, attrs] = m;
       // The directive's attributes, in any order; the one its kind names holds the entry's id.
       const id = new RegExp(`(?:^|\\s)${KEYS[kind]}="([^"]+)"`).exec(attrs)?.[1];
       if (!KEYS[kind] || !id) continue;
       if (compositeData[kind]?.[id] === undefined)
         throw new Error(
-          `${p}: ::${kind}{${key}="${id}"} has no data. The generator wrote the line without its rows.`,
+          `${p}: ::${kind}{${KEYS[kind]}="${id}"} has no data. The generator wrote the line without its rows.`,
         );
       (data[kind] ??= {})[id] = compositeData[kind][id];
     }

@@ -33,7 +33,7 @@ The first answers lead to the rest. Each branch is an answer that follows from t
 
 All 79, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.
 
-::::group{title="Reasons"}
+::::group{id="reasons"}
 :::fold{id="business" title="Business and product" note="2 answers, 6 decisions"}
 #### What does the product do for the business? {#business-q1}
 
@@ -129,7 +129,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 :::
 ::::
 
-::::group{title="Scopes"}
+::::group{id="scopes"}
 :::fold{id="typography" title="Typography" note="5 answers, 1 decision, and the values of its tokens"}
 #### Which text roles does it need? {#typography-roles}
 

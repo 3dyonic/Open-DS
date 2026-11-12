@@ -199,7 +199,9 @@
      "key": "trigger.height",
      "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.52",
+     "pick": [
+      "size.52"
+     ],
      "shares": []
     },
     {
@@ -208,7 +210,9 @@
      "key": "trigger.padding-x",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     },
     {
@@ -217,7 +221,9 @@
      "key": "trigger.radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: Clear, slightly rounded controls.",
+     "pick": [
+      "radius.6: Clear, slightly rounded controls."
+     ],
      "shares": []
     },
     {
@@ -228,8 +234,28 @@
      "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.500: the quietest text that still reads, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 8.89
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "border.strong",
       "category.5",
@@ -262,8 +288,28 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 8.74
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -276,7 +322,9 @@
      "key": "trigger.focus-width",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
@@ -285,7 +333,9 @@
      "key": "trigger.focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
@@ -314,8 +364,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "red.light.700: danger reads as text and icons, ",
+      {
+       "ratio": 8.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.76
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -339,8 +409,12 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "The fill of a control that cannot be used right now.",
-     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.sunken",
       "surface.highlight",
@@ -356,8 +430,12 @@
      "darkValue": "#333333",
      "byScheme": true,
      "rule": "The edge of a control that cannot be used right now.",
-     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.pressed",
       "border.default"
@@ -371,8 +449,20 @@
      "darkValue": "#949494",
      "byScheme": true,
      "rule": "Text and icons of a control that cannot be used right now.",
-     "pick": "neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
-     "darkPick": "neutral.500: 6.07:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "pick": [
+      "neutral.500: ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.500: ",
+      {
+       "ratio": 6.07
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
      "shares": [
       "text.muted",
       "border.strong",
@@ -412,8 +502,12 @@
      "darkValue": "#141414",
      "byScheme": true,
      "rule": "Fills that float above content.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -425,7 +519,9 @@
      "key": "overlay.shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: No shadows; borders do the work.",
+     "pick": [
+      "shadow.none: No shadows; borders do the work."
+     ],
      "shares": [
       "elevation.card"
      ]
@@ -436,7 +532,9 @@
      "key": "overlay.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Clear, slightly rounded controls.",
+     "pick": [
+      "radius.8: Clear, slightly rounded controls."
+     ],
      "shares": []
     },
     {
@@ -447,8 +545,20 @@
      "darkValue": "#333333",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.36
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.46
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "surface.pressed",
       "disabled.border"
@@ -485,7 +595,9 @@
      "key": "overlay.item-height",
      "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.52",
+     "pick": [
+      "size.52"
+     ],
      "shares": []
     },
     {
@@ -494,7 +606,9 @@
      "key": "item.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -503,7 +617,9 @@
      "key": "item.padding-left",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -512,7 +628,9 @@
      "key": "size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     }
    ]
@@ -548,8 +666,12 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+     ],
      "shares": [
       "surface.sunken",
       "action.secondary.hover",

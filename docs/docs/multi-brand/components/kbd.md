@@ -14,7 +14,7 @@ A keyboard key or shortcut, shown as text.
 
 ## See it live
 
-::preview{robot="slumber" id="kbd/live"}
+::preview{id="kbd/live"}
 
 ## When to use it
 

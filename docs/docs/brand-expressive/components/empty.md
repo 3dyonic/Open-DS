@@ -14,7 +14,7 @@ What a region shows when it loaded and has nothing: why, and what to do next.
 
 ## See it live
 
-::preview{robot="slumber" id="empty/live"}
+::preview{id="empty/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Brand expressive decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="empty/variant/default"}
+::preview{id="empty/variant/default"}
 
 **What it is for**
 
@@ -53,7 +53,7 @@ A campaign image or illustration beside the playful words and a clear next step.
 :::
 
 :::panel{title="icon" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="empty/variant/icon"}
+::preview{id="empty/variant/icon"}
 
 **What it is for**
 

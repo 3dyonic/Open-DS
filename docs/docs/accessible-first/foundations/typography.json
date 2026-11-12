@@ -241,7 +241,12 @@
      "sample": {
       "kind": "type",
       "role": "data",
-      "text": "Steps done 2 of 4 · Documents sent 3 · Time left to apply 12 days · Time this takes About 10 minutes"
+      "parts": [
+       "Steps done 2 of 4",
+       "Documents sent 3",
+       "Time left to apply 12 days",
+       "Time this takes About 10 minutes"
+      ]
      },
      "api": [
       {

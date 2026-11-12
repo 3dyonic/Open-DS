@@ -68,7 +68,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Pill controls feel playful.",
+     "pick": [
+      "radius.pill: Pill controls feel playful."
+     ],
      "shares": []
     }
    ]
@@ -102,7 +104,9 @@
      "key": "item.padding-x",
      "value": "1.75rem",
      "byScheme": true,
-     "pick": "space.28",
+     "pick": [
+      "space.28"
+     ],
      "shares": []
     }
    ]
@@ -129,7 +133,9 @@
      "key": "item.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Pill controls feel playful.",
+     "pick": [
+      "radius.pill: Pill controls feel playful."
+     ],
      "shares": []
     },
     {
@@ -138,7 +144,9 @@
      "key": "item.border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]

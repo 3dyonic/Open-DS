@@ -6,21 +6,35 @@
  * one line: ::decision-answer{id="people-q1"}
  */
 import * as React from "react";
-import Label from "./Label";
+import Label from "./base/Label";
 import { Tree, Twig } from "./base/Tree";
+import { measuredText, type MeasuredText } from "./base/Measured";
 import { Brush, Component, MessageCircle, Scale } from "lucide-react";
 
 type Link = { label: string; href: string };
+// An answer of the scheme: its scope (for a scope question), the question and the answer.
+type AnswerFact = { scope?: string; question: string; answer: string };
+// A theme pick: the token, the mode it holds in, the step it picks and why, with each ratio a number.
+type PickFact = { token: string; mode: "light" | "dark" | "every mode"; pick: string; why?: MeasuredText };
+type Decision = ({ text: string } | AnswerFact | PickFact) & { link?: Link };
 export type DecisionAnswerData = {
   answer: string;
   why: string;
   weighs?: { group: string; items: { label: string; text: string }[] }[];
-  because: string[];
+  because: AnswerFact[];
   decided: {
-    groups: { kind: "answers" | "rules" | "variants" | "picks"; items: { text: string; link?: Link }[] }[];
+    groups: { kind: "answers" | "rules" | "variants" | "picks"; items: Decision[] }[];
     values?: Link;
   };
 };
+
+const answerLine = (a: AnswerFact) => `${a.scope ? `${a.scope} · ` : ""}${a.question} → ${a.answer}`;
+const decisionLine = (d: Decision) =>
+  "text" in d
+    ? d.text
+    : "question" in d
+      ? answerLine(d)
+      : `${d.token}${d.mode === "every mode" ? "" : ` in ${d.mode}`}: ${d.why ? measuredText(d.why) : d.pick}`;
 
 // One icon per kind of decision, from lucide-react, the icons the scheme's components use.
 const ICONS = { answers: MessageCircle, rules: Scale, variants: Component, picks: Brush };
@@ -86,7 +100,7 @@ export default function DecisionAnswer({ data }: { data: DecisionAnswerData }) {
                 <span className={head}>Because of</span>
                 <Tree>
                   {data.because.map((b) => (
-                    <Twig key={b}>{b}</Twig>
+                    <Twig key={b.question}>{answerLine(b)}</Twig>
                   ))}
                 </Tree>
               </>
@@ -109,7 +123,7 @@ export default function DecisionAnswer({ data }: { data: DecisionAnswerData }) {
                   <Tree>
                     {g.items.map((d, i) => (
                       <Twig key={i}>
-                        <Line {...d} />
+                        <Line text={decisionLine(d)} link={d.link} />
                       </Twig>
                     ))}
                   </Tree>

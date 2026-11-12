@@ -85,7 +85,9 @@
      "key": "item.gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]
@@ -112,7 +114,9 @@
      "key": "description.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -121,7 +125,9 @@
      "key": "description.line-height",
      "value": "1.5",
      "byScheme": true,
-     "pick": "font.line-height.1_5",
+     "pick": [
+      "font.line-height.1_5"
+     ],
      "shares": []
     },
     {
@@ -132,8 +138,28 @@
      "darkValue": "#96A3B5",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 7.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -162,8 +188,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.600: danger reads as text and icons, ",
+      {
+       "ratio": 5.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.52
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -206,7 +252,9 @@
      "key": "message.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -215,7 +263,9 @@
      "key": "message.line-height",
      "value": "1.5",
      "byScheme": true,
-     "pick": "font.line-height.1_5",
+     "pick": [
+      "font.line-height.1_5"
+     ],
      "shares": []
     },
     {
@@ -226,8 +276,28 @@
      "darkValue": "#F28B8B",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.52:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "red.light.600: danger reads as text and icons, ",
+      {
+       "ratio": 5.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.600: danger reads as text and icons, ",
+      {
+       "ratio": 7.52
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "action.danger"
      ]
