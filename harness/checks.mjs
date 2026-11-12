@@ -498,6 +498,74 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "spacing-use-cases-generated": {
+    requires: ["cli/src/spacing-use-cases.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-294: every scheme's space tokens equal base × multiple from its spacing record, and its
+      // control heights and row equal its control scale. Every reason names its value, its job from
+      // the grammar's spacing jobs, and its use case or mechanism. A hand-edited value fails.
+      const { spaceValues, spaceProblems, controlHeights, controlProblems } = await import(
+        pathToFileURL(c.p("cli/src/spacing-use-cases.mjs")).href
+      );
+      const { matches } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const spacing = c.grammar().scopes.find((sc) => sc.id === "spacing");
+      const jobs = spacing?.jobs ?? [];
+      const gaps = [];
+      if (!spacing?.use_cases) gaps.push("the spacing scope names no use-case words");
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const semantic = s.tokens.semantic;
+        const answer = (q) => s.answers.find((a) => a.question === q)?.option;
+        const space = semantic.space?.$extensions?.["open-ds"];
+        const size = semantic.size?.$extensions?.["open-ds"];
+        if (!space?.["use-cases"] || !size?.steps) {
+          gaps.push(`${id}: no spacing record on space or no control scale on size`);
+          continue;
+        }
+        const rowRole = answer("spacing.roles") === "gap-inset-row";
+        gaps.push(
+          ...spaceProblems(space, { vocabulary: spacing?.use_cases, definition: answer("spacing.definition") }).map((p) => `${id}: ${p}`),
+          ...controlProblems(size, { rowRole }).map((p) => `${id}: ${p}`),
+        );
+        for (const q of [...(space.follows ?? []), ...(size.follows ?? [])])
+          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: a record follows ${q}, which is not an answer`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        const px = (name) => Math.round(parseFloat(String(resolve(all, name)?.value ?? "")) * 16 * 100) / 100;
+        const want = {
+          ...Object.fromEntries(Object.entries(spaceValues(space)).map(([k, v]) => [`space.${k}`, v])),
+          ...Object.fromEntries(Object.entries(controlHeights(size)).map(([k, v]) => [`size.${k}`, v])),
+        };
+        for (const group of ["gap", "inset"])
+          for (const k of Object.keys(semantic.space[group] ?? {}).filter((k) => !k.startsWith("$")))
+            if (!(`space.${group}.${k}` in want)) gaps.push(`${id}: space.${group}.${k} has no use case`);
+        for (const [name, value] of Object.entries(want)) {
+          if (px(name) !== value) gaps.push(`${id}: ${name} is ${px(name)}px, the record gives ${value}px`);
+          const token = name.split(".").reduce((n, k) => n?.[k], semantic);
+          const why = token?.$extensions?.["open-ds"]?.why ?? "";
+          const job = jobs.find((j) => j.tokens.some((p) => matches(p, name)));
+          const says = (text, what) => {
+            if (!why.includes(text)) gaps.push(`${id}: the reason of ${name} does not name ${what ?? text}`);
+          };
+          says(`${value}px`);
+          if (!job) gaps.push(`${id}: ${name} has no job in the grammar's spacing jobs`);
+          else says(job.job, `its job (${job.job})`);
+          // The use case or mechanism: a multiple of the base, a step on the control scale, or inheritance.
+          if (name.startsWith("space.")) {
+            const useCase = space["use-cases"][name.slice("space.".length)];
+            says(`${useCase.multiple} × ${space.base}px`, `its multiple (${useCase.multiple} × ${space.base}px)`);
+          } else if (name === "size.row") says(rowRole ? "decision of their own" : "inheritance", rowRole ? "the row decision" : "its inheritance");
+          else {
+            says("control scale");
+            // WCAG measures the hit area, not the drawn box: a control's reason names its hit area.
+            says("hit area");
+          }
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`the space tokens, control heights and rows in ${SCHEMES.length} schemes match their records and name their use case`);
+    },
+  },
   "type-scale-generated": {
     requires: ["cli/src/type-scale.mjs"],
     run: async (c) => {
@@ -672,6 +740,37 @@ export const CHECKS = {
       return gaps.length
         ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
         : ok(`${n} anatomy images, each exported from a Figma frame, in ${SCHEMES.length} schemes`);
+    },
+  },
+  "anatomy-text-from-samples": {
+    requires: ["schemes/grammar.json", "scripts/anatomy-figma/sample-text.mjs"],
+    run: async (c) => {
+      // OD-135: each scheme shows its UI with its own content, as Storybook does. Every text in a tree
+      // drawing reads a sample path that resolves in every scheme, or says why it keeps its own text.
+      const { sampleText, textNodes } = await import(pathToFileURL(c.p("scripts/anatomy-figma/sample-text.mjs")).href);
+      const samples = SCHEMES.map((id) => [id, c.scheme(id).samples]);
+      const gaps = [];
+      let read = 0;
+      let kept = 0;
+      for (const item of c.grammar().catalogue.items.filter((i) => i.anatomy?.drawing?.kind === "tree")) {
+        for (const node of textNodes(item.anatomy)) {
+          if (!node.sample) {
+            if (typeof node.fixed === "string" && node.fixed.trim() && typeof node.text === "string") kept++;
+            else gaps.push(`${item.id}: "${node.text}" reads no sample`);
+            continue;
+          }
+          read++;
+          for (const [id, smp] of samples) {
+            const { missing } = sampleText(node, smp);
+            if (missing) gaps.push(`${item.id}: ${id} has no samples.${missing.join(", samples.")}`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok(
+            `${read} anatomy texts read a sample in all ${SCHEMES.length} schemes; ${kept} keep their own text, each with a reason`,
+          );
     },
   },
   "floating-panels-agree": {

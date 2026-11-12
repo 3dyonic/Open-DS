@@ -573,15 +573,27 @@
             "type": "array",
             "minItems": 1,
             "description": "The tokens the rule names. The first rule that names a token is the one that applies.",
-            "items": { "type": "string", "pattern": "^[a-z*][a-z0-9*_-]*(\\.[a-z0-9*_@-]+)+$", "description": "A token name; * stands for one segment, for example type.*.font-size." }
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z*][a-z0-9*_-]*(\\.[a-z0-9*_@-]+)+$",
+              "description": "A token name; * stands for one segment, for example type.*.font-size."
+            }
           },
           "follows": {
             "type": "array",
             "minItems": 1,
             "description": "The questions whose answers decide these tokens.",
-            "items": { "type": "string", "pattern": "^[a-z-]+\\.[a-z0-9-]+$", "description": "A grammar question id, for example typography.values." }
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z-]+\\.[a-z0-9-]+$",
+              "description": "A grammar question id, for example typography.values."
+            }
           },
-          "says": { "type": "string", "minLength": 1, "description": "Why each question decides these tokens, in plain words." }
+          "says": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Why each question decides these tokens, in plain words."
+          }
         }
       }
     },
@@ -1292,6 +1304,74 @@
             }
           }
         },
+        "use_cases": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "level", "relation", "reach"],
+          "description": "The spacing scope only (OD-294): the words that name a space token's use case. Every scheme's spacing record uses these words.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What a use case is and how a scheme uses the words."
+            },
+            "level": {
+              "$ref": "#/$defs/use-case-axis",
+              "description": "Where the space sits: inside one component or between components."
+            },
+            "relation": {
+              "$ref": "#/$defs/use-case-axis",
+              "description": "What the space does: separate parts, or pad a box around things."
+            },
+            "reach": {
+              "$ref": "#/$defs/use-case-axis",
+              "description": "Which way the space runs: along one line or between blocks."
+            }
+          }
+        },
+        "jobs": {
+          "type": "array",
+          "minItems": 1,
+          "description": "The spacing scope only (OD-294): the job of each spacing property and how the property does it. A token can serve more than one job; its reason names the first job that names it.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "tokens", "property", "job", "how"],
+            "description": "One spacing property, its job and how it does the job.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "The property id, for example gap."
+              },
+              "tokens": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z*][a-z0-9*_-]*(\\.[a-z0-9*_@-]+)+$",
+                  "description": "A token name; * stands for one segment."
+                },
+                "description": "The tokens this property sets."
+              },
+              "property": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The property's name as a reason says it, for example Distance."
+              },
+              "job": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The job the property serves, as a reason names it after in order to."
+              },
+              "how": {
+                "type": "string",
+                "minLength": 1,
+                "description": "How the property does the job, as a reason says it after does this by."
+              }
+            }
+          }
+        },
         "hints": {
           "type": "array",
           "description": "Rules of thumb this scope's decisions taught (OD-230): hints for the next decision, for people and agents.",
@@ -1337,6 +1417,42 @@
               }
             }
           }
+        }
+      }
+    },
+    "use-case-axis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "options"],
+      "description": "One axis of a spacing use case: its words, each with what it means.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the axis says about a space."
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "description"],
+            "description": "One word of the axis.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z]+$",
+                "description": "The word, for example component."
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the word means for a space."
+              }
+            }
+          },
+          "description": "The words a use case may use on this axis."
         }
       }
     },
