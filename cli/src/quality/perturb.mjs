@@ -184,7 +184,8 @@ export function anchorPerturbations(stored, { primaryHue = null, darkCanvas = nu
       kind: "anchor",
       id: "control-height",
       change: `the control scale's default: ${controlScale.default}px → ${controlScale.default + controlScale.step}px`,
-      derives: { tokens: ["size.control.default"], inputs: ["size.control.default"] },
+      // The record generates every control height and the row, so each one follows the default.
+      derives: { tokens: ["size.control.default", "size.control.compact", "size.control.large", "size.row"], inputs: ["size.control.default"] },
       apply: (s) => {
         const next = structuredClone(s);
         next.tokens.semantic.size.$extensions["open-ds"].default += controlScale.step;
