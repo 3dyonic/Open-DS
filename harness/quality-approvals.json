@@ -1,0 +1,4 @@
+{
+  "$description": "Color moves the owner approved for the quality gate (OD-298). open-ds compare reads this file from the candidate. A move over the review tier, a hue turn or a key color change passes only with an entry here. Each entry: scheme, token, theme (light, dark, a brand theme, or * for all), why, approved_by. Only the owner adds entries.",
+  "approvals": []
+}

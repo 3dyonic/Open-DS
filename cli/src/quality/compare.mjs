@@ -7,6 +7,8 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync,
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { componentPairsSheet } from "./criteria/component-pairs.mjs";
+import { DEFAULT_PARAMS } from "./params.mjs";
 import { baselineOf, compareSnapshots, scorecardMarkdown } from "./scorecard.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -51,8 +53,8 @@ function buildTokens(root, log) {
   return r.status === 0;
 }
 
-function extractIn(root, { ref, sha, file, blast }) {
-  const args = [EXTRACT, "--root", root, "--out", file, "--ref", ref, ...(sha ? ["--sha", sha] : []), ...(blast ? [] : ["--no-blast"])];
+function extractIn(root, { ref, sha, file, blast, css }) {
+  const args = [EXTRACT, "--root", root, "--out", file, "--ref", ref, ...(sha ? ["--sha", sha] : []), ...(blast ? [] : ["--no-blast"]), ...(css ? [] : ["--no-css"])];
   const r = spawnSync(process.execPath, args, { cwd: root, encoding: "utf8", timeout: 900_000, maxBuffer: 64 * 1024 * 1024 });
   if (r.status !== 0) throw new Error(`Could not read ${ref}: ${(r.stderr || r.stdout || "").trim().split("\n").slice(-4).join(" ")}`);
   return JSON.parse(readFileSync(file, "utf8"));
@@ -69,7 +71,7 @@ export function snapshotSide({ repo, ref, scratch, css = true, blast = true, log
   if (!ref) {
     log(`Reading the working tree (${sha.slice(0, 10)}).`);
     if (css) buildTokens(repo, log);
-    return { snapshot: extractIn(repo, { ref: label, sha, file, blast }), file };
+    return { snapshot: extractIn(repo, { ref: label, sha, file, blast, css }), file };
   }
   const root = mkdtempSync(join(tmpdir(), "open-ds-compare-"));
   rmSync(root, { recursive: true, force: true });
@@ -79,7 +81,7 @@ export function snapshotSide({ repo, ref, scratch, css = true, blast = true, log
     log(`Reading ${ref} (${sha.slice(0, 10)}) in a temporary worktree.`);
     linkDependencies(repo, root);
     if (css) buildTokens(root, log);
-    return { snapshot: extractIn(root, { ref: label, sha, file, blast }), file };
+    return { snapshot: extractIn(root, { ref: label, sha, file, blast, css }), file };
   } finally {
     git(repo, ["worktree", "remove", "--force", root]);
     rmSync(root, { recursive: true, force: true });
@@ -89,24 +91,26 @@ export function snapshotSide({ repo, ref, scratch, css = true, blast = true, log
 
 /**
  * Compare a candidate (a ref, or the working tree) with a base ref. Writes scorecard.json,
- * scorecard.md and both snapshots into out; with writeBaseline, writes the base's numbers to
+ * scorecard.md, component-pairs.md (the flagged pairs) and both snapshots into out; with
+ * writeBaseline, writes the base's numbers to
  * harness/quality-baseline.json. Returns { card, files }.
  */
-export function compareRefs({ repo, base, candidate = null, out, writeBaseline = false, css = true, blast = true, log = () => {} }) {
+export function compareRefs({ repo, base, candidate = null, out, writeBaseline = false, css = true, blast = true, params = DEFAULT_PARAMS, log = () => {} }) {
   if (!base) throw new Error("compare needs a base: open-ds compare --base origin/master.");
   const outDir = resolve(out);
   mkdirSync(join(outDir, "snapshots"), { recursive: true });
   const scratch = join(outDir, "snapshots");
   const b = snapshotSide({ repo, ref: base, scratch, css, blast, log });
   const c = snapshotSide({ repo, ref: candidate, scratch, css, blast, log });
-  const card = compareSnapshots(b.snapshot, c.snapshot);
-  const files = { json: join(outDir, "scorecard.json"), md: join(outDir, "scorecard.md"), snapshots: [b.file, c.file] };
+  const card = compareSnapshots(b.snapshot, c.snapshot, params);
+  const files = { json: join(outDir, "scorecard.json"), md: join(outDir, "scorecard.md"), pairs: join(outDir, "component-pairs.md"), snapshots: [b.file, c.file] };
   writeFileSync(files.json, `${JSON.stringify(card, null, 2)}\n`);
   writeFileSync(files.md, scorecardMarkdown(card));
+  writeFileSync(files.pairs, componentPairsSheet(card.componentPairs.flagged, { base: card.base.ref, candidate: card.candidate.ref, compared: card.componentPairs.compared }));
   if (writeBaseline) {
     files.baseline = join(repo, BASELINE);
     mkdirSync(dirname(files.baseline), { recursive: true });
-    writeFileSync(files.baseline, `${JSON.stringify(baselineOf(b.snapshot), null, 2)}\n`);
+    writeFileSync(files.baseline, `${JSON.stringify(baselineOf(b.snapshot, params), null, 2)}\n`);
   }
   return { card, files };
 }

@@ -8,9 +8,10 @@ import { pairsIn } from "../tones.mjs";
 import { reasonOf, traceScheme, weakReasons } from "../trace.mjs";
 import { anchorPerturbations, answerPerturbations } from "./perturb.mjs";
 import { RELATION_TOKENS, evaluateRelations, relationLinks } from "./relations.mjs";
-import { flatMap, namedStep, px, resolveTree, shortName } from "./values.mjs";
+import { flatMap, hex6, namedStep, px, resolveTree, shortName } from "./values.mjs";
 
 const REF = /\{([^}]+)\}/g;
+const cssOf = (path) => shortName(path).split(".").join("-");
 const extOf = (node) => node?.$extensions?.["open-ds"] ?? {};
 const at = (tree, path) => path.split(".").reduce((n, k) => (n && typeof n === "object" ? n[k] : undefined), tree);
 
@@ -181,7 +182,7 @@ function expectedForAnchor(p, chains, links) {
  * themeTokens(scheme, brand, mode) is the ref's token builder; reload(stored) loads a changed file with
  * the ref's loader (omit it to skip the blast radius); css is { tokens, theme, shadcn } text or null.
  */
-export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, css = null }) {
+export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, css = null, uiPairs = [] }) {
   const themes = themesOf(scheme);
   const { values, chains, errors } = resolveScheme(scheme, themeTokens);
   const facts = factsOf(scheme, themes, values);
@@ -278,5 +279,47 @@ export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, c
       properties: new Set([...(css.tokens ?? "").matchAll(/^\s*(--[a-z0-9-]+)\s*:/gm)].map((m) => m[1])).size,
       reads: [...new Set([...`${css.theme ?? ""}\n${css.shadcn ?? ""}`.matchAll(/var\(--([a-z0-9-]+)/g)].map((m) => m[1]))].sort(),
     },
+    palette: paletteOf(scheme),
+    keys: keysOf(scheme),
+    componentPairs: { pairs: uiPairs, values: componentPairValues(scheme, themeTokens, uiPairs) },
   };
+}
+
+/** Every color step of the scheme's scales: { hue: { mode: { step: "#RRGGBB" } } }, 6-digit hex only. */
+export function paletteOf(scheme) {
+  const out = {};
+  for (const [hue, group] of Object.entries(scheme.tokens?.primitive?.color ?? {})) {
+    if (hue.startsWith("$") || !group || typeof group !== "object") continue;
+    for (const mode of ["light", "dark"])
+      for (const [step, t] of Object.entries(group[mode] ?? {}))
+        if (!step.startsWith("$") && hex6(t?.$value)) ((out[hue] ??= {})[mode] ??= {})[step] = hex6(t.$value);
+  }
+  return out;
+}
+
+/** The key color each generated hue records, and its adjustments: { hue: { mode: { key, adjust } } }. */
+export function keysOf(scheme) {
+  const out = {};
+  for (const [hue, group] of Object.entries(scheme.tokens?.primitive?.color ?? {})) {
+    const spec = extOf(group);
+    for (const mode of ["light", "dark"])
+      if (spec[mode]?.key) (out[hue] ??= {})[mode] = { key: String(spec[mode].key).toUpperCase(), adjust: spec[mode].adjust ?? null };
+  }
+  return out;
+}
+
+/**
+ * The values of the variables the component pairs name, in every theme: { theme: { variable: value } }.
+ * A component key's variable drops the base "@", as the build names it.
+ */
+export function componentPairValues(scheme, themeTokens, pairs) {
+  const wanted = new Set(pairs.flatMap((p) => [p.fg, p.bg].filter(Boolean)));
+  if (!wanted.size) return {};
+  const byCss = new Map();
+  for (const p of flatMap(scheme.tokens?.component).keys()) byCss.set(cssOf(p), p);
+  for (const p of semanticPaths(scheme)) if (!byCss.has(cssOf(p))) byCss.set(cssOf(p), p);
+  const paths = [...wanted].filter((c) => byCss.has(c)).map((c) => byCss.get(c));
+  const out = {};
+  for (const t of themesOf(scheme)) out[t.id] = resolveTree(themeTokens(scheme, t.brand, t.mode), paths, cssOf).values;
+  return out;
 }

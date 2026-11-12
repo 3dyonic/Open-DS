@@ -591,6 +591,8 @@
         "open-ds compare --base <ref> [--candidate <ref>] checks out each ref in a temporary worktree and loads it with its own code",
         "a snapshot per ref and scheme: decisions, resolved values per brand and mode, traces and reasons, CSS, component reads and literals",
         "criteria computed by code: traceability, derived against literal, invariants, blast radius, accessibility (WCAG and APCA), motion, repetition, size",
+        "color criteria (Jira comment 12136): shift per token by OKLab tier with role, hue and key color limits; relations hold (WCAG level and margin, step and ladder order, state deltas, distinct under simulated color vision deficiencies, shared colors); curve checks",
+        "simulated component pairs: each foreground-on-background pair a component draws, before and after, with a review sheet of the flagged pairs",
         "scorecard.json and scorecard.md; harness/quality-baseline.json from origin/master, refreshed on purpose with --write-baseline",
         "the harness fails when a gated criterion moves the wrong way against the baseline"
       ],

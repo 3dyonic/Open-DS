@@ -4,22 +4,28 @@
 // direction, pass, details }.
 import * as accessibility from "./criteria/accessibility.mjs";
 import * as blastRadius from "./criteria/blast-radius.mjs";
+import * as colorRelations from "./criteria/color-relations.mjs";
+import * as componentPairs from "./criteria/component-pairs.mjs";
+import * as curves from "./criteria/curves.mjs";
 import * as derived from "./criteria/derived.mjs";
 import * as invariants from "./criteria/invariants.mjs";
 import * as motion from "./criteria/motion.mjs";
 import * as repetition from "./criteria/repetition.mjs";
+import * as shift from "./criteria/shift.mjs";
 import * as size from "./criteria/size.mjs";
 import * as traceability from "./criteria/traceability.mjs";
+import { componentPairRows } from "./criteria/component-pairs.mjs";
+import { DEFAULT_PARAMS } from "./params.mjs";
 import { RELATION_LIST } from "./relations.mjs";
 
 /** The criterion families, in the order the scorecard shows them. */
-export const FAMILIES = [traceability, derived, invariants, blastRadius, accessibility, motion, repetition, size];
+export const FAMILIES = [traceability, derived, invariants, blastRadius, accessibility, motion, repetition, size, shift, colorRelations, curves, componentPairs];
 
 /** Every measure of one snapshot, family by family. */
-export const measureAll = (snapshot) => FAMILIES.flatMap((f) => f.measure(snapshot));
+export const measureAll = (snapshot, params = DEFAULT_PARAMS) => FAMILIES.flatMap((f) => f.measure(snapshot, params));
 
-/** The measures that need both snapshots (new literals against the base). */
-export const measureRelative = (base, candidate) => FAMILIES.flatMap((f) => f.relative?.(base, candidate) ?? []);
+/** The measures that need both snapshots: new literals, color shifts, relations kept, component pairs. */
+export const measureRelative = (base, candidate, params = DEFAULT_PARAMS) => FAMILIES.flatMap((f) => f.relative?.(base, candidate, params) ?? []);
 
 /**
  * Whether a value moved the right way: "down" passes when it did not rise, "up" when it did not fall.
@@ -53,13 +59,13 @@ export function criterionRow(b, c) {
 }
 
 /** The scorecard of a candidate against a base snapshot. */
-export function compareSnapshots(base, candidate) {
-  const b = new Map(measureAll(base).map((m) => [m.id, m]));
-  const c = new Map(measureAll(candidate).map((m) => [m.id, m]));
+export function compareSnapshots(base, candidate, params = DEFAULT_PARAMS) {
+  const b = new Map(measureAll(base, params).map((m) => [m.id, m]));
+  const c = new Map(measureAll(candidate, params).map((m) => [m.id, m]));
   const ids = [...new Set([...b.keys(), ...c.keys()])];
   const rows = ids.map((id) => criterionRow(b.get(id), c.get(id)));
   // A relative measure is zero for the base by definition: nothing is new against itself.
-  for (const m of measureRelative(base, candidate)) rows.push(criterionRow({ ...m, value: 0, perScheme: {}, details: [] }, m));
+  for (const m of measureRelative(base, candidate, params)) rows.push(criterionRow({ ...m, value: 0, perScheme: {}, details: [] }, m));
   const failed = rows.filter((r) => r.gated && !r.pass);
   return {
     base: { ref: base.ref, sha: base.sha },
@@ -68,8 +74,12 @@ export function compareSnapshots(base, candidate) {
     failed: failed.map((r) => r.id),
     criteria: rows,
     relations: relationTable(base, candidate),
+    params,
+    componentPairs: pairSummary(componentPairRows(base, candidate, params)),
   };
 }
+
+const pairSummary = (rows) => ({ compared: rows.length, flagged: rows.filter((r) => r.flagged) });
 
 /** Each relation per scheme, base against candidate: [{ scheme, relation, base, candidate }]. */
 export function relationTable(base, candidate) {
@@ -88,13 +98,13 @@ export function relationTable(base, candidate) {
 }
 
 /** The baseline file's content from one snapshot: each measure's value and direction. */
-export function baselineOf(snapshot) {
+export function baselineOf(snapshot, params = DEFAULT_PARAMS) {
   return {
     $description:
       "The quality gate's baseline (OD-298): each criterion's value on the ref below and the way it may move (down: may only go down; up: may only go up; report: not gated). Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
     ref: snapshot.ref,
     sha: snapshot.sha,
-    criteria: Object.fromEntries(measureAll(snapshot).map((m) => [m.id, { value: m.value, direction: m.direction }])),
+    criteria: Object.fromEntries(measureAll(snapshot, params).map((m) => [m.id, { value: m.value, direction: m.direction }])),
   };
 }
 
@@ -102,11 +112,11 @@ export function baselineOf(snapshot) {
  * A snapshot's numbers against the baseline: { ok, worse, better, missing }. worse lists each gated
  * criterion that moved the wrong way; better each that moved the right way (lower the baseline).
  */
-export function gateAgainstBaseline(snapshot, baseline) {
+export function gateAgainstBaseline(snapshot, baseline, params = DEFAULT_PARAMS) {
   const worse = [];
   const better = [];
   const missing = [];
-  for (const m of measureAll(snapshot)) {
+  for (const m of measureAll(snapshot, params)) {
     const was = baseline.criteria?.[m.id];
     if (!was) {
       missing.push(m.id);

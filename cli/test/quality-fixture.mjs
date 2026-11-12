@@ -186,9 +186,9 @@ export const cleanUi = () => ({ files: 1, literals: [], reducedMotion: [], reads
  * stored file goes through (identity: the stored file is the scheme, as before OD-292); load turns the
  * stored file into the scheme first.
  */
-export function snapshotOf(stored, { grammar = fixtureGrammar(), load = (s) => structuredClone(s), reload = load, ui = cleanUi(), ref = "fixture" } = {}) {
+export function snapshotOf(stored, { grammar = fixtureGrammar(), load = (s) => structuredClone(s), reload = load, ui = cleanUi(), ref = "fixture", approvals = [] } = {}) {
   const scheme = load(stored);
-  return { ref, sha: null, schemes: { fixture: snapshotScheme({ scheme, stored, grammar, themeTokens, reload }) }, ui };
+  return { ref, sha: null, schemes: { fixture: snapshotScheme({ scheme, stored, grammar, themeTokens, reload, uiPairs: ui.pairs ?? [] }) }, ui, approvals };
 }
 
 /** One measure's value from a list of measures. */

@@ -8,8 +8,12 @@ import { tmpdir } from "node:os";
 import { join, relative } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { saveGrammar, saveStoredScheme, storedScheme } from "../schemes.mjs";
+import { componentPairsOf } from "./component-pairs.mjs";
 import { componentLiterals, cssVarReads, reducedMotionTransforms } from "./sources.mjs";
 import { snapshotScheme } from "./snapshot.mjs";
+
+/** Where a checkout records the color moves its owner approved, from the repository root. */
+export const APPROVALS = join("harness", "quality-approvals.json");
 
 const readText = (path) => (existsSync(path) ? readFileSync(path, "utf8") : null);
 
@@ -39,20 +43,24 @@ export function uiFacts(root) {
     literals: componentLiterals(files),
     reducedMotion: reducedMotionTransforms(files),
     reads: cssVarReads(files),
+    pairs: componentPairsOf(files),
   };
 }
 
 /**
  * The snapshot of a checkout: { ref, sha, grammar, schemes: { id: snapshot }, ui }. blast: false skips
- * the blast radius (one reload per answer and anchor). ids narrows the schemes.
+ * the blast radius (one reload per answer and anchor); css: false leaves the built CSS unread. ids
+ * narrows the schemes.
  */
-export async function extractRef({ root, ref = "working tree", sha = null, blast = true, ids = null }) {
+export async function extractRef({ root, ref = "working tree", sha = null, blast = true, css: readCss = true, ids = null }) {
   const load = (rel) => import(pathToFileURL(join(root, rel)).href);
   const schemesModule = await load("cli/src/schemes.mjs");
   const { themeTokens } = await load("cli/src/tokens.mjs");
   const roots = { ...(schemesModule.assetRoots?.() ?? {}), schemes: join(root, "schemes") };
   const grammar = schemesModule.grammar(roots);
   const list = ids ?? schemesModule.schemeIds(roots);
+  const ui = uiFacts(root);
+  const approvalsFile = join(root, APPROVALS);
 
   // A changed scheme loads from a copy of the schemes folder, so the checkout is never written.
   const scratch = mkdtempSync(join(tmpdir(), "open-ds-quality-"));
@@ -70,10 +78,10 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
         return schemesModule.loadScheme(id, scratchRoots);
       };
       const dist = join(root, "tokens", "dist", id);
-      const css = existsSync(join(dist, "tokens.css"))
+      const css = readCss && existsSync(join(dist, "tokens.css"))
         ? { tokens: readText(join(dist, "tokens.css")), theme: readText(join(dist, "theme.css")), shadcn: readText(join(dist, "shadcn.css")) }
         : null;
-      schemes[id] = snapshotScheme({ scheme, stored, grammar, themeTokens, reload: blast ? reload : null, css });
+      schemes[id] = snapshotScheme({ scheme, stored, grammar, themeTokens, reload: blast ? reload : null, css, uiPairs: ui.pairs });
     }
     return {
       ref,
@@ -84,7 +92,8 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
         traceRules: (grammar.trace ?? []).map((r) => ({ tokens: r.tokens, follows: r.follows })),
       },
       schemes,
-      ui: uiFacts(root),
+      ui,
+      approvals: existsSync(approvalsFile) ? (JSON.parse(readFileSync(approvalsFile, "utf8")).approvals ?? []) : [],
     };
   } finally {
     rmSync(scratch, { recursive: true, force: true });
@@ -103,6 +112,6 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     console.error("extract needs --root <checkout> and --out <file.json>.");
     process.exit(2);
   }
-  const snapshot = await extractRef({ root, ref: arg("--ref") ?? "working tree", sha: arg("--sha") ?? null, blast: !args.includes("--no-blast") });
+  const snapshot = await extractRef({ root, ref: arg("--ref") ?? "working tree", sha: arg("--sha") ?? null, blast: !args.includes("--no-blast"), css: !args.includes("--no-css") });
   writeFileSync(out, JSON.stringify(snapshot));
 }

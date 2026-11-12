@@ -54,3 +54,9 @@ The exit code is 1 only when something fails.
 | motion          | Transforms under `prefers-reduced-motion: reduce`; durations over their cap (feedback 150ms, panels 300ms, expressive 500ms).        |
 | repetition      | Extra copies of a sentence across reasons, token names taken out.                                                                     |
 | size            | Token count and CSS bytes (shown); semantic tokens nothing reads (gated).                                                             |
+| shift           | Each color's OKLab move per scheme, brand and mode: under 0.02 passes, to 0.05 needs a new reason, above needs approval. Surfaces have tighter limits; hue turns and key colors are checked. |
+| relations       | No WCAG level drop, and a margin above each floor; step and ladder order; rest → hover → pressed sign and gap; distinct pairs stay distinct, also under simulated deuteranopia, protanopia and tritanopia; shared colors stay shared. |
+| curves          | The lightness gap between neighbouring scale steps; the contrast grades of steps 400, 500 and 700 apart (reported until OD-299).     |
+| component-pairs | Each foreground-on-background pair the components draw, per state, before and after: moves, contrast, WCAG level, difference. `component-pairs.md` lists only the flagged pairs. |
+
+The parameters (tiers, margins, gaps) live in `cli/src/quality/params.mjs`; pass others with `--params <file.json>`. A move that needs approval passes only with an entry in `harness/quality-approvals.json`, and only the owner adds one. Shift, relations kept and component pairs compare two refs, so they gate in `open-ds compare`; the harness check gates the numbers one ref gives.
