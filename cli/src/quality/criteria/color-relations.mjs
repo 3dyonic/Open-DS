@@ -126,9 +126,10 @@ export function relative(base, candidate, params) {
           if (db >= gap && dc < gap) lost[vision].push(`${id}/${t}: ${x} and ${y} were ΔE ${fmt(db)} apart, now ${fmt(dc)}`);
         }
       }
-      // Colors that were one color stay one color.
+      // Colors that were one color stay one color. The neutral scale's steps are options, not roles: a
+      // role that picks another step is a shift, not a split.
       const groups = new Map();
-      for (const n of Object.keys(vb).filter((n) => n.startsWith("color.") && both(n))) groups.set(hex6(vb[n]), [...(groups.get(hex6(vb[n])) ?? []), n]);
+      for (const n of Object.keys(vb).filter((n) => n.startsWith("color.") && !n.startsWith("color.neutral.") && both(n))) groups.set(hex6(vb[n]), [...(groups.get(hex6(vb[n])) ?? []), n]);
       for (const list of groups.values())
         for (const n of list.slice(1)) if (hex6(vc[n]) !== hex6(vc[list[0]])) split.push(`${id}/${t}: ${n} no longer shares ${list[0]}'s color (${hex6(vc[n])} vs ${hex6(vc[list[0]])})`);
     }
