@@ -71,6 +71,36 @@ test("dimmer dark text drops a WCAG level on 3 pairs and flags the component", (
   assert.equal(valueOf(relative(snap(withButton()), snap(s), paramsFrom({ componentPairs: { minDifference: 0.5 } })), "component-pairs.difference-shrunk"), 3);
 });
 
+test("an approved pair leaves the gated count and is listed as approved; an unapproved pair in the same file still fails", () => {
+  const s = withButton();
+  s.tokens.brands.default.theme.dark.color.text.primary.$value = "{color.gray.dark.300}";
+  const drops = componentPairRows(snap(withButton()), snap(s), P).filter((x) => x.levelDrop);
+  assert.equal(drops.length, 3);
+  // approve the first drop by its CSS variables, as the review sheet names them
+  const [first] = drops;
+  const pair = [`--${first.fg}`, first.bg ? `--${first.bg}` : "color.surface.canvas"];
+  const owner = { why: "AA trade-off on purpose.", approved_by: "owner" };
+  const approvals = [
+    { scheme: "fixture", theme: "dark", check: "component-pairs.level-drops", pair, ...owner },
+    // the same pair in the other theme, and another check: neither clears a dark level drop
+    { scheme: "fixture", theme: "light", check: "component-pairs.level-drops", pair: [`--${drops[1].fg}`, drops[1].bg ? `--${drops[1].bg}` : "color.surface.canvas"], ...owner },
+  ];
+  const cand = snapshotOf(s, { ui: { ...cleanUi(), pairs: pairsOfSource("button", SOURCE) }, approvals });
+  const card = compareSnapshots(snap(withButton()), cand);
+  const row = card.criteria.find((r) => r.id === "component-pairs.level-drops");
+  assert.equal(row.candidate, 2);
+  assert.ok(card.failed.includes("component-pairs.level-drops"));
+  assert.equal(row.details.filter((d) => d.endsWith("(approved by owner: AA trade-off on purpose.)")).length, 1);
+  // the approval names one check only: the shrunk difference of the same pair is not cleared by it
+  assert.equal(card.criteria.find((r) => r.id === "component-pairs.difference-shrunk").candidate, 1);
+  // approving every drop clears the row
+  const all = drops.map((d) => ({ scheme: "fixture", theme: "dark", check: "component-pairs.level-drops", pair: [d.fg, d.bg ?? "color.surface.canvas"], ...owner }));
+  const cleared = compareSnapshots(snap(withButton()), snapshotOf(s, { ui: { ...cleanUi(), pairs: pairsOfSource("button", SOURCE) }, approvals: all }));
+  assert.equal(cleared.criteria.find((r) => r.id === "component-pairs.level-drops").candidate, 0);
+  assert.ok(!cleared.failed.includes("component-pairs.level-drops"));
+  assert.match(componentPairsSheet(cleared.componentPairs.flagged, { base: "b", candidate: "c" }), /WCAG level drop \(approved by owner: AA trade-off on purpose\.\)/);
+});
+
 test("a fill that moves into the review tier is flagged with no level drop", () => {
   const s = withButton();
   s.tokens.brands.default.theme.light.color.surface.default.$value = "{color.gray.light.50}";

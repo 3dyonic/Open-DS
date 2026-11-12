@@ -5,8 +5,11 @@
 //   { scheme, theme, check, token | pair, why, approved_by }
 //
 // theme is the mode ("light", "dark"), a brand's theme ("aster-dark") or "*" for every theme. check is
-// the criterion id that raised the flag ("relations.ladder-order", "invariants.spacing-map"); an entry
-// with no check approves a color move (the shift criteria), as the first entries did.
+// the criterion id that raised the flag ("relations.ladder-order", "invariants.spacing-map",
+// "component-pairs.level-drops"); an entry with no check approves a color move (the shift criteria), as
+// the first entries did. A component pair names its foreground and background CSS variables
+// (["--menubar-item-label", "--menubar-content-background"]); a pair drawn on the page names the page
+// token (color.surface.canvas). A token and its variable match either way.
 
 const FIELDS = ["scheme", "theme", "check", "token", "pair", "why", "approved_by"];
 const text = (v) => typeof v === "string" && v.trim().length > 0;
@@ -40,9 +43,12 @@ export function approvalsFrom(doc) {
 }
 
 const covers = (a, theme) => a.theme === "*" || a.theme === theme;
+// One name for a token and its CSS variable: "--menubar-content-background" and "color.surface.canvas"
+// read as "menubar-content-background" and "color-surface-canvas".
+export const nameKey = (name) => String(name).replace(/^--/, "").replaceAll(".", "-");
 const sameTokens = (a, tokens) => {
   const named = a.pair ?? [a.token];
-  return named.length === tokens.length && [...named].sort().join("|") === [...tokens].sort().join("|");
+  return named.length === tokens.length && named.map(nameKey).sort().join("|") === tokens.map(nameKey).sort().join("|");
 };
 
 /**

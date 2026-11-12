@@ -1,8 +1,8 @@
 # Scheme quality scorecard
 
-Base: `origin/master` (48ded0add0). Candidate: `origin/feat/od-297-accepted-decisions` (33b0e31417).
+Base: `origin/master` (48ded0add0). Candidate: `origin/feat/od-297-accepted-decisions` (239ec425cb).
 
-**Fail.** 14 gated criteria moved the wrong way: derived.share, derived.literal-values, invariants.compact-step, repetition.repeated-sentences, shift.approval-unapproved, relations.wcag-level-drops, relations.ladder-order, relations.distinct-lost.normal, relations.distinct-lost.deuteranopia, relations.distinct-lost.protanopia, relations.distinct-lost.tritanopia, relations.shared-split, component-pairs.level-drops, component-pairs.difference-shrunk.
+**Fail.** 10 gated criteria moved the wrong way: derived.share, derived.literal-values, shift.approval-unapproved, relations.wcag-level-drops, relations.distinct-lost.normal, relations.distinct-lost.deuteranopia, relations.distinct-lost.protanopia, relations.distinct-lost.tritanopia, relations.shared-split, component-pairs.difference-shrunk.
 
 Every number is computed by code from the two checkouts. Run `open-ds compare --base <ref>` to produce it again. Each gated count is gated per scheme (and per scheme and theme where it applies): a breach in one part fails, whatever the total does.
 
@@ -24,14 +24,14 @@ Every number is computed by code from the two checkouts. Run `open-ds compare --
 | `traceability.weak.borrowed` | 48 | 0 | -48 | ↓ lower is better | pass |
 | `traceability.weak.linked` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `traceability.weak.none` | 129 | 0 | -129 | ↓ lower is better | pass |
-| `derived.share` | 0.8932 | 0.8625 | -0.0307 | ↑ higher is better | **fail** |
-| `derived.literal-values` | 196 | 266 | +70 | ↓ lower is better | **fail** |
+| `derived.share` | 0.8932 | 0.8972 | +0.0040 | ↑ higher is better | **fail** in a part |
+| `derived.literal-values` | 196 | 200 | +4 | ↓ lower is better | **fail** |
 | `derived.component-literals` | 8 | 6 | -2 | ↓ lower is better | pass |
-| `invariants.failures` | 18 | 5 | -13 | ↓ lower is better | pass |
+| `invariants.failures` | 18 | 4 | -14 | ↓ lower is better | pass |
 | `invariants.spacing-map` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `invariants.color-scale` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `invariants.focus-ring` | 0 | not present |  | ↓ lower is better | pass |
-| `invariants.compact-step` | 0 | 1 | +1 | ↓ lower is better | **fail** |
+| `invariants.compact-step` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `invariants.nested-radius` | 4 | 4 | 0 | ↓ lower is better | pass |
 | `invariants.dark-ladder` | 14 | 0 | -14 | ↓ lower is better | pass |
 | `invariants.floating-not-defined` | 5 | 5 | 0 | shown, not gated | — |
@@ -44,39 +44,39 @@ Every number is computed by code from the two checkouts. Run `open-ds compare --
 | `blast-radius.hidden-couplings` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `accessibility.wcag-failures` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `accessibility.wcag-waiting` | 0 | 0 | 0 | shown, not gated | — |
-| `accessibility.apca-warnings` | 108 | 107 | -1 | ↓ lower is better, not gated | — |
+| `accessibility.apca-warnings` | 108 | 98 | -10 | ↓ lower is better, not gated | — |
 | `accessibility.hit-area` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `accessibility.text-not-rem` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `motion.reduced-motion-transforms` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `motion.duration-caps` | 5 | 0 | -5 | ↓ lower is better | pass |
-| `repetition.repeated-sentences` | 719 | 793 | +74 | ↓ lower is better | **fail** |
-| `size.tokens` | 9046 | 9326 | +280 | shown, not gated | — |
-| `size.css-bytes` | 2954890 | 3067744 | +112854 | shown, not gated | — |
+| `repetition.repeated-sentences` | 719 | 651 | -68 | ↓ lower is better | pass |
+| `size.tokens` | 9046 | 9330 | +284 | shown, not gated | — |
+| `size.css-bytes` | 2954890 | 3068536 | +113646 | shown, not gated | — |
 | `size.unused-semantics` | 52 | 51 | -1 | ↓ lower is better | pass |
 | `relations.contrast-margin` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `relations.state-gap` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `curves.min-gap` | 25 | 25 | 0 | ↓ lower is better | pass |
 | `curves.grades` | 119 | 119 | 0 | shown, not gated | — |
-| `derived.new-literals` | 0 | 30 | +30 | shown, not gated | — |
+| `derived.new-literals` | 0 | 7 | +7 | shown, not gated | — |
 | `derived.new-literals-unreasoned` | 0 | 0 | 0 | ↓ lower is better | pass |
-| `shift.moves` | 0 | 25 | +25 | shown, not gated | — |
+| `shift.moves` | 0 | 27 | +27 | shown, not gated | — |
 | `shift.review-unreasoned` | 0 | 0 | 0 | ↓ lower is better | pass |
-| `shift.approval-unapproved` | 0 | 25 | +25 | ↓ lower is better | **fail** |
+| `shift.approval-unapproved` | 0 | 2 | +2 | ↓ lower is better | **fail** |
 | `shift.hue` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `shift.key-colors` | 0 | 0 | 0 | ↓ lower is better | pass |
-| `relations.wcag-level-drops` | 0 | 6 | +6 | ↓ lower is better | **fail** |
+| `relations.wcag-level-drops` | 0 | 1 | +1 | ↓ lower is better | **fail** |
 | `relations.step-order` | 0 | 0 | 0 | ↓ lower is better | pass |
-| `relations.ladder-order` | 0 | 14 | +14 | ↓ lower is better | **fail** |
+| `relations.ladder-order` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `relations.state-sign` | 0 | 0 | 0 | ↓ lower is better | pass |
-| `relations.distinct-lost.normal` | 0 | 14 | +14 | ↓ lower is better | **fail** |
-| `relations.distinct-lost.deuteranopia` | 0 | 14 | +14 | ↓ lower is better | **fail** |
-| `relations.distinct-lost.protanopia` | 0 | 14 | +14 | ↓ lower is better | **fail** |
-| `relations.distinct-lost.tritanopia` | 0 | 16 | +16 | ↓ lower is better | **fail** |
-| `relations.shared-split` | 0 | 32 | +32 | ↓ lower is better | **fail** |
-| `component-pairs.level-drops` | 0 | 9 | +9 | ↓ lower is better | **fail** |
+| `relations.distinct-lost.normal` | 0 | 1 | +1 | ↓ lower is better | **fail** |
+| `relations.distinct-lost.deuteranopia` | 0 | 1 | +1 | ↓ lower is better | **fail** |
+| `relations.distinct-lost.protanopia` | 0 | 1 | +1 | ↓ lower is better | **fail** |
+| `relations.distinct-lost.tritanopia` | 0 | 3 | +3 | ↓ lower is better | **fail** |
+| `relations.shared-split` | 0 | 1 | +1 | ↓ lower is better | **fail** |
+| `component-pairs.level-drops` | 0 | 0 | 0 | ↓ lower is better | pass |
 | `component-pairs.difference-shrunk` | 0 | 14 | +14 | ↓ lower is better | **fail** |
-| `component-pairs.moved` | 0 | 395 | +395 | shown, not gated | — |
-| `component-pairs.flagged-components` | 0 | 37 | +37 | shown, not gated | — |
+| `component-pairs.moved` | 0 | 475 | +475 | shown, not gated | — |
+| `component-pairs.flagged-components` | 0 | 48 | +48 | shown, not gated | — |
 
 ## Relations per scheme
 
@@ -93,7 +93,7 @@ Every number is computed by code from the two checkouts. Run `open-ds compare --
 | content-first | `spacing-map` | recorded | pass | pass |
 | content-first | `color-scale` | recorded | pass | pass |
 | content-first | `focus-ring` | minimum | pass | not present |
-| content-first | `compact-step` | minimum | pass | fail (1 of 1) |
+| content-first | `compact-step` | minimum | pass | pass |
 | content-first | `nested-radius` | minimum | fail (1 of 1) | fail (1 of 1) |
 | content-first | `dark-ladder` | minimum | fail (2 of 2) | pass |
 | content-first | `duration-caps` | minimum | fail (2 of 2) | pass |
@@ -131,7 +131,7 @@ Share of semantic values that reach an answer
 
 Per scheme (base → candidate): dense-data 0.8244 → 1; content-first 0.8015 → 1; accessible-first 0.8015 → 1; brand-expressive 0.7955 → 1; multi-brand 0.7939 → 1.
 
-- 691 of 691 values traced
+- 695 of 695 values traced
 
 ### `traceability.untraced`
 
@@ -179,28 +179,28 @@ Per scheme (base → candidate): dense-data 23 → 0; content-first 26 → 0; ac
 
 Share of semantic values (per brand and mode) derived from a scale, relation or alias
 
-Per scheme (base → candidate): dense-data 0.9008 → 0.8696; content-first 0.8931 → 0.8623; accessible-first 0.9008 → 0.8696; brand-expressive 0.8788 → 0.8489; multi-brand 0.8931 → 0.8623.
+Per scheme (base → candidate): dense-data 0.9008 → 0.9065; content-first 0.8931 → 0.8993; accessible-first 0.9008 → 0.9058; brand-expressive 0.8788 → 0.8714; multi-brand 0.8931 → 0.8993.
 
-Worse in: accessible-first 0.9008 → 0.8696; brand-expressive 0.8788 → 0.8489; content-first 0.8931 → 0.8623; dense-data 0.9008 → 0.8696; multi-brand 0.8931 → 0.8623.
+Worse in: brand-expressive 0.8788 → 0.8714.
 
 - relation: 98
-- alias: 0
-- scale: 1570
-- literal: 266
+- alias: 52
+- scale: 1596
+- literal: 200
 
 ### `derived.literal-values`
 
 Semantic values (per brand and mode) that end on a raw literal
 
-Per scheme (base → candidate): dense-data 26 → 36; content-first 28 → 38; accessible-first 26 → 36; brand-expressive 32 → 42; multi-brand 84 → 114.
+Per scheme (base → candidate): dense-data 26 → 26; content-first 28 → 28; accessible-first 26 → 26; brand-expressive 32 → 36; multi-brand 84 → 84.
 
-Worse in: accessible-first/dark 13 → 18; accessible-first/light 13 → 18; brand-expressive/dark 16 → 21; brand-expressive/light 16 → 21; content-first/dark 14 → 19; content-first/light 14 → 19; dense-data/dark 13 → 18; dense-data/light 13 → 18; multi-brand/aster-dark 13 → 18; multi-brand/aster-light 13 → 18; multi-brand/birch-dark 14 → 19; multi-brand/birch-light 14 → 19; multi-brand/coral-dark 15 → 20; multi-brand/coral-light 15 → 20.
+Worse in: brand-expressive/dark 16 → 18; brand-expressive/light 16 → 18.
 
-- dense-data: type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.duration.exit, motion.easing.standard, motion.easing.enter, motion.easing.exit, motion.easing.exit-offscreen, motion.easing.emphasize, elevation.card, elevation.overlay, icon.stroke-width
-- content-first: radius.badge, type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.duration.exit, motion.easing.standard, motion.easing.enter, motion.easing.exit, motion.easing.exit-offscreen, motion.easing.emphasize, elevation.card, elevation.overlay, icon.stroke-width
-- accessible-first: type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.duration.exit, motion.easing.standard, motion.easing.enter, motion.easing.exit, motion.easing.exit-offscreen, motion.easing.emphasize, elevation.card, elevation.overlay, icon.stroke-width
-- brand-expressive: radius.control, radius.badge, type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.duration.exit, motion.duration.hero, motion.easing.standard, motion.easing.enter, motion.easing.exit, motion.easing.exit-offscreen, motion.easing.emphasize, elevation.card, elevation.overlay, icon.stroke-width
-- multi-brand: type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.duration.exit, motion.easing.standard, motion.easing.enter, motion.easing.exit, motion.easing.exit-offscreen, motion.easing.emphasize, elevation.card, elevation.overlay, icon.stroke-width, radius.badge, radius.control
+- dense-data: type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.easing.standard, motion.easing.exit, elevation.card, elevation.overlay
+- content-first: radius.badge, type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.easing.standard, motion.easing.exit, elevation.card, elevation.overlay
+- accessible-first: type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.easing.standard, motion.easing.exit, elevation.card, elevation.overlay
+- brand-expressive: radius.control, radius.badge, type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.duration.hero, motion.easing.standard, motion.easing.exit, motion.easing.exit-offscreen, motion.easing.emphasize, elevation.card, elevation.overlay
+- multi-brand: type.display.font-family, type.title.font-family, type.heading.font-family, type.body.font-family, type.label.font-family, type.caption.font-family, type.data.font-family, motion.duration.feedback, motion.duration.panels, motion.easing.standard, motion.easing.exit, elevation.card, elevation.overlay, radius.badge, radius.control
 
 ### `derived.component-literals`
 
@@ -218,10 +218,10 @@ Raw hex, px and ms literals in component code and CSS that bypass the tokens
 
 Failing relation checks, all invariants
 
-Per scheme (base → candidate): dense-data 2 → 0; content-first 3 → 2; accessible-first 3 → 1; brand-expressive 3 → 1; multi-brand 7 → 1.
+Per scheme (base → candidate): dense-data 2 → 0; content-first 3 → 1; accessible-first 3 → 1; brand-expressive 3 → 1; multi-brand 7 → 1.
 
 - dense-data: spacing-map pass, color-scale pass, focus-ring not present, compact-step pass, nested-radius pass, dark-ladder pass, duration-caps pass, hit-area pass
-- content-first: spacing-map pass, color-scale pass, focus-ring not present, compact-step fail, nested-radius fail, dark-ladder pass, duration-caps pass, hit-area pass
+- content-first: spacing-map pass, color-scale pass, focus-ring not present, compact-step pass, nested-radius fail, dark-ladder pass, duration-caps pass, hit-area pass
 - accessible-first: spacing-map pass, color-scale pass, focus-ring not present, compact-step pass, nested-radius fail, dark-ladder pass, duration-caps pass, hit-area pass
 - brand-expressive: spacing-map pass, color-scale pass, focus-ring not present, compact-step pass, nested-radius fail, dark-ladder pass, duration-caps pass, hit-area pass
 - multi-brand: spacing-map pass, color-scale pass, focus-ring not present, compact-step pass, nested-radius fail, dark-ladder pass, duration-caps pass, hit-area pass
@@ -266,13 +266,10 @@ Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 0; acce
 
 A compact control is the default − 1 step on the control scale
 
-Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 1; accessible-first 0 → 0; brand-expressive 0 → 0; multi-brand 0 → 0.
-
-Worse in: content-first 0 → 1.
+Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 0; accessible-first 0 → 0; brand-expressive 0 → 0; multi-brand 0 → 0.
 
 - dense-data: pass
-- content-first: fail
--   size.control.compact is 40px; one step below the 48px default is 44px
+- content-first: pass
 - accessible-first: pass
 - brand-expressive: pass
 - multi-brand: pass
@@ -323,11 +320,11 @@ Semantic tokens whose value changes when an answer their trace cites changes (ma
 
 Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 0; accessible-first 0 → 0; brand-expressive 0 → 0; multi-brand 0 → 0.
 
-- dense-data: 0 of 138 traced tokens
-- content-first: 0 of 138 traced tokens
+- dense-data: 0 of 139 traced tokens
+- content-first: 0 of 139 traced tokens
 - accessible-first: 0 of 138 traced tokens
-- brand-expressive: 0 of 139 traced tokens
-- multi-brand: 0 of 138 traced tokens
+- brand-expressive: 0 of 140 traced tokens
+- multi-brand: 0 of 139 traced tokens
 
 ### `generation.answer-driven-share`
 
@@ -335,7 +332,7 @@ Share of traced semantic tokens that an answer they cite drives (may only rise, 
 
 Per scheme (base → candidate): dense-data 0 → 0; content-first 0 → 0; accessible-first 0 → 0; brand-expressive 0 → 0; multi-brand 0 → 0.
 
-- 0 of 691 traced tokens move with an answer they cite
+- 0 of 695 traced tokens move with an answer they cite
 
 ### `blast-radius.answers-generate-nothing`
 
@@ -400,19 +397,19 @@ Grammar pairs below their WCAG contrast on a fill that records it waits for a fi
 
 Grammar pairs whose APCA Lc is under the readability floor for their role (warning, not gated)
 
-Per scheme (base → candidate): dense-data 15 → 15; content-first 20 → 19; accessible-first 16 → 16; brand-expressive 13 → 13; multi-brand 44 → 44.
+Per scheme (base → candidate): dense-data 15 → 15; content-first 20 → 19; accessible-first 16 → 7; brand-expressive 13 → 13; multi-brand 44 → 44.
 
 - dense-data/dark: color.text.muted on color.surface.canvas Lc -49.4, floor 60
 - dense-data/dark: color.text.muted on color.surface.default Lc -48.5, floor 60
 - dense-data/dark: color.text.muted on color.surface.raised Lc -45.6, floor 60
-- dense-data/dark: color.text.muted on color.surface.sunken Lc -49.4, floor 60
-- dense-data/dark: color.text.muted on color.surface.highlight Lc -49.4, floor 60
+- dense-data/dark: color.text.muted on color.surface.sunken Lc -49.8, floor 60
+- dense-data/dark: color.text.muted on color.surface.highlight Lc -49.8, floor 60
 - dense-data/dark: color.text.muted on color.surface.selected Lc -46.0, floor 60
 - dense-data/dark: color.text.on-light on color.action.primary Lc 57.4, floor 60
 - dense-data/dark: color.text.on-light on color.action.danger Lc 55.6, floor 60
 - dense-data/dark: color.text.on-action on color.action.primary Lc 57.4, floor 60
 - dense-data/dark: color.text.on-danger on color.action.danger Lc 55.6, floor 60
-- … 97 more in scorecard.json
+- … 88 more in scorecard.json
 
 ### `accessibility.hit-area`
 
@@ -452,45 +449,43 @@ Per scheme (base → candidate): dense-data 0 → 0; content-first 2 → 0; acce
 
 Extra copies of sentences repeated across reasons, token names taken out
 
-Per scheme (base → candidate): dense-data 75 → 80; content-first 73 → 81; accessible-first 76 → 83; brand-expressive 73 → 77; multi-brand 422 → 472.
-
-Worse in: accessible-first 76 → 83; brand-expressive 73 → 77; content-first 73 → 81; dense-data 75 → 80; multi-brand 422 → 472.
+Per scheme (base → candidate): dense-data 75 → 66; content-first 73 → 67; accessible-first 76 → 63; brand-expressive 73 → 66; multi-brand 422 → 389.
 
 - dense-data: ×25 "one product one brand ramp on cool neutrals" (answer color.definition; pick default/light color.neutral.0; pick default/light color.neutral.50; …)
 - dense-data: ×24 "the scheme's neutral is slate" (pick default/light color.neutral.0; pick default/light color.neutral.50; pick default/light color.neutral.100; …)
-- dense-data: ×4 "distance does this by grouping what is near and separating what is far as the eye reads proximity gestalt so a gap between groups stays clearly larger than a gap inside one" (token space.gap.tight; token space.gap.default; token space.gap.group; …)
-- dense-data: ×3 "2 5 5: 44px at aaa and padding or a label can make it larger than the box" (token size.control.default; token size.control.compact; token size.control.large)
-- dense-data: ×3 "height does this by setting the hit area a finger or a pointer must hit" (token size.control.default; token size.control.compact; token size.control.large)
-- dense-data: ×3 "padding does this by keeping content off the edge of its box so the content reads as part of that box and by setting the size of the box with the content" (token space.inset.control-x; token space.inset.container; token space.inset.cell-x)
-- dense-data: ×3 "wcag measures the hit area not the drawn box 2 5 8: 24px at aa" (token size.control.default; token size.control.compact; token size.control.large)
 - dense-data: ×2 "a quiet tint behind danger" (pick default/light color.status.danger.subtle; pick default/dark color.status.danger.subtle)
 - dense-data: ×2 "a quiet tint behind info" (pick default/light color.status.info.subtle; pick default/dark color.status.info.subtle)
 - dense-data: ×2 "a quiet tint behind success" (pick default/light color.status.success.subtle; pick default/dark color.status.success.subtle)
-- … 251 more in scorecard.json
+- dense-data: ×2 "a quiet tint behind warning" (pick default/light color.status.warning.subtle; pick default/dark color.status.warning.subtle)
+- dense-data: ×2 "a see-through layer that dims the page behind a modal so the dialog is the one thing to act on" (pick default/light color.surface.scrim; pick default/dark color.surface.scrim)
+- dense-data: ×2 "disabled text has no contrast minimum" (pick default/light color.disabled.text; pick default/dark color.disabled.text)
+- dense-data: ×2 "experts do not need more" (answer accessibility.roles; pick default/light color.surface.pressed)
+- dense-data: ×2 "it decorates so it holds no contrast minimum" (pick default/light color.border.default; pick default/dark color.border.default)
+- … 174 more in scorecard.json
 
 ### `size.tokens`
 
 Semantic and component tokens
 
-Per scheme (base → candidate): dense-data 1809 → 1865; content-first 1809 → 1865; accessible-first 1809 → 1865; brand-expressive 1810 → 1866; multi-brand 1809 → 1865.
+Per scheme (base → candidate): dense-data 1809 → 1866; content-first 1809 → 1866; accessible-first 1809 → 1865; brand-expressive 1810 → 1867; multi-brand 1809 → 1866.
 
-- dense-data: 138 semantic, 1727 component
-- content-first: 138 semantic, 1727 component
+- dense-data: 139 semantic, 1727 component
+- content-first: 139 semantic, 1727 component
 - accessible-first: 138 semantic, 1727 component
-- brand-expressive: 139 semantic, 1727 component
-- multi-brand: 138 semantic, 1727 component
+- brand-expressive: 140 semantic, 1727 component
+- multi-brand: 139 semantic, 1727 component
 
 ### `size.css-bytes`
 
 Bytes of each scheme's generated tokens.css
 
-Per scheme (base → candidate): dense-data 422088 → 438134; content-first 422049 → 438075; accessible-first 422302 → 438330; brand-expressive 422232 → 438500; multi-brand 1266219 → 1314705.
+Per scheme (base → candidate): dense-data 422088 → 438256; content-first 422049 → 438199; accessible-first 422302 → 438384; brand-expressive 422232 → 438626; multi-brand 1266219 → 1315071.
 
-- dense-data: 438134 bytes, 1868 custom properties
-- content-first: 438075 bytes, 1868 custom properties
-- accessible-first: 438330 bytes, 1868 custom properties
-- brand-expressive: 438500 bytes, 1869 custom properties
-- multi-brand: 1314705 bytes, 1868 custom properties
+- dense-data: 438256 bytes, 1869 custom properties
+- content-first: 438199 bytes, 1869 custom properties
+- accessible-first: 438384 bytes, 1868 custom properties
+- brand-expressive: 438626 bytes, 1870 custom properties
+- multi-brand: 1315071 bytes, 1869 custom properties
 
 ### `size.unused-semantics`
 
@@ -552,17 +547,13 @@ Per scheme (base → candidate): dense-data 22 → 22; content-first 24 → 24; 
 
 Literals new in the candidate
 
-- dense-data: motion.duration.exit (why: We use 120ms (fast) for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So experts get the page back at once, because productive exits stay short (motion.roles) and there is one speed (motion.count).)
-- dense-data: motion.easing.enter (why: We use the standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So experts can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).)
 - dense-data: motion.easing.exit (why: We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move of the productive family. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next click, because productive exits take a strong ease-out (motion.roles) and easing never springs here (motion.definition).)
-- dense-data: motion.easing.exit-offscreen (why: We use the strong-out easing as well for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).)
-- dense-data: motion.easing.emphasize (why: We use the standard easing for a moment that calls for attention in order to give the emphasize move no overshoot. The curve does this by stopping at its target without passing it. So a new message draws the eye by its change, not by a bounce, because the family is productive (motion.roles) and easing is a standard ease-out, never a spring (motion.definition).)
-- dense-data: icon.stroke-width (why: A 1.5px stroke width on Lucide's 24px grid keeps outline icons light, so they never outweigh the dense text beside them.)
-- content-first: motion.duration.exit (why: We use 150ms (moderate) for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So readers get the page back at once, because productive exits stay short (motion.roles) and there are two speeds (motion.count).)
-- content-first: motion.easing.enter (why: We use the standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So readers can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).)
 - content-first: motion.easing.exit (why: We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move of the productive family. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next click, because productive exits take a strong ease-out (motion.roles) and easing never springs here (motion.definition).)
-- content-first: motion.easing.exit-offscreen (why: We use the strong-out easing as well for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).)
-- … 20 more in scorecard.json
+- accessible-first: motion.easing.exit (why: We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move of the productive family. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next click, because productive exits take a strong ease-out (motion.roles) and easing never springs here (motion.definition).)
+- brand-expressive: motion.easing.exit (why: We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next tap, because an expressive exit eases out unless the layer leaves the screen (motion.roles), and easing is set per move (motion.definition).)
+- brand-expressive: motion.easing.exit-offscreen (why: We use the accelerate easing (0.4, 0, 1, 1) for a drawer or sheet that slides off the screen in order to do the exit move of a layer that leaves the view. The curve does this by starting slow and speeding up, so the panel gathers pace on its way out. So visitors read the drawer as gone, not paused at the edge, because an expressive family accelerates only what leaves the screen (motion.roles) and easing is set per move (motion.definition).)
+- brand-expressive: motion.easing.emphasize (why: We use the spring easing (0.34, 1.56, 0.64, 1) for the emphasize move only, in order to celebrate a moment such as a sign-up that worked. The curve does this by passing its target and settling back, so the eye catches the bounce. So the brand's spring is felt where it means something, not on every menu, because easing is a spring (motion.definition) and motion carries expression (motion.roles).)
+- multi-brand: motion.easing.exit (why: We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move of the productive family. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next click, because productive exits take a strong ease-out (motion.roles) and easing never springs here (motion.definition).)
 
 ### `derived.new-literals-unreasoned`
 
@@ -572,17 +563,17 @@ Literals new in the candidate with no recorded reason
 
 Color tokens that moved, per scheme, brand and mode, every move listed by tier
 
-- approval: 25
+- approval: 27
 -   dense-data/dark color.surface.raised: #161B23 → #262D38, ΔE 0.075 (approval, surface limits)
--   dense-data/dark color.surface.sunken: #262D38 → #0D1117, ΔE 0.119 (approval, surface limits)
--   dense-data/dark color.surface.highlight: #262D38 → #0D1117, ΔE 0.119 (approval, surface limits)
--   dense-data/dark color.surface.pressed: #262D38 → #0D1117, ΔE 0.119 (approval, surface limits)
+-   dense-data/dark color.surface.sunken: #262D38 → #06090E, ΔE 0.157 (approval, surface limits)
+-   dense-data/dark color.surface.highlight: #262D38 → #06090E, ΔE 0.157 (approval, surface limits)
+-   dense-data/dark color.surface.pressed: #262D38 → #06090E, ΔE 0.157 (approval, surface limits)
 -   content-first/dark color.surface.raised: #1F1B16 → #2E2A24, ΔE 0.062 (approval, surface limits)
--   content-first/dark color.surface.sunken: #2E2A24 → #14110D, ΔE 0.107 (approval, surface limits)
--   content-first/dark color.surface.highlight: #2E2A24 → #14110D, ΔE 0.107 (approval, surface limits)
+-   content-first/dark color.surface.sunken: #2E2A24 → #0B0906, ΔE 0.146 (approval, surface limits)
+-   content-first/dark color.surface.highlight: #2E2A24 → #0B0906, ΔE 0.146 (approval, surface limits)
 -   accessible-first/dark color.surface.default: #141414 → #222222, ΔE 0.061 (approval, surface limits)
 -   accessible-first/dark color.surface.raised: #141414 → #333333, ΔE 0.130 (approval, surface limits)
-- … 18 more in scorecard.json
+- … 20 more in scorecard.json
 
 ### `shift.review-unreasoned`
 
@@ -592,17 +583,8 @@ Moves in the review tier (ΔE 0.02 to 0.05) with no new recorded reason
 
 Moves over ΔE 0.05 (or a role's own limit) that the owner has not approved
 
-- dense-data/dark color.surface.raised: #161B23 → #262D38, ΔE 0.075 (approval, surface limits)
-- dense-data/dark color.surface.sunken: #262D38 → #0D1117, ΔE 0.119 (approval, surface limits)
-- dense-data/dark color.surface.highlight: #262D38 → #0D1117, ΔE 0.119 (approval, surface limits)
-- dense-data/dark color.surface.pressed: #262D38 → #0D1117, ΔE 0.119 (approval, surface limits)
-- content-first/dark color.surface.raised: #1F1B16 → #2E2A24, ΔE 0.062 (approval, surface limits)
-- content-first/dark color.surface.sunken: #2E2A24 → #14110D, ΔE 0.107 (approval, surface limits)
-- content-first/dark color.surface.highlight: #2E2A24 → #14110D, ΔE 0.107 (approval, surface limits)
-- accessible-first/dark color.surface.default: #141414 → #222222, ΔE 0.061 (approval, surface limits)
-- accessible-first/dark color.surface.raised: #141414 → #333333, ΔE 0.130 (approval, surface limits)
-- accessible-first/dark color.surface.sunken: #222222 → #141414, ΔE 0.061 (approval, surface limits)
-- … 15 more in scorecard.json
+- accessible-first/dark color.border.default: #333333 → #595959, ΔE 0.143 (approval)
+- accessible-first/dark color.border.strong: #949494 → #B4B4B4, ΔE 0.103 (approval)
 
 ### `shift.hue`
 
@@ -616,16 +598,13 @@ Brand key colors that changed with no adjustment recorded
 
 Contrast pairs that drop a WCAG level (under 3, 3, 4.5, 7)
 
-Per scheme (base → candidate): dense-data not present → 1; accessible-first not present → 4; multi-brand not present → 1.
+Per scheme (base → candidate): accessible-first not present → 1.
 
-Worse in: accessible-first/dark 0 → 4; dense-data/dark 0 → 1; multi-brand/birch-dark 0 → 1.
+Worse in: accessible-first/dark 0 → 1.
 
-- dense-data/dark: color.border.focus on color.surface.raised 7.62:1 → 6.11:1
 - accessible-first/dark: color.text.muted on color.surface.raised 8.89:1 → 6.09:1
-- accessible-first/dark: color.border.strong on color.surface.raised 6.07:1 → 4.17:1
-- accessible-first/dark: color.border.focus on color.surface.raised 8.74:1 → 6.00:1
-- accessible-first/dark: color.status.danger on color.surface.default 7.76:1 → 6.70:1
-- multi-brand/birch-dark: color.border.focus on color.surface.raised 7.80:1 → 6.39:1
+- dense-data/dark: color.border.focus on color.surface.raised 7.62:1 → 6.11:1 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. color.border.focus keeps AA on raised layers; the raised step is lighter so height reads by tone.)
+- multi-brand/birch-dark: color.border.focus on color.surface.raised 7.80:1 → 6.39:1 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. color.border.focus keeps AA on raised layers; the raised step is lighter so height reads by tone.)
 
 ### `relations.step-order`
 
@@ -635,20 +614,16 @@ Scale steps that swap their lightness order
 
 Surface ladder rungs that swap their lightness order
 
-Per scheme (base → candidate): dense-data not present → 2; content-first not present → 2; accessible-first not present → 2; brand-expressive not present → 2; multi-brand not present → 6.
-
-Worse in: accessible-first/dark 0 → 2; brand-expressive/dark 0 → 2; content-first/dark 0 → 2; dense-data/dark 0 → 2; multi-brand/aster-dark 0 → 2; multi-brand/birch-dark 0 → 2; multi-brand/coral-dark 0 → 2.
-
-- dense-data/dark: color.surface.sunken and color.surface.default swap lightness order
-- dense-data/dark: color.surface.sunken and color.surface.raised swap lightness order
-- content-first/dark: color.surface.sunken and color.surface.default swap lightness order
-- content-first/dark: color.surface.sunken and color.surface.raised swap lightness order
-- accessible-first/dark: color.surface.sunken and color.surface.default swap lightness order
-- accessible-first/dark: color.surface.sunken and color.surface.raised swap lightness order
-- brand-expressive/dark: color.surface.sunken and color.surface.default swap lightness order
-- brand-expressive/dark: color.surface.sunken and color.surface.raised swap lightness order
-- multi-brand/aster-dark: color.surface.sunken and color.surface.default swap lightness order
-- multi-brand/aster-dark: color.surface.sunken and color.surface.raised swap lightness order
+- dense-data/dark: color.surface.sunken and color.surface.default swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.)
+- dense-data/dark: color.surface.sunken and color.surface.raised swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.)
+- content-first/dark: color.surface.sunken and color.surface.default swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.)
+- content-first/dark: color.surface.sunken and color.surface.raised swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.)
+- accessible-first/dark: color.surface.sunken and color.surface.default swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.)
+- accessible-first/dark: color.surface.sunken and color.surface.raised swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.)
+- brand-expressive/dark: color.surface.sunken and color.surface.default swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.)
+- brand-expressive/dark: color.surface.sunken and color.surface.raised swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.)
+- multi-brand/aster-dark: color.surface.sunken and color.surface.default swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.)
+- multi-brand/aster-dark: color.surface.sunken and color.surface.raised swap lightness order (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.)
 - … 4 more in scorecard.json
 
 ### `relations.state-sign`
@@ -659,130 +634,91 @@ State steps (rest → hover → pressed) whose lightness change flips sign
 
 Pairs distinct on base that are no longer distinct (ΔE 0.02), normal vision
 
-Per scheme (base → candidate): dense-data not present → 3; content-first not present → 2; accessible-first not present → 1; brand-expressive not present → 2; multi-brand not present → 6.
+Per scheme (base → candidate): accessible-first not present → 1.
 
-Worse in: accessible-first/dark 0 → 1; brand-expressive/dark 0 → 2; content-first/dark 0 → 2; dense-data/dark 0 → 3; multi-brand/aster-dark 0 → 2; multi-brand/birch-dark 0 → 2; multi-brand/coral-dark 0 → 2.
+Worse in: accessible-first/dark 0 → 1.
 
-- dense-data/dark: color.surface.canvas and color.surface.sunken were ΔE 0.119 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.highlight were ΔE 0.119 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.pressed were ΔE 0.119 apart, now 0.000
-- content-first/dark: color.surface.canvas and color.surface.sunken were ΔE 0.107 apart, now 0.000
-- content-first/dark: color.surface.canvas and color.surface.highlight were ΔE 0.107 apart, now 0.000
-- accessible-first/dark: color.surface.canvas and color.surface.pressed were ΔE 0.176 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.sunken were ΔE 0.119 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.highlight were ΔE 0.119 apart, now 0.000
-- multi-brand/aster-dark: color.surface.canvas and color.surface.sunken were ΔE 0.151 apart, now 0.000
-- multi-brand/aster-dark: color.surface.canvas and color.surface.highlight were ΔE 0.151 apart, now 0.000
-- … 4 more in scorecard.json
+- accessible-first/dark: color.surface.pressed and color.surface.raised were ΔE 0.130 apart, now 0.000
 
 ### `relations.distinct-lost.deuteranopia`
 
 Pairs distinct on base that are no longer distinct (ΔE 0.02), deuteranopia simulated
 
-Per scheme (base → candidate): dense-data not present → 3; content-first not present → 2; accessible-first not present → 1; brand-expressive not present → 2; multi-brand not present → 6.
+Per scheme (base → candidate): accessible-first not present → 1.
 
-Worse in: accessible-first/dark 0 → 1; brand-expressive/dark 0 → 2; content-first/dark 0 → 2; dense-data/dark 0 → 3; multi-brand/aster-dark 0 → 2; multi-brand/birch-dark 0 → 2; multi-brand/coral-dark 0 → 2.
+Worse in: accessible-first/dark 0 → 1.
 
-- dense-data/dark: color.surface.canvas and color.surface.sunken were ΔE 0.119 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.highlight were ΔE 0.119 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.pressed were ΔE 0.119 apart, now 0.000
-- content-first/dark: color.surface.canvas and color.surface.sunken were ΔE 0.107 apart, now 0.000
-- content-first/dark: color.surface.canvas and color.surface.highlight were ΔE 0.107 apart, now 0.000
-- accessible-first/dark: color.surface.canvas and color.surface.pressed were ΔE 0.176 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.sunken were ΔE 0.121 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.highlight were ΔE 0.121 apart, now 0.000
-- multi-brand/aster-dark: color.surface.canvas and color.surface.sunken were ΔE 0.150 apart, now 0.000
-- multi-brand/aster-dark: color.surface.canvas and color.surface.highlight were ΔE 0.150 apart, now 0.000
-- … 4 more in scorecard.json
+- accessible-first/dark: color.surface.pressed and color.surface.raised were ΔE 0.130 apart, now 0.000
 
 ### `relations.distinct-lost.protanopia`
 
 Pairs distinct on base that are no longer distinct (ΔE 0.02), protanopia simulated
 
-Per scheme (base → candidate): dense-data not present → 3; content-first not present → 2; accessible-first not present → 1; brand-expressive not present → 2; multi-brand not present → 6.
+Per scheme (base → candidate): accessible-first not present → 1.
 
-Worse in: accessible-first/dark 0 → 1; brand-expressive/dark 0 → 2; content-first/dark 0 → 2; dense-data/dark 0 → 3; multi-brand/aster-dark 0 → 2; multi-brand/birch-dark 0 → 2; multi-brand/coral-dark 0 → 2.
+Worse in: accessible-first/dark 0 → 1.
 
-- dense-data/dark: color.surface.canvas and color.surface.sunken were ΔE 0.120 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.highlight were ΔE 0.120 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.pressed were ΔE 0.120 apart, now 0.000
-- content-first/dark: color.surface.canvas and color.surface.sunken were ΔE 0.108 apart, now 0.000
-- content-first/dark: color.surface.canvas and color.surface.highlight were ΔE 0.108 apart, now 0.000
-- accessible-first/dark: color.surface.canvas and color.surface.pressed were ΔE 0.176 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.sunken were ΔE 0.114 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.highlight were ΔE 0.114 apart, now 0.000
-- multi-brand/aster-dark: color.surface.canvas and color.surface.sunken were ΔE 0.150 apart, now 0.000
-- multi-brand/aster-dark: color.surface.canvas and color.surface.highlight were ΔE 0.150 apart, now 0.000
-- … 4 more in scorecard.json
+- accessible-first/dark: color.surface.pressed and color.surface.raised were ΔE 0.130 apart, now 0.000
 
 ### `relations.distinct-lost.tritanopia`
 
 Pairs distinct on base that are no longer distinct (ΔE 0.02), tritanopia simulated
 
-Per scheme (base → candidate): dense-data not present → 4; content-first not present → 2; accessible-first not present → 1; brand-expressive not present → 2; multi-brand not present → 7.
+Per scheme (base → candidate): dense-data not present → 1; accessible-first not present → 1; multi-brand not present → 1.
 
-Worse in: accessible-first/dark 0 → 1; brand-expressive/dark 0 → 2; content-first/dark 0 → 2; dense-data/dark 0 → 4; multi-brand/aster-dark 0 → 3; multi-brand/birch-dark 0 → 2; multi-brand/coral-dark 0 → 2.
+Worse in: accessible-first/dark 0 → 1; dense-data/dark 0 → 1; multi-brand/aster-dark 0 → 1.
 
-- dense-data/dark: color.surface.canvas and color.surface.sunken were ΔE 0.119 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.highlight were ΔE 0.119 apart, now 0.000
-- dense-data/dark: color.surface.canvas and color.surface.pressed were ΔE 0.119 apart, now 0.000
 - dense-data/dark: color.surface.raised and color.surface.selected were ΔE 0.069 apart, now 0.012
-- content-first/dark: color.surface.canvas and color.surface.sunken were ΔE 0.109 apart, now 0.000
-- content-first/dark: color.surface.canvas and color.surface.highlight were ΔE 0.109 apart, now 0.000
-- accessible-first/dark: color.surface.canvas and color.surface.pressed were ΔE 0.176 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.sunken were ΔE 0.121 apart, now 0.000
-- brand-expressive/dark: color.surface.canvas and color.surface.highlight were ΔE 0.121 apart, now 0.000
-- multi-brand/aster-dark: color.surface.canvas and color.surface.sunken were ΔE 0.146 apart, now 0.000
-- … 6 more in scorecard.json
+- accessible-first/dark: color.surface.pressed and color.surface.raised were ΔE 0.130 apart, now 0.000
+- multi-brand/aster-dark: color.surface.raised and color.surface.selected were ΔE 0.066 apart, now 0.020
 
 ### `relations.shared-split`
 
 Colors that were one color on base and are split now
 
-Per scheme (base → candidate): dense-data not present → 4; content-first not present → 4; accessible-first not present → 11; brand-expressive not present → 4; multi-brand not present → 9.
+Per scheme (base → candidate): accessible-first not present → 1.
 
-Worse in: accessible-first/dark 0 → 11; brand-expressive/dark 0 → 4; content-first/dark 0 → 4; dense-data/dark 0 → 4; multi-brand/aster-dark 0 → 3; multi-brand/birch-dark 0 → 3; multi-brand/coral-dark 0 → 3.
+Worse in: accessible-first/dark 0 → 1.
 
-- dense-data/dark: color.surface.raised no longer shares color.surface.default's color (#262D38 vs #161B23)
-- dense-data/dark: color.action.secondary.hover no longer shares color.surface.sunken's color (#262D38 vs #0D1117)
-- dense-data/dark: color.category.5.subtle no longer shares color.surface.sunken's color (#262D38 vs #0D1117)
-- dense-data/dark: color.disabled.surface no longer shares color.surface.sunken's color (#262D38 vs #0D1117)
-- content-first/dark: color.surface.raised no longer shares color.surface.default's color (#2E2A24 vs #1F1B16)
-- content-first/dark: color.action.secondary.hover no longer shares color.surface.sunken's color (#2E2A24 vs #14110D)
-- content-first/dark: color.category.5.subtle no longer shares color.surface.sunken's color (#2E2A24 vs #14110D)
-- content-first/dark: color.disabled.surface no longer shares color.surface.sunken's color (#2E2A24 vs #14110D)
-- accessible-first/dark: color.surface.raised no longer shares color.surface.default's color (#333333 vs #222222)
-- accessible-first/dark: color.text.inverse no longer shares color.surface.default's color (#141414 vs #222222)
-- … 22 more in scorecard.json
+- accessible-first/dark: color.disabled.text no longer shares color.border.strong's color (#949494 vs #B4B4B4)
+- dense-data/dark: color.surface.raised no longer shares color.surface.default's color (#262D38 vs #161B23) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.)
+- dense-data/dark: color.action.secondary.hover no longer shares color.surface.sunken's color (#262D38 vs #06090E) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.)
+- dense-data/dark: color.category.5.subtle no longer shares color.surface.sunken's color (#262D38 vs #06090E) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.category.5.subtle no longer shares its step.)
+- dense-data/dark: color.disabled.surface no longer shares color.surface.sunken's color (#262D38 vs #06090E) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.)
+- content-first/dark: color.surface.raised no longer shares color.surface.default's color (#2E2A24 vs #1F1B16) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.)
+- content-first/dark: color.action.secondary.hover no longer shares color.surface.sunken's color (#2E2A24 vs #0B0906) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.)
+- content-first/dark: color.category.5.subtle no longer shares color.surface.sunken's color (#2E2A24 vs #0B0906) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.category.5.subtle no longer shares its step.)
+- content-first/dark: color.disabled.surface no longer shares color.surface.sunken's color (#2E2A24 vs #0B0906) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.)
+- accessible-first/dark: color.surface.raised no longer shares color.surface.default's color (#333333 vs #222222) (approved by Yonatan, 2026-11-12: Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.)
+- … 26 more in scorecard.json
 
 ### `component-pairs.level-drops`
 
-Component pairs whose contrast drops a WCAG level
+Component pairs whose contrast drops a WCAG level, less the ones the owner approved
 
-- dense-data/dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.28:1 → 5.84:1, ΔE fg/bg 0.543 → 0.472
-- content-first/dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.21:1 → 6.00:1, ΔE fg/bg 0.535 → 0.475
-- accessible-first/dark alert rest text: --alert-destructive-label on --alert-destructive-background: 7.76:1 → 6.70:1, ΔE fg/bg 0.570 → 0.511
-- accessible-first/dark alert *:data-[slot=alert-description] text: --alert-destructive-description-label on --alert-destructive-background: 7.76:1 → 6.70:1, ΔE fg/bg 0.570 → 0.511
-- accessible-first/dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.76:1 → 5.32:1, ΔE fg/bg 0.570 → 0.444
-- brand-expressive/dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.58:1 → 6.26:1, ΔE fg/bg 0.553 → 0.481
-- multi-brand/aster-dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.52:1 → 6.16:1, ΔE fg/bg 0.559 → 0.490
-- multi-brand/birch-dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.52:1 → 6.16:1, ΔE fg/bg 0.559 → 0.490
-- multi-brand/coral-dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.52:1 → 6.16:1, ΔE fg/bg 0.559 → 0.490
+- dense-data/dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.28:1 → 5.84:1, ΔE fg/bg 0.543 → 0.472 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.)
+- content-first/dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.21:1 → 6.00:1, ΔE fg/bg 0.535 → 0.475 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.)
+- brand-expressive/dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.58:1 → 6.26:1, ΔE fg/bg 0.553 → 0.481 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.)
+- multi-brand/aster-dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.52:1 → 6.16:1, ΔE fg/bg 0.559 → 0.490 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.)
+- multi-brand/birch-dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.52:1 → 6.16:1, ΔE fg/bg 0.559 → 0.490 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.)
+- multi-brand/coral-dark menubar data-[variant=destructive] text: --menubar-item-label-destructive on --menubar-content-background: 7.52:1 → 6.16:1, ΔE fg/bg 0.559 → 0.490 (approved by Yonatan, 2026-11-12: Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.)
 
 ### `component-pairs.difference-shrunk`
 
-Component pairs whose foreground-to-background ΔE fell below 0.1
+Component pairs whose foreground-to-background ΔE fell below 0.1, less the ones the owner approved
 
-- dense-data/dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.37:1 → 1.00:1, ΔE fg/bg 0.119 → 0.000
-- dense-data/dark chart [&_.recharts-rectangle.recharts-tooltip-cursor] icon: --chart-cursor-fill on the page: 1.37:1 → 1.00:1, ΔE fg/bg 0.119 → 0.000
-- content-first/dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.32:1 → 1.00:1, ΔE fg/bg 0.107 → 0.000
-- content-first/dark chart [&_.recharts-rectangle.recharts-tooltip-cursor] icon: --chart-cursor-fill on the page: 1.32:1 → 1.00:1, ΔE fg/bg 0.107 → 0.000
+Worse in: accessible-first/dark 0 → 2; brand-expressive/dark 0 → 2; content-first/dark 0 → 2; dense-data/dark 0 → 2; multi-brand/aster-dark 0 → 2; multi-brand/birch-dark 0 → 2; multi-brand/coral-dark 0 → 2.
+
+- dense-data/dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.37:1 → 1.05:1, ΔE fg/bg 0.119 → 0.038
+- dense-data/dark chart [&_.recharts-rectangle.recharts-tooltip-cursor] icon: --chart-cursor-fill on the page: 1.37:1 → 1.05:1, ΔE fg/bg 0.119 → 0.038
+- content-first/dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.32:1 → 1.06:1, ΔE fg/bg 0.107 → 0.039
+- content-first/dark chart [&_.recharts-rectangle.recharts-tooltip-cursor] icon: --chart-cursor-fill on the page: 1.32:1 → 1.06:1, ΔE fg/bg 0.107 → 0.039
 - accessible-first/dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.24:1 → 1.07:1, ΔE fg/bg 0.107 → 0.046
 - accessible-first/dark chart [&_.recharts-rectangle.recharts-tooltip-cursor] icon: --chart-cursor-fill on the page: 1.24:1 → 1.07:1, ΔE fg/bg 0.107 → 0.046
-- brand-expressive/dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.31:1 → 1.00:1, ΔE fg/bg 0.119 → 0.000
-- brand-expressive/dark chart [&_.recharts-rectangle.recharts-tooltip-cursor] icon: --chart-cursor-fill on the page: 1.31:1 → 1.00:1, ΔE fg/bg 0.119 → 0.000
-- multi-brand/aster-dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.38:1 → 1.00:1, ΔE fg/bg 0.151 → 0.000
-- multi-brand/birch-dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.38:1 → 1.00:1, ΔE fg/bg 0.151 → 0.000
+- brand-expressive/dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.31:1 → 1.05:1, ΔE fg/bg 0.119 → 0.042
+- brand-expressive/dark chart [&_.recharts-rectangle.recharts-tooltip-cursor] icon: --chart-cursor-fill on the page: 1.31:1 → 1.05:1, ΔE fg/bg 0.119 → 0.042
+- multi-brand/aster-dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.38:1 → 1.03:1, ΔE fg/bg 0.151 → 0.044
+- multi-brand/birch-dark chart [&_.recharts-radial-bar-background-sector] icon: --chart-track-fill on the page: 1.38:1 → 1.03:1, ΔE fg/bg 0.151 → 0.044
 - … 4 more in scorecard.json
 
 ### `component-pairs.moved`
@@ -801,9 +737,9 @@ Components with a flagged pair (see component-pairs.md)
 - attachment
 - avatar
 - badge
+- breadcrumb
 - bubble
 - button
 - button-group
-- card
-- … 27 more in scorecard.json
+- … 38 more in scorecard.json
 

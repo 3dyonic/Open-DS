@@ -1,14 +1,18 @@
 // Simulated component pairs (OD-298): each foreground-on-background pair a component draws, resolved on
 // base and candidate per scheme, brand and mode. A pair is flagged when either side moves past the
 // shift tier's pass, when its contrast drops a WCAG level, or when its difference (ΔE foreground
-// against background) falls below componentPairs.minDifference.
+// against background) falls below componentPairs.minDifference. A level drop or a shrunk difference the
+// owner approved (harness/quality-approvals.json) is listed, not counted.
+import { approvalFor } from "../approvals.mjs";
 import { contrast, oklabDistance, wcagLevel } from "../color.mjs";
 import { pairKey } from "../component-pairs.mjs";
 import { hex6 } from "../values.mjs";
-import { measureOf } from "./measure.mjs";
+import { countBy, measureOf } from "./measure.mjs";
 import { tierOf } from "./shift.mjs";
 
 export const FAMILY = "component-pairs";
+const LEVEL_DROPS = "component-pairs.level-drops";
+const SHRUNK = "component-pairs.difference-shrunk";
 
 // One side of a pair in one theme: its two colors, contrast and difference.
 function side(s, theme, p, page) {
@@ -38,7 +42,13 @@ export function componentPairRows(base, candidate, params) {
         const tier = ["approval", "review", "pass", "none"].find((t) => [tierOf(moveFg, tiers), tierOf(moveBg, tiers)].includes(t));
         const levelDrop = wcagLevel(after.ratio) < wcagLevel(before.ratio);
         const shrunk = before.difference >= minDifference && after.difference < minDifference;
-        rows.push({ scheme: id, theme, ...p, before, after, moveFg, moveBg, tier, levelDrop, shrunk, flagged: tier === "review" || tier === "approval" || levelDrop || shrunk });
+        // The pair as an approval names it: its two variables, or the page token when it has no fill of its own.
+        const flag = { scheme: id, themes: [theme], tokens: [p.fg, p.bg ?? page] };
+        const approved = {
+          [LEVEL_DROPS]: levelDrop ? approvalFor(candidate.approvals, { ...flag, check: LEVEL_DROPS }) : null,
+          [SHRUNK]: shrunk ? approvalFor(candidate.approvals, { ...flag, check: SHRUNK }) : null,
+        };
+        rows.push({ scheme: id, theme, ...p, before, after, moveFg, moveBg, tier, levelDrop, shrunk, approved, flagged: tier === "review" || tier === "approval" || levelDrop || shrunk });
       }
     }
   }
@@ -46,8 +56,15 @@ export function componentPairRows(base, candidate, params) {
 }
 
 const pairName = (r) => `${r.component} ${r.state} ${r.role}: --${r.fg} on ${r.bg ? `--${r.bg}` : "the page"}`;
+const approvedBy = (a) => (a ? ` (approved by ${a.approved_by}: ${a.why})` : "");
 const flags = (r) =>
-  [r.tier === "review" || r.tier === "approval" ? `moved (${r.tier})` : null, r.levelDrop ? "WCAG level drop" : null, r.shrunk ? "difference below the floor" : null].filter(Boolean).join(", ");
+  [
+    r.tier === "review" || r.tier === "approval" ? `moved (${r.tier})` : null,
+    r.levelDrop ? `WCAG level drop${approvedBy(r.approved?.[LEVEL_DROPS])}` : null,
+    r.shrunk ? `difference below the floor${approvedBy(r.approved?.[SHRUNK])}` : null,
+  ]
+    .filter(Boolean)
+    .join(", ");
 
 export const measure = () => [];
 
@@ -56,23 +73,23 @@ export function relative(base, candidate, params) {
   const line = (r) => `${r.scheme}/${r.theme} ${pairName(r)}: ${r.before.ratio.toFixed(2)}:1 → ${r.after.ratio.toFixed(2)}:1, ΔE fg/bg ${r.before.difference.toFixed(3)} → ${r.after.difference.toFixed(3)}`;
   const flagged = rows.filter((r) => r.flagged);
   const components = [...new Set(flagged.map((r) => r.component))].sort();
+  // A flag the owner approved stays in the detail and leaves the gated count.
+  const pairMeasure = (id, title, hit) => {
+    const open = rows.filter((r) => hit(r) && !r.approved[id]);
+    const cleared = rows.filter((r) => hit(r) && r.approved[id]);
+    return measureOf({
+      id,
+      family: FAMILY,
+      title,
+      direction: "down",
+      value: open.length,
+      parts: countBy(open, (r) => `${r.scheme}/${r.theme}`),
+      details: [...open.map(line), ...cleared.map((r) => `${line(r)}${approvedBy(r.approved[id])}`)],
+    });
+  };
   return [
-    measureOf({
-      id: "component-pairs.level-drops",
-      family: FAMILY,
-      title: "Component pairs whose contrast drops a WCAG level",
-      direction: "down",
-      value: rows.filter((r) => r.levelDrop).length,
-      details: rows.filter((r) => r.levelDrop).map(line),
-    }),
-    measureOf({
-      id: "component-pairs.difference-shrunk",
-      family: FAMILY,
-      title: `Component pairs whose foreground-to-background ΔE fell below ${params.componentPairs.minDifference}`,
-      direction: "down",
-      value: rows.filter((r) => r.shrunk).length,
-      details: rows.filter((r) => r.shrunk).map(line),
-    }),
+    pairMeasure(LEVEL_DROPS, "Component pairs whose contrast drops a WCAG level, less the ones the owner approved", (r) => r.levelDrop),
+    pairMeasure(SHRUNK, `Component pairs whose foreground-to-background ΔE fell below ${params.componentPairs.minDifference}, less the ones the owner approved`, (r) => r.shrunk),
     measureOf({
       id: "component-pairs.moved",
       family: FAMILY,
