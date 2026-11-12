@@ -22,7 +22,7 @@ import {
 } from "./color-map.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
-import { traceScheme } from "./trace.mjs";
+import { decidersOf, decisionTree, mappingOf, traceScheme } from "./trace.mjs";
 
 export const AREAS = ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Motion", "Opacity"];
 
@@ -42,18 +42,11 @@ const SCALES = [
   [/^opacity\.(.+)$/, "Opacity", "opacity", "opacity", "accessibility"],
 ];
 
-// A theme pick's why without its pick prefix and measured tail: "blue.light.600: the focus ring, so …,
-// 7.26:1 on surface.default, above the 3:1 floor." → "the focus ring, so …".
+// A theme pick's why without its pick prefix, which the card shows on its own: "blue.light.600: the focus
+// ring, …" → "the focus ring, …". The measured contrast and the because clause stay: they are the reason.
 export function plainWhy(why) {
   if (!why) return null;
-  return (
-    why
-      .replace(/^[^:]+:\s*/, "")
-      .replace(/^\d[\d.]*:1 on [a-z.]+,\s*/, "")
-      .replace(/\s*\([^)]*\d:1[^)]*\)/g, "")
-      .replace(/[,;]\s*(its label (still )?reads,?\s*)?\d[\d.]*:1.*$/, "")
-      .trim() || null
-  );
+  return why.replace(/^[a-z]+(\.[a-z0-9-]+)+:\s*/i, "").trim() || null;
 }
 
 // The theme pick of a semantic token in one brand and mode (or the mode-free base), if any.
@@ -172,7 +165,28 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     componentsShowing(index, d).map((c) => ({ component: c.component, rows: rowsOf(c.rows) }));
   const chainOf = (index, d) => {
     const { steps, links } = reasonChain(index, reasons, d);
-    return { answers: steps.map((s) => s.id).filter((id) => reasons[id]), direct: links.filter((l) => l.to === "decision").map((l) => l.from) };
+    const direct = links.filter((l) => l.to === "decision").map((l) => l.from);
+    // OD-303: a mapped token shows the one answer that decides it, its property and the property's jobs.
+    // The answers behind that answer belong to the answer, not to this token.
+    const entry = mappingOf(grammar, tokenName(d));
+    // What the token is for, from the grammar's semantics: its intent, uses and the token to use instead.
+    const key = (grammar.semantics?.keys ?? []).find((k) => k.id === tokenName(d));
+    const guide = key && { intent: key.intent ?? null, useFor: key.use_for ?? [], notFor: (key.not_for ?? []).map((n) => ({ when: n.when, use: n.use })) };
+    // What each part of the name means: the semantic group and the variant, from the scheme and the grammar.
+    const meaning = decisionTree(scheme, grammar, d, { brand })
+      .filter((n) => (n.level === "group" || n.level === "variant") && n.says)
+      .map((n) => ({ level: n.level, name: n.name, says: n.says }));
+    const property = decisionTree(scheme, grammar, d, { brand }).find((n) => n.level === "property");
+    if (property)
+      return {
+        // The questions the engine says decide this kind of token, the mapping's first (decidersOf).
+        answers: property.decided_by.map((a) => a.id).filter((id) => reasons[id]),
+        direct,
+        mapping: { property: property.name ?? entry?.title ?? null, says: property.says, jobs: property.jobs },
+        ...(meaning.length && { meaning }),
+        ...(guide && { guide }),
+      };
+    return { answers: steps.map((s) => s.id).filter((id) => reasons[id]), direct, ...(guide && { guide }) };
   };
 
   // Every area but color is the same in both modes: built once, from the light graph.
@@ -202,6 +216,9 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
           description: indexes.light.nodes.get(d)?.description ?? null,
           answers: chain.answers,
           direct: chain.direct,
+          ...(chain.mapping && { mapping: chain.mapping }),
+          ...(chain.meaning && { meaning: chain.meaning }),
+          ...(chain.guide && { guide: chain.guide }),
           components: componentsOf(indexes.light, d),
         };
       }
@@ -238,6 +255,9 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         description: index.nodes.get(d)?.description ?? null,
         answers: chain.answers,
         direct: chain.direct,
+        ...(chain.mapping && { mapping: chain.mapping }),
+        ...(chain.meaning && { meaning: chain.meaning }),
+        ...(chain.guide && { guide: chain.guide }),
         components: componentsOf(index, d),
         ...extra,
       };

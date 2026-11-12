@@ -180,22 +180,22 @@
      "byScheme": true,
      "rule": "The one main action in a view.",
      "pick": [
-      "navy.light.600: the primary action's fill; its label reads, ",
+      "navy.light.600: the primary action's fill, and its label reads ",
       {
        "ratio": 11.5
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "navy.dark.600: the primary action's fill; its label reads, ",
+      "navy.dark.600: the primary action's fill, and its label reads ",
       {
        "ratio": 6.86
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },

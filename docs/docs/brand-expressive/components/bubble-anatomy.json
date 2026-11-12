@@ -267,22 +267,22 @@
      "byScheme": true,
      "rule": "The one main action in a view.",
      "pick": [
-      "pink.light.600: the primary action's fill; its label reads, ",
+      "pink.light.600: the primary action's fill, and its label reads ",
       {
        "ratio": 4.84
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "pink.dark.600: the primary action's fill; its label reads, ",
+      "pink.dark.600: the primary action's fill, and its label reads ",
       {
        "ratio": 8.88
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },

@@ -51,11 +51,11 @@ const bareScheme = (id) => {
   return { ...s, usage: [] };
 };
 
-test("the grammar's trace rules alone reach every value; without them, values have gaps", () => {
+test("the grammar's rules alone reach every value; without the trace rules and the mapping, values have gaps", () => {
   for (const id of schemeIds()) {
     const s = bareScheme(id);
     assert.deepEqual(untraced(traceScheme(s, g)).map((t) => t.token), [], id);
-    const gaps = untraced(traceScheme(s, { ...g, trace: [] })).map((t) => t.token);
+    const gaps = untraced(traceScheme(s, { ...g, trace: [], mapping: [] })).map((t) => t.token);
     assert.ok(gaps.includes("motion.easing.standard") && gaps.includes("type.body.line-height"), `${id}: ${gaps.join(", ")}`);
   }
 });

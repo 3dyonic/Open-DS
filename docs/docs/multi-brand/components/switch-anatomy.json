@@ -244,22 +244,22 @@
      "byScheme": true,
      "rule": "The one main action in a view.",
      "pick": [
-      "teal.light.600: the primary action's fill; its label reads, ",
+      "teal.light.600: the primary action's fill, and its label reads ",
       {
        "ratio": 5.47
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },
       " floor."
      ],
      "darkPick": [
-      "teal.dark.600: the primary action's fill; its label reads, ",
+      "teal.dark.600: the primary action's fill, and its label reads ",
       {
        "ratio": 9.9
       },
-      ", above the ",
+      " on it, above the ",
       {
        "ratio": 4.5
       },

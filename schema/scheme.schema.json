@@ -511,7 +511,9 @@
                 "type": "array",
                 "minItems": 1,
                 "uniqueItems": true,
-                "items": { "enum": ["label", "description"] },
+                "items": {
+                  "enum": ["label", "description"]
+                },
                 "description": "The fields that hold illustrative sample copy, not an owner fact or a real offer. Anatomy drawings mark them \"(sample)\"."
               }
             }
@@ -972,12 +974,32 @@
         "additionalProperties": false,
         "required": ["token", "relation"],
         "properties": {
-          "token": { "type": "string", "pattern": "^[a-z-]+(\\.[a-z0-9-]+)+$", "description": "The semantic token, for example radius.option." },
-          "relation": { "type": "string", "pattern": "^[a-z-]+$", "description": "The id of a relation in the grammar's shape or elevation scope." },
-          "from": { "type": "string", "description": "The token this one derives from, for example radius.surface." },
-          "minus": { "type": "string", "description": "For a minus relation: the token taken off, for example the panel's padding." },
-          "box": { "type": "string", "description": "For equal-unless-pill: the corner a growing box takes when the control corner is a pill, as a primitive, for example radius.12." },
-          "on": { "type": "string", "description": "For dark-same-shape: the surface the shadow falls on, for example color.surface.default." }
+          "token": {
+            "type": "string",
+            "pattern": "^[a-z-]+(\\.[a-z0-9-]+)+$",
+            "description": "The semantic token, for example radius.option."
+          },
+          "relation": {
+            "type": "string",
+            "pattern": "^[a-z-]+$",
+            "description": "The id of a relation in the grammar's shape or elevation scope."
+          },
+          "from": {
+            "type": "string",
+            "description": "The token this one derives from, for example radius.surface."
+          },
+          "minus": {
+            "type": "string",
+            "description": "For a minus relation: the token taken off, for example the panel's padding."
+          },
+          "box": {
+            "type": "string",
+            "description": "For equal-unless-pill: the corner a growing box takes when the control corner is a pill, as a primitive, for example radius.12."
+          },
+          "on": {
+            "type": "string",
+            "description": "For dark-same-shape: the surface the shadow falls on, for example color.surface.default."
+          }
         }
       }
     },
@@ -1404,7 +1426,15 @@
     "typeScaleSpec": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["base", "ratio", "steps", "rounding", "line-height", "follows", "why"],
+      "required": [
+        "base",
+        "ratio",
+        "steps",
+        "rounding",
+        "line-height",
+        "follows",
+        "why"
+      ],
       "description": "On the type group (OD-294, OD-301): the decision the loader generates each role's size and line height from. A role's size is base × ratio^step, rounded by the rounding rule. Its line height is the ratio of its kind. The scheme file stores no size or line height next to it.",
       "properties": {
         "base": {
@@ -1422,8 +1452,14 @@
         "steps": {
           "type": "object",
           "minProperties": 1,
-          "propertyNames": { "pattern": "^[a-z][a-z0-9-]*$" },
-          "additionalProperties": { "type": "integer", "minimum": -6, "maximum": 12 },
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": -6,
+            "maximum": 12
+          },
           "description": "Each role's step on the scale, by role id. Body is 0. Roles can share a step, so data and body can share 0."
         },
         "rounding": {
@@ -1440,7 +1476,10 @@
             "roles": {
               "type": "array",
               "uniqueItems": true,
-              "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*$"
+              },
               "description": "The role ids that snap to the grid, such as display, title and heading."
             }
           }
@@ -1501,7 +1540,10 @@
         "roles": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
           "description": "The role ids that take this line height."
         }
       }

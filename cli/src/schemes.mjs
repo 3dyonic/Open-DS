@@ -89,6 +89,18 @@ export function formatGrammar(value) {
 }
 
 /** Write the grammar. The one way to change schemes/grammar.json (OD-289). */
+/**
+ * The source JSON files not in the one layout (formatGrammar): the grammar and the two schemas. [] when all
+ * are. Read here, so every read of schemes/ stays in this module (OD-289).
+ */
+export function layoutGaps(roots = assetRoots()) {
+  const files = [join(roots.schemes, "grammar.json"), join(roots.schema, "grammar.schema.json"), join(roots.schema, "scheme.schema.json")];
+  return files.filter((f) => {
+    const raw = readFileSync(f, "utf8");
+    return formatGrammar(JSON.parse(raw)) !== raw;
+  });
+}
+
 export function saveGrammar(g, roots = assetRoots()) {
   writeFileSync(join(roots.schemes, "grammar.json"), formatGrammar(g));
 }
