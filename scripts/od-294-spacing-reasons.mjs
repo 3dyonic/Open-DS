@@ -146,7 +146,7 @@ const REASONS = {
     ],
     "size.control.compact": [
       "compact controls, such as a clear or show button inside a field",
-      "one 8px step below the 48px default on the control scale; the 40px box relies on the padding of the field around it for a touch-size hit area",
+      "one 4px step below the 48px default on the control scale, and a 44px box that is the touch-size hit area on its own",
       "a small button fits inside the field around it",
       "the content is long-form text (content.q1) and the smallest target is touch size (accessibility.values)",
       ["content.q1", "accessibility.values"],
@@ -424,6 +424,7 @@ for (const [id, reasons] of Object.entries(REASONS)) {
       ),
     ),
   };
+  const anchors = {};
   for (const [
     name,
     [role, mechanism, get, decision, because],
@@ -435,7 +436,13 @@ for (const [id, reasons] of Object.entries(REASONS)) {
       throw new Error(
         `${id}: ${name} has no spacing job in the grammar. Add one to the spacing scope's jobs.`,
       );
-    const why = `We use ${px[name]}px for ${role}${role.includes(", such as") ? "," : ""} in order to ${job.job}: ${mechanism}. ${job.property} does this by ${job.how}. So ${get}, because ${decision}.`;
+    // The job's mechanism is said once, on its first token; the others point to it and say only their own effect.
+    const anchor = (anchors[job.id] ??= name);
+    const how =
+      anchor === name
+        ? `${job.property} does this by ${job.how}. So ${get}, because ${decision}.`
+        : `${job.property} does this by the rule given for ${anchor}, so ${get}, because ${decision}.`;
+    const why = `We use ${px[name]}px for ${role}${role.includes(", such as") ? "," : ""} in order to ${job.job}: ${mechanism}. ${how}`;
     token.$extensions = { ...token.$extensions, "open-ds": { why, because } };
   }
   saveScheme(s);

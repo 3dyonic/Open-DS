@@ -42,10 +42,8 @@ html[data-scheme="brand-expressive"] [data-mode="light"][data-mode] {
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Hover, press and toggle feedback. At most 500ms in an expressive family. */
   --motion-duration-panels: 200ms; /** Menus, popovers, dialogs and drawers opening. At most 500ms in an expressive family. */
-  --motion-duration-exit: 120ms; /** A layer closing: shorter than its open. */
   --motion-duration-hero: 320ms; /** Hero and launch moments. At most 500ms in an expressive family. */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** The transition move: a state that changes in place, such as hover, press or toggle. */
-  --motion-easing-enter: cubic-bezier(0.2, 0, 0, 1); /** The enter move: a layer that appears. */
   --motion-easing-exit: cubic-bezier(0.23, 1, 0.32, 1); /** The exit move: a layer that closes in place. */
   --motion-easing-exit-offscreen: cubic-bezier(0.4, 0, 1, 1); /** The exit move of a layer that slides off the screen: a sheet or a drawer. */
   --motion-easing-emphasize: cubic-bezier(0.34, 1.56, 0.64, 1); /** The emphasize move: a moment that calls for attention. The only move that overshoots. */
@@ -134,6 +132,8 @@ html[data-scheme="brand-expressive"] [data-mode="light"][data-mode] {
   --type-label-font-family: "DM Sans", system-ui, sans-serif;
   --type-caption-font-family: "DM Sans", system-ui, sans-serif;
   --type-data-font-family: "DM Sans", system-ui, sans-serif;
+  --motion-duration-exit: var(--motion-duration-feedback); /** A layer closing: shorter than its open. */
+  --motion-easing-enter: var(--motion-easing-standard); /** The enter move: a layer that appears. */
   --elevation-card: 0px 12px 32px 0px #1F141124;
   --elevation-overlay: 0px 24px 48px 0px #1F141133;
   --icon-size: var(--size-icon); /** Size of the icon next to text. */
@@ -200,11 +200,9 @@ html[data-scheme="brand-expressive"] [data-mode="light"][data-mode] {
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
-  --transition-enter-easing: var(--motion-easing-enter); /** Easing of a layer that appears: a menu, a popover, a dialog. */
   --transition-exit-easing: var(--motion-easing-exit); /** Easing of a layer that closes in place. */
   --transition-offscreen-exit-easing: var(--motion-easing-exit-offscreen); /** Easing of a layer that slides off the screen: a sheet or a drawer. */
   --transition-emphasize-easing: var(--motion-easing-emphasize); /** Easing of a moment that calls for attention. */
-  --transition-exit-duration: var(--motion-duration-exit); /** Duration of a layer that closes. */
   --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
   --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
   --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
@@ -988,6 +986,8 @@ html[data-scheme="brand-expressive"] [data-mode="light"][data-mode] {
   --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
+  --transition-enter-easing: var(--motion-easing-enter); /** Easing of a layer that appears: a menu, a popover, a dialog. */
+  --transition-exit-duration: var(--motion-duration-exit); /** Duration of a layer that closes. */
   --accordion-trigger-radius: var(--radius-element); /** The trigger's corner, seen on focus. */
   --accordion-trigger-focus-ring: var(--color-border-focus); /** The trigger's focus ring color, at full strength. */
   --accordion-focus-ring-width: var(--accordion-trigger-focus-ring-width); /** Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width. */
@@ -1916,10 +1916,8 @@ html[data-scheme="brand-expressive"] [data-mode="dark"][data-mode] {
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Hover, press and toggle feedback. At most 500ms in an expressive family. */
   --motion-duration-panels: 200ms; /** Menus, popovers, dialogs and drawers opening. At most 500ms in an expressive family. */
-  --motion-duration-exit: 120ms; /** A layer closing: shorter than its open. */
   --motion-duration-hero: 320ms; /** Hero and launch moments. At most 500ms in an expressive family. */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** The transition move: a state that changes in place, such as hover, press or toggle. */
-  --motion-easing-enter: cubic-bezier(0.2, 0, 0, 1); /** The enter move: a layer that appears. */
   --motion-easing-exit: cubic-bezier(0.23, 1, 0.32, 1); /** The exit move: a layer that closes in place. */
   --motion-easing-exit-offscreen: cubic-bezier(0.4, 0, 1, 1); /** The exit move of a layer that slides off the screen: a sheet or a drawer. */
   --motion-easing-emphasize: cubic-bezier(0.34, 1.56, 0.64, 1); /** The emphasize move: a moment that calls for attention. The only move that overshoots. */
@@ -2008,6 +2006,8 @@ html[data-scheme="brand-expressive"] [data-mode="dark"][data-mode] {
   --type-label-font-family: "DM Sans", system-ui, sans-serif;
   --type-caption-font-family: "DM Sans", system-ui, sans-serif;
   --type-data-font-family: "DM Sans", system-ui, sans-serif;
+  --motion-duration-exit: var(--motion-duration-feedback); /** A layer closing: shorter than its open. */
+  --motion-easing-enter: var(--motion-easing-standard); /** The enter move: a layer that appears. */
   --elevation-card: 0px 0px 0px 0px #00000000;
   --elevation-overlay: 0px 24px 48px 0px #00000099;
   --icon-size: var(--size-icon); /** Size of the icon next to text. */
@@ -2074,11 +2074,9 @@ html[data-scheme="brand-expressive"] [data-mode="dark"][data-mode] {
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
-  --transition-enter-easing: var(--motion-easing-enter); /** Easing of a layer that appears: a menu, a popover, a dialog. */
   --transition-exit-easing: var(--motion-easing-exit); /** Easing of a layer that closes in place. */
   --transition-offscreen-exit-easing: var(--motion-easing-exit-offscreen); /** Easing of a layer that slides off the screen: a sheet or a drawer. */
   --transition-emphasize-easing: var(--motion-easing-emphasize); /** Easing of a moment that calls for attention. */
-  --transition-exit-duration: var(--motion-duration-exit); /** Duration of a layer that closes. */
   --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
   --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
   --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
@@ -2862,6 +2860,8 @@ html[data-scheme="brand-expressive"] [data-mode="dark"][data-mode] {
   --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
+  --transition-enter-easing: var(--motion-easing-enter); /** Easing of a layer that appears: a menu, a popover, a dialog. */
+  --transition-exit-duration: var(--motion-duration-exit); /** Duration of a layer that closes. */
   --accordion-trigger-radius: var(--radius-element); /** The trigger's corner, seen on focus. */
   --accordion-trigger-focus-ring: var(--color-border-focus); /** The trigger's focus ring color, at full strength. */
   --accordion-focus-ring-width: var(--accordion-trigger-focus-ring-width); /** Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width. */

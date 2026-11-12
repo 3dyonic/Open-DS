@@ -468,9 +468,13 @@ export const CHECKS = {
         const s = c.scheme(id);
         const count = N[s.answers.find((a) => a.question === "motion.count")?.option];
         const prim = flatten(s.tokens.primitive);
-        const durs = Object.values(flatten(s.tokens.semantic.motion?.duration ?? {})).map(
-          (d) => prim[String(d.$value).replace(/[{}]/g, "")]?.$value ?? d.$value,
-        );
+        // A duration may name another move's duration ({motion.duration.feedback}): follow it to its step.
+        const own = flatten(s.tokens.semantic.motion?.duration ?? {});
+        const stepOf = (v) => {
+          const ref = String(v).replace(/[{}]/g, "");
+          return ref.startsWith("motion.duration.") ? stepOf(own[ref.slice("motion.duration.".length)]?.$value) : (prim[ref]?.$value ?? v);
+        };
+        const durs = Object.values(own).map((d) => stepOf(d.$value));
         const distinct = new Set(durs).size;
         if (!count) gaps.push(`${id}: no motion.count answer`);
         else if (distinct !== count)

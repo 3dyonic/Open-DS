@@ -206,6 +206,7 @@
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
      "pick": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
+     "darkPick": "shadow.none: We use the light pick for the dark card elevation in order to keep the height it sets, and the step does this by the same means, so the dark card elevation and the light pick never differ, because the step reads the same in dark (theming.values).",
      "shares": []
     }
    ]

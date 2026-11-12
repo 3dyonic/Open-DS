@@ -3303,12 +3303,12 @@
         }
       },
       "stroke-width": {
-        "175": {
+        "$description": "Icon stroke width options.",
+        "1_75": {
           "$type": "number",
           "$value": 1.75,
           "$description": "An icon stroke width option, on Lucide's 24px grid."
-        },
-        "$description": "Icon stroke width options."
+        }
       }
     },
     "brands": {
@@ -5535,7 +5535,7 @@
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So air between items keeps big type readable, because the layout is spacious (spacing.values) and delight is the point (human.q1).",
+                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by the rule given for space.gap.tight, so air between items keeps big type readable, because the layout is spacious (spacing.values) and delight is the point (human.q1).",
                 "because": [
                   "spacing.values",
                   "human.q1"
@@ -5549,7 +5549,7 @@
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 40px for the group gap between groups inside a section in order to group and separate: five base steps (5 × 8px), two and a half default gaps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each group has its own moment inside a section, because the layout is spacious (spacing.values) and each section holds one big idea (content.q2).",
+                "why": "We use 40px for the group gap between groups inside a section in order to group and separate: five base steps (5 × 8px), two and a half default gaps. Distance does this by the rule given for space.gap.tight, so each group has its own moment inside a section, because the layout is spacious (spacing.values) and each section holds one big idea (content.q2).",
                 "because": [
                   "spacing.values",
                   "content.q2"
@@ -5563,7 +5563,7 @@
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 64px for the section gap between big sections in order to group and separate: eight base steps (8 × 8px), four default gaps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each section, with its color block, is a moment of its own, because space works between big sections (spacing.lands) and the layout is spacious (spacing.values).",
+                "why": "We use 64px for the section gap between big sections in order to group and separate: eight base steps (8 × 8px), four default gaps. Distance does this by the rule given for space.gap.tight, so each section, with its color block, is a moment of its own, because space works between big sections (spacing.lands) and the layout is spacious (spacing.values).",
                 "because": [
                   "spacing.lands",
                   "spacing.values"
@@ -5593,7 +5593,7 @@
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 32px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 8px), twice the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So each card holds its moment, because delight is the point (human.q1) and the brand is bold (brand.q1).",
+                "why": "We use 32px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 8px), twice the default gap. Padding does this by the rule given for space.inset.control-x, so each card holds its moment, because delight is the point (human.q1) and the brand is bold (brand.q1).",
                 "because": [
                   "human.q1",
                   "brand.q1"
@@ -5607,7 +5607,7 @@
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So the rare table keeps the page's airy rhythm, because the content is images and campaigns, with few tables (content.q1), and the layout is spacious (spacing.values).",
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by the rule given for space.inset.control-x, so the rare table keeps the page's airy rhythm, because the content is images and campaigns, with few tables (content.q1), and the layout is spacious (spacing.values).",
                 "because": [
                   "content.q1",
                   "spacing.values"
@@ -5657,7 +5657,7 @@
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 44px for compact controls, such as a button inside a pill field, in order to make a hit target: one 8px step below the 52px default on the control scale, a 44px hit area that still fits a thumb. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a button sits inside the pill field and still fits a thumb, because visitors are on the move (scenarios.q1) and the smallest target is touch size (accessibility.values).",
+                "why": "We use 44px for compact controls, such as a button inside a pill field, in order to make a hit target: one 8px step below the 52px default on the control scale, a 44px hit area that still fits a thumb. Height does this by the rule given for size.control.default, so a button sits inside the pill field and still fits a thumb, because visitors are on the move (scenarios.q1) and the smallest target is touch size (accessibility.values).",
                 "because": [
                   "scenarios.q1",
                   "accessibility.values"
@@ -5671,7 +5671,7 @@
             "$description": "Height of large controls: the one loud call to action.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 60px for the one loud call to action in order to make a hit target: one 8px step above the 52px default on the control scale, a 60px hit area, as sign-up is the scheme's hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So the sign-up button wins the eye and the thumb, because there is one action, sign up (tasks.q2), and visitors are on the move (scenarios.q1).",
+                "why": "We use 60px for the one loud call to action in order to make a hit target: one 8px step above the 52px default on the control scale, a 60px hit area, as sign-up is the scheme's hero action. Height does this by the rule given for size.control.default, so the sign-up button wins the eye and the thumb, because there is one action, sign up (tasks.q2), and visitors are on the move (scenarios.q1).",
                 "because": [
                   "tasks.q2",
                   "scenarios.q1"
@@ -6176,11 +6176,11 @@
           },
           "exit": {
             "$type": "duration",
-            "$value": "{duration.fast}",
+            "$value": "{motion.duration.feedback}",
             "$description": "A layer closing: shorter than its open.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 120ms (fast) for a layer that closes in order to end the exit move faster than the 200ms open. The duration does this by removing what people are done with in fewer frames than it took to arrive. So visitors get back to the page at once, because even an expressive family keeps exits short (motion.roles) and there are three speeds (motion.count).",
+                "why": "We use the feedback duration, 120ms (fast), for a layer that closes in order to end the exit move faster than the 200ms open. The duration does this by removing what people are done with in fewer frames than it took to arrive. So visitors get back to the page at once, because even an expressive family keeps exits short (motion.roles) and there are three speeds (motion.count).",
                 "because": [
                   "motion.roles",
                   "motion.count"
@@ -6220,11 +6220,11 @@
           },
           "enter": {
             "$type": "cubicBezier",
-            "$value": "{easing.standard}",
+            "$value": "{motion.easing.standard}",
             "$description": "The enter move: a layer that appears.",
             "$extensions": {
               "open-ds": {
-                "why": "We use the standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So a menu is readable almost as soon as it opens, because an expressive family keeps its spring for emphasis (motion.roles) and enters on an ease-out (motion.definition).",
+                "why": "We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So a menu is readable almost as soon as it opens, because an expressive family keeps its spring for emphasis (motion.roles) and enters on an ease-out (motion.definition).",
                 "because": [
                   "motion.roles",
                   "motion.definition"
@@ -6766,7 +6766,7 @@
       "icon": {
         "stroke-width": {
           "$type": "number",
-          "$value": "{stroke-width.175}",
+          "$value": "{stroke-width.1_75}",
           "$description": "The line weight of every icon, on Lucide's 24px grid.",
           "$extensions": {
             "open-ds": {

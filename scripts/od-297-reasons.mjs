@@ -101,7 +101,7 @@ export function motionReasons(id, family) {
       word: sp.exit,
       description: "A layer closing. About 150ms, never more, in a productive family.",
       ...r(
-        `We use ${val("exit")} for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So ${p.who} get the page back at once, because productive exits stay short (motion.roles) and ${p.count} (motion.count).`,
+        `We use the feedback duration, ${val("exit")}, for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So ${p.who} get the page back at once, because productive exits stay short (motion.roles) and ${p.count} (motion.count).`,
         ["motion.roles", "motion.count"],
       ),
     };
@@ -117,7 +117,7 @@ export function motionReasons(id, family) {
       curve: "standard",
       description: "The enter move: a layer that appears.",
       ...r(
-        `We use the standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So ${p.who} can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).`,
+        `We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So ${p.who} can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).`,
         ["motion.definition", "motion.roles"],
       ),
     };
@@ -133,7 +133,7 @@ export function motionReasons(id, family) {
       curve: "strong-out",
       description: "The exit move of a layer that slides off the screen: a sheet or a drawer.",
       ...r(
-        `We use the strong-out easing as well for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).`,
+        `We use the exit move's strong-out easing for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).`,
         ["motion.roles", "motion.definition"],
       ),
     };
@@ -141,7 +141,7 @@ export function motionReasons(id, family) {
       curve: "standard",
       description: "The emphasize move: a moment that calls for attention.",
       ...r(
-        `We use the standard easing for a moment that calls for attention in order to give the emphasize move no overshoot. The curve does this by stopping at its target without passing it. So a new message draws the eye by its change, not by a bounce, because the family is productive (motion.roles) and easing is a standard ease-out, never a spring (motion.definition).`,
+        `We use the transition move's standard easing for a moment that calls for attention in order to give the emphasize move no overshoot. The curve does this by stopping at its target without passing it. So a new message draws the eye by its change, not by a bounce, because the family is productive (motion.roles) and easing is a standard ease-out, never a spring (motion.definition).`,
         ["motion.roles", "motion.definition"],
       ),
     };
@@ -166,7 +166,7 @@ export function motionReasons(id, family) {
       word: sp.exit,
       description: "A layer closing: shorter than its open.",
       ...r(
-        `We use ${val("exit")} for a layer that closes in order to end the exit move faster than the ${ms("panels")}ms open. The duration does this by removing what people are done with in fewer frames than it took to arrive. So ${p.who} get back to the page at once, because even an expressive family keeps exits short (motion.roles) and ${p.count} (motion.count).`,
+        `We use the feedback duration, ${val("exit")}, for a layer that closes in order to end the exit move faster than the ${ms("panels")}ms open. The duration does this by removing what people are done with in fewer frames than it took to arrive. So ${p.who} get back to the page at once, because even an expressive family keeps exits short (motion.roles) and ${p.count} (motion.count).`,
         ["motion.roles", "motion.count"],
       ),
     };
@@ -190,7 +190,7 @@ export function motionReasons(id, family) {
       curve: "standard",
       description: "The enter move: a layer that appears.",
       ...r(
-        `We use the standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So a menu is readable almost as soon as it opens, because an expressive family keeps its spring for emphasis (motion.roles) and enters on an ease-out (motion.definition).`,
+        `We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So a menu is readable almost as soon as it opens, because an expressive family keeps its spring for emphasis (motion.roles) and enters on an ease-out (motion.definition).`,
         ["motion.roles", "motion.definition"],
       ),
     };

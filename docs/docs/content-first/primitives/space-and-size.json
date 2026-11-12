@@ -181,20 +181,6 @@
      ]
     },
     {
-     "primitive": "size.40",
-     "value": "2.5rem (40px)",
-     "sample": {
-      "kind": "bar",
-      "value": "2.5rem"
-     },
-     "usedBy": [
-      {
-       "token": "size.control.compact",
-       "where": "semantic"
-      }
-     ]
-    },
-    {
      "primitive": "size.44",
      "value": "2.75rem (44px)",
      "sample": {
@@ -202,6 +188,10 @@
       "value": "2.75rem"
      },
      "usedBy": [
+      {
+       "token": "size.control.compact",
+       "where": "semantic"
+      },
       {
        "token": "size.hit-area",
        "where": "semantic"

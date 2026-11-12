@@ -13,10 +13,6 @@
       {
        "token": "motion.duration.feedback",
        "where": "semantic"
-      },
-      {
-       "token": "motion.duration.exit",
-       "where": "semantic"
       }
      ]
     },
@@ -76,10 +72,6 @@
      "usedBy": [
       {
        "token": "motion.easing.standard",
-       "where": "semantic"
-      },
-      {
-       "token": "motion.easing.enter",
        "where": "semantic"
       }
      ]

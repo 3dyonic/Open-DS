@@ -218,7 +218,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="shape-lands"}
 :::
 
-:::fold{id="elevation" title="Elevation" note="5 answers, 29 decisions, and the values of its tokens"}
+:::fold{id="elevation" title="Elevation" note="5 answers, 27 decisions, and the values of its tokens"}
 #### What rises above the page? {#elevation-roles}
 
 ::decision-answer{id="elevation-roles"}
@@ -284,7 +284,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="iconography-lands"}
 :::
 
-:::fold{id="theming" title="Theming" note="5 answers, 7 decisions, and the values of its tokens"}
+:::fold{id="theming" title="Theming" note="5 answers, 8 decisions, and the values of its tokens"}
 #### What can a theme change? {#theming-roles}
 
 ::decision-answer{id="theming-roles"}

@@ -1967,7 +1967,7 @@
         }
        },
        {
-        "text": "color.category.1.subtle in light: blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
+        "text": "color.category.1.subtle in light: blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary reads 15.61:1 on the blue tint, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -1981,7 +1981,7 @@
         }
        },
        {
-        "text": "color.category.2.subtle in light: teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
+        "text": "color.category.2.subtle in light: teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary reads 15.61:1 on the teal tint, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2058,7 +2058,7 @@
         }
        },
        {
-        "text": "color.category.1.subtle in dark: blue.dark.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 14.23:1, above the 7:1 floor.",
+        "text": "color.category.1.subtle in dark: blue.dark.100: in dark, category 1's tag fill moves to the dark blue ramp's 100 step under its dark 600 dot, so the light pairing of tint and dot holds. Text.primary reads 14.23:1 on it, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -2072,7 +2072,7 @@
         }
        },
        {
-        "text": "color.category.2.subtle in dark: teal.dark.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 13.57:1, above the 7:1 floor.",
+        "text": "color.category.2.subtle in dark: teal.dark.100: in dark, category 2's tag fill moves to the dark teal ramp's 100 step under its dark 600 dot, so the light pairing of tint and dot holds. Text.primary reads 13.57:1 on it, above the 7:1 floor.",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3014,20 +3014,6 @@
          "label": "Color",
          "href": "foundations/color"
         }
-       },
-       {
-        "text": "elevation.card in dark: shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
-        "text": "elevation.overlay in dark: shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
        }
       ]
      }
@@ -3225,20 +3211,6 @@
        },
        {
         "text": "elevation.overlay in light: shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
-        "text": "elevation.card in dark: shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
-        "text": "elevation.overlay in dark: shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3696,6 +3668,20 @@
         "link": {
          "label": "Color",
          "href": "foundations/color"
+        }
+       },
+       {
+        "text": "elevation.card in dark: shadow.none: We use the light pick for the dark card elevation in order to keep the height it sets, and the step does this by the same means, so the dark card elevation and the light pick never differ, because the step reads the same in dark (theming.values).",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "text": "elevation.overlay in dark: shadow.none: We use the light pick for the dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so the dark overlay elevation and the light pick never differ, because the step reads the same in dark (theming.values).",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
         }
        }
       ]

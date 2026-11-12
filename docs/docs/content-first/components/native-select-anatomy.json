@@ -438,9 +438,9 @@
      "kind": "token",
      "semantic": "size.control.compact",
      "key": "sm.height",
-     "value": "2.5rem",
+     "value": "2.75rem",
      "byScheme": true,
-     "pick": "size.40",
+     "pick": "size.44",
      "shares": []
     },
     {

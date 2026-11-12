@@ -77,7 +77,7 @@
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 35
+          "count": 31
         },
         {
           "id": "motion",
@@ -92,7 +92,7 @@
         {
           "id": "theming",
           "title": "Theming",
-          "count": 10
+          "count": 12
         },
         {
           "id": "accessibility",

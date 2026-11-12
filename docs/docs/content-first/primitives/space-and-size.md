@@ -8,7 +8,7 @@ description: "Space and size primitives in Content first."
 
 # Space and size
 
-14 primitives, 14 used.
+13 primitives, 13 used.
 
 ## `space`
 

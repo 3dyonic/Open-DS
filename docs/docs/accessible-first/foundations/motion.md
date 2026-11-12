@@ -30,12 +30,12 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
 | `motion.duration.panels` | `duration.moderate` |
-| `motion.duration.exit` | `duration.moderate` |
+| `motion.duration.exit` | `motion.duration.feedback` → `duration.moderate` |
 | `motion.easing.standard` | `easing.standard` |
-| `motion.easing.enter` | `easing.standard` |
+| `motion.easing.enter` | `motion.easing.standard` → `easing.standard` |
 | `motion.easing.exit` | `easing.strong-out` |
-| `motion.easing.exit-offscreen` | `easing.strong-out` |
-| `motion.easing.emphasize` | `easing.standard` |
+| `motion.easing.exit-offscreen` | `motion.easing.exit` → `easing.strong-out` |
+| `motion.easing.emphasize` | `motion.easing.standard` → `easing.standard` |
 
 The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 

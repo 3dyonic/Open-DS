@@ -12,9 +12,12 @@
 import { grammar as loadGrammar, loadScheme, saveGrammar, saveScheme, schemeIds } from "../cli/src/schemes.mjs";
 import { aliasChain, tokenIndex } from "../cli/src/lands.mjs";
 import { contrast } from "../cli/src/shape-elevation.mjs";
+import { pointRepeats } from "./reason-pointers.mjs";
 import { FAMILIES, darkReasons, hitAreaReason, motionReasons, typeReasons, USAGE } from "./od-297-reasons.mjs";
 
 const g = loadGrammar();
+// The moves that reuse another move's step when the family gives them the same one; their reasons name it.
+const SAME_STEP = { duration: { exit: "feedback" }, easing: { enter: "standard", emphasize: "standard", "exit-offscreen": "exit" } };
 const scope = (id) => g.scopes.find((s) => s.id === id);
 
 // ---------- Grammar: motion families and move types (decisions 2, 3, 6) ----------
@@ -263,12 +266,30 @@ for (const id of schemeIds()) {
   for (const name of Object.keys(p.easing)) if (!Object.values(plan.easings).some((e) => e.curve === name) && !name.startsWith("$")) delete p.easing[name];
 
   // Semantics: one duration per move kind and one easing per move type, each with its reason.
+  // A move that takes the same step as another move names that move's token, so the step is decided once.
   const motion = { duration: {}, easing: {} };
+  const ref = (kind, name, step, of) => {
+    const to = SAME_STEP[kind][name];
+    return to && of[to] === step ? `{motion.${kind}.${to}}` : `{${kind}.${step}}`;
+  };
+  const words = Object.fromEntries(Object.entries(plan.durationTokens).map(([k, d]) => [k, d.word]));
+  const curves = Object.fromEntries(Object.entries(plan.easings).map(([k, e]) => [k, e.curve]));
   for (const [name, d] of Object.entries(plan.durationTokens))
-    motion.duration[name] = { $type: "duration", $value: `{duration.${d.word}}`, $description: d.description, $extensions: ext(d.why, d.because) };
+    motion.duration[name] = { $type: "duration", $value: ref("duration", name, d.word, words), $description: d.description, $extensions: ext(d.why, d.because) };
   for (const [name, e] of Object.entries(plan.easings))
-    motion.easing[name] = { $type: "cubicBezier", $value: `{easing.${e.curve}}`, $description: e.description, $extensions: ext(e.why, e.because) };
+    motion.easing[name] = { $type: "cubicBezier", $value: ref("easing", name, e.curve, curves), $description: e.description, $extensions: ext(e.why, e.because) };
   sem.motion = motion;
+
+  // Icon stroke widths are steps named for their value (stroke-width.1_5 is 1.5), as size.24 is 24px.
+  const strokes = p["stroke-width"];
+  for (const key of Object.keys(strokes).filter((k) => !k.startsWith("$"))) {
+    const named = String(strokes[key].$value).replace(".", "_");
+    if (named === key) continue;
+    strokes[named] = strokes[key];
+    delete strokes[key];
+    const icon = sem.icon["stroke-width"];
+    if (icon.$value === `{stroke-width.${key}}`) icon.$value = `{stroke-width.${named}}`;
+  }
 
   // Focus ring: its own tokens; the border-width names stay one release as aliases.
   const bw = sem["border-width"];
@@ -310,6 +331,16 @@ for (const id of schemeIds()) {
     p.size[String(hit)] = { $type: "dimension", $value: `${hit / 16}rem` };
     const ordered = Object.entries(p.size).sort(([a], [b]) => (a.startsWith("$") ? 1 : b.startsWith("$") ? -1 : Number(a) - Number(b)));
     s.tokens.primitive.size = Object.fromEntries(ordered);
+  }
+  // A hit-area step between compact and default would leave compact two steps down the control scale:
+  // compact takes the hit area's step instead, one step below default.
+  const spec = sem.size.$extensions["open-ds"];
+  const compactPx = spec.default + spec.step * spec.steps.compact;
+  if (spec.steps.compact === -1 && hit > compactPx && hit < spec.default) {
+    spec.why = spec.why.replace(`Compact is one ${spec.step}px step below it;`, `Compact is one ${spec.default - hit}px step below it, ${hit}px, the touch-size hit area itself;`);
+    spec.step = spec.default - hit;
+    sem.size.control.compact.$value = `{size.${hit}}`;
+    if (!JSON.stringify(s.tokens).includes(`{size.${compactPx}}`)) delete p.size[String(compactPx)];
   }
   const hr = hitAreaReason(id, hit);
   s.tokens.semantic.size["hit-area"] = {
@@ -404,6 +435,8 @@ for (const id of schemeIds()) {
     if (!u) throw new Error(`${id}: no usage rule ${situation}`);
     Object.assign(u, rule);
   }
+  // A pick that repeats an earlier brand's or mode's reason points to it (scripts/reason-pointers.mjs).
+  pointRepeats(s);
   saveScheme(s);
 }
 console.log("OD-297: grammar and every scheme written.");

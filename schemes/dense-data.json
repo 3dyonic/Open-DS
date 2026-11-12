@@ -3414,12 +3414,12 @@
         }
       },
       "stroke-width": {
-        "150": {
+        "$description": "Icon stroke width options.",
+        "1_5": {
           "$type": "number",
           "$value": 1.5,
           "$description": "An icon stroke width option, on Lucide's 24px grid."
-        },
-        "$description": "Icon stroke width options."
+        }
       }
     },
     "brands": {
@@ -5532,10 +5532,9 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, framed by its line. So the page reads as one flat grid, because only menus and dialogs float (elevation.roles) and shadows are subtle (elevation.values).",
+                    "why": "shadow.none: We use the light pick for the dark card elevation in order to keep the height it sets, and the step does this by the same means, so the dark card elevation and the light pick never differ, because the step reads the same in dark (theming.values).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values"
+                      "theming.values"
                     ]
                   }
                 }
@@ -5642,7 +5641,7 @@
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 8px for the default gap between the items of one group in order to group and separate: two base steps (2 × 4px), twice the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So analysts tell one record from the next while a list stays close, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
+                "why": "We use 8px for the default gap between the items of one group in order to group and separate: two base steps (2 × 4px), twice the tight gap. Distance does this by the rule given for space.gap.tight, so analysts tell one record from the next while a list stays close, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
                 "because": [
                   "spacing.values",
                   "content.q2"
@@ -5656,7 +5655,7 @@
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 4px), four tight gaps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So a new group starts without pushing records off the screen, because the layout is compact (spacing.values) and people must keep their place (human.q1).",
+                "why": "We use 16px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 4px), four tight gaps. Distance does this by the rule given for space.gap.tight, so a new group starts without pushing records off the screen, because the layout is compact (spacing.values) and people must keep their place (human.q1).",
                 "because": [
                   "spacing.values",
                   "human.q1"
@@ -5670,7 +5669,7 @@
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 24px for the section gap between page sections in order to group and separate: six base steps (6 × 4px), half again the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So sections part with a hairline and little space, and the data keeps the room, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
+                "why": "We use 24px for the section gap between page sections in order to group and separate: six base steps (6 × 4px), half again the group gap. Distance does this by the rule given for space.gap.tight, so sections part with a hairline and little space, and the data keeps the room, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
                 "because": [
                   "spacing.values",
                   "content.q2"
@@ -5700,7 +5699,7 @@
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 4px), the same as the group gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So content starts close to the edge of its box, because experts want a lot on one screen (content.q2) and the layout is compact (spacing.values).",
+                "why": "We use 16px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 4px), the same as the group gap. Padding does this by the rule given for space.inset.control-x, so content starts close to the edge of its box, because experts want a lot on one screen (content.q2) and the layout is compact (spacing.values).",
                 "because": [
                   "content.q2",
                   "spacing.values"
@@ -5714,7 +5713,7 @@
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 12px for the inline padding inside table cells in order to give content room inside its box: three base steps (3 × 4px), the same as a control. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So more columns fit, and values in two columns still stay apart, because people scan and compare rows (tasks.q1) and the layout is compact (spacing.values).",
+                "why": "We use 12px for the inline padding inside table cells in order to give content room inside its box: three base steps (3 × 4px), the same as a control. Padding does this by the rule given for space.inset.control-x, so more columns fit, and values in two columns still stay apart, because people scan and compare rows (tasks.q1) and the layout is compact (spacing.values).",
                 "because": [
                   "tasks.q1",
                   "spacing.values"
@@ -5764,7 +5763,7 @@
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 24px for compact controls, such as a clear button inside a field, in order to make a hit target: one 8px step below the 32px default on the control scale, a 24px hit area that is exactly the WCAG 2.5.8 floor at AA, with no margin. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a small button fits inside a field, and the field keeps its row height, because the smallest target is compact, for a pointer (accessibility.values), and experts use a mouse at a desk (scenarios.q1).",
+                "why": "We use 24px for compact controls, such as a clear button inside a field, in order to make a hit target: one 8px step below the 32px default on the control scale, a 24px hit area that is exactly the WCAG 2.5.8 floor at AA, with no margin. Height does this by the rule given for size.control.default, so a small button fits inside a field, and the field keeps its row height, because the smallest target is compact, for a pointer (accessibility.values), and experts use a mouse at a desk (scenarios.q1).",
                 "because": [
                   "accessibility.values",
                   "scenarios.q1"
@@ -5778,7 +5777,7 @@
             "$description": "Height of large controls. Not used in this system, so it equals the default.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 32px for large controls in order to make a hit target: the default's step on the control scale and the default's 32px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So toolbar buttons stay in line, and color and place mark the main action, because actions take three emphasis levels with one primary per view (color.count), and the smallest target is compact (accessibility.values).",
+                "why": "We use 32px for large controls in order to make a hit target: the default's step on the control scale and the default's 32px hit area, as the scheme has no hero action. Height does this by the rule given for size.control.default, so toolbar buttons stay in line, and color and place mark the main action, because actions take three emphasis levels with one primary per view (color.count), and the smallest target is compact (accessibility.values).",
                 "because": [
                   "color.count",
                   "accessibility.values"
@@ -6279,11 +6278,11 @@
           },
           "exit": {
             "$type": "duration",
-            "$value": "{duration.fast}",
+            "$value": "{motion.duration.feedback}",
             "$description": "A layer closing. About 150ms, never more, in a productive family.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 120ms (fast) for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So experts get the page back at once, because productive exits stay short (motion.roles) and there is one speed (motion.count).",
+                "why": "We use the feedback duration, 120ms (fast), for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So experts get the page back at once, because productive exits stay short (motion.roles) and there is one speed (motion.count).",
                 "because": [
                   "motion.roles",
                   "motion.count"
@@ -6309,11 +6308,11 @@
           },
           "enter": {
             "$type": "cubicBezier",
-            "$value": "{easing.standard}",
+            "$value": "{motion.easing.standard}",
             "$description": "The enter move: a layer that appears.",
             "$extensions": {
               "open-ds": {
-                "why": "We use the standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So experts can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).",
+                "why": "We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So experts can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).",
                 "because": [
                   "motion.definition",
                   "motion.roles"
@@ -6337,11 +6336,11 @@
           },
           "exit-offscreen": {
             "$type": "cubicBezier",
-            "$value": "{easing.strong-out}",
+            "$value": "{motion.easing.exit}",
             "$description": "The exit move of a layer that slides off the screen: a sheet or a drawer.",
             "$extensions": {
               "open-ds": {
-                "why": "We use the strong-out easing as well for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).",
+                "why": "We use the exit move's strong-out easing for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).",
                 "because": [
                   "motion.roles",
                   "motion.definition"
@@ -6351,11 +6350,11 @@
           },
           "emphasize": {
             "$type": "cubicBezier",
-            "$value": "{easing.standard}",
+            "$value": "{motion.easing.standard}",
             "$description": "The emphasize move: a moment that calls for attention.",
             "$extensions": {
               "open-ds": {
-                "why": "We use the standard easing for a moment that calls for attention in order to give the emphasize move no overshoot. The curve does this by stopping at its target without passing it. So a new message draws the eye by its change, not by a bounce, because the family is productive (motion.roles) and easing is a standard ease-out, never a spring (motion.definition).",
+                "why": "We use the transition move's standard easing for a moment that calls for attention in order to give the emphasize move no overshoot. The curve does this by stopping at its target without passing it. So a new message draws the eye by its change, not by a bounce, because the family is productive (motion.roles) and easing is a standard ease-out, never a spring (motion.definition).",
                 "because": [
                   "motion.roles",
                   "motion.definition"
@@ -6856,7 +6855,7 @@
       "icon": {
         "stroke-width": {
           "$type": "number",
-          "$value": "{stroke-width.150}",
+          "$value": "{stroke-width.1_5}",
           "$description": "The line weight of every icon, on Lucide's 24px grid.",
           "$extensions": {
             "open-ds": {

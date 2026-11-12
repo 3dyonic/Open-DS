@@ -280,3 +280,49 @@ test("dense data keeps 12px labels and captions, the smallest step, and the reas
   }
   assert.match(reasonOf(traceToken(trace, "type.label.font-size")).why, /many records at a short reading distance/);
 });
+
+test("a compact control is one step below default on the size scale, the hit-area step included", () => {
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    const steps = Object.keys(s.tokens.primitive.size).filter((k) => !k.startsWith("$")).map(Number).sort((a, b) => a - b);
+    const at = (name) => Number(s.tokens.semantic.size.control[name].$value.match(/\{size\.(\d+)\}/)[1]);
+    assert.equal(steps[steps.indexOf(at("default")) - 1], at("compact"), id);
+  }
+});
+
+test("a move that shares another move's step names that move, and stroke steps are named for their value", () => {
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    const m = s.tokens.semantic.motion;
+    assert.equal(m.duration.exit.$value, "{motion.duration.feedback}", id);
+    assert.equal(m.easing.enter.$value, "{motion.easing.standard}", id);
+    for (const [k, v] of Object.entries(s.tokens.primitive["stroke-width"]).filter(([k]) => !k.startsWith("$")))
+      assert.equal(k, String(v.$value).replace(".", "_"), `${id} stroke-width.${k}`);
+  }
+});
+
+test("a hand-written theme pick never repeats a sentence of the same token's earlier pick", async () => {
+  const { sentencesOf } = await import("../../scripts/reason-pointers.mjs");
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    const seen = new Map();
+    for (const [brand, def] of Object.entries(s.tokens.brands))
+      for (const mode of ["base", "light", "dark"])
+        for (const [path, node] of Object.entries(flatPicks(def.theme[mode]))) {
+          const od = node.$extensions?.["open-ds"];
+          if (!od?.why) continue;
+          const mine = sentencesOf(od.why);
+          if (!od.generated)
+            for (const before of seen.get(path) ?? []) assert.ok(!mine.some((x) => before.has(x)), `${id} ${brand}/${mode} ${path}`);
+          seen.set(path, [...(seen.get(path) ?? []), new Set(mine)]);
+        }
+  }
+});
+
+function flatPicks(node, path = [], out = {}) {
+  for (const [k, v] of Object.entries(node ?? {}))
+    if (k.startsWith("$")) continue;
+    else if (v && typeof v === "object" && "$value" in v) out[[...path, k].join(".")] = v;
+    else if (v && typeof v === "object") flatPicks(v, [...path, k], out);
+  return out;
+}

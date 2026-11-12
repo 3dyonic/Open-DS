@@ -30,10 +30,10 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `motion.duration.feedback` | `duration.fast` |
 | `motion.duration.panels` | `duration.moderate` |
-| `motion.duration.exit` | `duration.fast` |
+| `motion.duration.exit` | `motion.duration.feedback` → `duration.fast` |
 | `motion.duration.hero` | `duration.relaxed` |
 | `motion.easing.standard` | `easing.standard` |
-| `motion.easing.enter` | `easing.standard` |
+| `motion.easing.enter` | `motion.easing.standard` → `easing.standard` |
 | `motion.easing.exit` | `easing.strong-out` |
 | `motion.easing.exit-offscreen` | `easing.accelerate` |
 | `motion.easing.emphasize` | `easing.spring` |

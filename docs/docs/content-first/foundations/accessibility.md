@@ -30,8 +30,8 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- | --- |
 | `size.control.default` | light | `size.48` |
 | | dark | `size.48` |
-| `size.control.compact` | light | `size.40` |
-| | dark | `size.40` |
+| `size.control.compact` | light | `size.44` |
+| | dark | `size.44` |
 | `size.control.large` | light | `size.48` |
 | | dark | `size.48` |
 | `opacity.disabled` | light | `opacity.40` |
