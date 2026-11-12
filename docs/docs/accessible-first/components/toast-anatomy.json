@@ -115,7 +115,7 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+     "pick": "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1).",
      "shares": []
     },
     {
@@ -139,7 +139,7 @@
      "key": "shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: No shadows; borders do the work.",
+     "pick": "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
      "shares": [
       "elevation.card"
      ]

@@ -134,7 +134,7 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+     "pick": "radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2).",
      "shares": []
     }
    ]

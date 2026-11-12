@@ -94,7 +94,7 @@
      "key": "content.radius",
      "value": "0rem",
      "byScheme": true,
-     "pick": "radius.0: square badges are rectangles, so status badges line up down a column in the table.",
+     "pick": "radius.0: We use a square corner for badges in order to give status a role of its own, apart from the 2px controls. A zero radius does this by keeping the badge a plain rectangle with no curve. So status badges line up down a table column, because badges get their own corner (shape.roles) and people scan and compare rows (tasks.q1).",
      "shares": []
     },
     {

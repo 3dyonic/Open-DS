@@ -847,6 +847,23 @@
         }
       }
     },
+    "relations": {
+      "type": "array",
+      "description": "Which grammar relation each shape and elevation token follows, with its inputs (OD-294). cli/src/shape-elevation.mjs checks each record against the values in every brand and mode.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["token", "relation"],
+        "properties": {
+          "token": { "type": "string", "pattern": "^[a-z-]+(\\.[a-z0-9-]+)+$", "description": "The semantic token, for example radius.option." },
+          "relation": { "type": "string", "pattern": "^[a-z-]+$", "description": "The id of a relation in the grammar's shape or elevation scope." },
+          "from": { "type": "string", "description": "The token this one derives from, for example radius.surface." },
+          "minus": { "type": "string", "description": "For a minus relation: the token taken off, for example the panel's padding." },
+          "box": { "type": "string", "description": "For equal-unless-pill: the corner a growing box takes when the control corner is a pill, as a primitive, for example radius.12." },
+          "on": { "type": "string", "description": "For dark-same-shape: the surface the shadow falls on, for example color.surface.default." }
+        }
+      }
+    },
     "usage": {
       "type": "array",
       "minItems": 1,

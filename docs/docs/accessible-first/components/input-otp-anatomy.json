@@ -118,7 +118,7 @@
      "key": "slot.radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
+     "pick": "radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values).",
      "shares": []
     }
    ]

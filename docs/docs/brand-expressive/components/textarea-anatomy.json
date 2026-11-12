@@ -109,7 +109,7 @@
      "key": "radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+     "pick": "radius.12: We use the 12px box corner for boxes that grow in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area or a list item stays a box, not an oval, because controls are pills (shape.values) and the brand is bold (brand.q1).",
      "shares": []
     },
     {

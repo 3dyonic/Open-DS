@@ -183,7 +183,7 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding.",
+     "pick": "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
      "shares": []
     }
    ]

@@ -1758,6 +1758,64 @@
       ]
     }
   ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control",
+      "box": "radius.12"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "border-width.focus",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "border-width.focus-offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
+    }
+  ],
   "usage": [
     {
       "situation": "page-title",
@@ -3513,11 +3571,11 @@
                 "$value": "{radius.4}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
+                    "why": "radius.4: We use a 4px corner for Aster's buttons and inputs in order to mark their role as controls in a calm, precise tone, by brand convention. A small radius does this by softening the edge just enough while the sides stay straight. So Aster feels exact and steady, the least round of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
                     "because": [
-                      "shape.roles",
                       "shape.values",
-                      "voice.count"
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3527,11 +3585,11 @@
                 "$value": "{radius.4}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag.",
+                    "why": "radius.4: We use the 4px control corner for Aster's badges in order to keep one role family by the badge relation: here badges share the control's corner. The same small radius does this by giving a plan status the box shape of the buttons. So a status reads as a small square tag, because each brand sets its three corners (shape.roles) and Aster's are small (shape.values).",
                     "because": [
                       "shape.roles",
                       "shape.values",
-                      "shape.lands"
+                      "brand.q1"
                     ]
                   }
                 }
@@ -3541,9 +3599,11 @@
                 "$value": "{radius.4}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.4: the panel's 8px corner less its 4px padding, so an option's corner nests inside the menu's.",
+                    "why": "radius.4: We use a 4px corner for Aster's menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Aster's surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
                     "because": [
                       "shape.roles",
+                      "shape.count",
+                      "brand.q1",
                       "spacing.values"
                     ]
                   }
@@ -3554,10 +3614,11 @@
                 "$value": "{radius.4}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.4: the control corner; it is not a pill, so a growing box keeps it.",
+                    "why": "radius.4: We use the 4px control corner for Aster's growing boxes in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because Aster's control corner is small, not a pill (shape.values).",
                     "because": [
-                      "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3567,11 +3628,11 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding.",
+                    "why": "radius.8: We use an 8px corner for Aster's cards and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. A modest radius does this by breaking the outline with a curve twice the 4px control corner. So a plan card reads as one object without feeling soft, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
                     "because": [
                       "shape.roles",
-                      "shape.values",
-                      "spacing.values"
+                      "shape.count",
+                      "brand.q1"
                     ]
                   }
                 }
@@ -4697,12 +4758,11 @@
                 "$value": "{shadow.card}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card: Cards lift slightly to group offers.",
+                    "why": "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -4711,11 +4771,10 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards.",
+                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.lands"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -5582,12 +5641,12 @@
                 "$value": "{shadow.card-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: Cards lift slightly to group offers.",
+                    "why": "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "theming.values"
+                    ]
                   }
                 }
               },
@@ -5596,11 +5655,11 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page.",
+                    "why": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values",
-                      "elevation.lands"
+                      "theming.values"
                     ]
                   }
                 }
@@ -5630,11 +5689,11 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: Birch's 12px control corner is softer than Aster's 4px, in line with its friendly tone, and still a box.",
+                    "why": "radius.12: We use a 12px corner for Birch's buttons and inputs in order to mark their role as controls in a friendly tone, by brand convention. A rounded radius does this by curving the edge clearly while the box keeps straight sides. So Birch feels softer than Aster yet still precise enough to fill a form, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
                     "because": [
-                      "shape.roles",
                       "shape.values",
-                      "voice.count"
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -5644,11 +5703,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Birch's badges are full capsules, rounder than its 12px controls, so a status and a button differ in shape.",
+                    "why": "radius.pill: We use a pill corner for Birch's badges in order to give status a role of its own, apart from the 12px controls. A full radius does this by rounding both ends into a capsule. So a status and a button never look alike, because each brand sets three corners (shape.roles) and Birch rounds its badges (shape.values).",
                     "because": [
                       "shape.roles",
                       "shape.values",
-                      "shape.lands"
+                      "brand.q1"
                     ]
                   }
                 }
@@ -5658,9 +5717,11 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: the panel's 16px corner less its 4px padding, so an option's corner nests inside the menu's.",
+                    "why": "radius.12: We use a 12px corner for Birch's menu options in order to keep nesting by the relation: the 16px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Birch's surfaces take 16px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
                     "because": [
                       "shape.roles",
+                      "shape.count",
+                      "brand.q1",
                       "spacing.values"
                     ]
                   }
@@ -5671,10 +5732,11 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: the control corner; it is not a pill, so a growing box keeps it.",
+                    "why": "radius.12: We use the 12px control corner for Birch's growing boxes in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because Birch's control corner is rounded, not a pill (shape.values).",
                     "because": [
-                      "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -5684,11 +5746,11 @@
                 "$value": "{radius.16}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.16: Birch's cards and dialogs take 16px, so its 12px options nest inside with 4px padding.",
+                    "why": "radius.16: We use a 16px corner for Birch's cards and dialogs in order to make each card read as a separate object, in a friendly tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 12px controls. So a plan card reads as one soft object, because containers get their own corner (shape.roles, shape.count) and each brand colors a neutral base (brand.q1).",
                     "because": [
                       "shape.roles",
-                      "shape.values",
-                      "spacing.values"
+                      "shape.count",
+                      "brand.q1"
                     ]
                   }
                 }
@@ -6814,12 +6876,11 @@
                 "$value": "{shadow.card}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card: Cards lift slightly to group offers.",
+                    "why": "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -6828,11 +6889,10 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards.",
+                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.lands"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -7699,12 +7759,12 @@
                 "$value": "{shadow.card-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: Cards lift slightly to group offers.",
+                    "why": "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "theming.values"
+                    ]
                   }
                 }
               },
@@ -7713,11 +7773,11 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page.",
+                    "why": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values",
-                      "elevation.lands"
+                      "theming.values"
                     ]
                   }
                 }
@@ -7747,11 +7807,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Coral's buttons and inputs are full capsules, the roundest control of the three brands, in line with its upbeat tone.",
+                    "why": "radius.pill: We use a pill corner for Coral's buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule. So Coral feels upbeat, the roundest of the three brands, because each brand sets its corners (shape.values) on a neutral base (brand.q1).",
                     "because": [
-                      "shape.roles",
                       "shape.values",
-                      "voice.count"
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -7761,11 +7821,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Coral's badges are capsules like its controls, so the word in each badge marks it as a status.",
+                    "why": "radius.pill: We use the pill control corner for Coral's badges in order to keep one role family by the badge relation: here badges share the control's corner. The same full radius does this by giving a status the capsule of the buttons. So the shape matches the buttons and the word in each badge marks it as a status, because each brand sets its corners (shape.roles, shape.values).",
                     "because": [
                       "shape.roles",
                       "shape.values",
-                      "shape.lands",
+                      "brand.q1",
                       "accessibility.count"
                     ]
                   }
@@ -7776,9 +7836,11 @@
                 "$value": "{radius.16}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.16: the panel's 20px corner less its 4px padding, so an option's corner nests inside the menu's.",
+                    "why": "radius.16: We use a 16px corner for Coral's menu options in order to keep nesting by the relation: the 20px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because Coral's surfaces take 20px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
                     "because": [
                       "shape.roles",
+                      "shape.count",
+                      "brand.q1",
                       "spacing.values"
                     ]
                   }
@@ -7789,10 +7851,11 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+                    "why": "radius.12: We use the 12px box corner for Coral's growing boxes in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area stays a box, not an oval, because Coral's controls are pills (shape.values).",
                     "because": [
-                      "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -7802,11 +7865,11 @@
                 "$value": "{radius.20}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.20: Coral's cards and dialogs take 20px, the roundest surface of the three brands, so 16px options nest inside with 4px padding.",
+                    "why": "radius.20: We use a 20px corner for Coral's cards and dialogs in order to make each card read as a separate object, in a playful tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So a plan card reads as one round, friendly object, the roundest of the three brands, because containers get their own corner (shape.roles, shape.count) on a neutral base (brand.q1).",
                     "because": [
                       "shape.roles",
-                      "shape.values",
-                      "spacing.values"
+                      "shape.count",
+                      "brand.q1"
                     ]
                   }
                 }
@@ -8936,12 +8999,11 @@
                 "$value": "{shadow.card}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card: Cards lift slightly to group offers.",
+                    "why": "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -8950,11 +9012,10 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards.",
+                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.lands"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -9825,12 +9886,12 @@
                 "$value": "{shadow.card-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: Cards lift slightly to group offers.",
+                    "why": "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "theming.values"
+                    ]
                   }
                 }
               },
@@ -9839,11 +9900,11 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page.",
+                    "why": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values",
-                      "elevation.lands"
+                      "theming.values"
                     ]
                   }
                 }
@@ -10147,7 +10208,16 @@
         "default": {
           "$type": "dimension",
           "$value": "{border-width.1}",
-          "$description": "Every border."
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 1px default line for card borders in every brand in order to give grouping to plans and offers. A thin stroke does this by drawing a shared region with the least weight that still reads, the same in each brand. So color carries each brand, not line weight, because cards separate groups (elevation.definition) and AA holds in every brand (accessibility.definition).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
         },
         "focus": {
           "$type": "dimension",
@@ -10155,9 +10225,10 @@
           "$description": "The focus ring.",
           "$extensions": {
             "open-ds": {
-              "why": "A 2px focus ring, the same in every brand, makes keyboard focus visible at AA on any brand color.",
+              "why": "We use a 2px focus ring in every brand in order to show focus, one step heavier than the 1px default line by the focus relation. A heavier stroke does this by standing out from the thin edges around it. So keyboard users see focus on any brand color, because focus has its own look (accessibility.roles) and AA holds in every brand (accessibility.definition).",
               "because": [
-                "people.q2",
+                "accessibility.roles",
+                "elevation.definition",
                 "accessibility.definition"
               ]
             }
@@ -10169,10 +10240,9 @@
           "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
           "$extensions": {
             "open-ds": {
-              "why": "A 2px focus offset keeps the ring off the control's brand fill, so the ring reads in light and dark modes.",
+              "why": "We use a fixed 2px focus offset in every brand in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So the ring reads in light and dark in every brand, because focus has its own look (accessibility.roles).",
               "because": [
-                "people.q2",
-                "accessibility.lands"
+                "accessibility.roles"
               ]
             }
           }

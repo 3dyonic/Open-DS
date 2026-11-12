@@ -99,7 +99,7 @@
      "key": "radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows.",
+     "pick": "radius.2: We use a 2px corner for buttons and inputs in order to mark their role as controls and keep density. A small radius does this by softening the edge just enough to read as an object, while it keeps straight lines that align in rows. So a dense toolbar reads as one line of actions, because the product is dense (content.q2) and precise (brand.q1), with slightly rounded controls (shape.values).",
      "shares": []
     },
     {

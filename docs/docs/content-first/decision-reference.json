@@ -613,6 +613,25 @@
         }
        }
       ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "text": "radius.control: radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.8: We use the 8px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because the control corner is rounded, not a pill (shape.values), and the brand is warm (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
      }
     ]
    }
@@ -1377,7 +1396,35 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+        "text": "radius.control: radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.badge: radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.option: radius.8: We use an 8px corner for menu options in order to keep nesting by the relation: the 12px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 12px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.element: radius.8: We use the 8px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because the control corner is rounded, not a pill (shape.values), and the brand is warm (brand.q1).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2620,7 +2667,7 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.option: radius.8: the panel's 12px corner less its 4px padding, so an option's corner nests inside the menu's.",
+        "text": "radius.option: radius.8: We use an 8px corner for menu options in order to keep nesting by the relation: the 12px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 12px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2681,35 +2728,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+        "text": "radius.badge: radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+        "text": "radius.option: radius.8: We use an 8px corner for menu options in order to keep nesting by the relation: the 12px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 12px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.option: radius.8: the panel's 12px corner less its 4px padding, so an option's corner nests inside the menu's.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.element: radius.8: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+        "text": "radius.surface: radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2732,7 +2765,14 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.badge: radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+        "text": "radius.option: radius.8: We use an 8px corner for menu options in order to keep nesting by the relation: the 12px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 12px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "text": "radius.surface: radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2781,28 +2821,21 @@
       "kind": "picks",
       "items": [
        {
-        "text": "radius.control: radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+        "text": "radius.control: radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.badge: radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+        "text": "radius.badge: radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
         }
        },
        {
-        "text": "radius.element: radius.8: the control corner; it is not a pill, so a growing box keeps it.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "text": "radius.surface: radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+        "text": "radius.element: radius.8: We use the 8px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because the control corner is rounded, not a pill (shape.values), and the brand is warm (brand.q1).",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -2820,20 +2853,11 @@
     "What is the main content? → Long-form text"
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "radius.surface: radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
    }
   },
   "elevation-roles": {
@@ -2893,14 +2917,14 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+        "text": "elevation.card in light: shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
+        "text": "elevation.overlay in light: shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by a 12px offset and a 32px blur in a 16% warm brown. So a menu lifts off warm paper without a hard edge, because only what floats rises (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2921,14 +2945,14 @@
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+        "text": "elevation.card in dark: shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16% brown. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships for night reading (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -2946,27 +2970,11 @@
     "Elevation · What rises above the page? → Only what floats"
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Elevation",
+     "href": "foundations/elevation"
+    }
    }
   },
   "elevation-definition": {
@@ -3040,13 +3048,6 @@
         }
        },
        {
-        "text": "elevation.card in light: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
         "text": "color.surface.canvas in dark: neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
         "link": {
          "label": "Color",
@@ -3073,13 +3074,6 @@
          "label": "Color",
          "href": "foundations/color"
         }
-       },
-       {
-        "text": "elevation.card in dark: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
        }
       ]
      }
@@ -3098,28 +3092,28 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.card in light: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+        "text": "elevation.card in light: shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
+        "text": "elevation.overlay in light: shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by a 12px offset and a 32px blur in a 16% warm brown. So a menu lifts off warm paper without a hard edge, because only what floats rises (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.card in dark: shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+        "text": "elevation.card in dark: shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
         }
        },
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16% brown. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships for night reading (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3143,25 +3137,6 @@
       "items": [
        {
         "text": "For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow. The dimmed page focuses the reader on the dialog.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       }
-      ]
-     },
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "text": "elevation.overlay in light: shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
-        "link": {
-         "label": "Elevation",
-         "href": "foundations/elevation"
-        }
-       },
-       {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -3543,7 +3518,7 @@
       "kind": "picks",
       "items": [
        {
-        "text": "elevation.overlay in dark: shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+        "text": "elevation.overlay in dark: shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16% brown. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships for night reading (theming.values).",
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"

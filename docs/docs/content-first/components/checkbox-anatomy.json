@@ -124,7 +124,7 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+     "pick": "radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
      "shares": []
     }
    ]

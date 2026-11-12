@@ -115,7 +115,7 @@
      "key": "radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
+     "pick": "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1).",
      "shares": []
     },
     {
@@ -139,8 +139,8 @@
      "value": "0px 8px 24px, #0D111729",
      "darkValue": "0px 8px 24px, #00000080",
      "byScheme": true,
-     "pick": "shadow.overlay: Subtle shadows keep the grid crisp.",
-     "darkPick": "shadow.overlay-dark: Subtle shadows keep the grid crisp.",
+     "pick": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by an 8px offset and a 24px blur at 16% under the panel's edge. So a menu reads as above the grid without a heavy edge, because only what floats rises (elevation.roles) and shadows are subtle (elevation.values).",
+     "darkPick": "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 8px offset and 24px blur, at 50% black instead of 16%. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships as standard (theming.values).",
      "shares": []
     }
    ]

@@ -223,8 +223,8 @@
      "value": "0px 12px 32px, #1F1B1629",
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
-     "pick": "shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
-     "darkPick": "shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+     "pick": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by a 12px offset and a 32px blur in a 16% warm brown. So a menu lifts off warm paper without a hard edge, because only what floats rises (elevation.roles) and shadows are soft (elevation.values).",
+     "darkPick": "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16% brown. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships for night reading (theming.values).",
      "shares": []
     },
     {
@@ -248,7 +248,7 @@
      "key": "content.radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+     "pick": "radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1).",
      "shares": []
     }
    ]
@@ -448,7 +448,7 @@
      "key": "chips.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: the control corner; it is not a pill, so a growing box keeps it.",
+     "pick": "radius.8: We use the 8px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because the control corner is rounded, not a pill (shape.values), and the brand is warm (brand.q1).",
      "shares": []
     },
     {
@@ -474,7 +474,7 @@
      "key": "chip.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+     "pick": "radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
      "shares": []
     },
     {

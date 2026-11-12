@@ -183,7 +183,7 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+     "pick": "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1).",
      "shares": []
     }
    ]

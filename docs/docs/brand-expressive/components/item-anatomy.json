@@ -131,7 +131,7 @@
      "key": "radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+     "pick": "radius.12: We use the 12px box corner for boxes that grow in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area or a list item stays a box, not an oval, because controls are pills (shape.values) and the brand is bold (brand.q1).",
      "shares": []
     }
    ]
@@ -174,7 +174,7 @@
      "key": "media.icon.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+     "pick": "radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2).",
      "shares": []
     },
     {

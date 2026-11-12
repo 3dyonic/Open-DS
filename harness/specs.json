@@ -586,15 +586,20 @@
     },
     {
       "id": "OD-294",
-      "title": "Spacing by use case and the control scale: values from a base, a multiple and a step",
+      "title": "Spacing by use case and the control scale; shape and elevation as decisions and relations, and reasons that say why",
       "in": [
         "the grammar's spacing scope names the use-case words (level, relation, reach) and the job of each spacing property",
         "each scheme records on its space group a base and, per space token, a use case and a multiple; the value is base × multiple",
         "each scheme records on its size group the control scale: the default height, the step, the steps of compact and large, and the row",
         "the values are computed once when the scheme is written (scripts/spacing-use-cases.mjs); the harness compares them with the generator",
-        "every space, control and row reason names its value, its job and its use case or mechanism"
+        "every space, control and row reason names its value, its job and its use case or mechanism",
+        "the grammar records each property's jobs and how it does each: corner, line width, focus ring and shadow",
+        "control and surface corners are decisions; option, element and badge follow them by a relation that each scheme records and a check verifies",
+        "the focus ring is one step heavier than the default line, with a fixed 2px gap; shadows are one scale by layer, and dark keeps the light shape",
+        "where today's values break a relation, the check lists a finding and changes no value",
+        "every reason states its job, how the property does it, what people get and the decision; the count of reasons out of the form may only go down"
       ],
-      "checks": ["spacing-use-cases-generated", "reasons-explain-values", "json-files-validate"]
+      "checks": ["spacing-use-cases-generated", "shape-elevation-relations", "reasons-say-why", "reasons-explain-values", "json-files-validate"]
     },
     {
       "id": "OD-285",

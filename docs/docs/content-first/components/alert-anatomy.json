@@ -127,7 +127,7 @@
      "key": "radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+     "pick": "radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1).",
      "shares": []
     },
     {
