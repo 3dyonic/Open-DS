@@ -121,9 +121,9 @@
      "kind": "token",
      "semantic": "type.caption.line-height",
      "key": "time.line-height",
-     "value": "1.65",
+     "value": "1.45",
      "byScheme": true,
-     "pick": "font.line-height.1_65",
+     "pick": "font.line-height.1_45",
      "shares": []
     }
    ]

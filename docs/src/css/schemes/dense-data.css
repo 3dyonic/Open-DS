@@ -24,20 +24,20 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --type-title-font-size: 1.25rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
-  --type-heading-font-size: 1.0625rem;
+  --type-heading-font-size: 1rem;
   --type-heading-line-height: 1.2;
   --type-heading-font-weight: 600;
   --type-body-font-size: 0.875rem;
-  --type-body-line-height: 1.45;
+  --type-body-line-height: 1.25rem;
   --type-body-font-weight: 400;
   --type-label-font-size: 0.75rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 500;
   --type-caption-font-size: 0.75rem;
-  --type-caption-line-height: 1.45;
+  --type-caption-line-height: 1rem;
   --type-caption-font-weight: 400;
   --type-data-font-size: 0.875rem;
-  --type-data-line-height: 1.45;
+  --type-data-line-height: 1.125rem;
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Feedback speed: fast. Hover, press and small state changes. */
   --motion-duration-panels: 120ms; /** Panel speed: fast. Dialogs, sheets, popovers and menus opening and closing. One speed: panels open at the feedback speed (motion.count). */
@@ -1847,20 +1847,20 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --type-title-font-size: 1.25rem;
   --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
-  --type-heading-font-size: 1.0625rem;
+  --type-heading-font-size: 1rem;
   --type-heading-line-height: 1.2;
   --type-heading-font-weight: 600;
   --type-body-font-size: 0.875rem;
-  --type-body-line-height: 1.45;
+  --type-body-line-height: 1.25rem;
   --type-body-font-weight: 400;
   --type-label-font-size: 0.75rem;
   --type-label-line-height: 1.2;
   --type-label-font-weight: 500;
   --type-caption-font-size: 0.75rem;
-  --type-caption-line-height: 1.45;
+  --type-caption-line-height: 1rem;
   --type-caption-font-weight: 400;
   --type-data-font-size: 0.875rem;
-  --type-data-line-height: 1.45;
+  --type-data-line-height: 1.125rem;
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Feedback speed: fast. Hover, press and small state changes. */
   --motion-duration-panels: 120ms; /** Panel speed: fast. Dialogs, sheets, popovers and menus opening and closing. One speed: panels open at the feedback speed (motion.count). */

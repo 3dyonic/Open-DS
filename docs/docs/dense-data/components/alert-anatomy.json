@@ -258,9 +258,9 @@
      "kind": "token",
      "semantic": "type.body.line-height",
      "key": "description.line-height",
-     "value": "1.45",
+     "value": "1.25rem",
      "byScheme": true,
-     "pick": "font.line-height.1_45",
+     "pick": "font.line-box.20",
      "shares": []
     }
    ]

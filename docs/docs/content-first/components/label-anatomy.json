@@ -97,9 +97,9 @@
      "kind": "token",
      "semantic": "type.label.line-height",
      "key": "line-height",
-     "value": "1.15",
+     "value": "1.45",
      "byScheme": true,
-     "pick": "font.line-height.1_15",
+     "pick": "font.line-height.1_45",
      "shares": []
     }
    ]

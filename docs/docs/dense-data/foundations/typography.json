@@ -108,7 +108,7 @@
       },
       {
        "token": "type.heading.font-size",
-       "value": "17px"
+       "value": "16px"
       },
       {
        "token": "type.heading.line-height",
@@ -152,7 +152,7 @@
       },
       {
        "token": "type.body.line-height",
-       "value": "1.45"
+       "value": "20px"
       },
       {
        "token": "type.body.font-weight",
@@ -244,7 +244,7 @@
       },
       {
        "token": "type.caption.line-height",
-       "value": "1.45"
+       "value": "16px"
       },
       {
        "token": "type.caption.font-weight",
@@ -278,7 +278,7 @@
       },
       {
        "token": "type.data.line-height",
-       "value": "1.45"
+       "value": "18px"
       },
       {
        "token": "type.data.font-weight",

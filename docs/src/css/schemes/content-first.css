@@ -18,7 +18,7 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --border-width-focus: 2px; /** The focus ring. */
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.4; /** Disabled controls. */
-  --type-display-font-size: 2.8125rem;
+  --type-display-font-size: 2.75rem;
   --type-display-line-height: 1.15;
   --type-display-font-weight: 600;
   --type-title-font-size: 2.25rem;
@@ -31,10 +31,10 @@ html[data-scheme="content-first"] [data-mode="light"][data-mode] {
   --type-body-line-height: 1.65;
   --type-body-font-weight: 400;
   --type-label-font-size: 1rem;
-  --type-label-line-height: 1.15;
+  --type-label-line-height: 1.45;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.875rem;
-  --type-caption-line-height: 1.65;
+  --type-caption-line-height: 1.45;
   --type-caption-font-weight: 400;
   --type-data-font-size: 1.125rem;
   --type-data-line-height: 1.65;
@@ -1841,7 +1841,7 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --border-width-focus: 2px; /** The focus ring. */
   --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.4; /** Disabled controls. */
-  --type-display-font-size: 2.8125rem;
+  --type-display-font-size: 2.75rem;
   --type-display-line-height: 1.15;
   --type-display-font-weight: 600;
   --type-title-font-size: 2.25rem;
@@ -1854,10 +1854,10 @@ html[data-scheme="content-first"] [data-mode="dark"][data-mode] {
   --type-body-line-height: 1.65;
   --type-body-font-weight: 400;
   --type-label-font-size: 1rem;
-  --type-label-line-height: 1.15;
+  --type-label-line-height: 1.45;
   --type-label-font-weight: 600;
   --type-caption-font-size: 0.875rem;
-  --type-caption-line-height: 1.65;
+  --type-caption-line-height: 1.45;
   --type-caption-font-weight: 400;
   --type-data-font-size: 1.125rem;
   --type-data-line-height: 1.65;

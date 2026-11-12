@@ -34,7 +34,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `aster.theme.base.type.title.font-family` → `font.family.inter` |
-| `type.title.font-size` | `font.size.25` |
+| `type.title.font-size` | `font.size.24` |
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `aster.theme.base.type.heading.font-family` → `font.family.inter` |
@@ -67,7 +67,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `birch.theme.base.type.title.font-family` → `font.family.plus-jakarta-sans` |
-| `type.title.font-size` | `font.size.25` |
+| `type.title.font-size` | `font.size.24` |
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `birch.theme.base.type.heading.font-family` → `font.family.plus-jakarta-sans` |
@@ -100,7 +100,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `coral.theme.base.type.title.font-family` → `font.family.poppins` |
-| `type.title.font-size` | `font.size.25` |
+| `type.title.font-size` | `font.size.24` |
 | `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `coral.theme.base.type.heading.font-family` → `font.family.poppins` |

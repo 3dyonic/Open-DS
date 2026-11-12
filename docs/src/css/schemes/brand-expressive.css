@@ -24,7 +24,7 @@ html[data-scheme="brand-expressive"] [data-mode="light"][data-mode] {
   --type-title-font-size: 2.5rem;
   --type-title-line-height: 1.1;
   --type-title-font-weight: 800;
-  --type-heading-font-size: 1.8125rem;
+  --type-heading-font-size: 1.75rem;
   --type-heading-line-height: 1.1;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.0625rem;
@@ -1848,7 +1848,7 @@ html[data-scheme="brand-expressive"] [data-mode="dark"][data-mode] {
   --type-title-font-size: 2.5rem;
   --type-title-line-height: 1.1;
   --type-title-font-weight: 800;
-  --type-heading-font-size: 1.8125rem;
+  --type-heading-font-size: 1.75rem;
   --type-heading-line-height: 1.1;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.0625rem;

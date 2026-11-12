@@ -198,9 +198,9 @@
      "kind": "token",
      "semantic": "size.row",
      "key": "row-height",
-     "value": "3.5rem",
+     "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.56",
+     "pick": "size.52",
      "shares": []
     },
     {

@@ -209,17 +209,7 @@
       {
        "token": "size.control.large",
        "where": "semantic"
-      }
-     ]
-    },
-    {
-     "primitive": "size.48",
-     "value": "3rem (48px)",
-     "sample": {
-      "kind": "bar",
-      "value": "3rem"
-     },
-     "usedBy": [
+      },
       {
        "token": "size.row",
        "where": "semantic"

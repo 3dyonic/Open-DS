@@ -8,7 +8,7 @@ description: "Space and size primitives in Accessible first."
 
 # Space and size
 
-17 primitives, 17 used.
+16 primitives, 16 used.
 
 ## `space`
 

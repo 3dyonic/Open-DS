@@ -8,7 +8,7 @@ description: "Type primitives in Content first."
 
 # Type
 
-12 primitives, 12 used.
+13 primitives, 13 used.
 
 ## `font.size`
 
