@@ -674,6 +674,37 @@ export const CHECKS = {
         : ok(`${n} anatomy images, each exported from a Figma frame, in ${SCHEMES.length} schemes`);
     },
   },
+  "anatomy-text-from-samples": {
+    requires: ["schemes/grammar.json", "scripts/anatomy-figma/sample-text.mjs"],
+    run: async (c) => {
+      // OD-135: each scheme shows its UI with its own content, as Storybook does. Every text in a tree
+      // drawing reads a sample path that resolves in every scheme, or says why it keeps its own text.
+      const { sampleText, textNodes } = await import(pathToFileURL(c.p("scripts/anatomy-figma/sample-text.mjs")).href);
+      const samples = SCHEMES.map((id) => [id, c.scheme(id).samples]);
+      const gaps = [];
+      let read = 0;
+      let kept = 0;
+      for (const item of c.grammar().catalogue.items.filter((i) => i.anatomy?.drawing?.kind === "tree")) {
+        for (const node of textNodes(item.anatomy)) {
+          if (!node.sample) {
+            if (typeof node.fixed === "string" && node.fixed.trim() && typeof node.text === "string") kept++;
+            else gaps.push(`${item.id}: "${node.text}" reads no sample`);
+            continue;
+          }
+          read++;
+          for (const [id, smp] of samples) {
+            const { missing } = sampleText(node, smp);
+            if (missing) gaps.push(`${item.id}: ${id} has no samples.${missing.join(", samples.")}`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok(
+            `${read} anatomy texts read a sample in all ${SCHEMES.length} schemes; ${kept} keep their own text, each with a reason`,
+          );
+    },
+  },
   "floating-panels-agree": {
     requires: ["schemes/grammar.json", "ui/src/components"],
     run: (c) => {

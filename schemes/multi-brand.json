@@ -1005,7 +1005,8 @@
       "placeholder": "1234 5678 9012 3456",
       "hint": "We never store the full number.",
       "error": "Your card was declined. Try another card or contact your bank.",
-      "invalid": "1234"
+      "invalid": "1234",
+      "value": "4242 4242 4242 4242"
     },
     "checkbox": [
       "Email me about my orders",
@@ -1023,7 +1024,8 @@
     },
     "switches": [
       "Renew automatically",
-      "Paperless invoices"
+      "Paperless invoices",
+      "Payment reminders"
     ],
     "messages": {
       "success": "Your plan is active.",
@@ -1070,7 +1072,48 @@
       ],
       "destructive": "Cancel plan"
     },
-    "icon_action": "Download invoice"
+    "icon_action": "Download invoice",
+    "choices": [
+      {
+        "label": "Monthly",
+        "description": "12.00 a month. Cancel any time.",
+        "illustrative": [
+          "description"
+        ]
+      },
+      {
+        "label": "Yearly",
+        "description": "Pay once a year."
+      }
+    ],
+    "search": {
+      "placeholder": "Search invoices",
+      "query": "October",
+      "total": "9 invoices",
+      "results": "1 invoice",
+      "none": "No invoices"
+    },
+    "chart": {
+      "series": [
+        "Plan",
+        "Add-ons"
+      ],
+      "ticks": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov"
+      ],
+      "point": {
+        "label": "Aug",
+        "values": [
+          "12.00",
+          "7.00"
+        ]
+      }
+    }
   },
   "themes": [
     {

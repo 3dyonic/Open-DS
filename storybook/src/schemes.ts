@@ -33,7 +33,10 @@ export interface Samples {
     rows: { cells: string[]; status: string }[];
   };
   metrics: { label: string; value: string }[];
-  field: { label: string; placeholder: string; hint: string; error: string; invalid: string };
+  field: { label: string; placeholder: string; hint: string; error: string; invalid: string; value?: string };
+  choices?: { label: string; description: string; illustrative?: ("label" | "description")[] }[];
+  search?: { placeholder: string; query: string; total: string; results: string; none: string };
+  chart?: { series: string[]; ticks: string[]; point: { label: string; values: string[] } };
   checkbox?: string[];
   select?: { label: string; options: string[]; value: string };
   switches?: string[];

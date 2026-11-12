@@ -985,7 +985,8 @@
       "placeholder": "",
       "hint": "For example, 27 3 1980.",
       "error": "Enter your date of birth. For example, 27 3 1980.",
-      "invalid": "27/3"
+      "invalid": "27/3",
+      "value": "27 3 1980"
     },
     "checkbox": [
       "I have read the guidance",
@@ -1003,7 +1004,8 @@
     },
     "switches": [
       "Show help on every question",
-      "Remind me by text message"
+      "Remind me by text message",
+      "Send me a copy of my answers"
     ],
     "messages": {
       "success": "Your answers are saved. You can come back later.",
@@ -1050,7 +1052,45 @@
       ],
       "destructive": "Delete your answers"
     },
-    "icon_action": "Get help with this question"
+    "icon_action": "Get help with this question",
+    "choices": [
+      {
+        "label": "By email",
+        "description": "We send updates to your email address."
+      },
+      {
+        "label": "By text message",
+        "description": "We send a short text to your phone."
+      }
+    ],
+    "search": {
+      "placeholder": "Search the guidance",
+      "query": "rent",
+      "total": "24 pages",
+      "results": "3 pages",
+      "none": "No pages found"
+    },
+    "chart": {
+      "series": [
+        "Rent",
+        "Bills"
+      ],
+      "ticks": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov"
+      ],
+      "point": {
+        "label": "Aug",
+        "values": [
+          "420.00",
+          "85.00"
+        ]
+      }
+    }
   },
   "themes": [
     {
