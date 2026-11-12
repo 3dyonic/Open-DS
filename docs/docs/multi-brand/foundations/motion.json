@@ -12,7 +12,7 @@
       {
        "token": "motion.duration.feedback",
        "primitive": "duration.moderate",
-       "value": "200ms"
+       "value": "150ms"
       }
      ],
      "rules": [
@@ -34,7 +34,7 @@
       {
        "token": "motion.duration.panels",
        "primitive": "duration.relaxed",
-       "value": "320ms"
+       "value": "300ms"
       }
      ],
      "rules": [
@@ -44,6 +44,21 @@
        "why": "A relaxed open guides customers through sign-up the same way in every brand."
       }
      ]
+    },
+    {
+     "title": "motion.duration.exit",
+     "sample": {
+      "kind": "duration",
+      "value": "var(--motion-duration-exit)"
+     },
+     "api": [
+      {
+       "token": "motion.duration.exit",
+       "primitive": "duration.moderate",
+       "value": "150ms"
+      }
+     ],
+     "rules": []
     },
     {
      "title": "motion.easing.standard",
@@ -65,6 +80,66 @@
        "why": "One calm curve keeps the shared components the same in every brand."
       }
      ]
+    },
+    {
+     "title": "motion.easing.enter",
+     "sample": {
+      "kind": "easing",
+      "value": "var(--motion-easing-enter)"
+     },
+     "api": [
+      {
+       "token": "motion.easing.enter",
+       "primitive": "easing.standard",
+       "value": "cubic-bezier(0.2"
+      }
+     ],
+     "rules": []
+    },
+    {
+     "title": "motion.easing.exit",
+     "sample": {
+      "kind": "easing",
+      "value": "var(--motion-easing-exit)"
+     },
+     "api": [
+      {
+       "token": "motion.easing.exit",
+       "primitive": "easing.strong-out",
+       "value": "cubic-bezier(0.23"
+      }
+     ],
+     "rules": []
+    },
+    {
+     "title": "motion.easing.exit-offscreen",
+     "sample": {
+      "kind": "easing",
+      "value": "var(--motion-easing-exit-offscreen)"
+     },
+     "api": [
+      {
+       "token": "motion.easing.exit-offscreen",
+       "primitive": "easing.strong-out",
+       "value": "cubic-bezier(0.23"
+      }
+     ],
+     "rules": []
+    },
+    {
+     "title": "motion.easing.emphasize",
+     "sample": {
+      "kind": "easing",
+      "value": "var(--motion-easing-emphasize)"
+     },
+     "api": [
+      {
+       "token": "motion.easing.emphasize",
+       "primitive": "easing.standard",
+       "value": "cubic-bezier(0.2"
+      }
+     ],
+     "rules": []
     }
    ]
   }

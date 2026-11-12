@@ -126,14 +126,18 @@
      "semantic": "color.surface.raised",
      "key": "content.background",
      "value": "#FFFFFF",
-     "darkValue": "#0F172A",
+     "darkValue": "#1E293B",
      "byScheme": true,
-     "rule": "Fills that float above content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": [
       "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill."
      ],
      "darkPick": [
-      "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light."
+      "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, ",
+      {
+       "ratio": 1.22
+      },
+      " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So customers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
      ],
      "shares": [
       "surface.default",
@@ -153,28 +157,29 @@
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "content.border",
      "value": "#E2E8F0",
      "darkValue": "#334155",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
      "pick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
       {
-       "ratio": 1.18
+       "ratio": 1.23
       },
-      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+      " on surface.raised, beside the light shadow that does most of the lift. So customers see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
       {
-       "ratio": 1.72
+       "ratio": 1.41
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      " on surface.raised (#334155, no alpha), so its contrast can be checked. So customers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
      ],
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     },

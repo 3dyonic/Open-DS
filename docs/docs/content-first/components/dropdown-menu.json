@@ -68,10 +68,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -225,7 +225,7 @@
      "themed": true,
      "chain": {
       "token": "component.dropdown-menu.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "dropdown-menu-content-border"
      },
      "values": [
@@ -320,23 +320,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.dropdown-menu.item.disabled",
-      "alias": "opacity.disabled",
-      "variable": "dropdown-menu-item-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Icon",
      "when": "",
      "themed": false,
@@ -374,10 +357,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -407,6 +390,35 @@
        },
        "token": "red.dark.600",
        "text": "#F28B8B"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.dropdown-menu.item.disabled-label",
+      "alias": "color.disabled.text",
+      "variable": "dropdown-menu-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },

@@ -302,10 +302,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1411"
+        "color": "#33241F"
        },
-       "token": "taupe.dark.50",
-       "text": "#1F1411"
+       "token": "taupe.dark.100",
+       "text": "#33241F"
       }
      ]
     },
@@ -363,7 +363,7 @@
      "themed": true,
      "chain": {
       "token": "component.toast.neutral.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "toast-neutral-border"
      },
      "values": [

@@ -76,7 +76,58 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "150ms"
       }
      ]
     },
@@ -185,10 +236,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#333333"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.200",
+       "text": "#333333"
       }
      ]
     },
@@ -264,7 +315,7 @@
      "themed": true,
      "chain": {
       "token": "component.combobox.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "combobox-content-border"
      },
      "values": [
@@ -279,10 +330,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -430,10 +481,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -468,23 +519,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.combobox.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "combobox-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Icon size",
      "when": "",
      "themed": false,
@@ -497,6 +531,35 @@
       {
        "token": "size.20",
        "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "combobox-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     },
@@ -716,10 +779,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -816,10 +879,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#949494"
+        "color": "#B4B4B4"
        },
-       "token": "gray.dark.500",
-       "text": "#949494"
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
       }
      ]
     },
@@ -915,10 +978,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -944,10 +1007,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#F28B8B"
+        "color": "#FEDBDA"
        },
-       "token": "red.dark.600",
-       "text": "#F28B8B"
+       "token": "red.dark.900",
+       "text": "#FEDBDA"
       }
      ]
     },
@@ -973,10 +1036,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#F28B8B"
+        "color": "#FEDBDA"
        },
-       "token": "red.dark.600",
-       "text": "#F28B8B"
+       "token": "red.dark.900",
+       "text": "#FEDBDA"
       }
      ]
     },
@@ -1019,10 +1082,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -1033,7 +1096,7 @@
      "themed": false,
      "chain": {
       "token": "component.combobox.chips.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "combobox-chips-focus-width"
      },
      "values": [
@@ -1067,7 +1130,7 @@
      "themed": false,
      "chain": {
       "token": "component.combobox.chips.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "combobox-chips-focus-offset"
      },
      "values": [
@@ -1182,10 +1245,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -1271,23 +1334,6 @@
     },
     {
      "group": "Chip",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.combobox.chip.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "combobox-chip-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Chip",
      "part": "Remove pull",
      "when": "",
      "themed": false,
@@ -1362,6 +1408,64 @@
      ]
     },
     {
+     "group": "Chip",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "combobox-chip-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "combobox-chip-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
      "group": "Input",
      "part": "Border",
      "when": "",
@@ -1383,10 +1487,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -1412,10 +1516,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },

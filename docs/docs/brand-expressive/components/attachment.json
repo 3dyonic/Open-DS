@@ -141,7 +141,7 @@
      "themed": false,
      "chain": {
       "token": "component.attachment.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "attachment-focus"
      },
      "values": [
@@ -216,7 +216,7 @@
      "themed": false,
      "chain": {
       "token": "component.attachment.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "attachment-focus-offset"
      },
      "values": [
@@ -323,10 +323,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -389,10 +389,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },

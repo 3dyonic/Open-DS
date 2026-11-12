@@ -88,10 +88,11 @@ test("S4 white surfaces moved 0.015 (under the general 0.02, over the surface 0.
   assert.doesNotMatch(listed, /color\.text\.inverse|color\.neutral\.0\b/, "non-surface tokens at 0.015 should pass");
 });
 test("S5 dark sunken surfaces moved 0.03 (surface approval tier) are caught as needing approval", async () => {
-  const g = "#2F3642";
+  // Dark sunken reads the slate floor step (OD-297), so the nudge moves that step.
+  const g = "#0B0F15";
   const d = dist(g, D["color.surface.sunken"]);
   assert.ok(d > 0.02 && d < 0.05, `d=${d}`);
-  const card = await run(dd((s) => val(s, prim("color.slate.dark.100"), g)));
+  const card = await run(dd((s) => val(s, prim("color.slate.dark.floor"), g)));
   assert.ok(flagged(card, "shift.approval-unapproved"), show(card, ["shift.approval-unapproved"]));
   assert.match(row(card, "shift.approval-unapproved").details.join("\n"), /color\.surface\.sunken/);
 });

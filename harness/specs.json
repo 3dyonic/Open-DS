@@ -621,6 +621,21 @@
       "checks": ["type-scale-generated", "reasons-explain-values", "json-files-validate", "spacing-use-cases-generated", "shape-elevation-relations", "reasons-say-why"]
     },
     {
+      "id": "OD-297",
+      "title": "The accepted design decisions: disabled colors, motion families, reduced motion, dark depth, hit areas, the focus ring and uppercase tracking",
+      "in": [
+        "disabled reads color.disabled.*; no component dims a disabled state with opacity, and opacity.disabled is a deprecated alias",
+        "motion has a productive and an expressive family, picked by motion.roles; each duration stays within its family's limit, and each move type (enter, exit, exit-offscreen, transition, emphasize) has its own easing of an allowed curve kind; only the expressive emphasize move overshoots",
+        "under prefers-reduced-motion nothing moves: fades and color changes stay, at the feedback duration",
+        "in dark, raised is a step lighter than content with a solid, lighter 1px ring, sunken is darker, and only floating layers cast a shade",
+        "size.hit-area is 24px for a pointer and 44px for touch; checkbox, radio, switch and slider thumb grow their hit area past the drawn box, and groups keep rows apart",
+        "the focus ring is its own token, focus.ring.width, one step heavier than the default line",
+        "uppercase labels use 0.05 to 0.12em of letter spacing",
+        "dense data keeps 12px label and caption text, and its reasons say why"
+      ],
+      "checks": ["motion-families", "reduced-motion-keeps-fades", "disabled-by-color", "dark-depth", "hit-area", "focus-ring-token", "uppercase-tracking", "reasons-explain-values", "json-files-validate"]
+    },
+    {
       "id": "OD-285",
       "title": "Icons follow each scheme: one Lucide set, the scheme's size and stroke, and an Icon component for content",
       "in": [

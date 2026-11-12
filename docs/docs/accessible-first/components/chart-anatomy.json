@@ -107,7 +107,7 @@
      "semantic": "color.border.default",
      "key": "grid.line",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": [
@@ -118,14 +118,15 @@
       ", on surface.canvas). It decorates, so it holds no contrast minimum."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
       {
-       "ratio": 1.46
+       "ratio": 1.8
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     }
@@ -178,15 +179,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",
@@ -228,14 +233,26 @@
      "semantic": "color.surface.highlight",
      "key": "cursor.fill",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": [
       "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
      ],
      "darkPick": [
-      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+      "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default and ",
+      {
+       "ratio": 1.46
+      },
+      " on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ",
+      {
+       "ratio": 8.89
+      },
+      " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
      ],
      "shares": [
       "surface.sunken",
@@ -249,7 +266,7 @@
      "semantic": "color.border.default",
      "key": "cursor.line",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": [
@@ -260,14 +277,15 @@
       ", on surface.canvas). It decorates, so it holds no contrast minimum."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
       {
-       "ratio": 1.46
+       "ratio": 1.8
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     }
@@ -321,7 +339,7 @@
      "darkPick": [
       "neutral.0, under content: ",
       {
-       "ratio": 1.07
+       "ratio": 1.24
       },
       " from surface.default, so cards and panels stand forward."
      ],
@@ -332,7 +350,7 @@
      "semantic": "color.border.default",
      "key": "tooltip.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": [
@@ -343,14 +361,15 @@
       ", on surface.canvas). It decorates, so it holds no contrast minimum."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
       {
-       "ratio": 1.46
+       "ratio": 1.8
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -419,15 +438,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",
@@ -457,7 +480,7 @@
      "darkPick": [
       "neutral.900: the strongest text step, ",
       {
-       "ratio": 17.2
+       "ratio": 14.85
       },
       " on surface.default, above the ",
       {

@@ -207,6 +207,15 @@
        "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
       },
       {
+       "token": "border.raised",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "taupe.light.200",
+       "via": "neutral.200",
+       "hex": "#F2DCCF",
+       "guidance": "../foundations/color?for=color-border-raised#what-each-color-is-for"
+      },
+      {
        "token": "disabled.border",
        "paints": "edge",
        "step": "200",
@@ -357,6 +366,11 @@
        "step": "950",
        "primitive": "taupe.dark.950",
        "hex": "#FFFFFF"
+      },
+      {
+       "step": "floor",
+       "primitive": "taupe.dark.floor",
+       "hex": "#090403"
       }
      ],
      "tokens": [
@@ -379,15 +393,6 @@
        "guidance": "../foundations/color?for=color-surface-default#what-each-color-is-for"
       },
       {
-       "token": "surface.raised",
-       "paints": "fill",
-       "step": "50",
-       "primitive": "taupe.dark.50",
-       "via": "neutral.50",
-       "hex": "#1F1411",
-       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
-      },
-      {
        "token": "action.secondary",
        "paints": "fill",
        "step": "50",
@@ -397,22 +402,13 @@
        "guidance": "../foundations/color?for=color-action-secondary#what-each-color-is-for"
       },
       {
-       "token": "surface.sunken",
+       "token": "surface.raised",
        "paints": "fill",
        "step": "100",
        "primitive": "taupe.dark.100",
        "via": "neutral.100",
        "hex": "#33241F",
-       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
-      },
-      {
-       "token": "surface.highlight",
-       "paints": "fill",
-       "step": "100",
-       "primitive": "taupe.dark.100",
-       "via": "neutral.100",
-       "hex": "#33241F",
-       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
       },
       {
        "token": "action.secondary.hover",
@@ -442,6 +438,22 @@
        "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
       },
       {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "taupe.dark.floor",
+       "hex": "#090403",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "taupe.dark.floor",
+       "hex": "#090403",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+      },
+      {
        "token": "surface.pressed",
        "paints": "fill",
        "step": "200",
@@ -458,6 +470,15 @@
        "via": "neutral.200",
        "hex": "#4D3A33",
        "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
+      },
+      {
+       "token": "border.raised",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "taupe.dark.200",
+       "via": "neutral.200",
+       "hex": "#4D3A33",
+       "guidance": "../foundations/color?for=color-border-raised#what-each-color-is-for"
       },
       {
        "token": "disabled.border",
@@ -1867,6 +1888,10 @@
       {
        "token": "color.neutral.0",
        "where": "light"
+      },
+      {
+       "token": "color.neutral.floor",
+       "where": "light"
       }
      ]
     },
@@ -2196,6 +2221,20 @@
      "usedBy": [
       {
        "token": "color.neutral.950",
+       "where": "dark"
+      }
+     ]
+    },
+    {
+     "primitive": "color.taupe.dark.floor",
+     "value": "#090403",
+     "sample": {
+      "kind": "color",
+      "value": "#090403"
+     },
+     "usedBy": [
+      {
+       "token": "color.neutral.floor",
        "where": "dark"
       }
      ]

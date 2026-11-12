@@ -272,7 +272,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
@@ -314,7 +314,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus-width",
      "value": "2px",
      "byScheme": true,
@@ -325,7 +325,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -468,7 +468,8 @@
      ],
      "shares": [
       "surface.pressed",
-      "border.default"
+      "border.default",
+      "border.raised"
      ]
     },
     {

@@ -8,13 +8,13 @@ description: "Color primitives in Accessible first."
 
 # Color
 
-136 primitives, 53 used.
+136 primitives, 54 used.
 
 Each color is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its color, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).
 
 ## Gray
 
-24 tokens in light, 19 tokens in dark.
+25 tokens in light, 20 tokens in dark.
 
 ::color-scale{id="gray"}
 

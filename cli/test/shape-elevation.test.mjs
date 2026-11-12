@@ -28,7 +28,7 @@ test("every scheme records every relation the grammar names, and each record can
 test("today the derived corners, the focus ring and the shadow scale hold in every scheme", () => {
   for (const id of schemeIds()) {
     const r = checkRelations(loadScheme(id), g);
-    for (const token of ["radius.option", "radius.element", "radius.badge", "border-width.focus", "border-width.focus-offset", "elevation.card", "elevation.overlay"])
+    for (const token of ["radius.option", "radius.element", "radius.badge", "focus.ring.width", "focus.ring.offset", "elevation.card", "elevation.overlay", "color.surface.raised", "color.border.raised"])
       assert.deepEqual(found(r, token), [], `${id} ${token}`);
   }
 });
@@ -55,7 +55,7 @@ test("a badge with its own corner is a finding where the roles answer gives it n
 
 test("a dark shadow that changes shape is a finding", () => {
   const s = structuredClone(loadScheme("multi-brand"));
-  s.tokens.brands.aster.theme.dark.elevation.overlay.$value = "{shadow.card-dark}";
+  s.tokens.brands.aster.theme.dark.elevation.overlay.$value = "{shadow.card}";
   const r = checkRelations(s, g);
   assert.ok(r.results.some((x) => x.token === "elevation.overlay" && x.relation === "dark-shade" && !x.holds && x.brand === "aster"));
 });

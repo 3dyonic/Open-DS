@@ -102,12 +102,13 @@
      "darkPick": [
       "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
       {
-       "ratio": 1.72
+       "ratio": 1.41
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised). It decorates, so it holds no contrast minimum."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     }
@@ -125,13 +126,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring (from the brand)",
+     "use": "button/focus-ring (from the brand) at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus follows the brand but always shows."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "viewport.focus",
      "value": "2px",
      "byScheme": true,
@@ -178,7 +179,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "viewport.focus-offset",
      "value": "2px",
      "byScheme": false,

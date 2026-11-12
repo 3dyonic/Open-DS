@@ -1772,12 +1772,12 @@
       "relation": "default-line"
     },
     {
-      "token": "border-width.focus",
+      "token": "focus.ring.width",
       "relation": "focus-heavier",
       "from": "border-width.default"
     },
     {
-      "token": "border-width.focus-offset",
+      "token": "focus.ring.offset",
       "relation": "focus-gap"
     },
     {
@@ -1926,9 +1926,9 @@
     },
     {
       "situation": "card",
-      "use": "elevation.card (pronounced)",
+      "use": "elevation.card (pronounced); none in dark",
       "not": "A flat card",
-      "why": "Cards float to feel tactile.",
+      "why": "Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them.",
       "because": [
         "elevation.roles",
         "elevation.values"
@@ -1947,7 +1947,7 @@
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (fast)",
       "not": "An instant change",
-      "why": "Fast feedback, on the brand's spring. An instant change drops the brand's motion.",
+      "why": "Fast feedback on an ease-out. The brand's spring waits for the moments that deserve it.",
       "because": [
         "motion.roles",
         "motion.values"
@@ -1955,7 +1955,7 @@
     },
     {
       "situation": "reduced-motion",
-      "use": "Reduced motion",
+      "use": "Fades only; nothing moves",
       "not": "Full motion",
       "why": "Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.",
       "because": [
@@ -1983,7 +1983,7 @@
     },
     {
       "situation": "keyboard-focus",
-      "use": "button/focus-ring at border-width.focus",
+      "use": "button/focus-ring at focus.ring.width",
       "not": "Removing the outline",
       "why": "Focus must show on vivid color.",
       "because": [
@@ -2312,7 +2312,7 @@
     },
     {
       "situation": "focus-gap",
-      "use": "border-width.focus-offset",
+      "use": "focus.ring.offset",
       "not": "A ring that touches the control",
       "why": "The gap keeps the ring visible on vivid fills.",
       "because": [
@@ -2324,7 +2324,7 @@
       "situation": "panel-opens",
       "use": "motion.duration.panels",
       "not": "A flat fade",
-      "why": "Panels open on the brand's spring, so people feel the brand in every menu.",
+      "why": "Panels open on an ease-out at a moderate speed, so menus feel quick and the brand shows in its big moments.",
       "because": [
         "brand.q2",
         "human.q1"
@@ -2334,7 +2334,7 @@
       "situation": "any-transition",
       "use": "motion.easing.standard",
       "not": "A plain ease-out",
-      "why": "The overshoot makes each move feel alive and playful.",
+      "why": "An ease-out keeps every menu and button quick. The overshoot is kept for emphasis, where it feels alive and playful.",
       "because": [
         "human.q1",
         "brand.q1"
@@ -2391,9 +2391,9 @@
     },
     {
       "situation": "unavailable-control",
-      "use": "opacity.disabled",
+      "use": "color.disabled.*, never opacity",
       "not": "Hiding the button",
-      "why": "A faded button keeps the layout. The vivid color returns when the visitor can sign up.",
+      "why": "Muted colors keep the layout and the label readable. The vivid color returns when the visitor can sign up.",
       "because": [
         "outcomes.q1"
       ]
@@ -2484,6 +2484,10 @@
             },
             "950": {
               "$value": "#FFFFFF"
+            },
+            "floor": {
+              "$value": "#090403",
+              "$description": "Derived: step 0 at 0.04 lower OKLab lightness, its hue and chroma kept. Added so a dark well sits below a canvas on 0."
             }
           }
         },
@@ -2776,7 +2780,7 @@
         "fast": {
           "$type": "duration",
           "$value": "120ms",
-          "$description": "Fast: the usual convention for feedback, about 120ms."
+          "$description": "Fast: about 120ms, the convention for feedback."
         },
         "moderate": {
           "$type": "duration",
@@ -2798,7 +2802,37 @@
             0.64,
             1
           ],
-          "$description": "A spring that overshoots, for feedback, panels and hero moments."
+          "$description": "A spring that overshoots and settles back. Only for the emphasize move."
+        },
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "A standard ease-out: fast at the start, settling slowly, with no overshoot."
+        },
+        "strong-out": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.23,
+            1,
+            0.32,
+            1
+          ],
+          "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
+        },
+        "accelerate": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.4,
+            0,
+            1,
+            1
+          ],
+          "$description": "An accelerate curve: slow at the start, fastest at the end. Only for a layer that leaves the screen."
         }
       },
       "opacity": {
@@ -2832,17 +2866,6 @@
           },
           "$description": "Raw shadow for overlay in light mode."
         },
-        "card-dark": {
-          "$type": "shadow",
-          "$value": {
-            "color": "#00000080",
-            "offsetX": "0px",
-            "offsetY": "12px",
-            "blur": "32px",
-            "spread": "0px"
-          },
-          "$description": "Raw shadow for card in dark mode."
-        },
         "overlay-dark": {
           "$type": "shadow",
           "$value": {
@@ -2853,15 +2876,26 @@
             "spread": "0px"
           },
           "$description": "Raw shadow for overlay in dark mode."
+        },
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
         }
       },
       "stroke-width": {
-        "175": {
+        "$description": "Icon stroke width options.",
+        "1_75": {
           "$type": "number",
           "$value": 1.75,
           "$description": "An icon stroke width option, on Lucide's 24px grid."
-        },
-        "$description": "Icon stroke width options."
+        }
       }
     },
     "brands": {
@@ -3362,6 +3396,19 @@
                       "generated": true
                     }
                   }
+                },
+                "floor": {
+                  "$type": "color",
+                  "$value": "{color.taupe.light.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "taupe.light.0: We use light's step 0 for the floor in order to keep the neutral scale whole in light. The step does this by naming white, as nothing sits above it and no light role reads the floor. So light pages stay as they are, because the floor exists for dark wells below the canvas (theming.values) and the gray ramp sets the steps (color.definition).",
+                      "because": [
+                        "color.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
                 }
               },
               "surface": {
@@ -3600,6 +3647,19 @@
                         "accessibility.definition"
                       ],
                       "generated": true
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.32:1 on surface.raised, beside the light shadow that does most of the lift. So visitors see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ]
                     }
                   }
                 },
@@ -4245,6 +4305,19 @@
                       "generated": true
                     }
                   }
+                },
+                "floor": {
+                  "$type": "color",
+                  "$value": "{color.taupe.dark.floor}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "taupe.dark.floor: We use one step below 0 for the floor in dark in order to put wells and the hover band below a canvas that sits on 0. The step does this by keeping the hue and chroma of 0 at 0.04 lower OKLab lightness, as the taupe ramp has no lower step. So a table header reads as recessed even on the page itself, because dark ships as standard (theming.values) and the gray ramp sets the steps (color.definition).",
+                      "because": [
+                        "color.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
                 }
               },
               "surface": {
@@ -4279,44 +4352,44 @@
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.neutral.50}",
+                  "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+                      "why": "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, 1.21:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So visitors see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
                       "because": [
+                        "theming.values",
                         "elevation.roles",
                         "elevation.definition"
-                      ],
-                      "generated": true
+                      ]
                     }
                   }
                 },
                 "sunken": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}",
+                  "$value": "{color.neutral.floor}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+                      "why": "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, 1.13:1 under content and 1.05:1 under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
                       "because": [
-                        "elevation.definition",
-                        "color.definition"
-                      ],
-                      "generated": true
+                        "theming.values",
+                        "elevation.definition"
+                      ]
                     }
                   }
                 },
                 "highlight": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}",
+                  "$value": "{color.neutral.floor}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+                      "why": "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.13:1 on surface.default and 1.37:1 on surface.raised, and 1.05:1 off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.59:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.roles",
-                        "color.definition"
+                        "color.definition",
+                        "theming.values"
                       ]
                     }
                   }
@@ -4327,7 +4400,7 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200: We use the light pick for the dark pressed surface in order to keep what it sets, and the step does this by the same means, so the dark pressed surface and the light pick never differ, because the step reads the same in dark (theming.values).",
+                      "why": "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 1.91:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "theming.values"
                       ]
@@ -4476,12 +4549,26 @@
                   "$value": "{color.neutral.200}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.39:1, on surface.raised). It decorates, so it holds no contrast minimum.",
                       "because": [
                         "elevation.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.39:1 on surface.raised (#4D3A33, no alpha), so its contrast can be checked. So visitors see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "theming.values",
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ]
                     }
                   }
                 },
@@ -4947,14 +5034,13 @@
             "elevation": {
               "card": {
                 "$type": "shadow",
-                "$value": "{shadow.card-dark}",
+                "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 14%. So each offer still reads as an object, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships as standard (theming.values).",
+                    "why": "shadow.none: We use no shadow for cards in dark in order to keep shadows on floating layers only: menus, popovers, dialogs, toasts and tooltips. The missing shade does this by leaving the card's height to tone: the lighter raised surface and its 1px light ring. So cards still read as lifted on a dark page, without a shade that cannot be seen, because dark ships as standard (theming.values) and cards rise by shadow in light (elevation.roles).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values",
-                      "theming.values"
+                      "theming.values",
+                      "elevation.roles"
                     ]
                   }
                 }
@@ -5061,7 +5147,7 @@
             "$description": "Between items in one group.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap, and it does this by the means stated in the reason of space.gap.tight. So air between items keeps big type readable, because the layout is spacious (spacing.values) and delight is the point (human.q1).",
+                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by the rule given for space.gap.tight, so air between items keeps big type readable, because the layout is spacious (spacing.values) and delight is the point (human.q1).",
                 "because": [
                   "spacing.values",
                   "human.q1"
@@ -5075,7 +5161,7 @@
             "$description": "Between groups.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 40px for the group gap between groups inside a section in order to group and separate: five base steps (5 × 8px), two and a half default gaps, and it does this by the means stated in the reason of space.gap.tight. So each group has its own moment inside a section, because the layout is spacious (spacing.values) and each section holds one big idea (content.q2).",
+                "why": "We use 40px for the group gap between groups inside a section in order to group and separate: five base steps (5 × 8px), two and a half default gaps. Distance does this by the rule given for space.gap.tight, so each group has its own moment inside a section, because the layout is spacious (spacing.values) and each section holds one big idea (content.q2).",
                 "because": [
                   "spacing.values",
                   "content.q2"
@@ -5089,7 +5175,7 @@
             "$description": "Between page sections.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 64px for the section gap between big sections in order to group and separate: eight base steps (8 × 8px), four default gaps, and it does this by the means stated in the reason of space.gap.tight. So each section, with its color block, is a moment of its own, because space works between big sections (spacing.lands) and the layout is spacious (spacing.values).",
+                "why": "We use 64px for the section gap between big sections in order to group and separate: eight base steps (8 × 8px), four default gaps. Distance does this by the rule given for space.gap.tight, so each section, with its color block, is a moment of its own, because space works between big sections (spacing.lands) and the layout is spacious (spacing.values).",
                 "because": [
                   "spacing.lands",
                   "spacing.values"
@@ -5119,7 +5205,7 @@
             "$description": "Padding inside cards and dialogs.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 32px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 8px), twice the default gap, and it does this by the means stated in the reason of space.inset.control-x. So each card holds its moment, because delight is the point (human.q1) and the brand is bold (brand.q1).",
+                "why": "We use 32px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 8px), twice the default gap. Padding does this by the rule given for space.inset.control-x, so each card holds its moment, because delight is the point (human.q1) and the brand is bold (brand.q1).",
                 "because": [
                   "human.q1",
                   "brand.q1"
@@ -5133,7 +5219,7 @@
             "$description": "Horizontal padding inside table cells.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap, and it does this by the means stated in the reason of space.inset.control-x. So the rare table keeps the page's airy rhythm, because the content is images and campaigns, with few tables (content.q1), and the layout is spacious (spacing.values).",
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by the rule given for space.inset.control-x, so the rare table keeps the page's airy rhythm, because the content is images and campaigns, with few tables (content.q1), and the layout is spacious (spacing.values).",
                 "because": [
                   "content.q1",
                   "spacing.values"
@@ -5183,7 +5269,7 @@
             "$description": "Height of compact controls.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 44px for compact controls, such as a button inside a pill field, in order to make a hit target: one 8px step below the 52px default on the control scale, a 44px hit area that still fits a thumb, and it does this by the means stated in the reason of size.control.default. So a button sits inside the pill field and still fits a thumb, because visitors are on the move (scenarios.q1) and the smallest target is touch size (accessibility.values).",
+                "why": "We use 44px for compact controls, such as a button inside a pill field, in order to make a hit target: one 8px step below the 52px default on the control scale, a 44px hit area that still fits a thumb. Height does this by the rule given for size.control.default, so a button sits inside the pill field and still fits a thumb, because visitors are on the move (scenarios.q1) and the smallest target is touch size (accessibility.values).",
                 "because": [
                   "scenarios.q1",
                   "accessibility.values"
@@ -5197,7 +5283,7 @@
             "$description": "Height of large controls: the one loud call to action.",
             "$extensions": {
               "open-ds": {
-                "why": "We use 60px for the one loud call to action in order to make a hit target: one 8px step above the 52px default on the control scale, a 60px hit area, as sign-up is the scheme's hero action, and it does this by the means stated in the reason of size.control.default. So the sign-up button wins the eye and the thumb, because there is one action, sign up (tasks.q2), and visitors are on the move (scenarios.q1).",
+                "why": "We use 60px for the one loud call to action in order to make a hit target: one 8px step above the 52px default on the control scale, a 60px hit area, as sign-up is the scheme's hero action. Height does this by the rule given for size.control.default, so the sign-up button wins the eye and the thumb, because there is one action, sign up (tasks.q2), and visitors are on the move (scenarios.q1).",
                 "because": [
                   "tasks.q2",
                   "scenarios.q1"
@@ -5230,6 +5316,20 @@
               "because": [
                 "brand.q1",
                 "brand.q2"
+              ]
+            }
+          }
+        },
+        "hit-area": {
+          "$type": "dimension",
+          "$value": "{size.44}",
+          "$description": "The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 44px hit area for controls drawn smaller, such as a checkbox, a radio or a switch, in order to make a hit target a fingertip can find: the WCAG 2.5.5 size. The hit area does this by growing past the drawn box through a pseudo-element, and rows in a group stand at least 44px apart, so no two targets overlap. So visitors tap the right control on a phone, because targets are sized for touch (accessibility.values) and the layout leaves room for it (spacing.values).",
+              "because": [
+                "accessibility.values",
+                "spacing.values"
               ]
             }
           }
@@ -5286,29 +5386,45 @@
         },
         "focus": {
           "$type": "dimension",
-          "$value": "{border-width.3}",
-          "$description": "The focus ring.",
-          "$extensions": {
-            "open-ds": {
-              "why": "We use a 3px focus ring in order to show focus, one step heavier than the 2px default line by the focus relation. A heavier stroke does this by standing out even from the bold edges around it. So keyboard users see focus on vivid color, because focus has its own look (accessibility.roles) and AA holds on every color (accessibility.definition).",
-              "because": [
-                "accessibility.roles",
-                "elevation.definition",
-                "accessibility.definition"
-              ]
-            }
-          }
+          "$value": "{focus.ring.width}",
+          "$description": "Deprecated: use focus.ring.width.",
+          "$deprecated": "Use focus.ring.width. Removed in the next minor release."
         },
         "focus-offset": {
           "$type": "dimension",
-          "$value": "{border-width.2}",
-          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
-          "$extensions": {
-            "open-ds": {
-              "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So visitors see the ring on any brand color, because focus has its own look (accessibility.roles).",
-              "because": [
-                "accessibility.roles"
-              ]
+          "$value": "{focus.ring.offset}",
+          "$description": "Deprecated: use focus.ring.offset.",
+          "$deprecated": "Use focus.ring.offset. Removed in the next minor release."
+        }
+      },
+      "focus": {
+        "ring": {
+          "width": {
+            "$type": "dimension",
+            "$value": "{border-width.3}",
+            "$description": "The focus ring's width: one step heavier than the default border, and not a border width.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a 3px focus ring in order to show focus, one step heavier than the 2px default line by the focus relation. A heavier stroke does this by standing out even from the bold edges around it. So keyboard users see focus on vivid color, because focus has its own look (accessibility.roles) and AA holds on every color (accessibility.definition).",
+                "because": [
+                  "accessibility.roles",
+                  "elevation.definition",
+                  "accessibility.definition"
+                ]
+              }
+            }
+          },
+          "offset": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So visitors see the ring on any brand color, because focus has its own look (accessibility.roles).",
+                "because": [
+                  "accessibility.roles"
+                ]
+              }
             }
           }
         }
@@ -5685,24 +5801,130 @@
           "feedback": {
             "$type": "duration",
             "$value": "{duration.fast}",
-            "$description": "Feedback speed: fast. Hover, press and small state changes."
+            "$description": "Hover, press and toggle feedback. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 120ms (fast) for hover, press and toggle feedback in order to answer each tap at once, well inside the expressive limit of 500ms. The duration does this by ending the change before the finger lifts. So visitors feel the brand respond, never lag, because motion carries expression (motion.roles) and feedback feels fast (motion.values).",
+                "because": [
+                  "motion.roles",
+                  "motion.values"
+                ]
+              }
+            }
           },
           "panels": {
             "$type": "duration",
             "$value": "{duration.moderate}",
-            "$description": "Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. Three speeds: fast feedback, moderate panels, relaxed hero (motion.count)."
+            "$description": "Menus, popovers, dialogs and drawers opening. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 200ms (moderate) for menus, popovers, dialogs and other panels in order to show where a panel comes from, inside the expressive limit of 500ms. The duration does this by giving the eye time to follow the panel from its trigger. So visitors see each menu arrive as part of the brand, because the family is expressive (motion.roles) and there are three speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "duration",
+            "$value": "{motion.duration.feedback}",
+            "$description": "A layer closing: shorter than its open.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the feedback duration, 120ms (fast), for a layer that closes in order to end the exit move faster than the 200ms open. The duration does this by removing what people are done with in fewer frames than it took to arrive. So visitors get back to the page at once, because even an expressive family keeps exits short (motion.roles) and there are three speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
           },
           "hero": {
             "$type": "duration",
             "$value": "{duration.relaxed}",
-            "$description": "Hero speed: relaxed. Hero and launch moments."
+            "$description": "Hero and launch moments. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 320ms (relaxed) for hero and launch moments in order to give the slowest move to the moment that matters most, inside the expressive limit of 500ms. The duration does this by holding the change long enough to be seen as an event. So every visitor sees the launch, because motion shows in hero moments (motion.lands) and the family is expressive (motion.roles).",
+                "because": [
+                  "motion.lands",
+                  "motion.roles"
+                ]
+              }
+            }
           }
         },
         "easing": {
           "standard": {
             "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "The transition move: a state that changes in place, such as hover, press or toggle.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the standard easing (0.2, 0, 0, 1) for state changes in place in order to do the transition move without the spring. The curve does this by reaching its target early and settling, with no overshoot. So buttons and toggles feel quick and steady, and the bounce stays special, because the spring is for emphasis only (motion.definition) in an expressive family (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          },
+          "enter": {
+            "$type": "cubicBezier",
+            "$value": "{motion.easing.standard}",
+            "$description": "The enter move: a layer that appears.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So a menu is readable almost as soon as it opens, because an expressive family keeps its spring for emphasis (motion.roles) and enters on an ease-out (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "cubicBezier",
+            "$value": "{easing.strong-out}",
+            "$description": "The exit move: a layer that closes in place.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next tap, because an expressive exit eases out unless the layer leaves the screen (motion.roles), and easing is set per move (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit-offscreen": {
+            "$type": "cubicBezier",
+            "$value": "{easing.accelerate}",
+            "$description": "The exit move of a layer that slides off the screen: a sheet or a drawer.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the accelerate easing (0.4, 0, 1, 1) for a drawer or sheet that slides off the screen in order to do the exit move of a layer that leaves the view. The curve does this by starting slow and speeding up, so the panel gathers pace on its way out. So visitors read the drawer as gone, not paused at the edge, because an expressive family accelerates only what leaves the screen (motion.roles) and easing is set per move (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "emphasize": {
+            "$type": "cubicBezier",
             "$value": "{easing.spring}",
-            "$description": "Feedback easing."
+            "$description": "The emphasize move: a moment that calls for attention. The only move that overshoots.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the spring easing (0.34, 1.56, 0.64, 1) for the emphasize move only, in order to celebrate a moment such as a sign-up that worked. The curve does this by passing its target and settling back, so the eye catches the bounce. So the brand's spring is felt where it means something, not on every menu, because easing is a spring (motion.definition) and motion carries expression (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
           }
         }
       },
@@ -5710,7 +5932,8 @@
         "disabled": {
           "$type": "number",
           "$value": "{opacity.40}",
-          "$description": "Disabled controls."
+          "$description": "Deprecated: disabled reads color.disabled.text, color.disabled.surface and color.disabled.border. Opacity is for loading and dragging only.",
+          "$deprecated": "Use color.disabled.text, color.disabled.surface and color.disabled.border. Removed in the next minor release."
         }
       },
       "color": {
@@ -5762,6 +5985,10 @@
           "950": {
             "$type": "color",
             "$value": "{theme.color.neutral.950}"
+          },
+          "floor": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.floor}"
           },
           "$description": "The neutral scale: the scheme's gray, step by step. Surfaces, borders and text read it, never a gray directly."
         },
@@ -5904,6 +6131,11 @@
             "$type": "color",
             "$description": "Row lines and card borders.",
             "$value": "{theme.color.border.default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "The 1px edge of a raised layer: menus, dialogs and toasts, and raised cards.",
+            "$value": "{theme.color.border.raised}"
           },
           "strong": {
             "$type": "color",
@@ -6119,7 +6351,7 @@
       "icon": {
         "stroke-width": {
           "$type": "number",
-          "$value": "{stroke-width.175}",
+          "$value": "{stroke-width.1_75}",
           "$description": "The line weight of every icon, on Lucide's 24px grid.",
           "$extensions": {
             "open-ds": {
@@ -6221,6 +6453,16 @@
           }
         }
       },
+      "card": {
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Card fill: a raised layer, lighter than content in dark."
+        },
+        "border": {
+          "$value": "{color.border.raised}",
+          "$description": "Card edge: the raised ring, a solid lighter step in dark."
+        }
+      },
       "tabs": {
         "indicator": {
           "$value": "{tabs.trigger.edge.current}",
@@ -6275,6 +6517,15 @@
           "$description": "Deprecated: use component.accordion.item.divider.@ (OD-243). The line between items.",
           "$deprecated": "Use component.accordion.item.divider.@. Removed in the next minor release."
         },
+        "trigger": {
+          "disabled": {
+            "opacity": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use accordion/trigger/disabled/label (OD-297). How faint a disabled trigger is.",
+              "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
+            }
+          }
+        },
         "focus-ring": {
           "@": {
             "$value": "{accordion.trigger.focus-ring.@}",
@@ -6290,8 +6541,8 @@
         "disabled": {
           "opacity": {
             "$value": "{accordion.trigger.disabled.opacity}",
-            "$description": "Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is.",
-            "$deprecated": "Use component.accordion.trigger.disabled.opacity. Removed in the next minor release."
+            "$description": "Deprecated: use accordion/trigger/disabled/label (OD-243). How faint a disabled trigger is.",
+            "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
           }
         },
         "focus-offset": {
@@ -6433,6 +6684,11 @@
         }
       },
       "calendar": {
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use calendar/nav/disabled/icon (OD-297). Disabled opacity disabled of the calendar.",
+          "$deprecated": "Use component.calendar.nav.disabled.icon. Removed in the next minor release."
+        },
         "background-3": {
           "$value": "{calendar.day.range.background}",
           "$description": "Deprecated: use component.calendar.day.range.background (OD-243). Background 3 of the calendar.",
@@ -6450,8 +6706,8 @@
         },
         "disabled-opacity": {
           "$value": "{calendar.day.disabled-opacity}",
-          "$description": "Deprecated: use component.calendar.day.disabled-opacity (OD-243). Disabled opacity of the calendar.",
-          "$deprecated": "Use component.calendar.day.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use calendar/day/disabled/label (OD-243). Disabled opacity of the calendar.",
+          "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
         },
         "background-4": {
           "$value": "{calendar.day.range-ends.background}",
@@ -6472,6 +6728,13 @@
           "$value": "{calendar.day.selected.label}",
           "$description": "Deprecated: use component.calendar.day.selected.label (OD-243). Label selected 2 of the calendar.",
           "$deprecated": "Use component.calendar.day.selected.label. Removed in the next minor release."
+        },
+        "day": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use calendar/day/disabled/label (OD-297). How faint a day that cannot be picked is.",
+            "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
+          }
         }
       },
       "chart": {
@@ -6537,6 +6800,11 @@
         }
       },
       "checkbox": {
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use checkbox/disabled-background (OD-297). Disabled of the checkbox.",
+          "$deprecated": "Use component.checkbox.disabled-background. Removed in the next minor release."
+        },
         "canvas": {
           "$value": "{checkbox.focus-ring-offset}",
           "$description": "Deprecated: use component.checkbox.focus-ring-offset (OD-243). Canvas of the checkbox.",
@@ -6575,6 +6843,11 @@
               "$description": "Deprecated: use component.combobox.item.label.highlight (OD-243). Item label of the combobox.",
               "$deprecated": "Use component.combobox.item.label.highlight. Removed in the next minor release."
             }
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use combobox/item/disabled/label (OD-297). Item disabled opacity disabled of the combobox.",
+            "$deprecated": "Use component.combobox.item.disabled.label. Removed in the next minor release."
           }
         },
         "chips": {
@@ -6592,6 +6865,13 @@
             "$description": "Chips focus ring invalid of the combobox."
           }
         },
+        "chip": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use combobox/chip/disabled/label (OD-297). Chip disabled opacity of the combobox.",
+            "$deprecated": "Use component.combobox.chip.disabled.label. Removed in the next minor release."
+          }
+        },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox.",
@@ -6599,12 +6879,24 @@
         }
       },
       "command": {
+        "input": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use command/input/disabled/text (OD-297). Input disabled opacity disabled of the command.",
+            "$deprecated": "Use component.command.input.disabled.text. Removed in the next minor release."
+          }
+        },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command.",
           "$deprecated": "Use component.command.input.wrapper.icon. Removed in the next minor release."
         },
         "item": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use command/item/disabled/label (OD-297). Item disabled opacity disabled of the command.",
+            "$deprecated": "Use component.command.item.disabled.label. Removed in the next minor release."
+          },
           "background-selected": {
             "$value": "{command.item.background.highlight}",
             "$description": "Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command.",
@@ -6645,6 +6937,11 @@
             "$description": "Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu.",
             "$deprecated": "Use component.context-menu.item.background.highlight. Removed in the next minor release."
           },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use context-menu/item/disabled/label (OD-297). Item disabled opacity disabled of the context menu.",
+            "$deprecated": "Use component.context-menu.item.disabled.label. Removed in the next minor release."
+          },
           "label": {
             "@": {
               "$value": "{context-menu.item.label.destructive}",
@@ -6674,6 +6971,11 @@
               "$value": "{context-menu.checkbox.item.background.highlight}",
               "$description": "Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu.",
               "$deprecated": "Use component.context-menu.checkbox.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use context-menu/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the context menu.",
+              "$deprecated": "Use component.context-menu.checkbox.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -6683,6 +6985,11 @@
               "$value": "{context-menu.radio.item.background.highlight}",
               "$description": "Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu.",
               "$deprecated": "Use component.context-menu.radio.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use context-menu/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the context menu.",
+              "$deprecated": "Use component.context-menu.radio.item.disabled.label. Removed in the next minor release."
             }
           }
         }
@@ -6779,6 +7086,11 @@
             "$value": "{dropdown-menu.item.background.highlight}",
             "$description": "Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu.",
             "$deprecated": "Use component.dropdown-menu.item.background.highlight. Removed in the next minor release."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use dropdown-menu/item/disabled-label (OD-297). Item disabled of the dropdown menu.",
+            "$deprecated": "Use component.dropdown-menu.item.disabled-label. Removed in the next minor release."
           }
         },
         "label": {
@@ -6794,6 +7106,11 @@
       },
       "field": {
         "label": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use field/label/disabled/text (OD-297). Label disabled opacity disabled of the field.",
+            "$deprecated": "Use component.field.label.disabled.text. Removed in the next minor release."
+          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Label radius of the field."
@@ -6879,8 +7196,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{input-group.addon.disabled-opacity-disabled}",
-          "$description": "Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group.",
-          "$deprecated": "Use component.input-group.addon.disabled-opacity-disabled. Removed in the next minor release."
+          "$description": "Deprecated: use input-group/addon/disabled/label (OD-243). Disabled opacity disabled of the input group.",
+          "$deprecated": "Use component.input-group.addon.disabled.label. Removed in the next minor release."
         },
         "icon-size": {
           "$value": "{input-group.addon.icon-size}",
@@ -7071,6 +7388,11 @@
             "$description": "Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar.",
             "$deprecated": "Use component.menubar.item.background.highlight. Removed in the next minor release."
           },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use menubar/item/disabled/label (OD-297). Item disabled opacity disabled of the menubar.",
+            "$deprecated": "Use component.menubar.item.disabled.label. Removed in the next minor release."
+          },
           "label": {
             "@": {
               "$value": "{menubar.item.label.destructive}",
@@ -7100,6 +7422,11 @@
               "$value": "{menubar.checkbox.item.background.highlight}",
               "$description": "Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar.",
               "$deprecated": "Use component.menubar.checkbox.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use menubar/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the menubar.",
+              "$deprecated": "Use component.menubar.checkbox.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -7109,6 +7436,11 @@
               "$value": "{menubar.radio.item.background.highlight}",
               "$description": "Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar.",
               "$deprecated": "Use component.menubar.radio.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use menubar/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the menubar.",
+              "$deprecated": "Use component.menubar.radio.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -7137,8 +7469,8 @@
       "native-select": {
         "disabled-opacity": {
           "$value": "{native-select.wrapper.disabled-opacity}",
-          "$description": "Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select.",
-          "$deprecated": "Use component.native-select.wrapper.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use native-select/disabled/text (OD-243). Disabled opacity of the native select.",
+          "$deprecated": "Use component.native-select.disabled.text. Removed in the next minor release."
         },
         "shadow": {
           "$value": "{elevation.card}",
@@ -7235,8 +7567,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{navigation-menu.trigger.disabled-opacity}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-243). Disabled opacity disabled of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
         },
         "background-open": {
           "$value": "{navigation-menu.trigger.background.open}",
@@ -7333,6 +7665,13 @@
           "$value": "{navigation-menu.indicator.shadow}",
           "$description": "Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu.",
           "$deprecated": "Use component.navigation-menu.indicator.shadow. Removed in the next minor release."
+        },
+        "trigger": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-297). Trigger opacity when disabled, of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
+          }
         }
       },
       "pagination": {
@@ -7367,6 +7706,11 @@
           "radius": {
             "$value": "{radius.round}",
             "$description": "Item radius of the radio group."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use radio-group/item/disabled/background (OD-297). Item disabled opacity disabled of the radio group.",
+            "$deprecated": "Use component.radio-group.item.disabled.background. Removed in the next minor release."
           }
         }
       },
@@ -7403,6 +7747,11 @@
             "$value": "{select.item.background.highlight}",
             "$description": "Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select.",
             "$deprecated": "Use component.select.item.background.highlight. Removed in the next minor release."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use select/item/disabled-label (OD-297). Item disabled of the select.",
+            "$deprecated": "Use component.select.item.disabled-label. Removed in the next minor release."
           }
         }
       },
@@ -7518,6 +7867,11 @@
                 "$value": "{color.text.primary}",
                 "$description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar.",
                 "$deprecated": "Use component.sidebar.menu.sub.button.label. Removed in the next minor release."
+              },
+              "disabled-opacity-disabled": {
+                "$value": "{opacity.disabled}",
+                "$description": "Deprecated: use sidebar/menu/sub/button/disabled/label (OD-297). Menu sub button disabled opacity disabled of the sidebar.",
+                "$deprecated": "Use component.sidebar.menu.sub.button.disabled.label. Removed in the next minor release."
               }
             }
           }
@@ -7574,8 +7928,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{sidebar.menu-button.opacity.disabled}",
-          "$description": "Deprecated: use component.sidebar.menu-button.opacity.disabled (OD-243). Disabled opacity disabled of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.opacity.disabled. Removed in the next minor release."
+          "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-243). Disabled opacity disabled of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
         },
         "background-2": {
           "$value": "{sidebar.menu-button.background.current}",
@@ -7710,6 +8064,13 @@
           "$deprecated": "Use component.sidebar.menu.sub.button.sm.line-height. Removed in the next minor release."
         },
         "menu-button": {
+          "opacity": {
+            "disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-297). Opacity of a menu button that cannot be used, of the sidebar.",
+              "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
+            }
+          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Corner of the menu button, of the sidebar."
@@ -7717,6 +8078,11 @@
         }
       },
       "slider": {
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use slider/disabled/range (OD-297). Disabled opacity disabled of the slider.",
+          "$deprecated": "Use component.slider.disabled.range. Removed in the next minor release."
+        },
         "thumb": {
           "radius": {
             "$value": "{radius.round}",
@@ -7726,10 +8092,20 @@
             "$value": "{color.border.focus}",
             "$description": "Deprecated: use slider/thumb/focus-ring-focus (OD-243). Thumb focus ring of the slider.",
             "$deprecated": "Use component.slider.thumb.focus-ring-focus. Removed in the next minor release."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use slider/thumb/disabled/background (OD-297). Thumb disabled opacity disabled of the slider.",
+            "$deprecated": "Use component.slider.thumb.disabled.background. Removed in the next minor release."
           }
         }
       },
       "switch": {
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",
+          "$deprecated": "Use component.switch.disabled-track. Removed in the next minor release."
+        },
         "canvas": {
           "$value": "{switch.focus-ring-offset}",
           "$description": "Deprecated: use component.switch.focus-ring-offset (OD-243). Canvas of the switch.",
@@ -7819,6 +8195,11 @@
           "$value": "{color.border.focus}",
           "$description": "Deprecated: use toggle/focus-ring-focus (OD-243). Border focus of the toggle.",
           "$deprecated": "Use component.toggle.focus-ring-focus. Removed in the next minor release."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use toggle/disabled/label (OD-297). Disabled opacity disabled of the toggle.",
+          "$deprecated": "Use component.toggle.disabled.label. Removed in the next minor release."
         },
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",

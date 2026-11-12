@@ -96,7 +96,7 @@
      "semantic": "color.border.default",
      "key": "list.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": [
@@ -107,14 +107,15 @@
       ", on surface.canvas). It decorates, so it holds no contrast minimum."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
       {
-       "ratio": 1.46
+       "ratio": 1.8
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -205,7 +206,7 @@
      "darkPick": [
       "neutral.900: the strongest text step, ",
       {
-       "ratio": 17.2
+       "ratio": 14.85
       },
       " on surface.default, above the ",
       {
@@ -271,7 +272,7 @@
      "darkPick": [
       "blue.dark.100: a tint of the brand, ",
       {
-       "ratio": 1.21
+       "ratio": 1.04
       },
       " from content, always beside its edge (border.selected), so selection is never color alone."
      ],
@@ -301,7 +302,7 @@
      "darkPick": [
       "blue.dark.600: the edge beside a selected fill, so selection is never color alone, ",
       {
-       "ratio": 8.74
+       "ratio": 7.55
       },
       " on surface.default, above the ",
       {
@@ -340,7 +341,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -349,7 +350,7 @@
      "semantic": "color.border.focus",
      "key": "trigger.focus-ring",
      "value": "#0B4FC0",
-     "darkValue": "#8AB4F8",
+     "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": [
@@ -364,15 +365,23 @@
       " floor."
      ],
      "darkPick": [
-      "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at ",
       {
-       "ratio": 8.74
+       "ratio": 7
       },
-      " on surface.default, above the ",
+      " where focus moves through menus and dialogs. The ring does this by reading ",
       {
-       "ratio": 3
+       "ratio": 9.33
       },
-      " floor."
+      " on surface.default and ",
+      {
+       "ratio": 7.41
+      },
+      " on surface.raised, where the key step (blue.dark.600) gave ",
+      {
+       "ratio": 6
+      },
+      " on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition)."
      ],
      "shares": [
       "border.selected",
@@ -382,7 +391,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "trigger.focus-width",
      "value": "3px",
      "byScheme": true,
@@ -393,7 +402,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "trigger.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -420,7 +429,7 @@
      "darkPick": [
       "neutral.0, under content: ",
       {
-       "ratio": 1.07
+       "ratio": 1.24
       },
       " from surface.default, so cards and panels stand forward."
      ],

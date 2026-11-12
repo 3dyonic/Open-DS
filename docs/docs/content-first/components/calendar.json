@@ -128,23 +128,6 @@
     },
     {
      "group": "Calendar",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.calendar.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "calendar-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Calendar",
      "part": "Gap 3",
      "when": "",
      "themed": false,
@@ -298,7 +281,7 @@
      "themed": false,
      "chain": {
       "token": "component.calendar.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "calendar-focus"
      },
      "values": [
@@ -388,10 +371,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -533,7 +516,7 @@
      "themed": false,
      "chain": {
       "token": "component.calendar.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "calendar-focus-offset"
      },
      "values": [
@@ -719,23 +702,6 @@
     },
     {
      "group": "Day",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.calendar.day.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "calendar-day-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Day",
      "part": "Today background",
      "when": "",
      "themed": true,
@@ -793,6 +759,35 @@
      ]
     },
     {
+     "group": "Day",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "calendar-day-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
+      }
+     ]
+    },
+    {
      "group": "Week",
      "part": "Margin top",
      "when": "",
@@ -823,6 +818,35 @@
       {
        "token": "border-width.1",
        "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Nav",
+     "part": "Disabled icon",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.nav.disabled.icon",
+      "alias": "color.disabled.text",
+      "variable": "calendar-nav-disabled-icon"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     }

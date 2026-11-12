@@ -99,14 +99,18 @@
      "semantic": "color.surface.raised",
      "key": "background",
      "value": "#FFFFFF",
-     "darkValue": "#141414",
+     "darkValue": "#333333",
      "byScheme": true,
-     "rule": "Fills that float above content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": [
       "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill."
      ],
      "darkPick": [
-      "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light."
+      "neutral.200: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, ",
+      {
+       "ratio": 1.26
+      },
+      " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So people see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
      ],
      "shares": [
       "surface.default",
@@ -126,28 +130,29 @@
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "neutral.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
      "pick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
       {
-       "ratio": 1.36
+       "ratio": 1.45
       },
-      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+      " on surface.raised, the layer's only edge, as nothing here casts a shadow. So people see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.300: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
       {
-       "ratio": 1.46
+       "ratio": 1.8
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      " on surface.raised (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
      ],
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     },
@@ -236,7 +241,7 @@
      "darkPick": [
       "neutral.900: the strongest text step, ",
       {
-       "ratio": 17.2
+       "ratio": 14.85
       },
       " on surface.default, above the ",
       {
@@ -295,7 +300,7 @@
      "darkPick": [
       "neutral.700: supporting text, ",
       {
-       "ratio": 12.68
+       "ratio": 10.95
       },
       " on surface.default, above the ",
       {
@@ -374,7 +379,7 @@
      "darkPick": [
       "green.dark.600: success reads as text and icons, ",
       {
-       "ratio": 8.33
+       "ratio": 7.2
       },
       " on surface.default, above the ",
       {
@@ -391,7 +396,7 @@
      "semantic": "color.status.danger",
      "key": "danger.edge",
      "value": "#981519",
-     "darkValue": "#F28B8B",
+     "darkValue": "#FEDBDA",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
      "pick": [
@@ -406,15 +411,27 @@
       " floor."
      ],
      "darkPick": [
-      "red.dark.600: danger reads as text and icons, ",
-      {
-       "ratio": 7.76
-      },
-      " on surface.default, above the ",
+      "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at ",
       {
        "ratio": 7
       },
-      " floor."
+      " in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading ",
+      {
+       "ratio": 12.39
+      },
+      " on surface.default and ",
+      {
+       "ratio": 9.84
+      },
+      " on surface.raised. Below it, the key (red.dark.600) gives ",
+      {
+       "ratio": 5.32
+      },
+      " and red.dark.700 ",
+      {
+       "ratio": 6.8
+      },
+      " on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands)."
      ],
      "shares": [
       "action.danger"

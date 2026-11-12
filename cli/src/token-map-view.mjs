@@ -184,7 +184,10 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       const scale = SCALES.find(([re]) => re.test(n.id));
       if (!scale) continue;
       const [re, area, id, label, scope] = scale;
-      const users = (indexes.light.readers.get(n.id) ?? []).filter((r) => indexes.light.nodes.get(r)?.tier === "semantic");
+      const users = (indexes.light.readers.get(n.id) ?? []).filter((r) => {
+        const node = indexes.light.nodes.get(r);
+        return node?.tier === "semantic" && !node.deprecated;
+      });
       if (!users.length) continue;
       for (const d of users) {
         if (shared.decisions[d]) continue;

@@ -121,7 +121,7 @@
      "semantic": "color.surface.sunken",
      "key": "header-background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": [
@@ -132,11 +132,11 @@
       " on surface.default), so table headers and wells read as recessed."
      ],
      "darkPick": [
-      "neutral.100, a step below content (",
+      "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, ",
       {
        "ratio": 1.16
       },
-      " on surface.default), so table headers and wells read as recessed."
+      " on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
      ],
      "shares": [
       "surface.highlight",
@@ -167,7 +167,7 @@
      "darkPick": [
       "neutral.700: supporting text, ",
       {
-       "ratio": 12.68
+       "ratio": 10.95
       },
       " on surface.default, above the ",
       {
@@ -246,7 +246,7 @@
      "semantic": "color.border.default",
      "key": "row-border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": [
@@ -257,14 +257,15 @@
       ", on surface.canvas). It decorates, so it holds no contrast minimum."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
       {
-       "ratio": 1.46
+       "ratio": 1.8
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -290,7 +291,7 @@
      "darkPick": [
       "neutral.900: the strongest text step, ",
       {
-       "ratio": 17.2
+       "ratio": 14.85
       },
       " on surface.default, above the ",
       {
@@ -355,7 +356,7 @@
      "darkPick": [
       "blue.dark.100: a tint of the brand, ",
       {
-       "ratio": 1.21
+       "ratio": 1.04
       },
       " from content, always beside its edge (border.selected), so selection is never color alone."
      ],
@@ -385,7 +386,7 @@
      "darkPick": [
       "blue.dark.600: the edge beside a selected fill, so selection is never color alone, ",
       {
-       "ratio": 8.74
+       "ratio": 7.55
       },
       " on surface.default, above the ",
       {
@@ -401,7 +402,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "row.focus",
      "value": "3px",
      "byScheme": true,

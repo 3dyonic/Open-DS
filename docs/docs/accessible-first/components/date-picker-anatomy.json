@@ -110,7 +110,7 @@
      "semantic": "color.border.strong",
      "key": "button.secondary.border",
      "value": "#595959",
-     "darkValue": "#949494",
+     "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
      "pick": [
@@ -125,15 +125,23 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.500: the edge of a control people must find, ",
+      "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading ",
       {
-       "ratio": 6.07
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, where neutral.500 gave only ",
+      {
+       "ratio": 4.17
+      },
+      " on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of ",
       {
        "ratio": 3
       },
-      " floor."
+      " with room to spare (accessibility.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "text.muted",
@@ -226,15 +234,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",

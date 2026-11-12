@@ -192,7 +192,7 @@
      "semantic": "color.surface.sunken",
      "key": "media.icon.background",
      "value": "#F6F2EA",
-     "darkValue": "#2E2A24",
+     "darkValue": "#0B0906",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": [
@@ -203,11 +203,15 @@
       " on surface.default), so table headers and wells read as recessed."
      ],
      "darkPick": [
-      "neutral.100, a step below content (",
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
       {
-       "ratio": 1.2
+       "ratio": 1.16
       },
-      " on surface.default), so table headers and wells read as recessed."
+      " under content and ",
+      {
+       "ratio": 1.06
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
      ],
      "shares": [
       "surface.highlight",
@@ -371,13 +375,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "2px",
      "byScheme": true,
@@ -424,7 +428,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,

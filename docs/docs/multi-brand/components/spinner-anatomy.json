@@ -84,7 +84,7 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "Reduced motion",
+     "use": "Fades only; nothing moves",
      "not": "full motion",
      "why": "Motion is reduced, not removed: a fade keeps the change visible, and nothing slides."
     }

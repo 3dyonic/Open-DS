@@ -116,7 +116,7 @@ test("size.control.default runs from size.52 to the button's height", () => {
 test("the brand theme folds into the primitive the theme picks, in each mode", () => {
   for (const [mode, primitive] of [
     ["light", "color.blue.light.600"],
-    ["dark", "color.blue.dark.600"],
+    ["dark", "color.blue.dark.700"],
   ]) {
     const graph = accessibleGraph(mode);
     assert.ok(hasEdge(graph, primitive, "color.border.focus"), `${mode}: ${primitive} does not reach the focus color`);

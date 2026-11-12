@@ -58,8 +58,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.50",
-         "via": "color.neutral.50"
+         "primitive": "color.gray.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
@@ -73,8 +73,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.50",
-         "via": "color.neutral.50"
+         "primitive": "color.gray.dark.200",
+         "via": "color.neutral.200"
         }
        ]
       },
@@ -88,8 +88,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.gray.dark.50",
+         "via": "color.neutral.50"
         }
        ]
       },
@@ -103,8 +103,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.gray.dark.50",
+         "via": "color.neutral.50"
         }
        ]
       },
@@ -281,8 +281,23 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.200",
+         "primitive": "color.gray.dark.300",
+         "via": "color.neutral.300"
+        }
+       ]
+      },
+      {
+       "token": "color.border.raised",
+       "cells": [
+        {
+         "mode": "light",
+         "primitive": "color.gray.light.200",
          "via": "color.neutral.200"
+        },
+        {
+         "mode": "dark",
+         "primitive": "color.gray.dark.300",
+         "via": "color.neutral.300"
         }
        ]
       },
@@ -296,8 +311,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.500",
-         "via": "color.neutral.500"
+         "primitive": "color.gray.dark.600",
+         "via": "color.neutral.600"
         }
        ]
       },
@@ -310,7 +325,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.blue.dark.600"
+         "primitive": "color.blue.dark.700"
         }
        ]
       },
@@ -506,7 +521,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.red.dark.600"
+         "primitive": "color.red.dark.900"
         }
        ]
       },

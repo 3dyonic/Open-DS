@@ -164,7 +164,7 @@
      "darkPick": [
       "neutral.900: the strongest text step, ",
       {
-       "ratio": 17.2
+       "ratio": 14.85
       },
       " on surface.default, above the ",
       {
@@ -230,9 +230,9 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "No motion",
+     "use": "Fades only; nothing moves",
      "not": "reduced motion",
-     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+     "why": "Movement can make some people dizzy, so it stops. A short fade or a color change still shows that something changed."
     },
     {
      "kind": "token",
@@ -249,7 +249,7 @@
      "kind": "token",
      "semantic": "motion.duration.feedback",
      "key": "icon.duration",
-     "value": "200ms",
+     "value": "150ms",
      "byScheme": true,
      "pick": [
       "duration.moderate"
@@ -317,13 +317,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "trigger.focus-ring.width",
      "value": "3px",
      "byScheme": true,
@@ -334,7 +334,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "trigger.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -361,7 +361,7 @@
      "darkPick": [
       "neutral.0, under content: ",
       {
-       "ratio": 1.07
+       "ratio": 1.24
       },
       " from surface.default, so cards and panels stand forward."
      ],
@@ -380,14 +380,31 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "trigger.disabled.opacity",
-     "value": "0.5",
+     "semantic": "color.disabled.text",
+     "key": "trigger.disabled.label",
+     "value": "#595959",
+     "darkValue": "#949494",
      "byScheme": true,
+     "rule": "Text and icons of a control that cannot be used right now.",
      "pick": [
-      "opacity.50"
+      "neutral.500: ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
      ],
-     "shares": []
+     "darkPick": [
+      "neutral.500: ",
+      {
+       "ratio": 5.24
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
+     "shares": [
+      "text.muted",
+      "border.strong",
+      "category.5"
+     ]
     }
    ]
   }

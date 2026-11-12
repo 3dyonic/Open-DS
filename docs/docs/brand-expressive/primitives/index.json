@@ -4,8 +4,8 @@
    "cards": [
     {
      "title": "Color",
-     "text": "136 primitives",
-     "note": "54 in use",
+     "text": "137 primitives",
+     "note": "55 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -42,9 +42,9 @@
       }
      ],
      "meter": {
-      "value": 54,
-      "max": 136,
-      "label": "54 of 136 in use"
+      "value": 55,
+      "max": 137,
+      "label": "55 of 137 in use"
      }
     }
    ]
@@ -163,8 +163,8 @@
     },
     {
      "title": "Motion",
-     "text": "4 primitives",
-     "note": "4 in use",
+     "text": "7 primitives",
+     "note": "7 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -178,9 +178,9 @@
       }
      ],
      "meter": {
-      "value": 4,
-      "max": 4,
-      "label": "4 of 4 in use"
+      "value": 7,
+      "max": 7,
+      "label": "7 of 7 in use"
      }
     },
     {
@@ -203,7 +203,7 @@
       },
       {
        "kind": "shadow",
-       "value": "0px 12px 32px 0px #00000080"
+       "value": "0px 24px 48px 0px #00000099"
       }
      ],
      "meter": {

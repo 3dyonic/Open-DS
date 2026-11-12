@@ -137,42 +137,30 @@
     {
      "kind": "rule",
      "situation": "a card on the page",
-     "use": "elevation.card",
+     "use": "elevation.card; none in dark",
      "not": "a border only",
-     "why": "Cards lift slightly to group offers."
+     "why": "Cards lift slightly to group offers. In dark, tone and a ring do the lift, the same in every brand."
     },
     {
      "kind": "token",
-     "semantic": "color.surface.default",
+     "semantic": "color.surface.raised",
      "key": "background",
      "value": "#FFFFFF",
-     "darkValue": "#0F172A",
+     "darkValue": "#1E293B",
      "byScheme": true,
-     "rule": "The base fill for content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": [
-      "neutral.0: the base for content; body text reads ",
-      {
-       "ratio": 17.85
-      },
-      " on it, above the ",
-      {
-       "ratio": 4.5
-      },
-      " floor."
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill."
      ],
      "darkPick": [
-      "neutral.50: the base for content; body text reads ",
+      "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, ",
       {
-       "ratio": 17.06
+       "ratio": 1.22
       },
-      " on it, above the ",
-      {
-       "ratio": 4.5
-      },
-      " floor."
+      " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So customers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
      ],
      "shares": [
-      "surface.raised",
+      "surface.default",
       "action.secondary"
      ]
     },
@@ -200,28 +188,29 @@
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "border",
      "value": "#E2E8F0",
      "darkValue": "#334155",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
      "pick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
       {
-       "ratio": 1.18
+       "ratio": 1.23
       },
-      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+      " on surface.raised, beside the light shadow that does most of the lift. So customers see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
       {
-       "ratio": 1.72
+       "ratio": 1.41
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      " on surface.raised (#334155, no alpha), so its contrast can be checked. So customers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
      ],
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     },
@@ -241,13 +230,13 @@
      "semantic": "elevation.card",
      "key": "shadow",
      "value": "0px 2px 8px, #0F172A14",
-     "darkValue": "0px 2px 8px, #00000066",
+     "darkValue": "0px 0px 0px, #00000000",
      "byScheme": true,
      "pick": [
       "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values)."
      ],
      "darkPick": [
-      "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values)."
+      "shadow.none: We use no shadow for cards in dark in order to keep shadows on floating layers only: menus, popovers, dialogs, toasts and tooltips. The missing shade does this by leaving the card's height to tone: the lighter raised surface and its 1px light ring. So cards still read as lifted on a dark page, without a shade that cannot be seen, because dark ships as standard (theming.values) and cards rise by shadow in light (elevation.roles)."
      ],
      "shares": []
     }

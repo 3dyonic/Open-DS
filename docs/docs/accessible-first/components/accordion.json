@@ -194,18 +194,30 @@
     },
     {
      "group": "Trigger",
-     "part": "Disabled opacity",
+     "part": "Disabled label",
      "when": "when disabled",
-     "themed": false,
+     "themed": true,
      "chain": {
-      "token": "component.accordion.trigger.disabled.opacity",
-      "alias": "opacity.disabled",
-      "variable": "accordion-trigger-disabled-opacity"
+      "token": "component.accordion.trigger.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "accordion-trigger-disabled-label"
      },
      "values": [
       {
-       "token": "opacity.50",
-       "text": "0.5"
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     },
@@ -231,10 +243,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -245,7 +257,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-ring.width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "accordion-trigger-focus-ring-width"
      },
      "values": [
@@ -262,7 +274,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "accordion-trigger-focus-offset"
      },
      "values": [
@@ -331,7 +343,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -391,10 +403,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },

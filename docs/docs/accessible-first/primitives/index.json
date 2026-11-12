@@ -5,7 +5,7 @@
     {
      "title": "Color",
      "text": "136 primitives",
-     "note": "53 in use",
+     "note": "54 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -42,9 +42,9 @@
       }
      ],
      "meter": {
-      "value": 53,
+      "value": 54,
       "max": 136,
-      "label": "53 of 136 in use"
+      "label": "54 of 136 in use"
      }
     }
    ]
@@ -53,8 +53,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "17 primitives",
-     "note": "17 in use",
+     "text": "18 primitives",
+     "note": "18 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -91,9 +91,9 @@
       }
      ],
      "meter": {
-      "value": 17,
-      "max": 17,
-      "label": "17 of 17 in use"
+      "value": 18,
+      "max": 18,
+      "label": "18 of 18 in use"
      }
     },
     {
@@ -158,8 +158,8 @@
     },
     {
      "title": "Motion",
-     "text": "2 primitives",
-     "note": "2 in use",
+     "text": "3 primitives",
+     "note": "3 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -168,14 +168,14 @@
      "samples": [
       {
        "kind": "duration",
-       "value": "200ms",
-       "note": "200ms"
+       "value": "150ms",
+       "note": "150ms"
       }
      ],
      "meter": {
-      "value": 2,
-      "max": 2,
-      "label": "2 of 2 in use"
+      "value": 3,
+      "max": 3,
+      "label": "3 of 3 in use"
      }
     },
     {

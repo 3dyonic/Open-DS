@@ -35,8 +35,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.surface` | `brand-expressive.theme.base.radius.surface` → `radius.24` |
 | `radius.container` | `radius.surface` → `brand-expressive.theme.base.radius.surface` → `radius.24` |
 | `border-width.default` | `border-width.2` |
-| `border-width.focus` | `border-width.3` |
-| `border-width.focus-offset` | `border-width.2` |
+| `border-width.focus` | `focus.ring.width` → `border-width.3` |
+| `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
@@ -50,4 +50,4 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | Something that grows past one line | radius.element | radius.control | A pill corner breaks when a text area grows to many lines. The element corner stays round at any height. |
 | Corners of cards, menus and dialogs | radius.surface | Small corners | Big round corners make cards feel like friendly objects. |
 | Edges and dividers | border-width.default | A hairline | A bold edge matches the bold type and vivid color. |
-| The gap around a focus ring | border-width.focus-offset | A ring that touches the control | The gap keeps the ring visible on vivid fills. |
+| The gap around a focus ring | focus.ring.offset | A ring that touches the control | The gap keeps the ring visible on vivid fills. |

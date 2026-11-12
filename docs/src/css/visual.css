@@ -970,6 +970,7 @@ a.odv-icard:hover {
   padding: 8px 14px;
   font: var(--type-caption-font-size) var(--type-data-font-family);
   text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--color-text-muted);
 }
 .odv-stats b {

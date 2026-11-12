@@ -67,12 +67,13 @@
      "darkPick": [
       "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
       {
-       "ratio": 1.69
+       "ratio": 1.39
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised). It decorates, so it holds no contrast minimum."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     }

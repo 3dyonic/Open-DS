@@ -8,7 +8,7 @@ description: "Motion primitives in Brand expressive."
 
 # Motion
 
-4 primitives, 4 used.
+7 primitives, 7 used.
 
 ## `duration`
 

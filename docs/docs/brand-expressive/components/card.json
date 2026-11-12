@@ -53,7 +53,7 @@
      "themed": true,
      "chain": {
       "token": "component.card.background",
-      "alias": "color.surface.default",
+      "alias": "color.surface.raised",
       "variable": "card-background"
      },
      "values": [
@@ -68,10 +68,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1411"
+        "color": "#33241F"
        },
-       "token": "taupe.dark.50",
-       "text": "#1F1411"
+       "token": "taupe.dark.100",
+       "text": "#33241F"
       }
      ]
     },
@@ -82,7 +82,7 @@
      "themed": true,
      "chain": {
       "token": "component.card.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "card-border"
      },
      "values": [
@@ -162,9 +162,9 @@
       {
        "theme": "Dark",
        "swatch": {
-        "shadow": "0px 12px 32px 0px #00000080"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },

@@ -118,15 +118,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",

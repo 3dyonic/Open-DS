@@ -205,7 +205,7 @@
      "darkPick": [
       "blue.dark.700: a link, set apart by its hue, ",
       {
-       "ratio": 10.8
+       "ratio": 9.33
       },
       " on surface.default, above the ",
       {
@@ -222,7 +222,7 @@
      "semantic": "color.border.strong",
      "key": "button.secondary.border",
      "value": "#595959",
-     "darkValue": "#949494",
+     "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
      "pick": [
@@ -237,15 +237,23 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.500: the edge of a control people must find, ",
+      "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading ",
       {
-       "ratio": 6.07
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, where neutral.500 gave only ",
+      {
+       "ratio": 4.17
+      },
+      " on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of ",
       {
        "ratio": 3
       },
-      " floor."
+      " with room to spare (accessibility.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "text.muted",

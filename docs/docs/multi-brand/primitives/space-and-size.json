@@ -209,6 +209,10 @@
       {
        "token": "size.control.large",
        "where": "semantic"
+      },
+      {
+       "token": "size.hit-area",
+       "where": "semantic"
       }
      ]
     },

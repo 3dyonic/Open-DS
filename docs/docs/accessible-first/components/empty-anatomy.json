@@ -143,7 +143,7 @@
      "semantic": "color.surface.sunken",
      "key": "icon.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": [
@@ -154,11 +154,11 @@
       " on surface.default), so table headers and wells read as recessed."
      ],
      "darkPick": [
-      "neutral.100, a step below content (",
+      "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, ",
       {
        "ratio": 1.16
       },
-      " on surface.default), so table headers and wells read as recessed."
+      " on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
      ],
      "shares": [
       "surface.highlight",
@@ -189,7 +189,7 @@
      "darkPick": [
       "neutral.900: the strongest text step, ",
       {
-       "ratio": 17.2
+       "ratio": 14.85
       },
       " on surface.default, above the ",
       {
@@ -279,15 +279,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",

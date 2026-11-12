@@ -245,7 +245,7 @@
      "themed": false,
      "chain": {
       "token": "component.input.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "input-focus"
      },
      "values": [
@@ -262,7 +262,7 @@
      "themed": false,
      "chain": {
       "token": "component.input.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "input-focus-offset"
      },
      "values": [
@@ -330,8 +330,8 @@
      },
      "values": [
       {
-       "token": "easing.spring",
-       "text": "cubic-bezier(0.34,1.56,0.64,1)"
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
       }
      ]
     },

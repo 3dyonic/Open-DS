@@ -137,41 +137,6 @@
        "why": "A bold edge matches the bold type and vivid color."
       }
      ]
-    },
-    {
-     "title": "Focus ring",
-     "sample": {
-      "kind": "focus"
-     },
-     "api": [
-      {
-       "token": "border-width.focus",
-       "value": "3px"
-      },
-      {
-       "token": "border-width.focus-offset",
-       "value": "2px"
-      },
-      {
-       "token": "color.border.focus",
-       "primitive": "color.pink.light.600",
-       "value": "#D61F7A",
-       "dark": "#F59ACA"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "Keyboard focus",
-       "detail": "button/focus-ring at border-width.focus",
-       "why": "Focus must show on vivid color."
-      },
-      {
-       "kind": "use",
-       "situation": "The gap around a focus ring",
-       "why": "The gap keeps the ring visible on vivid fills."
-      }
-     ]
     }
    ]
   }

@@ -248,7 +248,7 @@ Keep it enabled and explain on press: visitors see the interface fresh each time
 Occasional visitors do not know icons.
 :::
 :::panel{title="Keyboard focus"}
-**Use** button/focus-ring at border-width.focus
+**Use** button/focus-ring at focus.ring.width
 
 **Not** Removing the outline
 

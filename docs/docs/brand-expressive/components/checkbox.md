@@ -68,7 +68,7 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Checkbox reads 12 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Checkbox's tokens to change Checkbox alone.
+Checkbox reads 15 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Checkbox's tokens to change Checkbox alone.
 
 ::token-table{component="checkbox"}
 

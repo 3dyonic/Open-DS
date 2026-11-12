@@ -30,7 +30,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `elevation.card` | light | `aster.theme.light.elevation.card` → `shadow.card` |
-| | dark | `aster.theme.dark.elevation.card` → `shadow.card-dark` |
+| | dark | `aster.theme.dark.elevation.card` → `shadow.none` |
 | `elevation.overlay` | light | `aster.theme.light.elevation.overlay` → `shadow.overlay` |
 | | dark | `aster.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
@@ -39,7 +39,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `elevation.card` | light | `birch.theme.light.elevation.card` → `shadow.card` |
-| | dark | `birch.theme.dark.elevation.card` → `shadow.card-dark` |
+| | dark | `birch.theme.dark.elevation.card` → `shadow.none` |
 | `elevation.overlay` | light | `birch.theme.light.elevation.overlay` → `shadow.overlay` |
 | | dark | `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
@@ -48,7 +48,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `elevation.card` | light | `coral.theme.light.elevation.card` → `shadow.card` |
-| | dark | `coral.theme.dark.elevation.card` → `shadow.card-dark` |
+| | dark | `coral.theme.dark.elevation.card` → `shadow.none` |
 | `elevation.overlay` | light | `coral.theme.light.elevation.overlay` → `shadow.overlay` |
 | | dark | `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
@@ -59,5 +59,5 @@ The raw values these tokens end at are on [Primitives › Effects](../primitives
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| A card on the page | elevation.card | A border only | Cards lift slightly to group offers. |
+| A card on the page | elevation.card; none in dark | A border only | Cards lift slightly to group offers. In dark, tone and a ring do the lift, the same in every brand. |
 | A menu or dialog | elevation.overlay and a dimmed page | No shadow | The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards. |

@@ -249,7 +249,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -338,7 +338,7 @@
      "themed": false,
      "chain": {
       "token": "component.breadcrumb.link.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "breadcrumb-link-focus-width"
      },
      "values": [
@@ -416,7 +416,7 @@
      "themed": false,
      "chain": {
       "token": "component.breadcrumb.link.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "breadcrumb-link-focus-offset"
      },
      "values": [

@@ -63,7 +63,7 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Navigation menu reads 57 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Navigation menu's tokens to change Navigation menu alone.
+Navigation menu reads 60 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Navigation menu's tokens to change Navigation menu alone.
 
 ::token-table{component="navigation-menu"}
 

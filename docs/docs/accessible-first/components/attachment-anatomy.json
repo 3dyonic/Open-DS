@@ -107,7 +107,7 @@
      "semantic": "color.border.default",
      "key": "border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": [
@@ -118,14 +118,15 @@
       ", on surface.canvas). It decorates, so it holds no contrast minimum."
      ],
      "darkPick": [
-      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
       {
-       "ratio": 1.46
+       "ratio": 1.8
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -196,7 +197,7 @@
      "semantic": "color.surface.sunken",
      "key": "media.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": [
@@ -207,11 +208,11 @@
       " on surface.default), so table headers and wells read as recessed."
      ],
      "darkPick": [
-      "neutral.100, a step below content (",
+      "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, ",
       {
        "ratio": 1.16
       },
-      " on surface.default), so table headers and wells read as recessed."
+      " on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
      ],
      "shares": [
       "surface.highlight",
@@ -240,15 +241,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",
@@ -305,15 +310,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",
@@ -355,14 +364,26 @@
      "semantic": "color.surface.highlight",
      "key": "background.hover",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": [
       "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
      ],
      "darkPick": [
-      "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+      "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default and ",
+      {
+       "ratio": 1.46
+      },
+      " on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ",
+      {
+       "ratio": 8.89
+      },
+      " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
      ],
      "shares": [
       "surface.sunken",
@@ -385,13 +406,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
@@ -405,7 +426,7 @@
      "semantic": "color.border.focus",
      "key": "focus-ring-focus",
      "value": "#0B4FC0",
-     "darkValue": "#8AB4F8",
+     "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": [
@@ -420,15 +441,23 @@
       " floor."
      ],
      "darkPick": [
-      "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at ",
       {
-       "ratio": 8.74
+       "ratio": 7
       },
-      " on surface.default, above the ",
+      " where focus moves through menus and dialogs. The ring does this by reading ",
       {
-       "ratio": 3
+       "ratio": 9.33
       },
-      " floor."
+      " on surface.default and ",
+      {
+       "ratio": 7.41
+      },
+      " on surface.raised, where the key step (blue.dark.600) gave ",
+      {
+       "ratio": 6
+      },
+      " on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition)."
      ],
      "shares": [
       "border.selected",
@@ -438,7 +467,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,

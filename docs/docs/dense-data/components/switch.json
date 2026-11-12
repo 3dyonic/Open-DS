@@ -158,7 +158,7 @@
      "themed": false,
      "chain": {
       "token": "component.switch.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "switch-focus"
      },
      "values": [
@@ -170,29 +170,12 @@
     },
     {
      "group": "Switch",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.switch.disabled",
-      "alias": "opacity.disabled",
-      "variable": "switch-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Switch",
      "part": "Focus offset",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.switch.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "switch-focus-offset"
      },
      "values": [
@@ -257,6 +240,52 @@
        },
        "token": "slate.dark.0",
        "text": "#0D1117"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.hit-area",
+      "alias": "size.hit-area",
+      "variable": "switch-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Disabled track",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.disabled-track",
+      "alias": "color.disabled.border",
+      "variable": "switch-disabled-track"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
       }
      ]
     },

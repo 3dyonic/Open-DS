@@ -271,7 +271,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus must show on vivid color."
     },
@@ -313,7 +313,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "item.focus",
      "value": "3px",
      "byScheme": true,
@@ -324,7 +324,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "item.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -461,14 +461,24 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "item.disabled-opacity-disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.surface",
+     "key": "item.disabled.background",
+     "value": "#FCEFE6",
+     "darkValue": "#33241F",
      "byScheme": true,
+     "rule": "The fill of a control that cannot be used right now.",
      "pick": [
-      "opacity.40"
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
      ],
-     "shares": []
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle"
+     ]
     }
    ]
   }

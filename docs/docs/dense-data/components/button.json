@@ -476,7 +476,7 @@
        "used": true,
        "verb": "uses",
        "subject": "focus",
-       "text": "Always visible: the focus ring at border-width.focus."
+       "text": "Always visible: the focus ring at focus.ring.width."
       },
       {
        "used": true,
@@ -868,10 +868,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1050,7 +1050,7 @@
      "themed": false,
      "chain": {
       "token": "component.button.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "button-focus"
      },
      "values": [
@@ -1067,7 +1067,7 @@
      "themed": false,
      "chain": {
       "token": "component.button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "button-focus-offset"
      },
      "values": [

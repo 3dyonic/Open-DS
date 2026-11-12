@@ -68,10 +68,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -487,7 +487,7 @@
      "themed": false,
      "chain": {
       "token": "component.select.trigger.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "select-trigger-focus-width"
      },
      "values": [
@@ -504,7 +504,7 @@
      "themed": false,
      "chain": {
       "token": "component.select.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "select-trigger-focus-offset"
      },
      "values": [
@@ -717,7 +717,7 @@
      "themed": true,
      "chain": {
       "token": "component.select.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "select-content-border"
      },
      "values": [
@@ -829,23 +829,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.select.item.disabled",
-      "alias": "opacity.disabled",
-      "variable": "select-item-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Background highlight",
      "when": "on focus",
      "themed": true,
@@ -866,10 +849,39 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.select.item.disabled-label",
+      "alias": "color.disabled.text",
+      "variable": "select-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     }

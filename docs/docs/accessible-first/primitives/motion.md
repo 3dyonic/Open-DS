@@ -8,7 +8,7 @@ description: "Motion primitives in Accessible first."
 
 # Motion
 
-2 primitives, 2 used.
+3 primitives, 3 used.
 
 ## `duration`
 

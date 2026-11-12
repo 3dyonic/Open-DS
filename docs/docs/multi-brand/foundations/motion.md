@@ -31,7 +31,12 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
 | `motion.duration.panels` | `duration.relaxed` |
+| `motion.duration.exit` | `motion.duration.feedback` → `duration.moderate` |
 | `motion.easing.standard` | `easing.standard` |
+| `motion.easing.enter` | `motion.easing.standard` → `easing.standard` |
+| `motion.easing.exit` | `easing.strong-out` |
+| `motion.easing.exit-offscreen` | `motion.easing.exit` → `easing.strong-out` |
+| `motion.easing.emphasize` | `motion.easing.standard` → `easing.standard` |
 ::::
 
 ::::brand{id="birch"}
@@ -39,7 +44,12 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
 | `motion.duration.panels` | `duration.relaxed` |
+| `motion.duration.exit` | `motion.duration.feedback` → `duration.moderate` |
 | `motion.easing.standard` | `easing.standard` |
+| `motion.easing.enter` | `motion.easing.standard` → `easing.standard` |
+| `motion.easing.exit` | `easing.strong-out` |
+| `motion.easing.exit-offscreen` | `motion.easing.exit` → `easing.strong-out` |
+| `motion.easing.emphasize` | `motion.easing.standard` → `easing.standard` |
 ::::
 
 ::::brand{id="coral"}
@@ -47,7 +57,12 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
 | `motion.duration.panels` | `duration.relaxed` |
+| `motion.duration.exit` | `motion.duration.feedback` → `duration.moderate` |
 | `motion.easing.standard` | `easing.standard` |
+| `motion.easing.enter` | `motion.easing.standard` → `easing.standard` |
+| `motion.easing.exit` | `easing.strong-out` |
+| `motion.easing.exit-offscreen` | `motion.easing.exit` → `easing.strong-out` |
+| `motion.easing.emphasize` | `motion.easing.standard` → `easing.standard` |
 ::::
 
 The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
@@ -57,7 +72,7 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (moderate) | Brand-specific motion | Motion is shared, so one component library behaves the same in every brand. |
-| Someone asked for less motion | Reduced motion | Full motion | Motion is reduced, not removed: a fade keeps the change visible, and nothing slides. |
+| Someone asked for less motion | Fades only; nothing moves | Full motion | Motion is reduced, not removed: a fade keeps the change visible, and nothing slides. |
 | A panel opens | motion.duration.panels | Brand-specific motion | A relaxed open guides customers through sign-up the same way in every brand. |
 | The curve of any move | motion.easing.standard | A brand-specific curve | One calm curve keeps the shared components the same in every brand. |
 | A hero or launch moment | No hero motion | An intro animation for one brand | A brand-only animation would break the shared library. |

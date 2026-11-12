@@ -30,14 +30,20 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- | --- |
 | `size.control.default` | light | `size.48` |
 | | dark | `size.48` |
-| `size.control.compact` | light | `size.40` |
-| | dark | `size.40` |
+| `size.control.compact` | light | `size.44` |
+| | dark | `size.44` |
 | `size.control.large` | light | `size.48` |
 | | dark | `size.48` |
 | `opacity.disabled` | light | `opacity.40` |
 | | dark | `opacity.40` |
 | `color.border.focus` | light | `content-first.theme.light.color.border.focus` → `color.navy.light.600` |
 | | dark | `content-first.theme.dark.color.border.focus` → `color.navy.dark.600` |
+| `focus.ring.width` | light | `border-width.2` |
+| | dark | `border-width.2` |
+| `focus.ring.offset` | light | `border-width.2` |
+| | dark | `border-width.2` |
+| `size.hit-area` | light | `size.44` |
+| | dark | `size.44` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
@@ -45,9 +51,9 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Keyboard users must always see where they are. |
+| Keyboard focus | button/focus-ring at focus.ring.width | Removing the outline | Keyboard users must always see where they are. |
 | The smallest clickable thing | size.control.default (touch) | A compact control | Many readers are on phones. |
 | Most buttons and inputs | size.control.default | size.control.compact | Readers on phones get a full touch target on every control. |
 | The main action on a screen | size.control.large | A taller button for the main action | It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text. |
 | A button inside a field | size.control.compact | size.control.default | A clear or show button must fit inside the field around it. |
-| A control that is not available yet | opacity.disabled | Hiding the control | A faded control keeps its place. Hiding it would move the page and lose the reader's place. |
+| A control that is not available yet | color.disabled.*, never opacity | Hiding the control | Muted colors keep the control in place and its label readable. Hiding it would move the page and lose the reader's place. |

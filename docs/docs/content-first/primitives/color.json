@@ -207,6 +207,15 @@
        "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
       },
       {
+       "token": "border.raised",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "stone.light.200",
+       "via": "neutral.200",
+       "hex": "#E4DDD0",
+       "guidance": "../foundations/color?for=color-border-raised#what-each-color-is-for"
+      },
+      {
        "token": "disabled.border",
        "paints": "edge",
        "step": "200",
@@ -357,6 +366,11 @@
        "step": "950",
        "primitive": "stone.dark.950",
        "hex": "#FFFFFF"
+      },
+      {
+       "step": "floor",
+       "primitive": "stone.dark.floor",
+       "hex": "#0B0906"
       }
      ],
      "tokens": [
@@ -379,15 +393,6 @@
        "guidance": "../foundations/color?for=color-surface-default#what-each-color-is-for"
       },
       {
-       "token": "surface.raised",
-       "paints": "fill",
-       "step": "50",
-       "primitive": "stone.dark.50",
-       "via": "neutral.50",
-       "hex": "#1F1B16",
-       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
-      },
-      {
        "token": "action.secondary",
        "paints": "fill",
        "step": "50",
@@ -397,22 +402,13 @@
        "guidance": "../foundations/color?for=color-action-secondary#what-each-color-is-for"
       },
       {
-       "token": "surface.sunken",
+       "token": "surface.raised",
        "paints": "fill",
        "step": "100",
        "primitive": "stone.dark.100",
        "via": "neutral.100",
        "hex": "#2E2A24",
-       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
-      },
-      {
-       "token": "surface.highlight",
-       "paints": "fill",
-       "step": "100",
-       "primitive": "stone.dark.100",
-       "via": "neutral.100",
-       "hex": "#2E2A24",
-       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
       },
       {
        "token": "action.secondary.hover",
@@ -442,6 +438,22 @@
        "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
       },
       {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "stone.dark.floor",
+       "hex": "#0B0906",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "stone.dark.floor",
+       "hex": "#0B0906",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+      },
+      {
        "token": "surface.pressed",
        "paints": "fill",
        "step": "200",
@@ -458,6 +470,15 @@
        "via": "neutral.200",
        "hex": "#4A4339",
        "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
+      },
+      {
+       "token": "border.raised",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "stone.dark.200",
+       "via": "neutral.200",
+       "hex": "#4A4339",
+       "guidance": "../foundations/color?for=color-border-raised#what-each-color-is-for"
       },
       {
        "token": "disabled.border",
@@ -1867,6 +1888,10 @@
       {
        "token": "color.neutral.0",
        "where": "light"
+      },
+      {
+       "token": "color.neutral.floor",
+       "where": "light"
       }
      ]
     },
@@ -2196,6 +2221,20 @@
      "usedBy": [
       {
        "token": "color.neutral.950",
+       "where": "dark"
+      }
+     ]
+    },
+    {
+     "primitive": "color.stone.dark.floor",
+     "value": "#0B0906",
+     "sample": {
+      "kind": "color",
+      "value": "#0B0906"
+     },
+     "usedBy": [
+      {
+       "token": "color.neutral.floor",
        "where": "dark"
       }
      ]

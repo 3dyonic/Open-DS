@@ -82,7 +82,7 @@
      "semantic": "color.surface.sunken",
      "key": "track.background",
      "value": "#F1F5F9",
-     "darkValue": "#1E293B",
+     "darkValue": "#00010E",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": [
@@ -93,11 +93,15 @@
       " on surface.default), so table headers and wells read as recessed."
      ],
      "darkPick": [
-      "neutral.100, a step below content (",
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
       {
-       "ratio": 1.22
+       "ratio": 1.16
       },
-      " on surface.default), so table headers and wells read as recessed."
+      " under content and ",
+      {
+       "ratio": 1.03
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
      ],
      "shares": [
       "surface.highlight",
@@ -282,13 +286,13 @@
      "semantic": "elevation.card",
      "key": "thumb.shadow",
      "value": "0px 2px 8px, #0F172A14",
-     "darkValue": "0px 2px 8px, #00000066",
+     "darkValue": "0px 0px 0px, #00000000",
      "byScheme": true,
      "pick": [
       "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values)."
      ],
      "darkPick": [
-      "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values)."
+      "shadow.none: We use no shadow for cards in dark in order to keep shadows on floating layers only: menus, popovers, dialogs, toasts and tooltips. The missing shade does this by leaving the card's height to tone: the lighter raised surface and its 1px light ring. So cards still read as lifted on a dark page, without a shade that cannot be seen, because dark ships as standard (theming.values) and cards rise by shadow in light (elevation.roles)."
      ],
      "shares": []
     }
@@ -306,7 +310,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring (from the brand)",
+     "use": "button/focus-ring (from the brand) at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus follows the brand but always shows."
     },
@@ -348,7 +352,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "thumb.focus",
      "value": "2px",
      "byScheme": true,
@@ -359,7 +363,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "thumb.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -405,25 +409,43 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "disabled-opacity-disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.border",
+     "key": "disabled.range",
+     "value": "#E2E8F0",
+     "darkValue": "#334155",
      "byScheme": true,
+     "rule": "The edge of a control that cannot be used right now.",
      "pick": [
-      "opacity.40"
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
      ],
-     "shares": []
+     "darkPick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "shares": [
+      "surface.pressed",
+      "border.default",
+      "border.raised"
+     ]
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "thumb.disabled-opacity-disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.surface",
+     "key": "thumb.disabled.background",
+     "value": "#F1F5F9",
+     "darkValue": "#1E293B",
      "byScheme": true,
+     "rule": "The fill of a control that cannot be used right now.",
      "pick": [
-      "opacity.40"
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
      ],
-     "shares": []
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover"
+     ]
     }
    ]
   }

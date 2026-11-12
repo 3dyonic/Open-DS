@@ -81,26 +81,6 @@
      ]
     },
     {
-     "title": "opacity.disabled",
-     "sample": {
-      "kind": "opacity",
-      "value": "var(--opacity-disabled)"
-     },
-     "api": [
-      {
-       "token": "opacity.disabled",
-       "value": "0.4"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "A control that is not available yet",
-       "why": "One fade level works on every brand color, so no brand needs its own disabled color."
-      }
-     ]
-    },
-    {
      "title": "color.border.focus",
      "sample": {
       "kind": "color",
@@ -112,6 +92,61 @@
        "primitive": "color.teal.light.600",
        "value": "#0F766E",
        "dark": "#7FCFC6"
+      }
+     ],
+     "rules": []
+    },
+    {
+     "title": "focus.ring.width",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-width)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.width",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring (from the brand) at focus.ring.width",
+       "why": "Focus follows the brand but always shows."
+      }
+     ]
+    },
+    {
+     "title": "focus.ring.offset",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-offset)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.offset",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The gap sits around a ring of focus.ring.width. The ring and its gap stay the same in every brand, so focus shows on any brand color."
+      }
+     ]
+    },
+    {
+     "title": "size.hit-area",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-hit-area)"
+     },
+     "api": [
+      {
+       "token": "size.hit-area",
+       "value": "44px"
       }
      ],
      "rules": []

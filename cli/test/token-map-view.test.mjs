@@ -19,7 +19,7 @@ const light = af.modes.light;
 const blue = light.families.find((f) => f.id === "blue");
 
 test("every area of the scheme is a node, Color first", () => {
-  assert.deepEqual(af.areas, ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Motion", "Opacity"]);
+  assert.deepEqual(af.areas, ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Motion"]);
 });
 
 test("a scale lists only the steps a decision uses", () => {

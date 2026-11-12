@@ -81,6 +81,57 @@
      ]
     },
     {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
      "group": "Trigger",
      "part": "Icon size",
      "when": "",
@@ -185,10 +236,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1411"
+        "color": "#33241F"
        },
-       "token": "taupe.dark.50",
-       "text": "#1F1411"
+       "token": "taupe.dark.100",
+       "text": "#33241F"
       }
      ]
     },
@@ -272,7 +323,7 @@
      "themed": true,
      "chain": {
       "token": "component.combobox.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "combobox-content-border"
      },
      "values": [
@@ -438,10 +489,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -476,23 +527,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.combobox.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "combobox-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Icon size",
      "when": "",
      "themed": false,
@@ -505,6 +539,35 @@
       {
        "token": "size.20",
        "text": "1.25rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "combobox-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     },
@@ -903,9 +966,9 @@
       {
        "theme": "Dark",
        "swatch": {
-        "shadow": "0px 12px 32px 0px #00000080"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },
@@ -1049,7 +1112,7 @@
      "themed": false,
      "chain": {
       "token": "component.combobox.chips.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "combobox-chips-focus-width"
      },
      "values": [
@@ -1083,7 +1146,7 @@
      "themed": false,
      "chain": {
       "token": "component.combobox.chips.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "combobox-chips-focus-offset"
      },
      "values": [
@@ -1198,10 +1261,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -1287,23 +1350,6 @@
     },
     {
      "group": "Chip",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.combobox.chip.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "combobox-chip-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Chip",
      "part": "Remove pull",
      "when": "",
      "themed": false,
@@ -1378,6 +1424,64 @@
      ]
     },
     {
+     "group": "Chip",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "combobox-chip-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "combobox-chip-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
      "group": "Input",
      "part": "Border",
      "when": "",
@@ -1428,10 +1532,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },

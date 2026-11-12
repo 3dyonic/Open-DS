@@ -95,14 +95,16 @@ const RELATIONS = [
     family: "invariants",
     kind: "minimum",
     title: "The focus ring is the default border + 1 step",
-    links: () => ({ inputs: ["border-width.default"], outputs: ["border-width.focus"] }),
+    links: () => ({ inputs: ["border-width.default"], outputs: ["focus.ring.width", "border-width.focus"] }),
     check: (f) => {
-      if (!has(f, ["border-width.default", "border-width.focus"])) return null;
+      // OD-297 gives the ring its own token, focus.ring.width; older refs name it border-width.focus.
+      const ring = has(f, ["focus.ring.width"]) ? "focus.ring.width" : "border-width.focus";
+      if (!has(f, ["border-width.default", ring])) return null;
       return perTheme(f, (v) => {
         const d = px(v["border-width.default"]);
-        const got = px(v["border-width.focus"]);
+        const got = px(v[ring]);
         const { want, why } = stepFrom(f.scales["border-width"] ?? [], d, 1);
-        return [{ subject: "border-width.focus", pass: want !== null && near(got, want), says: want === null ? why : `border-width.focus is ${fmt(got)}; one step above the ${fmt(d)} border is ${fmt(want)}` }];
+        return [{ subject: ring, pass: want !== null && near(got, want), says: want === null ? why : `${ring} is ${fmt(got)}; one step above the ${fmt(d)} border is ${fmt(want)}` }];
       });
     },
   },

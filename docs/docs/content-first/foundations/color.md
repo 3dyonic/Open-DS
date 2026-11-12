@@ -66,16 +66,18 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
 | `color.neutral.950` | light | `content-first.theme.light.color.neutral.950` → `color.stone.light.950` |
 | | dark | `content-first.theme.dark.color.neutral.950` → `color.stone.dark.950` |
+| `color.neutral.floor` | light | `content-first.theme.light.color.neutral.floor` → `color.stone.light.0` |
+| | dark | `content-first.theme.dark.color.neutral.floor` → `color.stone.dark.floor` |
 | `color.surface.canvas` | light | `content-first.theme.light.color.surface.canvas` → `color.neutral.50` → `content-first.theme.light.color.neutral.50` → `color.stone.light.50` |
 | | dark | `content-first.theme.dark.color.surface.canvas` → `color.neutral.0` → `content-first.theme.dark.color.neutral.0` → `color.stone.dark.0` |
 | `color.surface.default` | light | `content-first.theme.light.color.surface.default` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` |
 | | dark | `content-first.theme.dark.color.surface.default` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
 | `color.surface.raised` | light | `content-first.theme.light.color.surface.raised` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` |
-| | dark | `content-first.theme.dark.color.surface.raised` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
+| | dark | `content-first.theme.dark.color.surface.raised` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `color.surface.sunken` | light | `content-first.theme.light.color.surface.sunken` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` |
-| | dark | `content-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
+| | dark | `content-first.theme.dark.color.surface.sunken` → `color.neutral.floor` → `content-first.theme.dark.color.neutral.floor` → `color.stone.dark.floor` |
 | `color.surface.highlight` | light | `content-first.theme.light.color.surface.highlight` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` |
-| | dark | `content-first.theme.dark.color.surface.highlight` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
+| | dark | `content-first.theme.dark.color.surface.highlight` → `color.neutral.floor` → `content-first.theme.dark.color.neutral.floor` → `color.stone.dark.floor` |
 | `color.surface.pressed` | light | `content-first.theme.light.color.surface.pressed` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` |
 | | dark | `content-first.theme.dark.color.surface.pressed` → `color.neutral.200` → `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
 | `color.surface.selected` | light | `content-first.theme.light.color.surface.selected` → `color.navy.light.100` |
@@ -120,6 +122,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `content-first.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
 | `color.border.default` | light | `content-first.theme.light.color.border.default` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` |
 | | dark | `content-first.theme.dark.color.border.default` → `color.neutral.200` → `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
+| `color.border.raised` | light | `content-first.theme.light.color.border.raised` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` |
+| | dark | `content-first.theme.dark.color.border.raised` → `color.neutral.200` → `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
 | `color.border.strong` | light | `content-first.theme.light.color.border.strong` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` |
 | | dark | `content-first.theme.dark.color.border.strong` → `color.neutral.400` → `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
 | `color.border.focus` | light | `content-first.theme.light.color.border.focus` → `color.navy.light.600` |
@@ -209,9 +213,9 @@ A surface tells people where they are in depth, or which item they are on. Each 
 | --- | --- | --- | --- |
 | :sample{kind="dot" value="var(--color-surface-canvas)"} **Canvas** | The page background behind everything. | Page and app background | Cards and panels on the page: `color.surface.default` |
 | :sample{kind="dot" value="var(--color-surface-default)"} **Default** | The base fill for content. | Cards, Panels, Inputs, Table body | The page behind content: `color.surface.canvas`; Menus and popovers above content: `color.surface.raised` |
-| :sample{kind="dot" value="var(--color-surface-raised)"} **Raised** | Fills that float above content. | Menus, Popovers, Dialogs | Cards in the page flow: `color.surface.default` |
+| :sample{kind="dot" value="var(--color-surface-raised)"} **Raised** | Fills that float above content. In dark, one step lighter than content, so height reads by tone. | Menus, Popovers, Dialogs | Cards in the page flow: `color.surface.default` |
 | :sample{kind="dot" value="var(--color-surface-sunken)"} **Sunken** | A recessed fill, a step below content. | Table headers, Wells | A selected item: `color.surface.selected`; An item the pointer or the keyboard is on: `color.surface.highlight` |
-| :sample{kind="dot" value="var(--color-surface-highlight)"} **Highlight** | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. | Highlighted menu items, Highlighted options, Hover rows, Open submenu triggers | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
+| :sample{kind="dot" value="var(--color-surface-highlight)"} **Highlight** | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. | Highlighted menu items, Highlighted options, Hover rows, Open submenu triggers | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
 | :sample{kind="dot" value="var(--color-surface-pressed)"} **Pressed** | The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. | Pressed menu buttons, Pressed list items | The item the pointer or the keyboard is on: `color.surface.highlight` |
 | :sample{kind="dot" value="var(--color-surface-selected)"} **Selected** | The fill of a selected or current item, or a toggle that is on. | Selected rows, Current menu item, Toggles that are on | Hover: `color.surface.sunken`; The main action: `color.action.primary.@` |
 | :sample{kind="dot" value="var(--color-surface-inverse)"} **Inverse** | A reversed fill for small, short-lived messages. | Tooltips, Toasts | Large areas: `color.surface.default` |
@@ -223,9 +227,9 @@ A surface tells people where they are in depth, or which item they are on. Each 
 | --- | --- | --- |
 | `color.surface.canvas` | The page background behind everything. | Cards and panels on the page: `color.surface.default` |
 | `color.surface.default` | The base fill for content. | The page behind content: `color.surface.canvas`; Menus and popovers above content: `color.surface.raised` |
-| `color.surface.raised` | Fills that float above content. | Cards in the page flow: `color.surface.default` |
+| `color.surface.raised` | Fills that float above content. In dark, one step lighter than content, so height reads by tone. | Cards in the page flow: `color.surface.default` |
 | `color.surface.sunken` | A recessed fill, a step below content. | A selected item: `color.surface.selected`; An item the pointer or the keyboard is on: `color.surface.highlight` |
-| `color.surface.highlight` | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
+| `color.surface.highlight` | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
 | `color.surface.pressed` | The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. | The item the pointer or the keyboard is on: `color.surface.highlight` |
 | `color.surface.selected` | The fill of a selected or current item, or a toggle that is on. | Hover: `color.surface.sunken`; The main action: `color.action.primary.@` |
 | `color.surface.inverse` | A reversed fill for small, short-lived messages. | Large areas: `color.surface.default` |
@@ -248,6 +252,7 @@ A surface tells people where they are in depth, or which item they are on. Each 
 | `color.text.on-danger` | Text on the danger fill: its tone's main text. | Text on the main action: `color.text.on-action` |
 | `color.text.link` | Links in running text. | Buttons: `color.action.primary.@` |
 | `color.border.default` | Quiet edges and dividers. Decorative, so it has no contrast minimum. | The edge of a control people must find: `color.border.strong` |
+| `color.border.raised` | The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot. | Dividers and card borders in the page flow: `color.border.default`; The edge of a control people must find: `color.border.strong` |
 | `color.border.strong` | The edge of a control people must find. | A divider: `color.border.default` |
 | `color.border.focus` | The focus ring. | A selected item: `color.surface.selected` |
 | `color.border.selected` | The edge that marks a selected item, beside its fill, so selection is never color alone. | Keyboard focus: `color.border.focus`; The fill of a selected item: `color.surface.selected` |

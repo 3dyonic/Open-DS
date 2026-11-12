@@ -604,10 +604,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1120,7 +1120,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.label.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-group-label-focus"
      },
      "values": [
@@ -1195,7 +1195,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.label.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-group-label-focus-offset"
      },
      "values": [
@@ -1304,7 +1304,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.action.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-group-action-focus"
      },
      "values": [
@@ -1394,10 +1394,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1408,7 +1408,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.action.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-group-action-focus-offset"
      },
      "values": [
@@ -1551,7 +1551,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.action.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-action-focus"
      },
      "values": [
@@ -1641,10 +1641,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1655,7 +1655,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.action.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-action-focus-offset"
      },
      "values": [
@@ -2038,23 +2038,6 @@
     },
     {
      "group": "Menu",
-     "part": "Sub button disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.sidebar.menu.sub.button.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "sidebar-menu-sub-button-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Menu",
      "part": "Sub button icon size",
      "when": "",
      "themed": false,
@@ -2077,7 +2060,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-sub-button-focus"
      },
      "values": [
@@ -2167,10 +2150,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -2196,10 +2179,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -2239,7 +2222,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-sub-button-edge-width-current"
      },
      "values": [
@@ -2273,7 +2256,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-sub-button-focus-offset"
      },
      "values": [
@@ -2297,6 +2280,35 @@
       {
        "token": "font.size.12",
        "text": "0.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "sidebar-menu-sub-button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
       }
      ]
     },
@@ -2339,10 +2351,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -2397,10 +2409,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -2426,10 +2438,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -2440,7 +2452,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-button-focus-offset"
      },
      "values": [
@@ -2457,7 +2469,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-button-edge-width-current"
      },
      "values": [
@@ -2537,29 +2549,12 @@
     },
     {
      "group": "Menu button",
-     "part": "Opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.sidebar.menu-button.opacity.disabled",
-      "alias": "opacity.disabled",
-      "variable": "sidebar-menu-button-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Menu button",
      "part": "Focus width",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-button-focus-width"
      },
      "values": [
@@ -2700,10 +2695,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -2787,10 +2782,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -2896,6 +2891,35 @@
       {
        "token": "space.8",
        "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "sidebar-menu-button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
       }
      ]
     }

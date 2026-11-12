@@ -35,8 +35,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.surface` | `content-first.theme.base.radius.surface` → `radius.12` |
 | `radius.container` | `radius.surface` → `content-first.theme.base.radius.surface` → `radius.12` |
 | `border-width.default` | `border-width.1` |
-| `border-width.focus` | `border-width.2` |
-| `border-width.focus-offset` | `border-width.2` |
+| `border-width.focus` | `focus.ring.width` → `border-width.2` |
+| `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
@@ -50,4 +50,4 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | Something that grows past one line | radius.element | radius.surface | Text areas and list items share the control corner, so a form reads as one family. |
 | Corners of cards, menus and dialogs | radius.surface | radius.control | Softer corners on cards and menus feel warm, like good paper. |
 | Edges and dividers | border-width.default | A heavy rule | A thin edge stays quiet beside long text. The words carry the page, not the lines. |
-| The gap around a focus ring | border-width.focus-offset | A ring that touches the control | The ring stands clear of the control, so readers see focus on any fill. |
+| The gap around a focus ring | focus.ring.offset | A ring that touches the control | The ring stands clear of the control, so readers see focus on any fill. |

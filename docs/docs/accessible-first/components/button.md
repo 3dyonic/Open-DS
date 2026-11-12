@@ -247,7 +247,7 @@ Keep it enabled and explain on press: nobody is left out, and nobody remembers t
 Icons alone are guesswork.
 :::
 :::panel{title="Keyboard focus"}
-**Use** button/focus-ring at border-width.focus, with an offset
+**Use** button/focus-ring at focus.ring.width, with an offset
 
 **Not** A thin or faint outline
 

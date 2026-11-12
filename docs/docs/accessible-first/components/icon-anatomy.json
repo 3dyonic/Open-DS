@@ -102,7 +102,7 @@
      "darkPick": [
       "blue.dark.100: a tint of the brand, ",
       {
-       "ratio": 1.21
+       "ratio": 1.04
       },
       " from content, always beside its edge (border.selected), so selection is never color alone."
      ],

@@ -87,7 +87,7 @@
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "checkbox-focus"
      },
      "values": [
@@ -99,29 +99,12 @@
     },
     {
      "group": "Checkbox",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.checkbox.disabled",
-      "alias": "opacity.disabled",
-      "variable": "checkbox-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Checkbox",
      "part": "Focus offset",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "checkbox-focus-offset"
      },
      "values": [
@@ -235,6 +218,110 @@
        },
        "token": "radius.0",
        "text": "0rem"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.hit-area",
+      "alias": "size.hit-area",
+      "variable": "checkbox-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.24",
+       "text": "1.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-background",
+      "alias": "color.disabled.surface",
+      "variable": "checkbox-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-border",
+      "alias": "color.disabled.border",
+      "variable": "checkbox-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#DDE2EA"
+       },
+       "token": "slate.light.200",
+       "text": "#DDE2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#3D4655"
+       },
+       "token": "slate.dark.200",
+       "text": "#3D4655"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled indicator",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-indicator",
+      "alias": "color.disabled.text",
+      "variable": "checkbox-disabled-indicator"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
       }
      ]
     },

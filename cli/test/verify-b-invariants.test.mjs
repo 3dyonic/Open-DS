@@ -18,14 +18,14 @@ async function caught(mutate, id, baseSnap = base) {
 
 // Focus ring
 test("I1 focus ring equal to the default border (0 steps up) is caught", async () => {
-  const { r, flagged } = await caught(dd((s) => val(s, ["tokens", "semantic", "border-width", "focus"], "{border-width.1}")), "invariants.focus-ring");
+  const { r, flagged } = await caught(dd((s) => val(s, ["tokens", "semantic", "focus", "ring", "width"], "{border-width.1}")), "invariants.focus-ring");
   assert.ok(flagged, JSON.stringify(r));
 });
 test("I2 focus ring two steps above the default border is caught", async () => {
   const { r, flagged } = await caught(dd((s) => {
     set(s, [...prim("border-width.4"), "$type"], "dimension");
     val(s, prim("border-width.4"), "4px");
-    val(s, ["tokens", "semantic", "border-width", "focus"], "{border-width.4}");
+    val(s, ["tokens", "semantic", "focus", "ring", "width"], "{border-width.4}");
   }), "invariants.focus-ring");
   assert.ok(flagged, JSON.stringify(r));
 });

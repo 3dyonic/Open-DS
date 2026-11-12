@@ -37,6 +37,20 @@
        "where": "semantic"
       }
      ]
+    },
+    {
+     "primitive": "easing.strong-out",
+     "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+     "sample": {
+      "kind": "easing",
+      "value": "cubic-bezier(0.23,1,0.32,1)"
+     },
+     "usedBy": [
+      {
+       "token": "motion.easing.exit",
+       "where": "semantic"
+      }
+     ]
     }
    ]
   }

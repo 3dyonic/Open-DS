@@ -153,7 +153,8 @@ export function checkRelations(scheme, g) {
           break;
         }
         case "next-step": {
-          const steps = Object.values(scheme.tokens.primitive[rec.token.split(".")[0]] ?? {})
+          // The steps of the scale the relation steps along: the primitive group of the token it follows.
+          const steps = Object.values(scheme.tokens.primitive[rec.from.split(".")[0]] ?? {})
             .map((t) => px(t.$value))
             .filter((n) => n !== null)
             .sort((a, b) => a - b);
@@ -167,6 +168,9 @@ export function checkRelations(scheme, g) {
           break;
         }
         case "layer-step": {
+          // The scale is set in light. In dark, dark-same-shape decides: floating layers keep the light
+          // shape and every other layer casts none (OD-297).
+          if (theme.mode === "dark") break;
           const s = shadowOf(value(rec.token));
           const named = def.by_answer.options[answer[def.by_answer.question]] ?? [];
           const rises = named.includes(rec.token);
@@ -190,7 +194,8 @@ export function checkRelations(scheme, g) {
         }
         case "dark-same-shape": {
           if (theme.mode !== "dark") break;
-          // Beside the decision, a finding: in dark mode a higher surface should be lighter (Material).
+          // In dark, height reads by tone (OD-297): a raised surface lighter than the base, a sunken one
+          // darker, and the raised layer's ring a solid color lighter than the raised surface.
           if (def.depth) {
             const [raised, base, sunken] = [def.depth.raised, def.depth.base, def.depth.sunken].map((p) => value(p));
             const lum = (c) => luminance(channels(c));
@@ -201,10 +206,27 @@ export function checkRelations(scheme, g) {
               `dark depth by tone: ${def.depth.raised} ${raised} is ${up ? "lighter than" : lum(raised) === lum(base) ? "the same as" : "darker than"} ${def.depth.base} ${base}; ${def.depth.sunken} ${sunken} is ${down ? "darker" : "lighter"}`,
               def.depth.raised,
             );
+            if (def.depth.ring) {
+              const ring = value(def.depth.ring);
+              const solid = typeof ring === "string" && /^#[0-9a-f]{6}$/i.test(ring);
+              const lighter = solid && lum(ring) > lum(raised);
+              out(
+                lighter,
+                solid
+                  ? `dark ring: ${def.depth.ring} ${ring} is ${lighter ? "lighter than" : "not lighter than"} ${def.depth.raised} ${raised}, ${contrast(ring, raised)}:1`
+                  : `dark ring: ${def.depth.ring} is ${JSON.stringify(ring)}, not a solid color, so its contrast cannot be checked`,
+                def.depth.ring,
+              );
+            }
           }
           const layer = rec.token;
           const d = shadowOf(value(layer));
           const l = shadowOf(aliasChain(light, layer).value);
+          // Only floating layers cast a shade in dark (OD-297); every other layer shows height by tone.
+          if (def.floating && !def.floating.includes(layer)) {
+            out(!casts(d), `${layer} is not a floating layer, so it ${casts(d) ? `should cast no shade in dark, yet casts ${shapeText(d)}` : "casts no shade in dark"}`);
+            break;
+          }
           if (!casts(d) && !casts(l)) {
             out(true, `${layer} casts no shadow in either mode`);
             break;

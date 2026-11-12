@@ -35,8 +35,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.surface` | `dense-data.theme.base.radius.surface` → `radius.4` |
 | `radius.container` | `radius.surface` → `dense-data.theme.base.radius.surface` → `radius.4` |
 | `border-width.default` | `border-width.1` |
-| `border-width.focus` | `border-width.2` |
-| `border-width.focus-offset` | `border-width.2` |
+| `border-width.focus` | `focus.ring.width` → `border-width.2` |
+| `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
@@ -50,4 +50,4 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | Something that grows past one line | radius.element | radius.surface | Rows and text areas keep the small control corner, so long lists stay straight. |
 | Corners of cards, menus and dialogs | radius.surface | radius.control | Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen. |
 | Edges and dividers | border-width.default | A thicker border | A hairline separates rows and cards without taking room from the data. |
-| The gap around a focus ring | border-width.focus-offset | A ring that touches the control | The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one. |
+| The gap around a focus ring | focus.ring.offset | A ring that touches the control | The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one. |

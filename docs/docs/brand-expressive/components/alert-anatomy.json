@@ -78,9 +78,9 @@
     {
      "kind": "rule",
      "situation": "a card on the page",
-     "use": "elevation.card (pronounced)",
+     "use": "elevation.card (pronounced); none in dark",
      "not": "a flat card",
-     "why": "Cards float to feel tactile."
+     "why": "Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them."
     },
     {
      "kind": "token",
@@ -135,12 +135,13 @@
      "darkPick": [
       "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
       {
-       "ratio": 1.69
+       "ratio": 1.39
       },
-      ", on surface.default). It decorates, so it holds no contrast minimum."
+      ", on surface.raised). It decorates, so it holds no contrast minimum."
      ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },

@@ -193,7 +193,7 @@
           "href": "foundations/motion",
           "token": "motion.duration.feedback",
           "primitive": "duration.moderate",
-          "value": "200ms"
+          "value": "150ms"
          }
         }
        ]
@@ -440,14 +440,14 @@
         }
        },
        {
-        "text": "For keyboard focus, use button/focus-ring at border-width.focus. Don't use removing the outline. Keyboard users must always see where they are.",
+        "text": "For keyboard focus, use button/focus-ring at focus.ring.width. Don't use removing the outline. Keyboard users must always see where they are.",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
         }
        },
        {
-        "text": "For the gap around a focus ring, use border-width.focus-offset. Don't use a ring that touches the control. The ring stands clear of the control, so readers see focus on any fill.",
+        "text": "For the gap around a focus ring, use focus.ring.offset. Don't use a ring that touches the control. The ring stands clear of the control, so readers see focus on any fill.",
         "link": {
          "label": "Shape",
          "href": "foundations/shape"
@@ -1354,7 +1354,7 @@
         }
        },
        {
-        "text": "For a control that is not available yet, use opacity.disabled. Don't use hiding the control. A faded control keeps its place. Hiding it would move the page and lose the reader's place.",
+        "text": "For a control that is not available yet, use color.disabled.*, never opacity. Don't use hiding the control. Muted colors keep the control in place and its label readable. Hiding it would move the page and lose the reader's place.",
         "link": {
          "label": "Accessibility",
          "href": "foundations/accessibility"
@@ -2892,6 +2892,18 @@
         }
        },
        {
+        "token": "color.neutral.floor",
+        "mode": "light",
+        "pick": "color.stone.light.0",
+        "why": [
+         "stone.light.0: We use light's step 0 for the floor in order to keep the neutral scale whole in light. The step does this by naming white, as nothing sits above it and no light role reads the floor. So light pages stay as they are, because the floor exists for dark wells below the canvas (theming.values) and the gray ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "color.surface.canvas",
         "mode": "light",
         "pick": "color.neutral.50",
@@ -3128,6 +3140,18 @@
         }
        },
        {
+        "token": "color.neutral.floor",
+        "mode": "dark",
+        "pick": "color.stone.dark.floor",
+        "why": [
+         "stone.dark.floor: We use one step below 0 for the floor in dark in order to put wells and the hover band below a canvas that sits on 0. The step does this by keeping the hue and chroma of 0 at 0.04 lower OKLab lightness, as the stone ramp has no lower step. So a table header reads as recessed even on the page itself, because dark ships as standard (theming.values) and the gray ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "color.surface.canvas",
         "mode": "dark",
         "pick": "color.neutral.0",
@@ -3144,27 +3168,27 @@
         }
        },
        {
-        "token": "color.surface.sunken",
-        "mode": "dark",
-        "pick": "color.neutral.100",
-        "why": [
-         "neutral.100, a step below content (",
-         {
-          "ratio": 1.2
-         },
-         " on surface.default), so table headers and wells read as recessed."
-        ],
-        "link": {
-         "label": "Color",
-         "href": "foundations/color"
-        }
-       },
-       {
         "token": "color.surface.highlight",
         "mode": "dark",
-        "pick": "color.neutral.100",
+        "pick": "color.neutral.floor",
         "why": [
-         "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+         "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ",
+         {
+          "ratio": 1.16
+         },
+         " on surface.default and ",
+         {
+          "ratio": 1.39
+         },
+         " on surface.raised, and ",
+         {
+          "ratio": 1.06
+         },
+         " off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ",
+         {
+          "ratio": 7.15
+         },
+         " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
         ],
         "link": {
          "label": "Color",
@@ -4217,9 +4241,13 @@
        {
         "token": "color.surface.raised",
         "mode": "dark",
-        "pick": "color.neutral.50",
+        "pick": "color.neutral.100",
         "why": [
-         "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light."
+         "neutral.100: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, ",
+         {
+          "ratio": 1.2
+         },
+         " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So readers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
         ],
         "link": {
          "label": "Color",
@@ -4379,6 +4407,22 @@
         }
        },
        {
+        "token": "color.border.raised",
+        "mode": "light",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
+         {
+          "ratio": 1.35
+         },
+         " on surface.raised, beside the light shadow that does most of the lift. So readers see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "color.surface.canvas",
         "mode": "dark",
         "pick": "color.neutral.0",
@@ -4397,9 +4441,13 @@
        {
         "token": "color.surface.raised",
         "mode": "dark",
-        "pick": "color.neutral.50",
+        "pick": "color.neutral.100",
         "why": [
-         "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light."
+         "neutral.100: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, ",
+         {
+          "ratio": 1.2
+         },
+         " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So readers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
         ],
         "link": {
          "label": "Color",
@@ -4409,13 +4457,17 @@
        {
         "token": "color.surface.sunken",
         "mode": "dark",
-        "pick": "color.neutral.100",
+        "pick": "color.neutral.floor",
         "why": [
-         "neutral.100, a step below content (",
+         "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
          {
-          "ratio": 1.2
+          "ratio": 1.16
          },
-         " on surface.default), so table headers and wells read as recessed."
+         " under content and ",
+         {
+          "ratio": 1.06
+         },
+         " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
         ],
         "link": {
          "label": "Color",
@@ -4429,9 +4481,25 @@
         "why": [
          "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
          {
-          "ratio": 1.76
+          "ratio": 1.46
          },
-         ", on surface.default). It decorates, so it holds no contrast minimum."
+         ", on surface.raised). It decorates, so it holds no contrast minimum."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "token": "color.border.raised",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
+         {
+          "ratio": 1.46
+         },
+         " on surface.raised (#4A4339, no alpha), so its contrast can be checked. So readers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
         ],
         "link": {
          "label": "Color",
@@ -4563,7 +4631,7 @@
       "kind": "rules",
       "items": [
        {
-        "text": "When someone asks for less motion, use no motion. Don't use reduced motion. A shorter motion still moves. When people ask for less motion, nothing moves.",
+        "text": "When someone asks for less motion, use fades only; nothing moves. Don't use reduced motion. Nothing slides or zooms for people who asked for less motion. A short fade keeps the change visible to the reader.",
         "link": {
          "label": "Motion",
          "href": "foundations/motion"
@@ -4952,11 +5020,119 @@
       "kind": "picks",
       "items": [
        {
+        "token": "color.neutral.floor",
+        "mode": "light",
+        "pick": "color.stone.light.0",
+        "why": [
+         "stone.light.0: We use light's step 0 for the floor in order to keep the neutral scale whole in light. The step does this by naming white, as nothing sits above it and no light role reads the floor. So light pages stay as they are, because the floor exists for dark wells below the canvas (theming.values) and the gray ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "token": "color.neutral.floor",
+        "mode": "dark",
+        "pick": "color.stone.dark.floor",
+        "why": [
+         "stone.dark.floor: We use one step below 0 for the floor in dark in order to put wells and the hover band below a canvas that sits on 0. The step does this by keeping the hue and chroma of 0 at 0.04 lower OKLab lightness, as the stone ramp has no lower step. So a table header reads as recessed even on the page itself, because dark ships as standard (theming.values) and the gray ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "token": "color.surface.raised",
+        "mode": "dark",
+        "pick": "color.neutral.100",
+        "why": [
+         "neutral.100: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, ",
+         {
+          "ratio": 1.2
+         },
+         " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So readers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "token": "color.surface.sunken",
+        "mode": "dark",
+        "pick": "color.neutral.floor",
+        "why": [
+         "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
+         {
+          "ratio": 1.16
+         },
+         " under content and ",
+         {
+          "ratio": 1.06
+         },
+         " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "token": "color.surface.highlight",
+        "mode": "dark",
+        "pick": "color.neutral.floor",
+        "why": [
+         "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ",
+         {
+          "ratio": 1.16
+         },
+         " on surface.default and ",
+         {
+          "ratio": 1.39
+         },
+         " on surface.raised, and ",
+         {
+          "ratio": 1.06
+         },
+         " off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ",
+         {
+          "ratio": 7.15
+         },
+         " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "color.surface.pressed",
         "mode": "dark",
         "pick": "color.neutral.200",
         "why": [
-         "neutral.200: We use the light pick for the dark pressed surface in order to keep what it sets, and the step does this by the same means, so the dark pressed surface and the light pick never differ, because the step reads the same in dark (theming.values)."
+         "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, ",
+         {
+          "ratio": 2.04
+         },
+         " from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "token": "color.border.raised",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
+         {
+          "ratio": 1.46
+         },
+         " on surface.raised (#4A4339, no alpha), so its contrast can be checked. So readers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
         ],
         "link": {
          "label": "Color",
@@ -5152,9 +5328,25 @@
        {
         "token": "color.surface.highlight",
         "mode": "dark",
-        "pick": "color.neutral.100",
+        "pick": "color.neutral.floor",
         "why": [
-         "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards."
+         "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ",
+         {
+          "ratio": 1.16
+         },
+         " on surface.default and ",
+         {
+          "ratio": 1.39
+         },
+         " on surface.raised, and ",
+         {
+          "ratio": 1.06
+         },
+         " off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ",
+         {
+          "ratio": 7.15
+         },
+         " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
         ],
         "link": {
          "label": "Color",
@@ -6114,6 +6306,22 @@
         }
        },
        {
+        "token": "color.border.raised",
+        "mode": "light",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
+         {
+          "ratio": 1.35
+         },
+         " on surface.raised, beside the light shadow that does most of the lift. So readers see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "token": "color.border.strong",
         "mode": "light",
         "pick": "color.neutral.500",
@@ -6560,9 +6768,25 @@
         "why": [
          "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
          {
-          "ratio": 1.76
+          "ratio": 1.46
          },
-         ", on surface.default). It decorates, so it holds no contrast minimum."
+         ", on surface.raised). It decorates, so it holds no contrast minimum."
+        ],
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "token": "color.border.raised",
+        "mode": "dark",
+        "pick": "color.neutral.200",
+        "why": [
+         "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
+         {
+          "ratio": 1.46
+         },
+         " on surface.raised (#4A4339, no alpha), so its contrast can be checked. So readers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
         ],
         "link": {
          "label": "Color",

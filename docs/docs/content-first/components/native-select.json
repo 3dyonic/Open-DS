@@ -245,7 +245,7 @@
      "themed": false,
      "chain": {
       "token": "component.native-select.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "native-select-focus"
      },
      "values": [
@@ -395,7 +395,7 @@
      "themed": false,
      "chain": {
       "token": "component.native-select.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "native-select-focus-offset"
      },
      "values": [
@@ -435,7 +435,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -543,8 +543,8 @@
      },
      "values": [
       {
-       "token": "size.40",
-       "text": "2.5rem"
+       "token": "size.44",
+       "text": "2.75rem"
       }
      ]
     },

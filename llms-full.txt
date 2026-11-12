@@ -9,9 +9,9 @@ Urgency order: color.status.info.@ → color.status.warning.@ → color.status.d
 
 - color.surface.canvas: The page background behind everything. Use for: Page and app background. Not for: Cards and panels on the page (use color.surface.default).
 - color.surface.default: The base fill for content. Use for: Cards, Panels, Inputs, Table body. Not for: The page behind content (use color.surface.canvas); Menus and popovers above content (use color.surface.raised).
-- color.surface.raised: Fills that float above content. Use for: Menus, Popovers, Dialogs. Not for: Cards in the page flow (use color.surface.default).
+- color.surface.raised: Fills that float above content. In dark, one step lighter than content, so height reads by tone. Use for: Menus, Popovers, Dialogs. Not for: Cards in the page flow (use color.surface.default).
 - color.surface.sunken: A recessed fill, a step below content. Use for: Table headers, Wells. Not for: A selected item (use color.surface.selected); An item the pointer or the keyboard is on (use color.surface.highlight).
-- color.surface.highlight: The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. Use for: Highlighted menu items, Highlighted options, Hover rows, Open submenu triggers. Not for: Table headers and wells (use color.surface.sunken); A selected or current item (use color.surface.selected).
+- color.surface.highlight: The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. Use for: Highlighted menu items, Highlighted options, Hover rows, Open submenu triggers. Not for: Table headers and wells (use color.surface.sunken); A selected or current item (use color.surface.selected).
 - color.surface.pressed: The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. Use for: Pressed menu buttons, Pressed list items. Not for: The item the pointer or the keyboard is on (use color.surface.highlight).
 - color.surface.selected: The fill of a selected or current item, or a toggle that is on. Use for: Selected rows, Current menu item, Toggles that are on. Not for: Hover (use color.surface.sunken); The main action (use color.action.primary.@).
 - color.surface.inverse: A reversed fill for small, short-lived messages. Use for: Tooltips, Toasts. Not for: Large areas (use color.surface.default).
@@ -34,6 +34,7 @@ Urgency order: color.status.info.@ → color.status.warning.@ → color.status.d
 - color.text.on-danger: Text on the danger fill: its tone's main text. Use for: The danger button label. Not for: Text on the main action (use color.text.on-action). Sits on: color.action.danger.@, color.action.danger.hover at 4.5:1 or more.
 - color.text.link: Links in running text. Use for: Inline links. Not for: Buttons (use color.action.primary.@). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.highlight, color.surface.selected at 4.5:1 or more.
 - color.border.default: Quiet edges and dividers. Decorative, so it has no contrast minimum. Use for: Card edges, Dividers, Table rules. Not for: The edge of a control people must find (use color.border.strong).
+- color.border.raised: The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot. Use for: Menus, Popovers, Dialogs, Toasts, Raised cards. Not for: Dividers and card borders in the page flow (use color.border.default); The edge of a control people must find (use color.border.strong).
 - color.border.strong: The edge of a control people must find. Use for: Input borders, Checkbox borders, Secondary button borders, An edge under the pointer, like the sidebar rail line. Not for: A divider (use color.border.default). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.highlight, color.surface.pressed, color.surface.selected at 3:1 or more.
 - color.border.focus: The focus ring. Use for: Keyboard focus on any control. Not for: A selected item (use color.surface.selected). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.highlight, color.surface.pressed, color.surface.selected, color.surface.inverse at 3:1 or more.
 - color.border.selected: The edge that marks a selected item, beside its fill, so selection is never color alone. Use for: A selected table row, The current item in a sidebar or menu, A choice that is checked or on, beside its fill. Not for: Keyboard focus (use color.border.focus); The fill of a selected item (use color.surface.selected). Sits on: color.surface.canvas, color.surface.default, color.surface.selected at 3:1 or more.
@@ -173,10 +174,10 @@ Themes: light, dark
 - A card on the page (card): use A strong border, no shadow; not A shadow; Shadows are hard to see; borders are not.
 - A menu or dialog (menu-or-dialog): use A strong border and a dimmed page; not A shadow only; The dimmed page makes the dialog obvious.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Fast flicker; Moderate speed is easy to follow.
-- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; A shorter motion still moves. When people ask for less motion, nothing moves.
+- Someone asked for less motion (reduced-motion): use Fades only; nothing moves; not Reduced motion; Movement can make some people dizzy, so it stops. A short fade or a color change still shows that something changed.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button; Icons alone are guesswork.
 - Someone switches to dark (dark-mode): use The dark semantic mode, or high contrast; not One mode only; People pick the mode they can read.
-- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus, with an offset; not A thin or faint outline; Focus must be seen by everyone.
+- Keyboard focus (keyboard-focus): use button/focus-ring at focus.ring.width, with an offset; not A thin or faint outline; Focus must be seen by everyone.
 - The smallest clickable thing (smallest-target): use size.control.default (large); not Touch-minimum size; Large targets help people with motor needs.
 - The action that completes the task (commit-action): use Button primary, one per page; not Two primaries; One clear next step. Two primaries make people stop and compare, which adds effort.
 - An alternative or cancel (alternative-action): use Button secondary; not A text link; Every action looks like a button people can find.
@@ -205,7 +206,7 @@ Themes: light, dark
 - Something that grows past one line (growing-element): use radius.element; not radius.surface; Text areas and list items keep the control corner, so people know they can type or pick there.
 - Corners of cards, menus and dialogs (surface-corner): use radius.surface; not A pill; Slightly rounded panels read as one clear box at any zoom.
 - Edges and dividers (edges-and-dividers): use border-width.default; not A hairline; A strong edge stays visible at high zoom and for people with low vision.
-- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The gap keeps the thick ring clear of the control, so focus shows on any fill.
+- The gap around a focus ring (focus-gap): use focus.ring.offset; not A ring that touches the control; The gap keeps the thick ring clear of the control, so focus shows on any fill.
 - A panel opens (panel-opens): use motion.duration.panels; not A long slide; A moderate open is easy to follow and shows where the panel came from.
 - The curve of any move (any-transition): use motion.easing.standard; not A spring that overshoots; A plain ease-out is calm and clear. An overshoot can confuse and distract.
 - A hero or launch moment (hero-motion): use No hero motion; not An animated start page; Moving content distracts people with attention needs and slows the task.
@@ -213,7 +214,7 @@ Themes: light, dark
 - Most buttons and inputs (most-controls): use size.control.default; not A touch-minimum size; Large controls help people with tremor and low vision.
 - The main action on a screen (main-action): use size.control.large; not A taller button for the main action; It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.
 - A button inside a field (control-inside-field): use size.control.compact; not A small icon button; It still meets the large target size and fits inside the field.
-- A control that is not available yet (unavailable-control): use opacity.disabled; not A faded control with no reason; It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step.
+- A control that is not available yet (unavailable-control): use color.disabled.*, never opacity; not A faded control with no reason; Muted colors keep the label readable, where a fade would drop its contrast. A hint says what is missing and the next step.
 
 ### Voice and tone
 
@@ -334,13 +335,13 @@ Themes: light, dark
 - Table row height (table-row): use size.row (comfortable); not A compact row; Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm.
 - Corners of buttons and inputs (control-corner): use radius.control (pill); not Sharp corners; Pills match the brand's round, playful shapes. Sharp corners would feel corporate.
 - Shape of a status badge (status-shape): use radius.badge (pill); not A rectangle; Pills match the controls.
-- A card on the page (card): use elevation.card (pronounced); not A flat card; Cards float to feel tactile.
+- A card on the page (card): use elevation.card (pronounced); none in dark; not A flat card; Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.
-- Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not An instant change; Fast feedback, on the brand's spring. An instant change drops the brand's motion.
-- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not An instant change; Fast feedback on an ease-out. The brand's spring waits for the moments that deserve it.
+- Someone asked for less motion (reduced-motion): use Fades only; nothing moves; not Full motion; Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button with a hover hint; On phones, hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not A separate campaign palette; Dark ships as standard; campaigns change values, not structure.
-- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Focus must show on vivid color.
+- Keyboard focus (keyboard-focus): use button/focus-ring at focus.ring.width; not Removing the outline; Focus must show on vivid color.
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Most visitors arrive on phones, and a compact control is too small for a thumb.
 - The action that completes the task (commit-action): use Button primary, large, one per section; not Two primaries; One loud call to action per section.
 - An alternative or cancel (alternative-action): use Button ghost; not A second primary; The alternative must not compete.
@@ -369,15 +370,15 @@ Themes: light, dark
 - Something that grows past one line (growing-element): use radius.element; not radius.control; A pill corner breaks when a text area grows to many lines. The element corner stays round at any height.
 - Corners of cards, menus and dialogs (surface-corner): use radius.surface; not Small corners; Big round corners make cards feel like friendly objects.
 - Edges and dividers (edges-and-dividers): use border-width.default; not A hairline; A bold edge matches the bold type and vivid color.
-- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The gap keeps the ring visible on vivid fills.
-- A panel opens (panel-opens): use motion.duration.panels; not A flat fade; Panels open on the brand's spring, so people feel the brand in every menu.
-- The curve of any move (any-transition): use motion.easing.standard; not A plain ease-out; The overshoot makes each move feel alive and playful.
+- The gap around a focus ring (focus-gap): use focus.ring.offset; not A ring that touches the control; The gap keeps the ring visible on vivid fills.
+- A panel opens (panel-opens): use motion.duration.panels; not A flat fade; Panels open on an ease-out at a moderate speed, so menus feel quick and the brand shows in its big moments.
+- The curve of any move (any-transition): use motion.easing.standard; not A plain ease-out; An ease-out keeps every menu and button quick. The overshoot is kept for emphasis, where it feels alive and playful.
 - A hero or launch moment (hero-motion): use motion.duration.hero; not motion.duration.panels; Hero and launch moments move slowest, so every visitor sees the launch.
 - An icon beside text (icon-beside-text): use size.icon and icon.stroke-width; not A thin icon at text size; Larger icons hold their own next to big type. The thicker line carries the brand's warmth.
 - Most buttons and inputs (most-controls): use size.control.default; not size.control.compact; Most visitors arrive on phones, so every control fits a thumb.
 - The main action on a screen (main-action): use size.control.large; not size.control.default; The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb.
 - A button inside a field (control-inside-field): use size.control.compact; not A small icon button; It still fits a thumb and sits inside the pill field.
-- A control that is not available yet (unavailable-control): use opacity.disabled; not Hiding the button; A faded button keeps the layout. The vivid color returns when the visitor can sign up.
+- A control that is not available yet (unavailable-control): use color.disabled.*, never opacity; not Hiding the button; Muted colors keep the layout and the label readable. The vivid color returns when the visitor can sign up.
 
 ### Voice and tone
 
@@ -501,10 +502,10 @@ Themes: light, dark
 - A card on the page (card): use A border, no shadow; not A strong shadow; Cards stay flat on the page; shadows are for floating things.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; The dimmed page focuses the reader on the dialog.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not A fast flash; Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy.
-- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; A shorter motion still moves. When people ask for less motion, nothing moves.
+- Someone asked for less motion (reduced-motion): use Fades only; nothing moves; not Reduced motion; Nothing slides or zooms for people who asked for less motion. A short fade keeps the change visible to the reader.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button; Occasional visitors do not know icons.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not Inverting images; Only semantic colors change; the reading layout stays.
-- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Keyboard users must always see where they are.
+- Keyboard focus (keyboard-focus): use button/focus-ring at focus.ring.width; not Removing the outline; Keyboard users must always see where they are.
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Many readers are on phones.
 - The action that completes the task (commit-action): use Button primary, one per section; not Two primaries side by side; One clear action per section. Two primaries make the reader choose before they have read.
 - An alternative or cancel (alternative-action): use Button ghost as a text link; not A second boxed button; A link feels lighter and does not compete.
@@ -533,7 +534,7 @@ Themes: light, dark
 - Something that grows past one line (growing-element): use radius.element; not radius.surface; Text areas and list items share the control corner, so a form reads as one family.
 - Corners of cards, menus and dialogs (surface-corner): use radius.surface; not radius.control; Softer corners on cards and menus feel warm, like good paper.
 - Edges and dividers (edges-and-dividers): use border-width.default; not A heavy rule; A thin edge stays quiet beside long text. The words carry the page, not the lines.
-- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The ring stands clear of the control, so readers see focus on any fill.
+- The gap around a focus ring (focus-gap): use focus.ring.offset; not A ring that touches the control; The ring stands clear of the control, so readers see focus on any fill.
 - A panel opens (panel-opens): use motion.duration.panels; not An instant pop; A relaxed open guides the reader to the new panel without a jolt.
 - The curve of any move (any-transition): use motion.easing.standard; not A bounce; A calm ease-out settles softly and never pulls the eye from the text.
 - A hero or launch moment (hero-motion): use No hero motion: the landing stays still; not An animated headline; Attention belongs to the text. A moving headline pulls the eye away from it.
@@ -541,7 +542,7 @@ Themes: light, dark
 - Most buttons and inputs (most-controls): use size.control.default; not size.control.compact; Readers on phones get a full touch target on every control.
 - The main action on a screen (main-action): use size.control.large; not A taller button for the main action; It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text.
 - A button inside a field (control-inside-field): use size.control.compact; not size.control.default; A clear or show button must fit inside the field around it.
-- A control that is not available yet (unavailable-control): use opacity.disabled; not Hiding the control; A faded control keeps its place. Hiding it would move the page and lose the reader's place.
+- A control that is not available yet (unavailable-control): use color.disabled.*, never opacity; not Hiding the control; Muted colors keep the control in place and its label readable. Hiding it would move the page and lose the reader's place.
 
 ### Voice and tone
 
@@ -665,10 +666,10 @@ Themes: light, dark
 - A card on the page (card): use A hairline border, no shadow; not A shadow; On a busy grid, lines separate. Shadows blur the edges.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page for dialogs; not A border only; Floating things need a shadow so they read as on top.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not No transition; Fast feedback confirms the pointer without slowing experts.
-- Someone asked for less motion (reduced-motion): use No motion; not A shorter version of the motion; A shorter motion still moves. When people ask for less motion, nothing moves.
+- Someone asked for less motion (reduced-motion): use Fades only; nothing moves; not A shorter version of the motion; Movement stops when people ask for less motion. A short fade still confirms a change without moving anything.
 - An icon with no label (icon-alone): use Icon button with a tooltip; not A bare icon; Experts learn icons; the tooltip covers the first uses.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not A second palette in components; Only semantic colors change, so layout never moves.
-- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Keyboard users must always see where they are.
+- Keyboard focus (keyboard-focus): use button/focus-ring at focus.ring.width; not Removing the outline; Keyboard users must always see where they are.
 - The smallest clickable thing (smallest-target): use size.control.compact; not Anything smaller; Compact still fits a mouse. Touch is not this product's input.
 - The action that completes the task (commit-action): use Button primary, one per view; not Two primaries side by side; One primary makes the committing action obvious.
 - An alternative or cancel (alternative-action): use Button secondary; not Button ghost; A ghost button has no edge, so next to a filled primary it reads as plain text and cancel gets lost. Secondary keeps a visible border, so people find it at once.
@@ -697,7 +698,7 @@ Themes: light, dark
 - Something that grows past one line (growing-element): use radius.element; not radius.surface; Rows and text areas keep the small control corner, so long lists stay straight.
 - Corners of cards, menus and dialogs (surface-corner): use radius.surface; not radius.control; Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen.
 - Edges and dividers (edges-and-dividers): use border-width.default; not A thicker border; A hairline separates rows and cards without taking room from the data.
-- The gap around a focus ring (focus-gap): use border-width.focus-offset; not A ring that touches the control; The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one.
+- The gap around a focus ring (focus-gap): use focus.ring.offset; not A ring that touches the control; The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one.
 - A panel opens (panel-opens): use motion.duration.panels; not A slow slide-in; Panels open at the feedback speed, so experts never wait for a menu.
 - The curve of any move (any-transition): use motion.easing.standard; not A spring or a bounce; A plain ease-out starts fast and settles quietly. Nothing pulls the eye from the data.
 - A hero or launch moment (hero-motion): use No hero motion; not An intro animation; Analysts open the tool to work for a whole shift. An intro would cost time on every visit.
@@ -705,7 +706,7 @@ Themes: light, dark
 - Most buttons and inputs (most-controls): use size.control.default; not size.control.large; Buttons and inputs fit a mouse and keep toolbars short.
 - The main action on a screen (main-action): use size.control.large; not A taller button for the main action; It is the same height as the default here. Color and place mark the main action. One height keeps toolbar buttons in line.
 - A button inside a field (control-inside-field): use size.control.compact; not size.control.default; A clear or step button fits inside the field, so the field keeps its row height.
-- A control that is not available yet (unavailable-control): use opacity.disabled; not Hiding the control; A faded control stays in its place. Experts keep their bearings and see the action will come back.
+- A control that is not available yet (unavailable-control): use color.disabled.*, never opacity; not Hiding the control; Muted colors keep a disabled control in its place and its label readable. Experts keep their bearings and see the action will come back.
 
 ### Voice and tone
 
@@ -826,13 +827,13 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - Table row height (table-row): use size.row (comfortable); not A compact row; Customers browse on phones, and compact rows are hard to tap in any brand.
 - Corners of buttons and inputs (control-corner): use radius.control (set by the brand); not A hard-coded radius; Each brand sets its own corner through the theme.
 - Shape of a status badge (status-shape): use radius.badge (set by the brand); not A hard-coded shape; The brand sets the badge shape.
-- A card on the page (card): use elevation.card; not A border only; Cards lift slightly to group offers.
+- A card on the page (card): use elevation.card; none in dark; not A border only; Cards lift slightly to group offers. In dark, tone and a ring do the lift, the same in every brand.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Brand-specific motion; Motion is shared, so one component library behaves the same in every brand.
-- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced, not removed: a fade keeps the change visible, and nothing slides.
+- Someone asked for less motion (reduced-motion): use Fades only; nothing moves; not Full motion; Motion is reduced, not removed: a fade keeps the change visible, and nothing slides.
 - An icon with no label (icon-alone): use Not used: always add a word; a popover explains a fee; not An icon button with a hover hint; On touch screens hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark mode of the active brand; not One dark theme for all brands; Every brand ships light and dark.
-- Keyboard focus (keyboard-focus): use button/focus-ring (from the brand); not Removing the outline; Focus follows the brand but always shows.
+- Keyboard focus (keyboard-focus): use button/focus-ring (from the brand) at focus.ring.width; not Removing the outline; Focus follows the brand but always shows.
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Customers are often on phones.
 - The action that completes the task (commit-action): use Button primary, one per view; not Two primaries; One clear action per view. Two primaries split attention.
 - An alternative or cancel (alternative-action): use Button secondary; not A second primary; The alternative steps back, so the one primary stays clear. A second primary would compete with it.
@@ -861,7 +862,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - Something that grows past one line (growing-element): use radius.element; not radius.control; (set by the brand). A brand with pill controls would turn a text area into a capsule. The element corner stays sane in every brand.
 - Corners of cards, menus and dialogs (surface-corner): use radius.surface; not A hard-coded radius; (set by the brand). Each brand sets its own card corner; the role stays shared.
 - Edges and dividers (edges-and-dividers): use border-width.default; not A brand-specific border width; One thin edge serves every brand. Color carries the brand, not line weight.
-- The gap around a focus ring (focus-gap): use border-width.focus-offset and border-width.focus; not A ring that touches the control; The gap sits around a ring of border-width.focus. The ring and its gap stay the same in every brand, so focus shows on any brand color.
+- The gap around a focus ring (focus-gap): use focus.ring.offset; not A ring that touches the control; The gap sits around a ring of focus.ring.width. The ring and its gap stay the same in every brand, so focus shows on any brand color.
 - A panel opens (panel-opens): use motion.duration.panels; not Brand-specific motion; A relaxed open guides customers through sign-up the same way in every brand.
 - The curve of any move (any-transition): use motion.easing.standard; not A brand-specific curve; One calm curve keeps the shared components the same in every brand.
 - A hero or launch moment (hero-motion): use No hero motion; not An intro animation for one brand; A brand-only animation would break the shared library.
@@ -869,7 +870,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - Most buttons and inputs (most-controls): use size.control.default; not size.control.compact; Customers sign up on phones, so every control fits a thumb in every brand.
 - The main action on a screen (main-action): use size.control.large; not A taller button for one brand; It is the same height as the default here. Brand color marks the main action. One height keeps every brand's forms the same.
 - A button inside a field (control-inside-field): use size.control.compact; not size.control.default; A clear or show-password button fits inside the field in every brand.
-- A control that is not available yet (unavailable-control): use opacity.disabled; not A grey color per brand; One fade level works on every brand color, so no brand needs its own disabled color.
+- A control that is not available yet (unavailable-control): use color.disabled.*, never opacity; not A grey color per brand; One set of muted colors works under every brand, and the label stays readable where a fade would lose it.
 
 ### Voice and tone
 

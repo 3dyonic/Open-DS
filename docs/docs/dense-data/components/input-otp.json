@@ -269,7 +269,7 @@
      "themed": false,
      "chain": {
       "token": "component.input-otp.slot.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "input-otp-slot-focus-width"
      },
      "values": [
@@ -303,7 +303,7 @@
      "themed": false,
      "chain": {
       "token": "component.input-otp.slot.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "input-otp-slot-focus-offset"
      },
      "values": [

@@ -150,15 +150,19 @@
       " floor."
      ],
      "darkPick": [
-      "neutral.600: the quietest text that still reads, ",
+      "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ",
       {
-       "ratio": 8.89
+       "ratio": 7.67
       },
-      " on surface.default, above the ",
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, the lightest surface it meets. Raised layers fall under ",
       {
        "ratio": 7
       },
-      " floor."
+      " by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition)."
      ],
      "shares": [
       "border.strong",
@@ -189,7 +193,7 @@
      "semantic": "color.status.danger",
      "key": "label.label",
      "value": "#981519",
-     "darkValue": "#F28B8B",
+     "darkValue": "#FEDBDA",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
      "pick": [
@@ -204,15 +208,27 @@
       " floor."
      ],
      "darkPick": [
-      "red.dark.600: danger reads as text and icons, ",
-      {
-       "ratio": 7.76
-      },
-      " on surface.default, above the ",
+      "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at ",
       {
        "ratio": 7
       },
-      " floor."
+      " in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading ",
+      {
+       "ratio": 12.39
+      },
+      " on surface.default and ",
+      {
+       "ratio": 9.84
+      },
+      " on surface.raised. Below it, the key (red.dark.600) gives ",
+      {
+       "ratio": 5.32
+      },
+      " and red.dark.700 ",
+      {
+       "ratio": 6.8
+      },
+      " on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands)."
      ],
      "shares": [
       "action.danger"
@@ -277,7 +293,7 @@
      "semantic": "color.status.danger",
      "key": "message.label",
      "value": "#981519",
-     "darkValue": "#F28B8B",
+     "darkValue": "#FEDBDA",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
      "pick": [
@@ -292,15 +308,27 @@
       " floor."
      ],
      "darkPick": [
-      "red.dark.600: danger reads as text and icons, ",
-      {
-       "ratio": 7.76
-      },
-      " on surface.default, above the ",
+      "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at ",
       {
        "ratio": 7
       },
-      " floor."
+      " in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading ",
+      {
+       "ratio": 12.39
+      },
+      " on surface.default and ",
+      {
+       "ratio": 9.84
+      },
+      " on surface.raised. Below it, the key (red.dark.600) gives ",
+      {
+       "ratio": 5.32
+      },
+      " and red.dark.700 ",
+      {
+       "ratio": 6.8
+      },
+      " on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands)."
      ],
      "shares": [
       "action.danger"

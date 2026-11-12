@@ -146,13 +146,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
@@ -166,7 +166,7 @@
      "semantic": "color.border.focus",
      "key": "focus-ring-focus",
      "value": "#0B4FC0",
-     "darkValue": "#8AB4F8",
+     "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": [
@@ -181,15 +181,23 @@
       " floor."
      ],
      "darkPick": [
-      "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at ",
       {
-       "ratio": 8.74
+       "ratio": 7
       },
-      " on surface.default, above the ",
+      " where focus moves through menus and dialogs. The ring does this by reading ",
       {
-       "ratio": 3
+       "ratio": 9.33
       },
-      " floor."
+      " on surface.default and ",
+      {
+       "ratio": 7.41
+      },
+      " on surface.raised, where the key step (blue.dark.600) gave ",
+      {
+       "ratio": 6
+      },
+      " on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition)."
      ],
      "shares": [
       "border.selected",
@@ -199,7 +207,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -226,7 +234,7 @@
      "darkPick": [
       "neutral.0, under content: ",
       {
-       "ratio": 1.07
+       "ratio": 1.24
       },
       " from surface.default, so cards and panels stand forward."
      ],

@@ -231,7 +231,7 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "Reduced motion",
+     "use": "Fades only; nothing moves",
      "not": "full motion",
      "why": "Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less."
     },
@@ -296,7 +296,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus must show on vivid color."
     },
@@ -338,7 +338,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
@@ -349,7 +349,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -395,14 +395,23 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.border",
+     "key": "disabled-track",
+     "value": "#F2DCCF",
+     "darkValue": "#4D3A33",
      "byScheme": true,
+     "rule": "The edge of a control that cannot be used right now.",
      "pick": [
-      "opacity.40"
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
      ],
-     "shares": []
+     "darkPick": [
+      "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "shares": [
+      "surface.pressed",
+      "border.default",
+      "border.raised"
+     ]
     }
    ]
   }

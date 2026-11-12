@@ -47,23 +47,6 @@
    ],
    "rows": [
     {
-     "group": "Slider",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.slider.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "slider-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
      "group": "Track",
      "part": "Corner",
      "when": "",
@@ -105,10 +88,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -228,26 +211,9 @@
       {
        "theme": "Dark",
        "swatch": {
-        "shadow": "0px 12px 32px 0px #00000080"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
-      }
-     ]
-    },
-    {
-     "group": "Thumb",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.slider.thumb.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "slider-thumb-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
+       "text": "shadow.none"
       }
      ]
     },
@@ -258,7 +224,7 @@
      "themed": false,
      "chain": {
       "token": "component.slider.thumb.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "slider-thumb-focus"
      },
      "values": [
@@ -333,7 +299,7 @@
      "themed": false,
      "chain": {
       "token": "component.slider.thumb.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "slider-thumb-focus-offset"
      },
      "values": [
@@ -386,6 +352,110 @@
        },
        "token": "taupe.dark.50",
        "text": "#1F1411"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.hit-area",
+      "alias": "size.hit-area",
+      "variable": "slider-thumb-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "slider-thumb-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "slider-thumb-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Range",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.disabled.range",
+      "alias": "color.disabled.border",
+      "variable": "slider-disabled-range"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
       }
      ]
     }
