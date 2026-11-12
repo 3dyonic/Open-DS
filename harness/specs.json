@@ -585,6 +585,18 @@
       "checks": ["values-traced", "reasons-explain-values", "decisions-cover-values", "json-files-validate"]
     },
     {
+      "id": "OD-294",
+      "title": "Spacing by use case and the control scale: values from a base, a multiple and a step",
+      "in": [
+        "the grammar's spacing scope names the use-case words (level, relation, reach) and the job of each spacing property",
+        "each scheme records on its space group a base and, per space token, a use case and a multiple; the value is base × multiple",
+        "each scheme records on its size group the control scale: the default height, the step, the steps of compact and large, and the row",
+        "the values are computed once when the scheme is written (scripts/spacing-use-cases.mjs); the harness compares them with the generator",
+        "every space, control and row reason names its value, its job and its use case or mechanism"
+      ],
+      "checks": ["spacing-use-cases-generated", "reasons-explain-values", "json-files-validate"]
+    },
+    {
       "id": "OD-285",
       "title": "Icons follow each scheme: one Lucide set, the scheme's size and stroke, and an Icon component for content",
       "in": [

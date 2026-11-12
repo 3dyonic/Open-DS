@@ -815,7 +815,10 @@
           "considers": {
             "type": "object",
             "description": "For a question that lists what an answer must weigh (OD-245): how this answer meets each one, by its id.",
-            "additionalProperties": { "type": "string", "minLength": 1 }
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
           },
           "question": {
             "type": "string",
@@ -1034,7 +1037,7 @@
           "description": "Open DS decisions on a group that are not values.",
           "properties": {
             "open-ds": {
-              "description": "Open DS decisions on a group: how a hue's scales are generated, or the component spacing map's rhythm.",
+              "description": "Open DS decisions on a group: how a hue's scales are generated, the component spacing map's rhythm, the spacing record or the control scale.",
               "anyOf": [
                 {
                   "type": "object",
@@ -1059,6 +1062,12 @@
                 },
                 {
                   "$ref": "#/$defs/spacingMapSpec"
+                },
+                {
+                  "$ref": "#/$defs/spacingUseCaseSpec"
+                },
+                {
+                  "$ref": "#/$defs/controlScaleSpec"
                 }
               ]
             }
@@ -1179,7 +1188,10 @@
                 "because": {
                   "type": "array",
                   "minItems": 1,
-                  "items": { "type": "string", "pattern": "^[a-z]+\\.[a-z0-9-]+$" },
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z]+\\.[a-z0-9-]+$"
+                  },
                   "description": "On a theme pick: the answers the step follows from."
                 },
                 "tone": {
@@ -1279,6 +1291,139 @@
           "type": "string",
           "minLength": 1,
           "description": "The reason, in plain words."
+        }
+      }
+    },
+    "spacingUseCaseSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base", "use-cases", "follows", "why"],
+      "description": "On the space group (OD-294): the spacing record. Each space token has a use case and a multiple; its value is base × multiple.",
+      "properties": {
+        "base": {
+          "type": "integer",
+          "enum": [4, 8],
+          "description": "The base step in px. The spacing.definition answer sets it: small steps on a 4px grid take 4, big even steps take 8."
+        },
+        "use-cases": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "pattern": "^(gap|inset)\\.[a-z][a-z0-9-]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/spacingUseCase"
+          },
+          "description": "Each space token's use case and multiple, by its path under space, for example gap.tight."
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
+          },
+          "description": "The answers the record is written from. It is an output of those answers, so it gives no reason to the space tokens: each token keeps its own."
+        },
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The reason for the base and the multiples, in plain words."
+        }
+      }
+    },
+    "spacingUseCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "relation", "multiple"],
+      "description": "One space token's use case, in the words of the grammar's spacing use_cases, and its multiple of the base.",
+      "properties": {
+        "level": {
+          "enum": ["component", "layout"],
+          "description": "Component: inside one component. Layout: between components."
+        },
+        "relation": {
+          "enum": ["inner", "container"],
+          "description": "Inner: between parts of one thing. Container: the padding of a box around things."
+        },
+        "reach": {
+          "enum": ["inline", "section"],
+          "description": "Inline: along one line. Section: between blocks. Left out when the space works both along a line and between blocks."
+        },
+        "multiple": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 16,
+          "multipleOf": 0.5,
+          "description": "How many base steps the space is: whole or a half."
+        }
+      }
+    },
+    "controlScaleSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default", "step", "steps", "row", "follows", "why"],
+      "description": "On the size group (OD-294): the control scale. A control height is default + step × its step; the row is the default plus its px. size.icon is not on it.",
+      "properties": {
+        "default": {
+          "type": "integer",
+          "minimum": 16,
+          "maximum": 96,
+          "description": "The default control height in px. The accessibility.values answer (the target size) sets it."
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 16,
+          "description": "The px between two steps on the control scale."
+        },
+        "steps": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["compact", "large"],
+          "description": "The step of compact and large on the control scale. Default is step 0.",
+          "properties": {
+            "compact": {
+              "type": "integer",
+              "minimum": -4,
+              "maximum": -1,
+              "description": "Below default: a negative whole step."
+            },
+            "large": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4,
+              "description": "At or above default. 0 when the scheme has no hero action, so large equals default."
+            }
+          }
+        },
+        "row": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["plus"],
+          "description": "How the table row relates to the control scale: one default control tall, plus some px.",
+          "properties": {
+            "plus": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32,
+              "description": "The px the row adds to the default control height. 0 when the scheme has no row role: the row takes the default."
+            }
+          }
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
+          },
+          "description": "The answers the scale is written from. It is an output of those answers, so it gives no reason to the size tokens: each token keeps its own."
+        },
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The reason for the default, the step and the row, in plain words."
         }
       }
     }

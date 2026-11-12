@@ -5471,68 +5471,236 @@
     },
     "semantic": {
       "space": {
+        "$extensions": {
+          "open-ds": {
+            "base": 4,
+            "use-cases": {
+              "gap.tight": {
+                "level": "component",
+                "relation": "inner",
+                "reach": "inline",
+                "multiple": 1
+              },
+              "gap.default": {
+                "level": "component",
+                "relation": "inner",
+                "multiple": 2
+              },
+              "gap.group": {
+                "level": "layout",
+                "relation": "inner",
+                "multiple": 4
+              },
+              "gap.section": {
+                "level": "layout",
+                "relation": "inner",
+                "reach": "section",
+                "multiple": 6
+              },
+              "inset.control-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 3
+              },
+              "inset.cell-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 3
+              },
+              "inset.container": {
+                "level": "layout",
+                "relation": "container",
+                "multiple": 4
+              }
+            },
+            "follows": [
+              "spacing.definition",
+              "spacing.values"
+            ],
+            "why": "Small steps on a 4px grid give a 4px base. Compact density keeps the multiples low: parts of one item sit one step apart, groups four and sections six."
+          }
+        },
         "gap": {
           "tight": {
             "$type": "dimension",
             "$value": "{space.4}",
-            "$description": "Between things that belong together."
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 4px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 4px), the smallest gap on the 4px grid. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each item in a dense row reads as one unit, because steps are small, on a 4px grid (spacing.definition), and the layout is compact (spacing.values).",
+                "because": [
+                  "spacing.definition",
+                  "spacing.values"
+                ]
+              }
+            }
           },
           "default": {
             "$type": "dimension",
             "$value": "{space.8}",
-            "$description": "Between items in one group."
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 8px for the default gap between the items of one group in order to group and separate: two base steps (2 × 4px), twice the tight gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So analysts tell one record from the next while a list stays close, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
+                "because": [
+                  "spacing.values",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "group": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Between groups."
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 4px), four tight gaps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So a new group starts without pushing records off the screen, because the layout is compact (spacing.values) and people must keep their place (human.q1).",
+                "because": [
+                  "spacing.values",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "section": {
             "$type": "dimension",
             "$value": "{space.24}",
-            "$description": "Between page sections."
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the section gap between page sections in order to group and separate: six base steps (6 × 4px), half again the group gap. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So sections part with a hairline and little space, and the data keeps the room, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
+                "because": [
+                  "spacing.values",
+                  "content.q2"
+                ]
+              }
+            }
           }
         },
         "inset": {
           "control-x": {
             "$type": "dimension",
             "$value": "{space.12}",
-            "$description": "Horizontal padding inside controls."
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 12px for the inline padding inside controls in order to give content room inside its box: three base steps (3 × 4px), the same as a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So buttons stay short and a toolbar holds every action an expert repeats, because actions repeat constantly (tasks.q2) and the layout is compact (spacing.values).",
+                "because": [
+                  "tasks.q2",
+                  "spacing.values"
+                ]
+              }
+            }
           },
           "container": {
             "$type": "dimension",
             "$value": "{space.16}",
-            "$description": "Padding inside cards and dialogs."
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 4px), the same as the group gap. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So content starts close to the edge of its box, because experts want a lot on one screen (content.q2) and the layout is compact (spacing.values).",
+                "because": [
+                  "content.q2",
+                  "spacing.values"
+                ]
+              }
+            }
           },
           "cell-x": {
             "$type": "dimension",
             "$value": "{space.12}",
-            "$description": "Horizontal padding inside table cells."
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 12px for the inline padding inside table cells in order to give content room inside its box: three base steps (3 × 4px), the same as a control. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So more columns fit, and values in two columns still stay apart, because people scan and compare rows (tasks.q1) and the layout is compact (spacing.values).",
+                "because": [
+                  "tasks.q1",
+                  "spacing.values"
+                ]
+              }
+            }
           }
         }
       },
       "size": {
+        "$extensions": {
+          "open-ds": {
+            "default": 32,
+            "step": 8,
+            "steps": {
+              "compact": -1,
+              "large": 0
+            },
+            "row": {
+              "plus": 0
+            },
+            "follows": [
+              "accessibility.values",
+              "spacing.roles"
+            ],
+            "why": "A pointer target sets the 32px default. Compact is one 8px step below it; large equals the default, as the scheme has no hero action. Rows are a decision of their own and stay one control tall."
+          }
+        },
         "control": {
           "default": {
             "$type": "dimension",
             "$value": "{size.32}",
-            "$description": "Height of buttons and inputs, and the smallest target."
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for buttons and inputs in order to make a hit target: the pointer target size, step 0 of the control scale, a 32px hit area above the 24px WCAG 2.5.8 floor. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a mouse and toolbars stay short, because the smallest target is compact, for a pointer (accessibility.values), and experts work at a desk (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
           },
           "compact": {
             "$type": "dimension",
             "$value": "{size.24}",
-            "$description": "Height of compact controls."
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for compact controls, such as a clear button inside a field, in order to make a hit target: one 8px step below the 32px default on the control scale, a 24px hit area that is exactly the WCAG 2.5.8 floor at AA, with no margin. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So a small button fits inside a field, and the field keeps its row height, because the smallest target is compact, for a pointer (accessibility.values), and experts use a mouse at a desk (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
           },
           "large": {
             "$type": "dimension",
             "$value": "{size.32}",
-            "$description": "Height of large controls. Not used in this system, so it equals the default."
+            "$description": "Height of large controls. Not used in this system, so it equals the default.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for large controls in order to make a hit target: the default's step on the control scale and the default's 32px hit area, as the scheme has no hero action. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So toolbar buttons stay in line, and color and place mark the main action, because actions take three emphasis levels with one primary per view (color.count), and the smallest target is compact (accessibility.values).",
+                "because": [
+                  "color.count",
+                  "accessibility.values"
+                ]
+              }
+            }
           }
         },
         "row": {
           "$type": "dimension",
           "$value": "{size.32}",
-          "$description": "Height of one table row."
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 32px for one table row in order to keep the eye on its row: a row one 32px default control tall and no more, as rows are a decision of their own here and a row holds controls. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So more records fit, and a control in a row fills its height, because row heights are a spacing role (spacing.roles) and the layout is compact (spacing.values).",
+              "because": [
+                "spacing.roles",
+                "spacing.values"
+              ]
+            }
+          }
         },
         "icon": {
           "$type": "dimension",
