@@ -12,10 +12,10 @@ export function Switch({ className, ...props }: React.ComponentProps<typeof Swit
     <SwitchPrimitive.Root
       data-slot="switch"
       className={cn(
-        "peer inline-flex h-[calc(var(--switch-height)*1.25)] w-[calc(var(--switch-width)*2.25)] shrink-0 items-center rounded-[var(--switch-radius)] p-[var(--switch-padding)]",
+        "peer relative after:absolute after:top-1/2 after:left-1/2 after:h-[max(100%,var(--switch-hit-area))] after:w-[max(100%,var(--switch-hit-area))] after:-translate-x-1/2 after:-translate-y-1/2 after:content-[''] inline-flex h-[calc(var(--switch-height)*1.25)] w-[calc(var(--switch-width)*2.25)] shrink-0 items-center rounded-[var(--switch-radius)] p-[var(--switch-padding)]",
         "bg-[var(--switch-track-background)] data-[state=checked]:bg-[var(--switch-track-background-checked)]",
         "transition-colors duration-[var(--transition-duration)] ease-[var(--transition-easing)]",
-        "outline-none focus-visible:ring-[length:var(--switch-focus)] focus-visible:ring-[color:var(--switch-focus-ring)] disabled:opacity-[var(--switch-disabled)] focus-visible:ring-offset-[length:var(--switch-focus-offset)] focus-visible:ring-offset-[color:var(--switch-focus-ring-offset)]",
+        "outline-none focus-visible:ring-[length:var(--switch-focus)] focus-visible:ring-[color:var(--switch-focus-ring)] disabled:bg-[var(--switch-disabled-track)] disabled:data-[state=checked]:bg-[var(--switch-disabled-track)] focus-visible:ring-offset-[length:var(--switch-focus-offset)] focus-visible:ring-offset-[color:var(--switch-focus-ring-offset)]",
         className,
       )}
       {...props}

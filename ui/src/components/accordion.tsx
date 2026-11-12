@@ -21,7 +21,10 @@ function AccordionItem({ className, ...props }: React.ComponentProps<typeof Acco
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("border-b-[length:var(--accordion-item-divider-width)] border-[color:var(--accordion-item-divider)] last:border-b-0", className)}
+      className={cn(
+        "border-b-[length:var(--accordion-item-divider-width)] border-[color:var(--accordion-item-divider)] last:border-b-0",
+        className,
+      )}
       {...props}
     />
   );
@@ -33,13 +36,16 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "flex flex-1 items-start justify-between gap-[var(--accordion-trigger-gap)] rounded-[var(--accordion-trigger-radius)] py-[var(--accordion-trigger-padding-y)] text-left text-[length:var(--accordion-trigger-font-size)] [font-weight:var(--accordion-trigger-font-weight)] text-[color:var(--accordion-trigger-label)] transition-all outline-none hover:underline disabled:pointer-events-none disabled:opacity-[var(--accordion-trigger-disabled-opacity)] focus-visible:ring-[length:var(--accordion-trigger-focus-ring-width)] focus-visible:ring-[color:var(--accordion-trigger-focus-ring)] focus-visible:ring-offset-[length:var(--accordion-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--accordion-trigger-focus-ring-offset-focus)] [&[data-state=open]>svg]:rotate-180",
+          "flex flex-1 items-start justify-between gap-[var(--accordion-trigger-gap)] rounded-[var(--accordion-trigger-radius)] py-[var(--accordion-trigger-padding-y)] text-left text-[length:var(--accordion-trigger-font-size)] [font-weight:var(--accordion-trigger-font-weight)] text-[color:var(--accordion-trigger-label)] transition-all outline-none hover:underline disabled:pointer-events-none disabled:text-[color:var(--accordion-trigger-disabled-label)] disabled:[&_svg]:text-[color:var(--accordion-trigger-disabled-label)]! focus-visible:ring-[length:var(--accordion-trigger-focus-ring-width)] focus-visible:ring-[color:var(--accordion-trigger-focus-ring)] focus-visible:ring-offset-[length:var(--accordion-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--accordion-trigger-focus-ring-offset-focus)] [&[data-state=open]>svg]:rotate-180",
           className,
         )}
         {...props}
       >
         {children}
-        <ChevronDownIcon data-slot="accordion-icon" className="pointer-events-none size-[var(--accordion-icon-size)] shrink-0 translate-y-0.5 text-[color:var(--accordion-icon)] transition-transform duration-[var(--accordion-icon-duration)]" />
+        <ChevronDownIcon
+          data-slot="accordion-icon"
+          className="pointer-events-none size-[var(--accordion-icon-size)] shrink-0 translate-y-0.5 text-[color:var(--accordion-icon)] transition-transform duration-[var(--accordion-icon-duration)]"
+        />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );

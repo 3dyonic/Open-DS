@@ -68,7 +68,7 @@ export function SelectItem({ className, children, ...props }: React.ComponentPro
       data-slot="select-item"
       className={cn(
         "relative flex w-full cursor-default select-none items-center gap-[var(--select-item-gap)] pl-[var(--select-item-padding-left)] pr-[var(--select-item-padding-right)] min-h-[var(--overlay-item-height)] rounded-[var(--select-item-radius)]",
-        "text-[length:var(--select-item-font-size)] outline-none focus:bg-[var(--select-item-background-highlight)] data-[disabled]:opacity-[var(--select-item-disabled)]",
+        "text-[length:var(--select-item-font-size)] outline-none focus:bg-[var(--select-item-background-highlight)] data-[disabled]:text-[color:var(--select-item-disabled-label)]",
         className,
       )}
       {...props}

@@ -31,7 +31,7 @@ function AlertDialogOverlay({ className, ...props }: React.ComponentProps<typeof
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-[var(--alert-dialog-overlay-background)] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 duration-[var(--transition-panels-duration)]",
+        "fixed inset-0 z-50 bg-[var(--alert-dialog-overlay-background)] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 duration-[var(--transition-panels-duration)] data-[state=open]:ease-[var(--transition-enter-easing)] data-[state=closed]:ease-[var(--transition-exit-easing)] data-[state=closed]:duration-[var(--transition-exit-duration)]",
         className,
       )}
       {...props}
@@ -53,7 +53,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-[var(--alert-dialog-content-gap)] rounded-[var(--alert-dialog-content-radius)] border-[length:var(--alert-dialog-content-border-width)] border-[color:var(--alert-dialog-content-border)] bg-[color:var(--alert-dialog-content-background)] text-[color:var(--alert-dialog-content-label)] p-[var(--alert-dialog-content-padding)] shadow-[var(--alert-dialog-content-shadow)] data-[size=sm]:max-w-xs data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[size=default]:sm:max-w-lg duration-[var(--transition-panels-duration)]",
+          "group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-[var(--alert-dialog-content-gap)] rounded-[var(--alert-dialog-content-radius)] border-[length:var(--alert-dialog-content-border-width)] border-[color:var(--alert-dialog-content-border)] bg-[color:var(--alert-dialog-content-background)] text-[color:var(--alert-dialog-content-label)] p-[var(--alert-dialog-content-padding)] shadow-[var(--alert-dialog-content-shadow)] data-[size=sm]:max-w-xs data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[size=default]:sm:max-w-lg duration-[var(--transition-panels-duration)] data-[state=open]:ease-[var(--transition-enter-easing)] data-[state=closed]:ease-[var(--transition-exit-easing)] data-[state=closed]:duration-[var(--transition-exit-duration)]",
           className,
         )}
         {...props}
