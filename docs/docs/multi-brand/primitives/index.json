@@ -164,7 +164,7 @@
     },
     {
      "title": "Motion",
-     "text": "3 primitives · 3 in use",
+     "text": "4 primitives · 4 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -173,14 +173,14 @@
      "samples": [
       {
        "kind": "duration",
-       "value": "200ms",
-       "note": "200ms"
+       "value": "150ms",
+       "note": "150ms"
       }
      ],
      "meter": {
-      "value": 3,
-      "max": 3,
-      "label": "3 of 3 in use"
+      "value": 4,
+      "max": 4,
+      "label": "4 of 4 in use"
      }
     },
     {
@@ -202,7 +202,7 @@
       },
       {
        "kind": "shadow",
-       "value": "0px 2px 8px 0px #00000066"
+       "value": "0px 12px 32px 0px #00000080"
       }
      ],
      "meter": {

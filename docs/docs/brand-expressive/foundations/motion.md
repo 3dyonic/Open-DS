@@ -30,8 +30,13 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `motion.duration.feedback` | `duration.fast` |
 | `motion.duration.panels` | `duration.moderate` |
+| `motion.duration.exit` | `duration.fast` |
 | `motion.duration.hero` | `duration.relaxed` |
-| `motion.easing.standard` | `easing.spring` |
+| `motion.easing.standard` | `easing.standard` |
+| `motion.easing.enter` | `easing.standard` |
+| `motion.easing.exit` | `easing.strong-out` |
+| `motion.easing.exit-offscreen` | `easing.accelerate` |
+| `motion.easing.emphasize` | `easing.spring` |
 
 The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 
@@ -39,8 +44,8 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Hover and press feedback | motion.duration.feedback (fast) | An instant change | Fast feedback, on the brand's spring. An instant change drops the brand's motion. |
-| Someone asked for less motion | Reduced motion | Full motion | Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less. |
-| A panel opens | motion.duration.panels | A flat fade | Panels open on the brand's spring, so people feel the brand in every menu. |
-| The curve of any move | motion.easing.standard | A plain ease-out | The overshoot makes each move feel alive and playful. |
+| Hover and press feedback | motion.duration.feedback (fast) | An instant change | Fast feedback on an ease-out. The brand's spring waits for the moments that deserve it. |
+| Someone asked for less motion | Fades only; nothing moves | Full motion | Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less. |
+| A panel opens | motion.duration.panels | A flat fade | Panels open on an ease-out at a moderate speed, so menus feel quick and the brand shows in its big moments. |
+| The curve of any move | motion.easing.standard | A plain ease-out | An ease-out keeps every menu and button quick. The overshoot is kept for emphasis, where it feels alive and playful. |
 | A hero or launch moment | motion.duration.hero | motion.duration.panels | Hero and launch moments move slowest, so every visitor sees the launch. |

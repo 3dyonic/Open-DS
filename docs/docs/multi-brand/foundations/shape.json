@@ -129,36 +129,6 @@
        "why": "One thin edge serves every brand. Color carries the brand, not line weight."
       }
      ]
-    },
-    {
-     "title": "Focus ring",
-     "sample": {
-      "kind": "focus"
-     },
-     "api": [
-      {
-       "token": "border-width.focus",
-       "value": "2px"
-      },
-      {
-       "token": "border-width.focus-offset",
-       "value": "2px"
-      },
-      {
-       "token": "color.border.focus",
-       "primitive": "color.teal.light.600",
-       "value": "#0F766E",
-       "dark": "#7FCFC6"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "The gap around a focus ring",
-       "detail": "border-width.focus-offset and border-width.focus",
-       "why": "The gap sits around a ring of border-width.focus. The ring and its gap stay the same in every brand, so focus shows on any brand color."
-      }
-     ]
     }
    ]
   }

@@ -49,7 +49,7 @@
      "themed": true,
      "chain": {
       "token": "component.card.background",
-      "alias": "color.surface.default",
+      "alias": "color.surface.raised",
       "variable": "card-background"
      },
      "values": [
@@ -64,10 +64,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Birch Light",
@@ -80,10 +80,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Coral Light",
@@ -96,10 +96,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       }
      ]
     },
@@ -110,7 +110,7 @@
      "themed": true,
      "chain": {
       "token": "component.card.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "card-border"
      },
      "values": [
@@ -263,9 +263,9 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Birch Light",
@@ -277,9 +277,9 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Coral Light",
@@ -291,9 +291,9 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },

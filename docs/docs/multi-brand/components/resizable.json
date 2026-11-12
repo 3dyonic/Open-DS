@@ -110,7 +110,7 @@
      "themed": false,
      "chain": {
       "token": "component.resizable.handle.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "resizable-handle-focus"
      },
      "values": [
@@ -266,7 +266,7 @@
      "themed": false,
      "chain": {
       "token": "component.resizable.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "resizable-focus-offset"
      },
      "values": [

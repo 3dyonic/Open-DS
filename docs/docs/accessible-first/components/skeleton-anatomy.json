@@ -81,11 +81,11 @@
      "semantic": "color.surface.sunken",
      "key": "background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -114,9 +114,9 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "No motion",
+     "use": "Fades only; nothing moves",
      "not": "reduced motion",
-     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+     "why": "Movement can make some people dizzy, so it stops. A short fade or a color change still shows that something changed."
     }
    ]
   }

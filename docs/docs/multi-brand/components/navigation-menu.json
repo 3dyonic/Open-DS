@@ -72,7 +72,58 @@
      "values": [
       {
        "token": "duration.relaxed",
-       "text": "320ms"
+       "text": "300ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "150ms"
       }
      ]
     },
@@ -106,7 +157,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -166,10 +217,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Birch Light",
@@ -182,10 +233,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Coral Light",
@@ -198,10 +249,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       }
      ]
     },
@@ -389,7 +440,7 @@
      "themed": true,
      "chain": {
       "token": "component.navigation-menu.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "navigation-menu-content-border"
      },
      "values": [
@@ -543,10 +594,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Birch Light",
@@ -559,10 +610,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Coral Light",
@@ -575,10 +626,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       }
      ]
     },
@@ -1032,10 +1083,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1048,10 +1099,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1064,10 +1115,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1093,10 +1144,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1109,10 +1160,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1125,10 +1176,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1400,7 +1451,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.link.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "navigation-menu-link-focus-offset"
      },
      "values": [
@@ -1417,7 +1468,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.link.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "navigation-menu-link-focus-width"
      },
      "values": [
@@ -1434,7 +1485,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.link.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "navigation-menu-link-edge-width-current"
      },
      "values": [
@@ -1588,10 +1639,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1604,10 +1655,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1620,10 +1671,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1649,10 +1700,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1665,10 +1716,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1681,10 +1732,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1710,10 +1761,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1726,10 +1777,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1742,10 +1793,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1771,10 +1822,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1787,10 +1838,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1803,10 +1854,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1832,10 +1883,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1848,10 +1899,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1864,10 +1915,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1878,7 +1929,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "navigation-menu-trigger-focus-offset"
      },
      "values": [
@@ -2141,29 +2192,12 @@
     },
     {
      "group": "Trigger",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.navigation-menu.trigger.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "navigation-menu-trigger-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Trigger",
      "part": "Focus width",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.trigger.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "navigation-menu-trigger-focus-width"
      },
      "values": [
@@ -2370,6 +2404,67 @@
       {
        "token": "space.8",
        "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.navigation-menu.trigger.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "navigation-menu-trigger-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
       }
      ]
     },

@@ -233,23 +233,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.radio-group.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "radio-group-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Border invalid",
      "when": "when invalid",
      "themed": true,
@@ -313,7 +296,7 @@
      "themed": false,
      "chain": {
       "token": "component.radio-group.item.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "radio-group-item-focus"
      },
      "values": [
@@ -388,7 +371,7 @@
      "themed": false,
      "chain": {
       "token": "component.radio-group.item.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "radio-group-item-focus-offset"
      },
      "values": [
@@ -412,6 +395,110 @@
       {
        "token": "border-width.2",
        "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.radio-group.item.hit-area",
+      "alias": "size.hit-area",
+      "variable": "radio-group-item-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.radio-group.item.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "radio-group-item-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.radio-group.item.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "radio-group-item-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D6D6D6"
+       },
+       "token": "gray.light.200",
+       "text": "#D6D6D6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#333333"
+       },
+       "token": "gray.dark.200",
+       "text": "#333333"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled indicator",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.radio-group.item.disabled.indicator",
+      "alias": "color.disabled.text",
+      "variable": "radio-group-item-disabled-indicator"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     }

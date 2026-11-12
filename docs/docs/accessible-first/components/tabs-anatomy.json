@@ -94,13 +94,14 @@
      "semantic": "color.border.default",
      "key": "list.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest 1.8:1, on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values).",
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -172,7 +173,7 @@
      "byScheme": true,
      "rule": "Body text and headings.",
      "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "surface.inverse"
      ]
@@ -220,7 +221,7 @@
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
      "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "blue.dark.100: a tint of the brand, 1.04:1 from content, always beside its edge (border.selected), so selection is never color alone.",
      "shares": [
       "category.1.subtle"
      ]
@@ -234,7 +235,7 @@
      "byScheme": true,
      "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
      "pick": "blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.focus",
       "action.primary",
@@ -264,7 +265,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -277,7 +278,7 @@
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.selected",
       "action.primary",
@@ -286,7 +287,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "trigger.focus-width",
      "value": "3px",
      "byScheme": true,
@@ -295,7 +296,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "trigger.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -311,7 +312,7 @@
      "byScheme": true,
      "rule": "The page background behind everything.",
      "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
      "shares": []
     }
    ]

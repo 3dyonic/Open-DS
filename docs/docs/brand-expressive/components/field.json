@@ -291,6 +291,23 @@
      ]
     },
     {
+     "group": "Group",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.group.hit-area",
+      "alias": "size.hit-area",
+      "variable": "field-group-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
      "group": "Field",
      "part": "Gap",
      "when": "",
@@ -384,23 +401,6 @@
       {
        "token": "space.16",
        "text": "1rem"
-      }
-     ]
-    },
-    {
-     "group": "Text",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.field.label.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "field-label-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
       }
      ]
     },
@@ -576,6 +576,35 @@
       {
        "token": "border-width.2",
        "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Disabled text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.field.label.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "field-label-disabled-text"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     },

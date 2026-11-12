@@ -111,7 +111,7 @@
      "byScheme": true,
      "rule": "The quietest text.",
      "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "border.strong",
       "category.5",
@@ -136,7 +136,7 @@
      "byScheme": true,
      "rule": "Body text and headings.",
      "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "surface.inverse"
      ]
@@ -145,7 +145,7 @@
      "kind": "token",
      "semantic": "motion.duration.feedback",
      "key": "link.duration",
-     "value": "200ms",
+     "value": "150ms",
      "byScheme": true,
      "pick": "duration.moderate",
      "shares": []
@@ -155,7 +155,7 @@
      "semantic": "motion.easing.standard",
      "key": "link.easing",
      "value": "[0.2,0,0,1]",
-     "byScheme": true,
+     "byScheme": false,
      "pick": "easing.standard",
      "shares": []
     }
@@ -256,7 +256,7 @@
      "byScheme": true,
      "rule": "Body text and headings.",
      "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "surface.inverse"
      ]
@@ -284,7 +284,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -297,7 +297,7 @@
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.selected",
       "action.primary",
@@ -306,7 +306,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "link.focus-width",
      "value": "3px",
      "byScheme": true,
@@ -315,7 +315,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "link.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -331,7 +331,7 @@
      "byScheme": true,
      "rule": "The page background behind everything.",
      "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
      "shares": []
     }
    ]

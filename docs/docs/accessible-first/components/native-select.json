@@ -241,7 +241,7 @@
      "themed": false,
      "chain": {
       "token": "component.native-select.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "native-select-focus"
      },
      "values": [
@@ -391,7 +391,7 @@
      "themed": false,
      "chain": {
       "token": "component.native-select.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "native-select-focus-offset"
      },
      "values": [
@@ -431,7 +431,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -641,10 +641,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#222222"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.100",
+       "text": "#222222"
       }
      ]
     },

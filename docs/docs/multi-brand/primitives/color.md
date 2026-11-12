@@ -14,7 +14,7 @@ Each color is a whole scale in each theme. The lanes show what its tokens paint:
 
 ## Slate deep
 
-22 tokens in light, 17 tokens in dark.
+23 tokens in light, 18 tokens in dark.
 
 ::color-scale{id="slate-deep"}
 

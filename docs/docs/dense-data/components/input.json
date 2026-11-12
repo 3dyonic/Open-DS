@@ -241,7 +241,7 @@
      "themed": false,
      "chain": {
       "token": "component.input.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "input-focus"
      },
      "values": [
@@ -258,7 +258,7 @@
      "themed": false,
      "chain": {
       "token": "component.input.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "input-focus-offset"
      },
      "values": [

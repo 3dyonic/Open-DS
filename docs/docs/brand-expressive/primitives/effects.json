@@ -49,20 +49,6 @@
      ]
     },
     {
-     "primitive": "shadow.card-dark",
-     "value": "0px 12px 32px 0px #00000080",
-     "sample": {
-      "kind": "shadow",
-      "value": "0px 12px 32px 0px #00000080"
-     },
-     "usedBy": [
-      {
-       "token": "elevation.card",
-       "where": "dark"
-      }
-     ]
-    },
-    {
      "primitive": "shadow.overlay-dark",
      "value": "0px 24px 48px 0px #00000099",
      "sample": {
@@ -72,6 +58,20 @@
      "usedBy": [
       {
        "token": "elevation.overlay",
+       "where": "dark"
+      }
+     ]
+    },
+    {
+     "primitive": "shadow.none",
+     "value": "0px 0px 0px 0px #00000000",
+     "sample": {
+      "kind": "shadow",
+      "value": "0px 0px 0px 0px #00000000"
+     },
+     "usedBy": [
+      {
+       "token": "elevation.card",
        "where": "dark"
       }
      ]

@@ -180,7 +180,7 @@
      "themed": false,
      "chain": {
       "token": "component.tabs.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "tabs-trigger-focus-offset"
      },
      "values": [
@@ -318,7 +318,7 @@
      "themed": false,
      "chain": {
       "token": "component.tabs.trigger.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "tabs-trigger-focus-width"
      },
      "values": [

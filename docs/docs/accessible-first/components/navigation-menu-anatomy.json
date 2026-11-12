@@ -221,11 +221,11 @@
      "semantic": "color.surface.highlight",
      "key": "trigger.background.open",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "darkPick": "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.46:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.89:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -263,11 +263,11 @@
      "semantic": "color.surface.raised",
      "key": "viewport.background",
      "value": "#FFFFFF",
-     "darkValue": "#141414",
+     "darkValue": "#333333",
      "byScheme": true,
-     "rule": "Fills that float above content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+     "darkPick": "neutral.200: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, 1.26:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So people see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
      "shares": [
       "surface.default",
       "action.secondary"
@@ -278,13 +278,14 @@
      "semantic": "color.border.default",
      "key": "viewport.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest 1.8:1, on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values).",
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -401,7 +402,7 @@
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
      "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "blue.dark.100: a tint of the brand, 1.04:1 from content, always beside its edge (border.selected), so selection is never color alone.",
      "shares": [
       "category.1.subtle"
      ]
@@ -415,7 +416,7 @@
      "byScheme": true,
      "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
      "pick": "blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.focus",
       "action.primary",
@@ -424,7 +425,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "link.edge-width.current",
      "value": "3px",
      "byScheme": true,
@@ -454,11 +455,11 @@
      "semantic": "color.surface.highlight",
      "key": "link.background.hover",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "darkPick": "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.46:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.89:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -480,7 +481,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -493,7 +494,7 @@
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.selected",
       "action.primary",
@@ -502,7 +503,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "link.focus-width",
      "value": "3px",
      "byScheme": true,
@@ -511,7 +512,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "link.focus-offset",
      "value": "2px",
      "byScheme": false,

@@ -64,10 +64,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -78,7 +78,7 @@
      "themed": false,
      "chain": {
       "token": "component.resizable.handle.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "resizable-handle-focus"
      },
      "values": [
@@ -170,7 +170,7 @@
      "themed": false,
      "chain": {
       "token": "component.resizable.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "resizable-focus-offset"
      },
      "values": [
@@ -219,10 +219,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -285,10 +285,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     }

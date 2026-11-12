@@ -72,7 +72,58 @@
      "values": [
       {
        "token": "duration.relaxed",
-       "text": "320ms"
+       "text": "300ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "150ms"
       }
      ]
     },
@@ -106,7 +157,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -166,10 +217,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -256,7 +307,7 @@
      "themed": true,
      "chain": {
       "token": "component.navigation-menu.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "navigation-menu-content-border"
      },
      "values": [
@@ -337,10 +388,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -597,10 +648,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#14110D"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.0",
+       "text": "#14110D"
       }
      ]
     },
@@ -626,10 +677,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#14110D"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.0",
+       "text": "#14110D"
       }
      ]
     },
@@ -773,7 +824,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.link.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "navigation-menu-link-focus-offset"
      },
      "values": [
@@ -790,7 +841,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.link.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "navigation-menu-link-focus-width"
      },
      "values": [
@@ -807,7 +858,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.link.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "navigation-menu-link-edge-width-current"
      },
      "values": [
@@ -897,10 +948,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#14110D"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.0",
+       "text": "#14110D"
       }
      ]
     },
@@ -926,10 +977,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#14110D"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.0",
+       "text": "#14110D"
       }
      ]
     },
@@ -955,10 +1006,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#14110D"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.0",
+       "text": "#14110D"
       }
      ]
     },
@@ -984,10 +1035,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#14110D"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.0",
+       "text": "#14110D"
       }
      ]
     },
@@ -1013,10 +1064,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#14110D"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.0",
+       "text": "#14110D"
       }
      ]
     },
@@ -1027,7 +1078,7 @@
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "navigation-menu-trigger-focus-offset"
      },
      "values": [
@@ -1194,29 +1245,12 @@
     },
     {
      "group": "Trigger",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.navigation-menu.trigger.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "navigation-menu-trigger-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Trigger",
      "part": "Focus width",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.navigation-menu.trigger.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "navigation-menu-trigger-focus-width"
      },
      "values": [
@@ -1318,6 +1352,35 @@
       {
        "token": "space.8",
        "text": "0.5rem"
+      }
+     ]
+    },
+    {
+     "group": "Trigger",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.navigation-menu.trigger.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "navigation-menu-trigger-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },

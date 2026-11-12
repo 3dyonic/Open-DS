@@ -142,13 +142,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring (from the brand)",
+     "use": "button/focus-ring (from the brand) at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus follows the brand but always shows."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "2px",
      "byScheme": true,
@@ -173,7 +173,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,

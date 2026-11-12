@@ -466,7 +466,7 @@
      "themed": false,
      "chain": {
       "token": "component.textarea.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "textarea-focus"
      },
      "values": [
@@ -605,7 +605,7 @@
      "themed": false,
      "chain": {
       "token": "component.textarea.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "textarea-focus-offset"
      },
      "values": [
@@ -662,7 +662,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },

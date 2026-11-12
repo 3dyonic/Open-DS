@@ -362,7 +362,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "item-focus"
      },
      "values": [
@@ -437,7 +437,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "item-focus-offset"
      },
      "values": [
@@ -515,10 +515,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -840,10 +840,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -920,10 +920,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },

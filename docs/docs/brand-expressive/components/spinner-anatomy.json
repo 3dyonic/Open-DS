@@ -82,7 +82,7 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "Reduced motion",
+     "use": "Fades only; nothing moves",
      "not": "full motion",
      "why": "Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less."
     }

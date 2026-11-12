@@ -83,7 +83,7 @@
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "checkbox-focus"
      },
      "values": [
@@ -95,29 +95,12 @@
     },
     {
      "group": "Checkbox",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.checkbox.disabled",
-      "alias": "opacity.disabled",
-      "variable": "checkbox-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Checkbox",
      "part": "Focus offset",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "checkbox-focus-offset"
      },
      "values": [
@@ -235,6 +218,110 @@
      ]
     },
     {
+     "group": "Checkbox",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.hit-area",
+      "alias": "size.hit-area",
+      "variable": "checkbox-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-background",
+      "alias": "color.disabled.surface",
+      "variable": "checkbox-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EDEDED"
+       },
+       "token": "gray.light.100",
+       "text": "#EDEDED"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#222222"
+       },
+       "token": "gray.dark.100",
+       "text": "#222222"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-border",
+      "alias": "color.disabled.border",
+      "variable": "checkbox-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D6D6D6"
+       },
+       "token": "gray.light.200",
+       "text": "#D6D6D6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#333333"
+       },
+       "token": "gray.dark.200",
+       "text": "#333333"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled indicator",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-indicator",
+      "alias": "color.disabled.text",
+      "variable": "checkbox-disabled-indicator"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
+      }
+     ]
+    },
+    {
      "group": "Fill",
      "part": "Color",
      "when": "",
@@ -256,10 +343,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#222222"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.100",
+       "text": "#222222"
       }
      ]
     },

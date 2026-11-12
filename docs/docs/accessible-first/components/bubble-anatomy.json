@@ -88,7 +88,7 @@
      "byScheme": true,
      "rule": "The quietest text.",
      "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "border.strong",
       "category.5",
@@ -145,11 +145,11 @@
      "semantic": "color.surface.sunken",
      "key": "body.them.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -166,7 +166,7 @@
      "byScheme": true,
      "rule": "Body text and headings.",
      "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "surface.inverse"
      ]

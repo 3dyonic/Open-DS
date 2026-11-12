@@ -34,11 +34,11 @@ Instead:
 
 ::::grid{columns="2"}
 :::panel{title="A card on the page"}
-**Use** elevation.card (pronounced)
+**Use** elevation.card (pronounced); none in dark
 
 **Not** A flat card
 
-Cards float to feel tactile.
+Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them.
 :::
 ::::
 

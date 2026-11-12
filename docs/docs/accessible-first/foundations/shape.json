@@ -134,41 +134,6 @@
        "why": "A strong edge stays visible at high zoom and for people with low vision."
       }
      ]
-    },
-    {
-     "title": "Focus ring",
-     "sample": {
-      "kind": "focus"
-     },
-     "api": [
-      {
-       "token": "border-width.focus",
-       "value": "3px"
-      },
-      {
-       "token": "border-width.focus-offset",
-       "value": "2px"
-      },
-      {
-       "token": "color.border.focus",
-       "primitive": "color.blue.light.600",
-       "value": "#0B4FC0",
-       "dark": "#8AB4F8"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "Keyboard focus",
-       "detail": "button/focus-ring at border-width.focus, with an offset",
-       "why": "Focus must be seen by everyone."
-      },
-      {
-       "kind": "use",
-       "situation": "The gap around a focus ring",
-       "why": "The gap keeps the thick ring clear of the control, so focus shows on any fill."
-      }
-     ]
     }
    ]
   }

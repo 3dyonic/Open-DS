@@ -121,10 +121,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -371,10 +371,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },

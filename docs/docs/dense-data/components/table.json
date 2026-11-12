@@ -64,10 +64,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -233,7 +233,7 @@
      "themed": false,
      "chain": {
       "token": "component.table.row.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "table-row-focus"
      },
      "values": [

@@ -56,9 +56,10 @@
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.39:1, on surface.raised). It decorates, so it holds no contrast minimum.",
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     }

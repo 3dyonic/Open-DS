@@ -783,10 +783,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -965,7 +965,7 @@
      "themed": false,
      "chain": {
       "token": "component.button.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "button-focus"
      },
      "values": [
@@ -982,7 +982,7 @@
      "themed": false,
      "chain": {
       "token": "component.button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "button-focus-offset"
      },
      "values": [
@@ -1188,8 +1188,8 @@
      },
      "values": [
       {
-       "token": "easing.spring",
-       "text": "cubic-bezier(0.34,1.56,0.64,1)"
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
       }
      ]
     }

@@ -30,7 +30,12 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `motion.duration.feedback` | `duration.fast` |
 | `motion.duration.panels` | `duration.fast` |
+| `motion.duration.exit` | `duration.fast` |
 | `motion.easing.standard` | `easing.standard` |
+| `motion.easing.enter` | `easing.standard` |
+| `motion.easing.exit` | `easing.strong-out` |
+| `motion.easing.exit-offscreen` | `easing.strong-out` |
+| `motion.easing.emphasize` | `easing.standard` |
 
 The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 
@@ -39,7 +44,7 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (fast) | No transition | Fast feedback confirms the pointer without slowing experts. |
-| Someone asked for less motion | No motion | A shorter version of the motion | A shorter motion still moves. When people ask for less motion, nothing moves. |
+| Someone asked for less motion | Fades only; nothing moves | A shorter version of the motion | Movement stops when people ask for less motion. A short fade still confirms a change without moving anything. |
 | A panel opens | motion.duration.panels | A slow slide-in | Panels open at the feedback speed, so experts never wait for a menu. |
 | The curve of any move | motion.easing.standard | A spring or a bounce | A plain ease-out starts fast and settles quietly. Nothing pulls the eye from the data. |
 | A hero or launch moment | No hero motion | An intro animation | Analysts open the tool to work for a whole shift. An intro would cost time on every visit. |

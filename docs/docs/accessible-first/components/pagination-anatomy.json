@@ -184,7 +184,7 @@
      "byScheme": true,
      "rule": "Links in running text.",
      "pick": "blue.light.700: a link, set apart by its hue, 10.5:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "blue.dark.700: a link, set apart by its hue, 10.8:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "blue.dark.700: a link, set apart by its hue, 9.33:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "action.primary.hover"
      ]
@@ -198,7 +198,7 @@
      "byScheme": true,
      "rule": "The edge of a control people must find.",
      "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.500: the edge of a control people must find, 5.24:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "text.muted",
       "category.5",

@@ -202,9 +202,9 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "No motion",
+     "use": "Fades only; nothing moves",
      "not": "a shorter version of the motion",
-     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+     "why": "Movement stops when people ask for less motion. A short fade still confirms a change without moving anything."
     },
     {
      "kind": "token",
@@ -281,13 +281,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "trigger.focus-ring.width",
      "value": "2px",
      "byScheme": true,
@@ -296,7 +296,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "trigger.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -328,12 +328,18 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "trigger.disabled.opacity",
-     "value": "0.4",
+     "semantic": "color.disabled.text",
+     "key": "trigger.disabled.label",
+     "value": "#6B7585",
+     "darkValue": "#C4CBD6",
      "byScheme": true,
-     "pick": "opacity.40",
-     "shares": []
+     "rule": "Text and icons of a control that cannot be used right now.",
+     "pick": "neutral.500: 4.66:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "darkPick": "neutral.500: 10.58:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "shares": [
+      "border.strong",
+      "category.5"
+     ]
     }
    ]
   }

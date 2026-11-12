@@ -19,7 +19,8 @@
       {
        "kind": "use",
        "situation": "A card on the page",
-       "why": "Cards lift slightly to group offers."
+       "detail": "elevation.card; none in dark",
+       "why": "Cards lift slightly to group offers. In dark, tone and a ring do the lift, the same in every brand."
       }
      ]
     },

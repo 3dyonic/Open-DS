@@ -82,11 +82,11 @@
      "semantic": "color.surface.sunken",
      "key": "track.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -190,11 +190,11 @@
      "semantic": "color.surface.default",
      "key": "thumb.background",
      "value": "#FFFFFF",
-     "darkValue": "#141414",
+     "darkValue": "#222222",
      "byScheme": true,
      "rule": "The base fill for content.",
      "pick": "neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
-     "darkPick": "neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+     "darkPick": "neutral.100: We use the step above the page for content in dark in order to leave a darker step free for wells, as the gray's two darkest steps are too close to tell apart. The fill does this by moving content one step up: sunken reads 1.16:1 below it and raised 1.26:1 above it. So people tell wells and menus from content, and body text still reads 14.85:1, because dark ships as standard (theming.values), text keeps the AAA floor (accessibility.definition) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.raised",
       "action.secondary"
@@ -225,7 +225,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -238,7 +238,7 @@
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.selected",
       "action.primary",
@@ -247,7 +247,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "thumb.focus",
      "value": "3px",
      "byScheme": true,
@@ -256,7 +256,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "thumb.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -272,7 +272,7 @@
      "byScheme": true,
      "rule": "The page background behind everything.",
      "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
      "shares": []
     }
    ]
@@ -288,21 +288,36 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "disabled-opacity-disabled",
-     "value": "0.5",
+     "semantic": "color.disabled.border",
+     "key": "disabled.range",
+     "value": "#D6D6D6",
+     "darkValue": "#333333",
      "byScheme": true,
-     "pick": "opacity.50",
-     "shares": []
+     "rule": "The edge of a control that cannot be used right now.",
+     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "surface.pressed",
+      "border.default",
+      "border.raised"
+     ]
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "thumb.disabled-opacity-disabled",
-     "value": "0.5",
+     "semantic": "color.disabled.surface",
+     "key": "thumb.disabled.background",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
      "byScheme": true,
-     "pick": "opacity.50",
-     "shares": []
+     "rule": "The fill of a control that cannot be used right now.",
+     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle"
+     ]
     }
    ]
   }

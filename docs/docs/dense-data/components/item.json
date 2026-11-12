@@ -409,7 +409,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "item-focus"
      },
      "values": [
@@ -484,7 +484,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "item-focus-offset"
      },
      "values": [
@@ -562,10 +562,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -887,10 +887,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -967,10 +967,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },

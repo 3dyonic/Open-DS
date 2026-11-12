@@ -164,7 +164,7 @@
      "byScheme": true,
      "rule": "The quietest text.",
      "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "border.strong",
       "category.5",
@@ -210,11 +210,11 @@
      "semantic": "color.surface.raised",
      "key": "content.background",
      "value": "#FFFFFF",
-     "darkValue": "#141414",
+     "darkValue": "#333333",
      "byScheme": true,
-     "rule": "Fills that float above content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+     "darkPick": "neutral.200: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, 1.26:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So people see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
      "shares": [
       "surface.default",
       "action.secondary"
@@ -233,16 +233,17 @@
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "content.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
+     "pick": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.45:1 on surface.raised, the layer's only edge, as nothing here casts a shadow. So people see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+     "darkPick": "neutral.300: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.8:1 on surface.raised (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     },
@@ -282,7 +283,7 @@
      "byScheme": true,
      "rule": "The quietest text.",
      "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "border.strong",
       "category.5",
@@ -389,7 +390,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -398,11 +399,11 @@
      "semantic": "color.surface.highlight",
      "key": "item.background.highlight",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "darkPick": "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.46:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.89:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -444,7 +445,7 @@
      "byScheme": true,
      "rule": "The edge of a control people must find.",
      "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.500: the edge of a control people must find, 5.24:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "text.muted",
       "category.5",
@@ -465,11 +466,11 @@
      "semantic": "color.surface.sunken",
      "key": "chip.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -495,7 +496,7 @@
      "byScheme": true,
      "rule": "The quietest text.",
      "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "border.strong",
       "category.5",

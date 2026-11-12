@@ -360,9 +360,9 @@
       {
        "theme": "Dark",
        "swatch": {
-        "shadow": "0px 12px 32px 0px #00000080"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },
@@ -405,10 +405,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -528,9 +528,9 @@
       {
        "theme": "Dark",
        "swatch": {
-        "shadow": "0px 12px 32px 0px #00000080"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },
@@ -929,7 +929,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.label.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-group-label-focus"
      },
      "values": [
@@ -1004,7 +1004,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.label.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-group-label-focus-offset"
      },
      "values": [
@@ -1113,7 +1113,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.action.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-group-action-focus"
      },
      "values": [
@@ -1203,10 +1203,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -1217,7 +1217,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.action.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-group-action-focus-offset"
      },
      "values": [
@@ -1360,7 +1360,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.action.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-action-focus"
      },
      "values": [
@@ -1450,10 +1450,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -1464,7 +1464,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.action.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-action-focus-offset"
      },
      "values": [
@@ -1847,23 +1847,6 @@
     },
     {
      "group": "Menu",
-     "part": "Sub button disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.sidebar.menu.sub.button.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "sidebar-menu-sub-button-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Menu",
      "part": "Sub button icon size",
      "when": "",
      "themed": false,
@@ -1886,7 +1869,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-sub-button-focus"
      },
      "values": [
@@ -1976,10 +1959,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -2048,7 +2031,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-sub-button-edge-width-current"
      },
      "values": [
@@ -2082,7 +2065,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-sub-button-focus-offset"
      },
      "values": [
@@ -2106,6 +2089,35 @@
       {
        "token": "font.size.14",
        "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "sidebar-menu-sub-button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     },
@@ -2148,10 +2160,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -2235,10 +2247,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -2249,7 +2261,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-button-focus-offset"
      },
      "values": [
@@ -2266,7 +2278,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-button-edge-width-current"
      },
      "values": [
@@ -2346,29 +2358,12 @@
     },
     {
      "group": "Menu button",
-     "part": "Opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.sidebar.menu-button.opacity.disabled",
-      "alias": "opacity.disabled",
-      "variable": "sidebar-menu-button-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Menu button",
      "part": "Focus width",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-button-focus-width"
      },
      "values": [
@@ -2509,10 +2504,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -2596,10 +2591,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#120B09"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.0",
+       "text": "#120B09"
       }
      ]
     },
@@ -2705,6 +2700,35 @@
       {
        "token": "space.16",
        "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "sidebar-menu-button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     }

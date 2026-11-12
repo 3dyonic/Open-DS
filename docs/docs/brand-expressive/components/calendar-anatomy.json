@@ -490,12 +490,18 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "day.disabled-opacity",
-     "value": "0.4",
+     "semantic": "color.disabled.text",
+     "key": "day.disabled.label",
+     "value": "#8A6F63",
+     "darkValue": "#E2C4B3",
      "byScheme": true,
-     "pick": "opacity.40",
-     "shares": []
+     "rule": "Text and icons of a control that cannot be used right now.",
+     "pick": "neutral.500: 4.63:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "darkPick": "neutral.500: 10.96:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "shares": [
+      "border.strong",
+      "category.5"
+     ]
     }
    ]
   },
@@ -511,13 +517,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus must show on vivid color."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
@@ -542,7 +548,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,

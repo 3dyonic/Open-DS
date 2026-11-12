@@ -168,11 +168,11 @@
      "semantic": "color.surface.raised",
      "key": "overlay.background",
      "value": "#FFFFFF",
-     "darkValue": "#161B23",
+     "darkValue": "#262D38",
      "byScheme": true,
-     "rule": "Fills that float above content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "darkPick": "neutral.100: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, 1.25:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So experts see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
      "shares": [
       "surface.default",
       "action.secondary"
@@ -278,11 +278,11 @@
      "semantic": "color.surface.highlight",
      "key": "item.background.highlight",
      "value": "#EEF1F5",
-     "darkValue": "#262D38",
+     "darkValue": "#0D1117",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "darkPick": "neutral.0: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.1:1 on surface.default and 1.37:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.08:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
      "shares": [
       "surface.sunken",
       "surface.pressed",
@@ -305,7 +305,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
@@ -326,7 +326,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "value": "2px",
      "byScheme": true,
      "pick": "border-width.2",
@@ -345,12 +345,18 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "item.disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.text",
+     "key": "item.disabled-label",
+     "value": "#6B7585",
+     "darkValue": "#C4CBD6",
      "byScheme": true,
-     "pick": "opacity.40",
-     "shares": []
+     "rule": "Text and icons of a control that cannot be used right now.",
+     "pick": "neutral.500: 4.66:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "darkPick": "neutral.500: 10.58:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "shares": [
+      "border.strong",
+      "category.5"
+     ]
     }
    ]
   },
@@ -411,8 +417,9 @@
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.raised). It decorates, so it holds no contrast minimum.",
      "shares": [
+      "border.raised",
       "disabled.border"
      ]
     }

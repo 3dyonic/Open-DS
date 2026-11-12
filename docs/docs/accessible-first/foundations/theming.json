@@ -58,8 +58,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.50",
-         "via": "color.neutral.50"
+         "primitive": "color.gray.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
@@ -73,8 +73,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.50",
-         "via": "color.neutral.50"
+         "primitive": "color.gray.dark.200",
+         "via": "color.neutral.200"
         }
        ]
       },
@@ -88,8 +88,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.gray.dark.50",
+         "via": "color.neutral.50"
         }
        ]
       },
@@ -103,8 +103,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.gray.dark.50",
+         "via": "color.neutral.50"
         }
        ]
       },
@@ -118,8 +118,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.200",
-         "via": "color.neutral.200"
+         "primitive": "color.gray.dark.0",
+         "via": "color.neutral.0"
         }
        ]
       },
@@ -281,8 +281,23 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.200",
+         "primitive": "color.gray.dark.300",
+         "via": "color.neutral.300"
+        }
+       ]
+      },
+      {
+       "token": "color.border.raised",
+       "cells": [
+        {
+         "mode": "light",
+         "primitive": "color.gray.light.200",
          "via": "color.neutral.200"
+        },
+        {
+         "mode": "dark",
+         "primitive": "color.gray.dark.300",
+         "via": "color.neutral.300"
         }
        ]
       },

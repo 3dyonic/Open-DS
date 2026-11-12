@@ -142,13 +142,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
@@ -164,7 +164,7 @@
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.selected",
       "action.primary",
@@ -173,7 +173,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -189,7 +189,7 @@
      "byScheme": true,
      "rule": "The page background behind everything.",
      "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
      "shares": []
     }
    ]

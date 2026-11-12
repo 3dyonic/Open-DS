@@ -190,18 +190,30 @@
     },
     {
      "group": "Trigger",
-     "part": "Disabled opacity",
+     "part": "Disabled label",
      "when": "when disabled",
-     "themed": false,
+     "themed": true,
      "chain": {
-      "token": "component.accordion.trigger.disabled.opacity",
-      "alias": "opacity.disabled",
-      "variable": "accordion-trigger-disabled-opacity"
+      "token": "component.accordion.trigger.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "accordion-trigger-disabled-label"
      },
      "values": [
       {
-       "token": "opacity.40",
-       "text": "0.4"
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     },
@@ -241,7 +253,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-ring.width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "accordion-trigger-focus-ring-width"
      },
      "values": [
@@ -258,7 +270,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "accordion-trigger-focus-offset"
      },
      "values": [

@@ -100,11 +100,11 @@
      "semantic": "color.surface.sunken",
      "key": "neutral.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -166,7 +166,7 @@
      "byScheme": true,
      "rule": "Supporting text.",
      "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.700: supporting text, 10.95:1 on surface.default, above the 7:1 floor.",
      "shares": []
     }
    ]

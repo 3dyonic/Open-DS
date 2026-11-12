@@ -135,7 +135,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -148,7 +148,7 @@
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "border.selected",
       "action.primary",
@@ -157,7 +157,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "slot.focus-width",
      "value": "3px",
      "byScheme": true,
@@ -166,7 +166,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "slot.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -187,7 +187,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -218,7 +218,7 @@
      "byScheme": true,
      "rule": "Body text and headings.",
      "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "surface.inverse"
      ]
@@ -227,7 +227,7 @@
      "kind": "token",
      "semantic": "motion.duration.feedback",
      "key": "caret.duration",
-     "value": "200ms",
+     "value": "150ms",
      "byScheme": true,
      "pick": "duration.moderate",
      "shares": []
@@ -295,7 +295,7 @@
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
      "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "red.dark.600: danger marks icons and edges, 6.7:1 on surface.default, over 3:1; its text uses danger-on-light, which reads at the floor.",
      "shares": [
       "action.danger"
      ]
@@ -309,7 +309,7 @@
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
      "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "red.dark.600: danger marks icons and edges, 6.7:1 on surface.default, over 3:1; its text uses danger-on-light, which reads at the floor.",
      "shares": [
       "action.danger"
      ]
@@ -354,7 +354,8 @@
      "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
      "shares": [
       "surface.pressed",
-      "border.default"
+      "border.default",
+      "border.raised"
      ]
     },
     {
@@ -366,7 +367,7 @@
      "byScheme": true,
      "rule": "Text and icons of a control that cannot be used right now.",
      "pick": "neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
-     "darkPick": "neutral.500: 6.07:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "darkPick": "neutral.500: 5.24:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
      "shares": [
       "text.muted",
       "border.strong",

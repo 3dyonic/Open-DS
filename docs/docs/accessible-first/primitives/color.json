@@ -207,6 +207,15 @@
        "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
       },
       {
+       "token": "border.raised",
+       "paints": "edge",
+       "step": "200",
+       "primitive": "gray.light.200",
+       "via": "neutral.200",
+       "hex": "#D6D6D6",
+       "guidance": "../foundations/color?for=color-border-raised#what-each-color-is-for"
+      },
+      {
        "token": "disabled.border",
        "paints": "edge",
        "step": "200",
@@ -294,7 +303,7 @@
       "canvas": "#0A0A0A",
       "text": "#F7F7F7",
       "muted": "#B4B4B4",
-      "border": "#333333",
+      "border": "#595959",
       "inverse": "#F7F7F7"
      },
      "steps": [
@@ -370,49 +379,22 @@
        "guidance": "../foundations/color?for=color-surface-canvas#what-each-color-is-for"
       },
       {
+       "token": "surface.pressed",
+       "paints": "fill",
+       "step": "0",
+       "primitive": "gray.dark.0",
+       "via": "neutral.0",
+       "hex": "#0A0A0A",
+       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
+      },
+      {
        "token": "surface.default",
        "paints": "fill",
-       "step": "50",
-       "primitive": "gray.dark.50",
-       "via": "neutral.50",
-       "hex": "#141414",
+       "step": "100",
+       "primitive": "gray.dark.100",
+       "via": "neutral.100",
+       "hex": "#222222",
        "guidance": "../foundations/color?for=color-surface-default#what-each-color-is-for"
-      },
-      {
-       "token": "surface.raised",
-       "paints": "fill",
-       "step": "50",
-       "primitive": "gray.dark.50",
-       "via": "neutral.50",
-       "hex": "#141414",
-       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
-      },
-      {
-       "token": "action.secondary",
-       "paints": "fill",
-       "step": "50",
-       "primitive": "gray.dark.50",
-       "via": "neutral.50",
-       "hex": "#141414",
-       "guidance": "../foundations/color?for=color-action-secondary#what-each-color-is-for"
-      },
-      {
-       "token": "surface.sunken",
-       "paints": "fill",
-       "step": "100",
-       "primitive": "gray.dark.100",
-       "via": "neutral.100",
-       "hex": "#222222",
-       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
-      },
-      {
-       "token": "surface.highlight",
-       "paints": "fill",
-       "step": "100",
-       "primitive": "gray.dark.100",
-       "via": "neutral.100",
-       "hex": "#222222",
-       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
       },
       {
        "token": "action.secondary.hover",
@@ -442,22 +424,13 @@
        "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
       },
       {
-       "token": "surface.pressed",
+       "token": "surface.raised",
        "paints": "fill",
        "step": "200",
        "primitive": "gray.dark.200",
        "via": "neutral.200",
        "hex": "#333333",
-       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
-      },
-      {
-       "token": "border.default",
-       "paints": "edge",
-       "step": "200",
-       "primitive": "gray.dark.200",
-       "via": "neutral.200",
-       "hex": "#333333",
-       "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
+       "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
       },
       {
        "token": "disabled.border",
@@ -467,6 +440,33 @@
        "via": "neutral.200",
        "hex": "#333333",
        "guidance": "../foundations/color?for=color-disabled-border#what-each-color-is-for"
+      },
+      {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "50",
+       "primitive": "gray.dark.50",
+       "via": "neutral.50",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "50",
+       "primitive": "gray.dark.50",
+       "via": "neutral.50",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+      },
+      {
+       "token": "action.secondary",
+       "paints": "fill",
+       "step": "50",
+       "primitive": "gray.dark.50",
+       "via": "neutral.50",
+       "hex": "#141414",
+       "guidance": "../foundations/color?for=color-action-secondary#what-each-color-is-for"
       },
       {
        "token": "surface.inverse",
@@ -512,6 +512,24 @@
        "via": "neutral.600",
        "hex": "#B4B4B4",
        "guidance": "../foundations/color?for=color-text-muted#what-each-color-is-for"
+      },
+      {
+       "token": "border.default",
+       "paints": "edge",
+       "step": "300",
+       "primitive": "gray.dark.300",
+       "via": "neutral.300",
+       "hex": "#595959",
+       "guidance": "../foundations/color?for=color-border-default#what-each-color-is-for"
+      },
+      {
+       "token": "border.raised",
+       "paints": "edge",
+       "step": "300",
+       "primitive": "gray.dark.300",
+       "via": "neutral.300",
+       "hex": "#595959",
+       "guidance": "../foundations/color?for=color-border-raised#what-each-color-is-for"
       },
       {
        "token": "border.strong",
@@ -712,7 +730,7 @@
       "canvas": "#0A0A0A",
       "text": "#F7F7F7",
       "muted": "#B4B4B4",
-      "border": "#333333",
+      "border": "#595959",
       "inverse": "#F7F7F7"
      },
      "steps": [
@@ -967,7 +985,7 @@
       "canvas": "#0A0A0A",
       "text": "#F7F7F7",
       "muted": "#B4B4B4",
-      "border": "#333333",
+      "border": "#595959",
       "inverse": "#F7F7F7"
      },
      "steps": [
@@ -1204,7 +1222,7 @@
       "canvas": "#0A0A0A",
       "text": "#F7F7F7",
       "muted": "#B4B4B4",
-      "border": "#333333",
+      "border": "#595959",
       "inverse": "#F7F7F7"
      },
      "steps": [
@@ -1441,7 +1459,7 @@
       "canvas": "#0A0A0A",
       "text": "#F7F7F7",
       "muted": "#B4B4B4",
-      "border": "#333333",
+      "border": "#595959",
       "inverse": "#F7F7F7"
      },
      "steps": [
@@ -1588,7 +1606,7 @@
       "canvas": "#0A0A0A",
       "text": "#F7F7F7",
       "muted": "#B4B4B4",
-      "border": "#333333",
+      "border": "#595959",
       "inverse": "#F7F7F7"
      },
      "steps": [
@@ -1737,7 +1755,7 @@
       "canvas": "#0A0A0A",
       "text": "#F7F7F7",
       "muted": "#B4B4B4",
-      "border": "#333333",
+      "border": "#595959",
       "inverse": "#F7F7F7"
      },
      "steps": [

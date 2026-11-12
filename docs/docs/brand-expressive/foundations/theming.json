@@ -73,8 +73,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.taupe.dark.50",
-         "via": "color.neutral.50"
+         "primitive": "color.taupe.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
@@ -88,8 +88,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.taupe.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.taupe.dark.0",
+         "via": "color.neutral.0"
         }
        ]
       },
@@ -103,8 +103,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.taupe.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.taupe.dark.0",
+         "via": "color.neutral.0"
         }
        ]
       },
@@ -273,6 +273,21 @@
      "rows": [
       {
        "token": "color.border.default",
+       "cells": [
+        {
+         "mode": "light",
+         "primitive": "color.taupe.light.200",
+         "via": "color.neutral.200"
+        },
+        {
+         "mode": "dark",
+         "primitive": "color.taupe.dark.200",
+         "via": "color.neutral.200"
+        }
+       ]
+      },
+      {
+       "token": "color.border.raised",
        "cells": [
         {
          "mode": "light",
@@ -727,8 +742,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "shadow.card-dark",
-         "value": "0px 12px 32px 0px #00000080"
+         "primitive": "shadow.none",
+         "value": "0px 0px 0px 0px #00000000"
         }
        ]
       },

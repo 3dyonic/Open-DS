@@ -136,7 +136,7 @@
      "byScheme": true,
      "rule": "Body text and headings.",
      "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "surface.inverse"
      ]

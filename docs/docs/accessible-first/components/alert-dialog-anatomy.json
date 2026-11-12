@@ -144,11 +144,11 @@
      "semantic": "color.surface.raised",
      "key": "content.background",
      "value": "#FFFFFF",
-     "darkValue": "#141414",
+     "darkValue": "#333333",
      "byScheme": true,
-     "rule": "Fills that float above content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+     "darkPick": "neutral.200: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, 1.26:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So people see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
      "shares": [
       "surface.default",
       "action.secondary"
@@ -176,16 +176,17 @@
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "content.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
+     "pick": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.45:1 on surface.raised, the layer's only edge, as nothing here casts a shadow. So people see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+     "darkPick": "neutral.300: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.8:1 on surface.raised (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     }
@@ -255,11 +256,11 @@
      "semantic": "color.surface.sunken",
      "key": "media.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -384,7 +385,7 @@
      "byScheme": true,
      "rule": "Supporting text.",
      "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.700: supporting text, 10.95:1 on surface.default, above the 7:1 floor.",
      "shares": []
     },
     {

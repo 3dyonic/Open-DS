@@ -247,7 +247,7 @@ Only with a visible reason next to it.
 On phones, hover hints never show; a word says what will happen.
 :::
 :::panel{title="Keyboard focus"}
-**Use** button/focus-ring at border-width.focus
+**Use** button/focus-ring at focus.ring.width
 
 **Not** Removing the outline
 

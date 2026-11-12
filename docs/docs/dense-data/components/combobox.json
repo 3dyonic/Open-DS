@@ -77,6 +77,57 @@
      ]
     },
     {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
      "group": "Trigger",
      "part": "Icon size",
      "when": "",
@@ -181,10 +232,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#161B23"
+        "color": "#262D38"
        },
-       "token": "slate.dark.50",
-       "text": "#161B23"
+       "token": "slate.dark.100",
+       "text": "#262D38"
       }
      ]
     },
@@ -268,7 +319,7 @@
      "themed": true,
      "chain": {
       "token": "component.combobox.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "combobox-content-border"
      },
      "values": [
@@ -434,10 +485,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -472,23 +523,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.combobox.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "combobox-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Icon size",
      "when": "",
      "themed": false,
@@ -501,6 +535,35 @@
       {
        "token": "size.16",
        "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "combobox-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
       }
      ]
     },
@@ -1037,7 +1100,7 @@
      "themed": false,
      "chain": {
       "token": "component.combobox.chips.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "combobox-chips-focus-width"
      },
      "values": [
@@ -1071,7 +1134,7 @@
      "themed": false,
      "chain": {
       "token": "component.combobox.chips.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "combobox-chips-focus-offset"
      },
      "values": [
@@ -1186,10 +1249,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -1275,23 +1338,6 @@
     },
     {
      "group": "Chip",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.combobox.chip.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "combobox-chip-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Chip",
      "part": "Remove pull",
      "when": "",
      "themed": false,
@@ -1366,6 +1412,64 @@
      ]
     },
     {
+     "group": "Chip",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "combobox-chip-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
+      }
+     ]
+    },
+    {
+     "group": "Chip",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.combobox.chip.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "combobox-chip-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#EEF1F5"
+       },
+       "token": "slate.light.100",
+       "text": "#EEF1F5"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#262D38"
+       },
+       "token": "slate.dark.100",
+       "text": "#262D38"
+      }
+     ]
+    },
+    {
      "group": "Input",
      "part": "Border",
      "when": "",
@@ -1416,10 +1520,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },

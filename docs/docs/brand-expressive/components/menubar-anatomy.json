@@ -214,9 +214,10 @@
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.39:1, on surface.raised). It decorates, so it holds no contrast minimum.",
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -254,11 +255,11 @@
      "semantic": "color.surface.highlight",
      "key": "trigger.background.open",
      "value": "#FCEFE6",
-     "darkValue": "#33241F",
+     "darkValue": "#120B09",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "darkPick": "neutral.0: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.08:1 on surface.default and 1.31:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.26:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -296,11 +297,11 @@
      "semantic": "color.surface.raised",
      "key": "content.background",
      "value": "#FFFFFF",
-     "darkValue": "#1F1411",
+     "darkValue": "#33241F",
      "byScheme": true,
-     "rule": "Fills that float above content.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
      "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "darkPick": "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, 1.21:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So visitors see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
      "shares": [
       "surface.default",
       "action.secondary"
@@ -319,16 +320,17 @@
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "content.border",
      "value": "#F2DCCF",
      "darkValue": "#4D3A33",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
+     "pick": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.32:1 on surface.raised, beside the light shadow that does most of the lift. So visitors see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+     "darkPick": "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.39:1 on surface.raised (#4D3A33, no alpha), so its contrast can be checked. So visitors see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     },
@@ -437,12 +439,12 @@
      "situation": "hover and press feedback",
      "use": "motion.duration.feedback (fast)",
      "not": "an instant change",
-     "why": "Fast feedback, on the brand's spring. An instant change drops the brand's motion."
+     "why": "Fast feedback on an ease-out. The brand's spring waits for the moments that deserve it."
     },
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus must show on vivid color."
     },
@@ -451,11 +453,11 @@
      "semantic": "color.surface.highlight",
      "key": "item.background.highlight",
      "value": "#FCEFE6",
-     "darkValue": "#33241F",
+     "darkValue": "#120B09",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
      "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "darkPick": "neutral.0: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.08:1 on surface.default and 1.31:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.26:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -522,9 +524,10 @@
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
      "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.39:1, on surface.raised). It decorates, so it holds no contrast minimum.",
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },

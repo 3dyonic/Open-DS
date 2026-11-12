@@ -65,7 +65,7 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Menubar reads 89 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Menubar's tokens to change Menubar alone.
+Menubar reads 92 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Menubar's tokens to change Menubar alone.
 
 ::token-table{component="menubar"}
 

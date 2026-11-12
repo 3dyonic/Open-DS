@@ -171,6 +171,10 @@
       {
        "token": "size.control.compact",
        "where": "semantic"
+      },
+      {
+       "token": "size.hit-area",
+       "where": "semantic"
       }
      ]
     },

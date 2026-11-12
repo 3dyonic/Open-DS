@@ -89,7 +89,7 @@
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
      "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "darkPick": "blue.dark.100: a tint of the brand, 1.04:1 from content, always beside its edge (border.selected), so selection is never color alone.",
      "shares": [
       "category.1.subtle"
      ]

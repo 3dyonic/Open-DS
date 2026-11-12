@@ -524,7 +524,7 @@
      "themed": false,
      "chain": {
       "token": "component.input-group.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "input-group-focus-width"
      },
      "values": [
@@ -541,7 +541,7 @@
      "themed": false,
      "chain": {
       "token": "component.input-group.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "input-group-focus-offset"
      },
      "values": [
@@ -642,7 +642,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },

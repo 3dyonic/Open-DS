@@ -363,6 +363,23 @@
      ]
     },
     {
+     "group": "Group",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.group.hit-area",
+      "alias": "size.hit-area",
+      "variable": "field-group-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
      "group": "Field",
      "part": "Gap",
      "when": "",
@@ -456,23 +473,6 @@
       {
        "token": "space.16",
        "text": "1rem"
-      }
-     ]
-    },
-    {
-     "group": "Text",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.field.label.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "field-label-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
       }
      ]
     },
@@ -598,10 +598,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -648,6 +648,35 @@
       {
        "token": "border-width.2",
        "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Disabled text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.field.label.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "field-label-disabled-text"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     },

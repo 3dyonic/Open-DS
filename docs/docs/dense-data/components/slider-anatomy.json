@@ -82,11 +82,11 @@
      "semantic": "color.surface.sunken",
      "key": "track.background",
      "value": "#EEF1F5",
-     "darkValue": "#262D38",
+     "darkValue": "#0D1117",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
      "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "darkPick": "neutral.0: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.1:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
      "shares": [
       "surface.highlight",
       "surface.pressed",
@@ -224,7 +224,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
@@ -246,7 +246,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "thumb.focus",
      "value": "2px",
      "byScheme": true,
@@ -255,7 +255,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "thumb.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -287,21 +287,36 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "disabled-opacity-disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.border",
+     "key": "disabled.range",
+     "value": "#DDE2EA",
+     "darkValue": "#3D4655",
      "byScheme": true,
-     "pick": "opacity.40",
-     "shares": []
+     "rule": "The edge of a control that cannot be used right now.",
+     "pick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "border.default",
+      "border.raised"
+     ]
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "thumb.disabled-opacity-disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.surface",
+     "key": "thumb.disabled.background",
+     "value": "#EEF1F5",
+     "darkValue": "#262D38",
      "byScheme": true,
-     "pick": "opacity.40",
-     "shares": []
+     "rule": "The fill of a control that cannot be used right now.",
+     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "surface.pressed",
+      "action.secondary.hover",
+      "category.5.subtle"
+     ]
     }
    ]
   }

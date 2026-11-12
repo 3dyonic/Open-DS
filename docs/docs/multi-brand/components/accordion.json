@@ -295,18 +295,62 @@
     },
     {
      "group": "Trigger",
-     "part": "Disabled opacity",
+     "part": "Disabled label",
      "when": "when disabled",
-     "themed": false,
+     "themed": true,
      "chain": {
-      "token": "component.accordion.trigger.disabled.opacity",
-      "alias": "opacity.disabled",
-      "variable": "accordion-trigger-disabled-opacity"
+      "token": "component.accordion.trigger.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "accordion-trigger-disabled-label"
      },
      "values": [
       {
-       "token": "opacity.40",
-       "text": "0.4"
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
       }
      ]
     },
@@ -378,7 +422,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-ring.width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "accordion-trigger-focus-ring-width"
      },
      "values": [
@@ -395,7 +439,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "accordion-trigger-focus-offset"
      },
      "values": [
@@ -496,7 +540,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },

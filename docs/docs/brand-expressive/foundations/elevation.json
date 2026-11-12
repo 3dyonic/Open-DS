@@ -19,8 +19,8 @@
       {
        "kind": "use",
        "situation": "A card on the page",
-       "detail": "elevation.card (pronounced)",
-       "why": "Cards float to feel tactile."
+       "detail": "elevation.card (pronounced); none in dark",
+       "why": "Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them."
       }
      ]
     },

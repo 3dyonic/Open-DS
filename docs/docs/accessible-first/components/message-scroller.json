@@ -86,7 +86,7 @@
      "themed": false,
      "chain": {
       "token": "component.message-scroller.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "message-scroller-focus"
      },
      "values": [
@@ -161,7 +161,7 @@
      "themed": false,
      "chain": {
       "token": "component.message-scroller.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "message-scroller-focus-offset"
      },
      "values": [

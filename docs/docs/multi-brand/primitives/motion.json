@@ -4,24 +4,28 @@
    "rows": [
     {
      "primitive": "duration.moderate",
-     "value": "200ms",
+     "value": "150ms",
      "sample": {
       "kind": "duration",
-      "value": "200ms"
+      "value": "150ms"
      },
      "usedBy": [
       {
        "token": "motion.duration.feedback",
+       "where": "semantic"
+      },
+      {
+       "token": "motion.duration.exit",
        "where": "semantic"
       }
      ]
     },
     {
      "primitive": "duration.relaxed",
-     "value": "320ms",
+     "value": "300ms",
      "sample": {
       "kind": "duration",
-      "value": "320ms"
+      "value": "300ms"
      },
      "usedBy": [
       {
@@ -44,6 +48,32 @@
      "usedBy": [
       {
        "token": "motion.easing.standard",
+       "where": "semantic"
+      },
+      {
+       "token": "motion.easing.enter",
+       "where": "semantic"
+      },
+      {
+       "token": "motion.easing.emphasize",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "easing.strong-out",
+     "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+     "sample": {
+      "kind": "easing",
+      "value": "cubic-bezier(0.23,1,0.32,1)"
+     },
+     "usedBy": [
+      {
+       "token": "motion.easing.exit",
+       "where": "semantic"
+      },
+      {
+       "token": "motion.easing.exit-offscreen",
        "where": "semantic"
       }
      ]

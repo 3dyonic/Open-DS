@@ -110,7 +110,7 @@
      "byScheme": true,
      "rule": "The edge of a control people must find.",
      "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.500: the edge of a control people must find, 5.24:1 on surface.default, above the 3:1 floor.",
      "shares": [
       "text.muted",
       "category.5",
@@ -187,7 +187,7 @@
      "byScheme": true,
      "rule": "The quietest text.",
      "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "border.strong",
       "category.5",

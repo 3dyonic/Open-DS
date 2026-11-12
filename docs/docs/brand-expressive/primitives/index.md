@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 # Primitives
 
-:::intro{robot="brand-expressive" stats="181 Primitives|99 In use|82 Spare"}
+:::intro{robot="brand-expressive" stats="184 Primitives|102 In use|82 Spare"}
 The raw values of Brand expressive. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/)), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.
 :::
 
@@ -26,7 +26,7 @@ The raw values of Brand expressive. Primitives hold the values; semantic tokens 
 
 ## Every kind
 
-**181** primitives. **99** are used by a semantic token, a theme or a component key. **82** are not used yet.
+**184** primitives. **102** are used by a semantic token, a theme or a component key. **82** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
@@ -34,5 +34,5 @@ The raw values of Brand expressive. Primitives hold the values; semantic tokens 
 | [Space and size](./space-and-size.md) | 15 | 15 |
 | [Shape](./shape.md) | 8 | 8 |
 | [Type](./type.md) | 13 | 13 |
-| [Motion](./motion.md) | 4 | 4 |
+| [Motion](./motion.md) | 7 | 7 |
 | [Effects](./effects.md) | 5 | 5 |

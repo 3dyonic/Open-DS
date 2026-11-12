@@ -78,7 +78,7 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Sheet reads 26 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Sheet's tokens to change Sheet alone.
+Sheet reads 30 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Sheet's tokens to change Sheet alone.
 
 ::token-table{component="sheet"}
 

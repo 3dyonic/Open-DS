@@ -256,10 +256,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -317,7 +317,7 @@
      "themed": true,
      "chain": {
       "token": "component.toast.neutral.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "toast-neutral-border"
      },
      "values": [

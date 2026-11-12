@@ -36,8 +36,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.surface` | `aster.theme.base.radius.surface` → `radius.8` |
 | `radius.container` | `radius.surface` → `aster.theme.base.radius.surface` → `radius.8` |
 | `border-width.default` | `border-width.1` |
-| `border-width.focus` | `border-width.2` |
-| `border-width.focus-offset` | `border-width.2` |
+| `border-width.focus` | `focus.ring.width` → `border-width.2` |
+| `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 ::::
 
 ::::brand{id="birch" name="Birch"}
@@ -50,8 +50,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.surface` | `birch.theme.base.radius.surface` → `radius.16` |
 | `radius.container` | `radius.surface` → `birch.theme.base.radius.surface` → `radius.16` |
 | `border-width.default` | `border-width.1` |
-| `border-width.focus` | `border-width.2` |
-| `border-width.focus-offset` | `border-width.2` |
+| `border-width.focus` | `focus.ring.width` → `border-width.2` |
+| `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 ::::
 
 ::::brand{id="coral" name="Coral"}
@@ -64,8 +64,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.surface` | `coral.theme.base.radius.surface` → `radius.20` |
 | `radius.container` | `radius.surface` → `coral.theme.base.radius.surface` → `radius.20` |
 | `border-width.default` | `border-width.1` |
-| `border-width.focus` | `border-width.2` |
-| `border-width.focus-offset` | `border-width.2` |
+| `border-width.focus` | `focus.ring.width` → `border-width.2` |
+| `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 ::::
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
@@ -80,4 +80,4 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | Something that grows past one line | radius.element | radius.control | (set by the brand). A brand with pill controls would turn a text area into a capsule. The element corner stays sane in every brand. |
 | Corners of cards, menus and dialogs | radius.surface | A hard-coded radius | (set by the brand). Each brand sets its own card corner; the role stays shared. |
 | Edges and dividers | border-width.default | A brand-specific border width | One thin edge serves every brand. Color carries the brand, not line weight. |
-| The gap around a focus ring | border-width.focus-offset and border-width.focus | A ring that touches the control | The gap sits around a ring of border-width.focus. The ring and its gap stay the same in every brand, so focus shows on any brand color. |
+| The gap around a focus ring | focus.ring.offset | A ring that touches the control | The gap sits around a ring of focus.ring.width. The ring and its gap stay the same in every brand, so focus shows on any brand color. |

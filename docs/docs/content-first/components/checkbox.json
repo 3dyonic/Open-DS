@@ -83,7 +83,7 @@
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "checkbox-focus"
      },
      "values": [
@@ -95,29 +95,12 @@
     },
     {
      "group": "Checkbox",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.checkbox.disabled",
-      "alias": "opacity.disabled",
-      "variable": "checkbox-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Checkbox",
      "part": "Focus offset",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "checkbox-focus-offset"
      },
      "values": [
@@ -231,6 +214,110 @@
        },
        "token": "radius.pill",
        "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.hit-area",
+      "alias": "size.hit-area",
+      "variable": "checkbox-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-background",
+      "alias": "color.disabled.surface",
+      "variable": "checkbox-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F6F2EA"
+       },
+       "token": "stone.light.100",
+       "text": "#F6F2EA"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#2E2A24"
+       },
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-border",
+      "alias": "color.disabled.border",
+      "variable": "checkbox-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#E4DDD0"
+       },
+       "token": "stone.light.200",
+       "text": "#E4DDD0"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4A4339"
+       },
+       "token": "stone.dark.200",
+       "text": "#4A4339"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled indicator",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-indicator",
+      "alias": "color.disabled.text",
+      "variable": "checkbox-disabled-indicator"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },

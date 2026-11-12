@@ -112,7 +112,7 @@
      "themed": true,
      "chain": {
       "token": "component.dialog.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "dialog-content-border"
      },
      "values": [
@@ -220,10 +220,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#161B23"
+        "color": "#262D38"
        },
-       "token": "slate.dark.50",
-       "text": "#161B23"
+       "token": "slate.dark.100",
+       "text": "#262D38"
       }
      ]
     },
@@ -249,10 +249,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -346,7 +346,7 @@
      "themed": false,
      "chain": {
       "token": "component.dialog.close.focus-ring.width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "dialog-close-focus-ring-width"
      },
      "values": [
@@ -421,7 +421,7 @@
      "themed": false,
      "chain": {
       "token": "component.dialog.close.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "dialog-close-focus-offset"
      },
      "values": [

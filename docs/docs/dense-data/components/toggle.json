@@ -343,23 +343,6 @@
     },
     {
      "group": "Toggle",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.toggle.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "toggle-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Toggle",
      "part": "Border invalid",
      "when": "when invalid",
      "themed": true,
@@ -411,7 +394,7 @@
      "themed": false,
      "chain": {
       "token": "component.toggle.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "toggle-focus"
      },
      "values": [
@@ -486,7 +469,7 @@
      "themed": false,
      "chain": {
       "token": "component.toggle.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "toggle-focus-offset"
      },
      "values": [
@@ -595,10 +578,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -709,10 +692,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#0D1117"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.0",
+       "text": "#0D1117"
       }
      ]
     },
@@ -759,6 +742,35 @@
       {
        "token": "border-width.1",
        "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "toggle-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#6B7585"
+       },
+       "token": "slate.light.500",
+       "text": "#6B7585"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#C4CBD6"
+       },
+       "token": "slate.dark.500",
+       "text": "#C4CBD6"
       }
      ]
     }

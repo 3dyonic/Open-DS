@@ -242,9 +242,9 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.slate-deep.dark.50",
-       "via": "color.neutral.50",
-       "hex": "#0F172A"
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100",
+       "hex": "#1E293B"
       }
      ]
     },
@@ -260,9 +260,9 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100",
-       "hex": "#1E293B"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0",
+       "hex": "#020617"
       }
      ]
     },
@@ -278,9 +278,9 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100",
-       "hex": "#1E293B"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0",
+       "hex": "#020617"
       }
      ]
     },
@@ -632,6 +632,24 @@
     },
     {
      "token": "color.border.default",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.slate-deep.light.200",
+       "via": "color.neutral.200",
+       "hex": "#E2E8F0"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.slate-deep.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#334155"
+      }
+     ]
+    },
+    {
+     "token": "color.border.raised",
      "type": "color",
      "modes": [
       {
@@ -2019,124 +2037,124 @@
        },
        {
         "fill": "color.surface.raised",
-        "primitive": "color.slate-deep.dark.50",
-        "via": "color.neutral.50",
-        "hex": "#0F172A",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 17.06
+          "contrast": 13.98
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 12.02
+          "contrast": 9.85
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 6.97
+          "contrast": 5.71
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 17.85
+          "contrast": 14.63
          },
          {
           "text": "color.text.link",
           "primitive": "color.teal.dark.700",
           "hex": "#A1DCD4",
-          "contrast": 11.65
+          "contrast": 9.55
          }
         ]
        },
        {
         "fill": "color.surface.sunken",
-        "primitive": "color.slate-deep.dark.100",
-        "via": "color.neutral.100",
-        "hex": "#1E293B",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 13.98
+          "contrast": 19.28
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 9.85
+          "contrast": 13.59
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 5.71
+          "contrast": 7.88
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 14.63
+          "contrast": 20.17
          },
          {
           "text": "color.text.link",
           "primitive": "color.teal.dark.700",
           "hex": "#A1DCD4",
-          "contrast": 9.55
+          "contrast": 13.16
          }
         ]
        },
        {
         "fill": "color.surface.highlight",
-        "primitive": "color.slate-deep.dark.100",
-        "via": "color.neutral.100",
-        "hex": "#1E293B",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 13.98
+          "contrast": 19.28
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 9.85
+          "contrast": 13.59
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 5.71
+          "contrast": 7.88
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 14.63
+          "contrast": 20.17
          },
          {
           "text": "color.text.link",
           "primitive": "color.teal.dark.700",
           "hex": "#A1DCD4",
-          "contrast": 9.55
+          "contrast": 13.16
          }
         ]
        },
@@ -3076,124 +3094,124 @@
        },
        {
         "fill": "color.surface.raised",
-        "primitive": "color.slate-deep.dark.50",
-        "via": "color.neutral.50",
-        "hex": "#0F172A",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 17.06
+          "contrast": 13.98
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 12.02
+          "contrast": 9.85
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 6.97
+          "contrast": 5.71
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 17.85
+          "contrast": 14.63
          },
          {
           "text": "color.text.link",
           "primitive": "color.purple.dark.700",
           "hex": "#C9B7FC",
-          "contrast": 9.91
+          "contrast": 8.12
          }
         ]
        },
        {
         "fill": "color.surface.sunken",
-        "primitive": "color.slate-deep.dark.100",
-        "via": "color.neutral.100",
-        "hex": "#1E293B",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 13.98
+          "contrast": 19.28
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 9.85
+          "contrast": 13.59
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 5.71
+          "contrast": 7.88
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 14.63
+          "contrast": 20.17
          },
          {
           "text": "color.text.link",
           "primitive": "color.purple.dark.700",
           "hex": "#C9B7FC",
-          "contrast": 8.12
+          "contrast": 11.2
          }
         ]
        },
        {
         "fill": "color.surface.highlight",
-        "primitive": "color.slate-deep.dark.100",
-        "via": "color.neutral.100",
-        "hex": "#1E293B",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 13.98
+          "contrast": 19.28
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 9.85
+          "contrast": 13.59
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 5.71
+          "contrast": 7.88
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 14.63
+          "contrast": 20.17
          },
          {
           "text": "color.text.link",
           "primitive": "color.purple.dark.700",
           "hex": "#C9B7FC",
-          "contrast": 8.12
+          "contrast": 11.2
          }
         ]
        },
@@ -4133,124 +4151,124 @@
        },
        {
         "fill": "color.surface.raised",
-        "primitive": "color.slate-deep.dark.50",
-        "via": "color.neutral.50",
-        "hex": "#0F172A",
+        "primitive": "color.slate-deep.dark.100",
+        "via": "color.neutral.100",
+        "hex": "#1E293B",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 17.06
+          "contrast": 13.98
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 12.02
+          "contrast": 9.85
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 6.97
+          "contrast": 5.71
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 17.85
+          "contrast": 14.63
          },
          {
           "text": "color.text.link",
           "primitive": "color.orange.dark.700",
           "hex": "#FCBD9F",
-          "contrast": 10.98
+          "contrast": 9
          }
         ]
        },
        {
         "fill": "color.surface.sunken",
-        "primitive": "color.slate-deep.dark.100",
-        "via": "color.neutral.100",
-        "hex": "#1E293B",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 13.98
+          "contrast": 19.28
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 9.85
+          "contrast": 13.59
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 5.71
+          "contrast": 7.88
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 14.63
+          "contrast": 20.17
          },
          {
           "text": "color.text.link",
           "primitive": "color.orange.dark.700",
           "hex": "#FCBD9F",
-          "contrast": 9
+          "contrast": 12.41
          }
         ]
        },
        {
         "fill": "color.surface.highlight",
-        "primitive": "color.slate-deep.dark.100",
-        "via": "color.neutral.100",
-        "hex": "#1E293B",
+        "primitive": "color.slate-deep.dark.0",
+        "via": "color.neutral.0",
+        "hex": "#020617",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.slate-deep.dark.900",
           "via": "color.neutral.900",
           "hex": "#F8FAFC",
-          "contrast": 13.98
+          "contrast": 19.28
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.slate-deep.dark.500",
           "via": "color.neutral.500",
           "hex": "#CBD5E1",
-          "contrast": 9.85
+          "contrast": 13.59
          },
          {
           "text": "color.text.muted",
           "primitive": "color.slate-deep.dark.400",
           "via": "color.neutral.400",
           "hex": "#96A3B5",
-          "contrast": 5.71
+          "contrast": 7.88
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.slate-deep.light.0",
           "hex": "#FFFFFF",
-          "contrast": 14.63
+          "contrast": 20.17
          },
          {
           "text": "color.text.link",
           "primitive": "color.orange.dark.700",
           "hex": "#FCBD9F",
-          "contrast": 9
+          "contrast": 12.41
          }
         ]
        },
@@ -4627,8 +4645,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.50",
-       "via": "color.neutral.50"
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
       }
      ]
     },
@@ -4644,8 +4662,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
       }
      ]
     },
@@ -4661,8 +4679,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
       }
      ]
     },
@@ -4923,8 +4941,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.50",
-       "via": "color.neutral.50"
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
       }
      ]
     },
@@ -4940,8 +4958,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
       }
      ]
     },
@@ -4957,8 +4975,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
       }
      ]
     },
@@ -5219,8 +5237,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.50",
-       "via": "color.neutral.50"
+       "primitive": "color.slate-deep.dark.100",
+       "via": "color.neutral.100"
       }
      ]
     },
@@ -5236,8 +5254,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
       }
      ]
     },
@@ -5253,8 +5271,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.slate-deep.dark.100",
-       "via": "color.neutral.100"
+       "primitive": "color.slate-deep.dark.0",
+       "via": "color.neutral.0"
       }
      ]
     },

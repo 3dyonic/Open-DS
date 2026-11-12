@@ -156,7 +156,7 @@
     },
     {
      "title": "Motion",
-     "text": "2 primitives · 2 in use",
+     "text": "3 primitives · 3 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -170,9 +170,9 @@
       }
      ],
      "meter": {
-      "value": 2,
-      "max": 2,
-      "label": "2 of 2 in use"
+      "value": 3,
+      "max": 3,
+      "label": "3 of 3 in use"
      }
     },
     {

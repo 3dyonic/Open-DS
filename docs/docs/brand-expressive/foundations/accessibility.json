@@ -81,26 +81,6 @@
      ]
     },
     {
-     "title": "opacity.disabled",
-     "sample": {
-      "kind": "opacity",
-      "value": "var(--opacity-disabled)"
-     },
-     "api": [
-      {
-       "token": "opacity.disabled",
-       "value": "0.4"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "A control that is not available yet",
-       "why": "A faded button keeps the layout. The vivid color returns when the visitor can sign up."
-      }
-     ]
-    },
-    {
      "title": "color.border.focus",
      "sample": {
       "kind": "color",
@@ -112,6 +92,61 @@
        "primitive": "color.pink.light.600",
        "value": "#D61F7A",
        "dark": "#F59ACA"
+      }
+     ],
+     "rules": []
+    },
+    {
+     "title": "focus.ring.width",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-width)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.width",
+       "value": "3px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring at focus.ring.width",
+       "why": "Focus must show on vivid color."
+      }
+     ]
+    },
+    {
+     "title": "focus.ring.offset",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-offset)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.offset",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The gap keeps the ring visible on vivid fills."
+      }
+     ]
+    },
+    {
+     "title": "size.hit-area",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-hit-area)"
+     },
+     "api": [
+      {
+       "token": "size.hit-area",
+       "value": "44px"
       }
      ],
      "rules": []

@@ -49,7 +49,7 @@
      "themed": false,
      "chain": {
       "token": "component.scroll-area.viewport.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "scroll-area-viewport-focus"
      },
      "values": [
@@ -124,7 +124,7 @@
      "themed": false,
      "chain": {
       "token": "component.scroll-area.viewport.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "scroll-area-viewport-focus-offset"
      },
      "values": [

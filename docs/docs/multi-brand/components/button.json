@@ -1133,10 +1133,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Birch Light",
@@ -1149,10 +1149,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       },
       {
        "theme": "Coral Light",
@@ -1165,10 +1165,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#020617"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.0",
+       "text": "#020617"
       }
      ]
     },
@@ -1446,7 +1446,7 @@
      "themed": false,
      "chain": {
       "token": "component.button.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "button-focus"
      },
      "values": [
@@ -1463,7 +1463,7 @@
      "themed": false,
      "chain": {
       "token": "component.button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "button-focus-offset"
      },
      "values": [
@@ -1781,7 +1781,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },

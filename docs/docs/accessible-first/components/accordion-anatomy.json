@@ -149,7 +149,7 @@
      "byScheme": true,
      "rule": "Body text and headings.",
      "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
      "shares": [
       "surface.inverse"
      ]
@@ -202,9 +202,9 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "No motion",
+     "use": "Fades only; nothing moves",
      "not": "reduced motion",
-     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+     "why": "Movement can make some people dizzy, so it stops. A short fade or a color change still shows that something changed."
     },
     {
      "kind": "token",
@@ -219,7 +219,7 @@
      "kind": "token",
      "semantic": "motion.duration.feedback",
      "key": "icon.duration",
-     "value": "200ms",
+     "value": "150ms",
      "byScheme": true,
      "pick": "duration.moderate",
      "shares": []
@@ -281,13 +281,13 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "trigger.focus-ring.width",
      "value": "3px",
      "byScheme": true,
@@ -296,7 +296,7 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "trigger.focus-offset",
      "value": "2px",
      "byScheme": false,
@@ -312,7 +312,7 @@
      "byScheme": true,
      "rule": "The page background behind everything.",
      "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "darkPick": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
      "shares": []
     }
    ]
@@ -328,12 +328,19 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "trigger.disabled.opacity",
-     "value": "0.5",
+     "semantic": "color.disabled.text",
+     "key": "trigger.disabled.label",
+     "value": "#595959",
+     "darkValue": "#949494",
      "byScheme": true,
-     "pick": "opacity.50",
-     "shares": []
+     "rule": "Text and icons of a control that cannot be used right now.",
+     "pick": "neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "darkPick": "neutral.500: 5.24:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "shares": [
+      "text.muted",
+      "border.strong",
+      "category.5"
+     ]
     }
    ]
   }

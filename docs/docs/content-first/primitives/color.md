@@ -14,7 +14,7 @@ Each color is a whole scale in each theme. The lanes show what its tokens paint:
 
 ## Stone
 
-24 tokens in light, 19 tokens in dark.
+25 tokens in light, 20 tokens in dark.
 
 ::color-scale{id="stone"}
 

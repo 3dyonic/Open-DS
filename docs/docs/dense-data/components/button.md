@@ -212,7 +212,7 @@ Keyboard or assistive tech is on this control. It must stay visible.
 
 **In Dense data**
 
-Always visible: the focus ring at border-width.focus.
+Always visible: the focus ring at focus.ring.width.
 
 **Because**
 
@@ -249,7 +249,7 @@ Only with a visible reason next to it.
 Experts learn icons; the tooltip covers the first uses.
 :::
 :::panel{title="Keyboard focus"}
-**Use** button/focus-ring at border-width.focus
+**Use** button/focus-ring at focus.ring.width
 
 **Not** Removing the outline
 

@@ -9,7 +9,7 @@ hide_title: true
 hide_table_of_contents: true
 ---
 
-:::hero{robot="dense-data" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="59 components|174 primitives|2 themes"}
+:::hero{robot="dense-data" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="59 components|175 primitives|2 themes"}
 # Dense data
 
 Compact, exact and quiet, for analysts who scan alerts and compare signals all day.
