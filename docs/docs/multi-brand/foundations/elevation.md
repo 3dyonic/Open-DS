@@ -26,7 +26,7 @@ When something rises above the page, and what separates groups.
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `elevation.card` | light | `aster.theme.light.elevation.card` → `shadow.card` |
@@ -35,7 +35,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `aster.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `elevation.card` | light | `birch.theme.light.elevation.card` → `shadow.card` |
@@ -44,7 +44,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `elevation.card` | light | `coral.theme.light.elevation.card` → `shadow.card` |

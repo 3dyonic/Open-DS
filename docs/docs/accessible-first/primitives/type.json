@@ -239,8 +239,13 @@
      "big": "Aa",
      "token": "font.family.atkinson-hyperlegible",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {

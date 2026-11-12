@@ -259,8 +259,13 @@
      "big": "Aa",
      "token": "font.family.source-serif-4",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {
@@ -289,8 +294,13 @@
      "big": "Aa",
      "token": "font.family.inter",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {

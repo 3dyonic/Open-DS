@@ -1,11 +1,11 @@
 /**
  * SampleScreen: the scheme's own sample screen on its home page, built from its real components (Card,
- * Table, Badge, Button, Input) with its own sample content: a table where the scheme carries one, else
+ * Table, Badge through the Label base form, Button, Input) with its own sample content: a table where the scheme carries one, else
  * a card, an article opening, a form step, a launch or the same card in each brand. The docs generator
  * writes the content (<page>.json beside the page); the page holds one line: ::sample-screen{id="home"}
  */
 import * as React from "react";
-import { Badge, type BadgeProps } from "@open-ds/ui/components/badge";
+import Label, { type LabelProps } from "./base/Label";
 import { Button } from "@open-ds/ui/components/button";
 import {
   Card,
@@ -25,7 +25,7 @@ import {
   TableRow,
 } from "@open-ds/ui/components/table";
 
-type Status = { text: string; tone?: BadgeProps["tone"] };
+type Status = { text: string; tone?: LabelProps["tone"] };
 export type SampleScreenData = {
   // The screen's name, shown in its bar.
   screen?: string;
@@ -65,7 +65,7 @@ function Body({ d, eyebrow }: { d: SampleScreenData; eyebrow?: string }) {
           {eyebrow && <CardDescription>{eyebrow}</CardDescription>}
           <div className="flex flex-wrap items-center justify-between gap-[var(--space-gap-tight)]">
             {d.title && <CardTitle>{d.title}</CardTitle>}
-            {d.status && <Badge tone={d.status.tone}>{d.status.text}</Badge>}
+            {d.status && <Label tone={d.status.tone}>{d.status.text}</Label>}
           </div>
         </CardHeader>
       )}
@@ -112,7 +112,7 @@ function Body({ d, eyebrow }: { d: SampleScreenData; eyebrow?: string }) {
                     </TableCell>
                   ))}
                   <TableCell>
-                    <Badge tone={r.status.tone}>{r.status.text}</Badge>
+                    <Label tone={r.status.tone}>{r.status.text}</Label>
                   </TableCell>
                 </TableRow>
               ))}

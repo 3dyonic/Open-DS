@@ -4,7 +4,9 @@
   "title": "Anatomy steps",
   "description": "How the design decisions reach one part: the answers, the rules and the tokens, in order. Drawn by the AnatomySteps composite in a part's card on a component's Anatomy reference.",
   "type": "object",
-  "required": ["steps"],
+  "required": [
+    "steps"
+  ],
   "additionalProperties": false,
   "properties": {
     "steps": {
@@ -14,43 +16,164 @@
         "oneOf": [
           {
             "type": "object",
-            "required": ["kind", "question", "answer", "why"],
+            "required": [
+              "kind",
+              "question",
+              "answer",
+              "why"
+            ],
             "additionalProperties": false,
             "properties": {
-              "kind": { "const": "answer", "description": "An answer about the product." },
-              "scope": { "type": "string", "minLength": 1, "description": "The scope the question belongs to, such as Elevation." },
-              "question": { "type": "string", "minLength": 1, "description": "The question." },
-              "answer": { "type": "string", "minLength": 1, "description": "The scheme's answer." },
-              "why": { "type": "string", "minLength": 1, "description": "Why the scheme answers so." }
+              "kind": {
+                "const": "answer",
+                "description": "An answer about the product."
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The scope the question belongs to, such as Elevation."
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The question."
+              },
+              "answer": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The scheme's answer."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why the scheme answers so."
+              }
             }
           },
           {
             "type": "object",
-            "required": ["kind", "situation", "use"],
+            "required": [
+              "kind",
+              "situation",
+              "use"
+            ],
             "additionalProperties": false,
             "properties": {
-              "kind": { "const": "rule", "description": "A rule the answers set." },
-              "situation": { "type": "string", "minLength": 1, "description": "When the rule applies, such as a menu or dialog." },
-              "use": { "type": "string", "minLength": 1, "description": "What to use." },
-              "not": { "type": "string", "minLength": 1, "description": "What not to use." },
-              "why": { "type": "string", "minLength": 1, "description": "Why the rule holds." }
+              "kind": {
+                "const": "rule",
+                "description": "A rule the answers set."
+              },
+              "situation": {
+                "type": "string",
+                "minLength": 1,
+                "description": "When the rule applies, such as a menu or dialog."
+              },
+              "use": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What to use."
+              },
+              "not": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What not to use."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why the rule holds."
+              }
             }
           },
           {
             "type": "object",
-            "required": ["kind", "semantic", "value", "byScheme", "pick", "shares"],
+            "required": [
+              "kind",
+              "semantic",
+              "value",
+              "byScheme",
+              "pick",
+              "shares"
+            ],
             "additionalProperties": false,
             "properties": {
-              "kind": { "const": "token", "description": "A token that carries the decision." },
-              "semantic": { "type": "string", "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$", "description": "The semantic token, such as color.surface.raised." },
-              "key": { "type": "string", "minLength": 1, "description": "The component's own key that reads it, such as content.background. Absent when it has none yet." },
-              "value": { "type": "string", "description": "The value in light mode." },
-              "darkValue": { "type": "string", "description": "The value in dark mode, when it differs." },
-              "byScheme": { "type": "boolean", "description": "Whether the value changes by scheme." },
-              "rule": { "type": "string", "minLength": 1, "description": "The token's own guidance." },
-              "pick": { "type": "string", "minLength": 1, "description": "Why the scheme picks this value in light mode." },
-              "darkPick": { "type": "string", "minLength": 1, "description": "Why it picks the dark value, when that differs." },
-              "shares": { "type": "array", "items": { "type": "string" }, "description": "Other tokens on the same step." }
+              "kind": {
+                "const": "token",
+                "description": "A token that carries the decision."
+              },
+              "semantic": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                "description": "The semantic token, such as color.surface.raised."
+              },
+              "key": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The component's own key that reads it, such as content.background. Absent when it has none yet."
+              },
+              "value": {
+                "type": "string",
+                "description": "The value in light mode."
+              },
+              "darkValue": {
+                "type": "string",
+                "description": "The value in dark mode, when it differs."
+              },
+              "byScheme": {
+                "type": "boolean",
+                "description": "Whether the value changes by scheme."
+              },
+              "rule": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The token's own guidance."
+              },
+              "pick": {
+                "$ref": "#/$defs/measured",
+                "description": "Why the scheme picks this value in light mode, with each ratio as a number."
+              },
+              "darkPick": {
+                "$ref": "#/$defs/measured",
+                "description": "Why it picks the dark value, when that differs."
+              },
+              "shares": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Other tokens on the same step."
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "measured": {
+      "type": "array",
+      "minItems": 1,
+      "description": "A sentence with contrast ratios in it: its words, and each ratio as a number between them.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1,
+            "description": "Words of the sentence, with no ratio in them."
+          },
+          {
+            "type": "object",
+            "required": [
+              "ratio"
+            ],
+            "additionalProperties": false,
+            "description": "A contrast ratio, written as <ratio>:1.",
+            "properties": {
+              "ratio": {
+                "type": "number",
+                "minimum": 1,
+                "description": "The ratio's first number: 7.26 for 7.26:1."
+              }
             }
           }
         ]

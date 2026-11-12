@@ -1,6 +1,7 @@
 /**
  * Hero: a scheme's home page opening. A line above the name, the page's own heading and summary in
- * Markdown, one action as the scheme's Button, a few counts, the robot and the scheme's sample screen.
+ * Markdown, one action as the scheme's Button, a few counts, the robot (the Robot base form) and the
+ * scheme's sample screen.
  *
  *   :::hero{eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="41 components|174 primitives|2 themes"}
  *   # Accessible first
@@ -9,13 +10,14 @@
  */
 import * as React from "react";
 import { Button } from "@open-ds/ui/components/button";
+import Robot, { type RobotPics } from "./base/Robot";
 
 export type HeroProps = {
   eyebrow?: string;
   action?: string;
   href?: string;
   stats?: string;
-  robot?: { day: string; night: string };
+  robot?: RobotPics;
   children?: React.ReactNode;
 };
 
@@ -37,12 +39,7 @@ export default function Hero({
       className="grid items-start gap-[var(--space-gap-section)] lg:grid-cols-2"
     >
       <div className="flex flex-col gap-[var(--space-gap-default)]">
-        {robot && (
-          <span aria-hidden="true" className="w-32">
-            <img src={robot.day} alt="" className="dark:hidden" />
-            <img src={robot.night} alt="" className="hidden dark:block" />
-          </span>
-        )}
+        {robot && <Robot robot={robot} className="w-32" />}
         {eyebrow && (
           <span className="text-[length:var(--type-caption-font-size)] text-[var(--color-text-secondary)]">
             {eyebrow}

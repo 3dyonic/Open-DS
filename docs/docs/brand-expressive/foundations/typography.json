@@ -252,7 +252,12 @@
      "sample": {
       "kind": "type",
       "role": "data",
-      "text": "Days to launch 6 · On the list 2,400 · Pieces in the drop 12 · Colors 4"
+      "parts": [
+       "Days to launch 6",
+       "On the list 2,400",
+       "Pieces in the drop 12",
+       "Colors 4"
+      ]
      },
      "api": [
       {

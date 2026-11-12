@@ -1,6 +1,8 @@
 // The rules every scheme keeps (OD-292, ADR-002 step 3). Each rule takes one scheme and returns what
 // breaks it, so the build, the harness and a user's project run the same rules. No file access.
+import { contrast } from "./ramps.mjs";
 import { themeTokens } from "./tokens.mjs";
+import { pairsIn } from "./tones.mjs";
 
 /** A DTCG group as { "a.b.c": token }. */
 export function flatten(group, prefix = "") {
@@ -95,12 +97,54 @@ export function spacingOffGrid(scheme) {
   return gaps;
 }
 
-/** Every rule for one scheme: [{ rule, findings }]. A scheme passes when every findings list is empty. */
-export function checkScheme(scheme) {
+/**
+ * Each contrast pair the grammar names keeps its ratio in every brand and mode (OD-222). A pair on a fill
+ * that waits for a recorded fix goes in waiting, not in gaps. { pairs, gaps, waiting }
+ */
+export function contrastPairs(scheme, g) {
+  const gaps = [];
+  const waiting = new Set();
+  let pairs = 0;
+  for (const brand of Object.keys(scheme.tokens.brands))
+    for (const mode of ["light", "dark"]) {
+      const all = flatten(themeTokens({ id: scheme.id, tokens: scheme.tokens }, brand, mode));
+      const hex = (p) => {
+        const v = resolve(all, p).value;
+        return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
+      };
+      for (const p of pairsIn(g, scheme, brand, mode)) {
+        const [a, b] = [hex(p.key), hex(p.on)];
+        if (!a || !b) continue;
+        pairs++;
+        const r = contrast(a, b);
+        if (r >= p.contrast) continue;
+        if (p.waits) waiting.add(`${scheme.id}/${brand}/${mode} ${p.on} (${p.waits.for})`);
+        else gaps.push(`${scheme.id}/${brand}/${mode}: ${p.key} on ${p.on} is ${r.toFixed(2)}:1, needs ${p.contrast}:1`);
+      }
+    }
+  return { pairs, gaps, waiting: [...waiting] };
+}
+
+/** What a compiled JSON Schema validator (Ajv) finds wrong with the scheme, one line per error. */
+export function schemaFindings(scheme, validate) {
+  if (validate(scheme)) return [];
+  return (validate.errors ?? []).map((e) => `${scheme.id}: ${e.instancePath || "/"} ${e.message}`);
+}
+
+/**
+ * Every rule for one scheme: [{ rule, findings }]. A scheme passes when every findings list is empty.
+ * grammar names the contrast pairs; validate is the compiled scheme schema (schemeValidator).
+ */
+export function checkScheme(scheme, { grammar, validate }) {
+  const schema = { rule: "matches the scheme schema", findings: schemaFindings(scheme, validate) };
+  // The other rules read the scheme's shape, so they run only on a scheme that matches the schema.
+  if (schema.findings.length) return [schema];
   return [
+    schema,
     { rule: "tokens resolve", findings: tokensResolve(scheme) },
     { rule: "semantics are links", findings: rawValues(scheme).map((p) => `${scheme.id}: raw value on ${p}`) },
     { rule: "picks cite answers", findings: picksCiteAnswers(scheme).gaps },
     { rule: "spacing on the grid", findings: spacingOffGrid(scheme) },
+    { rule: "contrast pairs pass", findings: contrastPairs(scheme, grammar).gaps },
   ];
 }

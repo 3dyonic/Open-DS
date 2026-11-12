@@ -1,4 +1,4 @@
-// Whole color scales, generated in OKLCH (OD-223). Shared by the scheme writer and the harness.
+// Whole color scales, generated in OKLCH (OD-223). Shared by the loader (scheme-generated.mjs), the scheme writer and the harness.
 //
 // Every colored hue has a light scale and a dark scale, steps 50 to 950. Each is generated from one
 // key color, kept exact at 600: the light scale on a shared lightness curve around it, the dark scale

@@ -84,8 +84,8 @@ export function onRouteDidUpdate() {
 // question opens its section, the address follows the open section, and the section menu in the
 // left sidebar marks it. On any other page that menu folds away.
 function setOpen(sec: Element | null, open: boolean) {
-  const btn = sec?.querySelector<HTMLButtonElement>(":scope > .odv-qsec-h");
-  const body = sec?.querySelector<HTMLElement>(":scope > .odv-qsec-b");
+  const btn = sec?.querySelector<HTMLButtonElement>(":scope [data-fold-head]");
+  const body = sec?.querySelector<HTMLElement>(":scope [data-fold-body]");
   if (!btn || !body) return;
   btn.setAttribute("aria-expanded", String(open));
   body.hidden = !open;
@@ -94,7 +94,7 @@ function setOpen(sec: Element | null, open: boolean) {
 function openOnly(sec: Element | null, keep?: Element | null) {
   const anchor = keep ?? sec;
   const before = anchor?.getBoundingClientRect().top ?? 0;
-  for (const o of document.querySelectorAll(".odv-qsec")) setOpen(o, o === sec);
+  for (const o of document.querySelectorAll("[data-fold]")) setOpen(o, o === sec);
   // Closing a section above moves everything below it up; scroll back so the header stays put.
   if (anchor) window.scrollBy(0, anchor.getBoundingClientRect().top - before);
   history.replaceState(null, "", sec ? `#${sec.id}` : location.pathname);
@@ -105,9 +105,9 @@ function openFor(hash: string) {
   const el = hash
     ? document.getElementById(decodeURIComponent(hash.slice(1)))
     : null;
-  const sec = el?.closest(".odv-qsec");
+  const sec = el?.closest("[data-fold]");
   if (sec)
-    for (const o of document.querySelectorAll(".odv-qsec"))
+    for (const o of document.querySelectorAll("[data-fold]"))
       setOpen(o, o === sec);
   markMenu();
   if (el) requestAnimationFrame(() => el.scrollIntoView({ block: "start" }));
@@ -115,8 +115,8 @@ function openFor(hash: string) {
 
 function markMenu() {
   const open =
-    document.querySelector('.odv-qsec-h[aria-expanded="true"]')?.parentElement
-      ?.id ?? "";
+    document.querySelector('[data-fold-head][aria-expanded="true"]')
+      ?.closest("[data-fold]")?.id ?? "";
   for (const a of document.querySelectorAll<HTMLAnchorElement>(".odv-dmenu-a"))
     a.classList.toggle("on", a.dataset.section === open);
 }
@@ -133,9 +133,9 @@ function foldMenu() {
 if (typeof window !== "undefined") {
   document.addEventListener("click", (e) => {
     const t = e.target as Element;
-    const head = t.closest(".odv-qsec-h");
+    const head = t.closest("[data-fold-head]");
     if (head) {
-      const sec = head.parentElement;
+      const sec = head.closest("[data-fold]");
       openOnly(head.getAttribute("aria-expanded") === "true" ? null : sec, sec);
       return;
     }

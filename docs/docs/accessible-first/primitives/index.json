@@ -4,7 +4,8 @@
    "cards": [
     {
      "title": "Color",
-     "text": "136 primitives · 53 in use",
+     "text": "136 primitives",
+     "note": "53 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -52,7 +53,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "17 primitives · 17 in use",
+     "text": "17 primitives",
+     "note": "17 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -96,7 +98,8 @@
     },
     {
      "title": "Shape",
-     "text": "8 primitives · 8 in use",
+     "text": "8 primitives",
+     "note": "8 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -128,7 +131,8 @@
    "cards": [
     {
      "title": "Type",
-     "text": "10 primitives · 10 in use",
+     "text": "10 primitives",
+     "note": "10 in use",
      "href": "./type",
      "robot": {
       "day": "/robots/scopes/typography.webp",
@@ -140,8 +144,10 @@
        "value": "'Atkinson Hyperlegible', Verdana, sans-serif"
       },
       {
-       "kind": "text",
-       "value": "Atkinson Hyperlegible"
+       "kind": "names",
+       "names": [
+        "Atkinson Hyperlegible"
+       ]
       }
      ],
      "meter": {
@@ -152,7 +158,8 @@
     },
     {
      "title": "Motion",
-     "text": "2 primitives · 2 in use",
+     "text": "2 primitives",
+     "note": "2 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -173,7 +180,8 @@
     },
     {
      "title": "Effects",
-     "text": "2 primitives · 2 in use",
+     "text": "2 primitives",
+     "note": "2 in use",
      "href": "./effects",
      "robot": {
       "day": "/robots/scopes/elevation.webp",

@@ -68,7 +68,9 @@
      "key": "radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
+     "pick": [
+      "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone."
+     ],
      "shares": []
     }
    ]
@@ -102,7 +104,9 @@
      "key": "item.padding-x",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -129,7 +133,9 @@
      "key": "item.radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone.",
+     "pick": [
+      "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone."
+     ],
      "shares": []
     },
     {
@@ -138,7 +144,9 @@
      "key": "item.border-width",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     }
    ]

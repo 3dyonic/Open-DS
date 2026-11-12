@@ -252,7 +252,12 @@
      "sample": {
       "kind": "type",
       "role": "data",
-      "text": "Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday"
+      "parts": [
+       "Guides saved 4",
+       "Finished this month 11",
+       "Minutes read 186",
+       "Next issue Friday"
+      ]
      },
      "api": [
       {

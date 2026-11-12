@@ -72,7 +72,9 @@
      "key": "font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -81,7 +83,9 @@
      "key": "font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -90,7 +94,9 @@
      "key": "font-family",
      "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
      "byScheme": true,
-     "pick": "atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "pick": [
+      "atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+     ],
      "shares": []
     },
     {
@@ -99,7 +105,9 @@
      "key": "line-height",
      "value": "1.6",
      "byScheme": true,
-     "pick": "font.line-height.1_6",
+     "pick": [
+      "font.line-height.1_6"
+     ],
      "shares": []
     }
    ]
@@ -135,8 +143,28 @@
      "darkValue": "#F7F7F7",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 18.42
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.2
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -165,7 +193,9 @@
      "key": "gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]

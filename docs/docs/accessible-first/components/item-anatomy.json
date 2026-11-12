@@ -113,7 +113,9 @@
      "key": "default.padding",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     },
     {
@@ -122,7 +124,9 @@
      "key": "default.gap",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     },
     {
@@ -131,7 +135,9 @@
      "key": "radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: the control corner; it is not a pill, so a growing box keeps it.",
+     "pick": [
+      "radius.6: the control corner; it is not a pill, so a growing box keeps it."
+     ],
      "shares": []
     }
    ]
@@ -165,7 +171,9 @@
      "key": "media.icon.size",
      "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.52",
+     "pick": [
+      "size.52"
+     ],
      "shares": []
     },
     {
@@ -174,7 +182,9 @@
      "key": "media.icon.radius",
      "value": "0.375rem",
      "byScheme": true,
-     "pick": "radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
+     "pick": [
+      "radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons."
+     ],
      "shares": []
     },
     {
@@ -185,8 +195,20 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.17
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -200,7 +222,9 @@
      "key": "media.icon.icon-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     }
    ]
@@ -220,7 +244,9 @@
      "key": "title.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -229,7 +255,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     }
    ]
@@ -263,7 +291,9 @@
      "key": "description.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -274,8 +304,28 @@
      "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 8.89:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.500: the quietest text that still reads, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 8.89
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "border.strong",
       "category.5",
@@ -306,7 +356,9 @@
      "key": "actions.gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -333,7 +385,9 @@
      "key": "focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
@@ -344,8 +398,28 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 8.74
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -358,7 +432,9 @@
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]

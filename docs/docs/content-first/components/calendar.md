@@ -15,7 +15,7 @@ A month grid for picking a date or a range.
 
 ## See it live
 
-::preview{robot="slumber" id="calendar/live"}
+::preview{id="calendar/live"}
 
 ## When to use it
 

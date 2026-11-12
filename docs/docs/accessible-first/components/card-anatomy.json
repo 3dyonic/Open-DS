@@ -149,8 +149,28 @@
      "darkValue": "#141414",
      "byScheme": true,
      "rule": "The base fill for content.",
-     "pick": "neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
-     "darkPick": "neutral.50: the base for content; body text reads 17.2:1 on it, above the 7:1 floor.",
+     "pick": [
+      "neutral.0: the base for content; body text reads ",
+      {
+       "ratio": 18.42
+      },
+      " on it, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.50: the base for content; body text reads ",
+      {
+       "ratio": 17.2
+      },
+      " on it, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "surface.raised",
       "action.secondary"
@@ -162,7 +182,9 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+     "pick": [
+      "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it."
+     ],
      "shares": []
     },
     {
@@ -171,7 +193,9 @@
      "key": "padding",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     },
     {
@@ -182,8 +206,20 @@
      "darkValue": "#333333",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.36
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.46
+      },
+      ", on surface.default). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
       "surface.pressed",
       "disabled.border"
@@ -195,7 +231,9 @@
      "key": "border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -204,7 +242,9 @@
      "key": "shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: Flat is easier to read at high zoom.",
+     "pick": [
+      "shadow.none: Flat is easier to read at high zoom."
+     ],
      "shares": [
       "elevation.overlay"
      ]
@@ -233,7 +273,9 @@
      "key": "title.font-family",
      "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
      "byScheme": true,
-     "pick": "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "pick": [
+      "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+     ],
      "shares": []
     },
     {
@@ -242,7 +284,9 @@
      "key": "title.font-size",
      "value": "1.4375rem",
      "byScheme": true,
-     "pick": "font.size.23",
+     "pick": [
+      "font.size.23"
+     ],
      "shares": []
     },
     {
@@ -251,7 +295,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -260,7 +306,9 @@
      "key": "header.gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     },
     {
@@ -271,8 +319,28 @@
      "darkValue": "#D6D6D6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 12.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 12.68
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -281,7 +349,9 @@
      "key": "description.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     }
    ]
@@ -308,7 +378,9 @@
      "key": "gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     },
     {
@@ -317,7 +389,9 @@
      "key": "content.gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     },
     {
@@ -326,7 +400,9 @@
      "key": "footer.gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]

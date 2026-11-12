@@ -15,7 +15,7 @@ A field for free text over several lines.
 
 ## See it live
 
-::preview{robot="slumber" id="textarea/live"}
+::preview{id="textarea/live"}
 
 ## When to use it
 

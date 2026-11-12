@@ -269,8 +269,13 @@
      "big": "Aa",
      "token": "font.family.bricolage-grotesque",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {
@@ -297,8 +302,13 @@
      "big": "Aa",
      "token": "font.family.dm-sans",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {

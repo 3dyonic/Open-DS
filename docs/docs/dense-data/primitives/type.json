@@ -259,8 +259,13 @@
      "big": "Aa",
      "token": "font.family.ibm-plex-sans",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {
@@ -294,8 +299,13 @@
      "big": "Aa",
      "token": "font.family.ibm-plex-mono",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {
