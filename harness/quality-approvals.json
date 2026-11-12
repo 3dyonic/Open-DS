@@ -1,4 +1,892 @@
 {
   "$description": "Flags the owner approved for the quality gate (OD-298). open-ds compare reads this file from the candidate. An approval clears one flag. Each entry names: scheme; theme (the mode, light or dark, a brand theme such as aster-dark, or * for every theme); check (the criterion id that raised the flag, such as relations.ladder-order, relations.state-sign, relations.shared-split or invariants.spacing-map); token, or pair (two token names; a component pair names its foreground and background CSS variables, such as --menubar-item-label-destructive and --menubar-content-background, or color.surface.canvas for the page); why; approved_by. An entry with a token and no check approves a color move (the shift criteria). A file with an invalid entry stops the run. Only the owner adds entries.",
-  "approvals": []
+  "approvals": [
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.raised"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.raised"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.raised"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.raised"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.raised"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.raised"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and default now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "relations.ladder-order",
+      "pair": [
+        "color.surface.sunken",
+        "color.surface.raised"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken and raised now keep that order.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary.hover",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.category.5.subtle",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.category.5.subtle no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.surface",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary.hover",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.category.5.subtle",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.category.5.subtle no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.surface",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.text.inverse",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.text.inverse no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.text.on-action",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.text.on-action no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.text.on-danger",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.text.on-danger no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.text.on-light",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.text.on-light no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.action.secondary no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary.hover",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.category.5.subtle",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.category.5.subtle no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.surface",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.border.default",
+        "color.surface.pressed"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. pressed moved to its rung, so color.border.default no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.border.selected",
+        "color.border.focus"
+      ],
+      "why": "Cause: Accessible first keeps AAA in dark mode. color.border.focus takes a lighter step for 7:1 on raised, so it leaves the step it shared.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.primary",
+        "color.border.focus"
+      ],
+      "why": "Cause: Accessible first keeps AAA in dark mode. color.border.focus takes a lighter step for 7:1 on raised, so it leaves the step it shared.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.category.1",
+        "color.border.focus"
+      ],
+      "why": "Cause: Accessible first keeps AAA in dark mode. color.border.focus takes a lighter step for 7:1 on raised, so it leaves the step it shared.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.status.danger",
+        "color.action.danger"
+      ],
+      "why": "Cause: Accessible first keeps AAA in dark mode. color.status.danger takes a lighter step for 7:1 on raised, so it leaves the step it shared.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary.hover",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.category.5.subtle",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.category.5.subtle no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.surface",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary.hover",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.surface",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary.hover",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.surface",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.default"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung, so color.surface.raised no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.action.secondary.hover",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.action.secondary.hover no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.surface",
+        "color.surface.sunken"
+      ],
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung, so color.disabled.surface no longer shares its step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.raised",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.sunken",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.highlight",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.pressed",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. pressed moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.raised",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.sunken",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.highlight",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.default",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.raised",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.sunken",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.highlight",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.border.focus",
+      "why": "Cause: Accessible first keeps AAA in dark mode. color.border.focus moves to a lighter step so it reads 7:1 on the lighter raised surface.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.status.danger",
+      "why": "Cause: Accessible first keeps AAA in dark mode. color.status.danger moves to a lighter step so it reads 7:1 on the lighter raised surface.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.raised",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.sunken",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.highlight",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.raised",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.sunken",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.highlight",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.raised",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.sunken",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.highlight",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.raised",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.sunken",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.highlight",
+      "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.wcag-level-drops",
+      "pair": [
+        "color.border.focus",
+        "color.surface.raised"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. color.border.focus keeps AA on raised layers; the raised step is lighter so height reads by tone.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "relations.wcag-level-drops",
+      "pair": [
+        "color.border.focus",
+        "color.surface.raised"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. color.border.focus keeps AA on raised layers; the raised step is lighter so height reads by tone.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "component-pairs.level-drops",
+      "pair": [
+        "--menubar-item-label-destructive",
+        "--menubar-content-background"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "dark",
+      "check": "component-pairs.level-drops",
+      "pair": [
+        "--menubar-item-label-destructive",
+        "--menubar-content-background"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "component-pairs.level-drops",
+      "pair": [
+        "--menubar-item-label-destructive",
+        "--menubar-content-background"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "component-pairs.level-drops",
+      "pair": [
+        "--menubar-item-label-destructive",
+        "--menubar-content-background"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "birch-dark",
+      "check": "component-pairs.level-drops",
+      "pair": [
+        "--menubar-item-label-destructive",
+        "--menubar-content-background"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "coral-dark",
+      "check": "component-pairs.level-drops",
+      "pair": [
+        "--menubar-item-label-destructive",
+        "--menubar-content-background"
+      ],
+      "why": "Cause: AA trade-off on the lighter dark raised surface. The menubar item label destructive keeps AA on the raised menu fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.border.default",
+      "why": "Cause: Accessible first keeps AAA in dark mode (owner decision 2026-11-12). The default border moves one step lighter so it keeps its contrast on the lighter raised surface.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.border.strong",
+      "why": "Cause: Accessible first keeps AAA in dark mode (owner decision 2026-11-12). The strong border moves one step lighter so it keeps its contrast on the lighter raised surface.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.shared-split",
+      "pair": [
+        "color.disabled.text",
+        "color.border.strong"
+      ],
+      "why": "Cause: Accessible first keeps AAA in dark mode (owner decision 2026-11-12). The strong border moved for AAA; disabled text stays where it reads as disabled, so the two no longer share a step.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "dark",
+      "check": "relations.wcag-level-drops",
+      "pair": [
+        "color.text.muted",
+        "color.surface.raised"
+      ],
+      "why": "Cause: owner exception, 2026-11-12. Accessible first muted text may sit below 7:1 on raised layers (AA holds at 6.09:1), because muted must read as secondary.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "dense-data",
+      "theme": "dark",
+      "check": "relations.distinct-lost.tritanopia",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.selected"
+      ],
+      "why": "Cause: second cue (owner rule for colour-blind pairs). A selected row carries its own edge: color.border.selected clears 6.11:1 on raised, so selection does not rely on the fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "aster-dark",
+      "check": "relations.distinct-lost.tritanopia",
+      "pair": [
+        "color.surface.raised",
+        "color.surface.selected"
+      ],
+      "why": "Cause: second cue (owner rule for colour-blind pairs). A selected row carries its own edge: color.border.selected clears 8.11:1 on raised, so selection does not rely on the fill.",
+      "approved_by": "Yonatan, 2026-11-12"
+    }
+  ]
 }
