@@ -183,7 +183,7 @@
      "value": "1.5rem",
      "byScheme": true,
      "pick": [
-      "radius.24: Pill controls feel playful."
+      "radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape."
      ],
      "shares": []
     },
@@ -244,10 +244,10 @@
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
      "pick": [
-      "shadow.card: Cards lift to feel like objects."
+      "shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page."
      ],
      "darkPick": [
-      "shadow.card-dark: Cards lift to feel like objects."
+      "shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark."
      ],
      "shares": []
     }
@@ -284,10 +284,10 @@
      "kind": "token",
      "semantic": "type.heading.font-size",
      "key": "title.font-size",
-     "value": "1.75rem",
+     "value": "1.8125rem",
      "byScheme": true,
      "pick": [
-      "font.size.28"
+      "font.size.29"
      ],
      "shares": []
     },

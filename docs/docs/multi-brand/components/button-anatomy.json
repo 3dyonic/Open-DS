@@ -139,7 +139,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: Rounded by default; each brand sets its own corner."
+      "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone."
      ],
      "shares": []
     }
@@ -273,10 +273,10 @@
      "kind": "token",
      "semantic": "type.label.font-size",
      "key": "font-size",
-     "value": "0.875rem",
+     "value": "0.8125rem",
      "byScheme": true,
      "pick": [
-      "font.size.14"
+      "font.size.13"
      ],
      "shares": []
     },

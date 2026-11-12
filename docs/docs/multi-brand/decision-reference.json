@@ -3801,6 +3801,18 @@
          "label": "Shape",
          "href": "foundations/shape"
         }
+       },
+       {
+        "token": "radius.surface",
+        "mode": "every mode",
+        "pick": "radius.8",
+        "why": [
+         "radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
        }
       ]
      }
@@ -3857,7 +3869,7 @@
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: Rounded by default; each brand sets its own corner."
+         "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone."
         ],
         "link": {
          "label": "Shape",
@@ -3869,7 +3881,7 @@
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: Rounded by default; each brand sets its own corner."
+         "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag."
         ],
         "link": {
          "label": "Shape",
@@ -3905,7 +3917,7 @@
         "mode": "every mode",
         "pick": "radius.8",
         "why": [
-         "radius.8: Rounded by default; each brand sets its own corner."
+         "radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding."
         ],
         "link": {
          "label": "Shape",
@@ -3992,7 +4004,7 @@
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: Rounded by default; each brand sets its own corner."
+         "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone."
         ],
         "link": {
          "label": "Shape",
@@ -4004,7 +4016,7 @@
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: Rounded by default; each brand sets its own corner."
+         "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag."
         ],
         "link": {
          "label": "Shape",
@@ -4028,7 +4040,7 @@
         "mode": "every mode",
         "pick": "radius.8",
         "why": [
-         "radius.8: Rounded by default; each brand sets its own corner."
+         "radius.8: Aster's cards and dialogs take 8px, twice the 4px control corner, so a 4px option nests inside with 4px padding."
         ],
         "link": {
          "label": "Shape",
@@ -4050,11 +4062,25 @@
     }
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "radius.badge",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "elevation-roles": {
@@ -4148,7 +4174,7 @@
         "mode": "light",
         "pick": "shadow.overlay",
         "why": [
-         "shadow.overlay: Soft shadows fit every brand."
+         "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards."
         ],
         "link": {
          "label": "Elevation",
@@ -4196,7 +4222,7 @@
         "mode": "dark",
         "pick": "shadow.overlay-dark",
         "why": [
-         "shadow.overlay-dark: Soft shadows fit every brand."
+         "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page."
         ],
         "link": {
          "label": "Elevation",
@@ -4434,7 +4460,7 @@
         "mode": "light",
         "pick": "shadow.overlay",
         "why": [
-         "shadow.overlay: Soft shadows fit every brand."
+         "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards."
         ],
         "link": {
          "label": "Elevation",
@@ -4458,7 +4484,7 @@
         "mode": "dark",
         "pick": "shadow.overlay-dark",
         "why": [
-         "shadow.overlay-dark: Soft shadows fit every brand."
+         "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page."
         ],
         "link": {
          "label": "Elevation",
@@ -4487,6 +4513,35 @@
       "items": [
        {
         "text": "For a menu or dialog, use elevation.overlay and a dimmed page. Don't use no shadow. The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.",
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "elevation.overlay",
+        "mode": "light",
+        "pick": "shadow.overlay",
+        "why": [
+         "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards."
+        ],
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
+        }
+       },
+       {
+        "token": "elevation.overlay",
+        "mode": "dark",
+        "pick": "shadow.overlay-dark",
+        "why": [
+         "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page."
+        ],
         "link": {
          "label": "Elevation",
          "href": "foundations/elevation"
@@ -7172,6 +7227,23 @@
         "link": {
          "label": "Toast",
          "href": "components/toast"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "radius.control",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: Aster's 4px control corner is rounded but the smallest of the three brands, in line with its calm, precise tone."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
         }
        }
       ]

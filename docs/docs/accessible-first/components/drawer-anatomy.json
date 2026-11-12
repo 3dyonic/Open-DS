@@ -186,7 +186,7 @@
      "value": "0.5rem",
      "byScheme": true,
      "pick": [
-      "radius.8: Clear, slightly rounded controls."
+      "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it."
      ],
      "shares": []
     },
@@ -323,7 +323,7 @@
      "situation": "items that belong together",
      "use": "space.gap.default",
      "not": "space.gap.tight",
-     "why": "Generous space lowers mis-taps."
+     "why": "Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps."
     },
     {
      "kind": "token",
@@ -340,10 +340,10 @@
      "kind": "token",
      "semantic": "type.heading.font-size",
      "key": "title.font-size",
-     "value": "1.375rem",
+     "value": "1.4375rem",
      "byScheme": true,
      "pick": [
-      "font.size.22"
+      "font.size.23"
      ],
      "shares": []
     },

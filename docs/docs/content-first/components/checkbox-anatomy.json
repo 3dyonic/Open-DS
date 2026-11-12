@@ -149,7 +149,7 @@
      "value": "calc(infinity * 1px)",
      "byScheme": true,
      "pick": [
-      "radius.pill: Rounded corners feel friendly."
+      "radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text."
      ],
      "shares": []
     }

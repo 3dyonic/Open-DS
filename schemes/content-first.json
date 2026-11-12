@@ -2686,9 +2686,9 @@
             "$type": "dimension",
             "$value": "2.25rem"
           },
-          "44": {
+          "45": {
             "$type": "dimension",
-            "$value": "2.75rem"
+            "$value": "2.8125rem"
           },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
@@ -2706,11 +2706,6 @@
           "1_15": {
             "$type": "number",
             "$value": 1.15,
-            "$description": "A ratio of the text size."
-          },
-          "1_45": {
-            "$type": "number",
-            "$value": 1.45,
             "$description": "A ratio of the text size."
           },
           "1_65": {
@@ -2820,12 +2815,12 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: Rounded corners feel friendly.",
+                    "why": "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "brand.q1"
+                    ]
                   }
                 }
               },
@@ -2834,12 +2829,12 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Rounded corners feel friendly.",
+                    "why": "radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "shape.count"
+                    ]
                   }
                 }
               },
@@ -2874,12 +2869,12 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: Rounded corners feel friendly.",
+                    "why": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "shape.lands"
+                    ]
                   }
                 }
               }
@@ -4004,12 +3999,12 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: Only menus and dialogs float.",
+                    "why": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.definition"
+                    ]
                   }
                 }
               },
@@ -4018,12 +4013,13 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: Soft shadows suit warm paper.",
+                    "why": "shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.lands",
+                      "elevation.count"
+                    ]
                   }
                 }
               }
@@ -4889,12 +4885,12 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: Only menus and dialogs float.",
+                    "why": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.definition"
+                    ]
                   }
                 }
               },
@@ -4903,12 +4899,14 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: Soft shadows suit warm paper.",
+                    "why": "shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
                     "because": [
                       "elevation.roles",
-                      "elevation.values"
-                    ],
-                    "generated": true
+                      "elevation.values",
+                      "elevation.lands",
+                      "elevation.count",
+                      "theming.values"
+                    ]
                   }
                 }
               }
@@ -4973,7 +4971,16 @@
           "default": {
             "$type": "dimension",
             "$value": "{size.48}",
-            "$description": "Height of buttons and inputs, and the smallest target."
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "48px is the touch height for buttons and inputs, because readers are often on phones; it is also the smallest target.",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
           },
           "compact": {
             "$type": "dimension",
@@ -4989,12 +4996,32 @@
         "row": {
           "$type": "dimension",
           "$value": "{size.48}",
-          "$description": "Height of one table row."
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "48px gives each table row the comfortable touch height, because rows are read one by one, not scanned.",
+              "because": [
+                "tasks.q1",
+                "spacing.values",
+                "accessibility.values"
+              ]
+            }
+          }
         },
         "icon": {
           "$type": "dimension",
           "$value": "{size.16}",
-          "$description": "Icon size next to text."
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "16px matches the 16px label text that icons sit beside in navigation, the one icon size this scheme uses.",
+              "because": [
+                "iconography.values",
+                "iconography.count",
+                "iconography.lands"
+              ]
+            }
+          }
         }
       },
       "radius": {
@@ -5048,6 +5075,46 @@
         }
       },
       "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 18,
+            "ratio": 1.12,
+            "steps": {
+              "display": 8,
+              "title": 6,
+              "heading": 4,
+              "body": 0,
+              "label": -1,
+              "caption": -2,
+              "data": 0
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.15,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "open": {
+                "ratio": 1.65,
+                "roles": [
+                  "body",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "Many fine steps: a large 18px body and a 1.12 ratio, with two steps between the headings, so long pages can set their own hierarchy. Short lines sit tight at 1.15; text that wraps opens to 1.65 for reading."
+          }
+        },
         "display": {
           "font-family": {
             "$type": "fontFamily",
@@ -5055,15 +5122,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.44}"
+            "$value": "{font.size.45}",
+            "$extensions": {
+              "open-ds": {
+                "why": "45px is eight fine steps above the 18px body (18 × 1.12^8), two steps over the 36px title, kept for the landing moment and the lead that opens an article.",
+                "because": [
+                  "typography.roles",
+                  "typography.count"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_15}"
+            "$value": "{font.line-height.1_15}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.15 sets 45px display text on about 52px lines, so a two-line opener reads as one tight block.",
+                "because": [
+                  "typography.definition",
+                  "typography.roles"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.600}"
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 lets the serif display carry the brand on the landing page, since the brand shows in type, not in color.",
+                "because": [
+                  "brand.q2",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The display text role."
         },
@@ -5074,15 +5168,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.36}"
+            "$value": "{font.size.36}",
+            "$extensions": {
+              "open-ds": {
+                "why": "36px is six fine steps above body and two under the 45px display, so article titles stay large but calm.",
+                "because": [
+                  "typography.roles",
+                  "typography.count"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_15}"
+            "$value": "{font.line-height.1_15}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.15 sets a 36px title on about 41px lines, so a long article title wraps as one unit.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.600}"
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 makes the serif article title the strongest line on an article page, without the landing-only display size.",
+                "because": [
+                  "typography.roles",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The title text role."
         },
@@ -5093,15 +5213,43 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.28}"
+            "$value": "{font.size.28}",
+            "$extensions": {
+              "open-ds": {
+                "why": "28px is four fine steps above the 18px body and two under the 36px title, so readers find their place in a long guide.",
+                "because": [
+                  "typography.count",
+                  "outcomes.q2"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_15}"
+            "$value": "{font.line-height.1_15}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.15 keeps a 28px heading on about 32px lines, tighter than the 1.65 body, so it reads as one label for its section.",
+                "because": [
+                  "typography.definition",
+                  "outcomes.q2"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.600}"
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 separates a serif section heading from 400 body text in the same family, so readers spot it while skimming.",
+                "because": [
+                  "typography.count",
+                  "outcomes.q2",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The heading text role."
         },
@@ -5112,15 +5260,43 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.18}"
+            "$value": "{font.size.18}",
+            "$extensions": {
+              "open-ds": {
+                "why": "18px is the large reading size and step 0 of the scale: every other role is a 1.12 ratio step from it, so long articles stay easy on the eyes.",
+                "because": [
+                  "typography.values",
+                  "outcomes.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_65}"
+            "$value": "{font.line-height.1_65}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.65 gives 18px body text about 30px lines, so the eye finds the next line in a long paragraph.",
+                "because": [
+                  "typography.definition",
+                  "outcomes.q1",
+                  "outcomes.q2"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 is Source Serif 4's regular reading weight, so long text stays even and open across a whole article.",
+                "because": [
+                  "brand.q3",
+                  "content.q1"
+                ]
+              }
+            }
           },
           "$description": "The body text role."
         },
@@ -5131,15 +5307,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.16}"
+            "$value": "{font.size.16}",
+            "$extensions": {
+              "open-ds": {
+                "why": "16px sets Inter labels one step under the 18px body (18 ÷ 1.12), still large enough for a field label people must read.",
+                "because": [
+                  "brand.q3",
+                  "people.q2"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}"
+            "$value": "{font.line-height.1_15}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.15, the tight ratio of the headings, gives a 16px label about 18px lines, because a label names a field on one line and never runs as a paragraph.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.600}"
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 makes Inter labels firm beside the serif text, so a field label reads clearly where a caption would be too faint.",
+                "because": [
+                  "people.q2",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The label text role."
         },
@@ -5150,15 +5353,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.14}"
+            "$value": "{font.size.14}",
+            "$extensions": {
+              "open-ds": {
+                "why": "14px is two steps under the 18px body and one under the 16px label, for Inter captions that sit quietly under the text.",
+                "because": [
+                  "human.q1",
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_45}"
+            "$value": "{font.line-height.1_65}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.65, the open ratio of body, sets a 14px caption on about 23px lines, because a caption under a figure or a quote wraps like body text.",
+                "because": [
+                  "typography.definition",
+                  "content.q1"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 keeps captions quiet: attention belongs to the article, so secondary notes take the regular weight.",
+                "because": [
+                  "human.q1"
+                ]
+              }
+            }
           },
           "$description": "The caption text role."
         },
@@ -5169,15 +5398,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.18}"
+            "$value": "{font.size.18}",
+            "$extensions": {
+              "open-ds": {
+                "why": "18px shares step 0 with body, because numbers sit in running text rather than table columns, so data reads at the reading size.",
+                "because": [
+                  "brand.q3",
+                  "tasks.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_65}"
+            "$value": "{font.line-height.1_65}",
+            "$extensions": {
+              "open-ds": {
+                "why": "1.65 matches body text, so a number set inside a paragraph keeps the 30px rhythm of the lines around it.",
+                "because": [
+                  "typography.definition",
+                  "tasks.q1"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 matches the reading serif's regular weight; data is rare, and a bolder number would pull attention from the text.",
+                "because": [
+                  "brand.q3",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "$description": "The data text role."
         }
@@ -5618,7 +5874,16 @@
         "stroke-width": {
           "$type": "number",
           "$value": "{stroke-width.150}",
-          "$description": "The line weight of every icon, on Lucide's 24px grid."
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "A 1.5px stroke width is the outline style the icon answer names; a thin line keeps icons quiet beside the text.",
+              "because": [
+                "iconography.definition",
+                "human.q1"
+              ]
+            }
+          }
         }
       }
     },

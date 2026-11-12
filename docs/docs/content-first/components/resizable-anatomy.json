@@ -144,7 +144,7 @@
      "value": "0.5rem",
      "byScheme": true,
      "pick": [
-      "radius.8: Rounded corners feel friendly."
+      "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges."
      ],
      "shares": []
     },

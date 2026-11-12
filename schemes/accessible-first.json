@@ -1832,9 +1832,10 @@
       "situation": "related-items",
       "use": "space.gap.default",
       "not": "space.gap.tight",
-      "why": "Generous space lowers mis-taps.",
+      "why": "Items in one group sit 16px apart, not the 12px tight gap: generous space between fields stops mis-taps.",
       "because": [
-        "spacing.values"
+        "spacing.values",
+        "spacing.lands"
       ]
     },
     {
@@ -2662,25 +2663,21 @@
             "$type": "dimension",
             "$value": "1rem"
           },
-          "18": {
-            "$type": "dimension",
-            "$value": "1.125rem"
-          },
           "19": {
             "$type": "dimension",
             "$value": "1.1875rem"
           },
-          "22": {
+          "23": {
             "$type": "dimension",
-            "$value": "1.375rem"
+            "$value": "1.4375rem"
           },
           "28": {
             "$type": "dimension",
             "$value": "1.75rem"
           },
-          "36": {
+          "35": {
             "$type": "dimension",
-            "$value": "2.25rem"
+            "$value": "2.1875rem"
           },
           "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
@@ -2776,12 +2773,11 @@
                 "$value": "{radius.6}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.6: Clear, slightly rounded controls.",
+                    "why": "radius.6: Buttons and inputs take the 6px corner: slightly rounded, never a pill, so they still read as clear fields and buttons.",
                     "because": [
                       "shape.roles",
                       "shape.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -2790,12 +2786,11 @@
                 "$value": "{radius.4}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.4: Clear, slightly rounded controls.",
+                    "why": "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
                     "because": [
                       "shape.roles",
                       "shape.values"
-                    ],
-                    "generated": true
+                    ]
                   }
                 }
               },
@@ -2830,12 +2825,13 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: Clear, slightly rounded controls.",
+                    "why": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
                     "because": [
                       "shape.roles",
-                      "shape.values"
-                    ],
-                    "generated": true
+                      "shape.values",
+                      "shape.count",
+                      "shape.lands"
+                    ]
                   }
                 }
               }
@@ -3787,11 +3783,10 @@
                     "$value": "{color.blue.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.light.100: a tag's tint; text on it reads, 15.61:1, above the 7:1 floor.",
+                        "why": "blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
                         "because": [
                           "color.count"
-                        ],
-                        "generated": true
+                        ]
                       }
                     }
                   }
@@ -3816,11 +3811,10 @@
                     "$value": "{color.teal.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.light.100: a tag's tint; text on it reads, 15.61:1, above the 7:1 floor.",
+                        "why": "teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 15.61:1, above the 7:1 floor.",
                         "because": [
                           "color.count"
-                        ],
-                        "generated": true
+                        ]
                       }
                     }
                   }
@@ -4673,11 +4667,10 @@
                     "$value": "{color.blue.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "blue.dark.100: a tag's tint; text on it reads, 14.23:1, above the 7:1 floor.",
+                        "why": "blue.dark.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary on it reads 14.23:1, above the 7:1 floor.",
                         "because": [
                           "color.count"
-                        ],
-                        "generated": true
+                        ]
                       }
                     }
                   }
@@ -4702,11 +4695,10 @@
                     "$value": "{color.teal.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "teal.dark.100: a tag's tint; text on it reads, 13.57:1, above the 7:1 floor.",
+                        "why": "teal.dark.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary on it reads 13.57:1, above the 7:1 floor.",
                         "because": [
                           "color.count"
-                        ],
-                        "generated": true
+                        ]
                       }
                     }
                   }
@@ -4952,7 +4944,16 @@
         "icon": {
           "$type": "dimension",
           "$value": "{size.20}",
-          "$description": "Icon size next to text."
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "One icon size, 20px, one step larger than the 19px body text it sits beside, so every icon stays easy to see.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            }
+          }
         }
       },
       "radius": {
@@ -5006,6 +5007,47 @@
         }
       },
       "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 19,
+            "ratio": 1.22,
+            "steps": {
+              "display": 3,
+              "title": 2,
+              "heading": 1,
+              "body": 0,
+              "label": 0,
+              "caption": -1,
+              "data": 0
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.25,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading"
+                ]
+              },
+              "open": {
+                "ratio": 1.6,
+                "roles": [
+                  "body",
+                  "label",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition",
+              "people.q1"
+            ],
+            "why": "Few sizes: a large 19px body and a 1.22 ratio, each role on the next step, and no step under 16px. Headings sit tight at 1.25; every other role wraps at 1.6, labels too, because a label wraps when people zoom."
+          }
+        },
         "display": {
           "font-family": {
             "$type": "fontFamily",
@@ -5013,15 +5055,40 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.36}"
+            "$value": "{font.size.35}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display is 35px, three ratio steps above the 19px body (19 × 1.22^3), kept off page titles: it changes from page to page and pushes the content down.",
+                "because": [
+                  "typography.count",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_25}"
+            "$value": "{font.line-height.1_25}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display lines are 1.25 times its 35px size, about 44px; as a ratio, the line height grows with the text when people zoom.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.700}"
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display is bold, 700, one of the two weights the scheme loads; bold and the 35px size together mark the top of the page.",
+                "because": [
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The display text role."
         },
@@ -5032,15 +5099,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.28}"
+            "$value": "{font.size.28}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title is 28px, two ratio steps above body and one clear step under display, the same on every page, so people always know where they are.",
+                "because": [
+                  "typography.count",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_25}"
+            "$value": "{font.line-height.1_25}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title lines are 1.25 times its 28px size, 35px, the same tight ratio as display, and they grow with the text on zoom.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.700}"
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title is bold, 700, so the 28px page title reads as a heading and never as large body text.",
+                "because": [
+                  "brand.q3",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "$description": "The title text role."
         },
@@ -5051,15 +5144,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.22}"
+            "$value": "{font.size.23}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading is 23px, one ratio step above the 19px body and one under the 28px title, so a section inside a form step stands out.",
+                "because": [
+                  "typography.count",
+                  "typography.lands"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_25}"
+            "$value": "{font.line-height.1_25}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading lines are 1.25 times its 23px size, about 29px: the smallest role on the tight ratio, while text from 19px down takes 1.6.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.700}"
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading is bold, 700: at 23px it sits only one ratio step above body, so weight, not size alone, sets it apart.",
+                "because": [
+                  "brand.q3",
+                  "typography.count"
+                ]
+              }
+            }
           },
           "$description": "The heading text role."
         },
@@ -5070,15 +5189,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.19}"
+            "$value": "{font.size.19}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body is 19px, step 0 of the scale and one ratio step above the 16px caption, because large text is readable for more people.",
+                "because": [
+                  "typography.values",
+                  "people.q1"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_6}"
+            "$value": "{font.line-height.1_6}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body lines are 1.6 times its 19px size, 30.4px: the open ratio for paragraphs, so short lines of large text lower effort.",
+                "because": [
+                  "typography.definition",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body is regular, 400, the plain weight for paragraphs; bold stays for the roles that mark structure.",
+                "because": [
+                  "brand.q3"
+                ]
+              }
+            }
           },
           "$description": "The body text role."
         },
@@ -5089,15 +5234,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.18}"
+            "$value": "{font.size.19}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Label shares step 0 with body at 19px, because form labels and hints are where type matters most; weight, not size, sets it apart.",
+                "because": [
+                  "typography.lands",
+                  "typography.values"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_6}"
+            "$value": "{font.line-height.1_6}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Label lines are 1.6 times its 19px size, 30.4px, so a label that wraps above its field keeps the open spacing of body.",
+                "because": [
+                  "typography.definition",
+                  "typography.lands"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.700}"
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Label is bold, 700: at 19px it shares the body size, so bold marks it as the field's always visible label.",
+                "because": [
+                  "brand.q3",
+                  "typography.lands"
+                ]
+              }
+            }
           },
           "$description": "The label text role."
         },
@@ -5108,15 +5280,41 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.16}"
+            "$value": "{font.size.16}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption is one ratio step under body (19 ÷ 1.22), 16px, exactly 1rem: even secondary text never drops below the reader's own default size.",
+                "because": [
+                  "typography.values",
+                  "typography.count"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_6}"
+            "$value": "{font.line-height.1_6}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption lines are 1.6 times its 16px size, 25.6px: the smallest text keeps the open ratio and grows with the text on zoom.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption is regular, 400, not bold: it carries secondary text, and the scheme loads only regular and bold.",
+                "because": [
+                  "brand.q3",
+                  "people.q1"
+                ]
+              }
+            }
           },
           "$description": "The caption text role."
         },
@@ -5127,15 +5325,42 @@
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "{font.size.19}"
+            "$value": "{font.size.19}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data shares step 0 with body at 19px, not a small or mono size, because every number must be readable at large size.",
+                "because": [
+                  "people.q1",
+                  "typography.values"
+                ]
+              }
+            }
           },
           "line-height": {
             "$type": "number",
-            "$value": "{font.line-height.1_6}"
+            "$value": "{font.line-height.1_6}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data lines match body, 1.6 times 19px, 30.4px, so numbers in a table read with the same room as text.",
+                "because": [
+                  "typography.definition",
+                  "people.q1"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
-            "$value": "{font.weight.400}"
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data is regular, 400, like body, so numbers in a table read as plain content and not as labels.",
+                "because": [
+                  "brand.q3",
+                  "people.q1"
+                ]
+              }
+            }
           },
           "$description": "The data text role."
         }
@@ -5578,7 +5803,15 @@
         "stroke-width": {
           "$type": "number",
           "$value": "{stroke-width.200}",
-          "$description": "The line weight of every icon, on Lucide's 24px grid."
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "Every icon draws with a bold 2px stroke width on Lucide's 24px grid, so its lines stay visible with low vision and on small screens.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
         }
       }
     },

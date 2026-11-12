@@ -188,7 +188,7 @@
      "value": "0.75rem",
      "byScheme": true,
      "pick": [
-      "radius.12: Rounded corners feel friendly."
+      "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside."
      ],
      "shares": []
     }

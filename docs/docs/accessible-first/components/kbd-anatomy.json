@@ -160,7 +160,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: Clear, slightly rounded controls."
+      "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill."
      ],
      "shares": []
     },

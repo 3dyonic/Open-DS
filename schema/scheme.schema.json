@@ -1151,7 +1151,7 @@
           "description": "Open DS decisions on a group that are not values.",
           "properties": {
             "open-ds": {
-              "description": "Open DS decisions on a group: how a hue's scales are generated, or the component spacing map's rhythm.",
+              "description": "Open DS decisions on a group: how a hue's scales are generated, the component spacing map's rhythm, or the type scale.",
               "anyOf": [
                 {
                   "type": "object",
@@ -1176,6 +1176,9 @@
                 },
                 {
                   "$ref": "#/$defs/spacingMapSpec"
+                },
+                {
+                  "$ref": "#/$defs/typeScaleSpec"
                 }
               ]
             }
@@ -1360,6 +1363,83 @@
             "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
           },
           "description": "Question ids whose answers this text was written from."
+        }
+      }
+    },
+    "typeScaleSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base", "ratio", "steps", "line-height", "follows", "why"],
+      "description": "On the type group (OD-294): the scale the text roles are generated from. A role's size is base × ratio^step, rounded to whole px. Its line height is the tight or the open ratio.",
+      "properties": {
+        "base": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 32,
+          "description": "The body size in px, at step 0. The typography.values answer sets it."
+        },
+        "ratio": {
+          "type": "number",
+          "minimum": 1.05,
+          "maximum": 2,
+          "description": "How much each step grows the size: one step up multiplies it by the ratio, one step down divides it."
+        },
+        "steps": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "pattern": "^[a-z][a-z0-9-]*$" },
+          "additionalProperties": { "type": "integer", "minimum": -6, "maximum": 12 },
+          "description": "Each role's step on the scale, by role id. Body is 0. Roles can share a step, so data and body can share 0."
+        },
+        "line-height": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tight", "open"],
+          "description": "The two line heights, as ratios of the text size, and the roles that take each.",
+          "properties": {
+            "tight": {
+              "$ref": "#/$defs/lineHeightKind",
+              "description": "For text that stays on one short line, such as headings and labels."
+            },
+            "open": {
+              "$ref": "#/$defs/lineHeightKind",
+              "description": "For text that wraps to several lines, such as body and captions."
+            }
+          }
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
+          },
+          "description": "The answers the scale is written from. It is an output of those answers, so it gives no reason to the type tokens: each size and line height keeps its own."
+        },
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The reason for the base, the ratio and the line heights, in plain words."
+        }
+      }
+    },
+    "lineHeightKind": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ratio", "roles"],
+      "description": "One line height: its ratio of the text size and the roles that take it.",
+      "properties": {
+        "ratio": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 2,
+          "description": "The line height as a ratio of the text size."
+        },
+        "roles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "description": "The role ids that take this line height."
         }
       }
     },

@@ -567,11 +567,34 @@
       "id": "OD-273",
       "title": "Every semantic value rests on a decision",
       "in": [
-        "a semantic is linked when its theme pick, or a usage rule that names it, cites an answer the grammar asks and the scheme gives",
+        "a semantic is linked when its theme pick, its own or its group's reason, a usage rule that names it, or a grammar trace rule for its kind cites an answer the grammar asks and the scheme gives",
         "the owning scope's answers do not count as a link",
         "the harness counts the values with no decision per scheme, and each count may only go down"
       ],
       "checks": ["decisions-cover-values"]
+    },
+    {
+      "id": "OD-293",
+      "title": "Trace engine: every value reaches the answers that decide it, from one source",
+      "in": [
+        "one engine (cli/src/trace.mjs) links a value by its theme pick, its own reason, its group's reason, a usage rule or a grammar trace rule",
+        "a grammar trace rule names one kind of token and the questions that decide it, never a whole scope",
+        "coverage, the Token map and open-ds trace read the engine, so they never disagree",
+        "the Token map shows a why only where the scheme records one",
+        "every semantic value has a reason of its own: 6 words or more, citing an answer, not another value's sentence"
+      ],
+      "checks": ["values-traced", "reasons-explain-values", "decisions-cover-values", "json-files-validate"]
+    },
+    {
+      "id": "OD-294",
+      "title": "The type scale: sizes from a base and a ratio, line heights by role kind",
+      "in": [
+        "each scheme records on its type group the body size, a ratio, each role's step, and a tight and an open line height with the roles that take each",
+        "a role's size is base × ratio^step, rounded to whole px, and links to the font.size primitive of that size; the scale owns the size and line height primitives",
+        "the values are computed once when the scheme is written (scripts/type-scale.mjs); the harness compares them with the generator",
+        "every size and line height keeps a reason that names its value and relates it to its siblings"
+      ],
+      "checks": ["type-scale-generated", "reasons-explain-values", "json-files-validate"]
     },
     {
       "id": "OD-285",

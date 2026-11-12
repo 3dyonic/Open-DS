@@ -498,6 +498,55 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "type-scale-generated": {
+    requires: ["cli/src/type-scale.mjs"],
+    run: async (c) => {
+      // OD-294: every scheme's type sizes and line heights equal the generator's output from its
+      // scale: base × ratio^step, and the tight or open line height. A hand-edited size fails, and so
+      // does a reason that names an old number.
+      const { sizes, lineHeights, specProblems } = await import(pathToFileURL(c.p("cli/src/type-scale.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const type = s.tokens.semantic.type;
+        const spec = type?.$extensions?.["open-ds"];
+        if (!spec?.steps) {
+          gaps.push(`${id}: no type scale on the type group`);
+          continue;
+        }
+        gaps.push(...specProblems(spec).map((p) => `${id}: ${p}`));
+        for (const q of spec.follows ?? [])
+          if (!s.answers.some((a) => a.question === q)) gaps.push(`${id}: the type scale follows ${q}, which is not an answer`);
+        const roles = Object.keys(type).filter((k) => !k.startsWith("$"));
+        for (const role of roles) if (!(role in spec.steps)) gaps.push(`${id}: type.${role} has no step on the scale`);
+        const px = sizes(spec);
+        const lh = lineHeights(spec);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        for (const role of roles.filter((r) => r in spec.steps)) {
+          const size = Math.round(parseFloat(String(resolve(all, `type.${role}.font-size`)?.value ?? "")) * 16 * 100) / 100;
+          if (size !== px[role]) gaps.push(`${id}: type.${role}.font-size is ${size}px, the scale gives ${px[role]}px`);
+          const line = Number(resolve(all, `type.${role}.line-height`)?.value);
+          if (line !== lh[role]) gaps.push(`${id}: type.${role}.line-height is ${line}, the scale gives ${lh[role]}`);
+          // A reason that names its value keeps up with the scale: the size in px, the line height ratio.
+          const why = (key) => type[role][key]?.$extensions?.["open-ds"]?.why ?? "";
+          if (!why("font-size").includes(`${px[role]}px`))
+            gaps.push(`${id}: the reason of type.${role}.font-size does not name ${px[role]}px`);
+          if (!why("line-height").includes(String(lh[role])))
+            gaps.push(`${id}: the reason of type.${role}.line-height does not name ${lh[role]}`);
+        }
+        // The scale owns the size and line height primitives: no primitive it does not use.
+        const want = new Set(Object.values(px).map(String));
+        const have = Object.keys(s.tokens.primitive.font.size).filter((k) => !k.startsWith("$"));
+        for (const k of have) if (!want.has(k)) gaps.push(`${id}: font.size.${k} is not on the scale`);
+        const ratios = new Set(Object.values(lh));
+        for (const [k, t] of Object.entries(s.tokens.primitive.font["line-height"]))
+          if (!k.startsWith("$") && !ratios.has(t.$value)) gaps.push(`${id}: font.line-height.${k} is not on the scale`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`the type sizes and line heights in ${SCHEMES.length} schemes match their scale`);
+    },
+  },
   "visible-where-it-meets": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
@@ -736,6 +785,59 @@ export const CHECKS = {
       if (fell.length)
         return bad(`gaps fell (good): ${fell.slice(0, 6).join("; ")}. Record it: node scripts/gaps.mjs --baseline.`);
       return ok(`${total} gaps across ${Object.keys(now).length} schemes, none new; each count may only go down`);
+    },
+  },
+  "values-traced": {
+    requires: ["cli/src/trace.mjs", "cli/src/token-map-view.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-293: one trace engine for coverage, the Token map and the CLI. Every semantic value reaches
+      // an answer, every grammar trace rule cites questions the grammar asks, and the Token map shows
+      // a reason for every decision it draws.
+      const { traceScheme, untraced } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const { tokenMapView } = await import(pathToFileURL(c.p("cli/src/token-map-view.mjs")).href);
+      const g = c.grammar();
+      const asked = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
+      const gaps = [];
+      for (const r of g.trace ?? [])
+        for (const q of r.follows) if (!asked.has(q)) gaps.push(`trace rule ${r.tokens.join(", ")}: ${q} is not a grammar question`);
+      let values = 0;
+      let decisions = 0;
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const trace = traceScheme(s, g);
+        values += trace.total;
+        for (const t of untraced(trace)) gaps.push(`${id}: ${t.token} reaches no answer`);
+        for (const brand of Object.keys(s.tokens.brands)) {
+          const v = tokenMapView({ scheme: s, grammar: g, brand });
+          for (const d of [v.shared, v.modes.light, v.modes.dark].flatMap((m) => Object.values(m.decisions))) {
+            decisions++;
+            if (!(d.why || d.answers.length || d.stepWhy)) gaps.push(`${id}/${brand}: the Token map shows ${d.id} with no reason`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} gaps; ${gaps.slice(0, 4).join("; ")}. Run open-ds trace <scheme> <token>.`)
+        : ok(`${values} semantic values in ${SCHEMES.length} schemes reach their answers; the Token map shows a reason for all ${decisions} decisions`);
+    },
+  },
+  "reasons-explain-values": {
+    requires: ["cli/src/trace.mjs"],
+    run: async (c) => {
+      // OD-293: a link to an answer is not a reason. Every semantic value carries a reason of its own (its
+      // pick, its own words, the group that generates it, or a usage rule that names exactly it). The
+      // reason is 6 words or more, cites an answer, and is not another value's sentence.
+      const { traceScheme, weakReasons } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const g = c.grammar();
+      const gaps = [];
+      let total = 0;
+      for (const id of SCHEMES) {
+        const trace = traceScheme(c.scheme(id), g);
+        total += trace.total;
+        for (const w of weakReasons(trace)) gaps.push(`${id}: ${w.token}, ${w.problem}`);
+      }
+      return gaps.length
+        ? bad(`${gaps.length} values lack a reason that explains them; ${gaps.slice(0, 4).join("; ")}. Run open-ds trace <scheme> --weak.`)
+        : ok(`${total} semantic values in ${SCHEMES.length} schemes each have a reason that explains them`);
     },
   },
   "decisions-cover-values": {
