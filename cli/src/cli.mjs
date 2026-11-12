@@ -63,8 +63,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        part or state, wrong or borrowed links, a semantic with two
                                        jobs, rules not written, picks with no reason (the gap ledger)
   open-ds build [<scheme>] [--out build/schemes]
-                                       check each scheme against its rules and write the built scheme
-                                       with its sha256 hash; when a rule fails, writes nothing and exits 1
+                                       fill each scheme's defaults, color scales and spacing map; check
+                                       it against the schema and its rules (links, contrast, grid); write
+                                       it with its sha256 hash; when a rule fails, writes nothing and exits 1
   open-ds token <scheme> <words>       the tokens and component keys that fit an intent
   open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]

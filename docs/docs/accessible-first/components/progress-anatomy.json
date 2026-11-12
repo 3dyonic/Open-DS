@@ -51,8 +51,20 @@
      "darkValue": "#222222",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.17
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -77,7 +89,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     }
    ]
@@ -113,8 +127,20 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
-     "darkPick": "blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+     "pick": [
+      "blue.light.600: brand blue marks the main action, with AAA white text (",
+      {
+       "ratio": 7.26
+      },
+      ")."
+     ],
+     "darkPick": [
+      "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+      {
+       "ratio": 8.74
+      },
+      ")."
+     ],
      "shares": [
       "border.focus",
       "border.selected",

@@ -14,7 +14,7 @@ A button that stays pressed or not.
 
 ## See it live
 
-::preview{robot="slumber" id="toggle/live"}
+::preview{id="toggle/live"}
 
 ## When to use it
 
@@ -34,7 +34,7 @@ Instead:
 What each variant is for in any design system, then what Brand expressive decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Brand expressive" tone="neutral"}
-::preview{robot="slumber" id="toggle/variant/default"}
+::preview{id="toggle/variant/default"}
 
 **What it is for**
 
@@ -54,7 +54,7 @@ Sections lead with media and color blocks, not toolbars; a toggle with no border
 :::
 
 :::panel{title="outline" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="toggle/variant/outline"}
+::preview{id="toggle/variant/outline"}
 
 **What it is for**
 
@@ -74,7 +74,7 @@ A pill with a border, so the toggle reads as a control on vivid color.
 :::
 
 :::panel{title="default" note="size" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="toggle/size/default"}
+::preview{id="toggle/size/default"}
 
 **What it is for**
 
@@ -93,7 +93,7 @@ Every toggle, at touch size: phones first.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Brand expressive" tone="neutral"}
-::preview{robot="slumber" id="toggle/size/sm"}
+::preview{id="toggle/size/sm"}
 
 **What it is for**
 
@@ -112,7 +112,7 @@ Phones first: no compact controls.
 :::
 
 :::panel{title="lg" note="size" label="Not used in Brand expressive" tone="neutral"}
-::preview{robot="slumber" id="toggle/size/lg"}
+::preview{id="toggle/size/lg"}
 
 **What it is for**
 

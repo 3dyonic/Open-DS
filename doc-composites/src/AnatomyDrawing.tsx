@@ -5,9 +5,11 @@
  * to show (<page>.json beside the page); the page holds one line: ::anatomy-drawing{id="data-table/stage"}
  *
  * This is a drawing of a component, not the component: it shows every part at once, with its number.
- * Its look comes from the docs' anatomy styles, which read the scheme's component variables.
+ * It sits on the Frame base form, on the page's canvas, and every class reads the scheme's component
+ * variables.
  */
 import * as React from "react";
+import Frame from "./base/Frame";
 
 type Marks = Record<string, number>;
 type MenuRow = {
@@ -115,10 +117,11 @@ const ICON: Record<string, React.ReactNode> = {
   ),
 };
 
-function Icon({ name }: { name?: string }) {
+// The drawing's own icon: the menu item's icon size, or a small one in the table and its toolbar.
+function Icon({ name, small = false, dim = "" }: { name?: string; small?: boolean; dim?: string }) {
   return (
     <svg
-      className="odv-am-icon"
+      className={`flex-none ${small ? "size-3.5" : "size-[var(--dropdown-menu-item-icon)]"} ${dim}`}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -132,49 +135,75 @@ function Icon({ name }: { name?: string }) {
   );
 }
 
+// A part's number: a small pill in the action color, set in the label face.
 function Num({ n, show }: { n?: number; show: Set<number> }) {
-  return n && show.has(n) ? <i className="odv-am-n">{n}</i> : null;
+  return n && show.has(n) ? (
+    <i className="mx-1 inline-flex h-4.5 min-w-4.5 flex-none items-center justify-center rounded-full bg-[var(--color-action-primary)] px-1 text-[length:var(--badge-font-size)] leading-none font-semibold not-italic text-[color:var(--color-text-on-action)] [font-family:var(--type-label-font-family)]">
+      {n}
+    </i>
+  ) : null;
 }
 
-function Menu({
-  data,
-}: {
-  data: Extract<AnatomyDrawingData, { kind: "menu" }>;
-}) {
+// Where a number sits outside the part it names: above a row, below it, at the frame's corner, under
+// its shadow, or at a separator's end.
+const AT = {
+  top: "absolute -top-2.75 left-1/2",
+  bottom: "absolute -bottom-3 left-1/2",
+  corner: "absolute -bottom-2.75 left-4.5",
+  shadow: "absolute -right-2.5 -bottom-5.5",
+  separator: "absolute -top-2.25 -right-3.5",
+} as const;
+
+function At({ at, n, show }: { at: keyof typeof AT; n?: number; show: Set<number> }) {
+  return n && show.has(n) ? (
+    <span className={AT[at]}>
+      <Num n={n} show={show} />
+    </span>
+  ) : null;
+}
+
+// A row's state, from the menu's own item variables.
+const ROW_STATE: Record<string, string> = {
+  highlight: "bg-[var(--dropdown-menu-item-background-highlight)]",
+  focus:
+    "outline-[length:var(--border-width-focus)] outline-solid outline-[var(--color-border-focus)] -outline-offset-2",
+  danger: "text-[color:var(--dropdown-menu-item-label-destructive)]",
+};
+
+function Menu({ data }: { data: Extract<AnatomyDrawingData, { kind: "menu" }> }) {
   const show = new Set(data.show);
   return (
-    <div className={`odv-am-menu${data.whole ? "" : " part"}`}>
+    <div
+      className={`relative border-[length:var(--dropdown-menu-content-border-width)] border-[var(--dropdown-menu-content-border)] bg-[var(--overlay-background)] p-[var(--dropdown-menu-content-padding)] text-[color:var(--dropdown-menu-content-label)] rounded-[var(--overlay-radius)] ${data.whole ? "min-w-65 shadow-[var(--overlay-shadow)]" : "min-w-60"}`}
+    >
       {data.rows.map((r, i) => {
         const k = r.marks ?? {};
         if (r.separator)
           return (
-            <div key={i} className="odv-am-sep">
-              {k.row && show.has(k.row) && (
-                <span className="odv-am-at sepn">
-                  <Num n={k.row} show={show} />
-                </span>
-              )}
+            <div key={i} className="relative my-1 h-px bg-[var(--dropdown-menu-separator-background)]">
+              <At at="separator" n={k.row} show={show} />
             </div>
           );
-        const cls = [r.state && `is-${r.state}`, r.tone && `is-${r.tone}`]
-          .filter(Boolean)
-          .join(" ");
+        // A disabled row dims its content, never its numbers.
+        const dim = r.state === "disabled" ? "opacity-[var(--dropdown-menu-item-disabled)]" : "";
+        const state = [r.state && ROW_STATE[r.state], r.tone && ROW_STATE[r.tone]].filter(Boolean).join(" ");
         return (
-          <div key={i} className={`odv-am-row ${cls}`}>
-            {k.focus && show.has(k.focus) && (
-              <span className="odv-am-at top">
-                <Num n={k.focus} show={show} />
-              </span>
-            )}
+          <div
+            key={i}
+            className={`relative flex min-h-[var(--overlay-item-height)] items-center gap-[var(--dropdown-menu-item-gap)] rounded-[var(--dropdown-menu-item-radius)] px-[var(--dropdown-menu-item-padding-x)] text-[length:var(--dropdown-menu-item-font-size)] ${state}`}
+          >
+            <At at="top" n={k.focus} show={show} />
             <Num n={k.icon} show={show} />
-            <Icon name={r.icon} />
-            <span className="odv-am-label">
+            <Icon name={r.icon} dim={dim} />
+            <span className={`inline-flex items-center whitespace-nowrap ${dim}`}>
               {r.label}
               <Num n={k.label} show={show} />
             </span>
-            <span className="odv-am-fill" />
+            <span className="flex-1" />
             {r.shortcut && (
-              <span className="odv-am-key">
+              <span
+                className={`inline-flex items-center whitespace-nowrap text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)] ${dim}`}
+              >
                 {r.shortcut}
                 <Num n={k.shortcut} show={show} />
               </span>
@@ -182,43 +211,28 @@ function Menu({
             {r.chevron && (
               <>
                 <Num n={k.chevron} show={show} />
-                <Icon name="chevron" />
+                <Icon name="chevron" dim={dim} />
               </>
             )}
             <Num n={k.row} show={show} />
-            {k.separator && show.has(k.separator) && (
-              <span className="odv-am-at bottom">
-                <Num n={k.separator} show={show} />
-              </span>
-            )}
+            <At at="bottom" n={k.separator} show={show} />
           </div>
         );
       })}
-      {data.whole &&
-        data.surface.map((n) =>
-          show.has(n) ? (
-            <span key={`s${n}`} className="odv-am-at corner">
-              <Num n={n} show={show} />
-            </span>
-          ) : null,
-        )}
-      {data.whole &&
-        data.shadow.map((n) =>
-          show.has(n) ? (
-            <span key={`h${n}`} className="odv-am-at shadow">
-              <Num n={n} show={show} />
-            </span>
-          ) : null,
-        )}
+      {data.whole && data.surface.map((n) => <At key={`s${n}`} at="corner" n={n} show={show} />)}
+      {data.whole && data.shadow.map((n) => <At key={`h${n}`} at="shadow" n={n} show={show} />)}
     </div>
   );
 }
 
 function Box({ on }: { on?: boolean }) {
   return (
-    <span className={`odv-at-box${on ? " on" : ""}`}>
+    <span
+      className={`inline-flex size-[var(--checkbox-size)] items-center justify-center rounded-[var(--radius-badge)] border-[length:var(--checkbox-border-width)] align-middle ${on ? "border-[var(--color-action-primary)] bg-[var(--color-action-primary)] text-[color:var(--color-text-on-action)]" : "border-[var(--color-border-strong)]"}`}
+    >
       {on && (
         <svg
+          className="size-4/5"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -234,32 +248,43 @@ function Box({ on }: { on?: boolean }) {
   );
 }
 
-function TableDrawing({
-  data,
-}: {
-  data: Extract<AnatomyDrawingData, { kind: "table" }>;
-}) {
+// The docs' own table styles sit outside any layer, so the drawing's cells set theirs as important.
+const CELL =
+  "h-[var(--table-row-height)]! border-0! px-[var(--table-cell-padding-x)]! py-0! text-left whitespace-nowrap";
+const HEAD = `${CELL} bg-[var(--table-header-background)]! text-[color:var(--table-head-label)] [font-family:var(--table-head-font-family)] text-[length:var(--table-head-font-size)] [font-weight:var(--table-head-font-weight)]`;
+const BODY = `${CELL} border-t-[length:var(--table-row-border-width)]! border-solid! border-[var(--table-row-border)]!`;
+const NUMERIC = "text-right! tabular-nums";
+const EDGE = { check: "w-7", end: "w-7 px-1!" };
+const ROW_FILL: Record<string, string> = {
+  highlight: "bg-[var(--data-table-row-background-hover)]!",
+  selected: "bg-[var(--table-row-selected)]!",
+};
+
+function TableDrawing({ data }: { data: Extract<AnatomyDrawingData, { kind: "table" }> }) {
   const show = new Set(data.show);
   const bar = (
-    <div className="odv-at-bar">
+    <div className="flex flex-wrap items-center gap-[var(--data-table-gap-2)]">
       {data.toolbar.map((t, i) => (
         <React.Fragment key={i}>
           {t.kind === "search" ? (
-            <span className="odv-at-input">
-              <Icon name="search" />
+            <span className="inline-flex h-[var(--input-height)] min-w-40 items-center gap-1.5 rounded-[var(--input-radius)] border-[length:var(--input-border-width)] border-[var(--input-border)] bg-[var(--input-background)] px-[var(--input-padding-x)] text-[color:var(--input-placeholder)]">
+              <Icon name="search" small />
               <span>{t.label}</span>
             </span>
           ) : t.kind === "button" ? (
-            <span className="odv-at-btn">
-              <Icon name={t.icon} />
+            <span className="inline-flex h-[var(--input-height)] items-center gap-1.5 rounded-[var(--radius-control)] border-[length:var(--button-secondary-border-width)] border-[var(--button-secondary-border)] bg-[var(--button-secondary-background)] px-2.5 text-[color:var(--button-secondary-label)]">
+              <Icon name={t.icon} small />
               {t.label}
             </span>
           ) : t.kind === "count" ? (
-            <span className="odv-at-count">{t.label}</span>
+            <span className="text-[color:var(--data-table-label)]">{t.label}</span>
           ) : (
-            <span className="odv-at-toggle">
+            <span className="inline-flex overflow-hidden rounded-[var(--toggle-group-radius)] border border-[var(--color-border-default)] shadow-[var(--toggle-group-shadow)]">
               {(t.options ?? []).map((o, k) => (
-                <span key={o} className={k ? undefined : "on"}>
+                <span
+                  key={o}
+                  className={`px-[var(--toggle-group-item-padding-x)] py-1 ${k ? "" : "bg-[var(--color-surface-selected)] text-[color:var(--ods-text-on-selected)]"}`}
+                >
                   {o}
                 </span>
               ))}
@@ -271,87 +296,88 @@ function TableDrawing({
     </div>
   );
   const head = (
-    <tr className="odv-at-head">
-      <th className="chk">
+    <tr className="border-0! bg-transparent!">
+      <th className={`${HEAD} ${EDGE.check}`}>
         <Box />
         <Num n={data.header.check} show={show} />
       </th>
       {data.columns.map((c, k) => (
-        <th key={c.label} className={c.numeric ? "num" : ""}>
+        <th key={c.label} className={`${HEAD} ${c.numeric ? NUMERIC : ""}`}>
           {c.label}
           {k === 0 && <Num n={data.header.label} show={show} />}
-          {c.sort && <Icon name="sort" />}
+          {c.sort && (
+            <span className="relative top-0.5 ml-1 inline-flex text-[color:var(--data-table-label)]">
+              <Icon name="sort" small />
+            </span>
+          )}
           {k === 0 && c.sort && <Num n={data.header.sort} show={show} />}
         </th>
       ))}
-      <th className="end">
+      <th className={`${HEAD} ${EDGE.end}`}>
         <Num n={data.header.row} show={show} />
       </th>
     </tr>
   );
   // The select box is numbered on the header when the header is drawn, else on its own row.
-  const row = (r: TableRow, withHead: boolean, i: number) => (
-    <tr key={i} className={`odv-at-row${r.state ? ` is-${r.state}` : ""}`}>
-      <td className="chk">
-        <Box on={r.checked} />
-        {!withHead && <Num n={r.marks?.check} show={show} />}
-      </td>
-      {r.cells.map((c, k) => (
-        <td key={k} className={data.columns[k]?.numeric ? "num" : ""}>
-          {c}
-          {k === 0 && <Num n={r.marks?.cell} show={show} />}
-          {data.columns[k]?.numeric && <Num n={r.marks?.number} show={show} />}
+  const row = (r: TableRow, withHead: boolean, i: number) => {
+    const fill = (r.state && ROW_FILL[r.state]) ?? "";
+    // A selected row marks its first cell with the row's focus edge.
+    const edge =
+      r.state === "selected" ? "shadow-[inset_var(--table-row-focus)_0_0_0_var(--table-row-selected-edge)]" : "";
+    return (
+      <tr key={i} className="border-0! bg-transparent!">
+        <td className={`${BODY} ${EDGE.check} ${fill} ${edge}`}>
+          <Box on={r.checked} />
+          {!withHead && <Num n={r.marks?.check} show={show} />}
         </td>
-      ))}
-      <td className="end">
-        <Num n={r.marks?.row} show={show} />
-      </td>
-    </tr>
-  );
-  const frame = (
-    rows: TableRow[],
-    withHead: boolean | "corner",
-    key: string,
-  ) => (
-    <div key={key} className="odv-at-frame">
-      {(withHead === "corner" || data.sections.includes("frame")) && (
-        <span className="odv-am-at corner">
-          <Num n={data.frame} show={show} />
-        </span>
-      )}
-      <table className="odv-at-table">
-        {withHead && <thead>{head}</thead>}
+        {r.cells.map((c, k) => (
+          <td key={k} className={`${BODY} ${fill} ${data.columns[k]?.numeric ? NUMERIC : ""}`}>
+            {c}
+            {k === 0 && <Num n={r.marks?.cell} show={show} />}
+            {data.columns[k]?.numeric && <Num n={r.marks?.number} show={show} />}
+          </td>
+        ))}
+        <td className={`${BODY} ${EDGE.end} ${fill}`}>
+          <Num n={r.marks?.row} show={show} />
+        </td>
+      </tr>
+    );
+  };
+  const frame = (rows: TableRow[], withHead: boolean | "corner", key: string) => (
+    <div
+      key={key}
+      className="relative overflow-visible rounded-[var(--data-table-container-radius)] border-[length:var(--data-table-container-border-width)] border-[var(--data-table-container-border)] bg-[var(--color-surface-default)]"
+    >
+      {(withHead === "corner" || data.sections.includes("frame")) && <At at="corner" n={data.frame} show={show} />}
+      <table className="m-0! table! w-full border-collapse border-0 [font-family:var(--table-cell-font-family)]">
+        {withHead && <thead className="bg-transparent!">{head}</thead>}
         <tbody>{rows.map((r, i) => row(r, Boolean(withHead), i))}</tbody>
       </table>
     </div>
   );
   const out: React.ReactNode[] = [];
   data.sections.forEach((sec, i) => {
-    if (sec === "toolbar")
-      out.push(<React.Fragment key={`b${i}`}>{bar}</React.Fragment>);
-    else if (sec === "frame" || sec === "table")
-      out.push(frame(data.rows, sec === "table" ? "corner" : true, `f${i}`));
+    if (sec === "toolbar") out.push(<React.Fragment key={`b${i}`}>{bar}</React.Fragment>);
+    else if (sec === "frame" || sec === "table") out.push(frame(data.rows, sec === "table" ? "corner" : true, `f${i}`));
   });
   const withHeader = data.sections.includes("header");
-  const picked = data.sections
-    .filter((x) => x.startsWith("row:"))
-    .map((x) => data.rows[Number(x.split(":")[1])]);
-  if (withHeader || picked.length)
-    out.push(frame(picked, withHeader, "picked"));
-  return <div className="odv-at">{out}</div>;
+  const picked = data.sections.filter((x) => x.startsWith("row:")).map((x) => data.rows[Number(x.split(":")[1])]);
+  if (withHeader || picked.length) out.push(frame(picked, withHeader, "picked"));
+  return (
+    <div className="flex w-full max-w-160 min-w-0 flex-col gap-3 text-[length:var(--table-font-size)] text-[color:var(--table-label)]">
+      {out}
+    </div>
+  );
 }
 
 export default function AnatomyDrawing({ data }: { data: AnatomyDrawingData }) {
   return (
-    <div
-      data-composite="anatomy-drawing"
-      className="flex justify-center overflow-x-auto rounded-[var(--radius-surface)] bg-[var(--color-surface-canvas)] p-[var(--space-inset-container)]"
-    >
-      {data.kind === "menu" ? (
-        <Menu data={data} />
-      ) : (
-        <TableDrawing data={data} />
-      )}
+    <div data-composite="anatomy-drawing">
+      <Frame variant="canvas">
+        <div className="flex justify-center overflow-x-auto pt-3 pr-3.5 pb-6">
+          {data.kind === "menu" ? <Menu data={data} /> : <TableDrawing data={data} />}
+        </div>
+      </Frame>
     </div>
   );
 }

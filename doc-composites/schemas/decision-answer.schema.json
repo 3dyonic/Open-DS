@@ -4,86 +4,259 @@
   "title": "Decision answer",
   "description": "One answer of a scheme: why, what it weighs, what it came from and every design decision it made. Drawn by the DecisionAnswer composite under its question on the Decision reference.",
   "type": "object",
-  "required": ["answer", "why", "because", "decided"],
+  "required": [
+    "answer",
+    "why",
+    "because",
+    "decided"
+  ],
   "additionalProperties": false,
   "$defs": {
     "link": {
       "type": "object",
-      "required": ["label", "href"],
+      "required": [
+        "label",
+        "href"
+      ],
       "additionalProperties": false,
       "properties": {
-        "label": { "type": "string", "description": "The page's name." },
-        "href": { "type": "string", "description": "The link, relative to this page or a #section." }
+        "label": {
+          "type": "string",
+          "description": "The page's name."
+        },
+        "href": {
+          "type": "string",
+          "description": "The link, relative to this page or a #section."
+        }
+      }
+    },
+    "answerFact": {
+      "type": "object",
+      "required": [
+        "question",
+        "answer"
+      ],
+      "additionalProperties": false,
+      "description": "An answer of the scheme, as facts.",
+      "properties": {
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The scope the question belongs to, such as Shape. Absent for a reason question."
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The question."
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The scheme's answer, as its short label."
+        },
+        "link": {
+          "$ref": "#/$defs/link",
+          "description": "The page that goes deeper."
+        }
+      }
+    },
+    "measured": {
+      "type": "array",
+      "minItems": 1,
+      "description": "A sentence with contrast ratios in it: its words, and each ratio as a number between them.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1,
+            "description": "Words of the sentence, with no ratio in them."
+          },
+          {
+            "type": "object",
+            "required": [
+              "ratio"
+            ],
+            "additionalProperties": false,
+            "description": "A contrast ratio, written as <ratio>:1.",
+            "properties": {
+              "ratio": {
+                "type": "number",
+                "minimum": 1,
+                "description": "The ratio's first number: 7.26 for 7.26:1."
+              }
+            }
+          }
+        ]
       }
     }
   },
   "properties": {
-    "answer": { "type": "string", "minLength": 1, "description": "The scheme's answer, as its short label." },
-    "why": { "type": "string", "minLength": 1, "description": "Why the scheme answers this way, in a sentence." },
+    "answer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The scheme's answer, as its short label."
+    },
+    "why": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Why the scheme answers this way, in a sentence."
+    },
     "weighs": {
       "type": "array",
       "description": "What the answer had to weigh, by group, with this scheme's words for each.",
       "items": {
         "type": "object",
-        "required": ["group", "items"],
+        "required": [
+          "group",
+          "items"
+        ],
         "additionalProperties": false,
         "properties": {
-          "group": { "type": "string", "description": "The group's name." },
+          "group": {
+            "type": "string",
+            "description": "The group's name."
+          },
           "items": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["label", "text"],
+              "required": [
+                "label",
+                "text"
+              ],
               "additionalProperties": false,
               "properties": {
-                "label": { "type": "string", "description": "What is weighed." },
-                "text": { "type": "string", "description": "The scheme's words for it." }
+                "label": {
+                  "type": "string",
+                  "description": "What is weighed."
+                },
+                "text": {
+                  "type": "string",
+                  "description": "The scheme's words for it."
+                }
               }
-            }
+            },
+            "description": "Each thing weighed in the group."
           }
         }
       }
     },
     "because": {
       "type": "array",
-      "description": "The earlier answers it came from, each as question → answer. Empty for a first answer.",
-      "items": { "type": "string" }
+      "description": "The earlier answers it came from. Empty for a first answer.",
+      "items": {
+        "$ref": "#/$defs/answerFact",
+        "description": "One earlier answer."
+      }
     },
     "decided": {
       "type": "object",
       "description": "Every design decision the answer made, by kind.",
-      "required": ["groups"],
+      "required": [
+        "groups"
+      ],
       "additionalProperties": false,
       "properties": {
         "groups": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["kind", "items"],
+            "required": [
+              "kind",
+              "items"
+            ],
             "additionalProperties": false,
             "properties": {
               "kind": {
                 "type": "string",
-                "enum": ["answers", "rules", "variants", "picks"],
+                "enum": [
+                  "answers",
+                  "rules",
+                  "variants",
+                  "picks"
+                ],
                 "description": "Later answers it led to, usage rules it sets, component variants it picks, or theme picks it sets."
               },
               "items": {
                 "type": "array",
                 "minItems": 1,
                 "items": {
-                  "type": "object",
-                  "required": ["text"],
-                  "additionalProperties": false,
-                  "properties": {
-                    "text": { "type": "string", "description": "The decision, in a line." },
-                    "link": { "$ref": "#/$defs/link", "description": "The page that goes deeper." }
-                  }
-                }
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "text"
+                      ],
+                      "additionalProperties": false,
+                      "description": "A usage rule or a component variant, in a line.",
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "minLength": 1,
+                          "description": "The decision, in a line."
+                        },
+                        "link": {
+                          "$ref": "#/$defs/link",
+                          "description": "The page that goes deeper."
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/$defs/answerFact",
+                      "description": "A later answer it led to."
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "token",
+                        "mode",
+                        "pick"
+                      ],
+                      "additionalProperties": false,
+                      "description": "A theme pick it sets.",
+                      "properties": {
+                        "token": {
+                          "type": "string",
+                          "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$",
+                          "description": "The semantic token the pick sets, such as color.action.primary."
+                        },
+                        "mode": {
+                          "type": "string",
+                          "enum": [
+                            "light",
+                            "dark",
+                            "every mode"
+                          ],
+                          "description": "The mode the pick holds in."
+                        },
+                        "pick": {
+                          "type": "string",
+                          "minLength": 1,
+                          "description": "The step it picks, such as blue.light.600."
+                        },
+                        "why": {
+                          "$ref": "#/$defs/measured",
+                          "description": "Why the scheme picks it, with each ratio as a number."
+                        },
+                        "link": {
+                          "$ref": "#/$defs/link",
+                          "description": "The page that goes deeper."
+                        }
+                      }
+                    }
+                  ]
+                },
+                "description": "Each decision of the kind."
               }
-            }
-          }
+            },
+            "description": "The decisions of one kind."
+          },
+          "description": "The decisions, one group per kind, in the order answers, rules, variants, picks."
         },
-        "values": { "$ref": "#/$defs/link", "description": "For a foundation answer with no other decision: the page with the values of its tokens." }
+        "values": {
+          "$ref": "#/$defs/link",
+          "description": "For a foundation answer with no other decision: the page with the values of its tokens."
+        }
       }
     }
   }

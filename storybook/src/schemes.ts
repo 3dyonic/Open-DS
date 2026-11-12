@@ -6,11 +6,13 @@ import content from "../../schemes/content-first.json";
 import dense from "../../schemes/dense-data.json";
 import multi from "../../schemes/multi-brand.json";
 import grammarJson from "../../schemes/grammar.json";
-// A scheme file stores only the component values it decides (OD-291); the rest are the grammar's.
+// A scheme file stores only what it decides: the grammar gives the other component values (OD-291), and
+// the color scales and the spacing map come from their recorded rules (OD-292).
 import { withDefaults } from "../../cli/src/scheme-defaults.mjs";
+import { withGenerated } from "../../cli/src/scheme-generated.mjs";
 
 export const grammar = grammarJson;
-const full = (s: unknown) => withDefaults(s, grammarJson);
+const full = (s: unknown) => withGenerated(withDefaults(s, grammarJson));
 
 export const SCHEMES = {
   "dense-data": full(dense),

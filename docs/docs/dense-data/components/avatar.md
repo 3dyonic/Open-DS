@@ -14,7 +14,7 @@ A small image or initials that stand for a person or account.
 
 ## See it live
 
-::preview{robot="slumber" id="avatar/live"}
+::preview{id="avatar/live"}
 
 ## When to use it
 

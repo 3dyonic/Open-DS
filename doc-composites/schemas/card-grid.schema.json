@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/card-grid.schema.json",
+  "title": "Card grid",
+  "description": "One or more cards, each with a title, a short text and what the card needs: a label, an answer, samples, a meter or a link. Drawn by the CardGrid composite.",
+  "type": "object",
+  "required": [
+    "cards"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Each card, in order.",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "text"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "eyebrow": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A line above the title, such as the question the card answers."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The card's title."
+          },
+          "text": {
+            "type": "string",
+            "description": "What the card says, in a sentence or a count."
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A second fact beside the text, such as 53 in use."
+          },
+          "label": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The state, such as In or Left out."
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "description": "A detail of the state, shown after it, such as built."
+              },
+              "tone": {
+                "type": "string",
+                "enum": [
+                  "neutral",
+                  "info",
+                  "success",
+                  "warning",
+                  "danger"
+                ],
+                "description": "The Badge tone that draws it."
+              }
+            },
+            "description": "A state shown as the scheme's Badge."
+          },
+          "answer": {
+            "type": "object",
+            "required": [
+              "label",
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the answer sets, such as Values."
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The scheme's answer."
+              }
+            },
+            "description": "The answer that sets the card's values."
+          },
+          "robot": {
+            "type": "object",
+            "required": [
+              "day",
+              "night"
+            ],
+            "additionalProperties": false,
+            "description": "A robot's pictures: the day edition and the night edition. The theme picks one.",
+            "properties": {
+              "day": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The day picture's path, from the site's base URL."
+              },
+              "night": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The night picture's path, from the site's base URL."
+              }
+            }
+          },
+          "samples": {
+            "type": "array",
+            "minItems": 1,
+            "description": "A few values drawn small.",
+            "items": {
+              "type": "object",
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "size",
+                    "color",
+                    "radius",
+                    "shadow",
+                    "bar",
+                    "duration",
+                    "icon-label",
+                    "target",
+                    "mode",
+                    "code",
+                    "quote",
+                    "count",
+                    "text",
+                    "column",
+                    "font",
+                    "names"
+                  ],
+                  "description": "How the value is drawn."
+                },
+                "value": {
+                  "type": "string",
+                  "description": "The value: a CSS value, a token's variable, or a short text."
+                },
+                "note": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "A value printed beside the drawing, such as 120ms."
+                },
+                "names": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": "For kind names: each name, such as each type family."
+                }
+              }
+            }
+          },
+          "meter": {
+            "type": "object",
+            "required": [
+              "value",
+              "max",
+              "label"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "How many are in use."
+              },
+              "max": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "How many there are."
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The meter's name for a screen reader, such as 53 of 136 in use."
+              }
+            },
+            "description": "How much of a set is in use, drawn as the scheme's Progress."
+          },
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A key the card cites, shown as code at its foot."
+          },
+          "href": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Where the card links, relative to this page."
+          },
+          "go": {
+            "type": "boolean",
+            "description": "Whether the card ends with an arrow, so it reads as a way on."
+          }
+        },
+        "description": "One card."
+      }
+    }
+  }
+}

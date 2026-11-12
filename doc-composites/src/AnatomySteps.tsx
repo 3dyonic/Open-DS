@@ -9,7 +9,8 @@
 import * as React from "react";
 import { Brush, MessageCircle, Scale } from "lucide-react";
 import Chain from "./base/Chain";
-import Label from "./Label";
+import { measuredText, type MeasuredText } from "./base/Measured";
+import Label from "./base/Label";
 import { Tree, Twig } from "./base/Tree";
 
 export type AnatomyStep =
@@ -23,8 +24,9 @@ export type AnatomyStep =
       darkValue?: string;
       byScheme: boolean;
       rule?: string;
-      pick: string;
-      darkPick?: string;
+      // Why the scheme picks the value, with each contrast ratio as a number.
+      pick: MeasuredText;
+      darkPick?: MeasuredText;
       shares: string[];
     };
 export type AnatomyStepsData = { steps: AnatomyStep[] };
@@ -57,8 +59,8 @@ function Detail({ s }: { s: AnatomyStep }) {
       </>
     );
   const lines: [string, string][] = [
-    ["Pick", s.pick],
-    ...(s.darkPick ? ([["Dark", s.darkPick]] as [string, string][]) : []),
+    ["Pick", measuredText(s.pick)],
+    ...(s.darkPick ? ([["Dark", measuredText(s.darkPick)]] as [string, string][]) : []),
     ...(s.shares.length
       ? ([["Shares the step with", `${s.shares.join(", ")}. Changing this pick moves only what reads ${s.semantic}.`]] as [string, string][])
       : []),

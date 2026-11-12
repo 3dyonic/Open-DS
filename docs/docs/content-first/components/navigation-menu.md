@@ -14,7 +14,7 @@ Site navigation with links and panels.
 
 ## See it live
 
-::preview{robot="slumber" id="navigation-menu/live"}
+::preview{id="navigation-menu/live"}
 
 ## When to use it
 
