@@ -240,11 +240,12 @@ export function hitAreaReason(id, hit) {
 // The dark steps of each scheme (decision 5). Raised is a step lighter than content and sunken a step
 // darker. The hover band steps darker as well: raised took the lighter step, and the step above it
 // fails muted text (4.5:1) in four schemes. Accessible first's two darkest gray steps are 1.07:1 apart,
-// under the 1.08:1 floor for a well, so its content moves one step up to leave room below it.
+// under the 1.08:1 floor for a well, so its content moves one step up to leave room below it. Its
+// pressed fill takes the raised step: the darkest step is the page, and the hover band holds the next.
 const DARK = {
   "dense-data": { raised: 100, sunken: 0, highlight: 0, pressed: 0, ring: 200 },
   "content-first": { raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
-  "accessible-first": { default: 100, raised: 200, sunken: 50, highlight: 50, pressed: 0, line: 300, ring: 300 },
+  "accessible-first": { default: 100, raised: 200, sunken: 50, highlight: 50, pressed: 200, line: 300, ring: 300 },
   "brand-expressive": { raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
   "multi-brand": { raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
 };
@@ -317,7 +318,7 @@ export function darkReasons(id, mode, cardsRise, facts = null) {
     "dense-data": ({ step }) =>
       `${step("color.surface.pressed")}: We use the highlight's step for a pressed item in dark in order to keep press and hover one state. The fill does this by staying where the hover put it. So experts get one plain signal and nothing more to learn, because the states are hover, focus and disabled, with no pressed look of its own (accessibility.roles), and the neutral ramp sets the steps (color.definition).`,
     "accessible-first": ({ ratio, step }) =>
-      `${step("color.surface.pressed")}: We use the darkest step for a pressed item in dark in order to show a press as a change of its own, one step past the hover band. The fill does this by stepping further from the surfaces, ${n2(ratio("color.surface.pressed", "color.surface.highlight"))}:1 from the highlight. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).`,
+      `${step("color.surface.pressed")}: We use the raised layer's step for a pressed sidebar item in dark in order to show a press as a change of its own, apart from the hover band and from the page. The fill does this by stepping lighter while the hover band steps darker: ${n2(ratio("color.surface.pressed", "color.surface.highlight"))}:1 from the highlight, ${n2(ratio("color.surface.pressed", "color.surface.default"))}:1 from content and ${n2(ratio("color.surface.pressed", "color.surface.canvas"))}:1 from the canvas, which keeps the darkest step. A pressed item never sits on a raised layer, so sharing that step hides nothing. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).`,
   }[id];
   picks["color.surface.pressed"] = {
     value: ref(d.pressed),
@@ -336,6 +337,7 @@ export function darkReasons(id, mode, cardsRise, facts = null) {
         `${step("color.border.raised")}: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ${n2(ratio("color.border.raised", "color.surface.raised"))}:1 on surface.raised (${v("color.border.raised")}, no alpha), so its contrast can be checked. So ${p.who} see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).`,
     ),
   };
+  if (id === "accessible-first") Object.assign(picks, aaaOnRaised(why, n2));
   if (cardsRise)
     picks["elevation.card"] = {
       type: "shadow",
@@ -347,6 +349,47 @@ export function darkReasons(id, mode, cardsRise, facts = null) {
       ),
     };
   return { picks };
+}
+
+// Accessible first's dark raised surface is two steps above the page, so the text and edges that sit on
+// menus and dialogs take lighter steps to keep the AAA level there. Muted text keeps its step under the
+// owner's exception (as in light): the next gray up is secondary's.
+function aaaOnRaised(why, n2) {
+  const on = (ratio, path) => `${n2(ratio(path, "color.surface.default"))}:1 on surface.default and ${n2(ratio(path, "color.surface.raised"))}:1 on surface.raised`;
+  return {
+    "color.text.muted": {
+      value: "{color.neutral.600}",
+      because: ["accessibility.definition", "color.definition"],
+      why: why(
+        ({ ratio, step }) =>
+          `${step("color.text.muted")}: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading ${on(ratio, "color.text.muted")}, the lightest surface it meets. Raised layers fall under 7:1 by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).`,
+      ),
+    },
+    "color.border.strong": {
+      value: "{color.neutral.600}",
+      because: ["accessibility.definition", "theming.values"],
+      why: why(
+        ({ ratio, step }) =>
+          `${step("color.border.strong")}: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading ${on(ratio, "color.border.strong")}, where neutral.500 gave only ${n2(ratio("color.neutral.500", "color.surface.raised"))}:1 on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of 3:1 with room to spare (accessibility.definition) and dark ships as standard (theming.values).`,
+      ),
+    },
+    "color.border.focus": {
+      value: "{color.blue.dark.700}",
+      because: ["accessibility.definition", "color.definition"],
+      why: why(
+        ({ ratio, step }) =>
+          `${step("color.border.focus")}: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at 7:1 where focus moves through menus and dialogs. The ring does this by reading ${on(ratio, "color.border.focus")}, where the key step (blue.dark.600) gave ${n2(ratio("color.blue.dark.600", "color.surface.raised"))}:1 on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition).`,
+      ),
+    },
+    "color.status.danger.@": {
+      value: "{color.red.dark.900}",
+      because: ["accessibility.definition", "color.lands"],
+      why: why(
+        ({ ratio, step }) =>
+          `${step("color.status.danger.@")}: We use the palest red but one for danger in dark in order to keep error labels at 7:1 in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading ${on(ratio, "color.status.danger.@")}. Below it, the key (red.dark.600) gives ${n2(ratio("color.red.dark.600", "color.surface.raised"))}:1 and red.dark.700 ${n2(ratio("color.red.dark.700", "color.surface.raised"))}:1 on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands).`,
+      ),
+    },
+  };
 }
 
 /** Dense data keeps 12px text (decision 7): the reasons say why, with the x-height of its face. */

@@ -77,7 +77,7 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.highlight` | light | `accessible-first.theme.light.color.surface.highlight` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` |
 | | dark | `accessible-first.theme.dark.color.surface.highlight` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
 | `color.surface.pressed` | light | `accessible-first.theme.light.color.surface.pressed` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` |
-| | dark | `accessible-first.theme.dark.color.surface.pressed` → `color.neutral.0` → `accessible-first.theme.dark.color.neutral.0` → `color.gray.dark.0` |
+| | dark | `accessible-first.theme.dark.color.surface.pressed` → `color.neutral.200` → `accessible-first.theme.dark.color.neutral.200` → `color.gray.dark.200` |
 | `color.surface.selected` | light | `accessible-first.theme.light.color.surface.selected` → `color.blue.light.100` |
 | | dark | `accessible-first.theme.dark.color.surface.selected` → `color.blue.dark.100` |
 | `color.surface.inverse` | light | `accessible-first.theme.light.color.surface.inverse` → `color.neutral.900` → `accessible-first.theme.light.color.neutral.900` → `color.gray.light.900` |
@@ -123,9 +123,9 @@ Each token points to another token. Values live only on primitives, below.
 | `color.border.raised` | light | `accessible-first.theme.light.color.border.raised` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` |
 | | dark | `accessible-first.theme.dark.color.border.raised` → `color.neutral.300` → `accessible-first.theme.dark.color.neutral.300` → `color.gray.dark.300` |
 | `color.border.strong` | light | `accessible-first.theme.light.color.border.strong` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` |
-| | dark | `accessible-first.theme.dark.color.border.strong` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
+| | dark | `accessible-first.theme.dark.color.border.strong` → `color.neutral.600` → `accessible-first.theme.dark.color.neutral.600` → `color.gray.dark.600` |
 | `color.border.focus` | light | `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` |
-| | dark | `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.600` |
+| | dark | `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.700` |
 | `color.border.selected` | light | `accessible-first.theme.light.color.border.selected` → `color.blue.light.600` |
 | | dark | `accessible-first.theme.dark.color.border.selected` → `color.blue.dark.600` |
 | `color.action.primary.@` | light | `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` |
@@ -153,7 +153,7 @@ Each token points to another token. Values live only on primitives, below.
 | `color.status.warning.subtle` | light | `accessible-first.theme.light.color.status.warning.subtle` → `color.amber.light.100` |
 | | dark | `accessible-first.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
 | `color.status.danger.@` | light | `accessible-first.theme.light.color.status.danger.@` → `color.red.light.700` |
-| | dark | `accessible-first.theme.dark.color.status.danger.@` → `color.red.dark.600` |
+| | dark | `accessible-first.theme.dark.color.status.danger.@` → `color.red.dark.900` |
 | `color.status.danger.subtle` | light | `accessible-first.theme.light.color.status.danger.subtle` → `color.red.light.100` |
 | | dark | `accessible-first.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
 | `color.category.1.@` | light | `accessible-first.theme.light.color.category.1.@` → `color.blue.light.600` |

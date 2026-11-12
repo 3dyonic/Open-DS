@@ -379,15 +379,6 @@
        "guidance": "../foundations/color?for=color-surface-canvas#what-each-color-is-for"
       },
       {
-       "token": "surface.pressed",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "gray.dark.0",
-       "via": "neutral.0",
-       "hex": "#0A0A0A",
-       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
-      },
-      {
        "token": "surface.default",
        "paints": "fill",
        "step": "100",
@@ -431,6 +422,15 @@
        "via": "neutral.200",
        "hex": "#333333",
        "guidance": "../foundations/color?for=color-surface-raised#what-each-color-is-for"
+      },
+      {
+       "token": "surface.pressed",
+       "paints": "fill",
+       "step": "200",
+       "primitive": "gray.dark.200",
+       "via": "neutral.200",
+       "hex": "#333333",
+       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
       },
       {
        "token": "disabled.border",
@@ -514,6 +514,15 @@
        "guidance": "../foundations/color?for=color-text-muted#what-each-color-is-for"
       },
       {
+       "token": "border.strong",
+       "paints": "edge",
+       "step": "600",
+       "primitive": "gray.dark.600",
+       "via": "neutral.600",
+       "hex": "#B4B4B4",
+       "guidance": "../foundations/color?for=color-border-strong#what-each-color-is-for"
+      },
+      {
        "token": "border.default",
        "paints": "edge",
        "step": "300",
@@ -530,15 +539,6 @@
        "via": "neutral.300",
        "hex": "#595959",
        "guidance": "../foundations/color?for=color-border-raised#what-each-color-is-for"
-      },
-      {
-       "token": "border.strong",
-       "paints": "edge",
-       "step": "500",
-       "primitive": "gray.dark.500",
-       "via": "neutral.500",
-       "hex": "#949494",
-       "guidance": "../foundations/color?for=color-border-strong#what-each-color-is-for"
       },
       {
        "token": "disabled.text",
@@ -816,20 +816,20 @@
        "guidance": "../foundations/color?for=color-text-link#what-each-color-is-for"
       },
       {
+       "token": "border.focus",
+       "paints": "edge",
+       "step": "700",
+       "primitive": "blue.dark.700",
+       "hex": "#A7C8FC",
+       "guidance": "../foundations/color?for=color-border-focus#what-each-color-is-for"
+      },
+      {
        "token": "action.primary.hover",
        "paints": "fill",
        "step": "700",
        "primitive": "blue.dark.700",
        "hex": "#A7C8FC",
        "guidance": "../foundations/color?for=color-action-primary-hover#what-each-color-is-for"
-      },
-      {
-       "token": "border.focus",
-       "paints": "edge",
-       "step": "600",
-       "primitive": "blue.dark.600",
-       "hex": "#8AB4F8",
-       "guidance": "../foundations/color?for=color-border-focus#what-each-color-is-for"
       },
       {
        "token": "border.selected",
@@ -1529,20 +1529,20 @@
        "guidance": "../foundations/color?for=color-action-danger#what-each-color-is-for"
       },
       {
-       "token": "status.danger",
-       "paints": "edge",
-       "step": "600",
-       "primitive": "red.dark.600",
-       "hex": "#F28B8B",
-       "guidance": "../foundations/color?for=color-status-danger#what-each-color-is-for"
-      },
-      {
        "token": "action.danger.hover",
        "paints": "fill",
        "step": "700",
        "primitive": "red.dark.700",
        "hex": "#FAA9A8",
        "guidance": "../foundations/color?for=color-action-danger-hover#what-each-color-is-for"
+      },
+      {
+       "token": "status.danger",
+       "paints": "edge",
+       "step": "900",
+       "primitive": "red.dark.900",
+       "hex": "#FEDBDA",
+       "guidance": "../foundations/color?for=color-status-danger#what-each-color-is-for"
       },
       {
        "token": "status.danger.subtle",
@@ -2432,10 +2432,6 @@
      },
      "usedBy": [
       {
-       "token": "color.border.focus",
-       "where": "dark"
-      },
-      {
        "token": "color.border.selected",
        "where": "dark"
       },
@@ -2459,6 +2455,10 @@
      "usedBy": [
       {
        "token": "color.text.link",
+       "where": "dark"
+      },
+      {
+       "token": "color.border.focus",
        "where": "dark"
       },
       {
@@ -3200,10 +3200,6 @@
       {
        "token": "color.action.danger",
        "where": "dark"
-      },
-      {
-       "token": "color.status.danger",
-       "where": "dark"
       }
      ]
     },
@@ -3237,7 +3233,12 @@
       "kind": "color",
       "value": "#FEDBDA"
      },
-     "usedBy": []
+     "usedBy": [
+      {
+       "token": "color.status.danger",
+       "where": "dark"
+      }
+     ]
     },
     {
      "primitive": "color.red.dark.950",

@@ -156,11 +156,11 @@
      "semantic": "color.border.strong",
      "key": "item.border",
      "value": "#595959",
-     "darkValue": "#949494",
+     "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
      "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 5.24:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading 7.67:1 on surface.default and 6.09:1 on surface.raised, where neutral.500 gave only 4.17:1 on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of 3:1 with room to spare (accessibility.definition) and dark ships as standard (theming.values).",
      "shares": [
       "text.muted",
       "category.5",
@@ -233,11 +233,11 @@
      "semantic": "color.border.focus",
      "key": "item.focus-ring-focus",
      "value": "#0B4FC0",
-     "darkValue": "#8AB4F8",
+     "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
      "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at 7:1 where focus moves through menus and dialogs. The ring does this by reading 9.33:1 on surface.default and 7.41:1 on surface.raised, where the key step (blue.dark.600) gave 6.0:1 on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition).",
      "shares": [
       "border.selected",
       "action.primary",
@@ -304,11 +304,11 @@
      "semantic": "color.status.danger",
      "key": "item.border-invalid",
      "value": "#981519",
-     "darkValue": "#F28B8B",
+     "darkValue": "#FEDBDA",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
      "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger marks icons and edges, 6.7:1 on surface.default, over 3:1; its text uses danger-on-light, which reads at the floor.",
+     "darkPick": "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at 7:1 in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading 12.39:1 on surface.default and 9.84:1 on surface.raised. Below it, the key (red.dark.600) gives 5.32:1 and red.dark.700 6.8:1 on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands).",
      "shares": [
       "action.danger"
      ]

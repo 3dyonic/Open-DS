@@ -37,7 +37,7 @@ Each token points to another token. Values live only on primitives, below.
 | `opacity.disabled` | light | `opacity.50` |
 | | dark | `opacity.50` |
 | `color.border.focus` | light | `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` |
-| | dark | `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.600` |
+| | dark | `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.700` |
 | `focus.ring.width` | light | `border-width.3` |
 | | dark | `border-width.3` |
 | `focus.ring.offset` | light | `border-width.2` |

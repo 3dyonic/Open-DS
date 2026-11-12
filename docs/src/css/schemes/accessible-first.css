@@ -1969,7 +1969,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --color-text-warning-on-dark: #FEE8CF; /** The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
   --color-text-danger-on-light: #6D0008; /** The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800). */
   --color-text-danger-on-dark: #FFDBD8; /** The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
-  --color-border-focus: #8AB4F8; /** The focus ring. */
+  --color-border-focus: #A7C8FC; /** The focus ring. */
   --color-border-selected: #8AB4F8; /** The edge that marks a selected item, beside its fill, so selection is never color alone. */
   --color-action-primary: #8AB4F8; /** The one main action in a view. */
   --color-action-primary-hover: #A7C8FC; /** The main action under the pointer. */
@@ -1981,7 +1981,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --color-status-success-subtle: #012E16; /** The fill behind success status. */
   --color-status-warning: #F2B84B; /** Caution: something may go wrong or needs a check, and it can be fixed. */
   --color-status-warning-subtle: #372500; /** The fill behind warning status. */
-  --color-status-danger: #F28B8B; /** Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. */
+  --color-status-danger: #FEDBDA; /** Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. */
   --color-status-danger-subtle: #451014; /** The fill behind danger status. */
   --color-category-1: #8AB4F8; /** Category 1: tells one item or series from another. It carries no meaning. */
   --color-category-1-subtle: #102547; /** Category 1: the fill of a tag. */
@@ -3182,7 +3182,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --color-surface-raised: #333333; /** Fills that float above content. In dark, one step lighter than content, so height reads by tone. */
   --color-surface-sunken: #141414; /** A recessed fill, a step below content. */
   --color-surface-highlight: #141414; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
-  --color-surface-pressed: #0A0A0A; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
+  --color-surface-pressed: #333333; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
   --color-surface-inverse: #F7F7F7; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F7F7F7; /** Body text and headings. */
   --color-text-secondary: #D6D6D6; /** Supporting text. */
@@ -3192,7 +3192,7 @@ html[data-scheme="accessible-first"] [data-mode="dark"][data-mode] {
   --color-text-on-danger: #141414; /** Text on the danger fill: its tone's main text. */
   --color-border-default: #595959; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
   --color-border-raised: #595959; /** The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot. */
-  --color-border-strong: #949494; /** The edge of a control people must find. */
+  --color-border-strong: #B4B4B4; /** The edge of a control people must find. */
   --color-action-secondary: #141414; /** The fill of other actions. */
   --color-action-secondary-hover: #222222; /** Other actions under the pointer. */
   --color-category-5: #D6D6D6; /** Category 5: tells one item or series from another. It carries no meaning. */

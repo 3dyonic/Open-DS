@@ -118,8 +118,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.gray.dark.200",
+         "via": "color.neutral.200"
         }
        ]
       },
@@ -311,8 +311,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.gray.dark.500",
-         "via": "color.neutral.500"
+         "primitive": "color.gray.dark.600",
+         "via": "color.neutral.600"
         }
        ]
       },
@@ -325,7 +325,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.blue.dark.600"
+         "primitive": "color.blue.dark.700"
         }
        ]
       },
@@ -521,7 +521,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.red.dark.600"
+         "primitive": "color.red.dark.900"
         }
        ]
       },

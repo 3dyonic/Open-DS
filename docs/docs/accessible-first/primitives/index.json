@@ -4,7 +4,7 @@
    "cards": [
     {
      "title": "Color",
-     "text": "136 primitives · 53 in use",
+     "text": "136 primitives · 54 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -41,9 +41,9 @@
       }
      ],
      "meter": {
-      "value": 53,
+      "value": 54,
       "max": 136,
-      "label": "53 of 136 in use"
+      "label": "54 of 136 in use"
      }
     }
    ]

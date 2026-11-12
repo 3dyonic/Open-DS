@@ -30,4 +30,4 @@ The page, its main surface and text, the main action at rest and on hover, and t
 | `color.text.primary` | :sample{kind="tone" value="#141414" ink="#FFFFFF"} `gray.light.900` via neutral.900 · #141414 | :sample{kind="tone" value="#F7F7F7" ink="#000000"} `gray.dark.900` via neutral.900 · #F7F7F7 |
 | `color.action.primary` | :sample{kind="tone" value="#0B4FC0" ink="#FFFFFF"} `blue.light.600` #0B4FC0 | :sample{kind="tone" value="#8AB4F8" ink="#000000"} `blue.dark.600` #8AB4F8 |
 | `color.action.primary.hover` | :sample{kind="tone" value="#013895" ink="#FFFFFF"} `blue.light.700` #013895 | :sample{kind="tone" value="#A7C8FC" ink="#000000"} `blue.dark.700` #A7C8FC |
-| `color.border.focus` | :sample{kind="tone" value="#0B4FC0" ink="#FFFFFF"} `blue.light.600` #0B4FC0 | :sample{kind="tone" value="#8AB4F8" ink="#000000"} `blue.dark.600` #8AB4F8 |
+| `color.border.focus` | :sample{kind="tone" value="#0B4FC0" ink="#FFFFFF"} `blue.light.600` #0B4FC0 | :sample{kind="tone" value="#A7C8FC" ink="#000000"} `blue.dark.700` #A7C8FC |

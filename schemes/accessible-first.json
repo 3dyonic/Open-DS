@@ -4727,11 +4727,11 @@
                 },
                 "pressed": {
                   "$type": "color",
-                  "$value": "{color.neutral.0}",
+                  "$value": "{color.neutral.200}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.0: We use the darkest step for a pressed item in dark in order to show a press as a change of its own, one step past the hover band. The fill does this by stepping further from the surfaces, 1.07:1 from the highlight. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+                      "why": "neutral.200: We use the raised layer's step for a pressed sidebar item in dark in order to show a press as a change of its own, apart from the hover band and from the page. The fill does this by stepping lighter while the hover band steps darker: 1.46:1 from the highlight, 1.26:1 from content and 1.57:1 from the canvas, which keeps the darkest step. A pressed item never sits on a raised layer, so sharing that step hides nothing. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.roles",
                         "color.definition"
@@ -4814,11 +4814,11 @@
                   "$value": "{color.neutral.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
+                      "why": "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.67:1 on surface.default and 6.09:1 on surface.raised, the lightest surface it meets. Raised layers fall under 7:1 by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).",
                       "because": [
-                        "accessibility.definition"
-                      ],
-                      "generated": true
+                        "accessibility.definition",
+                        "color.definition"
+                      ]
                     }
                   }
                 },
@@ -4905,28 +4905,27 @@
                 },
                 "strong": {
                   "$type": "color",
-                  "$value": "{color.neutral.500}",
+                  "$value": "{color.neutral.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.500: the edge of a control people must find, 5.24:1 on surface.default, above the 3:1 floor.",
+                      "why": "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading 7.67:1 on surface.default and 6.09:1 on surface.raised, where neutral.500 gave only 4.17:1 on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of 3:1 with room to spare (accessibility.definition) and dark ships as standard (theming.values).",
                       "because": [
-                        "accessibility.definition"
-                      ],
-                      "generated": true
+                        "accessibility.definition",
+                        "theming.values"
+                      ]
                     }
                   }
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{color.blue.dark.600}",
+                  "$value": "{color.blue.dark.700}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 7.55:1 on surface.default, above the 3:1 floor.",
+                      "why": "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at 7:1 where focus moves through menus and dialogs. The ring does this by reading 9.33:1 on surface.default and 7.41:1 on surface.raised, where the key step (blue.dark.600) gave 6.0:1 on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition).",
                       "because": [
                         "accessibility.definition",
                         "color.definition"
-                      ],
-                      "generated": true
+                      ]
                     }
                   }
                 },
@@ -5141,15 +5140,14 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.600}",
+                    "$value": "{color.red.dark.900}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "red.dark.600: danger marks icons and edges, 6.7:1 on surface.default, over 3:1; its text uses danger-on-light, which reads at the floor.",
+                        "why": "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at 7:1 in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading 12.39:1 on surface.default and 9.84:1 on surface.raised. Below it, the key (red.dark.600) gives 5.32:1 and red.dark.700 6.8:1 on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands).",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
-                        ],
-                        "generated": true
+                        ]
                       }
                     }
                   },

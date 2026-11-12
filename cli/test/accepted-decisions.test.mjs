@@ -139,7 +139,7 @@ test("a disabled field's label stays readable: 4.5:1 on content in every theme",
 const DARK = {
   "dense-data": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 0, ring: 200 },
   "content-first": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
-  "accessible-first": { default: 100, raised: 200, sunken: 50, highlight: 50, pressed: 0, ring: 300 },
+  "accessible-first": { default: 100, raised: 200, sunken: 50, highlight: 50, pressed: 200, ring: 300 },
   "brand-expressive": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
   "multi-brand": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
 };
@@ -160,6 +160,19 @@ test("in dark, raised is a step lighter than content, sunken a step darker, and 
     const r = checkRelations(s, g);
     assert.deepEqual(r.results.filter((x) => ["color.surface.raised", "color.border.raised"].includes(x.token) && !x.holds), [], id);
   }
+});
+
+test("Accessible first keeps AAA on its lighter dark raised surface; muted text takes the owner's exception", () => {
+  const s = loadScheme("accessible-first");
+  const t = { brand: "default", mode: "dark" };
+  const ratio = (fg, bg) => contrast(valueIn(s, t, fg), valueIn(s, t, `color.surface.${bg}`));
+  for (const bg of ["default", "raised"]) {
+    for (const fg of ["color.border.focus", "color.status.danger.@"]) assert.ok(ratio(fg, bg) >= 7, `${fg} on ${bg}`);
+    assert.ok(ratio("color.border.strong", bg) >= 4.5, `border.strong on ${bg}`);
+  }
+  assert.ok(ratio("color.text.muted", "default") >= 7, "muted on default");
+  assert.ok(ratio("color.text.muted", "raised") >= 4.5, "muted on raised, under the exception");
+  assert.notEqual(valueIn(s, t, "color.surface.pressed"), valueIn(s, t, "color.surface.canvas"), "pressed is not the page");
 });
 
 test("in dark only floating layers cast a shade", () => {

@@ -296,9 +296,9 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.gray.dark.0",
-       "via": "color.neutral.0",
-       "hex": "#0A0A0A"
+       "primitive": "color.gray.dark.200",
+       "via": "color.neutral.200",
+       "hex": "#333333"
       }
      ]
     },
@@ -678,9 +678,9 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.gray.dark.500",
-       "via": "color.neutral.500",
-       "hex": "#949494"
+       "primitive": "color.gray.dark.600",
+       "via": "color.neutral.600",
+       "hex": "#B4B4B4"
       }
      ]
     },
@@ -695,8 +695,8 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.blue.dark.600",
-       "hex": "#8AB4F8"
+       "primitive": "color.blue.dark.700",
+       "hex": "#A7C8FC"
       }
      ]
     },
@@ -923,8 +923,8 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.red.dark.600",
-       "hex": "#F28B8B"
+       "primitive": "color.red.dark.900",
+       "hex": "#FEDBDA"
       }
      ]
     },
@@ -1247,7 +1247,7 @@
       },
       {
        "mode": "dark",
-       "ratio": 6.6
+       "ratio": 12.2
       }
      ]
     }
@@ -1995,29 +1995,29 @@
        },
        {
         "fill": "color.surface.pressed",
-        "primitive": "color.gray.dark.0",
-        "via": "color.neutral.0",
-        "hex": "#0A0A0A",
+        "primitive": "color.gray.dark.200",
+        "via": "color.neutral.200",
+        "hex": "#333333",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.gray.dark.900",
           "via": "color.neutral.900",
           "hex": "#F7F7F7",
-          "contrast": 18.48
+          "contrast": 11.79
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.gray.dark.700",
           "via": "color.neutral.700",
           "hex": "#D6D6D6",
-          "contrast": 13.62
+          "contrast": 8.69
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.gray.light.0",
           "hex": "#FFFFFF",
-          "contrast": 19.8
+          "contrast": 12.63
          }
         ]
        },
@@ -2417,8 +2417,8 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.gray.dark.0",
-       "via": "color.neutral.0"
+       "primitive": "color.gray.dark.200",
+       "via": "color.neutral.200"
       }
      ]
     },

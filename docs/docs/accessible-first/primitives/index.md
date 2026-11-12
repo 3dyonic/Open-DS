@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 # Primitives
 
-:::intro{robot="accessible-first" stats="178 Primitives|95 In use|83 Spare"}
+:::intro{robot="accessible-first" stats="178 Primitives|96 In use|82 Spare"}
 The raw values of Accessible first. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/)), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.
 :::
 
@@ -26,11 +26,11 @@ The raw values of Accessible first. Primitives hold the values; semantic tokens 
 
 ## Every kind
 
-**178** primitives. **95** are used by a semantic token, a theme or a component key. **83** are not used yet.
+**178** primitives. **96** are used by a semantic token, a theme or a component key. **82** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
-| [Color](./color.md) | 136 | 53 |
+| [Color](./color.md) | 136 | 54 |
 | [Space and size](./space-and-size.md) | 18 | 18 |
 | [Shape](./shape.md) | 8 | 8 |
 | [Type](./type.md) | 11 | 11 |

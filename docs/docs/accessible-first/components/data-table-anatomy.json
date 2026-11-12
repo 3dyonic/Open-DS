@@ -200,11 +200,11 @@
      "semantic": "color.border.strong",
      "key": "button.secondary.border",
      "value": "#595959",
-     "darkValue": "#949494",
+     "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
      "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 5.24:1 on surface.default, above the 3:1 floor.",
+     "darkPick": "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading 7.67:1 on surface.default and 6.09:1 on surface.raised, where neutral.500 gave only 4.17:1 on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of 3:1 with room to spare (accessibility.definition) and dark ships as standard (theming.values).",
      "shares": [
       "text.muted",
       "category.5",
@@ -220,7 +220,7 @@
      "byScheme": true,
      "rule": "The quietest text.",
      "pick": "neutral.500: the quietest text that still reads, 7.0:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.600: the quietest text that still reads, 7.67:1 on surface.default, above the 7:1 floor.",
+     "darkPick": "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.67:1 on surface.default and 6.09:1 on surface.raised, the lightest surface it meets. Raised layers fall under 7:1 by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).",
      "shares": [
       "border.strong",
       "category.5",
