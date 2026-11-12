@@ -1,7 +1,9 @@
 // One change at a time to a stored scheme, for the blast radius (OD-298). Each perturbation names what
 // it changes and returns a changed copy of the stored file; the caller reloads it with the ref's own
-// loader and compares what moved. Pure: no file access, the input is never changed.
-import { fromLch, lch } from "../ramps.mjs";
+// loader and compares what moved. Each anchor also says what is recorded as derived from it (derives),
+// apart from the reference chain the change travels along, so a hard-coded copy shows as an orphan
+// and a stray reference as a hidden coupling. Pure: no file access, the input is never changed.
+import { fromLch, lch, scale as rampScale } from "../ramps.mjs";
 import { px } from "./values.mjs";
 
 const REF = /^\{([^}]+)\}$/;
@@ -40,40 +42,50 @@ function neighbour(group, step) {
   return steps[i + 1]?.[0] ?? steps[i - 1]?.[0] ?? null;
 }
 
-// Where a semantic's pick is stored: the semantic itself when it names a primitive, or each brand's
-// theme pick when it names the theme. [{ path: [..keys from the stored root], ref }]
+// Where a semantic's pick is stored: the semantic itself when it names a primitive or holds a raw
+// value, or each brand's theme pick when it names the theme. [{ path: [..keys from the stored root],
+// ref }]; ref is null for a raw value.
 function pickNodes(stored, semantic) {
   const node = at(stored.tokens?.semantic, semantic);
-  const ref = typeof node?.$value === "string" && node.$value.match(REF)?.[1];
-  if (!ref) return [];
-  if (!ref.startsWith("theme.")) return [{ path: ["tokens", "semantic", ...semantic.split(".")], ref }];
+  if (!node || typeof node !== "object" || !("$value" in node)) return [];
+  const ref = typeof node.$value === "string" && node.$value.match(REF)?.[1];
+  if (!ref || !ref.startsWith("theme.")) return [{ path: ["tokens", "semantic", ...semantic.split(".")], ref: ref || null }];
   const key = ref.slice("theme.".length);
   const out = [];
   for (const [brand, def] of Object.entries(stored.tokens?.brands ?? {}))
     for (const part of ["base", "light", "dark"]) {
       const pick = at(def.theme?.[part], key);
-      const r = typeof pick?.$value === "string" && pick.$value.match(REF)?.[1];
-      if (r) out.push({ path: ["tokens", "brands", brand, "theme", part, ...key.split(".")], ref: r });
+      if (!pick || typeof pick !== "object" || !("$value" in pick)) continue;
+      const r = typeof pick.$value === "string" && pick.$value.match(REF)?.[1];
+      out.push({ path: ["tokens", "brands", brand, "theme", part, ...key.split(".")], ref: r || null });
     }
   return out;
 }
 
-// Re-point a semantic's pick to the next step on its scale: the decision moves, the options stay.
+// Re-point a semantic's pick to the next step on its scale: the decision moves, the options stay. A
+// pick that holds a raw value cannot follow: it stays, and the anchor's own token shows as an orphan.
 function repoint(stored, id, semantic) {
-  const nodes = pickNodes(stored, semantic)
+  const all = pickNodes(stored, semantic);
+  if (!all.length) return { kind: "anchor", id, notPresent: `the scheme stores no ${semantic}` };
+  const raw = all.filter((n) => !n.ref);
+  const nodes = all
+    .filter((n) => n.ref)
     .map((n) => {
       const group = n.ref.split(".").slice(0, -1).join(".");
       const to = neighbour(at(stored.tokens?.primitive, group), n.ref.split(".").at(-1));
       return to ? { ...n, to: `${group}.${to}` } : null;
     })
     .filter(Boolean);
-  if (!nodes.length) return { kind: "anchor", id, notPresent: `${semantic} has no stored pick on a scale with a next step` };
-  const theme = at(stored.tokens?.semantic, semantic).$value.match(REF)[1];
+  if (!nodes.length && !raw.length) return { kind: "anchor", id, notPresent: `${semantic} has no stored pick on a scale with a next step` };
+  const change = [
+    ...new Set(nodes.map((n) => `${n.ref} → ${n.to}`)),
+    ...raw.map((n) => `${n.path.slice(n.path[1] === "brands" ? 2 : 1).join(".")} holds a raw value (${JSON.stringify(at(stored, n.path.join(".")).$value)}), so it cannot move`),
+  ].join(", ");
   return {
     kind: "anchor",
     id,
-    change: [...new Set(nodes.map((n) => `${n.ref} → ${n.to}`))].join(", "),
-    nodes: [semantic, ...(theme.startsWith("theme.") ? [theme] : [])],
+    change,
+    derives: { tokens: [semantic], inputs: [semantic] },
     apply: (s) => {
       const next = structuredClone(s);
       for (const n of nodes) at(next, n.path.join(".")).$value = `{${n.to}}`;
@@ -82,13 +94,46 @@ function repoint(stored, id, semantic) {
   };
 }
 
+// The key turned 40° in hue, and every step the generator made from the old key made again from the new
+// one, as the scheme writer does. A step stored by hand (not the generator's output) stays.
+function turnKey(stored, hue, modes, canvas) {
+  const turn = (k) => {
+    const [L, C, H] = lch(k);
+    return fromLch(L, C, (H + 40) % 360);
+  };
+  const spec = stored.tokens.primitive.color[hue].$extensions["open-ds"];
+  const regenerable = (m) => m === "light" || /^#[0-9a-f]{6}$/i.test(canvas ?? "");
+  return {
+    change: modes.map((m) => `${hue} ${m} key ${spec[m].key} → ${turn(spec[m].key)}`).join(", "),
+    apply: (s) => {
+      const next = structuredClone(s);
+      const group = next.tokens.primitive.color[hue];
+      const x = group.$extensions["open-ds"];
+      for (const m of modes) {
+        const was = regenerable(m) ? rampScale(x[m], m, canvas) : {};
+        x[m].key = turn(x[m].key);
+        const now = regenerable(m) ? rampScale(x[m], m, canvas) : {};
+        for (const [step, hex] of Object.entries(was)) {
+          const t = group[m]?.[step];
+          if (t && String(t.$value).toUpperCase() === String(hex).toUpperCase()) t.$value = now[step];
+        }
+      }
+      return next;
+    },
+  };
+}
+
 /**
  * The anchors a scheme's values hang from, each moved once: the base step (the 4px space step), the
  * key color of the primary action's hue, the default control height and the default radius.
- * first: the resolved chains of the first theme, to find the primary action's hue.
- * [{ kind, id, change, nodes, hue?, apply }] or { kind, id, notPresent } when the scheme stores no such anchor.
+ * primaryHue: the hue of the primary action's color scale. darkCanvas: the dark canvas the dark scales
+ * are generated over.
+ * [{ kind, id, change, derives, apply }] or { kind, id, notPresent } when the scheme stores no such anchor.
+ * derives is what the scheme records as derived from the anchor: { tokens } named outright, { family,
+ * px } every token of a family at the anchor's value, { hue, steps } every color at a step of the hue,
+ * and inputs, where the relations' links start.
  */
-export function anchorPerturbations(stored, { firstChains = {} } = {}) {
+export function anchorPerturbations(stored, { primaryHue = null, darkCanvas = null } = {}) {
   const out = [];
   const space = stored.tokens?.primitive?.space ?? {};
   const base = Object.entries(space).find(([k, v]) => !k.startsWith("$") && px(v?.$value) === 4);
@@ -101,7 +146,8 @@ export function anchorPerturbations(stored, { firstChains = {} } = {}) {
       kind: "anchor",
       id: "base-step",
       change: `space.${step}: ${token.$value} → ${to}`,
-      nodes: [`space.${step}`],
+      // Spacing at the base step is the base step; the spacing map multiplies it.
+      derives: { family: ["space.", "component-spacing-map."], px: 4, inputs: [`space.${step}`] },
       apply: (s) => {
         const next = structuredClone(s);
         next.tokens.primitive.space[step].$value = to;
@@ -110,29 +156,14 @@ export function anchorPerturbations(stored, { firstChains = {} } = {}) {
     });
   }
 
-  const end = firstChains["color.action.primary"]?.end ?? "";
-  const hue = end.match(/^color\.([a-z0-9-]+)\.(light|dark)\.[^.]+$/)?.[1];
-  const spec = hue && stored.tokens?.primitive?.color?.[hue]?.$extensions?.["open-ds"];
+  const hue = primaryHue;
+  const group = hue && stored.tokens?.primitive?.color?.[hue];
+  const spec = group?.$extensions?.["open-ds"];
   if (!spec?.light?.key) out.push({ kind: "anchor", id: "key-color", notPresent: hue ? `the ${hue} hue records no key color` : "the primary action ends on no color scale" });
   else {
-    const turn = (k) => {
-      const [L, C, H] = lch(k);
-      return fromLch(L, C, (H + 40) % 360);
-    };
     const modes = ["light", "dark"].filter((m) => spec[m]?.key);
-    out.push({
-      kind: "anchor",
-      id: "key-color",
-      hue,
-      change: modes.map((m) => `${hue} ${m} key ${spec[m].key} → ${turn(spec[m].key)}`).join(", "),
-      nodes: [`color.${hue}`],
-      apply: (s) => {
-        const next = structuredClone(s);
-        const x = next.tokens.primitive.color[hue].$extensions["open-ds"];
-        for (const m of modes) x[m].key = turn(x[m].key);
-        return next;
-      },
-    });
+    const steps = ["light", "dark"].flatMap((m) => Object.entries(group[m] ?? {}).filter(([k]) => !k.startsWith("$")).map(([, t]) => String(t?.$value ?? "").toUpperCase()));
+    out.push({ kind: "anchor", id: "key-color", hue, ...turnKey(stored, hue, modes, darkCanvas), derives: { hue, steps: [...new Set(steps)], inputs: [] } });
   }
 
   out.push(repoint(stored, "control-height", "size.control.default"));

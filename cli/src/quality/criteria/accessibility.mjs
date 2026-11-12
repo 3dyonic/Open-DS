@@ -1,11 +1,12 @@
 // Accessibility (OD-298): every grammar pair keeps its WCAG contrast; APCA Lc below the readability
-// floor is a warning; hit areas; and text sizes in rem, so text follows the user's setting.
+// floor is a warning, shown and never gated (the owner's decision); hit areas; and text sizes in rem,
+// so text follows the user's setting.
 import { contrast } from "../../ramps.mjs";
 import { apcaContrast, apcaFloor } from "../apca.mjs";
 import { RELATION_LIST } from "../relations.mjs";
 import { hex6 } from "../values.mjs";
 import { relationMeasure } from "./invariants.mjs";
-import { measureOf, perSchemeOf, sum } from "./measure.mjs";
+import { measureOf, perSchemeOf, perThemeOf, sum } from "./measure.mjs";
 
 export const FAMILY = "accessibility";
 
@@ -34,6 +35,8 @@ export function measure(snapshot) {
     return [...bad];
   });
   const hit = RELATION_LIST.find((r) => r.id === "hit-area");
+  // Per scheme and theme, every theme listed, so a breach in one mode never hides behind a fix in another.
+  const byTheme = (fn) => perThemeOf(snapshot, (s, theme, id) => pairs[id].filter((p) => p.theme === theme && fn(p)).length);
   return [
     measureOf({
       id: "accessibility.wcag-failures",
@@ -42,6 +45,7 @@ export function measure(snapshot) {
       direction: "down",
       value: sum(Object.fromEntries(Object.entries(pairs).map(([id, l]) => [id, l.filter(failing).length]))),
       perScheme: Object.fromEntries(Object.entries(pairs).map(([id, l]) => [id, l.filter(failing).length])),
+      parts: byTheme(failing),
       details: [`${sum(Object.fromEntries(Object.entries(pairs).map(([id, l]) => [id, l.length])))} pairs measured`, ...say(failing, (p) => `${p.ratio.toFixed(2)}:1, needs ${p.need}:1`)],
     }),
     measureOf({
@@ -55,10 +59,13 @@ export function measure(snapshot) {
     measureOf({
       id: "accessibility.apca-warnings",
       family: FAMILY,
-      title: "Grammar pairs whose APCA Lc is under the readability floor for their role (warning)",
+      title: "Grammar pairs whose APCA Lc is under the readability floor for their role (warning, not gated)",
       direction: "down",
+      gated: false,
+      notes: ["APCA Lc is a warning only, by the owner's decision: shown, never gated."],
       value: sum(Object.fromEntries(Object.entries(pairs).map(([id, l]) => [id, l.filter(weakLc).length]))),
       perScheme: Object.fromEntries(Object.entries(pairs).map(([id, l]) => [id, l.filter(weakLc).length])),
+      parts: byTheme(weakLc),
       details: say(weakLc, (p) => `Lc ${p.lc.toFixed(1)}, floor ${p.floor}`),
     }),
     { ...relationMeasure(snapshot, hit), title: hit.title },

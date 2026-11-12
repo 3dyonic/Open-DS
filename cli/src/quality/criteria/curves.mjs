@@ -1,8 +1,8 @@
 // Curve checks (OD-298): the shape of each color scale. Neighbouring steps differ in OKLab lightness
 // by at least curves.minGap; steps 400, 500 and 700 apart reach 3:1, 4.5:1 and 7:1. The grades are
-// reported, not gated, until OD-299 lands (curves.gradesGated).
+// reported, not gated, until OD-299 lands (curves.gradesGated). Each scale is gated on its own.
 import { contrast, oklab } from "../color.mjs";
-import { measureOf } from "./measure.mjs";
+import { countBy, measureOf } from "./measure.mjs";
 
 export const FAMILY = "curves";
 
@@ -56,6 +56,8 @@ export function measure(snapshot, params) {
       title: `Neighbouring scale steps closer than ${params.curves.minGap} in OKLab lightness`,
       direction: "down",
       value: tight.length,
+      perScheme: countBy(tight, (t) => t.scheme),
+      parts: countBy(tight, (t) => `${t.scheme}/${t.hue}.${t.mode}`),
       details: tight.map((t) => `${t.scheme}: ${t.hue}.${t.mode} ${t.from} → ${t.to} differ by ${t.gap.toFixed(3)}`),
     }),
     measureOf({
@@ -64,6 +66,9 @@ export function measure(snapshot, params) {
       title: `Step pairs under their contrast grade (${params.curves.grades.map((g) => `${g.apart} apart ${g.ratio}:1`).join(", ")})`,
       direction: params.curves.gradesGated ? "down" : "report",
       value: misses.length,
+      perScheme: countBy(misses, (m) => m.scheme),
+      parts: countBy(misses, (m) => `${m.scheme}/${m.hue}.${m.mode}`),
+      notes: params.curves.gradesGated ? [] : ["Contrast grades are reported, not gated (gradesGated: false), by the owner's decision. They gate once OD-299 lands."],
       details: misses.map((m) => `${m.scheme}: ${m.hue}.${m.mode} ${m.from} and ${m.to} are ${m.ratio.toFixed(2)}:1, need ${m.need}:1`),
     }),
   ];

@@ -47,7 +47,9 @@ test("compare measures a committed candidate against its parent and fails a brok
     assert.equal(card.pass, false);
     assert.deepEqual(card.failed, ["invariants.failures", "invariants.spacing-map"]);
     assert.equal(card.criteria.find((r) => r.id === "invariants.spacing-map").candidate, 1);
-    assert.equal(card.criteria.find((r) => r.id === "blast-radius.answer-orphans").base, 20);
+    // the fixture's loader generates nothing from answers: 6 of 6 answers move no value, so none has orphans
+    assert.equal(card.criteria.find((r) => r.id === "blast-radius.answers-generate-nothing").base, 6);
+    assert.equal(card.criteria.find((r) => r.id === "blast-radius.answer-orphans").base, 0);
     assert.ok(existsSync(files.md) && existsSync(files.json));
     assert.match(readFileSync(files.md, "utf8"), /\*\*Fail\.\*\*/);
     // both temporary worktrees are gone
@@ -69,7 +71,8 @@ test("the candidate defaults to the working tree, and --write-baseline records t
     assert.equal(card.criteria.find((r) => r.id === "blast-radius.answer-orphans").candidate, null);
     const baseline = JSON.parse(readFileSync(files.baseline, "utf8"));
     assert.equal(baseline.ref, "HEAD");
-    assert.equal(baseline.criteria["derived.share"].value, 0.65);
+    assert.equal(baseline.criteria["derived.share"].value, 0.9);
+    assert.deepEqual(baseline.criteria["derived.literal-values"].parts, { "fixture/light": 2, "fixture/dark": 2 });
   } finally {
     rmSync(repo, { recursive: true, force: true });
   }

@@ -47,7 +47,7 @@ export function measure(snapshot) {
       direction: "down",
       value: sum(extra),
       perScheme: extra,
-      details: Object.entries(repeated).flatMap(([id, list]) => list.slice(0, 10).map((r) => `${id}: ×${r.count} "${r.sentence}" (${r.where.slice(0, 3).join("; ")}${r.where.length > 3 ? "; …" : ""})`)),
+      details: Object.entries(repeated).flatMap(([id, list]) => list.map((r) => `${id}: ×${r.count} "${r.sentence}" (${r.where.slice(0, 3).join("; ")}${r.where.length > 3 ? "; …" : ""})`)),
     }),
   ];
 }

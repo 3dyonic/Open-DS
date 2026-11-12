@@ -38,13 +38,16 @@ function stepFrom(scale, value, by) {
 }
 
 // Every theme gives the same check for a mode-free value; a theme-dependent one is checked per theme.
-// Checks are merged by subject: a subject fails when any theme fails it.
+// Checks are merged by subject: a subject fails when any theme fails it, and themes lists each theme
+// it fails in.
 function perTheme(facts, fn) {
   const bySubject = new Map();
   for (const theme of facts.themes) {
     for (const c of fn(facts.values[theme.id] ?? {}, theme) ?? []) {
       const prev = bySubject.get(c.subject);
-      if (!prev || (prev.pass && !c.pass)) bySubject.set(c.subject, { ...c, theme: theme.id });
+      const themes = [...(prev?.themes ?? []), ...(c.pass ? [] : [theme.id])];
+      if (!prev || (prev.pass && !c.pass)) bySubject.set(c.subject, { ...c, theme: theme.id, themes });
+      else prev.themes = themes;
     }
   }
   return [...bySubject.values()];
@@ -81,6 +84,7 @@ const RELATIONS = [
       f.colorScales?.length
         ? f.colorScales.map((c) => ({
             subject: `color.${c.hue}.${c.mode}.${c.step}`,
+            themes: f.themes.filter((t) => t.mode === c.mode).map((t) => t.id),
             pass: String(c.stored).toUpperCase() === String(c.generated).toUpperCase(),
             says: `color.${c.hue}.${c.mode}.${c.step} is ${c.stored}; the key ${c.key} gives ${c.generated}`,
           }))
@@ -153,7 +157,7 @@ const RELATIONS = [
           const [lo, hi] = [present[i - 1], present[i]];
           const [a, b] = [v[lo], v[hi]].map((c) => (/^#[0-9a-f]{6}/i.test(c ?? "") ? lch(c.slice(0, 7))[0] : null));
           const subject = `${d.brand}: ${lo.split(".").at(-1)} < ${hi.split(".").at(-1)}`;
-          checks.push({ subject, theme: d.id, pass: a !== null && b !== null && a < b, says: `${subject}: lightness ${a?.toFixed(3)} vs ${b?.toFixed(3)}` });
+          checks.push({ subject, tokens: [lo, hi], theme: d.id, themes: [d.id], pass: a !== null && b !== null && a < b, says: `${subject}: lightness ${a?.toFixed(3)} vs ${b?.toFixed(3)}` });
         }
       }
       const missing = LADDER.filter((t) => !present.includes(t));

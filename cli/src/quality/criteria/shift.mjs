@@ -4,6 +4,7 @@
 // (surfaces) have tighter tiers; a chromatic token may turn its hue only a little; a brand key color
 // stays exact unless an adjustment is recorded.
 import { chromaHue, hueDifference, oklabDistance } from "../color.mjs";
+import { approvedMove } from "../approvals.mjs";
 import { hex6 } from "../values.mjs";
 import { measureOf } from "./measure.mjs";
 
@@ -21,9 +22,8 @@ export function tierOf(distance, { pass, review }) {
   return distance < pass ? "pass" : distance <= review ? "review" : "approval";
 }
 
-/** Whether the owner approved a move: an entry for this scheme and token, in this theme or any. */
-export const approved = (approvals, scheme, token, theme) =>
-  (approvals ?? []).some((a) => a.scheme === scheme && a.token === token && (!a.theme || a.theme === "*" || a.theme === theme));
+/** Whether the owner approved a move: an entry for this scheme and token, in this theme or "*". */
+export const approved = approvedMove;
 
 const fmt = (n) => n.toFixed(3);
 
@@ -84,7 +84,7 @@ export function keyChanges(base, candidate) {
     for (const [hue, modes] of Object.entries(b?.keys ?? {}))
       for (const [mode, k] of Object.entries(modes)) {
         const now = c.keys?.[hue]?.[mode];
-        if (now && now.key !== k.key && !adjusts(c.keys, hue, mode) && !approved(candidate.approvals, id, `color.${hue}.${mode}.key`))
+        if (now && now.key !== k.key && !adjusts(c.keys, hue, mode) && !approved(candidate.approvals, id, `color.${hue}.${mode}.key`, mode))
           out.push({ scheme: id, hue, mode, from: k.key, to: now.key });
       }
   }

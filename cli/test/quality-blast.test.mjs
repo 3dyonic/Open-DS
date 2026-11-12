@@ -44,28 +44,56 @@ const generating = () => {
 };
 const blastOf = (snap, id) => snap.schemes.fixture.blast.find((b) => b.id === id);
 
-test("with a loader that only reads the file, every answer link is an orphan", () => {
+test("with a loader that only reads the file, answers generate nothing and are counted apart", () => {
   const snap = snapshotOf(fixtureScheme());
   const m = measure(snap);
-  assert.equal(valueOf(m, "blast-radius.answer-orphans"), 20);
-  assert.equal(valueOf(m, "blast-radius.answer-orphan-share"), 1);
-  assert.equal(valueOf(m, "blast-radius.anchor-orphans"), 4);
+  // 6 of 6 answers move no value: their 20 trace links are not orphans one by one
+  assert.equal(valueOf(m, "blast-radius.answers-generate-nothing"), 6);
+  assert.equal(snap.schemes.fixture.blast.filter((b) => b.kind === "answer").reduce((n, b) => n + b.expected.length, 0), 20);
+  assert.match(m.find((x) => x.id === "blast-radius.answers-generate-nothing").notes[0], /^Answers do not generate values\. fixture: 6 of 6 answer changes move no value/);
+  assert.equal(valueOf(m, "blast-radius.answer-orphans"), 0);
+  assert.equal(valueOf(m, "blast-radius.answer-orphan-share"), null);
+  assert.equal(valueOf(m, "blast-radius.anchor-orphans"), 3);
   assert.equal(valueOf(m, "blast-radius.hidden-couplings"), 0);
   assert.deepEqual(blastOf(snap, "base-step").orphans, ["component-spacing-map.x2", "component-spacing-map.x3"]);
-  assert.deepEqual(blastOf(snap, "key-color").orphans, ["color.action.primary"]);
+  // the key color's generated steps are made again from the new key, as the scheme writer does
+  assert.deepEqual(blastOf(snap, "key-color").moved, ["color.action.primary"]);
+  assert.deepEqual(blastOf(snap, "key-color").orphans, []);
   assert.deepEqual(blastOf(snap, "control-height").orphans, ["size.control.compact"]);
   assert.deepEqual(blastOf(snap, "default-radius").orphans, []);
 });
 
-test("with a generating loader, only the answers it does not read leave orphans", () => {
+test("with a generating loader, only the answers it does not read are counted as generating nothing", () => {
   const snap = snapshotOf(generating(), { load: generate });
   const m = measure(snap);
-  // people.q1 3, spacing.values 4, color.values 6, shape.values 3, accessibility.values 2; motion.values 0
-  assert.equal(valueOf(m, "blast-radius.answer-orphans"), 18);
+  assert.equal(valueOf(m, "blast-radius.answers-generate-nothing"), 5);
+  assert.equal(valueOf(m, "blast-radius.answer-orphans"), 0);
+  assert.equal(valueOf(m, "blast-radius.answer-orphan-share"), 0);
   assert.deepEqual(blastOf(snap, "motion.values").moved, ["motion.duration.feedback", "motion.duration.panels"]);
   assert.equal(valueOf(m, "blast-radius.anchor-orphans"), 0);
   assert.equal(valueOf(m, "blast-radius.hidden-couplings"), 0);
   assert.deepEqual(blastOf(snap, "control-height").moved, ["size.control.compact", "size.control.default"]);
+});
+
+test("an answer orphan: a value that cites an answer which moves other values, but not this one", () => {
+  const s = generating();
+  s.tokens.semantic.type.body["font-size"].$extensions = { "open-ds": { why: "15px body text reads at a glance.", because: ["motion.values"] } };
+  const cand = snapshotOf(s, { load: generate });
+  const m = measure(cand);
+  assert.equal(valueOf(m, "blast-radius.answer-orphans"), 1);
+  assert.deepEqual(blastOf(cand, "motion.values").orphans, ["type.body.font-size"]);
+  assert.ok(compareSnapshots(snapshotOf(generating(), { load: generate }), cand).failed.includes("blast-radius.answer-orphans"));
+});
+
+test("a color step copied as a raw hex is an orphan of the key color", () => {
+  const s = fixtureScheme();
+  const base = snapshotOf(s);
+  const hex = base.schemes.fixture.values.light["color.action.primary"];
+  s.tokens.brands.default.theme.light.color.action.primary["@"].$value = hex;
+  const cand = snapshotOf(s);
+  assert.equal(cand.schemes.fixture.values.light["color.action.primary"], hex);
+  assert.deepEqual(blastOf(cand, "key-color").orphans, ["color.action.primary"]);
+  assert.ok(compareSnapshots(base, cand).failed.includes("blast-radius.anchor-orphans"));
 });
 
 test("an orphan hard-code: a compact height stored by hand does not follow the default", () => {
@@ -86,8 +114,8 @@ test("a hidden coupling: a row the loader ties to the control height, with no tr
   const m = measure(cand);
   assert.equal(valueOf(m, "blast-radius.hidden-couplings"), 1);
   assert.deepEqual(blastOf(cand, "control-height").hidden, ["size.row"]);
-  // the row also cites people.q1, which moves nothing: one more answer orphan
-  assert.equal(valueOf(m, "blast-radius.answer-orphans"), 19);
+  // the row also cites people.q1, which moves nothing at all: not an answer orphan
+  assert.equal(valueOf(m, "blast-radius.answer-orphans"), 0);
   assert.ok(compareSnapshots(snapshotOf(generating(), { load: generate }), cand).failed.includes("blast-radius.hidden-couplings"));
 });
 

@@ -394,9 +394,13 @@ export async function run(argv) {
         log: (line) => console.error(line),
       });
       out(r.card, () => {
+        for (const note of r.card.notes) console.log(`Note: ${note.note}`);
         for (const c of r.card.criteria)
-          if (c.direction !== "report" || c.base !== c.candidate)
-            console.log(`${c.direction === "report" ? "·" : c.pass ? "✓" : "✗"} ${c.id}: ${c.base ?? "not present"} → ${c.candidate ?? "not present"}`);
+          if (c.gated || c.base !== c.candidate)
+            console.log(
+              `${!c.gated ? "·" : c.pass ? "✓" : "✗"} ${c.id}: ${c.base ?? "not present"} → ${c.candidate ?? "not present"}` +
+                (c.regressions.length ? ` (worse in ${c.regressions.map((p) => `${p.part} ${p.base} → ${p.candidate}`).join(", ")})` : ""),
+            );
         console.log(r.card.pass ? "Pass: no gated criterion moved the wrong way." : `Fail: ${r.card.failed.join(", ")}.`);
         console.log(`Wrote ${r.files.md}, ${r.files.pairs} and ${r.files.json}.${r.files.baseline ? ` Wrote the baseline to ${r.files.baseline}.` : ""}`);
       });

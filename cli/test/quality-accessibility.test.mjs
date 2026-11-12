@@ -42,7 +42,10 @@ test("a contrast failure: dark text too dim fails both its pairs in WCAG and APC
   ]);
   const card = compareSnapshots(snapshotOf(fixtureScheme()), cand);
   assert.ok(card.failed.includes("accessibility.wcag-failures"));
-  assert.ok(card.failed.includes("accessibility.apca-warnings"));
+  // APCA warns and never gates (the owner's decision): the rise is shown, the gate does not fail on it
+  const apca = card.criteria.find((r) => r.id === "accessibility.apca-warnings");
+  assert.deepEqual([apca.base, apca.candidate, apca.gated], [0, 2, false]);
+  assert.ok(!card.failed.includes("accessibility.apca-warnings"));
 });
 
 test("a control under 24px and a text size in px are counted", () => {

@@ -8,11 +8,12 @@ import { tmpdir } from "node:os";
 import { join, relative } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { saveGrammar, saveStoredScheme, storedScheme } from "../schemes.mjs";
+import { approvalsFrom } from "./approvals.mjs";
 import { componentPairsOf } from "./component-pairs.mjs";
 import { componentLiterals, cssVarReads, reducedMotionTransforms } from "./sources.mjs";
 import { snapshotScheme } from "./snapshot.mjs";
 
-/** Where a checkout records the color moves its owner approved, from the repository root. */
+/** Where a checkout records the flags its owner approved, from the repository root. */
 export const APPROVALS = join("harness", "quality-approvals.json");
 
 const readText = (path) => (existsSync(path) ? readFileSync(path, "utf8") : null);
@@ -93,7 +94,7 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
       },
       schemes,
       ui,
-      approvals: existsSync(approvalsFile) ? (JSON.parse(readFileSync(approvalsFile, "utf8")).approvals ?? []) : [],
+      approvals: existsSync(approvalsFile) ? approvalsFrom(JSON.parse(readFileSync(approvalsFile, "utf8"))) : [],
     };
   } finally {
     rmSync(scratch, { recursive: true, force: true });

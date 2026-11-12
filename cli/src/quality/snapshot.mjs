@@ -6,7 +6,7 @@
 import { scale as rampScale } from "../ramps.mjs";
 import { pairsIn } from "../tones.mjs";
 import { reasonOf, traceScheme, weakReasons } from "../trace.mjs";
-import { anchorPerturbations, answerPerturbations } from "./perturb.mjs";
+import { blastRadius } from "./blast.mjs";
 import { RELATION_TOKENS, evaluateRelations, relationLinks } from "./relations.mjs";
 import { flatMap, hex6, namedStep, px, resolveTree, shortName } from "./values.mjs";
 
@@ -88,22 +88,22 @@ function factsOf(scheme, themes, values) {
     spacingMap: steps.length ? { rhythm: mapExt.rhythm ?? 1, fixed: mapExt.fixed ?? [], steps } : null,
     baseStep: base ? { path: `space.${base[0]}`, px: 4 } : null,
     colorScales,
+    darkCanvas: /^#[0-9a-f]{6}$/i.test(canvas) ? canvas : null,
   };
 }
 
 /**
  * Where a value comes from: "relation" (a recorded relation gives it and holds), "alias" (it names
- * another semantic), "scale" (it ends on a generated color step or a scale step whose value is its
- * name) or "literal" (a raw value someone typed).
+ * another semantic), "scale" (it ends on a step of a color scale, or on a scale step whose value is its
+ * name) or "literal" (a raw value someone typed, such as a hex in place of a step).
  */
-export function originOf({ token, chain, semantics, heldRelations, generatedSteps, primitives }) {
+export function originOf({ token, chain, semantics, heldRelations, primitives }) {
   if (heldRelations.has(token)) return "relation";
   const first = chain.hops[0];
   if (first && semantics.has(shortName(first))) return "alias";
-  if (!chain.hops.length) return "literal";
-  if (generatedSteps.has(chain.end)) return "scale";
-  if (primitives.has(chain.end) && namedStep(chain.end, primitives.get(chain.end).$value)) return "scale";
-  return "literal";
+  if (!chain.hops.length || !primitives.has(chain.end)) return "literal";
+  if (chain.end.startsWith("color.")) return "scale";
+  return namedStep(chain.end, primitives.get(chain.end).$value) ? "scale" : "literal";
 }
 
 // Every reason a scheme writes, with where it is: answers, usage rules, token and pick reasons.
@@ -115,6 +115,44 @@ function reasonsOf(scheme) {
   for (const [brand, def] of Object.entries(scheme.tokens?.brands ?? {}))
     for (const part of ["base", "light", "dark"])
       for (const [p, t] of flatMap(def.theme?.[part])) if (extOf(t).why) out.push({ where: `pick ${brand}/${part} ${shortName(p)}`, text: extOf(t).why });
+  return out;
+}
+
+/**
+ * The hue of the primary action's color scale: the first theme whose chain ends on a scale step, else
+ * the step a raw hex copies, so a hard-coded primary still finds its anchor. null when neither does.
+ */
+export function primaryHueOf(scheme, themes, chains, values) {
+  for (const t of themes) {
+    const hue = chains[t.id]?.["color.action.primary"]?.end?.match(/^color\.([a-z0-9-]+)\.(light|dark)\.[^.]+$/)?.[1];
+    if (hue) return hue;
+  }
+  const palette = paletteOf(scheme);
+  for (const t of themes) {
+    const hex = hex6(values[t.id]?.["color.action.primary"]);
+    const hue = hex && Object.keys(palette).find((h) => Object.values(palette[h]).some((row) => Object.values(row).includes(hex)));
+    if (hue) return hue;
+  }
+  return null;
+}
+
+/**
+ * The reason recorded for each semantic value itself: the token's own why, else its theme pick's why in
+ * any brand and mode. Map(name → why). A group's or a usage rule's text is about many values, so it is
+ * not one.
+ */
+export function ownReasons(scheme) {
+  const out = new Map();
+  for (const [p, t] of flatMap(scheme.tokens?.semantic)) {
+    let why = extOf(t).why ?? null;
+    const pick = typeof t.$value === "string" && t.$value.match(/^\{theme\.([^}]+)\}$/)?.[1];
+    for (const def of Object.values(scheme.tokens?.brands ?? {}))
+      for (const part of ["base", "light", "dark"]) {
+        const node = pick && at(def.theme?.[part], pick);
+        why ??= extOf(node?.["@"] ?? node).why ?? null;
+      }
+    if (why) out.set(shortName(p), why);
+  }
   return out;
 }
 
@@ -141,42 +179,6 @@ function referencedNames(scheme) {
   return names;
 }
 
-// Which tokens a perturbation moved: any theme's value differs.
-function movedBetween(before, after) {
-  const moved = new Set();
-  for (const [theme, vals] of Object.entries(before))
-    for (const [token, v] of Object.entries(vals)) {
-      if (token.startsWith("component.")) continue;
-      if (JSON.stringify(v) !== JSON.stringify(after[theme]?.[token])) moved.add(token);
-    }
-  return moved;
-}
-
-// The tokens an anchor should move: those whose chain passes through it, then what the relations tie
-// to those, until nothing new comes in.
-function expectedForAnchor(p, chains, links) {
-  const hit = (name) => p.nodes.some((n) => name === n || name.startsWith(`${n}.`));
-  const out = new Set();
-  for (const byToken of Object.values(chains))
-    for (const [token, ch] of Object.entries(byToken)) {
-      if (token.startsWith("component.")) continue;
-      if (hit(token) || ch.hops.some(hit) || (p.hue && ch.end.startsWith(`color.${p.hue}.`))) out.add(token);
-    }
-  const seeds = new Set([...p.nodes, ...out]);
-  for (let changed = true; changed; ) {
-    changed = false;
-    for (const l of links)
-      if (l.inputs.some((i) => seeds.has(i)))
-        for (const o of l.outputs)
-          if (!seeds.has(o)) {
-            seeds.add(o);
-            out.add(o);
-            changed = true;
-          }
-  }
-  return out;
-}
-
 /**
  * The snapshot of one scheme. scheme is the scheme as the ref's loader gives it; stored is its file;
  * themeTokens(scheme, brand, mode) is the ref's token builder; reload(stored) loads a changed file with
@@ -191,7 +193,6 @@ export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, c
 
   const semantics = new Set(semanticPaths(scheme).map(shortName));
   const primitives = flatMap(scheme.tokens?.primitive);
-  const generatedSteps = new Set(facts.colorScales.filter((c) => String(c.stored).toUpperCase() === String(c.generated).toUpperCase()).map((c) => `color.${c.hue}.${c.mode}.${c.step}`));
   const spacing = relations.find((r) => r.id === "spacing-map");
   const heldRelations = new Set((spacing?.checks ?? []).filter((c) => c.pass).map((c) => c.subject));
   const origin = {};
@@ -199,14 +200,15 @@ export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, c
     origin[t.id] = {};
     for (const [token, chain] of Object.entries(chains[t.id]))
       if (!token.startsWith("component."))
-        origin[t.id][token] = originOf({ token, chain, semantics, heldRelations, generatedSteps, primitives });
+        origin[t.id][token] = originOf({ token, chain, semantics, heldRelations, primitives });
   }
 
   const trace = traceScheme(scheme, grammar);
   const weak = new Map(weakReasons(trace).map((w) => [w.token, w.problem]));
+  const own = ownReasons(scheme);
   const traced = trace.tokens.map((t) => {
     const r = reasonOf(t);
-    return { token: t.token, because: t.because, reason: r.kind, why: r.why ?? null, weak: weak.get(t.token) ?? null };
+    return { token: t.token, because: t.because, reason: r.kind, why: r.why ?? null, ownWhy: own.get(t.token) ?? null, weak: weak.get(t.token) ?? null };
   });
 
   const pairs = {};
@@ -220,35 +222,19 @@ export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, c
     pairs[t.id] = list.map((p) => ({ key: shortName(p.key), on: shortName(p.on), contrast: p.contrast, ...(p.waits && { waits: true }) }));
   }
 
-  const blast = [];
-  if (reload) {
-    const linkedTo = new Map();
-    for (const t of trace.tokens) for (const id of t.because) linkedTo.set(id, [...(linkedTo.get(id) ?? []), t.token]);
-    const first = chains[themes[0]?.id] ?? {};
-    for (const p of [...answerPerturbations(stored, grammar), ...anchorPerturbations(stored, { firstChains: first })]) {
-      if (p.notPresent) {
-        blast.push({ kind: p.kind, id: p.id, notPresent: p.notPresent });
-        continue;
-      }
-      const expected = p.kind === "answer" ? new Set(linkedTo.get(p.id) ?? []) : expectedForAnchor(p, chains, links);
-      let moved;
-      try {
-        moved = movedBetween(values, resolveScheme(reload(p.apply(stored)), themeTokens).values);
-      } catch (e) {
-        blast.push({ kind: p.kind, id: p.id, change: p.change, error: String(e.message ?? e).slice(0, 200) });
-        continue;
-      }
-      blast.push({
-        kind: p.kind,
-        id: p.id,
-        change: p.change,
-        expected: [...expected].sort(),
-        moved: [...moved].sort(),
-        orphans: [...expected].filter((t) => !moved.has(t)).sort(),
-        hidden: [...moved].filter((t) => !expected.has(t)).sort(),
-      });
-    }
-  }
+  const blast = reload
+    ? blastRadius({
+        stored,
+        grammar,
+        trace,
+        values,
+        links,
+        primaryHue: primaryHueOf(scheme, themes, chains, values),
+        darkCanvas: facts.darkCanvas,
+        reload,
+        resolve: (changed) => resolveScheme(changed, themeTokens),
+      })
+    : [];
 
   const referenced = referencedNames(scheme);
   const cssName = (name) => name.replace(/\.@$/, "").split(".").join("-");

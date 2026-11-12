@@ -1,8 +1,8 @@
 // Derived against literal (OD-298): where each semantic value comes from. A value is derived when a
-// recorded relation, another semantic, a generated color scale or a scale step named for its value
-// gives it; a literal is a raw value someone typed (a hand-picked gray, a font stack, "120ms"). Also
+// recorded relation, another semantic, a color scale step or a scale step named for its value gives
+// it; a literal is a raw value someone typed (a hex in place of a step, a font stack, "120ms"). Also
 // the raw hex, px and ms literals in component code that bypass the tokens.
-import { measureOf, perSchemeOf, share, sum } from "./measure.mjs";
+import { countBy, measureOf, perSchemeOf, perThemeOf, share, sum } from "./measure.mjs";
 
 export const FAMILY = "derived";
 export const ORIGINS = ["relation", "alias", "scale", "literal"];
@@ -36,6 +36,7 @@ export function measure(snapshot) {
       direction: "down",
       value: sum(literal),
       perScheme: literal,
+      parts: perThemeOf(snapshot, (s, theme) => Object.values(s.origin[theme] ?? {}).filter((o) => o === "literal").length),
       details: Object.entries(snapshot.schemes).map(([id, s]) => `${id}: ${[...literalTokens(s)].join(", ")}`),
     }),
     measureOf({
@@ -44,6 +45,7 @@ export function measure(snapshot) {
       title: "Raw hex, px and ms literals in component code and CSS that bypass the tokens",
       direction: "down",
       value: snapshot.ui ? ui.length : null,
+      parts: countBy(ui, (l) => l.file),
       details: [`${Object.entries(kinds).map(([k, n]) => `${k}: ${n}`).join(", ") || "none"}`, ...ui.map((l) => `${l.file}:${l.line} ${l.text}`)],
     }),
   ];
@@ -51,19 +53,18 @@ export function measure(snapshot) {
 
 /**
  * New literals against the base: tokens literal in the candidate that were not literal (or did not
- * exist) in the base. Each must carry a recorded reason (its own why, or a usage rule naming exactly
- * it); the ones that do not are counted.
+ * exist) in the base. Each must carry a reason recorded for it: the token's own why, or its theme
+ * pick's why. A usage rule's text is about a situation, not this value, so it does not count.
  */
 export function relative(base, candidate) {
   const fresh = [];
   for (const [id, s] of Object.entries(candidate.schemes)) {
     const before = base.schemes[id] ? literalTokens(base.schemes[id]) : new Set();
-    const reasons = new Map(s.trace.map((t) => [t.token, t]));
+    const reasons = new Map(s.trace.map((t) => [t.token, t.ownWhy ?? null]));
     for (const token of literalTokens(s))
       if (!before.has(token)) {
-        const t = reasons.get(token);
-        const reasoned = !!t?.why && (t.reason === "own" || t.reason === "exact-rule");
-        fresh.push({ scheme: id, token, reasoned, why: t?.why ?? null });
+        const why = reasons.get(token) ?? null;
+        fresh.push({ scheme: id, token, reasoned: !!why, why });
       }
   }
   const unreasoned = fresh.filter((f) => !f.reasoned);
@@ -82,6 +83,7 @@ export function relative(base, candidate) {
       title: "Literals new in the candidate with no recorded reason",
       direction: "down",
       value: unreasoned.length,
+      perScheme: countBy(unreasoned, (f) => f.scheme),
       details: unreasoned.map((f) => `${f.scheme}: ${f.token}`),
     }),
   ];
