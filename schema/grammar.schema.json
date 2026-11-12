@@ -309,6 +309,23 @@
               },
               "description": "The steps of color.neutral."
             },
+            "floor": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["step", "description"],
+              "description": "The optional step below 0 that a scheme adds when its dark canvas sits on step 0, so dark wells sit below the page.",
+              "properties": {
+                "step": {
+                  "const": "floor",
+                  "description": "The step's name in color.neutral and in the gray's dark ramp."
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "What the floor is for, how it is derived, and what it names in light."
+                }
+              }
+            },
             "grays": {
               "type": "array",
               "minItems": 1,
@@ -530,6 +547,32 @@
                 "minLength": 1,
                 "description": "Why this key has no contrast minimum, when contrast is null."
               }
+            }
+          }
+        }
+      }
+    },
+    "reason_form": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "form", "parts"],
+      "description": "The form every reason takes (OD-294). The harness check reasons-say-why counts the reasons that miss a part, per scheme, and the count may only go down.",
+      "properties": {
+        "description": { "type": "string", "minLength": 1, "description": "What the form is for." },
+        "form": { "type": "string", "minLength": 1, "description": "The form, with each part in angle brackets." },
+        "from_above": { "type": "string", "minLength": 1, "description": "How a reason for a value set from above (a scale, a relation, inheritance) fills the form." },
+        "parts": {
+          "type": "array",
+          "minItems": 1,
+          "description": "The parts a reason must have, each found by its marker words.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "marker", "says"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z-]+$", "description": "The part's id, for example job." },
+              "marker": { "type": "string", "minLength": 1, "description": "The words that open the part, for example in order to." },
+              "says": { "type": "string", "minLength": 1, "description": "What the part says." }
             }
           }
         }
@@ -1215,6 +1258,215 @@
                 "type": "string",
                 "minLength": 1,
                 "description": "How the property does the job, as a reason says it after does this by."
+              }
+            }
+          }
+        },
+        "properties": {
+          "type": "array",
+          "description": "The design properties this scope's tokens carry (OD-294), for example a corner or a shadow: the jobs each property does and how it does each. Every reason for one of its tokens names one of these jobs.",
+          "items": {
+            "type": "object",
+            "description": "One property: the tokens that carry it, how it works and its jobs.",
+            "additionalProperties": false,
+            "required": ["id", "title", "description", "tokens", "works_by", "jobs"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z-]+$", "description": "A short id, for example corner." },
+              "title": { "type": "string", "minLength": 1, "description": "The property's name in plain words." },
+              "description": { "type": "string", "minLength": 1, "description": "What the property is, for a person or an agent." },
+              "tokens": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "pattern": "^[a-z-]+(\\.[a-z0-9*-]+)+$", "description": "A token name; * stands for one segment." },
+                "description": "The semantic tokens that carry this property."
+              },
+              "works_by": { "type": "string", "minLength": 1, "description": "How the property works in general, for example the curvature of the edge." },
+              "jobs": {
+                "type": "array",
+                "minItems": 1,
+                "description": "The jobs the property does. A reason names its job by the job's id.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "description", "how"],
+                  "properties": {
+                    "id": { "type": "string", "pattern": "^[a-z-]+$", "description": "The job in one word, as reasons name it, for example nesting." },
+                    "description": { "type": "string", "minLength": 1, "description": "What the job is." },
+                    "how": { "type": "string", "minLength": 1, "description": "How the property does this job." },
+                    "source": { "type": "string", "minLength": 1, "description": "Where the job comes from: research, a standard, or a brand convention named as one." }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "relations": {
+          "type": "array",
+          "description": "How each of this scope's tokens is set (OD-294): decided by answers, or derived from other tokens by a relation. Each scheme records which relation each token follows (scheme.relations), and cli/src/shape-elevation.mjs checks the record against the values.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "tokens", "check", "follows", "jobs", "says"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z-]+$", "description": "The relation's id; scheme records name it." },
+              "tokens": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "pattern": "^[a-z-]+(\\.[a-z0-9-]+)+$", "description": "A semantic token name." },
+                "description": "The tokens this relation sets. Every scheme records each of them."
+              },
+              "check": {
+                "enum": ["decided", "minus", "equal-unless-pill", "equal-or-own", "next-step", "fixed", "layer-step", "dark-same-shape"],
+                "description": "How the checker verifies it. decided: set by answers. minus: the record's from less its minus. equal-unless-pill: equals from, or the record's box corner when from is a pill. equal-or-own: equals from, unless own_when gives it its own value. next-step: the next primitive step above from. fixed: always equals. layer-step: a shadow by layer, from by_answer and steps. dark-same-shape: the dark shadow keeps the light shape."
+              },
+              "follows": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "pattern": "^[a-z-]+\\.[a-z0-9-]+$", "description": "A grammar question id." },
+                "description": "The answers that decide the tokens, directly or through the tokens they derive from."
+              },
+              "jobs": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "pattern": "^[a-z-]+$", "description": "A job id from the scope's properties." },
+                "description": "The jobs of the property these tokens do."
+              },
+              "says": { "type": "string", "minLength": 1, "description": "The relation in plain words." },
+              "count": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["question", "tokens", "options"],
+                "description": "For a decided token: a count answer that names how many sizes a set of tokens makes.",
+                "properties": {
+                  "question": { "type": "string", "description": "The count question, for example shape.count." },
+                  "tokens": { "type": "array", "items": { "type": "string", "description": "A semantic token name." }, "description": "The tokens whose distinct sizes are counted." },
+                  "options": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 }, "description": "Each answer option and the number of sizes it names." }
+                }
+              },
+              "own_when": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["question", "options"],
+                "description": "For equal-or-own: the answers that give the token a value of its own.",
+                "properties": {
+                  "question": { "type": "string", "description": "A grammar question id, for example shape.roles." },
+                  "options": { "type": "array", "items": { "type": "string", "description": "An option id." }, "description": "The options that give the token its own value." }
+                }
+              },
+              "equals": { "type": "string", "description": "For fixed: the value the token always has, for example 2px." },
+              "boundaries": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^component\\.", "description": "A component token path, for example component.tabs.list.border." },
+                "description": "For a line: the component colors whose edge is the only sign of a control. Each needs the floor's contrast against surface.default (WCAG 1.4.11); one under it is a finding."
+              },
+              "floor": { "type": "number", "minimum": 1, "description": "For boundaries: the contrast floor, for example 3." },
+              "depth": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["raised", "base", "sunken"],
+                "description": "For dark-same-shape: the surfaces that show height by tone in dark mode. A raised surface lighter than the base, and a sunken one darker, read as higher and lower; anything else is a finding.",
+                "properties": {
+                  "raised": { "type": "string", "description": "The raised surface, for example color.surface.raised." },
+                  "base": { "type": "string", "description": "The base surface, for example color.surface.default." },
+                  "sunken": { "type": "string", "description": "The sunken surface, for example color.surface.sunken." },
+                  "ring": { "type": "string", "description": "The 1px ring of a raised layer, for example color.border.raised. In dark it is a solid color, lighter than the raised surface (OD-297)." }
+                }
+              },
+              "floating": {
+                "type": "array",
+                "items": { "type": "string", "pattern": "^[a-z-]+(\\.[a-z0-9-]+)+$", "description": "A shadow token, for example elevation.overlay." },
+                "description": "For dark-same-shape: the layers that float (menus, popovers, dialogs, toasts, tooltips). Only these cast a shade in dark; every other layer casts none there (OD-297)."
+              },
+              "by_answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["question", "options"],
+                "description": "For layer-step: which layers rise under each answer.",
+                "properties": {
+                  "question": { "type": "string", "description": "A grammar question id, for example elevation.roles." },
+                  "options": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string", "description": "A token name." } }, "description": "Each option and the tokens that cast a shadow under it." }
+                }
+              },
+              "steps": {
+                "type": "object",
+                "additionalProperties": { "type": "integer", "minimum": 1 },
+                "description": "For layer-step: each layer's step on the scale. A higher step never casts a smaller offset or blur."
+              }
+            }
+          }
+        },
+        "families": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "question", "by_option", "moves", "curves", "items"],
+          "description": "The motion scope only (OD-297): the motion families, the move types and the curve kinds. A scheme's family follows one answer; each family limits each duration and allows curve kinds per move. cli/src/motion.mjs checks every scheme.",
+          "properties": {
+            "description": { "type": "string", "minLength": 1, "description": "What the families are and how a scheme gets one." },
+            "question": { "type": "string", "pattern": "^[a-z-]+\\.[a-z0-9-]+$", "description": "The grammar question whose answer picks the family, for example motion.roles." },
+            "by_option": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": { "type": "string", "pattern": "^[a-z-]+$", "description": "A family id." },
+              "description": "Each option of the question and the family it picks."
+            },
+            "moves": {
+              "type": "array",
+              "minItems": 1,
+              "description": "The move types. Each has one easing token in every scheme.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "token", "description"],
+                "properties": {
+                  "id": { "type": "string", "pattern": "^[a-z-]+$", "description": "The move type, for example exit." },
+                  "token": { "type": "string", "pattern": "^motion\\.easing\\.[a-z-]+$", "description": "The easing token of this move." },
+                  "description": { "type": "string", "minLength": 1, "description": "When the move happens." }
+                }
+              }
+            },
+            "curves": {
+              "type": "array",
+              "minItems": 1,
+              "description": "The curve kinds a family can allow, each measured from the cubic Bézier.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "says"],
+                "properties": {
+                  "id": { "enum": ["ease-out", "strong-out", "accelerate", "overshoot"], "description": "The curve kind; cli/src/motion.mjs measures it." },
+                  "says": { "type": "string", "minLength": 1, "description": "How the kind is measured, in plain words." }
+                }
+              }
+            },
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "description": "The families.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "title", "description", "max_ms", "curves"],
+                "properties": {
+                  "id": { "type": "string", "pattern": "^[a-z-]+$", "description": "The family id, for example productive." },
+                  "title": { "type": "string", "minLength": 1, "description": "The family's name." },
+                  "description": { "type": "string", "minLength": 1, "description": "What the family is for and its limits, in plain words." },
+                  "max_ms": {
+                    "type": "object",
+                    "minProperties": 1,
+                    "additionalProperties": { "type": "integer", "minimum": 1, "description": "The longest the duration may take, in milliseconds." },
+                    "description": "Duration token patterns and their limit; the first pattern that names a token applies."
+                  },
+                  "curves": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": { "enum": ["ease-out", "strong-out", "accelerate", "overshoot"], "description": "A curve kind." },
+                      "description": "The curve kinds this move may take."
+                    },
+                    "description": "Each move type and the curve kinds it allows in this family."
+                  }
+                }
               }
             }
           }

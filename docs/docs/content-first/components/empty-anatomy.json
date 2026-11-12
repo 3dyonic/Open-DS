@@ -93,7 +93,9 @@
      "key": "padding",
      "value": "2.25rem",
      "byScheme": true,
-     "pick": "space.36",
+     "pick": [
+      "space.36"
+     ],
      "shares": []
     },
     {
@@ -102,7 +104,9 @@
      "key": "padding-2",
      "value": "4rem",
      "byScheme": true,
-     "pick": "space.64",
+     "pick": [
+      "space.64"
+     ],
      "shares": []
     },
     {
@@ -111,7 +115,9 @@
      "key": "gap",
      "value": "4rem",
      "byScheme": true,
-     "pick": "space.64",
+     "pick": [
+      "space.64"
+     ],
      "shares": []
     }
    ]
@@ -137,11 +143,27 @@
      "semantic": "color.surface.sunken",
      "key": "icon.background",
      "value": "#F6F2EA",
-     "darkValue": "#2E2A24",
+     "darkValue": "#0B0906",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.12
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.16
+      },
+      " under content and ",
+      {
+       "ratio": 1.06
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -157,8 +179,28 @@
      "darkValue": "#FFFDF8",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 16.84
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -169,7 +211,9 @@
      "key": "icon.margin-bottom",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -203,7 +247,9 @@
      "key": "title.font-size",
      "value": "1.75rem",
      "byScheme": true,
-     "pick": "font.size.28",
+     "pick": [
+      "font.size.28"
+     ],
      "shares": []
     },
     {
@@ -212,7 +258,9 @@
      "key": "title.font-weight",
      "value": "600",
      "byScheme": true,
-     "pick": "font.weight.600",
+     "pick": [
+      "font.weight.600"
+     ],
      "shares": []
     },
     {
@@ -223,8 +271,28 @@
      "darkValue": "#A39A8B",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 6.9
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.16
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -243,7 +311,9 @@
      "key": "content.gap",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     }
    ]

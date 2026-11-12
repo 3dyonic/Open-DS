@@ -1,6 +1,10 @@
 {
  "preview": {
   "input-otp/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Input otp examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -466,7 +470,7 @@
      "themed": false,
      "chain": {
       "token": "component.input-otp.slot.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "input-otp-slot-focus-width"
      },
      "values": [
@@ -500,7 +504,7 @@
      "themed": false,
      "chain": {
       "token": "component.input-otp.slot.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "input-otp-slot-focus-offset"
      },
      "values": [
@@ -584,7 +588,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -957,7 +961,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },

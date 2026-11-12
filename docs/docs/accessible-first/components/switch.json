@@ -1,6 +1,10 @@
 {
  "preview": {
   "switch/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Switch examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -55,7 +59,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -154,7 +158,7 @@
      "themed": false,
      "chain": {
       "token": "component.switch.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "switch-focus"
      },
      "values": [
@@ -166,29 +170,12 @@
     },
     {
      "group": "Switch",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.switch.disabled",
-      "alias": "opacity.disabled",
-      "variable": "switch-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Switch",
      "part": "Focus offset",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.switch.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "switch-focus-offset"
      },
      "values": [
@@ -220,10 +207,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -253,6 +240,52 @@
        },
        "token": "gray.dark.0",
        "text": "#0A0A0A"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.hit-area",
+      "alias": "size.hit-area",
+      "variable": "switch-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Disabled track",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.disabled-track",
+      "alias": "color.disabled.border",
+      "variable": "switch-disabled-track"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#D6D6D6"
+       },
+       "token": "gray.light.200",
+       "text": "#D6D6D6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#333333"
+       },
+       "token": "gray.dark.200",
+       "text": "#333333"
       }
      ]
     },
@@ -332,10 +365,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#222222"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.100",
+       "text": "#222222"
       }
      ]
     },
@@ -361,10 +394,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#949494"
+        "color": "#B4B4B4"
        },
-       "token": "gray.dark.500",
-       "text": "#949494"
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
       }
      ]
     },

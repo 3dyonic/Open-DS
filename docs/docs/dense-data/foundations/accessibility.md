@@ -38,6 +38,12 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `opacity.40` |
 | `color.border.focus` | light | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` |
 | | dark | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.600` |
+| `focus.ring.width` | light | `border-width.2` |
+| | dark | `border-width.2` |
+| `focus.ring.offset` | light | `border-width.2` |
+| | dark | `border-width.2` |
+| `size.hit-area` | light | `size.24` |
+| | dark | `size.24` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
@@ -45,9 +51,9 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Keyboard users must always see where they are. |
+| Keyboard focus | button/focus-ring at focus.ring.width | Removing the outline | Keyboard users must always see where they are. |
 | The smallest clickable thing | size.control.compact | Anything smaller | Compact still fits a mouse. Touch is not this product's input. |
 | Most buttons and inputs | size.control.default | size.control.large | Buttons and inputs fit a mouse and keep toolbars short. |
 | The main action on a screen | size.control.large | A taller button for the main action | It is the same height as the default here. Color and place mark the main action. One height keeps toolbar buttons in line. |
 | A button inside a field | size.control.compact | size.control.default | A clear or step button fits inside the field, so the field keeps its row height. |
-| A control that is not available yet | opacity.disabled | Hiding the control | A faded control stays in its place. Experts keep their bearings and see the action will come back. |
+| A control that is not available yet | color.disabled.*, never opacity | Hiding the control | Muted colors keep a disabled control in its place and its label readable. Experts keep their bearings and see the action will come back. |

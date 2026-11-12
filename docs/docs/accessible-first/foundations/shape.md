@@ -35,8 +35,8 @@ Each token points to another token. Values live only on primitives, below.
 | `radius.surface` | `accessible-first.theme.base.radius.surface` → `radius.8` |
 | `radius.container` | `radius.surface` → `accessible-first.theme.base.radius.surface` → `radius.8` |
 | `border-width.default` | `border-width.2` |
-| `border-width.focus` | `border-width.3` |
-| `border-width.focus-offset` | `border-width.2` |
+| `border-width.focus` | `focus.ring.width` → `border-width.3` |
+| `border-width.focus-offset` | `focus.ring.offset` → `border-width.2` |
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
@@ -50,4 +50,4 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 | Something that grows past one line | radius.element | radius.surface | Text areas and list items keep the control corner, so people know they can type or pick there. |
 | Corners of cards, menus and dialogs | radius.surface | A pill | Slightly rounded panels read as one clear box at any zoom. |
 | Edges and dividers | border-width.default | A hairline | A strong edge stays visible at high zoom and for people with low vision. |
-| The gap around a focus ring | border-width.focus-offset | A ring that touches the control | The gap keeps the thick ring clear of the control, so focus shows on any fill. |
+| The gap around a focus ring | focus.ring.offset | A ring that touches the control | The gap keeps the thick ring clear of the control, so focus shows on any fill. |

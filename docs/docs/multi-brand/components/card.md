@@ -14,7 +14,7 @@ A bordered container for one item or group, with its title, content and actions.
 
 ## See it live
 
-::preview{robot="slumber" id="card/live"}
+::preview{id="card/live"}
 
 ## When to use it
 
@@ -34,11 +34,11 @@ Instead:
 
 ::::grid{columns="2"}
 :::panel{title="A card on the page"}
-**Use** elevation.card
+**Use** elevation.card; none in dark
 
 **Not** A border only
 
-Cards lift slightly to group offers.
+Cards lift slightly to group offers. In dark, tone and a ring do the lift, the same in every brand.
 :::
 ::::
 

@@ -1,6 +1,10 @@
 {
  "preview": {
   "avatar/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Avatar examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -121,10 +125,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -137,10 +141,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -153,10 +157,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -531,10 +535,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -547,10 +551,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -563,10 +567,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },

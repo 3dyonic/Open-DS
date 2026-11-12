@@ -14,7 +14,7 @@ A row with media, a title, a description and actions.
 
 ## See it live
 
-::preview{robot="slumber" id="item/live"}
+::preview{id="item/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Multi-brand decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="item/variant/default"}
+::preview{id="item/variant/default"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ Settings inside a card or menu, which already gives the frame.
 :::
 
 :::panel{title="outline" note="variant" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="item/variant/outline"}
+::preview{id="item/variant/outline"}
 
 **What it is for**
 
@@ -72,7 +72,7 @@ Account settings on their own page, with a border and the corner each brand sets
 :::
 
 :::panel{title="muted" note="variant" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="item/variant/muted"}
+::preview{id="item/variant/muted"}
 
 **What it is for**
 
@@ -91,7 +91,7 @@ The current setting, with a soft fill from the brand.
 :::
 
 :::panel{title="default" note="size" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="item/size/default"}
+::preview{id="item/size/default"}
 
 **What it is for**
 
@@ -110,7 +110,7 @@ Every row, at touch size: customers are often on phones.
 :::
 
 :::panel{title="sm" note="size" label="Not used in Multi-brand" tone="neutral"}
-::preview{robot="slumber" id="item/size/sm"}
+::preview{id="item/size/sm"}
 
 **What it is for**
 

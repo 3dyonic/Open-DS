@@ -1,6 +1,10 @@
 {
  "preview": {
   "toggle-group/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle group examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -124,9 +128,9 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Birch Light",
@@ -138,9 +142,9 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Coral Light",
@@ -152,9 +156,9 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },

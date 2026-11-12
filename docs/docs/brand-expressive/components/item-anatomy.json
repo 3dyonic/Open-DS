@@ -113,7 +113,9 @@
      "key": "default.padding",
      "value": "2rem",
      "byScheme": true,
-     "pick": "space.32",
+     "pick": [
+      "space.32"
+     ],
      "shares": []
     },
     {
@@ -122,7 +124,9 @@
      "key": "default.gap",
      "value": "2.5rem",
      "byScheme": true,
-     "pick": "space.40",
+     "pick": [
+      "space.40"
+     ],
      "shares": []
     },
     {
@@ -131,7 +135,9 @@
      "key": "radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+     "pick": [
+      "radius.12: We use the 12px box corner for boxes that grow in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area or a list item stays a box, not an oval, because controls are pills (shape.values) and the brand is bold (brand.q1)."
+     ],
      "shares": []
     }
    ]
@@ -165,7 +171,9 @@
      "key": "media.icon.size",
      "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.52",
+     "pick": [
+      "size.52"
+     ],
      "shares": []
     },
     {
@@ -174,7 +182,9 @@
      "key": "media.icon.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+     "pick": [
+      "radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2)."
+     ],
      "shares": []
     },
     {
@@ -182,11 +192,27 @@
      "semantic": "color.surface.sunken",
      "key": "media.icon.background",
      "value": "#FCEFE6",
-     "darkValue": "#33241F",
+     "darkValue": "#090403",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.13
+      },
+      " under content and ",
+      {
+       "ratio": 1.05
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -200,7 +226,9 @@
      "key": "media.icon.icon-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     }
    ]
@@ -220,7 +248,9 @@
      "key": "title.font-size",
      "value": "1.0625rem",
      "byScheme": true,
-     "pick": "font.size.17",
+     "pick": [
+      "font.size.17"
+     ],
      "shares": []
     },
     {
@@ -229,7 +259,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     }
    ]
@@ -263,7 +295,9 @@
      "key": "description.font-size",
      "value": "1.0625rem",
      "byScheme": true,
-     "pick": "font.size.17",
+     "pick": [
+      "font.size.17"
+     ],
      "shares": []
     },
     {
@@ -274,8 +308,28 @@
      "darkValue": "#B5988A",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.71:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 7.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.71
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -302,7 +356,9 @@
      "key": "actions.gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -319,17 +375,19 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus must show on vivid color."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
@@ -340,8 +398,28 @@
      "darkValue": "#F59ACA",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "pink.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 4.84
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "pink.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 8.88
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -350,11 +428,13 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]

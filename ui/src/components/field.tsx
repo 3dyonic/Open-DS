@@ -54,7 +54,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-group"
       className={cn(
-        "group/field-group @container/field-group flex w-full flex-col gap-[var(--field-group-gap)] data-[slot=checkbox-group]:gap-[var(--field-group-gap-2)] [&>[data-slot=field-group]]:gap-[var(--field-group-gap-3)]",
+        "group/field-group @container/field-group flex w-full flex-col gap-[var(--field-group-gap)] data-[slot=checkbox-group]:gap-[var(--field-group-gap-2)] data-[slot=checkbox-group]:[&>[data-slot=field]]:min-h-[var(--field-group-hit-area)] [&>[data-slot=field-group]]:gap-[var(--field-group-gap-3)]",
         className,
       )}
       {...props}
@@ -117,7 +117,7 @@ function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>)
     <Label
       data-slot="field-label"
       className={cn(
-        "group/field-label peer/field-label flex w-fit gap-[var(--field-label-gap)] leading-snug group-data-[disabled=true]/field:opacity-[var(--field-label-disabled-opacity-disabled)]",
+        "group/field-label peer/field-label flex w-fit gap-[var(--field-label-gap)] leading-snug group-data-[disabled=true]/field:text-[color:var(--field-label-disabled-text)]",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-[var(--field-label-radius)] has-[>[data-slot=field]]:border-[length:var(--field-label-border-width)] has-[>[data-slot=field]]:border-[color:var(--field-label-border)] [&>*]:data-[slot=field]:p-[var(--field-label-padding)]",
         "has-data-[state=checked]:border-[color:var(--field-label-border-checked)] has-data-[state=checked]:bg-[color:var(--field-label-background-checked)]",
         className,
@@ -132,7 +132,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-label"
       className={cn(
-        "flex w-fit items-center gap-[var(--field-label-gap)] text-[length:var(--field-label-font-size)]/[var(--field-label-line-height)] leading-snug [font-weight:var(--field-label-font-weight)] group-data-[disabled=true]/field:opacity-[var(--field-label-disabled-opacity-disabled)]",
+        "flex w-fit items-center gap-[var(--field-label-gap)] text-[length:var(--field-label-font-size)]/[var(--field-label-line-height)] leading-snug [font-weight:var(--field-label-font-weight)] group-data-[disabled=true]/field:text-[color:var(--field-label-disabled-text)]",
         className,
       )}
       {...props}

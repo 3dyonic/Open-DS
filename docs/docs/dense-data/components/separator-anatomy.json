@@ -44,7 +44,9 @@
      "key": "thickness",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     },
     {
@@ -55,9 +57,22 @@
      "darkValue": "#3D4655",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.22
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.46
+      },
+      ", on surface.raised). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
+      "border.raised",
       "disabled.border"
      ]
     }

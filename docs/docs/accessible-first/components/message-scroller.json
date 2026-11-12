@@ -1,6 +1,10 @@
 {
  "preview": {
   "message-scroller/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Message scroller examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -86,7 +90,7 @@
      "themed": false,
      "chain": {
       "token": "component.message-scroller.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "message-scroller-focus"
      },
      "values": [
@@ -118,10 +122,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -161,7 +165,7 @@
      "themed": false,
      "chain": {
       "token": "component.message-scroller.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "message-scroller-focus-offset"
      },
      "values": [

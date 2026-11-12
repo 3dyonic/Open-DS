@@ -26,7 +26,7 @@ How space shows what belongs together.
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Points to |
 | --- | --- |
 | `space.gap.tight` | `space.8` |
@@ -39,7 +39,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.row` | `size.44` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Points to |
 | --- | --- |
 | `space.gap.tight` | `space.8` |
@@ -52,7 +52,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.row` | `size.44` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Points to |
 | --- | --- |
 | `space.gap.tight` | `space.8` |

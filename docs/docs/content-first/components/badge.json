@@ -1,6 +1,10 @@
 {
  "preview": {
   "badge/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Badge examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "badge/tone/neutral": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Badge neutral",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "badge/tone/info": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Badge info",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "badge/tone/success": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Badge success",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -37,6 +53,10 @@
    }
   },
   "badge/tone/warning": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Badge warning",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -44,6 +64,10 @@
    }
   },
   "badge/tone/danger": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Badge danger",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -324,10 +348,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },

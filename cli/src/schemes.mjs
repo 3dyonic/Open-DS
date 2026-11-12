@@ -6,6 +6,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { guidanceFor } from "./guidance.mjs";
 import { withDefaults, withoutDefaults } from "./scheme-defaults.mjs";
+import { withGenerated, withoutGenerated } from "./scheme-generated.mjs";
 import { withTypeAndSpace, withoutTypeAndSpace } from "./type-space-generated.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -18,6 +19,7 @@ export function assetRoots() {
   if (!inRepo && existsSync(join(packed, "schemes", "grammar.json"))) {
     return {
       schemes: join(packed, "schemes"),
+      schema: join(packed, "schema"),
       tokens: join(packed, "tokens"),
       ui: join(packed, "ui"),
       skills: join(packed, "skills"),
@@ -30,6 +32,7 @@ export function assetRoots() {
   const repo = join(here, "..", "..");
   return {
     schemes: join(repo, "schemes"),
+    schema: join(repo, "schema"),
     tokens: join(repo, "tokens", "dist"),
     ui: join(repo, "ui", "src"),
     skills: join(repo, "skills"),
@@ -93,10 +96,21 @@ export function saveGrammar(g, roots = assetRoots()) {
 /** Write a scheme, by its id. The one way to change schemes/<id>.json (OD-289). */
 export function saveScheme(scheme, roots = assetRoots()) {
   if (!scheme?.id) throw new Error("saveScheme needs a scheme with an id. Load it with loadScheme first.");
-  // The file keeps only what the scheme decides: its own component values (OD-291), and the type and
-  // spacing records, not the values they generate (OD-301). loadScheme fills the rest.
-  const stored = withoutTypeAndSpace(withoutDefaults(scheme, grammar(roots)));
+  // The file keeps only what the scheme decides: its own component values (OD-291), and the key colors
+  // and spacing rhythm, not the scales and steps they generate (OD-292), and the type and spacing
+  // records, not the values they generate (OD-301). loadScheme fills the rest.
+  const stored = withoutTypeAndSpace(withoutGenerated(withoutDefaults(scheme, grammar(roots))));
   writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(stored, null, 2)}\n`);
+}
+
+/**
+ * Write a scheme file exactly as given, defaults and all. For a scratch copy of another checkout's
+ * schemes, which its own loader then reads (open-ds compare, OD-298); a scheme of this checkout
+ * changes through saveScheme.
+ */
+export function saveStoredScheme(stored, roots) {
+  if (!stored?.id) throw new Error("saveStoredScheme needs a stored scheme with an id. Read it with storedScheme first.");
+  writeFileSync(join(roots.schemes, `${stored.id}.json`), `${JSON.stringify(stored)}\n`);
 }
 
 /** A scheme as its file stores it, without defaults or generated values: for the checks that guard the file. */
@@ -112,8 +126,8 @@ export function loadScheme(id, roots = assetRoots()) {
     );
   }
   // The file stores only what the scheme decides; every other component key takes the grammar's default,
-  // and the type and spacing values come from their records.
-  return withTypeAndSpace(withDefaults(readJson(path), grammar(roots)));
+  // and the scales and the spacing map come from their recorded rules.
+  return withTypeAndSpace(withGenerated(withDefaults(readJson(path), grammar(roots))));
 }
 
 /** Every grammar question by id, with its group. */
@@ -244,4 +258,9 @@ export function focusedSkills(roots = assetRoots()) {
     .filter((e) => e.isDirectory() && e.name.startsWith("open-ds-"))
     .map((e) => e.name)
     .sort();
+}
+
+/** The JSON Schema every loaded scheme matches (schema/scheme.schema.json): for the build's schema rule. */
+export function schemeSchema(roots = assetRoots()) {
+  return readJson(join(roots.schema, "scheme.schema.json"));
 }

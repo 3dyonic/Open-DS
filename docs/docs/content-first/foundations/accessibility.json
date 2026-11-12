@@ -43,7 +43,7 @@
      "api": [
       {
        "token": "size.control.compact",
-       "value": "40px"
+       "value": "44px"
       }
      ],
      "rules": [
@@ -81,26 +81,6 @@
      ]
     },
     {
-     "title": "opacity.disabled",
-     "sample": {
-      "kind": "opacity",
-      "value": "var(--opacity-disabled)"
-     },
-     "api": [
-      {
-       "token": "opacity.disabled",
-       "value": "0.4"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "A control that is not available yet",
-       "why": "A faded control keeps its place. Hiding it would move the page and lose the reader's place."
-      }
-     ]
-    },
-    {
      "title": "color.border.focus",
      "sample": {
       "kind": "color",
@@ -112,6 +92,61 @@
        "primitive": "color.navy.light.600",
        "value": "#1E3A5F",
        "dark": "#8FA6C4"
+      }
+     ],
+     "rules": []
+    },
+    {
+     "title": "focus.ring.width",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-width)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.width",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring at focus.ring.width",
+       "why": "Keyboard users must always see where they are."
+      }
+     ]
+    },
+    {
+     "title": "focus.ring.offset",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-offset)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.offset",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The ring stands clear of the control, so readers see focus on any fill."
+      }
+     ]
+    },
+    {
+     "title": "size.hit-area",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-hit-area)"
+     },
+     "api": [
+      {
+       "token": "size.hit-area",
+       "value": "44px"
       }
      ],
      "rules": []

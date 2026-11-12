@@ -1,6 +1,10 @@
 {
  "preview": {
   "item/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Item examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "item/variant/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Item default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "item/variant/outline": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Item outline",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "item/variant/muted": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Item muted",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -37,6 +53,10 @@
    }
   },
   "item/size/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Item default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -44,6 +64,10 @@
    }
   },
   "item/size/sm": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Item sm",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -408,7 +432,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -480,7 +504,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "item-focus"
      },
      "values": [
@@ -619,7 +643,7 @@
      "themed": false,
      "chain": {
       "token": "component.item.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "item-focus-offset"
      },
      "values": [
@@ -729,10 +753,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -745,10 +769,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -761,10 +785,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -1150,10 +1174,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -1166,10 +1190,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -1182,10 +1206,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -1288,10 +1312,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -1304,10 +1328,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -1320,10 +1344,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },

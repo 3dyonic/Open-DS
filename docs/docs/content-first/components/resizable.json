@@ -1,6 +1,10 @@
 {
  "preview": {
   "resizable/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Resizable examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -78,7 +82,7 @@
      "themed": false,
      "chain": {
       "token": "component.resizable.handle.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "resizable-handle-focus"
      },
      "values": [
@@ -170,7 +174,7 @@
      "themed": false,
      "chain": {
       "token": "component.resizable.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "resizable-focus-offset"
      },
      "values": [

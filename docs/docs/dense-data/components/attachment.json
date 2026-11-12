@@ -1,6 +1,10 @@
 {
  "preview": {
   "attachment/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Attachment examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -137,7 +141,7 @@
      "themed": false,
      "chain": {
       "token": "component.attachment.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "attachment-focus"
      },
      "values": [
@@ -212,7 +216,7 @@
      "themed": false,
      "chain": {
       "token": "component.attachment.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "attachment-focus-offset"
      },
      "values": [
@@ -319,10 +323,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -385,10 +389,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },

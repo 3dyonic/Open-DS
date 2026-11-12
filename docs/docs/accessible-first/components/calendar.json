@@ -1,6 +1,10 @@
 {
  "preview": {
   "calendar/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Calendar examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -124,23 +128,6 @@
     },
     {
      "group": "Calendar",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.calendar.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "calendar-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Calendar",
      "part": "Gap 3",
      "when": "",
      "themed": false,
@@ -232,10 +219,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#949494"
+        "color": "#B4B4B4"
        },
-       "token": "gray.dark.500",
-       "text": "#949494"
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
       }
      ]
     },
@@ -280,10 +267,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -294,7 +281,7 @@
      "themed": false,
      "chain": {
       "token": "component.calendar.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "calendar-focus"
      },
      "values": [
@@ -326,10 +313,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -384,10 +371,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#333333"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.200",
+       "text": "#333333"
       }
      ]
     },
@@ -529,7 +516,7 @@
      "themed": false,
      "chain": {
       "token": "component.calendar.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "calendar-focus-offset"
      },
      "values": [
@@ -715,23 +702,6 @@
     },
     {
      "group": "Day",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.calendar.day.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "calendar-day-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Day",
      "part": "Today background",
      "when": "",
      "themed": true,
@@ -789,6 +759,35 @@
      ]
     },
     {
+     "group": "Day",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "calendar-day-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
+      }
+     ]
+    },
+    {
      "group": "Week",
      "part": "Margin top",
      "when": "",
@@ -819,6 +818,35 @@
       {
        "token": "border-width.2",
        "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Nav",
+     "part": "Disabled icon",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.nav.disabled.icon",
+      "alias": "color.disabled.text",
+      "variable": "calendar-nav-disabled-icon"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     }

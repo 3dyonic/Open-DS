@@ -73,8 +73,8 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate.dark.50",
-         "via": "color.neutral.50"
+         "primitive": "color.slate.dark.100",
+         "via": "color.neutral.100"
         }
        ]
       },
@@ -88,8 +88,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.slate.dark.floor"
         }
        ]
       },
@@ -103,8 +102,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.slate.dark.floor"
         }
        ]
       },
@@ -118,8 +116,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate.dark.100",
-         "via": "color.neutral.100"
+         "primitive": "color.slate.dark.floor"
         }
        ]
       },
@@ -273,6 +270,21 @@
      "rows": [
       {
        "token": "color.border.default",
+       "cells": [
+        {
+         "mode": "light",
+         "primitive": "color.slate.light.200",
+         "via": "color.neutral.200"
+        },
+        {
+         "mode": "dark",
+         "primitive": "color.slate.dark.200",
+         "via": "color.neutral.200"
+        }
+       ]
+      },
+      {
+       "token": "color.border.raised",
        "cells": [
         {
          "mode": "light",

@@ -1,6 +1,10 @@
 {
  "preview": {
   "field/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Field examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "field/orientation/vertical": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Field vertical",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "field/orientation/horizontal": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Field horizontal",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "field/orientation/responsive": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Field responsive",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -325,6 +341,23 @@
      ]
     },
     {
+     "group": "Group",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.field.group.hit-area",
+      "alias": "size.hit-area",
+      "variable": "field-group-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
      "group": "Field",
      "part": "Gap",
      "when": "",
@@ -450,23 +483,6 @@
       {
        "token": "space.12",
        "text": "0.75rem"
-      }
-     ]
-    },
-    {
-     "group": "Text",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.field.label.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "field-label-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
       }
      ]
     },
@@ -779,6 +795,67 @@
       {
        "token": "border-width.1",
        "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Text",
+     "part": "Disabled text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.field.label.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "field-label-disabled-text"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
       }
      ]
     },

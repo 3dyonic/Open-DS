@@ -80,11 +80,19 @@ function replaceContents(target, source) {
 /** The px a link names: {space.12} is 12. */
 const pxOf = (token) => Number(/\.(\d+)\}$/.exec(token.$value)?.[1]);
 
-/** The token with its generated value: a stored $description stays, a stored value wins. */
+/**
+ * The token with its generated value: a stored value wins, and a stored $description and reason stay.
+ * The record generates values; people write reasons, so a written reason is never replaced by the template.
+ */
 const filled = (stored, generated) =>
   stored && "$value" in stored
     ? stored
-    : { $type: generated.$type, $value: generated.$value, ...(stored?.$description && { $description: stored.$description }), $extensions: generated.$extensions };
+    : {
+        $type: generated.$type,
+        $value: generated.$value,
+        ...(stored?.$description && { $description: stored.$description }),
+        $extensions: stored?.$extensions ?? generated.$extensions,
+      };
 
 /** The scheme with every value its records generate. A value the file stores stays as stored. Does not change its input. */
 export function withTypeAndSpace(scheme) {
@@ -135,9 +143,11 @@ export function withoutTypeAndSpace(scheme) {
       parent[key] = { $description: stored.$description ?? GROUP_DESCRIPTIONS[key] };
       continue;
     }
-    const { $description, ...rest } = stored;
-    if (!same(rest, token)) continue;
-    if ($description) parent[key] = { $description };
+    const { $description, $extensions, ...rest } = stored;
+    if (!same(rest, { $type: token.$type, $value: token.$value })) continue;
+    // The value leaves the file; a written reason stays with its description.
+    const reason = $extensions && !same($extensions, token.$extensions) ? { $extensions } : {};
+    if ($description || reason.$extensions) parent[key] = { ...($description && { $description }), ...reason };
     else delete parent[key];
   }
   return { ...scheme, tokens };

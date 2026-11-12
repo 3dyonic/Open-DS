@@ -110,8 +110,28 @@
      "darkValue": "#96A3B5",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 7.02:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.97:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 7.02
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -120,7 +140,9 @@
      "key": "list.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -131,8 +153,28 @@
      "darkValue": "#F8FAFC",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.85
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.06
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -141,9 +183,11 @@
      "kind": "token",
      "semantic": "motion.duration.feedback",
      "key": "link.duration",
-     "value": "200ms",
+     "value": "150ms",
      "byScheme": true,
-     "pick": "duration.moderate",
+     "pick": [
+      "duration.moderate"
+     ],
      "shares": []
     },
     {
@@ -151,8 +195,10 @@
      "semantic": "motion.easing.standard",
      "key": "link.easing",
      "value": "[0.2,0,0,1]",
-     "byScheme": true,
-     "pick": "easing.standard",
+     "byScheme": false,
+     "pick": [
+      "easing.standard"
+     ],
      "shares": []
     }
    ]
@@ -186,7 +232,9 @@
      "key": "separator.icon-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     },
     {
@@ -195,7 +243,9 @@
      "key": "ellipsis.icon-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     },
     {
@@ -204,7 +254,9 @@
      "key": "list.gap",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -213,7 +265,9 @@
      "key": "list.wide.gap",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     },
     {
@@ -222,7 +276,9 @@
      "key": "item.gap",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -251,8 +307,28 @@
      "darkValue": "#F8FAFC",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.85:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.06:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.85
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.06
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -263,7 +339,9 @@
      "key": "page.font-weight",
      "value": "400",
      "byScheme": false,
-     "pick": "font.weight.400",
+     "pick": [
+      "font.weight.400"
+     ],
      "shares": []
     }
    ]
@@ -280,7 +358,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring (from the brand)",
+     "use": "button/focus-ring (from the brand) at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus follows the brand but always shows."
     },
@@ -292,8 +370,28 @@
      "darkValue": "#7FCFC6",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "teal.light.600: the focus ring, so the keyboard's place is never lost, 5.47:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "teal.dark.600: the focus ring, so the keyboard's place is never lost, 9.9:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "teal.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 5.47
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "teal.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 9.9
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -302,20 +400,24 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "link.focus-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "link.focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -326,8 +428,20 @@
      "darkValue": "#020617",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.05
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.13
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]

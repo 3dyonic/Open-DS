@@ -1,6 +1,10 @@
 {
  "preview": {
   "calendar/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Calendar examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -151,23 +155,6 @@
       {
        "token": "space.8",
        "text": "0.5rem"
-      }
-     ]
-    },
-    {
-     "group": "Calendar",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.calendar.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "calendar-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
       }
      ]
     },
@@ -365,9 +352,9 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Birch Light",
@@ -379,9 +366,9 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Coral Light",
@@ -393,9 +380,9 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },
@@ -467,7 +454,7 @@
      "themed": false,
      "chain": {
       "token": "component.calendar.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "calendar-focus"
      },
      "values": [
@@ -621,10 +608,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Birch Light",
@@ -637,10 +624,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Coral Light",
@@ -653,10 +640,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       }
      ]
     },
@@ -830,7 +817,7 @@
      "themed": false,
      "chain": {
       "token": "component.calendar.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "calendar-focus-offset"
      },
      "values": [
@@ -1208,23 +1195,6 @@
     },
     {
      "group": "Day",
-     "part": "Disabled opacity",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.calendar.day.disabled-opacity",
-      "alias": "opacity.disabled",
-      "variable": "calendar-day-disabled-opacity"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Day",
      "part": "Today background",
      "when": "",
      "themed": true,
@@ -1346,6 +1316,67 @@
      ]
     },
     {
+     "group": "Day",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.day.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "calendar-day-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      }
+     ]
+    },
+    {
      "group": "Week",
      "part": "Margin top",
      "when": "",
@@ -1376,6 +1407,67 @@
       {
        "token": "border-width.1",
        "text": "1px"
+      }
+     ]
+    },
+    {
+     "group": "Nav",
+     "part": "Disabled icon",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.calendar.nav.disabled.icon",
+      "alias": "color.disabled.text",
+      "variable": "calendar-nav-disabled-icon"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
       }
      ]
     }

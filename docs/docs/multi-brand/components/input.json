@@ -1,6 +1,10 @@
 {
  "preview": {
   "input/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Input examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -404,7 +408,7 @@
      "themed": false,
      "chain": {
       "token": "component.input.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "input-focus"
      },
      "values": [
@@ -421,7 +425,7 @@
      "themed": false,
      "chain": {
       "token": "component.input.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "input-focus-offset"
      },
      "values": [
@@ -505,7 +509,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },

@@ -54,7 +54,9 @@
      "key": "line.thickness",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     },
     {
@@ -65,9 +67,22 @@
      "darkValue": "#3D4655",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.22
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.46
+      },
+      ", on surface.raised). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -77,7 +92,9 @@
      "key": "gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]
@@ -106,8 +123,28 @@
      "darkValue": "#969FAD",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 6.66
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.47
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -116,7 +153,9 @@
      "key": "font-size",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "font.size.12",
+     "pick": [
+      "font.size.12"
+     ],
      "shares": []
     },
     {
@@ -125,7 +164,9 @@
      "key": "line-height",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.line-box.16",
+     "pick": [
+      "font.line-box.16"
+     ],
      "shares": []
     }
    ]

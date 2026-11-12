@@ -1,6 +1,10 @@
 {
  "preview": {
   "toast/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "toast/tone/neutral": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast neutral",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "toast/tone/success": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast success",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "toast/tone/danger": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast danger",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -165,10 +181,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#333333"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.200",
+       "text": "#333333"
       }
      ]
     },
@@ -218,7 +234,7 @@
      "themed": true,
      "chain": {
       "token": "component.toast.neutral.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "toast-neutral-border"
      },
      "values": [
@@ -233,10 +249,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -262,10 +278,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -320,10 +336,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -349,10 +365,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#F28B8B"
+        "color": "#FEDBDA"
        },
-       "token": "red.dark.600",
-       "text": "#F28B8B"
+       "token": "red.dark.900",
+       "text": "#FEDBDA"
       }
      ]
     },

@@ -82,8 +82,28 @@
      "darkValue": "#FFFDF8",
      "byScheme": true,
      "rule": "A reversed fill for small, short-lived messages.",
-     "pick": "neutral.900: the reverse of content for short messages; its text reads, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the reverse of content for short messages; its text reads, 16.84:1 on surface.inverse, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the reverse of content for short messages; its text reads, ",
+      {
+       "ratio": 16.84
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.primary"
      ]
@@ -94,7 +114,9 @@
      "key": "content.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+     "pick": [
+      "radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -103,7 +125,9 @@
      "key": "content.padding-x",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     },
     {
@@ -112,7 +136,9 @@
      "key": "content.padding-y",
      "value": "0.25rem",
      "byScheme": false,
-     "pick": "space.4",
+     "pick": [
+      "space.4"
+     ],
      "shares": []
     }
    ]
@@ -148,8 +174,28 @@
      "darkValue": "#1F1B16",
      "byScheme": true,
      "rule": "Text on an inverse fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 16.84:1 on surface.inverse, above the 4.5:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 16.84
+      },
+      " on surface.inverse, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.on-action",
       "text.on-danger"
@@ -161,7 +207,9 @@
      "key": "content.font-size",
      "value": "0.875rem",
      "byScheme": true,
-     "pick": "font.size.14",
+     "pick": [
+      "font.size.14"
+     ],
      "shares": []
     },
     {
@@ -170,7 +218,9 @@
      "key": "content.font-family",
      "value": "Inter, system-ui, sans-serif",
      "byScheme": true,
-     "pick": "inter for caption text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface.",
+     "pick": [
+      "inter for caption text: Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface."
+     ],
      "shares": []
     }
    ]
@@ -197,7 +247,9 @@
      "key": "overlay.offset",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]

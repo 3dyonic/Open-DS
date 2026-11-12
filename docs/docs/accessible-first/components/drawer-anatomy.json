@@ -134,8 +134,12 @@
      "darkValue": "#000000B3",
      "byScheme": false,
      "rule": "The see-through layer behind a modal.",
-     "pick": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
-     "darkPick": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+     "pick": [
+      "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+     ],
+     "darkPick": [
+      "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on."
+     ],
      "shares": []
     },
     {
@@ -146,8 +150,20 @@
      "darkValue": "#0A0A0A",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.07
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.24
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     },
     {
@@ -156,7 +172,12 @@
      "key": "content.shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: No shadows; borders do the work.",
+     "pick": [
+      "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+     ],
+     "darkPick": [
+      "shadow.none: We use the light pick for the dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so the dark overlay elevation and the light pick never differ, because the step reads the same in dark (theming.values)."
+     ],
      "shares": [
       "elevation.card"
      ]
@@ -167,7 +188,9 @@
      "key": "content.radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+     "pick": [
+      "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1)."
+     ],
      "shares": []
     },
     {
@@ -175,13 +198,26 @@
      "semantic": "color.border.default",
      "key": "content.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.36
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
+      {
+       "ratio": 1.8
+      },
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
+     ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     }
@@ -208,11 +244,23 @@
      "semantic": "color.surface.sunken",
      "key": "handle.background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.17
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -226,7 +274,9 @@
      "key": "handle.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     },
     {
@@ -235,7 +285,9 @@
      "key": "handle.margin-top",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     }
    ]
@@ -283,7 +335,9 @@
      "key": "title.font-family",
      "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
      "byScheme": true,
-     "pick": "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "pick": [
+      "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+     ],
      "shares": []
     },
     {
@@ -292,7 +346,9 @@
      "key": "title.font-size",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "font.size.24",
+     "pick": [
+      "font.size.24"
+     ],
      "shares": []
     },
     {
@@ -301,7 +357,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -310,7 +368,9 @@
      "key": "description.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -321,8 +381,28 @@
      "darkValue": "#D6D6D6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 12.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 10.95
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -331,7 +411,9 @@
      "key": "header.gap",
      "value": "0.125rem",
      "byScheme": false,
-     "pick": "space.2",
+     "pick": [
+      "space.2"
+     ],
      "shares": []
     },
     {
@@ -340,7 +422,9 @@
      "key": "header.padding",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     }
    ]
@@ -374,7 +458,9 @@
      "key": "footer.gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     },
     {
@@ -383,7 +469,9 @@
      "key": "footer.padding",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     }
    ]

@@ -64,8 +64,17 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        part or state, wrong or borrowed links, a semantic with two
                                        jobs, rules not written, picks with no reason (the gap ledger)
   open-ds build [<scheme>] [--out build/schemes]
-                                       check each scheme against its rules and write the built scheme
-                                       with its sha256 hash; when a rule fails, writes nothing and exits 1
+                                       fill each scheme's defaults, color scales and spacing map; check
+                                       it against the schema and its rules (links, contrast, grid); write
+                                       it with its sha256 hash; when a rule fails, writes nothing and exits 1
+  open-ds compare --base <ref> [--candidate <ref>] [--out build/quality] [--params <file.json>] [--write-baseline]
+                                       measure a scheme change against a base ref (origin/master):
+                                       traceability, derived values, invariants, blast radius,
+                                       accessibility, motion, repetition, size, color shift, color
+                                       relations, scale curves and component pairs; writes scorecard.json,
+                                       scorecard.md and component-pairs.md (the pairs to review);
+                                       the candidate defaults to the working tree;
+                                       exits 1 when a gated criterion moves the wrong way
   open-ds trace <scheme> [<token>] [--weak]
                                        how each value reaches the answers that decide it: a theme
                                        pick, its own or its group's reason, a usage rule or a grammar
@@ -368,6 +377,35 @@ export async function run(argv) {
         console.log(r.ok ? `Built ${r.built.length} schemes into ${r.out}.` : `${broken.length} rule failures; nothing written.`);
       });
       return r.ok ? 0 : 1;
+    }
+    if (cmd === "compare") {
+      // Loaded on demand: it spawns git and node, which no other command needs.
+      const { compareRefs, repoRoot } = await import("./quality/compare.mjs");
+      const { paramsFrom } = await import("./quality/params.mjs");
+      const paramsFile = flag(args, "--params", null);
+      const r = compareRefs({
+        repo: repoRoot(process.cwd()),
+        base: flag(args, "--base", null),
+        candidate: flag(args, "--candidate", null),
+        out: flag(args, "--out", "build/quality"),
+        writeBaseline: args.includes("--write-baseline"),
+        css: !args.includes("--no-css"),
+        blast: !args.includes("--no-blast"),
+        params: paramsFrom(paramsFile ? JSON.parse(readFileSync(resolve(paramsFile), "utf8")) : {}),
+        log: (line) => console.error(line),
+      });
+      out(r.card, () => {
+        for (const note of r.card.notes) console.log(`Note: ${note.note}`);
+        for (const c of r.card.criteria)
+          if (c.gated || c.base !== c.candidate)
+            console.log(
+              `${!c.gated ? "·" : c.pass ? "✓" : "✗"} ${c.id}: ${c.base ?? "not present"} → ${c.candidate ?? "not present"}` +
+                (c.regressions.length ? ` (worse in ${c.regressions.map((p) => `${p.part} ${p.base} → ${p.candidate}`).join(", ")})` : ""),
+            );
+        console.log(r.card.pass ? "Pass: no gated criterion moved the wrong way." : `Fail: ${r.card.failed.join(", ")}.`);
+        console.log(`Wrote ${r.files.md}, ${r.files.pairs} and ${r.files.json}.${r.files.baseline ? ` Wrote the baseline to ${r.files.baseline}.` : ""}`);
+      });
+      return r.card.pass ? 0 : 1;
     }
     if (cmd === "trace") {
       const [id, token] = args.filter((a) => !a.startsWith("--"));

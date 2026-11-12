@@ -1,6 +1,10 @@
 {
  "preview": {
   "accordion/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Accordion examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -190,18 +194,30 @@
     },
     {
      "group": "Trigger",
-     "part": "Disabled opacity",
+     "part": "Disabled label",
      "when": "when disabled",
-     "themed": false,
+     "themed": true,
      "chain": {
-      "token": "component.accordion.trigger.disabled.opacity",
-      "alias": "opacity.disabled",
-      "variable": "accordion-trigger-disabled-opacity"
+      "token": "component.accordion.trigger.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "accordion-trigger-disabled-label"
      },
      "values": [
       {
-       "token": "opacity.40",
-       "text": "0.4"
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },
@@ -241,7 +257,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-ring.width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "accordion-trigger-focus-ring-width"
      },
      "values": [
@@ -258,7 +274,7 @@
      "themed": false,
      "chain": {
       "token": "component.accordion.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "accordion-trigger-focus-offset"
      },
      "values": [
@@ -327,7 +343,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },

@@ -34,7 +34,7 @@ function SheetOverlay({ className, ...props }: React.ComponentProps<typeof Sheet
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-[var(--sheet-overlay-background)] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 duration-[var(--transition-panels-duration)]",
+        "fixed inset-0 z-50 bg-[var(--sheet-overlay-background)] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 duration-[var(--transition-panels-duration)] data-[state=open]:ease-[var(--transition-enter-easing)] data-[state=closed]:ease-[var(--transition-exit-easing)] data-[state=closed]:duration-[var(--transition-exit-duration)]",
         className,
       )}
       {...props}
@@ -58,7 +58,7 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          "fixed z-50 flex flex-col gap-[var(--sheet-content-gap)] bg-[color:var(--sheet-content-background)] border-[color:var(--sheet-content-border)] shadow-[var(--sheet-content-shadow)] transition ease-in-out data-[state=closed]:animate-out data-[state=open]:animate-in duration-[var(--transition-panels-duration)]",
+          "fixed z-50 flex flex-col gap-[var(--sheet-content-gap)] bg-[color:var(--sheet-content-background)] border-[color:var(--sheet-content-border)] shadow-[var(--sheet-content-shadow)] transition data-[state=closed]:animate-out data-[state=open]:animate-in duration-[var(--transition-panels-duration)] data-[state=open]:ease-[var(--transition-enter-easing)] data-[state=closed]:ease-[var(--transition-offscreen-exit-easing)] data-[state=closed]:duration-[var(--transition-exit-duration)]",
           side === "right" &&
             "inset-y-0 right-0 h-full w-3/4 border-l-[length:var(--sheet-content-border-width)] data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
           side === "left" &&

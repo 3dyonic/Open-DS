@@ -969,7 +969,8 @@
       "placeholder": "you@example.com",
       "hint": "One email at launch. No spam.",
       "error": "That email doesn't look right. Check it and try again.",
-      "invalid": "hello@"
+      "invalid": "hello@",
+      "value": "runner@example.com"
     },
     "checkbox": [
       "Remind me at launch",
@@ -988,7 +989,8 @@
     },
     "switches": [
       "Launch reminder",
-      "Drop news by email"
+      "Drop news by email",
+      "Restock alerts"
     ],
     "messages": {
       "success": "You're on the list. See you at launch.",
@@ -1035,7 +1037,48 @@
       ],
       "destructive": "Leave the list"
     },
-    "icon_action": "Share the drop"
+    "icon_action": "Share the drop",
+    "choices": [
+      {
+        "label": "Ship to me",
+        "description": "We send it on drop day.",
+        "illustrative": [
+          "description"
+        ]
+      },
+      {
+        "label": "Pick up in store",
+        "description": "Collect it after launch."
+      }
+    ],
+    "search": {
+      "placeholder": "Search the drop",
+      "query": "jacket",
+      "total": "12 pieces",
+      "results": "2 pieces",
+      "none": "Nothing found"
+    },
+    "chart": {
+      "series": [
+        "Joined",
+        "Bought"
+      ],
+      "ticks": [
+        "Day 1",
+        "Day 2",
+        "Day 3",
+        "Day 4",
+        "Day 5",
+        "Day 6"
+      ],
+      "point": {
+        "label": "Day 3",
+        "values": [
+          "640",
+          "210"
+        ]
+      }
+    }
   },
   "themes": [
     {
@@ -1698,6 +1741,64 @@
       ]
     }
   ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control",
+      "box": "radius.12"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "focus.ring.width",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "focus.ring.offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
+    }
+  ],
   "usage": [
     {
       "situation": "page-title",
@@ -1825,9 +1926,9 @@
     },
     {
       "situation": "card",
-      "use": "elevation.card (pronounced)",
+      "use": "elevation.card (pronounced); none in dark",
       "not": "A flat card",
-      "why": "Cards float to feel tactile.",
+      "why": "Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them.",
       "because": [
         "elevation.roles",
         "elevation.values"
@@ -1846,7 +1947,7 @@
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (fast)",
       "not": "An instant change",
-      "why": "Fast feedback, on the brand's spring. An instant change drops the brand's motion.",
+      "why": "Fast feedback on an ease-out. The brand's spring waits for the moments that deserve it.",
       "because": [
         "motion.roles",
         "motion.values"
@@ -1854,7 +1955,7 @@
     },
     {
       "situation": "reduced-motion",
-      "use": "Reduced motion",
+      "use": "Fades only; nothing moves",
       "not": "Full motion",
       "why": "Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.",
       "because": [
@@ -1882,7 +1983,7 @@
     },
     {
       "situation": "keyboard-focus",
-      "use": "button/focus-ring at border-width.focus",
+      "use": "button/focus-ring at focus.ring.width",
       "not": "Removing the outline",
       "why": "Focus must show on vivid color.",
       "because": [
@@ -2211,7 +2312,7 @@
     },
     {
       "situation": "focus-gap",
-      "use": "border-width.focus-offset",
+      "use": "focus.ring.offset",
       "not": "A ring that touches the control",
       "why": "The gap keeps the ring visible on vivid fills.",
       "because": [
@@ -2223,7 +2324,7 @@
       "situation": "panel-opens",
       "use": "motion.duration.panels",
       "not": "A flat fade",
-      "why": "Panels open on the brand's spring, so people feel the brand in every menu.",
+      "why": "Panels open on an ease-out at a moderate speed, so menus feel quick and the brand shows in its big moments.",
       "because": [
         "brand.q2",
         "human.q1"
@@ -2233,7 +2334,7 @@
       "situation": "any-transition",
       "use": "motion.easing.standard",
       "not": "A plain ease-out",
-      "why": "The overshoot makes each move feel alive and playful.",
+      "why": "An ease-out keeps every menu and button quick. The overshoot is kept for emphasis, where it feels alive and playful.",
       "because": [
         "human.q1",
         "brand.q1"
@@ -2290,9 +2391,9 @@
     },
     {
       "situation": "unavailable-control",
-      "use": "opacity.disabled",
+      "use": "color.disabled.*, never opacity",
       "not": "Hiding the button",
-      "why": "A faded button keeps the layout. The vivid color returns when the visitor can sign up.",
+      "why": "Muted colors keep the layout and the label readable. The vivid color returns when the visitor can sign up.",
       "because": [
         "outcomes.q1"
       ]
@@ -2383,104 +2484,16 @@
             },
             "950": {
               "$value": "#FFFFFF"
+            },
+            "floor": {
+              "$value": "#090403",
+              "$description": "Derived: step 0 at 0.04 lower OKLab lightness, its hue and chroma kept. Added so a dark well sits below a canvas on 0."
             }
           }
         },
         "pink": {
           "$type": "color",
           "$description": "The pink hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FEF8FA"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FFEAF0"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#FED9E4"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#FFCBDB"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#FE8BB5"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#E64A8D"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#D61F7A"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#A6025B"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#73013E"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#4A0025"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#24000F"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#310821"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#451731"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#5F2A47"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#7C4061"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#9F5A7F"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C676A1"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F59ACA"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#FBB4D8"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FEC9E3"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FFDDED"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FEF1F7"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2496,98 +2509,6 @@
         "green": {
           "$type": "color",
           "$description": "The green hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F1FDF2"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#DBF7DF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#CBE9CF"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#BCE0C1"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#82BA8B"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#448F54"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#1F7A3A"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#0B5C27"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#023E17"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#01260B"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#001003"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#01210E"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#013118"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#014724"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#0E5F35"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#287C4C"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#409B64"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#5CC283"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#8AD3A2"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#ADE2BD"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#CBEFD5"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#E8FBED"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2609,98 +2530,6 @@
         "amber": {
           "$type": "color",
           "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FFF7EF"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FEE8CF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#F1DBC3"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#EACFB3"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#C7A074"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#9E6E32"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#8A5600"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#673F01"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#462A02"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#2B1800"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#130800"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#261901"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#3B2701"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#563C00"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#765301"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#9C6F08"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C3902B"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F2B84B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#F6CA7F"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FAD9A3"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FDE7C3"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FFF4E2"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2723,98 +2552,6 @@
         "red": {
           "$type": "color",
           "$description": "The red hue: a light ramp, a dark ramp and its base value.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#FEF7F7"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#FFDBD8"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#FED7D2"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#FEC8C2"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#F68C82"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#D64F48"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#C42B2B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#981519"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#6D0008"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#450003"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#210001"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#35060A"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#481316"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#612527"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#7D393A"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#9F5051"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#C46B6B"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#F28B8B"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#FAA9A8"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#FEC3C1"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#FEDBDA"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#FEF2F1"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -2851,98 +2588,6 @@
         "blue": {
           "$type": "color",
           "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
-          "light": {
-            "50": {
-              "$type": "color",
-              "$value": "#F4F7FE"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#D3E4FF"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#C3D9FE"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#B2CCF8"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#6F95D6"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#2C5AAA"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#083C93"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#012A72"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#001A4E"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#000D31"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#000316"
-            }
-          },
-          "dark": {
-            "50": {
-              "$type": "color",
-              "$value": "#071938"
-            },
-            "100": {
-              "$type": "color",
-              "$value": "#13284B"
-            },
-            "200": {
-              "$type": "color",
-              "$value": "#243C64"
-            },
-            "300": {
-              "$type": "color",
-              "$value": "#385481"
-            },
-            "400": {
-              "$type": "color",
-              "$value": "#4F6FA3"
-            },
-            "500": {
-              "$type": "color",
-              "$value": "#6A8EC9"
-            },
-            "600": {
-              "$type": "color",
-              "$value": "#8AB4F8"
-            },
-            "700": {
-              "$type": "color",
-              "$value": "#A7C8FC"
-            },
-            "800": {
-              "$type": "color",
-              "$value": "#C1D8FE"
-            },
-            "900": {
-              "$type": "color",
-              "$value": "#D9E7FE"
-            },
-            "950": {
-              "$type": "color",
-              "$value": "#F0F6FF"
-            }
-          },
           "$extensions": {
             "open-ds": {
               "generated": "OD-223",
@@ -3102,7 +2747,7 @@
         "fast": {
           "$type": "duration",
           "$value": "120ms",
-          "$description": "Fast: the usual convention for feedback, about 120ms."
+          "$description": "Fast: about 120ms, the convention for feedback."
         },
         "moderate": {
           "$type": "duration",
@@ -3124,7 +2769,37 @@
             0.64,
             1
           ],
-          "$description": "A spring that overshoots, for feedback, panels and hero moments."
+          "$description": "A spring that overshoots and settles back. Only for the emphasize move."
+        },
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "A standard ease-out: fast at the start, settling slowly, with no overshoot."
+        },
+        "strong-out": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.23,
+            1,
+            0.32,
+            1
+          ],
+          "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
+        },
+        "accelerate": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.4,
+            0,
+            1,
+            1
+          ],
+          "$description": "An accelerate curve: slow at the start, fastest at the end. Only for a layer that leaves the screen."
         }
       },
       "opacity": {
@@ -3158,17 +2833,6 @@
           },
           "$description": "Raw shadow for overlay in light mode."
         },
-        "card-dark": {
-          "$type": "shadow",
-          "$value": {
-            "color": "#00000080",
-            "offsetX": "0px",
-            "offsetY": "12px",
-            "blur": "32px",
-            "spread": "0px"
-          },
-          "$description": "Raw shadow for card in dark mode."
-        },
         "overlay-dark": {
           "$type": "shadow",
           "$value": {
@@ -3179,15 +2843,26 @@
             "spread": "0px"
           },
           "$description": "Raw shadow for overlay in dark mode."
+        },
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
         }
       },
       "stroke-width": {
-        "175": {
+        "$description": "Icon stroke width options.",
+        "1_75": {
           "$type": "number",
           "$value": 1.75,
           "$description": "An icon stroke width option, on Lucide's 24px grid."
-        },
-        "$description": "Icon stroke width options."
+        }
       }
     },
     "brands": {
@@ -3203,12 +2878,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Controls take the pill corner, the brand's signature shape, because pill buttons feel playful and bold.",
+                    "why": "radius.pill: We use a pill corner for buttons and inputs in order to mark their role as controls in a playful tone, by brand convention. A full radius does this by rounding both ends into a capsule, the brand's signature shape. So every action feels bold and friendly, because the brand is bold (brand.q1), controls are pills (shape.values) and each section holds one big idea (content.q2).",
                     "because": [
-                      "shape.roles",
                       "shape.values",
-                      "shape.lands",
-                      "brand.q1"
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3218,10 +2892,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
+                    "why": "radius.pill: We use the pill control corner for badges in order to keep one role family by the badge relation: badges share the control's corner. The same full radius does this by giving a status the capsule of the buttons beside it. So a status pill matches the buttons and the page keeps one shape, because badges get no corner of their own (shape.roles) and controls are pills (shape.values).",
                     "because": [
                       "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1"
                     ]
                   }
                 }
@@ -3231,9 +2906,11 @@
                 "$value": "{radius.20}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.20: the panel's 24px corner less its 4px padding, so an option's corner nests inside the menu's.",
+                    "why": "radius.20: We use a 20px corner for menu options in order to keep nesting by the relation: the 24px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 24px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
                     "because": [
                       "shape.roles",
+                      "shape.count",
+                      "brand.q1",
                       "spacing.values"
                     ]
                   }
@@ -3244,10 +2921,11 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: a moderate corner, so a box that grows with its content stays a box, not an oval.",
+                    "why": "radius.12: We use the 12px box corner for boxes that grow in order to keep them box-shaped objects by the relation: a pill control gives way to the box corner. A moderate radius does this by curving the corners while the sides stay straight as the box grows. So a text area or a list item stays a box, not an oval, because controls are pills (shape.values) and the brand is bold (brand.q1).",
                     "because": [
-                      "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -3257,13 +2935,11 @@
                 "$value": "{radius.24}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape.",
+                    "why": "radius.24: We use a 24px corner for cards, menus and dialogs in order to make each offer read as a separate object, in a bold tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So each offer reads as one friendly object, because containers get their own corner (shape.count) and the brand is bold (brand.q1).",
                     "because": [
                       "shape.roles",
-                      "shape.values",
                       "shape.count",
-                      "brand.q1",
-                      "human.q1"
+                      "brand.q1"
                     ]
                   }
                 }
@@ -3687,6 +3363,19 @@
                       "generated": true
                     }
                   }
+                },
+                "floor": {
+                  "$type": "color",
+                  "$value": "{color.taupe.light.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "taupe.light.0: We use light's step 0 for the floor in order to keep the neutral scale whole in light. The step does this by naming white, as nothing sits above it and no light role reads the floor. So light pages stay as they are, because the floor exists for dark wells below the canvas (theming.values) and the gray ramp sets the steps (color.definition).",
+                      "because": [
+                        "color.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
                 }
               },
               "surface": {
@@ -3925,6 +3614,19 @@
                         "accessibility.definition"
                       ],
                       "generated": true
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.32:1 on surface.raised, beside the light shadow that does most of the lift. So visitors see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ]
                     }
                   }
                 },
@@ -4389,11 +4091,10 @@
                 "$value": "{shadow.card}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card: Cards lift on a 12px offset with a 32px blur, so each offer feels like an object on the page.",
+                    "why": "shadow.card: We use step 1 of the shadow scale for cards in order to show their height as objects above the page. The cast shade does this by a 12px offset and a 32px blur at 14%. So each offer feels like an object you can pick up, because cards rise too (elevation.roles) and shadows are pronounced (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.definition"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -4403,11 +4104,10 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: Menus and dialogs lift on a 24px offset with a 48px blur, twice the card's, so they sit clearly above vivid sections.",
+                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 24px offset and a 48px blur at 20%, larger than the card's. So a menu sits clearly above vivid sections and cards, because cards and overlays rise (elevation.roles) and shadows are pronounced (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.lands"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -4572,6 +4272,19 @@
                       "generated": true
                     }
                   }
+                },
+                "floor": {
+                  "$type": "color",
+                  "$value": "{color.taupe.dark.floor}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "taupe.dark.floor: We use one step below 0 for the floor in dark in order to put wells and the hover band below a canvas that sits on 0. The step does this by keeping the hue and chroma of 0 at 0.04 lower OKLab lightness, as the taupe ramp has no lower step. So a table header reads as recessed even on the page itself, because dark ships as standard (theming.values) and the gray ramp sets the steps (color.definition).",
+                      "because": [
+                        "color.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
                 }
               },
               "surface": {
@@ -4606,44 +4319,44 @@
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.neutral.50}",
+                  "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+                      "why": "neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, 1.21:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So visitors see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
                       "because": [
+                        "theming.values",
                         "elevation.roles",
                         "elevation.definition"
-                      ],
-                      "generated": true
+                      ]
                     }
                   }
                 },
                 "sunken": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}",
+                  "$value": "{color.neutral.floor}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, a step below content (1.21:1 on surface.default), so table headers and wells read as recessed.",
+                      "why": "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, 1.13:1 under content and 1.05:1 under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
                       "because": [
-                        "elevation.definition",
-                        "color.definition"
-                      ],
-                      "generated": true
+                        "theming.values",
+                        "elevation.definition"
+                      ]
                     }
                   }
                 },
                 "highlight": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}",
+                  "$value": "{color.neutral.floor}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+                      "why": "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.13:1 on surface.default and 1.37:1 on surface.raised, and 1.05:1 off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.59:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.roles",
-                        "color.definition"
+                        "color.definition",
+                        "theming.values"
                       ]
                     }
                   }
@@ -4654,10 +4367,9 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed for touch.",
+                      "why": "neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 1.91:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
-                        "accessibility.roles",
-                        "color.definition"
+                        "theming.values"
                       ]
                     }
                   }
@@ -4804,12 +4516,26 @@
                   "$value": "{color.neutral.200}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.39:1, on surface.raised). It decorates, so it holds no contrast minimum.",
                       "because": [
                         "elevation.definition",
                         "accessibility.definition"
                       ],
                       "generated": true
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.39:1 on surface.raised (#4D3A33, no alpha), so its contrast can be checked. So visitors see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "theming.values",
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ]
                     }
                   }
                 },
@@ -5275,14 +5001,13 @@
             "elevation": {
               "card": {
                 "$type": "shadow",
-                "$value": "{shadow.card-dark}",
+                "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.card-dark: Cards lift on a 12px offset with a 32px blur in deeper black, so each offer still reads as an object on dark.",
+                    "why": "shadow.none: We use no shadow for cards in dark in order to keep shadows on floating layers only: menus, popovers, dialogs, toasts and tooltips. The missing shade does this by leaving the card's height to tone: the lighter raised surface and its 1px light ring. So cards still read as lifted on a dark page, without a shade that cannot be seen, because dark ships as standard (theming.values) and cards rise by shadow in light (elevation.roles).",
                     "because": [
-                      "elevation.roles",
-                      "elevation.values",
-                      "elevation.definition"
+                      "theming.values",
+                      "elevation.roles"
                     ]
                   }
                 }
@@ -5292,11 +5017,11 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: Menus and dialogs lift on a 24px offset with a 48px blur in deeper black, twice the card's, so they sit above dark sections.",
+                    "why": "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 24px offset and 48px blur, at 60% black instead of 20%. So a menu still sits above dark sections, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships as standard (theming.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values",
-                      "elevation.lands"
+                      "theming.values"
                     ]
                   }
                 }
@@ -5369,27 +5094,90 @@
         },
         "gap": {
           "tight": {
-            "$description": "Between things that belong together."
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 8px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 8px), the smallest of the big even steps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So a call to action reads as one bold unit, because steps are big and even (spacing.definition) and the content is images and campaigns (content.q1).",
+                "because": [
+                  "spacing.definition",
+                  "content.q1"
+                ]
+              }
+            }
           },
           "default": {
-            "$description": "Between items in one group."
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by the rule given for space.gap.tight, so air between items keeps big type readable, because the layout is spacious (spacing.values) and delight is the point (human.q1).",
+                "because": [
+                  "spacing.values",
+                  "human.q1"
+                ]
+              }
+            }
           },
           "group": {
-            "$description": "Between groups."
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 40px for the group gap between groups inside a section in order to group and separate: five base steps (5 × 8px), two and a half default gaps. Distance does this by the rule given for space.gap.tight, so each group has its own moment inside a section, because the layout is spacious (spacing.values) and each section holds one big idea (content.q2).",
+                "because": [
+                  "spacing.values",
+                  "content.q2"
+                ]
+              }
+            }
           },
           "section": {
-            "$description": "Between page sections."
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 64px for the section gap between big sections in order to group and separate: eight base steps (8 × 8px), four default gaps. Distance does this by the rule given for space.gap.tight, so each section, with its color block, is a moment of its own, because space works between big sections (spacing.lands) and the layout is spacious (spacing.values).",
+                "because": [
+                  "spacing.lands",
+                  "spacing.values"
+                ]
+              }
+            }
           }
         },
         "inset": {
           "control-x": {
-            "$description": "Horizontal padding inside controls."
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 28px for the inline padding inside controls in order to give content room inside its box: three and a half base steps (3.5 × 8px), wider than a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So pill buttons look bold and are easy to hit with a thumb, because the brand is bold (brand.q1) and visitors are on the move (scenarios.q1).",
+                "because": [
+                  "brand.q1",
+                  "scenarios.q1"
+                ]
+              }
+            }
           },
           "container": {
-            "$description": "Padding inside cards and dialogs."
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 8px), twice the default gap. Padding does this by the rule given for space.inset.control-x, so each card holds its moment, because delight is the point (human.q1) and the brand is bold (brand.q1).",
+                "because": [
+                  "human.q1",
+                  "brand.q1"
+                ]
+              }
+            }
           },
           "cell-x": {
-            "$description": "Horizontal padding inside table cells."
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by the rule given for space.inset.control-x, so the rare table keeps the page's airy rhythm, because the content is images and campaigns, with few tables (content.q1), and the layout is spacious (spacing.values).",
+                "because": [
+                  "content.q1",
+                  "spacing.values"
+                ]
+              }
+            }
           }
         }
       },
@@ -5411,17 +5199,53 @@
         },
         "control": {
           "default": {
-            "$description": "Height of buttons and inputs, and the smallest target."
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 52px for buttons and inputs in order to make a hit target: the touch target size, step 0 of the control scale, a 52px hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a thumb, because the smallest target is touch size (accessibility.values) and visitors arrive on their phones (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
           },
           "compact": {
-            "$description": "Height of compact controls."
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 44px for compact controls, such as a button inside a pill field, in order to make a hit target: one 8px step below the 52px default on the control scale, a 44px hit area that still fits a thumb. Height does this by the rule given for size.control.default, so a button sits inside the pill field and still fits a thumb, because visitors are on the move (scenarios.q1) and the smallest target is touch size (accessibility.values).",
+                "because": [
+                  "scenarios.q1",
+                  "accessibility.values"
+                ]
+              }
+            }
           },
           "large": {
-            "$description": "Height of large controls: the one loud call to action."
+            "$description": "Height of large controls: the one loud call to action.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 60px for the one loud call to action in order to make a hit target: one 8px step above the 52px default on the control scale, a 60px hit area, as sign-up is the scheme's hero action. Height does this by the rule given for size.control.default, so the sign-up button wins the eye and the thumb, because there is one action, sign up (tasks.q2), and visitors are on the move (scenarios.q1).",
+                "because": [
+                  "tasks.q2",
+                  "scenarios.q1"
+                ]
+              }
+            }
           }
         },
         "row": {
-          "$description": "Height of one table row."
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 52px for one table row in order to keep the eye on its row: by inheritance, as the scheme has no row role and a row holds controls, so size.row takes size.control.default, one 52px control tall. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So the rare table keeps the brand's airy rhythm, because spacing has gaps and insets only (spacing.roles) and the smallest target is touch size (accessibility.values).",
+              "because": [
+                "spacing.roles",
+                "accessibility.values"
+              ]
+            }
+          }
         },
         "icon": {
           "$type": "dimension",
@@ -5433,6 +5257,20 @@
               "because": [
                 "brand.q1",
                 "brand.q2"
+              ]
+            }
+          }
+        },
+        "hit-area": {
+          "$type": "dimension",
+          "$value": "{size.44}",
+          "$description": "The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 44px hit area for controls drawn smaller, such as a checkbox, a radio or a switch, in order to make a hit target a fingertip can find: the WCAG 2.5.5 size. The hit area does this by growing past the drawn box through a pseudo-element, and rows in a group stand at least 44px apart, so no two targets overlap. So visitors tap the right control on a phone, because targets are sized for touch (accessibility.values) and the layout leaves room for it (spacing.values).",
+              "because": [
+                "accessibility.values",
+                "spacing.values"
               ]
             }
           }
@@ -5475,17 +5313,61 @@
         "default": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "Every border."
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 2px default line for card borders in order to give grouping in a bold tone. A heavier stroke does this by drawing a shared region with the weight of the bold type beside it. So each card holds its offer next to vivid color, because cards separate groups (elevation.definition), AA holds on every color (accessibility.definition) and the brand is bold (brand.q1).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition",
+                "brand.q1"
+              ]
+            }
+          }
         },
         "focus": {
           "$type": "dimension",
-          "$value": "{border-width.3}",
-          "$description": "The focus ring."
+          "$value": "{focus.ring.width}",
+          "$description": "Deprecated: use focus.ring.width.",
+          "$deprecated": "Use focus.ring.width. Removed in the next minor release."
         },
         "focus-offset": {
           "$type": "dimension",
-          "$value": "{border-width.2}",
-          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill."
+          "$value": "{focus.ring.offset}",
+          "$description": "Deprecated: use focus.ring.offset.",
+          "$deprecated": "Use focus.ring.offset. Removed in the next minor release."
+        }
+      },
+      "focus": {
+        "ring": {
+          "width": {
+            "$type": "dimension",
+            "$value": "{border-width.3}",
+            "$description": "The focus ring's width: one step heavier than the default border, and not a border width.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a 3px focus ring in order to show focus, one step heavier than the 2px default line by the focus relation. A heavier stroke does this by standing out even from the bold edges around it. So keyboard users see focus on vivid color, because focus has its own look (accessibility.roles) and AA holds on every color (accessibility.definition).",
+                "because": [
+                  "accessibility.roles",
+                  "elevation.definition",
+                  "accessibility.definition"
+                ]
+              }
+            }
+          },
+          "offset": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So visitors see the ring on any brand color, because focus has its own look (accessibility.roles).",
+                "because": [
+                  "accessibility.roles"
+                ]
+              }
+            }
+          }
         }
       },
       "type": {
@@ -5542,6 +5424,29 @@
             "$type": "fontFamily",
             "$value": "{theme.type.display.font-family}"
           },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Display sets 56px, eleven fine steps above the 17px body (17 × 1.114^11), the top of the scale, because every hero opens with one big idea in the brand's loudest voice.",
+                "because": [
+                  "typography.roles",
+                  "content.q2",
+                  "brand.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Display lines use 1.1, the tight ratio the scheme gives its big sizes, so a 56px headline stacks as one bold block.",
+                "because": [
+                  "typography.definition",
+                  "brand.q1"
+                ]
+              }
+            }
+          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.800}",
@@ -5563,6 +5468,28 @@
             "$type": "fontFamily",
             "$value": "{theme.type.title.font-family}"
           },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Title sets 40px, eight steps above body and three under display, so the sign-up form's title stays big and keeps the form in view on a phone.",
+                "because": [
+                  "tasks.q2",
+                  "scenarios.q1",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Title lines use 1.1 like display, because a 40px title is still a headline size in the proportional scale.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.800}",
@@ -5582,6 +5509,29 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading sets 28px, five steps above body (17 × 1.114^5 = 29.2) snapped to the 4px grid, and three under the 40px title, the smallest headline step, so it carries the display face into cards and dialogs.",
+                "because": [
+                  "brand.q3",
+                  "content.q2",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading lines use 1.1, the headline ratio, because headings stay short: three to six words, as the voice asks.",
+                "because": [
+                  "typography.definition",
+                  "voice.lands"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -5603,6 +5553,29 @@
             "$type": "fontFamily",
             "$value": "{theme.type.body.font-family}"
           },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Body sets 17px in DM Sans, step 0 of the scale, so short punchy copy reads easily on the phones visitors arrive on.",
+                "because": [
+                  "brand.q3",
+                  "content.q1",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Body lines open to 1.55, the relaxed ratio, so DM Sans copy reads easily while display lines sit tight at 1.1.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.400}",
@@ -5622,6 +5595,27 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Label sets 15px, one step under body and one over the 14px caption, so field labels stay readable on vivid color.",
+                "because": [
+                  "people.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Labels use the tight 1.1 ratio, because a label is one short line beside a pill control.",
+                "because": [
+                  "typography.definition",
+                  "shape.values"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -5643,6 +5637,28 @@
             "$type": "fontFamily",
             "$value": "{theme.type.caption.font-family}"
           },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption sets 14px, two steps under the 17px body, the smallest step, so fine print stays small and headlines keep the attention that wins sign-ups.",
+                "because": [
+                  "outcomes.q1",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Captions keep the 1.55 body ratio, so small fine print in DM Sans stays easy to read across lines.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
           "font-weight": {
             "$type": "fontWeight",
             "$value": "{font.weight.400}",
@@ -5662,6 +5678,27 @@
           "font-family": {
             "$type": "fontFamily",
             "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Data shares step 0 with body at 17px, because tables are rare and short, so cells read like the rest of the page.",
+                "because": [
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Data cells keep the body's 1.55 ratio, so a rare table keeps the page's airy rhythm.",
+                "because": [
+                  "content.q1",
+                  "spacing.values"
+                ]
+              }
+            }
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -5685,24 +5722,130 @@
           "feedback": {
             "$type": "duration",
             "$value": "{duration.fast}",
-            "$description": "Feedback speed: fast. Hover, press and small state changes."
+            "$description": "Hover, press and toggle feedback. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 120ms (fast) for hover, press and toggle feedback in order to answer each tap at once, well inside the expressive limit of 500ms. The duration does this by ending the change before the finger lifts. So visitors feel the brand respond, never lag, because motion carries expression (motion.roles) and feedback feels fast (motion.values).",
+                "because": [
+                  "motion.roles",
+                  "motion.values"
+                ]
+              }
+            }
           },
           "panels": {
             "$type": "duration",
             "$value": "{duration.moderate}",
-            "$description": "Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. Three speeds: fast feedback, moderate panels, relaxed hero (motion.count)."
+            "$description": "Menus, popovers, dialogs and drawers opening. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 200ms (moderate) for menus, popovers, dialogs and other panels in order to show where a panel comes from, inside the expressive limit of 500ms. The duration does this by giving the eye time to follow the panel from its trigger. So visitors see each menu arrive as part of the brand, because the family is expressive (motion.roles) and there are three speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "duration",
+            "$value": "{motion.duration.feedback}",
+            "$description": "A layer closing: shorter than its open.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the feedback duration, 120ms (fast), for a layer that closes in order to end the exit move faster than the 200ms open. The duration does this by removing what people are done with in fewer frames than it took to arrive. So visitors get back to the page at once, because even an expressive family keeps exits short (motion.roles) and there are three speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
           },
           "hero": {
             "$type": "duration",
             "$value": "{duration.relaxed}",
-            "$description": "Hero speed: relaxed. Hero and launch moments."
+            "$description": "Hero and launch moments. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 320ms (relaxed) for hero and launch moments in order to give the slowest move to the moment that matters most, inside the expressive limit of 500ms. The duration does this by holding the change long enough to be seen as an event. So every visitor sees the launch, because motion shows in hero moments (motion.lands) and the family is expressive (motion.roles).",
+                "because": [
+                  "motion.lands",
+                  "motion.roles"
+                ]
+              }
+            }
           }
         },
         "easing": {
           "standard": {
             "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "The transition move: a state that changes in place, such as hover, press or toggle.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the standard easing (0.2, 0, 0, 1) for state changes in place in order to do the transition move without the spring. The curve does this by reaching its target early and settling, with no overshoot. So buttons and toggles feel quick and steady, and the bounce stays special, because the spring is for emphasis only (motion.definition) in an expressive family (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          },
+          "enter": {
+            "$type": "cubicBezier",
+            "$value": "{motion.easing.standard}",
+            "$description": "The enter move: a layer that appears.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So a menu is readable almost as soon as it opens, because an expressive family keeps its spring for emphasis (motion.roles) and enters on an ease-out (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "cubicBezier",
+            "$value": "{easing.strong-out}",
+            "$description": "The exit move: a layer that closes in place.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next tap, because an expressive exit eases out unless the layer leaves the screen (motion.roles), and easing is set per move (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit-offscreen": {
+            "$type": "cubicBezier",
+            "$value": "{easing.accelerate}",
+            "$description": "The exit move of a layer that slides off the screen: a sheet or a drawer.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the accelerate easing (0.4, 0, 1, 1) for a drawer or sheet that slides off the screen in order to do the exit move of a layer that leaves the view. The curve does this by starting slow and speeding up, so the panel gathers pace on its way out. So visitors read the drawer as gone, not paused at the edge, because an expressive family accelerates only what leaves the screen (motion.roles) and easing is set per move (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "emphasize": {
+            "$type": "cubicBezier",
             "$value": "{easing.spring}",
-            "$description": "Feedback easing."
+            "$description": "The emphasize move: a moment that calls for attention. The only move that overshoots.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the spring easing (0.34, 1.56, 0.64, 1) for the emphasize move only, in order to celebrate a moment such as a sign-up that worked. The curve does this by passing its target and settling back, so the eye catches the bounce. So the brand's spring is felt where it means something, not on every menu, because easing is a spring (motion.definition) and motion carries expression (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
           }
         }
       },
@@ -5710,7 +5853,8 @@
         "disabled": {
           "$type": "number",
           "$value": "{opacity.40}",
-          "$description": "Disabled controls."
+          "$description": "Deprecated: disabled reads color.disabled.text, color.disabled.surface and color.disabled.border. Opacity is for loading and dragging only.",
+          "$deprecated": "Use color.disabled.text, color.disabled.surface and color.disabled.border. Removed in the next minor release."
         }
       },
       "color": {
@@ -5762,6 +5906,10 @@
           "950": {
             "$type": "color",
             "$value": "{theme.color.neutral.950}"
+          },
+          "floor": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.floor}"
           },
           "$description": "The neutral scale: the scheme's gray, step by step. Surfaces, borders and text read it, never a gray directly."
         },
@@ -5904,6 +6052,11 @@
             "$type": "color",
             "$description": "Row lines and card borders.",
             "$value": "{theme.color.border.default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "The 1px edge of a raised layer: menus, dialogs and toasts, and raised cards.",
+            "$value": "{theme.color.border.raised}"
           },
           "strong": {
             "$type": "color",
@@ -6102,7 +6255,6 @@
         }
       },
       "component-spacing-map": {
-        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
         "$extensions": {
           "open-ds": {
             "rhythm": 2,
@@ -6115,82 +6267,12 @@
             ],
             "why": "Spacious: big space makes big moments, so panels double their room; rows stay tight."
           }
-        },
-        "hairline": {
-          "$type": "dimension",
-          "$value": "{space.2}",
-          "$description": "A fixed 2px optical nudge, the same in every scheme."
-        },
-        "x1": {
-          "$type": "dimension",
-          "$value": "{space.4}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 1,
-              "fixed": true
-            }
-          }
-        },
-        "x2": {
-          "$type": "dimension",
-          "$value": "{space.8}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 2,
-              "fixed": true
-            }
-          }
-        },
-        "x3": {
-          "$type": "dimension",
-          "$value": "{space.24}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 3
-            }
-          }
-        },
-        "x4": {
-          "$type": "dimension",
-          "$value": "{space.32}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 4
-            }
-          }
-        },
-        "x6": {
-          "$type": "dimension",
-          "$value": "{space.48}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 6
-            }
-          }
-        },
-        "x8": {
-          "$type": "dimension",
-          "$value": "{space.64}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 8
-            }
-          }
-        },
-        "x12": {
-          "$type": "dimension",
-          "$value": "{space.64}",
-          "$extensions": {
-            "open-ds": {
-              "multiplier": 12
-            }
-          }
         }
       },
       "icon": {
         "stroke-width": {
           "$type": "number",
-          "$value": "{stroke-width.175}",
+          "$value": "{stroke-width.1_75}",
           "$description": "The line weight of every icon, on Lucide's 24px grid.",
           "$extensions": {
             "open-ds": {
@@ -6292,6 +6374,16 @@
           }
         }
       },
+      "card": {
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Card fill: a raised layer, lighter than content in dark."
+        },
+        "border": {
+          "$value": "{color.border.raised}",
+          "$description": "Card edge: the raised ring, a solid lighter step in dark."
+        }
+      },
       "tabs": {
         "indicator": {
           "$value": "{tabs.trigger.edge.current}",
@@ -6346,6 +6438,15 @@
           "$description": "Deprecated: use component.accordion.item.divider.@ (OD-243). The line between items.",
           "$deprecated": "Use component.accordion.item.divider.@. Removed in the next minor release."
         },
+        "trigger": {
+          "disabled": {
+            "opacity": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use accordion/trigger/disabled/label (OD-297). How faint a disabled trigger is.",
+              "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
+            }
+          }
+        },
         "focus-ring": {
           "@": {
             "$value": "{accordion.trigger.focus-ring.@}",
@@ -6361,8 +6462,8 @@
         "disabled": {
           "opacity": {
             "$value": "{accordion.trigger.disabled.opacity}",
-            "$description": "Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is.",
-            "$deprecated": "Use component.accordion.trigger.disabled.opacity. Removed in the next minor release."
+            "$description": "Deprecated: use accordion/trigger/disabled/label (OD-243). How faint a disabled trigger is.",
+            "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
           }
         },
         "focus-offset": {
@@ -6504,6 +6605,11 @@
         }
       },
       "calendar": {
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use calendar/nav/disabled/icon (OD-297). Disabled opacity disabled of the calendar.",
+          "$deprecated": "Use component.calendar.nav.disabled.icon. Removed in the next minor release."
+        },
         "background-3": {
           "$value": "{calendar.day.range.background}",
           "$description": "Deprecated: use component.calendar.day.range.background (OD-243). Background 3 of the calendar.",
@@ -6521,8 +6627,8 @@
         },
         "disabled-opacity": {
           "$value": "{calendar.day.disabled-opacity}",
-          "$description": "Deprecated: use component.calendar.day.disabled-opacity (OD-243). Disabled opacity of the calendar.",
-          "$deprecated": "Use component.calendar.day.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use calendar/day/disabled/label (OD-243). Disabled opacity of the calendar.",
+          "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
         },
         "background-4": {
           "$value": "{calendar.day.range-ends.background}",
@@ -6543,6 +6649,13 @@
           "$value": "{calendar.day.selected.label}",
           "$description": "Deprecated: use component.calendar.day.selected.label (OD-243). Label selected 2 of the calendar.",
           "$deprecated": "Use component.calendar.day.selected.label. Removed in the next minor release."
+        },
+        "day": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use calendar/day/disabled/label (OD-297). How faint a day that cannot be picked is.",
+            "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
+          }
         }
       },
       "chart": {
@@ -6608,6 +6721,11 @@
         }
       },
       "checkbox": {
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use checkbox/disabled-background (OD-297). Disabled of the checkbox.",
+          "$deprecated": "Use component.checkbox.disabled-background. Removed in the next minor release."
+        },
         "canvas": {
           "$value": "{checkbox.focus-ring-offset}",
           "$description": "Deprecated: use component.checkbox.focus-ring-offset (OD-243). Canvas of the checkbox.",
@@ -6646,6 +6764,11 @@
               "$description": "Deprecated: use component.combobox.item.label.highlight (OD-243). Item label of the combobox.",
               "$deprecated": "Use component.combobox.item.label.highlight. Removed in the next minor release."
             }
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use combobox/item/disabled/label (OD-297). Item disabled opacity disabled of the combobox.",
+            "$deprecated": "Use component.combobox.item.disabled.label. Removed in the next minor release."
           }
         },
         "chips": {
@@ -6663,6 +6786,13 @@
             "$description": "Chips focus ring invalid of the combobox."
           }
         },
+        "chip": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use combobox/chip/disabled/label (OD-297). Chip disabled opacity of the combobox.",
+            "$deprecated": "Use component.combobox.chip.disabled.label. Removed in the next minor release."
+          }
+        },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox.",
@@ -6670,12 +6800,24 @@
         }
       },
       "command": {
+        "input": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use command/input/disabled/text (OD-297). Input disabled opacity disabled of the command.",
+            "$deprecated": "Use component.command.input.disabled.text. Removed in the next minor release."
+          }
+        },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command.",
           "$deprecated": "Use component.command.input.wrapper.icon. Removed in the next minor release."
         },
         "item": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use command/item/disabled/label (OD-297). Item disabled opacity disabled of the command.",
+            "$deprecated": "Use component.command.item.disabled.label. Removed in the next minor release."
+          },
           "background-selected": {
             "$value": "{command.item.background.highlight}",
             "$description": "Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command.",
@@ -6716,6 +6858,11 @@
             "$description": "Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu.",
             "$deprecated": "Use component.context-menu.item.background.highlight. Removed in the next minor release."
           },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use context-menu/item/disabled/label (OD-297). Item disabled opacity disabled of the context menu.",
+            "$deprecated": "Use component.context-menu.item.disabled.label. Removed in the next minor release."
+          },
           "label": {
             "@": {
               "$value": "{context-menu.item.label.destructive}",
@@ -6745,6 +6892,11 @@
               "$value": "{context-menu.checkbox.item.background.highlight}",
               "$description": "Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu.",
               "$deprecated": "Use component.context-menu.checkbox.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use context-menu/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the context menu.",
+              "$deprecated": "Use component.context-menu.checkbox.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -6754,6 +6906,11 @@
               "$value": "{context-menu.radio.item.background.highlight}",
               "$description": "Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu.",
               "$deprecated": "Use component.context-menu.radio.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use context-menu/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the context menu.",
+              "$deprecated": "Use component.context-menu.radio.item.disabled.label. Removed in the next minor release."
             }
           }
         }
@@ -6850,6 +7007,11 @@
             "$value": "{dropdown-menu.item.background.highlight}",
             "$description": "Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu.",
             "$deprecated": "Use component.dropdown-menu.item.background.highlight. Removed in the next minor release."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use dropdown-menu/item/disabled-label (OD-297). Item disabled of the dropdown menu.",
+            "$deprecated": "Use component.dropdown-menu.item.disabled-label. Removed in the next minor release."
           }
         },
         "label": {
@@ -6865,6 +7027,11 @@
       },
       "field": {
         "label": {
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use field/label/disabled/text (OD-297). Label disabled opacity disabled of the field.",
+            "$deprecated": "Use component.field.label.disabled.text. Removed in the next minor release."
+          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Label radius of the field."
@@ -6950,8 +7117,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{input-group.addon.disabled-opacity-disabled}",
-          "$description": "Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group.",
-          "$deprecated": "Use component.input-group.addon.disabled-opacity-disabled. Removed in the next minor release."
+          "$description": "Deprecated: use input-group/addon/disabled/label (OD-243). Disabled opacity disabled of the input group.",
+          "$deprecated": "Use component.input-group.addon.disabled.label. Removed in the next minor release."
         },
         "icon-size": {
           "$value": "{input-group.addon.icon-size}",
@@ -7142,6 +7309,11 @@
             "$description": "Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar.",
             "$deprecated": "Use component.menubar.item.background.highlight. Removed in the next minor release."
           },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use menubar/item/disabled/label (OD-297). Item disabled opacity disabled of the menubar.",
+            "$deprecated": "Use component.menubar.item.disabled.label. Removed in the next minor release."
+          },
           "label": {
             "@": {
               "$value": "{menubar.item.label.destructive}",
@@ -7171,6 +7343,11 @@
               "$value": "{menubar.checkbox.item.background.highlight}",
               "$description": "Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar.",
               "$deprecated": "Use component.menubar.checkbox.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use menubar/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the menubar.",
+              "$deprecated": "Use component.menubar.checkbox.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -7180,6 +7357,11 @@
               "$value": "{menubar.radio.item.background.highlight}",
               "$description": "Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar.",
               "$deprecated": "Use component.menubar.radio.item.background.highlight. Removed in the next minor release."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use menubar/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the menubar.",
+              "$deprecated": "Use component.menubar.radio.item.disabled.label. Removed in the next minor release."
             }
           }
         },
@@ -7208,8 +7390,8 @@
       "native-select": {
         "disabled-opacity": {
           "$value": "{native-select.wrapper.disabled-opacity}",
-          "$description": "Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select.",
-          "$deprecated": "Use component.native-select.wrapper.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use native-select/disabled/text (OD-243). Disabled opacity of the native select.",
+          "$deprecated": "Use component.native-select.disabled.text. Removed in the next minor release."
         },
         "shadow": {
           "$value": "{elevation.card}",
@@ -7306,8 +7488,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{navigation-menu.trigger.disabled-opacity}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.disabled-opacity. Removed in the next minor release."
+          "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-243). Disabled opacity disabled of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
         },
         "background-open": {
           "$value": "{navigation-menu.trigger.background.open}",
@@ -7404,6 +7586,13 @@
           "$value": "{navigation-menu.indicator.shadow}",
           "$description": "Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu.",
           "$deprecated": "Use component.navigation-menu.indicator.shadow. Removed in the next minor release."
+        },
+        "trigger": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-297). Trigger opacity when disabled, of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
+          }
         }
       },
       "pagination": {
@@ -7438,6 +7627,11 @@
           "radius": {
             "$value": "{radius.round}",
             "$description": "Item radius of the radio group."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use radio-group/item/disabled/background (OD-297). Item disabled opacity disabled of the radio group.",
+            "$deprecated": "Use component.radio-group.item.disabled.background. Removed in the next minor release."
           }
         }
       },
@@ -7474,6 +7668,11 @@
             "$value": "{select.item.background.highlight}",
             "$description": "Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select.",
             "$deprecated": "Use component.select.item.background.highlight. Removed in the next minor release."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use select/item/disabled-label (OD-297). Item disabled of the select.",
+            "$deprecated": "Use component.select.item.disabled-label. Removed in the next minor release."
           }
         }
       },
@@ -7589,6 +7788,11 @@
                 "$value": "{color.text.primary}",
                 "$description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar.",
                 "$deprecated": "Use component.sidebar.menu.sub.button.label. Removed in the next minor release."
+              },
+              "disabled-opacity-disabled": {
+                "$value": "{opacity.disabled}",
+                "$description": "Deprecated: use sidebar/menu/sub/button/disabled/label (OD-297). Menu sub button disabled opacity disabled of the sidebar.",
+                "$deprecated": "Use component.sidebar.menu.sub.button.disabled.label. Removed in the next minor release."
               }
             }
           }
@@ -7645,8 +7849,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{sidebar.menu-button.opacity.disabled}",
-          "$description": "Deprecated: use component.sidebar.menu-button.opacity.disabled (OD-243). Disabled opacity disabled of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.opacity.disabled. Removed in the next minor release."
+          "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-243). Disabled opacity disabled of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
         },
         "background-2": {
           "$value": "{sidebar.menu-button.background.current}",
@@ -7781,6 +7985,13 @@
           "$deprecated": "Use component.sidebar.menu.sub.button.sm.line-height. Removed in the next minor release."
         },
         "menu-button": {
+          "opacity": {
+            "disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-297). Opacity of a menu button that cannot be used, of the sidebar.",
+              "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
+            }
+          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Corner of the menu button, of the sidebar."
@@ -7788,6 +7999,11 @@
         }
       },
       "slider": {
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use slider/disabled/range (OD-297). Disabled opacity disabled of the slider.",
+          "$deprecated": "Use component.slider.disabled.range. Removed in the next minor release."
+        },
         "thumb": {
           "radius": {
             "$value": "{radius.round}",
@@ -7797,10 +8013,20 @@
             "$value": "{color.border.focus}",
             "$description": "Deprecated: use slider/thumb/focus-ring-focus (OD-243). Thumb focus ring of the slider.",
             "$deprecated": "Use component.slider.thumb.focus-ring-focus. Removed in the next minor release."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Deprecated: use slider/thumb/disabled/background (OD-297). Thumb disabled opacity disabled of the slider.",
+            "$deprecated": "Use component.slider.thumb.disabled.background. Removed in the next minor release."
           }
         }
       },
       "switch": {
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",
+          "$deprecated": "Use component.switch.disabled-track. Removed in the next minor release."
+        },
         "canvas": {
           "$value": "{switch.focus-ring-offset}",
           "$description": "Deprecated: use component.switch.focus-ring-offset (OD-243). Canvas of the switch.",
@@ -7890,6 +8116,11 @@
           "$value": "{color.border.focus}",
           "$description": "Deprecated: use toggle/focus-ring-focus (OD-243). Border focus of the toggle.",
           "$deprecated": "Use component.toggle.focus-ring-focus. Removed in the next minor release."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Deprecated: use toggle/disabled/label (OD-297). Disabled opacity disabled of the toggle.",
+          "$deprecated": "Use component.toggle.disabled.label. Removed in the next minor release."
         },
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",

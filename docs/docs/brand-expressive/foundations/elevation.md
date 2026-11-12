@@ -29,7 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `elevation.card` | light | `brand-expressive.theme.light.elevation.card` → `shadow.card` |
-| | dark | `brand-expressive.theme.dark.elevation.card` → `shadow.card-dark` |
+| | dark | `brand-expressive.theme.dark.elevation.card` → `shadow.none` |
 | `elevation.overlay` | light | `brand-expressive.theme.light.elevation.overlay` → `shadow.overlay` |
 | | dark | `brand-expressive.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 
@@ -39,5 +39,5 @@ The raw values these tokens end at are on [Primitives › Effects](../primitives
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| A card on the page | elevation.card (pronounced) | A flat card | Cards float to feel tactile. |
+| A card on the page | elevation.card (pronounced); none in dark | A flat card | Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them. |
 | A menu or dialog | elevation.overlay and a dimmed page | No shadow | Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks. |

@@ -1,6 +1,10 @@
 {
  "preview": {
   "bubble/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Bubble examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -152,10 +156,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },

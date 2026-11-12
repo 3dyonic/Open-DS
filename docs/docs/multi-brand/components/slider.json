@@ -1,6 +1,10 @@
 {
  "preview": {
   "slider/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Slider examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -43,23 +47,6 @@
    ],
    "rows": [
     {
-     "group": "Slider",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.slider.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "slider-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
      "group": "Track",
      "part": "Corner",
      "when": "",
@@ -101,10 +88,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -117,10 +104,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -133,10 +120,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -320,9 +307,9 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Birch Light",
@@ -334,9 +321,9 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       },
       {
        "theme": "Coral Light",
@@ -348,26 +335,9 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "shadow": "0px 2px 8px 0px #00000066"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
-      }
-     ]
-    },
-    {
-     "group": "Thumb",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.slider.thumb.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "slider-thumb-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
+       "text": "shadow.none"
       }
      ]
     },
@@ -378,7 +348,7 @@
      "themed": false,
      "chain": {
       "token": "component.slider.thumb.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "slider-thumb-focus"
      },
      "values": [
@@ -517,7 +487,7 @@
      "themed": false,
      "chain": {
       "token": "component.slider.thumb.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "slider-thumb-focus-offset"
      },
      "values": [
@@ -602,6 +572,206 @@
        },
        "token": "slate-deep.dark.50",
        "text": "#0F172A"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.slider.thumb.hit-area",
+      "alias": "size.hit-area",
+      "variable": "slider-thumb-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "slider-thumb-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#F1F5F9"
+       },
+       "token": "slate-deep.light.100",
+       "text": "#F1F5F9"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#1E293B"
+       },
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
+      }
+     ]
+    },
+    {
+     "group": "Thumb",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.thumb.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "slider-thumb-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Range",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.slider.disabled.range",
+      "alias": "color.disabled.border",
+      "variable": "slider-disabled-range"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#E2E8F0"
+       },
+       "token": "slate-deep.light.200",
+       "text": "#E2E8F0"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#334155"
+       },
+       "token": "slate-deep.dark.200",
+       "text": "#334155"
       }
      ]
     }

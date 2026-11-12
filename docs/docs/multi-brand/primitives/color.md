@@ -8,13 +8,13 @@ description: "Color primitives in Multi-brand."
 
 # Color
 
-180 primitives, 66 used.
+181 primitives, 67 used.
 
 Each color is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its color, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).
 
 ## Slate deep
 
-22 tokens in light, 17 tokens in dark.
+23 tokens in light, 18 tokens in dark.
 
 ::color-scale{id="slate-deep"}
 

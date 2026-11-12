@@ -33,7 +33,7 @@ function Slider({
       min={min}
       max={max}
       className={cn(
-        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-[var(--slider-disabled-opacity-disabled)] data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+        "relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
         className,
       )}
       {...props}
@@ -47,7 +47,7 @@ function Slider({
         <SliderPrimitive.Range
           data-slot="slider-range"
           className={cn(
-            "absolute bg-[color:var(--slider-range-background)] data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
+            "absolute bg-[color:var(--slider-range-background)] data-[disabled]:bg-[color:var(--slider-disabled-range)] data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full",
           )}
         />
       </SliderPrimitive.Track>
@@ -55,7 +55,7 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
-          className="block size-[var(--slider-thumb-icon-size)] shrink-0 rounded-[var(--slider-thumb-radius)] border-[length:var(--slider-thumb-border-width)] border-[color:var(--slider-thumb-border)] bg-[color:var(--slider-thumb-background)] shadow-[var(--slider-thumb-shadow)] transition-[color,box-shadow] focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-[var(--slider-thumb-disabled-opacity-disabled)] focus-visible:ring-[length:var(--slider-thumb-focus)] focus-visible:ring-[color:var(--slider-thumb-focus-ring-focus)] focus-visible:ring-offset-[length:var(--slider-thumb-focus-offset)] focus-visible:ring-offset-[color:var(--slider-thumb-focus-ring-offset-focus)]"
+          className="relative after:absolute after:top-1/2 after:left-1/2 after:h-[max(100%,var(--slider-thumb-hit-area))] after:w-[max(100%,var(--slider-thumb-hit-area))] after:-translate-x-1/2 after:-translate-y-1/2 after:content-[''] block size-[var(--slider-thumb-icon-size)] shrink-0 rounded-[var(--slider-thumb-radius)] border-[length:var(--slider-thumb-border-width)] border-[color:var(--slider-thumb-border)] bg-[color:var(--slider-thumb-background)] shadow-[var(--slider-thumb-shadow)] transition-[color,box-shadow] focus-visible:outline-hidden data-[disabled]:pointer-events-none data-[disabled]:bg-[color:var(--slider-thumb-disabled-background)] data-[disabled]:border-[color:var(--slider-thumb-disabled-border)] focus-visible:ring-[length:var(--slider-thumb-focus)] focus-visible:ring-[color:var(--slider-thumb-focus-ring-focus)] focus-visible:ring-offset-[length:var(--slider-thumb-focus-offset)] focus-visible:ring-offset-[color:var(--slider-thumb-focus-ring-offset-focus)]"
         />
       ))}
     </SliderPrimitive.Root>

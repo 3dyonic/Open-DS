@@ -181,15 +181,19 @@
      ]
     },
     {
-     "primitive": "size.40",
-     "value": "2.5rem (40px)",
+     "primitive": "size.44",
+     "value": "2.75rem (44px)",
      "sample": {
       "kind": "bar",
-      "value": "2.5rem"
+      "value": "2.75rem"
      },
      "usedBy": [
       {
        "token": "size.control.compact",
+       "where": "semantic"
+      },
+      {
+       "token": "size.hit-area",
        "where": "semantic"
       }
      ]

@@ -68,7 +68,9 @@
      "key": "scrollbar.border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -77,7 +79,9 @@
      "key": "thumb.radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     },
     {
@@ -85,13 +89,26 @@
      "semantic": "color.border.default",
      "key": "thumb.background",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.36
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
+      {
+       "ratio": 1.8
+      },
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
+     ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     }
@@ -109,17 +126,19 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "viewport.focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
@@ -127,11 +146,39 @@
      "semantic": "color.border.focus",
      "key": "viewport.focus-ring-focus",
      "value": "#0B4FC0",
-     "darkValue": "#8AB4F8",
+     "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at ",
+      {
+       "ratio": 7
+      },
+      " where focus moves through menus and dialogs. The ring does this by reading ",
+      {
+       "ratio": 9.33
+      },
+      " on surface.default and ",
+      {
+       "ratio": 7.41
+      },
+      " on surface.raised, where the key step (blue.dark.600) gave ",
+      {
+       "ratio": 6
+      },
+      " on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition)."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -140,11 +187,13 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "viewport.focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -155,8 +204,20 @@
      "darkValue": "#0A0A0A",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.07
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.24
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]

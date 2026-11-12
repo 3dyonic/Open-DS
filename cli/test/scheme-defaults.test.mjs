@@ -3,6 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { assetRoots, grammar, loadScheme, schemeIds, storedScheme } from "../src/schemes.mjs";
 import { withDefaults, withoutDefaults } from "../src/scheme-defaults.mjs";
+import { withGenerated, withoutGenerated } from "../src/scheme-generated.mjs";
 import { withTypeAndSpace, withoutTypeAndSpace } from "../src/type-space-generated.mjs";
 
 const roots = assetRoots();
@@ -15,12 +16,13 @@ test("a stored scheme holds no component value equal to the grammar's default", 
   }
 });
 
-test("loading fills every component key and generated value, and saving gives back the same file", () => {
+test("loading fills every component key, and saving gives back the same file", () => {
   for (const id of schemeIds(roots)) {
     const full = loadScheme(id, roots);
     const stored = storedScheme(id, roots);
-    assert.equal(JSON.stringify(withoutTypeAndSpace(withoutDefaults(full, g))), JSON.stringify(stored), id);
-    assert.equal(JSON.stringify(withTypeAndSpace(withDefaults(stored, g))), JSON.stringify(full), id);
+    // The file also leaves out the generated scales and spacing steps (OD-292).
+    assert.equal(JSON.stringify(withoutTypeAndSpace(withoutGenerated(withoutDefaults(full, g)))), JSON.stringify(stored), id);
+    assert.equal(JSON.stringify(withTypeAndSpace(withGenerated(withDefaults(stored, g)))), JSON.stringify(full), id);
   }
 });
 

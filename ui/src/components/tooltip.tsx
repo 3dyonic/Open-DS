@@ -25,7 +25,7 @@ export function TooltipContent({
         className={cn(
           "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-50 rounded-[var(--tooltip-content-radius)] bg-[var(--tooltip-content-background)] text-[var(--tooltip-content-label)] px-[var(--tooltip-content-padding-x)] py-[var(--tooltip-content-padding-y)]",
           // It fades at the panel speed, like every floating panel; no slide or zoom distance is decided yet.
-          "data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=instant-open]:animate-in data-[state=instant-open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 duration-[var(--tooltip-content-duration)]",
+          "data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=instant-open]:animate-in data-[state=instant-open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 duration-[var(--tooltip-content-duration)] data-[state=delayed-open]:ease-[var(--transition-enter-easing)] data-[state=instant-open]:ease-[var(--transition-enter-easing)] data-[state=closed]:ease-[var(--transition-exit-easing)] data-[state=closed]:duration-[var(--transition-exit-duration)]",
           "text-[length:var(--tooltip-content-font-size)] [font-family:var(--tooltip-content-font-family)]",
           className,
         )}

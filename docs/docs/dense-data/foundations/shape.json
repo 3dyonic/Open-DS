@@ -140,41 +140,6 @@
        "why": "A hairline separates rows and cards without taking room from the data."
       }
      ]
-    },
-    {
-     "title": "Focus ring",
-     "sample": {
-      "kind": "focus"
-     },
-     "api": [
-      {
-       "token": "border-width.focus",
-       "value": "2px"
-      },
-      {
-       "token": "border-width.focus-offset",
-       "value": "2px"
-      },
-      {
-       "token": "color.border.focus",
-       "primitive": "color.violet.light.600",
-       "value": "#4B3FD9",
-       "dark": "#A9A3F6"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "Keyboard focus",
-       "detail": "button/focus-ring at border-width.focus",
-       "why": "Keyboard users must always see where they are."
-      },
-      {
-       "kind": "use",
-       "situation": "The gap around a focus ring",
-       "why": "The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one."
-      }
-     ]
     }
    ]
   }

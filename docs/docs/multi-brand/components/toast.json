@@ -1,6 +1,10 @@
 {
  "preview": {
   "toast/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "toast/tone/neutral": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast neutral",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "toast/tone/success": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast success",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "toast/tone/danger": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toast danger",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -308,10 +324,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Birch Light",
@@ -324,10 +340,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Coral Light",
@@ -340,10 +356,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       }
      ]
     },
@@ -470,7 +486,7 @@
      "themed": true,
      "chain": {
       "token": "component.toast.neutral.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "toast-neutral-border"
      },
      "values": [

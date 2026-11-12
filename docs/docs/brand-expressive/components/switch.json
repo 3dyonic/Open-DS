@@ -1,6 +1,10 @@
 {
  "preview": {
   "switch/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Switch examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -71,8 +75,8 @@
      },
      "values": [
       {
-       "token": "easing.spring",
-       "text": "cubic-bezier(0.34,1.56,0.64,1)"
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
       }
      ]
     },
@@ -154,7 +158,7 @@
      "themed": false,
      "chain": {
       "token": "component.switch.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "switch-focus"
      },
      "values": [
@@ -166,29 +170,12 @@
     },
     {
      "group": "Switch",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.switch.disabled",
-      "alias": "opacity.disabled",
-      "variable": "switch-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Switch",
      "part": "Focus offset",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.switch.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "switch-focus-offset"
      },
      "values": [
@@ -253,6 +240,52 @@
        },
        "token": "taupe.dark.0",
        "text": "#120B09"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.switch.hit-area",
+      "alias": "size.hit-area",
+      "variable": "switch-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Switch",
+     "part": "Disabled track",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.switch.disabled-track",
+      "alias": "color.disabled.border",
+      "variable": "switch-disabled-track"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
       }
      ]
     },

@@ -91,7 +91,9 @@
      "key": "size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -99,11 +101,39 @@
      "semantic": "color.border.strong",
      "key": "border",
      "value": "#595959",
-     "darkValue": "#949494",
+     "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading ",
+      {
+       "ratio": 7.67
+      },
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, where neutral.500 gave only ",
+      {
+       "ratio": 4.17
+      },
+      " on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of ",
+      {
+       "ratio": 3
+      },
+      " with room to spare (accessibility.definition) and dark ships as standard (theming.values)."
+     ],
      "shares": [
       "text.muted",
       "category.5",
@@ -116,7 +146,9 @@
      "key": "border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -125,7 +157,9 @@
      "key": "radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill.",
+     "pick": [
+      "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1)."
+     ],
      "shares": []
     }
    ]
@@ -154,8 +188,20 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
-     "darkPick": "blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+     "pick": [
+      "blue.light.600: brand blue marks the main action, with AAA white text (",
+      {
+       "ratio": 7.26
+      },
+      ")."
+     ],
+     "darkPick": [
+      "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+      {
+       "ratio": 8.74
+      },
+      ")."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
@@ -170,8 +216,28 @@
      "darkValue": "#141414",
      "byScheme": true,
      "rule": "Text and icons on the main action's fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 7.26:1 on action.primary, above the 7:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 8.74:1 on action.primary, above the 7:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 7.26
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 8.74
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "text.inverse",
       "text.on-danger"
@@ -191,7 +257,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -200,11 +266,39 @@
      "semantic": "color.border.focus",
      "key": "focus-ring",
      "value": "#0B4FC0",
-     "darkValue": "#8AB4F8",
+     "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at ",
+      {
+       "ratio": 7
+      },
+      " where focus moves through menus and dialogs. The ring does this by reading ",
+      {
+       "ratio": 9.33
+      },
+      " on surface.default and ",
+      {
+       "ratio": 7.41
+      },
+      " on surface.raised, where the key step (blue.dark.600) gave ",
+      {
+       "ratio": 6
+      },
+      " on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition)."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -213,20 +307,24 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -237,8 +335,20 @@
      "darkValue": "#0A0A0A",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.07
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.24
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -254,12 +364,24 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "disabled",
-     "value": "0.5",
+     "semantic": "color.disabled.surface",
+     "key": "disabled-background",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
      "byScheme": true,
-     "pick": "opacity.50",
-     "shares": []
+     "rule": "The fill of a control that cannot be used right now.",
+     "pick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle"
+     ]
     }
    ]
   }

@@ -1,6 +1,10 @@
 {
  "preview": {
   "scroll-area/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Scroll area examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -49,7 +53,7 @@
      "themed": false,
      "chain": {
       "token": "component.scroll-area.viewport.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "scroll-area-viewport-focus"
      },
      "values": [
@@ -124,7 +128,7 @@
      "themed": false,
      "chain": {
       "token": "component.scroll-area.viewport.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "scroll-area-viewport-focus-offset"
      },
      "values": [

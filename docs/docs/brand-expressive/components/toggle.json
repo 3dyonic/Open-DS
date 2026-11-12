@@ -1,6 +1,10 @@
 {
  "preview": {
   "toggle/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "toggle/variant/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "toggle/variant/outline": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle outline",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "toggle/size/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -37,6 +53,10 @@
    }
   },
   "toggle/size/sm": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle sm",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -44,6 +64,10 @@
    }
   },
   "toggle/size/lg": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle lg",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -391,23 +415,6 @@
     },
     {
      "group": "Toggle",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.toggle.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "toggle-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Toggle",
      "part": "Border invalid",
      "when": "when invalid",
      "themed": true,
@@ -459,7 +466,7 @@
      "themed": false,
      "chain": {
       "token": "component.toggle.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "toggle-focus"
      },
      "values": [
@@ -534,7 +541,7 @@
      "themed": false,
      "chain": {
       "token": "component.toggle.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "toggle-focus-offset"
      },
      "values": [
@@ -623,9 +630,9 @@
       {
        "theme": "Dark",
        "swatch": {
-        "shadow": "0px 12px 32px 0px #00000080"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },
@@ -651,10 +658,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -765,10 +772,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -815,6 +822,35 @@
       {
        "token": "border-width.2",
        "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "toggle-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     }

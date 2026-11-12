@@ -115,11 +115,19 @@
      "semantic": "color.surface.raised",
      "key": "content.background",
      "value": "#FFFFFF",
-     "darkValue": "#1F1B16",
+     "darkValue": "#2E2A24",
      "byScheme": true,
-     "rule": "Fills that float above content.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.100: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, ",
+      {
+       "ratio": 1.2
+      },
+      " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So readers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -131,21 +139,36 @@
      "key": "content.radius",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+     "pick": [
+      "radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1)."
+     ],
      "shares": []
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "content.border",
      "value": "#E4DDD0",
      "darkValue": "#4A4339",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.33:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.76:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
+     "pick": [
+      "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
+      {
+       "ratio": 1.35
+      },
+      " on surface.raised, beside the light shadow that does most of the lift. So readers see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
+     "darkPick": [
+      "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
+      {
+       "ratio": 1.46
+      },
+      " on surface.raised (#4A4339, no alpha), so its contrast can be checked. So readers see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     },
@@ -155,7 +178,9 @@
      "key": "content.border-width",
      "value": "1px",
      "byScheme": true,
-     "pick": "border-width.1",
+     "pick": [
+      "border-width.1"
+     ],
      "shares": []
     },
     {
@@ -165,8 +190,12 @@
      "value": "0px 12px 32px, #1F1B1629",
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
-     "pick": "shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
-     "darkPick": "shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+     "pick": [
+      "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by a 12px offset and a 32px blur in a 16% warm brown. So a menu lifts off warm paper without a hard edge, because only what floats rises (elevation.roles) and shadows are soft (elevation.values)."
+     ],
+     "darkPick": [
+      "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16% brown. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships for night reading (theming.values)."
+     ],
      "shares": []
     },
     {
@@ -175,7 +204,9 @@
      "key": "content.padding",
      "value": "1.5rem",
      "byScheme": true,
-     "pick": "space.24",
+     "pick": [
+      "space.24"
+     ],
      "shares": []
     }
    ]
@@ -211,8 +242,28 @@
      "darkValue": "#FFFDF8",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 17.12
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 16.84
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -241,7 +292,9 @@
      "key": "overlay.offset",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]

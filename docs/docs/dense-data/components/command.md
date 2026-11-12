@@ -14,7 +14,7 @@ A search-first menu of actions and places, opened from the keyboard.
 
 ## See it live
 
-::preview{robot="slumber" id="command/live"}
+::preview{id="command/live"}
 
 ## When to use it
 

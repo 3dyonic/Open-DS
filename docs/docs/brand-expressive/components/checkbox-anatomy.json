@@ -91,7 +91,9 @@
      "key": "size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -102,8 +104,28 @@
      "darkValue": "#B5988A",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 4.63:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.400: the edge of a control people must find, 6.71:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 4.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the edge of a control people must find, ",
+      {
+       "ratio": 6.71
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "category.5",
       "disabled.text"
@@ -115,7 +137,9 @@
      "key": "border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -124,7 +148,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": true,
-     "pick": "radius.pill: Badges share the control's pill corner, so a status pill matches the buttons beside it.",
+     "pick": [
+      "radius.pill: We use the pill control corner for badges in order to keep one role family by the badge relation: badges share the control's corner. The same full radius does this by giving a status the capsule of the buttons beside it. So a status pill matches the buttons and the page keeps one shape, because badges get no corner of their own (shape.roles) and controls are pills (shape.values)."
+     ],
      "shares": []
     }
    ]
@@ -153,8 +179,28 @@
      "darkValue": "#F59ACA",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "pink.light.600: the primary action's fill; its label reads, 4.84:1, above the 4.5:1 floor.",
-     "darkPick": "pink.dark.600: the primary action's fill; its label reads, 8.88:1, above the 4.5:1 floor.",
+     "pick": [
+      "pink.light.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 4.84
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "pink.dark.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 8.88
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
@@ -169,8 +215,28 @@
      "darkValue": "#1F1411",
      "byScheme": true,
      "rule": "Text and icons on the main action's fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 4.84:1 on action.primary, above the 4.5:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 8.88:1 on action.primary, above the 4.5:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 4.84
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 8.88
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.inverse",
       "text.on-danger"
@@ -190,7 +256,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Focus must show on vivid color."
     },
@@ -202,8 +268,28 @@
      "darkValue": "#F59ACA",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "pink.light.600: the focus ring, so the keyboard's place is never lost, 4.84:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "pink.dark.600: the focus ring, so the keyboard's place is never lost, 8.88:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "pink.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 4.84
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "pink.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 8.88
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -212,20 +298,24 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -236,8 +326,20 @@
      "darkValue": "#120B09",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.08:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.05
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.08
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -253,12 +355,24 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "disabled",
-     "value": "0.4",
+     "semantic": "color.disabled.surface",
+     "key": "disabled-background",
+     "value": "#FCEFE6",
+     "darkValue": "#33241F",
      "byScheme": true,
-     "pick": "opacity.40",
-     "shares": []
+     "rule": "The fill of a control that cannot be used right now.",
+     "pick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle"
+     ]
     }
    ]
   }

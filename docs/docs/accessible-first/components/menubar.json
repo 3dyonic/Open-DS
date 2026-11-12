@@ -1,6 +1,10 @@
 {
  "preview": {
   "menubar/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Menubar examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -72,7 +76,58 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "when open",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "150ms"
       }
      ]
     },
@@ -234,10 +289,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -426,10 +481,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -455,10 +510,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -504,10 +559,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#333333"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.200",
+       "text": "#333333"
       }
      ]
     },
@@ -583,7 +638,7 @@
      "themed": true,
      "chain": {
       "token": "component.menubar.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "menubar-content-border"
      },
      "values": [
@@ -598,10 +653,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -758,23 +813,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.menubar.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "menubar-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Padding left",
      "when": "",
      "themed": false,
@@ -812,10 +850,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#F28B8B"
+        "color": "#FEDBDA"
        },
-       "token": "red.dark.600",
-       "text": "#F28B8B"
+       "token": "red.dark.900",
+       "text": "#FEDBDA"
       }
      ]
     },
@@ -841,10 +879,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#F28B8B"
+        "color": "#FEDBDA"
        },
-       "token": "red.dark.600",
-       "text": "#F28B8B"
+       "token": "red.dark.900",
+       "text": "#FEDBDA"
       }
      ]
     },
@@ -887,10 +925,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -949,6 +987,35 @@
        },
        "token": "gray.dark.600",
        "text": "#B4B4B4"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.menubar.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "menubar-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     },
@@ -1085,23 +1152,6 @@
     },
     {
      "group": "Checkbox",
-     "part": "Item disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.menubar.checkbox.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "menubar-checkbox-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Checkbox",
      "part": "Item icon size",
      "when": "",
      "themed": false,
@@ -1139,10 +1189,39 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Item disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.menubar.checkbox.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "menubar-checkbox-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     },
@@ -1279,23 +1358,6 @@
     },
     {
      "group": "Radio",
-     "part": "Item disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.menubar.radio.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "menubar-radio-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Radio",
      "part": "Item icon size",
      "when": "",
      "themed": false,
@@ -1333,10 +1395,39 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
+      }
+     ]
+    },
+    {
+     "group": "Radio",
+     "part": "Item disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.menubar.radio.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "menubar-radio-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     },
@@ -1447,10 +1538,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -1699,10 +1790,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -1728,10 +1819,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -1791,10 +1882,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#333333"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.200",
+       "text": "#333333"
       }
      ]
     },
@@ -1871,7 +1962,7 @@
      "themed": true,
      "chain": {
       "token": "component.menubar.sub.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "menubar-sub-content-border"
      },
      "values": [
@@ -1886,10 +1977,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },

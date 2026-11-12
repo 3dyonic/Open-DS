@@ -13,11 +13,11 @@ export function Checkbox({ className, ...props }: React.ComponentProps<typeof Ch
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer size-[var(--checkbox-size)] shrink-0 rounded-[var(--checkbox-radius)] bg-[var(--checkbox-background)]",
+        "peer relative after:absolute after:top-1/2 after:left-1/2 after:h-[max(100%,var(--checkbox-hit-area))] after:w-[max(100%,var(--checkbox-hit-area))] after:-translate-x-1/2 after:-translate-y-1/2 after:content-[''] size-[var(--checkbox-size)] shrink-0 rounded-[var(--checkbox-radius)] bg-[var(--checkbox-background)]",
         // Checked, the fill is the box: its edge steps aside (transparent shows the fill under it).
         "border-[length:var(--checkbox-border-width)] border-[var(--checkbox-border)] data-[state=checked]:border-transparent",
         "data-[state=checked]:bg-[var(--checkbox-background-checked)]",
-        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--checkbox-focus-ring)] disabled:opacity-[var(--checkbox-disabled)] focus-visible:ring-offset-[length:var(--checkbox-focus-offset)] focus-visible:ring-offset-[color:var(--checkbox-focus-ring-offset)]",
+        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--checkbox-focus-ring)] disabled:bg-[var(--checkbox-disabled-background)] disabled:border-[var(--checkbox-disabled-border)] disabled:data-[state=checked]:bg-[var(--checkbox-disabled-background)] disabled:data-[state=checked]:border-[var(--checkbox-disabled-border)] focus-visible:ring-offset-[length:var(--checkbox-focus-offset)] focus-visible:ring-offset-[color:var(--checkbox-focus-ring-offset)]",
         className,
       )}
       {...props}
@@ -25,7 +25,7 @@ export function Checkbox({ className, ...props }: React.ComponentProps<typeof Ch
       {/* The indicator is there only while the box is checked, so its color needs no state. */}
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="flex items-center justify-center text-[var(--checkbox-indicator-icon)]"
+        className="flex items-center justify-center text-[var(--checkbox-indicator-icon)] data-[disabled]:text-[var(--checkbox-disabled-indicator)]"
       >
         <Check className="size-[calc(var(--checkbox-size)*0.8)]" strokeWidth={3} />
       </CheckboxPrimitive.Indicator>

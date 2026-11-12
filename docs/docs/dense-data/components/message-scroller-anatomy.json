@@ -84,7 +84,9 @@
      "key": "radius",
      "value": "0.25rem",
      "byScheme": true,
-     "pick": "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly.",
+     "pick": [
+      "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1)."
+     ],
      "shares": []
     }
    ]
@@ -118,7 +120,9 @@
      "key": "gap",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -142,17 +146,19 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -163,8 +169,28 @@
      "darkValue": "#A9A3F6",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "violet.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "violet.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.62
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -173,11 +199,13 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -188,8 +216,20 @@
      "darkValue": "#0D1117",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.06:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.06
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.1
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]

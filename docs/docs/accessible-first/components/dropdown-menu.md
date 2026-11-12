@@ -15,7 +15,7 @@ A menu of actions opened from a button.
 
 ## See it live
 
-::preview{robot="slumber" id="dropdown-menu/live"}
+::preview{id="dropdown-menu/live"}
 
 ## When to use it
 

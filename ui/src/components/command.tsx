@@ -66,7 +66,7 @@ function CommandInput({ className, ...props }: React.ComponentProps<typeof Comma
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(
-          "flex h-full w-full rounded-[var(--command-input-radius)] bg-transparent py-[var(--command-input-padding-y)] text-[length:var(--command-input-font-size)]/[var(--command-input-line-height)] outline-hidden placeholder:text-[color:var(--command-input-label-placeholder)] disabled:cursor-not-allowed disabled:opacity-[var(--command-input-disabled-opacity-disabled)]",
+          "flex h-full w-full rounded-[var(--command-input-radius)] bg-transparent py-[var(--command-input-padding-y)] text-[length:var(--command-input-font-size)]/[var(--command-input-line-height)] outline-hidden placeholder:text-[color:var(--command-input-label-placeholder)] disabled:cursor-not-allowed disabled:text-[color:var(--command-input-disabled-text)]",
           className,
         )}
         {...props}
@@ -126,7 +126,7 @@ function CommandItem({ className, ...props }: React.ComponentProps<typeof Comman
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-[var(--command-item-padding-x)] py-[var(--command-item-padding-y)] text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-[var(--command-item-disabled-opacity-disabled)] data-[selected=true]:bg-[color:var(--command-item-background-highlight)] data-[selected=true]:text-[color:var(--command-item-label-highlight)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-icon)]",
+        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-[var(--command-item-padding-x)] py-[var(--command-item-padding-y)] text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:text-[color:var(--command-item-disabled-label)] data-[disabled=true]:[&_svg]:text-[color:var(--command-item-disabled-label)]! data-[selected=true]:bg-[color:var(--command-item-background-highlight)] data-[selected=true]:text-[color:var(--command-item-label-highlight)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-icon)]",
         className,
       )}
       {...props}

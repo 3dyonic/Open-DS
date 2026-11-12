@@ -264,7 +264,12 @@
      "sample": {
       "kind": "type",
       "role": "data",
-      "text": "Open alerts 142 · Escalated 7 · Model precision 96.4% · Mean time to contain 38 min"
+      "parts": [
+       "Open alerts 142",
+       "Escalated 7",
+       "Model precision 96.4%",
+       "Mean time to contain 38 min"
+      ]
      },
      "api": [
       {

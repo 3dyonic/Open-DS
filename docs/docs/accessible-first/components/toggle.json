@@ -1,6 +1,10 @@
 {
  "preview": {
   "toggle/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "toggle/variant/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "toggle/variant/outline": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle outline",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "toggle/size/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -37,6 +53,10 @@
    }
   },
   "toggle/size/sm": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle sm",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -44,6 +64,10 @@
    }
   },
   "toggle/size/lg": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Toggle lg",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -331,23 +355,6 @@
     },
     {
      "group": "Toggle",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.toggle.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "toggle-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Toggle",
      "part": "Border invalid",
      "when": "when invalid",
      "themed": true,
@@ -368,10 +375,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#F28B8B"
+        "color": "#FEDBDA"
        },
-       "token": "red.dark.600",
-       "text": "#F28B8B"
+       "token": "red.dark.900",
+       "text": "#FEDBDA"
       }
      ]
     },
@@ -399,7 +406,7 @@
      "themed": false,
      "chain": {
       "token": "component.toggle.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "toggle-focus"
      },
      "values": [
@@ -431,10 +438,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -474,7 +481,7 @@
      "themed": false,
      "chain": {
       "token": "component.toggle.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "toggle-focus-offset"
      },
      "values": [
@@ -535,10 +542,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#949494"
+        "color": "#B4B4B4"
        },
-       "token": "gray.dark.500",
-       "text": "#949494"
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
       }
      ]
     },
@@ -583,10 +590,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -697,10 +704,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -747,6 +754,35 @@
       {
        "token": "border-width.2",
        "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Disabled",
+     "part": "Text",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.toggle.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "toggle-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     }

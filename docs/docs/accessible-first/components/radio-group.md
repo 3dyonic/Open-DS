@@ -14,7 +14,7 @@ One choice from a short list shown at once.
 
 ## See it live
 
-::preview{robot="slumber" id="radio-group/live"}
+::preview{id="radio-group/live"}
 
 ## When to use it
 
@@ -67,7 +67,7 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Radio group reads 16 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Radio group's tokens to change Radio group alone.
+Radio group reads 19 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Radio group's tokens to change Radio group alone.
 
 ::token-table{component="radio-group"}
 

@@ -48,11 +48,27 @@
      "semantic": "color.surface.sunken",
      "key": "background",
      "value": "#F6F2EA",
-     "darkValue": "#2E2A24",
+     "darkValue": "#0B0906",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.12
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.16
+      },
+      " under content and ",
+      {
+       "ratio": 1.06
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -77,7 +93,9 @@
      "key": "radius",
      "value": "calc(infinity * 1px)",
      "byScheme": false,
-     "pick": "radius.pill",
+     "pick": [
+      "radius.pill"
+     ],
      "shares": []
     }
    ]
@@ -101,9 +119,9 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "No motion",
+     "use": "Fades only; nothing moves",
      "not": "reduced motion",
-     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+     "why": "Nothing slides or zooms for people who asked for less motion. A short fade keeps the change visible to the reader."
     },
     {
      "kind": "token",
@@ -113,8 +131,28 @@
      "darkValue": "#8FA6C4",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.",
-     "darkPick": "navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.",
+     "pick": [
+      "navy.light.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 11.5
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "navy.dark.600: the primary action's fill; its label reads, ",
+      {
+       "ratio": 6.86
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "border.selected",

@@ -1,6 +1,10 @@
 {
  "preview": {
   "textarea/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Textarea examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -265,7 +269,7 @@
      "themed": false,
      "chain": {
       "token": "component.textarea.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "textarea-focus"
      },
      "values": [
@@ -340,7 +344,7 @@
      "themed": false,
      "chain": {
       "token": "component.textarea.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "textarea-focus-offset"
      },
      "values": [

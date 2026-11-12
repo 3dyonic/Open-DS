@@ -54,7 +54,9 @@
      "key": "icon-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "size.16",
+     "pick": [
+      "size.16"
+     ],
      "shares": []
     }
    ]
@@ -82,9 +84,9 @@
     {
      "kind": "rule",
      "situation": "someone asked for less motion",
-     "use": "No motion",
+     "use": "Fades only; nothing moves",
      "not": "reduced motion",
-     "why": "A shorter motion still moves. When people ask for less motion, nothing moves."
+     "why": "Nothing slides or zooms for people who asked for less motion. A short fade keeps the change visible to the reader."
     }
    ]
   }

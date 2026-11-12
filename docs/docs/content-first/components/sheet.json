@@ -1,6 +1,10 @@
 {
  "preview": {
   "sheet/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sheet examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -55,7 +59,75 @@
      "values": [
       {
        "token": "duration.relaxed",
-       "text": "320ms"
+       "text": "300ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "when open",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition offscreen exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.offscreen-exit-easing",
+      "alias": "motion.easing.exit-offscreen",
+      "variable": "transition-offscreen-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "150ms"
       }
      ]
     },
@@ -408,7 +480,7 @@
      "themed": false,
      "chain": {
       "token": "component.sheet.close.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sheet-close-focus-offset"
      },
      "values": [
@@ -445,7 +517,7 @@
      "themed": false,
      "chain": {
       "token": "component.sheet.close.focus-ring.width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sheet-close-focus-ring-width"
      },
      "values": [
@@ -535,10 +607,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },

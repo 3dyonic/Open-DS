@@ -23,6 +23,10 @@ Each scheme holds:
 A scheme file stores only what a person decided. `loadScheme` in `cli/src/schemes.mjs` fills the rest, and `saveScheme` leaves it out again:
 
 - Component keys: the file keeps a key only where it differs from the grammar's default.
+- Color scales: a colored hue keeps its key colors and adjustments in `$extensions.open-ds`. The loader generates its light and dark steps.
+- The component spacing map: the file keeps its rhythm and fixed steps in `$extensions.open-ds`. The loader generates its steps.
+
+`open-ds build` writes the filled scheme and checks it against the schema and the scheme rules.
 - Type: the type group keeps its scale in `$extensions.open-ds`: base, ratio, each role's step, the rounding rule and the line height kinds. The loader generates each role's font size and line height, and the font size, line height and line box options.
 - Spacing: the space group keeps its spacing record (each token's use case and multiple), and the size group its control scale (default, step, the steps of compact and large). The `spacing.definition` answer sets the base: 4px for fine steps, 8px for coarse ones. The loader generates the gaps, insets, control heights and the row, which is one default control tall.
 

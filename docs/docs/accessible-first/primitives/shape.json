@@ -145,7 +145,7 @@
        "where": "semantic"
       },
       {
-       "token": "border-width.focus-offset",
+       "token": "focus.ring.offset",
        "where": "semantic"
       }
      ]
@@ -159,7 +159,7 @@
      },
      "usedBy": [
       {
-       "token": "border-width.focus",
+       "token": "focus.ring.width",
        "where": "semantic"
       }
      ]
@@ -169,7 +169,7 @@
   "stroke-width": {
    "rows": [
     {
-     "primitive": "stroke-width.200",
+     "primitive": "stroke-width.2",
      "value": "2",
      "usedBy": [
       {

@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/reason-chain.schema.json",
+  "title": "Reason chain",
+  "description": "One answer and what follows from it: the question, the scheme's answer and why, what it decided for the component, and what would move if it changed. Drawn by the ReasonChain composite on a component's page.",
+  "type": "object",
+  "required": [
+    "anchor",
+    "question",
+    "key",
+    "steps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "anchor": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The chain's link target on the page, such as why-color-count.",
+      "pattern": "^why-[a-z0-9-]+$"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The question."
+    },
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The question's id, such as color.count."
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "description": "The steps, in order: the answer, what it decided, what would change.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "kind",
+              "title",
+              "answer",
+              "why"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "answer",
+                "description": "The scheme's answer."
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The step's title."
+              },
+              "answer": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The scheme's answer."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why the scheme answers so."
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "kind",
+              "title",
+              "lines"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "decided",
+                "description": "What the answer decided for the component."
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The step's title, such as So Button."
+              },
+              "lines": {
+                "type": "array",
+                "description": "Each decision.",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "used",
+                    "verb",
+                    "subject",
+                    "text"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "used": {
+                      "type": "boolean",
+                      "description": "Whether the component uses the subject, or leaves it out."
+                    },
+                    "verb": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "What the component does with it, such as uses."
+                    },
+                    "subject": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "What the answer decided, such as a variant."
+                    },
+                    "text": {
+                      "type": "string",
+                      "description": "Why, in a sentence."
+                    }
+                  },
+                  "description": "One decision the answer made for the component."
+                }
+              },
+              "also": {
+                "type": "object",
+                "required": [
+                  "label",
+                  "items"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "What the list holds."
+                  },
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": "Each other thing the answer shapes."
+                  }
+                },
+                "description": "What else the answer shapes."
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "kind",
+              "title",
+              "count",
+              "caption",
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "change",
+                "description": "What would move if the answer changed."
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The step's title."
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "How many decisions would reopen."
+              },
+              "caption": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the count counts."
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What else follows from the answer."
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

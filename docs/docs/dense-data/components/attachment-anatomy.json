@@ -110,9 +110,22 @@
      "darkValue": "#3D4655",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.22:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.82:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.22
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.46
+      },
+      ", on surface.raised). It decorates, so it holds no contrast minimum."
+     ],
      "shares": [
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -122,7 +135,9 @@
      "key": "radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
+     "pick": [
+      "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2)."
+     ],
      "shares": []
     },
     {
@@ -131,7 +146,9 @@
      "key": "padding-y",
      "value": "0.5rem",
      "byScheme": false,
-     "pick": "space.8",
+     "pick": [
+      "space.8"
+     ],
      "shares": []
     }
    ]
@@ -158,7 +175,9 @@
      "key": "media.size",
      "value": "2rem",
      "byScheme": true,
-     "pick": "size.32",
+     "pick": [
+      "size.32"
+     ],
      "shares": []
     },
     {
@@ -167,7 +186,9 @@
      "key": "media.radius",
      "value": "0.125rem",
      "byScheme": true,
-     "pick": "radius.2: the control corner; it is not a pill, so a growing box keeps it.",
+     "pick": [
+      "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2)."
+     ],
      "shares": []
     },
     {
@@ -175,11 +196,27 @@
      "semantic": "color.surface.sunken",
      "key": "media.background",
      "value": "#EEF1F5",
-     "darkValue": "#262D38",
+     "darkValue": "#06090E",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.13:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.25:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.13
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.15
+      },
+      " under content and ",
+      {
+       "ratio": 1.05
+      },
+      " under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "surface.pressed",
@@ -196,8 +233,28 @@
      "darkValue": "#969FAD",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 6.66
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.47
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -224,7 +281,9 @@
      "key": "name.font-weight",
      "value": "500",
      "byScheme": true,
-     "pick": "font.weight.500",
+     "pick": [
+      "font.weight.500"
+     ],
      "shares": []
     },
     {
@@ -235,8 +294,28 @@
      "darkValue": "#969FAD",
      "byScheme": true,
      "rule": "The quietest text.",
-     "pick": "neutral.600: the quietest text that still reads, 6.66:1 on surface.default, above the 4.5:1 floor.",
-     "darkPick": "neutral.400: the quietest text that still reads, 6.47:1 on surface.default, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.600: the quietest text that still reads, ",
+      {
+       "ratio": 6.66
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the quietest text that still reads, ",
+      {
+       "ratio": 6.47
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -245,7 +324,9 @@
      "key": "meta.font-size",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "font.size.12",
+     "pick": [
+      "font.size.12"
+     ],
      "shares": []
     }
    ]
@@ -271,11 +352,31 @@
      "semantic": "color.surface.highlight",
      "key": "background.hover",
      "value": "#EEF1F5",
-     "darkValue": "#262D38",
+     "darkValue": "#06090E",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ",
+      {
+       "ratio": 1.15
+      },
+      " on surface.default and ",
+      {
+       "ratio": 1.44
+      },
+      " on surface.raised, and ",
+      {
+       "ratio": 1.05
+      },
+      " off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ",
+      {
+       "ratio": 7.46
+      },
+      " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
+     ],
      "shares": [
       "surface.sunken",
       "surface.pressed",
@@ -298,17 +399,19 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -319,8 +422,28 @@
      "darkValue": "#A9A3F6",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "violet.light.600: the focus ring, so the keyboard's place is never lost, 6.97:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "violet.dark.600: the focus ring, so the keyboard's place is never lost, 7.62:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "violet.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 6.97
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "violet.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.62
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -329,11 +452,13 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]

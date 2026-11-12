@@ -15,7 +15,7 @@ A dialog that interrupts to confirm an action that cannot be undone.
 
 ## See it live
 
-::preview{robot="slumber" id="alert-dialog/live"}
+::preview{id="alert-dialog/live"}
 
 ## When to use it
 
@@ -87,6 +87,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Alert dialog reads 22 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Alert dialog's tokens to change Alert dialog alone.
+Alert dialog reads 25 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Alert dialog's tokens to change Alert dialog alone.
 
 ::token-table{component="alert-dialog"}

@@ -1,6 +1,10 @@
 {
  "preview": {
   "empty/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Empty examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "empty/variant/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Empty default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "empty/variant/icon": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Empty icon",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -340,10 +352,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },

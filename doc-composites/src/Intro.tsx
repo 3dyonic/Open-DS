@@ -1,6 +1,6 @@
 /**
  * Intro: how to read a page. An optional robot, a title, the page's own words and links, and a few
- * counts. With a title it is the scheme's Card, used through its props only; without one it is layout. The words stay Markdown in the
+ * counts. The robot is the Robot base form. With a title it is the scheme's Card, used through its props only; without one it is layout. The words stay Markdown in the
  * page, inside the directive:
  *
  *   :::intro{robot="anatomy" title="Look closer, when you want to" stats="6 Parts|3 Jobs"}
@@ -14,24 +14,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@open-ds/ui/components/card";
+import Robot, { type RobotPics } from "./base/Robot";
 
 export type IntroProps = {
   title?: string;
   // "44 Primitives|30 In use": each count and what it counts.
   stats?: string;
   // The robot's day and night pictures; the docs resolve them from the robot's name.
-  robot?: { day: string; night: string };
+  robot?: RobotPics;
   children?: React.ReactNode;
 };
-
-function Robot({ robot, className }: { robot: { day: string; night: string }; className: string }) {
-  return (
-    <span aria-hidden="true" className={className}>
-      <img src={robot.day} alt="" loading="lazy" className="dark:hidden" />
-      <img src={robot.night} alt="" loading="lazy" className="hidden dark:block" />
-    </span>
-  );
-}
 
 export default function Intro({ title, stats, robot, children }: IntroProps) {
   const counts = (stats ?? "")
@@ -65,7 +57,7 @@ export default function Intro({ title, stats, robot, children }: IntroProps) {
             {counts.map(([, n, what]) => (
               <span
                 key={what}
-                className="grid rounded-[var(--radius-surface)] border border-[var(--color-border-default)] px-[var(--space-gap-group)] py-[var(--space-gap-default)] [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] uppercase text-[color:var(--color-text-muted)]"
+                className="grid rounded-[var(--radius-surface)] border border-[var(--color-border-default)] px-[var(--space-gap-group)] py-[var(--space-gap-default)] [font-family:var(--type-data-font-family)] text-[length:var(--type-caption-font-size)] uppercase tracking-wider text-[color:var(--color-text-muted)]"
               >
                 <b className="[font-family:var(--type-display-font-family)] text-[length:var(--type-title-font-size)] normal-case text-[color:var(--color-text-primary)]">
                   {n}

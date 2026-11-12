@@ -121,11 +121,23 @@
      "semantic": "color.surface.sunken",
      "key": "header-background",
      "value": "#EDEDED",
-     "darkValue": "#222222",
+     "darkValue": "#141414",
      "byScheme": true,
      "rule": "A recessed fill, a step below content.",
-     "pick": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
-     "darkPick": "neutral.100, a step below content (1.16:1 on surface.default), so table headers and wells read as recessed.",
+     "pick": [
+      "neutral.100, a step below content (",
+      {
+       "ratio": 1.17
+      },
+      " on surface.default), so table headers and wells read as recessed."
+     ],
+     "darkPick": [
+      "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, ",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition)."
+     ],
      "shares": [
       "surface.highlight",
       "action.secondary.hover",
@@ -141,8 +153,28 @@
      "darkValue": "#D6D6D6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 12.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 10.95
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -151,7 +183,9 @@
      "key": "head.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -160,7 +194,9 @@
      "key": "head.padding-x",
      "value": "1rem",
      "byScheme": true,
-     "pick": "space.16",
+     "pick": [
+      "space.16"
+     ],
      "shares": []
     }
    ]
@@ -200,7 +236,9 @@
      "key": "row-height",
      "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.52",
+     "pick": [
+      "size.52"
+     ],
      "shares": []
     },
     {
@@ -208,13 +246,26 @@
      "semantic": "color.border.default",
      "key": "row-border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
      "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "pick": [
+      "neutral.200: a quiet line that stays visible on every surface it meets (lowest ",
+      {
+       "ratio": 1.36
+      },
+      ", on surface.canvas). It decorates, so it holds no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest ",
+      {
+       "ratio": 1.8
+      },
+      ", on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values)."
+     ],
      "shares": [
       "surface.pressed",
+      "border.raised",
       "disabled.border"
      ]
     },
@@ -226,8 +277,28 @@
      "darkValue": "#F7F7F7",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 18.42
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 14.85
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -238,7 +309,9 @@
      "key": "cell.font-family",
      "value": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
      "byScheme": true,
-     "pick": "atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+     "pick": [
+      "atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out."
+     ],
      "shares": []
     }
    ]
@@ -273,8 +346,20 @@
      "darkValue": "#102547",
      "byScheme": true,
      "rule": "The fill of a selected or current item, or a toggle that is on.",
-     "pick": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
-     "darkPick": "blue.dark.100: a tint of the brand, 1.21:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+     "pick": [
+      "blue.light.100: a tint of the brand, ",
+      {
+       "ratio": 1.18
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
+     "darkPick": [
+      "blue.dark.100: a tint of the brand, ",
+      {
+       "ratio": 1.04
+      },
+      " from content, always beside its edge (border.selected), so selection is never color alone."
+     ],
      "shares": [
       "category.1.subtle"
      ]
@@ -287,8 +372,28 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
-     "pick": "blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.600: the edge beside a selected fill, so selection is never color alone, ",
+      {
+       "ratio": 7.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.focus",
       "action.primary",
@@ -297,11 +402,13 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "row.focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     }
    ]

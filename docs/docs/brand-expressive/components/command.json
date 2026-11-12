@@ -1,6 +1,10 @@
 {
  "preview": {
   "command/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Command examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -84,10 +88,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1411"
+        "color": "#33241F"
        },
-       "token": "taupe.dark.50",
-       "text": "#1F1411"
+       "token": "taupe.dark.100",
+       "text": "#33241F"
       }
      ]
     },
@@ -428,18 +432,30 @@
     },
     {
      "group": "Input",
-     "part": "Disabled opacity disabled",
+     "part": "Disabled text",
      "when": "when disabled",
-     "themed": false,
+     "themed": true,
      "chain": {
-      "token": "component.command.input.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "command-input-disabled-opacity-disabled"
+      "token": "component.command.input.disabled.text",
+      "alias": "color.disabled.text",
+      "variable": "command-input-disabled-text"
      },
      "values": [
       {
-       "token": "opacity.40",
-       "text": "0.4"
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     },
@@ -756,23 +772,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.command.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "command-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Icon size",
      "when": "",
      "themed": false,
@@ -839,10 +838,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#33241F"
+        "color": "#090403"
        },
-       "token": "taupe.dark.100",
-       "text": "#33241F"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -872,6 +871,35 @@
        },
        "token": "taupe.dark.400",
        "text": "#B5988A"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.command.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "command-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     },

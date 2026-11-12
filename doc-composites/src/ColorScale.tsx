@@ -2,7 +2,8 @@
  * ColorScale: one color family of a scheme in each mode. Every step of the scale, the steps its tokens
  * use filled in, and one row per token: what it paints (a background, an edge or ring, or text), the
  * step it points at and its value. Pointing at a row lights its step, and the other way round. Built
- * from the scheme's Tabs, used through their props only; the steps are drawings of values.
+ * on the Frame base form, drawn in each mode's own colors, and the scheme's Tabs, used through their
+ * props only; the steps are drawings of values.
  * The data follows doc-composites/schemas/color-scale.schema.json; the page holds one line:
  * ::color-scale{id="blue"}
  */
@@ -13,6 +14,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@open-ds/ui/components/tabs";
+import Frame from "./base/Frame";
 import { contrast, ink } from "./color";
 
 type Paints = "fill" | "edge" | "text";
@@ -46,7 +48,7 @@ const LANES: { paints: Paints; title: string }[] = [
   { paints: "text", title: "Text" },
 ];
 const label =
-  "text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wide";
+  "text-[length:var(--type-caption-font-size)] font-semibold uppercase tracking-wider";
 const small =
   "text-[length:var(--type-caption-font-size)] [font-family:var(--type-data-font-family)]";
 
@@ -191,10 +193,8 @@ function Panel({ m }: { m: Mode }) {
   const own = m.tokens.filter((t) => t.step);
   const fixed = m.tokens.filter((t) => !t.step);
   return (
-    <div
-      className="flex flex-col gap-[var(--space-gap-group)] overflow-x-auto rounded-[var(--radius-surface)] border p-[var(--space-inset-container)]"
-      style={{ background: m.page.canvas, color: m.page.text, borderColor: m.page.border }}
-    >
+    <Frame variant="plain" style={{ background: m.page.canvas, color: m.page.text, borderColor: m.page.border }}>
+    <div className="flex flex-col gap-[var(--space-gap-group)] overflow-x-auto">
       {LANES.map(({ paints, title }) => {
         // Rows follow the scale: the lightest step first, the data's order within a step.
         const at = (t: Token) => m.steps.findIndex((s) => s.step === t.step);
@@ -293,6 +293,7 @@ function Panel({ m }: { m: Mode }) {
         </section>
       )}
     </div>
+    </Frame>
   );
 }
 

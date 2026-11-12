@@ -213,6 +213,10 @@
       {
        "token": "size.row",
        "where": "semantic"
+      },
+      {
+       "token": "size.hit-area",
+       "where": "semantic"
       }
      ]
     }

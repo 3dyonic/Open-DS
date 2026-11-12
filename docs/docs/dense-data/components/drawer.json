@@ -1,6 +1,10 @@
 {
  "preview": {
   "drawer/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Drawer examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -51,6 +55,57 @@
       "token": "component.transition.panels-duration",
       "alias": "motion.duration.panels",
       "variable": "transition-panels-duration"
+     },
+     "values": [
+      {
+       "token": "duration.fast",
+       "text": "120ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "when open",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
      },
      "values": [
       {
@@ -463,10 +518,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#262D38"
+        "color": "#06090E"
        },
-       "token": "slate.dark.100",
-       "text": "#262D38"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },

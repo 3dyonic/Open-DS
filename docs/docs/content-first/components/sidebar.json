@@ -1,6 +1,10 @@
 {
  "preview": {
   "sidebar/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -16,6 +20,10 @@
    ]
   },
   "sidebar/variant/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -23,6 +31,10 @@
    }
   },
   "sidebar/variant/outline": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar outline",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -30,6 +42,10 @@
    }
   },
   "sidebar/size/default": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar default",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -37,6 +53,10 @@
    }
   },
   "sidebar/size/sm": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar sm",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -44,6 +64,10 @@
    }
   },
   "sidebar/size/lg": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Sidebar lg",
    "wait": "Start Storybook to see it live",
    "frames": {
@@ -177,7 +201,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -194,7 +218,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -397,10 +421,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -885,7 +909,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -913,7 +937,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.label.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-group-label-focus"
      },
      "values": [
@@ -988,7 +1012,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.label.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-group-label-focus-offset"
      },
      "values": [
@@ -1097,7 +1121,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.action.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-group-action-focus"
      },
      "values": [
@@ -1187,10 +1211,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -1201,7 +1225,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.group.action.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-group-action-focus-offset"
      },
      "values": [
@@ -1344,7 +1368,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.action.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-action-focus"
      },
      "values": [
@@ -1434,10 +1458,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -1448,7 +1472,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.action.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-action-focus-offset"
      },
      "values": [
@@ -1831,23 +1855,6 @@
     },
     {
      "group": "Menu",
-     "part": "Sub button disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.sidebar.menu.sub.button.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "sidebar-menu-sub-button-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Menu",
      "part": "Sub button icon size",
      "when": "",
      "themed": false,
@@ -1870,7 +1877,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-sub-button-focus"
      },
      "values": [
@@ -1960,10 +1967,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -2032,7 +2039,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-sub-button-edge-width-current"
      },
      "values": [
@@ -2066,7 +2073,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu.sub.button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-sub-button-focus-offset"
      },
      "values": [
@@ -2090,6 +2097,35 @@
       {
        "token": "font.size.14",
        "text": "0.875rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu",
+     "part": "Sub button disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu.sub.button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "sidebar-menu-sub-button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },
@@ -2132,10 +2168,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -2219,10 +2255,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -2233,7 +2269,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "sidebar-menu-button-focus-offset"
      },
      "values": [
@@ -2250,7 +2286,7 @@
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.edge-width.current",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-button-edge-width-current"
      },
      "values": [
@@ -2330,29 +2366,12 @@
     },
     {
      "group": "Menu button",
-     "part": "Opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.sidebar.menu-button.opacity.disabled",
-      "alias": "opacity.disabled",
-      "variable": "sidebar-menu-button-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Menu button",
      "part": "Focus width",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.sidebar.menu-button.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "sidebar-menu-button-focus-width"
      },
      "values": [
@@ -2493,10 +2512,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -2580,10 +2599,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -2689,6 +2708,35 @@
       {
        "token": "space.16",
        "text": "1rem"
+      }
+     ]
+    },
+    {
+     "group": "Menu button",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.sidebar.menu-button.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "sidebar-menu-button-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     }

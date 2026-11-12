@@ -14,7 +14,7 @@ An input with addons inside its border: icons, text, buttons.
 
 ## See it live
 
-::preview{robot="slumber" id="input-group/live"}
+::preview{id="input-group/live"}
 
 ## When to use it
 
@@ -32,7 +32,7 @@ Instead:
 What each variant is for in any design system, then what Content first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="inline-start" note="align" label="Used in Content first" tone="success"}
-::preview{robot="slumber" id="input-group/align/inline-start"}
+::preview{id="input-group/align/inline-start"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ The search icon before the text, with the visible label above the field.
 :::
 
 :::panel{title="inline-end" note="align" label="Used in Content first" tone="success"}
-::preview{robot="slumber" id="input-group/align/inline-end"}
+::preview{id="input-group/align/inline-end"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ The clear button after the text, with a word: occasional visitors do not know ic
 :::
 
 :::panel{title="block-start" note="align" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="input-group/align/block-start"}
+::preview{id="input-group/align/block-start"}
 
 **What it is for**
 
@@ -90,7 +90,7 @@ Search is one line, and forms are rare and short.
 :::
 
 :::panel{title="block-end" note="align" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="input-group/align/block-end"}
+::preview{id="input-group/align/block-end"}
 
 **What it is for**
 

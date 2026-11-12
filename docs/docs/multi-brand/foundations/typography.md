@@ -26,7 +26,7 @@ How text is set: roles, sizes and line height.
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `aster.theme.base.type.display.font-family` → `font.family.inter` |
@@ -59,7 +59,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.font-weight` | `font.weight.400` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `birch.theme.base.type.display.font-family` → `font.family.plus-jakarta-sans` |
@@ -92,7 +92,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.font-weight` | `font.weight.400` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `coral.theme.base.type.display.font-family` → `font.family.poppins` |

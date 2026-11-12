@@ -14,7 +14,7 @@ A message that stays on the page with the content it is about.
 
 ## See it live
 
-::preview{robot="slumber" id="alert/live"}
+::preview{id="alert/live"}
 
 ## When to use it
 
@@ -34,7 +34,7 @@ Instead:
 What each variant is for in any design system, then what Multi-brand decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="default" note="variant" label="Not used in Multi-brand" tone="neutral"}
-::preview{robot="slumber" id="alert/variant/default"}
+::preview{id="alert/variant/default"}
 
 **What it is for**
 
@@ -54,7 +54,7 @@ Alerts here are for billing problems; news is a badge or a toast.
 :::
 
 :::panel{title="destructive" note="variant" label="Used in Multi-brand" tone="success"}
-::preview{robot="slumber" id="alert/variant/destructive"}
+::preview{id="alert/variant/destructive"}
 
 **What it is for**
 

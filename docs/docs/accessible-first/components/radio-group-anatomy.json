@@ -105,7 +105,9 @@
      "key": "gap",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     }
    ]
@@ -139,7 +141,9 @@
      "key": "item.icon-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -148,7 +152,9 @@
      "key": "item.radius",
      "value": "50%",
      "byScheme": false,
-     "pick": "radius.round",
+     "pick": [
+      "radius.round"
+     ],
      "shares": []
     },
     {
@@ -156,11 +162,39 @@
      "semantic": "color.border.strong",
      "key": "item.border",
      "value": "#595959",
-     "darkValue": "#949494",
+     "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading ",
+      {
+       "ratio": 7.67
+      },
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, where neutral.500 gave only ",
+      {
+       "ratio": 4.17
+      },
+      " on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of ",
+      {
+       "ratio": 3
+      },
+      " with room to spare (accessibility.definition) and dark ships as standard (theming.values)."
+     ],
      "shares": [
       "text.muted",
       "category.5",
@@ -173,7 +207,9 @@
      "key": "item.border-width",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     }
    ]
@@ -202,8 +238,20 @@
      "darkValue": "#8AB4F8",
      "byScheme": true,
      "rule": "The one main action in a view.",
-     "pick": "blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
-     "darkPick": "blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+     "pick": [
+      "blue.light.600: brand blue marks the main action, with AAA white text (",
+      {
+       "ratio": 7.26
+      },
+      ")."
+     ],
+     "darkPick": [
+      "blue.dark.600: brand blue marks the main action, with AAA dark text (",
+      {
+       "ratio": 8.74
+      },
+      ")."
+     ],
      "shares": [
       "border.focus",
       "border.selected",
@@ -224,7 +272,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus, with an offset",
+     "use": "button/focus-ring at focus.ring.width, with an offset",
      "not": "a thin or faint outline",
      "why": "Focus must be seen by everyone."
     },
@@ -233,11 +281,39 @@
      "semantic": "color.border.focus",
      "key": "item.focus-ring-focus",
      "value": "#0B4FC0",
-     "darkValue": "#8AB4F8",
+     "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "blue.dark.600: the focus ring, so the keyboard's place is never lost, 8.74:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "blue.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 7.26
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at ",
+      {
+       "ratio": 7
+      },
+      " where focus moves through menus and dialogs. The ring does this by reading ",
+      {
+       "ratio": 9.33
+      },
+      " on surface.default and ",
+      {
+       "ratio": 7.41
+      },
+      " on surface.raised, where the key step (blue.dark.600) gave ",
+      {
+       "ratio": 6
+      },
+      " on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition)."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -246,20 +322,24 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "item.focus",
      "value": "3px",
      "byScheme": true,
-     "pick": "border-width.3",
+     "pick": [
+      "border-width.3"
+     ],
      "shares": []
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "item.focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -270,8 +350,20 @@
      "darkValue": "#0A0A0A",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.07
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.24
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -304,11 +396,43 @@
      "semantic": "color.status.danger",
      "key": "item.border-invalid",
      "value": "#981519",
-     "darkValue": "#F28B8B",
+     "darkValue": "#FEDBDA",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "red.light.700: danger reads as text and icons, ",
+      {
+       "ratio": 8.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at ",
+      {
+       "ratio": 7
+      },
+      " in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading ",
+      {
+       "ratio": 12.39
+      },
+      " on surface.default and ",
+      {
+       "ratio": 9.84
+      },
+      " on surface.raised. Below it, the key (red.dark.600) gives ",
+      {
+       "ratio": 5.32
+      },
+      " and red.dark.700 ",
+      {
+       "ratio": 6.8
+      },
+      " on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands)."
+     ],
      "shares": [
       "action.danger"
      ]
@@ -321,8 +445,28 @@
      "darkValue": "#451014",
      "byScheme": true,
      "rule": "The fill behind danger status.",
-     "pick": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 7:1 floor.",
-     "darkPick": "red.dark.100: a quiet tint behind danger; its text, 12.25:1, above the 7:1 floor.",
+     "pick": [
+      "red.light.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 9.9
+      },
+      ", above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.100: a quiet tint behind danger; its text, ",
+      {
+       "ratio": 12.25
+      },
+      ", above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": []
     }
    ]
@@ -338,12 +482,24 @@
     },
     {
      "kind": "token",
-     "semantic": "opacity.disabled",
-     "key": "item.disabled-opacity-disabled",
-     "value": "0.5",
+     "semantic": "color.disabled.surface",
+     "key": "item.disabled.background",
+     "value": "#EDEDED",
+     "darkValue": "#222222",
      "byScheme": true,
-     "pick": "opacity.50",
-     "shares": []
+     "rule": "The fill of a control that cannot be used right now.",
+     "pick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "shares": [
+      "surface.sunken",
+      "surface.highlight",
+      "action.secondary.hover",
+      "category.5.subtle"
+     ]
     }
    ]
   }

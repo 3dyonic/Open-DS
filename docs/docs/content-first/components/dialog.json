@@ -1,6 +1,10 @@
 {
  "preview": {
   "dialog/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Dialog examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -112,7 +116,7 @@
      "themed": true,
      "chain": {
       "token": "component.dialog.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "dialog-content-border"
      },
      "values": [
@@ -220,10 +224,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -249,10 +253,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -346,7 +350,7 @@
      "themed": false,
      "chain": {
       "token": "component.dialog.close.focus-ring.width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "dialog-close-focus-ring-width"
      },
      "values": [
@@ -421,7 +425,7 @@
      "themed": false,
      "chain": {
       "token": "component.dialog.close.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "dialog-close-focus-offset"
      },
      "values": [

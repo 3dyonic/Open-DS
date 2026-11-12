@@ -29,7 +29,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.20` |
-| `icon.stroke-width` | `stroke-width.200` |
+| `icon.stroke-width` | `stroke-width.2` |
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 

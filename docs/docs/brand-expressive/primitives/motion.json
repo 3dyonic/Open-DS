@@ -57,7 +57,49 @@
      },
      "usedBy": [
       {
+       "token": "motion.easing.emphasize",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "easing.standard",
+     "value": "cubic-bezier(0.2, 0, 0, 1)",
+     "sample": {
+      "kind": "easing",
+      "value": "cubic-bezier(0.2,0,0,1)"
+     },
+     "usedBy": [
+      {
        "token": "motion.easing.standard",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "easing.strong-out",
+     "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+     "sample": {
+      "kind": "easing",
+      "value": "cubic-bezier(0.23,1,0.32,1)"
+     },
+     "usedBy": [
+      {
+       "token": "motion.easing.exit",
+       "where": "semantic"
+      }
+     ]
+    },
+    {
+     "primitive": "easing.accelerate",
+     "value": "cubic-bezier(0.4, 0, 1, 1)",
+     "sample": {
+      "kind": "easing",
+      "value": "cubic-bezier(0.4,0,1,1)"
+     },
+     "usedBy": [
+      {
+       "token": "motion.easing.exit-offscreen",
        "where": "semantic"
       }
      ]

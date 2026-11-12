@@ -1,6 +1,10 @@
 {
  "preview": {
   "chart/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Chart examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -219,10 +223,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -248,10 +252,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },

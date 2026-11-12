@@ -33,7 +33,7 @@ The first answers lead to the rest. Each branch is an answer that follows from t
 
 All 79, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.
 
-::::group{title="Reasons"}
+::::group{id="reasons"}
 :::fold{id="business" title="Business and product" note="2 answers, 56 decisions"}
 #### What does the product do for the business? {#business-q1}
 
@@ -54,7 +54,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="people-q2"}
 :::
 
-:::fold{id="content" title="Content and data" note="2 answers, 22 decisions"}
+:::fold{id="content" title="Content and data" note="2 answers, 24 decisions"}
 #### What is the main content? {#content-q1}
 
 ::decision-answer{id="content-q1"}
@@ -94,7 +94,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="outcomes-q2"}
 :::
 
-:::fold{id="brand" title="Brand" note="3 answers, 26 decisions"}
+:::fold{id="brand" title="Brand" note="3 answers, 31 decisions"}
 #### What should the brand feel like? {#brand-q1}
 
 ::decision-answer{id="brand-q1"}
@@ -129,7 +129,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 :::
 ::::
 
-::::group{title="Scopes"}
+::::group{id="scopes"}
 :::fold{id="typography" title="Typography" note="5 answers, 2 decisions, and the values of its tokens"}
 #### Which text roles does it need? {#typography-roles}
 
@@ -174,7 +174,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="color-lands"}
 :::
 
-:::fold{id="spacing" title="Spacing" note="5 answers, 9 decisions, and the values of its tokens"}
+:::fold{id="spacing" title="Spacing" note="5 answers, 8 decisions, and the values of its tokens"}
 #### Which spacing roles does it need? {#spacing-roles}
 
 ::decision-answer{id="spacing-roles"}
@@ -196,7 +196,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="spacing-lands"}
 :::
 
-:::fold{id="shape" title="Shape" note="5 answers, 13 decisions, and the values of its tokens"}
+:::fold{id="shape" title="Shape" note="5 answers, 11 decisions, and the values of its tokens"}
 #### Which shape roles does it need? {#shape-roles}
 
 ::decision-answer{id="shape-roles"}
@@ -218,7 +218,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="shape-lands"}
 :::
 
-:::fold{id="elevation" title="Elevation" note="5 answers, 29 decisions, and the values of its tokens"}
+:::fold{id="elevation" title="Elevation" note="5 answers, 28 decisions, and the values of its tokens"}
 #### What rises above the page? {#elevation-roles}
 
 ::decision-answer{id="elevation-roles"}
@@ -284,7 +284,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="iconography-lands"}
 :::
 
-:::fold{id="theming" title="Theming" note="5 answers, 16 decisions, and the values of its tokens"}
+:::fold{id="theming" title="Theming" note="5 answers, 25 decisions, and the values of its tokens"}
 #### What can a theme change? {#theming-roles}
 
 ::decision-answer{id="theming-roles"}
@@ -306,7 +306,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="theming-lands"}
 :::
 
-:::fold{id="accessibility" title="Accessibility" note="5 answers, 109 decisions, and the values of its tokens"}
+:::fold{id="accessibility" title="Accessibility" note="5 answers, 110 decisions, and the values of its tokens"}
 #### Which states get their own visible value? {#accessibility-roles}
 
 ::decision-answer{id="accessibility-roles"}
@@ -350,7 +350,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="naming-lands"}
 :::
 
-:::fold{id="voice" title="Voice and tone" note="5 answers, 14 decisions, and the values of its tokens"}
+:::fold{id="voice" title="Voice and tone" note="5 answers, 13 decisions, and the values of its tokens"}
 #### Which kinds of copy does it need? {#voice-roles}
 
 ::decision-answer{id="voice-roles"}

@@ -113,7 +113,9 @@
      "key": "link.gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     },
     {
@@ -122,7 +124,9 @@
      "key": "link.padding-x",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     },
     {
@@ -131,7 +135,9 @@
      "key": "previous.padding-left",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     },
     {
@@ -140,7 +146,9 @@
      "key": "next.padding-right",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     }
    ]
@@ -183,8 +191,28 @@
      "darkValue": "#A7C8FC",
      "byScheme": true,
      "rule": "Links in running text.",
-     "pick": "blue.light.700: a link, set apart by its hue, 10.5:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "blue.dark.700: a link, set apart by its hue, 10.8:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "blue.light.700: a link, set apart by its hue, ",
+      {
+       "ratio": 10.5
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "blue.dark.700: a link, set apart by its hue, ",
+      {
+       "ratio": 9.33
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "action.primary.hover"
      ]
@@ -194,11 +222,39 @@
      "semantic": "color.border.strong",
      "key": "button.secondary.border",
      "value": "#595959",
-     "darkValue": "#949494",
+     "darkValue": "#B4B4B4",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.500: the edge of a control people must find, 6.07:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 7
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading ",
+      {
+       "ratio": 7.67
+      },
+      " on surface.default and ",
+      {
+       "ratio": 6.09
+      },
+      " on surface.raised, where neutral.500 gave only ",
+      {
+       "ratio": 4.17
+      },
+      " on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of ",
+      {
+       "ratio": 3
+      },
+      " with room to spare (accessibility.definition) and dark ships as standard (theming.values)."
+     ],
      "shares": [
       "text.muted",
       "category.5",
@@ -211,7 +267,9 @@
      "key": "button.height",
      "value": "3.25rem",
      "byScheme": true,
-     "pick": "size.52",
+     "pick": [
+      "size.52"
+     ],
      "shares": []
     }
    ]
@@ -245,7 +303,9 @@
      "key": "ellipsis.icon-size",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "size.20",
+     "pick": [
+      "size.20"
+     ],
      "shares": []
     },
     {
@@ -254,7 +314,9 @@
      "key": "content.gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]

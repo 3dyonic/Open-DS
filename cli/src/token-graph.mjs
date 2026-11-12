@@ -129,7 +129,7 @@ function toneOf(index, path) {
 
 /**
  * The graph of one scheme in one brand and mode. { nodes: [{ id, tier, label, value, type,
- * description, theme?, answers?, tone? }], edges: [{ from, to }] }. An edge runs from the token a
+ * description, theme?, answers?, tone?, deprecated? }], edges: [{ from, to }] }. An edge runs from the token a
  * value comes from to its reader. theme marks a token whose value goes through the brand theme.
  * description is the token's own $description. A semantic token holds answers, the grammar answers
  * its pick records and the trace engine finds ([{ question, answer }]), and tone, the tone its fill
@@ -163,6 +163,8 @@ export function tokenGraph({ scheme, brand, mode, grammar = readGrammar(), trace
       ...(refs.some(isTheme) && { theme: true }),
       ...(answers.length && { answers }),
       ...(tone && { tone }),
+      // A deprecated alias decides nothing of its own (OD-286); the Token map draws no decision for it.
+      ...(token.$deprecated && { deprecated: true }),
     });
     for (const from of refs.flatMap((r) => throughTheme(index, r))) {
       const key = `${from}>${path}`;

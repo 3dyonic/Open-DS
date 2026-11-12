@@ -325,8 +325,13 @@
      "big": "Aa",
      "token": "font.family.inter",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {
@@ -361,8 +366,13 @@
      "big": "Aa",
      "token": "font.family.plus-jakarta-sans",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {
@@ -397,8 +407,13 @@
      "big": "Aa",
      "token": "font.family.poppins",
      "sample": [
-      "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm",
-      "0123456789 · & ? !"
+      [
+       "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm"
+      ],
+      [
+       "0123456789",
+       "& ? !"
+      ]
      ],
      "weights": [
       {

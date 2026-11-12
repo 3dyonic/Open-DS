@@ -53,12 +53,12 @@ function Calendar({
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          "size-(--cell-size) p-0 select-none aria-disabled:opacity-[var(--calendar-disabled-opacity-disabled)]",
+          "size-(--cell-size) p-0 select-none aria-disabled:text-[color:var(--calendar-nav-disabled-icon)]",
           defaultClassNames.button_previous,
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          "size-(--cell-size) p-0 select-none aria-disabled:opacity-[var(--calendar-disabled-opacity-disabled)]",
+          "size-(--cell-size) p-0 select-none aria-disabled:text-[color:var(--calendar-nav-disabled-icon)]",
           defaultClassNames.button_next,
         ),
         month_caption: cn(
@@ -112,7 +112,7 @@ function Calendar({
         ),
         outside: cn("text-[color:var(--calendar-label)]", defaultClassNames.outside),
         disabled: cn(
-          "text-[color:var(--calendar-label)] data-[disabled=true]:opacity-[var(--calendar-day-disabled-opacity)]",
+          "text-[color:var(--calendar-label)] data-[disabled=true]:text-[color:var(--calendar-day-disabled-label)]",
           defaultClassNames.disabled,
         ),
         hidden: cn("invisible", defaultClassNames.hidden),

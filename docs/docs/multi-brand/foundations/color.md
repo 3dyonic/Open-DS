@@ -12,15 +12,15 @@ How color carries action, state and brand.
 
 ::token-swatches{id="color"}
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::color-keys{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::color-keys{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::color-keys{id="coral"}
 ::::
 
@@ -28,15 +28,15 @@ How color carries action, state and brand.
 
 The canvas, then the surfaces content sits on, in aster-light and aster-dark and birch-light and birch-dark and coral-light and coral-dark.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::surface-stack{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::surface-stack{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::surface-stack{id="coral"}
 ::::
 
@@ -44,15 +44,15 @@ The canvas, then the surfaces content sits on, in aster-light and aster-dark and
 
 Each status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::status-colors{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::status-colors{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::status-colors{id="coral"}
 ::::
 
@@ -70,7 +70,7 @@ Each status label always gets the same color, with its dot, so color is never th
 
 Each token points to another token. Values live only on primitives, below.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `color.neutral.0` | light | `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -97,16 +97,18 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 | `color.neutral.950` | light | `aster.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
 | | dark | `aster.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.neutral.floor` | light | `aster.theme.light.color.neutral.floor` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.canvas` | light | `aster.theme.light.color.surface.canvas` → `color.neutral.50` → `aster.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
 | | dark | `aster.theme.dark.color.surface.canvas` → `color.neutral.0` → `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
 | `color.surface.default` | light | `aster.theme.light.color.surface.default` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
 | | dark | `aster.theme.dark.color.surface.default` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
 | `color.surface.raised` | light | `aster.theme.light.color.surface.raised` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
-| | dark | `aster.theme.dark.color.surface.raised` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| | dark | `aster.theme.dark.color.surface.raised` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.surface.sunken` | light | `aster.theme.light.color.surface.sunken` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `aster.theme.dark.color.surface.sunken` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| | dark | `aster.theme.dark.color.surface.sunken` → `color.neutral.floor` → `aster.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.highlight` | light | `aster.theme.light.color.surface.highlight` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `aster.theme.dark.color.surface.highlight` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| | dark | `aster.theme.dark.color.surface.highlight` → `color.neutral.floor` → `aster.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.pressed` | light | `aster.theme.light.color.surface.pressed` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `aster.theme.dark.color.surface.pressed` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.surface.selected` | light | `aster.theme.light.color.surface.selected` → `color.teal.light.100` |
@@ -151,6 +153,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
 | `color.border.default` | light | `aster.theme.light.color.border.default` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `aster.theme.dark.color.border.default` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.border.raised` | light | `aster.theme.light.color.border.raised` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `aster.theme.dark.color.border.raised` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.border.strong` | light | `aster.theme.light.color.border.strong` → `color.neutral.500` → `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
 | | dark | `aster.theme.dark.color.border.strong` → `color.neutral.400` → `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `color.border.focus` | light | `aster.theme.light.color.border.focus` → `color.teal.light.600` |
@@ -213,7 +217,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `aster.theme.dark.color.disabled.border` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `color.neutral.0` | light | `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -240,16 +244,18 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 | `color.neutral.950` | light | `birch.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
 | | dark | `birch.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.neutral.floor` | light | `birch.theme.light.color.neutral.floor` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.canvas` | light | `birch.theme.light.color.surface.canvas` → `color.neutral.50` → `birch.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
 | | dark | `birch.theme.dark.color.surface.canvas` → `color.neutral.0` → `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
 | `color.surface.default` | light | `birch.theme.light.color.surface.default` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
 | | dark | `birch.theme.dark.color.surface.default` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
 | `color.surface.raised` | light | `birch.theme.light.color.surface.raised` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
-| | dark | `birch.theme.dark.color.surface.raised` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| | dark | `birch.theme.dark.color.surface.raised` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.surface.sunken` | light | `birch.theme.light.color.surface.sunken` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `birch.theme.dark.color.surface.sunken` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| | dark | `birch.theme.dark.color.surface.sunken` → `color.neutral.floor` → `birch.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.highlight` | light | `birch.theme.light.color.surface.highlight` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `birch.theme.dark.color.surface.highlight` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| | dark | `birch.theme.dark.color.surface.highlight` → `color.neutral.floor` → `birch.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.pressed` | light | `birch.theme.light.color.surface.pressed` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `birch.theme.dark.color.surface.pressed` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.surface.selected` | light | `birch.theme.light.color.surface.selected` → `color.purple.light.100` |
@@ -294,6 +300,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
 | `color.border.default` | light | `birch.theme.light.color.border.default` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `birch.theme.dark.color.border.default` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.border.raised` | light | `birch.theme.light.color.border.raised` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `birch.theme.dark.color.border.raised` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.border.strong` | light | `birch.theme.light.color.border.strong` → `color.neutral.500` → `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
 | | dark | `birch.theme.dark.color.border.strong` → `color.neutral.400` → `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `color.border.focus` | light | `birch.theme.light.color.border.focus` → `color.purple.light.600` |
@@ -356,7 +364,7 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `birch.theme.dark.color.disabled.border` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 | Token | Mode | Points to |
 | --- | --- | --- |
 | `color.neutral.0` | light | `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -383,16 +391,18 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 | `color.neutral.950` | light | `coral.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
 | | dark | `coral.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.neutral.floor` | light | `coral.theme.light.color.neutral.floor` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.canvas` | light | `coral.theme.light.color.surface.canvas` → `color.neutral.50` → `coral.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
 | | dark | `coral.theme.dark.color.surface.canvas` → `color.neutral.0` → `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
 | `color.surface.default` | light | `coral.theme.light.color.surface.default` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
 | | dark | `coral.theme.dark.color.surface.default` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
 | `color.surface.raised` | light | `coral.theme.light.color.surface.raised` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
-| | dark | `coral.theme.dark.color.surface.raised` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| | dark | `coral.theme.dark.color.surface.raised` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.surface.sunken` | light | `coral.theme.light.color.surface.sunken` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `coral.theme.dark.color.surface.sunken` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| | dark | `coral.theme.dark.color.surface.sunken` → `color.neutral.floor` → `coral.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.highlight` | light | `coral.theme.light.color.surface.highlight` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `coral.theme.dark.color.surface.highlight` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
+| | dark | `coral.theme.dark.color.surface.highlight` → `color.neutral.floor` → `coral.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.pressed` | light | `coral.theme.light.color.surface.pressed` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `coral.theme.dark.color.surface.pressed` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.surface.selected` | light | `coral.theme.light.color.surface.selected` → `color.orange.light.100` |
@@ -437,6 +447,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
 | `color.border.default` | light | `coral.theme.light.color.border.default` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `coral.theme.dark.color.border.default` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
+| `color.border.raised` | light | `coral.theme.light.color.border.raised` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
+| | dark | `coral.theme.dark.color.border.raised` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.border.strong` | light | `coral.theme.light.color.border.strong` → `color.neutral.500` → `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` |
 | | dark | `coral.theme.dark.color.border.strong` → `color.neutral.400` → `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `color.border.focus` | light | `coral.theme.light.color.border.focus` → `color.orange.light.600` |
@@ -527,9 +539,9 @@ A surface tells people where they are in depth, or which item they are on. Each 
 | --- | --- | --- | --- |
 | :sample{kind="dot" value="var(--color-surface-canvas)"} **Canvas** | The page background behind everything. | Page and app background | Cards and panels on the page: `color.surface.default` |
 | :sample{kind="dot" value="var(--color-surface-default)"} **Default** | The base fill for content. | Cards, Panels, Inputs, Table body | The page behind content: `color.surface.canvas`; Menus and popovers above content: `color.surface.raised` |
-| :sample{kind="dot" value="var(--color-surface-raised)"} **Raised** | Fills that float above content. | Menus, Popovers, Dialogs | Cards in the page flow: `color.surface.default` |
+| :sample{kind="dot" value="var(--color-surface-raised)"} **Raised** | Fills that float above content. In dark, one step lighter than content, so height reads by tone. | Menus, Popovers, Dialogs | Cards in the page flow: `color.surface.default` |
 | :sample{kind="dot" value="var(--color-surface-sunken)"} **Sunken** | A recessed fill, a step below content. | Table headers, Wells | A selected item: `color.surface.selected`; An item the pointer or the keyboard is on: `color.surface.highlight` |
-| :sample{kind="dot" value="var(--color-surface-highlight)"} **Highlight** | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. | Highlighted menu items, Highlighted options, Hover rows, Open submenu triggers | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
+| :sample{kind="dot" value="var(--color-surface-highlight)"} **Highlight** | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. | Highlighted menu items, Highlighted options, Hover rows, Open submenu triggers | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
 | :sample{kind="dot" value="var(--color-surface-pressed)"} **Pressed** | The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. | Pressed menu buttons, Pressed list items | The item the pointer or the keyboard is on: `color.surface.highlight` |
 | :sample{kind="dot" value="var(--color-surface-selected)"} **Selected** | The fill of a selected or current item, or a toggle that is on. | Selected rows, Current menu item, Toggles that are on | Hover: `color.surface.sunken`; The main action: `color.action.primary.@` |
 | :sample{kind="dot" value="var(--color-surface-inverse)"} **Inverse** | A reversed fill for small, short-lived messages. | Tooltips, Toasts | Large areas: `color.surface.default` |
@@ -541,9 +553,9 @@ A surface tells people where they are in depth, or which item they are on. Each 
 | --- | --- | --- |
 | `color.surface.canvas` | The page background behind everything. | Cards and panels on the page: `color.surface.default` |
 | `color.surface.default` | The base fill for content. | The page behind content: `color.surface.canvas`; Menus and popovers above content: `color.surface.raised` |
-| `color.surface.raised` | Fills that float above content. | Cards in the page flow: `color.surface.default` |
+| `color.surface.raised` | Fills that float above content. In dark, one step lighter than content, so height reads by tone. | Cards in the page flow: `color.surface.default` |
 | `color.surface.sunken` | A recessed fill, a step below content. | A selected item: `color.surface.selected`; An item the pointer or the keyboard is on: `color.surface.highlight` |
-| `color.surface.highlight` | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
+| `color.surface.highlight` | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. | Table headers and wells: `color.surface.sunken`; A selected or current item: `color.surface.selected` |
 | `color.surface.pressed` | The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. | The item the pointer or the keyboard is on: `color.surface.highlight` |
 | `color.surface.selected` | The fill of a selected or current item, or a toggle that is on. | Hover: `color.surface.sunken`; The main action: `color.action.primary.@` |
 | `color.surface.inverse` | A reversed fill for small, short-lived messages. | Large areas: `color.surface.default` |
@@ -566,6 +578,7 @@ A surface tells people where they are in depth, or which item they are on. Each 
 | `color.text.on-danger` | Text on the danger fill: its tone's main text. | Text on the main action: `color.text.on-action` |
 | `color.text.link` | Links in running text. | Buttons: `color.action.primary.@` |
 | `color.border.default` | Quiet edges and dividers. Decorative, so it has no contrast minimum. | The edge of a control people must find: `color.border.strong` |
+| `color.border.raised` | The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot. | Dividers and card borders in the page flow: `color.border.default`; The edge of a control people must find: `color.border.strong` |
 | `color.border.strong` | The edge of a control people must find. | A divider: `color.border.default` |
 | `color.border.focus` | The focus ring. | A selected item: `color.surface.selected` |
 | `color.border.selected` | The edge that marks a selected item, beside its fill, so selection is never color alone. | Keyboard focus: `color.border.focus`; The fill of a selected item: `color.surface.selected` |
@@ -601,15 +614,15 @@ A surface tells people where they are in depth, or which item they are on. Each 
 
 Which text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take `color.text.on-light`, dark fills take `color.text.on-dark`. The harness checks every pair.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 ::pairs-chart{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 ::pairs-chart{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 ::pairs-chart{id="coral"}
 ::::
 
@@ -617,19 +630,19 @@ Which text may sit on which fill, and the contrast it keeps there. Each fill is 
 
 Every fill says whether it is light or dark, in each mode, and that picks the text on it. A fill can change tone between modes: the same token, the other text.
 
-::::brand{id="aster" name="Aster"}
+::::brand{id="aster"}
 **Every fill changes tone between light and dark mode.**
 
 ::fill-tones{id="aster"}
 ::::
 
-::::brand{id="birch" name="Birch"}
+::::brand{id="birch"}
 **Every fill changes tone between light and dark mode.**
 
 ::fill-tones{id="birch"}
 ::::
 
-::::brand{id="coral" name="Coral"}
+::::brand{id="coral"}
 **Every fill changes tone between light and dark mode.**
 
 ::fill-tones{id="coral"}

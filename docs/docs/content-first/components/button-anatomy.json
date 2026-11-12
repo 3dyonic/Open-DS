@@ -116,7 +116,9 @@
      "key": "height",
      "value": "3rem",
      "byScheme": true,
-     "pick": "size.48",
+     "pick": [
+      "size.48"
+     ],
      "shares": []
     },
     {
@@ -125,7 +127,9 @@
      "key": "padding-x",
      "value": "1.25rem",
      "byScheme": true,
-     "pick": "space.20",
+     "pick": [
+      "space.20"
+     ],
      "shares": []
     },
     {
@@ -134,7 +138,9 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+     "pick": [
+      "radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2)."
+     ],
      "shares": []
     }
    ]
@@ -177,8 +183,28 @@
      "darkValue": "#A39A8B",
      "byScheme": true,
      "rule": "The edge of a control people must find.",
-     "pick": "neutral.500: the edge of a control people must find, 4.86:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "neutral.400: the edge of a control people must find, 6.16:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "neutral.500: the edge of a control people must find, ",
+      {
+       "ratio": 4.86
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.400: the edge of a control people must find, ",
+      {
+       "ratio": 6.16
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "category.5",
       "disabled.text"
@@ -217,8 +243,28 @@
      "darkValue": "#1F1B16",
      "byScheme": true,
      "rule": "Text and icons on the main action's fill.",
-     "pick": "text.on-dark: the text its fill's tone picks, 11.5:1 on action.primary, above the 4.5:1 floor.",
-     "darkPick": "text.on-light: the text its fill's tone picks, 6.86:1 on action.primary, above the 4.5:1 floor.",
+     "pick": [
+      "text.on-dark: the text its fill's tone picks, ",
+      {
+       "ratio": 11.5
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "text.on-light: the text its fill's tone picks, ",
+      {
+       "ratio": 6.86
+      },
+      " on action.primary, above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.inverse",
       "text.on-danger"
@@ -230,7 +276,9 @@
      "key": "font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -239,7 +287,9 @@
      "key": "font-weight",
      "value": "600",
      "byScheme": true,
-     "pick": "font.weight.600",
+     "pick": [
+      "font.weight.600"
+     ],
      "shares": []
     }
    ]
@@ -275,8 +325,28 @@
      "darkValue": "#ACBDD5",
      "byScheme": true,
      "rule": "The main action under the pointer.",
-     "pick": "navy.light.700: one step from the primary action (navy.light.600), so the pointer shows; its label still reads 14.62:1, above the 4.5:1 floor.",
-     "darkPick": "navy.dark.700: one step from the primary action (navy.dark.600), so the pointer shows; its label still reads 8.96:1, above the 4.5:1 floor.",
+     "pick": [
+      "navy.light.700: one step from the primary action (navy.light.600), so the pointer shows; its label still reads ",
+      {
+       "ratio": 14.62
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "navy.dark.700: one step from the primary action (navy.dark.600), so the pointer shows; its label still reads ",
+      {
+       "ratio": 8.96
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "text.link"
      ]
@@ -289,8 +359,28 @@
      "darkValue": "#2E2A24",
      "byScheme": true,
      "rule": "Other actions under the pointer.",
-     "pick": "neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.33:1, above the 4.5:1 floor.",
-     "darkPick": "neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.03:1, above the 4.5:1 floor.",
+     "pick": [
+      "neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads ",
+      {
+       "ratio": 15.33
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads ",
+      {
+       "ratio": 14.03
+      },
+      ", above the ",
+      {
+       "ratio": 4.5
+      },
+      " floor."
+     ],
      "shares": [
       "surface.sunken",
       "surface.highlight",
@@ -303,11 +393,31 @@
      "semantic": "color.surface.highlight",
      "key": "ghost.background.hover",
      "value": "#F6F2EA",
-     "darkValue": "#2E2A24",
+     "darkValue": "#0B0906",
      "byScheme": true,
-     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-     "pick": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
-     "darkPick": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+     "rule": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step.",
+     "pick": [
+      "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it."
+     ],
+     "darkPick": [
+      "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ",
+      {
+       "ratio": 1.16
+      },
+      " on surface.default and ",
+      {
+       "ratio": 1.39
+      },
+      " on surface.raised, and ",
+      {
+       "ratio": 1.06
+      },
+      " off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ",
+      {
+       "ratio": 7.15
+      },
+      " on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition)."
+     ],
      "shares": [
       "surface.sunken",
       "action.secondary.hover",
@@ -329,7 +439,7 @@
     {
      "kind": "rule",
      "situation": "keyboard focus",
-     "use": "button/focus-ring at border-width.focus",
+     "use": "button/focus-ring at focus.ring.width",
      "not": "removing the outline",
      "why": "Keyboard users must always see where they are."
     },
@@ -341,8 +451,28 @@
      "darkValue": "#8FA6C4",
      "byScheme": true,
      "rule": "The focus ring.",
-     "pick": "navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.",
-     "darkPick": "navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.",
+     "pick": [
+      "navy.light.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 11.5
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "navy.dark.600: the focus ring, so the keyboard's place is never lost, ",
+      {
+       "ratio": 6.86
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 3
+      },
+      " floor."
+     ],
      "shares": [
       "border.selected",
       "action.primary",
@@ -351,20 +481,24 @@
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus",
+     "semantic": "focus.ring.width",
      "key": "focus",
      "value": "2px",
      "byScheme": true,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
      "kind": "token",
-     "semantic": "border-width.focus-offset",
+     "semantic": "focus.ring.offset",
      "key": "focus-offset",
      "value": "2px",
      "byScheme": false,
-     "pick": "border-width.2",
+     "pick": [
+      "border-width.2"
+     ],
      "shares": []
     },
     {
@@ -375,8 +509,20 @@
      "darkValue": "#14110D",
      "byScheme": true,
      "rule": "The page background behind everything.",
-     "pick": "neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.",
-     "darkPick": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+     "pick": [
+      "neutral.50, under content: ",
+      {
+       "ratio": 1.02
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
+     "darkPick": [
+      "neutral.0, under content: ",
+      {
+       "ratio": 1.1
+      },
+      " from surface.default, so cards and panels stand forward."
+     ],
      "shares": []
     }
    ]
@@ -398,8 +544,12 @@
      "darkValue": "#2E2A24",
      "byScheme": true,
      "rule": "The fill of a control that cannot be used right now.",
-     "pick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
-     "darkPick": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+     "pick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
+     "darkPick": [
+      "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action."
+     ],
      "shares": [
       "surface.sunken",
       "surface.highlight",
@@ -415,8 +565,20 @@
      "darkValue": "#CFC6B6",
      "byScheme": true,
      "rule": "Text and icons of a control that cannot be used right now.",
-     "pick": "neutral.500: 4.86:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
-     "darkPick": "neutral.500: 10.11:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+     "pick": [
+      "neutral.500: ",
+      {
+       "ratio": 4.86
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
+     "darkPick": [
+      "neutral.500: ",
+      {
+       "ratio": 10.11
+      },
+      " on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum."
+     ],
      "shares": [
       "border.strong",
       "category.5"

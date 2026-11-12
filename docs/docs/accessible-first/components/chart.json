@@ -1,6 +1,10 @@
 {
  "preview": {
   "chart/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Chart examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -190,10 +194,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -219,10 +223,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -248,10 +252,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },
@@ -277,10 +281,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -335,10 +339,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },

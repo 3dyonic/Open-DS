@@ -1,6 +1,10 @@
 {
  "preview": {
   "select/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Select examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -64,10 +68,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#333333"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.200",
+       "text": "#333333"
       }
      ]
     },
@@ -215,10 +219,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#141414"
+        "color": "#222222"
        },
-       "token": "gray.dark.50",
-       "text": "#141414"
+       "token": "gray.dark.100",
+       "text": "#222222"
       }
      ]
     },
@@ -244,10 +248,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#949494"
+        "color": "#B4B4B4"
        },
-       "token": "gray.dark.500",
-       "text": "#949494"
+       "token": "gray.dark.600",
+       "text": "#B4B4B4"
       }
      ]
     },
@@ -273,10 +277,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -302,10 +306,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#F28B8B"
+        "color": "#FEDBDA"
        },
-       "token": "red.dark.600",
-       "text": "#F28B8B"
+       "token": "red.dark.900",
+       "text": "#FEDBDA"
       }
      ]
     },
@@ -474,7 +478,7 @@
      "themed": false,
      "chain": {
       "token": "component.select.trigger.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "select-trigger-focus-width"
      },
      "values": [
@@ -491,7 +495,7 @@
      "themed": false,
      "chain": {
       "token": "component.select.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "select-trigger-focus-offset"
      },
      "values": [
@@ -704,7 +708,7 @@
      "themed": true,
      "chain": {
       "token": "component.select.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "select-content-border"
      },
      "values": [
@@ -719,10 +723,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#333333"
+        "color": "#595959"
        },
-       "token": "gray.dark.200",
-       "text": "#333333"
+       "token": "gray.dark.300",
+       "text": "#595959"
       }
      ]
     },
@@ -816,23 +820,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.select.item.disabled",
-      "alias": "opacity.disabled",
-      "variable": "select-item-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.50",
-       "text": "0.5"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Background highlight",
      "when": "on focus",
      "themed": true,
@@ -853,10 +840,39 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.select.item.disabled-label",
+      "alias": "color.disabled.text",
+      "variable": "select-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#595959"
+       },
+       "token": "gray.light.500",
+       "text": "#595959"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#949494"
+       },
+       "token": "gray.dark.500",
+       "text": "#949494"
       }
      ]
     }

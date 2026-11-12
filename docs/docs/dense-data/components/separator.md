@@ -14,7 +14,7 @@ A line between groups.
 
 ## See it live
 
-::preview{robot="slumber" id="separator/live"}
+::preview{id="separator/live"}
 
 ## When to use it
 

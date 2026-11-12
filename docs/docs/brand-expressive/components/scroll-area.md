@@ -14,7 +14,7 @@ A region with its own styled scrollbars.
 
 ## See it live
 
-::preview{robot="slumber" id="scroll-area/live"}
+::preview{id="scroll-area/live"}
 
 ## When to use it
 

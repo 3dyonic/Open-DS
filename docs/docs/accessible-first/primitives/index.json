@@ -4,7 +4,8 @@
    "cards": [
     {
      "title": "Color",
-     "text": "136 primitives · 53 in use",
+     "text": "136 primitives",
+     "note": "54 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -41,9 +42,9 @@
       }
      ],
      "meter": {
-      "value": 53,
+      "value": 54,
       "max": 136,
-      "label": "53 of 136 in use"
+      "label": "54 of 136 in use"
      }
     }
    ]
@@ -52,7 +53,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "16 primitives · 16 in use",
+     "text": "17 primitives",
+     "note": "17 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -89,14 +91,15 @@
       }
      ],
      "meter": {
-      "value": 16,
-      "max": 16,
-      "label": "16 of 16 in use"
+      "value": 17,
+      "max": 17,
+      "label": "17 of 17 in use"
      }
     },
     {
      "title": "Shape",
-     "text": "8 primitives · 8 in use",
+     "text": "8 primitives",
+     "note": "8 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -128,7 +131,8 @@
    "cards": [
     {
      "title": "Type",
-     "text": "10 primitives · 10 in use",
+     "text": "10 primitives",
+     "note": "10 in use",
      "href": "./type",
      "robot": {
       "day": "/robots/scopes/typography.webp",
@@ -140,8 +144,10 @@
        "value": "'Atkinson Hyperlegible', Verdana, sans-serif"
       },
       {
-       "kind": "text",
-       "value": "Atkinson Hyperlegible"
+       "kind": "names",
+       "names": [
+        "Atkinson Hyperlegible"
+       ]
       }
      ],
      "meter": {
@@ -152,7 +158,8 @@
     },
     {
      "title": "Motion",
-     "text": "2 primitives · 2 in use",
+     "text": "3 primitives",
+     "note": "3 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -161,19 +168,20 @@
      "samples": [
       {
        "kind": "duration",
-       "value": "200ms",
-       "note": "200ms"
+       "value": "150ms",
+       "note": "150ms"
       }
      ],
      "meter": {
-      "value": 2,
-      "max": 2,
-      "label": "2 of 2 in use"
+      "value": 3,
+      "max": 3,
+      "label": "3 of 3 in use"
      }
     },
     {
      "title": "Effects",
-     "text": "2 primitives · 2 in use",
+     "text": "2 primitives",
+     "note": "2 in use",
      "href": "./effects",
      "robot": {
       "day": "/robots/scopes/elevation.webp",

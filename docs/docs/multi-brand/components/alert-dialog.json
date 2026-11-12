@@ -1,6 +1,10 @@
 {
  "preview": {
   "alert-dialog/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Alert dialog examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -55,7 +59,58 @@
      "values": [
       {
        "token": "duration.relaxed",
-       "text": "320ms"
+       "text": "300ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "when open",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "150ms"
       }
      ]
     },
@@ -220,10 +275,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Birch Light",
@@ -236,10 +291,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Coral Light",
@@ -252,10 +307,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       }
      ]
     },
@@ -338,7 +393,7 @@
      "themed": true,
      "chain": {
       "token": "component.alert-dialog.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "alert-dialog-content-border"
      },
      "values": [
@@ -759,10 +814,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -775,10 +830,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -791,10 +846,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },

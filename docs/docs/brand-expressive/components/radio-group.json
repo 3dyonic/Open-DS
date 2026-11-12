@@ -1,6 +1,10 @@
 {
  "preview": {
   "radio-group/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Radio group examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -204,9 +208,9 @@
       {
        "theme": "Dark",
        "swatch": {
-        "shadow": "0px 12px 32px 0px #00000080"
+        "shadow": "0px 0px 0px 0px #00000000"
        },
-       "text": "shadow.card-dark"
+       "text": "shadow.none"
       }
      ]
     },
@@ -236,23 +240,6 @@
        },
        "token": "pink.dark.600",
        "text": "#F59ACA"
-      }
-     ]
-    },
-    {
-     "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.radio-group.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "radio-group-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
       }
      ]
     },
@@ -321,7 +308,7 @@
      "themed": false,
      "chain": {
       "token": "component.radio-group.item.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "radio-group-item-focus"
      },
      "values": [
@@ -396,7 +383,7 @@
      "themed": false,
      "chain": {
       "token": "component.radio-group.item.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "radio-group-item-focus-offset"
      },
      "values": [
@@ -420,6 +407,110 @@
       {
        "token": "border-width.2",
        "text": "2px"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.radio-group.item.hit-area",
+      "alias": "size.hit-area",
+      "variable": "radio-group-item-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.radio-group.item.disabled.background",
+      "alias": "color.disabled.surface",
+      "variable": "radio-group-item-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.radio-group.item.disabled.border",
+      "alias": "color.disabled.border",
+      "variable": "radio-group-item-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled indicator",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.radio-group.item.disabled.indicator",
+      "alias": "color.disabled.text",
+      "variable": "radio-group-item-disabled-indicator"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     }

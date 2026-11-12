@@ -17,7 +17,7 @@
         {
           "id": "content",
           "title": "Content and data",
-          "count": 22
+          "count": 24
         },
         {
           "id": "tasks",
@@ -37,7 +37,7 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 26
+          "count": 31
         },
         {
           "id": "scenarios",
@@ -67,17 +67,17 @@
         {
           "id": "spacing",
           "title": "Spacing",
-          "count": 9
+          "count": 8
         },
         {
           "id": "shape",
           "title": "Shape",
-          "count": 13
+          "count": 11
         },
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 29
+          "count": 28
         },
         {
           "id": "motion",
@@ -92,12 +92,12 @@
         {
           "id": "theming",
           "title": "Theming",
-          "count": 16
+          "count": 25
         },
         {
           "id": "accessibility",
           "title": "Accessibility",
-          "count": 109
+          "count": 110
         },
         {
           "id": "naming",
@@ -107,7 +107,7 @@
         {
           "id": "voice",
           "title": "Voice and tone",
-          "count": 14
+          "count": 13
         },
         {
           "id": "components",

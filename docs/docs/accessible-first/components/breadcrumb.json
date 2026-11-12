@@ -1,6 +1,10 @@
 {
  "preview": {
   "breadcrumb/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Breadcrumb examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -181,7 +185,7 @@
      "values": [
       {
        "token": "duration.moderate",
-       "text": "200ms"
+       "text": "150ms"
       }
      ]
     },
@@ -224,10 +228,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#8AB4F8"
+        "color": "#A7C8FC"
        },
-       "token": "blue.dark.600",
-       "text": "#8AB4F8"
+       "token": "blue.dark.700",
+       "text": "#A7C8FC"
       }
      ]
     },
@@ -238,7 +242,7 @@
      "themed": false,
      "chain": {
       "token": "component.breadcrumb.link.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "breadcrumb-link-focus-width"
      },
      "values": [
@@ -284,7 +288,7 @@
      "themed": false,
      "chain": {
       "token": "component.breadcrumb.link.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "breadcrumb-link-focus-offset"
      },
      "values": [

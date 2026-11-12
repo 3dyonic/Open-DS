@@ -4,7 +4,8 @@
    "cards": [
     {
      "title": "Color",
-     "text": "136 primitives · 54 in use",
+     "text": "137 primitives",
+     "note": "55 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -41,9 +42,9 @@
       }
      ],
      "meter": {
-      "value": 54,
-      "max": 136,
-      "label": "54 of 136 in use"
+      "value": 55,
+      "max": 137,
+      "label": "55 of 137 in use"
      }
     }
    ]
@@ -52,7 +53,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "11 primitives · 11 in use",
+     "text": "11 primitives",
+     "note": "11 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -96,7 +98,8 @@
     },
     {
      "title": "Shape",
-     "text": "8 primitives · 8 in use",
+     "text": "8 primitives",
+     "note": "8 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -128,7 +131,8 @@
    "cards": [
     {
      "title": "Type",
-     "text": "14 primitives · 14 in use",
+     "text": "14 primitives",
+     "note": "14 in use",
      "href": "./type",
      "robot": {
       "day": "/robots/scopes/typography.webp",
@@ -144,8 +148,11 @@
        "value": "'IBM Plex Mono', ui-monospace, monospace"
       },
       {
-       "kind": "text",
-       "value": "IBM Plex Sans · IBM Plex Mono"
+       "kind": "names",
+       "names": [
+        "IBM Plex Sans",
+        "IBM Plex Mono"
+       ]
       }
      ],
      "meter": {
@@ -156,7 +163,8 @@
     },
     {
      "title": "Motion",
-     "text": "2 primitives · 2 in use",
+     "text": "3 primitives",
+     "note": "3 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -170,14 +178,15 @@
       }
      ],
      "meter": {
-      "value": 2,
-      "max": 2,
-      "label": "2 of 2 in use"
+      "value": 3,
+      "max": 3,
+      "label": "3 of 3 in use"
      }
     },
     {
      "title": "Effects",
-     "text": "4 primitives · 4 in use",
+     "text": "4 primitives",
+     "note": "4 in use",
      "href": "./effects",
      "robot": {
       "day": "/robots/scopes/elevation.webp",

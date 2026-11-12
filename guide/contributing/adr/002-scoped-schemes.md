@@ -130,6 +130,15 @@ A scheme with an empty overlay is its source: same id, same name. An overlay may
 
 This is the ownership hook. A team that renames owns a scheme of its own, and it still gets the source's fixes when it wants them. Later, the same hook can let a team with an existing design system describe it as a scheme (see Later).
 
+### 9a. Nesting: a chain of sources
+
+A renamed scheme can be the source of another scheme. The chain reads from the root: a source, the overlay of the first scheme, then the overlay of the next. The build applies each overlay in order, and the last one wins. A "why" stays on the overlay that set the value.
+
+- The chain has at most 3 levels below the root source. A deeper chain fails the build with a plain message. Three levels cover a company scheme, a product scheme and a team scheme.
+- The lockfile records every link of the chain: each scheme's id, version and hash, root first.
+- `open-ds upgrade` moves one link at a time, from the root down. A conflict stops at the link where it occurs, so the user resolves it once.
+- A link that renames its scheme makes the schemes below it follow that scheme, not the root. Upgrades from the root reach them only through the link above.
+
 ### 10. Folder split of a source
 
 A source splits by scope: `scheme.json` (identity and global answers), `scopes/<scope>.json` (that scope's answers, rules and semantics), `brands/<brand>.json` and `components.json` (only the values that differ). The grammar splits the same way. Users never see this layout, because they read the built file and write the overlay.
@@ -200,3 +209,4 @@ Each step is one PR to RC1. The harness stays green after each step. Steps 1 to 
 4. Component code copied into a project belongs to the user; upgrades show a diff only.
 5. npm first. The zip format is set now and built later. No registry by URL.
 6. "Scheme" is the one name, with or without an overlay. A renamed overlay makes a new scheme that keeps a link to its source for opt-in upgrades.
+7. Schemes nest: a renamed scheme can be a source. The chain has at most 3 levels below the root, and the lockfile records every link.

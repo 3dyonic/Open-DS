@@ -1,6 +1,10 @@
 {
  "preview": {
   "progress/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Progress examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -84,10 +88,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#222222"
+        "color": "#141414"
        },
-       "token": "gray.dark.100",
-       "text": "#222222"
+       "token": "gray.dark.50",
+       "text": "#141414"
       }
      ]
     },

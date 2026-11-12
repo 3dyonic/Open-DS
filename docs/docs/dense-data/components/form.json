@@ -1,6 +1,10 @@
 {
  "preview": {
   "form/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Form examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {

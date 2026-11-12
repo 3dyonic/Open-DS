@@ -69,26 +69,6 @@
      ]
     },
     {
-     "title": "opacity.disabled",
-     "sample": {
-      "kind": "opacity",
-      "value": "var(--opacity-disabled)"
-     },
-     "api": [
-      {
-       "token": "opacity.disabled",
-       "value": "0.5"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "A control that is not available yet",
-       "why": "It comes with a hint that says what is missing. People must learn why they cannot go on. The hint tells them the next step."
-      }
-     ]
-    },
-    {
      "title": "color.border.focus",
      "sample": {
       "kind": "color",
@@ -99,7 +79,62 @@
        "token": "color.border.focus",
        "primitive": "color.blue.light.600",
        "value": "#0B4FC0",
-       "dark": "#8AB4F8"
+       "dark": "#A7C8FC"
+      }
+     ],
+     "rules": []
+    },
+    {
+     "title": "focus.ring.width",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-width)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.width",
+       "value": "3px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "Keyboard focus",
+       "detail": "button/focus-ring at focus.ring.width, with an offset",
+       "why": "Focus must be seen by everyone."
+      }
+     ]
+    },
+    {
+     "title": "focus.ring.offset",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--focus-ring-offset)"
+     },
+     "api": [
+      {
+       "token": "focus.ring.offset",
+       "value": "2px"
+      }
+     ],
+     "rules": [
+      {
+       "kind": "use",
+       "situation": "The gap around a focus ring",
+       "why": "The gap keeps the thick ring clear of the control, so focus shows on any fill."
+      }
+     ]
+    },
+    {
+     "title": "size.hit-area",
+     "sample": {
+      "kind": "bar",
+      "value": "var(--size-hit-area)"
+     },
+     "api": [
+      {
+       "token": "size.hit-area",
+       "value": "44px"
       }
      ],
      "rules": []

@@ -14,7 +14,7 @@ A short hint on hover or focus.
 
 ## See it live
 
-::preview{robot="slumber" id="tooltip/live"}
+::preview{id="tooltip/live"}
 
 ## When to use it
 
@@ -79,6 +79,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Tooltip reads 9 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Tooltip's tokens to change Tooltip alone.
+Tooltip reads 12 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Tooltip's tokens to change Tooltip alone.
 
 ::token-table{component="tooltip"}

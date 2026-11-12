@@ -1,6 +1,10 @@
 {
  "preview": {
   "checkbox/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Checkbox examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -83,7 +87,7 @@
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "checkbox-focus"
      },
      "values": [
@@ -95,29 +99,12 @@
     },
     {
      "group": "Checkbox",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.checkbox.disabled",
-      "alias": "opacity.disabled",
-      "variable": "checkbox-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Checkbox",
      "part": "Focus offset",
      "when": "on focus",
      "themed": false,
      "chain": {
       "token": "component.checkbox.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "checkbox-focus-offset"
      },
      "values": [
@@ -231,6 +218,110 @@
        },
        "token": "radius.pill",
        "text": "calc(infinity * 1px)"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Hit area",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.checkbox.hit-area",
+      "alias": "size.hit-area",
+      "variable": "checkbox-hit-area"
+     },
+     "values": [
+      {
+       "token": "size.44",
+       "text": "2.75rem"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled background",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-background",
+      "alias": "color.disabled.surface",
+      "variable": "checkbox-disabled-background"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#FCEFE6"
+       },
+       "token": "taupe.light.100",
+       "text": "#FCEFE6"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#33241F"
+       },
+       "token": "taupe.dark.100",
+       "text": "#33241F"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled border",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-border",
+      "alias": "color.disabled.border",
+      "variable": "checkbox-disabled-border"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#F2DCCF"
+       },
+       "token": "taupe.light.200",
+       "text": "#F2DCCF"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#4D3A33"
+       },
+       "token": "taupe.dark.200",
+       "text": "#4D3A33"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Disabled indicator",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.checkbox.disabled-indicator",
+      "alias": "color.disabled.text",
+      "variable": "checkbox-disabled-indicator"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#8A6F63"
+       },
+       "token": "taupe.light.500",
+       "text": "#8A6F63"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#E2C4B3"
+       },
+       "token": "taupe.dark.500",
+       "text": "#E2C4B3"
       }
      ]
     },

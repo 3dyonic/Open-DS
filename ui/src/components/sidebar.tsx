@@ -349,7 +349,10 @@ function SidebarSeparator({ className, ...props }: React.ComponentProps<typeof S
     <Separator
       data-slot="sidebar-separator"
       data-sidebar="separator"
-      className={cn("mx-[var(--sidebar-separator-margin-x)] w-auto bg-[color:var(--sidebar-separator-background)]", className)}
+      className={cn(
+        "mx-[var(--sidebar-separator-margin-x)] w-auto bg-[color:var(--sidebar-separator-background)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -461,12 +464,11 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-[var(--sidebar-menu-button-gap)] overflow-hidden rounded-[var(--sidebar-menu-button-radius)] p-[var(--sidebar-menu-button-padding)] text-left text-[length:var(--sidebar-menu-button-font-size)]/[var(--sidebar-menu-button-line-height)] outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-[var(--sidebar-menu-button-padding-right)] group-data-[collapsible=icon]:size-[var(--sidebar-menu-button-collapsed-size)]! group-data-[collapsible=icon]:p-[var(--sidebar-menu-button-padding)]! hover:bg-[color:var(--sidebar-menu-button-background-hover)] active:bg-[color:var(--sidebar-menu-button-background-pressed)] disabled:pointer-events-none disabled:opacity-[var(--sidebar-menu-button-opacity-disabled)] aria-disabled:pointer-events-none aria-disabled:opacity-[var(--sidebar-menu-button-opacity-disabled)] data-[active=true]:bg-[color:var(--sidebar-menu-button-background-current)] data-[active=true]:[font-weight:var(--sidebar-menu-button-font-weight-current)] data-[active=true]:shadow-[inset_var(--sidebar-menu-button-edge-width-current)_0_0_0_var(--sidebar-menu-button-edge-current)] data-[state=open]:hover:bg-[color:var(--sidebar-menu-button-background-open-hover)] [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-menu-button-icon-size)] [&>svg]:shrink-0 focus-visible:ring-[length:var(--sidebar-menu-button-focus-width)] focus-visible:ring-[color:var(--sidebar-menu-button-focus-ring)] focus-visible:ring-offset-[length:var(--sidebar-menu-button-focus-offset)] focus-visible:ring-offset-[color:var(--sidebar-menu-button-focus-ring-offset)]",
+  "peer/menu-button flex w-full items-center gap-[var(--sidebar-menu-button-gap)] overflow-hidden rounded-[var(--sidebar-menu-button-radius)] p-[var(--sidebar-menu-button-padding)] text-left text-[length:var(--sidebar-menu-button-font-size)]/[var(--sidebar-menu-button-line-height)] outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-[var(--sidebar-menu-button-padding-right)] group-data-[collapsible=icon]:size-[var(--sidebar-menu-button-collapsed-size)]! group-data-[collapsible=icon]:p-[var(--sidebar-menu-button-padding)]! hover:bg-[color:var(--sidebar-menu-button-background-hover)] active:bg-[color:var(--sidebar-menu-button-background-pressed)] disabled:pointer-events-none disabled:text-[color:var(--sidebar-menu-button-disabled-label)] disabled:[&_svg]:text-[color:var(--sidebar-menu-button-disabled-label)]! aria-disabled:pointer-events-none aria-disabled:text-[color:var(--sidebar-menu-button-disabled-label)] aria-disabled:[&_svg]:text-[color:var(--sidebar-menu-button-disabled-label)]! data-[active=true]:bg-[color:var(--sidebar-menu-button-background-current)] data-[active=true]:[font-weight:var(--sidebar-menu-button-font-weight-current)] data-[active=true]:shadow-[inset_var(--sidebar-menu-button-edge-width-current)_0_0_0_var(--sidebar-menu-button-edge-current)] data-[state=open]:hover:bg-[color:var(--sidebar-menu-button-background-open-hover)] [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-menu-button-icon-size)] [&>svg]:shrink-0 focus-visible:ring-[length:var(--sidebar-menu-button-focus-width)] focus-visible:ring-[color:var(--sidebar-menu-button-focus-ring)] focus-visible:ring-offset-[length:var(--sidebar-menu-button-focus-offset)] focus-visible:ring-offset-[color:var(--sidebar-menu-button-focus-ring-offset)]",
   {
     variants: {
       variant: {
-        default:
-          "",
+        default: "",
         outline:
           "bg-[color:var(--sidebar-menu-button-outline-background)] shadow-[0_0_0_var(--sidebar-menu-button-outline-border-width)_currentcolor] shadow-[color:var(--sidebar-menu-button-outline-border)] hover:bg-[color:var(--sidebar-menu-button-outline-background-hover)] hover:shadow-[color:var(--sidebar-menu-button-outline-border-hover)]",
       },
@@ -667,10 +669,12 @@ function SidebarMenuSubButton({
       data-size={size}
       data-active={isActive}
       className={cn(
-        "flex h-7 min-w-0 -translate-x-px items-center gap-[var(--sidebar-menu-sub-button-gap)] overflow-hidden rounded-[var(--sidebar-menu-sub-button-radius)] px-[var(--sidebar-menu-sub-button-padding-x)] text-[color:var(--sidebar-menu-sub-button-label)] ring-[color:var(--sidebar-menu-sub-button-focus-ring)] outline-hidden hover:bg-[color:var(--sidebar-menu-sub-button-background-hover)] active:bg-[color:var(--sidebar-menu-sub-button-background-pressed)] disabled:pointer-events-none disabled:opacity-[var(--sidebar-menu-sub-button-disabled-opacity-disabled)] aria-disabled:pointer-events-none aria-disabled:opacity-[var(--sidebar-menu-sub-button-disabled-opacity-disabled)] [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-menu-sub-button-icon-size)] [&>svg]:shrink-0 [&>svg]:text-[color:var(--sidebar-menu-sub-button-label)] focus-visible:ring-[length:var(--sidebar-menu-sub-button-focus)] focus-visible:ring-[color:var(--sidebar-menu-sub-button-focus-ring-focus)] focus-visible:ring-offset-[length:var(--sidebar-menu-sub-button-focus-offset)] focus-visible:ring-offset-[color:var(--sidebar-menu-sub-button-focus-ring-offset-focus)]",
+        "flex h-7 min-w-0 -translate-x-px items-center gap-[var(--sidebar-menu-sub-button-gap)] overflow-hidden rounded-[var(--sidebar-menu-sub-button-radius)] px-[var(--sidebar-menu-sub-button-padding-x)] text-[color:var(--sidebar-menu-sub-button-label)] ring-[color:var(--sidebar-menu-sub-button-focus-ring)] outline-hidden hover:bg-[color:var(--sidebar-menu-sub-button-background-hover)] active:bg-[color:var(--sidebar-menu-sub-button-background-pressed)] disabled:pointer-events-none disabled:text-[color:var(--sidebar-menu-sub-button-disabled-label)] disabled:[&_svg]:text-[color:var(--sidebar-menu-sub-button-disabled-label)]! aria-disabled:pointer-events-none aria-disabled:text-[color:var(--sidebar-menu-sub-button-disabled-label)] aria-disabled:[&_svg]:text-[color:var(--sidebar-menu-sub-button-disabled-label)]! [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-menu-sub-button-icon-size)] [&>svg]:shrink-0 [&>svg]:text-[color:var(--sidebar-menu-sub-button-label)] focus-visible:ring-[length:var(--sidebar-menu-sub-button-focus)] focus-visible:ring-[color:var(--sidebar-menu-sub-button-focus-ring-focus)] focus-visible:ring-offset-[length:var(--sidebar-menu-sub-button-focus-offset)] focus-visible:ring-offset-[color:var(--sidebar-menu-sub-button-focus-ring-offset-focus)]",
         "data-[active=true]:bg-[color:var(--sidebar-menu-sub-button-background-current)] data-[active=true]:shadow-[inset_var(--sidebar-menu-sub-button-edge-width-current)_0_0_0_var(--sidebar-menu-sub-button-edge-current)]",
-        size === "sm" && "text-[length:var(--sidebar-menu-sub-button-sm-font-size)]/[var(--sidebar-menu-sub-button-sm-line-height)]",
-        size === "md" && "text-[length:var(--sidebar-menu-sub-button-md-font-size)]/[var(--sidebar-menu-sub-button-md-line-height)]",
+        size === "sm" &&
+          "text-[length:var(--sidebar-menu-sub-button-sm-font-size)]/[var(--sidebar-menu-sub-button-sm-line-height)]",
+        size === "md" &&
+          "text-[length:var(--sidebar-menu-sub-button-md-font-size)]/[var(--sidebar-menu-sub-button-md-line-height)]",
         "group-data-[collapsible=icon]:hidden",
         className,
       )}

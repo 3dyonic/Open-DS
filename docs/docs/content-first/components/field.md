@@ -14,7 +14,7 @@ A label, control, hint and error laid out together, the same way every time.
 
 ## See it live
 
-::preview{robot="slumber" id="field/live"}
+::preview{id="field/live"}
 
 ## When to use it
 
@@ -32,7 +32,7 @@ Instead:
 What each variant is for in any design system, then what Content first decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="vertical" note="orientation" label="Used in Content first" tone="success"}
-::preview{robot="slumber" id="field/orientation/vertical"}
+::preview{id="field/orientation/vertical"}
 
 **What it is for**
 
@@ -51,7 +51,7 @@ Newsletter and search forms: the label above.
 :::
 
 :::panel{title="horizontal" note="orientation" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="field/orientation/horizontal"}
+::preview{id="field/orientation/horizontal"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ Forms are rare and short; stacking keeps the reading column.
 :::
 
 :::panel{title="responsive" note="orientation" label="Not used in Content first" tone="neutral"}
-::preview{robot="slumber" id="field/orientation/responsive"}
+::preview{id="field/orientation/responsive"}
 
 **What it is for**
 
@@ -155,6 +155,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Field reads 37 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Field's tokens to change Field alone.
+Field reads 38 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Field's tokens to change Field alone.
 
 ::token-table{component="field"}

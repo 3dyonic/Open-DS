@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/token-table.schema.json",
+  "title": "Token table",
+  "description": "The tokens a component reads, one row per part, from its token to the value it ends at in each theme. Drawn by the TokenTable composite on a component's page.",
+  "type": "object",
+  "required": [
+    "kind",
+    "head",
+    "rows"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "own",
+        "class"
+      ],
+      "description": "own: the component has its own tokens. class: it reads system tokens through its classes."
+    },
+    "legend": {
+      "type": "object",
+      "required": [
+        "label",
+        "text",
+        "title"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The marker's words, such as Changes with theme."
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the marker means, in a sentence or two."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The marker's tooltip."
+        }
+      },
+      "description": "What the marker on a themed row means."
+    },
+    "head": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "The column headings, in order."
+    },
+    "rows": {
+      "type": "array",
+      "description": "One row per part and state.",
+      "items": {
+        "type": "object",
+        "required": [
+          "part",
+          "chain",
+          "values"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "group": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The group of parts the row belongs to, such as Primary."
+          },
+          "part": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The part, such as Fill."
+          },
+          "when": {
+            "type": "string",
+            "description": "The state the row holds in, such as on hover. Empty for the rest state."
+          },
+          "themed": {
+            "type": "boolean",
+            "description": "Whether the value differs between themes."
+          },
+          "chain": {
+            "description": "How the part reaches its value.",
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "token",
+                  "alias",
+                  "variable"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The component's own token.",
+                    "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9@_-]+)+$"
+                  },
+                  "alias": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The semantic token it aliases."
+                  },
+                  "variable": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The CSS variable, without its leading dashes."
+                  }
+                },
+                "description": "An own token that aliases a semantic."
+              },
+              {
+                "type": "object",
+                "required": [
+                  "system",
+                  "variable"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The system token it reads straight through."
+                  },
+                  "variable": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The CSS variable, without its leading dashes."
+                  }
+                },
+                "description": "A system token read straight through."
+              },
+              {
+                "type": "object",
+                "required": [
+                  "cls",
+                  "variable",
+                  "token"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "cls": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The class that reads it."
+                  },
+                  "variable": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The CSS variable, without its leading dashes."
+                  },
+                  "token": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The token behind the variable."
+                  }
+                },
+                "description": "A system token read through a class."
+              }
+            ]
+          },
+          "values": {
+            "type": "array",
+            "minItems": 1,
+            "description": "The value in each theme, or one value for every theme.",
+            "items": {
+              "type": "object",
+              "required": [
+                "text"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "theme": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The theme, such as Light. Absent when one value holds in every theme."
+                },
+                "swatch": {
+                  "type": "object",
+                  "required": [],
+                  "additionalProperties": false,
+                  "properties": {
+                    "color": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "A color, drawn as a fill."
+                    },
+                    "corner": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "A corner radius, drawn as a corner."
+                    },
+                    "shadow": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "A shadow, drawn under a box."
+                    }
+                  },
+                  "description": "The value drawn small: a color, a corner or a shadow."
+                },
+                "token": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The primitive the value comes from."
+                },
+                "text": {
+                  "type": "string",
+                  "description": "The value as text, such as #4B3FD9 or 8px."
+                },
+                "span": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "description": "How many theme columns the value spans."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

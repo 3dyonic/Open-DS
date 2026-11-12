@@ -14,7 +14,7 @@ A control that commits an action on this screen.
 
 ## See it live
 
-::preview{robot="slumber" id="button/live"}
+::preview{id="button/live"}
 
 ## When to use it
 
@@ -33,7 +33,7 @@ Instead:
 What each variant is for in any design system, then what Brand expressive decided and why. Each sample is the live story with that variant set.
 
 :::panel{title="primary" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="button/variant/primary"}
+::preview{id="button/variant/primary"}
 
 **What it is for**
 
@@ -52,7 +52,7 @@ One loud call to action per section.
 :::
 
 :::panel{title="secondary" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="button/variant/secondary"}
+::preview{id="button/variant/secondary"}
 
 **What it is for**
 
@@ -71,7 +71,7 @@ The first step of a delete, before the confirm.
 :::
 
 :::panel{title="danger" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="button/variant/danger"}
+::preview{id="button/variant/danger"}
 
 **What it is for**
 
@@ -90,7 +90,7 @@ The confirm of a delete. It stays red, apart from the brand's pink.
 :::
 
 :::panel{title="ghost" note="variant" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="button/variant/ghost"}
+::preview{id="button/variant/ghost"}
 
 **What it is for**
 
@@ -110,7 +110,7 @@ The alternative next to the primary, and row actions with a word.
 :::
 
 :::panel{title="default" note="size" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="button/size/default"}
+::preview{id="button/size/default"}
 
 **What it is for**
 
@@ -126,7 +126,7 @@ Every button, at touch size: phones first.
 :::
 
 :::panel{title="compact" note="size" label="Not used in Brand expressive" tone="neutral"}
-::preview{robot="slumber" id="button/size/compact"}
+::preview{id="button/size/compact"}
 
 **What it is for**
 
@@ -144,7 +144,7 @@ Phones first: no compact controls.
 :::
 
 :::panel{title="icon" note="size" label="Not used in Brand expressive" tone="neutral"}
-::preview{robot="slumber" id="button/size/icon"}
+::preview{id="button/size/icon"}
 
 **What it is for**
 
@@ -164,7 +164,7 @@ Phones first: hover hints never show, so every button has a word.
 :::
 
 :::panel{title="large" note="size" label="Used in Brand expressive" tone="success"}
-::preview{robot="slumber" id="button/size/large"}
+::preview{id="button/size/large"}
 
 **What it is for**
 
@@ -247,7 +247,7 @@ Only with a visible reason next to it.
 On phones, hover hints never show; a word says what will happen.
 :::
 :::panel{title="Keyboard focus"}
-**Use** button/focus-ring at border-width.focus
+**Use** button/focus-ring at focus.ring.width
 
 **Not** Removing the outline
 

@@ -99,11 +99,19 @@
      "semantic": "color.surface.raised",
      "key": "background",
      "value": "#FFFFFF",
-     "darkValue": "#141414",
+     "darkValue": "#333333",
      "byScheme": true,
-     "rule": "Fills that float above content.",
-     "pick": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
-     "darkPick": "neutral.50, the same as content (surface.default): a menu stands out by its edge alone, not by its fill, as in light.",
+     "rule": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
+     "pick": [
+      "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill."
+     ],
+     "darkPick": [
+      "neutral.200: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, ",
+      {
+       "ratio": 1.26
+      },
+      " on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So people see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles)."
+     ],
      "shares": [
       "surface.default",
       "action.secondary"
@@ -115,21 +123,36 @@
      "key": "radius",
      "value": "0.5rem",
      "byScheme": true,
-     "pick": "radius.8: Cards, menus and dialogs take the largest corner, 8px, so a container's corner differs from the 6px controls inside it.",
+     "pick": [
+      "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1)."
+     ],
      "shares": []
     },
     {
      "kind": "token",
-     "semantic": "color.border.default",
+     "semantic": "color.border.raised",
      "key": "neutral.border",
      "value": "#D6D6D6",
-     "darkValue": "#333333",
+     "darkValue": "#595959",
      "byScheme": true,
-     "rule": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-     "pick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
-     "darkPick": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.default). It decorates, so it holds no contrast minimum.",
+     "rule": "The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot.",
+     "pick": [
+      "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, ",
+      {
+       "ratio": 1.45
+      },
+      " on surface.raised, the layer's only edge, as nothing here casts a shadow. So people see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
+     "darkPick": [
+      "neutral.300: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, ",
+      {
+       "ratio": 1.8
+      },
+      " on surface.raised (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition)."
+     ],
      "shares": [
       "surface.pressed",
+      "border.default",
       "disabled.border"
      ]
     },
@@ -139,7 +162,12 @@
      "key": "shadow",
      "value": "0px 0px 0px, #00000000",
      "byScheme": true,
-     "pick": "shadow.none: No shadows; borders do the work.",
+     "pick": [
+      "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values)."
+     ],
+     "darkPick": [
+      "shadow.none: We use the light pick for the dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so the dark overlay elevation and the light pick never differ, because the step reads the same in dark (theming.values)."
+     ],
      "shares": [
       "elevation.card"
      ]
@@ -175,7 +203,9 @@
      "key": "title.font-weight",
      "value": "700",
      "byScheme": true,
-     "pick": "font.weight.700",
+     "pick": [
+      "font.weight.700"
+     ],
      "shares": []
     },
     {
@@ -184,7 +214,9 @@
      "key": "title.font-size",
      "value": "1.1875rem",
      "byScheme": true,
-     "pick": "font.size.19",
+     "pick": [
+      "font.size.19"
+     ],
      "shares": []
     },
     {
@@ -195,8 +227,28 @@
      "darkValue": "#F7F7F7",
      "byScheme": true,
      "rule": "Body text and headings.",
-     "pick": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.900: the strongest text step, 17.2:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 18.42
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.900: the strongest text step, ",
+      {
+       "ratio": 14.85
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "surface.inverse"
      ]
@@ -234,8 +286,28 @@
      "darkValue": "#D6D6D6",
      "byScheme": true,
      "rule": "Supporting text.",
-     "pick": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "neutral.700: supporting text, 12.68:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 12.63
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "neutral.700: supporting text, ",
+      {
+       "ratio": 10.95
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": []
     },
     {
@@ -244,7 +316,9 @@
      "key": "description.font-size",
      "value": "1rem",
      "byScheme": true,
-     "pick": "font.size.16",
+     "pick": [
+      "font.size.16"
+     ],
      "shares": []
     },
     {
@@ -253,7 +327,9 @@
      "key": "content.gap",
      "value": "0.75rem",
      "byScheme": true,
-     "pick": "space.12",
+     "pick": [
+      "space.12"
+     ],
      "shares": []
     }
    ]
@@ -289,8 +365,28 @@
      "darkValue": "#5CC283",
      "byScheme": false,
      "rule": "Confirmation that something worked. It sits outside the urgency order.",
-     "pick": "green.light.600: success marks icons and edges, 5.38:1 on surface.default, over 3:1; its text uses success-on-light, which reads at the floor.",
-     "darkPick": "green.dark.600: success reads as text and icons, 8.33:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "green.light.600: success marks icons and edges, ",
+      {
+       "ratio": 5.38
+      },
+      " on surface.default, over ",
+      {
+       "ratio": 3
+      },
+      "; its text uses success-on-light, which reads at the floor."
+     ],
+     "darkPick": [
+      "green.dark.600: success reads as text and icons, ",
+      {
+       "ratio": 7.2
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
      "shares": [
       "category.3"
      ]
@@ -300,11 +396,43 @@
      "semantic": "color.status.danger",
      "key": "danger.edge",
      "value": "#981519",
-     "darkValue": "#F28B8B",
+     "darkValue": "#FEDBDA",
      "byScheme": true,
      "rule": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-     "pick": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
-     "darkPick": "red.dark.600: danger reads as text and icons, 7.76:1 on surface.default, above the 7:1 floor.",
+     "pick": [
+      "red.light.700: danger reads as text and icons, ",
+      {
+       "ratio": 8.55
+      },
+      " on surface.default, above the ",
+      {
+       "ratio": 7
+      },
+      " floor."
+     ],
+     "darkPick": [
+      "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at ",
+      {
+       "ratio": 7
+      },
+      " in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading ",
+      {
+       "ratio": 12.39
+      },
+      " on surface.default and ",
+      {
+       "ratio": 9.84
+      },
+      " on surface.raised. Below it, the key (red.dark.600) gives ",
+      {
+       "ratio": 5.32
+      },
+      " and red.dark.700 ",
+      {
+       "ratio": 6.8
+      },
+      " on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands)."
+     ],
      "shares": [
       "action.danger"
      ]

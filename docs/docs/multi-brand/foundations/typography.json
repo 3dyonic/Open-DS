@@ -240,7 +240,12 @@
      "sample": {
       "kind": "type",
       "role": "data",
-      "text": "Plan Standard · Next payment 12.00 · Orders this year 9 · Member since 2024"
+      "parts": [
+       "Plan Standard",
+       "Next payment 12.00",
+       "Orders this year 9",
+       "Member since 2024"
+      ]
      },
      "api": [
       {

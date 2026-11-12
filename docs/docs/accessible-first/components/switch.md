@@ -15,7 +15,7 @@ An on or off setting that applies at once, with no submit.
 
 ## See it live
 
-::preview{robot="slumber" id="switch/live"}
+::preview{id="switch/live"}
 
 ## When to use it
 
@@ -66,6 +66,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Switch reads 17 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Switch's tokens to change Switch alone.
+Switch reads 18 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Switch's tokens to change Switch alone.
 
 ::token-table{component="switch"}

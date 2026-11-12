@@ -142,41 +142,6 @@
        "why": "A thin edge stays quiet beside long text. The words carry the page, not the lines."
       }
      ]
-    },
-    {
-     "title": "Focus ring",
-     "sample": {
-      "kind": "focus"
-     },
-     "api": [
-      {
-       "token": "border-width.focus",
-       "value": "2px"
-      },
-      {
-       "token": "border-width.focus-offset",
-       "value": "2px"
-      },
-      {
-       "token": "color.border.focus",
-       "primitive": "color.navy.light.600",
-       "value": "#1E3A5F",
-       "dark": "#8FA6C4"
-      }
-     ],
-     "rules": [
-      {
-       "kind": "use",
-       "situation": "Keyboard focus",
-       "detail": "button/focus-ring at border-width.focus",
-       "why": "Keyboard users must always see where they are."
-      },
-      {
-       "kind": "use",
-       "situation": "The gap around a focus ring",
-       "why": "The ring stands clear of the control, so readers see focus on any fill."
-      }
-     ]
     }
    ]
   }

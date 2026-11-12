@@ -4,7 +4,8 @@
    "cards": [
     {
      "title": "Color",
-     "text": "180 primitives · 66 in use",
+     "text": "181 primitives",
+     "note": "67 in use",
      "href": "./color",
      "robot": {
       "day": "/robots/swatch.webp",
@@ -45,9 +46,9 @@
       }
      ],
      "meter": {
-      "value": 66,
-      "max": 180,
-      "label": "66 of 180 in use"
+      "value": 67,
+      "max": 181,
+      "label": "67 of 181 in use"
      }
     }
    ]
@@ -56,7 +57,8 @@
    "cards": [
     {
      "title": "Space and size",
-     "text": "13 primitives · 13 in use",
+     "text": "13 primitives",
+     "note": "13 in use",
      "href": "./space-and-size",
      "robot": {
       "day": "/robots/measure.webp",
@@ -100,7 +102,8 @@
     },
     {
      "title": "Shape",
-     "text": "10 primitives · 10 in use",
+     "text": "10 primitives",
+     "note": "10 in use",
      "href": "./shape",
      "robot": {
       "day": "/robots/scopes/shape.webp",
@@ -136,7 +139,8 @@
    "cards": [
     {
      "title": "Type",
-     "text": "13 primitives · 13 in use",
+     "text": "13 primitives",
+     "note": "13 in use",
      "href": "./type",
      "robot": {
       "day": "/robots/scopes/typography.webp",
@@ -152,8 +156,11 @@
        "value": "'Plus Jakarta Sans', system-ui, sans-serif"
       },
       {
-       "kind": "text",
-       "value": "Inter · Plus Jakarta Sans"
+       "kind": "names",
+       "names": [
+        "Inter",
+        "Plus Jakarta Sans"
+       ]
       }
      ],
      "meter": {
@@ -164,7 +171,8 @@
     },
     {
      "title": "Motion",
-     "text": "3 primitives · 3 in use",
+     "text": "4 primitives",
+     "note": "4 in use",
      "href": "./motion",
      "robot": {
       "day": "/robots/scopes/motion.webp",
@@ -173,19 +181,20 @@
      "samples": [
       {
        "kind": "duration",
-       "value": "200ms",
-       "note": "200ms"
+       "value": "150ms",
+       "note": "150ms"
       }
      ],
      "meter": {
-      "value": 3,
-      "max": 3,
-      "label": "3 of 3 in use"
+      "value": 4,
+      "max": 4,
+      "label": "4 of 4 in use"
      }
     },
     {
      "title": "Effects",
-     "text": "5 primitives · 5 in use",
+     "text": "5 primitives",
+     "note": "5 in use",
      "href": "./effects",
      "robot": {
       "day": "/robots/scopes/elevation.webp",
@@ -202,7 +211,7 @@
       },
       {
        "kind": "shadow",
-       "value": "0px 2px 8px 0px #00000066"
+       "value": "0px 12px 32px 0px #00000080"
       }
      ],
      "meter": {

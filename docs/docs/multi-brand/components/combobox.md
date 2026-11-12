@@ -14,7 +14,7 @@ A text field that suggests and completes matches from a known list as people typ
 
 ## See it live
 
-::preview{robot="slumber" id="combobox/live"}
+::preview{id="combobox/live"}
 
 ## When to use it
 
@@ -67,7 +67,7 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Combobox reads 67 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Combobox's tokens to change Combobox alone.
+Combobox reads 71 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of Combobox's tokens to change Combobox alone.
 
 ::token-table{component="combobox"}
 

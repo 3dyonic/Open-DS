@@ -1,6 +1,10 @@
 {
  "preview": {
   "context-menu/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Context menu examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -55,7 +59,58 @@
      "values": [
       {
        "token": "duration.relaxed",
-       "text": "320ms"
+       "text": "300ms"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition enter easing",
+     "when": "when open",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.enter-easing",
+      "alias": "motion.easing.enter",
+      "variable": "transition-enter-easing"
+     },
+     "values": [
+      {
+       "token": "easing.standard",
+       "text": "cubic-bezier(0.2,0,0,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit easing",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-easing",
+      "alias": "motion.easing.exit",
+      "variable": "transition-exit-easing"
+     },
+     "values": [
+      {
+       "token": "easing.strong-out",
+       "text": "cubic-bezier(0.23,1,0.32,1)"
+      }
+     ]
+    },
+    {
+     "group": "Shared",
+     "part": "Transition exit duration",
+     "when": "",
+     "themed": false,
+     "chain": {
+      "token": "component.transition.exit-duration",
+      "alias": "motion.duration.exit",
+      "variable": "transition-exit-duration"
+     },
+     "values": [
+      {
+       "token": "duration.moderate",
+       "text": "150ms"
       }
      ]
     },
@@ -241,10 +296,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -270,10 +325,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -345,10 +400,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -434,7 +489,7 @@
      "themed": true,
      "chain": {
       "token": "component.context-menu.sub.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "context-menu-sub-content-border"
      },
      "values": [
@@ -515,10 +570,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#1F1B16"
+        "color": "#2E2A24"
        },
-       "token": "stone.dark.50",
-       "text": "#1F1B16"
+       "token": "stone.dark.100",
+       "text": "#2E2A24"
       }
      ]
     },
@@ -602,7 +657,7 @@
      "themed": true,
      "chain": {
       "token": "component.context-menu.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "context-menu-content-border"
      },
      "values": [
@@ -760,23 +815,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.context-menu.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "context-menu-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Padding left",
      "when": "",
      "themed": false,
@@ -889,10 +927,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },
@@ -951,6 +989,35 @@
        },
        "token": "stone.dark.400",
        "text": "#A39A8B"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.context-menu.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "context-menu-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },
@@ -1087,23 +1154,6 @@
     },
     {
      "group": "Checkbox",
-     "part": "Item disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.context-menu.checkbox.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "context-menu-checkbox-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Checkbox",
      "part": "Item icon size",
      "when": "",
      "themed": false,
@@ -1141,10 +1191,39 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
+      }
+     ]
+    },
+    {
+     "group": "Checkbox",
+     "part": "Item disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.context-menu.checkbox.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "context-menu-checkbox-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },
@@ -1298,23 +1377,6 @@
     },
     {
      "group": "Radio",
-     "part": "Item disabled opacity disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.context-menu.radio.item.disabled-opacity-disabled",
-      "alias": "opacity.disabled",
-      "variable": "context-menu-radio-item-disabled-opacity-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Radio",
      "part": "Item icon size",
      "when": "",
      "themed": false,
@@ -1352,10 +1414,39 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#2E2A24"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.100",
-       "text": "#2E2A24"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
+      }
+     ]
+    },
+    {
+     "group": "Radio",
+     "part": "Item disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.context-menu.radio.item.disabled.label",
+      "alias": "color.disabled.text",
+      "variable": "context-menu-radio-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Light",
+       "swatch": {
+        "color": "#7A7062"
+       },
+       "token": "stone.light.500",
+       "text": "#7A7062"
+      },
+      {
+       "theme": "Dark",
+       "swatch": {
+        "color": "#CFC6B6"
+       },
+       "token": "stone.dark.500",
+       "text": "#CFC6B6"
       }
      ]
     },

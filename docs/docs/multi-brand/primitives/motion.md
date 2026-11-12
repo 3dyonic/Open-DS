@@ -8,7 +8,7 @@ description: "Motion primitives in Multi-brand."
 
 # Motion
 
-3 primitives, 3 used.
+4 primitives, 4 used.
 
 ## `duration`
 

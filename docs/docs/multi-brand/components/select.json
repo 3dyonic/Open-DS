@@ -1,6 +1,10 @@
 {
  "preview": {
   "select/live": {
+   "robot": {
+    "day": "/robots/slumber.webp",
+    "night": "/robots/slumber-dark.webp"
+   },
    "title": "Select examples in Storybook",
    "wait": "Start Storybook to see it live: npm run storybook",
    "frames": {
@@ -64,10 +68,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Birch Light",
@@ -80,10 +84,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       },
       {
        "theme": "Coral Light",
@@ -96,10 +100,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#0F172A"
+        "color": "#1E293B"
        },
-       "token": "slate-deep.dark.50",
-       "text": "#0F172A"
+       "token": "slate-deep.dark.100",
+       "text": "#1E293B"
       }
      ]
     },
@@ -864,7 +868,7 @@
      "themed": false,
      "chain": {
       "token": "component.select.trigger.focus-width",
-      "alias": "border-width.focus",
+      "alias": "focus.ring.width",
       "variable": "select-trigger-focus-width"
      },
      "values": [
@@ -881,7 +885,7 @@
      "themed": false,
      "chain": {
       "token": "component.select.trigger.focus-offset",
-      "alias": "border-width.focus-offset",
+      "alias": "focus.ring.offset",
       "variable": "select-trigger-focus-offset"
      },
      "values": [
@@ -1254,7 +1258,7 @@
      "themed": true,
      "chain": {
       "token": "component.select.content.border",
-      "alias": "color.border.default",
+      "alias": "color.border.raised",
       "variable": "select-content-border"
      },
      "values": [
@@ -1439,23 +1443,6 @@
     },
     {
      "group": "Item",
-     "part": "Disabled",
-     "when": "when disabled",
-     "themed": false,
-     "chain": {
-      "token": "component.select.item.disabled",
-      "alias": "opacity.disabled",
-      "variable": "select-item-disabled"
-     },
-     "values": [
-      {
-       "token": "opacity.40",
-       "text": "0.4"
-      }
-     ]
-    },
-    {
-     "group": "Item",
      "part": "Background highlight",
      "when": "on focus",
      "themed": true,
@@ -1476,10 +1463,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -1492,10 +1479,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -1508,10 +1495,71 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#1E293B"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.100",
-       "text": "#1E293B"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
+      }
+     ]
+    },
+    {
+     "group": "Item",
+     "part": "Disabled label",
+     "when": "when disabled",
+     "themed": true,
+     "chain": {
+      "token": "component.select.item.disabled-label",
+      "alias": "color.disabled.text",
+      "variable": "select-item-disabled-label"
+     },
+     "values": [
+      {
+       "theme": "Aster Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Aster Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Birch Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Birch Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
+      },
+      {
+       "theme": "Coral Light",
+       "swatch": {
+        "color": "#64748B"
+       },
+       "token": "slate-deep.light.500",
+       "text": "#64748B"
+      },
+      {
+       "theme": "Coral Dark",
+       "swatch": {
+        "color": "#CBD5E1"
+       },
+       "token": "slate-deep.dark.500",
+       "text": "#CBD5E1"
       }
      ]
     }
