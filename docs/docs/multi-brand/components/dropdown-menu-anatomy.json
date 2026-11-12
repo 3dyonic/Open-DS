@@ -190,10 +190,10 @@
      "darkValue": "0px 12px 32px, #00000080",
      "byScheme": true,
      "pick": [
-      "shadow.overlay: a soft 32px blur at a 12px offset, four times the card's blur, so a menu or dialog floats clear above the cards."
+      "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show floating height, one step above the cards. The cast shade does this by a 12px offset and a 32px blur at 16%, four times the card's blur. So a menu floats clear above the cards in every brand, because cards and overlays rise (elevation.roles) and shadows are soft (elevation.values)."
      ],
      "darkPick": [
-      "shadow.overlay-dark: the same 32px blur and 12px offset in 50% black, so a menu or dialog still floats above cards on a dark page."
+      "shadow.overlay-dark: We use the light overlay shadow's shape in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16%. So a menu still floats above the cards, though its shade reads weaker on dark than in light, because cards and overlays rise (elevation.roles) and dark ships for every brand (theming.values)."
      ],
      "shares": []
     }

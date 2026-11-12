@@ -161,7 +161,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly."
+      "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1)."
      ],
      "shares": []
     },

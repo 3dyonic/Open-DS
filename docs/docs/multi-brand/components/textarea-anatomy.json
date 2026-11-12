@@ -112,7 +112,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: the control corner; it is not a pill, so a growing box keeps it."
+      "radius.4: We use the 4px control corner for Aster's growing boxes in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because Aster's control corner is small, not a pill (shape.values)."
      ],
      "shares": []
     },

@@ -54,7 +54,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="people-q2"}
 :::
 
-:::fold{id="content" title="Content and data" note="2 answers, 14 decisions"}
+:::fold{id="content" title="Content and data" note="2 answers, 16 decisions"}
 #### What is the main content? {#content-q1}
 
 ::decision-answer{id="content-q1"}
@@ -94,7 +94,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="outcomes-q2"}
 :::
 
-:::fold{id="brand" title="Brand" note="3 answers, 16 decisions"}
+:::fold{id="brand" title="Brand" note="3 answers, 21 decisions"}
 #### What should the brand feel like? {#brand-q1}
 
 ::decision-answer{id="brand-q1"}
@@ -196,7 +196,7 @@ All 79, by section, in the order every scheme answers them. Each answer shows wh
 ::decision-answer{id="spacing-lands"}
 :::
 
-:::fold{id="shape" title="Shape" note="5 answers, 14 decisions, and the values of its tokens"}
+:::fold{id="shape" title="Shape" note="5 answers, 11 decisions, and the values of its tokens"}
 #### Which shape roles does it need? {#shape-roles}
 
 ::decision-answer{id="shape-roles"}

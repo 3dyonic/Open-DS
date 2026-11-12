@@ -1009,11 +1009,23 @@
       "kind": "picks",
       "items": [
        {
-        "token": "radius.surface",
+        "token": "radius.control",
         "mode": "every mode",
-        "pick": "radius.4",
+        "pick": "radius.2",
         "why": [
-         "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly."
+         "radius.2: We use a 2px corner for buttons and inputs in order to mark their role as controls and keep density. A small radius does this by softening the edge just enough to read as an object, while it keeps straight lines that align in rows. So a dense toolbar reads as one line of actions, because the product is dense (content.q2) and precise (brand.q1), with slightly rounded controls (shape.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.element",
+        "mode": "every mode",
+        "pick": "radius.2",
+        "why": [
+         "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2)."
         ],
         "link": {
          "label": "Shape",
@@ -1186,7 +1198,7 @@
         "mode": "every mode",
         "pick": "radius.0",
         "why": [
-         "radius.0: square badges are rectangles, so status badges line up down a column in the table."
+         "radius.0: We use a square corner for badges in order to give status a role of its own, apart from the 2px controls. A zero radius does this by keeping the badge a plain rectangle with no curve. So status badges line up down a table column, because badges get their own corner (shape.roles) and people scan and compare rows (tasks.q1)."
         ],
         "link": {
          "label": "Shape",
@@ -1787,11 +1799,47 @@
       "kind": "picks",
       "items": [
        {
+        "token": "radius.control",
+        "mode": "every mode",
+        "pick": "radius.2",
+        "why": [
+         "radius.2: We use a 2px corner for buttons and inputs in order to mark their role as controls and keep density. A small radius does this by softening the edge just enough to read as an object, while it keeps straight lines that align in rows. So a dense toolbar reads as one line of actions, because the product is dense (content.q2) and precise (brand.q1), with slightly rounded controls (shape.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.option",
+        "mode": "every mode",
+        "pick": "radius.0",
+        "why": [
+         "radius.0: We use a square corner for menu options in order to keep nesting by the relation: the 4px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance, and here no curve is left. So an option's edge runs parallel to its menu's edge, because surfaces take 4px (shape.roles, brand.q1) and the layout is compact (spacing.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.element",
+        "mode": "every mode",
+        "pick": "radius.2",
+        "why": [
+         "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
         "token": "radius.surface",
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly."
+         "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1)."
         ],
         "link": {
          "label": "Shape",
@@ -4140,7 +4188,7 @@
         "mode": "every mode",
         "pick": "radius.0",
         "why": [
-         "radius.0: square, because the panel's 4px corner is used up by its 4px padding."
+         "radius.0: We use a square corner for menu options in order to keep nesting by the relation: the 4px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance, and here no curve is left. So an option's edge runs parallel to its menu's edge, because surfaces take 4px (shape.roles, brand.q1) and the layout is compact (spacing.values)."
         ],
         "link": {
          "label": "Shape",
@@ -4210,23 +4258,11 @@
       "kind": "picks",
       "items": [
        {
-        "token": "radius.control",
-        "mode": "every mode",
-        "pick": "radius.2",
-        "why": [
-         "radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows."
-        ],
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
         "token": "radius.badge",
         "mode": "every mode",
         "pick": "radius.0",
         "why": [
-         "radius.0: square badges are rectangles, so status badges line up down a column in the table."
+         "radius.0: We use a square corner for badges in order to give status a role of its own, apart from the 2px controls. A zero radius does this by keeping the badge a plain rectangle with no curve. So status badges line up down a table column, because badges get their own corner (shape.roles) and people scan and compare rows (tasks.q1)."
         ],
         "link": {
          "label": "Shape",
@@ -4238,19 +4274,7 @@
         "mode": "every mode",
         "pick": "radius.0",
         "why": [
-         "radius.0: square, because the panel's 4px corner is used up by its 4px padding."
-        ],
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "token": "radius.element",
-        "mode": "every mode",
-        "pick": "radius.2",
-        "why": [
-         "radius.2: the control corner; it is not a pill, so a growing box keeps it."
+         "radius.0: We use a square corner for menu options in order to keep nesting by the relation: the 4px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance, and here no curve is left. So an option's edge runs parallel to its menu's edge, because surfaces take 4px (shape.roles, brand.q1) and the layout is compact (spacing.values)."
         ],
         "link": {
          "label": "Shape",
@@ -4262,7 +4286,7 @@
         "mode": "every mode",
         "pick": "radius.4",
         "why": [
-         "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly."
+         "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1)."
         ],
         "link": {
          "label": "Shape",
@@ -4285,11 +4309,37 @@
     }
    ],
    "decided": {
-    "groups": [],
-    "values": {
-     "label": "Shape",
-     "href": "foundations/shape"
-    }
+    "groups": [
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "radius.option",
+        "mode": "every mode",
+        "pick": "radius.0",
+        "why": [
+         "radius.0: We use a square corner for menu options in order to keep nesting by the relation: the 4px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance, and here no curve is left. So an option's edge runs parallel to its menu's edge, because surfaces take 4px (shape.roles, brand.q1) and the layout is compact (spacing.values)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       },
+       {
+        "token": "radius.surface",
+        "mode": "every mode",
+        "pick": "radius.4",
+        "why": [
+         "radius.4: We use a 4px corner for cards, menus and dialogs in order to make touching panels read as separate objects, in a precise tone by brand convention. A small radius does this by breaking the outline at each corner, just softer than the 2px controls. So panels read apart yet still tile neatly, because containers get their own corner (shape.roles, shape.count) and the brand is precise (brand.q1)."
+        ],
+        "link": {
+         "label": "Shape",
+         "href": "foundations/shape"
+        }
+       }
+      ]
+     }
+    ]
    }
   },
   "shape-definition": {
@@ -4340,7 +4390,7 @@
         "mode": "every mode",
         "pick": "radius.2",
         "why": [
-         "radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows."
+         "radius.2: We use a 2px corner for buttons and inputs in order to mark their role as controls and keep density. A small radius does this by softening the edge just enough to read as an object, while it keeps straight lines that align in rows. So a dense toolbar reads as one line of actions, because the product is dense (content.q2) and precise (brand.q1), with slightly rounded controls (shape.values)."
         ],
         "link": {
          "label": "Shape",
@@ -4352,7 +4402,7 @@
         "mode": "every mode",
         "pick": "radius.0",
         "why": [
-         "radius.0: square badges are rectangles, so status badges line up down a column in the table."
+         "radius.0: We use a square corner for badges in order to give status a role of its own, apart from the 2px controls. A zero radius does this by keeping the badge a plain rectangle with no curve. So status badges line up down a table column, because badges get their own corner (shape.roles) and people scan and compare rows (tasks.q1)."
         ],
         "link": {
          "label": "Shape",
@@ -4364,19 +4414,7 @@
         "mode": "every mode",
         "pick": "radius.2",
         "why": [
-         "radius.2: the control corner; it is not a pill, so a growing box keeps it."
-        ],
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       },
-       {
-        "token": "radius.surface",
-        "mode": "every mode",
-        "pick": "radius.4",
-        "why": [
-         "radius.4: cards, menus and dialogs get 4px, just softer than the 2px controls, so panels still tile neatly."
+         "radius.2: We use the 2px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list row or a text area the curve of the controls beside it. So rows and fields read as one family, because the control corner is small, not a pill (shape.values), and the product is dense (content.q2)."
         ],
         "link": {
          "label": "Shape",
@@ -4398,25 +4436,11 @@
     }
    ],
    "decided": {
-    "groups": [
-     {
-      "kind": "picks",
-      "items": [
-       {
-        "token": "radius.control",
-        "mode": "every mode",
-        "pick": "radius.2",
-        "why": [
-         "radius.2: a 2px corner marks buttons and inputs as controls, yet keeps them straight in dense rows."
-        ],
-        "link": {
-         "label": "Shape",
-         "href": "foundations/shape"
-        }
-       }
-      ]
-     }
-    ]
+    "groups": [],
+    "values": {
+     "label": "Shape",
+     "href": "foundations/shape"
+    }
    }
   },
   "elevation-roles": {
@@ -4498,7 +4522,7 @@
         "mode": "light",
         "pick": "shadow.none",
         "why": [
-         "shadow.none: Only menus and dialogs float; cards use lines."
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, framed by its line. So the page reads as one flat grid, because only menus and dialogs float (elevation.roles) and shadows are subtle (elevation.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -4510,7 +4534,7 @@
         "mode": "light",
         "pick": "shadow.overlay",
         "why": [
-         "shadow.overlay: Subtle shadows keep the grid crisp."
+         "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by an 8px offset and a 24px blur at 16% under the panel's edge. So a menu reads as above the grid without a heavy edge, because only what floats rises (elevation.roles) and shadows are subtle (elevation.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -4546,7 +4570,7 @@
         "mode": "dark",
         "pick": "shadow.none",
         "why": [
-         "shadow.none: Only menus and dialogs float; cards use lines."
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, framed by its line. So the page reads as one flat grid, because only menus and dialogs float (elevation.roles) and shadows are subtle (elevation.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -4558,7 +4582,7 @@
         "mode": "dark",
         "pick": "shadow.overlay-dark",
         "why": [
-         "shadow.overlay-dark: Subtle shadows keep the grid crisp."
+         "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 8px offset and 24px blur, at 50% black instead of 16%. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships as standard (theming.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -4784,7 +4808,7 @@
         "mode": "light",
         "pick": "shadow.none",
         "why": [
-         "shadow.none: Only menus and dialogs float; cards use lines."
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, framed by its line. So the page reads as one flat grid, because only menus and dialogs float (elevation.roles) and shadows are subtle (elevation.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -4796,7 +4820,7 @@
         "mode": "light",
         "pick": "shadow.overlay",
         "why": [
-         "shadow.overlay: Subtle shadows keep the grid crisp."
+         "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by an 8px offset and a 24px blur at 16% under the panel's edge. So a menu reads as above the grid without a heavy edge, because only what floats rises (elevation.roles) and shadows are subtle (elevation.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -4808,7 +4832,7 @@
         "mode": "dark",
         "pick": "shadow.none",
         "why": [
-         "shadow.none: Only menus and dialogs float; cards use lines."
+         "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, framed by its line. So the page reads as one flat grid, because only menus and dialogs float (elevation.roles) and shadows are subtle (elevation.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -4820,7 +4844,7 @@
         "mode": "dark",
         "pick": "shadow.overlay-dark",
         "why": [
-         "shadow.overlay-dark: Subtle shadows keep the grid crisp."
+         "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 8px offset and 24px blur, at 50% black instead of 16%. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships as standard (theming.values)."
         ],
         "link": {
          "label": "Elevation",
@@ -5260,6 +5284,23 @@
         "link": {
          "label": "Theming",
          "href": "foundations/theming"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "picks",
+      "items": [
+       {
+        "token": "elevation.overlay",
+        "mode": "dark",
+        "pick": "shadow.overlay-dark",
+        "why": [
+         "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 8px offset and 24px blur, at 50% black instead of 16%. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships as standard (theming.values)."
+        ],
+        "link": {
+         "label": "Elevation",
+         "href": "foundations/elevation"
         }
        }
       ]

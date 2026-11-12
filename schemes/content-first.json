@@ -1784,6 +1784,63 @@
       ]
     }
   ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "border-width.focus",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "border-width.focus-offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
+    }
+  ],
   "usage": [
     {
       "situation": "page-title",
@@ -2815,11 +2872,11 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: an 8px corner rounds buttons and inputs enough to feel friendly, without the softness kept for pill badges.",
+                    "why": "radius.8: We use an 8px corner for buttons and inputs in order to mark their role as controls in a warm tone, by brand convention. A rounded radius does this by curving the edge enough to feel soft, while the sides stay straight. So controls feel friendly next to long text and never compete with it, because the brand is warm (brand.q1), corners are rounded (shape.values) and each screen holds one idea (content.q2).",
                     "because": [
-                      "shape.roles",
                       "shape.values",
-                      "brand.q1"
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -2829,11 +2886,11 @@
                 "$value": "{radius.pill}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.pill: fully round ends set status badges apart from controls, so a pill sits softly next to the text.",
+                    "why": "radius.pill: We use a pill corner for badges in order to give status a role of its own, apart from the 8px controls. A full radius does this by rounding both ends into a capsule. So a status sits softly in the text and never reads as a button, because badges get their own corner (shape.roles) and the brand is warm (brand.q1).",
                     "because": [
                       "shape.roles",
                       "shape.values",
-                      "shape.count"
+                      "brand.q1"
                     ]
                   }
                 }
@@ -2843,9 +2900,11 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: the panel's 12px corner less its 4px padding, so an option's corner nests inside the menu's.",
+                    "why": "radius.8: We use an 8px corner for menu options in order to keep nesting by the relation: the 12px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 12px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
                     "because": [
                       "shape.roles",
+                      "shape.count",
+                      "brand.q1",
                       "spacing.values"
                     ]
                   }
@@ -2856,10 +2915,11 @@
                 "$value": "{radius.8}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.8: the control corner; it is not a pill, so a growing box keeps it.",
+                    "why": "radius.8: We use the 8px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because the control corner is rounded, not a pill (shape.values), and the brand is warm (brand.q1).",
                     "because": [
-                      "shape.roles",
-                      "shape.values"
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
                     ]
                   }
                 }
@@ -2869,11 +2929,11 @@
                 "$value": "{radius.12}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "radius.12: a 12px corner, larger than the 8px control, rounds article cards and panels so their 8px options nest inside.",
+                    "why": "radius.12: We use a 12px corner for article cards, menus and dialogs in order to make each card read as a separate object, in a warm tone by brand convention. A larger radius does this by breaking the outline with a curve wider than the 8px controls inside it. So a card reads as one calm object on the page, because containers get their own corner (shape.roles, shape.count) and the brand is warm (brand.q1).",
                     "because": [
                       "shape.roles",
-                      "shape.values",
-                      "shape.lands"
+                      "shape.count",
+                      "brand.q1"
                     ]
                   }
                 }
@@ -3999,11 +4059,10 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.definition"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -4013,12 +4072,10 @@
                 "$value": "{shadow.overlay}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay: one soft 32px blur in a 16% warm-brown tint lifts menus and dialogs off warm paper without a hard edge.",
+                    "why": "shadow.overlay: We use step 2 of the shadow scale for menus and dialogs in order to show their height as floating layers. The cast shade does this by a 12px offset and a 32px blur in a 16% warm brown. So a menu lifts off warm paper without a hard edge, because only what floats rises (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.lands",
-                      "elevation.count"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -4885,11 +4942,10 @@
                 "$value": "{shadow.none}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.none: cards stay flat on the page with a border, because only menus and dialogs float.",
+                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: on the scale only floating layers rise. The missing shade does this by leaving the card flat, set apart by space. So reading flows down the page without boxes that lift, because only menus and dialogs float (elevation.roles) and shadows are soft (elevation.values).",
                     "because": [
                       "elevation.roles",
-                      "elevation.values",
-                      "elevation.definition"
+                      "elevation.values"
                     ]
                   }
                 }
@@ -4899,12 +4955,10 @@
                 "$value": "{shadow.overlay-dark}",
                 "$extensions": {
                   "open-ds": {
-                    "why": "shadow.overlay-dark: the same soft 32px blur at 50% black, so menus and dialogs still lift off the dark page.",
+                    "why": "shadow.overlay-dark: We use the light shadow's shape for menus and dialogs in dark in order to show the same floating height by the dark-shade relation. The cast shade does this by the same 12px offset and 32px blur, at 50% black instead of 16% brown. So a menu still lifts off the dark page, though its shade reads weaker on dark than in light, because only what floats rises (elevation.roles) and dark ships for night reading (theming.values).",
                     "because": [
                       "elevation.roles",
                       "elevation.values",
-                      "elevation.lands",
-                      "elevation.count",
                       "theming.values"
                     ]
                   }
@@ -5210,17 +5264,44 @@
         "default": {
           "$type": "dimension",
           "$value": "{border-width.1}",
-          "$description": "Every border."
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 1px default line for card and panel borders in order to give grouping where space alone does not, not separation: space separates groups here. A thin stroke does this by drawing a shared region with the least weight that still reads. So the lines stay quiet beside long text, because space separates groups (elevation.definition) and AA is the floor (accessibility.definition).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
         },
         "focus": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "The focus ring."
+          "$description": "The focus ring.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 2px focus ring in order to show focus, one step heavier than the 1px default line by the focus relation. A heavier stroke does this by standing out from the thin edges around it. So readers who use a keyboard always see where they are, because focus has its own look (accessibility.roles) and lines are thin (elevation.definition).",
+              "because": [
+                "accessibility.roles",
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
         },
         "focus-offset": {
           "$type": "dimension",
           "$value": "{border-width.2}",
-          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill."
+          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So readers see the ring on any fill, even a filled button, because focus has its own look (accessibility.roles).",
+              "because": [
+                "accessibility.roles"
+              ]
+            }
+          }
         }
       },
       "type": {

@@ -160,7 +160,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: Badges and checkboxes take the smallest corner, 4px, so a status keeps a clear rectangle around its word, never a pill."
+      "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1)."
      ],
      "shares": []
     },

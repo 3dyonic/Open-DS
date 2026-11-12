@@ -232,7 +232,7 @@
      "value": "1.5rem",
      "byScheme": true,
      "pick": [
-      "radius.24: Cards, menus and dialogs take a big, round 24px corner, so a card feels like a friendly object and keeps its box shape."
+      "radius.24: We use a 24px corner for cards, menus and dialogs in order to make each offer read as a separate object, in a bold tone by brand convention. A large radius does this by breaking the outline with a wide curve while the sides stay straight. So each offer reads as one friendly object, because containers get their own corner (shape.count) and the brand is bold (brand.q1)."
      ],
      "shares": []
     }

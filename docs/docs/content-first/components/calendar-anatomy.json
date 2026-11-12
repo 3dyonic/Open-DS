@@ -361,7 +361,7 @@
      "value": "0.5rem",
      "byScheme": true,
      "pick": [
-      "radius.8: the control corner; it is not a pill, so a growing box keeps it."
+      "radius.8: We use the 8px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a list item or a text area the curve of the controls beside it. So fields and rows read as one family, because the control corner is rounded, not a pill (shape.values), and the brand is warm (brand.q1)."
      ],
      "shares": []
     },

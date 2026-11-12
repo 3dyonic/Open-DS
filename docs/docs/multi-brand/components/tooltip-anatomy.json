@@ -115,7 +115,7 @@
      "value": "0.25rem",
      "byScheme": true,
      "pick": [
-      "radius.4: Aster's badges share the 4px control corner, so a plan status reads as a small square tag."
+      "radius.4: We use the 4px control corner for Aster's badges in order to keep one role family by the badge relation: here badges share the control's corner. The same small radius does this by giving a plan status the box shape of the buttons. So a status reads as a small square tag, because each brand sets its three corners (shape.roles) and Aster's are small (shape.values)."
      ],
      "shares": []
     },

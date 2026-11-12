@@ -908,6 +908,78 @@ export const CHECKS = {
         : ok(`${total} semantic values in ${SCHEMES.length} schemes each have a reason that explains them`);
     },
   },
+  "reasons-say-why": {
+    requires: ["cli/src/trace.mjs", "scripts/reason-form.mjs", "harness/reason-form-baseline.json"],
+    run: async (c) => {
+      // OD-294: a reason states its job ("in order to"), how the property does it ("does this by"), what
+      // people get ("so") and the decision ("because"), and cites an answer. Scopes convert in rounds:
+      // the count of values not yet in the form, per scheme, may only go down. Shape and elevation are
+      // converted: every reason they write, in every brand and mode, must be in the form now.
+      const { formOfSchemes } = await import(pathToFileURL(c.p("scripts/reason-form.mjs")).href);
+      const { formGaps, writtenReasons } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const g = c.grammar();
+      const base = c.json("harness", "reason-form-baseline.json").counts;
+      const rose = [];
+      const fell = [];
+      const lines = [];
+      for (const f of formOfSchemes()) {
+        const n = f.off.length;
+        const was = base[f.scheme];
+        if (was === undefined) rose.push(`${f.scheme} has ${n}, and the baseline does not list it`);
+        else if (n > was) rose.push(`${f.scheme} went from ${was} to ${n}`);
+        else if (n < was) fell.push(`${f.scheme} went from ${was} to ${n}`);
+        lines.push(`${f.scheme} ${n} of ${f.total}`);
+      }
+      const converted = /^(radius|border-width|elevation)\./;
+      const off = [];
+      for (const id of SCHEMES)
+        for (const r of writtenReasons(c.scheme(id)))
+          if (converted.test(r.token)) {
+            const missing = formGaps(g, r.token, r.why, r.because);
+            if (missing.length) off.push(`${id} ${r.where} ${r.token} misses ${missing.join(", ")}`);
+          }
+      const counts = `Values whose reason is not in the form yet: ${lines.join("; ")}`;
+      if (off.length) return bad(`${off.length} shape or elevation reasons are not in the reason form: ${off.slice(0, 4).join("; ")}`);
+      if (rose.length)
+        return bad(`more reasons are out of the form: ${rose.join("; ")}. Write them in the grammar's reason_form; node scripts/reason-form.mjs lists them. ${counts}.`);
+      if (fell.length)
+        return ok(`fewer reasons are out of the form (good): ${fell.join("; ")}. Lower the baseline: node scripts/reason-form.mjs --baseline. ${counts}.`);
+      return ok(`every shape and elevation reason is in the form. ${counts}. Each count may only go down.`);
+    },
+  },
+  "shape-elevation-relations": {
+    requires: ["cli/src/shape-elevation.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-294: control and surface corners are decisions; option, element and badge follow them by a
+      // relation; the focus ring follows the default line; shadows are one scale by layer, and dark
+      // keeps the light shape. A record that is missing or cannot be checked fails. Where today's values
+      // break a relation, the check lists it as a finding and passes: the user decides those.
+      const { checkRelations, elevationScale } = await import(pathToFileURL(c.p("cli/src/shape-elevation.mjs")).href);
+      const g = c.grammar();
+      const errors = [];
+      // Findings by token, so one cause reads as one line however many themes it shows in.
+      const findings = new Map();
+      let held = 0;
+      const schemes = SCHEMES.map((id) => c.scheme(id));
+      for (const s of schemes) {
+        const r = checkRelations(s, g);
+        errors.push(...r.errors);
+        for (const x of r.results)
+          if (x.holds) held++;
+          else {
+            const f = findings.get(x.token) ?? { themes: [], says: x.says };
+            f.themes.push(`${s.id}/${x.brand}/${x.mode}`);
+            findings.set(x.token, f);
+          }
+      }
+      for (const row of elevationScale(schemes, g))
+        if (!row.same)
+          findings.set(`elevation.values ${row.values} step ${row.step}`, { themes: row.shapes.map((x) => x.scheme), says: row.shapes.map((x) => `${x.scheme} ${x.shape}`).join(", ") });
+      if (errors.length) return bad(`${errors.length} relation records cannot be checked: ${errors.slice(0, 4).join("; ")}`);
+      const list = [...findings].map(([token, f]) => `${token} in ${f.themes.length} themes (first ${f.themes[0]}: ${f.says})`);
+      return ok(`${held} relations hold${list.length ? `; findings for the user to decide (warnings): ${list.join("; ")}` : ""}`);
+    },
+  },
   "decisions-cover-values": {
     requires: ["schemes/grammar.json", "cli/src/coverage.mjs", "harness/coverage-baseline.json"],
     run: async (c) => {

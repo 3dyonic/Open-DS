@@ -112,7 +112,7 @@
      "value": "0.375rem",
      "byScheme": true,
      "pick": [
-      "radius.6: the control corner; it is not a pill, so a growing box keeps it."
+      "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1)."
      ],
      "shares": []
     },

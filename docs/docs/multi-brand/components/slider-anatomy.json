@@ -285,10 +285,10 @@
      "darkValue": "0px 2px 8px, #00000066",
      "byScheme": true,
      "pick": [
-      "shadow.card: Cards lift slightly to group offers."
+      "shadow.card: We use step 1 of the shadow scale for cards in order to show their height just above the page. The cast shade does this by a 2px offset and an 8px blur at 8%. So plan cards group each offer and lift only slightly, because cards rise too (elevation.roles) and shadows are soft (elevation.values)."
      ],
      "darkPick": [
-      "shadow.card-dark: Cards lift slightly to group offers."
+      "shadow.card-dark: We use the light card shadow's shape in dark in order to show the same card height by the dark-shade relation. The cast shade does this by the same 2px offset and 8px blur, at 40% black instead of 8%. So cards keep their lift in shape, though its shade reads weaker on dark than in light, because cards rise too (elevation.roles) and dark ships for every brand (theming.values)."
      ],
      "shares": []
     }
