@@ -111,7 +111,8 @@ export const uiComponents = (): string[] =>
     .filter((f) => f.endsWith(".tsx"))
     .map((f) => f.replace(/\.tsx$/, ""));
 
-export const scheme = (id: string): Scheme => withTypeAndSpace(withGenerated(read<Scheme>(`${id}.json`))) as Scheme;
+export const scheme = (id: string): Scheme =>
+  withTypeAndSpace(withGenerated(read<Scheme>(`${id}.json`))) as Scheme;
 
 export const schemes = (): Scheme[] => schemeIds().map(scheme);
 
