@@ -73,22 +73,27 @@ function LinkedFold(props: React.ComponentProps<typeof Fold>) {
   return <Fold {...props} />;
 }
 
-// A live preview names its robot too: the one that sleeps while Storybook is not running.
+// A live preview's data holds its robot: the one that sleeps while Storybook is not running.
 // The pages hold the site path /storybook, where open-ds.dev serves Storybook beside the docs. The dev
 // server has nothing there, so in development the frames and links go to the running Storybook
 // (customFields.storybook, STORYBOOK_URL or http://127.0.0.1:6006, the address Storybook prints).
-function RobotPreview({ robot, data, ...props }: Omit<React.ComponentProps<typeof Preview>, "robot"> & { robot?: string }) {
-  const day = useBaseUrl(`/robots/${robot}.webp`);
-  const night = useBaseUrl(`/robots/${robot}-dark.webp`);
+function LivePreview({ data, ...props }: React.ComponentProps<typeof Preview>) {
   const live = String(useDocusaurusContext().siteConfig.customFields?.storybook ?? "").replace(/\/$/, "");
   const local = (u?: string) =>
-    process.env.NODE_ENV === "development" && live && u?.startsWith("/storybook") ? live + u.slice("/storybook".length) : u;
+    process.env.NODE_ENV === "development" && live && u?.startsWith("/storybook")
+      ? live + u.slice("/storybook".length)
+      : u;
   const shown = {
     ...data,
     frames: { light: local(data.frames.light) as string, ...(data.frames.dark && { dark: local(data.frames.dark) }) },
     ...(data.links && { links: data.links.map((l) => ({ ...l, href: local(l.href) as string })) }),
   };
-  return <Preview {...props} data={shown} robot={robot ? { day, night } : undefined} />;
+  return <Preview {...props} data={shown} />;
+}
+
+// A brand's set names its brand; the docs name it the way the brand picker in the top bar does.
+function NamedBrandSet({ id, children }: { id: string; children?: React.ReactNode }) {
+  return <BrandSet data={{ brand: id, name: id.charAt(0).toUpperCase() + id.slice(1) }}>{children}</BrandSet>;
 }
 
 // The home page's hero names its robot too.
@@ -122,7 +127,7 @@ export default {
   AnatomyDrawing,
   AnatomyLegend,
   AnatomySteps,
-  BrandSet,
+  BrandSet: NamedBrandSet,
   CardGrid,
   ModePreview,
   PairsChart: ThemedPairsChart,
@@ -135,7 +140,7 @@ export default {
   Hero: RobotHero,
   Intro: RobotIntro,
   Label,
-  Preview: RobotPreview,
+  Preview: LivePreview,
   ReasonChain: LinkedReasonChain,
   Specimen,
   SurfaceStack,
