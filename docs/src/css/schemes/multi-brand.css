@@ -83,6 +83,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="aste
   --color-neutral-800: #1E293B;
   --color-neutral-900: #0F172A;
   --color-neutral-950: #020617;
+  --color-neutral-floor: #FFFFFF;
   --color-surface-selected: #DEF3F0; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
   --color-text-link: #015852; /** Links in running text. */
@@ -1962,6 +1963,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --color-neutral-800: #F1F5F9;
   --color-neutral-900: #F8FAFC;
   --color-neutral-950: #FFFFFF;
+  --color-neutral-floor: #00010E;
   --color-surface-selected: #012C28; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
   --color-text-link: #A1DCD4; /** Links in running text. */
@@ -3192,8 +3194,8 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="aster
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
   --color-surface-raised: #1E293B; /** Fills that float above content. In dark, one step lighter than content, so height reads by tone. */
-  --color-surface-sunken: #020617; /** A recessed fill, a step below content. */
-  --color-surface-highlight: #020617; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
+  --color-surface-sunken: #00010E; /** A recessed fill, a step below content. */
+  --color-surface-highlight: #00010E; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
   --color-surface-pressed: #334155; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
   --color-surface-inverse: #F8FAFC; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F8FAFC; /** Body text and headings. */
@@ -3837,6 +3839,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="birc
   --color-neutral-800: #1E293B;
   --color-neutral-900: #0F172A;
   --color-neutral-950: #020617;
+  --color-neutral-floor: #FFFFFF;
   --color-surface-selected: #EDEAFE; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
   --color-text-link: #5212AA; /** Links in running text. */
@@ -5714,6 +5717,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --color-neutral-800: #F1F5F9;
   --color-neutral-900: #F8FAFC;
   --color-neutral-950: #FFFFFF;
+  --color-neutral-floor: #00010E;
   --color-surface-selected: #271745; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
   --color-text-link: #C9B7FC; /** Links in running text. */
@@ -6944,8 +6948,8 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="birch
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
   --color-surface-raised: #1E293B; /** Fills that float above content. In dark, one step lighter than content, so height reads by tone. */
-  --color-surface-sunken: #020617; /** A recessed fill, a step below content. */
-  --color-surface-highlight: #020617; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
+  --color-surface-sunken: #00010E; /** A recessed fill, a step below content. */
+  --color-surface-highlight: #00010E; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
   --color-surface-pressed: #334155; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
   --color-surface-inverse: #F8FAFC; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F8FAFC; /** Body text and headings. */
@@ -7589,6 +7593,7 @@ html[data-scheme="multi-brand"] [data-mode="light"][data-mode] [data-brand="cora
   --color-neutral-800: #1E293B;
   --color-neutral-900: #0F172A;
   --color-neutral-950: #020617;
+  --color-neutral-floor: #FFFFFF;
   --color-surface-selected: #FEEBE4; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
   --color-text-link: #942D02; /** Links in running text. */
@@ -9466,6 +9471,7 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --color-neutral-800: #F1F5F9;
   --color-neutral-900: #F8FAFC;
   --color-neutral-950: #FFFFFF;
+  --color-neutral-floor: #00010E;
   --color-surface-selected: #3F1702; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
   --color-text-link: #FCBD9F; /** Links in running text. */
@@ -10696,8 +10702,8 @@ html[data-scheme="multi-brand"] [data-mode="dark"][data-mode] [data-brand="coral
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
   --color-surface-raised: #1E293B; /** Fills that float above content. In dark, one step lighter than content, so height reads by tone. */
-  --color-surface-sunken: #020617; /** A recessed fill, a step below content. */
-  --color-surface-highlight: #020617; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
+  --color-surface-sunken: #00010E; /** A recessed fill, a step below content. */
+  --color-surface-highlight: #00010E; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
   --color-surface-pressed: #334155; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
   --color-surface-inverse: #F8FAFC; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F8FAFC; /** Body text and headings. */

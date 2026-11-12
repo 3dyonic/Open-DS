@@ -97,6 +97,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 | `color.neutral.950` | light | `aster.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
 | | dark | `aster.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.neutral.floor` | light | `aster.theme.light.color.neutral.floor` → `color.slate-deep.light.0` |
+| | dark | `aster.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.canvas` | light | `aster.theme.light.color.surface.canvas` → `color.neutral.50` → `aster.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
 | | dark | `aster.theme.dark.color.surface.canvas` → `color.neutral.0` → `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
 | `color.surface.default` | light | `aster.theme.light.color.surface.default` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -104,9 +106,9 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.raised` | light | `aster.theme.light.color.surface.raised` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
 | | dark | `aster.theme.dark.color.surface.raised` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.surface.sunken` | light | `aster.theme.light.color.surface.sunken` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `aster.theme.dark.color.surface.sunken` → `color.neutral.0` → `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| | dark | `aster.theme.dark.color.surface.sunken` → `color.neutral.floor` → `aster.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.highlight` | light | `aster.theme.light.color.surface.highlight` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `aster.theme.dark.color.surface.highlight` → `color.neutral.0` → `aster.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| | dark | `aster.theme.dark.color.surface.highlight` → `color.neutral.floor` → `aster.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.pressed` | light | `aster.theme.light.color.surface.pressed` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `aster.theme.dark.color.surface.pressed` → `color.neutral.200` → `aster.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.surface.selected` | light | `aster.theme.light.color.surface.selected` → `color.teal.light.100` |
@@ -242,6 +244,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 | `color.neutral.950` | light | `birch.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
 | | dark | `birch.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.neutral.floor` | light | `birch.theme.light.color.neutral.floor` → `color.slate-deep.light.0` |
+| | dark | `birch.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.canvas` | light | `birch.theme.light.color.surface.canvas` → `color.neutral.50` → `birch.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
 | | dark | `birch.theme.dark.color.surface.canvas` → `color.neutral.0` → `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
 | `color.surface.default` | light | `birch.theme.light.color.surface.default` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -249,9 +253,9 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.raised` | light | `birch.theme.light.color.surface.raised` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
 | | dark | `birch.theme.dark.color.surface.raised` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.surface.sunken` | light | `birch.theme.light.color.surface.sunken` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `birch.theme.dark.color.surface.sunken` → `color.neutral.0` → `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| | dark | `birch.theme.dark.color.surface.sunken` → `color.neutral.floor` → `birch.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.highlight` | light | `birch.theme.light.color.surface.highlight` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `birch.theme.dark.color.surface.highlight` → `color.neutral.0` → `birch.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| | dark | `birch.theme.dark.color.surface.highlight` → `color.neutral.floor` → `birch.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.pressed` | light | `birch.theme.light.color.surface.pressed` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `birch.theme.dark.color.surface.pressed` → `color.neutral.200` → `birch.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.surface.selected` | light | `birch.theme.light.color.surface.selected` → `color.purple.light.100` |
@@ -387,6 +391,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 | `color.neutral.950` | light | `coral.theme.light.color.neutral.950` → `color.slate-deep.light.950` |
 | | dark | `coral.theme.dark.color.neutral.950` → `color.slate-deep.dark.950` |
+| `color.neutral.floor` | light | `coral.theme.light.color.neutral.floor` → `color.slate-deep.light.0` |
+| | dark | `coral.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.canvas` | light | `coral.theme.light.color.surface.canvas` → `color.neutral.50` → `coral.theme.light.color.neutral.50` → `color.slate-deep.light.50` |
 | | dark | `coral.theme.dark.color.surface.canvas` → `color.neutral.0` → `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
 | `color.surface.default` | light | `coral.theme.light.color.surface.default` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
@@ -394,9 +400,9 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.raised` | light | `coral.theme.light.color.surface.raised` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` |
 | | dark | `coral.theme.dark.color.surface.raised` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.surface.sunken` | light | `coral.theme.light.color.surface.sunken` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `coral.theme.dark.color.surface.sunken` → `color.neutral.0` → `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| | dark | `coral.theme.dark.color.surface.sunken` → `color.neutral.floor` → `coral.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.highlight` | light | `coral.theme.light.color.surface.highlight` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` |
-| | dark | `coral.theme.dark.color.surface.highlight` → `color.neutral.0` → `coral.theme.dark.color.neutral.0` → `color.slate-deep.dark.0` |
+| | dark | `coral.theme.dark.color.surface.highlight` → `color.neutral.floor` → `coral.theme.dark.color.neutral.floor` → `color.slate-deep.dark.floor` |
 | `color.surface.pressed` | light | `coral.theme.light.color.surface.pressed` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` |
 | | dark | `coral.theme.dark.color.surface.pressed` → `color.neutral.200` → `coral.theme.dark.color.neutral.200` → `color.slate-deep.dark.200` |
 | `color.surface.selected` | light | `coral.theme.light.color.surface.selected` → `color.orange.light.100` |

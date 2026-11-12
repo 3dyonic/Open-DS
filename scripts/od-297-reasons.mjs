@@ -242,12 +242,14 @@ export function hitAreaReason(id, hit) {
 // fails muted text (4.5:1) in four schemes. Accessible first's two darkest gray steps are 1.07:1 apart,
 // under the 1.08:1 floor for a well, so its content moves one step up to leave room below it. Its
 // pressed fill takes the raised step: the darkest step is the page, and the hover band holds the next.
-const DARK = {
-  "dense-data": { raised: 100, sunken: 0, highlight: 0, pressed: 0, ring: 200 },
-  "content-first": { raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
+// The other four put their dark canvas on step 0, so wells and the hover band take the floor, a step
+// below 0 that their dark neutral adds (the grammar's neutral.floor).
+export const DARK = {
+  "dense-data": { raised: 100, sunken: "floor", highlight: "floor", pressed: "floor", ring: 200 },
+  "content-first": { raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
   "accessible-first": { default: 100, raised: 200, sunken: 50, highlight: 50, pressed: 200, line: 300, ring: 300 },
-  "brand-expressive": { raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
-  "multi-brand": { raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
+  "brand-expressive": { raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
+  "multi-brand": { raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
 };
 
 /**
@@ -303,7 +305,7 @@ export function darkReasons(id, mode, cardsRise, facts = null) {
     because: ["theming.values", "elevation.definition"],
     why: why(
       ({ ratio, step }) =>
-        `${step("color.surface.sunken")}: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, ${n2(ratio("color.surface.sunken", "color.surface.default"))}:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).`,
+        `${step("color.surface.sunken")}: We use ${d.sunken === "floor" ? `the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, ${n2(ratio("color.surface.sunken", "color.surface.default"))}:1 under content and ${n2(ratio("color.surface.sunken", "color.surface.canvas"))}:1 under the canvas` : `one step darker than content for table headers and wells in dark, in order to show depth by tone, ${n2(ratio("color.surface.sunken", "color.surface.default"))}:1 on surface.default`}. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).`,
     ),
   };
   picks["color.surface.highlight"] = {
@@ -311,7 +313,7 @@ export function darkReasons(id, mode, cardsRise, facts = null) {
     because: ["accessibility.roles", "color.definition", "theming.values"],
     why: why(
       ({ ratio, step }) =>
-        `${step("color.surface.highlight")}: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ${n2(ratio("color.surface.highlight", "color.surface.default"))}:1 on surface.default and ${n2(ratio("color.surface.highlight", "color.surface.raised"))}:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ${n2(ratio("color.text.muted", "color.surface.highlight"))}:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).`,
+        `${step("color.surface.highlight")}: We use ${d.highlight === "floor" ? "the floor step, below the canvas," : "a step darker than content"} for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: ${n2(ratio("color.surface.highlight", "color.surface.default"))}:1 on surface.default and ${n2(ratio("color.surface.highlight", "color.surface.raised"))}:1 on surface.raised${d.highlight === "floor" ? `, and ${n2(ratio("color.surface.highlight", "color.surface.canvas"))}:1 off the page` : ""}. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads ${n2(ratio("color.text.muted", "color.surface.highlight"))}:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).`,
     ),
   };
   const pressedWhy = {

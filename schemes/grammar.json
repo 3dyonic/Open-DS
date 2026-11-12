@@ -17355,7 +17355,11 @@
           "temperature": "warm-rosy",
           "description": "A warm, rosy gray that sits under a vivid brand."
         }
-      ]
+      ],
+      "floor": {
+        "step": "floor",
+        "description": "One step below 0, for a scheme whose dark canvas sits on step 0: in dark, wells and the hover band take it, so they sit below the page. It is step 0 at 0.04 lower OKLab lightness, hue and chroma kept. In light it names step 0, as nothing sits above white, and no light role reads it."
+      }
     }
   },
   "reason_form": {

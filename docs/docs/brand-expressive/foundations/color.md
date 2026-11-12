@@ -66,6 +66,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
 | `color.neutral.950` | light | `brand-expressive.theme.light.color.neutral.950` → `color.taupe.light.950` |
 | | dark | `brand-expressive.theme.dark.color.neutral.950` → `color.taupe.dark.950` |
+| `color.neutral.floor` | light | `brand-expressive.theme.light.color.neutral.floor` → `color.taupe.light.0` |
+| | dark | `brand-expressive.theme.dark.color.neutral.floor` → `color.taupe.dark.floor` |
 | `color.surface.canvas` | light | `brand-expressive.theme.light.color.surface.canvas` → `color.neutral.50` → `brand-expressive.theme.light.color.neutral.50` → `color.taupe.light.50` |
 | | dark | `brand-expressive.theme.dark.color.surface.canvas` → `color.neutral.0` → `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
 | `color.surface.default` | light | `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` |
@@ -73,9 +75,9 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.raised` | light | `brand-expressive.theme.light.color.surface.raised` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` |
 | | dark | `brand-expressive.theme.dark.color.surface.raised` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `color.surface.sunken` | light | `brand-expressive.theme.light.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
-| | dark | `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.0` → `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
+| | dark | `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.floor` → `brand-expressive.theme.dark.color.neutral.floor` → `color.taupe.dark.floor` |
 | `color.surface.highlight` | light | `brand-expressive.theme.light.color.surface.highlight` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` |
-| | dark | `brand-expressive.theme.dark.color.surface.highlight` → `color.neutral.0` → `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
+| | dark | `brand-expressive.theme.dark.color.surface.highlight` → `color.neutral.floor` → `brand-expressive.theme.dark.color.neutral.floor` → `color.taupe.dark.floor` |
 | `color.surface.pressed` | light | `brand-expressive.theme.light.color.surface.pressed` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` |
 | | dark | `brand-expressive.theme.dark.color.surface.pressed` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
 | `color.surface.selected` | light | `brand-expressive.theme.light.color.surface.selected` → `color.pink.light.100` |

@@ -137,11 +137,11 @@ test("a disabled field's label stays readable: 4.5:1 on content in every theme",
 // ---------- Decision 5: dark depth ----------
 
 const DARK = {
-  "dense-data": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 0, ring: 200 },
-  "content-first": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
+  "dense-data": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: "floor", ring: 200 },
+  "content-first": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
   "accessible-first": { default: 100, raised: 200, sunken: 50, highlight: 50, pressed: 200, ring: 300 },
-  "brand-expressive": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
-  "multi-brand": { default: 50, raised: 100, sunken: 0, highlight: 0, pressed: 200, ring: 200 },
+  "brand-expressive": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
+  "multi-brand": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
 };
 
 test("in dark, raised is a step lighter than content, sunken a step darker, and the ring a lighter solid step", () => {
@@ -326,3 +326,20 @@ function flatPicks(node, path = [], out = {}) {
     else if (v && typeof v === "object") flatPicks(v, [...path, k], out);
   return out;
 }
+
+test("in dark, sunken, highlight and pressed sit apart from the canvas and content; the floor is a step below 0", async () => {
+  const { lch } = await import("../src/ramps.mjs");
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    for (const brand of Object.keys(s.tokens.brands)) {
+      const t = { brand, mode: "dark" };
+      const v = (k) => valueIn(s, t, `color.surface.${k}`);
+      for (const k of ["sunken", "highlight", "pressed"])
+        for (const from of ["canvas", "default"]) assert.notEqual(v(k), v(from), `${id}/${brand}: ${k} is the ${from}`);
+      assert.equal(v("canvas"), valueIn(s, t, "color.neutral.0"), `${id}/${brand}: the canvas the dark hues are generated over stays on 0`);
+      if (!s.tokens.semantic.color.neutral.floor) continue;
+      const gap = lch(valueIn(s, t, "color.neutral.0"))[0] - lch(valueIn(s, t, "color.neutral.floor"))[0];
+      assert.ok(gap >= 0.03, `${id}/${brand}: the floor is ${gap.toFixed(3)} below 0`);
+    }
+  }
+});

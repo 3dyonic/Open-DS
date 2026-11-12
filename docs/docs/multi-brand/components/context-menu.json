@@ -382,10 +382,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -398,10 +398,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -414,10 +414,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -443,10 +443,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -459,10 +459,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -475,10 +475,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -1565,10 +1565,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -1581,10 +1581,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -1597,10 +1597,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -2015,10 +2015,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -2031,10 +2031,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -2047,10 +2047,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },
@@ -2360,10 +2360,10 @@
       {
        "theme": "Aster Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Birch Light",
@@ -2376,10 +2376,10 @@
       {
        "theme": "Birch Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       },
       {
        "theme": "Coral Light",
@@ -2392,10 +2392,10 @@
       {
        "theme": "Coral Dark",
        "swatch": {
-        "color": "#020617"
+        "color": "#00010E"
        },
-       "token": "slate-deep.dark.0",
-       "text": "#020617"
+       "token": "slate-deep.dark.floor",
+       "text": "#00010E"
       }
      ]
     },

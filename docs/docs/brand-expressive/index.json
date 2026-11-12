@@ -121,7 +121,7 @@
     {
      "href": "primitives/",
      "title": "Primitives",
-     "text": "All 184 raw values, and the tokens that point to each.",
+     "text": "All 185 raw values, and the tokens that point to each.",
      "samples": [
       {
        "kind": "color",

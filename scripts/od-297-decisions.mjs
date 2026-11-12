@@ -12,10 +12,19 @@
 import { grammar as loadGrammar, loadScheme, saveGrammar, saveScheme, schemeIds } from "../cli/src/schemes.mjs";
 import { aliasChain, tokenIndex } from "../cli/src/lands.mjs";
 import { contrast } from "../cli/src/shape-elevation.mjs";
+import { fromLch, lch } from "../cli/src/ramps.mjs";
 import { pointRepeats } from "./reason-pointers.mjs";
-import { FAMILIES, darkReasons, hitAreaReason, motionReasons, typeReasons, USAGE } from "./od-297-reasons.mjs";
+import { DARK, FAMILIES, darkReasons, hitAreaReason, motionReasons, typeReasons, USAGE } from "./od-297-reasons.mjs";
 
 const g = loadGrammar();
+// The floor of a dark neutral scale: one step below 0, and how far below 0 it sits in OKLab lightness.
+const FLOOR = "floor";
+const FLOOR_DROP = 0.04;
+g.semantics.neutral.floor = {
+  step: FLOOR,
+  description:
+    "One step below 0, for a scheme whose dark canvas sits on step 0: in dark, wells and the hover band take it, so they sit below the page. It is step 0 at 0.04 lower OKLab lightness, hue and chroma kept. In light it names step 0, as nothing sits above white, and no light role reads it.",
+};
 // The moves that reuse another move's step when the family gives them the same one; their reasons name it.
 const SAME_STEP = { duration: { exit: "feedback" }, easing: { enter: "standard", emphasize: "standard", "exit-offscreen": "exit" } };
 const scope = (id) => g.scopes.find((s) => s.id === id);
@@ -373,6 +382,42 @@ for (const id of schemeIds()) {
       else if (v && typeof v === "object") reword(v);
   };
   for (const [k, v] of Object.entries(s)) if (k !== "tokens" && v && typeof v === "object") reword(v);
+
+  // The floor (decision 5): a scheme whose dark canvas sits on step 0 adds one darker step below it, so
+  // wells and the hover band sit below the page. The canvas keeps its value, so no dark hue is generated
+  // again. Light has nothing above white: its floor names step 0, and no light role reads it.
+  if (DARK[id].sunken === FLOOR) {
+    s.tokens.semantic.color.neutral = { [FLOOR]: { $type: "color", $value: `{theme.color.neutral.${FLOOR}}` }, ...s.tokens.semantic.color.neutral };
+    for (const def of Object.values(s.tokens.brands)) {
+      const gray = def.theme.neutral.gray;
+      const ramp = s.tokens.primitive.color[gray];
+      if (!ramp.dark[FLOOR]) {
+        const [L, C, H] = lch(ramp.dark["0"].$value);
+        ramp.dark = {
+          [FLOOR]: {
+            $value: fromLch(L - FLOOR_DROP, C, H),
+            $description: `Derived: step 0 at ${FLOOR_DROP} lower OKLab lightness, its hue and chroma kept. Added so a dark well sits below a canvas on 0.`,
+          },
+          ...ramp.dark,
+        };
+      }
+      const pick = (mode, value, why) => ({ $type: "color", $value: value, $extensions: { "open-ds": { why, because: ["color.definition", "theming.values"] } } });
+      const first = (mode, value, why) => {
+        const { [FLOOR]: _, ...rest } = def.theme[mode].color.neutral;
+        def.theme[mode].color.neutral = { [FLOOR]: pick(mode, value, why), ...rest };
+      };
+      first(
+        "light",
+        `{color.${gray}.light.0}`,
+        `${gray}.light.0: We use light's step 0 for the floor in order to keep the neutral scale whole in light. The step does this by naming white, as nothing sits above it and no light role reads the floor. So light pages stay as they are, because the floor exists for dark wells below the canvas (theming.values) and the gray ramp sets the steps (color.definition).`,
+      );
+      first(
+        "dark",
+        `{color.${gray}.dark.${FLOOR}}`,
+        `${gray}.dark.${FLOOR}: We use one step below 0 for the floor in dark in order to put wells and the hover band below a canvas that sits on 0. The step does this by keeping the hue and chroma of 0 at ${FLOOR_DROP} lower OKLab lightness, as the ${gray} ramp has no lower step. So a table header reads as recessed even on the page itself, because dark ships as standard (theming.values) and the gray ramp sets the steps (color.definition).`,
+      );
+    }
+  }
 
   // Dark depth: a raised layer is a lighter step with a solid lighter ring; sunken is darker.
   s.tokens.semantic.color.border.raised = {

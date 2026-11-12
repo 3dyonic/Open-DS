@@ -366,6 +366,11 @@
        "step": "950",
        "primitive": "taupe.dark.950",
        "hex": "#FFFFFF"
+      },
+      {
+       "step": "floor",
+       "primitive": "taupe.dark.floor",
+       "hex": "#090403"
       }
      ],
      "tokens": [
@@ -377,24 +382,6 @@
        "via": "neutral.0",
        "hex": "#120B09",
        "guidance": "../foundations/color?for=color-surface-canvas#what-each-color-is-for"
-      },
-      {
-       "token": "surface.sunken",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "taupe.dark.0",
-       "via": "neutral.0",
-       "hex": "#120B09",
-       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
-      },
-      {
-       "token": "surface.highlight",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "taupe.dark.0",
-       "via": "neutral.0",
-       "hex": "#120B09",
-       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
       },
       {
        "token": "surface.default",
@@ -449,6 +436,22 @@
        "via": "neutral.100",
        "hex": "#33241F",
        "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
+      },
+      {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "taupe.dark.floor",
+       "hex": "#090403",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "taupe.dark.floor",
+       "hex": "#090403",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
       },
       {
        "token": "surface.pressed",
@@ -1885,6 +1888,10 @@
       {
        "token": "color.neutral.0",
        "where": "light"
+      },
+      {
+       "token": "color.neutral.floor",
+       "where": "light"
       }
      ]
     },
@@ -2214,6 +2221,20 @@
      "usedBy": [
       {
        "token": "color.neutral.950",
+       "where": "dark"
+      }
+     ]
+    },
+    {
+     "primitive": "color.taupe.dark.floor",
+     "value": "#090403",
+     "sample": {
+      "kind": "color",
+      "value": "#090403"
+     },
+     "usedBy": [
+      {
+       "token": "color.neutral.floor",
        "where": "dark"
       }
      ]

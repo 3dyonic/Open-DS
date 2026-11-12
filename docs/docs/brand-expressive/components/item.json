@@ -515,10 +515,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#120B09"
+        "color": "#090403"
        },
-       "token": "taupe.dark.0",
-       "text": "#120B09"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -840,10 +840,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#120B09"
+        "color": "#090403"
        },
-       "token": "taupe.dark.0",
-       "text": "#120B09"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },
@@ -920,10 +920,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#120B09"
+        "color": "#090403"
        },
-       "token": "taupe.dark.0",
-       "text": "#120B09"
+       "token": "taupe.dark.floor",
+       "text": "#090403"
       }
      ]
     },

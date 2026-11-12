@@ -2164,6 +2164,13 @@
         }
        },
        {
+        "text": "color.neutral.floor in light: slate-deep.light.0: We use light's step 0 for the floor in order to keep the neutral scale whole in light. The step does this by naming white, as nothing sits above it and no light role reads the floor. So light pages stay as they are, because the floor exists for dark wells below the canvas (theming.values) and the gray ramp sets the steps (color.definition).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "text": "color.surface.canvas in light: neutral.50, under content: 1.05:1 from surface.default, so cards and panels stand forward.",
         "link": {
          "label": "Color",
@@ -2290,6 +2297,13 @@
         }
        },
        {
+        "text": "color.neutral.floor in dark: slate-deep.dark.floor: We use one step below 0 for the floor in dark in order to put wells and the hover band below a canvas that sits on 0. The step does this by keeping the hue and chroma of 0 at 0.04 lower OKLab lightness, as the slate-deep ramp has no lower step. So a table header reads as recessed even on the page itself, because dark ships as standard (theming.values) and the gray ramp sets the steps (color.definition).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "text": "color.surface.canvas in dark: neutral.0, under content: 1.13:1 from surface.default, so cards and panels stand forward.",
         "link": {
          "label": "Color",
@@ -2297,14 +2311,14 @@
         }
        },
        {
-        "text": "color.surface.highlight in dark: neutral.0: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.13:1 on surface.default and 1.38:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.88:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+        "text": "color.surface.highlight in dark: neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.42:1 on surface.raised, and 1.03:1 off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.12:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.pressed in dark: neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 1.95:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+        "text": "color.surface.pressed in dark: neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 2.01:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3072,7 +3086,7 @@
         }
        },
        {
-        "text": "color.surface.sunken in dark: neutral.0: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.13:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
+        "text": "color.surface.sunken in dark: neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, 1.16:1 under content and 1.03:1 under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3627,6 +3641,20 @@
       "kind": "picks",
       "items": [
        {
+        "text": "color.neutral.floor in light: slate-deep.light.0: We use light's step 0 for the floor in order to keep the neutral scale whole in light. The step does this by naming white, as nothing sits above it and no light role reads the floor. So light pages stay as they are, because the floor exists for dark wells below the canvas (theming.values) and the gray ramp sets the steps (color.definition).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
+        "text": "color.neutral.floor in dark: slate-deep.dark.floor: We use one step below 0 for the floor in dark in order to put wells and the hover band below a canvas that sits on 0. The step does this by keeping the hue and chroma of 0 at 0.04 lower OKLab lightness, as the slate-deep ramp has no lower step. So a table header reads as recessed even on the page itself, because dark ships as standard (theming.values) and the gray ramp sets the steps (color.definition).",
+        "link": {
+         "label": "Color",
+         "href": "foundations/color"
+        }
+       },
+       {
         "text": "color.surface.raised in dark: neutral.100: We use one step lighter than content for menus, dialogs and raised cards in dark, in order to show height by tone, 1.22:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So customers see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
         "link": {
          "label": "Color",
@@ -3634,14 +3662,14 @@
         }
        },
        {
-        "text": "color.surface.sunken in dark: neutral.0: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.13:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
+        "text": "color.surface.sunken in dark: neutral.floor: We use the floor step, below the page's canvas, for table headers and wells in dark, in order to show depth by tone, 1.16:1 under content and 1.03:1 under the canvas. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.highlight in dark: neutral.0: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.13:1 on surface.default and 1.38:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.88:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+        "text": "color.surface.highlight in dark: neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.42:1 on surface.raised, and 1.03:1 off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.12:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
@@ -3755,14 +3783,14 @@
         }
        },
        {
-        "text": "color.surface.highlight in dark: neutral.0: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.13:1 on surface.default and 1.38:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.88:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+        "text": "color.surface.highlight in dark: neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.42:1 on surface.raised, and 1.03:1 off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.12:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
         "link": {
          "label": "Color",
          "href": "foundations/color"
         }
        },
        {
-        "text": "color.surface.pressed in dark: neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 1.95:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+        "text": "color.surface.pressed in dark: neutral.200: We use the step above the raised surface for a pressed item in dark in order to show a press as a change of its own. The fill does this by stepping lighter while the hover band steps darker, 2.01:1 from the highlight, so press and hover never match. So a tap reads under the finger, because pressed has its own look for touch (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
         "link": {
          "label": "Color",
          "href": "foundations/color"

@@ -244,10 +244,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#14110D"
+        "color": "#0B0906"
        },
-       "token": "stone.dark.0",
-       "text": "#14110D"
+       "token": "stone.dark.floor",
+       "text": "#0B0906"
       }
      ]
     },

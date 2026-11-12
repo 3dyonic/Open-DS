@@ -144,8 +144,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate-deep.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.slate-deep.dark.floor"
         }
        ]
       },
@@ -159,8 +158,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate-deep.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.slate-deep.dark.floor"
         }
        ]
       },
@@ -882,8 +880,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate-deep.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.slate-deep.dark.floor"
         }
        ]
       },
@@ -897,8 +894,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate-deep.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.slate-deep.dark.floor"
         }
        ]
       },
@@ -1620,8 +1616,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate-deep.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.slate-deep.dark.floor"
         }
        ]
       },
@@ -1635,8 +1630,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.slate-deep.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.slate-deep.dark.floor"
         }
        ]
       },

@@ -79,6 +79,7 @@ html[data-scheme="dense-data"] [data-mode="light"][data-mode] {
   --color-neutral-800: #262D38;
   --color-neutral-900: #161B23;
   --color-neutral-950: #0D1117;
+  --color-neutral-floor: #FFFFFF;
   --color-surface-selected: #E8ECFF; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
   --color-text-link: #3729AA; /** Links in running text. */
@@ -1952,6 +1953,7 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --color-neutral-800: #EEF1F5;
   --color-neutral-900: #F7F8FA;
   --color-neutral-950: #FFFFFF;
+  --color-neutral-floor: #06090E;
   --color-surface-selected: #2A244F; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
   --color-text-link: #BEBBFB; /** Links in running text. */
@@ -3180,9 +3182,9 @@ html[data-scheme="dense-data"] [data-mode="dark"][data-mode] {
   --color-surface-canvas: #0D1117; /** The page background behind everything. */
   --color-surface-default: #161B23; /** The base fill for content. */
   --color-surface-raised: #262D38; /** Fills that float above content. In dark, one step lighter than content, so height reads by tone. */
-  --color-surface-sunken: #0D1117; /** A recessed fill, a step below content. */
-  --color-surface-highlight: #0D1117; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
-  --color-surface-pressed: #0D1117; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
+  --color-surface-sunken: #06090E; /** A recessed fill, a step below content. */
+  --color-surface-highlight: #06090E; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surfaces it sits on: darker in light, and darker in dark too, as raised layers take the lighter step. */
+  --color-surface-pressed: #06090E; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
   --color-surface-inverse: #F7F8FA; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F7F8FA; /** Body text and headings. */
   --color-text-secondary: #C4CBD6; /** Supporting text. */

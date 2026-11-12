@@ -366,6 +366,11 @@
        "step": "950",
        "primitive": "slate.dark.950",
        "hex": "#FFFFFF"
+      },
+      {
+       "step": "floor",
+       "primitive": "slate.dark.floor",
+       "hex": "#06090E"
       }
      ],
      "tokens": [
@@ -377,33 +382,6 @@
        "via": "neutral.0",
        "hex": "#0D1117",
        "guidance": "../foundations/color?for=color-surface-canvas#what-each-color-is-for"
-      },
-      {
-       "token": "surface.sunken",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "slate.dark.0",
-       "via": "neutral.0",
-       "hex": "#0D1117",
-       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
-      },
-      {
-       "token": "surface.highlight",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "slate.dark.0",
-       "via": "neutral.0",
-       "hex": "#0D1117",
-       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
-      },
-      {
-       "token": "surface.pressed",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "slate.dark.0",
-       "via": "neutral.0",
-       "hex": "#0D1117",
-       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
       },
       {
        "token": "surface.default",
@@ -458,6 +436,30 @@
        "via": "neutral.100",
        "hex": "#262D38",
        "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
+      },
+      {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "slate.dark.floor",
+       "hex": "#06090E",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "slate.dark.floor",
+       "hex": "#06090E",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
+      },
+      {
+       "token": "surface.pressed",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "slate.dark.floor",
+       "hex": "#06090E",
+       "guidance": "../foundations/color?for=color-surface-pressed#what-each-color-is-for"
       },
       {
        "token": "surface.inverse",
@@ -1885,6 +1887,10 @@
       {
        "token": "color.neutral.0",
        "where": "light"
+      },
+      {
+       "token": "color.neutral.floor",
+       "where": "light"
       }
      ]
     },
@@ -2214,6 +2220,20 @@
      "usedBy": [
       {
        "token": "color.neutral.950",
+       "where": "dark"
+      }
+     ]
+    },
+    {
+     "primitive": "color.slate.dark.floor",
+     "value": "#06090E",
+     "sample": {
+      "kind": "color",
+      "value": "#06090E"
+     },
+     "usedBy": [
+      {
+       "token": "color.neutral.floor",
        "where": "dark"
       }
      ]

@@ -88,8 +88,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.taupe.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.taupe.dark.floor"
         }
        ]
       },
@@ -103,8 +102,7 @@
         },
         {
          "mode": "dark",
-         "primitive": "color.taupe.dark.0",
-         "via": "color.neutral.0"
+         "primitive": "color.taupe.dark.floor"
         }
        ]
       },

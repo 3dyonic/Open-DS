@@ -309,6 +309,23 @@
               },
               "description": "The steps of color.neutral."
             },
+            "floor": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["step", "description"],
+              "description": "The optional step below 0 that a scheme adds when its dark canvas sits on step 0, so dark wells sit below the page.",
+              "properties": {
+                "step": {
+                  "const": "floor",
+                  "description": "The step's name in color.neutral and in the gray's dark ramp."
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "What the floor is for, how it is derived, and what it names in light."
+                }
+              }
+            },
             "grays": {
               "type": "array",
               "minItems": 1,

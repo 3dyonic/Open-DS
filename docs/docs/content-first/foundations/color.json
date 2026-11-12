@@ -195,6 +195,22 @@
      ]
     },
     {
+     "token": "color.neutral.floor",
+     "type": "color",
+     "modes": [
+      {
+       "mode": "light",
+       "primitive": "color.stone.light.0",
+       "hex": "#FFFFFF"
+      },
+      {
+       "mode": "dark",
+       "primitive": "color.stone.dark.floor",
+       "hex": "#0B0906"
+      }
+     ]
+    },
+    {
      "token": "color.surface.canvas",
      "type": "color",
      "modes": [
@@ -260,9 +276,8 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.stone.dark.0",
-       "via": "color.neutral.0",
-       "hex": "#14110D"
+       "primitive": "color.stone.dark.floor",
+       "hex": "#0B0906"
       }
      ]
     },
@@ -278,9 +293,8 @@
       },
       {
        "mode": "dark",
-       "primitive": "color.stone.dark.0",
-       "via": "color.neutral.0",
-       "hex": "#14110D"
+       "primitive": "color.stone.dark.floor",
+       "hex": "#0B0906"
       }
      ]
     },
@@ -1898,83 +1912,81 @@
        },
        {
         "fill": "color.surface.sunken",
-        "primitive": "color.stone.dark.0",
-        "via": "color.neutral.0",
-        "hex": "#14110D",
+        "primitive": "color.stone.dark.floor",
+        "hex": "#0B0906",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
           "via": "color.neutral.900",
           "hex": "#FFFDF8",
-          "contrast": 18.51
+          "contrast": 19.56
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
           "via": "color.neutral.500",
           "hex": "#CFC6B6",
-          "contrast": 11.12
+          "contrast": 11.75
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
           "via": "color.neutral.400",
           "hex": "#A39A8B",
-          "contrast": 6.77
+          "contrast": 7.15
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.stone.light.0",
           "hex": "#FFFFFF",
-          "contrast": 18.82
+          "contrast": 19.89
          },
          {
           "text": "color.text.link",
           "primitive": "color.navy.dark.700",
           "hex": "#ACBDD5",
-          "contrast": 9.85
+          "contrast": 10.41
          }
         ]
        },
        {
         "fill": "color.surface.highlight",
-        "primitive": "color.stone.dark.0",
-        "via": "color.neutral.0",
-        "hex": "#14110D",
+        "primitive": "color.stone.dark.floor",
+        "hex": "#0B0906",
         "pairs": [
          {
           "text": "color.text.primary",
           "primitive": "color.stone.dark.900",
           "via": "color.neutral.900",
           "hex": "#FFFDF8",
-          "contrast": 18.51
+          "contrast": 19.56
          },
          {
           "text": "color.text.secondary",
           "primitive": "color.stone.dark.500",
           "via": "color.neutral.500",
           "hex": "#CFC6B6",
-          "contrast": 11.12
+          "contrast": 11.75
          },
          {
           "text": "color.text.muted",
           "primitive": "color.stone.dark.400",
           "via": "color.neutral.400",
           "hex": "#A39A8B",
-          "contrast": 6.77
+          "contrast": 7.15
          },
          {
           "text": "color.text.on-dark",
           "primitive": "color.stone.light.0",
           "hex": "#FFFFFF",
-          "contrast": 18.82
+          "contrast": 19.89
          },
          {
           "text": "color.text.link",
           "primitive": "color.navy.dark.700",
           "hex": "#ACBDD5",
-          "contrast": 9.85
+          "contrast": 10.41
          }
         ]
        },
@@ -2368,8 +2380,7 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.stone.dark.0",
-       "via": "color.neutral.0"
+       "primitive": "color.stone.dark.floor"
       }
      ]
     },
@@ -2385,8 +2396,7 @@
       {
        "mode": "dark",
        "tone": "dark",
-       "primitive": "color.stone.dark.0",
-       "via": "color.neutral.0"
+       "primitive": "color.stone.dark.floor"
       }
      ]
     },

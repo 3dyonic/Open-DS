@@ -477,10 +477,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#0D1117"
+        "color": "#06090E"
        },
-       "token": "slate.dark.0",
-       "text": "#0D1117"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -506,10 +506,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#0D1117"
+        "color": "#06090E"
        },
-       "token": "slate.dark.0",
-       "text": "#0D1117"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -929,10 +929,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#0D1117"
+        "color": "#06090E"
        },
-       "token": "slate.dark.0",
-       "text": "#0D1117"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1193,10 +1193,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#0D1117"
+        "color": "#06090E"
        },
-       "token": "slate.dark.0",
-       "text": "#0D1117"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1399,10 +1399,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#0D1117"
+        "color": "#06090E"
        },
-       "token": "slate.dark.0",
-       "text": "#0D1117"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1794,10 +1794,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#0D1117"
+        "color": "#06090E"
        },
-       "token": "slate.dark.0",
-       "text": "#0D1117"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },
@@ -1823,10 +1823,10 @@
       {
        "theme": "Dark",
        "swatch": {
-        "color": "#0D1117"
+        "color": "#06090E"
        },
-       "token": "slate.dark.0",
-       "text": "#0D1117"
+       "token": "slate.dark.floor",
+       "text": "#06090E"
       }
      ]
     },

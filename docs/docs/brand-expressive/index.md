@@ -9,7 +9,7 @@ hide_title: true
 hide_table_of_contents: true
 ---
 
-:::hero{robot="brand-expressive" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="48 components|184 primitives|2 themes"}
+:::hero{robot="brand-expressive" eyebrow="Design system · built from 79 answered questions" action="Explore the foundations" href="foundations/" stats="48 components|185 primitives|2 themes"}
 # Brand expressive
 
 Big display type, vivid color and springy motion, for launches that must be remembered.

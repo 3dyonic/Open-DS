@@ -294,7 +294,8 @@ export const CHECKS = {
         const t = c.scheme(s).tokens;
         const semantic = Object.keys(flatten(t.semantic)).filter((p) => p.startsWith("color."));
         // OD-228: the neutral steps are one scale with one entry, the grammar's semantics.neutral.
-        const scaleOk = (p) => p.startsWith("color.neutral.") && g.semantics.neutral?.steps.includes(p.split(".")[2]);
+        const scaleOk = (p) =>
+          p.startsWith("color.neutral.") && [...(g.semantics.neutral?.steps ?? []), g.semantics.neutral?.floor?.step].includes(p.split(".")[2]);
         for (const p of semantic)
           if (!guide.has(p) && !scaleOk(p)) gaps.push(`${s}: ${p} has no guidance in the grammar`);
         for (const k of guide.values()) {
@@ -1348,6 +1349,10 @@ export const CHECKS = {
             for (const st of g.steps)
               if (scale[st]?.$value !== `{color.${n.gray}.${mode}.${st}}`)
                 gaps.push(`${id}/${brand}/${mode}: neutral.${st} does not point at ${n.gray}.${mode}.${st}`);
+            // The floor, where a scheme has one: below 0 in dark; step 0 in light, as nothing is above white.
+            const floor = g.floor?.step;
+            const want = { light: `{color.${n.gray}.light.0}`, dark: `{color.${n.gray}.dark.${floor}}` }[mode];
+            if (floor && sem?.[floor] && scale[floor]?.$value !== want) gaps.push(`${id}/${brand}/${mode}: neutral.${floor} does not point at ${want}`);
             const rest = JSON.stringify({ ...br.theme[mode].color, neutral: undefined });
             for (const gr of grays)
               if (rest.includes(`{color.${gr}.`))

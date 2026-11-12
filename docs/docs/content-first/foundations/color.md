@@ -66,6 +66,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
 | `color.neutral.950` | light | `content-first.theme.light.color.neutral.950` → `color.stone.light.950` |
 | | dark | `content-first.theme.dark.color.neutral.950` → `color.stone.dark.950` |
+| `color.neutral.floor` | light | `content-first.theme.light.color.neutral.floor` → `color.stone.light.0` |
+| | dark | `content-first.theme.dark.color.neutral.floor` → `color.stone.dark.floor` |
 | `color.surface.canvas` | light | `content-first.theme.light.color.surface.canvas` → `color.neutral.50` → `content-first.theme.light.color.neutral.50` → `color.stone.light.50` |
 | | dark | `content-first.theme.dark.color.surface.canvas` → `color.neutral.0` → `content-first.theme.dark.color.neutral.0` → `color.stone.dark.0` |
 | `color.surface.default` | light | `content-first.theme.light.color.surface.default` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` |
@@ -73,9 +75,9 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.raised` | light | `content-first.theme.light.color.surface.raised` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` |
 | | dark | `content-first.theme.dark.color.surface.raised` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `color.surface.sunken` | light | `content-first.theme.light.color.surface.sunken` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` |
-| | dark | `content-first.theme.dark.color.surface.sunken` → `color.neutral.0` → `content-first.theme.dark.color.neutral.0` → `color.stone.dark.0` |
+| | dark | `content-first.theme.dark.color.surface.sunken` → `color.neutral.floor` → `content-first.theme.dark.color.neutral.floor` → `color.stone.dark.floor` |
 | `color.surface.highlight` | light | `content-first.theme.light.color.surface.highlight` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` |
-| | dark | `content-first.theme.dark.color.surface.highlight` → `color.neutral.0` → `content-first.theme.dark.color.neutral.0` → `color.stone.dark.0` |
+| | dark | `content-first.theme.dark.color.surface.highlight` → `color.neutral.floor` → `content-first.theme.dark.color.neutral.floor` → `color.stone.dark.floor` |
 | `color.surface.pressed` | light | `content-first.theme.light.color.surface.pressed` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` |
 | | dark | `content-first.theme.dark.color.surface.pressed` → `color.neutral.200` → `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
 | `color.surface.selected` | light | `content-first.theme.light.color.surface.selected` → `color.navy.light.100` |

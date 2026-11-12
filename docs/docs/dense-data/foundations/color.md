@@ -66,6 +66,8 @@ Each token points to another token. Values live only on primitives, below.
 | | dark | `dense-data.theme.dark.color.neutral.900` → `color.slate.dark.900` |
 | `color.neutral.950` | light | `dense-data.theme.light.color.neutral.950` → `color.slate.light.950` |
 | | dark | `dense-data.theme.dark.color.neutral.950` → `color.slate.dark.950` |
+| `color.neutral.floor` | light | `dense-data.theme.light.color.neutral.floor` → `color.slate.light.0` |
+| | dark | `dense-data.theme.dark.color.neutral.floor` → `color.slate.dark.floor` |
 | `color.surface.canvas` | light | `dense-data.theme.light.color.surface.canvas` → `color.neutral.50` → `dense-data.theme.light.color.neutral.50` → `color.slate.light.50` |
 | | dark | `dense-data.theme.dark.color.surface.canvas` → `color.neutral.0` → `dense-data.theme.dark.color.neutral.0` → `color.slate.dark.0` |
 | `color.surface.default` | light | `dense-data.theme.light.color.surface.default` → `color.neutral.0` → `dense-data.theme.light.color.neutral.0` → `color.slate.light.0` |
@@ -73,11 +75,11 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.raised` | light | `dense-data.theme.light.color.surface.raised` → `color.neutral.0` → `dense-data.theme.light.color.neutral.0` → `color.slate.light.0` |
 | | dark | `dense-data.theme.dark.color.surface.raised` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `color.surface.sunken` | light | `dense-data.theme.light.color.surface.sunken` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` |
-| | dark | `dense-data.theme.dark.color.surface.sunken` → `color.neutral.0` → `dense-data.theme.dark.color.neutral.0` → `color.slate.dark.0` |
+| | dark | `dense-data.theme.dark.color.surface.sunken` → `color.neutral.floor` → `dense-data.theme.dark.color.neutral.floor` → `color.slate.dark.floor` |
 | `color.surface.highlight` | light | `dense-data.theme.light.color.surface.highlight` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` |
-| | dark | `dense-data.theme.dark.color.surface.highlight` → `color.neutral.0` → `dense-data.theme.dark.color.neutral.0` → `color.slate.dark.0` |
+| | dark | `dense-data.theme.dark.color.surface.highlight` → `color.neutral.floor` → `dense-data.theme.dark.color.neutral.floor` → `color.slate.dark.floor` |
 | `color.surface.pressed` | light | `dense-data.theme.light.color.surface.pressed` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` |
-| | dark | `dense-data.theme.dark.color.surface.pressed` → `color.neutral.0` → `dense-data.theme.dark.color.neutral.0` → `color.slate.dark.0` |
+| | dark | `dense-data.theme.dark.color.surface.pressed` → `color.neutral.floor` → `dense-data.theme.dark.color.neutral.floor` → `color.slate.dark.floor` |
 | `color.surface.selected` | light | `dense-data.theme.light.color.surface.selected` → `color.violet.light.100` |
 | | dark | `dense-data.theme.dark.color.surface.selected` → `color.violet.dark.100` |
 | `color.surface.inverse` | light | `dense-data.theme.light.color.surface.inverse` → `color.neutral.900` → `dense-data.theme.light.color.neutral.900` → `color.slate.light.900` |

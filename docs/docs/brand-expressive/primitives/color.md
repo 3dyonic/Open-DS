@@ -8,7 +8,7 @@ description: "Color primitives in Brand expressive."
 
 # Color
 
-136 primitives, 54 used.
+137 primitives, 55 used.
 
 Each color is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its color, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).
 

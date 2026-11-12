@@ -348,6 +348,11 @@
        "step": "950",
        "primitive": "slate-deep.dark.950",
        "hex": "#FFFFFF"
+      },
+      {
+       "step": "floor",
+       "primitive": "slate-deep.dark.floor",
+       "hex": "#00010E"
       }
      ],
      "tokens": [
@@ -359,24 +364,6 @@
        "via": "neutral.0",
        "hex": "#020617",
        "guidance": "../foundations/color?for=color-surface-canvas#what-each-color-is-for"
-      },
-      {
-       "token": "surface.sunken",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "slate-deep.dark.0",
-       "via": "neutral.0",
-       "hex": "#020617",
-       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
-      },
-      {
-       "token": "surface.highlight",
-       "paints": "fill",
-       "step": "0",
-       "primitive": "slate-deep.dark.0",
-       "via": "neutral.0",
-       "hex": "#020617",
-       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
       },
       {
        "token": "surface.default",
@@ -422,6 +409,22 @@
        "via": "neutral.100",
        "hex": "#1E293B",
        "guidance": "../foundations/color?for=color-disabled-surface#what-each-color-is-for"
+      },
+      {
+       "token": "surface.sunken",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "slate-deep.dark.floor",
+       "hex": "#00010E",
+       "guidance": "../foundations/color?for=color-surface-sunken#what-each-color-is-for"
+      },
+      {
+       "token": "surface.highlight",
+       "paints": "fill",
+       "step": "floor",
+       "primitive": "slate-deep.dark.floor",
+       "hex": "#00010E",
+       "guidance": "../foundations/color?for=color-surface-highlight#what-each-color-is-for"
       },
       {
        "token": "surface.pressed",
@@ -2469,6 +2472,10 @@
        "where": "light, aster"
       },
       {
+       "token": "color.neutral.floor",
+       "where": "light, aster"
+      },
+      {
        "token": "color.text.on-dark",
        "where": "every mode, birch"
       },
@@ -2477,11 +2484,19 @@
        "where": "light, birch"
       },
       {
+       "token": "color.neutral.floor",
+       "where": "light, birch"
+      },
+      {
        "token": "color.text.on-dark",
        "where": "every mode, coral"
       },
       {
        "token": "color.neutral.0",
+       "where": "light, coral"
+      },
+      {
+       "token": "color.neutral.floor",
        "where": "light, coral"
       }
      ]
@@ -3004,6 +3019,28 @@
       },
       {
        "token": "color.neutral.950",
+       "where": "dark, coral"
+      }
+     ]
+    },
+    {
+     "primitive": "color.slate-deep.dark.floor",
+     "value": "#00010E",
+     "sample": {
+      "kind": "color",
+      "value": "#00010E"
+     },
+     "usedBy": [
+      {
+       "token": "color.neutral.floor",
+       "where": "dark, aster"
+      },
+      {
+       "token": "color.neutral.floor",
+       "where": "dark, birch"
+      },
+      {
+       "token": "color.neutral.floor",
        "where": "dark, coral"
       }
      ]
