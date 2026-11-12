@@ -63,7 +63,7 @@ test("S2 a move over 0.05 with no approval is caught", async () => {
 test("S2-clean the same move with owner approvals passes the shift tiers", async () => {
   const card = await run(dd((s, r) => {
     for (const t of ["color.status.warning", "color.category.4"]) setTheme(s, "light", t, WARN);
-    approve(r, [{ token: "color.status.warning" }, { token: "color.category.4" }]);
+    approve(r, [{ token: "color.status.warning", to: WARN.toLowerCase() }, { token: "color.category.4", to: WARN.toLowerCase() }]);
   }));
   const shiftFails = failing(card).filter((id) => id.startsWith("shift."));
   assert.deepEqual(shiftFails, [], show(card, shiftFails));
@@ -71,7 +71,15 @@ test("S2-clean the same move with owner approvals passes the shift tiers", async
 test("S3 an approval for a different theme does not cover the move", async () => {
   const card = await run(dd((s, r) => {
     for (const t of ["color.status.warning", "color.category.4"]) setTheme(s, "light", t, WARN);
-    approve(r, [{ token: "color.status.warning", theme: "dark" }, { token: "color.category.4", theme: "dark" }]);
+    approve(r, [{ token: "color.status.warning", theme: "dark", to: WARN.toLowerCase() }, { token: "color.category.4", theme: "dark", to: WARN.toLowerCase() }]);
+  }));
+  assert.ok(flagged(card, "shift.approval-unapproved"), show(card, ["shift.approval-unapproved"]));
+});
+// An approval clears the move it names: the same token moved to another value needs a new approval.
+test("S3b an approval for another value does not cover the move", async () => {
+  const card = await run(dd((s, r) => {
+    for (const t of ["color.status.warning", "color.category.4"]) setTheme(s, "light", t, WARN);
+    approve(r, [{ token: "color.status.warning", to: "#a06a24" }, { token: "color.category.4", to: "#a06a24" }]);
   }));
   assert.ok(flagged(card, "shift.approval-unapproved"), show(card, ["shift.approval-unapproved"]));
 });

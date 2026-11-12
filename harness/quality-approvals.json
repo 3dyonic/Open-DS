@@ -545,6 +545,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.raised",
+      "to": "#262d38",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -553,6 +554,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.sunken",
+      "to": "#06090e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -561,6 +563,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.highlight",
+      "to": "#06090e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -569,6 +572,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.pressed",
+      "to": "#06090e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. pressed moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -577,6 +581,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.raised",
+      "to": "#2e2a24",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -585,6 +590,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.sunken",
+      "to": "#0b0906",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -593,6 +599,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.highlight",
+      "to": "#0b0906",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -601,6 +608,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.default",
+      "to": "#222222",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. default moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -609,6 +617,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.raised",
+      "to": "#333333",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -617,6 +626,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.sunken",
+      "to": "#141414",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -625,6 +635,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.highlight",
+      "to": "#141414",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -633,6 +644,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.border.focus",
+      "to": "#a7c8fc",
       "why": "Cause: Accessible first keeps AAA in dark mode. color.border.focus moves to a lighter step so it reads 7:1 on the lighter raised surface.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -641,6 +653,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.status.danger",
+      "to": "#fedbda",
       "why": "Cause: Accessible first keeps AAA in dark mode. color.status.danger moves to a lighter step so it reads 7:1 on the lighter raised surface.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -649,6 +662,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.raised",
+      "to": "#33241f",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -657,6 +671,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.sunken",
+      "to": "#090403",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -665,6 +680,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.highlight",
+      "to": "#090403",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -673,6 +689,7 @@
       "theme": "aster-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.raised",
+      "to": "#1e293b",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -681,6 +698,7 @@
       "theme": "aster-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.sunken",
+      "to": "#00010e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -689,6 +707,7 @@
       "theme": "aster-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.highlight",
+      "to": "#00010e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -697,6 +716,7 @@
       "theme": "birch-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.raised",
+      "to": "#1e293b",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -705,6 +725,7 @@
       "theme": "birch-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.sunken",
+      "to": "#00010e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -713,6 +734,7 @@
       "theme": "birch-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.highlight",
+      "to": "#00010e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -721,6 +743,7 @@
       "theme": "coral-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.raised",
+      "to": "#1e293b",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. raised moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -729,6 +752,7 @@
       "theme": "coral-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.sunken",
+      "to": "#00010e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. sunken moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -737,6 +761,7 @@
       "theme": "coral-dark",
       "check": "shift.approval-unapproved",
       "token": "color.surface.highlight",
+      "to": "#00010e",
       "why": "Cause: dark surface order fixed. In dark, sunken sits below content and raised above it, as decision 5 sets. highlight moved to its rung on the dark ladder.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -833,6 +858,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.border.default",
+      "to": "#595959",
       "why": "Cause: Accessible first keeps AAA in dark mode (owner decision 2026-11-12). The default border moves one step lighter so it keeps its contrast on the lighter raised surface.",
       "approved_by": "Yonatan, 2026-11-12"
     },
@@ -841,6 +867,7 @@
       "theme": "dark",
       "check": "shift.approval-unapproved",
       "token": "color.border.strong",
+      "to": "#b4b4b4",
       "why": "Cause: Accessible first keeps AAA in dark mode (owner decision 2026-11-12). The strong border moves one step lighter so it keeps its contrast on the lighter raised surface.",
       "approved_by": "Yonatan, 2026-11-12"
     },
