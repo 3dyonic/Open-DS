@@ -2,7 +2,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { EASING_BY_STEPS, GRADED_STEPS, curveOf, differenceThreshold, stepsAnswer } from "../src/color-steps.mjs";
-import { colorScalePage, greyOf } from "../src/color-scale-doc.mjs";
+import { colorScalePage, primaryScale, scaleFacts, stepsChain } from "../src/color-scale-doc.mjs";
 import { contrast, easedPosition, gradedDarkScale, gradedLightScale, lch, lightScale, luminance, scale, STEPS } from "../src/ramps.mjs";
 import { closePairs, onSurface, smallestDistance } from "../src/quality/difference.mjs";
 import { stepsToHold } from "../src/quality/curve-shift.mjs";
@@ -117,21 +117,36 @@ test("holding runs from a held step to its end of the scale", () => {
   assert.deepEqual(held, { s: { blue: { light: { 300: "over-limit", 50: "order", 100: "order", 200: "order" } } } });
 });
 
-test("How the scale is built: none while the flag is off; with it on, the strip and the answer", () => {
+test("How the scale is built: none while the flag is off; with it on, every section from the data", () => {
   const g = grammar();
   const fm = () => "";
   const s = loadScheme("content-first", undefined, { graded: true });
   const stored = {};
-  const put = (id, data) => ((stored[id] = data), `::color-scale{id="${id}"}`);
+  const put = (kind, id, data) => (((stored[kind] ??= {})[id] = data), `::${kind}{id="${id}"}`);
   assert.equal(colorScalePage(s, g, { graded: false, frontMatter: fm, put }), null);
   const page = colorScalePage(s, g, { graded: true, frontMatter: fm, put });
   assert.match(page, /# How the scale is built/);
-  assert.match(page, /::color-scale\{id="content-first-scale-in-grey"\}/);
+  for (const kind of ["scale-strip", "scale-curve", "scale-uses", "scale-options"]) assert.match(page, new RegExp(`^::${kind}\\{id="key"\\}$`, "m"));
+  assert.match(page, /^:::scale-why\{id="key"\}\nWe use \*\*a light ease\*\* for the \*\*navy scale\*\* in order to /m);
   assert.doesNotMatch(page, /<[a-z]/, "no HTML in a docs page");
-  const strip = stored["content-first-scale-in-grey"].modes[0].steps;
-  assert.equal(strip.length, 11);
-  assert.ok(strip.every((x) => /^#([0-9A-F]{2})\1\1$/.test(x.hex)), "every swatch is a grey");
-  assert.match(page, /\(easing 0\.25\)/);
-  assert.equal(greyOf("#FFFFFF"), "#FFFFFF");
-  assert.ok(Math.abs(contrast(greyOf(KEY), KEY) - 1) < 0.05, "a grey keeps its color's lightness");
+  assert.doesNotMatch(page, /Not used yet|in grey|Part of \[Primitives/, "the grey strip and its lines are gone");
+  // The strip and the dots are the built scale; the uses are its real contrast.
+  const row = primaryScale(s).row;
+  assert.deepEqual(stored["scale-strip"].key.steps.map((x) => x.hex), STEPS.map((st) => row[st]));
+  assert.deepEqual(stored["scale-curve"].key.steps.map((x) => x.hex), STEPS.map((st) => row[st]));
+  const banner = stored["scale-uses"].key.uses.find((u) => u.use === "banner");
+  assert.equal(banner.contrast, Math.round(contrast(row[950], row[100]) * 100) / 100);
+  const own = stored["scale-options"].key.options.filter((o) => o.own);
+  assert.deepEqual(own.map((o) => o.option), ["light-ease"]);
+  assert.deepEqual(own[0].steps.map((x) => x.hex), STEPS.map((st) => gradedLightScale(row[600], 0.25)[st]));
+});
+
+test("the chain to the step answer follows each answer's because list, earliest first", () => {
+  const g = grammar();
+  const chain = stepsChain(loadScheme("brand-expressive"), g).map((x) => x.question);
+  assert.deepEqual(chain, ["brand.q1", "color.definition", "color.definition.steps"]);
+  const af = stepsChain(loadScheme("accessible-first"), g).map((x) => x.question);
+  assert.deepEqual(af, ["people.q1", "color.definition", "color.definition.steps"]);
+  const facts = scaleFacts(loadScheme("multi-brand"), g);
+  assert.equal(facts.brand, "aster", "Multi-brand shows its first brand");
 });

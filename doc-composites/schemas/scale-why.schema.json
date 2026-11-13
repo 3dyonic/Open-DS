@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/scale-why.schema.json",
+  "title": "Scale why",
+  "description": "The answers that lead to a scheme's color.definition.steps answer, earliest first, read from each answer's because list. Drawn by the ScaleWhy composite beside the reason in words.",
+  "type": "object",
+  "required": [
+    "steps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Each answer in the chain; the last is color.definition.steps.",
+      "items": {
+        "type": "object",
+        "required": [
+          "question",
+          "group",
+          "text",
+          "option",
+          "answer",
+          "why"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "question": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.[a-z0-9.]+$",
+            "description": "The question's id, such as brand.q1."
+          },
+          "group": {
+            "type": "string",
+            "description": "The title of the question's group in the grammar, such as Brand or Color."
+          },
+          "text": {
+            "type": "string",
+            "description": "The question, from the grammar."
+          },
+          "option": {
+            "type": "string",
+            "description": "The id of the option the scheme chose."
+          },
+          "answer": {
+            "type": "string",
+            "description": "The label of that option, from the grammar."
+          },
+          "why": {
+            "type": "string",
+            "description": "The scheme's own reason for the answer."
+          }
+        }
+      }
+    }
+  }
+}

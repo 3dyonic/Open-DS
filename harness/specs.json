@@ -978,6 +978,24 @@
         "edge-rule",
         "hit-area"
       ]
+    },
+    {
+      "id": "OD-307",
+      "title": "How the scale is built: the curve and its reason, per scheme, nested under Color",
+      "in": [
+        "the page sits under Primitives › Color in every scheme, and the Color page links work from its folder index",
+        "the page shows the key scale, the curve chart, the chain of answers with the reason, three uses with their contrast, and the key built with other answers, all from data",
+        "the grey strip, its label, the dense paragraph and the Part of line are gone",
+        "a check fails when the page shows a value that differs from the built scale"
+      ],
+      "checks": [
+        "color-scale-docs",
+        "doc-composites-data",
+        "doc-composites-facts",
+        "doc-composites-props-only",
+        "doc-composites-scoped-styles",
+        "doc-composites-base-forms"
+      ]
     }
   ]
 }

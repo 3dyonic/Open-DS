@@ -48,6 +48,11 @@ const COMPOSITES = {
   "status-colors": "StatusColors",
   "mode-changes": "ModeChanges",
   "mode-constants": "ModeConstants",
+  "scale-strip": "ScaleStrip",
+  "scale-curve": "ScaleCurve",
+  "scale-why": "ScaleWhy",
+  "scale-uses": "ScaleUses",
+  "scale-options": "ScaleOptions",
 };
 // The attribute that names a composite's entry in the page's data file.
 const DATA_KEY = {
@@ -76,6 +81,11 @@ const DATA_KEY = {
   "status-colors": "id",
   "mode-changes": "id",
   "mode-constants": "id",
+  "scale-strip": "id",
+  "scale-curve": "id",
+  "scale-why": "id",
+  "scale-uses": "id",
+  "scale-options": "id",
   group: "id",
 };
 // The name the page's data has inside the compiled page.

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/scale-uses.schema.json",
+  "title": "Scale uses",
+  "description": "Three uses of a scheme's key scale in the light theme, each a text on a fill, with the WCAG contrast computed from the built colors. Drawn by the ScaleUses composite on How the scale is built.",
+  "type": "object",
+  "required": [
+    "hue",
+    "uses"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "hue": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "The hue of the key scale, such as pink or blue."
+    },
+    "uses": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Each use: the main button, a highlight and a banner.",
+      "items": {
+        "type": "object",
+        "required": [
+          "use",
+          "sample",
+          "fill",
+          "text",
+          "contrast",
+          "level"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "use": {
+            "type": "string",
+            "enum": [
+              "button",
+              "highlight",
+              "banner"
+            ],
+            "description": "What the pair is used for."
+          },
+          "sample": {
+            "type": "string",
+            "description": "The words drawn in the use, from the scheme's samples."
+          },
+          "fill": {
+            "type": "object",
+            "description": "The fill: a step of the key scale.",
+            "required": [
+              "step",
+              "hex"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "step": {
+                "type": "string",
+                "pattern": "^(50|[1-9]00|950)$",
+                "description": "The step of the scale, 50 to 950."
+              },
+              "hex": {
+                "type": "string",
+                "pattern": "^#[0-9A-F]{6}$",
+                "description": "The color as built, in uppercase hex."
+              }
+            }
+          },
+          "text": {
+            "type": "object",
+            "description": "The text color: a step of the key scale, or the scheme's text on its action.",
+            "additionalProperties": false,
+            "required": [
+              "hex"
+            ],
+            "properties": {
+              "step": {
+                "type": "string",
+                "pattern": "^(50|[1-9]00|950)$",
+                "description": "The step of the scale, 50 to 950."
+              },
+              "token": {
+                "type": "string",
+                "description": "The semantic token of the text, when it is not a step, such as text.on-action."
+              },
+              "hex": {
+                "type": "string",
+                "pattern": "^#[0-9A-F]{6}$",
+                "description": "The color as built, in uppercase hex."
+              }
+            }
+          },
+          "contrast": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 21,
+            "description": "The WCAG contrast ratio of the text on the fill, to two decimals."
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "AAA",
+              "AA",
+              "AA-large",
+              "fail"
+            ],
+            "description": "The WCAG level for body text: AAA from 7, AA from 4.5, AA-large (large text only) from 3, else fail."
+          }
+        }
+      }
+    }
+  }
+}
