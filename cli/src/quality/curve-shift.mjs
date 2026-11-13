@@ -9,7 +9,7 @@ import { scale } from "../ramps.mjs";
 import { colorMoves, keyChanges, tierOf, tiersFor } from "./criteria/shift.mjs";
 import { relationFlags, stateFamilies } from "./criteria/color-relations.mjs";
 import { hex6 } from "./values.mjs";
-import { gradeMisses } from "./criteria/curves.mjs";
+import { gradeMisses, tightSteps } from "./criteria/curves.mjs";
 import { oklabDistance } from "./color.mjs";
 import { DEFAULT_PARAMS } from "./params.mjs";
 import { snapshotScheme } from "./snapshot.mjs";
@@ -73,8 +73,16 @@ export function gates(base, candidate, params = DEFAULT_PARAMS) {
   const different = differenceFailures(candidate, threshold(candidate))
     .filter((f) => !failedBefore.has(f.id))
     .map((f) => ({ scheme: f.scheme, themes: [f.theme], tokens: f.tokens, says: `${f.id}: now ${f.distance.toFixed(3)} apart, under the scheme's difference threshold` }));
+  // Neighbouring steps keep a visible lightness gap (OD-298 curves.min-gap): no pair may be tight on
+  // new that is not tight on old.
+  const pairKey = (t) => `${t.scheme}/${t.hue}.${t.mode} ${t.from}-${t.to}`;
+  const tightBefore = new Set(tightSteps(base, params.curves.minGap).map(pairKey));
+  const tight = tightSteps(candidate, params.curves.minGap)
+    .filter((t) => !tightBefore.has(pairKey(t)))
+    .map((t) => ({ scheme: t.scheme, themes: [t.mode], tokens: [`color.${t.hue}.${t.mode}.${t.from}`, `color.${t.hue}.${t.mode}.${t.to}`], says: `${pairKey(t)} differ by ${t.gap.toFixed(3)} in lightness` }));
   return [
     ...relationFlags(base, candidate, params),
+    { id: "curves.min-gap-new", title: `Neighbouring steps that fall under ${params.curves.minGap} in lightness`, flags: tight },
     { id: "relations.state-gap-lost", title: `State steps that fall under a visible gap (${gap})`, flags: close },
     { id: "difference.new-failures", title: "Pairs that fail the difference check on the graded curve and pass on the shared one", flags: different },
   ].filter((r) => r.flags.length);

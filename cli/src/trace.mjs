@@ -11,7 +11,9 @@
 // the button's height to the contrast answer (OD-273). No file access: the caller passes the scheme
 // and the grammar.
 import { graphNodes, roleOf } from "./decision-graph.mjs";
+import { curveOf } from "./color-steps.mjs";
 import { tokenIndex } from "./lands.mjs";
+import { follow } from "./scale-map.mjs";
 import { questions } from "./schemes.mjs";
 import { flatTokens } from "./tokens.mjs";
 
@@ -22,6 +24,7 @@ export const LINKS = [
   { id: "group", title: "The group's reason" },
   { id: "rule", title: "Usage rule" },
   { id: "grammar", title: "Grammar trace rule" },
+  { id: "scale", title: "The scale's curve" },
 ];
 
 // A token name in a rule's text: two or more dotted segments ("type.body", "size.control.default").
@@ -122,6 +125,24 @@ export function traceScheme(scheme, g) {
     return ids.length ? { by: "grammar", because: ids, why: null, says: rule?.says ?? null, property: entry?.title ?? null } : null;
   };
 
+  // A color on a step the graded curve sets (OD-299) follows the steps answer: the curve is on, and the
+  // step is not an anchor (50, the key at 600, 950) and not held. Computed from the chain, so it names
+  // exactly the tokens the answer moves.
+  const curve = curveOf(scheme);
+  const stepsId = cited(["color.definition.steps"]);
+  const ANCHORS = new Set(["50", "600", "950"]);
+  const scaleLink = (path) => {
+    if (!curve || !stepsId.length || !path.startsWith("color.")) return null;
+    for (const brand of brands)
+      for (const mode of ["light", "dark"]) {
+        const m = follow(scheme.tokens, brand, mode, path)?.prim?.match(/^color\.([a-z0-9-]+)\.(light|dark)\.(\d+)$/);
+        const spec = m && extOf(scheme.tokens.primitive?.color?.[m[1]])[m[2]];
+        if (spec?.key && !ANCHORS.has(m[3]) && !(m[3] in (spec.held ?? {})))
+          return { by: "scale", because: stepsId, why: null, says: `On ${m[1]}.${m[2]}.${m[3]}, a step the contrast-graded curve sets.` };
+      }
+    return null;
+  };
+
   const tokens = semantics.map(([path, token]) => {
     const name = shortName(path);
     const own = cited(extOf(token).because);
@@ -131,6 +152,7 @@ export function traceScheme(scheme, g) {
       groupLink(path),
       ...(byRule.get(name) ?? []).map((r) => ({ by: "rule", because: r.because, why: r.why, situation: r.situation, exact: r.exact })),
       grammarLink(name),
+      scaleLink(path),
     ].filter(Boolean);
     return { token: name, value: token.$value, links, because: [...new Set(links.flatMap((l) => l.because))] };
   });

@@ -3476,7 +3476,7 @@ export const CHECKS = {
         }
         const text = c.read(page);
         const easing = stepsAnswer(c.scheme(id))?.easing;
-        if (!text.includes("# How the scale is built") || !text.includes("<svg") || !text.includes(`(easing ${easing})`))
+        if (!text.includes("# How the scale is built") || !text.includes(`::color-scale{id="${id}-scale-in-grey"}`) || !text.includes(`(easing ${easing})`))
           gaps.push(`${page} lacks its title, the grey strip or the easing ${easing}`);
       }
       return gaps.length

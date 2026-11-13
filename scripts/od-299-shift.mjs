@@ -43,6 +43,8 @@ function hold(toHold) {
         const held = { ...(spec.held ?? {}) };
         for (const [st, why] of Object.entries(steps)) if (!(st in held)) ((held[st] = why), added++);
         spec.held = Object.fromEntries(Object.entries(held).sort(([a], [b]) => a - b));
+        // The loaded row was generated before this hold; drop it, so saveScheme stores only the spec.
+        delete s.tokens.primitive.color[hue][mode];
       }
     saveScheme(s);
   }

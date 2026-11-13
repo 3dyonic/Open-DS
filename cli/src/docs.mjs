@@ -2126,7 +2126,13 @@ export function docsPages(
       "\n";
   });
   // How the scale is built (OD-299): only while the graded curve is on.
-  const scalePage = colorScalePage(scheme, g, { frontMatter: fm });
+  const scalePage = colorScalePage(scheme, g, {
+    frontMatter: fm,
+    put: (id, data) => {
+      (compositeData["color-scale"] ??= {})[id] = data;
+      return `::color-scale{id="${id}"}`;
+    },
+  });
   if (scalePage) pages["primitives/color-scale.md"] = scalePage;
 
   // What a component built on shadcn reads (OD-215): each class it uses, the shadcn variable, the

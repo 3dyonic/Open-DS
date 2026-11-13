@@ -2532,7 +2532,10 @@
                 "key": "#F59ACA",
                 "held": {
                   "50": "order",
-                  "100": "over-limit"
+                  "100": "over-limit",
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
                 }
               }
             }
@@ -2560,7 +2563,11 @@
                 }
               },
               "dark": {
-                "key": "#5CC283"
+                "key": "#5CC283",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
               }
             }
           }
@@ -2588,7 +2595,12 @@
                 }
               },
               "dark": {
-                "key": "#F2B84B"
+                "key": "#F2B84B",
+                "held": {
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
               }
             }
           }
@@ -2616,7 +2628,11 @@
                 }
               },
               "dark": {
-                "key": "#F28B8B"
+                "key": "#F28B8B",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
               }
             }
           }
@@ -2659,7 +2675,12 @@
                 }
               },
               "dark": {
-                "key": "#8AB4F8"
+                "key": "#8AB4F8",
+                "held": {
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
               }
             }
           }

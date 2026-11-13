@@ -3,6 +3,7 @@
 // is on (GRADED_STEPS), so it never describes a curve the scheme does not ship.
 import { DISTANCE_BY_DIFFERENCE, GRADED_STEPS, GRADES, stepsAnswer } from "./color-steps.mjs";
 import { STEPS, contrast, luminance } from "./ramps.mjs";
+import { resolveScheme, themesOf } from "./quality/snapshot.mjs";
 import { follow } from "./scale-map.mjs";
 import { differenceOf } from "./quality/difference.mjs";
 import { themeTokens } from "./tokens.mjs";
@@ -23,15 +24,23 @@ export function primaryScale(scheme) {
   return { hue, row: Object.fromEntries(STEPS.map((st) => [st, String(group[st]?.$value ?? "").slice(0, 7).toUpperCase()])) };
 }
 
-/** The grey strip as inline SVG: one swatch per step, its step under it. */
-export function greyStrip(row) {
-  const w = 56;
-  const cells = STEPS.map((st, i) => {
-    const grey = greyOf(row[st]);
-    const ink = contrast(grey, "#000000") >= contrast(grey, "#FFFFFF") ? "#000000" : "#FFFFFF";
-    return `<rect x="${i * w}" y="0" width="${w}" height="56" fill="${grey}"/><text x="${i * w + w / 2}" y="34" text-anchor="middle" font-size="13" fill="${ink}">${st}</text>`;
-  }).join("");
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${STEPS.length * w} 56" width="100%" role="img" aria-label="The steps 50 to 950 as greys of the same lightness">${cells}</svg>`;
+/**
+ * The grey strip as color-scale composite data (doc-composites/schemas/color-scale.schema.json): the
+ * primary hue's light steps, each as the grey of the same lightness. page is the light page's colors.
+ */
+export function greyStrip(hue, row, page) {
+  return {
+    family: `${hue} in grey`,
+    modes: [{ mode: "light", page, steps: STEPS.map((st) => ({ step: st, primitive: `${hue}.light.${st}`, hex: greyOf(row[st]) })), tokens: [] }],
+  };
+}
+
+// The light page's colors the composite draws on.
+function lightPage(scheme) {
+  const theme = themesOf(scheme).find((t) => t.mode === "light");
+  const v = resolveScheme(scheme, themeTokens).values[theme.id];
+  const hex = (n) => String(v[n] ?? "").slice(0, 7).toUpperCase();
+  return { canvas: hex("color.surface.canvas"), text: hex("color.text.primary"), muted: hex("color.text.muted"), border: hex("color.border.default"), inverse: hex("color.surface.inverse") };
 }
 
 const answerOf = (scheme, q) => scheme.answers.find((a) => a.question === q);
@@ -54,8 +63,8 @@ export function gradeMissCount(scheme) {
   return n;
 }
 
-/** The page's Markdown, or null when the flag is off or the scheme has no step answer. */
-export function colorScalePage(scheme, grammar, { graded = GRADED_STEPS, frontMatter }) {
+/** The page's Markdown, or null when the flag is off or the scheme has no step answer. put(id, data) stores composite data and returns its directive. */
+export function colorScalePage(scheme, grammar, { graded = GRADED_STEPS, frontMatter, put }) {
   const steps = stepsAnswer(scheme);
   const primary = primaryScale(scheme);
   if (!graded || !steps || !primary) return null;
@@ -78,11 +87,12 @@ export function colorScalePage(scheme, grammar, { graded = GRADED_STEPS, frontMa
       ? `Colors that mean different things must be at least ${DISTANCE_BY_DIFFERENCE[diff.option]} apart in OKLab, also for red-weak, green-weak and blue-weak vision; ${close ? `${close} pairs are closer today and need a second cue, such as an icon or a label` : "every pair is"}.`
       : null,
   ].filter(Boolean);
-  const kept = held ? ` Steps 50 and 950 keep the earlier curve, and so do ${held} steps that would move more than their limit.` : " Steps 50 and 950 keep the earlier curve.";
+  const kept = held ? ` Steps 50 and 950 keep the earlier curve, and so do ${held} held steps that would move too far or break a relation.` : " Steps 50 and 950 keep the earlier curve.";
+  const id = `${scheme.id}-scale-in-grey`;
   return (
     frontMatter({ sidebar_position: 1.5, title: "How the scale is built", description: `How ${scheme.name} spaces the steps of a color scale.` }) +
     `# How the scale is built\n\nPart of [Primitives › Color](./color.md). Every color scale in ${scheme.name} runs from step 50 to step 950, with its key color exact at step 600.${kept}\n\n` +
-    `${greyStrip(primary.row)}\n\n` +
+    `${put(id, greyStrip(primary.hue, primary.row, lightPage(scheme)))}\n\n` +
     `The strip is the ${primary.hue} scale with its color taken out. Each swatch keeps only the lightness of its step.\n\n` +
     `${sentences.join(" ")}\n`
   );

@@ -11,11 +11,11 @@ import { grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
 const KEY = "#0B4FC0";
 const z = (hex) => Math.log(luminance(hex) + 0.05);
 
-test("the flag is off by default, and the curve follows it", () => {
-  assert.equal(GRADED_STEPS, false);
+test("the curve follows the flag", () => {
   const scheme = { answers: [{ question: "color.definition.steps", option: "even-ease" }] };
-  assert.equal(curveOf(scheme), null);
+  assert.equal(curveOf(scheme, false), null);
   assert.deepEqual(curveOf(scheme, true), { easing: 0.5 });
+  assert.deepEqual(curveOf(scheme), GRADED_STEPS ? { easing: 0.5 } : null, "the default is the flag");
   assert.equal(curveOf({ answers: [] }, true), null, "no answer, no graded curve");
 });
 
@@ -72,12 +72,25 @@ test("a held step keeps the shared curve; the shared curve ignores held", () => 
   assert.deepEqual(scale(spec, "light"), shared);
 });
 
-test("flag off: every scheme loads exactly as on the shared curve", () => {
+test("a scheme loads on the curve the flag names, and the two curves differ", () => {
   for (const id of schemeIds()) {
-    const now = loadScheme(id);
-    const shared = loadScheme(id, undefined, { graded: false });
-    assert.equal(JSON.stringify(now.tokens.primitive.color), JSON.stringify(shared.tokens.primitive.color), id);
+    const colors = (graded) => JSON.stringify(loadScheme(id, undefined, { graded }).tokens.primitive.color);
+    assert.equal(JSON.stringify(loadScheme(id).tokens.primitive.color), colors(GRADED_STEPS), id);
+    assert.notEqual(colors(true), colors(false), `${id}: the graded curve moves some step`);
   }
+});
+
+test("the trace links a color on a graded step to the steps answer, only with the curve on", async () => {
+  const { traceScheme } = await import("../src/trace.mjs");
+  const g = grammar();
+  const linked = (graded) => {
+    const s = loadScheme("content-first", undefined, { graded });
+    // traceScheme reads the flag through curveOf; a scheme with no steps answer has no curve.
+    const scheme = graded ? s : { ...s, answers: s.answers.filter((a) => a.question !== "color.definition.steps") };
+    return traceScheme(scheme, g).tokens.filter((t) => t.links.some((l) => l.by === "scale")).map((t) => t.token);
+  };
+  assert.deepEqual(linked(false), []);
+  if (GRADED_STEPS) assert.ok(linked(true).includes("color.action.primary.hover"));
 });
 
 test("the difference check lays a translucent mark over its surface and finds close pairs", () => {
@@ -108,10 +121,16 @@ test("How the scale is built: none while the flag is off; with it on, the strip 
   const g = grammar();
   const fm = () => "";
   const s = loadScheme("content-first", undefined, { graded: true });
-  assert.equal(colorScalePage(s, g, { graded: false, frontMatter: fm }), null);
-  const page = colorScalePage(s, g, { graded: true, frontMatter: fm });
+  const stored = {};
+  const put = (id, data) => ((stored[id] = data), `::color-scale{id="${id}"}`);
+  assert.equal(colorScalePage(s, g, { graded: false, frontMatter: fm, put }), null);
+  const page = colorScalePage(s, g, { graded: true, frontMatter: fm, put });
   assert.match(page, /# How the scale is built/);
-  assert.match(page, /<svg/);
+  assert.match(page, /::color-scale\{id="content-first-scale-in-grey"\}/);
+  assert.doesNotMatch(page, /<[a-z]/, "no HTML in a docs page");
+  const strip = stored["content-first-scale-in-grey"].modes[0].steps;
+  assert.equal(strip.length, 11);
+  assert.ok(strip.every((x) => /^#([0-9A-F]{2})\1\1$/.test(x.hex)), "every swatch is a grey");
   assert.match(page, /\(easing 0\.25\)/);
   assert.equal(greyOf("#FFFFFF"), "#FFFFFF");
   assert.ok(Math.abs(contrast(greyOf(KEY), KEY) - 1) < 0.05, "a grey keeps its color's lightness");

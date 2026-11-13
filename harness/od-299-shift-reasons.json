@@ -4,12 +4,8 @@
     "dense-data": {
       "reason": "Method: contrast-graded steps, strong-ease (easing 0.6). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
       "tokens": [
-        "dark color.category.2.subtle",
-        "dark color.category.3.subtle",
         "dark color.category.4.subtle",
         "dark color.status.danger.subtle",
-        "dark color.status.info.subtle",
-        "dark color.status.success.subtle",
         "dark color.status.warning.subtle"
       ],
       "steps": [
@@ -17,31 +13,19 @@
         "amber.dark.200",
         "amber.dark.300",
         "amber.dark.400",
-        "amber.dark.800",
-        "amber.dark.900",
         "amber.light.400",
         "amber.light.900",
-        "blue.dark.100",
         "blue.dark.200",
         "blue.dark.300",
-        "blue.dark.800",
-        "blue.dark.900",
-        "green.dark.100",
         "green.dark.200",
         "green.dark.300",
-        "green.dark.800",
-        "green.dark.900",
         "green.light.400",
         "green.light.900",
         "red.dark.100",
         "red.dark.200",
-        "red.dark.800",
-        "red.dark.900",
         "red.light.400",
         "red.light.900",
         "violet.dark.200",
-        "violet.dark.800",
-        "violet.dark.900",
         "violet.light.900"
       ]
     },
@@ -52,9 +36,7 @@
         "light color.text.info-on-light"
       ],
       "steps": [
-        "blue.dark.900",
         "blue.light.800",
-        "green.dark.900",
         "navy.dark.900",
         "navy.light.800",
         "red.dark.900"
@@ -101,22 +83,14 @@
       "steps": [
         "amber.dark.100",
         "amber.dark.200",
-        "amber.dark.800",
-        "amber.dark.900",
         "amber.light.400",
         "amber.light.900",
         "blue.dark.100",
-        "blue.dark.800",
-        "blue.dark.900",
         "green.dark.800",
-        "green.dark.900",
         "green.light.400",
         "green.light.900",
-        "pink.dark.800",
-        "pink.dark.900",
         "pink.light.400",
         "red.dark.800",
-        "red.dark.900",
         "red.light.400",
         "red.light.900"
       ]
@@ -127,14 +101,8 @@
         "aster-dark color.surface.selected"
       ],
       "steps": [
-        "amber.dark.900",
-        "blue.dark.900",
-        "green.dark.900",
-        "orange.dark.900",
         "orange.light.400",
         "orange.light.900",
-        "purple.dark.900",
-        "red.dark.900",
         "red.light.400"
       ]
     }
