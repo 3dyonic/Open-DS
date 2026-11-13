@@ -1,0 +1,11 @@
+{
+  "$description": "The Jira status of each ticket that an ADR names in its plan steps, or in the status line of an ADR with a plan (OD-312). The harness reads it offline. Refresh it with node scripts/ticket-status.mjs; the check fails when it is more than 30 days old or lacks a step's ticket.",
+  "refreshed": "2026-11-13T00:00:00.000Z",
+  "statuses": {
+    "OD-288": "Done",
+    "OD-289": "Done",
+    "OD-291": "Done",
+    "OD-292": "Done",
+    "OD-311": "To Do"
+  }
+}
