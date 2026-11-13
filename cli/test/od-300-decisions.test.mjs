@@ -126,26 +126,31 @@ test("a row is one default control tall in every scheme, and the trace states it
 
 // ---------- Item 4: the switch ----------
 
-test("the switch track is the thumb plus its padding, twice as wide as it is tall, and the thumb slides one track height", () => {
+test("the switch track is the thumb plus its offset, twice as wide as it is tall, and the thumb slides one track height", () => {
   const src = read("components/switch.tsx");
-  assert.match(src, /\[--switch-track-height:calc\(var\(--switch-thumb-size\)\+2\*var\(--switch-padding\)\)\]/);
-  assert.match(src, /h-\[var\(--switch-track-height\)\] w-\[calc\(2\*var\(--switch-track-height\)\)\]/);
-  assert.match(src, /data-\[state=checked\]:translate-x-\[var\(--switch-track-height\)\] data-\[state=unchecked\]:translate-x-0/);
+  const track = "var(--switch-thumb-size)+2*var(--switch-thumb-offset)";
+  assert.ok(src.includes(`h-[calc(${track})] w-[calc(2*(${track}))]`));
+  assert.ok(src.includes(`data-[state=checked]:translate-x-[calc(${track})] data-[state=unchecked]:translate-x-0`));
+  assert.ok(src.includes("p-[var(--switch-thumb-offset)]"));
   assert.match(src, /transition-transform/);
-  assert.doesNotMatch(src, /var\(--switch-(width|height|thumb-travel)\)/);
+  assert.doesNotMatch(src, /var\(--switch-(width|height|padding|thumb-travel)\)/);
   for (const id of ["switch/width", "switch/height", "switch/thumb/travel"]) assert.equal(keyOf(id).replaced_by, "switch/thumb/size", id);
+  assert.equal(keyOf("switch/padding").replaced_by, "switch/thumb/offset");
   for (const id of schemeIds()) {
     const s = loadScheme(id);
     for (const t of themes(s)) {
       const thumb = px(valueIn(s, t, "component.switch.thumb.size"));
-      const pad = px(valueIn(s, t, "component.switch.padding"));
-      const height = thumb + 2 * pad;
+      const offset = px(valueIn(s, t, "component.switch.thumb.offset"));
+      const height = thumb + 2 * offset;
       const width = 2 * height;
-      assert.equal(width / height, 2, id);
-      // On, the thumb's right edge sits one padding from the track's right edge.
-      assert.equal(pad + height + thumb + pad, width, `${id}: the thumb ends inside the track`);
+      // On, the thumb has slid one track height; its right edge sits one offset from the track's edge.
+      assert.equal(offset + height + thumb + offset, width, `${id}: the thumb ends inside the track`);
     }
   }
+  // The anatomy draws the same shape: an offset, the thumb, an offset, a thumb's width of travel, an offset.
+  const track0 = g.catalogue.items.find((i) => i.id === "switch").anatomy.drawing.stage.children[0].children[0];
+  assert.equal(track0.pad, "component.switch.thumb.offset");
+  assert.deepEqual(track0.children.map((c) => c.w), ["component.switch.thumb.size", "component.switch.thumb.offset", "component.switch.thumb.size", "component.switch.thumb.offset"]);
 });
 
 // ---------- Item 6: the Accessible first promise and the muted exception ----------

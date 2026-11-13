@@ -8021,6 +8021,11 @@
           "$description": "Deprecated: use switch/thumb/size (OD-300). Width of the switch.",
           "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
         },
+        "padding": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Deprecated: use switch/thumb/offset (OD-300). Padding of the switch: the gap between the track's edge and the thumb, on every side.",
+          "$deprecated": "Use component.switch.thumb.offset. Removed in the next minor release."
+        },
         "disabled": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",

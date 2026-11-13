@@ -167,16 +167,27 @@ rowRule.says =
   "Decided: a row is one default control tall in every scheme. A row holds controls, so a taller row only adds a gap around them, and a shorter one cuts them. The target size answer sets the control height; the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow.";
 
 // ---------- Item 4: the switch track is about twice its height, and the thumb slides ----------
-// The track is the thumb plus the padding on each side, so it fits the thumb exactly. The thumb slides
+// The track is the thumb plus its offset on each side, so it fits the thumb exactly. The thumb slides
 // one track height, so the track is twice its height. The width and height keys multiplied the icon
-// size by 2.25 and 1.25 in code, and the travel was one thumb's width; they give way to the thumb's size.
-const SWITCH_OLD = ["switch/width", "switch/height", "switch/thumb/travel"];
+// size by 2.25 and 1.25 in code, and the travel was one thumb's width; they give way to the thumb's
+// size. The padding becomes the thumb's offset, a key that names the part it places.
+addKey(
+  "switch/thumb/offset",
+  "component-spacing-map.hairline",
+  "The gap between the thumb and the track's edge, on every side. The track is the thumb plus this gap on each side, and the thumb slides one track height.",
+);
+const SWITCH_OLD = {
+  "switch/width": "switch/thumb/size",
+  "switch/height": "switch/thumb/size",
+  "switch/thumb/travel": "switch/thumb/size",
+  "switch/padding": "switch/thumb/offset",
+};
 const deprecateKey = (id, by) => {
   const e = keyOf(id);
   e.replaced_by = by;
   e.description = `Deprecated: use ${by} (OD-300). ${e.description.replace(/^Deprecated: use [^ ]+ \(OD-\d+\)\. /, "")}`;
 };
-for (const id of SWITCH_OLD) deprecateKey(id, "switch/thumb/size");
+for (const [id, by] of Object.entries(SWITCH_OLD)) deprecateKey(id, by);
 // A key deprecated earlier in favour of one deprecated now points at the key that replaces both.
 const REPOINTED = new Set();
 for (const k of g.component_keys) {
@@ -191,13 +202,44 @@ for (const k of g.component_keys) {
 setKey(
   "switch/thumb/size",
   "size.icon",
-  "Size of the switch's thumb: the icon size. The track is the thumb plus the padding on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
+  "Size of the switch's thumb: the icon size. The track is the thumb plus its offset on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
 );
-setKey(
-  "switch/padding",
-  "component-spacing-map.hairline",
-  "Padding of the switch: the gap between the track's edge and the thumb, on every side.",
-);
+// The anatomy draws the new shape: the track's padding is the thumb's offset, and the thumb's travel is
+// one track height, drawn as an offset, a thumb's width and an offset.
+const SW = "component.switch.";
+const swapSwitch = (node) => {
+  if (Array.isArray(node)) {
+    for (let i = 0; i < node.length; i++) {
+      const n = node[i];
+      if (n && n.t === "rect" && n.name === "Travel" && n.w === `${SW}thumb.travel`) {
+        const gap = { t: "rect", name: "Offset", w: `${SW}thumb.offset`, h: `${SW}thumb.size` };
+        node.splice(i, 1, gap, { t: "rect", name: "Travel", w: `${SW}thumb.size`, h: `${SW}thumb.size` }, { ...gap });
+        i += 2;
+      } else swapSwitch(n);
+    }
+    return;
+  }
+  if (!node || typeof node !== "object") return;
+  for (const [k, v] of Object.entries(node)) {
+    if (v === `${SW}padding`) node[k] = `${SW}thumb.offset`;
+    else if (k === "tokens" && Array.isArray(v) && v.some((t) => [`${SW}height`, `${SW}width`, `${SW}padding`, `${SW}thumb.travel`].includes(t)))
+      node[k] = [
+        ...new Set(
+          v.flatMap((t) =>
+            t === `${SW}height` || t === `${SW}width`
+              ? []
+              : t === `${SW}padding`
+                ? [`${SW}thumb.offset`]
+                : t === `${SW}thumb.travel`
+                  ? [`${SW}thumb.size`, `${SW}thumb.offset`]
+                  : [t],
+          ),
+        ),
+      ];
+    else swapSwitch(v);
+  }
+};
+swapSwitch(g.catalogue.items.find((i) => i.id === "switch"));
 
 // ---------- Item 9: compact buttons in touch-first schemes get a 44px hit area ----------
 // Multi-brand draws compact buttons at 36px; touch needs 44px. The drawn box keeps its size and the hit
@@ -270,7 +312,7 @@ for (const id of schemeIds()) {
   }
 
   // Item 4: each deprecated switch key keeps its value one release and says what replaces it.
-  for (const id of SWITCH_OLD) {
+  for (const id of Object.keys(SWITCH_OLD)) {
     const e = keyOf(id);
     const path = id.split("/");
     let node = s.tokens.component;

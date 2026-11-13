@@ -5542,7 +5542,8 @@
         "switch/track/background/@",
         "switch/track/background/checked",
         "switch/hit-area",
-        "switch/disabled-track"
+        "switch/disabled-track",
+        "switch/thumb/offset"
       ]
     },
     {
@@ -15694,8 +15695,9 @@
     {
       "id": "switch/padding",
       "component": "switch",
-      "description": "Padding of the switch: the gap between the track's edge and the thumb, on every side.",
-      "default": "component-spacing-map.hairline"
+      "description": "Deprecated: use switch/thumb/offset (OD-300). Padding of the switch: the gap between the track's edge and the thumb, on every side.",
+      "default": "component-spacing-map.hairline",
+      "replaced_by": "switch/thumb/offset"
     },
     {
       "id": "switch/focus",
@@ -15752,7 +15754,7 @@
     {
       "id": "switch/thumb/size",
       "component": "switch",
-      "description": "Size of the switch's thumb: the icon size. The track is the thumb plus the padding on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
+      "description": "Size of the switch's thumb: the icon size. The track is the thumb plus its offset on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
       "default": "size.icon"
     },
     {
@@ -15797,6 +15799,12 @@
       "component": "switch",
       "description": "Track of a disabled switch, on or off; the thumb's place shows the state.",
       "default": "color.disabled.border"
+    },
+    {
+      "id": "switch/thumb/offset",
+      "component": "switch",
+      "description": "The gap between the thumb and the track's edge, on every side. The track is the thumb plus this gap on each side, and the thumb slides one track height.",
+      "default": "component-spacing-map.hairline"
     },
     {
       "id": "textarea/radius",
@@ -37954,7 +37962,7 @@
                     {
                       "t": "frame",
                       "name": "Track",
-                      "pad": "component.switch.padding",
+                      "pad": "component.switch.thumb.offset",
                       "radius": "component.switch.radius",
                       "fill": "component.switch.track.background",
                       "children": [
@@ -37969,8 +37977,20 @@
                         },
                         {
                           "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
                           "name": "Travel",
-                          "w": "component.switch.thumb.travel",
+                          "w": "component.switch.thumb.size",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
                           "h": "component.switch.thumb.size"
                         }
                       ],
@@ -37996,14 +38016,26 @@
                     {
                       "t": "frame",
                       "name": "Track · on",
-                      "pad": "component.switch.padding",
+                      "pad": "component.switch.thumb.offset",
                       "radius": "component.switch.radius",
                       "fill": "component.switch.track.background.checked",
                       "children": [
                         {
                           "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
                           "name": "Travel",
-                          "w": "component.switch.thumb.travel",
+                          "w": "component.switch.thumb.size",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
                           "h": "component.switch.thumb.size"
                         },
                         {
@@ -38046,7 +38078,7 @@
                     {
                       "t": "frame",
                       "name": "Track",
-                      "pad": "component.switch.padding",
+                      "pad": "component.switch.thumb.offset",
                       "radius": "component.switch.radius",
                       "fill": "component.switch.track.background",
                       "children": [
@@ -38060,8 +38092,20 @@
                         },
                         {
                           "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
                           "name": "Travel",
-                          "w": "component.switch.thumb.travel",
+                          "w": "component.switch.thumb.size",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
                           "h": "component.switch.thumb.size"
                         }
                       ]
@@ -38091,9 +38135,7 @@
               "need": "required",
               "roles": ["affordance", "reach"],
               "tokens": [
-                "component.switch.height",
-                "component.switch.width",
-                "component.switch.padding",
+                "component.switch.thumb.offset",
                 "component.switch.radius",
                 "component.switch.track.background"
               ]
@@ -38124,7 +38166,10 @@
               "label": "Thumb at the on side",
               "need": "state",
               "roles": ["meaning", "feedback"],
-              "tokens": ["component.switch.thumb.travel"]
+              "tokens": [
+                "component.switch.thumb.size",
+                "component.switch.thumb.offset"
+              ]
             },
             {
               "n": 5,
@@ -38164,8 +38209,6 @@
               "answers": ["accessibility.values", "shape.values"],
               "rules": ["smallest-target"],
               "tokens": [
-                "component.switch.height",
-                "component.switch.width",
                 "component.switch.radius",
                 "component.switch.track.background"
               ]
@@ -38190,7 +38233,8 @@
               "rules": ["reduced-motion"],
               "tokens": [
                 "component.switch.track.background.checked",
-                "component.switch.thumb.travel"
+                "component.switch.thumb.size",
+                "component.switch.thumb.offset"
               ]
             },
             {
