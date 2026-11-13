@@ -936,7 +936,7 @@
           "options": [
             {
               "id": "core",
-              "label": "Brand primary, surface, text and status",
+              "label": "Surface, text, action and status",
               "creates": [
                 "page-text",
                 "text-on-fill",

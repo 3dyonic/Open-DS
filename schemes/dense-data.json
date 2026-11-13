@@ -1340,7 +1340,7 @@
     {
       "question": "brand.q2",
       "option": "quiet",
-      "why": "The data is the hero. The brand shows only on actions, links, focus and selection.",
+      "why": "The data is the hero; the brand steps back.",
       "because": [
         "content.q2"
       ]
@@ -1465,7 +1465,7 @@
     {
       "question": "color.definition.steps",
       "option": "strong-ease",
-      "why": "A strong ease keeps the selected-row tint almost white, so a selection never colours the data. It makes hover and links clearly deeper than the button, so actions stand out among the numbers.",
+      "why": "A strong ease opens the middle steps, where dense tables need fills that stand apart.",
       "because": [
         "tasks.q1",
         "color.definition"
@@ -1491,7 +1491,7 @@
     {
       "question": "color.lands",
       "option": "status",
-      "why": "The brand primary marks actions and selection; status color marks late and failed records.",
+      "why": "Color earns its place by marking late and failed records.",
       "because": [
         "outcomes.q2"
       ]

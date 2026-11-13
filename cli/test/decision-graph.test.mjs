@@ -77,7 +77,7 @@ test("the reason is written from the fields, in the reason form, and cites the a
   assert.match(why, /The category color does this by following brand hue/);
   assert.match(why, /because a design system ships category colors for the products teams build, and the scheme answers/);
   assert.match(why, /\(color\.definition, accessibility\.definition\)\.$/);
-  // "Brand primary, surface, text and status" does not name category, so the reason does not cite it.
+  // "Surface, text, action and status" does not name category, so the reason does not cite it.
   assert.doesNotMatch(why, /color\.roles/);
   assert.deepEqual(formGaps(g, "color.category.4", why, ["color.definition", "accessibility.definition"]), []);
 });
@@ -87,7 +87,7 @@ test("an answer creates a role: the reason cites the option that brings it", () 
   assert.deepEqual(madeBy(scheme, g, "color.text.primary"), { role: "page-text", always: null, creates: ["color.roles"], shapes: ["color.definition"] });
   assert.deepEqual(madeBy(scheme, g, "color.surface.scrim").creates, ["elevation.lands"]);
   const why = graphReason(scheme, g, "color.text.primary", { value: "gray.light.900" });
-  assert.match(why, /"Brand primary, surface, text and status" to "Which color roles does it need\?"/);
+  assert.match(why, /"Surface, text, action and status" to "Which color roles does it need\?"/);
 });
 
 test("every shipped color role is created by a chosen option or always-on; removing a creates entry breaks it", () => {

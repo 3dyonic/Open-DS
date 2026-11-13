@@ -1387,7 +1387,7 @@
     {
       "question": "color.definition.steps",
       "option": "medium-ease",
-      "why": "We want the brands to stay tied together. One shared curve gives every brand the same contrast between its steps and the same soft tints. Each brand keeps its own hue and intensity.",
+      "why": "A medium ease fits every brand key: soft tints for surfaces, open middle steps for fills.",
       "because": [
         "brand.q1",
         "color.definition"
@@ -2584,15 +2584,22 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#0F766E"
+                "key": "#0F766E",
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "order",
+                  "300": "over-limit",
+                  "400": "over-limit"
+                }
               },
               "dark": {
                 "key": "#7FCFC6",
                 "held": {
                   "700": "relation",
                   "800": "order",
-                  "900": "relation",
-                  "950": "relation"
+                  "900": "order",
+                  "950": "order"
                 }
               }
             }
@@ -2608,7 +2615,10 @@
                 "key": "#6D28D9",
                 "held": {
                   "50": "order",
-                  "100": "relation"
+                  "100": "relation",
+                  "200": "over-limit",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {
@@ -2628,7 +2638,13 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#C2410C"
+                "key": "#C2410C",
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "order",
+                  "300": "over-limit"
+                }
               },
               "dark": {
                 "key": "#F7A67F",
@@ -2654,6 +2670,13 @@
                     "C": 0.008,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "order",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {
@@ -2680,6 +2703,13 @@
                     "C": 0.013,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "order",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {
@@ -2707,6 +2737,12 @@
                     "C": 0.017,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "order",
+                  "300": "over-limit"
                 }
               },
               "dark": {
@@ -2747,6 +2783,13 @@
                     "C": 0.011,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "over-limit",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {

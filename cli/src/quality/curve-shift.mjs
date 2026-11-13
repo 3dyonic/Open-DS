@@ -11,7 +11,6 @@ import { relationFlags, stateFamilies } from "./criteria/color-relations.mjs";
 import { hex6 } from "./values.mjs";
 import { gradeMisses, tightSteps } from "./criteria/curves.mjs";
 import { oklabDistance } from "./color.mjs";
-import { approvedMove } from "./approvals.mjs";
 import { DEFAULT_PARAMS } from "./params.mjs";
 import { snapshotScheme } from "./snapshot.mjs";
 
@@ -33,12 +32,8 @@ export function curveSnapshots({ ids, load, stored, grammar, themeTokens }) {
   return { old: side(false), new: side(true) };
 }
 
-/**
- * Moves of the scale steps themselves: [{ scheme, hue, mode, step, from, to, distance, tier, approved }].
- * approvals are the owner's (harness/quality-approvals.json): a step move names its step as the token
- * (color.<hue>.<mode>.<step>) and its mode as the theme.
- */
-export function stepMoves(base, candidate, params = DEFAULT_PARAMS, approvals = []) {
+/** Moves of the scale steps themselves: [{ scheme, hue, mode, step, from, to, distance, tier }]. */
+export function stepMoves(base, candidate, params = DEFAULT_PARAMS) {
   const out = [];
   for (const [id, c] of Object.entries(candidate.schemes))
     for (const [hue, modes] of Object.entries(c.palette ?? {}))
@@ -48,8 +43,7 @@ export function stepMoves(base, candidate, params = DEFAULT_PARAMS, approvals = 
           if (!from) continue;
           const distance = oklabDistance(from, to);
           const tier = tierOf(distance, tiersFor(`color.${hue}.${mode}.${step}`, params.shift));
-          const approved = approvedMove(approvals, id, `color.${hue}.${mode}.${step}`, mode, to);
-          if (tier !== "none") out.push({ scheme: id, hue, mode, step, from, to, distance, tier, approved });
+          if (tier !== "none") out.push({ scheme: id, hue, mode, step, from, to, distance, tier });
         }
   return out;
 }
@@ -108,10 +102,8 @@ const PALETTE = /^color\.([a-z0-9-]+)\.(light|dark)\.(\d+)$/;
  * why is "over-limit" (a scale step, or a semantic token on it, moves over its tier limit; surfaces
  * take their tighter limit), "relation" (a token on it is in a relation gate that fires), or "order"
  * (a held run reaches from a held step to its end of the scale, so held and graded steps never swap).
- * A move the owner approved (approvals, as harness/quality-approvals.json holds them) is not over-limit:
- * its step moves. A relation gate still holds its step.
  */
-export function stepsToHold(base, candidate, params = DEFAULT_PARAMS, approvals = []) {
+export function stepsToHold(base, candidate, params = DEFAULT_PARAMS) {
   const out = {};
   const add = (scheme, s, why) => {
     // Only a generated hue (one with a recorded key) has a curve to hold.
@@ -119,9 +111,9 @@ export function stepsToHold(base, candidate, params = DEFAULT_PARAMS, approvals 
     const row = (((out[scheme] ??= {})[s.hue] ??= {})[s.mode] ??= {});
     row[s.step] ??= why;
   };
-  for (const m of stepMoves(base, candidate, params, approvals)) if (m.tier === "approval" && !m.approved) add(m.scheme, m, "over-limit");
+  for (const m of stepMoves(base, candidate, params)) if (m.tier === "approval") add(m.scheme, m, "over-limit");
   for (const m of colorMoves(base, candidate, params))
-    if (m.tier === "approval" && !approvedMove(approvals, m.scheme, m.token, m.theme, m.to)) {
+    if (m.tier === "approval") {
       const s = stepOf(candidate, m.scheme, m.theme, m.token);
       if (s) add(m.scheme, s, "over-limit");
     }
@@ -148,12 +140,11 @@ export function stepsToHold(base, candidate, params = DEFAULT_PARAMS, approvals 
 /**
  * The whole report: { moves, steps, relations, keys, grades, perScheme }. moves are the semantic token
  * moves; steps the scale step moves; relations the gate flags that fire; keys the brand key changes;
- * grades the step pairs under their contrast grade, old and new. Each move over its limit says whether
- * the owner approved it (approved). The approvals clear no relation gate.
+ * grades the step pairs under their contrast grade, old and new.
  */
-export function shiftReport(base, candidate, params = DEFAULT_PARAMS, approvals = []) {
-  const moves = colorMoves(base, candidate, params).map((m) => ({ ...m, approved: approvedMove(approvals, m.scheme, m.token, m.theme, m.to) }));
-  const steps = stepMoves(base, candidate, params, approvals);
+export function shiftReport(base, candidate, params = DEFAULT_PARAMS) {
+  const moves = colorMoves(base, candidate, params);
+  const steps = stepMoves(base, candidate, params);
   const relations = gates(base, candidate, params).map((r) => ({ id: r.id, title: r.title, value: r.flags.length, details: r.flags.map((f) => f.says) }));
   const keys = keyChanges(base, candidate);
   const grades = { old: gradeMisses(base, params.curves.grades), new: gradeMisses(candidate, params.curves.grades) };

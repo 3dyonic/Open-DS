@@ -93,18 +93,13 @@ test("changing blue 600 changes 4 decisions and 34 components, and all of its ch
   assert.ok(impact.checks.every((c) => c.check.met));
 });
 
-test("trying blue 300 fails the primary action and the focus ring; blue 400 fails only the action; blue 500 passes everything", () => {
-  const of = (impact, id) => impact.checks.find((c) => c.decision === id).check;
-  const three = impactOf(light, BLUE_600, valueOf("color.blue.light.300"));
-  assert.equal(of(three, "color.action.primary.@").met, false);
-  assert.match(of(three, "color.action.primary.@").text, /2\.56:1, needs 4\.5:1/);
-  assert.equal(of(three, "color.border.focus").met, false);
-  assert.match(of(three, "color.border.focus").text, /2\.19:1 on sunken, needs 3:1/);
-  // On the graded curve (OD-299, released in OD-308), steps 400 apart reach 3:1: enough for a ring, not for text.
+test("trying blue 400 fails the primary action and the focus ring; blue 500 passes everything", () => {
   const four = impactOf(light, BLUE_600, valueOf("color.blue.light.400"));
+  const of = (impact, id) => impact.checks.find((c) => c.decision === id).check;
   assert.equal(of(four, "color.action.primary.@").met, false);
-  assert.match(of(four, "color.action.primary.@").text, /3\.61:1, needs 4\.5:1/);
-  assert.equal(of(four, "color.border.focus").met, true);
+  assert.match(of(four, "color.action.primary.@").text, /2\.56:1, needs 4\.5:1/);
+  assert.equal(of(four, "color.border.focus").met, false);
+  assert.match(of(four, "color.border.focus").text, /2\.19:1 on sunken, needs 3:1/);
   const five = impactOf(light, BLUE_600, valueOf("color.blue.light.500"));
   assert.ok(five.checks.every((c) => c.check.met));
 });
