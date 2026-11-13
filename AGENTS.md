@@ -32,6 +32,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 5. Light and dark ship for every brand of every scheme.
 6. Plain words, short sentences. Never invent names, numbers or domains. The product name, tagline, site address and contact live only in the root `package.json` (`displayName`, `description`, `homepage`, `bugs.email`). Deploy settings (analytics IDs, hosting) never go in this repository: they live in open-ds-ops.
 7. Work on a feature branch from `RC1`. Open a PR into `RC1`. Run `pnpm harness` before you push.
+8. A change is done only when every line of [DONE.md](DONE.md) is true.
 
 ## Commands
 
