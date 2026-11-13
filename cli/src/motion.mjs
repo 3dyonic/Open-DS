@@ -56,7 +56,7 @@ export function familyOf(scheme, g) {
  *   errors: what cannot be checked (no family, a move with no easing token, a value that does not
  *     resolve). An error is a defect in the scheme, as is a result that does not hold.
  */
-export function checkMotion(scheme, g) {
+export function checkMotion(scheme, g, { index } = {}) {
   const f = g.scopes.find((s) => s.id === "motion")?.families;
   const errors = [];
   const results = [];
@@ -66,7 +66,7 @@ export function checkMotion(scheme, g) {
   if (!family) return { scheme: scheme.id, family: id, results, errors: [`${scheme.id}: ${f.question} picks no family`] };
   // Motion is the same in every brand and mode; the first theme resolves it.
   const brand = Object.keys(scheme.tokens.brands ?? {})[0];
-  const ix = tokenIndex(scheme, { brand, mode: "light" });
+  const ix = index ?? tokenIndex(scheme, { brand, mode: "light" });
   const value = (path) => aliasChain(ix, path).value;
 
   for (const name of Object.keys(scheme.tokens.semantic.motion?.duration ?? {})) {
