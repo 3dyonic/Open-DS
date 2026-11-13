@@ -15431,8 +15431,8 @@
     {
       "id": "skeleton/background",
       "component": "skeleton",
-      "description": "Background of the skeleton.",
-      "default": "color.surface.sunken"
+      "description": "Fill of the skeleton: neutral step 200, the nearest scale step to the chosen look. A placeholder shows content to come, so it does not take the sunken fill of a well.",
+      "default": "color.neutral.200"
     },
     {
       "id": "slider/disabled-opacity-disabled",

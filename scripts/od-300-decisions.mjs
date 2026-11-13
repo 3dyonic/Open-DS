@@ -13,6 +13,15 @@ const keyOf = (id) => {
 };
 const setKey = (id, def, description) => Object.assign(keyOf(id), { default: def, description });
 
+// ---------- Item 8: the skeleton fills with neutral step 200 ----------
+// Colors map to scale steps only. Step 200 is the nearest step to the chosen look; sunken (step 100)
+// is the well's job, and a placeholder is not a well.
+setKey(
+  "skeleton/background",
+  "color.neutral.200",
+  "Fill of the skeleton: neutral step 200, the nearest scale step to the chosen look. A placeholder shows content to come, so it does not take the sunken fill of a well.",
+);
+
 saveGrammar(g);
 
 // ---------- Schemes ----------

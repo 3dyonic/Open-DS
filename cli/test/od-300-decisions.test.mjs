@@ -29,3 +29,19 @@ test("Aster and Coral make the two corner sizes the answer names; Birch stays a 
   // Birch's pill badge, 12px control and 16px surface make three sizes. The value is the owner's to change.
   assert.deepEqual(broken, ["birch/light"]);
 });
+
+// ---------- Item 8: the skeleton fills with neutral step 200 ----------
+
+test("the skeleton reads neutral step 200 in every scheme, brand and mode, not the sunken well", () => {
+  assert.equal(keyOf("skeleton/background").default, "color.neutral.200");
+  assert.match(keyOf("skeleton/background").description, /nearest scale step/);
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    for (const t of themes(s)) {
+      const fill = valueIn(s, t, "component.skeleton.background");
+      assert.equal(fill, valueIn(s, t, "color.neutral.200"), `${id}/${t.brand}/${t.mode}`);
+      assert.notEqual(fill, valueIn(s, t, "color.surface.sunken"), `${id}/${t.brand}/${t.mode}: not the well`);
+    }
+  }
+  assert.match(read("components/skeleton.tsx"), /var\(--skeleton-background\)/);
+});
