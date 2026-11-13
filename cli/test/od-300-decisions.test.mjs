@@ -2,6 +2,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { howTypeIsBuilt } from "../src/docs.mjs";
 import { aliasChain, tokenIndex } from "../src/lands.mjs";
 import { grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
 import { checkRelations, contrast, edgeRule, px } from "../src/shape-elevation.mjs";
@@ -210,6 +211,42 @@ test("a compact button drawn under the touch hit area grows its hit area to 44px
   // The drawn box keeps its size: the compact height still reads its own key.
   assert.match(button, /compact: "h-\[var\(--button-compact-height\)\]/);
   assert.match(read("components/button-group.tsx"), /vertical:\n?\s*"flex-col[^"]*\[&>\[data-slot=button\]\]:after:hidden"/);
+});
+
+// ---------- Type items: Dense data's line boxes and the How type is built page ----------
+
+test("Dense data sets body and help text 14/20, data cells 14/18 and captions 12/16, each reason naming its line kind", () => {
+  const s = loadScheme("dense-data");
+  const t = { brand: "default", mode: "light" };
+  const want = { body: [14, 20, "open step, 1.45"], data: [14, 18, "snug step, 1.3"], caption: [12, 16, "snug step, 1.3"] };
+  const trace = traceScheme(s, g);
+  for (const [role, [size, line, kind]] of Object.entries(want)) {
+    assert.equal(px(valueIn(s, t, `type.${role}.font-size`)), size, role);
+    assert.equal(px(valueIn(s, t, `type.${role}.line-height`)), line, role);
+    const r = reasonOf(traceToken(trace, `type.${role}.line-height`));
+    assert.equal(r.kind, "own", role);
+    assert.match(r.why, new RegExp(`^An? ${line}px line box for ${size}px`), role);
+    assert.ok(r.why.includes(kind), role);
+    assert.match(r.why, /snapped to the 2px grid/, role);
+  }
+});
+
+test("each scheme's How type is built page states its base, ratio, grid and line kinds from the record", () => {
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    const rec = s.tokens.semantic.type.$extensions["open-ds"];
+    const page = howTypeIsBuilt(s);
+    assert.ok(page, id);
+    assert.match(page.markdown, /^:::info\[Look closer, when you want to\]/, id);
+    assert.ok(page.markdown.includes(`The base is **${rec.base}px** and the ratio is **${rec.ratio}**.`), id);
+    for (const [kind, k] of Object.entries(rec["line-height"])) assert.ok(page.markdown.includes(`lines are ${k.ratio} × the size`), `${id} ${kind}`);
+    assert.deepEqual(page.roles.map((r) => r.role).sort(), Object.keys(rec.steps).sort(), id);
+    const body = page.roles.find((r) => r.role === "body");
+    assert.equal(body.size, `${px(valueIn(s, { brand: Object.keys(s.tokens.brands)[0], mode: "light" }, "type.body.font-size"))}px`, id);
+  }
+  const dense = howTypeIsBuilt(loadScheme("dense-data")).markdown;
+  assert.match(dense, /\| Data \| 0 \| 14px \| 18px \|/);
+  assert.match(dense, /\| Caption \| -1 \| 12px \| 16px \|/);
 });
 
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
