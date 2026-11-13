@@ -78,7 +78,10 @@ test("a missing key or date fails and names the refresh command; age alone does 
   const fresh = { refreshed: "2026-11-01T00:00:00Z", statuses: { "OD-2": "Done" } };
   assert.deepEqual(ticketStatusGaps(fresh, ["OD-2"], NOW), []);
   assert.deepEqual(ticketStatusGaps({ ...fresh, refreshed: "2026-09-01T00:00:00Z" }, ["OD-2"], NOW), []);
-  assert.match(ticketStatusGaps(fresh, ["OD-2", "OD-9"], NOW)[0], /no status for OD-9; run: node scripts\/ticket-status\.mjs/);
+  assert.match(
+    ticketStatusGaps(fresh, ["OD-2", "OD-9"], NOW)[0],
+    /no status for OD-9; run: node scripts\/ticket-status\.mjs/,
+  );
   assert.match(ticketStatusGaps({ statuses: {} }, [], NOW)[0], /no valid refreshed date/);
   const text = adr("decided.", ["Load path. (OD-2)", "Build step. (OD-3)"]);
   const r = await runCheck("adr-status-matches-tickets", repo(text, { "OD-2": "Done" }), { full: false });
