@@ -1,9 +1,11 @@
-// The color decision graph (OD-304). Color is structural: a hue scale, a slot on it, a pair, and the
-// connections between colors. A color token inherits its explanation down that chain, so nothing here
-// is typed per token. The grammar holds the data: each mapping entry's roles (role, jobs, what people
-// get), semantics.variants (the slot and its step) and semantics.connections (comes-from, pairs-with,
-// stays-apart). This module reads them, measures what they promise, and writes the reason sentence in
-// the grammar's reason form. No file access: the caller passes the scheme and the grammar.
+// The decision graph (OD-304), one engine for every scope that records roles. A token inherits its
+// explanation down a chain, so nothing here is typed per token: its role (from its mapping entry), the
+// role's jobs, its rule, the connections it takes part in and its value. Color is a hue scale, a slot on
+// it, a pair and the connections between colors. Type is one base and one ratio, a step per text role and
+// a line kind. The grammar holds the data: each mapping entry's roles and rule, semantics.variants (a
+// color slot and its step) and semantics.connections (comes-from, pairs-with, stays-apart). This module
+// reads them, measures what they promise, and writes the reason sentence in the grammar's reason form.
+// No file access: the caller passes the scheme and the grammar.
 import { aliasChain, tokenIndex } from "./lands.mjs";
 import { oklab, oklabDistance } from "./quality/color.mjs";
 import { questions } from "./schemes.mjs";
@@ -11,6 +13,8 @@ import { contrastRatio } from "./token-measure.mjs";
 import { flatTokens } from "./tokens.mjs";
 import { pairsIn, toneOf, toneRole } from "./tones.mjs";
 import { decidersOf, mappingOf, matches } from "./trace.mjs";
+import { KINDS, lineHeights, plain, sizeOf } from "./type-scale.mjs";
+import { recordsOf } from "./type-space-generated.mjs";
 
 const MODES = ["light", "dark"];
 // A primitive step: color.<hue>.<light|dark>.<step>.
@@ -27,6 +31,23 @@ export function roleOf(g, name) {
   const jobs = role.jobs.map((id) => entry.jobs.find((j) => j.id === id)).filter(Boolean);
   return { property: entry.property, title: entry.title, role, jobs };
 }
+
+/** A type token's place in its scheme's type record: { spec, role, part, kind }, or null for any other token. */
+export function typePlace(scheme, name) {
+  const [scope, role, part, ...rest] = short(name).split(".");
+  const spec = recordsOf(scheme).type;
+  if (scope !== "type" || rest.length || !part || !spec || !(role in spec.steps)) return null;
+  return { spec, role, part, kind: lineHeights(spec)[role].kind };
+}
+
+/** A role's jobs for one token. A job named after a line kind (tight, snug, open) stays only for a token of that kind. */
+const jobsFor = (jobs, place) => jobs.filter((j) => !(place && KINDS.includes(j.id) && j.id !== place.kind));
+
+/** A length in px: "1.1875rem" is 19. null for a value that is no length. */
+const pxOf = (v) => (typeof v === "string" && /^[\d.]+(rem|px)$/.test(v) ? parseFloat(v) * (v.endsWith("rem") ? 16 : 1) : null);
+
+/** The token groups that play roles (color, type): the first part of every role's token pattern. */
+export const graphGroups = (g) => [...new Set((g.mapping ?? []).flatMap((e) => (e.roles ?? []).flatMap((r) => r.tokens.map((t) => t.split(".")[0]))))];
 
 /** The slot a token's last part names (@, subtle, hover), with the step it sits at, or null. */
 export function slotOf(g, name) {
@@ -48,7 +69,7 @@ export function connectionsOf(g, name) {
   const inPairs = (c, n) => fills.has(n) || toneRole(n) || keys.get(n)?.pairs?.on || [...keys.values()].some((k) => k.pairs?.on?.includes(n)) || inAlso(c, n);
   const full = keys.has(name) ? name : keys.has(`${name}.@`) ? `${name}.@` : name;
   const takesPart = (c, n) => covers(c.tokens, n) || (c.kind === "stays-apart" && covers(c.from, n));
-  const own = items.filter((c) => (c.kind === "pairs-with" ? inPairs(c, full) : takesPart(c, name)));
+  const own = items.filter((c) => (c.kind === "pairs-with" && c.pairs ? inPairs(c, full) : takesPart(c, name)));
   const sources = items
     .filter((c) => c.kind === "comes-from" && c.match === "hue" && c.from === "@" && covers(c.tokens, name))
     .map(() => `${short(name).split(".").slice(0, -1).join(".")}.@`);
@@ -97,6 +118,7 @@ const lightness = (hex) => (/^#[0-9a-f]{6}/i.test(hex ?? "") ? oklab(String(hex)
 export function connectionChecks(scheme, g, c, { brand, mode, index, name = null }) {
   if (c.modes && !c.modes.includes(mode)) return [];
   const theme = `${brand}/${mode}`;
+  if (TYPE_MEASURES.has(c.match ?? c.by)) return typeChecks(scheme, c, { theme, index, name });
   const names = flatTokens(scheme.tokens.semantic)
     .filter(([, t]) => !t.$deprecated)
     .map(([p]) => p);
@@ -169,6 +191,85 @@ export function connectionChecks(scheme, g, c, { brand, mode, index, name = null
   return out;
 }
 
+// The connections type keeps, by what they measure: a size from its scale, a line height from its kind,
+// sizes a ratio step apart, line kinds apart, and a box that holds a line.
+const TYPE_MEASURES = new Set(["scale", "line-kind", "ratio-step", "kind-gap", "holds-line"]);
+
+/**
+ * The checks of one type connection, for every token it holds or only for name, measured on the scheme's
+ * type record (cli/src/type-scale.mjs) and the values the tokens resolve to. [] when the scheme keeps no
+ * type record. Same shape as the color checks.
+ */
+function typeChecks(scheme, c, { theme, index, name }) {
+  const spec = recordsOf(scheme).type;
+  if (!spec) return [];
+  const out = [];
+  const add = (tokens, holds, says) => out.push({ connection: c.id, kind: c.kind, theme, tokens, holds, says });
+  const value = (n) => aliasChain(index, n).value;
+  const lines = lineHeights(spec);
+  const roles = Object.keys(spec.steps);
+  const tokenOf = (role, part) => `type.${role}.${part}`;
+  const mine = (...tokens) => !name || tokens.includes(short(name));
+  const names = new Set(flatTokens(scheme.tokens.semantic).map(([p]) => short(p)));
+  const held = roles.filter((role) => c.tokens.some((p) => names.has(tokenOf(role, p.split(".").at(-1))) && matches(p, tokenOf(role, p.split(".").at(-1)))));
+  // A line's height in px: a ratio times the size, or the line box.
+  const linePx = (role) => {
+    const v = value(tokenOf(role, "line-height"));
+    return typeof v === "number" ? v * (pxOf(value(tokenOf(role, "font-size"))) ?? 0) : pxOf(v);
+  };
+  const m = c.match ?? c.by;
+  if (m === "scale")
+    for (const role of held.filter((r) => mine(tokenOf(r, "font-size")))) {
+      const t = tokenOf(role, "font-size");
+      const want = sizeOf(spec, role);
+      const px = pxOf(value(t));
+      const how = want.snapped ? `snapped to the ${want.snapped}px grid` : "rounded to whole px";
+      add([t], px === want.px, `${t} is ${plain(px)}px; ${spec.base} × ${spec.ratio}^${spec.steps[role]} = ${plain(want.exact)}px, ${how}, gives ${want.px}px`);
+    }
+  else if (m === "line-kind")
+    for (const role of held.filter((r) => mine(tokenOf(r, "line-height")))) {
+      const t = tokenOf(role, "line-height");
+      const { kind, ratio, grid, px } = lines[role];
+      const v = value(t);
+      const holds = grid ? pxOf(v) === px : v === ratio;
+      const want = grid ? `${px}px, the ${kind} ratio ${ratio} × the size, snapped to the ${grid}px grid` : `${ratio}, the ${kind} ratio`;
+      add([t], holds, `${t} is ${typeof v === "number" ? v : `${plain(pxOf(v))}px`}; its ${kind} line kind gives ${want}`);
+    }
+  else if (m === "ratio-step") {
+    // Each step against the step below it, once: roles that share a step share a size by design. The pair
+    // names the first role of each step, or the asked token's own role.
+    const steps = [...new Set(held.map((r) => spec.steps[r]))].sort((a, b) => a - b);
+    for (let i = 1; i < steps.length; i++) {
+      const pairs = held.filter((r) => spec.steps[r] === steps[i]).flatMap((hi) => held.filter((r) => spec.steps[r] === steps[i - 1]).map((lo) => [tokenOf(lo, "font-size"), tokenOf(hi, "font-size")]));
+      const pair = pairs.find(([a, b]) => mine(a, b));
+      if (!pair) continue;
+      const [a, b] = pair;
+      const [pa, pb] = [pxOf(value(a)), pxOf(value(b))];
+      const times = pb / pa;
+      add([b, a], times >= spec.ratio - 1e-9, `${b} ${plain(pb)}px is ${times.toFixed(3)} × ${a} ${plain(pa)}px; one ${spec.ratio} step needs ${plain(pa * spec.ratio)}px`);
+    }
+  } else if (m === "kind-gap") {
+    const kinds = KINDS.filter((k) => spec["line-height"][k]);
+    const ratioOf = (k) => spec["line-height"][k].ratio;
+    for (let i = 1; i < kinds.length; i++) {
+      const [lo, hi] = [kinds[i - 1], kinds[i]];
+      if (name && !held.some((r) => mine(tokenOf(r, "line-height")) && [lo, hi].includes(lines[r].kind))) continue;
+      const gap = Math.round((ratioOf(hi) - ratioOf(lo)) * 1000) / 1000;
+      add([`${lo} lines`, `${hi} lines`], gap >= c.min_apart, `${hi} ${ratioOf(hi)} is ${gap} above ${lo} ${ratioOf(lo)}; needs ${c.min_apart}`);
+    }
+  } else if (m === "holds-line") {
+    const boxes = [...names].filter((n) => (c.from ?? []).some((p) => matches(p, n)));
+    for (const role of held)
+      for (const box of boxes) {
+        if (!mine(tokenOf(role, "font-size"), tokenOf(role, "line-height"), box)) continue;
+        const [line, px] = [linePx(role), pxOf(value(box))];
+        if (line === null || px === null) continue;
+        add([box, `type.${role}`], px >= line, `${box} is ${plain(px)}px for the ${plain(line)}px ${role} line`);
+      }
+  }
+  return out;
+}
+
 /**
  * Every connection of a scheme in every brand and mode, merged by subject: [{ connection, kind,
  * tokens, holds, waits, themes, says }]. A subject fails when it fails in any theme; themes lists them.
@@ -236,12 +337,12 @@ export function madeBy(scheme, g, name) {
 export const citedBy = (made) => (made ? [...made.creates, ...made.shapes] : []);
 
 /**
- * The reason sentence of a color token, in the grammar's reason form, written from the grammar's
+ * The reason sentence of a token, in the grammar's reason form, written from the grammar's
  * fields and the scheme's answers, never stored: "We use <value> for <role> in order to <job>. The
  * <property> does this by <how>. So <what people get>, because <decision> (<answer ids>)." The because
  * cites only the answers that create or shape the role (madeBy). Null when no role covers the token.
  */
-export function colorReason(scheme, g, name, { value }) {
+export function graphReason(scheme, g, name, { value }) {
   const r = roleOf(g, name);
   if (!r) return null;
   const asked = questions(g);
@@ -254,19 +355,29 @@ export function colorReason(scheme, g, name, { value }) {
     : answered
       ? `because ${answered}`
       : "because no answer decides it yet";
-  return `We use ${value} for ${r.role.role} in order to ${r.role.to}. The ${r.title.toLowerCase()} does this by ${byPhrase(r.jobs[0]?.how)}. So ${r.role.gets}, ${decision}.`;
+  const lead = jobsFor(r.jobs, typePlace(scheme, name))[0];
+  return `We use ${value} for ${r.role.role} in order to ${r.role.to}. The ${r.title.toLowerCase()} does this by ${byPhrase(lead?.how)}. So ${r.role.gets}, ${decision}.`;
+}
+
+/** A value as the reason names it: a color's hue and step, a size in px and rem, a face by its name, else the value. */
+function valueName(at, place) {
+  if (at.hue) return `${at.hue}.${at.side}.${at.step}`;
+  if (place?.part === "font-size" && pxOf(at.value) !== null) return `${plain(pxOf(at.value))}px (${at.value})`;
+  if (place?.part === "font-family") return at.hops.at(-1).split(".").at(-1);
+  return typeof at.value === "string" || typeof at.value === "number" ? String(at.value) : JSON.stringify(at.value);
 }
 
 /**
- * The color part of a token's decision tree, in one brand and mode: role (with its jobs), rule (the
- * slot and its step), each connection with its checks, and the reason sentence. [] for a token no
- * color role covers.
+ * The graph part of a token's decision tree, in one brand and mode: role (with its jobs), rule (a color
+ * slot and its step, a neutral step, or the rule its mapping entry states), each connection with its
+ * checks, the value and the reason sentence. [] for a token no role covers.
  */
-export function colorNodes(scheme, g, name, { brand, mode, index = tokenIndex(scheme, { brand, mode }) }) {
+export function graphNodes(scheme, g, name, { brand, mode, index = tokenIndex(scheme, { brand, mode }) }) {
   const r = roleOf(g, name);
   if (!r) return [];
   const at = placeOf(index, name);
-  const value = at.hue ? `${at.hue}.${at.side}.${at.step}` : typeof at.value === "string" ? at.value : JSON.stringify(at.value);
+  const place = typePlace(scheme, name);
+  const value = valueName(at, place);
   const made = madeBy(scheme, g, name);
   const nodes = [
     {
@@ -275,7 +386,7 @@ export function colorNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
       says: r.role.role,
       to: r.role.to,
       gets: r.role.gets,
-      jobs: r.jobs.map((j) => ({ id: j.id, title: j.title, how: j.how })),
+      jobs: jobsFor(r.jobs, place).map((j) => ({ id: j.id, title: j.title, how: j.how })),
       always: made.always,
       creates: made.creates,
       shapes: made.shapes,
@@ -288,6 +399,9 @@ export function colorNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
     const says = want ? `${slot.id} sits at step ${want} of its hue` : `${slot.id} sits ${slot.steps} step${slot.steps === 1 ? "" : "s"} from its ${slot.from}`;
     nodes.push({ level: "rule", name: slot.id, says, step: want, picked: at.step, holds: want ? at.step === want : null });
   }
+  // The rule the token's mapping entry states: how a type size or line height is made.
+  const entry = mappingOf(g, short(name));
+  if (!slot && entry?.rule) nodes.push({ level: "rule", name: entry.property, says: entry.rule, step: null, picked: null, holds: null });
   // A step of the neutral scale is its own rule: the step the scale's curve sets, or the floor below 0.
   const neutral = g.semantics?.neutral;
   const step = name.split(".").at(-1);
@@ -301,18 +415,18 @@ export function colorNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
       holds: null,
     });
   for (const c of connections) {
-    if (!slot && c.kind === "pairs-with")
+    if (!slot && c.kind === "pairs-with" && c.promise)
       nodes.push({ level: "rule", name: "step-promise", says: c.promise.map((p) => `${p.apart} steps apart give ${p.contrast}:1`).join(", "), step: null, picked: at.step, holds: null });
     const checks = connectionChecks(scheme, g, c, { brand, mode, index, name: c.via ?? name });
     nodes.push({ level: "connection", name: c.id, kind: c.kind, says: c.says, ...(c.via && { via: c.via }), holds: checks.every((x) => x.holds), checks });
   }
-  nodes.push({ level: "value", name: value, says: typeof at.value === "string" ? at.value : null });
-  nodes.push({ level: "reason", name: `${brand}/${mode}`, says: colorReason(scheme, g, name, { value }) });
+  nodes.push({ level: "value", name: place && at.hops.length ? at.hops.at(-1) : value, says: typeof at.value === "string" || typeof at.value === "number" ? String(at.value) : null });
+  nodes.push({ level: "reason", name: `${brand}/${mode}`, says: graphReason(scheme, g, name, { value }) });
   return nodes;
 }
 
 /**
- * The links of a color token that are missing: role, job, property, answer, rule, value. [] when every
+ * The links of a token that are missing: role, job, property, answer, rule, value. [] when every
  * link is there. A rule is the token's slot or a connection it takes part in.
  */
 export function missingLinks(scheme, g, name, nodes) {
