@@ -445,8 +445,10 @@ function spacingMap(scheme, g) {
   );
 }
 
-// put(id, data) stores a ColorScale composite's data and returns its directive (OD-284).
-function colorScales(scheme, g, fams, put) {
+// put(id, data) stores a ColorScale composite's data and returns its directive (OD-284). up is the
+// path from the page's folder to the scheme's root: "../" for primitives/color.md, "../../" for the
+// folder index primitives/color/index.md, where "../" names primitives/ (OD-307).
+function colorScales(scheme, g, fams, put, { up = "../" } = {}) {
   const t = scheme.tokens;
   const brands = Object.keys(t.brands);
   const many = brands.length > 1;
@@ -495,7 +497,7 @@ function colorScales(scheme, g, fams, put) {
       hex: hex(r.prim),
       ...(many && r.brands.length < brands.length && { brands: r.brands }),
       ...(guided.has(id) && {
-        guidance: `../foundations/color?for=${cssId(id)}#what-each-color-is-for`,
+        guidance: `${up}foundations/color?for=${cssId(id)}#what-each-color-is-for`,
       }),
     };
   };
@@ -541,7 +543,7 @@ function colorScales(scheme, g, fams, put) {
     );
   }
   return (
-    `Each color is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its color, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).\n\n` +
+    `Each color is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its color, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](${up}foundations/color).\n\n` +
     out.join("\n\n")
   );
 }
@@ -2009,8 +2011,17 @@ export function docsPages(
     .map((k) => ({ ...k, list: prims.filter((x) => k.match(x.path)) }))
     .filter((k) => k.list.length);
   // Type has a sub-page, How type is built (OD-300), so its page is the index of a folder of its own.
+  // So has Color while the graded curve is on: How the scale is built (OD-307).
   const typeBuilt = howTypeIsBuilt(scheme);
-  const primPath = (id) => (id === "type" && typeBuilt ? "primitives/type/index.md" : `primitives/${id}.md`);
+  const scalePage = colorScalePage(scheme, g, {
+    frontMatter: fm,
+    put: (kind, id, data) => {
+      (compositeData[kind] ??= {})[id] = data;
+      return `::${kind}{id="${id}"}`;
+    },
+  });
+  const nested = { type: typeBuilt, color: scalePage };
+  const primPath = (id) => (nested[id] ? `primitives/${id}/index.md` : `primitives/${id}.md`);
   pages["primitives/_category_.json"] =
     JSON.stringify(
       {
@@ -2160,9 +2171,11 @@ export function docsPages(
     "\n";
   kinds.forEach((k, i) => {
     const fams = [...new Set(k.list.map((x) => family(x.path)))];
+    if (nested[k.id])
+      pages[`primitives/${k.id}/_category_.json`] =
+        JSON.stringify({ label: k.title, position: i + 1, link: { type: "doc", id: `primitives/${k.id}/index` } }, null, 2) + "\n";
+    if (k.id === "color" && scalePage) pages["primitives/color/how-the-scale-is-built.md"] = scalePage;
     if (k.id === "type" && typeBuilt) {
-      pages["primitives/type/_category_.json"] =
-        JSON.stringify({ label: k.title, position: i + 1, link: { type: "doc", id: "primitives/type/index" } }, null, 2) + "\n";
       (compositeData["type-roles"] ??= {})["how-type-is-built"] = { roles: typeBuilt.roles };
       pages["primitives/type/how-type-is-built.md"] =
         fm({
@@ -2187,7 +2200,7 @@ export function docsPages(
         ? colorScales(scheme, g, fams, (id, data) => {
             (compositeData["color-scale"] ??= {})[id] = data;
             return `::color-scale{id="${id}"}`;
-          }) + `\n\n## Every color\n\n`
+          }, { up: nested.color ? "../../" : "../" }) + `\n\n## Every color\n\n`
         : "") +
       (fams.length > 1
         ? fams
@@ -2199,16 +2212,6 @@ export function docsPages(
         : table(k.list, k.id)) +
       "\n";
   });
-  // How the scale is built (OD-299): only while the graded curve is on.
-  const scalePage = colorScalePage(scheme, g, {
-    frontMatter: fm,
-    put: (id, data) => {
-      (compositeData["color-scale"] ??= {})[id] = data;
-      return `::color-scale{id="${id}"}`;
-    },
-  });
-  if (scalePage) pages["primitives/color-scale.md"] = scalePage;
-
   // What a component built on shadcn reads (OD-215): each class it uses, the shadcn variable, the
   // scheme's token behind it, and the primitive and value that token ends at in every theme. Read from
   // the component's own source and the mapping the token build writes, so it cannot drift.
@@ -3306,6 +3309,11 @@ export function docsPages(
     "status-colors": "id",
     "mode-changes": "id",
     "mode-constants": "id",
+    "scale-strip": "id",
+    "scale-curve": "id",
+    "scale-why": "id",
+    "scale-uses": "id",
+    "scale-options": "id",
     steps: "id",
     "decision-tree": "id",
     "decision-answer": "id",
