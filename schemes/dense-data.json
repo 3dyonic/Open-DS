@@ -5676,7 +5676,7 @@
             "$value": "{font.weight.600}",
             "$extensions": {
               "open-ds": {
-                "why": "600 separates a 17px heading from the 14px body by weight, because the two sit only one ratio step apart.",
+                "why": "600 separates a 16px heading from the 14px body by weight, because the two sit only one ratio step apart.",
                 "because": [
                   "brand.q3",
                   "typography.count"
@@ -5706,7 +5706,7 @@
           "line-height": {
             "$extensions": {
               "open-ds": {
-                "why": "A 20px line box for 14px body and help text: the open step, 1.45 × 14px (20.3px), snapped to the 2px grid, which also sits on the 4px grid. Help text wraps to several lines, so the open box lets the eye find the next line.",
+                "why": "A 20px line box: the open step, 1.45 × 14px (20.3px), snapped to the 2px grid, because body is help text that wraps to several lines and rows of text keep the grid.",
                 "because": [
                   "typography.definition"
                 ]
@@ -5794,7 +5794,7 @@
           "line-height": {
             "$extensions": {
               "open-ds": {
-                "why": "A 16px line box for 12px captions: the snug step, 1.3 × 12px (15.6px), snapped to the 2px grid, which also sits on the 4px grid. Hints and timestamps are short, so the snug box keeps them close to what they describe.",
+                "why": "A 16px line box for 12px captions: the snug step, 1.3 × 12px (15.6px), snapped to the 2px grid, so hints and timestamps that wrap stay on the grid.",
                 "because": [
                   "typography.definition"
                 ]

@@ -5441,7 +5441,7 @@
           "line-height": {
             "$extensions": {
               "open-ds": {
-                "why": "1.15 sets 45px display text on about 52px lines, so a two-line opener reads as one tight block.",
+                "why": "1.15 sets 44px display text on about 51px lines, so a two-line opener reads as one tight block.",
                 "because": [
                   "typography.definition",
                   "typography.roles"
@@ -5472,7 +5472,7 @@
           "font-size": {
             "$extensions": {
               "open-ds": {
-                "why": "36px is six fine steps above body and two under the 45px display, so article titles stay large but calm.",
+                "why": "36px is six fine steps above body and two under the 44px display, so article titles stay large but calm.",
                 "because": [
                   "typography.roles",
                   "typography.count"

@@ -20,6 +20,7 @@ import {
   rowLabel,
   tokenName,
 } from "./color-map.mjs";
+import { allConnections } from "./decision-graph.mjs";
 import { tokenIndex } from "./lands.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
@@ -401,7 +402,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     areas: AREAS.filter((a) => [...modes.light.families, ...shared.families].some((f) => f.area === a)),
     answers,
     // What each connection says, by id, once: a decision's graph names its connections by id.
-    connections: Object.fromEntries((grammar.semantics?.connections?.items ?? []).map((c) => [c.id, { kind: c.kind, says: c.says }])),
+    connections: Object.fromEntries(allConnections(grammar).map((c) => [c.id, { kind: c.kind, says: c.says }])),
     shared,
     modes,
   };

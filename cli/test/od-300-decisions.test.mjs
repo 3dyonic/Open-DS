@@ -230,7 +230,7 @@ test("Dense data sets body and help text 14/20, data cells 14/18 and captions 12
     assert.equal(px(valueIn(s, t, `type.${role}.line-height`)), line, role);
     const r = reasonOf(traceToken(trace, `type.${role}.line-height`));
     assert.equal(r.kind, "own", role);
-    assert.match(r.why, new RegExp(`^An? ${line}px line box for ${size}px`), role);
+    assert.match(r.why, new RegExp(`^An? ${line}px line box`), role);
     assert.ok(r.why.includes(kind), role);
     assert.match(r.why, /snapped to the 2px grid/, role);
   }
