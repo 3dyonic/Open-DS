@@ -23,33 +23,72 @@ test("Brand expressive's palette steps with a why pass the component-key rule", 
 });
 
 test("a raw hex in a component key fails the rule", () => {
-  const s = copy("hex", (c) => (c.button.secondary.background["@"].$value = "#FFCCDC"));
-  assert.match(componentLinks(s).join("\n"), /component\.button\.secondary\.background\.@ holds the raw value "#FFCCDC"/);
+  const s = copy(
+    "hex",
+    (c) => (c.button.secondary.background["@"].$value = "#FFCCDC"),
+  );
+  assert.match(
+    componentLinks(s).join("\n"),
+    /component\.button\.secondary\.background\.@ holds the raw value "#FFCCDC"/,
+  );
 });
 
 test("a palette step with no why fails the rule and the gap ledger", () => {
-  const s = copy("no-why", (c) => delete c.tabs.trigger.background.current.$extensions);
-  assert.match(componentLinks(s).join("\n"), /tabs\.trigger\.background\.current reads the palette step color\.pink\.light\.200 with no why/);
-  const gap = componentGaps(s, g, roots).find((x) => x.key === "component.tabs.trigger.background.current");
+  const s = copy(
+    "no-why",
+    (c) => delete c.tabs.trigger.background.current.$extensions,
+  );
+  assert.match(
+    componentLinks(s).join("\n"),
+    /tabs\.trigger\.background\.current reads the palette step color\.pink\.light\.200 with no why/,
+  );
+  const gap = componentGaps(s, g, roots).find(
+    (x) => x.key === "component.tabs.trigger.background.current",
+  );
   assert.equal(gap?.kind, "wrong-semantic");
 });
 
 test("a step of a hue the scheme does not define fails the rule", () => {
-  const s = copy("hue", (c) => (c.tabs.trigger.background.current.$value = "{color.teal.light.200}"));
-  assert.match(componentLinks(s).join("\n"), /reads color\.teal\.light\.200, a hue the scheme does not define/);
+  const s = copy(
+    "hue",
+    (c) =>
+      (c.tabs.trigger.background.current.$value = "{color.teal.light.200}"),
+  );
+  assert.match(
+    componentLinks(s).join("\n"),
+    /reads color\.teal\.light\.200, a hue the scheme does not define/,
+  );
 });
 
 test("a palette step with a why raises no wrong-semantic gap", () => {
   const gaps = componentGaps(loadScheme("brand-expressive", roots), g, roots);
-  assert.equal(gaps.filter((x) => x.kind === "wrong-semantic" && /color\.pink\./.test(x.aliases ?? "")).length, 0);
+  assert.equal(
+    gaps.filter(
+      (x) =>
+        x.kind === "wrong-semantic" && /color\.pink\./.test(x.aliases ?? ""),
+    ).length,
+    0,
+  );
 });
 
 test("the build reads a component key's step from the active mode's ramp", () => {
-  const tree = { a: { $value: "{color.pink.light.200}" }, b: { $value: "{color.text.primary}" } };
-  assert.equal(componentsInMode(tree, "dark").a.$value, "{color.pink.dark.200}");
-  assert.equal(componentsInMode(tree, "light").a.$value, "{color.pink.light.200}");
+  const tree = {
+    a: { $value: "{color.pink.light.200}" },
+    b: { $value: "{color.text.primary}" },
+  };
+  assert.equal(
+    componentsInMode(tree, "dark").a.$value,
+    "{color.pink.dark.200}",
+  );
+  assert.equal(
+    componentsInMode(tree, "light").a.$value,
+    "{color.pink.light.200}",
+  );
   assert.equal(componentsInMode(tree, "dark").b.$value, "{color.text.primary}");
   const s = loadScheme("brand-expressive", roots);
   const dark = themeTokens(s, "default", "dark");
-  assert.equal(dark.tabs.trigger.background.current.$value, "{color.pink.dark.200}");
+  assert.equal(
+    dark.tabs.trigger.background.current.$value,
+    "{color.pink.dark.200}",
+  );
 });
