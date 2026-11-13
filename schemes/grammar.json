@@ -442,27 +442,32 @@
             {
               "id": "grotesque-mono",
               "label": "A neutral grotesque, with a monospace for data",
-              "description": "For products where numbers and records are the content."
+              "description": "For products where numbers and records are the content.",
+              "creates": ["typeface"]
             },
             {
               "id": "serif-sans",
               "label": "A reading serif, with a sans for the interface",
-              "description": "For long-form reading; the interface steps back."
+              "description": "For long-form reading; the interface steps back.",
+              "creates": ["typeface"]
             },
             {
               "id": "hyperlegible",
               "label": "One face drawn for legibility",
-              "description": "For products where nobody may be left out."
+              "description": "For products where nobody may be left out.",
+              "creates": ["typeface"]
             },
             {
               "id": "display-text",
               "label": "A display face for brand moments, with a sans for text",
-              "description": "For brands that lead with type."
+              "description": "For brands that lead with type.",
+              "creates": ["typeface"]
             },
             {
               "id": "per-brand",
               "label": "Each brand brings its own face, on one shared scale",
-              "description": "For several brands on one system."
+              "description": "For several brands on one system.",
+              "creates": ["typeface"]
             }
           ],
           "considers": [
@@ -702,19 +707,47 @@
           "options": [
             {
               "id": "core",
-              "label": "Core: heading, body, label"
+              "label": "Core: heading, body, label",
+              "creates": [
+                "heading-size",
+                "body-size",
+                "small-text-size",
+                "heading-weight",
+                "text-weight"
+              ]
             },
             {
               "id": "core-data",
-              "label": "Core and data"
+              "label": "Core and data",
+              "creates": [
+                "heading-size",
+                "body-size",
+                "small-text-size",
+                "heading-weight",
+                "text-weight"
+              ]
             },
             {
               "id": "core-editorial",
-              "label": "Core and editorial display"
+              "label": "Core and editorial display",
+              "creates": [
+                "heading-size",
+                "body-size",
+                "small-text-size",
+                "heading-weight",
+                "text-weight"
+              ]
             },
             {
               "id": "core-expressive",
-              "label": "Core and expressive display"
+              "label": "Core and expressive display",
+              "creates": [
+                "heading-size",
+                "body-size",
+                "small-text-size",
+                "heading-weight",
+                "text-weight"
+              ]
             }
           ]
         },
@@ -727,17 +760,20 @@
             {
               "id": "few",
               "label": "Only the steps the screens need",
-              "description": "The scale keeps the few sizes the screens use, and nothing in between."
+              "description": "The scale keeps the few sizes the screens use, and nothing in between.",
+              "creates": []
             },
             {
               "id": "some",
               "label": "One step per kind of text",
-              "description": "One size each for caption, body, heading, title and display."
+              "description": "One size each for caption, body, heading, title and display.",
+              "creates": []
             },
             {
               "id": "many",
               "label": "Fine steps, so pages can set their own rhythm",
-              "description": "Many close sizes, so a page can tune its hierarchy and pace."
+              "description": "Many close sizes, so a page can tune its hierarchy and pace.",
+              "creates": []
             }
           ]
         },
@@ -749,15 +785,18 @@
           "options": [
             {
               "id": "ratio-grid",
-              "label": "A ratio, line heights on the grid"
+              "label": "A ratio, line heights on the grid",
+              "creates": ["heading-lines", "label-lines", "text-lines"]
             },
             {
               "id": "ratio-proportional",
-              "label": "A ratio, line heights in proportion"
+              "label": "A ratio, line heights in proportion",
+              "creates": ["heading-lines", "label-lines", "text-lines"]
             },
             {
               "id": "fixed",
-              "label": "Fixed steps"
+              "label": "Fixed steps",
+              "creates": ["heading-lines", "label-lines", "text-lines"]
             }
           ]
         },
@@ -769,15 +808,18 @@
           "options": [
             {
               "id": "small",
-              "label": "Small"
+              "label": "Small",
+              "creates": []
             },
             {
               "id": "regular",
-              "label": "Regular"
+              "label": "Regular",
+              "creates": []
             },
             {
               "id": "large",
-              "label": "Large"
+              "label": "Large",
+              "creates": []
             }
           ]
         },
@@ -789,19 +831,23 @@
           "options": [
             {
               "id": "tables-inputs",
-              "label": "Tables and inputs"
+              "label": "Tables and inputs",
+              "creates": []
             },
             {
               "id": "articles",
-              "label": "Articles and long text"
+              "label": "Articles and long text",
+              "creates": []
             },
             {
               "id": "forms",
-              "label": "Forms and labels"
+              "label": "Forms and labels",
+              "creates": []
             },
             {
               "id": "headlines",
-              "label": "Headlines and hero"
+              "label": "Headlines and hero",
+              "creates": []
             }
           ]
         }
@@ -17419,7 +17465,7 @@
       ]
     },
     "connections": {
-      "description": "How the color tokens connect (OD-304). comes-from: a token takes its value or its hue from another. pairs-with: a fill and the text on it keep the contrast floor, and a step distance promises a contrast. stays-apart: two sets of colors must not look alike, or must keep an order. The harness checks each one in every brand and mode.",
+      "description": "How the tokens of a scope connect (OD-304). comes-from: a token takes its value from another, a scale or a rule. pairs-with: two tokens keep a floor together, such as a fill and its text, or a box and the line it holds. stays-apart: two sets must not look alike, or must keep an order or a distance. The harness checks each one in every brand and mode.",
       "items": [
         {
           "id": "subtle-from-hue",
@@ -17547,6 +17593,46 @@
           "by": "order",
           "modes": ["dark"],
           "says": "In dark mode the surfaces lighten as they rise: sunken, then default, then raised, then floating."
+        },
+        {
+          "id": "size-from-scale",
+          "kind": "comes-from",
+          "tokens": ["type.*.font-size"],
+          "from": "type scale",
+          "match": "scale",
+          "says": "Each text size comes from one base and one ratio: base × ratio^step. Display, title and heading snap to the 4px grid; other text rounds to whole px."
+        },
+        {
+          "id": "line-from-kind",
+          "kind": "comes-from",
+          "tokens": ["type.*.line-height"],
+          "from": "line kind",
+          "match": "line-kind",
+          "says": "Each line height comes from its role's line kind: the kind's ratio × the size, or a line box snapped to the kind's grid."
+        },
+        {
+          "id": "label-pairs-with-control",
+          "kind": "pairs-with",
+          "tokens": ["type.label.font-size", "type.label.line-height"],
+          "from": ["size.control.*"],
+          "by": "holds-line",
+          "says": "A control holds one label line: each control height is at least the label's line height, so the label never clips."
+        },
+        {
+          "id": "sizes-step-apart",
+          "kind": "stays-apart",
+          "tokens": ["type.*.font-size"],
+          "by": "ratio-step",
+          "says": "Each text size is at least one ratio step above the size on the step below it, so two roles never look almost alike."
+        },
+        {
+          "id": "line-kinds-apart",
+          "kind": "stays-apart",
+          "tokens": ["type.*.line-height"],
+          "by": "kind-gap",
+          "min_apart": 0.2,
+          "says": "The line kinds stay at least 0.2 apart (tight, snug, open), so each kind reads as its own.",
+          "why": "The owner decided steps at least 0.2 apart (OD-221)."
         }
       ]
     },
@@ -40353,6 +40439,7 @@
       "scope": "typography",
       "question": "typography.values",
       "tokens": ["type.*.font-size"],
+      "rule": "size = base × ratio^step; display, title and heading snap to the 4px grid, other text rounds to whole px; set in rem, so text grows with the reader",
       "jobs": [
         {
           "id": "body-size",
@@ -40377,6 +40464,64 @@
           "title": "Contrast floor by size",
           "how": "Contrast sensitivity → From 24px, or 18.66px bold, text needs 3:1 instead of 4.5:1."
         }
+      ],
+      "roles": [
+        {
+          "id": "body-size",
+          "role": "the body size",
+          "tokens": ["type.body.font-size"],
+          "jobs": ["body-size"],
+          "to": "set the size every other text steps from",
+          "gets": "long reading stays effortless"
+        },
+        {
+          "id": "heading-size",
+          "role": "a heading size",
+          "tokens": ["type.title.font-size", "type.heading.font-size"],
+          "jobs": ["other-sizes", "contrast-floor-by-size"],
+          "to": "rank titles and sections above the text by size",
+          "gets": "people see the order of a page before they read it"
+        },
+        {
+          "id": "display-size",
+          "role": "the display size",
+          "tokens": ["type.display.font-size"],
+          "jobs": ["other-sizes", "contrast-floor-by-size"],
+          "to": "give the one largest line on a page its own step",
+          "gets": "the key line or number is seen first",
+          "always_on": {
+            "why": "every scheme's type scale gives the display line a step of its own",
+            "shaped_by": [
+              "typography.roles",
+              "typography.count",
+              "typography.values"
+            ]
+          }
+        },
+        {
+          "id": "small-text-size",
+          "role": "a label or caption size",
+          "tokens": ["type.label.font-size", "type.caption.font-size"],
+          "jobs": ["other-sizes", "smallest-text"],
+          "to": "let names and secondary text step back from the body",
+          "gets": "labels and hints stay readable but quiet"
+        },
+        {
+          "id": "data-size",
+          "role": "the data size",
+          "tokens": ["type.data.font-size"],
+          "jobs": ["other-sizes", "smallest-text"],
+          "to": "set numbers and values on a step of the scale",
+          "gets": "values read at a size the scale chose",
+          "always_on": {
+            "why": "every scheme's type scale gives values a step of their own",
+            "shaped_by": [
+              "typography.roles",
+              "typography.count",
+              "typography.values"
+            ]
+          }
+        }
       ]
     },
     {
@@ -40385,6 +40530,7 @@
       "scope": "typography",
       "question": "typography.definition",
       "tokens": ["type.*.line-height"],
+      "rule": "line height = the ratio of the role's line kind (tight, snug or open) × its size; a kind with a grid snaps the line box to that grid",
       "jobs": [
         {
           "id": "open",
@@ -40406,6 +40552,40 @@
           "title": "Survive user spacing",
           "how": "follows text content: text box height = its content; no fixed heights"
         }
+      ],
+      "roles": [
+        {
+          "id": "heading-lines",
+          "role": "heading lines",
+          "tokens": [
+            "type.display.line-height",
+            "type.title.line-height",
+            "type.heading.line-height"
+          ],
+          "jobs": ["tight", "open", "follow-the-size"],
+          "to": "hold the lines of a heading together",
+          "gets": "a heading that wraps still reads as one unit"
+        },
+        {
+          "id": "label-lines",
+          "role": "label lines",
+          "tokens": ["type.label.line-height"],
+          "jobs": ["tight", "open", "follow-the-size", "survive-user-spacing"],
+          "to": "keep a label close to the thing it names",
+          "gets": "a label stays with its field, even when it wraps"
+        },
+        {
+          "id": "text-lines",
+          "role": "lines of running text",
+          "tokens": [
+            "type.body.line-height",
+            "type.caption.line-height",
+            "type.data.line-height"
+          ],
+          "jobs": ["open", "tight", "follow-the-size", "survive-user-spacing"],
+          "to": "let the eye find the next line",
+          "gets": "people keep their place in text that wraps"
+        }
       ]
     },
     {
@@ -40414,6 +40594,7 @@
       "scope": "typography",
       "question": "typography.definition",
       "tokens": ["type.*.letter-spacing"],
+      "rule": "letter spacing = extra space for uppercase labels only",
       "jobs": [
         {
           "id": "uppercase-labels",
@@ -40428,6 +40609,7 @@
       "scope": "typography",
       "question": "typography.count",
       "tokens": ["type.*.font-weight"],
+      "rule": "weight shows rank, within the weights the typeface draws, and stays legible at its size",
       "jobs": [
         {
           "id": "rank-the-roles",
@@ -40443,6 +40625,37 @@
           "id": "legible-at-small-sizes",
           "title": "Legible at small sizes",
           "how": "Visual acuity → Avoid thin weights at small sizes, where hairlines break up."
+        }
+      ],
+      "roles": [
+        {
+          "id": "heading-weight",
+          "role": "a heading weight",
+          "tokens": [
+            "type.display.font-weight",
+            "type.title.font-weight",
+            "type.heading.font-weight"
+          ],
+          "jobs": ["rank-the-roles", "weights-the-family-draws"],
+          "to": "show rank where sizes are close",
+          "gets": "headings stand out even one step above the text"
+        },
+        {
+          "id": "text-weight",
+          "role": "a text weight",
+          "tokens": [
+            "type.body.font-weight",
+            "type.label.font-weight",
+            "type.caption.font-weight",
+            "type.data.font-weight"
+          ],
+          "jobs": [
+            "rank-the-roles",
+            "legible-at-small-sizes",
+            "weights-the-family-draws"
+          ],
+          "to": "keep text legible at its size and below the headings in rank",
+          "gets": "small text keeps its strokes and its place in the order"
         }
       ]
     },
@@ -41318,11 +41531,22 @@
       "scope": "typography",
       "question": "brand.q3",
       "tokens": ["type.*.font-family"],
+      "rule": "font family = the face the typeface answer names for the role",
       "jobs": [
         {
           "id": "carry-the-product",
           "title": "Carry the product",
-          "how": "The scheme's answer names the faces and why they fit its readers."
+          "how": "Voice and legibility → The scheme's answer names the faces and why they fit its readers."
+        }
+      ],
+      "roles": [
+        {
+          "id": "typeface",
+          "role": "a text role's typeface",
+          "tokens": ["type.*.font-family"],
+          "jobs": ["carry-the-product"],
+          "to": "carry the product's voice in every text role",
+          "gets": "the product reads as itself on every screen"
         }
       ]
     }
