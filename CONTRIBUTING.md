@@ -37,4 +37,4 @@ Every scope answers the same five questions (roles, how many, how defined, value
 
 ## Rules
 
-See [AGENTS.md](AGENTS.md). Plain words, short sentences, no invented names or numbers. Work on a branch from `RC1` and open the PR into `RC1`.
+See [AGENTS.md](AGENTS.md). A change is done only when every line of [DONE.md](DONE.md) is true. Plain words, short sentences, no invented names or numbers. Work on a branch from `RC1` and open the PR into `RC1`.

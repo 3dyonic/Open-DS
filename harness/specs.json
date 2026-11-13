@@ -926,6 +926,17 @@
         "json-files-validate",
         "json-sources-one-layout"
       ]
+    },
+    {
+      "id": "OD-305",
+      "title": "Generated files stay out of git, and CI keeps the gate scorecard",
+      "in": [
+        "a harness check fails when git tracks a path that a generated-file group in .gitignore matches",
+        "the changes job uploads the gate scorecard and the component pairs as one artifact"
+      ],
+      "checks": [
+        "generated-files-untracked"
+      ]
     }
   ]
 }

@@ -148,3 +148,13 @@ jobs:
           else
             echo "The scorecard was not written. The step log shows the error." >> "$GITHUB_STEP_SUMMARY"
           fi
+      # The numbers behind the summary, kept with the run. Skipped when compare wrote nothing.
+      - name: Keep the scorecard and the component pairs
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: quality-scorecard
+          path: |
+            build/quality/scorecard.json
+            build/quality/component-pairs.md
+          if-no-files-found: warn
