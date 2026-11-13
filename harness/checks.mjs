@@ -140,6 +140,65 @@ export function trackedMatching(c, patterns) {
   }
 }
 
+// OD-312: an ADR's plan names a ticket for each step, and its status line agrees with those tickets.
+// Ticket statuses come from harness/ticket-status.json, so the harness runs offline. A one-off command
+// refreshes that file from Jira: node scripts/ticket-status.mjs.
+export const ADR_DIR = "guide/contributing/adr";
+export const TICKET_STATUS_FILE = "harness/ticket-status.json";
+const TICKET_KEY = /\bOD-\d+\b/g;
+// A status line that says no step is built yet.
+export const NOTHING_BUILT = /\bnothing\b[^.]*\bbuilt\b|\bnot (yet )?built\b|\bno step is built\b/i;
+
+/** The status line and the numbered steps under "## Order of work", each with the ticket keys it names. */
+export function adrPlan(text) {
+  const lines = text.split("\n");
+  const status = lines.find((l) => /^Status:/.test(l)) ?? "";
+  const keys = (s) => [...new Set(s.match(TICKET_KEY) ?? [])];
+  const steps = [];
+  const start = lines.findIndex((l) => /^##\s+Order of work\s*$/i.test(l));
+  if (start >= 0) {
+    for (let i = start + 1; i < lines.length && !/^##\s/.test(lines[i]); i++) {
+      const m = lines[i].match(/^(\d+)\.\s+(.*)$/);
+      if (m) steps.push({ step: Number(m[1]), line: i + 1, tickets: keys(m[2]) });
+    }
+  }
+  return { status, statusTickets: keys(status), steps };
+}
+
+/** One finding per step that names no ticket key. */
+export function adrStepGaps(file, plan) {
+  return plan.steps.filter((s) => !s.tickets.length).map((s) => `${file}:${s.line} step ${s.step} names no ticket (OD-n)`);
+}
+
+/** A finding when the status line says nothing is built while a step's ticket is Done. */
+export function adrStatusGaps(file, plan, statuses) {
+  if (!NOTHING_BUILT.test(plan.status)) return [];
+  const done = plan.steps.flatMap((s) => s.tickets.filter((k) => /^done$/i.test(statuses[k] ?? "")).map((k) => `step ${s.step} (${k})`));
+  return done.length
+    ? [`${file}: the status line says nothing is built, but ${done.join(", ")} ${done.length > 1 ? "are" : "is"} Done; say which steps shipped and which are open`]
+    : [];
+}
+
+/**
+ * Findings when the status file has no refresh date, or lacks a key that an ADR step names.
+ * Age alone never fails: a check that turns red with the calendar would block every pull request.
+ */
+export function ticketStatusGaps(data, keys) {
+  const gaps = [];
+  const run = "run: node scripts/ticket-status.mjs";
+  if (Number.isNaN(Date.parse(data?.refreshed ?? ""))) gaps.push(`${TICKET_STATUS_FILE} has no valid refreshed date; ${run}`);
+  const missing = keys.filter((k) => !(k in (data?.statuses ?? {})));
+  if (missing.length) gaps.push(`${TICKET_STATUS_FILE} has no status for ${missing.join(", ")}; ${run}`);
+  return gaps;
+}
+
+/** Every ADR file and its plan. */
+export function adrPlans(c) {
+  return c
+    .walk(ADR_DIR, (f) => f.endsWith(".md"))
+    .map((file) => ({ file, plan: adrPlan(c.read(file)) }));
+}
+
 function ajv() {
   const a = new Ajv2020({ allErrors: true, strict: false });
   addFormats(a);
@@ -207,6 +266,33 @@ export const CHECKS = {
     run: (c) => {
       const r = c.sh("node", ["--test"], { cwd: c.p("harness") });
       return r.code === 0 ? ok("harness tests pass") : bad(tail(r.out));
+    },
+  },
+
+  // OD-312: every plan step in an ADR names its ticket.
+  "adr-steps-name-tickets": {
+    requires: [ADR_DIR],
+    run: (c) => {
+      const plans = adrPlans(c);
+      const gaps = plans.flatMap(({ file, plan }) => adrStepGaps(file, plan));
+      const steps = plans.reduce((n, { plan }) => n + plan.steps.length, 0);
+      return gaps.length ? bad(gaps.join("; ")) : ok(`${steps} plan steps in ${plans.length} ADRs each name a ticket`);
+    },
+  },
+  // OD-312: an ADR that says nothing is built has no step whose ticket is Done.
+  "adr-status-matches-tickets": {
+    requires: [ADR_DIR, TICKET_STATUS_FILE],
+    run: (c) => {
+      const data = c.json(TICKET_STATUS_FILE);
+      const plans = adrPlans(c);
+      const keys = [...new Set(plans.flatMap(({ plan }) => plan.steps.flatMap((s) => s.tickets)))].sort();
+      const gaps = [
+        ...ticketStatusGaps(data, keys),
+        ...plans.flatMap(({ file, plan }) => adrStatusGaps(file, plan, data.statuses ?? {})),
+      ];
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`${plans.length} ADR status lines agree with ${keys.length} step tickets (statuses from ${data.refreshed})`);
     },
   },
 

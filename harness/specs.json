@@ -996,6 +996,20 @@
         "doc-composites-scoped-styles",
         "doc-composites-base-forms"
       ]
+    },
+    {
+      "id": "OD-312",
+      "title": "Every ADR plan step names a ticket, and an ADR's status matches its tickets",
+      "in": [
+        "a check over guide/contributing/adr/*.md: every numbered step under Order of work names a ticket key (OD-n)",
+        "a check fails when an ADR's status line says nothing is built and a step's ticket is Done",
+        "ADR-002 names OD-289, OD-291 and OD-292 for steps 1 to 3 and OD-311 for steps 4 to 7; its status line says steps 1 to 3 shipped and steps 4 to 7 are open",
+        "ticket statuses come from harness/ticket-status.json, which node scripts/ticket-status.mjs refreshes from Jira; the check fails when the file is too old or lacks a step's ticket"
+      ],
+      "checks": [
+        "adr-steps-name-tickets",
+        "adr-status-matches-tickets"
+      ]
     }
   ]
 }
