@@ -1328,7 +1328,7 @@
     {
       "question": "color.definition.steps",
       "option": "even-ease",
-      "why": "An even ease keeps the blush tints soft and the berry link text deep. The blush tint fills the selected tab and the ghost button on hover.",
+      "why": "An even ease keeps the blush tints soft and the berry link text deep. The blush tint fills the selected tab.",
       "because": [
         "brand.q1",
         "color.definition"
