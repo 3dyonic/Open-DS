@@ -36,6 +36,14 @@ The exit code is 1 only when something fails.
 - `decisions-cover-values`: the semantic values per scheme that rest on no decision. A value is linked when its theme pick, or a usage rule that names it, cites an answer. After a fix, run `node scripts/coverage.mjs --baseline`.
 - `scheme-quality`: the scheme quality gate (OD-298). Each criterion in `quality-baseline.json` has a value on `origin/master`, a value per part (scheme, scheme and theme, or file) and a direction: down, up or report (not gated). A gated criterion that moves the wrong way fails. Refresh the baseline on purpose: `open-ds compare --base origin/master --write-baseline`.
 
+## Ticket statuses
+
+`adr-status-matches-tickets` (OD-312) reads `ticket-status.json`, so the harness runs offline. The check fails when the file is more than 30 days old or lacks a ticket that an ADR step names. Refresh it by hand; the harness and CI never call Jira:
+
+```bash
+JIRA_EMAIL=… JIRA_API_TOKEN=… node scripts/ticket-status.mjs
+```
+
 ## The scheme quality gate
 
 `open-ds compare --base origin/master [--candidate <ref>]` measures a scheme change before it merges. The candidate defaults to the working tree.
