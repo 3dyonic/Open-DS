@@ -1443,10 +1443,11 @@
     },
     {
       "question": "shape.count",
-      "option": "three",
-      "why": "Control, badge and container.",
+      "option": "two",
+      "why": "Two corner sizes: one for controls and badges, and a larger one for containers, as Aster's 4px and 8px corners show.",
       "because": [
-        "shape.roles"
+        "shape.roles",
+        "shape.values"
       ]
     },
     {

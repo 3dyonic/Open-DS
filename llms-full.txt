@@ -767,7 +767,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - spacing.values How dense is the layout? Comfortable. Comfortable spacing in every brand. (because content.q2)
 - spacing.lands Where does spacing matter most? Between fields. Space matters most between form fields. (because tasks.q1)
 - shape.roles Which shape roles does it need? Controls, badges and containers. Each brand sets three corners. (because business.q2)
-- shape.count How many corner sizes exist? Three. Control, badge and container. (because shape.roles)
+- shape.count How many corner sizes exist? Two. Two corner sizes: one for controls and badges, and a larger one for containers, as Aster's 4px and 8px corners show. (because shape.roles, shape.values)
 - shape.definition How are corners set? Set by each brand. Each brand sets its own corners. (because business.q2)
 - shape.values What should control corners say? Rounded. Rounded by default; each brand sets its own corner. (because business.q2)
 - shape.lands Where does shape show most? Buttons and badges. Corners are the most visible brand difference. (because brand.q2)
