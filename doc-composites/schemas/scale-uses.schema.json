@@ -27,7 +27,8 @@
           "fill",
           "text",
           "contrast",
-          "level"
+          "level",
+          "caption"
         ],
         "additionalProperties": false,
         "properties": {
@@ -67,9 +68,10 @@
           },
           "text": {
             "type": "object",
-            "description": "The text color: a step of the key scale, or the scheme's text on its action.",
+            "description": "The text color: a step of the key scale, or the scheme text color on its action, by its plain name.",
             "additionalProperties": false,
             "required": [
+              "name",
               "hex"
             ],
             "properties": {
@@ -78,14 +80,15 @@
                 "pattern": "^(50|[1-9]00|950)$",
                 "description": "The step of the scale, 50 to 950."
               },
-              "token": {
-                "type": "string",
-                "description": "The semantic token of the text, when it is not a step, such as text.on-action."
-              },
               "hex": {
                 "type": "string",
                 "pattern": "^#[0-9A-F]{6}$",
                 "description": "The color as built, in uppercase hex."
+              },
+              "name": {
+                "type": "string",
+                "description": "The text color plain name, such as White or Pink 950. Never a token id.",
+                "minLength": 1
               }
             }
           },
@@ -104,6 +107,11 @@
               "fail"
             ],
             "description": "The WCAG level for body text: AAA from 7, AA from 4.5, AA-large (large text only) from 3, else fail."
+          },
+          "caption": {
+            "type": "string",
+            "pattern": "^[A-Z]",
+            "description": "The use in plain words, such as 'White text on pink 600. The main button.' It names colors, never a token."
           }
         }
       }

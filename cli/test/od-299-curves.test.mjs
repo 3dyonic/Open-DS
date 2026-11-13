@@ -127,7 +127,8 @@ test("How the scale is built: none while the flag is off; with it on, every sect
   const page = colorScalePage(s, g, { graded: true, frontMatter: fm, put });
   assert.match(page, /# How the scale is built/);
   for (const kind of ["scale-strip", "scale-curve", "scale-uses", "scale-options"]) assert.match(page, new RegExp(`^::${kind}\\{id="key"\\}$`, "m"));
-  assert.match(page, /^:::scale-why\{id="key"\}\nWe use \*\*a light ease\*\* for the \*\*navy scale\*\* in order to /m);
+  assert.match(page, /^:::scale-why\{id="key"\}\nWe use a light ease for the navy scale, to keep the soft page tints close together\. /m);
+  assert.match(page, /We chose it because the content is long-form text\.\n:::/);
   assert.doesNotMatch(page, /<[a-z]/, "no HTML in a docs page");
   assert.doesNotMatch(page, /Not used yet|in grey|Part of \[Primitives/, "the grey strip and its lines are gone");
   // The strip and the dots are the built scale; the uses are its real contrast.
@@ -149,4 +150,37 @@ test("the chain to the step answer follows each answer's because list, earliest 
   assert.deepEqual(af, ["people.q1", "color.definition", "color.definition.steps"]);
   const facts = scaleFacts(loadScheme("multi-brand"), g);
   assert.equal(facts.brand, "aster", "Multi-brand shows its first brand");
+});
+
+test("How the scale is built reads plainly: a four-sentence reason, a hidden repeat, captions with color names", () => {
+  const g = grammar();
+  const fm = () => "";
+  const page = (id) => {
+    const stored = {};
+    const put = (kind, key, data) => (((stored[kind] ??= {})[key] = data), `::${kind}{id="${key}"}`);
+    return { text: colorScalePage(loadScheme(id, undefined, { graded: true }), g, { graded: true, frontMatter: fm, put }), stored };
+  };
+  const be = page("brand-expressive");
+  assert.match(
+    be.text,
+    /\nWe use an even ease for the pink scale, to give brand fills many strong steps\. The curve spreads the middle steps apart and keeps the ends close\. So buttons and badges get several rich pinks, while backgrounds stay soft and text stays deep\. We chose it because the brand is bold\.\n/,
+  );
+  const cards = be.stored["scale-why"].key.steps;
+  assert.equal(cards.find((c) => c.question === "brand.q1").repeatsLabel, true, "Bold and confident. only repeats Bold");
+  assert.equal(cards.find((c) => c.question === "color.definition").repeatsLabel, false, "Warm neutrals and one vivid ramp. adds a fact");
+  assert.deepEqual(
+    be.stored["scale-uses"].key.uses.map((u) => u.caption),
+    ["White text on pink 600. The main button.", "Pink 600 text on pink 50. A highlight.", "Pink 950 text on pink 100. A banner."],
+  );
+  assert.equal(be.stored["scale-curve"].key.band.label, "spread wider for brand fills");
+  const af = page("accessible-first");
+  assert.equal(af.stored["scale-curve"].key.band, undefined, "a linear curve draws no middle band");
+  assert.doesNotMatch(af.text, /A thin line links it/);
+  for (const id of ["brand-expressive", "accessible-first", "content-first", "dense-data", "multi-brand"]) {
+    const reason = page(id).text.match(/^:::scale-why\{id="key"\}\n(.+)\n:::$/m)[1];
+    const sentences = reason.split(/(?<=\.) /);
+    assert.equal(sentences.length, 4, `${id}: four sentences`);
+    for (const s of sentences) assert.ok(s.split(" ").length <= 20, `${id}: "${s}" has more than 20 words`);
+    assert.doesNotMatch(reason, /\d+(\.\d+)? times|\*\*/, `${id}: no ratio and no bold`);
+  }
 });

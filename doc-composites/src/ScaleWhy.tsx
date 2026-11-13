@@ -8,7 +8,7 @@ import * as React from "react";
 import Columns from "./base/Columns";
 import Frame from "./base/Frame";
 
-export type ScaleWhyStep = { question: string; group: string; text: string; option: string; answer: string; why: string };
+export type ScaleWhyStep = { question: string; group: string; text: string; option: string; answer: string; why: string; repeatsLabel: boolean };
 export type ScaleWhyData = { steps: ScaleWhyStep[] };
 
 export default function ScaleWhy({ data, children }: { data: ScaleWhyData; children?: React.ReactNode }) {
@@ -26,7 +26,8 @@ export default function ScaleWhy({ data, children }: { data: ScaleWhyData; child
                       {s.group}: {s.text}
                     </p>
                     <p className="m-0 font-semibold text-[color:var(--color-text-primary)]">{s.answer}</p>
-                    <p className="m-0 text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">{s.why}</p>
+                    {/* A why that only repeats the answer says nothing new, so it stays hidden. */}
+                    {!s.repeatsLabel && <p className="m-0 text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">{s.why}</p>}
                   </Frame>
                 </div>
                 {!last && <span aria-hidden="true" className="ml-[var(--space-gap-group)] h-[var(--space-gap-default)] w-[var(--border-width-focus)] bg-[var(--color-border-strong)]" />}

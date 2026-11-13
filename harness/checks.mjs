@@ -3576,6 +3576,20 @@ export const CHECKS = {
           differ(`${u.use} contrast`, u.contrast, ratio);
           differ(`${u.use} level`, u.level, ratio >= 7 ? "AAA" : ratio >= 4.5 ? "AA" : ratio >= 3 ? "AA-large" : "fail");
         }
+        // A person reads the prose and the shown strings of each composite: none may name a raw token id,
+        // such as text.on-action. Ids the page uses only as keys (question, option, primitive) are not shown.
+        const SHOWN = new Set(["caption", "label", "why", "answer", "text", "sample", "name", "group", "option"]);
+        const shown = [];
+        const collect = (v, key) => {
+          if (typeof v === "string") return SHOWN.has(key) && shown.push([key, v]);
+          if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) collect(x, Array.isArray(v) ? key : k);
+        };
+        collect(data);
+        const prose = text.split("\n").filter((l) => !/^:{2,3}[a-z-]*(\{.*\})?$/.test(l) && !/^[a-z_]+: /.test(l) && l !== "---");
+        for (const [where, s] of [...prose.map((l) => ["text", l]), ...shown]) {
+          const token = s.match(/(?<![\w.])[a-z][a-z0-9-]*(?:\.[a-z0-9@][a-z0-9@-]*)+(?![\w.])/)?.[0];
+          if (token) gaps.push(`${id}: the page ${where} "${s.slice(0, 60)}" names the raw token ${token}; write the color's plain name`);
+        }
         const own = options.options.filter((o) => o.own);
         if (own.length !== 1 || own[0].option !== steps.option) gaps.push(`${id}: the outlined option is not the scheme's own answer, ${steps.option}`);
         if (!options.options.some((o) => o.option === "linear")) gaps.push(`${id}: the other answers leave out linear`);
@@ -3588,7 +3602,7 @@ export const CHECKS = {
         ? bad(`${gaps.length} gaps; ${gaps.slice(0, 4).join("; ")}`)
         : ok(
             GRADED_STEPS
-              ? `${SCHEMES.length} schemes have How the scale is built under Color; its ${values} values match the built scale`
+              ? `${SCHEMES.length} schemes have How the scale is built under Color; its ${values} values match the built scale, and no page text names a raw token`
               : "the graded curve is off, so no scheme has How the scale is built",
           );
     },
