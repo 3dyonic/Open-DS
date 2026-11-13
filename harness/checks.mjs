@@ -1131,8 +1131,10 @@ export const CHECKS = {
         for (const h of disabledOpacity(c.read(f))) gaps.push(`${f}:${h.line} ${h.cls}`);
       for (const k of c.grammar().component_keys)
         if (!k.replaced_by && k.default === "opacity.disabled") gaps.push(`${k.id} reads opacity.disabled`);
-      for (const id of SCHEMES)
-        if (!c.scheme(id).tokens.semantic.opacity?.disabled?.$deprecated) gaps.push(`${id}: opacity.disabled is not deprecated`);
+      for (const id of SCHEMES) {
+        const alias = c.scheme(id).tokens.semantic.opacity?.disabled;
+        if (alias && !alias.$deprecated) gaps.push(`${id}: opacity.disabled is a live token`);
+      }
       return gaps.length
         ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
         : ok("no component dims a disabled state with opacity; disabled parts read color.disabled.*");

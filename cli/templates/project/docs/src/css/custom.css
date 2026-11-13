@@ -130,12 +130,12 @@ code {
   border: 0;
 }
 .tabs__item {
-  color: var(--tabs-label);
+  color: var(--color-text-secondary);
   font-size: var(--type-label-font-size);
 }
 .tabs__item--active {
-  color: var(--tabs-label-active);
-  border-bottom-color: var(--tabs-indicator);
+  color: var(--tabs-trigger-label);
+  border-bottom-color: var(--tabs-trigger-edge-current);
 }
 .alert,
 .theme-admonition {

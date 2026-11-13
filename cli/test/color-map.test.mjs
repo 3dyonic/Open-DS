@@ -86,10 +86,10 @@ test("a fill keeps the text contrast floor among its reasons: its label is text"
   assert.ok(!focus.steps.some((s) => s.answer === "AAA for text"));
 });
 
-test("changing blue 600 changes 4 decisions and 34 components, and all of its checks pass", () => {
+test("changing blue 600 changes 4 decisions and 33 components, and all of its checks pass", () => {
   const impact = impactOf(light, BLUE_600);
   assert.equal(impact.decisions, 4);
-  assert.equal(impact.components, 34); // 34 with Icon (OD-285): its solid container reads the primary action.
+  assert.equal(impact.components, 33); // With Icon: its solid container reads the primary action.
   assert.ok(impact.checks.every((c) => c.check.met));
 });
 

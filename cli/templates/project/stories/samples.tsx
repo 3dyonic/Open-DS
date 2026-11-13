@@ -129,7 +129,7 @@ export function Show({
   if (!data.inventory.in.some((i) => i.id === component)) {
     const out = data.inventory.out.find((i) => i.id === component);
     return (
-      <p className="max-w-xl border-l-[length:var(--border-width-focus)] border-[var(--color-border-strong)] pl-[var(--space-gap-group)] text-[var(--color-text-secondary)]">
+      <p className="max-w-xl border-l-[length:var(--focus-ring-width)] border-[var(--color-border-strong)] pl-[var(--space-gap-group)] text-[var(--color-text-secondary)]">
         {data.name} does not carry this component.{" "}
         {out?.why ?? "It is not in its inventory."}
       </p>

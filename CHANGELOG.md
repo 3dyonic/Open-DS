@@ -6,6 +6,10 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ## [Unreleased]
 
+### Breaking
+
+- Every scheme drops its 305 deprecated aliases: 301 component keys, and `radius.container`, `border-width.focus`, `border-width.focus-offset` and `opacity.disabled`. Read the token that each alias named in its `$deprecated` note.
+
 ### Added
 
 - Two shape radii replace `radius.full` and `radius.999` (OD-286). `radius.round` (50%) makes a circle of a square: avatars, radio dots, thumbs and round buttons. `radius.pill` (`calc(infinity * 1px)`) makes a capsule of any box: tracks, progress, the scroll thumb and pill controls.

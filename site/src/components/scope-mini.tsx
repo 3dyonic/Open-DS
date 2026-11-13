@@ -121,7 +121,7 @@ export function ScopeMini({
       case "accessibility":
         return (
           <span
-            className="flex items-center justify-center rounded-[var(--radius-control)] border-[length:var(--border-width-focus)] border-[var(--color-border-focus)] px-2"
+            className="flex items-center justify-center rounded-[var(--radius-control)] border-[length:var(--focus-ring-width)] border-[var(--color-border-focus)] px-2"
             style={{ height: v("size-control-default") }}
           >
             <span className="text-[12px]">target</span>

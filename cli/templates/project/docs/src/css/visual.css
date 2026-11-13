@@ -2025,7 +2025,7 @@ tr.odv-for td {
 /* The Anatomy reference card (OD-229), after a component's variants: a link to the parts layer. */
 .odv-anatref { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin: 8px 0 24px; border: var(--border-width-default, 1px) solid var(--color-border-default); border-radius: var(--radius-surface); background: var(--color-surface-default); color: inherit; text-decoration: none; }
 .odv-anatref:hover { background: var(--color-surface-highlight); text-decoration: none; color: inherit; }
-.odv-anatref:focus-visible { outline: var(--border-width-focus, 2px) solid var(--color-border-focus); outline-offset: var(--border-width-focus-offset, 2px); }
+.odv-anatref:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--color-border-focus); outline-offset: var(--focus-ring-offset, 2px); }
 .odv-anatref-b { display: grid; gap: 4px; flex: 1; min-width: 0; }
 .odv-anatref-b b { font-weight: 600; color: var(--color-text-primary); }
 .odv-anatref-b span { color: var(--color-text-secondary); font-size: 0.9em; }

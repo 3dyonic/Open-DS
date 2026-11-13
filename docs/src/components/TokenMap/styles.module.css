@@ -57,7 +57,7 @@
   padding: var(--space-inset-container);
   background: var(--color-status-danger-subtle);
   color: var(--color-text-primary);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
 }
 .error p:last-child,
 .empty p {
@@ -67,14 +67,14 @@
   padding: var(--space-inset-container);
   background: var(--color-surface-sunken);
   color: var(--color-text-secondary);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
 }
 
 .canvas {
   height: clamp(32rem, 80vh, 56rem);
   background: var(--color-surface-canvas);
   border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
+  border-radius: var(--radius-surface);
   --xy-edge-stroke-width: 1.5;
 }
 
@@ -102,8 +102,8 @@
   cursor: pointer;
 }
 .button:focus-visible {
-  outline: var(--border-width-focus) solid var(--color-border-focus);
-  outline-offset: var(--border-width-focus-offset);
+  outline: var(--focus-ring-width) solid var(--color-border-focus);
+  outline-offset: var(--focus-ring-offset);
 }
 .closed {
   background: var(--color-surface-sunken);
@@ -115,7 +115,7 @@
 .selected {
   background: var(--color-surface-selected);
   border-color: var(--color-border-selected);
-  border-width: var(--border-width-focus);
+  border-width: var(--focus-ring-width);
 }
 .title {
   font-weight: var(--type-label-font-weight);
@@ -136,7 +136,7 @@
 
 /* The value */
 .word {
-  border-width: var(--border-width-focus);
+  border-width: var(--focus-ring-width);
   border-color: var(--color-border-selected);
 }
 .swatchRow {
@@ -297,7 +297,7 @@
   padding: 0.4rem 0.6rem;
   border-radius: var(--radius-element);
   background: var(--color-surface-selected);
-  border-inline-start: var(--border-width-focus) solid var(--color-border-selected);
+  border-inline-start: var(--focus-ring-width) solid var(--color-border-selected);
 }
 .qa {
   display: flex;
@@ -319,8 +319,8 @@
   cursor: pointer;
 }
 .more:focus-visible {
-  outline: var(--border-width-focus) solid var(--color-border-focus);
-  outline-offset: var(--border-width-focus-offset);
+  outline: var(--focus-ring-width) solid var(--color-border-focus);
+  outline-offset: var(--focus-ring-offset);
 }
 .pick {
   cursor: pointer;
