@@ -252,6 +252,23 @@ for (const id of schemeIds()) {
   const ONE_LINE = "A button label stays on one line: it never breaks onto two.";
   if (!s.voice.principles.some((p) => p.text === ONE_LINE)) s.voice.principles.push({ text: ONE_LINE, follows: ["voice.values", "voice.definition"] });
 
+  // Type item 1: Dense data's line boxes, 14/20 for body and help text, 14/18 for data cells and 12/16
+  // for captions. The values follow the type record already (OD-301); the reasons named the wrong line
+  // kind and grid, so each says the record's own rule.
+  if (id === "dense-data") {
+    const type = s.tokens.semantic.type;
+    const LINES = {
+      body: "A 20px line box for 14px body and help text: the open step, 1.45 × 14px (20.3px), snapped to the 2px grid, which also sits on the 4px grid. Help text wraps to several lines, so the open box lets the eye find the next line.",
+      data: "An 18px line box for 14px cells: the snug step, 1.3 × 14px (18.2px), snapped to the 2px grid. A cell holds one line, so the box sits just above the text: the eye keeps its row while it scans a long table, and the row stays dense.",
+      caption: "A 16px line box for 12px captions: the snug step, 1.3 × 12px (15.6px), snapped to the 2px grid, which also sits on the 4px grid. Hints and timestamps are short, so the snug box keeps them close to what they describe.",
+    };
+    for (const [role, why] of Object.entries(LINES)) {
+      const od = type[role]["line-height"].$extensions["open-ds"];
+      od.why = why;
+      od.because = ["typography.definition", ...(role === "data" ? ["human.q1"] : [])];
+    }
+  }
+
   // Item 4: each deprecated switch key keeps its value one release and says what replaces it.
   for (const id of SWITCH_OLD) {
     const e = keyOf(id);
