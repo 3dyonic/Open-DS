@@ -4700,7 +4700,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "pink.dark.100: a brand tint, so the second action carries the brand; its primary text label reads 15.1:1, above the 4.5:1 floor.",
+                        "why": "pink.dark.100: in dark mode the secondary fill keeps a deep pink, so it still reads as the brand; its light label holds 15.1:1, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
                           "color.roles",
@@ -4715,7 +4715,7 @@
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "pink.dark.200: one step past the pink 100 rest fill, so hover reads as a change; its label still reads 11.1:1, above the 4.5:1 floor.",
+                        "why": "pink.dark.200: the dark hover lifts one pink step from the rest fill; the label still holds 11.1:1, above the 4.5:1 floor.",
                         "because": [
                           "color.definition",
                           "color.roles",
@@ -6405,23 +6405,6 @@
           "$value": "{button.focus-ring-offset}",
           "$description": "Deprecated: use component.button.focus-ring-offset (OD-243). Canvas of the button.",
           "$deprecated": "Use component.button.focus-ring-offset. Removed in the next minor release."
-        },
-        "ghost": {
-          "background": {
-            "hover": {
-              "$value": "{color.surface.selected}",
-              "$description": "Ghost button fill on hover.",
-              "$extensions": {
-                "open-ds": {
-                  "why": "color.surface.selected: the brand tint (pink 100) the scheme already uses for a chosen item, so a ghost hover reads as brand.",
-                  "because": [
-                    "color.roles",
-                    "people.q2"
-                  ]
-                }
-              }
-            }
-          }
         }
       },
       "input": {
