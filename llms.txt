@@ -6,7 +6,7 @@ Pick a scheme by its use_when and avoid_when. Deploy it with the CLI (`open-ds i
 
 ## Schemes
 
-- [Accessible first](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/accessible-first.json): id accessible-first. Large text, large targets and AAA contrast, so everyone can finish the task. Use when: Public services, health, government and any product that must work for everyone.
+- [Accessible first](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/accessible-first.json): id accessible-first. Large text, large targets and AAA contrast for the text you must read, so everyone can finish the task. Use when: Public services, health, government and any product that must work for everyone.
 - [Brand expressive](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/brand-expressive.json): id brand-expressive. Big display type, vivid color and springy motion, for launches that must be remembered. Use when: Launch sites, campaigns, marketing pages and consumer brands that lead with personality.
 - [Content first](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/content-first.json): id content-first. Large, calm type and generous space, for people who come to read. Use when: Publications, documentation, blogs, guides and help centers.
 - [Dense data](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/dense-data.json): id dense-data. Compact, exact and quiet, for analysts who scan alerts and compare signals all day. Use when: Security operations, threat detection, model monitoring, admin panels and analytics: many records, daily expert users, mouse and keyboard.
@@ -14,7 +14,7 @@ Pick a scheme by its use_when and avoid_when. Deploy it with the CLI (`open-ds i
 
 ## Grammar and formats
 
-- [Grammar](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/grammar.json): 9 reason groups, 12 scopes (each answers the same 5 method questions: roles, how many, how defined, values, lands in), 81 questions, 57 situations, 1727 component keys
+- [Grammar](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/grammar.json): 9 reason groups, 12 scopes (each answers the same 5 method questions: roles, how many, how defined, values, lands in), 81 questions, 57 situations, 1734 component keys
 - [Scheme JSON Schema](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schema/scheme.schema.json): the scheme format, every property described
 - [Grammar JSON Schema](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schema/grammar.schema.json): the grammar format
 

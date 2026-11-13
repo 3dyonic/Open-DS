@@ -59,6 +59,13 @@
         "follows": [
           "voice.definition"
         ]
+      },
+      {
+        "text": "A button label stays on one line: it never breaks onto two.",
+        "follows": [
+          "voice.values",
+          "voice.definition"
+        ]
       }
     ],
     "words": {
@@ -1461,10 +1468,11 @@
     },
     {
       "question": "shape.count",
-      "option": "three",
-      "why": "Control, badge and container.",
+      "option": "two",
+      "why": "Two corner sizes: one for controls and badges, and a larger one for containers, as Aster's 4px and 8px corners show.",
       "because": [
-        "shape.roles"
+        "shape.roles",
+        "shape.values"
       ]
     },
     {
@@ -12640,6 +12648,21 @@
         }
       },
       "switch": {
+        "height": {
+          "$value": "{size.icon}",
+          "$description": "Deprecated: use switch/thumb/size (OD-300). Height of the switch.",
+          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
+        },
+        "width": {
+          "$value": "{size.icon}",
+          "$description": "Deprecated: use switch/thumb/size (OD-300). Width of the switch.",
+          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
+        },
+        "padding": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Deprecated: use switch/thumb/offset (OD-300). Padding of the switch: the gap between the track's edge and the thumb, on every side.",
+          "$deprecated": "Use component.switch.thumb.offset. Removed in the next minor release."
+        },
         "disabled": {
           "$value": "{opacity.disabled}",
           "$description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",
@@ -12657,10 +12680,15 @@
         },
         "icon": {
           "$value": "{switch.thumb.travel}",
-          "$description": "Deprecated: use component.switch.thumb.travel (OD-243). Icon of the switch.",
-          "$deprecated": "Use component.switch.thumb.travel. Removed in the next minor release."
+          "$description": "Deprecated: use switch/thumb/size (OD-243). Icon of the switch.",
+          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
         },
         "thumb": {
+          "travel": {
+            "$value": "{size.icon}",
+            "$description": "Deprecated: use switch/thumb/size (OD-300). How far the thumb moves when the switch turns on: one thumb's width.",
+            "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
+          },
           "radius": {
             "$value": "{radius.round}",
             "$description": "Corner of the switch's thumb: round, as the track is."

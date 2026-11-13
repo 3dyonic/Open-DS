@@ -584,6 +584,64 @@ function colorGuidance(g) {
   );
 }
 
+/**
+ * Primitives › Type › How type is built (OD-300): how a scheme's sizes and line heights follow from its
+ * type record (base, ratio, steps, rounding and line kinds), in the wording the owner approved. Returns
+ * { markdown, roles }: the page's body, and each role as the TypeRoles specimen draws it, largest first.
+ */
+export function howTypeIsBuilt(scheme) {
+  const rec = scheme.tokens.semantic.type?.$extensions?.["open-ds"];
+  if (!rec?.base || !rec?.ratio || !rec?.steps) return null;
+  const ix = tokenIndex(scheme, { brand: Object.keys(scheme.tokens.brands)[0], mode: "light" });
+  const px = (v) => {
+    const m = String(v ?? "").match(/^([\d.]+)(rem|px)?$/);
+    return m ? Number(m[1]) * (m[2] === "rem" ? 16 : 1) : null;
+  };
+  const round = (n) => Math.round(n * 10) / 10;
+  const smp = scheme.samples ?? {};
+  const roles = Object.entries(rec.steps)
+    .sort(([a, x], [b, y]) => y - x || a.localeCompare(b))
+    .map(([role]) => {
+      const size = px(aliasChain(ix, `type.${role}.font-size`).value);
+      const lh = aliasChain(ix, `type.${role}.line-height`).value;
+      // A line height is a ratio of the size (1.2) or a line box (1.25rem).
+      const box = /rem|px/.test(String(lh)) ? px(lh) : size * Number(lh);
+      const weight = aliasChain(ix, `type.${role}.font-weight`).value;
+      return {
+        role,
+        ...roleLine(ROLE_TEXT[role]?.({ smp }), smp.screen ?? scheme.name),
+        size: `${size}px`,
+        lineHeight: `${round(box)}px line`,
+        ...(weight && { weight: String(weight) }),
+      };
+    });
+  const kinds = Object.entries(rec["line-height"] ?? {});
+  const grid = rec.rounding?.grid;
+  const snapped = rec.rounding?.roles ?? [];
+  const list = (xs) => (xs.length > 1 ? `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}` : xs.join(""));
+  const name = esc(scheme.name);
+  const markdown =
+    `:::info[Look closer, when you want to]\n` +
+    `This page shows how the type sizes and line heights of ${name} are built. You don't need it to set text: the [Type](./index.md) page has every style ready to use. Come back when a size or a line makes you wonder why.\n:::\n\n` +
+    `## Four ideas\n\n` +
+    `1. **One base and one ratio make every size.** The body size is the base. Each step up multiplies it by the ratio, and each step down divides it. Headings and larger snap to the 4px grid; text that wraps rounds to whole pixels.\n` +
+    `2. **Two kinds of line.** Headings and labels use tight lines, so their lines hold together. Text that wraps (body, captions, data) uses open lines, so the eye finds the next line.\n` +
+    `3. **Weight shows rank.** Heavier text is read first. The weights come from the ones the typeface really draws.\n` +
+    `4. **Text grows with the reader.** Sizes and line heights are in rem, so they follow the reader's text setting.\n\n` +
+    `## ${name}'s specimen\n\n` +
+    `::type-roles{id="how-type-is-built"}\n\n` +
+    `## ${name}'s numbers\n\n` +
+    `The base is **${rec.base}px** and the ratio is **${rec.ratio}**. ` +
+    `${snapped.length && grid ? `${list(snapped.map((r) => title(r)))} snap to the ${grid}px grid; the other sizes round to whole pixels. ` : "Every size rounds to whole pixels. "}` +
+    kinds
+      .map(([kind, k]) => `${title(kind)} lines are ${k.ratio} × the size, for ${list(k.roles)}${k.grid ? `, and their line boxes snap to the ${k.grid}px grid` : ""}.`)
+      .join(" ") +
+    `\n\n| Role | Step | Size | Line |\n| --- | --- | --- | --- |\n` +
+    roles.map((r) => `| ${title(r.role)} | ${rec.steps[r.role]} | ${r.size} | ${r.lineHeight.replace(" line", "")} |`).join("\n") +
+    `\n\n## Why ${name} sits where it does\n\n${esc(rec.why ?? "")}\n`;
+  return { markdown, roles };
+}
+
 export function docsPages(
   scheme,
   g,
@@ -1950,6 +2008,9 @@ export function docsPages(
   ]
     .map((k) => ({ ...k, list: prims.filter((x) => k.match(x.path)) }))
     .filter((k) => k.list.length);
+  // Type has a sub-page, How type is built (OD-300), so its page is the index of a folder of its own.
+  const typeBuilt = howTypeIsBuilt(scheme);
+  const primPath = (id) => (id === "type" && typeBuilt ? "primitives/type/index.md" : `primitives/${id}.md`);
   pages["primitives/_category_.json"] =
     JSON.stringify(
       {
@@ -2093,13 +2154,26 @@ export function docsPages(
     kinds
       .map(
         (k) =>
-          `| [${k.title}](./${k.id}.md) | ${k.list.length} | ${k.list.filter((x) => usedBy[x.path]).length} |`,
+          `| [${k.title}](./${primPath(k.id).replace(/^primitives\//, "")}) | ${k.list.length} | ${k.list.filter((x) => usedBy[x.path]).length} |`,
       )
       .join("\n") +
     "\n";
   kinds.forEach((k, i) => {
     const fams = [...new Set(k.list.map((x) => family(x.path)))];
-    pages[`primitives/${k.id}.md`] =
+    if (k.id === "type" && typeBuilt) {
+      pages["primitives/type/_category_.json"] =
+        JSON.stringify({ label: k.title, position: i + 1, link: { type: "doc", id: "primitives/type/index" } }, null, 2) + "\n";
+      (compositeData["type-roles"] ??= {})["how-type-is-built"] = { roles: typeBuilt.roles };
+      pages["primitives/type/how-type-is-built.md"] =
+        fm({
+          sidebar_position: 1,
+          title: "How type is built",
+          description: `How the type sizes and line heights of ${scheme.name} follow from its answers.`,
+        }) +
+        NOTE +
+        `# How type is built\n\n${typeBuilt.markdown}`;
+    }
+    pages[primPath(k.id)] =
       fm({
         sidebar_position: i + 1,
         title: k.title,
