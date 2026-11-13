@@ -68,7 +68,7 @@ Urgency order: color.status.info.@ → color.status.warning.@ → color.status.d
 
 ## Accessible first (accessible-first)
 
-Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast, so everyone can finish the task.
+Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast for the text you must read, so everyone can finish the task.
 
 Use when: Public services, health, government and any product that must work for everyone.
 Avoid when: Dense expert tools where screen space matters more than size.
@@ -137,7 +137,7 @@ Themes: light, dark
 - theming.lands What changes when the theme changes? Colors only. Only colors change. (because theming.roles)
 - accessibility.roles Which states get their own visible value? All, including loading. Every state, including loading, gets its own value. (because people.q2)
 - accessibility.count How many signals carry each meaning? Three: color, icon and word. Never color alone. (because people.q2)
-- accessibility.definition What contrast floor do we hold? AAA for text. AAA contrast for text. (because people.q2)
+- accessibility.definition What contrast floor do we hold? AAA for text. AAA for text you must read; AA for muted text, which must look secondary. The owner records muted text at 6.54:1 on the canvas as an exception. (because people.q2)
 - accessibility.values What is the smallest target? Large. Large targets for tremor and touch. (because people.q1)
 - accessibility.lands Where are the floors hardest to hold? Forms. Forms are where people are blocked. (because content.q1)
 - naming.roles What gets a name? Tokens and component keys. Components get their own keys. (because team.q2)

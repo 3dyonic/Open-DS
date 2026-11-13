@@ -33,6 +33,7 @@ const writeSchema = (name, edit) => {
   edit(schema);
   writeFileSync(path, formatGrammar(schema));
 };
+const answerOf = (s, question) => s.answers.find((a) => a.question === question);
 const dot = (id) => `component.${id.replaceAll("/", ".")}`;
 
 // ---------- Item 1: the edge rule ----------
@@ -219,6 +220,21 @@ for (const id of schemeIds()) {
     a.option = "two";
     a.why = "Two corner sizes: one for controls and badges, and a larger one for containers, as Aster's 4px and 8px corners show.";
     a.because = ["shape.roles", "shape.values"];
+  }
+
+  // Item 6: Accessible first keeps muted text at 6.54:1 on the canvas, a recorded exception. The promise
+  // says what it holds: AAA for text you must read, AA for muted text, which must look secondary.
+  if (id === "accessible-first") {
+    const PROMISE = "AAA contrast for the text you must read";
+    s.summary = `Large text, large targets and ${PROMISE}, so everyone can finish the task.`;
+    s.description = s.description.replace(/Large text, large targets and AAA contrast[^,]*, so everyone can finish the task\./, s.summary);
+    answerOf(s, "accessibility.definition").why =
+      "AAA for text you must read; AA for muted text, which must look secondary. The owner records muted text at 6.54:1 on the canvas as an exception.";
+    const muted = s.tokens.brands.default.theme.light.color.text.muted;
+    muted.$extensions["open-ds"] = {
+      why: "neutral.500: We use the quietest readable gray for hints and captions in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.0:1 on surface.default and 6.54:1 on the canvas. The canvas pair falls under 7:1 by the owner's recorded exception: AA for muted text, as neutral.600 would read 1.34:1 from secondary and no longer look secondary. So a hint reads as a hint and every line you must read keeps AAA, because the floor is AAA for text you must read (accessibility.definition) and the neutral ramp sets the steps (color.definition).",
+      because: ["accessibility.definition", "color.definition"],
+    };
   }
 
   // Item 4: each deprecated switch key keeps its value one release and says what replaces it.

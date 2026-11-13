@@ -145,6 +145,28 @@ test("the switch track is the thumb plus its padding, twice as wide as it is tal
   }
 });
 
+// ---------- Item 6: the Accessible first promise and the muted exception ----------
+
+test("Accessible first promises AAA for text you must read and AA for muted text, and records 6.54:1 as the exception", () => {
+  const s = loadScheme("accessible-first");
+  assert.match(answerOf(s, "accessibility.definition").why, /^AAA for text you must read; AA for muted text, which must look secondary\./);
+  assert.match(s.summary, /AAA contrast for the text you must read/);
+  assert.ok(s.description.endsWith(s.summary));
+  const light = { brand: "default", mode: "light" };
+  const ratio = (fg, bg) => contrast(valueIn(s, light, fg), valueIn(s, light, `color.surface.${bg}`));
+  assert.equal(ratio("color.text.muted", "canvas"), 6.54);
+  const pick = s.tokens.brands.default.theme.light.color.text.muted.$extensions["open-ds"];
+  assert.equal(pick.generated, undefined, "the reason is the owner's, not generated");
+  assert.match(pick.why, /6\.54:1 on the canvas/);
+  assert.match(pick.why, /recorded exception/);
+  for (const t of themes(s))
+    for (const bg of ["canvas", "default", "raised"]) {
+      const on = valueIn(s, t, `color.surface.${bg}`);
+      for (const fg of ["color.text.primary", "color.text.secondary"]) assert.ok(contrast(valueIn(s, t, fg), on) >= 7, `${t.mode} ${fg} on ${bg}`);
+      assert.ok(contrast(valueIn(s, t, "color.text.muted"), on) >= 4.5, `${t.mode} muted on ${bg}`);
+    }
+});
+
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
 
 test("the skeleton reads neutral step 200 in every scheme, brand and mode, not the sunken well", () => {
