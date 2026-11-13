@@ -158,6 +158,13 @@ const strongRule = g.semantics.keys.find((k) => k.id === STRONG);
 const HANDLE_USE = "A scroll thumb or a resize handle under the pointer or in keyboard focus";
 if (!strongRule.use_for.includes(HANDLE_USE)) strongRule.use_for.push(HANDLE_USE);
 
+// ---------- Item 3: a row matches the control height in every scheme ----------
+// The loader generates the row from the default control (OD-301). The trace rule states it as a decision,
+// with its reason, so no scheme adds a few pixels to its rows again.
+const rowRule = g.trace.find((r) => r.tokens.join() === "size.row");
+rowRule.says =
+  "Decided: a row is one default control tall in every scheme. A row holds controls, so a taller row only adds a gap around them, and a shorter one cuts them. The target size answer sets the control height; the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow.";
+
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
 // Colors map to scale steps only. Step 200 is the nearest step to the chosen look; sunken (step 100)
 // is the well's job, and a placeholder is not a well.

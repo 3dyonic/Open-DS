@@ -4,7 +4,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { aliasChain, tokenIndex } from "../src/lands.mjs";
 import { grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
-import { checkRelations, contrast, edgeRule } from "../src/shape-elevation.mjs";
+import { checkRelations, contrast, edgeRule, px } from "../src/shape-elevation.mjs";
+import { reasonOf, traceScheme, traceToken } from "../src/trace.mjs";
 
 const g = grammar();
 const UI = new URL("../../ui/src/", import.meta.url);
@@ -100,6 +101,24 @@ test("a scroll thumb and a resize handle are faint at rest and strong under the 
   assert.match(resize, /hover:bg-\[color:var\(--resizable-handle-background-hover\)\]/);
   assert.match(resize, /focus-visible:bg-\[color:var\(--resizable-handle-background-focus\)\]/);
   assert.match(resize, /focus-visible:ring-\[color:var\(--resizable-handle-focus-ring-focus\)\]/);
+});
+
+// ---------- Item 3: rows match the control height ----------
+
+test("a row is one default control tall in every scheme, and the trace states it as a decision", () => {
+  const want = { "dense-data": 32, "content-first": 48, "accessible-first": 52, "brand-expressive": 52, "multi-brand": 44 };
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    for (const t of themes(s)) {
+      const row = px(valueIn(s, t, "size.row"));
+      assert.equal(row, px(valueIn(s, t, "size.control.default")), `${id}/${t.brand}/${t.mode}`);
+      assert.equal(row, want[id], id);
+    }
+    const r = reasonOf(traceToken(traceScheme(s, g), "size.row"));
+    assert.match(r.why, /one \d+px default control tall|size\.control\.default/, id);
+  }
+  const rule = g.trace.find((r) => r.tokens.join() === "size.row");
+  assert.match(rule.says, /^Decided: a row is one default control tall in every scheme\. A row holds controls/);
 });
 
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------

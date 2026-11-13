@@ -17891,7 +17891,7 @@
     {
       "tokens": ["size.row"],
       "follows": ["spacing.roles", "spacing.values", "accessibility.values"],
-      "says": "A row holds controls, so it is one default control tall (the target size answer); the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow."
+      "says": "Decided: a row is one default control tall in every scheme. A row holds controls, so a taller row only adds a gap around them, and a shorter one cuts them. The target size answer sets the control height; the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow."
     },
     {
       "tokens": ["radius.control"],
