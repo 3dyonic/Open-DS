@@ -176,7 +176,7 @@ export function adrStatusGaps(file, plan, statuses) {
   if (!NOTHING_BUILT.test(plan.status)) return [];
   const done = plan.steps.flatMap((s) => s.tickets.filter((k) => /^done$/i.test(statuses[k] ?? "")).map((k) => `step ${s.step} (${k})`));
   return done.length
-    ? [`${file}: the status line says nothing is built, but ${done.join(", ")} is Done; say which steps shipped and which are open`]
+    ? [`${file}: the status line says nothing is built, but ${done.join(", ")} ${done.length > 1 ? "are" : "is"} Done; say which steps shipped and which are open`]
     : [];
 }
 
