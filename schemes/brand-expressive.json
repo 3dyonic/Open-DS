@@ -2866,13 +2866,6 @@
           "$description": "An accelerate curve: slow at the start, fastest at the end. Only for a layer that leaves the screen."
         }
       },
-      "opacity": {
-        "40": {
-          "$type": "number",
-          "$value": 0.4,
-          "$description": "An opacity option."
-        }
-      },
       "shadow": {
         "$description": "Raw shadows. Elevation semantics point at these.",
         "card": {

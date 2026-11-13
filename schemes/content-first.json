@@ -2826,13 +2826,6 @@
           "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
         }
       },
-      "opacity": {
-        "40": {
-          "$type": "number",
-          "$value": 0.4,
-          "$description": "An opacity option."
-        }
-      },
       "shadow": {
         "$description": "Raw shadows. Elevation semantics point at these.",
         "none": {

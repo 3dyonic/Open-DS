@@ -8,7 +8,7 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ### Breaking
 
-- Every scheme drops its 305 deprecated aliases: 301 component keys, and `radius.container`, `border-width.focus`, `border-width.focus-offset` and `opacity.disabled`. Read the token that each alias named in its `$deprecated` note.
+- Every scheme drops its 305 deprecated aliases (301 component keys, and `radius.container`, `border-width.focus`, `border-width.focus-offset` and `opacity.disabled`) and the opacity option that only `opacity.disabled` read. Read the token that each alias named in its `$deprecated` note.
 
 ### Added
 
