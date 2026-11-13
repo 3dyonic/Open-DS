@@ -903,7 +903,7 @@
     },
     {
       "id": "OD-304",
-      "title": "Color and type are a decision graph: every color and type token inherits its reason from role, job, property, answers, rule and connections",
+      "title": "Every scope is a decision graph: each token inherits its reason from role, job, property, answers, rule and connections",
       "in": [
         "each color role in the grammar records its role, its jobs, what people get and the tokens that play it; the how comes from the job, so nothing is stored twice",
         "the variants record the step each slot sits at: @ at 600, subtle at 100, hover one step from its fill",
@@ -915,13 +915,17 @@
         "the token map card shows every connection of a color token: comes-from, pairs-with with each measured pair and its step promise, and stays-apart, with a baseline gap shown as waits",
         "type is a decision graph on the same engine: each type role records its role, jobs, what people get and its tokens; each type property states its rule; the line kind of a token picks its line job",
         "type connections: each size comes from base × ratio^step, each line height from its line kind, a control holds one label line, adjacent sizes stay one ratio step apart and line kinds 0.2 apart; today's gaps are in the baseline",
-        "each option of a typography question lists the type roles it creates, or the role is always-on with a reason; the type card shows the same graph as color"
+        "each option of a typography question lists the type roles it creates, or the role is always-on with a reason; the type card shows the same graph as color",
+        "spacing is a decision graph on the same engine: gap, inset, padding, component step and row roles; each gap and inset comes from the spacing base × its use case's multiple, each map step from the rhythm; gaps between groups and sections keep their floors; a row is one default control tall and at least the smallest target",
+        "shape is a decision graph on the same engine: control, surface, option, element and badge corner roles; a decided corner's relation is its rule; a relation with a kind (option, element and badge) is a connection, read from the scope's relations, not a second store",
+        "a stored reason names only the numbers its data has: a type reason's sizes, grid, line box and line kind, and the lead value of any reason in the reason form"
       ],
       "checks": [
         "color-links-complete",
         "color-connections-hold",
         "color-roles-created",
         "token-map-equals-engine",
+        "stored-reasons-match-values",
         "danger-apart",
         "json-files-validate",
         "json-sources-one-layout"
