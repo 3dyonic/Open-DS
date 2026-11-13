@@ -12,7 +12,7 @@
  * On: each scheme's scales follow its color.definition.steps answer. The docs page "How the scale is
  * built" shows only when it is on.
  */
-export const GRADED_STEPS = false;
+export const GRADED_STEPS = true;
 
 /** The easing strength of each color.definition.steps option: 0 is linear, 1 is full smoothstep. */
 export const EASING_BY_STEPS = {
