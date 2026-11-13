@@ -10004,7 +10004,7 @@
           "line-height": {
             "$extensions": {
               "open-ds": {
-                "why": "1.2 keeps a 25px page title tight above its form, so a title that wraps still reads as one title.",
+                "why": "1.2 keeps a 24px page title tight above its form, so a title that wraps still reads as one title.",
                 "because": [
                   "typography.definition",
                   "typography.lands",
@@ -10036,7 +10036,7 @@
           "font-size": {
             "$extensions": {
               "open-ds": {
-                "why": "20px heads the sections inside a page: one ratio step above the 16px body and one under the 25px title.",
+                "why": "20px heads the sections inside a page: one ratio step above the 16px body and one under the 24px title.",
                 "because": [
                   "typography.count",
                   "typography.roles"
@@ -10061,7 +10061,7 @@
             "$value": "{font.weight.600}",
             "$extensions": {
               "open-ds": {
-                "why": "600 matches the page title, so size alone ranks a 20px section heading under the 25px title in every brand.",
+                "why": "600 matches the page title, so size alone ranks a 20px section heading under the 24px title in every brand.",
                 "because": [
                   "typography.roles",
                   "brand.q3"
