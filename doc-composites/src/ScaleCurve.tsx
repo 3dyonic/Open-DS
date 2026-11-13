@@ -23,7 +23,7 @@ export type ScaleCurveData = {
   key: string;
   option: string;
   easing: number;
-  band: { from: string; to: string; wider: number };
+  band?: { from: string; to: string; wider: number; label: string };
   steps: ScaleCurveStep[];
 };
 
@@ -50,22 +50,20 @@ export default function ScaleCurve({ data }: { data: ScaleCurveData }) {
     data.steps.map((s, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(pick(s)).toFixed(1)}`).join(" ");
   const keyIndex = data.steps.findIndex((s) => s.step === data.key);
   const key = data.steps[keyIndex];
-  const from = data.steps.findIndex((s) => s.step === data.band.from);
-  const to = data.steps.findIndex((s) => s.step === data.band.to);
+  const band = data.band;
+  const from = band ? data.steps.findIndex((s) => s.step === band.from) : -1;
+  const to = band ? data.steps.findIndex((s) => s.step === band.to) : -1;
   const half = (W - LEFT - RIGHT - 2 * PAD) / (n - 1) / 2;
   const linear = data.easing === 0;
-  const bandName = linear
-    ? "Middle steps: the same rule as the ends"
-    : `Middle steps: up to ${data.band.wider} times the linear gap`;
   const held = data.steps.some((s) => s.held);
   return (
     <div data-composite="scale-curve">
       <Frame>
         <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={`Lightness of each ${data.hue} step, with the ${data.option.toLowerCase()} curve and a linear curve`}>
-          <rect x={x(from) - half} y={TOP} width={x(to) - x(from) + 2 * half} height={H - TOP - BOTTOM} rx="10" fill="var(--color-surface-sunken)" />
-          <text x={(x(from) + x(to)) / 2} y={TOP + 18} textAnchor="middle" fontWeight="600" fill="var(--color-text-secondary)" fontSize={LABEL}>
-            {bandName}
-          </text>
+          {band && <rect x={x(from) - half} y={TOP} width={x(to) - x(from) + 2 * half} height={H - TOP - BOTTOM} rx="10" fill="var(--color-surface-sunken)" />}
+          {band && <text x={(x(from) + x(to)) / 2} y={TOP + 18} textAnchor="middle" fontWeight="600" fill="var(--color-text-secondary)" fontSize={LABEL}>
+            {`Middle steps: ${band.label}`}
+          </text>}
           {[0.2, 0.4, 0.6, 0.8, 1].map((L) => (
             <g key={L}>
               <line x1={LEFT} x2={W - RIGHT} y1={y(L)} y2={y(L)} stroke="var(--color-border-default)" />

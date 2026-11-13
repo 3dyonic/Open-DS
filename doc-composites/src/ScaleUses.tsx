@@ -14,9 +14,10 @@ export type ScaleUse = {
   use: "button" | "highlight" | "banner";
   sample: string;
   fill: { step: string; hex: string };
-  text: { step?: string; token?: string; hex: string };
+  text: { step?: string; name: string; hex: string };
   contrast: number;
   level: Level;
+  caption: string;
 };
 export type ScaleUsesData = { hue: string; uses: ScaleUse[] };
 
@@ -26,10 +27,8 @@ const LEVEL: Record<Level, { tone: "success" | "warning" | "danger"; text: strin
   "AA-large": { tone: "warning", text: "Large text only" },
   fail: { tone: "danger", text: "Fails AA" },
 };
-const ROLE = { button: "The main button.", highlight: "A highlight.", banner: "A banner." };
 
 export default function ScaleUses({ data }: { data: ScaleUsesData }) {
-  const name = (x: { step?: string; token?: string }) => (x.step ? `${data.hue} ${x.step}` : x.token);
   return (
     <div data-composite="scale-uses">
       <Columns count="3">
@@ -59,7 +58,7 @@ export default function ScaleUses({ data }: { data: ScaleUsesData }) {
                 <Label tone={LEVEL[u.level].tone}>{LEVEL[u.level].text}</Label>
               </div>
               <p className="m-0 text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">
-                {u.use === "button" ? `The scheme's ${name(u.text)} text` : `${name(u.text)} text`} on {name(u.fill)}. {ROLE[u.use]}
+                {u.caption}
               </p>
             </div>
           </Frame>

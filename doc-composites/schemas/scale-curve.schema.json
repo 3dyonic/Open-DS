@@ -9,7 +9,6 @@
     "key",
     "option",
     "easing",
-    "band",
     "steps"
   ],
   "additionalProperties": false,
@@ -36,11 +35,12 @@
     },
     "band": {
       "type": "object",
-      "description": "The middle band: the steps an ease spreads wider than a linear curve.",
+      "description": "The middle band: the steps an ease spreads wider than a linear curve. Left out for a linear curve, which has none.",
       "required": [
         "from",
         "to",
-        "wider"
+        "wider",
+        "label"
       ],
       "additionalProperties": false,
       "properties": {
@@ -57,6 +57,11 @@
         "wider": {
           "type": "number",
           "description": "The largest lightness gap between two neighbor middle steps, as a multiple of the linear curve's gap."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the middle steps do, from the option's explain text in the grammar, shown after 'Middle steps:'."
         }
       }
     },

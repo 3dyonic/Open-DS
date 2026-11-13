@@ -21,7 +21,8 @@
           "text",
           "option",
           "answer",
-          "why"
+          "why",
+          "repeatsLabel"
         ],
         "additionalProperties": false,
         "properties": {
@@ -49,6 +50,10 @@
           "why": {
             "type": "string",
             "description": "The scheme's own reason for the answer."
+          },
+          "repeatsLabel": {
+            "type": "boolean",
+            "description": "True when the why adds at most one word of content to the answer label, such as Bold and confident. under Bold. The page hides such a why."
           }
         }
       }

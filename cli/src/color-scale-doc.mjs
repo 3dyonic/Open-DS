@@ -26,7 +26,6 @@ const MIDDLE = ["300", "400", "500", "600", "700"];
 const hex7 = (v) => String(v ?? "").slice(0, 7).toUpperCase();
 const round = (n, d) => Math.round(n * 10 ** d) / 10 ** d;
 const answerOf = (scheme, q) => scheme.answers.find((a) => a.question === q);
-const sentence = (s) => `${String(s ?? "").trim().replace(/[.\s]+$/, "")}.`;
 // A label inside a sentence starts in lowercase, unless its first word is an acronym such as AAA.
 const lowerFirst = (s) => (/^[A-Z](?![A-Z])/.test(s) ? s[0].toLowerCase() + s.slice(1) : s);
 
@@ -77,9 +76,30 @@ export function stepsChain(scheme, g) {
       option: a.option,
       answer: q.options.find((o) => o.id === a.option)?.label ?? a.option,
       why: a.why,
+      repeatsLabel: repeatsLabel(a.why, q.options.find((o) => o.id === a.option)?.label ?? a.option),
     };
   });
 }
+
+// A why repeats its label when it adds at most one word of content to the label's words, such as
+// "Bold and confident." under "Bold". A why that adds a fact ("Warm neutrals and one vivid ramp.") stays.
+const FILLER = new Set("a an the and or of to for with on in is are it its one each own per every that this by as at be".split(" "));
+const stem = (w) => (w.length > 3 ? w.replace(/s$/, "") : w);
+const contentWords = (s) => (String(s ?? "").toLowerCase().match(/[a-z0-9]+(?:-[a-z0-9]+)*/g) ?? []).filter((w) => !FILLER.has(w)).map(stem);
+export function repeatsLabel(why, label) {
+  const own = new Set(contentWords(label));
+  return new Set(contentWords(why).filter((w) => !own.has(w))).size <= 1;
+}
+
+/** A plain name for a text color: White, Black, or its hue and step. */
+function colorName(hex, prim) {
+  if (hex === "#FFFFFF") return "White";
+  if (hex === "#000000") return "Black";
+  const [, hue, , step] = String(prim ?? "").split(".");
+  return hue ? `${hue[0].toUpperCase()}${hue.slice(1)} ${step}` : hex;
+}
+const capital = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const ROLE = { button: "The main button.", highlight: "A highlight.", banner: "A banner." };
 
 // The lightness gap of each pair of neighbor steps.
 const gaps = (L) => STEPS.slice(1).map((st, i) => L[STEPS[i]] - L[st]);
@@ -108,11 +128,13 @@ export function scaleFacts(scheme, g) {
   const ends = round(Math.min(ratio[0], ratio.at(-1)), 1);
   const values = lightValues(scheme, primary.brand);
   const onColor = hex7(values["color.text.on-action"]) || "#FFFFFF";
+  const onName = colorName(onColor, follow(scheme.tokens, primary.brand, "light", "color.text.on-action")?.prim);
   const color = (st) => (st === "on" ? onColor : row[st]);
   const smp = scheme.samples ?? {};
   const sampleOf = { button: smp.actions?.primary, highlight: smp.statuses?.[0]?.label, banner: smp.screen };
   const optionOf = (opt) => questions(g)["color.definition.steps"].options.find((o) => o.id === opt);
   const label = (opt) => optionOf(opt)?.label ?? opt;
+  const explain = optionOf(steps.option)?.explain ?? null;
   const other = steps.option === "strong-ease" ? "light-ease" : "strong-ease";
   const optionIds = [...new Set(["linear", steps.option, other, "even-ease"])].slice(0, 3).sort((a, b) => EASING_BY_STEPS[a] - EASING_BY_STEPS[b]);
   return {
@@ -125,6 +147,7 @@ export function scaleFacts(scheme, g) {
     easing: steps.easing,
     middle,
     ends,
+    explain,
     strip: {
       hue,
       key: KEY_STEP,
@@ -135,7 +158,8 @@ export function scaleFacts(scheme, g) {
       key: KEY_STEP,
       option: label(steps.option),
       easing: steps.easing,
-      band: { from: MIDDLE[0], to: MIDDLE.at(-1), wider: middle },
+      // A linear curve spreads no steps wider, so it has no middle band to point at.
+      ...(explain?.band && steps.easing > 0 && { band: { from: MIDDLE[0], to: MIDDLE.at(-1), wider: middle, label: explain.band } }),
       steps: STEPS.map((st) => ({
         step: st,
         hex: row[st],
@@ -155,9 +179,10 @@ export function scaleFacts(scheme, g) {
           use: u.use,
           sample: sampleOf[u.use] ?? u.use,
           fill: { step: u.fill, hex: color(u.fill) },
-          text: u.text === "on" ? { token: "text.on-action", hex: onColor } : { step: u.text, hex: color(u.text) },
+          text: u.text === "on" ? { name: onName, hex: onColor } : { step: u.text, name: `${hue} ${u.text}`, hex: color(u.text) },
           contrast: ratioOf,
           level: wcagLevel(ratioOf),
+          caption: capital(`${u.text === "on" ? onName : `${hue} ${u.text}`} text on ${hue} ${u.fill}. ${ROLE[u.use]}`),
         };
       }),
     },
@@ -179,26 +204,29 @@ export function scaleFacts(scheme, g) {
   };
 }
 
-/** The reason, in the house form, from the step answer's own why and the answer it follows from. */
-export function scaleReason(facts) {
+// How a cause answer reads after "We chose it because", by question: its subject and the label in
+// lower case. A question not listed reads 'the answer to "<question>" is <label>'.
+const BECAUSE = {
+  "brand.q1": (x) => `the brand is ${x}`,
+  "people.q1": (x) => `it serves ${x}`,
+  "content.q1": (x) => `the content is ${x}`,
+  "tasks.q1": (x) => `the main task is to ${x}`,
+};
+
+/**
+ * The reason in four plain sentences: what the option is for, how the curve does it, what people get
+ * (each from the option's explain text in the grammar), and the answer it follows from.
+ */
+export function scaleReason(facts, g) {
   const chain = facts.chain.steps;
-  const own = chain.at(-1);
   // The first answer outside Color is the cause; with none, the first answer in the chain.
   const cause = chain.find((x) => !x.question.startsWith("color.")) ?? chain[0];
-  const option = lowerFirst(facts.optionLabel);
-  const linear = facts.easing === 0;
-  const goal = linear
-    ? "keep the same contrast between any two steps the same distance apart"
-    : "open the middle steps and keep the soft tints and the deep shades close together";
-  const how = linear
-    ? `giving each step the same share of the contrast on each side of step ${KEY_STEP}, where the key color sits`
-    : `setting the middle steps up to ${facts.middle} times as far apart in lightness as a linear curve does, and the end steps ${facts.ends} times as far apart`;
-  return (
-    `We use **${option}** for the **${facts.hue} scale** in order to ${goal}. ` +
-    `The curve does this by ${how}. ` +
-    `So people get this: ${sentence(own.why)} ` +
-    `This is because of the ${cause.group} answer: **${cause.answer}**. ${sentence(cause.why)}`
-  );
+  const e = facts.explain;
+  if (!e) throw new Error(`The grammar has no explain text for color.definition.steps option ${facts.option}. Add it with scripts/od-307-explain.mjs.`);
+  const fill = (s) => s.replaceAll("{hue}", facts.hue);
+  const answer = cause.answer.toLowerCase();
+  const because = BECAUSE[cause.question]?.(answer) ?? `the answer to "${questions(g)[cause.question].text}" is ${answer}`;
+  return `We use ${lowerFirst(facts.optionLabel)} for the ${facts.hue} scale, ${fill(e.goal)}. ${fill(e.how)} ${fill(e.gives)} We chose it because ${because}.`;
 }
 
 /** The page's Markdown, or null when the flag is off or the scheme has no step answer. put(kind, id, data) stores composite data and returns its directive line. */
@@ -215,12 +243,14 @@ export function colorScalePage(scheme, grammar, { graded = GRADED_STEPS, frontMa
     `${scheme.name} builds each color scale from one key color. The ${facts.hue} scale has eleven steps, from step 50 to step 950. This page shows how the steps are spaced, and why.${many}\n\n` +
     `${put("scale-strip", id, facts.strip)}\n\n` +
     `## ${curveTitle}\n\n` +
-    `Each dot is one step, in its own color. Higher means lighter. The solid line is the curve that ${scheme.name} chose: ${lowerFirst(facts.optionLabel)}. ` +
-    (facts.easing === 0 ? "This curve is the linear one, so the page draws no second line for comparison." : "The dashed line is a linear curve, for comparison.") +
-    (held ? " A dashed ring is a held step: it keeps its earlier value for now. A thin line links it to where the curve puts it." : "") +
+    `Each dot is one step in its own color, and higher means lighter. ` +
+    (facts.easing === 0
+      ? `The line is the linear curve that ${scheme.name} chose.`
+      : `The solid line is the curve that ${scheme.name} chose, and the dashed line is linear.`) +
+    (held ? " A dashed ring is a held step: it keeps its earlier value for now." : "") +
     `\n\n${put("scale-curve", id, facts.curve)}\n\n` +
     `## Why this shape\n\n` +
-    `${put("scale-why", id, facts.chain).replace(/^::/, ":::")}\n${scaleReason(facts)}\n:::\n\n` +
+    `${put("scale-why", id, facts.chain).replace(/^::/, ":::")}\n${scaleReason(facts, grammar)}\n:::\n\n` +
     `## What it gives you\n\n` +
     `Three uses of the ${facts.hue} scale, with the contrast of the text on its fill. AA needs 4.5 to 1 for body text, and AAA needs 7 to 1.\n\n` +
     `${put("scale-uses", id, facts.uses)}\n\n` +
