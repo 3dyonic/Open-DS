@@ -52,7 +52,8 @@ export function colorMoves(base, candidate, params) {
         const distance = oklabDistance(from, to);
         const tiers = tiersFor(token, shift);
         const r = candReason.get(token);
-        const reasoned = !!r?.why && (r.reason === "own" || r.reason === "exact-rule") && r.why !== baseWhy.get(token);
+        const recorded = !!candidate.shiftReasons?.[id]?.tokens?.includes(`${theme} ${token}`);
+        const reasoned = recorded || (!!r?.why && (r.reason === "own" || r.reason === "exact-rule") && r.why !== baseWhy.get(token));
         const [p, q] = [chromaHue(from), chromaHue(to)];
         const turn = p.C > shift.chroma && q.C > shift.chroma ? hueDifference(p.H, q.H) : 0;
         const key = keyStepOf(b.chains[theme]?.[token]?.end, b.palette, b.keys);

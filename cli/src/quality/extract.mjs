@@ -15,6 +15,8 @@ import { snapshotScheme } from "./snapshot.mjs";
 
 /** Where a checkout records the flags its owner approved, from the repository root. */
 export const APPROVALS = join("harness", "quality-approvals.json");
+/** Where a checkout records the reasons of the color moves the graded curve makes (OD-299). */
+export const SHIFT_REASONS = join("harness", "od-299-shift-reasons.json");
 
 const readText = (path) => (existsSync(path) ? readFileSync(path, "utf8") : null);
 
@@ -97,6 +99,8 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
       schemes,
       ui,
       approvals: existsSync(approvalsFile) ? approvalsFrom(JSON.parse(readFileSync(approvalsFile, "utf8"))) : [],
+      // OD-299: the recorded reason of each review-tier move between the shared and the graded curve.
+      shiftReasons: existsSync(join(root, SHIFT_REASONS)) ? JSON.parse(readFileSync(join(root, SHIFT_REASONS), "utf8")).schemes ?? {} : {},
     };
   } finally {
     rmSync(scratch, { recursive: true, force: true });
