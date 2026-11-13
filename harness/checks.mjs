@@ -2195,7 +2195,7 @@ export const CHECKS = {
       // Every connection, color and type, holds in every brand and mode, waits for a recorded fix, or is in the baseline.
       // The count of gaps per connection and scheme may only go down. The gaps are findings for the
       // owner: the check changes no value.
-      const { allConnections, connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
+      const { checkedConnections, connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const g = c.grammar();
       const base = c.json("harness", "connections-baseline.json").counts;
       const rose = [];
@@ -2206,7 +2206,7 @@ export const CHECKS = {
         const checks = evaluateConnections(c.scheme(id), g);
         n += checks.length;
         const gaps = connectionGaps(checks);
-        for (const conn of allConnections(g)) {
+        for (const conn of checkedConnections(g)) {
           const mine = gaps.filter((x) => x.connection === conn.id);
           const was = base[conn.id]?.[id] ?? 0;
           if (mine.length > was) rose.push(`${id} ${conn.id} went from ${was} to ${mine.length}: ${mine.map((x) => x.says).join("; ")}`);

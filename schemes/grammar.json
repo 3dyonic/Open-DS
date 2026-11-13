@@ -1875,12 +1875,12 @@
             {
               "id": "floating-only",
               "label": "Only what floats",
-              "creates": []
+              "creates": ["overlay-shadow"]
             },
             {
               "id": "cards-too",
               "label": "Cards too",
-              "creates": []
+              "creates": ["card-shadow", "overlay-shadow"]
             },
             {
               "id": "nothing",
@@ -1897,15 +1897,18 @@
           "options": [
             {
               "id": "none",
-              "label": "None"
+              "label": "None",
+              "creates": []
             },
             {
               "id": "one",
-              "label": "One"
+              "label": "One",
+              "creates": []
             },
             {
               "id": "two",
-              "label": "Two"
+              "label": "Two",
+              "creates": []
             }
           ]
         },
@@ -1917,15 +1920,18 @@
           "options": [
             {
               "id": "space",
-              "label": "Space"
+              "label": "Space",
+              "creates": []
             },
             {
               "id": "lines",
-              "label": "Lines"
+              "label": "Lines",
+              "creates": ["line-width"]
             },
             {
               "id": "cards",
-              "label": "Cards"
+              "label": "Cards",
+              "creates": []
             }
           ]
         },
@@ -1937,19 +1943,23 @@
           "options": [
             {
               "id": "none",
-              "label": "No shadows"
+              "label": "No shadows",
+              "creates": []
             },
             {
               "id": "subtle",
-              "label": "Subtle"
+              "label": "Subtle",
+              "creates": []
             },
             {
               "id": "soft",
-              "label": "Soft"
+              "label": "Soft",
+              "creates": []
             },
             {
               "id": "pronounced",
-              "label": "Pronounced"
+              "label": "Pronounced",
+              "creates": []
             }
           ]
         },
@@ -2003,6 +2013,7 @@
       "relations": [
         {
           "id": "layer-step",
+          "kind": "stays-apart",
           "tokens": ["elevation.card", "elevation.overlay"],
           "check": "layer-step",
           "by_answer": {
@@ -2023,6 +2034,7 @@
         },
         {
           "id": "dark-shade",
+          "kind": "comes-from",
           "tokens": ["elevation.card", "elevation.overlay"],
           "check": "dark-same-shape",
           "depth": {
@@ -2085,15 +2097,39 @@
           "options": [
             {
               "id": "feedback",
-              "label": "Feedback only"
+              "label": "Feedback only",
+              "creates": [
+                "feedback-time",
+                "exit-time",
+                "transition-ease",
+                "enter-ease",
+                "exit-ease"
+              ]
             },
             {
               "id": "feedback-guidance",
-              "label": "Feedback and guidance"
+              "label": "Feedback and guidance",
+              "creates": [
+                "feedback-time",
+                "exit-time",
+                "transition-ease",
+                "enter-ease",
+                "exit-ease",
+                "panel-time"
+              ]
             },
             {
               "id": "expression",
-              "label": "Feedback and expression"
+              "label": "Feedback and expression",
+              "creates": [
+                "feedback-time",
+                "exit-time",
+                "transition-ease",
+                "enter-ease",
+                "exit-ease",
+                "panel-time",
+                "emphasize-ease"
+              ]
             }
           ]
         },
@@ -2105,15 +2141,18 @@
           "options": [
             {
               "id": "one",
-              "label": "One"
+              "label": "One",
+              "creates": []
             },
             {
               "id": "two",
-              "label": "Two"
+              "label": "Two",
+              "creates": []
             },
             {
               "id": "three",
-              "label": "Three"
+              "label": "Three",
+              "creates": []
             }
           ]
         },
@@ -2125,11 +2164,13 @@
           "options": [
             {
               "id": "standard",
-              "label": "Standard ease-out"
+              "label": "Standard ease-out",
+              "creates": []
             },
             {
               "id": "spring",
-              "label": "A spring"
+              "label": "A spring",
+              "creates": []
             }
           ]
         },
@@ -2141,15 +2182,18 @@
           "options": [
             {
               "id": "fast",
-              "label": "Fast"
+              "label": "Fast",
+              "creates": []
             },
             {
               "id": "moderate",
-              "label": "Moderate"
+              "label": "Moderate",
+              "creates": []
             },
             {
               "id": "relaxed",
-              "label": "Relaxed"
+              "label": "Relaxed",
+              "creates": []
             }
           ]
         },
@@ -2161,15 +2205,18 @@
           "options": [
             {
               "id": "state-only",
-              "label": "State changes only"
+              "label": "State changes only",
+              "creates": []
             },
             {
               "id": "state-panels",
-              "label": "State changes and panels"
+              "label": "State changes and panels",
+              "creates": []
             },
             {
               "id": "hero",
-              "label": "Hero and launch moments"
+              "label": "Hero and launch moments",
+              "creates": ["hero-time"]
             }
           ]
         }
@@ -17757,6 +17804,38 @@
           "tokens": ["size.row"],
           "from": ["size.hit-area"],
           "says": "A row is at least the scheme's smallest target, so a clickable row is easy to hit."
+        },
+        {
+          "id": "exit-from-feedback",
+          "kind": "comes-from",
+          "match": "chain",
+          "tokens": ["motion.duration.exit"],
+          "from": "motion.duration.feedback",
+          "says": "A closing layer takes the feedback time, so an exit is as quick as the answer to a click."
+        },
+        {
+          "id": "enter-from-standard",
+          "kind": "comes-from",
+          "match": "chain",
+          "tokens": ["motion.easing.enter"],
+          "from": "motion.easing.standard",
+          "says": "An arriving layer eases out on the standard curve, so it comes to rest the way a state change does."
+        },
+        {
+          "id": "panels-after-feedback",
+          "kind": "stays-apart",
+          "by": "at-least",
+          "tokens": ["motion.duration.panels"],
+          "from": ["motion.duration.feedback"],
+          "says": "A panel takes at least the feedback time, so the eye can follow it from its trigger."
+        },
+        {
+          "id": "hero-after-panels",
+          "kind": "stays-apart",
+          "by": "at-least",
+          "tokens": ["motion.duration.hero"],
+          "from": ["motion.duration.panels"],
+          "says": "A launch moment takes at least the panel time, the step above panels."
         }
       ]
     },
@@ -41405,6 +41484,20 @@
           "title": "Selected and invalid",
           "how": "Redundant coding → A thicker or colored edge adds a cue besides hue."
         }
+      ],
+      "roles": [
+        {
+          "id": "line-width",
+          "role": "the width of a default line",
+          "tokens": ["border-width.default"],
+          "jobs": ["default-line", "control-edge", "selected-and-invalid"],
+          "to": "show a line where lines group, and keep it thin where space groups",
+          "gets": "dividers and edges show where they must, without heavy boxes",
+          "always_on": {
+            "why": "every scheme draws dividers and control edges, and the layering answer decides how much work lines do",
+            "shaped_by": ["elevation.definition", "accessibility.definition"]
+          }
+        }
       ]
     },
     {
@@ -41417,15 +41510,38 @@
         {
           "id": "depth-order",
           "title": "Depth order",
-          "how": "Light from above → A larger offset and blur read as a higher layer.",
-          "also": [
-            "follows layer order: each layer up takes the next shadow step"
-          ]
+          "how": "Light from above → A larger offset and blur read as a higher layer."
         },
         {
           "id": "separate-same-color-surfaces",
           "title": "Separate same-color surfaces",
           "how": "Figure and ground → A shade makes a same-color card the figure on its ground."
+        }
+      ],
+      "roles": [
+        {
+          "id": "card-shadow",
+          "role": "the shadow of a card",
+          "tokens": ["elevation.card"],
+          "jobs": ["separate-same-color-surfaces", "depth-order"],
+          "to": "lift a card off a ground of the same color",
+          "gets": "a card reads as one object on its page",
+          "always_on": {
+            "why": "every scheme ships a card layer, and the roles answer decides whether it casts a shadow",
+            "shaped_by": ["elevation.roles", "elevation.values"]
+          }
+        },
+        {
+          "id": "overlay-shadow",
+          "role": "the shadow of a floating layer",
+          "tokens": ["elevation.overlay"],
+          "jobs": ["depth-order", "separate-same-color-surfaces"],
+          "to": "set a menu, popover or dialog above the page",
+          "gets": "people see what floats and what it covers",
+          "always_on": {
+            "why": "every scheme ships a floating layer, and the roles answer decides whether it casts a shadow",
+            "shaped_by": ["elevation.roles", "elevation.values"]
+          }
         }
       ]
     },
@@ -41543,6 +41659,36 @@
           "title": "Expressive",
           "how": "Motion capture → Expressive motion draws the eye, so it is kept for brand moments."
         }
+      ],
+      "roles": [
+        {
+          "id": "panel-time",
+          "role": "the time a panel takes to open",
+          "tokens": ["motion.duration.panels"],
+          "jobs": ["productive", "expressive"],
+          "to": "let the eye follow a panel from its trigger to its place",
+          "gets": "people see where a menu or dialog comes from",
+          "always_on": {
+            "why": "every scheme opens panels, and with one speed a panel takes the feedback time",
+            "shaped_by": ["motion.roles", "motion.count", "motion.values"]
+          }
+        },
+        {
+          "id": "exit-time",
+          "role": "the time a closing layer takes",
+          "tokens": ["motion.duration.exit"],
+          "jobs": ["productive", "expressive"],
+          "to": "clear a closing layer out of the way fast",
+          "gets": "people get back to their work at once"
+        },
+        {
+          "id": "hero-time",
+          "role": "the time a launch moment takes",
+          "tokens": ["motion.duration.hero"],
+          "jobs": ["expressive", "productive"],
+          "to": "give a brand moment room to be seen",
+          "gets": "a launch moment draws the eye once"
+        }
       ]
     },
     {
@@ -41566,6 +41712,16 @@
           "id": "expressive-moves",
           "title": "Expressive moves",
           "how": "follows panel duration: expressive ≤ 500ms, the step above panels"
+        }
+      ],
+      "roles": [
+        {
+          "id": "feedback-time",
+          "role": "the time feedback takes",
+          "tokens": ["motion.duration.feedback"],
+          "jobs": ["feedback"],
+          "to": "confirm an action while it still feels caused by the click",
+          "gets": "people see each action land and never wait for it"
         }
       ]
     },
@@ -41598,6 +41754,44 @@
           "id": "emphasize",
           "title": "Emphasize",
           "how": "Motion capture → Overshoot draws the eye, so only the emphasize move uses it."
+        }
+      ],
+      "roles": [
+        {
+          "id": "transition-ease",
+          "role": "the easing of a change in place",
+          "tokens": ["motion.easing.standard"],
+          "jobs": ["transition"],
+          "to": "keep an element trackable while its state changes",
+          "gets": "people see a hover, a press or a toggle as one move"
+        },
+        {
+          "id": "enter-ease",
+          "role": "the easing of a layer that appears",
+          "tokens": ["motion.easing.enter"],
+          "jobs": ["enter"],
+          "to": "bring an arriving layer to rest",
+          "gets": "a menu or dialog settles where people expect it"
+        },
+        {
+          "id": "exit-ease",
+          "role": "the easing of a layer that leaves",
+          "tokens": ["motion.easing.exit", "motion.easing.exit-offscreen"],
+          "jobs": ["exit"],
+          "to": "move a closing layer out of the way at once",
+          "gets": "a closing layer never holds people up"
+        },
+        {
+          "id": "emphasize-ease",
+          "role": "the easing of a moment that calls for attention",
+          "tokens": ["motion.easing.emphasize"],
+          "jobs": ["emphasize"],
+          "to": "draw the eye to one moment, such as a success",
+          "gets": "people notice the moment that matters",
+          "always_on": {
+            "why": "every scheme names an emphasize move, and only the expressive family lets it overshoot",
+            "shaped_by": ["motion.roles", "motion.definition"]
+          }
         }
       ]
     },
