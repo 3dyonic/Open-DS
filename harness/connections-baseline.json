@@ -24,13 +24,6 @@
     "line-kinds-apart": {
       "dense-data": 2
     },
-    "default-line": {
-      "dense-data": 4,
-      "content-first": 4,
-      "accessible-first": 4,
-      "brand-expressive": 4,
-      "multi-brand": 4
-    },
     "surface-corner": {
       "multi-brand": 1
     }
