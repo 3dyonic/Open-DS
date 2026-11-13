@@ -145,7 +145,6 @@ export function trackedMatching(c, patterns) {
 // refreshes that file from Jira: node scripts/ticket-status.mjs.
 export const ADR_DIR = "guide/contributing/adr";
 export const TICKET_STATUS_FILE = "harness/ticket-status.json";
-export const TICKET_STATUS_MAX_AGE_DAYS = 30;
 const TICKET_KEY = /\bOD-\d+\b/g;
 // A status line that says no step is built yet.
 export const NOTHING_BUILT = /\bnothing\b[^.]*\bbuilt\b|\bnot (yet )?built\b|\bno step is built\b/i;
@@ -180,17 +179,14 @@ export function adrStatusGaps(file, plan, statuses) {
     : [];
 }
 
-/** Findings when the status file is older than the set age, or lacks a key that an ADR step names. */
-export function ticketStatusGaps(data, keys, now = Date.now()) {
+/**
+ * Findings when the status file has no refresh date, or lacks a key that an ADR step names.
+ * Age alone never fails: a check that turns red with the calendar would block every pull request.
+ */
+export function ticketStatusGaps(data, keys) {
   const gaps = [];
-  const refreshed = Date.parse(data?.refreshed ?? "");
   const run = "run: node scripts/ticket-status.mjs";
-  if (Number.isNaN(refreshed)) gaps.push(`${TICKET_STATUS_FILE} has no valid refreshed date; ${run}`);
-  else {
-    const days = Math.floor((now - refreshed) / 86_400_000);
-    if (days > TICKET_STATUS_MAX_AGE_DAYS)
-      gaps.push(`${TICKET_STATUS_FILE} is ${days} days old (limit ${TICKET_STATUS_MAX_AGE_DAYS}); ${run}`);
-  }
+  if (Number.isNaN(Date.parse(data?.refreshed ?? ""))) gaps.push(`${TICKET_STATUS_FILE} has no valid refreshed date; ${run}`);
   const missing = keys.filter((k) => !(k in (data?.statuses ?? {})));
   if (missing.length) gaps.push(`${TICKET_STATUS_FILE} has no status for ${missing.join(", ")}; ${run}`);
   return gaps;

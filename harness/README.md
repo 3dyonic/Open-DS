@@ -38,7 +38,7 @@ The exit code is 1 only when something fails.
 
 ## Ticket statuses
 
-`adr-status-matches-tickets` (OD-312) reads `ticket-status.json`, so the harness runs offline. The check fails when the file is more than 30 days old or lacks a ticket that an ADR step names. Refresh it by hand; the harness and CI never call Jira:
+`adr-status-matches-tickets` (OD-312) reads `ticket-status.json`, so the harness runs offline. The check fails when the file lacks a ticket that an ADR step names. Refresh it after a ticket that an ADR names changes status. Refresh it by hand; the harness and CI never call Jira:
 
 ```bash
 JIRA_EMAIL=… JIRA_API_TOKEN=… node scripts/ticket-status.mjs
