@@ -1,5 +1,5 @@
 {
-  "$description": "Connections per scheme that do not hold today and wait for the owner's decision (OD-304): color and type. Each count may only go down. A scheme with no entry has 0 gaps.",
+  "$description": "Connections and measured rules per scheme that do not hold today and wait for the owner's decision (OD-304): color, type, shape and elevation. Each count may only go down. A scheme with no entry has 0 gaps.",
   "counts": {
     "category-apart-from-status": {
       "dense-data": 3,
@@ -23,6 +23,16 @@
     },
     "line-kinds-apart": {
       "dense-data": 2
+    },
+    "default-line": {
+      "dense-data": 4,
+      "content-first": 4,
+      "accessible-first": 4,
+      "brand-expressive": 4,
+      "multi-brand": 4
+    },
+    "surface-corner": {
+      "multi-brand": 1
     }
   }
 }

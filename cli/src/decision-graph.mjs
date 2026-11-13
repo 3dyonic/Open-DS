@@ -2,14 +2,16 @@
 // explanation down a chain, so nothing here is typed per token: its role (from its mapping entry), the
 // role's jobs, its rule, the connections it takes part in and its value. Color is a hue scale, a slot on
 // it, a pair and the connections between colors. Type is one base and one ratio, a step per text role and
-// a line kind. Spacing is one base and a multiple per use case, and the component map's rhythm. Shape
-// keeps its connections as the scope's relations (shape-elevation.mjs). The grammar holds the data: each
+// a line kind. Spacing is one base and a multiple per use case, and the component map's rhythm. Shape and
+// elevation keep their connections as the scope's relations (shape-elevation.mjs); motion keeps its limits
+// in the scope's families (motion.mjs). The grammar holds the data: each
 // mapping entry's roles and rule, semantics.variants (a color slot and its step), semantics.connections
 // (comes-from, pairs-with, stays-apart) and each scope relation with a kind. This module reads them,
 // measures what they promise, and writes the reason sentence in the grammar's reason form.
 // No file access: the caller passes the scheme and the grammar.
 import { aliasChain, owns, tokenIndex } from "./lands.mjs";
 import { oklab, oklabDistance } from "./quality/color.mjs";
+import { checkMotion, familyOf, ms } from "./motion.mjs";
 import { questions } from "./schemes.mjs";
 import { grammarRelations, relationResults } from "./shape-elevation.mjs";
 import { MULTIPLIERS, steps as mapSteps } from "./spacing-map.mjs";
@@ -45,8 +47,24 @@ export function typePlace(scheme, name) {
   return { spec, role, part, kind: lineHeights(spec)[role].kind };
 }
 
-/** A role's jobs for one token. A job named after a line kind (tight, snug, open) stays only for a token of that kind. */
-const jobsFor = (jobs, place) => jobs.filter((j) => !(place && KINDS.includes(j.id) && j.id !== place.kind));
+/** The motion scope's families (productive, expressive), or null. */
+const familiesOf = (g) => (g.scopes ?? []).find((s) => s.id === "motion")?.families ?? null;
+
+/** The kind a token's jobs may be named after: a type token's line kind, a motion token's family. null for any other token. */
+function kindOf(scheme, g, name) {
+  const place = typePlace(scheme, name);
+  if (place) return place.kind;
+  return short(name).startsWith("motion.") ? familyOf(scheme, g) : null;
+}
+
+/**
+ * A role's jobs for one token. A job named after a kind (a line kind: tight, snug, open; a motion family:
+ * productive, expressive) stays only for a token of that kind.
+ */
+function jobsFor(g, jobs, kind) {
+  const kinds = [...KINDS, ...(familiesOf(g)?.items ?? []).map((f) => f.id)];
+  return jobs.filter((j) => !(kind && kinds.includes(j.id) && j.id !== kind));
+}
 
 /** A length in px: "1.1875rem" is 19. null for a value that is no length. */
 const pxOf = (v) => (typeof v === "string" && /^[\d.]+(rem|px)$/.test(v) ? parseFloat(v) * (v.endsWith("rem") ? 16 : 1) : null);
@@ -83,6 +101,54 @@ export function allConnections(g) {
 
 /** The scope relations without a kind that name a token: each is the token's rule, checked like a connection. */
 const ruleRelations = (g, name) => [...grammarRelations(g).values()].filter((r) => !r.kind && r.tokens.includes(short(name)));
+
+/**
+ * The rules that measure a value, besides a mapping entry's rule: each scope relation without a kind, and
+ * the motion family (its limit per duration and its curves per move). The baseline counts their breaks as it
+ * counts a connection's. [{ id, kind: "rule", by: "rule", tokens }]
+ */
+function measuredRules(g) {
+  const relations = [...grammarRelations(g).values()].filter((r) => !r.kind).map((r) => ({ id: r.id, kind: "rule", by: "rule", tokens: r.tokens }));
+  const f = familiesOf(g);
+  const family = f ? [{ id: "motion-family", kind: "rule", by: "rule", tokens: ["motion.duration.*", ...f.moves.map((m) => m.token)] }] : [];
+  return [...relations, ...family];
+}
+
+/** Every connection and measured rule, as the baseline counts them: allConnections, then measuredRules. */
+export const checkedConnections = (g) => [...allConnections(g), ...measuredRules(g)];
+
+/**
+ * The motion family rule of a motion token in its scheme: { id, says, checks }, or null. A duration takes at
+ * most its family's limit; a move's easing takes one of the curves its family allows (motion.mjs).
+ */
+function familyRule(scheme, g, name, index) {
+  const f = familiesOf(g);
+  const family = f?.items.find((x) => x.id === familyOf(scheme, g));
+  const token = short(name);
+  if (!family || !token.startsWith("motion.")) return null;
+  const move = f.moves.find((m) => m.token === token);
+  const limit = Object.entries(family.max_ms).find(([pattern]) => matches(pattern, token))?.[1];
+  if (!move && (limit === undefined || !token.startsWith("motion.duration."))) return null;
+  const title = family.title.toLowerCase();
+  const says = move
+    ? `the ${title} family: the ${move.id} move takes the ${(family.curves[move.id] ?? []).join(" or ")} curve`
+    : `the ${title} family: ${token} takes at most ${limit}ms`;
+  const checks = checkMotion(scheme, g, { index })
+    .results.filter((x) => x.token === token)
+    .map((x) => ({ tokens: [x.token], holds: x.holds, says: x.says }));
+  return { id: "motion-family", says, checks };
+}
+
+/** The measured rules a token follows in one brand and mode: [{ id, says, checks: [{ tokens, holds, says }] }]. */
+function rulesOf(scheme, g, name, { brand, mode, index }) {
+  const out = ruleRelations(g, name).map((rel) => {
+    const records = (scheme.relations ?? []).filter((r) => r.relation === rel.id && r.token === short(name));
+    const results = relationResults(scheme, g, { brand, mode, index, records }).results;
+    return { id: rel.id, says: rel.says, checks: results.map((x) => ({ tokens: [x.token], holds: x.holds, says: x.says })) };
+  });
+  const family = familyRule(scheme, g, name, index);
+  return family ? [...out, family] : out;
+}
 
 /** The slot a token's last part names (@, subtle, hover), with the step it sits at, or null. */
 export function slotOf(g, name) {
@@ -347,26 +413,42 @@ function spaceChecks(scheme, g, c, { theme, index, name }) {
   return out;
 }
 
+/** A length in px or a time in ms, with its unit: "1rem" is { n: 16, unit: "px" }, "150ms" is { n: 150, unit: "ms" }. */
+function amountOf(value) {
+  if (pxOf(value) !== null) return { n: pxOf(value), unit: "px" };
+  return ms(value) !== null ? { n: ms(value), unit: "ms" } : null;
+}
+
 /**
- * The checks of a connection between two lengths: equals (a token is its from token) or at-least (a token is
- * at least times × its from token, times 1 when the connection names none). Any scope's lengths.
+ * The checks of a connection between two lengths or two times: equals (a token is its from token) or at-least
+ * (a token is at least times × its from token, times 1 when the connection names none). Any scope's values.
  */
 function lengthChecks(scheme, g, c, { theme, index, name }) {
   const out = [];
   const names = semanticNames(scheme);
   const from = [c.from].flat()[0];
   if (!names.has(from)) return [];
-  const px = (n) => pxOf(aliasChain(index, n).value);
+  const amount = (n) => amountOf(aliasChain(index, n).value);
   const times = c.times ?? 1;
   for (const t of [...names].filter((n) => covers(c.tokens, n))) {
     if (name && ![t, from].includes(short(name))) continue;
-    const [a, b] = [px(t), px(from)];
-    if (a === null || b === null) continue;
-    const holds = (c.match ?? c.by) === "equals" ? a === b : a >= b * times - 1e-9;
-    const against = times === 1 ? `${from} is ${plain(b)}px` : `${times} × ${from} ${plain(b)}px is ${plain(b * times)}px`;
-    out.push({ connection: c.id, kind: c.kind, theme, tokens: [t, from], holds, says: `${t} is ${plain(a)}px; ${against}` });
+    const [a, b] = [amount(t), amount(from)];
+    if (!a || !b || a.unit !== b.unit) continue;
+    const holds = (c.match ?? c.by) === "equals" ? a.n === b.n : a.n >= b.n * times - 1e-9;
+    const against = times === 1 ? `${from} is ${plain(b.n)}${b.unit}` : `${times} × ${from} ${plain(b.n)}${b.unit} is ${plain(b.n * times)}${b.unit}`;
+    out.push({ connection: c.id, kind: c.kind, theme, tokens: [t, from], holds, says: `${t} is ${plain(a.n)}${a.unit}; ${against}` });
   }
   return out;
+}
+
+/** The checks of a measured rule (measuredRules), for every token it names or only for name. */
+function ruleChecks(scheme, g, c, { brand, mode, theme, index, name }) {
+  const held = [...semanticNames(scheme)].filter((n) => covers(c.tokens, n) && (!name || n === short(name)));
+  return held.flatMap((t) =>
+    rulesOf(scheme, g, t, { brand, mode, index })
+      .filter((r) => r.id === c.id)
+      .flatMap((r) => r.checks.map((x) => ({ connection: c.id, kind: "rule", theme, tokens: x.tokens, holds: x.holds, says: x.says }))),
+  );
 }
 
 /** The checks of a scope relation with a kind, from its records in this scheme (shape-elevation.mjs). */
@@ -377,7 +459,8 @@ function relationChecks(scheme, g, c, { brand, mode, theme, index, name }) {
 
 // What each measured connection reads, by its match or by: a type size from its scale, a line height from its
 // kind, sizes a ratio step apart, line kinds apart, a box that holds a line; a gap or inset from the spacing
-// base, a map step from the rhythm; two lengths that are equal or keep a floor; a scope relation.
+// base, a map step from the rhythm; two lengths or times that are equal or keep a floor; a scope relation;
+// a measured rule.
 const MEASURES = {
   scale: typeChecks,
   "line-kind": typeChecks,
@@ -389,6 +472,7 @@ const MEASURES = {
   equals: lengthChecks,
   "at-least": lengthChecks,
   relation: relationChecks,
+  rule: ruleChecks,
 };
 
 /**
@@ -400,7 +484,7 @@ export function evaluateConnections(scheme, g) {
   const bySubject = new Map();
   for (const brand of Object.keys(scheme.tokens.brands))
     for (const mode of MODES)
-      for (const c of allConnections(g))
+      for (const c of checkedConnections(g))
         for (const x of connectionChecks(scheme, g, c, { brand, mode, index: indexOf(brand, mode) })) {
           const key = `${x.connection} ${x.tokens.join(" | ")}`;
           const prev = bySubject.get(key);
@@ -476,18 +560,28 @@ export function graphReason(scheme, g, name, { value }) {
     : answered
       ? `because ${answered}`
       : "because no answer decides it yet";
-  const lead = jobsFor(r.jobs, typePlace(scheme, name))[0];
+  const lead = jobsFor(g, r.jobs, kindOf(scheme, g, name))[0];
   return `We use ${value} for ${r.role.role} in order to ${r.role.to}. The ${r.title.toLowerCase()} does this by ${byPhrase(lead?.how)}. So ${r.role.gets}, ${decision}.`;
 }
 
-/** A value as the reason names it: a color's hue and step, a size in px and rem, a face by its name, else the value. */
+/** A value as text: a cubic Bézier as cubic-bezier(…), a shadow as its CSS layers, a string or number as itself; else null. */
+function textOf(value) {
+  const layer = (s) => [s.offsetX, s.offsetY, s.blur, s.spread, s.color].join(" ");
+  const isLayer = (s) => !!s && typeof s === "object" && !Array.isArray(s) && "offsetY" in s;
+  if (Array.isArray(value) && value.length === 4 && value.every((x) => typeof x === "number")) return `cubic-bezier(${value.join(", ")})`;
+  if (isLayer(value)) return layer(value);
+  if (Array.isArray(value) && value.length && value.every(isLayer)) return value.map(layer).join(", ");
+  return typeof value === "string" || typeof value === "number" ? String(value) : null;
+}
+
+/** A value as the reason names it: a color's hue and step, a size in px and rem, a face by its name, else the value as text. */
 function valueName(at, place) {
   if (at.hue) return `${at.hue}.${at.side}.${at.step}`;
   if (place?.part === "font-size" && pxOf(at.value) !== null) return `${plain(pxOf(at.value))}px (${at.value})`;
   if (place?.part === "font-family") return at.hops.at(-1).split(".").at(-1);
   // Another length reads in px, with its rem when it grows with the text: a gap, a corner, a row.
   if (!place && /^[\d.]+rem$/.test(String(at.value))) return `${plain(pxOf(at.value))}px (${at.value})`;
-  return typeof at.value === "string" || typeof at.value === "number" ? String(at.value) : JSON.stringify(at.value);
+  return textOf(at.value) ?? JSON.stringify(at.value);
 }
 
 /**
@@ -509,7 +603,7 @@ export function graphNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
       says: r.role.role,
       to: r.role.to,
       gets: r.role.gets,
-      jobs: jobsFor(r.jobs, place).map((j) => ({ id: j.id, title: j.title, how: j.how })),
+      jobs: jobsFor(g, r.jobs, kindOf(scheme, g, name)).map((j) => ({ id: j.id, title: j.title, how: j.how })),
       always: made.always,
       creates: made.creates,
       shapes: made.shapes,
@@ -525,12 +619,9 @@ export function graphNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
   // The rule the token's mapping entry states: how a type size or line height is made.
   const entry = mappingOf(g, short(name));
   if (!slot && entry?.rule) nodes.push({ level: "rule", name: entry.property, says: entry.rule, step: null, picked: null, holds: null });
-  // A scope relation without a kind is the token's rule (a decided corner), with the check its relation runs.
-  for (const rel of slot ? [] : ruleRelations(g, name)) {
-    const records = (scheme.relations ?? []).filter((r) => r.relation === rel.id && r.token === short(name));
-    const results = relationResults(scheme, g, { brand, mode, index, records }).results;
-    nodes.push({ level: "rule", name: rel.id, says: rel.says, step: null, picked: null, holds: results.length ? results.every((x) => x.holds) : null, checks: results.map((x) => x.says) });
-  }
+  // A measured rule (a decided corner, the default line, the motion family), with the checks it runs.
+  for (const rule of slot ? [] : rulesOf(scheme, g, name, { brand, mode, index }))
+    nodes.push({ level: "rule", name: rule.id, says: rule.says, step: null, picked: null, holds: rule.checks.length ? rule.checks.every((x) => x.holds) : null, checks: rule.checks.map((x) => x.says) });
   // A step of the neutral scale is its own rule: the step the scale's curve sets, or the floor below 0.
   const neutral = g.semantics?.neutral;
   const step = name.split(".").at(-1);
@@ -549,7 +640,9 @@ export function graphNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
     const checks = connectionChecks(scheme, g, c, { brand, mode, index, name: c.via ?? name });
     nodes.push({ level: "connection", name: c.id, kind: c.kind, says: c.says, ...(c.via && { via: c.via }), holds: checks.every((x) => x.holds), checks });
   }
-  nodes.push({ level: "value", name: place && at.hops.length ? at.hops.at(-1) : value, says: typeof at.value === "string" || typeof at.value === "number" ? String(at.value) : null });
+  // A type value and a composite value (a curve, a shadow) are named by the primitive they end at.
+  const composite = at.value !== null && typeof at.value === "object";
+  nodes.push({ level: "value", name: (place || composite) && at.hops.length ? at.hops.at(-1) : value, says: textOf(at.value) });
   nodes.push({ level: "reason", name: `${brand}/${mode}`, says: graphReason(scheme, g, name, { value }) });
   return nodes;
 }

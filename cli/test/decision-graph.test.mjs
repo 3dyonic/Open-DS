@@ -4,6 +4,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, roleOf, storedNumberGaps } from "../src/decision-graph.mjs";
 import { assetRoots, grammar, loadScheme } from "../src/schemes.mjs";
+import { flatTokens } from "../src/tokens.mjs";
 import { decisionTree, formGaps } from "../src/trace.mjs";
 
 const roots = assetRoots();
@@ -90,8 +91,10 @@ test("an answer creates a role: the reason cites the option that brings it", () 
 });
 
 test("every shipped color role is created by a chosen option or always-on; removing a creates entry breaks it", () => {
+  // The roles a scheme ships: those of its own tokens. hero-time ships only where a scheme has a hero duration.
+  const ships = (scheme) => new Set(flatTokens(scheme.tokens.semantic).map(([p]) => roleOf(g, p)?.role.id).filter(Boolean));
   const shipped = (scheme, grammarOf) =>
-    [...new Set(g.mapping.flatMap((e) => (e.roles ?? []).map((r) => r.id)))].filter((id) => {
+    [...ships(scheme)].filter((id) => {
       const role = grammarOf.mapping.flatMap((e) => e.roles ?? []).find((r) => r.id === id);
       return !role.always_on && !creatorsOf(scheme, grammarOf, id).length;
     });
@@ -255,6 +258,51 @@ test("the badge corner ships everywhere: always-on, and created where the roles 
   const expressive = madeBy(loadScheme("brand-expressive", roots), g, "radius.badge");
   assert.deepEqual(expressive.creates, []);
   assert.match(expressive.always, /every scheme ships badges/);
+});
+
+// Elevation (OD-304): the shadow scale and the dark shade are the scope's relations; the default line is its rule.
+test("a shadow reads role → property → connections → value → reason; a planted flat overlay breaks the layer step", () => {
+  const scheme = loadScheme("brand-expressive", roots);
+  const tree = decisionTree(scheme, g, "elevation.overlay");
+  assert.equal(tree.find((n) => n.level === "role").name, "overlay-shadow");
+  assert.deepEqual(tree.filter((n) => n.level === "connection").map((n) => [n.name, n.kind, n.holds]), [["layer-step", "stays-apart", true], ["dark-shade", "comes-from", true]]);
+  assert.equal(tree.find((n) => n.level === "value").says, "0px 24px 48px 0px #1F141133");
+  assert.deepEqual(missingLinks(scheme, g, "elevation.overlay", tree), []);
+  const low = structuredClone(scheme);
+  low.tokens.brands.default.theme.light.elevation.overlay.$value = "{shadow.none}";
+  assert.equal(decisionTree(low, g, "elevation.overlay").find((n) => n.name === "layer-step").holds, false);
+});
+
+test("the default line's rule breaks today: a control's only edge is under 3:1 in every scheme", () => {
+  const tree = decisionTree(loadScheme("dense-data", roots), g, "border-width.default");
+  const rule = tree.find((n) => n.level === "rule" && n.name === "default-line");
+  assert.equal(rule.holds, false);
+  for (const id of SCHEMES) assert.equal(gapsOf(loadScheme(id, roots), "default-line").length, 4, id);
+  assert.deepEqual(gapsOf(loadScheme("multi-brand", roots), "surface-corner").map((x) => x.themes), [["aster/light", "aster/dark", "coral/light", "coral/dark"]]);
+});
+
+// Motion (OD-304): the family picks a duration's job and sets its limits; an exit takes the feedback time.
+test("a motion token's family picks its job and its rule", () => {
+  const expressive = decisionTree(loadScheme("brand-expressive", roots), g, "motion.duration.panels");
+  const productive = decisionTree(loadScheme("dense-data", roots), g, "motion.duration.panels");
+  assert.deepEqual(expressive.find((n) => n.level === "role").jobs.map((j) => j.id), ["expressive"]);
+  assert.deepEqual(productive.find((n) => n.level === "role").jobs.map((j) => j.id), ["productive"]);
+  assert.equal(productive.find((n) => n.level === "rule").says, "the productive family: motion.duration.panels takes at most 300ms");
+  const easing = decisionTree(loadScheme("dense-data", roots), g, "motion.easing.enter");
+  assert.equal(easing.find((n) => n.level === "value").says, "cubic-bezier(0.2, 0, 0, 1)");
+  assert.deepEqual(easing.filter((n) => n.level === "connection").map((n) => [n.name, n.holds]), [["enter-from-standard", true]]);
+  assert.deepEqual(missingLinks(loadScheme("dense-data", roots), g, "motion.easing.enter", easing), []);
+});
+
+test("motion connections hold today; a planted slow feedback breaks its family and the exit's chain", () => {
+  for (const id of SCHEMES) for (const c of ["exit-from-feedback", "enter-from-standard", "panels-after-feedback", "hero-after-panels", "motion-family"]) assert.deepEqual(gapsOf(loadScheme(id, roots), c), [], `${id} ${c}`);
+  const scheme = structuredClone(loadScheme("dense-data", roots));
+  scheme.tokens.semantic.motion.duration.feedback.$value = "{duration.relaxed}";
+  scheme.tokens.primitive.duration.relaxed ??= { $type: "duration", $value: "400ms" };
+  scheme.tokens.semantic.motion.duration.exit.$value = "{duration.fast}";
+  assert.deepEqual(gapsOf(scheme, "motion-family").map((x) => x.tokens), [["motion.duration.feedback"]]);
+  assert.deepEqual(gapsOf(scheme, "exit-from-feedback").map((x) => x.tokens), [["motion.duration.exit", "motion.duration.feedback"]]);
+  assert.deepEqual(gapsOf(scheme, "panels-after-feedback").map((x) => x.tokens), [["motion.duration.panels", "motion.duration.feedback"]]);
 });
 
 // A stored reason names the numbers its data has (OD-304).
