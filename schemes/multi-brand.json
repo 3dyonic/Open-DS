@@ -1387,7 +1387,7 @@
     {
       "question": "color.definition.steps",
       "option": "medium-ease",
-      "why": "A medium ease fits every brand key: soft tints for surfaces, open middle steps for fills.",
+      "why": "We want the brands to stay tied together. One shared curve gives every brand the same contrast between its steps and the same soft tints. Each brand keeps its own hue and intensity.",
       "because": [
         "brand.q1",
         "color.definition"

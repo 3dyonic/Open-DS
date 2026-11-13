@@ -1371,7 +1371,7 @@
     {
       "question": "color.definition.steps",
       "option": "light-ease",
-      "why": "A light ease keeps the soft tints behind long text close together; the middle stays even.",
+      "why": "A light ease keeps the paper tints behind long text close together. The middle steps stay even.",
       "because": [
         "content.q1",
         "color.definition"

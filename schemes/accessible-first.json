@@ -1340,7 +1340,7 @@
     {
       "question": "color.definition.steps",
       "option": "linear",
-      "why": "Even contrast between all steps, so every pair of steps is as easy to tell apart as any other.",
+      "why": "The same distance in steps gives the same contrast everywhere. So every pair of steps is as easy to tell apart as any other, for everyone, including people with low vision.",
       "because": [
         "people.q1",
         "color.definition"
