@@ -1,8 +1,8 @@
-// The color decision graph (OD-304): every color token inherits its reason from its role, job,
-// property, answers, slot and connections. Run on the real schemes and grammar.
+// The decision graph (OD-304): every color and type token inherits its reason from its role, job,
+// property, answers, rule and connections. Run on the real schemes and grammar.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { colorReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, roleOf } from "../src/color-graph.mjs";
+import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, roleOf } from "../src/decision-graph.mjs";
 import { assetRoots, grammar, loadScheme } from "../src/schemes.mjs";
 import { decisionTree, formGaps } from "../src/trace.mjs";
 
@@ -71,7 +71,7 @@ test("each color role names jobs its mapping entry has", () => {
 
 test("the reason is written from the fields, in the reason form, and cites the answers that shape an always-on role", () => {
   const scheme = loadScheme("accessible-first", roots);
-  const why = colorReason(scheme, g, "color.category.4.@", { value: "amber.light.600" });
+  const why = graphReason(scheme, g, "color.category.4.@", { value: "amber.light.600" });
   assert.match(why, /^We use amber\.light\.600 for a category mark in order to tell series and tags apart/);
   assert.match(why, /The category color does this by following brand hue/);
   assert.match(why, /because a design system ships category colors for the products teams build, and the scheme answers/);
@@ -85,7 +85,7 @@ test("an answer creates a role: the reason cites the option that brings it", () 
   const scheme = loadScheme("dense-data", roots);
   assert.deepEqual(madeBy(scheme, g, "color.text.primary"), { role: "page-text", always: null, creates: ["color.roles"], shapes: ["color.definition"] });
   assert.deepEqual(madeBy(scheme, g, "color.surface.scrim").creates, ["elevation.lands"]);
-  const why = colorReason(scheme, g, "color.text.primary", { value: "gray.light.900" });
+  const why = graphReason(scheme, g, "color.text.primary", { value: "gray.light.900" });
   assert.match(why, /"Surface, text, action and status" to "Which color roles does it need\?"/);
 });
 
@@ -130,4 +130,60 @@ test("a color token with no role misses its links", () => {
   const bare = { ...g, mapping: g.mapping.map(({ roles, ...e }) => e) };
   const tree = decisionTree(scheme, bare, "color.action.primary.hover");
   assert.deepEqual(missingLinks(scheme, bare, "color.action.primary.hover", tree), ["role", "job", "rule", "value"]);
+});
+
+// Type (OD-304): one base and one ratio make every size; a line kind makes every line height.
+const typeGaps = (scheme, id) => connectionGaps(evaluateConnections(scheme, g)).filter((x) => x.connection === id);
+
+test("a type token reads role → property → rule → connections → value → reason, with the job of its line kind", () => {
+  const scheme = loadScheme("accessible-first", roots);
+  const tree = decisionTree(scheme, g, "type.body.line-height");
+  const levels = tree.map((n) => n.level).filter((l) => ["role", "property", "rule", "connection", "value", "reason"].includes(l));
+  assert.deepEqual([...new Set(levels)], ["role", "property", "rule", "connection", "value", "reason"]);
+  const role = tree.find((n) => n.level === "role");
+  assert.equal(role.name, "text-lines");
+  assert.deepEqual(role.creates, ["typography.definition"]);
+  assert.ok(!role.jobs.some((j) => j.id === "tight"), "an open line shows no tight job");
+  assert.deepEqual(tree.filter((n) => n.level === "connection").map((n) => [n.name, n.holds]), [["line-from-kind", true], ["line-kinds-apart", true]]);
+  assert.match(tree.find((n) => n.level === "reason").says, /^We use 1\.6 for lines of running text in order to .* does this by return sweep: .*\(typography\.definition\)\.$/);
+  assert.deepEqual(formGaps(g, "type.body.line-height", tree.find((n) => n.level === "reason").says, ["typography.definition"]).filter((x) => x !== "job name"), []);
+  assert.deepEqual(missingLinks(scheme, g, "type.body.line-height", tree), []);
+});
+
+test("a label line in a tight scheme leads with the tight job; in accessible-first it is open", () => {
+  const tight = decisionTree(loadScheme("dense-data", roots), g, "type.label.line-height").find((n) => n.level === "role");
+  const open = decisionTree(loadScheme("accessible-first", roots), g, "type.label.line-height").find((n) => n.level === "role");
+  assert.equal(tight.jobs[0].id, "tight");
+  assert.equal(open.jobs[0].id, "open");
+});
+
+test("each size comes from base × ratio^step; a planted size breaks it", () => {
+  assert.deepEqual(typeGaps(loadScheme("accessible-first", roots), "size-from-scale"), []);
+  const scheme = structuredClone(loadScheme("accessible-first", roots));
+  scheme.tokens.semantic.type.body["font-size"].$value = "{font.size.16}";
+  assert.deepEqual(typeGaps(scheme, "size-from-scale").map((x) => x.tokens), [["type.body.font-size"]]);
+});
+
+test("adjacent sizes stay one ratio step apart and line kinds 0.2 apart: today's gaps are the baseline's", () => {
+  assert.deepEqual(typeGaps(loadScheme("dense-data", roots), "line-kinds-apart").map((x) => x.tokens), [["tight lines", "snug lines"], ["snug lines", "open lines"]]);
+  assert.deepEqual(typeGaps(loadScheme("content-first", roots), "sizes-step-apart"), []);
+  assert.deepEqual(typeGaps(loadScheme("accessible-first", roots), "sizes-step-apart").map((x) => x.tokens), [
+    ["type.body.font-size", "type.caption.font-size"],
+    ["type.title.font-size", "type.heading.font-size"],
+  ]);
+});
+
+test("a control holds one label line; a planted short control breaks it", () => {
+  assert.deepEqual(typeGaps(loadScheme("dense-data", roots), "label-pairs-with-control"), []);
+  const scheme = structuredClone(loadScheme("dense-data", roots));
+  scheme.tokens.semantic.size.control.compact.$value = "{size.12}";
+  scheme.tokens.primitive.size["12"] ??= { $type: "dimension", $value: "0.75rem" };
+  assert.deepEqual(typeGaps(scheme, "label-pairs-with-control").map((x) => x.tokens), [["size.control.compact", "type.label"]]);
+});
+
+test("every shipped type role is created by a chosen option or always-on", () => {
+  const scheme = loadScheme("dense-data", roots);
+  assert.deepEqual(creatorsOf(scheme, g, "heading-lines"), ["typography.definition"]);
+  assert.deepEqual(creatorsOf(scheme, g, "typeface"), ["brand.q3"]);
+  assert.deepEqual(madeBy(scheme, g, "type.data.font-size"), { role: "data-size", always: "every scheme's type scale gives values a step of their own", creates: [], shapes: ["typography.roles", "typography.count", "typography.values"] });
 });

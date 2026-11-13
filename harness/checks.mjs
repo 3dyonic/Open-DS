@@ -2134,12 +2134,13 @@ export const CHECKS = {
     },
   },
 
-  // OD-304: the color decision graph. Every color token has each link of its chain, as plain data:
-  // role, job, property, answer, rule (its slot or a connection) and value, in every brand and mode.
+  // OD-304: the decision graph. Every token of a group that plays roles (color, type) has each link of its
+  // chain, as plain data: role, job, property, answer, rule (its slot, its entry's rule or a connection)
+  // and value, in every brand and mode.
   "color-links-complete": {
-    requires: ["cli/src/color-graph.mjs", "cli/src/trace.mjs", "schemes/grammar.json"],
+    requires: ["cli/src/decision-graph.mjs", "cli/src/trace.mjs", "schemes/grammar.json"],
     run: async (c) => {
-      const { indexesOf, missingLinks } = await import(pathToFileURL(c.p("cli/src/color-graph.mjs")).href);
+      const { graphGroups, indexesOf, missingLinks } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const { decisionTree } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
       const { flatTokens } = await import(pathToFileURL(c.p("cli/src/tokens.mjs")).href);
       const g = c.grammar();
@@ -2149,7 +2150,7 @@ export const CHECKS = {
         const scheme = c.scheme(id);
         const indexOf = indexesOf(scheme);
         const names = flatTokens(scheme.tokens.semantic)
-          .filter(([p, t]) => p.startsWith("color.") && !t.$deprecated)
+          .filter(([p, t]) => graphGroups(g).includes(p.split(".")[0]) && !t.$deprecated)
           .map(([p]) => p);
         for (const brand of Object.keys(scheme.tokens.brands))
           for (const mode of ["light", "dark"])
@@ -2160,17 +2161,17 @@ export const CHECKS = {
             }
       }
       return off.length
-        ? bad(`${off.length} color tokens miss a link: ${off.slice(0, 5).join("; ")}. Add a role to the token's mapping entry, or a connection to semantics.connections.`)
-        : ok(`${n} color tokens in every brand and mode of ${SCHEMES.length} schemes each have a role, a job, a property, an answer, a rule and a value`);
+        ? bad(`${off.length} ${graphGroups(g).join(" and ")} tokens miss a link: ${off.slice(0, 5).join("; ")}. Add a role to the token's mapping entry, or a rule or a connection.`)
+        : ok(`${n} ${graphGroups(g).join(" and ")} tokens in every brand and mode of ${SCHEMES.length} schemes each have a role, a job, a property, an answer, a rule and a value`);
     },
   },
   "color-connections-hold": {
-    requires: ["cli/src/color-graph.mjs", "schemes/grammar.json", "harness/connections-baseline.json"],
+    requires: ["cli/src/decision-graph.mjs", "schemes/grammar.json", "harness/connections-baseline.json"],
     run: async (c) => {
-      // Every connection holds in every brand and mode, waits for a recorded fix, or is in the baseline.
+      // Every connection, color and type, holds in every brand and mode, waits for a recorded fix, or is in the baseline.
       // The count of gaps per connection and scheme may only go down. The gaps are findings for the
-      // owner: the check changes no color.
-      const { connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/color-graph.mjs")).href);
+      // owner: the check changes no value.
+      const { connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const g = c.grammar();
       const base = c.json("harness", "connections-baseline.json").counts;
       const rose = [];
@@ -2196,13 +2197,13 @@ export const CHECKS = {
       );
     },
   },
-  // OD-304: answers create choices. Each shipped color role is created by an option the scheme chose, or
-  // the grammar marks it always-on with a reason and the answers that shape it. Each option of a question a
-  // color role depends on lists what it creates, and each listed role exists.
+  // OD-304: answers create choices. Each shipped role (color, type) is created by an option the scheme chose,
+  // or the grammar marks it always-on with a reason and the answers that shape it. Each option of a question
+  // a role depends on lists what it creates, and each listed role exists.
   "color-roles-created": {
-    requires: ["cli/src/color-graph.mjs", "schemes/grammar.json"],
+    requires: ["cli/src/decision-graph.mjs", "schemes/grammar.json"],
     run: async (c) => {
-      const { creatorsOf, roleOf } = await import(pathToFileURL(c.p("cli/src/color-graph.mjs")).href);
+      const { creatorsOf, graphGroups, roleOf } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const { questions } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
       const { flatTokens } = await import(pathToFileURL(c.p("cli/src/tokens.mjs")).href);
       const g = c.grammar();
@@ -2210,9 +2211,10 @@ export const CHECKS = {
       const roles = (g.mapping ?? []).flatMap((e) => (e.roles ?? []).map((r) => ({ ...r, question: e.question })));
       const ids = new Set(roles.map((r) => r.id));
       const off = [];
-      // The questions a color role depends on: the color scope's, each role's deciding question, and each always-on role's shaping ones.
+      // The questions a role depends on: those of each scope that owns a group playing roles (color, type),
+      // each role's deciding question, and each always-on role's shaping ones.
       const depends = new Set([
-        ...Object.keys(asked).filter((id) => id.startsWith("color.")),
+        ...(g.scopes ?? []).filter((s) => (s.owns ?? []).some((o) => graphGroups(g).includes(o))).flatMap((s) => s.questions.map((q) => q.id)),
         ...roles.map((r) => r.question),
         ...roles.flatMap((r) => r.always_on?.shaped_by ?? []),
       ]);
@@ -2220,7 +2222,7 @@ export const CHECKS = {
         if (!asked[id]) off.push(`${id} is not a question`);
         for (const o of asked[id]?.options ?? []) {
           if (!Array.isArray(o.creates)) off.push(`${id} option ${o.id} lists nothing it creates`);
-          for (const r of o.creates ?? []) if (!ids.has(r)) off.push(`${id} option ${o.id} creates ${r}, which is no color role`);
+          for (const r of o.creates ?? []) if (!ids.has(r)) off.push(`${id} option ${o.id} creates ${r}, which is no role`);
         }
       }
       let n = 0;
@@ -2228,7 +2230,7 @@ export const CHECKS = {
         const scheme = c.scheme(id);
         const shipped = new Map();
         for (const [path, t] of flatTokens(scheme.tokens.semantic))
-          if (path.startsWith("color.") && !t.$deprecated) {
+          if (graphGroups(g).includes(path.split(".")[0]) && !t.$deprecated) {
             const r = roleOf(g, path)?.role;
             if (r && !shipped.has(r.id)) shipped.set(r.id, { role: r, token: path });
           }
@@ -2239,8 +2241,8 @@ export const CHECKS = {
         }
       }
       return off.length
-        ? bad(`${off.length} color roles have no answer that creates them: ${off.slice(0, 5).join("; ")}`)
-        : ok(`${n} shipped color roles in ${SCHEMES.length} schemes are created by a chosen option or always-on; ${depends.size} questions list what each option creates`);
+        ? bad(`${off.length} roles have no answer that creates them: ${off.slice(0, 5).join("; ")}`)
+        : ok(`${n} shipped color and type roles in ${SCHEMES.length} schemes are created by a chosen option or always-on; ${depends.size} questions list what each option creates`);
     },
   },
   "json-sources-one-layout": {
