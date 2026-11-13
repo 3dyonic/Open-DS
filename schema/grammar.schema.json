@@ -1602,11 +1602,10 @@
         "questions": {
           "type": "array",
           "minItems": 5,
-          "maxItems": 5,
           "items": {
             "$ref": "#/$defs/scope-question"
           },
-          "description": "Exactly one question per method, in method order."
+          "description": "One question per method, in method order. A follow-up question refines one method question and sits right after it (OD-299)."
         },
         "owns": {
           "type": "array",
@@ -2243,9 +2242,9 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^[a-z]+\\.(roles|count|definition|values|lands)$",
-          "description": "Scope question id: <scope>.<method>.",
-          "examples": ["typography.values"]
+          "pattern": "^[a-z]+\\.(roles|count|definition|values|lands)(\\.[a-z-]+)?$",
+          "description": "Scope question id: <scope>.<method>, or <scope>.<method>.<name> for a follow-up question.",
+          "examples": ["typography.values", "color.definition.steps"]
         },
         "text": {
           "type": "string",

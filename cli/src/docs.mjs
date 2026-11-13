@@ -10,6 +10,7 @@ import { questions } from "./schemes.mjs";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
 import { pairsIn, sitsOn, toneOf, toneRole } from "./tones.mjs";
 import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
+import { colorScalePage } from "./color-scale-doc.mjs";
 import { aliasChain, tokenIndex } from "./lands.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
 import { componentGuide, followers } from "./component.mjs";
@@ -2198,6 +2199,15 @@ export function docsPages(
         : table(k.list, k.id)) +
       "\n";
   });
+  // How the scale is built (OD-299): only while the graded curve is on.
+  const scalePage = colorScalePage(scheme, g, {
+    frontMatter: fm,
+    put: (id, data) => {
+      (compositeData["color-scale"] ??= {})[id] = data;
+      return `::color-scale{id="${id}"}`;
+    },
+  });
+  if (scalePage) pages["primitives/color-scale.md"] = scalePage;
 
   // What a component built on shadcn reads (OD-215): each class it uses, the shadcn variable, the
   // scheme's token behind it, and the primitive and value that token ends at in every theme. Read from

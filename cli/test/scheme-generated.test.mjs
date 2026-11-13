@@ -31,7 +31,8 @@ test("the scale generator gives the scales the schemes stored before", () => {
 
 test("every loaded scheme has the scales it stored before, where its inputs are unchanged", () => {
   for (const id of ids) {
-    const s = loadScheme(id, roots);
+    // The shared curve: OD-292 moved its stored scales out. The graded curve (OD-299) has its own check.
+    const s = loadScheme(id, roots, { graded: false });
     const sameCanvas = darkCanvas(s) === before[id].canvas;
     for (const [hue, modes] of Object.entries(before[id].hues)) {
       const grp = s.tokens.primitive.color[hue];

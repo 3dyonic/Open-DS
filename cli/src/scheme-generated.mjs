@@ -3,6 +3,7 @@
 // (OD-223). The component spacing map stores its rhythm and fixed steps; withGenerated fills its steps
 // (OD-235). withoutGenerated takes out each part that equals the generator's output exactly. No file
 // access, so the loader, the build and the bundled apps (Storybook, the site) share it.
+import { curveOf } from "./color-steps.mjs";
 import { scale, STEPS } from "./ramps.mjs";
 import { mapTokens } from "./spacing-map.mjs";
 import { themeTokens } from "./tokens.mjs";
@@ -37,8 +38,8 @@ export function darkCanvas(scheme) {
 }
 
 /** One mode of a hue as the scheme holds it: { 50: { $type, $value }, … }. */
-function scaleTokens(hueSpec, mode, canvas) {
-  const row = scale(hueSpec[mode], mode, canvas);
+function scaleTokens(hueSpec, mode, canvas, curve = null) {
+  const row = scale(hueSpec[mode], mode, canvas, curve);
   return Object.fromEntries(STEPS.map((st) => [st, { $type: "color", $value: row[st] }]));
 }
 
@@ -53,7 +54,7 @@ function hueWith(hue, scales) {
 }
 
 /** The scheme with every generated part present. A part the file stores stays as stored. Does not change its input. */
-export function withGenerated(scheme) {
+export function withGenerated(scheme, { graded } = {}) {
   const t = scheme?.tokens;
   if (!t) return scheme;
   const colors = t.primitive?.color ?? {};
@@ -61,9 +62,10 @@ export function withGenerated(scheme) {
   let color = colors;
   if (hues.length) {
     const canvas = darkCanvas(scheme);
+    const curve = curveOf(scheme, graded);
     color = { ...colors };
     for (const [id, g] of hues) {
-      const scales = Object.fromEntries(MODES.map((m) => [m, g[m] ?? scaleTokens(spec(g), m, canvas)]));
+      const scales = Object.fromEntries(MODES.map((m) => [m, g[m] ?? scaleTokens(spec(g), m, canvas, curve)]));
       color[id] = hueWith(g, scales);
     }
   }
@@ -81,17 +83,18 @@ export function withGenerated(scheme) {
 }
 
 /** The scheme as it is stored: each scale and spacing map that equals the generator's output is left out. */
-export function withoutGenerated(scheme) {
+export function withoutGenerated(scheme, { graded } = {}) {
   const t = scheme?.tokens;
   if (!t) return scheme;
   const primitive = { ...t.primitive };
   const hues = Object.entries(t.primitive?.color ?? {}).filter(([, g]) => spec(g));
   if (hues.length) {
     const canvas = darkCanvas(scheme);
+    const curve = curveOf(scheme, graded);
     primitive.color = { ...t.primitive.color };
     for (const [id, g] of hues) {
       const hue = { ...g };
-      for (const m of MODES) if (hue[m] && same(hue[m], scaleTokens(spec(g), m, canvas))) delete hue[m];
+      for (const m of MODES) if (hue[m] && same(hue[m], scaleTokens(spec(g), m, canvas, curve))) delete hue[m];
       primitive.color[id] = hue;
     }
   }

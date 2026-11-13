@@ -154,10 +154,80 @@ export function adjusted(h, adj) {
     (H + (adj.H ?? 0) + 360) % 360,
   );
 }
-/** A hue's scale for one mode, with its recorded adjustments. */
-export function scale(spec, mode, canvas) {
-  const row =
-    mode === "light" ? lightScale(spec.key) : darkScale(spec.key, canvas);
+// The contrast-graded curve (OD-299). Contrast is a ratio of (luminance + 0.05), so a curve that is
+// even in ln(luminance + 0.05) gives the same contrast for the same distance in steps. The curve keeps
+// three anchors of the shared curve: step 50, the key exact at 600, and step 950. Between them it runs
+// even in ln(luminance + 0.05) along an eased position: easing 0 is linear, and a higher easing blends
+// in more smoothstep, which holds the ends closer together and opens the middle. Chroma follows
+// lightness with each mode's own shape, and the hue stays the key's. Recorded adjustments apply after.
+
+/** Relative luminance (WCAG) of a hex color. */
+export function luminance(h) {
+  const [r, g, b] = rgb(h).map(lin);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+const smoothstep = (u) => u * u * (3 - 2 * u);
+/** The eased position of a step: a blend of linear and smoothstep, from 0 (step 50) to 1 (step 950). */
+export function easedPosition(step, easing) {
+  const u = (+step - 50) / 900;
+  return (1 - easing) * u + easing * smoothstep(u);
+}
+// The hex color of a lightness, its chroma taken from the mode's chroma shape.
+const colorAt = (L, chromaOf, H) => fromLch(L, chromaOf(L), H);
+// The lightness whose color has the luminance y, by bisection. Luminance rises with lightness.
+function lightnessFor(y, chromaOf, H) {
+  let [lo, hi] = [0, 1];
+  for (let i = 0; i < 30; i++) {
+    const mid = (lo + hi) / 2;
+    if (luminance(colorAt(mid, chromaOf, H)) < y) lo = mid;
+    else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+// A graded row from the anchors of the shared row (50, the key at 600, 950).
+function gradedRow(shared, key, chromaOf, H, easing) {
+  const z = (h) => Math.log(luminance(h) + 0.05);
+  const [z50, zk, z950] = [z(shared[50]), z(key), z(shared[950])];
+  const ek = easedPosition(600, easing);
+  return Object.fromEntries(
+    STEPS.map((st) => {
+      if (st === "600") return [st, key.toUpperCase()];
+      if (st === "50" || st === "950") return [st, shared[st]];
+      const e = easedPosition(st, easing);
+      const target = +st < 600 ? z50 + ((zk - z50) * e) / ek : zk + ((z950 - zk) * (e - ek)) / (1 - ek);
+      return [st, colorAt(lightnessFor(Math.exp(target) - 0.05, chromaOf, H), chromaOf, H)];
+    }),
+  );
+}
+/** The contrast-graded light scale of a key color, the key exact at 600. */
+export function gradedLightScale(key, easing) {
+  const [Lk, Ck, H] = lch(key);
+  const chromaOf = (L) =>
+    L > Lk ? Ck * Math.min(1, ((1 - L) / (1 - Lk)) ** 0.6) : Ck * Math.min(1, (L / Lk) ** 0.7);
+  return gradedRow(lightScale(key), key, chromaOf, H, easing);
+}
+/** The contrast-graded dark scale of a key color over a dark canvas, the key exact at 600. */
+export function gradedDarkScale(key, canvas, easing) {
+  const [Lk, Ck, H] = lch(key);
+  const Lc = lch(canvas)[0];
+  const chromaOf = (L) =>
+    L < Lk
+      ? Ck * (0.55 + 0.45 * Math.min(1, Math.max(0, (L - Lc) / (Lk - Lc))))
+      : Ck * (1 - 0.8 * Math.min(1, (L - Lk) / (0.97 - Lk)));
+  return gradedRow(darkScale(key, canvas), key, chromaOf, H, easing);
+}
+/**
+ * A hue's scale for one mode, with its recorded adjustments. curve is null for the shared curve, or
+ * { easing } for the contrast-graded curve (OD-299). A step the spec holds keeps the shared curve.
+ */
+export function scale(spec, mode, canvas, curve = null) {
+  const shared = mode === "light" ? lightScale(spec.key) : darkScale(spec.key, canvas);
+  const row = !curve
+    ? shared
+    : mode === "light"
+      ? gradedLightScale(spec.key, curve.easing)
+      : gradedDarkScale(spec.key, canvas, curve.easing);
+  if (curve) for (const st of Object.keys(spec.held ?? {})) row[st] = shared[st];
   for (const [st, adj] of Object.entries(spec.adjust ?? {}))
     row[st] = adjusted(row[st], adj);
   return row;

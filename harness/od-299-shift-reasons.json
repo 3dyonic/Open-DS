@@ -1,0 +1,110 @@
+{
+  "description": "OD-299: the recorded reason for each color move in the review tier (OKLab 0.02 to 0.05; 0.01 to 0.02 for a surface) between the shared curve and the contrast-graded curve. Each scheme's reason names the method. The harness check color-curve-shift fails a review move with no entry here, and an entry with no move. Written by node scripts/od-299-shift.mjs --reasons.",
+  "schemes": {
+    "dense-data": {
+      "reason": "Method: contrast-graded steps, strong-ease (easing 0.6). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "tokens": [
+        "dark color.category.4.subtle",
+        "dark color.status.danger.subtle",
+        "dark color.status.warning.subtle"
+      ],
+      "steps": [
+        "amber.dark.100",
+        "amber.dark.200",
+        "amber.dark.300",
+        "amber.dark.400",
+        "amber.light.400",
+        "amber.light.900",
+        "blue.dark.200",
+        "blue.dark.300",
+        "green.dark.200",
+        "green.dark.300",
+        "green.light.400",
+        "green.light.900",
+        "red.dark.100",
+        "red.dark.200",
+        "red.light.400",
+        "red.light.900",
+        "violet.dark.200",
+        "violet.light.900"
+      ]
+    },
+    "content-first": {
+      "reason": "Method: contrast-graded steps, light-ease (easing 0.25). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "tokens": [
+        "dark color.text.info-on-light",
+        "light color.text.info-on-light"
+      ],
+      "steps": [
+        "blue.light.800",
+        "navy.dark.900",
+        "navy.light.800",
+        "red.dark.900"
+      ]
+    },
+    "accessible-first": {
+      "reason": "Method: contrast-graded steps, linear (easing 0). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "tokens": [
+        "dark color.text.success-on-light",
+        "light color.action.primary.hover",
+        "light color.text.link",
+        "light color.text.success-on-light"
+      ],
+      "steps": [
+        "amber.dark.200",
+        "amber.dark.300",
+        "amber.dark.400",
+        "blue.dark.200",
+        "blue.dark.300",
+        "blue.dark.400",
+        "blue.light.700",
+        "blue.light.800",
+        "green.dark.200",
+        "green.dark.300",
+        "green.dark.400",
+        "green.light.800",
+        "red.dark.200",
+        "red.dark.300",
+        "red.dark.400",
+        "red.dark.500",
+        "teal.dark.200",
+        "teal.dark.300",
+        "teal.dark.400"
+      ]
+    },
+    "brand-expressive": {
+      "reason": "Method: contrast-graded steps, even-ease (easing 0.5). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "tokens": [
+        "dark color.category.2.subtle",
+        "dark color.category.4.subtle",
+        "dark color.status.info.subtle",
+        "dark color.status.warning.subtle"
+      ],
+      "steps": [
+        "amber.dark.100",
+        "amber.dark.200",
+        "amber.light.400",
+        "amber.light.900",
+        "blue.dark.100",
+        "green.dark.800",
+        "green.light.400",
+        "green.light.900",
+        "pink.light.400",
+        "red.dark.800",
+        "red.light.400",
+        "red.light.900"
+      ]
+    },
+    "multi-brand": {
+      "reason": "Method: contrast-graded steps, medium-ease (easing 0.4). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "tokens": [
+        "aster-dark color.surface.selected"
+      ],
+      "steps": [
+        "orange.light.400",
+        "orange.light.900",
+        "red.light.400"
+      ]
+    }
+  }
+}

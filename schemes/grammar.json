@@ -1010,6 +1010,44 @@
           ]
         },
         {
+          "id": "color.definition.steps",
+          "method": "definition",
+          "text": "How are the steps of a color scale spaced?",
+          "description": "Every option is contrast-graded: steps 400 apart reach 3:1, 500 apart 4.5:1 and 700 apart 7:1. The option sets how much the lightness curve eases toward the ends. A stronger ease keeps the soft tints and the deep shades closer together and opens the middle steps.",
+          "options": [
+            {
+              "id": "linear",
+              "label": "Linear",
+              "description": "No ease. The same contrast for the same distance in steps, from end to end.",
+              "creates": []
+            },
+            {
+              "id": "light-ease",
+              "label": "A light ease",
+              "description": "A quarter of the ease. The ends sit a little closer together.",
+              "creates": []
+            },
+            {
+              "id": "medium-ease",
+              "label": "A medium ease",
+              "description": "A bit less than half of the ease.",
+              "creates": []
+            },
+            {
+              "id": "even-ease",
+              "label": "An even ease",
+              "description": "Half linear, half eased.",
+              "creates": []
+            },
+            {
+              "id": "strong-ease",
+              "label": "A strong ease",
+              "description": "More ease than linear. The middle steps stand furthest apart.",
+              "creates": []
+            }
+          ]
+        },
+        {
           "id": "color.values",
           "method": "values",
           "text": "How saturated is the palette?",
@@ -1028,6 +1066,32 @@
             {
               "id": "vivid",
               "label": "Vivid",
+              "creates": []
+            }
+          ]
+        },
+        {
+          "id": "color.values.difference",
+          "method": "values",
+          "text": "How far apart must colors that mean different things be?",
+          "description": "The smallest OKLab distance between two accent, status or category colors on a surface. It is checked with normal vision and with simulated red-weak, green-weak and blue-weak vision. A pair under it needs a second cue: an icon, a label or a pattern.",
+          "options": [
+            {
+              "id": "distinct",
+              "label": "Distinct",
+              "description": "Visibly different side by side. Words and icons carry most of the meaning.",
+              "creates": []
+            },
+            {
+              "id": "clear",
+              "label": "Clear",
+              "description": "Different at a glance, about as far apart as the closest status colors of published systems.",
+              "creates": []
+            },
+            {
+              "id": "strong",
+              "label": "Strong",
+              "description": "Different even at small sizes and from a distance.",
               "creates": []
             }
           ]

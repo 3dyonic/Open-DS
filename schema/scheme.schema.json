@@ -941,7 +941,7 @@
           },
           "question": {
             "type": "string",
-            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)(\\.[a-z-]+)?$",
             "description": "Grammar question id."
           },
           "option": {
@@ -959,7 +959,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+              "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)(\\.[a-z-]+)?$"
             },
             "description": "Earlier question ids whose answers pulled this one."
           }
@@ -1289,6 +1289,16 @@
                 "description": "Why the step moved."
               }
             }
+          }
+        },
+        "held": {
+          "type": "object",
+          "description": "Steps that keep the shared curve when the contrast-graded curve is on, each with why: over-limit (the move is over its shift limit), relation (a relation gate would fail) or order (it sits between a held step and the end of the scale).",
+          "propertyNames": {
+            "pattern": "^(50|[1-9]00|950)$"
+          },
+          "additionalProperties": {
+            "enum": ["over-limit", "relation", "order"]
           }
         }
       }

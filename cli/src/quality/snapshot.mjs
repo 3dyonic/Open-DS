@@ -3,6 +3,7 @@
 // relations it keeps, and what moves when one answer or one anchor changes. Pure: the caller passes
 // the ref's own token builder (themeTokens) and loader (reload), so a snapshot of any ref reads the
 // same way.
+import { curveOf } from "../color-steps.mjs";
 import { scale as rampScale } from "../ramps.mjs";
 import { pairsIn } from "../tones.mjs";
 import { reasonOf, traceScheme, weakReasons } from "../trace.mjs";
@@ -188,7 +189,11 @@ function referencedNames(scheme) {
  * the ref's loader (omit it to skip the blast radius); generateScale(spec, mode, canvas) is the ref's
  * color scale generator; css is { tokens, theme, shadcn } text or null.
  */
-export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, generateScale = rampScale, css = null, uiPairs = [] }) {
+export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, generateScale: refScale = rampScale, css = null, uiPairs = [] }) {
+  // The scheme's own curve (OD-299): the shared curve, or the graded one when the flag is on and the
+  // scheme answers color.definition.steps. A ref whose generator takes no curve ignores it.
+  const curve = curveOf(scheme);
+  const generateScale = (spec, mode, canvas) => refScale(spec, mode, canvas, curve);
   const themes = themesOf(scheme);
   const { values, chains, errors } = resolveScheme(scheme, themeTokens);
   const facts = factsOf(scheme, themes, values, generateScale, grammar);

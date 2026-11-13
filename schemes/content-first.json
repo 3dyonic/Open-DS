@@ -1369,11 +1369,29 @@
       ]
     },
     {
+      "question": "color.definition.steps",
+      "option": "light-ease",
+      "why": "A light ease keeps the soft tints behind long text close together; the middle stays even.",
+      "because": [
+        "content.q1",
+        "color.definition"
+      ]
+    },
+    {
       "question": "color.values",
       "option": "balanced",
       "why": "A calm, balanced palette.",
       "because": [
         "brand.q1"
+      ]
+    },
+    {
+      "question": "color.values.difference",
+      "option": "clear",
+      "why": "Readers meet status and links inside text, so each must be clear at a glance.",
+      "because": [
+        "content.q1",
+        "color.lands"
       ]
     },
     {
@@ -2532,7 +2550,14 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#1E3A5F"
+                "key": "#1E3A5F",
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "over-limit",
+                  "300": "over-limit",
+                  "400": "over-limit"
+                }
               },
               "dark": {
                 "key": "#8FA6C4"
@@ -2553,10 +2578,21 @@
                     "C": 0.008,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "over-limit",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {
-                "key": "#5CC283"
+                "key": "#5CC283",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
               }
             }
           }
@@ -2575,10 +2611,22 @@
                     "C": 0.013,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "over-limit",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {
-                "key": "#F2B84B"
+                "key": "#F2B84B",
+                "held": {
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
               }
             }
           }
@@ -2597,6 +2645,13 @@
                     "C": 0.017,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "over-limit",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {
@@ -2633,10 +2688,21 @@
                     "C": 0.011,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "over-limit",
+                  "300": "over-limit",
+                  "400": "over-limit"
                 }
               },
               "dark": {
-                "key": "#8AB4F8"
+                "key": "#8AB4F8",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
               }
             }
           }
