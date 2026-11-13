@@ -2,17 +2,22 @@
 // explanation down a chain, so nothing here is typed per token: its role (from its mapping entry), the
 // role's jobs, its rule, the connections it takes part in and its value. Color is a hue scale, a slot on
 // it, a pair and the connections between colors. Type is one base and one ratio, a step per text role and
-// a line kind. The grammar holds the data: each mapping entry's roles and rule, semantics.variants (a
-// color slot and its step) and semantics.connections (comes-from, pairs-with, stays-apart). This module
-// reads them, measures what they promise, and writes the reason sentence in the grammar's reason form.
+// a line kind. Spacing is one base and a multiple per use case, and the component map's rhythm. Shape
+// keeps its connections as the scope's relations (shape-elevation.mjs). The grammar holds the data: each
+// mapping entry's roles and rule, semantics.variants (a color slot and its step), semantics.connections
+// (comes-from, pairs-with, stays-apart) and each scope relation with a kind. This module reads them,
+// measures what they promise, and writes the reason sentence in the grammar's reason form.
 // No file access: the caller passes the scheme and the grammar.
-import { aliasChain, tokenIndex } from "./lands.mjs";
+import { aliasChain, owns, tokenIndex } from "./lands.mjs";
 import { oklab, oklabDistance } from "./quality/color.mjs";
 import { questions } from "./schemes.mjs";
+import { grammarRelations, relationResults } from "./shape-elevation.mjs";
+import { MULTIPLIERS, steps as mapSteps } from "./spacing-map.mjs";
+import { baseOf } from "./spacing-use-cases.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { flatTokens } from "./tokens.mjs";
 import { pairsIn, toneOf, toneRole } from "./tones.mjs";
-import { decidersOf, mappingOf, matches } from "./trace.mjs";
+import { decidersOf, mappingOf, matches, writtenReasons } from "./trace.mjs";
 import { KINDS, lineHeights, plain, sizeOf } from "./type-scale.mjs";
 import { recordsOf } from "./type-space-generated.mjs";
 
@@ -46,8 +51,38 @@ const jobsFor = (jobs, place) => jobs.filter((j) => !(place && KINDS.includes(j.
 /** A length in px: "1.1875rem" is 19. null for a value that is no length. */
 const pxOf = (v) => (typeof v === "string" && /^[\d.]+(rem|px)$/.test(v) ? parseFloat(v) * (v.endsWith("rem") ? 16 : 1) : null);
 
-/** The token groups that play roles (color, type): the first part of every role's token pattern. */
-export const graphGroups = (g) => [...new Set((g.mapping ?? []).flatMap((e) => (e.roles ?? []).flatMap((r) => r.tokens.map((t) => t.split(".")[0]))))];
+/** The group a token or a pattern belongs to: the longest owns entry of a grammar scope that covers it, else its first part. */
+function ownerOf(g, name) {
+  let best = null;
+  for (const scope of g.scopes ?? []) for (const o of scope.owns ?? []) if (owns(name, o) && (!best || o.length > best.length)) best = o;
+  return best ?? name.split(".")[0];
+}
+
+/**
+ * The token groups that play roles (color, type, space, size.row, radius): the owner of every role's token
+ * pattern. A group inside another listed group adds nothing, so it is left out.
+ */
+export function graphGroups(g) {
+  const all = [...new Set((g.mapping ?? []).flatMap((e) => (e.roles ?? []).flatMap((r) => r.tokens.map((t) => ownerOf(g, t)))))];
+  return all.filter((a) => !all.some((b) => b !== a && owns(a, b)));
+}
+
+/** True when a token sits in a group that plays roles, so each link of its chain must be there. */
+export const inGraph = (g, name) => graphGroups(g).some((o) => owns(short(name), o));
+
+/**
+ * Every connection: semantics.connections, then each scope relation that has a kind. A relation keeps its
+ * record per scheme (scheme.relations) and its check in shape-elevation.mjs; here it is one more connection.
+ */
+export function allConnections(g) {
+  const relations = [...grammarRelations(g).values()]
+    .filter((r) => r.kind)
+    .map((r) => ({ id: r.id, kind: r.kind, by: "relation", tokens: r.tokens, says: r.says }));
+  return [...(g.semantics?.connections?.items ?? []), ...relations];
+}
+
+/** The scope relations without a kind that name a token: each is the token's rule, checked like a connection. */
+const ruleRelations = (g, name) => [...grammarRelations(g).values()].filter((r) => !r.kind && r.tokens.includes(short(name)));
 
 /** The slot a token's last part names (@, subtle, hover), with the step it sits at, or null. */
 export function slotOf(g, name) {
@@ -64,7 +99,7 @@ export function slotOf(g, name) {
 export function connectionsOf(g, name) {
   const keys = new Map((g.semantics?.keys ?? []).map((k) => [k.id, k]));
   const fills = new Set((g.semantics?.tones?.fills ?? []).map((f) => f.id));
-  const items = g.semantics?.connections?.items ?? [];
+  const items = allConnections(g);
   const inAlso = (c, n) => (c.also ?? []).some((a) => covers(a.fills, n) || a.text === n);
   const inPairs = (c, n) => fills.has(n) || toneRole(n) || keys.get(n)?.pairs?.on || [...keys.values()].some((k) => k.pairs?.on?.includes(n)) || inAlso(c, n);
   const full = keys.has(name) ? name : keys.has(`${name}.@`) ? `${name}.@` : name;
@@ -118,7 +153,8 @@ const lightness = (hex) => (/^#[0-9a-f]{6}/i.test(hex ?? "") ? oklab(String(hex)
 export function connectionChecks(scheme, g, c, { brand, mode, index, name = null }) {
   if (c.modes && !c.modes.includes(mode)) return [];
   const theme = `${brand}/${mode}`;
-  if (TYPE_MEASURES.has(c.match ?? c.by)) return typeChecks(scheme, c, { theme, index, name });
+  const measure = MEASURES[c.match ?? c.by];
+  if (measure) return measure(scheme, g, c, { brand, mode, theme, index, name });
   const names = flatTokens(scheme.tokens.semantic)
     .filter(([, t]) => !t.$deprecated)
     .map(([p]) => p);
@@ -191,16 +227,12 @@ export function connectionChecks(scheme, g, c, { brand, mode, index, name = null
   return out;
 }
 
-// The connections type keeps, by what they measure: a size from its scale, a line height from its kind,
-// sizes a ratio step apart, line kinds apart, and a box that holds a line.
-const TYPE_MEASURES = new Set(["scale", "line-kind", "ratio-step", "kind-gap", "holds-line"]);
-
 /**
  * The checks of one type connection, for every token it holds or only for name, measured on the scheme's
  * type record (cli/src/type-scale.mjs) and the values the tokens resolve to. [] when the scheme keeps no
  * type record. Same shape as the color checks.
  */
-function typeChecks(scheme, c, { theme, index, name }) {
+function typeChecks(scheme, g, c, { theme, index, name }) {
   const spec = recordsOf(scheme).type;
   if (!spec) return [];
   const out = [];
@@ -270,6 +302,95 @@ function typeChecks(scheme, c, { theme, index, name }) {
   return out;
 }
 
+/** The semantic token names of a scheme, short and not deprecated. */
+const semanticNames = (scheme) => new Set(flatTokens(scheme.tokens.semantic).filter(([, t]) => !t.$deprecated).map(([p]) => short(p)));
+
+/**
+ * The checks of one spacing connection, measured on the scheme's records and the values the tokens resolve
+ * to: a gap or inset from the spacing record and the base its spacing.definition answer sets
+ * (spacing-use-cases.mjs), a component spacing step from the map's rhythm (spacing-map.mjs). [] when the
+ * scheme keeps no such record.
+ */
+function spaceChecks(scheme, g, c, { theme, index, name }) {
+  const out = [];
+  const add = (tokens, holds, says) => out.push({ connection: c.id, kind: c.kind, theme, tokens, holds, says });
+  const px = (n) => pxOf(aliasChain(index, n).value);
+  const held = [...semanticNames(scheme)].filter((n) => covers(c.tokens, n) && (!name || n === short(name)));
+  if (c.match === "base-multiple") {
+    const spec = recordsOf(scheme).space;
+    const option = (scheme.answers ?? []).find((a) => a.question === "spacing.definition")?.option;
+    const base = baseOf(option);
+    if (!spec || !base) return [];
+    for (const t of held) {
+      const u = spec["use-cases"][t.replace(/^space\./, "")];
+      if (!u) continue;
+      const useCase = [u.level, u.relation, u.reach].filter(Boolean).join(" ");
+      add([t], px(t) === base * u.multiple, `${t} is ${plain(px(t))}px; the ${base}px base × ${plain(u.multiple)} for its ${useCase} use case gives ${plain(base * u.multiple)}px`);
+    }
+  } else if (c.match === "rhythm") {
+    const spec = scheme.tokens.semantic["component-spacing-map"]?.$extensions?.["open-ds"];
+    if (!spec) return [];
+    const want = mapSteps(spec);
+    for (const t of held) {
+      const step = t.split(".").at(-1);
+      if (!(step in want)) continue;
+      const m = MULTIPLIERS.find((x) => `x${x}` === step);
+      const how =
+        step === "hairline"
+          ? "the hairline is a fixed 2px"
+          : (spec.fixed ?? []).includes(step)
+            ? `4px × ${m}, held at every rhythm, gives ${want[step]}px`
+            : `4px × ${m} × the ${spec.rhythm} rhythm, rounded to 4px and at most 64px, gives ${want[step]}px`;
+      add([t], px(t) === want[step], `${t} is ${plain(px(t))}px; ${how}`);
+    }
+  }
+  return out;
+}
+
+/**
+ * The checks of a connection between two lengths: equals (a token is its from token) or at-least (a token is
+ * at least times × its from token, times 1 when the connection names none). Any scope's lengths.
+ */
+function lengthChecks(scheme, g, c, { theme, index, name }) {
+  const out = [];
+  const names = semanticNames(scheme);
+  const from = [c.from].flat()[0];
+  if (!names.has(from)) return [];
+  const px = (n) => pxOf(aliasChain(index, n).value);
+  const times = c.times ?? 1;
+  for (const t of [...names].filter((n) => covers(c.tokens, n))) {
+    if (name && ![t, from].includes(short(name))) continue;
+    const [a, b] = [px(t), px(from)];
+    if (a === null || b === null) continue;
+    const holds = (c.match ?? c.by) === "equals" ? a === b : a >= b * times - 1e-9;
+    const against = times === 1 ? `${from} is ${plain(b)}px` : `${times} × ${from} ${plain(b)}px is ${plain(b * times)}px`;
+    out.push({ connection: c.id, kind: c.kind, theme, tokens: [t, from], holds, says: `${t} is ${plain(a)}px; ${against}` });
+  }
+  return out;
+}
+
+/** The checks of a scope relation with a kind, from its records in this scheme (shape-elevation.mjs). */
+function relationChecks(scheme, g, c, { brand, mode, theme, index, name }) {
+  const records = (scheme.relations ?? []).filter((r) => r.relation === c.id && (!name || r.token === short(name)));
+  return relationResults(scheme, g, { brand, mode, index, records }).results.map((x) => ({ connection: c.id, kind: c.kind, theme, tokens: [x.token], holds: x.holds, says: x.says }));
+}
+
+// What each measured connection reads, by its match or by: a type size from its scale, a line height from its
+// kind, sizes a ratio step apart, line kinds apart, a box that holds a line; a gap or inset from the spacing
+// base, a map step from the rhythm; two lengths that are equal or keep a floor; a scope relation.
+const MEASURES = {
+  scale: typeChecks,
+  "line-kind": typeChecks,
+  "ratio-step": typeChecks,
+  "kind-gap": typeChecks,
+  "holds-line": typeChecks,
+  "base-multiple": spaceChecks,
+  rhythm: spaceChecks,
+  equals: lengthChecks,
+  "at-least": lengthChecks,
+  relation: relationChecks,
+};
+
 /**
  * Every connection of a scheme in every brand and mode, merged by subject: [{ connection, kind,
  * tokens, holds, waits, themes, says }]. A subject fails when it fails in any theme; themes lists them.
@@ -279,7 +400,7 @@ export function evaluateConnections(scheme, g) {
   const bySubject = new Map();
   for (const brand of Object.keys(scheme.tokens.brands))
     for (const mode of MODES)
-      for (const c of g.semantics?.connections?.items ?? [])
+      for (const c of allConnections(g))
         for (const x of connectionChecks(scheme, g, c, { brand, mode, index: indexOf(brand, mode) })) {
           const key = `${x.connection} ${x.tokens.join(" | ")}`;
           const prev = bySubject.get(key);
@@ -364,6 +485,8 @@ function valueName(at, place) {
   if (at.hue) return `${at.hue}.${at.side}.${at.step}`;
   if (place?.part === "font-size" && pxOf(at.value) !== null) return `${plain(pxOf(at.value))}px (${at.value})`;
   if (place?.part === "font-family") return at.hops.at(-1).split(".").at(-1);
+  // Another length reads in px, with its rem when it grows with the text: a gap, a corner, a row.
+  if (!place && /^[\d.]+rem$/.test(String(at.value))) return `${plain(pxOf(at.value))}px (${at.value})`;
   return typeof at.value === "string" || typeof at.value === "number" ? String(at.value) : JSON.stringify(at.value);
 }
 
@@ -402,6 +525,12 @@ export function graphNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
   // The rule the token's mapping entry states: how a type size or line height is made.
   const entry = mappingOf(g, short(name));
   if (!slot && entry?.rule) nodes.push({ level: "rule", name: entry.property, says: entry.rule, step: null, picked: null, holds: null });
+  // A scope relation without a kind is the token's rule (a decided corner), with the check its relation runs.
+  for (const rel of slot ? [] : ruleRelations(g, name)) {
+    const records = (scheme.relations ?? []).filter((r) => r.relation === rel.id && r.token === short(name));
+    const results = relationResults(scheme, g, { brand, mode, index, records }).results;
+    nodes.push({ level: "rule", name: rel.id, says: rel.says, step: null, picked: null, holds: results.length ? results.every((x) => x.holds) : null, checks: results.map((x) => x.says) });
+  }
   // A step of the neutral scale is its own rule: the step the scale's curve sets, or the floor below 0.
   const neutral = g.semantics?.neutral;
   const step = name.split(".").at(-1);
@@ -441,4 +570,54 @@ export function missingLinks(scheme, g, name, nodes) {
     !nodes.some((n) => n.level === "rule" || n.level === "connection") && "rule",
     !nodes.some((n) => n.level === "value" && n.says) && "value",
   ].filter(Boolean);
+}
+
+// The numbers a stored reason names, and what each must equal. A size next to a role word ("the 19px body",
+// "a 25px page title"), its own size ("its 35px size", "at 23px it sits"), a grid ("the 4px grid"), a line box ("a
+// 20px line box"), a line kind ("the open step"), and the lead of the reason form ("We use 16px for").
+const ROLE_SIZE = /(\d+(?:\.\d+)?)px (?:[a-z]+ )?(display|title|heading|body|label|caption|data)s?\b/g;
+const OWN_SIZE = /\b(?:(?:its|the) (\d+(?:\.\d+)?)px size\b|at (\d+(?:\.\d+)?)px it (?!would))/g;
+const GRID = /(\d+(?:\.\d+)?)px grid\b/g;
+const LINE_BOX = /(\d+(?:\.\d+)?)px line box\b/g;
+const KIND = /\bthe (tight|snug|open) (?:step|ratio|line kind)\b/g;
+const LEAD = /^We use (\d+(?:\.\d+)?)px for\b/;
+
+/**
+ * The numbers in a scheme's stored reasons that its data does not support, one line each: a type reason
+ * that names a size, a grid, a line box or a line kind its role does not have, and any reason in the
+ * reason form whose lead names another px value than the token resolves to. Read in the scheme's first
+ * brand, light, where type and spacing are the same in every mode. [] when every number holds.
+ */
+export function storedNumberGaps(scheme) {
+  const indexOf = indexesOf(scheme);
+  const first = Object.keys(scheme.tokens.brands)[0];
+  const px = (n, brand = first, mode = "light") => pxOf(aliasChain(indexOf(brand, mode), n).value);
+  const spec = recordsOf(scheme).type;
+  const lines = spec ? lineHeights(spec) : {};
+  const sizeOfRole = (role) => px(`type.${role}.font-size`);
+  const out = [];
+  for (const r of writtenReasons(scheme)) {
+    const off = [];
+    const lead = LEAD.exec(r.why);
+    // A theme pick's lead names the value of the semantic token that reads it, in the pick's brand and mode.
+    const [brand, mode] = r.where === "own" ? [first, "light"] : r.where.split("/");
+    const own = px(r.token, brand, mode === "base" ? "light" : mode);
+    if (lead && own !== null && Number(lead[1]) !== own) off.push(`it leads with ${lead[1]}px, the token is ${plain(own)}px`);
+    const place = r.where === "own" ? typePlace(scheme, r.token) : null;
+    if (place) {
+      for (const [, n, role] of r.why.matchAll(ROLE_SIZE))
+        if (role in spec.steps && Number(n) !== sizeOfRole(role)) off.push(`${n}px ${role}: the ${role} size is ${plain(sizeOfRole(role))}px`);
+      for (const [, a, b] of r.why.matchAll(OWN_SIZE))
+        if (Number(a ?? b) !== sizeOfRole(place.role)) off.push(`${a ?? b}px as its size: the ${place.role} size is ${plain(sizeOfRole(place.role))}px`);
+      const grid = place.part === "line-height" ? lines[place.role].grid : place.part === "font-size" ? sizeOf(spec, place.role).snapped : undefined;
+      if (grid !== undefined)
+        for (const [, n] of r.why.matchAll(GRID)) if (Number(n) !== grid) off.push(`the ${n}px grid: ${grid ? `${place.role} snaps to the ${grid}px grid` : `${place.role} snaps to no grid`}`);
+      if (place.part === "line-height") {
+        for (const [, n] of r.why.matchAll(LINE_BOX)) if (Number(n) !== lines[place.role].px) off.push(`a ${n}px line box: the ${place.role} line box is ${lines[place.role].px ?? "none"}px`);
+        for (const [, kind] of r.why.matchAll(KIND)) if (kind !== place.kind) off.push(`the ${kind} kind: ${place.role} lines are ${place.kind}`);
+      }
+    }
+    if (off.length) out.push({ token: r.token, where: r.where, says: off.join("; ") });
+  }
+  return out;
 }

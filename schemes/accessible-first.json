@@ -5355,7 +5355,7 @@
           "line-height": {
             "$extensions": {
               "open-ds": {
-                "why": "Display lines are 1.25 times its 35px size, about 44px; as a ratio, the line height grows with the text when people zoom.",
+                "why": "Display lines are 1.25 times its 36px size, 45px; as a ratio, the line height grows with the text when people zoom.",
                 "because": [
                   "typography.definition"
                 ]
@@ -5367,7 +5367,7 @@
             "$value": "{font.weight.700}",
             "$extensions": {
               "open-ds": {
-                "why": "Display is bold, 700, one of the two weights the scheme loads; bold and the 35px size together mark the top of the page.",
+                "why": "Display is bold, 700, one of the two weights the scheme loads; bold and the 36px size together mark the top of the page.",
                 "because": [
                   "brand.q3"
                 ]
@@ -5436,7 +5436,7 @@
           "line-height": {
             "$extensions": {
               "open-ds": {
-                "why": "Heading lines are 1.25 times its 23px size, about 29px: the smallest role on the tight ratio, while text from 19px down takes 1.6.",
+                "why": "Heading lines are 1.25 times its 24px size, 30px: the smallest role on the tight ratio, while text from 19px down takes 1.6.",
                 "because": [
                   "typography.definition"
                 ]
@@ -5448,7 +5448,7 @@
             "$value": "{font.weight.700}",
             "$extensions": {
               "open-ds": {
-                "why": "Heading is bold, 700: at 23px it sits only one ratio step above body, so weight, not size alone, sets it apart.",
+                "why": "Heading is bold, 700: at 24px it sits only one ratio step above body, so weight, not size alone, sets it apart.",
                 "because": [
                   "brand.q3",
                   "typography.count"
