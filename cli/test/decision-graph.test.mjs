@@ -305,6 +305,46 @@ test("motion connections hold today; a planted slow feedback breaks its family a
   assert.deepEqual(gapsOf(scheme, "panels-after-feedback").map((x) => x.tokens), [["motion.duration.panels", "motion.duration.feedback"]]);
 });
 
+// Accessibility (OD-304): the control scale makes each control height; the focus width comes from the default line.
+test("each control height comes from the control scale and holds a label line; a planted compact control breaks the scale", () => {
+  const scheme = loadScheme("multi-brand", roots);
+  const tree = decisionTree(scheme, g, "size.control.compact");
+  assert.equal(tree.find((n) => n.level === "role").name, "compact-control");
+  assert.deepEqual(tree.filter((n) => n.level === "connection").map((n) => [n.name, n.holds]), [["label-pairs-with-control", true], ["controls-from-scale", true]]);
+  assert.deepEqual(missingLinks(scheme, g, "size.control.compact", tree), []);
+  for (const id of SCHEMES) assert.deepEqual(gapsOf(loadScheme(id, roots), "controls-from-scale"), [], id);
+  const planted = structuredClone(loadScheme("dense-data", roots));
+  planted.tokens.semantic.size.control.compact.$value = "{size.32}";
+  assert.deepEqual(gapsOf(planted, "controls-from-scale").map((x) => x.says), ["size.control.compact is 32px; the 32px default − 1 × the 8px step gives 24px"]);
+});
+
+test("the focus width comes from the default line and the gap is the ring's fixed rule; a planted thin ring breaks it", () => {
+  const scheme = loadScheme("accessible-first", roots);
+  const width = decisionTree(scheme, g, "focus.ring.width");
+  assert.deepEqual(width.filter((n) => n.level === "connection").map((n) => [n.name, n.kind, n.holds]), [["focus-heavier", "comes-from", true]]);
+  const gap = decisionTree(scheme, g, "focus.ring.offset");
+  assert.deepEqual(gap.filter((n) => n.level === "rule").map((n) => [n.name, n.holds]), [["focus-gap", true]]);
+  const thin = structuredClone(scheme);
+  thin.tokens.semantic.focus.ring.width.$value = "{border-width.2}";
+  assert.equal(decisionTree(thin, g, "focus.ring.width").find((n) => n.name === "focus-heavier").holds, false);
+});
+
+// Iconography (OD-304): an icon is one label line tall; its stroke renders at least 1px at its size.
+test("an icon holds a label line in three schemes and its stroke renders; a planted thin stroke breaks it", () => {
+  assert.deepEqual(
+    SCHEMES.flatMap((id) => gapsOf(loadScheme(id, roots), "icon-matches-label").map((x) => `${id}: ${x.says}`)),
+    ["content-first: size.icon is 16px for the 23.2px label line", "accessible-first: size.icon is 20px for the 30.4px label line"],
+  );
+  for (const id of SCHEMES) assert.deepEqual(gapsOf(loadScheme(id, roots), "stroke-renders"), [], id);
+  const scheme = structuredClone(loadScheme("dense-data", roots));
+  scheme.tokens.primitive["stroke-width"]["1"] ??= { $type: "number", $value: 1 };
+  scheme.tokens.semantic.icon["stroke-width"].$value = "{stroke-width.1}";
+  assert.deepEqual(gapsOf(scheme, "stroke-renders").map((x) => x.says), ["icon.stroke-width 1 on a 16px icon renders 0.67px (1 × 16 ÷ 24); needs at least 1px"]);
+  const tree = decisionTree(loadScheme("dense-data", roots), g, "size.icon");
+  assert.deepEqual(tree.filter((n) => n.level === "connection").map((n) => n.name), ["icon-matches-label", "stroke-renders"]);
+  assert.deepEqual(missingLinks(loadScheme("dense-data", roots), g, "size.icon", tree), []);
+});
+
 // A stored reason names the numbers its data has (OD-304).
 test("stored reasons name the sizes, grids and line kinds their tokens have; a planted old number is found", () => {
   for (const id of SCHEMES) assert.deepEqual(storedNumberGaps(loadScheme(id, roots)), [], id);
