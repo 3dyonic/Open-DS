@@ -445,16 +445,17 @@
       }
     },
     "size.unused-semantics": {
-      "value": 52,
+      "value": 53,
       "direction": "down",
       "gated": true,
       "parts": {
         "dense-data": 10,
         "content-first": 10,
         "accessible-first": 11,
-        "brand-expressive": 11,
+        "brand-expressive": 12,
         "multi-brand": 10
-      }
+      },
+      "why": "OD-309: brand-expressive's secondary button hover reads pink 200 directly, so color.action.secondary.hover (neutral, by grays-from-neutral) has no reader. Owner to review."
     },
     "relations.contrast-margin": {
       "value": 0,

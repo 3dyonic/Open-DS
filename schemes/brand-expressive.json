@@ -6405,6 +6405,66 @@
           "$value": "{button.focus-ring-offset}",
           "$description": "Deprecated: use component.button.focus-ring-offset (OD-243). Canvas of the button.",
           "$deprecated": "Use component.button.focus-ring-offset. Removed in the next minor release."
+        },
+        "secondary": {
+          "background": {
+            "@": {
+              "$value": "{color.pink.light.100}",
+              "$description": "Secondary button fill.",
+              "$extensions": {
+                "open-ds": {
+                  "why": "pink.light.100, pink.dark.100 in dark: a brand tint, so the second action carries the brand; its pink 800 label reads 10.1:1 (11.1:1 in dark).",
+                  "because": [
+                    "color.roles",
+                    "people.q2"
+                  ]
+                }
+              }
+            },
+            "hover": {
+              "$value": "{color.pink.light.200}",
+              "$description": "Secondary button fill on hover.",
+              "$extensions": {
+                "open-ds": {
+                  "why": "pink.light.200, pink.dark.200 in dark: one step past the pink 100 rest fill, so hover reads as a change; the pink 800 label still reads 8.3:1 (8.2:1 in dark).",
+                  "because": [
+                    "color.roles",
+                    "people.q2"
+                  ]
+                }
+              }
+            }
+          },
+          "label": {
+            "$value": "{color.pink.light.800}",
+            "$description": "Secondary button label color.",
+            "$extensions": {
+              "open-ds": {
+                "why": "pink.light.800, pink.dark.800 in dark: brand text on the pink 100 fill, 10.1:1 (11.1:1 in dark), above the 4.5:1 floor.",
+                "because": [
+                  "color.roles",
+                  "people.q2"
+                ]
+              }
+            }
+          }
+        },
+        "ghost": {
+          "background": {
+            "hover": {
+              "$value": "{color.pink.light.100}",
+              "$description": "Ghost button fill on hover.",
+              "$extensions": {
+                "open-ds": {
+                  "why": "pink.light.100, pink.dark.100 in dark: a light brand tint shows the pointer without a box at rest.",
+                  "because": [
+                    "color.roles",
+                    "people.q2"
+                  ]
+                }
+              }
+            }
+          }
         }
       },
       "input": {
@@ -6524,6 +6584,23 @@
           "$value": "{tabs.trigger.focus-ring-offset}",
           "$description": "Deprecated: use component.tabs.trigger.focus-ring-offset (OD-243). Canvas of the tabs.",
           "$deprecated": "Use component.tabs.trigger.focus-ring-offset. Removed in the next minor release."
+        },
+        "trigger": {
+          "background": {
+            "current": {
+              "$value": "{color.pink.light.200}",
+              "$description": "Fill of the current tab.",
+              "$extensions": {
+                "open-ds": {
+                  "why": "pink.light.200, pink.dark.200 in dark: the current tab sits on a stronger brand tint than hover, with the pink 600 edge.",
+                  "because": [
+                    "color.roles",
+                    "people.q2"
+                  ]
+                }
+              }
+            }
+          }
         }
       },
       "overlay": {

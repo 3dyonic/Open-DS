@@ -23,8 +23,8 @@ test("Brand expressive's palette steps with a why pass the component-key rule", 
 });
 
 test("a raw hex in a component key fails the rule", () => {
-  const s = copy("hex", (c) => (c.badge["brand-soft"].background.$value = "#FFCCDC"));
-  assert.match(componentLinks(s).join("\n"), /component\.badge\.brand-soft\.background holds the raw value "#FFCCDC"/);
+  const s = copy("hex", (c) => (c.button.secondary.background["@"].$value = "#FFCCDC"));
+  assert.match(componentLinks(s).join("\n"), /component\.button\.secondary\.background\.@ holds the raw value "#FFCCDC"/);
 });
 
 test("a palette step with no why fails the rule and the gap ledger", () => {
