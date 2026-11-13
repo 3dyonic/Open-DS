@@ -5,7 +5,7 @@ description: "OD-288: split a scheme by owner (source, overlay, output), join it
 
 # ADR-002: Scheme layers, a build step, and distribution
 
-Status: decided (OD-288). Nothing in this note is built yet.
+Status: decided (OD-288). Steps 1 to 3 of the order of work shipped (OD-289, OD-291, OD-292). Steps 4 to 7 are open (OD-311).
 
 ## Problem
 
@@ -182,13 +182,13 @@ A source splits by scope: `scheme.json` (identity and global answers), `scopes/<
 
 Each step is one PR to RC1. The harness stays green after each step. Steps 1 to 3 change nothing a user sees.
 
-1. One load and save path. A harness check fails on any direct read of `schemes/*.json`. 40 files move to it.
-2. Component defaults at build time. A source stores only the differences. Defaults are added for the 22 keys. Measure the size change.
-3. The build step and the built file, with the scheme checks moved into `cli/src` and the out-of-date check.
-4. The overlay format, its schema, the review list and the lockfile. `create` writes these in place of a copied `scheme.json`.
-5. `open-ds upgrade`: the three-way compare, migrations on overlays, and the import from old projects.
-6. The source folder split by scope.
-7. Packaging: the npm package, and `create --from` reading the package folder or a zip. Installing one scope alone (`--scope`) comes after a real user needs it.
+1. One load and save path. A harness check fails on any direct read of `schemes/*.json`. 40 files move to it. (OD-289)
+2. Component defaults at build time. A source stores only the differences. Defaults are added for the 22 keys. Measure the size change. (OD-291)
+3. The build step and the built file, with the scheme checks moved into `cli/src` and the out-of-date check. (OD-292)
+4. The overlay format, its schema, the review list and the lockfile. `create` writes these in place of a copied `scheme.json`. (OD-311)
+5. `open-ds upgrade`: the three-way compare, migrations on overlays, and the import from old projects. (OD-311)
+6. The source folder split by scope. (OD-311)
+7. Packaging: the npm package, and `create --from` reading the package folder or a zip. Installing one scope alone (`--scope`) comes after a real user needs it. (OD-311)
 
 ## Not in scope
 
