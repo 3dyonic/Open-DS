@@ -117,6 +117,15 @@ test("holding runs from a held step to its end of the scale", () => {
   assert.deepEqual(held, { s: { blue: { light: { 300: "over-limit", 50: "order", 100: "order", 200: "order" } } } });
 });
 
+test("a move over its limit that the owner approved moves; an approval to another value holds it", () => {
+  const snap = (row) => ({ schemes: { s: { themes: [], values: {}, chains: {}, palette: { blue: { light: row } }, keys: { blue: { light: { key: KEY } } }, trace: [], decisions: { answers: [] } } } });
+  const base = lightScale(KEY);
+  const moved = { ...base, 300: "#9DBEF8" };
+  const approval = (to) => [{ scheme: "s", theme: "light", check: "shift.approval-unapproved", token: "color.blue.light.300", to, why: "Cause: OD-308. Approved.", approved_by: "owner" }];
+  assert.deepEqual(stepsToHold(snap(base), snap(moved), undefined, approval("#9dbef8")), {});
+  assert.equal(stepsToHold(snap(base), snap(moved), undefined, approval("#9dbef9")).s.blue.light[300], "over-limit");
+});
+
 test("How the scale is built: none while the flag is off; with it on, every section from the data", () => {
   const g = grammar();
   const fm = () => "";
