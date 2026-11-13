@@ -918,7 +918,10 @@
         "each option of a typography question lists the type roles it creates, or the role is always-on with a reason; the type card shows the same graph as color",
         "spacing is a decision graph on the same engine: gap, inset, padding, component step and row roles; each gap and inset comes from the spacing base × its use case's multiple, each map step from the rhythm; gaps between groups and sections keep their floors; a row is one default control tall and at least the smallest target",
         "shape is a decision graph on the same engine: control, surface, option, element and badge corner roles; a decided corner's relation is its rule; a relation with a kind (option, element and badge) is a connection, read from the scope's relations, not a second store",
-        "a stored reason names only the numbers its data has: a type reason's sizes, grid, line box and line kind, and the lead value of any reason in the reason form"
+        "a stored reason names only the numbers its data has: a type reason's sizes, grid, line box and line kind, and the lead value of any reason in the reason form",
+        "elevation is a decision graph on the same engine: card and overlay shadow and default line roles; the layer step and the dark shade are connections read from the scope's relations; the default line's relation is its rule",
+        "motion is a decision graph on the same engine: feedback, panel, exit and hero time and four easing roles; the motion family picks a duration's job and sets its limit and its curves as the token's rule; an exit takes the feedback time, an enter the standard curve, a panel at least the feedback time and a hero at least the panel time",
+        "a measured rule that breaks today (the default line, the multi-brand corner count) is in the connections baseline, which may only go down"
       ],
       "checks": [
         "color-links-complete",
