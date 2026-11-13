@@ -130,7 +130,8 @@ export function storedScheme(id, roots = assetRoots()) {
   return readJson(join(roots.schemes, `${id}.json`));
 }
 
-export function loadScheme(id, roots = assetRoots()) {
+/** A scheme with its defaults and generated values. graded overrides the curve flag (OD-299), for a report that builds both curves. */
+export function loadScheme(id, roots = assetRoots(), { graded } = {}) {
   const path = join(roots.schemes, `${id}.json`);
   if (!existsSync(path)) {
     throw new Error(
@@ -139,7 +140,7 @@ export function loadScheme(id, roots = assetRoots()) {
   }
   // The file stores only what the scheme decides; every other component key takes the grammar's default,
   // and the scales and the spacing map come from their recorded rules.
-  return withTypeAndSpace(withGenerated(withDefaults(readJson(path), grammar(roots))));
+  return withTypeAndSpace(withGenerated(withDefaults(readJson(path), grammar(roots)), { graded }));
 }
 
 /** Every grammar question by id, with its group. */
