@@ -3499,32 +3499,98 @@ export const CHECKS = {
       return ok(`${record.systems.length} systems measured from their published tokens, with sources and versions`);
     },
   },
-  // OD-299: "How the scale is built" sits under Primitives > Color only while the graded curve is on,
-  // so it never describes a curve the scheme does not ship. When on, it carries the grey strip and the
-  // scheme's own easing answer.
+  // OD-299, OD-307: "How the scale is built" sits under Primitives › Color › only while the graded
+  // curve is on, so it never describes a curve the scheme does not ship. When on, every value the page
+  // shows is the built scale's: the strip, each dot of the chart and its lightness, the curve and the
+  // linear line, the held steps, the three contrast pairs, and the other answers' strips. The check
+  // works each value out again from the scheme's tokens and cli/src/ramps.mjs, not from the generator.
   "color-scale-docs": {
-    requires: ["cli/src/color-steps.mjs", "docs/docs"],
+    requires: ["cli/src/color-steps.mjs", "cli/src/ramps.mjs", "docs/docs"],
     run: async (c) => {
-      const { GRADED_STEPS, stepsAnswer } = await import(pathToFileURL(c.p("cli/src/color-steps.mjs")).href);
+      const { GRADED_STEPS, EASING_BY_STEPS, stepsAnswer } = await import(pathToFileURL(c.p("cli/src/color-steps.mjs")).href);
+      const { STEPS, contrast, gradedLightScale, lch } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
+      const { follow } = await import(pathToFileURL(c.p("cli/src/scale-map.mjs")).href);
       const gaps = [];
+      let values = 0;
       for (const id of SCHEMES) {
-        const page = `docs/docs/${id}/primitives/color-scale.md`;
+        const dir = `docs/docs/${id}/primitives/color`;
+        const page = `${dir}/how-the-scale-is-built.md`;
         if (!GRADED_STEPS) {
           if (c.has(page)) gaps.push(`${page} exists, but the graded curve is off`);
           continue;
         }
-        if (!c.has(page)) {
-          gaps.push(`${page} is missing; the graded curve is on (run pnpm generate)`);
+        if (!c.has(page) || !c.has(`${dir}/index.md`)) {
+          gaps.push(`${page} or the Color folder index is missing; the graded curve is on (run pnpm generate)`);
           continue;
         }
         const text = c.read(page);
-        const easing = stepsAnswer(c.scheme(id))?.easing;
-        if (!text.includes("# How the scale is built") || !text.includes(`::color-scale{id="${id}-scale-in-grey"}`) || !text.includes(`(easing ${easing})`))
-          gaps.push(`${page} lacks its title, the grey strip or the easing ${easing}`);
+        const kinds = ["scale-strip", "scale-curve", "scale-why", "scale-uses", "scale-options"];
+        const lacking = kinds.filter((k) => !text.includes(`::${k}{id="key"}`));
+        if (!text.includes("# How the scale is built") || lacking.length) gaps.push(`${page} lacks its title or ${lacking.join(", ")}`);
+        if (/Not used yet|in grey|Part of \[Primitives/.test(text)) gaps.push(`${page} still shows the grey strip or its old lines`);
+        const data = c.json(page.replace(/\.md$/, ".json"));
+        const s = c.scheme(id);
+        const t = s.tokens;
+        const brand = Object.keys(t.brands)[0];
+        const hue = follow(t, brand, "light", "color.action.primary.@")?.prim?.split(".")[1];
+        const group = t.primitive.color[hue];
+        const spec = group?.$extensions?.["open-ds"]?.light;
+        const built = Object.fromEntries(STEPS.map((st) => [st, String(group?.light?.[st]?.$value ?? "").slice(0, 7).toUpperCase()]));
+        const steps = stepsAnswer(s);
+        const L = (h) => Math.round(lch(h)[0] * 1000) / 1000;
+        const eased = gradedLightScale(spec.key, steps.easing);
+        const linear = gradedLightScale(spec.key, 0);
+        const differ = (what, shown, want) => {
+          values++;
+          if (shown !== want) gaps.push(`${id}: ${what} shows ${shown}, the built scale has ${want}`);
+        };
+        const strip = data["scale-strip"]?.key;
+        const curve = data["scale-curve"]?.key;
+        const uses = data["scale-uses"]?.key;
+        const options = data["scale-options"]?.key;
+        if (!strip || !curve || !uses || !options) {
+          gaps.push(`${id}: the page data lacks a strip, a curve, the uses or the options`);
+          continue;
+        }
+        differ("the strip's hue", strip.hue, hue);
+        for (const st of STEPS) {
+          differ(`strip ${st}`, strip.steps.find((x) => x.step === st)?.hex, built[st]);
+          const dot = curve.steps.find((x) => x.step === st);
+          differ(`dot ${st}`, dot?.hex, built[st]);
+          differ(`dot ${st} lightness`, dot?.lightness, L(built[st]));
+          differ(`curve at ${st}`, dot?.curve, L(eased[st]));
+          differ(`linear line at ${st}`, dot?.linear, L(linear[st]));
+          const held = st !== "50" && st !== "950" && spec.held?.[st];
+          differ(`held mark at ${st}`, dot?.held ?? null, held || null);
+        }
+        differ("the curve's easing", curve.easing, steps.easing);
+        // The text on the action: the scheme's own on-color, resolved in the first brand's light theme.
+        const onAction = follow(t, brand, "light", "color.text.on-action.@") ?? follow(t, brand, "light", "color.text.on-action");
+        const on = onAction?.prim ? String(onAction.prim.split(".").reduce((n, k) => n?.[k], t.primitive)?.$value ?? "").slice(0, 7).toUpperCase() : null;
+        for (const u of uses.uses) {
+          const fill = built[u.fill.step];
+          const ink = u.text.step ? built[u.text.step] : on ?? u.text.hex;
+          differ(`${u.use} fill`, u.fill.hex, fill);
+          differ(`${u.use} text`, u.text.hex, ink);
+          const ratio = Math.round(contrast(fill, ink) * 100) / 100;
+          differ(`${u.use} contrast`, u.contrast, ratio);
+          differ(`${u.use} level`, u.level, ratio >= 7 ? "AAA" : ratio >= 4.5 ? "AA" : ratio >= 3 ? "AA-large" : "fail");
+        }
+        const own = options.options.filter((o) => o.own);
+        if (own.length !== 1 || own[0].option !== steps.option) gaps.push(`${id}: the outlined option is not the scheme's own answer, ${steps.option}`);
+        if (!options.options.some((o) => o.option === "linear")) gaps.push(`${id}: the other answers leave out linear`);
+        for (const o of options.options) {
+          const r = gradedLightScale(spec.key, EASING_BY_STEPS[o.option]);
+          for (const st of STEPS) differ(`${o.option} strip ${st}`, o.steps.find((x) => x.step === st)?.hex, r[st]);
+        }
       }
       return gaps.length
-        ? bad(gaps.slice(0, 4).join("; "))
-        : ok(GRADED_STEPS ? `${SCHEMES.length} schemes have How the scale is built, from their color answers` : "the graded curve is off, so no scheme has How the scale is built");
+        ? bad(`${gaps.length} gaps; ${gaps.slice(0, 4).join("; ")}`)
+        : ok(
+            GRADED_STEPS
+              ? `${SCHEMES.length} schemes have How the scale is built under Color; its ${values} values match the built scale`
+              : "the graded curve is off, so no scheme has How the scale is built",
+          );
     },
   },
   // OD-291: a scheme file stores only the component values it decides. A token equal to the grammar's
@@ -3705,7 +3771,7 @@ export const CHECKS = {
           ["index.md", '::card-grid{id="home/sections"}'],
           ["foundations/color.md", '::color-keys{id="'],
           ["foundations/color.md", "::surface-stack{"],
-          ["primitives/color.md", "::color-scale{"],
+          ["primitives/color/index.md", "::color-scale{"],
           ["components/button.md", ":::panel{"],
           ["components/button.md", "::reason-chain{"],
           ["components/button.md", "::token-table{"],
