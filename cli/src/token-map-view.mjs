@@ -22,6 +22,8 @@ import {
 } from "./color-map.mjs";
 import { allConnections } from "./decision-graph.mjs";
 import { tokenIndex } from "./lands.mjs";
+import { differenceThreshold } from "./color-steps.mjs";
+import { clashesOf, pairsOf, shorthandOf, weakestContrast } from "./token-card.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
 import { decidersOf, decisionTree, mappingOf, traceScheme } from "./trace.mjs";
@@ -160,6 +162,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
   const floorAnswer = reasons["accessibility.definition"]?.answer ?? "";
   const textFloor = /AAA/.test(floorAnswer) ? 7 : 4.5;
   const level = /AAA/.test(floorAnswer) ? "AAA" : "AA";
+  const threshold = differenceThreshold(scheme);
 
   const rowsOf = (rows) =>
     rows.map((id) => ({ id: tokenName(id), label: rowLabel(id), better: betterName(id, componentSource) }));
@@ -224,17 +227,24 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       .map((n) => ({ level: n.level, name: n.name, says: n.says }));
     const property = tree.find((n) => n.level === "property");
     const graph = graphOf(tree, tokenName(d));
+    // OD-310: the pairs the engine measures this token in (pairs-with): the surfaces it sits on, or the text on it.
+    const sits = tree
+      .filter((n) => n.level === "connection" && n.kind === "pairs-with")
+      .flatMap((n) => n.checks)
+      .filter((c) => c.floor && c.tokens.includes(tokenName(d)))
+      .map((c) => ({ key: c.tokens[0], on: c.tokens[1], floor: c.floor }));
     if (property)
       return {
         ...(graph && { graph }),
         // The questions the engine says decide this kind of token, the mapping's first (decidersOf).
         answers: property.decided_by.map((a) => a.id).filter((id) => reasons[id]),
         direct,
+        sits,
         mapping: { property: property.name ?? entry?.title ?? null, says: property.says, jobs: property.jobs },
         ...(meaning.length && { meaning }),
         ...(guide && { guide }),
       };
-    return { answers: steps.map((s) => s.id).filter((id) => reasons[id]), direct, ...(guide && { guide }) };
+    return { answers: steps.map((s) => s.id).filter((id) => reasons[id]), direct, sits, ...(guide && { guide }) };
   };
 
   // Every area but color is the same in both modes: built once, from the light graph.
@@ -260,6 +270,8 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         shared.decisions[d] = {
           id: d,
           group,
+          shorthand: shorthandOf(scheme, d),
+          resolves: { name: `${label} ${re.exec(n.id)[1].replace("_", ".")}`, value: typeof n.value === "string" ? n.value : JSON.stringify(n.value) },
           why: plainWhy(pick?.why) ?? tracedWhy(d),
           description: indexes.light.nodes.get(d)?.description ?? null,
           answers: chain.answers,
@@ -300,6 +312,11 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       decisions[tokenName(d)] = {
         id: tokenName(d),
         group: groupOf(d),
+        // OD-310: the card's shorthand, its weakest contrast, its real pairs and its clashes.
+        shorthand: shorthandOf(scheme, d),
+        contrast: weakestContrast(index, d, chain.sits),
+        pairs: pairsOf(index, d, scheme.samples, chain.sits),
+        clashes: clashesOf(index, d, threshold),
         why: plainWhy(pick?.why) ?? tracedWhy(d),
         description: index.nodes.get(d)?.description ?? null,
         answers: chain.answers,
@@ -336,7 +353,12 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
           .map((s) => {
             const { found, via } = decisionsUsing(index, s.id);
             if (!found.length) return null;
-            for (const d of found) addDecision(d, { via: via[d] ? tokenName(via[d]) : null, stepWhy: lightestFill({ id: hue.id, steps: all }, s, d) });
+            for (const d of found)
+              addDecision(d, {
+                via: via[d] ? tokenName(via[d]) : null,
+                stepWhy: lightestFill({ id: hue.id, steps: all }, s, d),
+                resolves: { name: `${hue.id} ${s.step}`, value: s.value },
+              });
             const low = contrastsOf(index, s.value).reduce((a, b) => (b.ratio < a.ratio ? b : a), { ratio: Infinity });
             const checks = [];
             for (const d of found) {

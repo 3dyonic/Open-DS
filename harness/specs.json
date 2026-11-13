@@ -996,6 +996,22 @@
         "doc-composites-scoped-styles",
         "doc-composites-base-forms"
       ]
+    },
+    {
+      "id": "OD-310",
+      "title": "The token map card standard: shorthand, weakest contrast, real pairs, clashes and the trace, light and dark side by side",
+      "in": [
+        "the scheme schema has a shorthand per semantic token: a headline of 40 characters or fewer and a line of 90 or fewer, both required",
+        "the token map data gives each card its shorthand, the step and value it resolves to, its weakest contrast against its floor, its pairs on real surfaces with the scheme's sample texts, and the tokens with the same or a near value",
+        "the card shows the header, the shorthand, one contrast meter with the floor marked, the pairs, the clashes and the trace toggle, with light and dark side by side",
+        "every semantic token in every scheme has a shorthand within its limits"
+      ],
+      "checks": [
+        "token-shorthand",
+        "token-map-equals-engine",
+        "json-files-validate",
+        "json-sources-one-layout"
+      ]
     }
   ]
 }

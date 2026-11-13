@@ -52,7 +52,18 @@ type Decision = {
   // A color token's decision graph (OD-304): role → jobs → property → answers → rule → connections →
   // value, and the reason sentence the engine writes from those fields.
   graph?: Graph;
+  // The card (OD-310): the stored shorthand, the step and value it resolves to, and for a color token
+  // its weakest contrast, its real pairs on real surfaces and the tokens with the same or a near value.
+  shorthand?: Shorthand | null;
+  resolves?: { name: string; value: string } | null;
+  contrast?: Contrast | null;
+  pairs?: Pair[];
+  clashes?: Clash[];
 };
+type Shorthand = { headline: string; line: string };
+type Contrast = { ratio: number; floor: number; kind: "text" | "non-text"; on: string; against: string | null };
+type Pair = { as: "text" | "icon" | "edge" | "label"; on: string; text: string; ink: string; ground: string; label?: string };
+type Clash = { token: string; value: string; distance: number; same: boolean; note: string };
 type Connection = { kind: string; says: string };
 type Graph = {
   role: string;
@@ -104,8 +115,8 @@ type Load = { state: "loading" } | { state: "error"; message: string } | { state
 
 const NONE: Path = { area: null, hue: null, step: null, group: null, decision: null };
 // Columns, left to right.
-const X = { area: 0, family: 210, word: 420, group: 850, decision: 1050, list: 1480 };
-const W = { area: 160, family: 160, step: 170, word: 370, group: 160, decision: 370, list: 300 };
+const X = { area: 0, family: 210, word: 420, group: 850, decision: 1050 };
+const W = { area: 160, family: 160, step: 170, word: 370, group: 160, decision: 370, decisionWide: 730, list: 300 };
 
 const ratio = (r: number) => `${Math.round(r * 10) / 10}:1`;
 const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -303,8 +314,136 @@ function GroupNode({ data }: NodeProps<Node<GroupData>>) {
   );
 }
 
-// A decision: its name and its recorded reason on top; the answers behind it behind "more".
-type DecisionData = { d: Decision; selected: boolean; answers: Record<string, Answer>; connections: Record<string, Connection> };
+// A decision (OD-310): the card shows what the token is and does from data only. For a color token, light
+// and dark sit side by side, each in its own mode's surfaces. The trace (the answers behind it) opens below.
+type DecisionData = {
+  d: Decision;
+  selected: boolean;
+  answers: Record<string, Answer>;
+  connections: Record<string, Connection>;
+  // A color token's card in each mode, with that mode's surfaces; null for a token that is the same in both.
+  modes: { mode: Mode; d: Decision; theme: Theme }[] | null;
+};
+const short = (id: string) => id.replace(/^color\./, "");
+const METER_MAX = 14;
+const meterAt = (r: number) => `${Math.min(100, (r / METER_MAX) * 100)}%`;
+
+const MarkIcon = ({ color }: { color: string }) => (
+  <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" className={styles.pairIcon}>
+    <circle cx="10" cy="10" r="8" fill="none" stroke={color} strokeWidth="2" />
+    <path d="M10 5.5v5.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <circle cx="10" cy="14.2" r="1.2" fill={color} />
+  </svg>
+);
+
+function PairChip({ p }: { p: Pair }) {
+  return (
+    <div
+      className={styles.pairChip}
+      style={{ background: p.ground, borderColor: p.as === "edge" ? p.ink : undefined }}
+    >
+      {p.as === "icon" ? (
+        <div className={styles.swatchRow}>
+          <MarkIcon color={p.ink} />
+          <span className={styles.pairText} style={{ color: p.label }}>
+            {p.text}
+          </span>
+        </div>
+      ) : (
+        <span className={styles.pairText} style={{ color: p.as === "edge" ? p.label : p.ink }}>
+          {p.text}
+        </span>
+      )}
+      <span className={styles.pairOn} style={{ color: p.as === "icon" || p.as === "edge" ? p.label : p.ink }}>
+        as {p.as} · on {short(p.on)}
+      </span>
+    </div>
+  );
+}
+
+// One mode's face of a card: header, shorthand, the contrast meter, the pairs and the clashes.
+function CardFace({ d, mode, theme }: { d: Decision; mode: Mode | null; theme: Theme | null }) {
+  const swatch = d.resolves && /^#/.test(d.resolves.value) ? d.resolves.value : null;
+  const c = d.contrast;
+  const pairs = d.pairs ?? [];
+  const clashes = d.clashes ?? [];
+  return (
+    <div className={styles.face} style={theme ? faceStyle(theme) : undefined}>
+      {mode && <div className={styles.cap}>{mode === "light" ? "Light" : "Dark"}</div>}
+      <div className={styles.swatchRow}>
+        {swatch && <span className={styles.swatchBig} style={{ background: swatch }} />}
+        <div>
+          <div className={`${styles.title} ${styles.mono}`}>{d.id}</div>
+          {d.resolves && (
+            <div className={styles.line}>
+              {d.resolves.name} · <span className={styles.mono}>{pxOf(d.resolves.value)}</span>
+            </div>
+          )}
+        </div>
+      </div>
+      {d.shorthand ? (
+        <div className={styles.shorthand}>
+          {d.shorthand.headline}
+          <span className={styles.shortLine}>{d.shorthand.line}</span>
+        </div>
+      ) : (
+        <Badge tone="warning" className={styles.gap}>
+          No shorthand recorded yet
+        </Badge>
+      )}
+      {c && (
+        <div>
+          <div className={styles.cap}>Weakest contrast</div>
+          <div className={styles.meterRow}>
+            <div
+              className={styles.track}
+              role="meter"
+              aria-valuemin={0}
+              aria-valuemax={METER_MAX}
+              aria-valuenow={c.ratio}
+              aria-label={`${ratio(c.ratio)} against a ${ratio(c.floor)} floor`}
+            >
+              <div className={styles.fill} style={{ width: meterAt(c.ratio), background: swatch ?? undefined }} />
+              <div className={styles.floor} style={{ left: meterAt(c.floor) }} />
+            </div>
+            <span className={`${styles.mono} ${c.ratio < c.floor ? styles.missed : ""}`}>{ratio(c.ratio)}</span>
+          </div>
+          <div className={styles.line}>
+            {c.against ? `${short(c.against)} on it` : `On ${short(c.on)}`}. Line: the {ratio(c.floor)} floor
+            {c.kind === "text" ? " for text" : " for marks and edges"}.
+          </div>
+        </div>
+      )}
+      {pairs.length > 0 && (
+        <div className={styles.pairs}>
+          <div className={styles.cap}>Pairs with</div>
+          {pairs.map((p) => (
+            <React.Fragment key={`${p.as}:${p.on}`}>
+              <PairChip p={p} />
+            </React.Fragment>
+          ))}
+        </div>
+      )}
+      {clashes.length > 0 && (
+        <div className={styles.clash}>
+          <div className={styles.dots}>
+            {[swatch, ...clashes.map((x) => x.value)].filter(Boolean).map((v, i) => (
+              <i key={i} style={{ background: v as string }} />
+            ))}
+          </div>
+          <div>
+            {clashes.map((x) => (
+              <div key={x.token}>
+                <b>Clash:</b> {x.note}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
   const [open, setOpen] = useState(false);
   const d = data.d;
@@ -314,38 +453,58 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
       <Hidden type="target" pos={Position.Left} />
       <Hidden type="source" pos={Position.Right} />
       <div className={styles.cap}>Decision</div>
-      <div className={`${styles.title} ${styles.mono}`}>{d.id}</div>
-      {d.meaning && d.meaning.length > 0 && (
-        <>
-          <div className={styles.cap}>What the name means</div>
-          {d.meaning.map((m) => (
-            <div key={m.name} className={styles.qa}>
-              <b className={styles.mono}>{m.level === "variant" ? `.${m.name}` : m.name}</b> <span className={styles.line}>{m.says}</span>
-            </div>
+      {data.modes ? (
+        <div className={styles.faces}>
+          {data.modes.map((m) => (
+            <React.Fragment key={m.mode}>
+              <CardFace d={m.d} mode={m.mode} theme={m.theme} />
+            </React.Fragment>
           ))}
-        </>
-      )}
-      {d.graph?.reason ? (
-        <div className={styles.key}>{d.graph.reason}</div>
-      ) : d.why ? (
-        <div className={styles.key}>{sentence(d.why)}</div>
-      ) : (
-        d.description && <div>{d.description}</div>
-      )}
-      {d.graph?.reason && d.why && <div className={styles.line}>Measured: {sentence(d.why)}</div>}
-      {d.guide?.intent && <div>{d.guide.intent}</div>}
-      {d.guide && d.guide.useFor.length > 0 && <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>}
-      {d.guide?.notFor.map((n) => (
-        <div key={n.when} className={styles.line}>
-          Not for {n.when.toLowerCase()}: use {n.use}
         </div>
-      ))}
+      ) : (
+        <CardFace d={d} mode={null} theme={null} />
+      )}
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
       {used === 0 && !d.via && !(d.guide && d.guide.useFor.length) && <div className={styles.line}>No component uses it.</div>}
       {!hasReason(d) && <NoReason />}
-      {(d.stepWhy || d.answers.length > 0 || d.graph) && <More open={open} onToggle={() => setOpen(!open)} closed="Why" />}
+      <button
+        type="button"
+        className={`${styles.more} nodrag`}
+        aria-expanded={open}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen(!open);
+        }}
+      >
+        {open ? "▾ Hide the trace" : "▸ Show the trace"}
+      </button>
       {open && (
         <>
+          {d.meaning && d.meaning.length > 0 && (
+            <>
+              <div className={styles.cap}>What the name means</div>
+              {d.meaning.map((m) => (
+                <div key={m.name} className={styles.qa}>
+                  <b className={styles.mono}>{m.level === "variant" ? `.${m.name}` : m.name}</b> <span className={styles.line}>{m.says}</span>
+                </div>
+              ))}
+            </>
+          )}
+          {d.graph?.reason ? (
+            <div className={styles.key}>{d.graph.reason}</div>
+          ) : d.why ? (
+            <div className={styles.key}>{sentence(d.why)}</div>
+          ) : (
+            d.description && <div>{d.description}</div>
+          )}
+          {d.graph?.reason && d.why && <div className={styles.line}>Measured: {sentence(d.why)}</div>}
+          {d.guide?.intent && <div>{d.guide.intent}</div>}
+          {d.guide && d.guide.useFor.length > 0 && <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>}
+          {d.guide?.notFor.map((n) => (
+            <div key={n.when} className={styles.line}>
+              Not for {n.when.toLowerCase()}: use {n.use}
+            </div>
+          ))}
           {d.graph ? (
             <ColorGraph graph={d.graph} mapping={d.mapping} connections={data.connections} answers={data.answers} />
           ) : (
@@ -616,12 +775,20 @@ function build(map: MapFile, model: Model, path: Path, openComp: string | null, 
       if (path.decision && path.decision !== id) continue;
       const d = model.decisions[id];
       const top = Math.max(dy, cy);
+      // A color card shows light and dark side by side, each from its own mode's map.
+      const modes = map.modes.light.decisions[id]
+        ? (["light", "dark"] as const)
+            .filter((m) => map.modes[m].decisions[id])
+            .map((m) => ({ mode: m, d: map.modes[m].decisions[id], theme: map.modes[m].theme }))
+        : null;
+      const width = modes && modes.length > 1 ? W.decisionWide : W.decision;
+      const listX = X.decision + width + 60;
       nodes.push({
         id: `d:${id}`,
         type: "decision",
         position: at(X.decision, top),
-        style: { width: W.decision },
-        data: { d, selected: path.decision === id, answers: map.answers, connections: map.connections ?? {} },
+        style: { width },
+        data: { d, selected: path.decision === id, answers: map.answers, connections: map.connections ?? {}, modes },
       });
       edges.push({ id: `e:${g}:${id}`, source: `g:${g}`, target: `d:${id}`, className: styles.edgeLit });
       dy = top + 160;
@@ -630,7 +797,7 @@ function build(map: MapFile, model: Model, path: Path, openComp: string | null, 
         nodes.push({
           id: `cl:${id}`,
           type: "list",
-          position: at(X.list, cy),
+          position: at(listX, cy),
           style: { width: W.list },
           data: { title: "Components", owner: id, items: d.components, open: openComp, onToggle: toggleComp },
         });
@@ -642,7 +809,7 @@ function build(map: MapFile, model: Model, path: Path, openComp: string | null, 
         nodes.push({
           id: `al:${id}`,
           type: "list",
-          position: at(X.list, cy),
+          position: at(listX, cy),
           style: { width: W.list },
           data: {
             title: "Aliases",
@@ -697,6 +864,9 @@ const canvasStyle = (t: Theme) =>
     "--color-border-selected": t.accent,
     "--color-surface-selected": t.accentSoft,
   }) as React.CSSProperties;
+
+// A card face wears its own mode's card surface, so light and dark read side by side.
+const faceStyle = (t: Theme) => ({ ...canvasStyle(t), background: t.panel ?? undefined }) as React.CSSProperties;
 
 function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: Mode) => void }) {
   const model: Model = useMemo(() => {

@@ -268,6 +268,7 @@ export function connectionChecks(scheme, g, c, { brand, mode, index, name = null
       const promise = apart === null ? null : promised(c.promise, apart);
       const rule = apart === null ? "" : `; ${apart} steps apart${promise ? ` promise ${promise}:1` : " promise no floor"}`;
       add([short(p.key), short(p.on)], ratio >= p.contrast, `${short(p.key)} on ${short(p.on)} is ${r2(ratio)}, floor ${p.contrast}:1${rule}`, p.waits);
+      out.at(-1).floor = p.contrast;
     }
   } else if (c.kind === "stays-apart" && c.by === "order") {
     const rungs = c.tokens.filter((t) => has.has(t) && typeof place(t).value === "string");
