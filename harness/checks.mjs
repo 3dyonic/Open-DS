@@ -1093,6 +1093,8 @@ export const CHECKS = {
         "radio-group.tsx": ["--radio-group-item-hit-area"],
         "switch.tsx": ["--switch-hit-area"],
         "slider.tsx": ["--slider-thumb-hit-area"],
+        // OD-300: a compact button on touch (36px in Multi-brand) grows to the 44px hit area.
+        "button.tsx": ["--button-hit-area"],
       };
       for (const [file, vars] of Object.entries(reads)) {
         const text = c.read(`ui/src/components/${file}`);
@@ -1102,9 +1104,11 @@ export const CHECKS = {
         gaps.push("radio-group.tsx: the gap does not keep two radios' hit areas apart");
       if (!c.read("ui/src/components/field.tsx").includes("min-h-[var(--field-group-hit-area)]"))
         gaps.push("field.tsx: a checkbox group's rows are not one hit area tall");
+      if (!c.read("ui/src/components/button-group.tsx").includes("[&>[data-slot=button]]:after:hidden"))
+        gaps.push("button-group.tsx: stacked buttons grow hit areas over each other");
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
-        : ok("size.hit-area is 24px for a pointer and 44px for touch; 4 small controls grow to it, and their groups keep rows apart");
+        : ok("size.hit-area is 24px for a pointer and 44px for touch; 5 controls grow to it, and their groups keep hit areas apart");
     },
   },
   "focus-ring-token": {

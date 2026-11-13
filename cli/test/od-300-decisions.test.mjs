@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import { aliasChain, tokenIndex } from "../src/lands.mjs";
 import { grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
 import { checkRelations, contrast, edgeRule, px } from "../src/shape-elevation.mjs";
+import { readsHitArea } from "../src/style-rules.mjs";
 import { BUTTON_LABEL_WORDS, checkCopy, checkUi } from "../src/tools.mjs";
 import { reasonOf, traceScheme, traceToken } from "../src/trace.mjs";
 
@@ -190,6 +191,25 @@ test("check_ui flags a button label too long for one line, and passes a short on
   assert.deepEqual(checkUi(s, g, [{ path: "src/a.tsx", content: "<Button>{t('a long label from a catalogue')}</Button>" }]).findings, []);
   assert.equal(BUTTON_LABEL_WORDS, 3);
   assert.match(checkCopy(s, g, { kind: "button", text: "Export all of the records" }).findings[0].message, /3 words at most, so it stays on one line/);
+});
+
+// ---------- Item 9: compact buttons on touch get a 44px hit area ----------
+
+test("a compact button drawn under the touch hit area grows its hit area to 44px, and joined stacked buttons do not overlap", () => {
+  assert.equal(keyOf("button/hit-area").default, "size.hit-area");
+  const drawn = { "content-first": 44, "multi-brand": 36 };
+  for (const [id, compact] of Object.entries(drawn)) {
+    const s = loadScheme(id);
+    for (const t of themes(s)) {
+      assert.equal(px(valueIn(s, t, "component.button.compact.height")), compact, `${id} draws compact at ${compact}px`);
+      assert.equal(px(valueIn(s, t, "component.button.hit-area")), 44, `${id}/${t.brand}/${t.mode}`);
+    }
+  }
+  const button = read("components/button.tsx");
+  assert.ok(readsHitArea(button, "--button-hit-area"));
+  // The drawn box keeps its size: the compact height still reads its own key.
+  assert.match(button, /compact: "h-\[var\(--button-compact-height\)\]/);
+  assert.match(read("components/button-group.tsx"), /vertical:\n?\s*"flex-col[^"]*\[&>\[data-slot=button\]\]:after:hidden"/);
 });
 
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------

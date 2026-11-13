@@ -199,6 +199,16 @@ setKey(
   "Padding of the switch: the gap between the track's edge and the thumb, on every side.",
 );
 
+// ---------- Item 9: compact buttons in touch-first schemes get a 44px hit area ----------
+// Multi-brand draws compact buttons at 36px; touch needs 44px. The drawn box keeps its size and the hit
+// area grows past it, as the checkbox's and the switch's do. Buttons joined in a vertical group touch,
+// so there the hit area does not grow: it would cover the next button.
+addKey(
+  "button/hit-area",
+  "size.hit-area",
+  "The button's hit area: it grows past a drawn box that is smaller, such as a compact button on touch, and never into a joined neighbour.",
+);
+
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
 // Colors map to scale steps only. Step 200 is the nearest step to the chosen look; sunken (step 100)
 // is the well's job, and a placeholder is not a well.

@@ -3595,7 +3595,8 @@
         "button/compact/height",
         "button/compact/padding-x",
         "button/large/height",
-        "button/focus-offset"
+        "button/focus-offset",
+        "button/hit-area"
       ]
     },
     {
@@ -5858,6 +5859,12 @@
       "component": "button",
       "description": "Color of the gap between a button and its focus ring: the canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
+    },
+    {
+      "id": "button/hit-area",
+      "component": "button",
+      "description": "The button's hit area: it grows past a drawn box that is smaller, such as a compact button on touch, and never into a joined neighbour.",
+      "default": "size.hit-area"
     },
     {
       "id": "input/background",
