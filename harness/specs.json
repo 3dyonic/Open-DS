@@ -934,6 +934,26 @@
       "checks": [
         "generated-files-untracked"
       ]
+    },
+    {
+      "id": "OD-299",
+      "title": "Color scales: contrast-graded steps with an eased lightness curve per scheme, and a difference check",
+      "in": [
+        "two color questions with an answer and a why per scheme: color.definition.steps (the easing strength) and color.values.difference (the threshold)",
+        "the generator builds the shared curve and the contrast-graded curve side by side, behind a flag in cli/src/color-steps.mjs",
+        "the OKLab difference check over the accent, status and category colors on each surface, under normal vision and three simulated deficiencies, with a baseline that may only go down",
+        "threshold research: the smallest pairwise OKLab distance in the status and category colors of Primer, Carbon, Spectrum, Atlassian and Radix, with sources and versions",
+        "a shift report for every color token per scheme, brand and mode, by tier; a move over its limit keeps its value; the relation gates hold",
+        "a swatch sheet per scheme from token values, both curves side by side",
+        "a docs page per scheme, How the scale is built, under Primitives > Color, shown only when the flag is on"
+      ],
+      "checks": [
+        "scopes-uniform-template",
+        "color-curve-shift",
+        "color-difference",
+        "color-difference-research",
+        "color-scale-docs"
+      ]
     }
   ]
 }

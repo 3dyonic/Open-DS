@@ -2,6 +2,7 @@
 // Each check says what it needs to exist (`requires`). If that is missing, the layer is
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
+import { curveOf } from "../cli/src/color-steps.mjs";
 import { themeTokens } from "../cli/src/tokens.mjs";
 import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
@@ -1347,7 +1348,7 @@ export const CHECKS = {
           const spec = g?.$extensions?.["open-ds"];
           if (!spec) continue;
           for (const mode of ["light", "dark"]) {
-            const want = scale(spec[mode], mode, canvas);
+            const want = scale(spec[mode], mode, canvas, curveOf(s));
             for (const st of STEPS) {
               const got = String(g[mode]?.[st]?.$value ?? "").toUpperCase();
               if (got !== want[st])
@@ -1390,7 +1391,7 @@ export const CHECKS = {
               if (adj.C == null || adj.C <= 0) continue;
               moves++;
               if (mode !== "light") continue;
-              const generated = scale({ key: spec.light.key }, "light")[st];
+              const generated = scale({ key: spec.light.key, held: spec.light.held }, "light", null, curveOf(s))[st];
               if (lch(generated)[1] >= TARGET)
                 gaps.push(
                   `${id}: ${hue}.${mode}.${st} takes more chroma, but its generated chroma already meets ${TARGET}`,
@@ -1870,9 +1871,16 @@ export const CHECKS = {
         path.split(".").reduce((n, p) => (n && typeof n === "object" ? n[p] : undefined), tree) !== undefined;
       const semantic = (sch) => sch.tokens.semantic;
       for (const sc of g.scopes) {
-        const got = sc.questions.map((q) => q.method).join();
+        // The five method questions, in order. A follow-up question (OD-299) refines one of them: its id is
+        // <scope>.<method>.<name>, and it sits right after its method question or another follow-up of it.
+        const main = sc.questions.filter((q) => q.id === `${sc.id}.${q.method}`);
+        const got = main.map((q) => q.method).join();
         if (got !== methods.join()) gaps.push(`${sc.id}: methods ${got}`);
-        for (const q of sc.questions) if (q.id !== `${sc.id}.${q.method}`) gaps.push(`${sc.id}: question id ${q.id}`);
+        sc.questions.forEach((q, i) => {
+          if (q.id === `${sc.id}.${q.method}`) return;
+          if (!q.id.startsWith(`${sc.id}.${q.method}.`)) return gaps.push(`${sc.id}: question id ${q.id}`);
+          if (sc.questions[i - 1]?.method !== q.method) gaps.push(`${sc.id}: follow-up ${q.id} does not sit after ${sc.id}.${q.method}`);
+        });
         if (!sc.owns?.length) gaps.push(`${sc.id}: owns no tokens`);
         if (!sc.lands_in?.length) gaps.push(`${sc.id}: lands in no component`);
         const sits = g.situations.filter((x) => x.scope === sc.id).map((x) => x.id);
@@ -1897,7 +1905,7 @@ export const CHECKS = {
         if (!g.scopes.some((sc) => sc.id === x.scope)) gaps.push(`situation ${x.id} has no scope`);
       return gaps.length
         ? bad(gaps.slice(0, 12).join("; "))
-        : ok(`${g.scopes.length} scopes, each with the 5 method questions, owned tokens, components and situations`);
+        : ok(`${g.scopes.length} scopes, each with the 5 method questions (and their follow-ups), owned tokens, components and situations`);
     },
   },
 
@@ -3377,6 +3385,101 @@ export const CHECKS = {
       return copies.length
         ? bad(`${copies.join(", ")} store color scales or spacing map steps that the generator makes; load and save each with loadScheme and saveScheme`)
         : ok(`${SCHEMES.length} schemes store key colors and spacing rhythms, not the scales and steps they generate`);
+    },
+  },
+  // OD-299: the contrast-graded curve against the shared curve, both built in this process. Every move
+  // under its limit passes; a review-tier move has its reason in harness/od-299-shift-reasons.json; no
+  // move is over its limit (that step is held); every relation gate holds; brand keys stay exact.
+  "color-curve-shift": {
+    requires: ["cli/src/quality/curve-shift.mjs", "harness/od-299-shift-reasons.json"],
+    run: async (c) => {
+      const { curveSnapshots, shiftReport } = await import(pathToFileURL(c.p("cli/src/quality/curve-shift.mjs")).href);
+      const roots = { schemes: c.p("schemes") };
+      const s = curveSnapshots({
+        ids: SCHEMES,
+        load: (id, graded) => loadScheme(id, roots, { graded }),
+        stored: (id) => c.storedScheme(id),
+        grammar: c.grammar(),
+        themeTokens,
+      });
+      const r = shiftReport(s.old, s.new);
+      const reasons = c.json("harness", "od-299-shift-reasons.json").schemes ?? {};
+      const gaps = [];
+      for (const m of [...r.moves, ...r.steps].filter((x) => x.tier === "approval"))
+        gaps.push(`${m.scheme} ${m.token ?? `${m.hue}.${m.mode}.${m.step}`} moves ${m.distance.toFixed(3)}, over its limit: hold the step (node scripts/od-299-shift.mjs --hold)`);
+      for (const id of SCHEMES) {
+        const rec = reasons[id];
+        const answer = c.scheme(id).answers.find((a) => a.question === "color.definition.steps")?.option;
+        if (!rec?.reason?.includes("contrast-graded") || !rec.reason.includes(answer ?? "?")) gaps.push(`${id}: the review reason does not name the method and the answer ${answer}`);
+        const want = { tokens: r.moves, steps: r.steps };
+        for (const [kind, list] of Object.entries(want)) {
+          const moved = new Set(list.filter((m) => m.scheme === id && m.tier === "review").map((m) => (kind === "tokens" ? `${m.theme} ${m.token}` : `${m.hue}.${m.mode}.${m.step}`)));
+          const listed = new Set(rec?.[kind] ?? []);
+          for (const x of moved) if (!listed.has(x)) gaps.push(`${id}: ${x} moves in the review tier with no recorded reason`);
+          for (const x of listed) if (!moved.has(x)) gaps.push(`${id}: ${x} has a reason but no review-tier move`);
+        }
+      }
+      for (const g of r.relations) gaps.push(`${g.id}: ${g.details.slice(0, 2).join("; ")}`);
+      for (const k of r.keys) gaps.push(`${k.scheme}: the ${k.hue} ${k.mode} key changed`);
+      const count = (tier) => r.moves.filter((m) => m.tier === tier).length;
+      return gaps.length
+        ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}. node scripts/od-299-shift.mjs writes the full report.`)
+        : ok(`the graded curve against the shared one: ${count("pass")} token moves pass, ${count("review")} have a recorded reason, none over its limit; every relation gate holds; brand keys exact`);
+    },
+  },
+  // OD-299: colors that mean different things look different. The accent and status marks, and the
+  // category marks, on each surface, under normal vision and three simulated deficiencies. A pair under
+  // the scheme's threshold needs a second cue; today's pairs are in a baseline that may only go down.
+  "color-difference": {
+    requires: ["cli/src/quality/difference.mjs", "harness/color-difference-baseline.json"],
+    run: async (c) => {
+      const { againstBaseline, differenceOf } = await import(pathToFileURL(c.p("cli/src/quality/difference.mjs")).href);
+      const failures = differenceOf(Object.fromEntries(SCHEMES.map((id) => [id, c.scheme(id)])), themeTokens);
+      const { added, fixed } = againstBaseline(failures, c.json("harness", "color-difference-baseline.json"));
+      if (added.length) return bad(`${added.length} pairs fail the difference check and are not in the baseline: ${added.slice(0, 4).map((f) => `${f.id} (${f.distance.toFixed(3)})`).join("; ")}`);
+      if (fixed.length) return bad(`${fixed.length} pairs in the baseline pass now; take them out with node scripts/od-299-difference.mjs --write-baseline: ${fixed.slice(0, 3).join("; ")}`);
+      return ok(`${failures.length} pairs need a second cue, all in the owner's baseline; no new ones`);
+    },
+  },
+  // OD-299: the threshold research. Its measured block is what the difference math gives its sources.
+  "color-difference-research": {
+    requires: ["harness/research/od-299-difference-sources.json", "scripts/od-299-thresholds.mjs"],
+    run: async (c) => {
+      const { measured } = await import(pathToFileURL(c.p("scripts/od-299-thresholds.mjs")).href);
+      const record = c.json("harness", "research", "od-299-difference-sources.json");
+      const missing = record.systems.filter((s) => !s.url || !s.version).map((s) => s.id);
+      if (missing.length) return bad(`${missing.join(", ")} name no source URL or version`);
+      if (JSON.stringify(measured(record)) !== JSON.stringify(record.measured))
+        return bad("the measured block differs from its sources; run node scripts/od-299-thresholds.mjs");
+      return ok(`${record.systems.length} systems measured from their published tokens, with sources and versions`);
+    },
+  },
+  // OD-299: "How the scale is built" sits under Primitives > Color only while the graded curve is on,
+  // so it never describes a curve the scheme does not ship. When on, it carries the grey strip and the
+  // scheme's own easing answer.
+  "color-scale-docs": {
+    requires: ["cli/src/color-steps.mjs", "docs/docs"],
+    run: async (c) => {
+      const { GRADED_STEPS, stepsAnswer } = await import(pathToFileURL(c.p("cli/src/color-steps.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const page = `docs/docs/${id}/primitives/color-scale.md`;
+        if (!GRADED_STEPS) {
+          if (c.has(page)) gaps.push(`${page} exists, but the graded curve is off`);
+          continue;
+        }
+        if (!c.has(page)) {
+          gaps.push(`${page} is missing; the graded curve is on (run pnpm generate)`);
+          continue;
+        }
+        const text = c.read(page);
+        const easing = stepsAnswer(c.scheme(id))?.easing;
+        if (!text.includes("# How the scale is built") || !text.includes("<svg") || !text.includes(`(easing ${easing})`))
+          gaps.push(`${page} lacks its title, the grey strip or the easing ${easing}`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 4).join("; "))
+        : ok(GRADED_STEPS ? `${SCHEMES.length} schemes have How the scale is built, from their color answers` : "the graded curve is off, so no scheme has How the scale is built");
     },
   },
   // OD-291: a scheme file stores only the component values it decides. A token equal to the grammar's

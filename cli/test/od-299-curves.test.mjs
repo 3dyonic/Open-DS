@@ -1,0 +1,118 @@
+// OD-299: the contrast-graded curve, its flag, the held steps, the difference check and the docs page.
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import { EASING_BY_STEPS, GRADED_STEPS, curveOf, differenceThreshold, stepsAnswer } from "../src/color-steps.mjs";
+import { colorScalePage, greyOf } from "../src/color-scale-doc.mjs";
+import { contrast, easedPosition, gradedDarkScale, gradedLightScale, lch, lightScale, luminance, scale, STEPS } from "../src/ramps.mjs";
+import { closePairs, onSurface, smallestDistance } from "../src/quality/difference.mjs";
+import { stepsToHold } from "../src/quality/curve-shift.mjs";
+import { grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
+
+const KEY = "#0B4FC0";
+const z = (hex) => Math.log(luminance(hex) + 0.05);
+
+test("the flag is off by default, and the curve follows it", () => {
+  assert.equal(GRADED_STEPS, false);
+  const scheme = { answers: [{ question: "color.definition.steps", option: "even-ease" }] };
+  assert.equal(curveOf(scheme), null);
+  assert.deepEqual(curveOf(scheme, true), { easing: 0.5 });
+  assert.equal(curveOf({ answers: [] }, true), null, "no answer, no graded curve");
+});
+
+test("each scheme answers both color questions, with a strength and a threshold", () => {
+  const seen = new Set();
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    assert.ok(stepsAnswer(s), `${id} answers color.definition.steps`);
+    assert.ok(differenceThreshold(s) > 0, `${id} answers color.values.difference`);
+    seen.add(stepsAnswer(s).easing);
+  }
+  assert.deepEqual([...seen].sort(), [0, 0.25, 0.4, 0.5, 0.6], "the owner's five strengths, one per scheme");
+});
+
+test("the graded light scale keeps 50, the key at 600 and 950, and is ordered", () => {
+  const shared = lightScale(KEY);
+  for (const easing of Object.values(EASING_BY_STEPS)) {
+    const row = gradedLightScale(KEY, easing);
+    assert.equal(row["600"], KEY);
+    assert.equal(row["50"], shared["50"]);
+    assert.equal(row["950"], shared["950"]);
+    for (let i = 1; i < STEPS.length; i++) assert.ok(lch(row[STEPS[i]])[0] < lch(row[STEPS[i - 1]])[0], `easing ${easing}: ${STEPS[i]} is darker than ${STEPS[i - 1]}`);
+  }
+});
+
+test("easing 0 is even in ln(luminance + 0.05): equal steps give equal contrast", () => {
+  const row = gradedLightScale(KEY, 0);
+  const rate = (a, b) => (z(row[a]) - z(row[b])) / (+b - +a);
+  assert.ok(Math.abs(rate("100", "200") - rate("300", "400")) < 0.0005, "the same rate above the key");
+  assert.ok(Math.abs(rate("700", "800") - rate("800", "900")) < 0.0005, "the same rate below the key");
+});
+
+test("a stronger ease holds the ends closer and opens the middle", () => {
+  assert.equal(easedPosition(50, 0.6), 0);
+  assert.equal(easedPosition(950, 0.6), 1);
+  const gap = (easing, a, b) => easedPosition(b, easing) - easedPosition(a, easing);
+  assert.ok(gap(0.6, 50, 100) < gap(0, 50, 100));
+  assert.ok(gap(0.6, 500, 550) > gap(0, 500, 550));
+});
+
+test("the dark scale keeps its anchors and climbs from the canvas", () => {
+  const row = gradedDarkScale("#8AB4F8", "#0F1115", 0.4);
+  assert.equal(row["600"], "#8AB4F8");
+  for (let i = 1; i < STEPS.length; i++) assert.ok(luminance(row[STEPS[i]]) > luminance(row[STEPS[i - 1]]));
+});
+
+test("a held step keeps the shared curve; the shared curve ignores held", () => {
+  const spec = { key: KEY, held: { 200: "over-limit", 100: "order" } };
+  const shared = scale({ key: KEY }, "light");
+  const graded = scale(spec, "light", null, { easing: 0.4 });
+  assert.equal(graded["200"], shared["200"]);
+  assert.equal(graded["100"], shared["100"]);
+  assert.notEqual(graded["400"], shared["400"]);
+  assert.deepEqual(scale(spec, "light"), shared);
+});
+
+test("flag off: every scheme loads exactly as on the shared curve", () => {
+  for (const id of schemeIds()) {
+    const now = loadScheme(id);
+    const shared = loadScheme(id, undefined, { graded: false });
+    assert.equal(JSON.stringify(now.tokens.primitive.color), JSON.stringify(shared.tokens.primitive.color), id);
+  }
+});
+
+test("the difference check lays a translucent mark over its surface and finds close pairs", () => {
+  assert.equal(onSurface("#00000080", "#FFFFFF"), "#7F7F7F");
+  assert.equal(onSurface("#123456", "#FFFFFF"), "#123456");
+  const values = {
+    "color.surface.canvas": "#FFFFFF",
+    "color.status.danger": "#C42B2B",
+    "color.status.warning": "#C42B2C",
+    "color.status.info": "#083C93",
+    "color.category.1": "#C42B2B",
+  };
+  const pairs = closePairs(values, 0.05);
+  assert.ok(pairs.some((p) => p.vision === "normal" && p.tokens.join() === "color.status.danger,color.status.warning"));
+  assert.ok(!pairs.some((p) => p.tokens.includes("color.category.1")), "a category is not compared with a status mark");
+  assert.equal(smallestDistance({ a: "#FF0000", b: "#FF0000" }).distance, 0);
+});
+
+test("holding runs from a held step to its end of the scale", () => {
+  const snap = (row) => ({ schemes: { s: { themes: [], values: {}, chains: {}, palette: { blue: { light: row } }, keys: { blue: { light: { key: KEY } } }, trace: [], decisions: { answers: [] } } } });
+  const base = lightScale(KEY);
+  const moved = { ...base, 300: "#9DBEF8" };
+  const held = stepsToHold(snap(base), snap(moved));
+  assert.deepEqual(held, { s: { blue: { light: { 300: "over-limit", 50: "order", 100: "order", 200: "order" } } } });
+});
+
+test("How the scale is built: none while the flag is off; with it on, the strip and the answer", () => {
+  const g = grammar();
+  const fm = () => "";
+  const s = loadScheme("content-first", undefined, { graded: true });
+  assert.equal(colorScalePage(s, g, { graded: false, frontMatter: fm }), null);
+  const page = colorScalePage(s, g, { graded: true, frontMatter: fm });
+  assert.match(page, /# How the scale is built/);
+  assert.match(page, /<svg/);
+  assert.match(page, /\(easing 0\.25\)/);
+  assert.equal(greyOf("#FFFFFF"), "#FFFFFF");
+  assert.ok(Math.abs(contrast(greyOf(KEY), KEY) - 1) < 0.05, "a grey keeps its color's lightness");
+});
