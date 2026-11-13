@@ -1527,6 +1527,34 @@
             "pattern": "^[a-z0-9-]+$"
           },
           "description": "The roles this option brings, by role id (OD-304). An empty list means the option shapes roles but brings none."
+        },
+        "explain": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["goal", "how", "gives"],
+          "description": "Plain words that explain the option on a docs page, such as How the scale is built (OD-307). {hue} stands for the name of the scale's color.",
+          "properties": {
+            "goal": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the option is for: a clause after 'We use <option> for the <hue> scale,', such as 'to give brand fills many strong steps'."
+            },
+            "how": {
+              "type": "string",
+              "minLength": 1,
+              "description": "One sentence: how the option does its job."
+            },
+            "gives": {
+              "type": "string",
+              "minLength": 1,
+              "description": "One sentence that starts with 'So': what people get."
+            },
+            "band": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the middle steps do, after 'Middle steps:'. Left out when the option draws no middle band, such as linear."
+            }
+          }
         }
       }
     },
