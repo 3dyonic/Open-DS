@@ -2008,6 +2008,8 @@
         "native-select",
         "navigation-menu",
         "popover",
+        "resizable",
+        "scroll-area",
         "sheet",
         "sidebar",
         "switch",
@@ -5189,7 +5191,9 @@
         "resizable/focus-offset",
         "resizable/handle/thickness",
         "resizable/grip/border-width",
-        "resizable/grip/border"
+        "resizable/grip/border",
+        "resizable/handle/background-hover",
+        "resizable/handle/background-focus"
       ]
     },
     {
@@ -5202,7 +5206,9 @@
         "scroll-area/thumb/radius",
         "scroll-area/thumb/background",
         "scroll-area/viewport/focus-offset",
-        "scroll-area/scrollbar/border-width"
+        "scroll-area/scrollbar/border-width",
+        "scroll-area/thumb/background-hover",
+        "scroll-area/thumb/background-focus"
       ]
     },
     {
@@ -13811,7 +13817,7 @@
     {
       "id": "resizable/handle/background",
       "component": "resizable",
-      "description": "Handle background of the resizable.",
+      "description": "Fill of the resize handle's line at rest: the faint line, so the panels read as one surface while you work.",
       "default": "color.border.default"
     },
     {
@@ -13896,6 +13902,18 @@
       "default": "color.border.default"
     },
     {
+      "id": "resizable/handle/background-hover",
+      "component": "resizable",
+      "description": "Fill of the resize handle's line under the pointer: the strong border, so the line you are about to drag is clear (3:1).",
+      "default": "color.border.strong"
+    },
+    {
+      "id": "resizable/handle/background-focus",
+      "component": "resizable",
+      "description": "Fill of the resize handle's line in keyboard focus: the strong border, the same as under the pointer, with the focus ring around it.",
+      "default": "color.border.strong"
+    },
+    {
       "id": "scroll-area/viewport/focus",
       "component": "scroll-area",
       "description": "Viewport focus of the scroll area.",
@@ -13928,7 +13946,7 @@
     {
       "id": "scroll-area/thumb/background",
       "component": "scroll-area",
-      "description": "Thumb background of the scroll area.",
+      "description": "Fill of the scroll thumb at rest: the faint line, so a handle stays quiet while you read.",
       "default": "color.border.default"
     },
     {
@@ -13936,6 +13954,18 @@
       "component": "scroll-area",
       "description": "Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge.",
       "default": "border-width.default"
+    },
+    {
+      "id": "scroll-area/thumb/background-hover",
+      "component": "scroll-area",
+      "description": "Fill of the scroll thumb under the pointer: the strong border, so the handle you are about to drag is clear (3:1).",
+      "default": "color.border.strong"
+    },
+    {
+      "id": "scroll-area/thumb/background-focus",
+      "component": "scroll-area",
+      "description": "Fill of the scroll thumb while its scroll area has keyboard focus: the strong border, the same as under the pointer. The area also shows the focus ring.",
+      "default": "color.border.strong"
     },
     {
       "id": "select/trigger/gap",
@@ -16774,7 +16804,8 @@
           "Input borders",
           "Checkbox borders",
           "Secondary button borders",
-          "An edge under the pointer, like the sidebar rail line"
+          "An edge under the pointer, like the sidebar rail line",
+          "A scroll thumb or a resize handle under the pointer or in keyboard focus"
         ],
         "not_for": [
           {

@@ -120,6 +120,44 @@ writeSchema("grammar.schema.json", (schema) => {
   };
 });
 
+// ---------- Item 2: handles are faint at rest, strong under the pointer and in keyboard focus ----------
+// A scroll thumb and a resize handle are tools, not content: at rest they stay quiet so the screen does
+// not get busy. Under the pointer or in keyboard focus they take the strong border, and keyboard focus
+// adds the focus ring (the mock the owner approved: Figma bFTn13mWXP5HXSXSgVBL8m).
+setKey(
+  "scroll-area/thumb/background",
+  FAINT,
+  "Fill of the scroll thumb at rest: the faint line, so a handle stays quiet while you read.",
+);
+addKey(
+  "scroll-area/thumb/background-hover",
+  STRONG,
+  "Fill of the scroll thumb under the pointer: the strong border, so the handle you are about to drag is clear (3:1).",
+);
+addKey(
+  "scroll-area/thumb/background-focus",
+  STRONG,
+  "Fill of the scroll thumb while its scroll area has keyboard focus: the strong border, the same as under the pointer. The area also shows the focus ring.",
+);
+setKey(
+  "resizable/handle/background",
+  FAINT,
+  "Fill of the resize handle's line at rest: the faint line, so the panels read as one surface while you work.",
+);
+addKey(
+  "resizable/handle/background-hover",
+  STRONG,
+  "Fill of the resize handle's line under the pointer: the strong border, so the line you are about to drag is clear (3:1).",
+);
+addKey(
+  "resizable/handle/background-focus",
+  STRONG,
+  "Fill of the resize handle's line in keyboard focus: the strong border, the same as under the pointer, with the focus ring around it.",
+);
+const strongRule = g.semantics.keys.find((k) => k.id === STRONG);
+const HANDLE_USE = "A scroll thumb or a resize handle under the pointer or in keyboard focus";
+if (!strongRule.use_for.includes(HANDLE_USE)) strongRule.use_for.push(HANDLE_USE);
+
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
 // Colors map to scale steps only. Step 200 is the nearest step to the chosen look; sunken (step 100)
 // is the well's job, and a placeholder is not a well.

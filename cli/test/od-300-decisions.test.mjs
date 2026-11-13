@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { aliasChain, tokenIndex } from "../src/lands.mjs";
 import { grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
-import { checkRelations, edgeRule } from "../src/shape-elevation.mjs";
+import { checkRelations, contrast, edgeRule } from "../src/shape-elevation.mjs";
 
 const g = grammar();
 const UI = new URL("../../ui/src/", import.meta.url);
@@ -73,6 +73,33 @@ test("a boundary on the faint line, or a quiet line on the strong one, breaks th
 test("an outline item that is a link or a button takes the clickable edge", () => {
   assert.match(read("components/item.tsx"), /\[a\]:border-\[color:var\(--item-outline-clickable-border\)\]/);
   assert.match(read("components/item.tsx"), /\[button\]:border-\[color:var\(--item-outline-clickable-border\)\]/);
+});
+
+// ---------- Item 2: handles ----------
+
+test("a scroll thumb and a resize handle are faint at rest and strong under the pointer and in keyboard focus", () => {
+  for (const part of ["scroll-area/thumb/background", "resizable/handle/background"]) {
+    assert.equal(keyOf(part).default, "color.border.default", part);
+    assert.equal(keyOf(`${part}-hover`).default, "color.border.strong", `${part}-hover`);
+    assert.equal(keyOf(`${part}-focus`).default, "color.border.strong", `${part}-focus`);
+  }
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    for (const t of themes(s)) {
+      const on = valueIn(s, t, "color.surface.default");
+      const strong = contrast(valueIn(s, t, "component.scroll-area.thumb.background-hover"), on);
+      assert.ok(strong >= 3, `${id}/${t.brand}/${t.mode}: the thumb under the pointer is ${strong}:1`);
+      assert.equal(valueIn(s, t, "component.resizable.handle.background-focus"), valueIn(s, t, "color.border.strong"), id);
+    }
+  }
+  const scroll = read("components/scroll-area.tsx");
+  assert.match(scroll, /hover:bg-\[color:var\(--scroll-area-thumb-background-hover\)\]/);
+  assert.match(scroll, /group-has-\[\[data-slot=scroll-area-viewport\]:focus-visible\]\/scroll-area:bg-\[color:var\(--scroll-area-thumb-background-focus\)\]/);
+  assert.match(scroll, /focus-visible:ring-\[color:var\(--scroll-area-viewport-focus-ring-focus\)\]/);
+  const resize = read("components/resizable.tsx");
+  assert.match(resize, /hover:bg-\[color:var\(--resizable-handle-background-hover\)\]/);
+  assert.match(resize, /focus-visible:bg-\[color:var\(--resizable-handle-background-focus\)\]/);
+  assert.match(resize, /focus-visible:ring-\[color:var\(--resizable-handle-focus-ring-focus\)\]/);
 });
 
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
