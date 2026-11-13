@@ -9,7 +9,7 @@ import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "
 import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
-import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, relative } from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
@@ -111,6 +111,34 @@ const bad = (detail) => ({ ok: false, detail });
 const pending = (detail) => ({ ok: false, pending: true, detail });
 const tail = (s) => s.split("\n").slice(-6).join("\n");
 
+// The ignore groups that hold generated files (OD-305). A group is a run of lines under one comment
+// header, up to the next blank line. The header names the group: "Generated ..." or "Written ...".
+// The patterns come from .gitignore, so a new pattern in a group is guarded with no edit here.
+export function generatedIgnorePatterns(gitignoreText) {
+  const patterns = [];
+  let generated = false;
+  for (const raw of gitignoreText.split("\n")) {
+    const line = raw.trim();
+    if (!line) generated = false;
+    else if (line.startsWith("#")) generated = /^#\s*(generated|written)\b/i.test(line);
+    else if (generated) patterns.push(line);
+  }
+  return patterns;
+}
+
+// Tracked paths that match the patterns. Git does the matching, so it is the same as .gitignore.
+export function trackedMatching(c, patterns) {
+  const dir = mkdtempSync(join(tmpdir(), "od-ignore-"));
+  try {
+    const exclude = join(dir, "exclude");
+    writeFileSync(exclude, `${patterns.join("\n")}\n`);
+    const r = c.sh("git", ["ls-files", "-z", "--cached", "--ignored", "--exclude-from", exclude]);
+    return { code: r.code, paths: r.out.split("\0").filter(Boolean), out: r.out };
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
+
 function ajv() {
   const a = new Ajv2020({ allErrors: true, strict: false });
   addFormats(a);
@@ -178,6 +206,19 @@ export const CHECKS = {
     run: (c) => {
       const r = c.sh("node", ["--test"], { cwd: c.p("harness") });
       return r.code === 0 ? ok("harness tests pass") : bad(tail(r.out));
+    },
+  },
+
+  "generated-files-untracked": {
+    requires: [".gitignore"],
+    run: (c) => {
+      const patterns = generatedIgnorePatterns(c.read(".gitignore"));
+      if (!patterns.length) return bad("no generated-file group found in .gitignore: a header must start with Generated or Written");
+      const found = trackedMatching(c, patterns);
+      if (found.code !== 0) return bad(`git ls-files failed: ${tail(found.out)}`);
+      return found.paths.length
+        ? bad(found.paths.slice(0, 20).map((f) => `${f} is tracked but generated: run git rm --cached ${f}`).join("; "))
+        : ok(`no tracked file matches the ${patterns.length} generated-file patterns in .gitignore`);
     },
   },
 
