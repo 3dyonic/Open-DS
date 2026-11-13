@@ -921,7 +921,9 @@
         "a stored reason names only the numbers its data has: a type reason's sizes, grid, line box and line kind, and the lead value of any reason in the reason form",
         "elevation is a decision graph on the same engine: card and overlay shadow and default line roles; the layer step and the dark shade are connections read from the scope's relations; the default line's relation is its rule",
         "motion is a decision graph on the same engine: feedback, panel, exit and hero time and four easing roles; the motion family picks a duration's job and sets its limit and its curves as the token's rule; an exit takes the feedback time, an enter the standard curve, a panel at least the feedback time and a hero at least the panel time",
-        "a measured rule that breaks today (the default line, the multi-brand corner count) is in the connections baseline, which may only go down"
+        "a measured rule that breaks today (the default line, the multi-brand corner count) is in the connections baseline, which may only go down",
+        "iconography is a decision graph on the same engine: icon size and icon stroke roles; an icon is at least one label line tall, and its stroke renders at least 1px at its size",
+        "accessibility is a decision graph on the same engine: default, compact and large control, hit area, focus width and focus gap roles; each control height comes from the control scale; the focus width comes from the default line, read from the scope's relation"
       ],
       "checks": [
         "color-links-complete",
