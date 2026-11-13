@@ -165,6 +165,39 @@ const rowRule = g.trace.find((r) => r.tokens.join() === "size.row");
 rowRule.says =
   "Decided: a row is one default control tall in every scheme. A row holds controls, so a taller row only adds a gap around them, and a shorter one cuts them. The target size answer sets the control height; the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow.";
 
+// ---------- Item 4: the switch track is about twice its height, and the thumb slides ----------
+// The track is the thumb plus the padding on each side, so it fits the thumb exactly. The thumb slides
+// one track height, so the track is twice its height. The width and height keys multiplied the icon
+// size by 2.25 and 1.25 in code, and the travel was one thumb's width; they give way to the thumb's size.
+const SWITCH_OLD = ["switch/width", "switch/height", "switch/thumb/travel"];
+const deprecateKey = (id, by) => {
+  const e = keyOf(id);
+  e.replaced_by = by;
+  e.description = `Deprecated: use ${by} (OD-300). ${e.description.replace(/^Deprecated: use [^ ]+ \(OD-\d+\)\. /, "")}`;
+};
+for (const id of SWITCH_OLD) deprecateKey(id, "switch/thumb/size");
+// A key deprecated earlier in favour of one deprecated now points at the key that replaces both.
+const REPOINTED = new Set();
+for (const k of g.component_keys) {
+  let by = k.replaced_by;
+  while (by && keyOf(by).replaced_by) by = keyOf(by).replaced_by;
+  if (by && by !== k.replaced_by) {
+    k.description = k.description.replace(`use ${k.replaced_by} `, `use ${by} `);
+    k.replaced_by = by;
+    REPOINTED.add(k.id);
+  }
+}
+setKey(
+  "switch/thumb/size",
+  "size.icon",
+  "Size of the switch's thumb: the icon size. The track is the thumb plus the padding on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
+);
+setKey(
+  "switch/padding",
+  "component-spacing-map.hairline",
+  "Padding of the switch: the gap between the track's edge and the thumb, on every side.",
+);
+
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
 // Colors map to scale steps only. Step 200 is the nearest step to the chosen look; sunken (step 100)
 // is the well's job, and a placeholder is not a well.
@@ -186,6 +219,27 @@ for (const id of schemeIds()) {
     a.option = "two";
     a.why = "Two corner sizes: one for controls and badges, and a larger one for containers, as Aster's 4px and 8px corners show.";
     a.because = ["shape.roles", "shape.values"];
+  }
+
+  // Item 4: each deprecated switch key keeps its value one release and says what replaces it.
+  for (const id of SWITCH_OLD) {
+    const e = keyOf(id);
+    const path = id.split("/");
+    let node = s.tokens.component;
+    for (const k of path.slice(0, -1)) node = node[k] ??= {};
+    node[path.at(-1)] = {
+      $value: `{${e.default}}`,
+      $description: e.description,
+      $deprecated: `Use component.${e.replaced_by.replaceAll("/", ".")}. Removed in the next minor release.`,
+    };
+  }
+  for (const id of REPOINTED) {
+    const e = keyOf(id);
+    const leaf = id.split("/").reduce((n, k) => n?.[k], s.tokens.component);
+    const n = leaf?.$value !== undefined ? leaf : leaf?.["@"];
+    if (!n) continue;
+    n.$description = e.description;
+    n.$deprecated = `Use component.${e.replaced_by.replaceAll("/", ".")}. Removed in the next minor release.`;
   }
 
   saveScheme(s);

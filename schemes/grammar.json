@@ -15667,14 +15667,16 @@
     {
       "id": "switch/height",
       "component": "switch",
-      "description": "Height of the switch.",
-      "default": "size.icon"
+      "description": "Deprecated: use switch/thumb/size (OD-300). Height of the switch.",
+      "default": "size.icon",
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/width",
       "component": "switch",
-      "description": "Width of the switch.",
-      "default": "size.icon"
+      "description": "Deprecated: use switch/thumb/size (OD-300). Width of the switch.",
+      "default": "size.icon",
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/radius",
@@ -15685,7 +15687,7 @@
     {
       "id": "switch/padding",
       "component": "switch",
-      "description": "Padding of the switch.",
+      "description": "Padding of the switch: the gap between the track's edge and the thumb, on every side.",
       "default": "component-spacing-map.hairline"
     },
     {
@@ -15718,9 +15720,9 @@
     {
       "id": "switch/icon",
       "component": "switch",
-      "description": "Deprecated: use switch/thumb/travel (OD-243). Icon of the switch.",
+      "description": "Deprecated: use switch/thumb/size (OD-243). Icon of the switch.",
       "default": "size.icon",
-      "replaced_by": "switch/thumb/travel"
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/focus-offset",
@@ -15743,14 +15745,15 @@
     {
       "id": "switch/thumb/size",
       "component": "switch",
-      "description": "Size of the switch's thumb.",
+      "description": "Size of the switch's thumb: the icon size. The track is the thumb plus the padding on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
       "default": "size.icon"
     },
     {
       "id": "switch/thumb/travel",
       "component": "switch",
-      "description": "How far the thumb moves when the switch turns on: one thumb's width.",
-      "default": "size.icon"
+      "description": "Deprecated: use switch/thumb/size (OD-300). How far the thumb moves when the switch turns on: one thumb's width.",
+      "default": "size.icon",
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/thumb/radius",

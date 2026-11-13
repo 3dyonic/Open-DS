@@ -121,6 +121,30 @@ test("a row is one default control tall in every scheme, and the trace states it
   assert.match(rule.says, /^Decided: a row is one default control tall in every scheme\. A row holds controls/);
 });
 
+// ---------- Item 4: the switch ----------
+
+test("the switch track is the thumb plus its padding, twice as wide as it is tall, and the thumb slides one track height", () => {
+  const src = read("components/switch.tsx");
+  assert.match(src, /\[--switch-track-height:calc\(var\(--switch-thumb-size\)\+2\*var\(--switch-padding\)\)\]/);
+  assert.match(src, /h-\[var\(--switch-track-height\)\] w-\[calc\(2\*var\(--switch-track-height\)\)\]/);
+  assert.match(src, /data-\[state=checked\]:translate-x-\[var\(--switch-track-height\)\] data-\[state=unchecked\]:translate-x-0/);
+  assert.match(src, /transition-transform/);
+  assert.doesNotMatch(src, /var\(--switch-(width|height|thumb-travel)\)/);
+  for (const id of ["switch/width", "switch/height", "switch/thumb/travel"]) assert.equal(keyOf(id).replaced_by, "switch/thumb/size", id);
+  for (const id of schemeIds()) {
+    const s = loadScheme(id);
+    for (const t of themes(s)) {
+      const thumb = px(valueIn(s, t, "component.switch.thumb.size"));
+      const pad = px(valueIn(s, t, "component.switch.padding"));
+      const height = thumb + 2 * pad;
+      const width = 2 * height;
+      assert.equal(width / height, 2, id);
+      // On, the thumb's right edge sits one padding from the track's right edge.
+      assert.equal(pad + height + thumb + pad, width, `${id}: the thumb ends inside the track`);
+    }
+  }
+});
+
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------
 
 test("the skeleton reads neutral step 200 in every scheme, brand and mode, not the sunken well", () => {
