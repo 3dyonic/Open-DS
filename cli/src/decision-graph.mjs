@@ -15,7 +15,7 @@ import { checkMotion, familyOf, ms } from "./motion.mjs";
 import { questions } from "./schemes.mjs";
 import { grammarRelations, relationResults } from "./shape-elevation.mjs";
 import { MULTIPLIERS, steps as mapSteps } from "./spacing-map.mjs";
-import { baseOf } from "./spacing-use-cases.mjs";
+import { baseOf, controlHeights } from "./spacing-use-cases.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { flatTokens } from "./tokens.mjs";
 import { pairsIn, toneOf, toneRole } from "./tones.mjs";
@@ -85,8 +85,11 @@ export function graphGroups(g) {
   return all.filter((a) => !all.some((b) => b !== a && owns(a, b)));
 }
 
-/** True when a token sits in a group that plays roles, so each link of its chain must be there. */
-export const inGraph = (g, name) => graphGroups(g).some((o) => owns(short(name), o));
+/**
+ * True when each link of a token's chain must be there: the token sits in a group that plays roles, or a
+ * mapping entry covers it. The mapping keeps a token on the graph when its roles go missing.
+ */
+export const inGraph = (g, name) => graphGroups(g).some((o) => owns(short(name), o)) || mappingOf(g, short(name)) !== null;
 
 /**
  * Every connection: semantics.connections, then each scope relation that has a kind. A relation keeps its
@@ -158,7 +161,8 @@ export function slotOf(g, name) {
 
 /**
  * The connections a token takes part in, from semantics.connections. A pairs-with holds every fill and
- * text of the tone pairs, and the fills its also list names. A token that comes from the hue of its @
+ * text of the tone pairs, and the fills its also list names. The tokens a pairs-with or a stays-apart
+ * measures against (its from list: a control box, an icon, a gap) take part too. A token that comes from the hue of its @
  * also takes part in each stays-apart by hue of that @: it shares the hue, so it shares the clash. Such
  * a connection carries via, the token it comes through.
  */
@@ -169,7 +173,7 @@ export function connectionsOf(g, name) {
   const inAlso = (c, n) => (c.also ?? []).some((a) => covers(a.fills, n) || a.text === n);
   const inPairs = (c, n) => fills.has(n) || toneRole(n) || keys.get(n)?.pairs?.on || [...keys.values()].some((k) => k.pairs?.on?.includes(n)) || inAlso(c, n);
   const full = keys.has(name) ? name : keys.has(`${name}.@`) ? `${name}.@` : name;
-  const takesPart = (c, n) => covers(c.tokens, n) || (c.kind === "stays-apart" && covers(c.from, n));
+  const takesPart = (c, n) => covers(c.tokens, n) || (c.kind !== "comes-from" && Array.isArray(c.from) && covers(c.from, n));
   const own = items.filter((c) => (c.kind === "pairs-with" && c.pairs ? inPairs(c, full) : takesPart(c, name)));
   const sources = items
     .filter((c) => c.kind === "comes-from" && c.match === "hue" && c.from === "@" && covers(c.tokens, name))
@@ -372,10 +376,10 @@ function typeChecks(scheme, g, c, { theme, index, name }) {
 const semanticNames = (scheme) => new Set(flatTokens(scheme.tokens.semantic).filter(([, t]) => !t.$deprecated).map(([p]) => short(p)));
 
 /**
- * The checks of one spacing connection, measured on the scheme's records and the values the tokens resolve
- * to: a gap or inset from the spacing record and the base its spacing.definition answer sets
- * (spacing-use-cases.mjs), a component spacing step from the map's rhythm (spacing-map.mjs). [] when the
- * scheme keeps no such record.
+ * The checks of one spacing or size connection, measured on the scheme's records and the values the tokens
+ * resolve to: a gap or inset from the spacing record and the base its spacing.definition answer sets, a
+ * control height from the control scale (spacing-use-cases.mjs), a component spacing step from the map's
+ * rhythm (spacing-map.mjs). [] when the scheme keeps no such record.
  */
 function spaceChecks(scheme, g, c, { theme, index, name }) {
   const out = [];
@@ -392,6 +396,18 @@ function spaceChecks(scheme, g, c, { theme, index, name }) {
       if (!u) continue;
       const useCase = [u.level, u.relation, u.reach].filter(Boolean).join(" ");
       add([t], px(t) === base * u.multiple, `${t} is ${plain(px(t))}px; the ${base}px base × ${plain(u.multiple)} for its ${useCase} use case gives ${plain(base * u.multiple)}px`);
+    }
+  } else if (c.match === "control-scale") {
+    const spec = recordsOf(scheme).size;
+    if (!spec) return [];
+    const heights = controlHeights(spec);
+    const steps = { default: 0, ...spec.steps };
+    for (const t of held) {
+      const path = t.replace(/^size\./, "");
+      if (!(path in heights) || path === "row") continue;
+      const step = steps[path.split(".")[1]];
+      const how = step === 0 ? `the ${spec.default}px default` : `the ${spec.default}px default ${step < 0 ? "−" : "+"} ${Math.abs(step)} × the ${spec.step}px step`;
+      add([t], px(t) === heights[path], `${t} is ${plain(px(t))}px; ${how} gives ${heights[path]}px`);
     }
   } else if (c.match === "rhythm") {
     const spec = scheme.tokens.semantic["component-spacing-map"]?.$extensions?.["open-ds"];
@@ -417,6 +433,32 @@ function spaceChecks(scheme, g, c, { theme, index, name }) {
 function amountOf(value) {
   if (pxOf(value) !== null) return { n: pxOf(value), unit: "px" };
   return ms(value) !== null ? { n: ms(value), unit: "ms" } : null;
+}
+
+/**
+ * The checks of an icon connection: rendered-stroke means the stroke, drawn on the icon set's grid and shown
+ * at the icon size, renders at least min_px: stroke × size ÷ grid.
+ */
+function iconChecks(scheme, g, c, { theme, index, name }) {
+  const names = semanticNames(scheme);
+  const from = [c.from].flat()[0];
+  const out = [];
+  for (const t of [...names].filter((n) => covers(c.tokens, n))) {
+    if (name && ![t, from].includes(short(name))) continue;
+    const stroke = Number(aliasChain(index, t).value);
+    const size = pxOf(aliasChain(index, from).value);
+    if (!Number.isFinite(stroke) || size === null) continue;
+    const rendered = (stroke * size) / c.grid;
+    out.push({
+      connection: c.id,
+      kind: c.kind,
+      theme,
+      tokens: [t, from],
+      holds: rendered >= c.min_px - 1e-9,
+      says: `${t} ${plain(stroke)} on a ${plain(size)}px icon renders ${plain(rendered)}px (${plain(stroke)} × ${plain(size)} ÷ ${c.grid}); needs at least ${c.min_px}px`,
+    });
+  }
+  return out;
 }
 
 /**
@@ -459,8 +501,8 @@ function relationChecks(scheme, g, c, { brand, mode, theme, index, name }) {
 
 // What each measured connection reads, by its match or by: a type size from its scale, a line height from its
 // kind, sizes a ratio step apart, line kinds apart, a box that holds a line; a gap or inset from the spacing
-// base, a map step from the rhythm; two lengths or times that are equal or keep a floor; a scope relation;
-// a measured rule.
+// base, a map step from the rhythm, a control height from the control scale; an icon stroke that renders at
+// its size; two lengths or times that are equal or keep a floor; a scope relation; a measured rule.
 const MEASURES = {
   scale: typeChecks,
   "line-kind": typeChecks,
@@ -469,6 +511,8 @@ const MEASURES = {
   "holds-line": typeChecks,
   "base-multiple": spaceChecks,
   rhythm: spaceChecks,
+  "control-scale": spaceChecks,
+  "rendered-stroke": iconChecks,
   equals: lengthChecks,
   "at-least": lengthChecks,
   relation: relationChecks,
