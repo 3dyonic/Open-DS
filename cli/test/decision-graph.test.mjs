@@ -273,12 +273,14 @@ test("a shadow reads role → property → connections → value → reason; a p
   assert.equal(decisionTree(low, g, "elevation.overlay").find((n) => n.name === "layer-step").holds, false);
 });
 
-test("the default line's rule breaks today: a control's only edge is under 3:1 in every scheme", () => {
+// OD-300: the edge rule gives each only cue the strong border, so the default line's rule holds; with
+// shape.count at two, Multi-brand's corner count breaks only in Birch, which waits for the owner.
+test("the default line's rule holds: every control's only edge is 3:1 or more in every scheme", () => {
   const tree = decisionTree(loadScheme("dense-data", roots), g, "border-width.default");
   const rule = tree.find((n) => n.level === "rule" && n.name === "default-line");
-  assert.equal(rule.holds, false);
-  for (const id of SCHEMES) assert.equal(gapsOf(loadScheme(id, roots), "default-line").length, 4, id);
-  assert.deepEqual(gapsOf(loadScheme("multi-brand", roots), "surface-corner").map((x) => x.themes), [["aster/light", "aster/dark", "coral/light", "coral/dark"]]);
+  assert.equal(rule.holds, true);
+  for (const id of SCHEMES) assert.equal(gapsOf(loadScheme(id, roots), "default-line").length, 0, id);
+  assert.deepEqual(gapsOf(loadScheme("multi-brand", roots), "surface-corner").map((x) => x.themes), [["birch/light", "birch/dark"]]);
 });
 
 // Motion (OD-304): the family picks a duration's job and sets its limits; an exit takes the feedback time.

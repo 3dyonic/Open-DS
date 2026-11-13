@@ -19,6 +19,8 @@ import { cn } from "../lib/utils";
 export const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-[var(--button-gap)] whitespace-nowrap select-none",
+    // The hit area grows past a smaller drawn box (a compact button on touch) and keeps it (OD-300).
+    "relative after:absolute after:top-1/2 after:left-1/2 after:h-[max(100%,var(--button-hit-area))] after:w-[max(100%,var(--button-hit-area))] after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']",
     "h-[var(--button-height)] px-[var(--button-padding-x)] rounded-[var(--button-radius)]",
     "text-[length:var(--button-font-size)] [font-weight:var(--button-font-weight)] [font-family:var(--button-font-family)]",
     "transition-colors duration-[var(--transition-duration)] ease-[var(--transition-easing)]",

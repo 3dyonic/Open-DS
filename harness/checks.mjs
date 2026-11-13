@@ -1093,6 +1093,8 @@ export const CHECKS = {
         "radio-group.tsx": ["--radio-group-item-hit-area"],
         "switch.tsx": ["--switch-hit-area"],
         "slider.tsx": ["--slider-thumb-hit-area"],
+        // OD-300: a compact button on touch (36px in Multi-brand) grows to the 44px hit area.
+        "button.tsx": ["--button-hit-area"],
       };
       for (const [file, vars] of Object.entries(reads)) {
         const text = c.read(`ui/src/components/${file}`);
@@ -1102,9 +1104,11 @@ export const CHECKS = {
         gaps.push("radio-group.tsx: the gap does not keep two radios' hit areas apart");
       if (!c.read("ui/src/components/field.tsx").includes("min-h-[var(--field-group-hit-area)]"))
         gaps.push("field.tsx: a checkbox group's rows are not one hit area tall");
+      if (!c.read("ui/src/components/button-group.tsx").includes("[&>[data-slot=button]]:after:hidden"))
+        gaps.push("button-group.tsx: stacked buttons grow hit areas over each other");
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
-        : ok("size.hit-area is 24px for a pointer and 44px for touch; 4 small controls grow to it, and their groups keep rows apart");
+        : ok("size.hit-area is 24px for a pointer and 44px for touch; 5 controls grow to it, and their groups keep hit areas apart");
     },
   },
   "focus-ring-token": {
@@ -1129,6 +1133,26 @@ export const CHECKS = {
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
         : ok("focus.ring.width and focus.ring.offset are their own tokens; the ring is one step heavier than the default line in every scheme");
+    },
+  },
+  "edge-rule": {
+    requires: ["cli/src/shape-elevation.mjs", "schemes/grammar.json"],
+    run: async (c) => {
+      // OD-300: a line that is the only cue that you can click or type reads the strong border and
+      // meets 3:1 in every brand and mode; a quiet line reads the faint one. Unlike the OD-294
+      // boundary findings, a break here fails.
+      const { edgeRule } = await import(pathToFileURL(c.p("cli/src/shape-elevation.mjs")).href);
+      const g = c.grammar();
+      const gaps = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const r = edgeRule(c.scheme(id), g);
+        n += r.checked;
+        gaps.push(...r.gaps);
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(`${n} edges hold the edge rule: each only cue reads color.border.strong at 3:1 or more, each quiet line reads color.border.default`);
     },
   },
   "uppercase-tracking": {

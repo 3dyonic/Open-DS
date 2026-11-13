@@ -946,6 +946,18 @@
       "checks": [
         "generated-files-untracked"
       ]
+    },
+    {
+      "id": "OD-300",
+      "title": "The round 1 and 2 decisions: edges, handles, rows, switch, corners, the muted exception, the voice rule, the skeleton, touch hit areas and the floating surface",
+      "in": [
+        "the edge rule: each line that is the only cue that you can click or type reads color.border.strong at 3:1 or more; the tabs list and a static outline item stay faint, each with its reason",
+        "compact buttons drawn under the touch hit area (Multi-brand 36px) grow their hit area to 44px; buttons stacked in a joined group do not grow over each other"
+      ],
+      "checks": [
+        "edge-rule",
+        "hit-area"
+      ]
     }
   ]
 }

@@ -35,7 +35,7 @@ Urgency order: color.status.info.@ → color.status.warning.@ → color.status.d
 - color.text.link: Links in running text. Use for: Inline links. Not for: Buttons (use color.action.primary.@). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.highlight, color.surface.selected at 4.5:1 or more.
 - color.border.default: Quiet edges and dividers. Decorative, so it has no contrast minimum. Use for: Card edges, Dividers, Table rules. Not for: The edge of a control people must find (use color.border.strong).
 - color.border.raised: The 1px edge of a raised layer. In dark, a solid step lighter than the raised surface, so the edge shows where a shadow cannot. Use for: Menus, Popovers, Dialogs, Toasts, Raised cards. Not for: Dividers and card borders in the page flow (use color.border.default); The edge of a control people must find (use color.border.strong).
-- color.border.strong: The edge of a control people must find. Use for: Input borders, Checkbox borders, Secondary button borders, An edge under the pointer, like the sidebar rail line. Not for: A divider (use color.border.default). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.highlight, color.surface.pressed, color.surface.selected at 3:1 or more.
+- color.border.strong: The edge of a control people must find. Use for: Input borders, Checkbox borders, Secondary button borders, An edge under the pointer, like the sidebar rail line, A scroll thumb or a resize handle under the pointer or in keyboard focus. Not for: A divider (use color.border.default). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.highlight, color.surface.pressed, color.surface.selected at 3:1 or more.
 - color.border.focus: The focus ring. Use for: Keyboard focus on any control. Not for: A selected item (use color.surface.selected). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.highlight, color.surface.pressed, color.surface.selected, color.surface.inverse at 3:1 or more.
 - color.border.selected: The edge that marks a selected item, beside its fill, so selection is never color alone. Use for: A selected table row, The current item in a sidebar or menu, A choice that is checked or on, beside its fill. Not for: Keyboard focus (use color.border.focus); The fill of a selected item (use color.surface.selected). Sits on: color.surface.canvas, color.surface.default, color.surface.selected at 3:1 or more.
 - color.action.primary.@: The one main action in a view. Use for: Primary button fill, Checked controls, Active tab indicator. Not for: A second action in the same view (use color.action.secondary.@); Links in text (use color.text.link); News or status (use color.status.info.@). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
@@ -68,7 +68,7 @@ Urgency order: color.status.info.@ → color.status.warning.@ → color.status.d
 
 ## Accessible first (accessible-first)
 
-Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast, so everyone can finish the task.
+Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast for the text you must read, so everyone can finish the task.
 
 Use when: Public services, health, government and any product that must work for everyone.
 Avoid when: Dense expert tools where screen space matters more than size.
@@ -137,7 +137,7 @@ Themes: light, dark
 - theming.lands What changes when the theme changes? Colors only. Only colors change. (because theming.roles)
 - accessibility.roles Which states get their own visible value? All, including loading. Every state, including loading, gets its own value. (because people.q2)
 - accessibility.count How many signals carry each meaning? Three: color, icon and word. Never color alone. (because people.q2)
-- accessibility.definition What contrast floor do we hold? AAA for text. AAA contrast for text. (because people.q2)
+- accessibility.definition What contrast floor do we hold? AAA for text. AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is the owner's recorded exception. (because people.q2)
 - accessibility.values What is the smallest target? Large. Large targets for tremor and touch. (because people.q1)
 - accessibility.lands Where are the floors hardest to hold? Forms. Forms are where people are blocked. (because content.q1)
 - naming.roles What gets a name? Tokens and component keys. Components get their own keys. (because team.q2)
@@ -222,6 +222,7 @@ Plain and direct. Every sentence is easy to read on the first try. (follows voic
 - Use common words. Explain any term you must use. (follows voice.definition, people.q1)
 - One idea per sentence. Put the action first. (follows human.q1)
 - Never blame the person. (follows voice.values)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Continue, Change, Start, You. Avoid: Invalid, Utilise, Submit, Error code.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -386,6 +387,7 @@ Playful and short. Big words, few of them. (follows voice.values)
 - Headlines are short and bold. Three to six words. (follows voice.lands, typography.roles)
 - Verbs that move: Join, Try, Go. (follows voice.values)
 - Playful in headlines, plain in errors. (follows voice.count)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Join, Drop, Go, Love. Avoid: Synergy, Leverage, Kindly.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -550,6 +552,7 @@ Conversational and warm. Talk to one reader, like a good editor would. (follows 
 - Write to one person: "you", not "users". (follows voice.values)
 - Short sentences with room to breathe. (follows outcomes.q1)
 - Explain why before asking for anything. (follows people.q1, voice.definition)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Read, Save for later, You, Next issue. Avoid: Click here, Submit, Users, Content.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -714,6 +717,7 @@ Terse and exact. Say what happened and what to do, in as few words as possible. 
 - Lead with the object, then the state: "Alert 2041 contained." (follows voice.values, content.q1)
 - Use numbers, not words for numbers. (follows content.q1)
 - One verb per button. No "please", no exclamation marks. (follows voice.definition, voice.values)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -767,7 +771,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - spacing.values How dense is the layout? Comfortable. Comfortable spacing in every brand. (because content.q2)
 - spacing.lands Where does spacing matter most? Between fields. Space matters most between form fields. (because tasks.q1)
 - shape.roles Which shape roles does it need? Controls, badges and containers. Each brand sets three corners. (because business.q2)
-- shape.count How many corner sizes exist? Three. Control, badge and container. (because shape.roles)
+- shape.count How many corner sizes exist? Two. Two corner sizes: one for controls and badges, and a larger one for containers, as Aster's 4px and 8px corners show. (because shape.roles, shape.values)
 - shape.definition How are corners set? Set by each brand. Each brand sets its own corners. (because business.q2)
 - shape.values What should control corners say? Rounded. Rounded by default; each brand sets its own corner. (because business.q2)
 - shape.lands Where does shape show most? Buttons and badges. Corners are the most visible brand difference. (because brand.q2)
@@ -878,6 +882,7 @@ A plain shared voice. Each brand adds its own tone on top, never its own structu
 - Shared structure: object, state, next step. (follows voice.definition)
 - Brand tone lives in headlines and marketing copy, not in errors. (follows voice.lands, voice.count)
 - Errors and confirmations read the same in every brand. (follows voice.definition)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Get started, Plan, Order. Avoid: Brand-specific words in errors, Jargon.
 The tone per moment is in the usage rules of the voice situations above.
 

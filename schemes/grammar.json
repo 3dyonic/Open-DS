@@ -1786,13 +1786,31 @@
           "follows": ["elevation.definition", "accessibility.definition"],
           "jobs": ["separation", "grouping", "boundary"],
           "boundaries": [
+            "component.input.border.@",
+            "component.input-group.border.@",
+            "component.input-otp.slot.border.@",
+            "component.native-select.border",
+            "component.select.trigger.border.@",
+            "component.textarea.border",
+            "component.combobox.chips.border",
             "component.combobox.input.border",
-            "component.item.outline.border",
+            "component.button.secondary.border",
+            "component.toggle.outline.border",
             "component.sidebar.menu-button.outline.border.@",
-            "component.tabs.list.border"
+            "component.item.outline.clickable.border"
           ],
           "floor": 3,
-          "says": "A decision: the layering answer says whether lines separate groups, and the contrast floor says how heavy a line must be to be seen. A divider has no contrast floor; a line that is a control's only edge needs 3:1, so the boundaries listed here are checked."
+          "says": "A decision: the layering answer says whether lines separate groups, and the contrast floor says how heavy a line must be to be seen. The edge rule: a line that is the only cue that you can click or type is a boundary and needs 3:1. Importance picks its strength, and the same importance gets the same line, so every boundary reads color.border.strong. A line that is not the only cue stays faint, and quiet says why for each.",
+          "quiet": [
+            {
+              "token": "component.tabs.list.border",
+              "why": "Each tab's label is the cue that it can be clicked. The line under the list only separates the tabs from the panel."
+            },
+            {
+              "token": "component.item.outline.border",
+              "why": "A static item cannot be clicked. Its edge only groups the item's content."
+            }
+          ]
         },
         {
           "id": "focus-heavier",
@@ -2056,6 +2074,8 @@
         "native-select",
         "navigation-menu",
         "popover",
+        "resizable",
+        "scroll-area",
         "sheet",
         "sidebar",
         "switch",
@@ -3735,7 +3755,8 @@
         "button/compact/height",
         "button/compact/padding-x",
         "button/large/height",
-        "button/focus-offset"
+        "button/focus-offset",
+        "button/hit-area"
       ]
     },
     {
@@ -4915,7 +4936,8 @@
         "item/focus-offset",
         "item/media/icon/border-width",
         "item/media/icon/border",
-        "item/border-width"
+        "item/border-width",
+        "item/outline/clickable/border"
       ]
     },
     {
@@ -5330,7 +5352,9 @@
         "resizable/focus-offset",
         "resizable/handle/thickness",
         "resizable/grip/border-width",
-        "resizable/grip/border"
+        "resizable/grip/border",
+        "resizable/handle/background-hover",
+        "resizable/handle/background-focus"
       ]
     },
     {
@@ -5343,7 +5367,9 @@
         "scroll-area/thumb/radius",
         "scroll-area/thumb/background",
         "scroll-area/viewport/focus-offset",
-        "scroll-area/scrollbar/border-width"
+        "scroll-area/scrollbar/border-width",
+        "scroll-area/thumb/background-hover",
+        "scroll-area/thumb/background-focus"
       ]
     },
     {
@@ -5676,7 +5702,8 @@
         "switch/track/background/@",
         "switch/track/background/checked",
         "switch/hit-area",
-        "switch/disabled-track"
+        "switch/disabled-track",
+        "switch/thumb/offset"
       ]
     },
     {
@@ -5993,6 +6020,12 @@
       "component": "button",
       "description": "Color of the gap between a button and its focus ring: the canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
+    },
+    {
+      "id": "button/hit-area",
+      "component": "button",
+      "description": "The button's hit area: it grows past a drawn box that is smaller, such as a compact button on touch, and never into a joined neighbour.",
+      "default": "size.hit-area"
     },
     {
       "id": "input/background",
@@ -6492,7 +6525,7 @@
     {
       "id": "tabs/list/border",
       "component": "tabs",
-      "description": "List border of the tabs.",
+      "description": "List border of the tabs: the faint line. Each tab's label shows that it can be clicked, so the line only separates the tabs from the panel.",
       "default": "color.border.default"
     },
     {
@@ -8970,8 +9003,8 @@
     {
       "id": "combobox/input/border",
       "component": "combobox",
-      "description": "Border of the search field in the combobox's list.",
-      "default": "color.border.default"
+      "description": "Border of the search field in the combobox's list: the strong edge, the same as the input's, as the edge is the only cue that you can type there.",
+      "default": "color.border.strong"
     },
     {
       "id": "combobox/input/background",
@@ -11719,7 +11752,7 @@
     {
       "id": "item/outline/border",
       "component": "item",
-      "description": "Outline border of the item.",
+      "description": "Edge of a static outline item: the faint line. A static item cannot be clicked, so its edge only groups its content.",
       "default": "color.border.default"
     },
     {
@@ -11943,6 +11976,12 @@
       "component": "item",
       "description": "Border width of the item: transparent by default, so every variant has the same box; the outline variant colors it.",
       "default": "border-width.default"
+    },
+    {
+      "id": "item/outline/clickable/border",
+      "component": "item",
+      "description": "Edge of an outline item that is a link or a button: the strong edge, as the edge is the only cue that the item can be clicked.",
+      "default": "color.border.strong"
     },
     {
       "id": "kbd/gap",
@@ -13946,7 +13985,7 @@
     {
       "id": "resizable/handle/background",
       "component": "resizable",
-      "description": "Handle background of the resizable.",
+      "description": "Fill of the resize handle's line at rest: the faint line, so the panels read as one surface while you work.",
       "default": "color.border.default"
     },
     {
@@ -14031,6 +14070,18 @@
       "default": "color.border.default"
     },
     {
+      "id": "resizable/handle/background-hover",
+      "component": "resizable",
+      "description": "Fill of the resize handle's line under the pointer: the strong border, so the line you are about to drag is clear (3:1).",
+      "default": "color.border.strong"
+    },
+    {
+      "id": "resizable/handle/background-focus",
+      "component": "resizable",
+      "description": "Fill of the resize handle's line in keyboard focus: the strong border, the same as under the pointer, with the focus ring around it.",
+      "default": "color.border.strong"
+    },
+    {
       "id": "scroll-area/viewport/focus",
       "component": "scroll-area",
       "description": "Viewport focus of the scroll area.",
@@ -14063,7 +14114,7 @@
     {
       "id": "scroll-area/thumb/background",
       "component": "scroll-area",
-      "description": "Thumb background of the scroll area.",
+      "description": "Fill of the scroll thumb at rest: the faint line, so a handle stays quiet while you read.",
       "default": "color.border.default"
     },
     {
@@ -14071,6 +14122,18 @@
       "component": "scroll-area",
       "description": "Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge.",
       "default": "border-width.default"
+    },
+    {
+      "id": "scroll-area/thumb/background-hover",
+      "component": "scroll-area",
+      "description": "Fill of the scroll thumb under the pointer: the strong border, so the handle you are about to drag is clear (3:1).",
+      "default": "color.border.strong"
+    },
+    {
+      "id": "scroll-area/thumb/background-focus",
+      "component": "scroll-area",
+      "description": "Fill of the scroll thumb while its scroll area has keyboard focus: the strong border, the same as under the pointer. The area also shows the focus ring.",
+      "default": "color.border.strong"
     },
     {
       "id": "select/trigger/gap",
@@ -15565,8 +15628,8 @@
     {
       "id": "sidebar/menu-button/outline/border/@",
       "component": "sidebar",
-      "description": "Edge of an outline menu button, of the sidebar.",
-      "default": "color.border.default"
+      "description": "Edge of an outline menu button, of the sidebar: the strong edge, the same as the outline (secondary) button's, as the edge is the only cue that it is a button.",
+      "default": "color.border.strong"
     },
     {
       "id": "sidebar/menu-button/outline/border/hover",
@@ -15637,8 +15700,8 @@
     {
       "id": "skeleton/background",
       "component": "skeleton",
-      "description": "Background of the skeleton.",
-      "default": "color.surface.sunken"
+      "description": "Fill of the skeleton: neutral step 200, the nearest scale step to the chosen look. A placeholder shows content to come, so it does not take the sunken fill of a well.",
+      "default": "color.neutral.200"
     },
     {
       "id": "slider/disabled-opacity-disabled",
@@ -15772,14 +15835,16 @@
     {
       "id": "switch/height",
       "component": "switch",
-      "description": "Height of the switch.",
-      "default": "size.icon"
+      "description": "Deprecated: use switch/thumb/size (OD-300). Height of the switch.",
+      "default": "size.icon",
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/width",
       "component": "switch",
-      "description": "Width of the switch.",
-      "default": "size.icon"
+      "description": "Deprecated: use switch/thumb/size (OD-300). Width of the switch.",
+      "default": "size.icon",
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/radius",
@@ -15790,8 +15855,9 @@
     {
       "id": "switch/padding",
       "component": "switch",
-      "description": "Padding of the switch.",
-      "default": "component-spacing-map.hairline"
+      "description": "Deprecated: use switch/thumb/offset (OD-300). Padding of the switch: the gap between the track's edge and the thumb, on every side.",
+      "default": "component-spacing-map.hairline",
+      "replaced_by": "switch/thumb/offset"
     },
     {
       "id": "switch/focus",
@@ -15823,9 +15889,9 @@
     {
       "id": "switch/icon",
       "component": "switch",
-      "description": "Deprecated: use switch/thumb/travel (OD-243). Icon of the switch.",
+      "description": "Deprecated: use switch/thumb/size (OD-243). Icon of the switch.",
       "default": "size.icon",
-      "replaced_by": "switch/thumb/travel"
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/focus-offset",
@@ -15848,14 +15914,15 @@
     {
       "id": "switch/thumb/size",
       "component": "switch",
-      "description": "Size of the switch's thumb.",
+      "description": "Size of the switch's thumb: the icon size. The track is the thumb plus its offset on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
       "default": "size.icon"
     },
     {
       "id": "switch/thumb/travel",
       "component": "switch",
-      "description": "How far the thumb moves when the switch turns on: one thumb's width.",
-      "default": "size.icon"
+      "description": "Deprecated: use switch/thumb/size (OD-300). How far the thumb moves when the switch turns on: one thumb's width.",
+      "default": "size.icon",
+      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/thumb/radius",
@@ -15892,6 +15959,12 @@
       "component": "switch",
       "description": "Track of a disabled switch, on or off; the thumb's place shows the state.",
       "default": "color.disabled.border"
+    },
+    {
+      "id": "switch/thumb/offset",
+      "component": "switch",
+      "description": "The gap between the thumb and the track's edge, on every side. The track is the thumb plus this gap on each side, and the thumb slides one track height.",
+      "default": "component-spacing-map.hairline"
     },
     {
       "id": "textarea/radius",
@@ -16909,7 +16982,8 @@
           "Input borders",
           "Checkbox borders",
           "Secondary button borders",
-          "An edge under the pointer, like the sidebar rail line"
+          "An edge under the pointer, like the sidebar rail line",
+          "A scroll thumb or a resize handle under the pointer or in keyboard focus"
         ],
         "not_for": [
           {
@@ -18111,7 +18185,7 @@
     {
       "tokens": ["size.row"],
       "follows": ["spacing.roles", "spacing.values", "accessibility.values"],
-      "says": "A row holds controls, so it is one default control tall (the target size answer); the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow."
+      "says": "Decided: a row is one default control tall in every scheme. A row holds controls, so a taller row only adds a gap around them, and a shorter one cuts them. The target size answer sets the control height; the roles answer says whether rows are a decision of their own, and the values answer sets the density they follow."
     },
     {
       "tokens": ["radius.control"],
@@ -38164,7 +38238,7 @@
                     {
                       "t": "frame",
                       "name": "Track",
-                      "pad": "component.switch.padding",
+                      "pad": "component.switch.thumb.offset",
                       "radius": "component.switch.radius",
                       "fill": "component.switch.track.background",
                       "children": [
@@ -38179,8 +38253,20 @@
                         },
                         {
                           "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
                           "name": "Travel",
-                          "w": "component.switch.thumb.travel",
+                          "w": "component.switch.thumb.size",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
                           "h": "component.switch.thumb.size"
                         }
                       ],
@@ -38206,14 +38292,26 @@
                     {
                       "t": "frame",
                       "name": "Track · on",
-                      "pad": "component.switch.padding",
+                      "pad": "component.switch.thumb.offset",
                       "radius": "component.switch.radius",
                       "fill": "component.switch.track.background.checked",
                       "children": [
                         {
                           "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
                           "name": "Travel",
-                          "w": "component.switch.thumb.travel",
+                          "w": "component.switch.thumb.size",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
                           "h": "component.switch.thumb.size"
                         },
                         {
@@ -38256,7 +38354,7 @@
                     {
                       "t": "frame",
                       "name": "Track",
-                      "pad": "component.switch.padding",
+                      "pad": "component.switch.thumb.offset",
                       "radius": "component.switch.radius",
                       "fill": "component.switch.track.background",
                       "children": [
@@ -38270,8 +38368,20 @@
                         },
                         {
                           "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
                           "name": "Travel",
-                          "w": "component.switch.thumb.travel",
+                          "w": "component.switch.thumb.size",
+                          "h": "component.switch.thumb.size"
+                        },
+                        {
+                          "t": "rect",
+                          "name": "Offset",
+                          "w": "component.switch.thumb.offset",
                           "h": "component.switch.thumb.size"
                         }
                       ]
@@ -38301,9 +38411,7 @@
               "need": "required",
               "roles": ["affordance", "reach"],
               "tokens": [
-                "component.switch.height",
-                "component.switch.width",
-                "component.switch.padding",
+                "component.switch.thumb.offset",
                 "component.switch.radius",
                 "component.switch.track.background"
               ]
@@ -38334,7 +38442,10 @@
               "label": "Thumb at the on side",
               "need": "state",
               "roles": ["meaning", "feedback"],
-              "tokens": ["component.switch.thumb.travel"]
+              "tokens": [
+                "component.switch.thumb.size",
+                "component.switch.thumb.offset"
+              ]
             },
             {
               "n": 5,
@@ -38374,8 +38485,6 @@
               "answers": ["accessibility.values", "shape.values"],
               "rules": ["smallest-target"],
               "tokens": [
-                "component.switch.height",
-                "component.switch.width",
                 "component.switch.radius",
                 "component.switch.track.background"
               ]
@@ -38400,7 +38509,8 @@
               "rules": ["reduced-motion"],
               "tokens": [
                 "component.switch.track.background.checked",
-                "component.switch.thumb.travel"
+                "component.switch.thumb.size",
+                "component.switch.thumb.offset"
               ]
             },
             {
