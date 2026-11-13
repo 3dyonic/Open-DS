@@ -1865,7 +1865,7 @@
                   "pattern": "^component\\.",
                   "description": "A component token path, for example component.tabs.list.border."
                 },
-                "description": "For a line: the component colors whose edge is the only sign of a control. Each needs the floor's contrast against surface.default (WCAG 1.4.11); one under it is a finding."
+                "description": "For a line: the component colors whose edge is the only cue that you can click or type there (the edge rule). Each reads color.border.strong and needs the floor's contrast against surface.default (WCAG 1.4.11)."
               },
               "floor": {
                 "type": "number",
@@ -1935,6 +1935,28 @@
                   "minimum": 1
                 },
                 "description": "For layer-step: each layer's step on the scale. A higher step never casts a smaller offset or blur."
+              },
+              "quiet": {
+                "type": "array",
+                "description": "For a line: the component colors whose edge is not the only cue, so they stay faint (color.border.default), each with its reason.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["token", "why"],
+                  "description": "One faint line and why it may stay faint.",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "pattern": "^component\\.",
+                      "description": "A component token path, for example component.tabs.list.border."
+                    },
+                    "why": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "What else shows that the part can be clicked or typed in, or why it cannot."
+                    }
+                  }
+                }
               }
             }
           }

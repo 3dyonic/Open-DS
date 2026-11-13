@@ -281,3 +281,34 @@ export function elevationScale(schemes, g) {
   }
   return [...rows.values()].map((r) => ({ ...r, same: new Set(r.shapes.map((x) => x.shape)).size === 1 }));
 }
+
+/**
+ * The edge rule (OD-300): a line that is the only cue that you can click or type (a boundary of the
+ * default-line relation) reads the strong border and meets the floor's contrast on surface.default in
+ * every brand and mode. The same importance gets the same line, so every boundary reads one semantic.
+ * A quiet line reads the faint border. Returns { checked, gaps }, a gap per break, in words.
+ */
+export function edgeRule(scheme, g, { strong = "color.border.strong", faint = "color.border.default" } = {}) {
+  const def = grammarRelations(g).get("default-line");
+  const gaps = [];
+  let checked = 0;
+  if (!def?.boundaries?.length) return { checked, gaps: ["the default-line relation lists no boundaries"] };
+  for (const theme of themesOf(scheme)) {
+    const ix = tokenIndex(scheme, theme);
+    const where = `${scheme.id}/${theme.brand}/${theme.mode}`;
+    const surface = aliasChain(ix, "color.surface.default").value;
+    for (const b of def.boundaries) {
+      checked++;
+      const chain = aliasChain(ix, b);
+      if (chain.hops[0] !== strong) gaps.push(`${where}: ${b} reads ${chain.hops[0] ?? "nothing"}, not ${strong}`);
+      const r = typeof chain.value === "string" && typeof surface === "string" ? contrast(chain.value, surface) : null;
+      if (r === null || r < def.floor) gaps.push(`${where}: ${b} is ${r ?? "?"}:1 on color.surface.default, under the ${def.floor}:1 floor`);
+    }
+    for (const q of def.quiet ?? []) {
+      checked++;
+      const first = aliasChain(ix, q.token).hops[0];
+      if (first !== faint) gaps.push(`${where}: ${q.token} reads ${first ?? "nothing"}, not ${faint}`);
+    }
+  }
+  return { checked, gaps: [...new Set(gaps)] };
+}

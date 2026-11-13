@@ -1687,13 +1687,31 @@
           "follows": ["elevation.definition", "accessibility.definition"],
           "jobs": ["separation", "grouping", "boundary"],
           "boundaries": [
+            "component.input.border.@",
+            "component.input-group.border.@",
+            "component.input-otp.slot.border.@",
+            "component.native-select.border",
+            "component.select.trigger.border.@",
+            "component.textarea.border",
+            "component.combobox.chips.border",
             "component.combobox.input.border",
-            "component.item.outline.border",
+            "component.button.secondary.border",
+            "component.toggle.outline.border",
             "component.sidebar.menu-button.outline.border.@",
-            "component.tabs.list.border"
+            "component.item.outline.clickable.border"
           ],
           "floor": 3,
-          "says": "A decision: the layering answer says whether lines separate groups, and the contrast floor says how heavy a line must be to be seen. A divider has no contrast floor; a line that is a control's only edge needs 3:1, so the boundaries listed here are checked."
+          "says": "A decision: the layering answer says whether lines separate groups, and the contrast floor says how heavy a line must be to be seen. The edge rule: a line that is the only cue that you can click or type is a boundary and needs 3:1. Importance picks its strength, and the same importance gets the same line, so every boundary reads color.border.strong. A line that is not the only cue stays faint, and quiet says why for each.",
+          "quiet": [
+            {
+              "token": "component.tabs.list.border",
+              "why": "Each tab's label is the cue that it can be clicked. The line under the list only separates the tabs from the panel."
+            },
+            {
+              "token": "component.item.outline.border",
+              "why": "A static item cannot be clicked. Its edge only groups the item's content."
+            }
+          ]
         },
         {
           "id": "focus-heavier",
@@ -4709,7 +4727,8 @@
         "item/focus-offset",
         "item/media/icon/border-width",
         "item/media/icon/border",
-        "item/border-width"
+        "item/border-width",
+        "item/outline/clickable/border"
       ]
     },
     {
@@ -6286,7 +6305,7 @@
     {
       "id": "tabs/list/border",
       "component": "tabs",
-      "description": "List border of the tabs.",
+      "description": "List border of the tabs: the faint line. Each tab's label shows that it can be clicked, so the line only separates the tabs from the panel.",
       "default": "color.border.default"
     },
     {
@@ -8764,8 +8783,8 @@
     {
       "id": "combobox/input/border",
       "component": "combobox",
-      "description": "Border of the search field in the combobox's list.",
-      "default": "color.border.default"
+      "description": "Border of the search field in the combobox's list: the strong edge, the same as the input's, as the edge is the only cue that you can type there.",
+      "default": "color.border.strong"
     },
     {
       "id": "combobox/input/background",
@@ -11513,7 +11532,7 @@
     {
       "id": "item/outline/border",
       "component": "item",
-      "description": "Outline border of the item.",
+      "description": "Edge of a static outline item: the faint line. A static item cannot be clicked, so its edge only groups its content.",
       "default": "color.border.default"
     },
     {
@@ -11737,6 +11756,12 @@
       "component": "item",
       "description": "Border width of the item: transparent by default, so every variant has the same box; the outline variant colors it.",
       "default": "border-width.default"
+    },
+    {
+      "id": "item/outline/clickable/border",
+      "component": "item",
+      "description": "Edge of an outline item that is a link or a button: the strong edge, as the edge is the only cue that the item can be clicked.",
+      "default": "color.border.strong"
     },
     {
       "id": "kbd/gap",
@@ -15359,8 +15384,8 @@
     {
       "id": "sidebar/menu-button/outline/border/@",
       "component": "sidebar",
-      "description": "Edge of an outline menu button, of the sidebar.",
-      "default": "color.border.default"
+      "description": "Edge of an outline menu button, of the sidebar: the strong edge, the same as the outline (secondary) button's, as the edge is the only cue that it is a button.",
+      "default": "color.border.strong"
     },
     {
       "id": "sidebar/menu-button/outline/border/hover",
