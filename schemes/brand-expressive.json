@@ -1328,7 +1328,7 @@
     {
       "question": "color.definition.steps",
       "option": "even-ease",
-      "why": "Half eased: rich middle steps for brand fills, soft ends for backgrounds and deep text.",
+      "why": "An even ease keeps the blush tints soft and the berry link text deep. The blush tint fills the selected tab.",
       "because": [
         "brand.q1",
         "color.definition"
@@ -2527,8 +2527,6 @@
                 "held": {
                   "50": "order",
                   "100": "relation",
-                  "200": "order",
-                  "300": "over-limit",
                   "700": "relation",
                   "800": "order",
                   "900": "order",
@@ -2538,8 +2536,6 @@
               "dark": {
                 "key": "#F59ACA",
                 "held": {
-                  "50": "order",
-                  "100": "over-limit",
                   "800": "relation",
                   "900": "relation",
                   "950": "relation"
@@ -2564,9 +2560,7 @@
                 },
                 "held": {
                   "50": "order",
-                  "100": "relation",
-                  "200": "order",
-                  "300": "over-limit"
+                  "100": "relation"
                 }
               },
               "dark": {
@@ -2596,9 +2590,7 @@
                 },
                 "held": {
                   "50": "order",
-                  "100": "relation",
-                  "200": "order",
-                  "300": "over-limit"
+                  "100": "relation"
                 }
               },
               "dark": {
@@ -2626,12 +2618,6 @@
                     "C": 0.017,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
-                },
-                "held": {
-                  "50": "order",
-                  "100": "order",
-                  "200": "order",
-                  "300": "over-limit"
                 }
               },
               "dark": {
@@ -2672,13 +2658,6 @@
                     "C": 0.011,
                     "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
-                },
-                "held": {
-                  "50": "order",
-                  "100": "order",
-                  "200": "order",
-                  "300": "over-limit",
-                  "400": "over-limit"
                 }
               },
               "dark": {

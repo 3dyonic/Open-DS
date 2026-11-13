@@ -1340,7 +1340,7 @@
     {
       "question": "color.definition.steps",
       "option": "linear",
-      "why": "Even contrast between all steps, so every pair of steps is as easy to tell apart as any other.",
+      "why": "The same distance in steps gives the same contrast everywhere. So every pair of steps is as easy to tell apart as any other, for everyone, including people with low vision.",
       "because": [
         "people.q1",
         "color.definition"
@@ -2520,14 +2520,7 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#0B4FC0",
-                "held": {
-                  "50": "order",
-                  "100": "over-limit",
-                  "200": "over-limit",
-                  "300": "over-limit",
-                  "400": "over-limit"
-                }
+                "key": "#0B4FC0"
               },
               "dark": {
                 "key": "#8AB4F8"
@@ -2551,10 +2544,7 @@
                 },
                 "held": {
                   "50": "order",
-                  "100": "order",
-                  "200": "over-limit",
-                  "300": "over-limit",
-                  "400": "over-limit"
+                  "100": "relation"
                 }
               },
               "dark": {
@@ -2580,10 +2570,7 @@
                 },
                 "held": {
                   "50": "order",
-                  "100": "order",
-                  "200": "over-limit",
-                  "300": "over-limit",
-                  "400": "over-limit",
+                  "100": "relation",
                   "600": "relation",
                   "800": "relation",
                   "900": "order",
@@ -2618,11 +2605,8 @@
                 "held": {
                   "50": "order",
                   "100": "relation",
-                  "200": "over-limit",
-                  "300": "over-limit",
-                  "400": "over-limit",
                   "700": "relation",
-                  "800": "order",
+                  "800": "relation",
                   "900": "order",
                   "950": "order"
                 }
@@ -2662,11 +2646,6 @@
                   }
                 },
                 "held": {
-                  "50": "order",
-                  "100": "order",
-                  "200": "over-limit",
-                  "300": "over-limit",
-                  "400": "over-limit",
                   "800": "relation",
                   "900": "order",
                   "950": "order"
