@@ -1378,11 +1378,29 @@
       ]
     },
     {
+      "question": "color.definition.steps",
+      "option": "medium-ease",
+      "why": "A medium ease fits every brand key: soft tints for surfaces, open middle steps for fills.",
+      "because": [
+        "brand.q1",
+        "color.definition"
+      ]
+    },
+    {
       "question": "color.values",
       "option": "balanced",
       "why": "Balanced, so any brand hue works.",
       "because": [
         "brand.q1"
+      ]
+    },
+    {
+      "question": "color.values.difference",
+      "option": "clear",
+      "why": "Each brand keeps its status colors clear of its own accent at a glance.",
+      "because": [
+        "brand.q1",
+        "color.lands"
       ]
     },
     {

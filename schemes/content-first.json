@@ -1362,11 +1362,29 @@
       ]
     },
     {
+      "question": "color.definition.steps",
+      "option": "light-ease",
+      "why": "A light ease keeps the soft tints behind long text close together; the middle stays even.",
+      "because": [
+        "content.q1",
+        "color.definition"
+      ]
+    },
+    {
       "question": "color.values",
       "option": "balanced",
       "why": "A calm, balanced palette.",
       "because": [
         "brand.q1"
+      ]
+    },
+    {
+      "question": "color.values.difference",
+      "option": "clear",
+      "why": "Readers meet status and links inside text, so each must be clear at a glance.",
+      "because": [
+        "content.q1",
+        "color.lands"
       ]
     },
     {

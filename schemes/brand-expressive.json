@@ -1319,11 +1319,29 @@
       ]
     },
     {
+      "question": "color.definition.steps",
+      "option": "even-ease",
+      "why": "Half eased: rich middle steps for brand fills, soft ends for backgrounds and deep text.",
+      "because": [
+        "brand.q1",
+        "color.definition"
+      ]
+    },
+    {
       "question": "color.values",
       "option": "vivid",
       "why": "Vivid color is the brand.",
       "because": [
         "brand.q2"
+      ]
+    },
+    {
+      "question": "color.values.difference",
+      "option": "distinct",
+      "why": "Brand moments carry meaning with words and icons too, so a visible difference is enough.",
+      "because": [
+        "brand.q1",
+        "color.lands"
       ]
     },
     {

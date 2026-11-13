@@ -1456,11 +1456,29 @@
       ]
     },
     {
+      "question": "color.definition.steps",
+      "option": "strong-ease",
+      "why": "A strong ease opens the middle steps, where dense tables need fills that stand apart.",
+      "because": [
+        "tasks.q1",
+        "color.definition"
+      ]
+    },
+    {
       "question": "color.values",
       "option": "muted",
       "why": "Muted color keeps attention on the data.",
       "because": [
         "brand.q2"
+      ]
+    },
+    {
+      "question": "color.values.difference",
+      "option": "clear",
+      "why": "Status and categories in tables must differ at a glance, row after row.",
+      "because": [
+        "tasks.q1",
+        "color.lands"
       ]
     },
     {

@@ -1331,11 +1331,29 @@
       ]
     },
     {
+      "question": "color.definition.steps",
+      "option": "linear",
+      "why": "Even contrast between all steps, so every pair of steps is as easy to tell apart as any other.",
+      "because": [
+        "people.q1",
+        "color.definition"
+      ]
+    },
+    {
       "question": "color.values",
       "option": "balanced",
       "why": "Strong but not loud color.",
       "because": [
         "brand.q1"
+      ]
+    },
+    {
+      "question": "color.values.difference",
+      "option": "strong",
+      "why": "Status and accent must be told apart by everyone, also with a color vision deficiency.",
+      "because": [
+        "people.q1",
+        "color.lands"
       ]
     },
     {
