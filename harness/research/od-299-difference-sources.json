@@ -1,0 +1,525 @@
+{
+  "description": "OD-299 threshold research: the status and category colors of five published design systems, light mode, as their token packages ship them. scripts/od-299-thresholds.mjs measures the smallest pairwise OKLab distance in each set, under normal vision and simulated protanopia, deuteranopia and tritanopia, and writes the measured block. Each set names its package, version, file and source URL.",
+  "read_on": "2026-11-13",
+  "simulation": "Machado, Oliveira and Fernandes (2009), full severity, on linear sRGB (cli/src/quality/color.mjs).",
+  "systems": [
+    {
+      "id": "primer",
+      "name": "GitHub Primer",
+      "package": "@primer/primitives",
+      "version": "11.10.0",
+      "file": "dist/css/functional/themes/light.css",
+      "url": "https://www.npmjs.com/package/@primer/primitives/v/11.10.0",
+      "sets": {
+        "status": {
+          "tokens": "--fgColor-success, -danger, -attention, -accent, -done, -severe, -sponsors",
+          "colors": {
+            "success": "#1a7f37",
+            "danger": "#d1242f",
+            "attention": "#9a6700",
+            "accent": "#0969da",
+            "done": "#8250df",
+            "severe": "#bc4c00",
+            "sponsors": "#bf3989"
+          }
+        },
+        "category": {
+          "tokens": "--data-<hue>-color-emphasis",
+          "colors": {
+            "auburn": "#9d615c",
+            "blue": "#006edb",
+            "brown": "#856d4c",
+            "coral": "#d43511",
+            "gray": "#808fa3",
+            "green": "#30a147",
+            "lemon": "#866e04",
+            "lime": "#527a29",
+            "olive": "#64762d",
+            "orange": "#eb670f",
+            "pine": "#167e53",
+            "pink": "#ce2c85",
+            "plum": "#a830e8",
+            "purple": "#894ceb",
+            "red": "#df0c24",
+            "teal": "#179b9b",
+            "yellow": "#b88700"
+          }
+        }
+      }
+    },
+    {
+      "id": "carbon",
+      "name": "IBM Carbon",
+      "package": "@carbon/themes (status), @carbon/charts (category)",
+      "version": "@carbon/themes 11.85.0, @carbon/charts 1.27.27",
+      "file": "@carbon/themes lib/index.js (white theme support tokens); @carbon/charts dist/styles.css (--cds-charts-14-1-*, light)",
+      "url": "https://www.npmjs.com/package/@carbon/themes/v/11.85.0 and https://www.npmjs.com/package/@carbon/charts/v/1.27.27",
+      "sets": {
+        "status": {
+          "tokens": "supportError, supportSuccess, supportWarning, supportInfo (white theme)",
+          "colors": {
+            "error": "#da1e28",
+            "success": "#24a148",
+            "warning": "#f1c21b",
+            "info": "#0043ce"
+          }
+        },
+        "category": {
+          "tokens": "the 14-color categorical palette, light",
+          "colors": {
+            "1": "#6929c4",
+            "2": "#1192e8",
+            "3": "#005d5d",
+            "4": "#9f1853",
+            "5": "#fa4d56",
+            "6": "#520408",
+            "7": "#198038",
+            "8": "#002d9c",
+            "9": "#ee5396",
+            "10": "#b28600",
+            "11": "#009d9a",
+            "12": "#012749",
+            "13": "#8a3800",
+            "14": "#a56eff"
+          }
+        }
+      }
+    },
+    {
+      "id": "spectrum",
+      "name": "Adobe Spectrum",
+      "package": "@adobe/spectrum-tokens",
+      "version": "15.7.0",
+      "file": "dist/json/variables.json (light set)",
+      "url": "https://www.npmjs.com/package/@adobe/spectrum-tokens/v/15.7.0",
+      "sets": {
+        "status": {
+          "tokens": "positive-, negative-, notice-, informative-visual-color",
+          "colors": {
+            "positive": "#079355",
+            "negative": "#f03823",
+            "notice": "#d45b00",
+            "informative": "#4b75ff"
+          }
+        },
+        "category": {
+          "tokens": "<hue>-visual-color, the 17 chromatic hues (gray, silver and neutral left out)",
+          "colors": {
+            "blue": "#4b75ff",
+            "brown": "#9a7b4d",
+            "celery": "#52a119",
+            "chartreuse": "#8fac00",
+            "cinnamon": "#b86d46",
+            "cyan": "#30a7fe",
+            "fuchsia": "#c844dc",
+            "green": "#0ba45d",
+            "indigo": "#7a6afd",
+            "magenta": "#f02d6e",
+            "orange": "#e86a00",
+            "pink": "#e434a3",
+            "purple": "#a65ce7",
+            "red": "#f03823",
+            "seafoam": "#0ba286",
+            "turquoise": "#0a8d99",
+            "yellow": "#d29500"
+          }
+        }
+      }
+    },
+    {
+      "id": "atlassian",
+      "name": "Atlassian Design System",
+      "package": "@atlaskit/tokens",
+      "version": "20.11.0",
+      "file": "dist/esm/artifacts/themes/atlassian-light.js",
+      "url": "https://www.npmjs.com/package/@atlaskit/tokens/v/20.11.0",
+      "sets": {
+        "status": {
+          "tokens": "--ds-icon-success, -danger, -warning, -information, -discovery",
+          "colors": {
+            "success": "#6A9A23",
+            "danger": "#C9372C",
+            "warning": "#E06C00",
+            "information": "#357DE8",
+            "discovery": "#AF59E1"
+          }
+        },
+        "category": {
+          "tokens": "--ds-chart-categorical-1 to 8",
+          "colors": {
+            "1": "#357DE8",
+            "2": "#82B536",
+            "3": "#BF63F3",
+            "4": "#F68909",
+            "5": "#1558BC",
+            "6": "#964AC0",
+            "7": "#42B2D7",
+            "8": "#BD5B00"
+          }
+        }
+      }
+    },
+    {
+      "id": "radix",
+      "name": "Radix Colors",
+      "package": "@radix-ui/colors",
+      "version": "3.0.0",
+      "file": "<hue>.css, step 9 (light)",
+      "url": "https://www.npmjs.com/package/@radix-ui/colors/v/3.0.0",
+      "not_checked": "Radix publishes scales, not status or category tokens. The status set (red, green, amber, blue) and the category set (every chromatic hue at step 9) are this research's choice, not Radix's.",
+      "sets": {
+        "status": {
+          "tokens": "--red-9, --green-9, --amber-9, --blue-9",
+          "colors": {
+            "red": "#e5484d",
+            "green": "#30a46c",
+            "amber": "#ffc53d",
+            "blue": "#0090ff"
+          }
+        },
+        "category": {
+          "tokens": "--<hue>-9, 25 chromatic hues",
+          "colors": {
+            "tomato": "#e54d2e",
+            "red": "#e5484d",
+            "ruby": "#e54666",
+            "crimson": "#e93d82",
+            "pink": "#d6409f",
+            "plum": "#ab4aba",
+            "purple": "#8e4ec6",
+            "violet": "#6e56cf",
+            "iris": "#5b5bd6",
+            "indigo": "#3e63dd",
+            "blue": "#0090ff",
+            "cyan": "#00a2c7",
+            "teal": "#12a594",
+            "jade": "#29a383",
+            "green": "#30a46c",
+            "grass": "#46a758",
+            "brown": "#ad7f58",
+            "orange": "#f76b15",
+            "sky": "#7ce2fe",
+            "mint": "#86ead4",
+            "lime": "#bdee63",
+            "yellow": "#ffe629",
+            "amber": "#ffc53d",
+            "gold": "#978365",
+            "bronze": "#a18072"
+          }
+        }
+      }
+    }
+  ],
+  "measured": {
+    "primer": {
+      "status": {
+        "normal": {
+          "distance": 0.078,
+          "pair": [
+            "danger",
+            "severe"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0081,
+          "pair": [
+            "attention",
+            "severe"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.019,
+          "pair": [
+            "accent",
+            "done"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0346,
+          "pair": [
+            "severe",
+            "sponsors"
+          ]
+        }
+      },
+      "category": {
+        "normal": {
+          "distance": 0.0269,
+          "pair": [
+            "lime",
+            "olive"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0042,
+          "pair": [
+            "lime",
+            "olive"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.0088,
+          "pair": [
+            "lime",
+            "olive"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0128,
+          "pair": [
+            "brown",
+            "lemon"
+          ]
+        }
+      }
+    },
+    "carbon": {
+      "status": {
+        "normal": {
+          "distance": 0.2629,
+          "pair": [
+            "success",
+            "warning"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.051,
+          "pair": [
+            "error",
+            "success"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.1597,
+          "pair": [
+            "success",
+            "warning"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.1588,
+          "pair": [
+            "success",
+            "info"
+          ]
+        }
+      },
+      "category": {
+        "normal": {
+          "distance": 0.0884,
+          "pair": [
+            "5",
+            "9"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0342,
+          "pair": [
+            "2",
+            "14"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.0416,
+          "pair": [
+            "5",
+            "7"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0329,
+          "pair": [
+            "2",
+            "11"
+          ]
+        }
+      }
+    },
+    "spectrum": {
+      "status": {
+        "normal": {
+          "distance": 0.0745,
+          "pair": [
+            "negative",
+            "notice"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0136,
+          "pair": [
+            "negative",
+            "notice"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.0367,
+          "pair": [
+            "negative",
+            "notice"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0489,
+          "pair": [
+            "negative",
+            "notice"
+          ]
+        }
+      },
+      "category": {
+        "normal": {
+          "distance": 0.0583,
+          "pair": [
+            "brown",
+            "cinnamon"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0082,
+          "pair": [
+            "blue",
+            "indigo"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.0077,
+          "pair": [
+            "blue",
+            "indigo"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0106,
+          "pair": [
+            "green",
+            "seafoam"
+          ]
+        }
+      }
+    },
+    "atlassian": {
+      "status": {
+        "normal": {
+          "distance": 0.1233,
+          "pair": [
+            "danger",
+            "warning"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.048,
+          "pair": [
+            "success",
+            "warning"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.0424,
+          "pair": [
+            "information",
+            "discovery"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0776,
+          "pair": [
+            "success",
+            "information"
+          ]
+        }
+      },
+      "category": {
+        "normal": {
+          "distance": 0.1164,
+          "pair": [
+            "3",
+            "6"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0457,
+          "pair": [
+            "2",
+            "4"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.0178,
+          "pair": [
+            "5",
+            "6"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0843,
+          "pair": [
+            "2",
+            "7"
+          ]
+        }
+      }
+    },
+    "radix": {
+      "status": {
+        "normal": {
+          "distance": 0.2422,
+          "pair": [
+            "green",
+            "blue"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0493,
+          "pair": [
+            "red",
+            "green"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.1496,
+          "pair": [
+            "red",
+            "green"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0563,
+          "pair": [
+            "green",
+            "blue"
+          ]
+        }
+      },
+      "category": {
+        "normal": {
+          "distance": 0.0235,
+          "pair": [
+            "teal",
+            "jade"
+          ]
+        },
+        "deuteranopia": {
+          "distance": 0.0114,
+          "pair": [
+            "violet",
+            "iris"
+          ]
+        },
+        "protanopia": {
+          "distance": 0.0129,
+          "pair": [
+            "violet",
+            "iris"
+          ]
+        },
+        "tritanopia": {
+          "distance": 0.0061,
+          "pair": [
+            "tomato",
+            "red"
+          ]
+        }
+      }
+    }
+  }
+}
