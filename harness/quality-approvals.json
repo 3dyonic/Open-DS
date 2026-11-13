@@ -914,6 +914,474 @@
       ],
       "why": "Cause: second cue (owner rule for colour-blind pairs). A selected row carries its own edge: color.border.selected clears 8.11:1 on raised, so selection does not rely on the fill.",
       "approved_by": "Yonatan, 2026-11-12"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.navy.light.200",
+      "to": "#afc0d6",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step navy 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.navy.light.300",
+      "to": "#869bb7",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step navy 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.navy.light.400",
+      "to": "#617999",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step navy 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.200",
+      "to": "#b4dbb9",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.300",
+      "to": "#8dc195",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.400",
+      "to": "#69a974",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.200",
+      "to": "#e5c8a9",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.300",
+      "to": "#ceaa80",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.400",
+      "to": "#b78c5a",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.200",
+      "to": "#ffc0b9",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.300",
+      "to": "#fb988e",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.400",
+      "to": "#ea756b",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.200",
+      "to": "#a6c2f3",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.300",
+      "to": "#7a9fdc",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "content-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.400",
+      "to": "#537cc4",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.200",
+      "to": "#a0c3fe",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.300",
+      "to": "#74a2f3",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.400",
+      "to": "#5185e3",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.200",
+      "to": "#a9d5b0",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.300",
+      "to": "#84bc8d",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.400",
+      "to": "#63a56f",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.200",
+      "to": "#dfc09f",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.300",
+      "to": "#c9a277",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.400",
+      "to": "#b38753",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.200",
+      "to": "#feb7ae",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.300",
+      "to": "#f89085",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.400",
+      "to": "#e76f65",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.teal.light.200",
+      "to": "#a4c6c2",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step teal 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.teal.light.300",
+      "to": "#7ba8a2",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step teal 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.teal.light.400",
+      "to": "#578c86",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step teal 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.pink.light.300",
+      "to": "#ffa6c4",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step pink 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.300",
+      "to": "#96c79d",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.300",
+      "to": "#d3b08a",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.300",
+      "to": "#fea298",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.300",
+      "to": "#84a7e2",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.400",
+      "to": "#5a82c8",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.teal.light.300",
+      "to": "#90c3bc",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step teal 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.teal.light.400",
+      "to": "#68a7a0",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step teal 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.purple.light.200",
+      "to": "#d1c7ff",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step purple 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.purple.light.300",
+      "to": "#b5a1ff",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step purple 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.purple.light.400",
+      "to": "#9b7afb",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step purple 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.orange.light.300",
+      "to": "#faa58b",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step orange 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.300",
+      "to": "#93c59b",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.green.light.400",
+      "to": "#6cab78",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step green 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.300",
+      "to": "#d1ad86",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.amber.light.400",
+      "to": "#b98e5d",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step amber 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.red.light.300",
+      "to": "#fe9d93",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step red 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.200",
+      "to": "#adc8f6",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 200 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.300",
+      "to": "#80a4df",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 300 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "multi-brand",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.blue.light.400",
+      "to": "#5780c7",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The step blue 400 moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "accessible-first",
+      "theme": "light",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.selected",
+      "to": "#d6e6ff",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The token color.surface.selected moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
+    },
+    {
+      "scheme": "brand-expressive",
+      "theme": "dark",
+      "check": "shift.approval-unapproved",
+      "token": "color.surface.selected",
+      "to": "#3e112b",
+      "why": "Cause: OD-308. The owner approved the contrast-graded curve for this scheme. The token color.surface.selected moves over the shift limit to its graded value.",
+      "approved_by": "Yonatan, 2026-11-13"
     }
   ]
 }
