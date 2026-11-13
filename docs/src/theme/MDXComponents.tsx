@@ -37,6 +37,11 @@ import FillTones from "@open-ds/doc-composites/FillTones";
 import StatusColors from "@open-ds/doc-composites/StatusColors";
 import ModeChanges from "@open-ds/doc-composites/ModeChanges";
 import ModeConstants from "@open-ds/doc-composites/ModeConstants";
+import ScaleStrip from "@open-ds/doc-composites/ScaleStrip";
+import ScaleCurve from "@open-ds/doc-composites/ScaleCurve";
+import ScaleWhy from "@open-ds/doc-composites/ScaleWhy";
+import ScaleUses from "@open-ds/doc-composites/ScaleUses";
+import ScaleOptions from "@open-ds/doc-composites/ScaleOptions";
 
 // The pages link to sections by id: a "Because" chip opens the answer card below it (#why-...).
 // Docusaurus only registers headings as link targets, so it reported those links as broken though
@@ -158,4 +163,9 @@ export default {
   StatusColors,
   ModeChanges,
   ModeConstants,
+  ScaleStrip,
+  ScaleCurve,
+  ScaleWhy,
+  ScaleUses,
+  ScaleOptions,
 };

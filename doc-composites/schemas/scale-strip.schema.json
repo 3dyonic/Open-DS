@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-ds.dev/schemas/doc-composites/scale-strip.schema.json",
+  "title": "Scale strip",
+  "description": "A scheme's key scale in the light theme, steps 50 to 950, as built. Drawn by the ScaleStrip composite on Primitives › Color › How the scale is built.",
+  "type": "object",
+  "required": [
+    "hue",
+    "key",
+    "steps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "hue": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "The hue of the key scale, such as pink or blue."
+    },
+    "key": {
+      "type": "string",
+      "const": "600",
+      "description": "The key step: the key color sits exact here."
+    },
+    "steps": {
+      "type": "array",
+      "description": "Every step, lightest first.",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "required": [
+          "step",
+          "primitive",
+          "hex"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "step": {
+            "type": "string",
+            "pattern": "^(50|[1-9]00|950)$",
+            "description": "The step of the scale, 50 to 950."
+          },
+          "primitive": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*\\.light\\.\\d+$",
+            "description": "The primitive of the step, without its color. prefix, such as pink.light.600."
+          },
+          "hex": {
+            "type": "string",
+            "pattern": "^#[0-9A-F]{6}$",
+            "description": "The color as built, in uppercase hex."
+          }
+        }
+      }
+    }
+  }
+}
