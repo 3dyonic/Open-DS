@@ -324,8 +324,16 @@
                     ]
                   },
                   "match": {
-                    "enum": ["hue", "chain", "scale", "line-kind"],
-                    "description": "comes-from: hue means the same hue scale; chain means the value reads the from token on its way; scale means a type size is base × ratio^step of the scheme's type record; line-kind means a line height is the ratio of its role's line kind."
+                    "enum": [
+                      "hue",
+                      "chain",
+                      "scale",
+                      "line-kind",
+                      "base-multiple",
+                      "rhythm",
+                      "equals"
+                    ],
+                    "description": "comes-from: hue means the same hue scale; chain means the value reads the from token on its way; scale means a type size is base × ratio^step of the scheme's type record; line-kind means a line height is the ratio of its role's line kind; base-multiple means a gap or inset is the spacing base × its use case's multiple; rhythm means a component spacing step is 4px × its multiplier × the scheme's rhythm; equals means a length is its from token."
                   },
                   "steps": {
                     "type": "integer",
@@ -366,9 +374,10 @@
                       "order",
                       "ratio-step",
                       "kind-gap",
-                      "holds-line"
+                      "holds-line",
+                      "at-least"
                     ],
-                    "description": "stays-apart: hue means no shared hue scale; delta-e means a color difference; order means a lightness order; ratio-step means a text size is at least one ratio step above the size on the step below; kind-gap means the line kinds keep min_apart between their ratios. pairs-with: holds-line means each from box is at least the line height of the tokens' role."
+                    "description": "stays-apart: hue means no shared hue scale; delta-e means a color difference; order means a lightness order; ratio-step means a text size is at least one ratio step above the size on the step below; kind-gap means the line kinds keep min_apart between their ratios; at-least means a length is at least times × its from token. pairs-with: holds-line means each from box is at least the line height of the tokens' role; at-least as for stays-apart."
                   },
                   "min_delta_e": {
                     "type": "number",
@@ -379,6 +388,11 @@
                     "type": "number",
                     "exclusiveMinimum": 0,
                     "description": "stays-apart by kind-gap: the smallest gap between two line kind ratios."
+                  },
+                  "times": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "description": "at-least: how many times its from token a length is at least. 1 when left out."
                   },
                   "modes": {
                     "type": "array",
@@ -1334,7 +1348,7 @@
           },
           "roles": {
             "type": "array",
-            "description": "The roles this property serves (OD-304), in color and type, each with the parts of the reason form: role, job, how (from the job), what people get.",
+            "description": "The roles this property serves (OD-304), in every scope on the decision graph, each with the parts of the reason form: role, job, how (from the job), what people get.",
             "items": {
               "type": "object",
               "additionalProperties": false,
@@ -1500,7 +1514,7 @@
             "type": "string",
             "pattern": "^[a-z0-9-]+$"
           },
-          "description": "The color roles this option brings, by role id (OD-304). An empty list means the option shapes roles but brings none."
+          "description": "The roles this option brings, by role id (OD-304). An empty list means the option shapes roles but brings none."
         }
       }
     },
@@ -1773,6 +1787,10 @@
                 "type": "string",
                 "pattern": "^[a-z-]+$",
                 "description": "The relation's id; scheme records name it."
+              },
+              "kind": {
+                "enum": ["comes-from", "pairs-with", "stays-apart"],
+                "description": "The decision graph's kind of connection (OD-304), for a relation that ties the token to another token. A relation without a kind is the token's rule."
               },
               "tokens": {
                 "type": "array",

@@ -1289,11 +1289,26 @@
           "options": [
             {
               "id": "gap-inset",
-              "label": "Gaps and insets"
+              "label": "Gaps and insets",
+              "creates": [
+                "item-gap",
+                "group-gap",
+                "inset",
+                "container-padding",
+                "component-step"
+              ]
             },
             {
               "id": "gap-inset-row",
-              "label": "Gaps, insets and row heights"
+              "label": "Gaps, insets and row heights",
+              "creates": [
+                "item-gap",
+                "group-gap",
+                "inset",
+                "container-padding",
+                "component-step",
+                "row"
+              ]
             }
           ]
         },
@@ -1305,11 +1320,13 @@
           "options": [
             {
               "id": "one",
-              "label": "One"
+              "label": "One",
+              "creates": []
             },
             {
               "id": "two",
-              "label": "Two"
+              "label": "Two",
+              "creates": []
             }
           ]
         },
@@ -1321,11 +1338,13 @@
           "options": [
             {
               "id": "fine",
-              "label": "Small steps, on a 4px grid"
+              "label": "Small steps, on a 4px grid",
+              "creates": []
             },
             {
               "id": "coarse",
-              "label": "Big, even steps"
+              "label": "Big, even steps",
+              "creates": []
             }
           ]
         },
@@ -1337,15 +1356,18 @@
           "options": [
             {
               "id": "compact",
-              "label": "Compact"
+              "label": "Compact",
+              "creates": []
             },
             {
               "id": "comfortable",
-              "label": "Comfortable"
+              "label": "Comfortable",
+              "creates": []
             },
             {
               "id": "spacious",
-              "label": "Spacious"
+              "label": "Spacious",
+              "creates": []
             }
           ]
         },
@@ -1357,19 +1379,23 @@
           "options": [
             {
               "id": "rows-cells",
-              "label": "Rows and cells"
+              "label": "Rows and cells",
+              "creates": []
             },
             {
               "id": "reading",
-              "label": "Between paragraphs"
+              "label": "Between paragraphs",
+              "creates": []
             },
             {
               "id": "fields",
-              "label": "Between fields"
+              "label": "Between fields",
+              "creates": []
             },
             {
               "id": "sections",
-              "label": "Between big sections"
+              "label": "Between big sections",
+              "creates": []
             }
           ]
         }
@@ -1558,11 +1584,24 @@
           "options": [
             {
               "id": "control-container",
-              "label": "Controls and containers"
+              "label": "Controls and containers",
+              "creates": [
+                "control-corner",
+                "surface-corner",
+                "option-corner",
+                "element-corner"
+              ]
             },
             {
               "id": "control-badge-container",
-              "label": "Controls, badges and containers"
+              "label": "Controls, badges and containers",
+              "creates": [
+                "control-corner",
+                "surface-corner",
+                "option-corner",
+                "element-corner",
+                "badge-corner"
+              ]
             }
           ]
         },
@@ -1574,11 +1613,13 @@
           "options": [
             {
               "id": "two",
-              "label": "Two"
+              "label": "Two",
+              "creates": []
             },
             {
               "id": "three",
-              "label": "Three"
+              "label": "Three",
+              "creates": []
             }
           ]
         },
@@ -1590,11 +1631,13 @@
           "options": [
             {
               "id": "fixed",
-              "label": "Fixed for the product"
+              "label": "Fixed for the product",
+              "creates": []
             },
             {
               "id": "per-brand",
-              "label": "Set by each brand"
+              "label": "Set by each brand",
+              "creates": []
             }
           ]
         },
@@ -1606,19 +1649,23 @@
           "options": [
             {
               "id": "sharp",
-              "label": "Sharp"
+              "label": "Sharp",
+              "creates": []
             },
             {
               "id": "slightly-rounded",
-              "label": "Slightly rounded"
+              "label": "Slightly rounded",
+              "creates": []
             },
             {
               "id": "rounded",
-              "label": "Rounded"
+              "label": "Rounded",
+              "creates": []
             },
             {
               "id": "pill",
-              "label": "Pill"
+              "label": "Pill",
+              "creates": []
             }
           ]
         },
@@ -1630,15 +1677,18 @@
           "options": [
             {
               "id": "controls",
-              "label": "Controls in dense rows"
+              "label": "Controls in dense rows",
+              "creates": []
             },
             {
               "id": "controls-cards",
-              "label": "Controls and cards"
+              "label": "Controls and cards",
+              "creates": []
             },
             {
               "id": "buttons-badges",
-              "label": "Buttons and badges"
+              "label": "Buttons and badges",
+              "creates": []
             }
           ]
         }
@@ -1759,6 +1809,7 @@
         },
         {
           "id": "option-nests",
+          "kind": "comes-from",
           "tokens": ["radius.option"],
           "check": "minus",
           "follows": [
@@ -1772,6 +1823,7 @@
         },
         {
           "id": "element-box",
+          "kind": "comes-from",
           "tokens": ["radius.element"],
           "check": "equal-unless-pill",
           "follows": ["shape.values", "brand.q1", "content.q2"],
@@ -1780,6 +1832,7 @@
         },
         {
           "id": "badge-corner",
+          "kind": "comes-from",
           "tokens": ["radius.badge"],
           "check": "equal-or-own",
           "own_when": {
@@ -2670,15 +2723,18 @@
           "options": [
             {
               "id": "pointer",
-              "label": "Compact, for a pointer"
+              "label": "Compact, for a pointer",
+              "creates": []
             },
             {
               "id": "touch",
-              "label": "Touch size"
+              "label": "Touch size",
+              "creates": []
             },
             {
               "id": "large",
-              "label": "Large"
+              "label": "Large",
+              "creates": []
             }
           ]
         },
@@ -17633,6 +17689,64 @@
           "min_apart": 0.2,
           "says": "The line kinds stay at least 0.2 apart (tight, snug, open), so each kind reads as its own.",
           "why": "The owner decided steps at least 0.2 apart (OD-221)."
+        },
+        {
+          "id": "space-from-base",
+          "kind": "comes-from",
+          "match": "base-multiple",
+          "tokens": ["space.gap.*", "space.inset.*"],
+          "from": "spacing base",
+          "says": "Each gap and inset comes from the spacing base: the base (4px for small steps, 8px for big ones) × the multiple of its use case."
+        },
+        {
+          "id": "map-from-rhythm",
+          "kind": "comes-from",
+          "match": "rhythm",
+          "tokens": ["component-spacing-map.*"],
+          "from": "spacing rhythm",
+          "says": "Each step of the component spacing map comes from 4px × its multiplier × the scheme's rhythm, rounded to 4px and at most 64px. Held steps and the hairline stay fixed."
+        },
+        {
+          "id": "group-gap-apart",
+          "kind": "stays-apart",
+          "by": "at-least",
+          "times": 2,
+          "tokens": ["space.gap.group"],
+          "from": ["space.gap.default"],
+          "says": "The gap between groups is at least twice the gap inside a group, so groups read as separate."
+        },
+        {
+          "id": "section-gap-apart",
+          "kind": "stays-apart",
+          "by": "at-least",
+          "times": 1.5,
+          "tokens": ["space.gap.section"],
+          "from": ["space.gap.group"],
+          "says": "The gap between sections is at least 1.5 times the gap between groups, so a section reads as a larger break."
+        },
+        {
+          "id": "group-gap-past-padding",
+          "kind": "stays-apart",
+          "by": "at-least",
+          "tokens": ["space.gap.group"],
+          "from": ["space.inset.container"],
+          "says": "The gap between groups is at least the padding of a container, so content sits nearer its own edge than the next box."
+        },
+        {
+          "id": "row-from-control",
+          "kind": "comes-from",
+          "match": "equals",
+          "tokens": ["size.row"],
+          "from": "size.control.default",
+          "says": "A row is one default control tall, so a control in a row fills its height."
+        },
+        {
+          "id": "row-holds-target",
+          "kind": "pairs-with",
+          "by": "at-least",
+          "tokens": ["size.row"],
+          "from": ["size.hit-area"],
+          "says": "A row is at least the scheme's smallest target, so a clickable row is easy to hit."
         }
       ]
     },
@@ -40543,6 +40657,11 @@
           "how": "Proximity → Heading lines closer than the space around them read as one unit."
         },
         {
+          "id": "snug",
+          "title": "Snug (short text that wraps)",
+          "how": "Return sweep → Snug leading keeps a short block compact, with room enough to land on the next line."
+        },
+        {
           "id": "follow-the-size",
           "title": "Follow the size",
           "how": "follows typography.definition: line height = size × the role kind's ratio"
@@ -40570,7 +40689,13 @@
           "id": "label-lines",
           "role": "label lines",
           "tokens": ["type.label.line-height"],
-          "jobs": ["tight", "open", "follow-the-size", "survive-user-spacing"],
+          "jobs": [
+            "tight",
+            "snug",
+            "open",
+            "follow-the-size",
+            "survive-user-spacing"
+          ],
           "to": "keep a label close to the thing it names",
           "gets": "a label stays with its field, even when it wraps"
         },
@@ -40582,7 +40707,13 @@
             "type.caption.line-height",
             "type.data.line-height"
           ],
-          "jobs": ["open", "tight", "follow-the-size", "survive-user-spacing"],
+          "jobs": [
+            "open",
+            "snug",
+            "tight",
+            "follow-the-size",
+            "survive-user-spacing"
+          ],
           "to": "let the eye find the next line",
           "gets": "people keep their place in text that wraps"
         }
@@ -40966,6 +41097,7 @@
       "scope": "spacing",
       "question": "spacing.values",
       "tokens": ["space.gap.*", "space.inset.*", "component-spacing-map.*"],
+      "rule": "gap or inset = the spacing base × the multiple of its use case (the base is 4px for small steps, 8px for big ones); a component spacing step = 4px × its multiplier × the rhythm, rounded to 4px, at most 64px",
       "jobs": [
         {
           "id": "gap-inside-a-group",
@@ -40975,10 +41107,7 @@
         {
           "id": "gap-between-groups",
           "title": "Gap between groups",
-          "how": "Proximity → The gap between groups is clearly larger than the gap inside one.",
-          "also": [
-            "follows gap.default: group ≥ 2 × default; section ≥ 1.5 × group"
-          ]
+          "how": "Proximity → The gap between groups is clearly larger than the gap inside one."
         },
         {
           "id": "control-and-cell-inset",
@@ -40988,8 +41117,58 @@
         {
           "id": "container-padding",
           "title": "Container padding",
-          "how": "Common region → Content sits nearer its own edge than the next box.",
-          "also": ["follows gap.group: inset.container ≤ gap.group"]
+          "how": "Common region → Content sits nearer its own edge than the next box."
+        },
+        {
+          "id": "inside-a-component",
+          "title": "Inside a component",
+          "how": "follows spacing.values: map step = 4px × multiplier × the rhythm; x1 and x2 hold still, so rows stay tight"
+        }
+      ],
+      "roles": [
+        {
+          "id": "item-gap",
+          "role": "the gap inside a group",
+          "tokens": ["space.gap.tight", "space.gap.default"],
+          "jobs": ["gap-inside-a-group"],
+          "to": "keep the parts of one group together",
+          "gets": "people see which things belong together"
+        },
+        {
+          "id": "group-gap",
+          "role": "the gap between groups",
+          "tokens": ["space.gap.group", "space.gap.section"],
+          "jobs": ["gap-between-groups", "gap-inside-a-group"],
+          "to": "set one group or section apart from the next",
+          "gets": "people see where one group ends and the next begins"
+        },
+        {
+          "id": "inset",
+          "role": "the inset inside a control or a cell",
+          "tokens": ["space.inset.control-x", "space.inset.cell-x"],
+          "jobs": ["control-and-cell-inset"],
+          "to": "give a label room inside its box",
+          "gets": "a label never touches the edge of its control or cell"
+        },
+        {
+          "id": "container-padding",
+          "role": "the padding of a container",
+          "tokens": ["space.inset.container"],
+          "jobs": ["container-padding"],
+          "to": "keep content nearer its own edge than the next box",
+          "gets": "content reads as part of its own box"
+        },
+        {
+          "id": "component-step",
+          "role": "a spacing step inside a component",
+          "tokens": ["component-spacing-map.*"],
+          "jobs": [
+            "inside-a-component",
+            "gap-inside-a-group",
+            "control-and-cell-inset"
+          ],
+          "to": "space the parts inside one component on one rhythm",
+          "gets": "every component spaces its parts the same way"
         }
       ]
     },
@@ -40999,6 +41178,7 @@
       "scope": "spacing",
       "question": "spacing.roles",
       "tokens": ["size.row"],
+      "rule": "row height = the default control height on the scheme's control scale",
       "jobs": [
         {
           "id": "default-row",
@@ -41020,6 +41200,29 @@
           "title": "Row as target",
           "how": "follows hit area: a clickable row meets the scheme's minimum target"
         }
+      ],
+      "roles": [
+        {
+          "id": "row",
+          "role": "a table row",
+          "tokens": ["size.row"],
+          "jobs": [
+            "default-row",
+            "stay-on-the-row",
+            "compact-row",
+            "row-as-target"
+          ],
+          "to": "keep the eye on one record",
+          "gets": "people follow one record across a table",
+          "always_on": {
+            "why": "every scheme ships a table row, and a scheme without row heights takes the default control height",
+            "shaped_by": [
+              "spacing.roles",
+              "spacing.values",
+              "accessibility.values"
+            ]
+          }
+        }
       ]
     },
     {
@@ -41039,6 +41242,16 @@
           "title": "Tone",
           "how": "Curvature preference → Rounder controls read softer; the brand words are convention."
         }
+      ],
+      "roles": [
+        {
+          "id": "control-corner",
+          "role": "the control corner",
+          "tokens": ["radius.control"],
+          "jobs": ["mark-controls", "tone"],
+          "to": "mark every control as one family",
+          "gets": "people spot what they can press or type in"
+        }
       ]
     },
     {
@@ -41052,6 +41265,16 @@
           "id": "object-or-cell",
           "title": "Object or cell",
           "how": "Uniform connectedness → Rounded surfaces read as separate objects; square ones tile."
+        }
+      ],
+      "roles": [
+        {
+          "id": "surface-corner",
+          "role": "the surface corner",
+          "tokens": ["radius.container", "radius.surface"],
+          "jobs": ["object-or-cell"],
+          "to": "show whether a surface is an object or a cell",
+          "gets": "cards and panels read as separate objects, or tile as one grid"
         }
       ]
     },
@@ -41081,6 +41304,36 @@
           "id": "nested-formula",
           "title": "Nested formula",
           "how": "follows radius.surface: outer = inner + padding + border; at 24px+ padding, own corner"
+        }
+      ],
+      "roles": [
+        {
+          "id": "option-corner",
+          "role": "the corner of an option in a menu",
+          "tokens": ["radius.option"],
+          "jobs": ["option", "nested-formula"],
+          "to": "keep an option's corner concentric with its menu",
+          "gets": "a highlighted option sits inside its menu as one shape"
+        },
+        {
+          "id": "element-corner",
+          "role": "the corner of a box inside a control",
+          "tokens": ["radius.element"],
+          "jobs": ["element"],
+          "to": "keep a box that grows in the control's corner family",
+          "gets": "inputs and boxes that grow look like the controls beside them"
+        },
+        {
+          "id": "badge-corner",
+          "role": "the badge corner",
+          "tokens": ["radius.badge"],
+          "jobs": ["badge"],
+          "to": "set a badge's corner from the control corner, or give it its own",
+          "gets": "badges belong to the same shape family as the controls",
+          "always_on": {
+            "why": "every scheme ships badges, and the roles answer decides whether the badge corner is its own or the control's",
+            "shaped_by": ["shape.roles", "shape.values"]
+          }
         }
       ]
     },

@@ -2148,7 +2148,7 @@ export const CHECKS = {
   "color-links-complete": {
     requires: ["cli/src/decision-graph.mjs", "cli/src/trace.mjs", "schemes/grammar.json"],
     run: async (c) => {
-      const { graphGroups, indexesOf, missingLinks } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
+      const { graphGroups, inGraph, indexesOf, missingLinks } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const { decisionTree } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
       const { flatTokens } = await import(pathToFileURL(c.p("cli/src/tokens.mjs")).href);
       const g = c.grammar();
@@ -2158,7 +2158,7 @@ export const CHECKS = {
         const scheme = c.scheme(id);
         const indexOf = indexesOf(scheme);
         const names = flatTokens(scheme.tokens.semantic)
-          .filter(([p, t]) => graphGroups(g).includes(p.split(".")[0]) && !t.$deprecated)
+          .filter(([p, t]) => inGraph(g, p) && !t.$deprecated)
           .map(([p]) => p);
         for (const brand of Object.keys(scheme.tokens.brands))
           for (const mode of ["light", "dark"])
@@ -2179,7 +2179,7 @@ export const CHECKS = {
       // Every connection, color and type, holds in every brand and mode, waits for a recorded fix, or is in the baseline.
       // The count of gaps per connection and scheme may only go down. The gaps are findings for the
       // owner: the check changes no value.
-      const { connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
+      const { allConnections, connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const g = c.grammar();
       const base = c.json("harness", "connections-baseline.json").counts;
       const rose = [];
@@ -2190,7 +2190,7 @@ export const CHECKS = {
         const checks = evaluateConnections(c.scheme(id), g);
         n += checks.length;
         const gaps = connectionGaps(checks);
-        for (const conn of g.semantics.connections.items) {
+        for (const conn of allConnections(g)) {
           const mine = gaps.filter((x) => x.connection === conn.id);
           const was = base[conn.id]?.[id] ?? 0;
           if (mine.length > was) rose.push(`${id} ${conn.id} went from ${was} to ${mine.length}: ${mine.map((x) => x.says).join("; ")}`);
@@ -2211,7 +2211,7 @@ export const CHECKS = {
   "color-roles-created": {
     requires: ["cli/src/decision-graph.mjs", "schemes/grammar.json"],
     run: async (c) => {
-      const { creatorsOf, graphGroups, roleOf } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
+      const { creatorsOf, graphGroups, inGraph, roleOf } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const { questions } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
       const { flatTokens } = await import(pathToFileURL(c.p("cli/src/tokens.mjs")).href);
       const g = c.grammar();
@@ -2238,7 +2238,7 @@ export const CHECKS = {
         const scheme = c.scheme(id);
         const shipped = new Map();
         for (const [path, t] of flatTokens(scheme.tokens.semantic))
-          if (graphGroups(g).includes(path.split(".")[0]) && !t.$deprecated) {
+          if (inGraph(g, path) && !t.$deprecated) {
             const r = roleOf(g, path)?.role;
             if (r && !shipped.has(r.id)) shipped.set(r.id, { role: r, token: path });
           }
@@ -2250,7 +2250,26 @@ export const CHECKS = {
       }
       return off.length
         ? bad(`${off.length} roles have no answer that creates them: ${off.slice(0, 5).join("; ")}`)
-        : ok(`${n} shipped color and type roles in ${SCHEMES.length} schemes are created by a chosen option or always-on; ${depends.size} questions list what each option creates`);
+        : ok(`${n} shipped roles in ${SCHEMES.length} schemes are created by a chosen option or always-on; ${depends.size} questions list what each option creates`);
+    },
+  },
+  // OD-304: a stored reason names the numbers its data has. A type reason's size, grid, line box and line kind,
+  // and the lead of any reason in the reason form ("We use 16px for"), match the values the tokens resolve to.
+  "stored-reasons-match-values": {
+    requires: ["cli/src/decision-graph.mjs"],
+    run: async (c) => {
+      const { storedNumberGaps } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
+      const { writtenReasons } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
+      const off = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const scheme = c.scheme(id);
+        n += writtenReasons(scheme).length;
+        for (const x of storedNumberGaps(scheme)) off.push(`${id} ${x.where} ${x.token}: ${x.says}`);
+      }
+      return off.length
+        ? bad(`${off.length} stored reasons name numbers the data does not have: ${off.slice(0, 5).join("; ")}. Fix the text with saveScheme; keep the value.`)
+        : ok(`${n} stored reasons in ${SCHEMES.length} schemes name only the sizes, grids, line boxes, line kinds and lead values their tokens have`);
     },
   },
   "json-sources-one-layout": {

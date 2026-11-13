@@ -1,8 +1,8 @@
-// The decision graph (OD-304): every color and type token inherits its reason from its role, job,
+// The decision graph (OD-304): every token of a scope on the graph inherits its reason from its role, job,
 // property, answers, rule and connections. Run on the real schemes and grammar.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, roleOf } from "../src/decision-graph.mjs";
+import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, roleOf, storedNumberGaps } from "../src/decision-graph.mjs";
 import { assetRoots, grammar, loadScheme } from "../src/schemes.mjs";
 import { decisionTree, formGaps } from "../src/trace.mjs";
 
@@ -186,4 +186,87 @@ test("every shipped type role is created by a chosen option or always-on", () =>
   assert.deepEqual(creatorsOf(scheme, g, "heading-lines"), ["typography.definition"]);
   assert.deepEqual(creatorsOf(scheme, g, "typeface"), ["brand.q3"]);
   assert.deepEqual(madeBy(scheme, g, "type.data.font-size"), { role: "data-size", always: "every scheme's type scale gives values a step of their own", creates: [], shapes: ["typography.roles", "typography.count", "typography.values"] });
+});
+
+// A snug line (OD-304): a snug token leads with the snug job, not the open one.
+test("a snug caption line leads with the snug job", () => {
+  const role = decisionTree(loadScheme("dense-data", roots), g, "type.caption.line-height").find((n) => n.level === "role");
+  assert.equal(role.jobs[0].id, "snug");
+  assert.ok(!role.jobs.some((j) => j.id === "open" || j.id === "tight"));
+});
+
+// Spacing (OD-304): one base and a multiple per use case make every gap and inset; the map's rhythm makes each step.
+const gapsOf = (scheme, id) => connectionGaps(evaluateConnections(scheme, g)).filter((x) => x.connection === id);
+
+test("a spacing token reads role → property → rule → connections → value → reason", () => {
+  const scheme = loadScheme("dense-data", roots);
+  const tree = decisionTree(scheme, g, "space.gap.group");
+  const levels = tree.map((n) => n.level).filter((l) => ["role", "property", "rule", "connection", "value", "reason"].includes(l));
+  assert.deepEqual([...new Set(levels)], ["role", "property", "rule", "connection", "value", "reason"]);
+  assert.equal(tree.find((n) => n.level === "role").name, "group-gap");
+  assert.deepEqual(tree.filter((n) => n.level === "connection").map((n) => [n.name, n.holds]), [
+    ["space-from-base", true],
+    ["group-gap-apart", true],
+    ["section-gap-apart", true],
+    ["group-gap-past-padding", true],
+  ]);
+  assert.match(tree.find((n) => n.level === "reason").says, /^We use 16px \(1rem\) for the gap between groups in order to .* does this by proximity: .*\(spacing\.roles, .*\)\.$/);
+  assert.deepEqual(missingLinks(scheme, g, "space.gap.group", tree), []);
+});
+
+test("each gap and inset comes from the spacing base, each map step from the rhythm; planted values break them", () => {
+  for (const id of SCHEMES) {
+    const scheme = loadScheme(id, roots);
+    for (const c of ["space-from-base", "map-from-rhythm", "group-gap-apart", "section-gap-apart", "group-gap-past-padding", "row-from-control", "row-holds-target"])
+      assert.deepEqual(gapsOf(scheme, c), [], `${id} ${c}`);
+  }
+  const scheme = structuredClone(loadScheme("dense-data", roots));
+  scheme.tokens.semantic.space.gap.group.$value = "{space.12}";
+  scheme.tokens.semantic["component-spacing-map"].x3.$value = "{space.16}";
+  assert.deepEqual(gapsOf(scheme, "space-from-base").map((x) => x.tokens), [["space.gap.group"]]);
+  assert.deepEqual(gapsOf(scheme, "group-gap-apart").map((x) => x.says), ["space.gap.group is 12px; 2 × space.gap.default 8px is 16px"]);
+  assert.deepEqual(gapsOf(scheme, "group-gap-past-padding").map((x) => x.tokens), [["space.gap.group", "space.inset.container"]]);
+  assert.deepEqual(gapsOf(scheme, "map-from-rhythm").map((x) => x.tokens), [["component-spacing-map.x3"]]);
+});
+
+test("a row is one default control tall and at least the smallest target; a planted row breaks both", () => {
+  const scheme = structuredClone(loadScheme("dense-data", roots));
+  scheme.tokens.semantic.size.row.$value = "{size.16}";
+  assert.deepEqual(gapsOf(scheme, "row-from-control").map((x) => x.says), ["size.row is 16px; size.control.default is 32px"]);
+  assert.deepEqual(gapsOf(scheme, "row-holds-target").map((x) => x.says), ["size.row is 16px; size.hit-area is 24px"]);
+});
+
+// Shape (OD-304): a decided corner's relation is its rule; a derived corner's relation is a connection.
+test("a decided corner reads its relation as the rule; a derived corner comes from it", () => {
+  const scheme = loadScheme("content-first", roots);
+  const control = decisionTree(scheme, g, "radius.control");
+  assert.deepEqual(control.filter((n) => n.level === "rule").map((n) => [n.name, n.holds]), [["control-corner", true]]);
+  const element = decisionTree(scheme, g, "radius.element");
+  assert.deepEqual(element.filter((n) => n.level === "connection").map((n) => [n.name, n.kind, n.holds]), [["element-box", "comes-from", true]]);
+  assert.match(element.find((n) => n.level === "reason").says, /^We use 8px \(0\.5rem\) for the corner of a box inside a control in order to /);
+  assert.deepEqual(missingLinks(scheme, g, "radius.element", element), []);
+  const broken = structuredClone(scheme);
+  broken.tokens.brands.default.theme.base.radius.element.$value = "{radius.12}";
+  assert.equal(decisionTree(broken, g, "radius.element").find((n) => n.name === "element-box").holds, false);
+});
+
+test("the badge corner ships everywhere: always-on, and created where the roles answer names badges", () => {
+  assert.deepEqual(madeBy(loadScheme("dense-data", roots), g, "radius.badge").creates, ["shape.roles"]);
+  const expressive = madeBy(loadScheme("brand-expressive", roots), g, "radius.badge");
+  assert.deepEqual(expressive.creates, []);
+  assert.match(expressive.always, /every scheme ships badges/);
+});
+
+// A stored reason names the numbers its data has (OD-304).
+test("stored reasons name the sizes, grids and line kinds their tokens have; a planted old number is found", () => {
+  for (const id of SCHEMES) assert.deepEqual(storedNumberGaps(loadScheme(id, roots)), [], id);
+  const scheme = structuredClone(loadScheme("dense-data", roots));
+  const line = scheme.tokens.semantic.type.caption["line-height"].$extensions["open-ds"];
+  line.why = line.why.replace("the snug step", "the open step").replace("2px grid", "4px grid");
+  const gap = scheme.tokens.semantic.space.gap.tight.$extensions["open-ds"];
+  gap.why = gap.why.replace("We use 4px", "We use 6px");
+  assert.deepEqual(storedNumberGaps(scheme), [
+    { token: "space.gap.tight", where: "own", says: "it leads with 6px, the token is 4px" },
+    { token: "type.caption.line-height", where: "own", says: "the 4px grid: caption snaps to the 2px grid; the open kind: caption lines are snug" },
+  ]);
 });
