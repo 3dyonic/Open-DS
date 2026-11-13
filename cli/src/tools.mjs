@@ -1,6 +1,7 @@
 // The tools behind the skills (OD-202): each one does a step that a skill would otherwise judge by
 // eye. One engine for the CLI and the MCP server, like the rest of the package.
-//   checkUi    review and build: raw values, components the scheme does not carry, unused variants
+//   checkUi    review and build: raw values, components the scheme does not carry, unused variants,
+//              button labels too long for one line
 //   checkCopy  write: text against the scheme's voice and the rule for its situation
 //   planChange change: the edits a changed answer or primitive needs, and the contrast it keeps
 //   findToken  build: the token or component key for an intent, with its guidance
@@ -90,7 +91,13 @@ export const SEE = {
   "not-in-inventory": "AGENTS.md: Components",
   "variant-not-used": "context/components/<id>.md: Variants here",
   "context-drift": "context/README.md",
+  "long-label": "context/tasks/write.md: Situations",
 };
+
+/** The most words a button label holds on one line (the voice rule, OD-300): one verb and its object. */
+export const BUTTON_LABEL_WORDS = 3;
+// A Button with plain text as its label: <Button …>Save changes</Button>.
+const BUTTON_LABEL = /<Button\b[^<>]*>([^<>{}]+)<\/Button>/g;
 
 export function checkUi(scheme, g, files) {
   const carried = new Map((scheme.inventory?.in ?? []).map((c) => [c.id, c]));
@@ -195,6 +202,21 @@ export function checkUi(scheme, g, files) {
             "It is not in the inventory. Pick a component the scheme carries.",
         );
     }
+    // A button label that would break onto two lines (OD-300): the voice says it never does.
+    if (!css)
+      for (const m of text.matchAll(BUTTON_LABEL)) {
+        const label = m[1].trim().replace(/\s+/g, " ");
+        const n = label ? label.split(" ").length : 0;
+        if (n > BUTTON_LABEL_WORDS)
+          add(
+            path,
+            text,
+            m.index,
+            "long-label",
+            `A button label of ${n} words: "${label}". A button label stays on one line and never breaks onto two.`,
+            `Use one verb and its object, ${BUTTON_LABEL_WORDS} words at most. Check it with check_copy.`,
+          );
+      }
     // Variants the scheme decided not to use, from JSX props with a string value.
     for (const m of text.matchAll(/<([A-Z][A-Za-z0-9]*)\b([^<>]*?)\/?>/g)) {
       const id = kebab(m[1]);
@@ -266,11 +288,10 @@ export function checkCopy(scheme, g, { kind, text }) {
     });
   const sentences = t.split(/(?<=[.!?])\s+/).filter(Boolean);
   if (kind === "button") {
-    if (t.split(/\s+/).length > 3)
+    if (t.split(/\s+/).length > BUTTON_LABEL_WORDS)
       findings.push({
         rule: "button-shape",
-        message:
-          "A button label is one verb and its object: three words at most.",
+        message: `A button label is one verb and its object: ${BUTTON_LABEL_WORDS} words at most, so it stays on one line.`,
       });
     if (/[.!?]$/.test(t))
       findings.push({

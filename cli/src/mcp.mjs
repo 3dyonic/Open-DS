@@ -614,7 +614,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Check UI",
       description:
-        "Checks UI code against a scheme and lists each problem with its file, line, rule, fix and see (the booklet section in a created project that answers it): raw colors and sizes instead of tokens, components the scheme does not carry, and variants it decided not to use (for example the large Button size in Dense data). Pass the contents of the files; this server never reads your disk. A review passes only when this returns no findings. The CLI runs the same check on a folder: open-ds check.",
+        "Checks UI code against a scheme and lists each problem with its file, line, rule, fix and see (the booklet section in a created project that answers it): raw colors and sizes instead of tokens, components the scheme does not carry, variants it decided not to use (for example the large Button size in Dense data), and a button label too long to stay on one line. Pass the contents of the files; this server never reads your disk. A review passes only when this returns no findings. The CLI runs the same check on a folder: open-ds check.",
       inputSchema: {
         scheme_id: SchemeId,
         files: z

@@ -229,13 +229,18 @@ for (const id of schemeIds()) {
     s.summary = `Large text, large targets and ${PROMISE}, so everyone can finish the task.`;
     s.description = s.description.replace(/Large text, large targets and AAA contrast[^,]*, so everyone can finish the task\./, s.summary);
     answerOf(s, "accessibility.definition").why =
-      "AAA for text you must read; AA for muted text, which must look secondary. The owner records muted text at 6.54:1 on the canvas as an exception.";
+      "AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is the owner's recorded exception.";
     const muted = s.tokens.brands.default.theme.light.color.text.muted;
     muted.$extensions["open-ds"] = {
       why: "neutral.500: We use the quietest readable gray for hints and captions in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.0:1 on surface.default and 6.54:1 on the canvas. The canvas pair falls under 7:1 by the owner's recorded exception: AA for muted text, as neutral.600 would read 1.34:1 from secondary and no longer look secondary. So a hint reads as a hint and every line you must read keeps AAA, because the floor is AAA for text you must read (accessibility.definition) and the neutral ramp sets the steps (color.definition).",
       because: ["accessibility.definition", "color.definition"],
     };
   }
+
+  // Item 7: a button label never breaks onto two lines. A voice rule, not a line-height fix; check_ui
+  // flags a label longer than a button holds on one line.
+  const ONE_LINE = "A button label stays on one line: it never breaks onto two.";
+  if (!s.voice.principles.some((p) => p.text === ONE_LINE)) s.voice.principles.push({ text: ONE_LINE, follows: ["voice.values", "voice.definition"] });
 
   // Item 4: each deprecated switch key keeps its value one release and says what replaces it.
   for (const id of SWITCH_OLD) {

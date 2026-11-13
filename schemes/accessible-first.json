@@ -61,6 +61,13 @@
         "follows": [
           "voice.values"
         ]
+      },
+      {
+        "text": "A button label stays on one line: it never breaks onto two.",
+        "follows": [
+          "voice.values",
+          "voice.definition"
+        ]
       }
     ],
     "words": {
@@ -1605,7 +1612,7 @@
     {
       "question": "accessibility.definition",
       "option": "aaa-text",
-      "why": "AAA for text you must read; AA for muted text, which must look secondary. The owner records muted text at 6.54:1 on the canvas as an exception.",
+      "why": "AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is the owner's recorded exception.",
       "because": [
         "people.q2"
       ]

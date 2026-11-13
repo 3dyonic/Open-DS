@@ -44,8 +44,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds component <scheme> <id>      what a component and each variant are for, and how this scheme
                                        uses each one (or does not), with its rules
   open-ds check [dir] [--scheme <id>]  check UI code against the scheme: raw colors and sizes, components it
-                                       does not carry, variants it does not use, and a context/ that no
-                                       longer matches the scheme; exits 1 when it finds any
+                                       does not carry, variants it does not use, button labels too long
+                                       for one line, and a context/ that no longer matches the scheme;
+                                       exits 1 when it finds any
   open-ds copy <scheme> <kind> <text>  check a label or message against the voice; kind: button, error,
                                        success, empty, confirm or hint
   open-ds change <scheme> <question-id> <option>

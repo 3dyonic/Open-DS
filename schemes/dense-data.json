@@ -61,6 +61,13 @@
           "voice.definition",
           "voice.values"
         ]
+      },
+      {
+        "text": "A button label stays on one line: it never breaks onto two.",
+        "follows": [
+          "voice.values",
+          "voice.definition"
+        ]
       }
     ],
     "words": {

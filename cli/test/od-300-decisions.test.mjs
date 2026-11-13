@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import { aliasChain, tokenIndex } from "../src/lands.mjs";
 import { grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
 import { checkRelations, contrast, edgeRule, px } from "../src/shape-elevation.mjs";
+import { BUTTON_LABEL_WORDS, checkCopy, checkUi } from "../src/tools.mjs";
 import { reasonOf, traceScheme, traceToken } from "../src/trace.mjs";
 
 const g = grammar();
@@ -165,6 +166,30 @@ test("Accessible first promises AAA for text you must read and AA for muted text
       for (const fg of ["color.text.primary", "color.text.secondary"]) assert.ok(contrast(valueIn(s, t, fg), on) >= 7, `${t.mode} ${fg} on ${bg}`);
       assert.ok(contrast(valueIn(s, t, "color.text.muted"), on) >= 4.5, `${t.mode} muted on ${bg}`);
     }
+});
+
+// ---------- Item 7: a button label never breaks onto two lines ----------
+
+test("every scheme's voice says a button label stays on one line", () => {
+  for (const id of schemeIds()) {
+    const p = loadScheme(id).voice.principles.find((x) => /button label stays on one line/.test(x.text));
+    assert.ok(p, id);
+    assert.deepEqual(p.follows, ["voice.values", "voice.definition"], id);
+  }
+});
+
+test("check_ui flags a button label too long for one line, and passes a short one", () => {
+  const s = loadScheme("dense-data");
+  const long = checkUi(s, g, [{ path: "src/app/page.tsx", content: '<Button variant="secondary">Export all of the records</Button>' }]);
+  assert.equal(long.pass, false);
+  assert.deepEqual(long.findings.map((f) => [f.rule, f.line, f.see]), [["long-label", 1, "context/tasks/write.md: Situations"]]);
+  assert.match(long.findings[0].message, /5 words: "Export all of the records"/);
+  const short = checkUi(s, g, [{ path: "src/app/page.tsx", content: '<Button variant="secondary">Export records</Button>' }]);
+  assert.deepEqual(short.findings, []);
+  // A label that is an expression is not read: only plain text is measured.
+  assert.deepEqual(checkUi(s, g, [{ path: "src/a.tsx", content: "<Button>{t('a long label from a catalogue')}</Button>" }]).findings, []);
+  assert.equal(BUTTON_LABEL_WORDS, 3);
+  assert.match(checkCopy(s, g, { kind: "button", text: "Export all of the records" }).findings[0].message, /3 words at most, so it stays on one line/);
 });
 
 // ---------- Item 8: the skeleton fills with neutral step 200 ----------

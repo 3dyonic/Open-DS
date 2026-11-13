@@ -137,7 +137,7 @@ Themes: light, dark
 - theming.lands What changes when the theme changes? Colors only. Only colors change. (because theming.roles)
 - accessibility.roles Which states get their own visible value? All, including loading. Every state, including loading, gets its own value. (because people.q2)
 - accessibility.count How many signals carry each meaning? Three: color, icon and word. Never color alone. (because people.q2)
-- accessibility.definition What contrast floor do we hold? AAA for text. AAA for text you must read; AA for muted text, which must look secondary. The owner records muted text at 6.54:1 on the canvas as an exception. (because people.q2)
+- accessibility.definition What contrast floor do we hold? AAA for text. AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is the owner's recorded exception. (because people.q2)
 - accessibility.values What is the smallest target? Large. Large targets for tremor and touch. (because people.q1)
 - accessibility.lands Where are the floors hardest to hold? Forms. Forms are where people are blocked. (because content.q1)
 - naming.roles What gets a name? Tokens and component keys. Components get their own keys. (because team.q2)
@@ -222,6 +222,7 @@ Plain and direct. Every sentence is easy to read on the first try. (follows voic
 - Use common words. Explain any term you must use. (follows voice.definition, people.q1)
 - One idea per sentence. Put the action first. (follows human.q1)
 - Never blame the person. (follows voice.values)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Continue, Change, Start, You. Avoid: Invalid, Utilise, Submit, Error code.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -386,6 +387,7 @@ Playful and short. Big words, few of them. (follows voice.values)
 - Headlines are short and bold. Three to six words. (follows voice.lands, typography.roles)
 - Verbs that move: Join, Try, Go. (follows voice.values)
 - Playful in headlines, plain in errors. (follows voice.count)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Join, Drop, Go, Love. Avoid: Synergy, Leverage, Kindly.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -550,6 +552,7 @@ Conversational and warm. Talk to one reader, like a good editor would. (follows 
 - Write to one person: "you", not "users". (follows voice.values)
 - Short sentences with room to breathe. (follows outcomes.q1)
 - Explain why before asking for anything. (follows people.q1, voice.definition)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Read, Save for later, You, Next issue. Avoid: Click here, Submit, Users, Content.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -714,6 +717,7 @@ Terse and exact. Say what happened and what to do, in as few words as possible. 
 - Lead with the object, then the state: "Alert 2041 contained." (follows voice.values, content.q1)
 - Use numbers, not words for numbers. (follows content.q1)
 - One verb per button. No "please", no exclamation marks. (follows voice.definition, voice.values)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
 The tone per moment is in the usage rules of the voice situations above.
 
@@ -878,6 +882,7 @@ A plain shared voice. Each brand adds its own tone on top, never its own structu
 - Shared structure: object, state, next step. (follows voice.definition)
 - Brand tone lives in headlines and marketing copy, not in errors. (follows voice.lands, voice.count)
 - Errors and confirmations read the same in every brand. (follows voice.definition)
+- A button label stays on one line: it never breaks onto two. (follows voice.values, voice.definition)
 Use: Get started, Plan, Order. Avoid: Brand-specific words in errors, Jargon.
 The tone per moment is in the usage rules of the voice situations above.
 
