@@ -166,7 +166,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     componentsShowing(index, d).map((c) => ({ component: c.component, rows: rowsOf(c.rows) }));
   // One token index per mode, so the color graph (OD-304) resolves each value once.
   const tokenIndexes = Object.fromEntries(["light", "dark"].map((m) => [m, tokenIndex(scheme, { brand, mode: m })]));
-  // A color token's decision graph, in the order the card reads it: role → jobs → property → answers →
+  // A color or type token's decision graph, in the order the card reads it: role → jobs → property → answers →
   // rule → connections → value, and the reason sentence the engine writes from those fields.
   // A check that does not hold waits when the scheme records a fix for it, or when the connection's
   // baseline (waiting, the harness's connections-baseline.json counts) keeps gaps for this scheme.
@@ -266,6 +266,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
           ...(chain.mapping && { mapping: chain.mapping }),
           ...(chain.meaning && { meaning: chain.meaning }),
           ...(chain.guide && { guide: chain.guide }),
+          ...(chain.graph && { graph: chain.graph }),
           components: componentsOf(indexes.light, d),
         };
       }
@@ -399,7 +400,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     brands: Object.keys(scheme.tokens.brands),
     areas: AREAS.filter((a) => [...modes.light.families, ...shared.families].some((f) => f.area === a)),
     answers,
-    // What each color connection says, by id, once: a decision's graph names its connections by id.
+    // What each connection says, by id, once: a decision's graph names its connections by id.
     connections: Object.fromEntries((grammar.semantics?.connections?.items ?? []).map((c) => [c.id, { kind: c.kind, says: c.says }])),
     shared,
     modes,

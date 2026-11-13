@@ -86,18 +86,12 @@ function sizeWhy(spec, role) {
   return `${capital(role)} text is ${px}px = ${how} ${answersOf(spec.follows)}.`;
 }
 
-const KIND_SAYS = {
-  tight: "the tight ratio for text that stays on one short line",
-  snug: "the snug ratio for dense text that wraps rarely",
-  open: "the open ratio for text that wraps",
-};
-
-/** The reason of a generated line height. */
+/** The reason of a generated line height. What each line kind is for lives in the grammar's line-height jobs. */
 function lineWhy(spec, role) {
   const size = sizeOf(spec, role).px;
   const { kind, ratio, grid, px } = lineHeights(spec)[role];
-  if (!grid) return `${capital(role)} lines are ${ratio} × the ${size}px size, ${KIND_SAYS[kind]} ${answersOf(spec.follows)}.`;
-  return `${capital(role)} lines are ${px}px = ${size}px × ${ratio} = ${plain(size * ratio)}px, snapped to the ${grid}px grid, ${KIND_SAYS[kind]} ${answersOf(spec.follows)}.`;
+  if (!grid) return `${capital(role)} lines are ${ratio} × the ${size}px size, the ${kind} line kind ${answersOf(spec.follows)}.`;
+  return `${capital(role)} lines are ${px}px = ${size}px × ${ratio} = ${plain(size * ratio)}px, snapped to the ${grid}px grid, the ${kind} line kind ${answersOf(spec.follows)}.`;
 }
 
 /**

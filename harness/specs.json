@@ -903,7 +903,7 @@
     },
     {
       "id": "OD-304",
-      "title": "Color is a decision graph: every color token inherits its reason from role, job, property, answers, rule and connections",
+      "title": "Color and type are a decision graph: every color and type token inherits its reason from role, job, property, answers, rule and connections",
       "in": [
         "each color role in the grammar records its role, its jobs, what people get and the tokens that play it; the how comes from the job, so nothing is stored twice",
         "the variants record the step each slot sits at: @ at 600, subtle at 100, hover one step from its fill",
@@ -912,7 +912,10 @@
         "category hues stay apart from status hues; today they do not, so the check lists the clashes and keeps a baseline that may only go down",
         "every color token has every link in every brand and mode, and every connection holds, waits for a fix, or is in the baseline",
         "each option of a question a color role depends on lists the roles it creates; each shipped color role is created by a chosen option, or the grammar marks it always-on with a reason and the answers that shape it; the reason cites only answers that create or shape the role",
-        "the token map card shows every connection of a color token: comes-from, pairs-with with each measured pair and its step promise, and stays-apart, with a baseline gap shown as waits"
+        "the token map card shows every connection of a color token: comes-from, pairs-with with each measured pair and its step promise, and stays-apart, with a baseline gap shown as waits",
+        "type is a decision graph on the same engine: each type role records its role, jobs, what people get and its tokens; each type property states its rule; the line kind of a token picks its line job",
+        "type connections: each size comes from base × ratio^step, each line height from its line kind, a control holds one label line, adjacent sizes stay one ratio step apart and line kinds 0.2 apart; today's gaps are in the baseline",
+        "each option of a typography question lists the type roles it creates, or the role is always-on with a reason; the type card shows the same graph as color"
       ],
       "checks": [
         "color-links-complete",
