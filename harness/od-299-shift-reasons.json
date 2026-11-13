@@ -30,9 +30,10 @@
       ]
     },
     "content-first": {
-      "reason": "Method: contrast-graded steps, light-ease (easing 0.25). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "reason": "Method: contrast-graded steps, light-ease (easing 0.25). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay. The owner approved the moves over the limit in OD-308, so those steps move too. harness/quality-approvals.json lists each one.",
       "tokens": [
         "dark color.text.info-on-light",
+        "light color.surface.selected",
         "light color.text.info-on-light"
       ],
       "steps": [
@@ -43,10 +44,15 @@
       ]
     },
     "accessible-first": {
-      "reason": "Method: contrast-graded steps, linear (easing 0). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "reason": "Method: contrast-graded steps, linear (easing 0). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay. The owner approved the moves over the limit in OD-308, so those steps move too. harness/quality-approvals.json lists each one.",
       "tokens": [
+        "dark color.text.info-on-dark",
         "dark color.text.success-on-light",
         "light color.action.primary.hover",
+        "light color.category.1.subtle",
+        "light color.category.2.subtle",
+        "light color.status.info.subtle",
+        "light color.text.info-on-dark",
         "light color.text.link",
         "light color.text.success-on-light"
       ],
@@ -57,6 +63,7 @@
         "blue.dark.200",
         "blue.dark.300",
         "blue.dark.400",
+        "blue.light.100",
         "blue.light.700",
         "blue.light.800",
         "green.dark.200",
@@ -69,12 +76,14 @@
         "red.dark.500",
         "teal.dark.200",
         "teal.dark.300",
-        "teal.dark.400"
+        "teal.dark.400",
+        "teal.light.100"
       ]
     },
     "brand-expressive": {
-      "reason": "Method: contrast-graded steps, even-ease (easing 0.5). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "reason": "Method: contrast-graded steps, even-ease (easing 0.5). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay. The owner approved the moves over the limit in OD-308, so those steps move too. harness/quality-approvals.json lists each one.",
       "tokens": [
+        "dark color.category.1.subtle",
         "dark color.category.2.subtle",
         "dark color.category.4.subtle",
         "dark color.status.info.subtle",
@@ -83,27 +92,38 @@
       "steps": [
         "amber.dark.100",
         "amber.dark.200",
+        "amber.light.200",
         "amber.light.400",
         "amber.light.900",
         "blue.dark.100",
+        "blue.light.200",
         "green.dark.800",
+        "green.light.200",
         "green.light.400",
         "green.light.900",
+        "pink.dark.100",
+        "pink.light.200",
         "pink.light.400",
         "red.dark.800",
+        "red.light.200",
         "red.light.400",
         "red.light.900"
       ]
     },
     "multi-brand": {
-      "reason": "Method: contrast-graded steps, medium-ease (easing 0.4). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay.",
+      "reason": "Method: contrast-graded steps, medium-ease (easing 0.4). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay. The owner approved the moves over the limit in OD-308, so those steps move too. harness/quality-approvals.json lists each one.",
       "tokens": [
         "aster-dark color.surface.selected"
       ],
       "steps": [
+        "amber.light.200",
+        "green.light.200",
+        "orange.light.200",
         "orange.light.400",
         "orange.light.900",
-        "red.light.400"
+        "red.light.200",
+        "red.light.400",
+        "teal.light.200"
       ]
     }
   }

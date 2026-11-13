@@ -3433,10 +3433,11 @@ export const CHECKS = {
     },
   },
   // OD-299: the contrast-graded curve against the shared curve, both built in this process. Every move
-  // under its limit passes; a review-tier move has its reason in harness/od-299-shift-reasons.json; no
-  // move is over its limit (that step is held); every relation gate holds; brand keys stay exact.
+  // under its limit passes; a review-tier move has its reason in harness/od-299-shift-reasons.json; a
+  // move over its limit has the owner's approval in harness/quality-approvals.json (OD-308), or its step
+  // is held; every relation gate holds; brand keys stay exact.
   "color-curve-shift": {
-    requires: ["cli/src/quality/curve-shift.mjs", "harness/od-299-shift-reasons.json"],
+    requires: ["cli/src/quality/curve-shift.mjs", "cli/src/quality/approvals.mjs", "harness/od-299-shift-reasons.json", "harness/quality-approvals.json"],
     run: async (c) => {
       const { curveSnapshots, shiftReport } = await import(pathToFileURL(c.p("cli/src/quality/curve-shift.mjs")).href);
       const roots = { schemes: c.p("schemes") };
@@ -3447,11 +3448,14 @@ export const CHECKS = {
         grammar: c.grammar(),
         themeTokens,
       });
-      const r = shiftReport(s.old, s.new);
+      const { approvalsFrom } = await import(pathToFileURL(c.p("cli/src/quality/approvals.mjs")).href);
+      const approvals = approvalsFrom(c.json("harness", "quality-approvals.json"));
+      const r = shiftReport(s.old, s.new, undefined, approvals);
       const reasons = c.json("harness", "od-299-shift-reasons.json").schemes ?? {};
       const gaps = [];
-      for (const m of [...r.moves, ...r.steps].filter((x) => x.tier === "approval"))
-        gaps.push(`${m.scheme} ${m.token ?? `${m.hue}.${m.mode}.${m.step}`} moves ${m.distance.toFixed(3)}, over its limit: hold the step (node scripts/od-299-shift.mjs --hold)`);
+      const over = [...r.moves, ...r.steps].filter((x) => x.tier === "approval");
+      for (const m of over.filter((x) => !x.approved))
+        gaps.push(`${m.scheme} ${m.token ?? `${m.hue}.${m.mode}.${m.step}`} moves ${m.distance.toFixed(3)}, over its limit, with no approval: hold the step (node scripts/od-299-shift.mjs --hold)`);
       for (const id of SCHEMES) {
         const rec = reasons[id];
         const answer = c.scheme(id).answers.find((a) => a.question === "color.definition.steps")?.option;
@@ -3469,7 +3473,7 @@ export const CHECKS = {
       const count = (tier) => r.moves.filter((m) => m.tier === tier).length;
       return gaps.length
         ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}. node scripts/od-299-shift.mjs writes the full report.`)
-        : ok(`the graded curve against the shared one: ${count("pass")} token moves pass, ${count("review")} have a recorded reason, none over its limit; every relation gate holds; brand keys exact`);
+        : ok(`the graded curve against the shared one: ${count("pass")} token moves pass, ${count("review")} have a recorded reason, ${over.length} moves over the limit (${count("approval")} tokens) have the owner's approval; every relation gate holds; brand keys exact`);
     },
   },
   // OD-299: colors that mean different things look different. The accent and status marks, and the
