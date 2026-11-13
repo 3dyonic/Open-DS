@@ -5,6 +5,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { assetRoots, grammar, loadScheme, schemeIds } from "../src/schemes.mjs";
 import { tokenGraph, tokenMap, TIERS } from "../src/token-graph.mjs";
+import { GRADED_STEPS } from "../src/color-steps.mjs";
 
 const roots = assetRoots();
 const g = grammar(roots);
@@ -88,7 +89,8 @@ test("the map file holds each brand in light and dark, the scopes, and each pick
   // OD-303: the states answer decides the focus ring (the decision mapping); the dark pick adds the floor and the palette.
   assert.deepEqual(
     focus.answers.map((a) => a.id),
-    ["accessibility.roles", "accessibility.definition", "color.definition"],
+    // With the graded curve on (OD-299), the steps answer shapes the ring's step too.
+    ["accessibility.roles", "accessibility.definition", "color.definition", ...(GRADED_STEPS ? ["color.definition.steps"] : [])],
   );
   assert.deepEqual(focus.answers[0], { id: "accessibility.roles", question: "Which states get their own visible value?", answer: "All, including loading" });
   // The reasons: each answer in plain words with the answers it follows from.

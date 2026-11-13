@@ -4,6 +4,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { tokenMap } from "../src/token-graph.mjs";
+import { GRADED_STEPS } from "../src/color-steps.mjs";
 import { loadScheme } from "../src/schemes.mjs";
 import {
   colorIndex,
@@ -64,7 +65,8 @@ test("the focus ring's reasons run from the states answer and the palette to the
   const chain = reasonChain(light, map.reasons, "color.border.focus");
   assert.deepEqual(
     chain.steps.map((s) => s.id),
-    ["accessibility.roles", "people.q2", "people.q1", "business.q1", "color.definition", "color.lands", "outcomes.q1", "tasks.q1", "content.q1"],
+    // With the graded curve on (OD-299), the steps answer shapes the ring's step too.
+    ["accessibility.roles", "people.q2", "people.q1", "business.q1", "color.definition", "color.lands", "outcomes.q1", "tasks.q1", "content.q1", ...(GRADED_STEPS ? ["color.definition.steps"] : [])],
   );
   assert.equal(chain.steps[0].answer, "All, including loading");
   assert.deepEqual(chain.links.slice(0, 5), [
