@@ -1077,13 +1077,13 @@
     },
     "tokens": {
       "type": "object",
-      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (color by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
+      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (color by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics, or to a palette step of the scheme's own hues with a why (OD-309); the build reads that step from the active mode's ramp. content holds the voice scope's words.",
       "additionalProperties": false,
       "required": ["primitive", "brands", "semantic", "component", "content"],
       "properties": {
         "primitive": {
           "$ref": "#/$defs/group",
-          "description": "Raw options shared by every brand: color hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
+          "description": "Raw options shared by every brand: color hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them; a component key may name a color step, with a why."
         },
         "brands": {
           "type": "object",
@@ -1348,7 +1348,7 @@
                 "why": {
                   "type": "string",
                   "minLength": 1,
-                  "description": "On a theme pick: why this step carries the semantic's rule in this brand and mode (OD-241, OD-243)."
+                  "description": "On a theme pick: why this step carries the semantic's rule in this brand and mode (OD-241, OD-243). On a component key: why the scheme assigns it this step (OD-309)."
                 },
                 "generated": {
                   "const": true,
@@ -1361,7 +1361,7 @@
                     "type": "string",
                     "pattern": "^[a-z]+\\.[a-z0-9-]+$"
                   },
-                  "description": "On a theme pick: the answers the step follows from."
+                  "description": "On a theme pick or a component key: the answers the step follows from."
                 },
                 "tone": {
                   "enum": ["light", "dark"],

@@ -1,7 +1,7 @@
 // The rules every scheme keeps (OD-292, ADR-002 step 3). Each rule takes one scheme and returns what
 // breaks it, so the build, the harness and a user's project run the same rules. No file access.
 import { contrast } from "./ramps.mjs";
-import { themeTokens } from "./tokens.mjs";
+import { paletteStep, themeTokens } from "./tokens.mjs";
 import { pairsIn } from "./tones.mjs";
 import { generatedProblems } from "./type-space-generated.mjs";
 
@@ -65,6 +65,30 @@ export function rawValues(scheme) {
   for (const b of Object.values(t.brands)) walk(b.theme, "", link);
   walk(t.component, "", link);
   return raw;
+}
+
+/**
+ * What a component key may read (OD-309): a semantic, another key, or a step of the scheme's own palette
+ * with a why. A raw value, a step without a why and a step of a hue the scheme does not define break it.
+ * Returns one finding per break, in words.
+ */
+export function componentLinks(scheme) {
+  const hues = new Set(Object.keys(scheme.tokens.primitive?.color ?? {}).filter((k) => !k.startsWith("$")));
+  const findings = [];
+  walk(scheme.tokens.component, "", (path, node) => {
+    const v = node.$value;
+    if (!(typeof v === "string" && /^\{[^}]+\}$/.test(v))) {
+      findings.push(`${scheme.id}: component.${path} holds the raw value ${JSON.stringify(v)}; point it at a semantic or a palette step`);
+      return;
+    }
+    const step = paletteStep(v);
+    if (!step) return;
+    if (!hues.has(step.hue))
+      findings.push(`${scheme.id}: component.${path} reads ${v.slice(1, -1)}, a hue the scheme does not define`);
+    if (!node.$extensions?.["open-ds"]?.why)
+      findings.push(`${scheme.id}: component.${path} reads the palette step ${v.slice(1, -1)} with no why`);
+  });
+  return findings;
 }
 
 /** Each theme pick's because names a question this scheme answers. { cited, gaps } */
@@ -145,6 +169,7 @@ export function checkScheme(scheme, { grammar, validate, stored }) {
     schema,
     { rule: "tokens resolve", findings: tokensResolve(scheme) },
     { rule: "semantics are links", findings: rawValues(scheme).map((p) => `${scheme.id}: raw value on ${p}`) },
+    { rule: "component keys read semantics or own steps", findings: componentLinks(scheme) },
     { rule: "picks cite answers", findings: picksCiteAnswers(scheme).gaps },
     { rule: "spacing on the grid", findings: spacingOffGrid(scheme) },
     { rule: "contrast pairs pass", findings: contrastPairs(scheme, grammar).gaps },

@@ -7,7 +7,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
-import { cssName, flatTokens } from "./tokens.mjs";
+import { componentsInMode, cssName, flatTokens } from "./tokens.mjs";
 
 const REF = /\{([^}]+)\}/g;
 const UTIL =
@@ -37,7 +37,8 @@ function buildIndex(scheme, { brand, mode }) {
   };
   add(t.primitive);
   add(t.semantic);
-  add({ component: t.component });
+  // A key that reads a palette step reads it from this mode's ramp, as the build does (OD-309).
+  add({ component: mode ? componentsInMode(t.component, mode) : t.component });
   if (brand && mode) {
     const th = t.brands[brand].theme;
     add(th.base ?? {}, ["theme"]);

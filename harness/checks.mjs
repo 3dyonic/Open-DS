@@ -7,7 +7,7 @@ import { themeTokens } from "../cli/src/tokens.mjs";
 import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
 import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "../cli/src/schemes.mjs";
-import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
+import { componentLinks, contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
@@ -468,9 +468,12 @@ export const CHECKS = {
       const gaps = SCHEMES.map((id) => [id, rawValues(c.scheme(id))])
         .filter(([, raw]) => raw.length)
         .map(([id, raw]) => `${id}: raw values on ${raw.slice(0, 4).join(", ")}`);
+      // OD-309: a component key reads a semantic, or a step of its own scheme's palette with a why.
+      const links = SCHEMES.flatMap((id) => componentLinks(c.scheme(id)));
+      gaps.push(...links.slice(0, 4));
       return gaps.length
         ? bad(gaps.join("; "))
-        : ok("every semantic and component token is a link; values live on primitives");
+        : ok("every semantic and component token is a link; values live on primitives; a component key reads a semantic or its own scheme's palette step with a why");
     },
   },
 

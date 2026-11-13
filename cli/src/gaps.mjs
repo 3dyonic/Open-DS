@@ -11,6 +11,7 @@ import { join } from "node:path";
 import { componentApi } from "./lands.mjs";
 import { builtComponents } from "./components.mjs";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
+import { paletteStep } from "./tokens.mjs";
 
 /** The kinds of gap, in the order of the trace. */
 export const GAP_KINDS = [
@@ -302,6 +303,7 @@ function componentGapsNow(scheme, g, roots) {
           FAMILY[property]?.test(id) && RULE_WORDS[state].test(text),
       )
       .map(([id]) => id);
+  const hues = new Set(Object.keys(scheme.tokens.primitive?.color ?? {}).filter((k) => !k.startsWith("$")));
   const gaps = [];
   const jobs = new Map(); // semantic → job → [keys]
   const unwritten = new Map(); // "state property" → [keys]
@@ -471,6 +473,21 @@ function componentGapsNow(scheme, g, roots) {
       const kw = words(key);
       const uses = usages(src, comp, t.css);
       const base = { component: comp, key: t.token, aliases: t.aliases };
+      // A key may read a step of its own scheme's palette, with a why (OD-309). That step is the
+      // scheme's assignment, not a semantic with a rule, so the semantic checks below skip it.
+      const step = paletteStep(`{${t.aliases}}`);
+      if (step) {
+        const node = t.token.split(".").reduce((n, k) => n?.[k], scheme.tokens);
+        const token = node && "$value" in node ? node : node?.["@"];
+        if (!hues.has(step.hue) || !token?.$extensions?.["open-ds"]?.why)
+          gaps.push({
+            ...base,
+            kind: "wrong-semantic",
+            says: hues.has(step.hue)
+              ? `${t.token} reads the palette step ${t.aliases} with no why.`
+              : `${t.token} reads ${t.aliases}, a hue ${scheme.id} does not define.`,
+          });
+      }
       // 1. The key does not name its part.
       const parts = [
         ...new Set(uses.map((u) => u.part).filter((p) => p !== "root")),
@@ -498,7 +515,7 @@ function componentGapsNow(scheme, g, roots) {
             says: `${t.token} paints the ${u.part === "root" ? comp : u.part} ${u.property} when ${u.state}, and its key does not say ${u.state}.`,
           });
         // 3. The link goes to the wrong semantic: a written rule names another semantic for this job.
-        if (/^color\./.test(t.aliases) && FAMILY[u.property]) {
+        if (!step && /^color\./.test(t.aliases) && FAMILY[u.property]) {
           const covers = rulesFor(u.state, u.property);
           if (!covers.length) {
             const k = `${u.state} ${u.property}`;
@@ -586,7 +603,7 @@ function componentGapsNow(scheme, g, roots) {
           says: `${comp} reads ${t.token}, the ${owner}'s key, for ${[...new Set(uses.map((u) => `its ${u.part === "root" ? comp : u.part} ${u.property ?? "value"}`))].join(" and ") || "a part"}.`,
         });
       // Collect the jobs of each color semantic on fills, for kind 4.
-      if (/^color\./.test(t.aliases))
+      if (!step && /^color\./.test(t.aliases))
         for (const u of uses.filter(
           (x) => x.property === "background" && x.state !== "disabled",
         )) {

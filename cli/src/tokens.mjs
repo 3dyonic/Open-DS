@@ -8,7 +8,9 @@
 //               theme.light.color.action.primary.@ and theme.light.color.action.primary.hover.
 //   semantic    the plain keys components read. A brand-dependent one says {theme.<its path>}, and
 //               the build points it at the active brand and mode's theme token.
-//   component   component keys, which read semantics.
+//   component   component keys, which read semantics. A key may also read a palette step of the
+//               scheme's own hues, with a why (OD-309): it names the light ramp, {color.pink.light.200},
+//               and the build reads the same step of the active mode's ramp, color.pink.dark.200 in dark.
 //
 // Only semantic and component keys ship as CSS variables. The build resolves primitives and
 // themes to values. A name drops the @: color.action.primary.@ is --color-action-primary.
@@ -90,8 +92,26 @@ export function themeTokens(scheme, brand, mode) {
     t.primitive,
     themeTree,
     pointAtTheme(t.semantic, name, theme, mode),
-    pickByTone(t.component, theme, mode),
+    componentsInMode(pickByTone(t.component, theme, mode), mode),
   );
+}
+
+/** A palette step a component key names: { hue, ramp, step }, or null for any other value. */
+export const paletteStep = (value) => {
+  const m = typeof value === "string" && value.match(/^\{color\.([a-z0-9-]+)\.(light|dark)\.([a-z0-9-]+)\}$/);
+  return m ? { hue: m[1], ramp: m[2], step: m[3] } : null;
+};
+
+/** Points each component key that reads a palette step at the same step of this mode's ramp (OD-309). */
+export function componentsInMode(tree, mode) {
+  const out = {};
+  for (const [k, v] of Object.entries(tree ?? {})) {
+    if (isObject(v) && "$value" in v) {
+      const p = paletteStep(v.$value);
+      out[k] = p && p.ramp !== mode ? { ...v, $value: `{color.${p.hue}.${mode}.${p.step}}` } : v;
+    } else out[k] = isObject(v) ? componentsInMode(v, mode) : v;
+  }
+  return out;
 }
 
 /**
