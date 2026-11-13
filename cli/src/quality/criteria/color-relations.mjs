@@ -77,7 +77,8 @@ function flips(names, lb, lc) {
   return out;
 }
 
-export function relative(base, candidate, params) {
+/** The relation gates and every flag each raises, before approvals: [{ id, title, flags }]. */
+export function relationFlags(base, candidate, params) {
   const drops = [];
   const steps = [];
   const ladder = [];
@@ -149,13 +150,17 @@ export function relative(base, candidate, params) {
             split.push({ scheme: id, themes: [t], tokens: [n, list[0]], says: `${id}/${t}: ${n} no longer shares ${list[0]}'s color (${hex6(vc[n])} vs ${hex6(vc[list[0]])})` });
     }
   }
-  const m = (id, title, flags) => flagMeasure({ id, family: FAMILY, title, flags, approvals: candidate.approvals });
+  const g = (id, title, flags) => ({ id, title, flags });
   return [
-    m("relations.wcag-level-drops", "Contrast pairs that drop a WCAG level (under 3, 3, 4.5, 7)", drops),
-    m("relations.step-order", "Scale steps that swap their lightness order", steps),
-    m("relations.ladder-order", "Surface ladder rungs that swap their lightness order", ladder),
-    m("relations.state-sign", "State steps (rest → hover → pressed) whose lightness change flips sign", signs),
-    ...Object.entries(lost).map(([vision, list]) => m(`relations.distinct-lost.${vision}`, `Pairs distinct on base that are no longer distinct (ΔE ${gap}), ${vision === "normal" ? "normal vision" : `${vision} simulated`}`, list)),
-    m("relations.shared-split", "Colors that were one color on base and are split now", split),
+    g("relations.wcag-level-drops", "Contrast pairs that drop a WCAG level (under 3, 3, 4.5, 7)", drops),
+    g("relations.step-order", "Scale steps that swap their lightness order", steps),
+    g("relations.ladder-order", "Surface ladder rungs that swap their lightness order", ladder),
+    g("relations.state-sign", "State steps (rest → hover → pressed) whose lightness change flips sign", signs),
+    ...Object.entries(lost).map(([vision, list]) => g(`relations.distinct-lost.${vision}`, `Pairs distinct on base that are no longer distinct (ΔE ${gap}), ${vision === "normal" ? "normal vision" : `${vision} simulated`}`, list)),
+    g("relations.shared-split", "Colors that were one color on base and are split now", split),
   ];
+}
+
+export function relative(base, candidate, params) {
+  return relationFlags(base, candidate, params).map((r) => flagMeasure({ ...r, family: FAMILY, approvals: candidate.approvals }));
 }
