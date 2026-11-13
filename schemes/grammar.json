@@ -1814,6 +1814,7 @@
         },
         {
           "id": "focus-heavier",
+          "kind": "comes-from",
           "tokens": ["focus.ring.width"],
           "check": "next-step",
           "follows": [
@@ -2360,15 +2361,18 @@
           "options": [
             {
               "id": "actions-status",
-              "label": "Actions and status"
+              "label": "Actions and status",
+              "creates": ["icon", "icon-stroke"]
             },
             {
               "id": "actions-status-nav",
-              "label": "Actions, status and navigation"
+              "label": "Actions, status and navigation",
+              "creates": ["icon", "icon-stroke"]
             },
             {
               "id": "decoration-too",
-              "label": "Those and decoration"
+              "label": "Those and decoration",
+              "creates": ["icon", "icon-stroke"]
             }
           ]
         },
@@ -2380,11 +2384,13 @@
           "options": [
             {
               "id": "one",
-              "label": "One"
+              "label": "One",
+              "creates": []
             },
             {
               "id": "two",
-              "label": "Two"
+              "label": "Two",
+              "creates": []
             }
           ]
         },
@@ -2396,15 +2402,18 @@
           "options": [
             {
               "id": "outline",
-              "label": "Outline"
+              "label": "Outline",
+              "creates": []
             },
             {
               "id": "bold",
-              "label": "Bold stroke"
+              "label": "Bold stroke",
+              "creates": []
             },
             {
               "id": "contained",
-              "label": "Contained"
+              "label": "Contained",
+              "creates": []
             }
           ]
         },
@@ -2416,11 +2425,13 @@
           "options": [
             {
               "id": "match-text",
-              "label": "Match the text"
+              "label": "Match the text",
+              "creates": []
             },
             {
               "id": "larger",
-              "label": "Larger than the text"
+              "label": "Larger than the text",
+              "creates": []
             }
           ]
         },
@@ -2432,19 +2443,23 @@
           "options": [
             {
               "id": "toolbars-rows",
-              "label": "Toolbars and rows"
+              "label": "Toolbars and rows",
+              "creates": []
             },
             {
               "id": "status",
-              "label": "Status and messages"
+              "label": "Status and messages",
+              "creates": []
             },
             {
               "id": "navigation",
-              "label": "Navigation"
+              "label": "Navigation",
+              "creates": []
             },
             {
               "id": "buttons",
-              "label": "Buttons and calls to action"
+              "label": "Buttons and calls to action",
+              "creates": []
             }
           ]
         }
@@ -2670,17 +2685,38 @@
             {
               "id": "hover-focus-disabled",
               "label": "Hover, focus, disabled",
-              "creates": ["hover", "state", "focus", "disabled"]
+              "creates": [
+                "hover",
+                "state",
+                "focus",
+                "disabled",
+                "focus-width",
+                "focus-gap"
+              ]
             },
             {
               "id": "plus-pressed",
               "label": "Those and pressed",
-              "creates": ["hover", "state", "focus", "disabled"]
+              "creates": [
+                "hover",
+                "state",
+                "focus",
+                "disabled",
+                "focus-width",
+                "focus-gap"
+              ]
             },
             {
               "id": "all",
               "label": "All, including loading",
-              "creates": ["hover", "state", "focus", "disabled"]
+              "creates": [
+                "hover",
+                "state",
+                "focus",
+                "disabled",
+                "focus-width",
+                "focus-gap"
+              ]
             }
           ]
         },
@@ -2692,11 +2728,13 @@
           "options": [
             {
               "id": "color-word",
-              "label": "Two: color and word"
+              "label": "Two: color and word",
+              "creates": []
             },
             {
               "id": "color-icon-word",
-              "label": "Three: color, icon and word"
+              "label": "Three: color, icon and word",
+              "creates": []
             }
           ]
         },
@@ -2727,17 +2765,32 @@
             {
               "id": "pointer",
               "label": "Compact, for a pointer",
-              "creates": []
+              "creates": [
+                "control-height",
+                "compact-control",
+                "large-control",
+                "hit-area"
+              ]
             },
             {
               "id": "touch",
               "label": "Touch size",
-              "creates": []
+              "creates": [
+                "control-height",
+                "compact-control",
+                "large-control",
+                "hit-area"
+              ]
             },
             {
               "id": "large",
               "label": "Large",
-              "creates": []
+              "creates": [
+                "control-height",
+                "compact-control",
+                "large-control",
+                "hit-area"
+              ]
             }
           ]
         },
@@ -2749,19 +2802,23 @@
           "options": [
             {
               "id": "dense-tables",
-              "label": "Dense tables"
+              "label": "Dense tables",
+              "creates": []
             },
             {
               "id": "long-text",
-              "label": "Long text"
+              "label": "Long text",
+              "creates": []
             },
             {
               "id": "forms",
-              "label": "Forms"
+              "label": "Forms",
+              "creates": []
             },
             {
               "id": "brand-color",
-              "label": "Brand color"
+              "label": "Brand color",
+              "creates": []
             }
           ]
         }
@@ -17836,6 +17893,32 @@
           "tokens": ["motion.duration.hero"],
           "from": ["motion.duration.panels"],
           "says": "A launch moment takes at least the panel time, the step above panels."
+        },
+        {
+          "id": "controls-from-scale",
+          "kind": "comes-from",
+          "match": "control-scale",
+          "tokens": ["size.control.*"],
+          "from": "control scale",
+          "says": "Each control height comes from the control scale: the default, and compact and large a whole step below or above it."
+        },
+        {
+          "id": "icon-matches-label",
+          "kind": "pairs-with",
+          "by": "holds-line",
+          "tokens": ["type.label.font-size", "type.label.line-height"],
+          "from": ["size.icon"],
+          "says": "An icon is at least one label line tall, so the icon and its label share one line."
+        },
+        {
+          "id": "stroke-renders",
+          "kind": "pairs-with",
+          "by": "rendered-stroke",
+          "tokens": ["icon.stroke-width"],
+          "from": ["size.icon"],
+          "grid": 24,
+          "min_px": 1,
+          "says": "The stroke, drawn on the icon set's 24px grid, renders at least 1px at the icon size, so thin lines do not break up."
         }
       ]
     },
@@ -41820,6 +41903,7 @@
       "scope": "iconography",
       "question": "iconography.values",
       "tokens": ["size.icon"],
+      "rule": "icon size = a size the icon set is drawn for (16, 20 or 24px), at least one label line tall",
       "jobs": [
         {
           "id": "match-the-label",
@@ -41836,6 +41920,16 @@
           "title": "Meaningful icon",
           "how": "follows color-step (edge): a meaningful icon takes a 3:1 step"
         }
+      ],
+      "roles": [
+        {
+          "id": "icon",
+          "role": "the icon size next to text",
+          "tokens": ["size.icon"],
+          "jobs": ["match-the-label", "recognize", "meaningful-icon"],
+          "to": "set an icon on the same line as its label",
+          "gets": "an icon and its word read as one item"
+        }
       ]
     },
     {
@@ -41844,6 +41938,7 @@
       "scope": "iconography",
       "question": "iconography.definition",
       "tokens": ["icon.stroke-width"],
+      "rule": "stroke width = the icon style's stroke on the icon set's 24px grid; it renders at stroke × icon size ÷ 24",
       "jobs": [
         {
           "id": "one-family",
@@ -41863,6 +41958,16 @@
           "title": "Stroke by text weight",
           "how": "follows text weight: 1.5px regular; 2px medium or semibold; 2.5px bold"
         }
+      ],
+      "roles": [
+        {
+          "id": "icon-stroke",
+          "role": "the stroke of every icon",
+          "tokens": ["icon.stroke-width"],
+          "jobs": ["one-family", "rendered-stroke", "stroke-by-text-weight"],
+          "to": "draw every icon as one family",
+          "gets": "icons read as one set at every size"
+        }
       ]
     },
     {
@@ -41871,6 +41976,7 @@
       "scope": "accessibility",
       "question": "accessibility.values",
       "tokens": ["size.control.*", "size.hit-area"],
+      "rule": "default height = the target the scheme's main input needs; compact and large = the default ± a step of the control scale; hit area = 24px for a pointer, else 44px",
       "jobs": [
         {
           "id": "default-height",
@@ -41901,6 +42007,40 @@
           "id": "hold-the-text",
           "title": "Hold the text",
           "how": "follows label line height: min-height, not height: box = label line + inset"
+        }
+      ],
+      "roles": [
+        {
+          "id": "control-height",
+          "role": "the default control height",
+          "tokens": ["size.control.default"],
+          "jobs": ["default-height", "align-in-a-row", "hold-the-text"],
+          "to": "give the main input device a target it hits",
+          "gets": "people hit a control on the first try"
+        },
+        {
+          "id": "compact-control",
+          "role": "the compact control height",
+          "tokens": ["size.control.compact"],
+          "jobs": ["compact", "hold-the-text"],
+          "to": "fit controls into dense places, one step below the default",
+          "gets": "toolbars and tables hold controls that people can still hit"
+        },
+        {
+          "id": "large-control",
+          "role": "the large control height",
+          "tokens": ["size.control.large"],
+          "jobs": ["large", "hold-the-text"],
+          "to": "give the main action one step more room, or the default",
+          "gets": "the main action is easy to find and to hit"
+        },
+        {
+          "id": "hit-area",
+          "role": "the hit area of a control",
+          "tokens": ["size.hit-area"],
+          "jobs": ["hit-area"],
+          "to": "keep a small control easy to hit",
+          "gets": "people hit small controls without a miss"
         }
       ]
     },
@@ -42015,6 +42155,22 @@
           "jobs": ["two-color-gap"],
           "to": "show where the keyboard is",
           "gets": "keyboard users never lose their place"
+        },
+        {
+          "id": "focus-width",
+          "role": "the width of the focus ring",
+          "tokens": ["focus.ring.width"],
+          "jobs": ["ring-width"],
+          "to": "make focus the heaviest edge on the page",
+          "gets": "keyboard users see where they are"
+        },
+        {
+          "id": "focus-gap",
+          "role": "the gap between a control and its focus ring",
+          "tokens": ["focus.ring.offset"],
+          "jobs": ["two-color-gap", "ring-corner"],
+          "to": "keep the page color between the ring and the control",
+          "gets": "the ring keeps its contrast on any fill"
         }
       ]
     },

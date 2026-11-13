@@ -331,9 +331,10 @@
                       "line-kind",
                       "base-multiple",
                       "rhythm",
-                      "equals"
+                      "equals",
+                      "control-scale"
                     ],
-                    "description": "comes-from: hue means the same hue scale; chain means the value reads the from token on its way; scale means a type size is base × ratio^step of the scheme's type record; line-kind means a line height is the ratio of its role's line kind; base-multiple means a gap or inset is the spacing base × its use case's multiple; rhythm means a component spacing step is 4px × its multiplier × the scheme's rhythm; equals means a length is its from token."
+                    "description": "comes-from: hue means the same hue scale; chain means the value reads the from token on its way; scale means a type size is base × ratio^step of the scheme's type record; line-kind means a line height is the ratio of its role's line kind; base-multiple means a gap or inset is the spacing base × its use case's multiple; rhythm means a component spacing step is 4px × its multiplier × the scheme's rhythm; control-scale means a control height is the default ± a step of the scheme's control scale; equals means a length is its from token."
                   },
                   "steps": {
                     "type": "integer",
@@ -375,9 +376,10 @@
                       "ratio-step",
                       "kind-gap",
                       "holds-line",
-                      "at-least"
+                      "at-least",
+                      "rendered-stroke"
                     ],
-                    "description": "stays-apart: hue means no shared hue scale; delta-e means a color difference; order means a lightness order; ratio-step means a text size is at least one ratio step above the size on the step below; kind-gap means the line kinds keep min_apart between their ratios; at-least means a length is at least times × its from token. pairs-with: holds-line means each from box is at least the line height of the tokens' role; at-least as for stays-apart."
+                    "description": "stays-apart: hue means no shared hue scale; delta-e means a color difference; order means a lightness order; ratio-step means a text size is at least one ratio step above the size on the step below; kind-gap means the line kinds keep min_apart between their ratios; at-least means a length is at least times × its from token. pairs-with: holds-line means each from box is at least the line height of the tokens' role; at-least as for stays-apart; rendered-stroke means a stroke drawn on grid renders at least min_px at its from icon size."
                   },
                   "min_delta_e": {
                     "type": "number",
@@ -393,6 +395,16 @@
                     "type": "number",
                     "exclusiveMinimum": 0,
                     "description": "at-least: how many times its from token a length is at least. 1 when left out."
+                  },
+                  "grid": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "description": "rendered-stroke: the grid in px the icon set is drawn on."
+                  },
+                  "min_px": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "description": "rendered-stroke: the thinnest rendered line in px."
                   },
                   "modes": {
                     "type": "array",
