@@ -70,6 +70,21 @@
           }
         }
       },
+      "context-menu": {
+        "item": {
+          "label": {
+            "destructive-highlight": {
+              "$value": "{color.text.danger-on-light}",
+              "$description": "Item label of a destructive item when highlighted, of the context menu.",
+              "$extensions": {
+                "open-ds": {
+                  "on": "color.status.danger.subtle"
+                }
+              }
+            }
+          }
+        }
+      },
       "field": {
         "label": {
           "radius": {
@@ -89,6 +104,21 @@
           "focus-ring-invalid": {
             "$value": "{color.status.danger.@}",
             "$description": "Slot focus ring invalid of the input otp."
+          }
+        }
+      },
+      "menubar": {
+        "item": {
+          "label": {
+            "destructive-highlight": {
+              "$value": "{color.text.danger-on-light}",
+              "$description": "Item label of a destructive item when highlighted, of the menubar.",
+              "$extensions": {
+                "open-ds": {
+                  "on": "color.status.danger.subtle"
+                }
+              }
+            }
           }
         }
       },
