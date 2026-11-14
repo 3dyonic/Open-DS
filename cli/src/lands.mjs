@@ -165,7 +165,8 @@ export function refPath(index, ref) {
  */
 export function aliasChain(index, path) {
   const hops = [];
-  let p = path;
+  // A group token (size.icon, color.action.primary) keeps its own value at its base, @.
+  let p = !index.byPath.has(path) && index.byPath.has(`${path}.@`) ? `${path}.@` : path;
   for (let i = 0; i < 16; i++) {
     const v = index.byPath.get(p)?.$value;
     const m = typeof v === "string" && v.match(/^\{([^}]+)\}$/);
