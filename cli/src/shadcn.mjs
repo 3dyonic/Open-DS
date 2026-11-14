@@ -8,7 +8,7 @@ export const SHADCN = {
   foreground: "color-text-primary",
   card: "color-surface-default",
   "card-foreground": "color-text-primary",
-  popover: "color-surface-raised",
+  popover: "color-surface-floating",
   "popover-foreground": "color-text-primary",
   primary: "color-action-primary",
   "primary-foreground": "color-text-on-action",

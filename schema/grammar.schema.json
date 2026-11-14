@@ -1950,11 +1950,15 @@
                 "type": "object",
                 "additionalProperties": false,
                 "required": ["raised", "base", "sunken"],
-                "description": "For dark-same-shape: the surfaces that show height by tone in dark mode. A raised surface lighter than the base, and a sunken one darker, read as higher and lower; anything else is a finding.",
+                "description": "For dark-same-shape: the surfaces that show height by tone in dark mode. A raised surface lighter than the base, a floating one lighter than raised, and a sunken one darker, read as higher and lower; anything else is a finding.",
                 "properties": {
                   "raised": {
                     "type": "string",
                     "description": "The raised surface, for example color.surface.raised."
+                  },
+                  "floating": {
+                    "type": "string",
+                    "description": "The floating surface, for example color.surface.floating: menus, dialogs and sheets. In dark it is lighter than the raised surface."
                   },
                   "base": {
                     "type": "string",
@@ -1966,7 +1970,7 @@
                   },
                   "ring": {
                     "type": "string",
-                    "description": "The 1px ring of a raised layer, for example color.border.raised. In dark it is a solid color, lighter than the raised surface."
+                    "description": "The 1px ring of a raised or floating layer, for example color.border.raised. In dark it is a solid color, lighter than the raised and the floating surface."
                   }
                 }
               },
