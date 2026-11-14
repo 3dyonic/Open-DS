@@ -2,7 +2,8 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, rmSync, writeFileSync, existsSync } from "node:fs";
+import { storedScheme } from "../src/schemes.mjs";
 import { join } from "node:path";
 import { sandbox, drop, REPO } from "./verify-b-helpers.mjs";
 import { cpSync, symlinkSync } from "node:fs";
@@ -21,9 +22,9 @@ before(() => {
 after(() => drop(root));
 
 function run(edit) {
+  // The edited scheme goes in a single file, which the loader reads in place of the scheme's folder.
   const file = join(root, "schemes", "dense-data.json");
-  const original = readFileSync(file, "utf8");
-  const scheme = JSON.parse(original);
+  const scheme = storedScheme("dense-data", { schemes: join(root, "schemes") });
   edit(scheme);
   writeFileSync(file, JSON.stringify(scheme, null, 2));
   try {
@@ -32,7 +33,7 @@ function run(edit) {
     const card = existsSync(join(out, "scorecard.json")) ? JSON.parse(readFileSync(join(out, "scorecard.json"), "utf8")) : null;
     return { status: res.status, stdout: res.stdout + res.stderr, card };
   } finally {
-    writeFileSync(file, original);
+    rmSync(file, { force: true });
   }
 }
 

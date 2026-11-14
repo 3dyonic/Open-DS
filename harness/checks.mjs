@@ -6,7 +6,7 @@ import { curveOf } from "../cli/src/color-steps.mjs";
 import { themeTokens } from "../cli/src/tokens.mjs";
 import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
-import { grammar as loadGrammar, loadScheme, storedScheme as loadStored } from "../cli/src/schemes.mjs";
+import { grammar as loadGrammar, loadScheme, schemeIds as loadSchemeIds, storedScheme as loadStored } from "../cli/src/schemes.mjs";
 import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
@@ -103,7 +103,8 @@ export function makeContext(root) {
   const grammar = () => loadGrammar(roots);
   const scheme = (id) => loadScheme(id, roots);
   const storedScheme = (id) => loadStored(id, roots);
-  return { root, p, has, read, json, walk, sh, grammar, scheme, storedScheme };
+  const schemeIds = () => loadSchemeIds(roots);
+  return { root, p, has, read, json, walk, sh, grammar, scheme, storedScheme, schemeIds };
 }
 
 const ok = (detail = "") => ({ ok: true, detail });
@@ -438,12 +439,12 @@ export const CHECKS = {
   "schemes-five": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
-      const missing = SCHEMES.filter((s) => !c.has("schemes", `${s}.json`));
+      const missing = SCHEMES.filter((s) => !c.has("schemes", s, "scheme.json"));
       return missing.length ? bad(`missing: ${missing.join(", ")}`) : ok("5 schemes");
     },
   },
   "schemes-answer-every-question": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       const g = c.grammar();
       const qids = [...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id));
@@ -457,7 +458,7 @@ export const CHECKS = {
     },
   },
   "schemes-because-resolves": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       const g = c.grammar();
       const qids = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
@@ -475,7 +476,7 @@ export const CHECKS = {
     },
   },
   "schemes-usage-rules": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       const sits = c.grammar().situations.map((s) => s.id);
       const gaps = [];
@@ -489,7 +490,7 @@ export const CHECKS = {
   },
 
   "schemes-tokens-resolve": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       // The rule lives in cli/src/scheme-checks.mjs (OD-292), so the build runs it too.
       const problems = SCHEMES.flatMap((s) => tokensResolve(c.scheme(s)));
@@ -522,7 +523,7 @@ export const CHECKS = {
   },
 
   "semantics-guidance": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       // Every color semantic has guidance in the grammar; every key it names exists; every pair keeps
       // its contrast in every brand and mode. No exceptions: a failing pair fails the check.
@@ -845,7 +846,7 @@ export const CHECKS = {
     },
   },
   "visible-where-it-meets": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       // OD-242: decorative means no contrast floor, not invisible. In dark, every scheme once picked one
       // neutral step for the menu, its hover and its divider, so both read 1.00:1 and no check asked.
@@ -912,7 +913,7 @@ export const CHECKS = {
     },
   },
   "answers-consider": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       // OD-245: a question that lists what an answer must weigh (the typeface: readability, legibility,
       // scalability, numerals, scripts, recognition, familiarity, personality, performance, licensing,
@@ -1046,7 +1047,7 @@ export const CHECKS = {
     },
   },
   "picks-cite-answers": {
-    requires: SCHEMES.map((s) => `schemes/${s}.json`),
+    requires: SCHEMES.map((s) => `schemes/${s}/scheme.json`),
     run: (c) => {
       // A pick's because must name a question this scheme answers (cli/src/scheme-checks.mjs, OD-292).
       const results = SCHEMES.map((id) => picksCiteAnswers(c.scheme(id)));
@@ -1458,9 +1459,7 @@ export const CHECKS = {
       // One order everywhere: the grammar's scheme_order. The CLI, MCP, docs and website sort by it in
       // code; Storybook's toolbar and the website's home list are written by hand, so check them.
       const order = c.grammar().scheme_order?.order ?? [];
-      const ids = readdirSync(c.p("schemes"))
-        .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-        .map((f) => f.replace(/\.json$/, ""));
+      const ids = c.schemeIds();
       const gaps = [];
       for (const id of ids) if (!order.includes(id)) gaps.push(`scheme_order leaves out ${id}`);
       for (const id of order) if (!ids.includes(id)) gaps.push(`scheme_order names ${id}, which is not a scheme`);
@@ -2066,7 +2065,7 @@ export const CHECKS = {
   },
 
   "schemes-voice-and-themes": {
-    requires: [...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: [...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       const gaps = [];
       for (const s of SCHEMES) {
@@ -2091,7 +2090,7 @@ export const CHECKS = {
   },
 
   "scopes-uniform-template": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       const g = c.grammar();
       const gaps = [];
@@ -2212,7 +2211,7 @@ export const CHECKS = {
   },
 
   "outputs-follow-answers": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       const g = c.grammar();
       const qids = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
@@ -2274,7 +2273,7 @@ export const CHECKS = {
       const a = ajv();
       const targets = [
         ["grammar", c.grammar(), "schema/grammar.schema.json"],
-        ...SCHEMES.filter((s) => c.has("schemes", `${s}.json`)).map((s) => [s, c.scheme(s), "schema/scheme.schema.json"]),
+        ...SCHEMES.filter((s) => c.has("schemes", s, "scheme.json")).map((s) => [s, c.scheme(s), "schema/scheme.schema.json"]),
         ["harness/specs.json", c.json("harness/specs.json"), "harness/harness.schema.json"],
       ];
       const errs = [];
@@ -2569,7 +2568,7 @@ export const CHECKS = {
     },
   },
   "llm-scheme-descriptions": {
-    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
     run: (c) => {
       const missing = [];
       const g = c.grammar();
@@ -3112,6 +3111,26 @@ export const CHECKS = {
       }
     },
   },
+  // Every scheme is a folder split by scope, and the split joins back to the same object.
+  "schemes-split-by-scope": {
+    requires: ["schemes/grammar.json", "cli/src/scheme-layout.mjs"],
+    run: async (c) => {
+      const { joinScheme, splitScheme } = await import(pathToFileURL(c.p("cli/src/scheme-layout.mjs")).href);
+      const { schemeLayout } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
+      const roots = { schemes: c.p("schemes") };
+      const g = c.grammar();
+      const single = SCHEMES.filter((s) => schemeLayout(s, roots) !== "folder");
+      if (single.length) return bad(`not split by scope: ${single.join(", ")}. Save each with saveScheme.`);
+      if (!c.has("schemes", "grammar", "scopes")) return bad("the grammar is not split by scope. Save it with saveGrammar.");
+      const drift = SCHEMES.filter((s) => {
+        const stored = c.storedScheme(s);
+        return JSON.stringify(joinScheme(structuredClone(splitScheme(stored, g)), g)) !== JSON.stringify(stored);
+      });
+      return drift.length
+        ? bad(`the split does not join back to the same object for: ${drift.join(", ")}`)
+        : ok(`${SCHEMES.length} schemes and the grammar are split by scope; each split joins back to the same object`);
+    },
+  },
   // Every scheme's empty overlay passes the overlay schema, and an entry with no because fails it.
   "overlay-schema-guards": {
     requires: ["schema/overlay.schema.json", "cli/src/overlay.mjs", "cli/src/project.mjs"],
@@ -3461,9 +3480,7 @@ export const CHECKS = {
         readdirSync(c.p(d), { withFileTypes: true }).flatMap((e) =>
           e.isDirectory() ? walk(`${d}/${e.name}`) : /\.tsx?$/.test(e.name) ? [`${d}/${e.name}`] : [],
         );
-      const schemeIds = readdirSync(c.p("schemes"))
-        .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-        .map((f) => f.replace(/\.json$/, ""));
+      const schemeIds = c.schemeIds();
       const gaps = [];
       for (const f of walk(dir)) {
         const text = c.read(f);
@@ -3557,7 +3574,7 @@ export const CHECKS = {
   // icons.css gives every Lucide icon that stroke; the large size differs only where the scheme answers
   // two sizes. The docs' own visuals draw icons through Icon, and an icon-only button has a name.
   "icons-follow-scheme": {
-    requires: [...SCHEMES.map((s) => `schemes/${s}.json`), "ui/src/icons.css", "doc-composites/src", "storybook/stories"],
+    requires: [...SCHEMES.map((s) => `schemes/${s}/scheme.json`), "ui/src/icons.css", "doc-composites/src", "storybook/stories"],
     run: (c) => {
       const gaps = [];
       if (!/\.lucide\s*\{[^}]*stroke-width:\s*var\(--icon-stroke-width\)/.test(c.read("ui", "src", "icons.css")))
@@ -3598,7 +3615,7 @@ export const CHECKS = {
   // resolves to, the data carries the neutral step it goes through as via, so the page shows
   // neutral.600, not the gray primitive behind it. Each entry is traced again through the scheme.
   "doc-composites-steps": {
-    requires: [...SCHEMES.map((s) => `schemes/${s}.json`), "docs/docs"],
+    requires: [...SCHEMES.map((s) => `schemes/${s}/scheme.json`), "docs/docs"],
     run: (c) => {
       const gaps = [];
       let facts = 0;

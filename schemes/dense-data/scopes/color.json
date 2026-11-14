@@ -1,0 +1,798 @@
+{
+  "description": "The color scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "color",
+  "answers": [
+    {
+      "question": "color.roles",
+      "option": "core",
+      "why": "Surface, text, action and status cover an operations tool.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "color.count",
+      "option": "three",
+      "why": "One primary per view; the rest step back.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "color.definition",
+      "option": "neutral-brand",
+      "why": "One product, one brand ramp on cool neutrals.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "color.definition.steps",
+      "option": "strong-ease",
+      "why": "The data is the hero. A strong ease keeps the selected-row tint almost white, so selection never colours the data. Hover and links sit clearly deeper than the button, so actions stand out.",
+      "because": [
+        "tasks.q1",
+        "color.definition"
+      ]
+    },
+    {
+      "question": "color.values",
+      "option": "muted",
+      "why": "Muted color keeps attention on the data.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "color.values.difference",
+      "option": "clear",
+      "why": "Status and categories in tables must differ at a glance, row after row.",
+      "because": [
+        "tasks.q1",
+        "color.lands"
+      ]
+    },
+    {
+      "question": "color.lands",
+      "option": "status",
+      "why": "The brand primary marks actions and selection; status color marks late and failed records.",
+      "because": [
+        "outcomes.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "selected-row",
+      "use": "color.surface.selected",
+      "not": "color.action.primary as a fill",
+      "why": "A light tint shows selection without hiding the data.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "error-message",
+      "use": "color.status.danger with an icon",
+      "not": "color.status.warning",
+      "why": "Red always means fix this, and the icon says it without color.",
+      "because": [
+        "accessibility.count",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "link",
+      "use": "color.text.link",
+      "not": "color.action.primary",
+      "why": "Links and buttons look different, so people know which one navigates.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "status-label",
+      "use": "Badge with a subtle fill, an icon and a word",
+      "not": "A full-strength fill",
+      "why": "Subtle fills let many statuses share one table.",
+      "because": [
+        "accessibility.count",
+        "content.q1"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
+      ]
+    },
+    {
+      "situation": "commit-action",
+      "use": "Button primary, one per view",
+      "not": "Two primaries side by side",
+      "why": "One primary makes the committing action obvious.",
+      "because": [
+        "color.count",
+        "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
+      ]
+    },
+    {
+      "situation": "alternative-action",
+      "use": "Button secondary",
+      "not": "Button ghost",
+      "why": "A ghost button has no edge, so next to a filled primary it reads as plain text and cancel gets lost. Secondary keeps a visible border, so people find it at once.",
+      "because": [
+        "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
+      ]
+    },
+    {
+      "situation": "destructive-action",
+      "use": "Button secondary, then confirm in a dialog with Button danger",
+      "not": "Button primary as the first step",
+      "why": "Deleting is rare and costly; a confirm step catches mistakes.",
+      "because": [
+        "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        },
+        {
+          "component": "dialog"
+        },
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "danger"
+        }
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "color": {
+        "neutral": {
+          "0": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.0}"
+          },
+          "50": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.50}"
+          },
+          "100": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.100}"
+          },
+          "150": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.150}"
+          },
+          "200": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.200}"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.300}"
+          },
+          "400": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.400}"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.500}"
+          },
+          "600": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.600}"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.700}"
+          },
+          "800": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.800}"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.900}"
+          },
+          "950": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.950}"
+          },
+          "floor": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.floor}"
+          },
+          "$description": "The neutral scale: the scheme's gray, step by step. Surfaces, borders and text read it, never a gray directly."
+        },
+        "surface": {
+          "canvas": {
+            "$type": "color",
+            "$description": "The page background.",
+            "$value": "{theme.color.surface.canvas}"
+          },
+          "default": {
+            "$type": "color",
+            "$description": "Cards, inputs and tables.",
+            "$value": "{theme.color.surface.default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "Parts that rise inside the page, such as raised cards.",
+            "$value": "{theme.color.surface.raised}"
+          },
+          "floating": {
+            "$type": "color",
+            "$description": "Menus, popovers, dialogs, sheets and toasts: the layers that float above the page.",
+            "$value": "{theme.color.surface.floating}"
+          },
+          "sunken": {
+            "$type": "color",
+            "$description": "Table headers and wells.",
+            "$value": "{theme.color.surface.sunken}"
+          },
+          "highlight": {
+            "$type": "color",
+            "$description": "The item the pointer or the keyboard is on.",
+            "$value": "{theme.color.surface.highlight}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$description": "The item while it is pressed.",
+            "$value": "{theme.color.surface.pressed}"
+          },
+          "selected": {
+            "$type": "color",
+            "$description": "A selected row or item.",
+            "$value": "{theme.color.surface.selected}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Tooltips.",
+            "$value": "{theme.color.surface.inverse}"
+          },
+          "scrim": {
+            "$type": "color",
+            "$description": "Dims the page behind a dialog.",
+            "$value": "{theme.color.surface.scrim}"
+          }
+        },
+        "text": {
+          "primary": {
+            "$type": "color",
+            "$description": "Main text.",
+            "$value": "{theme.color.text.primary}"
+          },
+          "secondary": {
+            "$type": "color",
+            "$description": "Supporting text; passes AA.",
+            "$value": "{theme.color.text.secondary}"
+          },
+          "muted": {
+            "$type": "color",
+            "$description": "Hints and placeholders.",
+            "$value": "{theme.color.text.muted}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Text on inverse surfaces.",
+            "$value": "{theme.color.text.inverse}"
+          },
+          "on-action": {
+            "$type": "color",
+            "$description": "Text on the primary action.",
+            "$value": "{theme.color.text.on-action}"
+          },
+          "link": {
+            "$type": "color",
+            "$description": "Links.",
+            "$value": "{theme.color.text.link}"
+          },
+          "on-danger": {
+            "$type": "color",
+            "$description": "Text on the danger fill.",
+            "$value": "{theme.color.text.on-danger}"
+          },
+          "on-light": {
+            "$type": "color",
+            "$description": "Text on any light fill, in either mode.",
+            "$value": "{theme.color.text.on-light}"
+          },
+          "on-dark": {
+            "$type": "color",
+            "$description": "Text on any dark fill, in either mode.",
+            "$value": "{theme.color.text.on-dark}"
+          },
+          "info-on-light": {
+            "$type": "color",
+            "$description": "Info text on a light info fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.info-on-light}"
+          },
+          "info-on-dark": {
+            "$type": "color",
+            "$description": "Info text on a dark info fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.info-on-dark}"
+          },
+          "success-on-light": {
+            "$type": "color",
+            "$description": "Success text on a light success fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.success-on-light}"
+          },
+          "success-on-dark": {
+            "$type": "color",
+            "$description": "Success text on a dark success fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.success-on-dark}"
+          },
+          "warning-on-light": {
+            "$type": "color",
+            "$description": "Warning text on a light warning fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.warning-on-light}"
+          },
+          "warning-on-dark": {
+            "$type": "color",
+            "$description": "Warning text on a dark warning fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.warning-on-dark}"
+          },
+          "danger-on-light": {
+            "$type": "color",
+            "$description": "Danger text on a light danger fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.danger-on-light}"
+          },
+          "danger-on-dark": {
+            "$type": "color",
+            "$description": "Danger text on a dark danger fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.danger-on-dark}"
+          }
+        },
+        "border": {
+          "default": {
+            "$type": "color",
+            "$description": "Row lines and card borders.",
+            "$value": "{theme.color.border.default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "The 1px edge of a raised or floating layer: menus, dialogs and toasts, and raised cards.",
+            "$value": "{theme.color.border.raised}"
+          },
+          "strong": {
+            "$type": "color",
+            "$description": "Input and secondary button borders.",
+            "$value": "{theme.color.border.strong}"
+          },
+          "focus": {
+            "$ref": "scopes/accessibility.json#/tokens/semantic/color/border/focus"
+          },
+          "selected": {
+            "$type": "color",
+            "$description": "The edge that marks a selected item, so selection is never color alone.",
+            "$value": "{theme.color.border.selected}"
+          }
+        },
+        "action": {
+          "primary": {
+            "@": {
+              "$type": "color",
+              "$description": "The primary action.",
+              "$value": "{theme.color.action.primary.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "Primary action on hover.",
+              "$value": "{theme.color.action.primary.hover}"
+            }
+          },
+          "secondary": {
+            "@": {
+              "$type": "color",
+              "$description": "Secondary action fill.",
+              "$value": "{theme.color.action.secondary.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "Secondary action on hover.",
+              "$value": "{theme.color.action.secondary.hover}"
+            }
+          },
+          "danger": {
+            "@": {
+              "$type": "color",
+              "$description": "The fill of a destructive commit: the confirm of a delete.",
+              "$value": "{theme.color.action.danger.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "The danger fill on hover.",
+              "$value": "{theme.color.action.danger.hover}"
+            }
+          }
+        },
+        "status": {
+          "info": {
+            "@": {
+              "$type": "color",
+              "$description": "Info text and icons: neutral news, no action needed.",
+              "$value": "{theme.color.status.info.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Info badge and banner fill.",
+              "$value": "{theme.color.status.info.subtle}"
+            }
+          },
+          "success": {
+            "@": {
+              "$type": "color",
+              "$description": "Success text and icons.",
+              "$value": "{theme.color.status.success.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Success badge fill.",
+              "$value": "{theme.color.status.success.subtle}"
+            }
+          },
+          "warning": {
+            "@": {
+              "$type": "color",
+              "$description": "Warning text and icons.",
+              "$value": "{theme.color.status.warning.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Warning badge fill.",
+              "$value": "{theme.color.status.warning.subtle}"
+            }
+          },
+          "danger": {
+            "@": {
+              "$type": "color",
+              "$description": "Danger text and icons.",
+              "$value": "{theme.color.status.danger.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Danger badge fill.",
+              "$value": "{theme.color.status.danger.subtle}"
+            }
+          }
+        },
+        "category": {
+          "1": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 1: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.1.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 1: tag fill.",
+              "$value": "{theme.color.category.1.subtle}"
+            }
+          },
+          "2": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 2: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.2.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 2: tag fill.",
+              "$value": "{theme.color.category.2.subtle}"
+            }
+          },
+          "3": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 3: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.3.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 3: tag fill.",
+              "$value": "{theme.color.category.3.subtle}"
+            }
+          },
+          "4": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 4: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.4.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 4: tag fill.",
+              "$value": "{theme.color.category.4.subtle}"
+            }
+          },
+          "5": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 5: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.5.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 5: tag fill.",
+              "$value": "{theme.color.category.5.subtle}"
+            }
+          },
+          "$description": "Colors with no meaning, for content that needs telling apart: decorative accents and non-semantic blocks such as tags, labels and chart series."
+        },
+        "disabled": {
+          "$description": "The shared look of controls that cannot be used right now.",
+          "text": {
+            "$type": "color",
+            "$description": "Text and icons of a disabled control.",
+            "$value": "{theme.color.disabled.text}"
+          },
+          "surface": {
+            "$type": "color",
+            "$description": "Fill of a disabled control.",
+            "$value": "{theme.color.disabled.surface}"
+          },
+          "border": {
+            "$type": "color",
+            "$description": "Border of a disabled control.",
+            "$value": "{theme.color.disabled.border}"
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "color.action.danger": {
+      "headline": "This one cannot be undone.",
+      "line": "Red only on the step that deletes a record."
+    },
+    "color.action.danger.hover": {
+      "headline": "Still the delete.",
+      "line": "The fill darkens under the pointer, so the risk stays in view."
+    },
+    "color.action.primary": {
+      "headline": "The next step.",
+      "line": "One fill marks the action among many rows."
+    },
+    "color.action.primary.hover": {
+      "headline": "Ready to act.",
+      "line": "The fill darkens, so the analyst knows it will respond."
+    },
+    "color.action.secondary": {
+      "headline": "Another action.",
+      "line": "Export and filter stay plain beside the main action."
+    },
+    "color.action.secondary.hover": {
+      "headline": "Still optional.",
+      "line": "A soft change under the pointer, quieter than the main action."
+    },
+    "color.border.default": {
+      "headline": "Row lines.",
+      "line": "Lines keep the eye on one row across many columns."
+    },
+    "color.border.raised": {
+      "headline": "The edge of a layer.",
+      "line": "A menu or dialog stays apart from the page under it."
+    },
+    "color.border.selected": {
+      "headline": "This record.",
+      "line": "The edge marks the chosen record, not only its color."
+    },
+    "color.border.strong": {
+      "headline": "Type here.",
+      "line": "Inputs show their edge in a crowded screen."
+    },
+    "color.category.1": {
+      "headline": "The first signal.",
+      "line": "A chart series that means a group, not a state."
+    },
+    "color.category.1.subtle": {
+      "headline": "The first tag fill.",
+      "line": "A soft ground for the tag; its words stay main text."
+    },
+    "color.category.2": {
+      "headline": "The second signal.",
+      "line": "Told apart from the first when signals sit side by side."
+    },
+    "color.category.2.subtle": {
+      "headline": "The second tag fill.",
+      "line": "A soft ground for the tag; its words stay main text."
+    },
+    "color.category.3": {
+      "headline": "The third signal.",
+      "line": "Told apart from the others in a busy chart."
+    },
+    "color.category.3.subtle": {
+      "headline": "The third tag fill.",
+      "line": "A soft ground for the tag; its words stay main text."
+    },
+    "color.category.4": {
+      "headline": "The fourth signal.",
+      "line": "Told apart from the others in a busy chart."
+    },
+    "color.category.4.subtle": {
+      "headline": "The fourth tag fill.",
+      "line": "A soft ground for the tag; its words stay main text."
+    },
+    "color.category.5": {
+      "headline": "The fifth signal.",
+      "line": "Told apart from the others at a glance."
+    },
+    "color.category.5.subtle": {
+      "headline": "The fifth tag fill.",
+      "line": "A soft ground for the tag; its words stay main text."
+    },
+    "color.disabled.border": {
+      "headline": "Not now.",
+      "line": "The edge fades, so people do not try this control."
+    },
+    "color.disabled.surface": {
+      "headline": "Not available.",
+      "line": "A flat fill shows the control is off for now."
+    },
+    "color.disabled.text": {
+      "headline": "Off for now.",
+      "line": "Faded words, still readable, on a control that does nothing yet."
+    },
+    "color.status.danger": {
+      "headline": "Breach.",
+      "line": "Analysts see the worst rows first in a long table."
+    },
+    "color.status.danger.subtle": {
+      "headline": "Breach, in a badge.",
+      "line": "The fill marks the row without turning the table red."
+    },
+    "color.status.info": {
+      "headline": "Under watch.",
+      "line": "A state to know about, with no action yet."
+    },
+    "color.status.info.subtle": {
+      "headline": "Under watch, in a badge.",
+      "line": "The fill tags the row and keeps its text easy to scan."
+    },
+    "color.status.success": {
+      "headline": "Resolved.",
+      "line": "Closed rows read as done at a glance."
+    },
+    "color.status.success.subtle": {
+      "headline": "Resolved, in a badge.",
+      "line": "A quiet fill, so closed rows do not pull the eye."
+    },
+    "color.status.warning": {
+      "headline": "Escalated.",
+      "line": "Analysts spot it in a column before they read the word."
+    },
+    "color.status.warning.subtle": {
+      "headline": "Escalated, in a badge.",
+      "line": "The fill tags the row and keeps its text easy to scan."
+    },
+    "color.surface.canvas": {
+      "headline": "The workspace.",
+      "line": "A cool ground for a screen people use all day."
+    },
+    "color.surface.default": {
+      "headline": "Where the records sit.",
+      "line": "Tables, cards and inputs share one ground."
+    },
+    "color.surface.floating": {
+      "headline": "Floats over it all.",
+      "line": "Menus, dialogs and toasts sit highest, and their text stays easy to read."
+    },
+    "color.surface.highlight": {
+      "headline": "This row.",
+      "line": "The row under the pointer stands out, so the eye keeps its place."
+    },
+    "color.surface.inverse": {
+      "headline": "A short note on top.",
+      "line": "A dark tip that reads against any page."
+    },
+    "color.surface.pressed": {
+      "headline": "Pressed.",
+      "line": "A pointer press shows the same band as the hover."
+    },
+    "color.surface.raised": {
+      "headline": "On top of the page.",
+      "line": "Cards and panels sit one step above the content."
+    },
+    "color.surface.scrim": {
+      "headline": "Look here first.",
+      "line": "The page dims, so the dialog holds the attention."
+    },
+    "color.surface.selected": {
+      "headline": "The chosen record.",
+      "line": "The selected row stays marked while you scan the rest."
+    },
+    "color.surface.sunken": {
+      "headline": "Table headers.",
+      "line": "Headers sit back, so the values lead."
+    },
+    "color.text.danger-on-dark": {
+      "headline": "The problem, on dark.",
+      "line": "Danger words that read on the dark danger fill."
+    },
+    "color.text.danger-on-light": {
+      "headline": "The problem, on light.",
+      "line": "Danger words that read on the light danger fill."
+    },
+    "color.text.info-on-dark": {
+      "headline": "The note, on dark.",
+      "line": "Info words that read on the dark info fill."
+    },
+    "color.text.info-on-light": {
+      "headline": "The note, on light.",
+      "line": "Info words that read on the light info fill."
+    },
+    "color.text.inverse": {
+      "headline": "Words on the dark tip.",
+      "line": "Text that reads on a tooltip."
+    },
+    "color.text.link": {
+      "headline": "Open the record.",
+      "line": "Links stand out in a dense table."
+    },
+    "color.text.muted": {
+      "headline": "A quiet hint.",
+      "line": "Units and placeholders step back from the values."
+    },
+    "color.text.on-action": {
+      "headline": "The words on the button.",
+      "line": "The main action's label reads on its fill."
+    },
+    "color.text.on-danger": {
+      "headline": "The words on the delete.",
+      "line": "The label reads on the red fill."
+    },
+    "color.text.on-dark": {
+      "headline": "Words on a dark fill.",
+      "line": "Light text for any dark ground, in either mode."
+    },
+    "color.text.on-light": {
+      "headline": "Words on a light fill.",
+      "line": "Dark text for any light ground, in either mode."
+    },
+    "color.text.primary": {
+      "headline": "The values.",
+      "line": "Records and numbers at full strength."
+    },
+    "color.text.secondary": {
+      "headline": "The context.",
+      "line": "Labels and timestamps that support the value."
+    },
+    "color.text.success-on-dark": {
+      "headline": "The good news, on dark.",
+      "line": "Success words that read on the dark success fill."
+    },
+    "color.text.success-on-light": {
+      "headline": "The good news, on light.",
+      "line": "Success words that read on the light success fill."
+    },
+    "color.text.warning-on-dark": {
+      "headline": "The caution, on dark.",
+      "line": "Warning words that read on the dark warning fill."
+    },
+    "color.text.warning-on-light": {
+      "headline": "The caution, on light.",
+      "line": "Warning words that read on the light warning fill."
+    }
+  }
+}

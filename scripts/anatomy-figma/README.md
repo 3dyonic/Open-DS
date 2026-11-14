@@ -52,5 +52,5 @@ A NODE:
 Every value that is a string (other than names, text, icon names and the words above) is a token path:
 a component key (`component.button.height`) or a semantic (`color.text.muted`, `space.gap.tight`).
 Plain numbers are allowed only where no decision exists for the value (a sample width, say); prefer a
-token. Never write a hex color. Read the component's own keys first (`schemes/dense-data.json`,
+token. Never write a hex color. Read the component's own keys first (`schemes/dense-data/`,
 `tokens.component.<id>`); the keys the parts layer lists on each part are the ones to draw with.

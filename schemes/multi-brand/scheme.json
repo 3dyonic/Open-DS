@@ -1,0 +1,2025 @@
+{
+  "$schema": "../schema/scheme.schema.json",
+  "id": "multi-brand",
+  "name": "Multi-brand",
+  "version": "0.1.0",
+  "status": "draft",
+  "summary": "Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.",
+  "description": "Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.",
+  "ai": {
+    "use_when": "Companies that sell to customers under several brands, or white-label products shown to their clients' customers: sign-up, checkout, account and product pages.",
+    "avoid_when": "A single product with one brand, where the brand layer is cost with no user; or tools staff use all day. Use Dense data for those.",
+    "example_products": [
+      "Brand family of apps",
+      "White-label platform",
+      "Agency client portfolio"
+    ]
+  },
+  "scenarios": [
+    {
+      "text": "A customer signs up for a plan on the Birch site, then manages it in the shared account area.",
+      "follows": [
+        "scenarios.q1",
+        "scenarios.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "text": "A product team launches a fourth brand by adding brand primitives, without touching components.",
+      "follows": [
+        "business.q2",
+        "team.q2"
+      ]
+    }
+  ],
+  "voice": {
+    "summary": {
+      "text": "A plain shared voice. Each brand adds its own tone on top, never its own structure.",
+      "follows": [
+        "voice.definition",
+        "voice.count"
+      ]
+    },
+    "principles": [
+      {
+        "text": "Shared structure: object, state, next step.",
+        "follows": [
+          "voice.definition"
+        ]
+      },
+      {
+        "text": "Brand tone lives in headlines and marketing copy, not in errors.",
+        "follows": [
+          "voice.lands",
+          "voice.count"
+        ]
+      },
+      {
+        "text": "Errors and confirmations read the same in every brand.",
+        "follows": [
+          "voice.definition"
+        ]
+      },
+      {
+        "text": "A button label stays on one line: it never breaks onto two.",
+        "follows": [
+          "voice.values",
+          "voice.definition"
+        ]
+      }
+    ],
+    "words": {
+      "use": [
+        "Get started",
+        "Plan",
+        "Order"
+      ],
+      "avoid": [
+        "Brand-specific words in errors",
+        "Jargon"
+      ],
+      "follows": [
+        "voice.definition"
+      ]
+    },
+    "brands": {
+      "aster": {
+        "text": "Calm and precise.",
+        "follows": [
+          "voice.count",
+          "theming.definition"
+        ]
+      },
+      "birch": {
+        "text": "Friendly and helpful.",
+        "follows": [
+          "voice.count",
+          "theming.definition"
+        ]
+      },
+      "coral": {
+        "text": "Upbeat and energetic.",
+        "follows": [
+          "voice.count",
+          "theming.definition"
+        ]
+      }
+    }
+  },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Every action.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "One clear action per view.",
+              "because": [
+                "outcomes.q1"
+              ]
+            },
+            "secondary": {
+              "use": "The alternative that steps back, and the first step of a delete.",
+              "because": [
+                "color.count",
+                "outcomes.q2"
+              ]
+            },
+            "danger": {
+              "use": "The confirm of a delete, the same red in every brand: danger never follows the brand.",
+              "because": [
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Row actions, with a word.",
+              "because": [
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button, at touch size: customers are often on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Customers are often on phones: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Customers use any device and hover hints never show on touch, so every button has a word.",
+              "because": [
+                "accessibility.values",
+                "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "One clear action per view, at the normal size, in every brand.",
+              "because": [
+                "outcomes.q1"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback, shared across brands.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Follows the brand, but always shows.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "toggle-group",
+        "why": "Monthly or yearly prices."
+      },
+      {
+        "id": "input",
+        "why": "Sign-up and account fields."
+      },
+      {
+        "id": "input-otp",
+        "why": "The code that verifies an email or phone."
+      },
+      {
+        "id": "select",
+        "why": "Country and plan options."
+      },
+      {
+        "id": "checkbox",
+        "why": "Terms and preferences."
+      },
+      {
+        "id": "radio-group",
+        "why": "Picks a plan."
+      },
+      {
+        "id": "switch",
+        "why": "Account settings."
+      },
+      {
+        "id": "label",
+        "why": "Names every control."
+      },
+      {
+        "id": "field",
+        "why": "Lays out every form the same way in every brand.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Sign-up and checkout forms: the label above, in every brand.",
+              "because": [
+                "people.q2",
+                "scenarios.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Customers sign up on phones: labels stay above.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "responsive": {
+              "use": "Account settings: stacked on phones, label beside on laptops.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "textarea",
+        "why": "Messages to support."
+      },
+      {
+        "id": "form",
+        "why": "Validation shared by every product team."
+      },
+      {
+        "id": "badge",
+        "why": "Plan and status labels.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "Trial: the plan works and billing has not started.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "info": {
+              "use": "Renews in 3 days: a payment is coming; nothing has gone wrong.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "success": {
+              "use": "Active: the plan is paid and running.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "warning": {
+              "not_used": true,
+              "why": "No plan or order state sits between running and failed; a coming renewal is news, not a warning.",
+              "because": [
+                "content.q1",
+                "accessibility.count"
+              ]
+            },
+            "danger": {
+              "use": "Card declined: the payment failed, so the plan will stop.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "avatar",
+        "why": "The customer in the account menu."
+      },
+      {
+        "id": "navigation-menu",
+        "why": "Brand site navigation."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "Where a page sits in the account area."
+      },
+      {
+        "id": "tabs",
+        "why": "Sections of the account."
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "The account menu."
+      },
+      {
+        "id": "sidebar",
+        "why": "Account area navigation.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Account-area menu items, the same in every brand.",
+              "because": [
+                "theming.definition"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Brands change color and corners, not the structure of the menu.",
+              "because": [
+                "theming.definition"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every account-area menu item.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "alert",
+        "why": "Billing problems.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Alerts here are for billing problems; news is a badge or a toast.",
+              "because": [
+                "content.q1",
+                "outcomes.q1"
+              ]
+            },
+            "destructive": {
+              "use": "A billing problem such as a declined card: plain and specific, the same in every brand.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2",
+                "voice.definition"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "toast",
+        "why": "Confirms a saved change.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A shared line with brand words.",
+              "because": [
+                "voice.definition"
+              ]
+            },
+            "success": {
+              "use": "Brand tone allowed: Aster calm, Birch friendly, Coral upbeat.",
+              "because": [
+                "voice.count"
+              ]
+            },
+            "danger": {
+              "use": "Shared across brands: plain and specific.",
+              "because": [
+                "voice.definition",
+                "voice.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "skeleton",
+        "why": "Plans and orders while they load."
+      },
+      {
+        "id": "spinner",
+        "why": "A payment in progress."
+      },
+      {
+        "id": "empty",
+        "why": "No orders yet.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Shared structure in every brand: no brand pictures in empty states.",
+              "because": [
+                "voice.definition",
+                "theming.definition"
+              ]
+            },
+            "icon": {
+              "use": "An icon in a small tile, from the one outline set every brand shares.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "dialog",
+        "why": "Change a plan."
+      },
+      {
+        "id": "alert-dialog",
+        "why": "Cancel a plan."
+      },
+      {
+        "id": "sheet",
+        "why": "The menu on a phone."
+      },
+      {
+        "id": "popover",
+        "why": "Plan details and fee explanations, opened by tap on any device."
+      },
+      {
+        "id": "card",
+        "why": "Plans and products."
+      },
+      {
+        "id": "separator",
+        "why": "Groups of settings."
+      },
+      {
+        "id": "accordion",
+        "why": "Frequent questions."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "Media in cards or on product pages, held in shape while it loads. Not in empty states, which carry no brand pictures."
+      },
+      {
+        "id": "button-group",
+        "why": "A few related actions that belong together, such as previous and next. Not two primaries; one clear action per view."
+      },
+      {
+        "id": "calendar",
+        "why": "A date near today or a range, shown at once, where the day of the week matters. Not a birth date; type it."
+      },
+      {
+        "id": "carousel",
+        "why": "A few items browsed for pleasure on product pages, where missing some is fine. Never for plans or offers; cards group those."
+      },
+      {
+        "id": "collapsible",
+        "why": "One block of extra detail on a form, such as more options. Not for frequent questions; accordion holds those."
+      },
+      {
+        "id": "combobox",
+        "why": "A long closed list such as country, matched as the customer types. Not for plan options, a short list that select covers."
+      },
+      {
+        "id": "date-picker",
+        "why": "A date near today or a range, opened by tap from a field. Not a date known by heart; type it."
+      },
+      {
+        "id": "drawer",
+        "why": "Details or a short form on a phone, with the page partly in view. Not for blocking decisions; dialog and alert-dialog hold those."
+      },
+      {
+        "id": "input-group",
+        "why": "A field with a unit or currency, or a search with an icon. Not for separate fields; field lays those out.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "A currency sign or a search icon before the text, from the outline set every brand shares.",
+              "because": [
+                "iconography.definition",
+                "content.q1"
+              ]
+            },
+            "inline-end": {
+              "use": "A unit after the value, the same in every brand.",
+              "because": [
+                "content.q1",
+                "naming.lands"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "Sign-up and account fields stay one line; field puts the label above, outside the input.",
+              "because": [
+                "content.q1",
+                "people.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Sign-up and account fields stay one line; field shows the hint and error below.",
+              "because": [
+                "content.q1",
+                "people.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "item",
+        "why": "A list of account settings, each with a few actions named by a word. Not for records compared cell by cell.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Settings inside a card or menu, which already gives the frame.",
+              "because": [
+                "elevation.definition"
+              ]
+            },
+            "outline": {
+              "use": "Account settings on their own page, with a border and the corner each brand sets.",
+              "because": [
+                "content.q1",
+                "shape.definition"
+              ]
+            },
+            "muted": {
+              "use": "The current setting, with a soft fill from the brand.",
+              "because": [
+                "theming.definition"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row, at touch size: customers are often on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "One density across brands, at touch size.",
+              "because": [
+                "spacing.count",
+                "accessibility.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "kbd",
+        "why": "A shortcut shown beside an action on laptops, the action also reachable by tap. Not decoration, and never the only way in."
+      },
+      {
+        "id": "native-select",
+        "why": "A plain closed list such as country on a phone, where the system picker is best. Not where options need rich content."
+      },
+      {
+        "id": "pagination",
+        "why": "An account list or table that grows past one page, such as orders. Not for steps of sign-up; progress covers those."
+      },
+      {
+        "id": "progress",
+        "why": "A sign-up split into known steps, showing how far the customer has come. Not for a payment in progress; spinner covers that."
+      },
+      {
+        "id": "scroll-area",
+        "why": "A fixed-height list or panel inside a page. Not the whole page; let the page scroll."
+      },
+      {
+        "id": "slider",
+        "why": "A rough value where an exact number is not needed, paired with a number field. Not for picking a plan; radio-group does that."
+      },
+      {
+        "id": "toggle",
+        "why": "One mode turned on or off in place. Not for account settings, which use switch, or one-off actions, which use button.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Toggles that sit together, like monthly or yearly prices, use toggle-group.",
+              "because": [
+                "components.definition"
+              ]
+            },
+            "outline": {
+              "use": "A single toggle, with a border so it reads as a control in every brand.",
+              "because": [
+                "human.q2",
+                "theming.definition"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every toggle, at touch size: customers are often on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Customers are often on phones: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "table",
+        "why": "A customer's own records in the account area, such as Your subscriptions, in comfortable rows. Not as a tool for bulk work."
+      },
+      {
+        "id": "icon",
+        "why": "Navigation and actions, the same in every brand.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "The size of the text beside it.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Multi-brand has one icon size.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: one outline set for every brand, at a 1.5px stroke.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "One outline set serves every brand; a shape would need a brand decision.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "One outline set serves every brand.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "out": [
+      {
+        "id": "attachment",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "bubble",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "chart",
+        "why": "Multi-brand draws on core, content and media families, not data. It admits only families in its roles. Its scenarios are signing up and managing a plan.",
+        "instead": [
+          "card",
+          "badge"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "command",
+        "why": "Command suits expert users who jump anywhere by typing, not people who visit now and then. Multi-brand's customers return now and then, and most visits last a few minutes.",
+        "instead": [
+          "navigation-menu",
+          "dropdown-menu"
+        ],
+        "because": [
+          "tasks.q2",
+          "scenarios.q2"
+        ]
+      },
+      {
+        "id": "context-menu",
+        "why": "Right-click menus suit power users, and people who don't know to right-click never find them. Multi-brand's customers see it fresh each time. Plan actions sit in a visible menu.",
+        "instead": [
+          "dropdown-menu"
+        ],
+        "because": [
+          "tasks.q2",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "data-table",
+        "why": "Multi-brand draws on core, content and media families, not data. It avoids tools staff use all day and points those to Dense data.",
+        "instead": [
+          "card",
+          "tabs"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "hover-card",
+        "why": "Hover cards need a mouse, and touch screens have no hover. Multi-brand's customers use any device. A popover opens plan details by tap.",
+        "instead": [
+          "popover"
+        ],
+        "because": [
+          "accessibility.values",
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "marker",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "separator"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "menubar",
+        "why": "Menubar suits dense desktop tools, not website navigation or phones. Brand sites use navigation-menu, and customers sign up on phones.",
+        "instead": [
+          "navigation-menu",
+          "dropdown-menu"
+        ],
+        "because": [
+          "scenarios.q1",
+          "people.q1"
+        ]
+      },
+      {
+        "id": "message",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "message-scroller",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "resizable",
+        "why": "Resizable suits desktop tools where people size panels, not phones. Multi-brand avoids tools staff use all day, and customers sign up on phones.",
+        "instead": [
+          "sidebar",
+          "sheet"
+        ],
+        "because": [
+          "scenarios.q1",
+          "people.q1"
+        ]
+      },
+      {
+        "id": "tooltip",
+        "why": "Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead.",
+        "instead": [
+          "popover"
+        ],
+        "because": [
+          "accessibility.values",
+          "iconography.roles"
+        ]
+      }
+    ]
+  },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "scenarios.q2",
+      "content.q1",
+      "voice.definition"
+    ],
+    "screen": "Your plan",
+    "conversation": {
+      "title": "Help with your plan",
+      "marker": "Today",
+      "messages": [
+        {
+          "author": "Support",
+          "time": "14:05",
+          "text": "Your Standard plan renews on the 14th."
+        },
+        {
+          "author": "You",
+          "time": "14:07",
+          "text": "Can I switch to yearly?",
+          "mine": true
+        },
+        {
+          "author": "Support",
+          "time": "14:09",
+          "text": "Yes. Change it in Your plan, under Billing."
+        }
+      ],
+      "attachment": {
+        "name": "invoice-october.pdf",
+        "type": "PDF",
+        "size": "92 KB"
+      }
+    },
+    "actions": {
+      "primary": "Get started",
+      "secondary": "Compare plans"
+    },
+    "statuses": [
+      {
+        "label": "Trial",
+        "meaning": "neutral",
+        "why": "The plan works; billing has not started."
+      },
+      {
+        "label": "Active",
+        "meaning": "success",
+        "why": "The plan is paid and running."
+      },
+      {
+        "label": "Renews in 3 days",
+        "meaning": "info",
+        "why": "A payment is coming: news, nothing has gone wrong."
+      },
+      {
+        "label": "Card declined",
+        "meaning": "danger",
+        "why": "The payment failed, so the plan will stop."
+      }
+    ],
+    "table": {
+      "caption": "Your subscriptions",
+      "columns": [
+        {
+          "label": "Subscription"
+        },
+        {
+          "label": "Started"
+        },
+        {
+          "label": "Per month",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Standard plan",
+            "14 Mar 2024",
+            "12.00"
+          ],
+          "status": "Active"
+        },
+        {
+          "cells": [
+            "Cloud storage",
+            "2 Jan 2025",
+            "3.00"
+          ],
+          "status": "Renews in 3 days"
+        },
+        {
+          "cells": [
+            "Device cover",
+            "20 May 2025",
+            "5.00"
+          ],
+          "status": "Card declined"
+        },
+        {
+          "cells": [
+            "Music add-on",
+            "1 Jun 2025",
+            "4.00"
+          ],
+          "status": "Trial"
+        },
+        {
+          "cells": [
+            "Family member",
+            "9 Feb 2025",
+            "6.00"
+          ],
+          "status": "Active"
+        },
+        {
+          "cells": [
+            "Extra data",
+            "18 Apr 2025",
+            "2.00"
+          ],
+          "status": "Active"
+        }
+      ]
+    },
+    "metrics": [
+      {
+        "label": "Plan",
+        "value": "Standard"
+      },
+      {
+        "label": "Next payment",
+        "value": "12.00"
+      },
+      {
+        "label": "Orders this year",
+        "value": "9"
+      },
+      {
+        "label": "Member since",
+        "value": "2024"
+      }
+    ],
+    "field": {
+      "label": "Card number",
+      "placeholder": "1234 5678 9012 3456",
+      "hint": "We never store the full number.",
+      "error": "Your card was declined. Try another card or contact your bank.",
+      "invalid": "1234",
+      "value": "4242 4242 4242 4242"
+    },
+    "checkbox": [
+      "Email me about my orders",
+      "Send me offers",
+      "Remember this device"
+    ],
+    "select": {
+      "label": "Plan",
+      "options": [
+        "Basic",
+        "Standard",
+        "Plus"
+      ],
+      "value": "Standard"
+    },
+    "switches": [
+      "Renew automatically",
+      "Paperless invoices",
+      "Payment reminders"
+    ],
+    "messages": {
+      "success": "Your plan is active.",
+      "error": {
+        "title": "Your card was declined.",
+        "description": "Try another card or contact your bank."
+      },
+      "neutral": "No orders yet. Your first order will appear here."
+    },
+    "confirm": {
+      "trigger": "Cancel plan",
+      "title": "Cancel your plan?",
+      "body": "It stays active until the end of the month.",
+      "confirm": "Cancel plan",
+      "cancel": "Keep my plan",
+      "destroys": false
+    },
+    "card": {
+      "title": "Standard plan",
+      "description": "12.00 a month · renews on the 14th",
+      "status": "Active",
+      "primary": "Change plan",
+      "secondary": "View invoices"
+    },
+    "tabs": [
+      {
+        "label": "Plan",
+        "content": "Standard, renews on the 14th."
+      },
+      {
+        "label": "Orders",
+        "content": "9 orders this year."
+      },
+      {
+        "label": "Payment",
+        "content": "Card ending 4242."
+      }
+    ],
+    "menu": {
+      "trigger": "Plan actions",
+      "items": [
+        "Change plan",
+        "Download invoice"
+      ],
+      "destructive": "Cancel plan"
+    },
+    "icon_action": "Download invoice",
+    "choices": [
+      {
+        "label": "Monthly",
+        "description": "12.00 a month. Cancel any time.",
+        "illustrative": [
+          "description"
+        ]
+      },
+      {
+        "label": "Yearly",
+        "description": "Pay once a year."
+      }
+    ],
+    "search": {
+      "placeholder": "Search invoices",
+      "query": "October",
+      "total": "9 invoices",
+      "results": "1 invoice",
+      "none": "No invoices"
+    },
+    "chart": {
+      "series": [
+        "Plan",
+        "Add-ons"
+      ],
+      "ticks": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov"
+      ],
+      "point": {
+        "label": "Aug",
+        "values": [
+          "12.00",
+          "7.00"
+        ]
+      }
+    }
+  },
+  "themes": [
+    {
+      "id": "aster-light",
+      "brand": "aster",
+      "mode": "light"
+    },
+    {
+      "id": "aster-dark",
+      "brand": "aster",
+      "mode": "dark"
+    },
+    {
+      "id": "birch-light",
+      "brand": "birch",
+      "mode": "light"
+    },
+    {
+      "id": "birch-dark",
+      "brand": "birch",
+      "mode": "dark"
+    },
+    {
+      "id": "coral-light",
+      "brand": "coral",
+      "mode": "light"
+    },
+    {
+      "id": "coral-dark",
+      "brand": "coral",
+      "mode": "dark"
+    }
+  ],
+  "answers": [
+    {
+      "question": "business.q1",
+      "option": "convert",
+      "why": "A company sells several products under several brands.",
+      "because": []
+    },
+    {
+      "question": "business.q2",
+      "option": "many",
+      "why": "Three brands share one system today, more tomorrow.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "people.q1",
+      "option": "customers",
+      "why": "Customers who chose one of our brands.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "people.q2",
+      "option": "aa",
+      "why": "AA in every brand.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "content.q1",
+      "option": "forms",
+      "why": "Product pages, sign-up and account forms.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "content.q2",
+      "option": "moderate",
+      "why": "A moderate amount per screen.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q1",
+      "option": "complete",
+      "why": "Customers sign up and buy.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "tasks.q2",
+      "option": "sometimes",
+      "why": "Customers return now and then.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "human.q1",
+      "option": "effort",
+      "why": "Low effort, whichever brand they see.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "human.q2",
+      "option": "fresh",
+      "why": "Customers see it fresh each time.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "outcomes.q1",
+      "option": "completion",
+      "why": "Finished sign-ups and orders.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "outcomes.q2",
+      "option": "off-brand",
+      "why": "A page that looks like the wrong brand loses trust.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "brand.q1",
+      "option": "neutral",
+      "why": "A neutral base each brand can color.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "brand.q2",
+      "option": "present",
+      "why": "Each brand is clearly present.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "brand.q3",
+      "option": "per-brand",
+      "why": "Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+      "because": [
+        "business.q2",
+        "brand.q1",
+        "brand.q2"
+      ],
+      "considers": {
+        "readability": "All three are screen sans faces with open shapes; the shared scale keeps body size and line height the same in every brand.",
+        "legibility": "Each brand checks its face's confusable characters in its own data; the scale gives every brand the same sizes to check at.",
+        "scalability": "All three have a wide range of weights, so every role in the shared scale has a weight in every brand.",
+        "numerals": "Inter has tabular figures; the brands that show tables lean on it.",
+        "scripts": "Latin, with accents, in all three; Poppins also covers Devanagari. Other scripts need a face per brand.",
+        "recognition": "The face is how each brand is known on a shared system.",
+        "familiarity": "Inter, Plus Jakarta Sans and Poppins are widely seen on the web, so none feels strange.",
+        "personality": "A neutral base each brand can color: the face carries the brand, the scale stays neutral.",
+        "performance": "One family per brand: a page loads only its own brand's face.",
+        "licensing": "SIL Open Font License, all three: free to embed in apps and on the web.",
+        "fallback": "Each falls back to system-ui, as its tokens say; the shared scale keeps the layout steady while a face loads."
+      }
+    },
+    {
+      "question": "scenarios.q1",
+      "option": "anywhere",
+      "why": "Customers sign up on phones and manage plans on laptops.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "scenarios.q2",
+      "option": "short",
+      "why": "Most visits are a few minutes: sign up, check, change.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "team.q1",
+      "option": "platform",
+      "why": "A platform team serves three product teams.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "team.q2",
+      "option": "monthly",
+      "why": "Brands ship every month.",
+      "because": [
+        "business.q2"
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control",
+      "box": "radius.12"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "focus.ring.width",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "focus.ring.offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
+    }
+  ],
+  "usage": [],
+  "tokens": {
+    "primitive": {
+      "color": {
+        "$description": "Color options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
+        "slate-deep": {
+          "$type": "color",
+          "$description": "The slate-deep hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "0": {
+              "$value": "#FFFFFF"
+            },
+            "50": {
+              "$value": "#F8FAFC"
+            },
+            "100": {
+              "$value": "#F1F5F9"
+            },
+            "150": {
+              "$value": "#E9EFF5",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (medium-ease), even in contrast. Added so a floating layer sits one step above raised in dark."
+            },
+            "200": {
+              "$value": "#E2E8F0"
+            },
+            "300": {
+              "$value": "#CBD5E1"
+            },
+            "400": {
+              "$value": "#96A3B5",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#64748B"
+            },
+            "600": {
+              "$value": "#4B5A6F",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#334155"
+            },
+            "800": {
+              "$value": "#1E293B"
+            },
+            "900": {
+              "$value": "#0F172A"
+            },
+            "950": {
+              "$value": "#020617"
+            }
+          },
+          "dark": {
+            "0": {
+              "$value": "#020617"
+            },
+            "50": {
+              "$value": "#0F172A"
+            },
+            "100": {
+              "$value": "#1E293B"
+            },
+            "150": {
+              "$value": "#283548",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (medium-ease), even in contrast. Added so a floating layer sits one step above raised in dark."
+            },
+            "200": {
+              "$value": "#334155"
+            },
+            "300": {
+              "$value": "#64748B"
+            },
+            "400": {
+              "$value": "#96A3B5",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#CBD5E1"
+            },
+            "600": {
+              "$value": "#D6DEE8",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#E2E8F0"
+            },
+            "800": {
+              "$value": "#F1F5F9"
+            },
+            "900": {
+              "$value": "#F8FAFC"
+            },
+            "950": {
+              "$value": "#FFFFFF"
+            },
+            "floor": {
+              "$value": "#00010E",
+              "$description": "Derived: step 0 at 0.04 lower OKLab lightness, its hue and chroma kept. Added so a dark well sits below a canvas on 0."
+            }
+          }
+        },
+        "teal": {
+          "$type": "color",
+          "$description": "The teal hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#0F766E"
+              },
+              "dark": {
+                "key": "#7FCFC6",
+                "held": {
+                  "700": "relation",
+                  "800": "order",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "purple": {
+          "$type": "color",
+          "$description": "The purple hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#6D28D9",
+                "held": {
+                  "50": "order",
+                  "100": "relation"
+                }
+              },
+              "dark": {
+                "key": "#B79DF7",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "orange": {
+          "$type": "color",
+          "$description": "The orange hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#C2410C"
+              },
+              "dark": {
+                "key": "#F7A67F",
+                "held": {
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "green": {
+          "$type": "color",
+          "$description": "The green hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#1F7A3A",
+                "adjust": {
+                  "100": {
+                    "C": 0.008,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                }
+              },
+              "dark": {
+                "key": "#5CC283",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "amber": {
+          "$type": "color",
+          "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#8A5600",
+                "adjust": {
+                  "100": {
+                    "L": -0.005,
+                    "C": 0.013,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                }
+              },
+              "dark": {
+                "key": "#F2B84B",
+                "held": {
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "red": {
+          "$type": "color",
+          "$description": "The red hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#C42B2B",
+                "adjust": {
+                  "100": {
+                    "L": -0.03,
+                    "C": 0.017,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                }
+              },
+              "dark": {
+                "key": "#F28B8B",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "black": {
+          "$type": "color",
+          "$description": "See-through black for scrims behind dialogs, light and dark.",
+          "light": {
+            "scrim": {
+              "$value": "#0000008C"
+            }
+          },
+          "dark": {
+            "scrim": {
+              "$value": "#000000B3"
+            }
+          }
+        },
+        "blue": {
+          "$type": "color",
+          "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#083C93",
+                "adjust": {
+                  "100": {
+                    "L": -0.02,
+                    "C": 0.011,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                }
+              },
+              "dark": {
+                "key": "#8AB4F8",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "space": {
+        "2": {
+          "$type": "dimension",
+          "$value": "0.125rem"
+        },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "12": {
+          "$type": "dimension",
+          "$value": "0.75rem"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "36": {
+          "$type": "dimension",
+          "$value": "2.25rem"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": "3rem"
+        },
+        "64": {
+          "$type": "dimension",
+          "$value": "4rem"
+        },
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem."
+      },
+      "size": {
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "36": {
+          "$type": "dimension",
+          "$value": "2.25rem"
+        },
+        "44": {
+          "$type": "dimension",
+          "$value": "2.75rem"
+        },
+        "$description": "Size options for controls, rows and icons."
+      },
+      "radius": {
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "12": {
+          "$type": "dimension",
+          "$value": "0.75rem"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "$description": "Corner options.",
+        "round": {
+          "$type": "dimension",
+          "$value": "50%",
+          "$description": "A circle of a square: avatars, radio dots, thumbs and round buttons."
+        },
+        "pill": {
+          "$type": "dimension",
+          "$value": "calc(infinity * 1px)",
+          "$description": "A capsule of any box: tracks, progress, the scroll thumb and pill controls."
+        }
+      },
+      "border-width": {
+        "1": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "2": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "$description": "Border width options."
+      },
+      "font": {
+        "size": {
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
+        },
+        "weight": {
+          "400": {
+            "$type": "fontWeight",
+            "$value": 400
+          },
+          "600": {
+            "$type": "fontWeight",
+            "$value": 600
+          },
+          "700": {
+            "$type": "fontWeight",
+            "$value": 700
+          }
+        },
+        "line-height": {
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
+        },
+        "family": {
+          "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
+          "inter": {
+            "$type": "fontFamily",
+            "$value": "Inter, system-ui, sans-serif"
+          },
+          "plus-jakarta-sans": {
+            "$type": "fontFamily",
+            "$value": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+          },
+          "poppins": {
+            "$type": "fontFamily",
+            "$value": "Poppins, system-ui, sans-serif"
+          }
+        }
+      },
+      "duration": {
+        "moderate": {
+          "$type": "duration",
+          "$value": "150ms",
+          "$description": "Moderate: a calm, easy-to-follow speed, about 150ms."
+        },
+        "relaxed": {
+          "$type": "duration",
+          "$value": "300ms",
+          "$description": "Relaxed: a slower speed for larger moves, about 300ms."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "A standard ease-out: fast at the start, settling slowly, with no overshoot."
+        },
+        "strong-out": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.23,
+            1,
+            0.32,
+            1
+          ],
+          "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
+        }
+      },
+      "shadow": {
+        "$description": "Raw shadows. Elevation semantics point at these.",
+        "card": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#0F172A14",
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "8px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for card in light mode."
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#0F172A29",
+            "offsetX": "0px",
+            "offsetY": "12px",
+            "blur": "32px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in light mode."
+        },
+        "overlay-dark": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000080",
+            "offsetX": "0px",
+            "offsetY": "12px",
+            "blur": "32px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in dark mode."
+        },
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
+        }
+      },
+      "stroke-width": {
+        "$description": "Icon stroke width options.",
+        "1_5": {
+          "$type": "number",
+          "$value": 1.5,
+          "$description": "An icon stroke width option, on Lucide's 24px grid."
+        }
+      }
+    },
+    "brands": {
+      "aster": {
+        "$ref": "brands/aster.json#/tokens/brands/aster"
+      },
+      "birch": {
+        "$ref": "brands/birch.json#/tokens/brands/birch"
+      },
+      "coral": {
+        "$ref": "brands/coral.json#/tokens/brands/coral"
+      }
+    },
+    "semantic": {
+      "space": {
+        "$ref": "scopes/spacing.json#/tokens/semantic/space"
+      },
+      "size": {
+        "$extensions": {
+          "open-ds": {
+            "default": 44,
+            "step": 8,
+            "steps": {
+              "compact": -1,
+              "large": 0
+            },
+            "follows": [
+              "accessibility.values",
+              "spacing.roles"
+            ],
+            "why": "A touch target sets the 44px default. Compact is one 8px step below it; large equals the default, as brand color marks the main action. Rows are a decision of their own and stay one control tall."
+          }
+        },
+        "control": {
+          "$ref": "scopes/accessibility.json#/tokens/semantic/size/control"
+        },
+        "row": {
+          "$ref": "scopes/spacing.json#/tokens/semantic/size/row"
+        },
+        "icon": {
+          "$ref": "scopes/iconography.json#/tokens/semantic/size/icon"
+        },
+        "hit-area": {
+          "$ref": "scopes/accessibility.json#/tokens/semantic/size/hit-area"
+        }
+      },
+      "radius": {
+        "$ref": "scopes/shape.json#/tokens/semantic/radius"
+      },
+      "border-width": {
+        "$ref": "scopes/shape.json#/tokens/semantic/border-width"
+      },
+      "focus": {
+        "$ref": "scopes/accessibility.json#/tokens/semantic/focus"
+      },
+      "type": {
+        "$ref": "scopes/typography.json#/tokens/semantic/type"
+      },
+      "motion": {
+        "$ref": "scopes/motion.json#/tokens/semantic/motion"
+      },
+      "color": {
+        "$ref": "scopes/color.json#/tokens/semantic/color"
+      },
+      "elevation": {
+        "$ref": "scopes/elevation.json#/tokens/semantic/elevation"
+      },
+      "component-spacing-map": {
+        "$extensions": {
+          "open-ds": {
+            "rhythm": 1.5,
+            "fixed": [
+              "x1",
+              "x2"
+            ],
+            "because": [
+              "spacing.values"
+            ],
+            "why": "Comfortable in every brand: panels and fields breathe; rows stay tight."
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$ref": "scopes/iconography.json#/tokens/semantic/icon/stroke-width"
+        }
+      }
+    },
+    "component": {
+      "$ref": "components.json#/tokens/component"
+    },
+    "content": {
+      "$ref": "scopes/voice.json#/tokens/content"
+    }
+  },
+  "shorthand": {
+    "description": "What each semantic token does for people in this scheme, in a headline and one line. The token map card shows it.",
+    "tokens": {
+      "component-spacing-map.hairline": {
+        "headline": "A tiny nudge.",
+        "line": "Two pixels that line things up by eye."
+      },
+      "component-spacing-map.x1": {
+        "headline": "One step.",
+        "line": "The base step of the comfortable rhythm inside a component."
+      },
+      "component-spacing-map.x12": {
+        "headline": "Twelve steps.",
+        "line": "Twelve steps of the comfortable rhythm inside a component."
+      },
+      "component-spacing-map.x2": {
+        "headline": "Two steps.",
+        "line": "Two steps of the comfortable rhythm inside a component."
+      },
+      "component-spacing-map.x3": {
+        "headline": "Three steps.",
+        "line": "Three steps of the comfortable rhythm inside a component."
+      },
+      "component-spacing-map.x4": {
+        "headline": "Four steps.",
+        "line": "Four steps of the comfortable rhythm inside a component."
+      },
+      "component-spacing-map.x6": {
+        "headline": "Six steps.",
+        "line": "Six steps of the comfortable rhythm inside a component."
+      },
+      "component-spacing-map.x8": {
+        "headline": "Eight steps.",
+        "line": "Eight steps of the comfortable rhythm inside a component."
+      }
+    }
+  }
+}

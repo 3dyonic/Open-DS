@@ -1,0 +1,63 @@
+{
+  "description": "The components scope of Accessible first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "components",
+  "answers": [
+    {
+      "question": "components.roles",
+      "option": "core",
+      "why": "Forms, steps and feedback are all a public service needs.",
+      "because": [
+        "content.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "few",
+      "why": "Only the parts in use, each tested with assistive technology.",
+      "because": [
+        "people.q2",
+        "team.q2"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "inclusive",
+      "why": "A component joins only when it works with any device and assistive technology.",
+      "because": [
+        "people.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "few",
+      "why": "One clear way to do each thing.",
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "forms",
+      "why": "Components do their work in forms and steps.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "missing-component",
+      "use": "a native HTML element with a label and a hint",
+      "not": "a custom widget that needs hover, drag or precise pointing",
+      "why": "Native elements work with every assistive technology without extra work.",
+      "because": [
+        "people.q1",
+        "components.definition"
+      ]
+    }
+  ]
+}

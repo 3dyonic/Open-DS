@@ -1,0 +1,91 @@
+{
+  "description": "The elevation scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "elevation",
+  "answers": [
+    {
+      "question": "elevation.roles",
+      "option": "floating-only",
+      "why": "Only menus and dialogs float.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "elevation.count",
+      "option": "one",
+      "why": "One shadow for floating things.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.definition",
+      "option": "space",
+      "why": "Space separates groups; lines would interrupt reading.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "elevation.values",
+      "option": "soft",
+      "why": "Soft shadows suit warm paper.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "elevation.lands",
+      "option": "menus-dialogs",
+      "why": "Menus and dialogs are the only layers.",
+      "because": [
+        "elevation.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "card",
+      "use": "A border, no shadow",
+      "not": "A strong shadow",
+      "why": "Cards stay flat on the page; shadows are for floating things.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "elevation.overlay and a dimmed page",
+      "not": "No shadow",
+      "why": "The dimmed page focuses the reader on the dialog.",
+      "because": [
+        "elevation.lands"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation.card}"
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": "{theme.elevation.overlay}"
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "elevation.card": {
+      "headline": "Space, not shadows.",
+      "line": "Cards sit flat; the space around them does the work."
+    },
+    "elevation.overlay": {
+      "headline": "A soft lift.",
+      "line": "Menus and dialogs rise gently above the page."
+    }
+  }
+}

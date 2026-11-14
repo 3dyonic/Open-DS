@@ -1,0 +1,57 @@
+{
+  "description": "The theming scope of Accessible first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "theming",
+  "answers": [
+    {
+      "question": "theming.roles",
+      "option": "mode",
+      "why": "One brand, so only the mode changes.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.count",
+      "option": "two",
+      "why": "Light and dark.",
+      "because": [
+        "theming.values"
+      ]
+    },
+    {
+      "question": "theming.definition",
+      "option": "single",
+      "why": "One service, one brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.values",
+      "option": "light-dark",
+      "why": "Light and dark ship as standard; both hold AAA text.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "theming.lands",
+      "option": "colors",
+      "why": "Only colors change.",
+      "because": [
+        "theming.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "dark-mode",
+      "use": "The dark semantic mode, or high contrast",
+      "not": "One mode only",
+      "why": "People pick the mode they can read.",
+      "because": [
+        "theming.values"
+      ]
+    }
+  ]
+}

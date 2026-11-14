@@ -1,0 +1,124 @@
+{
+  "description": "The iconography scope of Accessible first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "iconography",
+  "answers": [
+    {
+      "question": "iconography.roles",
+      "option": "actions-status",
+      "why": "Icons support words; they never replace them.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "question": "iconography.count",
+      "option": "one",
+      "why": "One size, larger than the text.",
+      "because": [
+        "iconography.values"
+      ]
+    },
+    {
+      "question": "iconography.definition",
+      "option": "bold",
+      "why": "A bold 2px stroke keeps every icon easy to see, for low vision and small screens.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "iconography.values",
+      "option": "larger",
+      "why": "Larger icons are easier to see.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "iconography.lands",
+      "option": "status",
+      "why": "Icons work hardest beside status words and errors.",
+      "because": [
+        "accessibility.count"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "icon-alone",
+      "use": "Not used: always add a word",
+      "not": "An icon button",
+      "why": "Icons alone are guesswork.",
+      "because": [
+        "iconography.roles"
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Button secondary with a word",
+      "not": "An icon on its own",
+      "why": "A word says what will happen.",
+      "because": [
+        "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A thin icon at text size",
+      "why": "Larger icons with a bold line stay easy to see for people with low vision.",
+      "because": [
+        "people.q1",
+        "people.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.20}",
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "One icon size, 20px, one step larger than the 19px body text it sits beside, so every icon stays easy to see.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            }
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.2}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "Every icon draws with a bold 2px stroke width on Lucide's 24px grid, so its lines stay visible with low vision and on small screens.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.icon": {
+      "headline": "Large icons.",
+      "line": "Icons are big enough to read beside large text."
+    }
+  }
+}

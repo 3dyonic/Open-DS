@@ -1,0 +1,57 @@
+{
+  "description": "The naming scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "naming",
+  "answers": [
+    {
+      "question": "naming.roles",
+      "option": "tokens-keys",
+      "why": "Components get their own keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.count",
+      "option": "three",
+      "why": "Primitives, semantics and component keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.definition",
+      "option": "by-role",
+      "why": "Role names survive a redesign.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.values",
+      "option": "kebab-paths",
+      "why": "Lowercase paths read the same in CSS, JSON and Figma.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.lands",
+      "option": "keys",
+      "why": "A component API keeps changes local.",
+      "because": [
+        "team.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "missing-token",
+      "use": "The closest semantic token, then ask for a new one",
+      "not": "A raw value in the component",
+      "why": "Raw values break dark mode and the next redesign.",
+      "because": [
+        "naming.lands"
+      ]
+    }
+  ]
+}

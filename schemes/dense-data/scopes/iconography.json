@@ -1,0 +1,141 @@
+{
+  "description": "The iconography scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "iconography",
+  "answers": [
+    {
+      "question": "iconography.roles",
+      "option": "actions-status",
+      "why": "Icons mark row actions and status.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "iconography.count",
+      "option": "one",
+      "why": "One size, matched to the small text.",
+      "because": [
+        "typography.values"
+      ]
+    },
+    {
+      "question": "iconography.definition",
+      "option": "outline",
+      "why": "Outline icons at a 1.5px stroke stay light next to dense text.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "iconography.values",
+      "option": "match-text",
+      "why": "Icons match the label so they do not outweigh it.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "iconography.lands",
+      "option": "toolbars-rows",
+      "why": "Icons work hardest in toolbars and row actions.",
+      "because": [
+        "tasks.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "icon-alone",
+      "use": "Icon button with a tooltip",
+      "not": "A bare icon",
+      "why": "Experts learn icons; the tooltip covers the first uses.",
+      "because": [
+        "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        },
+        {
+          "component": "tooltip"
+        }
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Icon button, ghost, compact",
+      "not": "Button secondary in every row",
+      "why": "Rows repeat dozens of times; a quiet icon keeps the table readable.",
+      "because": [
+        "tasks.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        },
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        }
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "An icon larger than its label",
+      "why": "Icons match the small text, so a toolbar reads as one line. The light stroke keeps rows quiet.",
+      "because": [
+        "brand.q2",
+        "tasks.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.16}",
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "16px icons match the small text, so an icon and its label in a toolbar read as one line.",
+              "because": [
+                "iconography.values",
+                "iconography.count",
+                "tasks.q2"
+              ]
+            }
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.1_5}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "A 1.5px stroke width on Lucide's 24px grid keeps outline icons light, so they never outweigh the dense text beside them.",
+              "because": [
+                "iconography.definition",
+                "brand.q2"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.icon": {
+      "headline": "Small icons.",
+      "line": "Icons match the small text in rows and toolbars."
+    }
+  }
+}

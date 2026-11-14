@@ -1,0 +1,92 @@
+{
+  "description": "The elevation scope of Accessible first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "elevation",
+  "answers": [
+    {
+      "question": "elevation.roles",
+      "option": "nothing",
+      "why": "Flat is easier to read at high zoom.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "elevation.count",
+      "option": "none",
+      "why": "No shadows.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.definition",
+      "option": "lines",
+      "why": "Strong borders separate groups at any zoom.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "elevation.values",
+      "option": "none",
+      "why": "No shadows; borders do the work.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.lands",
+      "option": "dialogs-only",
+      "why": "Only dialogs separate, with a dimmed page and a border.",
+      "because": [
+        "elevation.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "card",
+      "use": "A strong border, no shadow",
+      "not": "A shadow",
+      "why": "Shadows are hard to see; borders are not.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "A strong border and a dimmed page",
+      "not": "A shadow only",
+      "why": "The dimmed page makes the dialog obvious.",
+      "because": [
+        "elevation.lands"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation.card}"
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation.overlay}"
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "elevation.card": {
+      "headline": "Lines, not shadows.",
+      "line": "Cards show their edge, so no one depends on a shadow."
+    },
+    "elevation.overlay": {
+      "headline": "No shadow.",
+      "line": "Layers use a clear edge in place of a shadow."
+    }
+  }
+}

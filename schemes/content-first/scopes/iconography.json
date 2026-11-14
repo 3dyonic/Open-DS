@@ -1,0 +1,127 @@
+{
+  "description": "The iconography scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "iconography",
+  "answers": [
+    {
+      "question": "iconography.roles",
+      "option": "actions-status-nav",
+      "why": "Occasional readers need icons for save, share and navigation.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "iconography.count",
+      "option": "one",
+      "why": "One size next to text.",
+      "because": [
+        "iconography.values"
+      ]
+    },
+    {
+      "question": "iconography.definition",
+      "option": "outline",
+      "why": "Outline icons stay quiet beside text, at a 1.5px stroke.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "iconography.values",
+      "option": "match-text",
+      "why": "Icons match the text size.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "iconography.lands",
+      "option": "navigation",
+      "why": "Icons help most in navigation.",
+      "because": [
+        "people.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "icon-alone",
+      "use": "Not used: always add a word",
+      "not": "An icon button",
+      "why": "Occasional visitors do not know icons.",
+      "because": [
+        "iconography.roles",
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Button ghost with a word",
+      "not": "An icon on its own",
+      "why": "Occasional visitors need the word.",
+      "because": [
+        "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A filled or colored icon",
+      "why": "Quiet outline icons sit beside the words and never outshine the text.",
+      "because": [
+        "human.q1",
+        "brand.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.16}",
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "16px matches the 16px label text that icons sit beside in navigation, the one icon size this scheme uses.",
+              "because": [
+                "iconography.values",
+                "iconography.count",
+                "iconography.lands"
+              ]
+            }
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.1_5}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "A 1.5px stroke width is the outline style the icon answer names; a thin line keeps icons quiet beside the text.",
+              "because": [
+                "iconography.definition",
+                "human.q1"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.icon": {
+      "headline": "An icon beside a word.",
+      "line": "Icons match the text they sit with."
+    }
+  }
+}

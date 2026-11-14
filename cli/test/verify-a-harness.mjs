@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractRef } from "../src/quality/extract.mjs";
+import { storedScheme } from "../src/schemes.mjs";
 import { compareSnapshots } from "../src/quality/scorecard.mjs";
 
 export const REPO = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -18,8 +19,9 @@ export function temporaryRoot(mutate = () => {}) {
     symlinkSync(join(REPO, entry), join(root, entry));
   }
   cpSync(join(REPO, "schemes"), join(root, "schemes"), { recursive: true });
+  // The edited scheme goes in a single file, which the loader reads in place of the scheme's folder.
   const file = join(root, "schemes", `${SCHEME}.json`);
-  const scheme = JSON.parse(readFileSync(file, "utf8"));
+  const scheme = storedScheme(SCHEME, { schemes: join(root, "schemes") });
   mutate(scheme);
   writeFileSync(file, `${JSON.stringify(scheme, null, 2)}\n`);
   return root;

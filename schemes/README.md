@@ -2,14 +2,23 @@
 
 A scheme is a full design system as data. It answers every question in the grammar and says why.
 
-| File                    | What it holds                                                                                                                                         |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `grammar.json`          | The questions (9 reasons, 11 scopes, 73 questions; every scope answers the same five method questions), the 57 situations, and the 63 component keys. |
-| `dense-data.json`       | Compact and exact, for experts who compare numbers.                                                                                                   |
-| `content-first.json`    | Large calm type, for people who come to read.                                                                                                         |
-| `accessible-first.json` | Large text and targets, AAA contrast, for everyone.                                                                                                   |
-| `multi-brand.json`      | One system, three brands (Aster, Birch, Coral) as themes.                                                                                             |
-| `brand-expressive.json` | Big display type and vivid color, for launches.                                                                                                       |
+| Folder or file      | What it holds                                                                                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `grammar.json`      | The questions (9 reasons, 11 scopes, 73 questions; every scope answers the same five method questions), the 57 situations, and the 63 component keys. |
+| `dense-data/`       | Compact and exact, for experts who compare numbers.                                                                                                   |
+| `content-first/`    | Large calm type, for people who come to read.                                                                                                         |
+| `accessible-first/` | Large text and targets, AAA contrast, for everyone.                                                                                                   |
+| `multi-brand/`      | One system, three brands (Aster, Birch, Coral) as themes.                                                                                             |
+| `brand-expressive/` | Big display type and vivid color, for launches.                                                                                                       |
+
+Each scheme is a folder, split by scope:
+
+- `scheme.json`: the identity, the answers to the reasons, the primitives and every part no scope owns.
+- `scopes/<scope>.json`: that scope's answers, its usage rules, the semantic tokens it owns (`owns` in the grammar) and their shorthand.
+- `brands/<brand>.json`: one brand's theme picks in each mode.
+- `components.json`: the component values the scheme decides.
+
+A part that lives in another file is a JSON Reference in its place, such as `{ "$ref": "scopes/color.json#/tokens/semantic/color" }`. The grammar splits the same way: `grammar.json` holds a reference for each scope (`grammar/scopes/<scope>.json`) and for the component sections (`grammar/components.json`). The loader joins the files into one object, and reads a single `<scheme>.json` file too. Write with `saveScheme` and `saveGrammar` only.
 
 Each scheme holds:
 

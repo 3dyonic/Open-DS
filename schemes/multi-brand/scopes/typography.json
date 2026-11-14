@@ -1,0 +1,611 @@
+{
+  "description": "The typography scope of Multi-brand: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "typography",
+  "answers": [
+    {
+      "question": "typography.roles",
+      "option": "core",
+      "why": "One set of roles across brands.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "typography.count",
+      "option": "some",
+      "why": "One size per kind of text suits every brand font.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "typography.definition",
+      "option": "ratio-proportional",
+      "why": "Ratios work with every brand font.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "typography.values",
+      "option": "regular",
+      "why": "Regular body size suits all brands.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "typography.lands",
+      "option": "forms",
+      "why": "Sign-up and account forms carry most text.",
+      "because": [
+        "tasks.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.title in the brand font",
+      "not": "A brand-specific style",
+      "why": "Roles stay shared; only the brand font changes.",
+      "because": [
+        "typography.roles",
+        "theming.definition"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.body",
+      "not": "A mono font",
+      "why": "Prices sit in sentences and offers, not in columns to compare, so a mono font adds nothing in any brand.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body",
+      "not": "type.caption",
+      "why": "Regular body size suits every brand.",
+      "because": [
+        "typography.values"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label",
+      "not": "type.caption",
+      "why": "Labels stay readable in every brand.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "A brand-specific headline style",
+      "why": "In the brand font for the product-page headline. Each brand speaks loudest in its product headline, on the shared scale.",
+      "because": [
+        "brand.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Headings stay one shared role; only the brand font changes.",
+      "because": [
+        "business.q2",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "A brand-specific small style",
+      "why": "One caption role serves fees, dates and hints in every brand.",
+      "because": [
+        "business.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A mono font",
+      "why": "It equals body here. Plan and order tables read like body text in every brand font.",
+      "because": [
+        "content.q1",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "In the brand font. Sign-up and account pages share one title role in every brand.",
+      "because": [
+        "content.q1",
+        "business.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 16,
+            "ratio": 1.26,
+            "steps": {
+              "display": 3,
+              "title": 2,
+              "heading": 1,
+              "body": 0,
+              "label": -1,
+              "caption": -1,
+              "data": 0
+            },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.2,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "open": {
+                "ratio": 1.5,
+                "roles": [
+                  "body",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "One size per kind of text: a regular 16px body and a 1.26 ratio, each kind on the next step, so the scale suits every brand face. Short lines sit tight at 1.2; text that wraps opens to 1.5."
+          }
+        },
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.display.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "32px is three ratio steps above the 16px body (16 × 1.26^3), the top of the shared scale, for the product-page headline where each brand speaks loudest.",
+                "because": [
+                  "brand.q2",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2 gives the 32px product headline 38px lines, so a headline that wraps stays one block in every brand face.",
+                "because": [
+                  "brand.q2",
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "700, the heaviest weight in the scale, makes the product headline the loudest line. All three brand faces carry a 700.",
+                "because": [
+                  "brand.q2",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.title.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "24px titles each sign-up and account page: two ratio steps above body (16 × 1.26^2 = 25.4) snapped to the 4px grid, and one under the 32px headline, because forms carry most text here.",
+                "because": [
+                  "typography.lands",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2 keeps a 24px page title tight above its form, so a title that wraps still reads as one title.",
+                "because": [
+                  "typography.definition",
+                  "typography.lands",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 marks the sign-up or account page title and leaves 700 to the product headline alone.",
+                "because": [
+                  "content.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "20px heads the sections inside a page: one ratio step above the 16px body and one under the 24px title.",
+                "because": [
+                  "typography.count",
+                  "typography.roles"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2 holds a 20px section heading close to the fields it names, as one shared role in every brand face.",
+                "because": [
+                  "typography.definition",
+                  "typography.roles",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 matches the page title, so size alone ranks a 20px section heading under the 24px title in every brand.",
+                "because": [
+                  "typography.roles",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.body.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "16px is the regular body size and step 0 of the shared scale; every brand face sets product and form text at it.",
+                "because": [
+                  "typography.values",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.5 gives 16px body text 24px lines, the same in Inter, Plus Jakarta Sans and Poppins, so paragraphs stay readable.",
+                "because": [
+                  "typography.definition",
+                  "typography.values",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400, the regular weight, keeps body text plain, so the brand face, not a heavier weight, carries each brand.",
+                "because": [
+                  "brand.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "13px names every field, one ratio step under the 16px text inside it (16 ÷ 1.26), so the label and the entry stay apart.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "typography.lands",
+                  "people.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2 keeps a 13px field label one tight line, directly above its input in sign-up and checkout forms.",
+                "because": [
+                  "typography.definition",
+                  "typography.lands",
+                  "people.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 keeps a 13px field label readable in every brand face and sets it apart from the 400 caption on the same step.",
+                "because": [
+                  "people.q2",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.caption.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "13px, the smallest size, holds fees, dates and hints on the label's step, one ratio step under the 16px body.",
+                "because": [
+                  "content.q1",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.5 gives 13px captions 20px lines, so a hint or fee note that wraps stays easy to read.",
+                "because": [
+                  "typography.definition",
+                  "content.q1",
+                  "people.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 keeps a 13px caption quiet beside the 600 label, so hints and fees support a field without naming it.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "typography.roles",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "16px shares step 0 with body: plan and order tables hold prices in sentences and offers, not columns of figures to compare.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.5 matches body, so a 16px price in a plan table sits on the same 24px line as the text beside it.",
+                "because": [
+                  "typography.definition",
+                  "content.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 matches body, so a price in a plan or order table reads as plain text in every brand font.",
+                "because": [
+                  "content.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The data text role."
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "type.body.font-family": {
+      "headline": "One face for every brand.",
+      "line": "Text reads the same, whatever the brand."
+    },
+    "type.body.font-size": {
+      "headline": "The size people read at.",
+      "line": "Form text reads on a phone without a zoom."
+    },
+    "type.body.font-weight": {
+      "headline": "Regular words.",
+      "line": "Body text stays light, so the words lead."
+    },
+    "type.body.line-height": {
+      "headline": "Room between lines.",
+      "line": "The eye finds the next line without a search."
+    },
+    "type.caption.font-family": {
+      "headline": "One face for every brand.",
+      "line": "Small print in the shared face."
+    },
+    "type.caption.font-size": {
+      "headline": "Small print.",
+      "line": "Captions sit below the body text, still readable."
+    },
+    "type.caption.font-weight": {
+      "headline": "Plain small print.",
+      "line": "Captions stay regular, so they do not compete."
+    },
+    "type.caption.line-height": {
+      "headline": "Room in small print.",
+      "line": "Short notes stay easy to follow."
+    },
+    "type.data.font-family": {
+      "headline": "One face for figures.",
+      "line": "Prices and card numbers in the shared face."
+    },
+    "type.data.font-size": {
+      "headline": "Figures at reading size.",
+      "line": "Data matches the body text."
+    },
+    "type.data.font-weight": {
+      "headline": "Plain figures.",
+      "line": "Numbers stay regular, so none looks more urgent."
+    },
+    "type.data.line-height": {
+      "headline": "Room between records.",
+      "line": "Lines of data stay apart."
+    },
+    "type.display.font-family": {
+      "headline": "One face for every brand.",
+      "line": "Headlines in the shared face."
+    },
+    "type.display.font-size": {
+      "headline": "The biggest words.",
+      "line": "The one line people see first."
+    },
+    "type.display.font-weight": {
+      "headline": "Bold and clear.",
+      "line": "The headline carries weight in every brand."
+    },
+    "type.display.line-height": {
+      "headline": "Tight big lines.",
+      "line": "Large lines sit close, so they read as one."
+    },
+    "type.heading.font-family": {
+      "headline": "One face for every brand.",
+      "line": "Headings in the shared face."
+    },
+    "type.heading.font-size": {
+      "headline": "A section starts.",
+      "line": "Headings stand above the body text."
+    },
+    "type.heading.font-weight": {
+      "headline": "Strong headings.",
+      "line": "Weight marks where a section starts."
+    },
+    "type.heading.line-height": {
+      "headline": "Close heading lines.",
+      "line": "A heading that wraps still reads as one."
+    },
+    "type.label.font-family": {
+      "headline": "One face for every brand.",
+      "line": "Labels in the shared face."
+    },
+    "type.label.font-size": {
+      "headline": "Words on controls.",
+      "line": "Labels small enough to fit a phone, large enough to read."
+    },
+    "type.label.font-weight": {
+      "headline": "Labels that stand out.",
+      "line": "Weight sets a label apart from body text."
+    },
+    "type.label.line-height": {
+      "headline": "One line of label.",
+      "line": "A control holds its label on one line."
+    },
+    "type.title.font-family": {
+      "headline": "One face for every brand.",
+      "line": "Titles in the shared face."
+    },
+    "type.title.font-size": {
+      "headline": "The page title.",
+      "line": "One size below the display line, above the headings."
+    },
+    "type.title.font-weight": {
+      "headline": "A strong title.",
+      "line": "Weight marks what the page is about."
+    },
+    "type.title.line-height": {
+      "headline": "Close title lines.",
+      "line": "A long title still reads as one."
+    }
+  }
+}

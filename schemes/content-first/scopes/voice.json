@@ -1,0 +1,145 @@
+{
+  "description": "The voice scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "voice",
+  "answers": [
+    {
+      "question": "voice.roles",
+      "option": "ui-editorial",
+      "why": "Articles are the product; the UI copy must match them.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "voice.count",
+      "option": "per-moment",
+      "why": "Warm by default, calmer for errors.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "voice.definition",
+      "option": "principles",
+      "why": "Editors work from principles and examples, not word lists.",
+      "because": [
+        "team.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "question": "voice.values",
+      "option": "conversational",
+      "why": "Talk to one reader, like a good editor.",
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "voice.lands",
+      "option": "articles",
+      "why": "Most words are in articles and guides.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "button-label",
+      "use": "A warm verb a reader would say",
+      "not": "\"Submit\" or \"Click here\"",
+      "why": "Buttons are part of the reading voice.",
+      "because": [
+        "voice.values"
+      ],
+      "example": "Subscribe"
+    },
+    {
+      "situation": "error-words",
+      "use": "Calm and helpful. Take the blame, offer the way forward.",
+      "not": "Blaming the reader",
+      "why": "A calm error keeps the reader's trust.",
+      "because": [
+        "voice.count",
+        "voice.values"
+      ],
+      "example": "We could not save your email. Check it and try again."
+    },
+    {
+      "situation": "success-words",
+      "use": "Warm and brief, with what happens next",
+      "not": "A bare \"Done\"",
+      "why": "A warm close invites the reader back.",
+      "because": [
+        "voice.values"
+      ],
+      "example": "You're in. The next issue arrives on Friday."
+    },
+    {
+      "situation": "empty-words",
+      "use": "An invitation, not a dead end",
+      "not": "\"No items\"",
+      "why": "An empty list is a chance to show what the product offers.",
+      "because": [
+        "voice.values",
+        "people.q1"
+      ],
+      "example": "Nothing saved yet. Tap Save on any article to read it later."
+    },
+    {
+      "situation": "confirm-words",
+      "use": "Gentle and clear about what changes",
+      "not": "Guilt or pressure",
+      "why": "Readers come back when leaving felt respectful.",
+      "because": [
+        "voice.values"
+      ],
+      "example": "Unsubscribe from the weekly letter? You can come back any time."
+    },
+    {
+      "situation": "first-visit",
+      "use": "One sentence on what is here and why it is worth reading",
+      "not": "A sign-up wall",
+      "why": "Occasional readers decide in seconds whether to stay.",
+      "because": [
+        "people.q1",
+        "scenarios.q2"
+      ],
+      "example": "Practical guides, one a week. Start with the most read."
+    }
+  ],
+  "tokens": {
+    "content": {
+      "$description": "Voice tokens: the words components use for common actions. Text, not CSS.",
+      "action": {
+        "commit": {
+          "$type": "string",
+          "$value": "Save",
+          "$description": "The label of the action that completes a task."
+        },
+        "cancel": {
+          "$type": "string",
+          "$value": "Not now",
+          "$description": "The label of the way out next to the main action."
+        },
+        "destroy": {
+          "$type": "string",
+          "$value": "Remove",
+          "$description": "The label of an action that deletes data."
+        },
+        "retry": {
+          "$type": "string",
+          "$value": "Try again",
+          "$description": "The label that repeats a failed action."
+        },
+        "empty-action": {
+          "$type": "string",
+          "$value": "Browse guides",
+          "$description": "The label of the action in an empty state."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "description": "The elevation scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "elevation",
+  "answers": [
+    {
+      "question": "elevation.roles",
+      "option": "cards-too",
+      "why": "Cards lift to feel like objects.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "elevation.count",
+      "option": "two",
+      "why": "One shadow for cards, one for overlays.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.definition",
+      "option": "cards",
+      "why": "Cards hold each offer.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "elevation.values",
+      "option": "pronounced",
+      "why": "Pronounced shadows add depth.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "elevation.lands",
+      "option": "cards-menus",
+      "why": "Cards, menus and dialogs rise.",
+      "because": [
+        "elevation.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "card",
+      "use": "elevation.card (pronounced); none in dark",
+      "not": "A flat card",
+      "why": "Cards float to feel tactile. In dark a shade cannot be seen, so a lighter surface and a light ring lift them.",
+      "because": [
+        "elevation.roles",
+        "elevation.values"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "elevation.overlay and a dimmed page",
+      "not": "No shadow",
+      "why": "Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.",
+      "because": [
+        "elevation.values"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$value": "{theme.elevation.card}"
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": "{theme.elevation.overlay}"
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "elevation.card": {
+      "headline": "Cards that lift.",
+      "line": "A clear shadow makes each card feel like an object."
+    },
+    "elevation.overlay": {
+      "headline": "Well above the page.",
+      "line": "A deep shadow puts menus and dialogs in front."
+    }
+  }
+}

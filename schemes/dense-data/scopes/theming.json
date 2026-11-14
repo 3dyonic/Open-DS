@@ -1,0 +1,57 @@
+{
+  "description": "The theming scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "theming",
+  "answers": [
+    {
+      "question": "theming.roles",
+      "option": "mode",
+      "why": "One brand, so only the mode changes.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.count",
+      "option": "two",
+      "why": "Light and dark.",
+      "because": [
+        "theming.values"
+      ]
+    },
+    {
+      "question": "theming.definition",
+      "option": "single",
+      "why": "One product, one brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.values",
+      "option": "light-dark",
+      "why": "Light first, always; dark ships as standard for night shifts.",
+      "because": [
+        "scenarios.q2"
+      ]
+    },
+    {
+      "question": "theming.lands",
+      "option": "colors",
+      "why": "A mode switch changes colors only, so layout never moves.",
+      "because": [
+        "human.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "dark-mode",
+      "use": "The dark semantic mode",
+      "not": "A second palette in components",
+      "why": "Only semantic colors change, so layout never moves.",
+      "because": [
+        "theming.values"
+      ]
+    }
+  ]
+}

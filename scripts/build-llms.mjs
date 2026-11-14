@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Writes llms.txt (an index in the llmstxt.org format) and llms-full.txt (every scheme as plain
-// text) at the repository root, from schemes/*.json. With --check, fails if they are out of date.
+// text) at the repository root, from the schemes in schemes/. With --check, fails if they are out of date.
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { sitsOn } from "../cli/src/tones.mjs";
@@ -33,7 +33,7 @@ export function buildLlms(repo) {
     "",
     ...schemes.map(
       (s) =>
-        `- [${s.name}](${REPO_URL}/schemes/${s.id}.json): id ${s.id}. ${s.summary} Use when: ${s.ai.use_when}`,
+        `- [${s.name}](${REPO_URL}/schemes/${s.id}/scheme.json): id ${s.id}. ${s.summary} Use when: ${s.ai.use_when}`,
     ),
     "",
     "## Grammar and formats",
@@ -58,7 +58,7 @@ export function buildLlms(repo) {
   const full = [
     "# Open DS: every scheme in full",
     "",
-    "> Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.",
+    "> Generated from the schemes in schemes/. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.",
     "",
     "## Color guidance, for every scheme",
     "",

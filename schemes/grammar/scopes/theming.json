@@ -1,0 +1,154 @@
+{
+  "id": "theming",
+  "kind": "scope",
+  "title": "Theming",
+  "description": "Modes and brands.",
+  "owns": ["theme"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "chart",
+    "checkbox",
+    "combobox",
+    "command",
+    "context-menu",
+    "data-table",
+    "date-picker",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "form",
+    "hover-card",
+    "icon",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "label",
+    "marker",
+    "menubar",
+    "message",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "popover",
+    "progress",
+    "radio-group",
+    "resizable",
+    "scroll-area",
+    "select",
+    "separator",
+    "sheet",
+    "sidebar",
+    "skeleton",
+    "slider",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "toggle-group",
+    "tooltip"
+  ],
+  "situations": ["dark-mode"],
+  "questions": [
+    {
+      "id": "theming.roles",
+      "method": "roles",
+      "text": "What can a theme change?",
+      "description": "The axes a theme varies along.",
+      "options": [
+        {
+          "id": "mode",
+          "label": "Mode only"
+        },
+        {
+          "id": "mode-brand",
+          "label": "Mode and brand"
+        },
+        {
+          "id": "mode-contrast",
+          "label": "Mode and contrast"
+        }
+      ]
+    },
+    {
+      "id": "theming.count",
+      "method": "count",
+      "text": "How many themes ship?",
+      "description": "Brands times modes.",
+      "options": [
+        {
+          "id": "two",
+          "label": "Two"
+        },
+        {
+          "id": "several",
+          "label": "Several"
+        }
+      ]
+    },
+    {
+      "id": "theming.definition",
+      "method": "definition",
+      "text": "How are brands handled?",
+      "description": "Single brand, or brands as theme modes over shared semantics.",
+      "options": [
+        {
+          "id": "single",
+          "label": "One brand"
+        },
+        {
+          "id": "brand-modes",
+          "label": "Brands as modes"
+        }
+      ]
+    },
+    {
+      "id": "theming.values",
+      "method": "values",
+      "text": "Which modes ship?",
+      "description": "The modes the semantic layer carries. Light and dark are standard.",
+      "options": [
+        {
+          "id": "light-dark",
+          "label": "Light and dark"
+        },
+        {
+          "id": "light-dark-contrast",
+          "label": "Light, dark and high contrast"
+        }
+      ]
+    },
+    {
+      "id": "theming.lands",
+      "method": "lands",
+      "text": "What changes when the theme changes?",
+      "description": "The decisions a theme switch touches.",
+      "options": [
+        {
+          "id": "colors",
+          "label": "Colors only"
+        },
+        {
+          "id": "colors-type-shape",
+          "label": "Colors, type and shape"
+        }
+      ]
+    }
+  ]
+}

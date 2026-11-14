@@ -1,0 +1,57 @@
+{
+  "description": "The theming scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "theming",
+  "answers": [
+    {
+      "question": "theming.roles",
+      "option": "mode",
+      "why": "One brand, so only the mode changes.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.count",
+      "option": "two",
+      "why": "Light and dark.",
+      "because": [
+        "theming.values"
+      ]
+    },
+    {
+      "question": "theming.definition",
+      "option": "single",
+      "why": "One brand per campaign.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.values",
+      "option": "light-dark",
+      "why": "Light and dark ship as standard.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "theming.lands",
+      "option": "colors",
+      "why": "Only colors change.",
+      "because": [
+        "theming.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "dark-mode",
+      "use": "The dark semantic mode",
+      "not": "A separate campaign palette",
+      "why": "Dark ships as standard; campaigns change values, not structure.",
+      "because": [
+        "theming.values"
+      ]
+    }
+  ]
+}

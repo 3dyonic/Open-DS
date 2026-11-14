@@ -1,0 +1,240 @@
+{
+  "description": "The accessibility scope of Accessible first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "accessibility",
+  "answers": [
+    {
+      "question": "accessibility.roles",
+      "option": "all",
+      "why": "Every state, including loading, gets its own value.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.count",
+      "option": "color-icon-word",
+      "why": "Never color alone.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.definition",
+      "option": "aaa-text",
+      "why": "AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is a recorded exception.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.values",
+      "option": "large",
+      "why": "Large targets for tremor and touch.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "accessibility.lands",
+      "option": "forms",
+      "why": "Forms are where people are blocked.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "keyboard-focus",
+      "use": "button/focus-ring at focus.ring.width, with an offset",
+      "not": "A thin or faint outline",
+      "why": "Focus must be seen by everyone.",
+      "because": [
+        "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
+      ]
+    },
+    {
+      "situation": "smallest-target",
+      "use": "size.control.default (large)",
+      "not": "Touch-minimum size",
+      "why": "Large targets help people with motor needs.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "A touch-minimum size",
+      "why": "Large controls help people with tremor and low vision.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "A taller button for the main action",
+      "why": "It is the same height as the default here. Every control is already large. One height on every button keeps pages predictable.",
+      "because": [
+        "human.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "A small icon button",
+      "why": "It still meets the large target size and fits inside the field.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "color.disabled.*, never opacity",
+      "not": "A faded control with no reason",
+      "why": "Muted colors keep the label readable, where a fade would drop its contrast. A hint says what is missing and the next step.",
+      "because": [
+        "outcomes.q2",
+        "human.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "control": {
+          "default": {
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 52px for buttons and inputs in order to make a hit target: the large target size, step 0 of the control scale, a 52px hit area above the 44px of WCAG 2.5.5. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So people with tremor and low vision get a large control, because the smallest target is large (accessibility.values) and everyone uses it, including people with motor needs (people.q1).",
+                "because": [
+                  "accessibility.values",
+                  "people.q1"
+                ]
+              }
+            }
+          },
+          "compact": {
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 48px for compact controls, such as a button inside a field, in order to make a hit target: one 4px step below the 52px default on the control scale, a short step so the 48px hit area still meets the large target size. Height does this by the rule given for size.control.default, so a button fits inside a field and is still large, because the smallest target is large (accessibility.values) and everyone uses it (people.q1).",
+                "because": [
+                  "accessibility.values",
+                  "people.q1"
+                ]
+              }
+            }
+          },
+          "large": {
+            "$description": "Height of large controls. Not used in this system, so it equals the default.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 52px for large controls in order to make a hit target: the default's step on the control scale and the default's 52px hit area, as every control is already large and the scheme has no hero action. Height does this by the rule given for size.control.default, so every button has one height and pages stay predictable, because each step must take low effort to understand (human.q1) and the smallest target is large (accessibility.values).",
+                "because": [
+                  "human.q1",
+                  "accessibility.values"
+                ]
+              }
+            }
+          }
+        },
+        "hit-area": {
+          "$type": "dimension",
+          "$value": "{size.44}",
+          "$description": "The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 44px hit area for controls drawn smaller, such as a checkbox, a radio or a switch, in order to make a hit target a fingertip can find: the WCAG 2.5.5 size. The hit area does this by growing past the drawn box through a pseudo-element, and rows in a group stand at least 44px apart, so no two targets overlap. So people tap the right control on a phone, because targets are sized for large, easy hits (accessibility.values) and the layout leaves room for it (spacing.values).",
+              "because": [
+                "accessibility.values",
+                "spacing.values"
+              ]
+            }
+          }
+        }
+      },
+      "focus": {
+        "ring": {
+          "width": {
+            "$type": "dimension",
+            "$value": "{border-width.3}",
+            "$description": "The focus ring's width: one step heavier than the default border, and not a border width.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a 3px focus ring in order to show focus, one step heavier than the 2px default line by the focus relation. A heavier stroke does this by standing out even from the strong borders around it. So everyone sees where the keyboard is, because every state has its own look (accessibility.roles) and lines are strong (elevation.definition).",
+                "because": [
+                  "accessibility.roles",
+                  "elevation.definition",
+                  "accessibility.definition"
+                ]
+              }
+            }
+          },
+          "offset": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So people see the ring on any fill and at any zoom, because every state has its own look (accessibility.roles).",
+                "because": [
+                  "accessibility.roles"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "color": {
+        "border": {
+          "focus": {
+            "$type": "color",
+            "$description": "The keyboard focus ring.",
+            "$value": "{theme.color.border.focus}"
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "color.border.focus": {
+      "headline": "You are here.",
+      "line": "A strong ring shows keyboard users where they are."
+    },
+    "focus.ring.offset": {
+      "headline": "A gap around the ring.",
+      "line": "The ring never touches the control, so it reads on any fill."
+    },
+    "focus.ring.width": {
+      "headline": "A thick ring.",
+      "line": "Focus is easy to see for every eye."
+    },
+    "size.control.compact": {
+      "headline": "Still large.",
+      "line": "Even the small control is easy to see and hit."
+    },
+    "size.control.default": {
+      "headline": "Large controls.",
+      "line": "Buttons and fields are easy to see and press."
+    },
+    "size.control.large": {
+      "headline": "Same as the usual.",
+      "line": "One height covers the large case too, so sizes stay few."
+    },
+    "size.hit-area": {
+      "headline": "Easy to hit.",
+      "line": "Targets suit shaky hands and large fingers."
+    }
+  }
+}

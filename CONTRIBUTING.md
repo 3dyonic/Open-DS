@@ -27,7 +27,7 @@ pnpm generate
 
 ## Change a scheme
 
-1. Edit `schemes/<scheme>.json`. Every answer needs a `why`, and `because` links to the answers it follows from.
+1. Change a scheme with `saveScheme` from `cli/src/schemes.mjs`; it writes `schemes/<scheme>/`, one file per scope. Every answer needs a `why`, and `because` links to the answers it follows from.
 2. Run `pnpm generate` and `node scripts/build-llms.mjs`. Commit `llms.txt` and `llms-full.txt`; the other generated files stay out of git.
 3. Run `pnpm harness`.
 

@@ -1,10 +1,11 @@
 // Data access for the scheme commands. The CLI reads its assets from cli/assets when it is
 // packed (pnpm --dir cli bundle), and from the repository when it runs from a checkout.
 
-import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { guidanceFor } from "./guidance.mjs";
+import { SCHEME_ROOT, isSplitGrammar, joinGrammar, joinScheme, splitGrammar, splitScheme } from "./scheme-layout.mjs";
 import { withDefaults, withoutDefaults } from "./scheme-defaults.mjs";
 import { withGenerated, withoutGenerated } from "./scheme-generated.mjs";
 import { withTypeAndSpace, withoutTypeAndSpace } from "./type-space-generated.mjs";
@@ -45,18 +46,54 @@ export function assetRoots() {
 
 const readJson = (p) => JSON.parse(readFileSync(p, "utf8"));
 
+/** Every JSON file under dir, parsed, by its path relative to base: { "scopes/color.json": {...} }. */
+function readTree(dir, base = dir) {
+  if (!existsSync(dir)) return {};
+  const files = {};
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, e.name);
+    if (e.isDirectory()) Object.assign(files, readTree(path, base));
+    else if (e.name.endsWith(".json")) files[relative(base, path).split("\\").join("/")] = readJson(path);
+  }
+  return files;
+}
+
+/** Write files ({ relative path: text }) under dir. */
+function writeTree(dir, files) {
+  for (const [rel, text] of Object.entries(files)) {
+    mkdirSync(dirname(join(dir, rel)), { recursive: true });
+    writeFileSync(join(dir, rel), text);
+  }
+}
+
+/**
+ * The grammar. It reads both layouts: one grammar.json, or grammar.json with its scopes and component
+ * sections split into schemes/grammar/.
+ */
 export function grammar(roots = assetRoots()) {
-  return readJson(join(roots.schemes, "grammar.json"));
+  const root = readJson(join(roots.schemes, "grammar.json"));
+  if (!isSplitGrammar(root)) return root;
+  return joinGrammar({ "grammar.json": root, ...readTree(join(roots.schemes, "grammar"), roots.schemes) });
+}
+
+/** The layout a scheme is stored in: "folder" (schemes/<id>/), "file" (schemes/<id>.json) or null. A file wins. */
+export function schemeLayout(id, roots = assetRoots()) {
+  if (id === "grammar") return null;
+  if (existsSync(join(roots.schemes, `${id}.json`))) return "file";
+  if (existsSync(join(roots.schemes, id, SCHEME_ROOT))) return "folder";
+  return null;
 }
 
 /** Every scheme id, in the grammar's scheme_order; a scheme it does not list comes last, by id. */
 export function schemeIds(roots = assetRoots()) {
   const order = grammar(roots).scheme_order?.order ?? [];
   const rank = (id) => (order.includes(id) ? order.indexOf(id) : order.length);
-  return readdirSync(roots.schemes)
-    .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-    .map((f) => f.replace(/\.json$/, ""))
-    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
+  const ids = readdirSync(roots.schemes, { withFileTypes: true }).flatMap((e) => {
+    if (e.isFile() && e.name.endsWith(".json") && e.name !== "grammar.json") return [e.name.replace(/\.json$/, "")];
+    if (e.isDirectory() && existsSync(join(roots.schemes, e.name, SCHEME_ROOT))) return [e.name];
+    return [];
+  });
+  return [...new Set(ids)].sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
 }
 
 /**
@@ -88,32 +125,42 @@ export function formatGrammar(value) {
   return `${out(value, "", 0)}\n`;
 }
 
-/** Write the grammar. The one way to change schemes/grammar.json. */
 /**
  * The source JSON files not in the one layout (formatGrammar): the grammar and its schemas. [] when all
  * are. Read here, so every read of schemes/ stays in this module.
  */
 export function layoutGaps(roots = assetRoots()) {
   const schemas = ["grammar.schema.json", "scheme.schema.json", "overlay.schema.json"].map((f) => join(roots.schema, f));
-  const files = [join(roots.schemes, "grammar.json"), ...schemas];
+  const split = Object.keys(readTree(join(roots.schemes, "grammar"), roots.schemes)).map((f) => join(roots.schemes, f));
+  const files = [join(roots.schemes, "grammar.json"), ...split, ...schemas];
   return files.filter((f) => {
     const raw = readFileSync(f, "utf8");
     return formatGrammar(JSON.parse(raw)) !== raw;
   });
 }
 
+/** Write the grammar, split by scope. The one way to change schemes/grammar.json and schemes/grammar/. */
 export function saveGrammar(g, roots = assetRoots()) {
-  writeFileSync(join(roots.schemes, "grammar.json"), formatGrammar(g));
+  const files = splitGrammar(g);
+  // A scope that left the grammar leaves no file behind.
+  rmSync(join(roots.schemes, "grammar"), { recursive: true, force: true });
+  writeTree(roots.schemes, Object.fromEntries(Object.entries(files).map(([rel, data]) => [rel, formatGrammar(data)])));
 }
 
-/** Write a scheme, by its id. The one way to change schemes/<id>.json. */
+/** Write a scheme, by its id, as its folder split by scope. The one way to change schemes/<id>/. */
 export function saveScheme(scheme, roots = assetRoots()) {
   if (!scheme?.id) throw new Error("saveScheme needs a scheme with an id. Load it with loadScheme first.");
-  // The file keeps only what the scheme decides: its own component values, and the key colors
+  const g = grammar(roots);
+  // The folder keeps only what the scheme decides: its own component values, and the key colors
   // and spacing rhythm, not the scales and steps they generate, and the type and spacing
   // records, not the values they generate. loadScheme fills the rest.
-  const stored = withoutTypeAndSpace(withoutGenerated(withoutDefaults(scheme, grammar(roots))));
-  writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(stored, null, 2)}\n`);
+  const stored = withoutTypeAndSpace(withoutGenerated(withoutDefaults(scheme, g)));
+  const files = splitScheme(stored, g);
+  const dir = join(roots.schemes, scheme.id);
+  // The folder replaces the single file, and a part that left the scheme leaves no file behind.
+  rmSync(dir, { recursive: true, force: true });
+  rmSync(join(roots.schemes, `${scheme.id}.json`), { force: true });
+  writeTree(dir, Object.fromEntries(Object.entries(files).map(([rel, data]) => [rel, `${JSON.stringify(data, null, 2)}\n`])));
 }
 
 /**
@@ -128,20 +175,17 @@ export function saveStoredScheme(stored, roots) {
 
 /** A scheme as its file stores it, without defaults or generated values: for the checks that guard the file. */
 export function storedScheme(id, roots = assetRoots()) {
-  return readJson(join(roots.schemes, `${id}.json`));
+  const layout = schemeLayout(id, roots);
+  if (layout === "file") return readJson(join(roots.schemes, `${id}.json`));
+  if (layout === "folder") return joinScheme(readTree(join(roots.schemes, id)), grammar(roots));
+  throw new Error(`No scheme called "${id}". Run "open-ds list" to see the schemes: ${schemeIds(roots).join(", ")}.`);
 }
 
 /** A scheme with its defaults and generated values. graded overrides the curve flag, for a report that builds both curves. */
 export function loadScheme(id, roots = assetRoots(), { graded } = {}) {
-  const path = join(roots.schemes, `${id}.json`);
-  if (!existsSync(path)) {
-    throw new Error(
-      `No scheme called "${id}". Run "open-ds list" to see the schemes: ${schemeIds(roots).join(", ")}.`,
-    );
-  }
-  // The file stores only what the scheme decides; every other component key takes the grammar's default,
+  // The source stores only what the scheme decides; every other component key takes the grammar's default,
   // and the scales and the spacing map come from their recorded rules.
-  return withTypeAndSpace(withGenerated(withDefaults(readJson(path), grammar(roots)), { graded }));
+  return withTypeAndSpace(withGenerated(withDefaults(storedScheme(id, roots), grammar(roots)), { graded }));
 }
 
 /** Every grammar question by id, with its group. */

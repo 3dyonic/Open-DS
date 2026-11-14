@@ -1,0 +1,194 @@
+{
+  "id": "voice",
+  "kind": "scope",
+  "title": "Voice and tone",
+  "description": "How the product speaks: the words in every component.",
+  "owns": ["content"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "aspect-ratio",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "carousel",
+    "chart",
+    "checkbox",
+    "collapsible",
+    "combobox",
+    "command",
+    "context-menu",
+    "data-table",
+    "date-picker",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "form",
+    "hover-card",
+    "icon",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "label",
+    "marker",
+    "menubar",
+    "message",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "pagination",
+    "popover",
+    "progress",
+    "radio-group",
+    "resizable",
+    "scroll-area",
+    "select",
+    "separator",
+    "sheet",
+    "sidebar",
+    "skeleton",
+    "slider",
+    "spinner",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "toggle-group",
+    "tooltip"
+  ],
+  "situations": [
+    "button-label",
+    "error-words",
+    "success-words",
+    "empty-words",
+    "confirm-words",
+    "first-visit"
+  ],
+  "questions": [
+    {
+      "id": "voice.roles",
+      "method": "roles",
+      "text": "Which kinds of copy does it need?",
+      "description": "The groups of words the product writes.",
+      "options": [
+        {
+          "id": "ui",
+          "label": "Labels and messages"
+        },
+        {
+          "id": "ui-help",
+          "label": "Labels, messages and help"
+        },
+        {
+          "id": "ui-editorial",
+          "label": "Labels, messages and articles"
+        },
+        {
+          "id": "ui-marketing",
+          "label": "Labels, messages and headlines"
+        }
+      ]
+    },
+    {
+      "id": "voice.count",
+      "method": "count",
+      "text": "How many tones does it use?",
+      "description": "One tone everywhere, a tone per moment, or a shared core with a tone per brand.",
+      "options": [
+        {
+          "id": "one",
+          "label": "One"
+        },
+        {
+          "id": "per-moment",
+          "label": "One per moment"
+        },
+        {
+          "id": "per-brand",
+          "label": "One per brand"
+        }
+      ]
+    },
+    {
+      "id": "voice.definition",
+      "method": "definition",
+      "text": "How is the voice defined?",
+      "description": "The rule that keeps copy consistent.",
+      "options": [
+        {
+          "id": "word-list",
+          "label": "Rules and a word list"
+        },
+        {
+          "id": "principles",
+          "label": "Principles and examples"
+        },
+        {
+          "id": "shared-core",
+          "label": "A shared core, brand tone on top"
+        }
+      ]
+    },
+    {
+      "id": "voice.values",
+      "method": "values",
+      "text": "How does it sound?",
+      "description": "The voice as a word.",
+      "options": [
+        {
+          "id": "terse",
+          "label": "Terse"
+        },
+        {
+          "id": "plain",
+          "label": "Plain and direct"
+        },
+        {
+          "id": "conversational",
+          "label": "Conversational"
+        },
+        {
+          "id": "playful",
+          "label": "Playful"
+        }
+      ]
+    },
+    {
+      "id": "voice.lands",
+      "method": "lands",
+      "text": "Where do the words matter most?",
+      "description": "The place where copy does its most important job.",
+      "options": [
+        {
+          "id": "errors-empty",
+          "label": "Errors and empty states"
+        },
+        {
+          "id": "articles",
+          "label": "Articles and guides"
+        },
+        {
+          "id": "forms",
+          "label": "Form steps and errors"
+        },
+        {
+          "id": "headlines",
+          "label": "Headlines and buttons"
+        }
+      ]
+    }
+  ]
+}

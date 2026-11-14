@@ -1,0 +1,151 @@
+{
+  "description": "The voice scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "voice",
+  "answers": [
+    {
+      "question": "voice.roles",
+      "option": "ui",
+      "why": "Labels and messages are all the copy an operations tool needs.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "voice.count",
+      "option": "one",
+      "why": "One flat tone everywhere; experts want no surprises.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "voice.definition",
+      "option": "word-list",
+      "why": "A word list keeps labels identical across screens.",
+      "because": [
+        "team.q1",
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "voice.values",
+      "option": "terse",
+      "why": "Experts want short labels and short messages.",
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "voice.lands",
+      "option": "errors-empty",
+      "why": "Errors and empty tables are where words decide the next action.",
+      "because": [
+        "outcomes.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "button-label",
+      "use": "One verb from the word list",
+      "not": "A sentence or \"Please\"",
+      "why": "Labels repeat on every screen; one verb reads fastest.",
+      "because": [
+        "voice.values",
+        "voice.definition"
+      ],
+      "example": "Export"
+    },
+    {
+      "situation": "error-words",
+      "use": "Name the record, then the fix. Flat and specific.",
+      "not": "\"Oops\" or a vague apology",
+      "why": "Experts act on the message; the record and the fix are all they need.",
+      "because": [
+        "voice.values",
+        "voice.lands"
+      ],
+      "example": "Alert ALR-2042 not saved. Threshold must be between 0 and 100."
+    },
+    {
+      "situation": "success-words",
+      "use": "A short confirmation with the count",
+      "not": "Celebration",
+      "why": "Confirm and get out of the way; the next task is waiting.",
+      "because": [
+        "voice.values",
+        "tasks.q2"
+      ],
+      "example": "12 alerts exported."
+    },
+    {
+      "situation": "empty-words",
+      "use": "Why it is empty and the one action that fills it",
+      "not": "A blank table",
+      "why": "An empty table with no words looks like an error.",
+      "because": [
+        "voice.lands"
+      ],
+      "example": "No escalated alerts. Change the date range to see older ones.",
+      "uses": [
+        {
+          "component": "empty"
+        }
+      ]
+    },
+    {
+      "situation": "confirm-words",
+      "use": "Name the exact object and the consequence",
+      "not": "\"Are you sure?\"",
+      "why": "Acting on the wrong record is the costly mistake.",
+      "because": [
+        "outcomes.q2"
+      ],
+      "example": "Dismiss 3 alerts? This cannot be undone."
+    },
+    {
+      "situation": "first-visit",
+      "use": "No tour. Show the data, with a tooltip where needed.",
+      "not": "A welcome tour",
+      "why": "Daily experts skip tours; tooltips cover the first uses.",
+      "because": [
+        "people.q1",
+        "voice.count"
+      ],
+      "example": "Hover any column header to see what it counts."
+    }
+  ],
+  "tokens": {
+    "content": {
+      "$description": "Voice tokens: the words components use for common actions. Text, not CSS.",
+      "action": {
+        "commit": {
+          "$type": "string",
+          "$value": "Save",
+          "$description": "The label of the action that completes a task."
+        },
+        "cancel": {
+          "$type": "string",
+          "$value": "Cancel",
+          "$description": "The label of the way out next to the main action."
+        },
+        "destroy": {
+          "$type": "string",
+          "$value": "Delete",
+          "$description": "The label of an action that deletes data."
+        },
+        "retry": {
+          "$type": "string",
+          "$value": "Retry",
+          "$description": "The label that repeats a failed action."
+        },
+        "empty-action": {
+          "$type": "string",
+          "$value": "Change filters",
+          "$description": "The label of the action in an empty state."
+        }
+      }
+    }
+  }
+}

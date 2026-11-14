@@ -1,0 +1,90 @@
+{
+  "description": "The elevation scope of Multi-brand: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "elevation",
+  "answers": [
+    {
+      "question": "elevation.roles",
+      "option": "cards-too",
+      "why": "Cards lift slightly to group offers.",
+      "because": [
+        "elevation.definition"
+      ]
+    },
+    {
+      "question": "elevation.count",
+      "option": "two",
+      "why": "One shadow for cards, one for overlays.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.definition",
+      "option": "cards",
+      "why": "Cards group plans and offers.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "elevation.values",
+      "option": "soft",
+      "why": "Soft shadows fit every brand.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "elevation.lands",
+      "option": "cards-menus",
+      "why": "Cards, menus and dialogs rise.",
+      "because": [
+        "elevation.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "card",
+      "use": "elevation.card; none in dark",
+      "not": "A border only",
+      "why": "Cards lift slightly to group offers. In dark, tone and a ring do the lift, the same in every brand.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "elevation.overlay and a dimmed page",
+      "not": "No shadow",
+      "why": "The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.",
+      "because": [
+        "elevation.lands"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$value": "{theme.elevation.card}"
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": "{theme.elevation.overlay}"
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "elevation.card": {
+      "headline": "Cards that lift.",
+      "line": "A soft shadow sets each card above the page."
+    },
+    "elevation.overlay": {
+      "headline": "Above the page.",
+      "line": "A softer shadow lifts menus and dialogs."
+    }
+  }
+}

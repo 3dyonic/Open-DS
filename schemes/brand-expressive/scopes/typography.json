@@ -1,0 +1,625 @@
+{
+  "description": "The typography scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "typography",
+  "answers": [
+    {
+      "question": "typography.roles",
+      "option": "core-expressive",
+      "why": "A big expressive display role carries the brand.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "typography.count",
+      "option": "many",
+      "why": "Fine steps give big moments room.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "typography.definition",
+      "option": "ratio-proportional",
+      "why": "Ratios suit the big display sizes.",
+      "because": [
+        "typography.roles"
+      ]
+    },
+    {
+      "question": "typography.values",
+      "option": "regular",
+      "why": "Regular body; the display does the shouting.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "typography.lands",
+      "option": "headlines",
+      "why": "Type does its work in headlines.",
+      "because": [
+        "brand.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.display",
+      "not": "type.title",
+      "why": "The display role carries the brand in every hero.",
+      "because": [
+        "typography.roles",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.body",
+      "not": "A mono font",
+      "why": "Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body, short",
+      "not": "Long paragraphs",
+      "why": "Short copy keeps the energy.",
+      "because": [
+        "voice.values"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label",
+      "not": "type.caption",
+      "why": "Labels stay readable on vivid color.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "type.title",
+      "why": "It is for every hero and section opener. Each section is one big idea. The biggest line sells it in the brand's loudest voice.",
+      "because": [
+        "content.q2",
+        "business.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Headings carry the brand's display face into cards and dialogs.",
+      "because": [
+        "brand.q2",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "type.body",
+      "why": "Fine print stays small, so the headlines keep the attention that wins sign-ups.",
+      "because": [
+        "outcomes.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A mono font",
+      "why": "It equals body here. Tables are rare and short. Cells keep the brand's text face, so they sound like the rest of the page.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "The sign-up form is the one action. A smaller title keeps the form in view on a phone.",
+      "because": [
+        "tasks.q2",
+        "scenarios.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 17,
+            "ratio": 1.114,
+            "steps": {
+              "display": 11,
+              "title": 8,
+              "heading": 5,
+              "body": 0,
+              "label": -1,
+              "caption": -2,
+              "data": 0
+            },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.1,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "open": {
+                "ratio": 1.55,
+                "roles": [
+                  "body",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "Many fine steps: a regular 17px body and a 1.114 ratio, with wide gaps up to the display, so big moments have room. Headlines and labels sit tight at 1.1; text that wraps opens to 1.55."
+          }
+        },
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.display.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Display sets 56px, eleven fine steps above the 17px body (17 × 1.114^11), the top of the scale, because every hero opens with one big idea in the brand's loudest voice.",
+                "because": [
+                  "typography.roles",
+                  "content.q2",
+                  "brand.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Display lines use 1.1, the tight ratio the scheme gives its big sizes, so a 56px headline stacks as one bold block.",
+                "because": [
+                  "typography.definition",
+                  "brand.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.800}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display sets weight 800, the heaviest step, because the hero headline carries the bold, loud brand.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "brand.q1",
+                  "brand.q2",
+                  "typography.lands"
+                ]
+              }
+            }
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.title.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Title sets 40px, eight steps above body and three under display, so the sign-up form's title stays big and keeps the form in view on a phone.",
+                "because": [
+                  "tasks.q2",
+                  "scenarios.q1",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Title lines use 1.1 like display, because a 40px title is still a headline size in the proportional scale.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.800}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title keeps weight 800 from display, so the form page still speaks in the brand's bold headline voice.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "brand.q1",
+                  "typography.lands"
+                ]
+              }
+            }
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading sets 28px, five steps above body (17 × 1.114^5 = 29.2) snapped to the 4px grid, and three under the 40px title, the smallest headline step, so it carries the display face into cards and dialogs.",
+                "because": [
+                  "brand.q3",
+                  "content.q2",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading lines use 1.1, the headline ratio, because headings stay short: three to six words, as the voice asks.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading drops to weight 700, one step under display and title, so cards stay bold without shouting over the hero.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "brand.q1",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.body.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Body sets 17px in DM Sans, step 0 of the scale, so short punchy copy reads easily on the phones visitors arrive on.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "brand.q3",
+                  "content.q1",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Body lines open to 1.55, the relaxed ratio, so DM Sans copy reads easily while display lines sit tight at 1.1.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body stays at weight 400, regular, because the display does the shouting and the text only has to read.",
+                "because": [
+                  "typography.values",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Label sets 15px, one step under body and one over the 14px caption, so field labels stay readable on vivid color.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "people.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Labels use the tight 1.1 ratio, because a label is one short line beside a pill control.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Labels set weight 700, bold DM Sans, so a field label holds on vivid color and matches the bold brand.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "people.q2",
+                  "brand.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.caption.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption sets 14px, two steps under the 17px body, the smallest step, so fine print stays small and headlines keep the attention that wins sign-ups.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "outcomes.q1",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Captions keep the 1.55 body ratio, so small fine print in DM Sans stays easy to read across lines.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Captions stay at weight 400, regular, so fine print never pulls the eye from the bold headlines.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "typography.values",
+                  "outcomes.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Data shares step 0 with body at 17px, because tables are rare and short, so cells read like the rest of the page.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Data cells keep the body's 1.55 ratio, so a rare table keeps the page's airy rhythm.",
+                "because": [
+                  "typography.definition",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data stays at weight 400, regular DM Sans, so numbers in short copy keep the brand's text voice.",
+                "because": [
+                  "content.q1",
+                  "brand.q3",
+                  "typography.values"
+                ]
+              }
+            }
+          },
+          "$description": "The data text role."
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "type.body.font-family": {
+      "headline": "A friendly sans.",
+      "line": "Short copy that reads fast on the move."
+    },
+    "type.body.font-size": {
+      "headline": "The size people read at.",
+      "line": "Running text at a size that reads without effort."
+    },
+    "type.body.font-weight": {
+      "headline": "Regular words.",
+      "line": "Body text stays light, so the words lead."
+    },
+    "type.body.line-height": {
+      "headline": "Room between lines.",
+      "line": "The eye finds the next line without a search."
+    },
+    "type.caption.font-family": {
+      "headline": "A friendly sans.",
+      "line": "Small print in the body face."
+    },
+    "type.caption.font-size": {
+      "headline": "Small print.",
+      "line": "Captions sit below the body text, still readable."
+    },
+    "type.caption.font-weight": {
+      "headline": "Plain small print.",
+      "line": "Captions stay regular, so they do not compete."
+    },
+    "type.caption.line-height": {
+      "headline": "Room in small print.",
+      "line": "Short notes stay easy to follow."
+    },
+    "type.data.font-family": {
+      "headline": "Figures in the body face.",
+      "line": "Prices and counts read with the copy."
+    },
+    "type.data.font-size": {
+      "headline": "Figures at reading size.",
+      "line": "Data matches the body text."
+    },
+    "type.data.font-weight": {
+      "headline": "Plain figures.",
+      "line": "Numbers stay regular, so none looks more urgent."
+    },
+    "type.data.line-height": {
+      "headline": "Room between records.",
+      "line": "Lines of data stay apart."
+    },
+    "type.display.font-family": {
+      "headline": "A face with character.",
+      "line": "Big headlines that look like the brand."
+    },
+    "type.display.font-size": {
+      "headline": "Huge words.",
+      "line": "One line people remember."
+    },
+    "type.display.font-weight": {
+      "headline": "Extra bold.",
+      "line": "The headline lands with full weight."
+    },
+    "type.display.line-height": {
+      "headline": "Tight big lines.",
+      "line": "Large lines pack close, like a poster."
+    },
+    "type.heading.font-family": {
+      "headline": "A face with character.",
+      "line": "Headings carry the brand voice."
+    },
+    "type.heading.font-size": {
+      "headline": "A section starts.",
+      "line": "Headings stand above the body text."
+    },
+    "type.heading.font-weight": {
+      "headline": "Strong headings.",
+      "line": "Weight marks where a section starts."
+    },
+    "type.heading.line-height": {
+      "headline": "Tight heading lines.",
+      "line": "Headings pack close and read as one."
+    },
+    "type.label.font-family": {
+      "headline": "The label face.",
+      "line": "Buttons, fields and tabs in one typeface."
+    },
+    "type.label.font-size": {
+      "headline": "Words on controls.",
+      "line": "Labels at a size people can read and press."
+    },
+    "type.label.font-weight": {
+      "headline": "Bold labels.",
+      "line": "Button words stand out on vivid fills."
+    },
+    "type.label.line-height": {
+      "headline": "One tight line.",
+      "line": "A pill button holds its label on one line."
+    },
+    "type.title.font-family": {
+      "headline": "A face with character.",
+      "line": "Titles in the brand's display face."
+    },
+    "type.title.font-size": {
+      "headline": "A big title.",
+      "line": "Large and bold, below the display line."
+    },
+    "type.title.font-weight": {
+      "headline": "Extra bold.",
+      "line": "Titles land with weight."
+    },
+    "type.title.line-height": {
+      "headline": "Tight title lines.",
+      "line": "A long title packs close and reads as one."
+    }
+  }
+}

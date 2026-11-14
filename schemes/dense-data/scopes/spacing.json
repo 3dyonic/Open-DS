@@ -1,0 +1,327 @@
+{
+  "description": "The spacing scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "spacing",
+  "answers": [
+    {
+      "question": "spacing.roles",
+      "option": "gap-inset-row",
+      "why": "Row height is a decision of its own in a table product.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "spacing.count",
+      "option": "two",
+      "why": "A second, denser size serves tables and toolbars.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "spacing.definition",
+      "option": "fine",
+      "why": "Steps on a 4px grid give the small gaps dense screens need.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.values",
+      "option": "compact",
+      "why": "Compact spacing shows more records.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.lands",
+      "option": "rows-cells",
+      "why": "Space is spent inside rows and cells.",
+      "because": [
+        "tasks.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "related-items",
+      "use": "space.gap.tight",
+      "not": "space.gap.group",
+      "why": "Things that belong together sit close.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "between-sections",
+      "use": "space.gap.section and a hairline",
+      "not": "A card around every section",
+      "why": "Lines separate without taking room from the data.",
+      "because": [
+        "elevation.definition",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "table-row",
+      "use": "size.row (compact)",
+      "not": "The comfortable row",
+      "why": "Compact rows show more records without scrolling.",
+      "because": [
+        "content.q2",
+        "spacing.count"
+      ]
+    },
+    {
+      "situation": "parts-of-one-item",
+      "use": "space.gap.tight",
+      "not": "space.gap.default",
+      "why": "An icon and its word sit close, so each item reads as one unit in a dense row.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "siblings-in-a-row",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Items in a list sit close but apart. Analysts still tell one record from the next.",
+      "because": [
+        "content.q2",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "between-groups",
+      "use": "space.gap.group",
+      "not": "space.gap.section",
+      "why": "A small step marks a new group without pushing records off the screen.",
+      "because": [
+        "content.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-control",
+      "use": "space.inset.control-x",
+      "not": "Padding set by eye",
+      "why": "Narrow padding keeps buttons short, so a toolbar holds every action an expert repeats.",
+      "because": [
+        "tasks.q2",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "inside-a-container",
+      "use": "space.inset.container",
+      "not": "space.gap.section",
+      "why": "Cards and dialogs keep a small inset, so their content starts close to the edge.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "inside-a-cell",
+      "use": "space.inset.cell-x",
+      "not": "space.inset.container",
+      "why": "Narrow cell padding fits more columns, and values in two columns still stay apart.",
+      "because": [
+        "content.q2",
+        "tasks.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "space": {
+        "$extensions": {
+          "open-ds": {
+            "use-cases": {
+              "gap.tight": {
+                "level": "component",
+                "relation": "inner",
+                "reach": "inline",
+                "multiple": 1
+              },
+              "gap.default": {
+                "level": "component",
+                "relation": "inner",
+                "multiple": 2
+              },
+              "gap.group": {
+                "level": "layout",
+                "relation": "inner",
+                "multiple": 4
+              },
+              "gap.section": {
+                "level": "layout",
+                "relation": "inner",
+                "reach": "section",
+                "multiple": 6
+              },
+              "inset.control-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 3
+              },
+              "inset.cell-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 3
+              },
+              "inset.container": {
+                "level": "layout",
+                "relation": "container",
+                "multiple": 4
+              }
+            },
+            "follows": [
+              "spacing.definition",
+              "spacing.values"
+            ],
+            "why": "Small steps on a 4px grid give a 4px base. Compact density keeps the multiples low: parts of one item sit one step apart, groups four and sections six."
+          }
+        },
+        "gap": {
+          "tight": {
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 4px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 4px), the smallest gap on the 4px grid. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So each item in a dense row reads as one unit, because steps are small, on a 4px grid (spacing.definition), and the layout is compact (spacing.values).",
+                "because": [
+                  "spacing.definition",
+                  "spacing.values"
+                ]
+              }
+            }
+          },
+          "default": {
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 8px for the default gap between the items of one group in order to group and separate: two base steps (2 × 4px), twice the tight gap. Distance does this by the rule given for space.gap.tight, so analysts tell one record from the next while a list stays close, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
+                "because": [
+                  "spacing.values",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "group": {
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 4px), four tight gaps. Distance does this by the rule given for space.gap.tight, so a new group starts without pushing records off the screen, because the layout is compact (spacing.values) and people must keep their place (human.q1).",
+                "because": [
+                  "spacing.values",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "section": {
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the section gap between page sections in order to group and separate: six base steps (6 × 4px), half again the group gap. Distance does this by the rule given for space.gap.tight, so sections part with a hairline and little space, and the data keeps the room, because the layout is compact (spacing.values) and experts want a lot on one screen (content.q2).",
+                "because": [
+                  "spacing.values",
+                  "content.q2"
+                ]
+              }
+            }
+          }
+        },
+        "inset": {
+          "control-x": {
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 12px for the inline padding inside controls in order to give content room inside its box: three base steps (3 × 4px), the same as a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So buttons stay short and a toolbar holds every action an expert repeats, because actions repeat constantly (tasks.q2) and the layout is compact (spacing.values).",
+                "because": [
+                  "tasks.q2",
+                  "spacing.values"
+                ]
+              }
+            }
+          },
+          "container": {
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 4px), the same as the group gap. Padding does this by the rule given for space.inset.control-x, so content starts close to the edge of its box, because experts want a lot on one screen (content.q2) and the layout is compact (spacing.values).",
+                "because": [
+                  "content.q2",
+                  "spacing.values"
+                ]
+              }
+            }
+          },
+          "cell-x": {
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 12px for the inline padding inside table cells in order to give content room inside its box: three base steps (3 × 4px), the same as a control. Padding does this by the rule given for space.inset.control-x, so more columns fit, and values in two columns still stay apart, because people scan and compare rows (tasks.q1) and the layout is compact (spacing.values).",
+                "because": [
+                  "tasks.q1",
+                  "spacing.values"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "size": {
+        "row": {
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 32px for one table row in order to keep the eye on its row: a row one 32px default control tall and no more, as rows are a decision of their own here and a row holds controls. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So more records fit, and a control in a row fills its height, because row heights are a spacing role (spacing.roles) and the layout is compact (spacing.values).",
+              "because": [
+                "spacing.roles",
+                "spacing.values"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.row": {
+      "headline": "One compact row.",
+      "line": "More records fit on screen without a scroll."
+    },
+    "space.gap.default": {
+      "headline": "Items in a group.",
+      "line": "A small gap keeps related values close."
+    },
+    "space.gap.group": {
+      "headline": "Between groups.",
+      "line": "A clear break, still small enough to keep data in view."
+    },
+    "space.gap.section": {
+      "headline": "A new section.",
+      "line": "The widest gap, kept small so more fits on screen."
+    },
+    "space.gap.tight": {
+      "headline": "One item.",
+      "line": "An icon and its value read as one."
+    },
+    "space.inset.cell-x": {
+      "headline": "Room in a cell.",
+      "line": "Values clear the column lines and stay dense."
+    },
+    "space.inset.container": {
+      "headline": "Room inside a card.",
+      "line": "Compact padding, so a panel holds more."
+    },
+    "space.inset.control-x": {
+      "headline": "Room inside a control.",
+      "line": "Compact padding beside the label."
+    }
+  }
+}

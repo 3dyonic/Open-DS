@@ -1,0 +1,153 @@
+{
+  "id": "naming",
+  "kind": "scope",
+  "title": "Naming",
+  "description": "How tokens and keys are named.",
+  "owns": ["component"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "carousel",
+    "chart",
+    "checkbox",
+    "combobox",
+    "command",
+    "context-menu",
+    "data-table",
+    "date-picker",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "form",
+    "hover-card",
+    "icon",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "label",
+    "marker",
+    "menubar",
+    "message",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "pagination",
+    "popover",
+    "progress",
+    "radio-group",
+    "resizable",
+    "scroll-area",
+    "select",
+    "separator",
+    "sheet",
+    "sidebar",
+    "skeleton",
+    "slider",
+    "spinner",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "toggle-group",
+    "tooltip"
+  ],
+  "situations": ["missing-token"],
+  "questions": [
+    {
+      "id": "naming.roles",
+      "method": "roles",
+      "text": "What gets a name?",
+      "description": "Tokens only, or tokens and a component API.",
+      "options": [
+        {
+          "id": "tokens",
+          "label": "Tokens"
+        },
+        {
+          "id": "tokens-keys",
+          "label": "Tokens and component keys"
+        }
+      ]
+    },
+    {
+      "id": "naming.count",
+      "method": "count",
+      "text": "How many token tiers?",
+      "description": "Primitives and semantics, or also component keys.",
+      "options": [
+        {
+          "id": "two",
+          "label": "Two"
+        },
+        {
+          "id": "three",
+          "label": "Three"
+        }
+      ]
+    },
+    {
+      "id": "naming.definition",
+      "method": "definition",
+      "text": "How are decisions named?",
+      "description": "Role names survive change; component names are local.",
+      "options": [
+        {
+          "id": "by-role",
+          "label": "By role"
+        },
+        {
+          "id": "by-component",
+          "label": "By component"
+        }
+      ]
+    },
+    {
+      "id": "naming.values",
+      "method": "values",
+      "text": "How are names written?",
+      "description": "The spelling of every name.",
+      "options": [
+        {
+          "id": "kebab-paths",
+          "label": "Lowercase words in paths"
+        },
+        {
+          "id": "camel",
+          "label": "camelCase"
+        }
+      ]
+    },
+    {
+      "id": "naming.lands",
+      "method": "lands",
+      "text": "What do components read?",
+      "description": "A component API: one key per element, variant and state.",
+      "options": [
+        {
+          "id": "keys",
+          "label": "Component keys"
+        },
+        {
+          "id": "semantic",
+          "label": "Semantic tokens"
+        }
+      ]
+    }
+  ]
+}

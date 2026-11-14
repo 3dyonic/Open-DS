@@ -7,6 +7,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractRef } from "../src/quality/extract.mjs";
+import { storedScheme } from "../src/schemes.mjs";
 
 export const REPO = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 
@@ -26,7 +27,8 @@ export function copyRepo() {
   return root;
 }
 
-export const readScheme = (root, id) => JSON.parse(readFileSync(join(root, "schemes", `${id}.json`), "utf8"));
+// An edited scheme goes in a single file, which the loader reads in place of the scheme's folder.
+export const readScheme = (root, id) => storedScheme(id, { schemes: join(root, "schemes") });
 export const writeScheme = (root, id, s) => writeFileSync(join(root, "schemes", `${id}.json`), `${JSON.stringify(s, null, 2)}\n`);
 
 /** Set a $value at a dotted path under a scheme's tokens (path segments may contain '@'). */

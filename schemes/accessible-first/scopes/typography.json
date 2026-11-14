@@ -1,0 +1,591 @@
+{
+  "description": "The typography scope of Accessible first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "typography",
+  "answers": [
+    {
+      "question": "typography.roles",
+      "option": "core",
+      "why": "Few roles keep pages predictable.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "typography.count",
+      "option": "few",
+      "why": "Only the sizes the screens need, each clearly different.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "typography.definition",
+      "option": "ratio-proportional",
+      "why": "Line height grows with text size for zoom users.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "typography.values",
+      "option": "large",
+      "why": "Large text is readable for more people.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "typography.lands",
+      "option": "forms",
+      "why": "Type matters most in form labels and hints.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "The same title size on every page tells people where they are. The display size changes from page to page and pushes the content down.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.body",
+      "not": "A small or mono font",
+      "why": "Every number must be readable at large size.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body, short sentences",
+      "not": "type.caption",
+      "why": "Large text and short lines lower effort.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label, above the field, always visible",
+      "not": "A placeholder as the label",
+      "why": "Labels must stay visible while typing.",
+      "because": [
+        "people.q2",
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "type.display on step pages",
+      "why": "It is for the one headline on the start page. The start page says what the service does in one big line. Every step after it uses the title size.",
+      "because": [
+        "content.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Clear headings split a page into short parts that people can find again.",
+      "because": [
+        "human.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "type.caption for a hint sentence",
+      "why": "It is for a few short words only; a sentence uses type.body. Small text is harder to read. A hint that people must follow gets body size.",
+      "because": [
+        "people.q1",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A small or mono font",
+      "why": "It equals body here. Every cell stays as large and plain as body text, for people with low vision.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "Every step page has the same title size, so people always know where they are.",
+      "because": [
+        "human.q1",
+        "content.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 19,
+            "ratio": 1.22,
+            "steps": {
+              "display": 3,
+              "title": 2,
+              "heading": 1,
+              "body": 0,
+              "label": 0,
+              "caption": -1,
+              "data": 0
+            },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.25,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading"
+                ]
+              },
+              "open": {
+                "ratio": 1.6,
+                "roles": [
+                  "body",
+                  "label",
+                  "caption",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition",
+              "people.q1"
+            ],
+            "why": "Few sizes: a large 19px body and a 1.22 ratio, each role on the next step, and no step under 16px. Headings sit tight at 1.25; every other role wraps at 1.6, labels too, because a label wraps when people zoom."
+          }
+        },
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.display.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Display is 36px, three ratio steps above the 19px body (19 × 1.22^3 = 34.5), snapped up to the 4px grid as headings are, kept off page titles: it changes from page to page and pushes the content down.",
+                "because": [
+                  "typography.count",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Display lines are 1.25 times its 36px size, 45px; as a ratio, the line height grows with the text when people zoom.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Display is bold, 700, one of the two weights the scheme loads; bold and the 36px size together mark the top of the page.",
+                "because": [
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.title.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Title is 28px, two ratio steps above body and one clear step under display, the same on every page, so people always know where they are.",
+                "because": [
+                  "typography.count",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Title lines are 1.25 times its 28px size, 35px, the same tight ratio as display, and they grow with the text on zoom.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Title is bold, 700, so the 28px page title reads as a heading and never as large body text.",
+                "because": [
+                  "brand.q3",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading is 24px, one ratio step above the 19px body (23.2px) snapped up to the 4px grid, and one under the 28px title, so a section inside a form step stands out.",
+                "because": [
+                  "typography.count",
+                  "typography.lands"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading lines are 1.25 times its 24px size, 30px: the smallest role on the tight ratio, while text from 19px down takes 1.6.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Heading is bold, 700: at 24px it sits only one ratio step above body, so weight, not size alone, sets it apart.",
+                "because": [
+                  "brand.q3",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.body.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Body is 19px, step 0 of the scale and one ratio step above the 16px caption, because large text is readable for more people.",
+                "because": [
+                  "typography.values",
+                  "people.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Body lines are 1.6 times its 19px size, 30.4px: the open ratio for paragraphs, so short lines of large text lower effort.",
+                "because": [
+                  "typography.definition",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Body is regular, 400, the plain weight for paragraphs; bold stays for the roles that mark structure.",
+                "because": [
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Label shares step 0 with body at 19px, because form labels and hints are where type matters most; weight, not size, sets it apart.",
+                "because": [
+                  "typography.lands",
+                  "typography.values"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Label lines are 1.6 times its 19px size, 30.4px, so a label that wraps above its field keeps the open spacing of body.",
+                "because": [
+                  "typography.definition",
+                  "typography.lands"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Label is bold, 700: at 19px it shares the body size, so bold marks it as the field's always visible label.",
+                "because": [
+                  "brand.q3",
+                  "typography.lands"
+                ]
+              }
+            }
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.caption.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption is one ratio step under body (19 ÷ 1.22), 16px, exactly 1rem: even secondary text never drops below the reader's own default size.",
+                "because": [
+                  "typography.values",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption lines are 1.6 times its 16px size, 25.6px: the smallest text keeps the open ratio and grows with the text on zoom.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Caption is regular, 400, not bold: it carries secondary text, and the scheme loads only regular and bold.",
+                "because": [
+                  "brand.q3",
+                  "people.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Data shares step 0 with body at 19px, not a small or mono size, because every number must be readable at large size.",
+                "because": [
+                  "people.q1",
+                  "typography.values"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Data lines match body, 1.6 times 19px, 30.4px, so numbers in a table read with the same room as text.",
+                "because": [
+                  "typography.definition",
+                  "people.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "Data is regular, 400, like body, so numbers in a table read as plain content and not as labels.",
+                "because": [
+                  "brand.q3",
+                  "people.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The data text role."
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "type.body.font-family": {
+      "headline": "A face for every reader.",
+      "line": "Letters that are hard to mix up."
+    },
+    "type.body.font-size": {
+      "headline": "Large text.",
+      "line": "People read it without leaning in."
+    },
+    "type.body.font-weight": {
+      "headline": "Regular words.",
+      "line": "Body text stays light, so the words lead."
+    },
+    "type.body.line-height": {
+      "headline": "Open lines.",
+      "line": "The eye finds the next line with ease."
+    },
+    "type.caption.font-family": {
+      "headline": "The same clear face.",
+      "line": "Small print in the face that is hard to misread."
+    },
+    "type.caption.font-size": {
+      "headline": "Small print, not tiny.",
+      "line": "Notes stay large enough for every reader."
+    },
+    "type.caption.font-weight": {
+      "headline": "Plain small print.",
+      "line": "Captions stay regular, so they do not compete."
+    },
+    "type.caption.line-height": {
+      "headline": "Room in small print.",
+      "line": "Short notes stay easy to follow."
+    },
+    "type.data.font-family": {
+      "headline": "Clear figures.",
+      "line": "Digits that are hard to mix up."
+    },
+    "type.data.font-size": {
+      "headline": "Figures at body size.",
+      "line": "Numbers are as easy to read as the words."
+    },
+    "type.data.font-weight": {
+      "headline": "Plain figures.",
+      "line": "Numbers stay regular, so none looks more urgent."
+    },
+    "type.data.line-height": {
+      "headline": "Room between records.",
+      "line": "Lines of data stay apart."
+    },
+    "type.display.font-family": {
+      "headline": "The same clear face.",
+      "line": "Headlines in the face that is hard to misread."
+    },
+    "type.display.font-size": {
+      "headline": "The biggest words.",
+      "line": "One clear line that says what the page is for."
+    },
+    "type.display.font-weight": {
+      "headline": "Bold and plain.",
+      "line": "The headline is easy to spot."
+    },
+    "type.display.line-height": {
+      "headline": "Tight big lines.",
+      "line": "Large lines sit close, so they read as one."
+    },
+    "type.heading.font-family": {
+      "headline": "The same clear face.",
+      "line": "Headings in the face that is hard to misread."
+    },
+    "type.heading.font-size": {
+      "headline": "A section starts.",
+      "line": "Headings stand above the body text."
+    },
+    "type.heading.font-weight": {
+      "headline": "Bold headings.",
+      "line": "Each part of the task starts with a clear mark."
+    },
+    "type.heading.line-height": {
+      "headline": "Close heading lines.",
+      "line": "A heading that wraps still reads as one."
+    },
+    "type.label.font-family": {
+      "headline": "The same clear face.",
+      "line": "Labels in the face that is hard to misread."
+    },
+    "type.label.font-size": {
+      "headline": "Large labels.",
+      "line": "Field labels as large as the body text."
+    },
+    "type.label.font-weight": {
+      "headline": "Bold labels.",
+      "line": "Each label stands apart from the text around it."
+    },
+    "type.label.line-height": {
+      "headline": "Room in a label.",
+      "line": "A long label can wrap and still read."
+    },
+    "type.title.font-family": {
+      "headline": "The same clear face.",
+      "line": "Titles in the face that is hard to misread."
+    },
+    "type.title.font-size": {
+      "headline": "The page title.",
+      "line": "One size below the display line, above the headings."
+    },
+    "type.title.font-weight": {
+      "headline": "A bold title.",
+      "line": "The page says at once what it is for."
+    },
+    "type.title.line-height": {
+      "headline": "Close title lines.",
+      "line": "A long title still reads as one."
+    }
+  }
+}

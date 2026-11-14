@@ -1,0 +1,235 @@
+{
+  "description": "The motion scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "motion",
+  "answers": [
+    {
+      "question": "motion.roles",
+      "option": "feedback-guidance",
+      "why": "Motion confirms actions and guides between pages.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "motion.count",
+      "option": "two",
+      "why": "One speed for feedback, one for panels.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "question": "motion.definition",
+      "option": "standard",
+      "why": "A standard ease-out is calm.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "motion.values",
+      "option": "moderate",
+      "why": "Moderate speed feels calm.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "motion.lands",
+      "option": "state-panels",
+      "why": "State changes and opening panels move.",
+      "because": [
+        "motion.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "hover-feedback",
+      "use": "motion.duration.feedback (moderate)",
+      "not": "A fast flash",
+      "why": "Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy.",
+      "because": [
+        "motion.values"
+      ]
+    },
+    {
+      "situation": "reduced-motion",
+      "use": "Fades only; nothing moves",
+      "not": "Reduced motion",
+      "why": "Nothing slides or zooms for people who asked for less motion. A short fade keeps the change visible to the reader.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "situation": "panel-opens",
+      "use": "motion.duration.panels",
+      "not": "An instant pop",
+      "why": "A relaxed open guides the reader to the new panel without a jolt.",
+      "because": [
+        "human.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "any-transition",
+      "use": "motion.easing.standard",
+      "not": "A bounce",
+      "why": "A calm ease-out settles softly and never pulls the eye from the text.",
+      "because": [
+        "brand.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "hero-motion",
+      "use": "No hero motion: the landing stays still",
+      "not": "An animated headline",
+      "why": "Attention belongs to the text. A moving headline pulls the eye away from it.",
+      "because": [
+        "human.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "motion": {
+        "duration": {
+          "feedback": {
+            "$type": "duration",
+            "$value": "{duration.moderate}",
+            "$description": "Hover, press and toggle feedback. At most 150ms in a productive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 150ms (moderate) for hover, press and toggle feedback in order to confirm each action inside the productive limit of 150ms. The duration does this by ending the change before the eye leaves the control. So readers see each action land and never wait for it, because motion is for feedback and guidance, which makes the family productive (motion.roles), and feedback feels moderate (motion.values).",
+                "because": [
+                  "motion.roles",
+                  "motion.values"
+                ]
+              }
+            }
+          },
+          "panels": {
+            "$type": "duration",
+            "$value": "{duration.relaxed}",
+            "$description": "Menus, popovers, dialogs and drawers opening. At most 300ms in a productive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 300ms (relaxed) for menus, popovers, dialogs and other panels in order to show where a panel comes from, inside the productive limit of 300ms. The duration does this by giving the eye just enough frames to follow the panel from its trigger. So readers follow the new panel without losing their place in the text, because the family is productive (motion.roles) and there are two speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "duration",
+            "$value": "{motion.duration.feedback}",
+            "$description": "A layer closing. About 150ms, never more, in a productive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the feedback duration, 150ms (moderate), for a layer that closes in order to finish the exit move within the productive 150ms. The duration does this by removing the layer in fewer frames than an open takes, as nothing in it needs reading any more. So readers get the page back at once, because productive exits stay short (motion.roles) and there are two speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
+          }
+        },
+        "easing": {
+          "standard": {
+            "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "The transition move: a state that changes in place, such as hover, press or toggle.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the standard easing (0.2, 0, 0, 1) for state changes in place in order to do the transition move. The curve does this by reaching its target early and settling slowly, with no overshoot. So a hover, a press or a toggle lands at once and then stays still, because easing is a standard ease-out (motion.definition) and the family is productive (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          },
+          "enter": {
+            "$type": "cubicBezier",
+            "$value": "{motion.easing.standard}",
+            "$description": "The enter move: a layer that appears.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So readers can read a menu almost as soon as it opens, because easing is a standard ease-out (motion.definition) in a productive family (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "cubicBezier",
+            "$value": "{easing.strong-out}",
+            "$description": "The exit move: a layer that closes in place.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move of the productive family. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next click, because productive exits take a strong ease-out (motion.roles) and easing never springs here (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit-offscreen": {
+            "$type": "cubicBezier",
+            "$value": "{motion.easing.exit}",
+            "$description": "The exit move of a layer that slides off the screen: a sheet or a drawer.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the exit move's strong-out easing for a drawer or sheet that slides off the screen, in order to keep every exit of a productive family on one fast curve. The curve does this by moving fastest at the start, so the panel clears the view with no slow tail. So the content under a closing sheet comes back at once, because only an expressive family accelerates what leaves the screen (motion.roles), and easing is a plain ease-out (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "emphasize": {
+            "$type": "cubicBezier",
+            "$value": "{motion.easing.standard}",
+            "$description": "The emphasize move: a moment that calls for attention.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the transition move's standard easing for a moment that calls for attention in order to give the emphasize move no overshoot. The curve does this by stopping at its target without passing it. So a new message draws the eye by its change, not by a bounce, because the family is productive (motion.roles) and easing is a standard ease-out, never a spring (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "motion.duration.feedback": {
+      "headline": "A calm answer.",
+      "line": "Controls respond at once, without a jolt."
+    },
+    "motion.duration.panels": {
+      "headline": "Panels arrive calmly.",
+      "line": "Menus and dialogs open at a pace the eye can follow."
+    },
+    "motion.easing.exit": {
+      "headline": "Leave quietly.",
+      "line": "A closing layer slows to a stop, so the page stays calm."
+    },
+    "motion.easing.standard": {
+      "headline": "Change in place.",
+      "line": "Hover, press and toggle start fast and settle."
+    }
+  }
+}

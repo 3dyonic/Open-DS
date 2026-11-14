@@ -1,0 +1,216 @@
+{
+  "id": "elevation",
+  "kind": "scope",
+  "title": "Elevation",
+  "description": "When something rises above the page, and what separates groups.",
+  "owns": ["elevation"],
+  "lands_in": [
+    "alert-dialog",
+    "calendar",
+    "card",
+    "chart",
+    "combobox",
+    "context-menu",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "hover-card",
+    "menubar",
+    "navigation-menu",
+    "popover",
+    "radio-group",
+    "select",
+    "sheet",
+    "sidebar",
+    "slider",
+    "toast",
+    "toggle",
+    "toggle-group"
+  ],
+  "situations": ["card", "menu-or-dialog"],
+  "questions": [
+    {
+      "id": "elevation.roles",
+      "method": "roles",
+      "text": "What rises above the page?",
+      "description": "The layers that get a shadow.",
+      "options": [
+        {
+          "id": "floating-only",
+          "label": "Only what floats",
+          "creates": ["overlay-shadow"]
+        },
+        {
+          "id": "cards-too",
+          "label": "Cards too",
+          "creates": ["card-shadow", "overlay-shadow"]
+        },
+        {
+          "id": "nothing",
+          "label": "Nothing",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "elevation.count",
+      "method": "count",
+      "text": "How many shadow levels exist?",
+      "description": "The number of distinct shadows.",
+      "options": [
+        {
+          "id": "none",
+          "label": "None",
+          "creates": []
+        },
+        {
+          "id": "one",
+          "label": "One",
+          "creates": []
+        },
+        {
+          "id": "two",
+          "label": "Two",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "elevation.definition",
+      "method": "definition",
+      "text": "What separates groups on the page?",
+      "description": "The device that tells the eye a new group starts.",
+      "options": [
+        {
+          "id": "space",
+          "label": "Space",
+          "creates": []
+        },
+        {
+          "id": "lines",
+          "label": "Lines",
+          "creates": ["line-width"]
+        },
+        {
+          "id": "cards",
+          "label": "Cards",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "elevation.values",
+      "method": "values",
+      "text": "How soft are shadows?",
+      "description": "Shadow character.",
+      "options": [
+        {
+          "id": "none",
+          "label": "No shadows",
+          "creates": []
+        },
+        {
+          "id": "subtle",
+          "label": "Subtle",
+          "creates": []
+        },
+        {
+          "id": "soft",
+          "label": "Soft",
+          "creates": []
+        },
+        {
+          "id": "pronounced",
+          "label": "Pronounced",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "elevation.lands",
+      "method": "lands",
+      "text": "Where does elevation show?",
+      "description": "The place where layering is seen.",
+      "options": [
+        {
+          "id": "menus-dialogs",
+          "label": "Menus and dialogs",
+          "creates": ["scrim"]
+        },
+        {
+          "id": "cards-menus",
+          "label": "Cards, menus and dialogs",
+          "creates": ["scrim"]
+        },
+        {
+          "id": "dialogs-only",
+          "label": "Dialogs only",
+          "creates": ["scrim"]
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "id": "shadow",
+      "title": "Shadow",
+      "description": "The shade a layer casts on what is under it.",
+      "tokens": ["elevation.*"],
+      "works_by": "the offset and blur of a cast shade",
+      "jobs": [
+        {
+          "id": "height",
+          "description": "A shadow shows how high a layer sits: one scale by layer.",
+          "how": "The eye assumes light from above, so a darker blurred area under an edge reads as raised; a larger offset and blur read as higher.",
+          "source": "Ramachandran 1988, Perception of shape from shading, Nature 331; Kleffner and Ramachandran 1992."
+        },
+        {
+          "id": "floating",
+          "description": "A shadow marks a layer that floats for a while above the page: a menu, a dialog or a toast.",
+          "how": "A cast shade under the edge separates the layer from what is under it, even where the two have the same fill.",
+          "source": "Material Design, elevation."
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "layer-step",
+      "kind": "stays-apart",
+      "tokens": ["elevation.card", "elevation.overlay"],
+      "check": "layer-step",
+      "by_answer": {
+        "question": "elevation.roles",
+        "options": {
+          "floating-only": ["elevation.overlay"],
+          "cards-too": ["elevation.card", "elevation.overlay"],
+          "nothing": []
+        }
+      },
+      "steps": {
+        "elevation.card": 1,
+        "elevation.overlay": 2
+      },
+      "follows": ["elevation.roles", "elevation.values"],
+      "jobs": ["height", "floating"],
+      "says": "One scale by layer: each layer the roles answer names takes one step up, card step 1 and overlay step 2. The values answer sets the size of a step. A layer the roles answer leaves out casts no shadow."
+    },
+    {
+      "id": "dark-shade",
+      "kind": "comes-from",
+      "tokens": ["elevation.card", "elevation.overlay"],
+      "check": "dark-same-shape",
+      "depth": {
+        "raised": "color.surface.raised",
+        "floating": "color.surface.floating",
+        "base": "color.surface.default",
+        "sunken": "color.surface.sunken",
+        "ring": "color.border.raised"
+      },
+      "follows": ["elevation.roles", "elevation.values", "theming.values"],
+      "jobs": ["height", "floating"],
+      "says": "Decided: in dark, only floating layers (menus, popovers, dialogs, toasts, tooltips) cast a shade, and it keeps the light shape (offset and blur); only its strength changes with the dark surface it falls on. Every other layer casts none in dark. Height reads by tone: a raised surface is lighter than the base, a floating one lighter than raised, with a solid ring lighter than both; a sunken one is darker. The check reports each break.",
+      "floating": ["elevation.overlay"]
+    }
+  ]
+}

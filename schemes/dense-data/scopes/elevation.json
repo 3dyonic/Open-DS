@@ -1,0 +1,91 @@
+{
+  "description": "The elevation scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "elevation",
+  "answers": [
+    {
+      "question": "elevation.roles",
+      "option": "floating-only",
+      "why": "Only menus and dialogs float; cards use lines.",
+      "because": [
+        "elevation.definition"
+      ]
+    },
+    {
+      "question": "elevation.count",
+      "option": "one",
+      "why": "One shadow for everything that floats.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.definition",
+      "option": "lines",
+      "why": "Thin lines guide the eye along rows.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "elevation.values",
+      "option": "subtle",
+      "why": "Subtle shadows keep the grid crisp.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "elevation.lands",
+      "option": "menus-dialogs",
+      "why": "Menus and dialogs are the only layers.",
+      "because": [
+        "elevation.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "card",
+      "use": "A hairline border, no shadow",
+      "not": "A shadow",
+      "why": "On a busy grid, lines separate. Shadows blur the edges.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "elevation.overlay and a dimmed page for dialogs",
+      "not": "A border only",
+      "why": "Floating things need a shadow so they read as on top.",
+      "because": [
+        "elevation.lands"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation.card}"
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": "{theme.elevation.overlay}"
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "elevation.card": {
+      "headline": "Lines, not shadows.",
+      "line": "Cards sit flat, so a busy screen stays calm."
+    },
+    "elevation.overlay": {
+      "headline": "A faint lift.",
+      "line": "Menus rise just enough to read above the table."
+    }
+  }
+}

@@ -2,12 +2,12 @@
 // scheme's sample texts, the clashes, and the stored shorthand that saveScheme keeps.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { cpSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { cpSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { clashesOf, pairsOf, samplesFor, shorthandOf, shorthandProblems, weakestContrast } from "../src/token-card.mjs";
 import { tokenMapView } from "../src/token-map-view.mjs";
-import { assetRoots, grammar, loadScheme, saveScheme } from "../src/schemes.mjs";
+import { assetRoots, grammar, loadScheme, saveScheme, storedScheme } from "../src/schemes.mjs";
 
 // A color index with only the nodes a test names.
 const indexOf = (values) => ({
@@ -121,7 +121,7 @@ test("saveScheme keeps the stored shorthand", () => {
     const scheme = loadScheme("content-first", copy);
     scheme.shorthand = { description: "Test.", tokens: { "color.status.warning": { headline: "Careful.", line: "One line." } } };
     saveScheme(scheme, copy);
-    const stored = JSON.parse(readFileSync(join(copy.schemes, "content-first.json"), "utf8"));
+    const stored = storedScheme("content-first", copy);
     assert.deepEqual(stored.shorthand, scheme.shorthand);
     assert.deepEqual(loadScheme("content-first", copy).shorthand, scheme.shorthand);
   } finally {

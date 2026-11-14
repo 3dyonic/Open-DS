@@ -12,7 +12,7 @@ Open DS is built so an agent can use it without guessing.
 
 1. `/llms.txt`: a short index of everything.
 2. `schemes/grammar.json`: the questions, situations and component keys. Every object has a `description`.
-3. `schemes/<scheme>.json`: answers with `why` and `because`, `usage` rules, `voice`, and `ai.use_when` / `ai.avoid_when`.
+3. `schemes/<scheme>/` (`scheme.json` and one file per scope): answers with `why` and `because`, `usage` rules, `voice`, and `ai.use_when` / `ai.avoid_when`.
 4. In a created project: `AGENTS.md` first, then what `context/index.json` lists for the file you edit. The skills are in `.claude/skills/`.
 
 ## Rules

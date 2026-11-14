@@ -1,0 +1,129 @@
+{
+  "description": "The iconography scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "iconography",
+  "answers": [
+    {
+      "question": "iconography.roles",
+      "option": "decoration-too",
+      "why": "Icons also decorate campaign pages.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "iconography.count",
+      "option": "two",
+      "why": "One size next to text, one for decoration.",
+      "because": [
+        "iconography.roles"
+      ]
+    },
+    {
+      "question": "iconography.definition",
+      "option": "contained",
+      "why": "Contained icons sit in a tinted shape at a 1.75px stroke, so they carry the brand's warmth.",
+      "because": [
+        "color.values"
+      ]
+    },
+    {
+      "question": "iconography.values",
+      "option": "larger",
+      "why": "Larger icons hold their own next to big type.",
+      "because": [
+        "typography.roles"
+      ]
+    },
+    {
+      "question": "iconography.lands",
+      "option": "buttons",
+      "why": "Icons sit in calls to action.",
+      "because": [
+        "outcomes.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "icon-alone",
+      "use": "Not used: always add a word",
+      "not": "An icon button with a hover hint",
+      "why": "On phones, hover hints never show; a word says what will happen.",
+      "because": [
+        "accessibility.values",
+        "iconography.roles"
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Button ghost with a word",
+      "not": "An icon alone",
+      "why": "Visitors come rarely, so they never learn an icon. A word says what will happen.",
+      "because": [
+        "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A thin icon at text size",
+      "why": "Larger icons hold their own next to big type. The thicker line carries the brand's warmth.",
+      "because": [
+        "brand.q1",
+        "brand.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.20}",
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "Icons beside text are 20px, larger than the 17px body, so they hold their own next to big type.",
+              "because": [
+                "iconography.values",
+                "iconography.count",
+                "brand.q1",
+                "brand.q2"
+              ]
+            }
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.1_75}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "Icons use a 1.75 stroke width on Lucide's 24px grid, a firm line that carries the brand's bold warmth.",
+              "because": [
+                "iconography.definition",
+                "brand.q1",
+                "brand.q2"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.icon": {
+      "headline": "Icons beside words.",
+      "line": "Icons sized to the text they sit with."
+    }
+  }
+}

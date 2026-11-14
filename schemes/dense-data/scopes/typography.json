@@ -1,0 +1,614 @@
+{
+  "description": "The typography scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "typography",
+  "answers": [
+    {
+      "question": "typography.roles",
+      "option": "core-data",
+      "why": "A data role keeps numbers in aligned columns.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "typography.count",
+      "option": "few",
+      "why": "A screen full of records stays calm with only the sizes it needs.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "typography.definition",
+      "option": "ratio-proportional",
+      "why": "Line height is a ratio of each text's own size, so it follows the text. Two steps: tight for headings and labels, open for body, data and captions.",
+      "because": [
+        "tasks.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "question": "typography.values",
+      "option": "small",
+      "why": "Small body text fits more rows on the screen.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "typography.lands",
+      "option": "tables-inputs",
+      "why": "Most text sits in table cells and inputs.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "Titles stay small so the table starts higher on the screen.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.data",
+      "not": "type.body",
+      "why": "Mono digits line up in columns, so values compare at a glance.",
+      "because": [
+        "typography.roles",
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body",
+      "not": "type.label",
+      "why": "Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label",
+      "not": "type.heading",
+      "why": "Headers repeat on every column; a heavy style would compete with the data.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "type.display for page titles",
+      "why": "It is for the one key number at the top of a dashboard. One big total gives analysts the headline at a glance. Everything below it stays small so more rows fit.",
+      "because": [
+        "tasks.q1",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "type.title",
+      "why": "Panel and card headings sit one step above body. They name a block without taking rows from the data.",
+      "because": [
+        "content.q2",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "type.body",
+      "why": "Timestamps and hints step back, so the values stay the hero.",
+      "because": [
+        "brand.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "type.body",
+      "why": "Every cell shares the mono face, so IDs, times and values line up down each column.",
+      "because": [
+        "tasks.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "Settings and form pages keep the same small title as every page. Experts find the fields higher up.",
+      "because": [
+        "content.q2",
+        "human.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 14,
+            "ratio": 1.2,
+            "steps": {
+              "display": 3,
+              "title": 2,
+              "heading": 1,
+              "body": 0,
+              "label": -1,
+              "caption": -1,
+              "data": 0
+            },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.2,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading",
+                  "label"
+                ]
+              },
+              "snug": {
+                "ratio": 1.3,
+                "roles": [
+                  "caption",
+                  "data"
+                ],
+                "grid": 2
+              },
+              "open": {
+                "ratio": 1.45,
+                "roles": [
+                  "body"
+                ],
+                "grid": 2
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "Few sizes: a small 14px body and a 1.2 ratio, each role on the next step, so every size is clearly apart and none is wasted. Short lines sit tight at 1.2. Body opens to 1.45, and data and captions sit snug at 1.3; their line boxes snap to a 2px grid, so rows of data keep whole-pixel lines."
+          }
+        },
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.display.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "24px is three ratio steps above the 14px body (14 × 1.2^3), the top of the scale, kept for the one key number on a dashboard. Everything below it stays small.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "tasks.q1",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step, because display holds one short number, not wrapped lines. The tight box keeps rows close below it.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600, the heaviest weight in the scale, makes the one display number the headline at a glance.",
+                "because": [
+                  "tasks.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.title.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "20px is two ratio steps above body and one under the 24px display, so page titles stay small and the table starts higher on the screen.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "content.q2",
+                  "human.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step: a page title is one short line, so a tight box saves height above the table.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 lets the small 20px title stand above the table by weight, not by a larger size.",
+                "because": [
+                  "content.q2",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "16px sits one ratio step above the 14px body (14 × 1.2 = 16.8), snapped down to the 4px grid as headings are. Panel and card headings name a block without taking rows from the data.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "content.q2",
+                  "brand.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step for headings, keeps a panel heading in a short box, so the block below starts sooner.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 separates a 16px heading from the 14px body by weight, because the two sit only one ratio step apart.",
+                "because": [
+                  "brand.q3",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.body.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "14px is the small body size and step 0 of the scale: every other role is a 1.2 ratio step from it, and more rows fit on the screen.",
+                "because": [
+                  "typography.values",
+                  "outcomes.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "A 20px line box: the open step, 1.45 × 14px (20.3px), snapped to the 2px grid, because body is help text that wraps to several lines and rows of text keep the grid.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400, the regular weight, keeps help sentences quiet beside the data, so the brand steps back.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "brand.q2"
+                ]
+              }
+            }
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 12px for column headers and field labels in order to keep labels at the smallest legible step: one ratio step under the 14px body (14 ÷ 1.2), on the caption’s step. The size does this by keeping IBM Plex Sans’s x-height at 6.2px (0.516 of the em); at 11px it would drop to 5.7px. So a header repeats on every column without competing with the data, and still reads, because experts scan many records at a short reading distance (tasks.q1) and the type scale is small (typography.values).",
+                "because": [
+                  "tasks.q1",
+                  "typography.values"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.2, the tight step for labels: a column header is one short name, so a 14.4px line keeps the header row low.",
+                "because": [
+                  "typography.definition",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.500}",
+            "$extensions": {
+              "open-ds": {
+                "why": "500 sets a 12px label apart from the 12px caption by weight alone, without a heavy 600 that competes with data.",
+                "because": [
+                  "tasks.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.caption.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 12px for timestamps and hints in order to let secondary text step back: one ratio step under the 14px body, the same step as label. The caption size does this by holding the lowercase letters of IBM Plex Sans at a 6.2px x-height, open enough to tell a 6 from a b at a glance. So experts read a timestamp across many rows while the values stay the hero, because the brand is quiet (brand.q2) and the content is numbers (content.q1).",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "brand.q2",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "A 16px line box for 12px captions: the snug step, 1.3 × 12px (15.6px), snapped to the 2px grid, so hints and timestamps that wrap stay on the grid.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400, the regular weight, so supporting text steps back behind the 500 labels and the data.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "brand.q2",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "14px shares step 0 with body, so Plex Mono values read at the body size. The scale has no step between the 12px labels and 14px.",
+                "because": [
+                  "typography.roles",
+                  "typography.count",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "An 18px line box for 14px cells: the snug step, 1.3 × 14px (18.2px), snapped to the 2px grid. A cell holds one line, so the box sits just above the text: the eye keeps its row while it scans a long table, and the row stays dense.",
+                "because": [
+                  "typography.definition",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 keeps table values regular, so the mono digits stay even and columns compare at a glance.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "tasks.q1",
+                  "typography.roles"
+                ]
+              }
+            }
+          },
+          "$description": "The data text role."
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "type.body.font-family": {
+      "headline": "A plain sans.",
+      "line": "Labels and notes in a face built for screens."
+    },
+    "type.body.font-size": {
+      "headline": "Small, clear text.",
+      "line": "More fits on screen and still reads at a desk."
+    },
+    "type.body.font-weight": {
+      "headline": "Regular words.",
+      "line": "Body text stays light, so the words lead."
+    },
+    "type.caption.font-family": {
+      "headline": "The small-print face.",
+      "line": "Captions and notes use a clear face."
+    },
+    "type.caption.font-size": {
+      "headline": "Small print.",
+      "line": "Timestamps and units, smaller than the values."
+    },
+    "type.caption.font-weight": {
+      "headline": "Plain small print.",
+      "line": "Captions stay regular, so they do not compete."
+    },
+    "type.data.font-family": {
+      "headline": "Monospace figures.",
+      "line": "Digits line up, so columns compare at a glance."
+    },
+    "type.data.font-size": {
+      "headline": "Figures at body size.",
+      "line": "Numbers match the text around them in a row."
+    },
+    "type.data.font-weight": {
+      "headline": "Plain figures.",
+      "line": "No number looks more urgent than its status says."
+    },
+    "type.display.font-family": {
+      "headline": "The headline face.",
+      "line": "The largest words on the page."
+    },
+    "type.display.font-size": {
+      "headline": "The biggest words.",
+      "line": "Kept small, so the numbers lead."
+    },
+    "type.display.font-weight": {
+      "headline": "Strong and clear.",
+      "line": "The display line carries weight."
+    },
+    "type.display.line-height": {
+      "headline": "Tight big lines.",
+      "line": "Large lines sit close, so they read as one."
+    },
+    "type.heading.font-family": {
+      "headline": "The section face.",
+      "line": "Headings in one typeface."
+    },
+    "type.heading.font-size": {
+      "headline": "A panel heading.",
+      "line": "Just above body size, so it labels without taking room."
+    },
+    "type.heading.font-weight": {
+      "headline": "Strong headings.",
+      "line": "Weight marks where a section starts."
+    },
+    "type.heading.line-height": {
+      "headline": "Close heading lines.",
+      "line": "A heading that wraps still reads as one."
+    },
+    "type.label.font-family": {
+      "headline": "The label face.",
+      "line": "Buttons, fields and tabs in one typeface."
+    },
+    "type.label.font-size": {
+      "headline": "Small labels.",
+      "line": "Column heads and controls in small, clear words."
+    },
+    "type.label.font-weight": {
+      "headline": "Labels that stand out.",
+      "line": "Medium weight sets a label apart from a value."
+    },
+    "type.label.line-height": {
+      "headline": "One line of label.",
+      "line": "A control holds its label on one line."
+    },
+    "type.title.font-family": {
+      "headline": "The title face.",
+      "line": "Page titles in one typeface."
+    },
+    "type.title.font-size": {
+      "headline": "The screen title.",
+      "line": "Clear, and small enough to leave room for data."
+    },
+    "type.title.font-weight": {
+      "headline": "A strong title.",
+      "line": "Weight marks what the page is about."
+    },
+    "type.title.line-height": {
+      "headline": "Close title lines.",
+      "line": "A long title still reads as one."
+    }
+  }
+}
