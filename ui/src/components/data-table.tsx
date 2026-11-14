@@ -299,7 +299,7 @@ export function DataTable<TData>({
 
       <div className="max-h-[32rem] overflow-auto rounded-[var(--data-table-container-radius)] border-[length:var(--data-table-container-border-width)] border-[color:var(--data-table-container-border)]">
         <Table>
-          <TableHeader className="sticky top-0 z-10">
+          <TableHeader className="sticky top-0 z-[var(--data-table-header-layer)]">
             {table.getHeaderGroups().map((group) => (
               <TableRow key={group.id}>
                 {group.headers.map((h) => (

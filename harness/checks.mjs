@@ -327,6 +327,85 @@ export function productFiles(c) {
 }
 const statSafe = (p) => (existsSync(p) ? statSync(p) : null);
 
+// The layer order every scheme shares, lowest first.
+export const LAYER_ORDER = ["sticky", "backdrop", "modal", "dropdown", "toast", "tooltip"];
+
+// Stacking inside one component keeps a plain number: it orders parts of that component, never one
+// layer against another. Each entry is "<file>: <class>" and says why.
+export const LOCAL_STACKING = {
+  "avatar.tsx: z-10": "the status badge sits over its own avatar image",
+  "button-group.tsx: z-10": "the focused button's ring shows over the buttons beside it",
+  "toggle-group.tsx: z-10": "the focused item's ring shows over the items beside it",
+  "input-otp.tsx: z-10": "the active slot's ring shows over the slots beside it",
+  "calendar.tsx: z-10": "the focused day's ring shows over the days beside it",
+  "resizable.tsx: z-10": "the grip sits over the handle line it marks",
+  "sidebar.tsx: z-20": "the rail sits over the sidebar edge it toggles",
+  "navigation-menu.tsx: z-[1]": "the indicator sits over the menu bar it points from",
+};
+
+/** Each layer's value in every theme of a scheme: [{ theme, values: { sticky: 100, … }, extra: [names] }]. */
+export function layerValues(scheme) {
+  const extra = Object.keys(flatten(scheme.tokens.semantic.layer ?? {})).filter((n) => !LAYER_ORDER.includes(n));
+  return scheme.themes.map((t) => {
+    const all = flatten(themeTokens(scheme, t.brand, t.mode));
+    const values = Object.fromEntries(LAYER_ORDER.map((n) => [n, resolve(all, `layer.${n}`).value]));
+    return { theme: t.id, values, extra };
+  });
+}
+
+/** Where a scheme's layers break the order: a missing or non-number layer, one at or below the layer before it, or a name outside the order. */
+export function layerOrderGaps(id, themes) {
+  const gaps = [];
+  for (const { theme, values, extra } of themes) {
+    for (const n of extra) gaps.push(`${id}: layer.${n} is not in the order ${LAYER_ORDER.join(" < ")}`);
+    LAYER_ORDER.forEach((n, i) => {
+      if (!Number.isFinite(values[n])) return gaps.push(`${id}/${theme}: layer.${n} is not a number`);
+      const below = LAYER_ORDER[i - 1];
+      if (below && Number.isFinite(values[below]) && values[n] <= values[below])
+        gaps.push(`${id}/${theme}: layer.${n} (${values[n]}) is not above layer.${below} (${values[below]})`);
+    });
+  }
+  return [...new Set(gaps)];
+}
+
+/** Where a theme's layer values differ from the first theme of the first scheme: one order for every scheme. */
+export function layerSharedGaps(byScheme) {
+  const [first] = Object.entries(byScheme);
+  if (!first) return ["no scheme"];
+  const want = first[1][0]?.values ?? {};
+  const gaps = [];
+  for (const [id, themes] of Object.entries(byScheme))
+    for (const { theme, values } of themes)
+      for (const n of LAYER_ORDER)
+        if (values[n] !== want[n]) gaps.push(`${id}/${theme}: layer.${n} is ${values[n]}, ${first[0]} has ${want[n]}`);
+  return gaps;
+}
+
+/** The raw stack numbers in a component's source: z-10, focus:z-10, z-[1], zIndex: 50. Each as its class. */
+export function rawZIndexes(src) {
+  const out = [];
+  for (const m of src.matchAll(/(?:^|[\s"'`])(?:[^\s"'`]*:)?-?(z-(?:\d+|\[-?\d+\]))(?=[\s"'`]|$)/gm)) out.push(m[1]);
+  for (const m of src.matchAll(/\bzIndex:\s*["'`]?(-?\d+)/g)) out.push(`zIndex: ${m[1]}`);
+  return out;
+}
+
+/**
+ * Raw stack numbers that are not local stacking, and allow-list entries no component still has.
+ * files: { "<name>.tsx": source }.
+ */
+export function rawLayerGaps(files, allowed = LOCAL_STACKING) {
+  const gaps = [];
+  const seen = new Set();
+  for (const [file, src] of Object.entries(files))
+    for (const z of rawZIndexes(src)) {
+      const key = `${file}: ${z}`;
+      seen.add(key);
+      if (!(key in allowed)) gaps.push(`${key} is a raw stack number; read the component's layer key`);
+    }
+  for (const key of Object.keys(allowed)) if (!seen.has(key)) gaps.push(`${key} is allowed as local stacking, and no component has it`);
+  return [...new Set(gaps)];
+}
+
 // The token API: the names a project can read. A new one waits for the owner's approval.
 export const TOKEN_API_FILE = "harness/token-api.json";
 
@@ -3054,6 +3133,47 @@ export const CHECKS = {
       return offenders.length
         ? bad(`${offenders.slice(0, 8).join("; ")}. Point each at a decision token`)
         : ok(`every component key reads a decision token; ${geometry} read the circle or capsule shape directly`);
+    },
+  },
+
+  "layer-order-kept": {
+    requires: ["schemes"],
+    run: (c) => {
+      // Every scheme keeps one layer order in every brand and mode: each layer sits above the one before it.
+      const gaps = SCHEMES.flatMap((id) => layerOrderGaps(id, layerValues(c.scheme(id))));
+      return gaps.length
+        ? bad(`${gaps.slice(0, 6).join("; ")}. Keep ${LAYER_ORDER.join(" < ")}`)
+        : ok(`${SCHEMES.length} schemes keep ${LAYER_ORDER.join(" < ")} in every brand and mode`);
+    },
+  },
+  "layer-values-shared": {
+    requires: ["schemes"],
+    run: (c) => {
+      // The layer values are the same in every scheme, brand and mode, so a component stacks the same way everywhere.
+      const byScheme = Object.fromEntries(SCHEMES.map((id) => [id, layerValues(c.scheme(id))]));
+      const gaps = layerSharedGaps(byScheme);
+      const values = byScheme[SCHEMES[0]][0].values;
+      return gaps.length
+        ? bad(`${gaps.slice(0, 6).join("; ")}. Read the shared z-index steps; a scheme does not set its own`)
+        : ok(`every scheme stacks at ${LAYER_ORDER.map((n) => `${n} ${values[n]}`).join(", ")}`);
+    },
+  },
+  "ui-layers-read-keys": {
+    requires: ["ui/src/components", "schemes/grammar.json"],
+    run: (c) => {
+      // A component stacks a layer by its layer key, never a raw number; only local stacking keeps one.
+      // Each layer key the grammar names is read by its component.
+      const files = Object.fromEntries(
+        c.walk("ui/src/components", (f) => f.endsWith(".tsx")).map((f) => [f.split("/").pop(), c.read(f)]),
+      );
+      const gaps = rawLayerGaps(files);
+      const keys = c.grammar().component_keys.filter((k) => /(^|\/|-)layer$/.test(k.id));
+      for (const k of keys)
+        if (!files[`${k.component}.tsx`]?.includes(`var(--${k.id.replaceAll("/", "-")})`))
+          gaps.push(`${k.component}.tsx does not read --${k.id.replaceAll("/", "-")}`);
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${keys.length} layer keys read by their components; ${Object.keys(LOCAL_STACKING).length} local stacking numbers, each with its reason`);
     },
   },
 

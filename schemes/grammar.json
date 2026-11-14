@@ -54,6 +54,38 @@
       }
     ]
   },
+  "shared_primitives": {
+    "description": "Primitives every scheme shares, written once. The loader adds each group to every scheme's primitives; a scheme does not store them.",
+    "tokens": {
+      "z-index": {
+        "100": {
+          "$type": "number",
+          "$value": 100
+        },
+        "1000": {
+          "$type": "number",
+          "$value": 1000
+        },
+        "1100": {
+          "$type": "number",
+          "$value": 1100
+        },
+        "1200": {
+          "$type": "number",
+          "$value": 1200
+        },
+        "1300": {
+          "$type": "number",
+          "$value": 1300
+        },
+        "1400": {
+          "$type": "number",
+          "$value": 1400
+        },
+        "$description": "The stack order steps every scheme shares. The layer tokens pick from them."
+      }
+    }
+  },
   "methods": [
     {
       "id": "roles",
@@ -2639,6 +2671,10 @@
           "says": "The shadows that lift a layer above the page."
         },
         {
+          "id": "layer",
+          "says": "The stack order of the layers above the page: which one paints on top where two overlap."
+        },
+        {
           "id": "motion",
           "says": "How things move: how long and on which curve."
         },
@@ -2771,6 +2807,11 @@
       "tokens": ["elevation.card", "elevation.overlay"],
       "follows": ["elevation.roles", "elevation.values", "theming.values"],
       "says": "The roles answer names the layers that rise, each one step up the scale; the values answer sets the size of a step."
+    },
+    {
+      "tokens": ["layer.*"],
+      "follows": ["elevation.lands"],
+      "says": "Decided: one layer order in every scheme, sticky < backdrop < modal < dropdown < toast < tooltip. The dropdown layer sits above the modal layer, so a menu or a select opened in a dialog shows. The lands answer says where layering is seen; no answer moves the order."
     },
     {
       "tokens": ["motion.duration.feedback"],
@@ -3846,12 +3887,13 @@
       "title": "Layer order and scrim",
       "scope": "elevation",
       "question": "elevation.lands",
-      "tokens": ["color.surface.scrim"],
+      "tokens": ["layer.*", "color.surface.scrim"],
+      "rule": "layer order = sticky < backdrop < modal < dropdown < toast < tooltip, the same in every scheme; the scrim fills the backdrop layer",
       "jobs": [
         {
           "id": "layer-order",
           "title": "Layer order",
-          "how": "follows layer order: base < raised < sticky < overlay < modal < toast < tooltip"
+          "how": "follows layer order: sticky < backdrop < modal < dropdown < toast < tooltip; dropdown sits above modal, so a menu opened in a dialog shows"
         },
         {
           "id": "scrim",
@@ -3863,6 +3905,25 @@
         }
       ],
       "roles": [
+        {
+          "id": "layer-order",
+          "role": "a layer's place in the stack order",
+          "tokens": [
+            "layer.sticky",
+            "layer.backdrop",
+            "layer.modal",
+            "layer.dropdown",
+            "layer.toast",
+            "layer.tooltip"
+          ],
+          "jobs": ["layer-order"],
+          "to": "put each layer above every layer it can open over",
+          "gets": "a menu, a toast or a tooltip is never hidden behind what it opened over",
+          "always_on": {
+            "why": "every scheme stacks the same layers in the same order, and the lands answer says where layering is seen",
+            "shaped_by": ["elevation.lands"]
+          }
+        },
         {
           "id": "scrim",
           "role": "the layer behind a modal",

@@ -2,7 +2,9 @@
 // component key takes the grammar's default and description. withDefaults fills them in, in the
 // grammar's order; withoutDefaults takes out each token that equals its fill exactly. A key with
 // created_by exists only in a scheme whose answer creates it, so no scheme ships a choice it did not
-// make. No file access, so the loader, the build and the bundled apps (Storybook) share it.
+// make. The grammar's shared primitives (the z-index steps) join every scheme the same way: withDefaults
+// adds each group, and withoutDefaults leaves out each group that equals the grammar's. No file access, so
+// the loader, the build and the bundled apps (Storybook) share it.
 
 /** A key's token path in a scheme: its id's segments; a key that is also a group keeps its token at "@". */
 function pathsOf(g) {
@@ -29,7 +31,24 @@ export function keyCreated(key, scheme) {
 /** The grammar's component keys the scheme has, in the grammar's order. */
 export const keysOf = (g, scheme) => g.component_keys.filter((key) => keyCreated(key, scheme));
 
-/** The scheme with every component key present, in the grammar's order. Does not change its input. */
+/** The primitive groups every scheme shares, by name: { "z-index": { ... } }. */
+const sharedOf = (g) => g?.shared_primitives?.tokens ?? {};
+
+/** The primitives with each shared group the scheme lacks. A group the scheme stores stays, so the checks can name it. */
+function withShared(primitive, g) {
+  const missing = Object.entries(sharedOf(g)).filter(([name]) => !(name in primitive));
+  return missing.length ? { ...primitive, ...structuredClone(Object.fromEntries(missing)) } : primitive;
+}
+
+/** The primitives without each group that equals the grammar's shared group. */
+function withoutShared(primitive, g) {
+  const out = { ...primitive };
+  for (const [name, group] of Object.entries(sharedOf(g)))
+    if (JSON.stringify(out[name]) === JSON.stringify(group)) delete out[name];
+  return out;
+}
+
+/** The scheme with every component key and shared primitive present, in the grammar's order. Does not change its input. */
 export function withDefaults(scheme, g) {
   const stored = scheme?.tokens?.component ?? {};
   const paths = pathsOf(g);
@@ -59,10 +78,11 @@ export function withDefaults(scheme, g) {
     }
   };
   extra(stored);
-  return { ...scheme, tokens: { ...scheme.tokens, component } };
+  const primitive = scheme?.tokens?.primitive;
+  return { ...scheme, tokens: { ...scheme.tokens, ...(primitive && { primitive: withShared(primitive, g) }), component } };
 }
 
-/** The scheme as it is stored: each component token that equals the grammar's fill is left out. */
+/** The scheme as it is stored: each component token that equals the grammar's fill, and each shared primitive group, is left out. */
 export function withoutDefaults(scheme, g) {
   const component = structuredClone(scheme?.tokens?.component ?? {});
   for (const [id, path] of pathsOf(g)) {
@@ -79,5 +99,6 @@ export function withoutDefaults(scheme, g) {
       }
   };
   prune(component);
-  return { ...scheme, tokens: { ...scheme.tokens, component } };
+  const primitive = scheme?.tokens?.primitive;
+  return { ...scheme, tokens: { ...scheme.tokens, ...(primitive && { primitive: withoutShared(primitive, g) }), component } };
 }

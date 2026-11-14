@@ -19,12 +19,12 @@ export function DialogContent({ className, children, ...props }: React.Component
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay
         data-slot="dialog-overlay"
-        className="fixed inset-0 z-50 bg-[var(--dialog-overlay-background)]"
+        className="fixed inset-0 z-[var(--dialog-backdrop-layer)] bg-[var(--dialog-overlay-background)]"
       />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "fixed left-1/2 top-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] sm:max-w-lg -translate-x-1/2 -translate-y-1/2",
+          "fixed left-1/2 top-1/2 z-[var(--dialog-layer)] grid w-full max-w-[calc(100%-2rem)] sm:max-w-lg -translate-x-1/2 -translate-y-1/2",
           "gap-[var(--dialog-content-gap)] p-[var(--dialog-content-padding)] rounded-[var(--dialog-content-radius)]",
           "bg-[var(--dialog-content-background)] text-[var(--dialog-content-label)] [box-shadow:var(--dialog-content-shadow)]",
           "border-[length:var(--dialog-content-border-width)] border-[var(--dialog-content-border)]",

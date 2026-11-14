@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { cvaVariants, processWords, tokenApiGaps } from "../checks.mjs";
+import { cvaVariants, layerOrderGaps, layerSharedGaps, processWords, rawLayerGaps, rawZIndexes, tokenApiGaps } from "../checks.mjs";
 
 test("process words: a ticket key, the owner, the harness, a ticket and a pull request are found", () => {
   const text = [
@@ -50,4 +50,33 @@ test("token api: a name the approved list lacks fails with the approval message"
     "button/variant/loud is new; add it to harness/token-api.json only with the owner's approval.",
   ]);
   assert.deepEqual(tokenApiGaps(approved, approved), []);
+});
+
+const LAYERS = { sticky: 100, backdrop: 1000, modal: 1100, dropdown: 1200, toast: 1300, tooltip: 1400 };
+
+test("layer order: a toast below the modal and a name outside the order are found", () => {
+  assert.deepEqual(layerOrderGaps("a", [{ theme: "light", values: LAYERS, extra: [] }]), []);
+  const low = { ...LAYERS, toast: 1050 };
+  assert.deepEqual(layerOrderGaps("a", [{ theme: "light", values: low, extra: ["overlay"] }]), [
+    "a: layer.overlay is not in the order sticky < backdrop < modal < dropdown < toast < tooltip",
+    "a/light: layer.toast (1050) is not above layer.dropdown (1200)",
+  ]);
+  assert.deepEqual(layerOrderGaps("a", [{ theme: "light", values: { ...LAYERS, modal: undefined }, extra: [] }]), ["a/light: layer.modal is not a number"]);
+});
+
+test("layer values: a scheme that stacks at other numbers is found, even in order", () => {
+  const same = { a: [{ theme: "light", values: LAYERS }], b: [{ theme: "dark", values: LAYERS }] };
+  assert.deepEqual(layerSharedGaps(same), []);
+  const own = { ...same, c: [{ theme: "light", values: { ...LAYERS, sticky: 10 } }] };
+  assert.deepEqual(layerSharedGaps(own), ["c/light: layer.sticky is 10, a has 100"]);
+});
+
+test("raw stack numbers: classes with variants, arbitrary numbers and inline styles; a layer key is not one", () => {
+  const src = `cn("fixed z-50 p-2", "focus-visible:z-10 [&>*]:focus:z-20", "top-full z-[1]", "z-[var(--dialog-layer)]"); const s = { zIndex: 30 };`;
+  assert.deepEqual(rawZIndexes(src), ["z-50", "z-10", "z-20", "z-[1]", "zIndex: 30"]);
+  assert.deepEqual(rawLayerGaps({ "a.tsx": `"z-10"` }, { "a.tsx: z-10": "local" }), []);
+  assert.deepEqual(rawLayerGaps({ "a.tsx": `"z-50"` }, { "b.tsx: z-10": "local" }), [
+    "a.tsx: z-50 is a raw stack number; read the component's layer key",
+    "b.tsx: z-10 is allowed as local stacking, and no component has it",
+  ]);
 });

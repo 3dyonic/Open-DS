@@ -76,6 +76,86 @@
           "$description": "No shadow in this scheme.",
           "$value": "{theme.elevation.overlay}"
         }
+      },
+      "layer": {
+        "sticky": {
+          "$type": "number",
+          "$value": "{z-index.100}",
+          "$description": "Layer of a part that stays in view while the page scrolls: a sticky table header, the sidebar.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 100 for the sticky layer, a part that stays in view while the page scrolls, such as a table header or the sidebar, in order to stack it above the content that scrolls under it. The layer order does this by giving the sticky layer the lowest number of the order, so every floating layer still paints above it. So the column names stay in view over a long table, and a menu opened from the header is not hidden behind it, because the order is decided once for every scheme, and here only dialogs rise, with a dimmed page and a border (elevation.lands).",
+              "because": [
+                "elevation.lands"
+              ]
+            }
+          }
+        },
+        "backdrop": {
+          "$type": "number",
+          "$value": "{z-index.1000}",
+          "$description": "Layer of the dimmed page behind a dialog, an alert dialog, a sheet or a drawer.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 1000 for the backdrop layer, the dimmed page behind a dialog, an alert dialog, a sheet or a drawer, in order to stack it above the page and every sticky part. The layer order does this by placing the backdrop one step below the modal layer and far above the sticky layer at 100. So the whole page dims behind a dialog, its sticky header and sidebar too, because the order is decided once for every scheme, and here only dialogs rise, with a dimmed page and a border (elevation.lands).",
+              "because": [
+                "elevation.lands"
+              ]
+            }
+          }
+        },
+        "modal": {
+          "$type": "number",
+          "$value": "{z-index.1100}",
+          "$description": "Layer of a dialog, an alert dialog, a sheet or a drawer, above its dimmed page.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 1100 for the modal layer, a dialog, an alert dialog, a sheet or a drawer, in order to stack it right above its own dimmed page. The layer order does this by putting the modal one step above the backdrop and one step below the dropdown layer. So the dialog is the one thing to act on while the page behind it waits, because the order is decided once for every scheme, and here only dialogs rise, with a dimmed page and a border (elevation.lands).",
+              "because": [
+                "elevation.lands"
+              ]
+            }
+          }
+        },
+        "dropdown": {
+          "$type": "number",
+          "$value": "{z-index.1200}",
+          "$description": "Layer of menus, popovers, hover cards and select lists, above a dialog they open in.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 1200 for the dropdown layer, menus, popovers, hover cards and select lists, in order to nest them: a list opened inside a dialog shows above it. The layer order does this by putting the dropdown one step above the modal layer, so a list never opens behind the dialog that holds it. So a select or a menu in a form inside a dialog stays usable, because the order is decided once for every scheme, and here only dialogs rise, with a dimmed page and a border (elevation.lands).",
+              "because": [
+                "elevation.lands"
+              ]
+            }
+          }
+        },
+        "toast": {
+          "$type": "number",
+          "$value": "{z-index.1300}",
+          "$description": "Layer of toasts, above dialogs and menus.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 1300 for the toast layer in order to stack a short confirmation above dialogs and menus. The layer order does this by putting toasts one step above the dropdown layer, so an open menu or dialog does not cover the message. So people read that a change worked while a dialog is still open, because the order is decided once for every scheme, and here only dialogs rise, with a dimmed page and a border (elevation.lands).",
+              "because": [
+                "elevation.lands"
+              ]
+            }
+          }
+        },
+        "tooltip": {
+          "$type": "number",
+          "$value": "{z-index.1400}",
+          "$description": "Layer of tooltips, above every other layer.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 1400 for the tooltip layer, the top of the order, in order to stack a short label above every other layer. The layer order does this by giving the tooltip the highest number, so nothing that opens can cover it. So the label of a control in a dialog, in a menu or beside a toast stays readable, because the order is decided once for every scheme, and here only dialogs rise, with a dimmed page and a border (elevation.lands).",
+              "because": [
+                "elevation.lands"
+              ]
+            }
+          }
+        }
       }
     }
   },
