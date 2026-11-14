@@ -1,5 +1,5 @@
 // The active scheme's sample content. Every story shows that scheme's own words, data and status
-// meanings. A component the scheme does not carry still renders in its tokens (OD-192); the docs page
+// meanings. A component the scheme does not carry still renders in its tokens; the docs page
 // says it is not part of the scheme.
 import type { ReactNode } from "react";
 import { useScheme } from "./scheme-context";
@@ -9,7 +9,7 @@ export type { Samples };
 
 /** The tone a status label maps to, from its meaning in the scheme. */
 /**
- * The first variant this scheme uses on an axis, so an example stays inside its decisions (OD-214):
+ * The first variant this scheme uses on an axis, so an example stays inside its decisions:
  * Dense data's Item shows default, Accessible first's shows outline. A component the scheme leaves
  * out has no decisions, so it shows the fallback.
  */
@@ -20,7 +20,7 @@ export function useVariant(component: string, axis: string, fallback: string): s
   return Object.entries(item?.variants?.[axis] ?? {}).find(([, d]) => !d.not_used)?.[0] ?? fallback;
 }
 type Carried = { id: string; variants?: Record<string, Record<string, { not_used?: boolean }>> };
-/** Every variant this scheme uses on an axis, so an example shows only its decisions (OD-285). */
+/** Every variant this scheme uses on an axis, so an example shows only its decisions. */
 export function useVariants(component: string, axis: string): string[] {
   const { scheme } = useScheme();
   const data = SCHEMES[scheme] ?? SCHEMES["dense-data"];

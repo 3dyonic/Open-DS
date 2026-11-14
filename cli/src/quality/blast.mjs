@@ -1,4 +1,4 @@
-// The blast radius of one scheme (OD-298): change one answer or one anchor, load the scheme again with
+// The blast radius of one scheme: change one answer or one anchor, load the scheme again with
 // the ref's own loader, and compare what moved with what the scheme records as depending on it.
 //
 // "Expected" never comes from the reference chain the change travels along, or a hard-code would leave

@@ -1,4 +1,4 @@
-// The foundations (OD-180): the three token layers, then color, type, spacing, shape and motion, each
+// The foundations: the three token layers, then color, type, spacing, shape and motion, each
 // with the scheme's answer and its reason, and values read live from the tokens.
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {

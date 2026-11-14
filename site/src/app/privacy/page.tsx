@@ -1,4 +1,4 @@
-// The privacy policy (OD-173), in plain words. It describes what the site and the hosted service
+// The privacy policy, in plain words. It describes what the site and the hosted service
 // actually do; if the service changes what it keeps, this page changes with it.
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/chrome";

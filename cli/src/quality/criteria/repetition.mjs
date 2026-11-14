@@ -1,4 +1,4 @@
-// Repetition (OD-298): a sentence that several reasons repeat, once token names are taken out, says
+// Repetition: a sentence that several reasons repeat, once token names are taken out, says
 // nothing about any one value. Counted per scheme as the extra copies of each repeated sentence.
 import { measureOf, perSchemeOf, sum } from "./measure.mjs";
 

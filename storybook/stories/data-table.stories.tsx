@@ -88,7 +88,7 @@ export const Examples: Story = {
                 </>
               )}
             />
-            {/* The empty state is the Empty pattern (OD-229): with no data, the table's own empty state
+            {/* The empty state is the Empty pattern: with no data, the table's own empty state
                 or its default words; when the search or the filters hide every row, the one action
                 that clears them. */}
             <DataTable columns={t.columns} data={[]} facets={t.facets} />

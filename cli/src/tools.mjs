@@ -1,4 +1,4 @@
-// The tools behind the skills (OD-202): each one does a step that a skill would otherwise judge by
+// The tools behind the skills: each one does a step that a skill would otherwise judge by
 // eye. One engine for the CLI and the MCP server, like the rest of the package.
 //   checkUi    review and build: raw values, components the scheme does not carry, unused variants,
 //              button labels too long for one line
@@ -81,8 +81,8 @@ function spacingName(scheme, px, util) {
 }
 
 /**
- * Where each finding is answered (OD-205): a file in a created project and its section heading.
- * The harness checks that each one exists.
+ * Where each finding is answered: a file in a created project and its section heading.
+ * Each one must exist.
  */
 export const SEE = {
   "raw-color": "context/tasks/build.md: Situations",
@@ -94,7 +94,7 @@ export const SEE = {
   "long-label": "context/tasks/write.md: Situations",
 };
 
-/** The most words a button label holds on one line (the voice rule, OD-300): one verb and its object. */
+/** The most words a button label holds on one line (the voice rule): one verb and its object. */
 export const BUTTON_LABEL_WORDS = 3;
 // A Button with plain text as its label: <Button …>Save changes</Button>.
 const BUTTON_LABEL = /<Button\b[^<>]*>([^<>{}]+)<\/Button>/g;
@@ -144,7 +144,7 @@ export function checkUi(scheme, g, files) {
           `A palette color class: ${m[0]}`,
           "Use a class that reads the scheme's color variables, or a component key.",
         );
-    // Raw spacing (OD-235): a Tailwind spacing number. Name the role or map step with that value here.
+    // Raw spacing: a Tailwind spacing number. Name the role or map step with that value here.
     if (!css)
       for (const m of text.matchAll(SPACING_NUMBER)) {
         if (Number(m[3]) === 0) continue;
@@ -202,7 +202,7 @@ export function checkUi(scheme, g, files) {
             "It is not in the inventory. Pick a component the scheme carries.",
         );
     }
-    // A button label that would break onto two lines (OD-300): the voice says it never does.
+    // A button label that would break onto two lines: the voice says it never does.
     if (!css)
       for (const m of text.matchAll(BUTTON_LABEL)) {
         const label = m[1].trim().replace(/\s+/g, " ");
@@ -555,7 +555,7 @@ export function findToken(scheme, g, query, limit = 5) {
       matched: [...new Set([...head, ...body])],
     };
   });
-  // A component key ranks only when the query names its component (OD-234: every component has its own keys).
+  // A component key ranks only when the query names its component (every component has its own keys).
   // A deprecated key (replaced_by) is never offered; its replacement is.
   const keys = g.component_keys
     .filter((k) => !k.replaced_by)
@@ -572,7 +572,7 @@ export function findToken(scheme, g, query, limit = 5) {
         matched: [...new Set([...head, ...body])],
       };
     });
-  // Spacing (OD-235): the layout roles and the component spacing map's steps, with this scheme's px.
+  // Spacing: the layout roles and the component spacing map's steps, with this scheme's px.
   const sg = spacingGuide(scheme, {
     index: tokenIndex(scheme),
     chain: aliasChain,

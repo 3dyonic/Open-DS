@@ -166,7 +166,7 @@ function At({ at, n, show }: { at: keyof typeof AT; n?: number; show: Set<number
 const ROW_STATE: Record<string, string> = {
   highlight: "bg-[var(--dropdown-menu-item-background-highlight)]",
   focus:
-    "outline-[length:var(--border-width-focus)] outline-solid outline-[var(--color-border-focus)] -outline-offset-2",
+    "outline-[length:var(--focus-ring-width)] outline-solid outline-[var(--color-border-focus)] -outline-offset-2",
   danger: "text-[color:var(--dropdown-menu-item-label-destructive)]",
 };
 
@@ -184,8 +184,8 @@ function Menu({ data }: { data: Extract<AnatomyDrawingData, { kind: "menu" }> })
               <At at="separator" n={k.row} show={show} />
             </div>
           );
-        // A disabled row dims its content, never its numbers.
-        const dim = r.state === "disabled" ? "opacity-[var(--dropdown-menu-item-disabled)]" : "";
+        // A disabled row greys its content, never its numbers.
+        const dim = r.state === "disabled" ? "text-[color:var(--dropdown-menu-item-disabled-label)]!" : "";
         const state = [r.state && ROW_STATE[r.state], r.tone && ROW_STATE[r.tone]].filter(Boolean).join(" ");
         return (
           <div

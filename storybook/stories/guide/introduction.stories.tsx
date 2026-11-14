@@ -1,4 +1,4 @@
-// The design system's introduction (OD-179): what it is for, who it is for, how to use it, its voice.
+// The design system's introduction: what it is for, who it is for, how to use it, its voice.
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Introduction as Page } from "./guide";
 

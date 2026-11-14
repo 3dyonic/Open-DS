@@ -1,4 +1,4 @@
-// Style rules the owner accepted (OD-297) that live in code, not in a scheme: what a source file must
+// Accepted style rules that live in code, not in a scheme: what a source file must
 // not do, measured from its text. No file access: the caller passes the source.
 
 /** The accepted range of letter spacing for uppercase text, in em. */

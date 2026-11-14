@@ -1,4 +1,4 @@
-// Which semantic tokens land on each primitive color step (OD-223). The scale view in the docs and the
+// Which semantic tokens land on each primitive color step. The scale view in the docs and the
 // Storybook guide reads this: for a brand and mode, every color semantic followed through the theme and
 // the neutral scale to the primitive step it ends at.
 

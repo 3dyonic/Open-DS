@@ -1,4 +1,4 @@
-// The two color answers of OD-299, as the generator and the checks read them. No file access, so the
+// The two color answers that shape a scale, as the generator and the checks read them. No file access, so the
 // loader, the build and the bundled apps (Storybook, the site) share it.
 //
 // color.definition.steps: how a scale spaces its steps. Every option is contrast-graded (steps 400
@@ -8,7 +8,7 @@
 // must be, under normal vision and three simulated color vision deficiencies.
 
 /**
- * The flag for the contrast-graded curve. Off: every scale uses the shared lightness curve of OD-223.
+ * The flag for the contrast-graded curve. Off: every scale uses the shared lightness curve.
  * On: each scheme's scales follow its color.definition.steps answer. The docs page "How the scale is
  * built" shows only when it is on.
  */

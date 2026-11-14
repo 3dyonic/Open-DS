@@ -53,7 +53,7 @@ const DRAW: Record<string, (v: string, p: SampleProps) => Drawn> = {
   // One corner of a 48px square, so a small corner and a large one look different: a full corner ends
   // at a quarter circle (24px) instead of turning every sample into the same circle (OD-286).
   radius: (v) => ({
-    cls: "inline-block size-12 flex-none border-t-[length:var(--border-width-focus)] border-l-[length:var(--border-width-focus)] border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)] align-middle",
+    cls: "inline-block size-12 flex-none border-t-[length:var(--focus-ring-width)] border-l-[length:var(--focus-ring-width)] border-[var(--color-border-strong)] bg-[var(--color-surface-sunken)] align-middle",
     style: { borderTopLeftRadius: v },
   }),
   line: (v) => ({ cls: "inline-block w-6 bg-[var(--color-text-primary)] align-middle", style: { height: v } }),
@@ -175,7 +175,7 @@ export default function Sample({
       <span
         data-composite="sample"
         aria-hidden="true"
-        className="inline-flex h-[var(--size-control-compact)] w-16 rounded-[var(--radius-control)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] bg-[var(--color-surface-default)] outline-[length:var(--border-width-focus)] outline-offset-[length:var(--border-width-focus-offset)] outline-[var(--color-border-focus)] [outline-style:solid]"
+        className="inline-flex h-[var(--size-control-compact)] w-16 rounded-[var(--radius-control)] border-[length:var(--border-width-default)] border-[var(--color-border-default)] bg-[var(--color-surface-default)] outline-[length:var(--focus-ring-width)] outline-offset-[length:var(--focus-ring-offset)] outline-[var(--color-border-focus)] [outline-style:solid]"
       />
     );
   // An icon at the scheme's icon size and stroke, drawn through Icon (OD-285).

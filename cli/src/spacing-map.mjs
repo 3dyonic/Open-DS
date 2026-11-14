@@ -1,10 +1,10 @@
-// The component spacing map (OD-235). Shared by the loader, the scheme writer and the harness.
+// The component spacing map. Shared by the loader, the scheme writer and the checks.
 //
 // Inside a component, spacing is a step of the map: space.unit (4px, the same in every scheme) ×
 // the step's multiplier × the scheme's rhythm, rounded to a multiple of 4px and at most 64px. The
 // scheme decides its rhythm and which steps hold still (fixed: x1 and x2 are the fine spacing inside
 // rows, so a roomy scheme does not fatten its lists). The hairline is a fixed 2px optical nudge.
-// A scheme stores only its spec; loadScheme runs the math (scheme-generated.mjs, OD-292), so every reader gets the steps.
+// A scheme stores only its spec; loadScheme runs the math (scheme-generated.mjs), so every reader gets the steps.
 
 export const UNIT_PX = 4;
 export const CAP_PX = 64;
@@ -76,7 +76,7 @@ export function mapTokens(spec) {
 export const remOf = rem;
 
 /**
- * The spacing guide for agents and the docs (OD-235), from one scheme: the rule, the rhythm and why,
+ * The spacing guide for agents and the docs, from one scheme: the rule, the rhythm and why,
  * every step of the component spacing map and every layout role, each with its px value, the primitive
  * it ends at and the named Tailwind utility to write. `index` is lands.mjs's tokenIndex(scheme);
  * `chain` its aliasChain.

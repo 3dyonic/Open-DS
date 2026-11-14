@@ -1,4 +1,4 @@
-// Extract a quality snapshot from one checkout of Open DS (OD-298). The checkout's own code loads its
+// Extract a quality snapshot from one checkout of Open DS. The checkout's own code loads its
 // schemes and builds its token trees, so each ref is read in its own shape; this tool's code measures
 // them. Run as a child process, one per ref, so two refs' modules never share a process:
 //
@@ -15,7 +15,7 @@ import { snapshotScheme } from "./snapshot.mjs";
 
 /** Where a checkout records the flags its owner approved, from the repository root. */
 export const APPROVALS = join("harness", "quality-approvals.json");
-/** Where a checkout records the reasons of the color moves the graded curve makes (OD-299). */
+/** Where a checkout records the reasons of the color moves the graded curve makes. */
 export const SHIFT_REASONS = join("harness", "od-299-shift-reasons.json");
 
 const readText = (path) => (existsSync(path) ? readFileSync(path, "utf8") : null);
@@ -71,7 +71,7 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
   const scratch = mkdtempSync(join(tmpdir(), "open-ds-quality-"));
   const scratchRoots = { ...roots, schemes: join(scratch, "schemes") };
   mkdirSync(scratchRoots.schemes);
-  // The files go through this checkout's one path (OD-289); the ref's own loader reads them back.
+  // The files go through this checkout's one path; the ref's own loader reads them back.
   saveGrammar(grammar, scratchRoots);
   try {
     const schemes = {};
@@ -99,7 +99,7 @@ export async function extractRef({ root, ref = "working tree", sha = null, blast
       schemes,
       ui,
       approvals: existsSync(approvalsFile) ? approvalsFrom(JSON.parse(readFileSync(approvalsFile, "utf8"))) : [],
-      // OD-299: the recorded reason of each review-tier move between the shared and the graded curve.
+      // The recorded reason of each review-tier move between the shared and the graded curve.
       shiftReasons: existsSync(join(root, SHIFT_REASONS)) ? JSON.parse(readFileSync(join(root, SHIFT_REASONS), "utf8")).schemes ?? {} : {},
     };
   } finally {

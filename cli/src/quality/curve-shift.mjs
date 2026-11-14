@@ -1,8 +1,8 @@
-// The shift report of OD-299: every color token of every scheme, brand and mode, built on the shared
+// The shift report of the contrast-graded curve: every color token of every scheme, brand and mode, built on the shared
 // curve (old) and on the contrast-graded curve (new), side by side in one process. Each move gets its
 // tier: under 0.02 OKLab passes; 0.02 to 0.05 needs a recorded reason that names the method; over 0.05
-// keeps its current value (the step is held) and goes on the owner's list. Surfaces take the tighter
-// limits of params.shift.roles. The relation gates of OD-298 must hold between old and new.
+// keeps its current value (the step is held) and needs an approval. Surfaces take the tighter
+// limits of params.shift.roles. The relation gates of the quality gate must hold between old and new.
 import { curveOf, differenceThreshold, stepsAnswer } from "../color-steps.mjs";
 import { differenceFailures } from "./difference.mjs";
 import { scale } from "../ramps.mjs";
@@ -35,7 +35,7 @@ export function curveSnapshots({ ids, load, stored, grammar, themeTokens }) {
 
 /**
  * Moves of the scale steps themselves: [{ scheme, hue, mode, step, from, to, distance, tier, approved }].
- * approvals are the owner's (harness/quality-approvals.json): a step move names its step as the token
+ * approvals come from harness/quality-approvals.json: a step move names its step as the token
  * (color.<hue>.<mode>.<step>) and its mode as the theme.
  */
 export function stepMoves(base, candidate, params = DEFAULT_PARAMS, approvals = []) {
@@ -56,7 +56,7 @@ export function stepMoves(base, candidate, params = DEFAULT_PARAMS, approvals = 
 
 /**
  * The relation gates between old and new, with the flags each raises, only the gates that fire:
- * [{ id, title, flags }]. The gates of OD-298, and the state gap: a rest → hover → pressed step that
+ * [{ id, title, flags }]. The quality gate's relation gates, and the state gap: a rest → hover → pressed step that
  * was at least params.relations.stateGap apart on old and is closer now.
  */
 export function gates(base, candidate, params = DEFAULT_PARAMS) {
@@ -73,13 +73,13 @@ export function gates(base, candidate, params = DEFAULT_PARAMS) {
         }
     }
   }
-  // The difference check (OD-299): no pair may fail on new that passes on old.
+  // The difference check: no pair may fail on new that passes on old.
   const threshold = (s) => (id) => differenceThreshold({ answers: s.schemes[id].decisions.answers });
   const failedBefore = new Set(differenceFailures(base, threshold(base)).map((f) => f.id));
   const different = differenceFailures(candidate, threshold(candidate))
     .filter((f) => !failedBefore.has(f.id))
     .map((f) => ({ scheme: f.scheme, themes: [f.theme], tokens: f.tokens, says: `${f.id}: now ${f.distance.toFixed(3)} apart, under the scheme's difference threshold` }));
-  // Neighbouring steps keep a visible lightness gap (OD-298 curves.min-gap): no pair may be tight on
+  // Neighbouring steps keep a visible lightness gap (curves.min-gap): no pair may be tight on
   // new that is not tight on old.
   const pairKey = (t) => `${t.scheme}/${t.hue}.${t.mode} ${t.from}-${t.to}`;
   const tightBefore = new Set(tightSteps(base, params.curves.minGap).map(pairKey));
@@ -108,7 +108,7 @@ const PALETTE = /^color\.([a-z0-9-]+)\.(light|dark)\.(\d+)$/;
  * why is "over-limit" (a scale step, or a semantic token on it, moves over its tier limit; surfaces
  * take their tighter limit), "relation" (a token on it is in a relation gate that fires), or "order"
  * (a held run reaches from a held step to its end of the scale, so held and graded steps never swap).
- * A move the owner approved (approvals, as harness/quality-approvals.json holds them) is not over-limit:
+ * An approved move (approvals, as harness/quality-approvals.json holds them) is not over-limit:
  * its step moves. A relation gate still holds its step.
  */
 export function stepsToHold(base, candidate, params = DEFAULT_PARAMS, approvals = []) {
@@ -149,7 +149,7 @@ export function stepsToHold(base, candidate, params = DEFAULT_PARAMS, approvals 
  * The whole report: { moves, steps, relations, keys, grades, perScheme }. moves are the semantic token
  * moves; steps the scale step moves; relations the gate flags that fire; keys the brand key changes;
  * grades the step pairs under their contrast grade, old and new. Each move over its limit says whether
- * the owner approved it (approved). The approvals clear no relation gate.
+ * it is approved (approved). The approvals clear no relation gate.
  */
 export function shiftReport(base, candidate, params = DEFAULT_PARAMS, approvals = []) {
   const moves = colorMoves(base, candidate, params).map((m) => ({ ...m, approved: approvedMove(approvals, m.scheme, m.token, m.theme, m.to) }));

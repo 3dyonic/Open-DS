@@ -37,7 +37,7 @@
     }
   ],
   "options": {
-    "description": "Rules every scheme's primitives follow (OD-221, OD-222). An option set exists to offer distinct choices, so each option looks clearly different from the others: two steps you cannot tell apart are one step. Prefer fewer steps that each do a job over one step per role. And keep only the options something reads: an option nothing reads is a choice nobody made.",
+    "description": "Rules every scheme's primitives follow. An option set exists to offer distinct choices, so each option looks clearly different from the others: two steps you cannot tell apart are one step. Prefer fewer steps that each do a job over one step per role. And keep only the options something reads: an option nothing reads is a choice nobody made.",
     "used": {
       "say": "outside color ramps, keep only the options a semantic, theme or component key reads",
       "why": "An option nothing reads is a choice nobody made. Color ramps stay whole, because a ramp is one unit with meaning.",
@@ -1154,87 +1154,75 @@
           "id": "what-a-scale-is-for",
           "when": "Before you change any color.",
           "do": "A scale is one color in steps, from lightened (50) to darkened (950). The steps are made in OKLCH, a color space built around how the eye sees lightness, and each step mostly moves the color's lightness. The steps aren't evenly spaced in lightness: at the light and dark ends they are tweaked so that each gap means the same, one step more of use. The light tints sit close together, so there is a choice of soft backgrounds; the middle steps step out as fills, borders and buttons; the dark end gives strong text. Colorfulness eases toward the ends. Each scale starts from its own key color at 600 and keeps that hue's natural lightness and contrast: a yellow is light by nature and a blue is dark, so their steps sit around where each hue really is, not at the same values for every hue. So every step still reads as the same color.",
-          "why": "When every step is one step of use, people can pick the right strength for each job, and the screen stays calm and consistent.",
-          "from": ["OD-223"]
+          "why": "When every step is one step of use, people can pick the right strength for each job, and the screen stays calm and consistent."
         },
         {
           "id": "each-step-has-a-job",
           "when": "You pick a step for something.",
           "do": "Use the lightest steps for backgrounds behind text, the middle steps for buttons, borders and focus rings, and the darkest steps for text on light backgrounds. In dark mode the roles swap ends.",
-          "why": "Text must stand out from what is behind it. Each end of the scale gives that for the other end.",
-          "from": ["OD-223"]
+          "why": "Text must stand out from what is behind it. Each end of the scale gives that for the other end."
         },
         {
           "id": "fix-only-what-is-wrong",
           "when": "A step looks wrong where it is used.",
           "do": "Say exactly what is wrong first: too pale, too dull, too close to another color. Then change only that step, and leave the ones that work alone.",
-          "measure": "The harness checks that every step that was changed really needed it.",
-          "why": "A small fix in the right place keeps the family together. Reworking a whole scale for one problem makes new problems.",
-          "from": ["OD-231"]
+          "measure": "Every changed step really needed the change.",
+          "why": "A small fix in the right place keeps the family together. Reworking a whole scale for one problem makes new problems."
         },
         {
           "id": "look-at-every-use",
           "when": "Before you change a step.",
           "do": "Find everything that uses it, and look at each one in light and dark mode. One step can be a soft background in light mode and a text color in dark mode at the same time.",
-          "why": "A change made for one use moves every other use of that step too.",
-          "from": ["OD-223", "OD-231"]
+          "why": "A change made for one use moves every other use of that step too."
         },
         {
           "id": "more-color-before-darker",
           "when": "A step looks washed out or greyish.",
           "do": "OKLCH gives a step three dials: lightness, colorfulness and hue. Turn colorfulness first. If that is not enough, make it a little darker. Turn the hue last.",
-          "why": "Darkening a pale color makes it grayer, not more colorful. How colorful it is decides whether people recognize it.",
-          "from": ["OD-231"]
+          "why": "Darkening a pale color makes it grayer, not more colorful. How colorful it is decides whether people recognize it."
         },
         {
           "id": "pale-blue-and-red",
           "when": "You make a very pale step more colorful.",
           "do": "Expect blue and red to need a touch of darkening before they can take more color. Green and yellow usually take it as they are.",
-          "why": "Screens can show only so much color in very pale steps, and blue and red run out of room first.",
-          "from": ["OD-231"]
+          "why": "Screens can show only so much color in very pale steps, and blue and red run out of room first."
         },
         {
           "id": "colored-text-must-look-colored",
           "when": "Text is set in a color, like an error message or a status label.",
           "do": "Make sure it is easy to read and also clearly that color. Text that is readable but looks white has lost its meaning.",
-          "measure": "The harness checks that status text on dark backgrounds is clearly colored and easy to read, in every scheme.",
-          "why": "The color tells people what kind of message it is before they read a word.",
-          "from": ["OD-231"]
+          "measure": "Status text on dark backgrounds is clearly colored and easy to read, in every scheme.",
+          "why": "The color tells people what kind of message it is before they read a word."
         },
         {
           "id": "change-a-little",
           "when": "You decide how much to change.",
           "do": "Change as little as solves the problem. Then compare it with the original side by side, in light and dark mode, and ease it back if it stands out.",
-          "why": "A big change makes the step look like it belongs to another color.",
-          "from": ["OD-231"]
+          "why": "A big change makes the step look like it belongs to another color."
         },
         {
           "id": "fix-it-once",
           "when": "The same problem shows up in several schemes.",
           "do": "If the schemes use the same color, fix it once for all of them. Fix one scheme alone only when its color is different.",
-          "why": "The same blue is the same color wherever it is used, so it has the same problem everywhere.",
-          "from": ["OD-231"]
+          "why": "The same blue is the same color wherever it is used, so it has the same problem everywhere."
         },
         {
           "id": "same-fix-everywhere-is-a-new-rule",
           "when": "Every color seems to need the same fix.",
           "do": "Change how all the scales are made, instead of fixing each color one by one.",
-          "why": "A fix is for an exception. When every color needs it, the rule itself is what needs to change.",
-          "from": ["OD-223"]
+          "why": "A fix is for an exception. When every color needs it, the rule itself is what needs to change."
         },
         {
           "id": "say-why",
           "when": "You have changed a step.",
           "do": "Write down why, in a sentence anyone can follow. \"It looked too pale on dark backgrounds\" is a good reason.",
-          "why": "Whoever comes next can keep the change, adjust it, or undo it on purpose.",
-          "from": ["OD-223", "OD-231"]
+          "why": "Whoever comes next can keep the change, adjust it, or undo it on purpose."
         },
         {
           "id": "apart-where-they-meet",
           "when": "Two colors must never be confused, like the main button and a delete button.",
           "do": "Decide how different they must be from where they appear together, not from one number for every case.",
-          "why": "Colors side by side need more difference than colors that never meet.",
-          "from": ["OD-225"]
+          "why": "Colors side by side need more difference than colors that never meet."
         }
       ]
     },
@@ -1513,22 +1501,19 @@
           "id": "never-a-number",
           "when": "Before you write any spacing.",
           "do": "Never write a spacing as a number: not p-6, not gap-1.5, not p-[10px]. Every spacing has a name. Between things and on the page, use a role: gap-tight, gap-default, gap-group, gap-section, p-container, px-control, px-cell. Inside a component of your own, use a step of the component spacing map: gap-map-x2, p-map-x6.",
-          "why": "A number looks right in one scheme and wrong in the next. A name follows the scheme, so the screen keeps its density in every scheme.",
-          "from": ["OD-235"]
+          "why": "A number looks right in one scheme and wrong in the next. A name follows the scheme, so the screen keeps its density in every scheme."
         },
         {
           "id": "what-the-map-is",
           "when": "When you space the inside of a component.",
           "do": "The component spacing map is the steps components space by. Each step is 4px × its multiplier (x1, x2, x3, x4, x6, x8, x12) × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. A compact scheme has rhythm 1 and a spacious one up to 2, so a dialog's padding (x6) is 24px in one and 48px in the other. The scheme decides which steps hold still: x1 and x2 are the fine spacing inside rows, so lists stay lists in a roomy scheme. The hairline is a fixed 2px nudge. Pick the step nearest the space you want.",
-          "why": "One unit keeps everything on one grid; the rhythm lets each scheme decide how roomy its components are.",
-          "from": ["OD-235"]
+          "why": "One unit keeps everything on one grid; the rhythm lets each scheme decide how roomy its components are."
         },
         {
           "id": "rhythm-is-the-scheme",
           "when": "When one component looks too tight or too loose.",
           "do": "Don't change the rhythm to fix one component. The rhythm is the whole scheme's density. Pick another step for that spacing instead, or ask for a new role if the same spacing repeats across components.",
-          "why": "A rhythm change moves every component in the scheme at once.",
-          "from": ["OD-235"]
+          "why": "A rhythm change moves every component in the scheme at once."
         }
       ]
     },
@@ -2717,13 +2702,7 @@
       "kind": "scope",
       "title": "Accessibility",
       "description": "Floors the system must hold.",
-      "owns": [
-        "size.control",
-        "opacity",
-        "color.border.focus",
-        "focus",
-        "size.hit-area"
-      ],
+      "owns": ["size.control", "color.border.focus", "focus", "size.hit-area"],
       "lands_in": [
         "accordion",
         "alert-dialog",
@@ -3843,7 +3822,6 @@
         "button/font-family",
         "button/focus",
         "button/focus-ring-offset",
-        "button/canvas",
         "button/secondary/border-width",
         "button/compact/height",
         "button/compact/padding-x",
@@ -3872,22 +3850,10 @@
         "input/border-width",
         "input/focus",
         "input/focus-ring-offset",
-        "input/canvas",
         "input/border/invalid",
-        "input/danger",
         "input/focus-offset",
         "input/duration",
         "input/easing"
-      ]
-    },
-    {
-      "id": "control",
-      "description": "Shared keys for checkbox and switch.",
-      "keys": [
-        "control/checked",
-        "control/track",
-        "control/thumb",
-        "control/radius"
       ]
     },
     {
@@ -3963,10 +3929,7 @@
       "description": "Switches between views.",
       "keys": [
         "tabs/trigger/edge/current",
-        "tabs/indicator",
         "tabs/trigger/label",
-        "tabs/label/@",
-        "tabs/label/active",
         "tabs/list/gap",
         "tabs/list/border-width",
         "tabs/list/border",
@@ -3975,9 +3938,7 @@
         "tabs/trigger/font-size",
         "tabs/trigger/font-weight",
         "tabs/trigger/focus-width",
-        "tabs/focus",
         "tabs/trigger/focus-ring-offset",
-        "tabs/canvas",
         "tabs/content/padding-top",
         "tabs/trigger/focus-offset",
         "tabs/trigger/edge-width",
@@ -3993,12 +3954,9 @@
         "overlay/background",
         "overlay/radius",
         "overlay/shadow",
-        "overlay/scrim",
         "overlay/item-height",
         "tooltip/content/background",
-        "tooltip/background",
         "tooltip/content/label",
-        "tooltip/label",
         "overlay/offset"
       ]
     },
@@ -4020,7 +3978,6 @@
       "description": "Stacked sections that open one at a time.",
       "keys": [
         "accordion/item/divider/@",
-        "accordion/divider",
         "accordion/trigger/label",
         "accordion/trigger/font-size",
         "accordion/trigger/font-weight",
@@ -4028,11 +3985,7 @@
         "accordion/trigger/gap",
         "accordion/trigger/radius",
         "accordion/trigger/focus-ring/@",
-        "accordion/focus-ring/@",
         "accordion/trigger/focus-ring/width",
-        "accordion/focus-ring/width",
-        "accordion/trigger/disabled/opacity",
-        "accordion/disabled/opacity",
         "accordion/icon/@",
         "accordion/icon/size",
         "accordion/icon/duration",
@@ -4040,7 +3993,6 @@
         "accordion/content/padding-bottom",
         "accordion/trigger/focus-ring-offset-focus",
         "accordion/trigger/focus-offset",
-        "accordion/focus-offset",
         "accordion/item/divider/width",
         "accordion/trigger/disabled/label"
       ]
@@ -4116,21 +4068,13 @@
         "attachment/focus-ring-focus",
         "attachment/focus-ring-offset-focus",
         "attachment/media/size",
-        "attachment/size",
         "attachment/media/radius",
-        "attachment/radius-2",
         "attachment/media/background",
-        "attachment/background-2",
         "attachment/media/icon/size",
-        "attachment/icon-size",
         "attachment/meta/label",
-        "attachment/label",
         "attachment/name/font-weight",
-        "attachment/font-weight",
         "attachment/meta/font-size",
-        "attachment/font-size-2",
         "attachment/meta/line-height",
-        "attachment/line-height-2",
         "attachment/focus-offset",
         "attachment/border",
         "attachment/border-width",
@@ -4149,16 +4093,12 @@
         "avatar/fallback/line-height",
         "avatar/fallback/label",
         "avatar/fallback/sm/font-size",
-        "avatar/fallback/font-size-2",
         "avatar/fallback/sm/line-height",
-        "avatar/fallback/line-height-2",
         "avatar/badge/radius",
         "avatar/badge/background",
         "avatar/badge/label",
         "avatar/badge/ring",
-        "avatar/badge/focus-ring",
         "avatar/group/ring",
-        "avatar/group/focus-ring",
         "avatar/group/count/size",
         "avatar/group/count/radius",
         "avatar/group/count/background",
@@ -4166,7 +4106,6 @@
         "avatar/group/count/line-height",
         "avatar/group/count/label",
         "avatar/group/count/ring",
-        "avatar/group/count/focus-ring",
         "avatar/group/count/icon-size",
         "avatar/badge/ring-width",
         "avatar/group/ring-width",
@@ -4183,13 +4122,11 @@
         "breadcrumb/list/line-height",
         "breadcrumb/list/label",
         "breadcrumb/list/wide/gap",
-        "breadcrumb/list/gap-2",
         "breadcrumb/item/gap",
         "breadcrumb/link/label-hover",
         "breadcrumb/page/font-weight",
         "breadcrumb/page/label",
         "breadcrumb/ellipsis/icon-size",
-        "breadcrumb/icon-size",
         "breadcrumb/separator/icon-size",
         "breadcrumb/link/duration",
         "breadcrumb/link/easing",
@@ -4204,20 +4141,13 @@
       "description": "The bubble component.",
       "keys": [
         "bubble/body/them/background",
-        "bubble/them/background",
         "bubble/body/them/label",
-        "bubble/them/label",
         "bubble/body/me/background",
-        "bubble/me/background",
         "bubble/body/me/label",
-        "bubble/me/label",
         "bubble/gap",
         "bubble/byline/font-size",
-        "bubble/font-size",
         "bubble/byline/line-height",
-        "bubble/line-height",
         "bubble/byline/label",
-        "bubble/label",
         "bubble/body/radius",
         "bubble/body/padding-x",
         "bubble/body/padding-y",
@@ -4251,7 +4181,6 @@
         "calendar/padding",
         "calendar/gap",
         "calendar/gap-2",
-        "calendar/disabled-opacity-disabled",
         "calendar/gap-3",
         "calendar/font-size",
         "calendar/line-height",
@@ -4270,21 +4199,12 @@
         "calendar/label",
         "calendar/font-weight-2",
         "calendar/day/range/background",
-        "calendar/background-3",
         "calendar/day/range/label",
-        "calendar/label-2",
-        "calendar/label-selected",
-        "calendar/day/disabled-opacity",
-        "calendar/disabled-opacity",
         "calendar/icon-size",
         "calendar/day/range-ends/background",
-        "calendar/background-4",
         "calendar/day/range-ends/label",
-        "calendar/label-3",
         "calendar/day/selected/background",
-        "calendar/background-selected",
         "calendar/day/selected/label",
-        "calendar/label-selected-2",
         "calendar/font-size-2",
         "calendar/line-height-2",
         "calendar/focus-offset",
@@ -4315,34 +4235,22 @@
         "chart/font-size",
         "chart/line-height",
         "chart/axis/label",
-        "chart/icon",
         "chart/grid/line",
-        "chart/icon-2",
         "chart/track/fill",
-        "chart/icon-3",
         "chart/font-weight",
         "chart/gap",
         "chart/tooltip/radius",
-        "chart/radius",
         "chart/tooltip/border",
-        "chart/border",
         "chart/tooltip/background",
-        "chart/background",
         "chart/tooltip/padding-x",
-        "chart/padding-x",
         "chart/tooltip/padding-y",
-        "chart/padding-y",
         "chart/tooltip/shadow",
-        "chart/shadow",
         "chart/gap-2",
         "chart/label",
         "chart/label-2",
         "chart/legend/gap",
-        "chart/gap-3",
         "chart/legend/padding-bottom",
-        "chart/padding-bottom",
         "chart/legend/padding-top",
-        "chart/padding-top",
         "chart/cursor/fill",
         "chart/cursor/line",
         "chart/tooltip/border-width",
@@ -4358,9 +4266,7 @@
         "checkbox/size",
         "checkbox/border-width",
         "checkbox/focus",
-        "checkbox/disabled",
         "checkbox/focus-ring-offset",
-        "checkbox/canvas",
         "checkbox/focus-offset",
         "checkbox/focus-ring",
         "checkbox/background/@",
@@ -4386,12 +4292,9 @@
         "combobox/content/label",
         "combobox/content/shadow",
         "combobox/content/border",
-        "combobox/content/focus-ring",
         "combobox/input/height",
-        "combobox/content/height",
         "combobox/input/border",
         "combobox/input/background",
-        "combobox/content/background-2",
         "combobox/list/padding",
         "combobox/item/gap",
         "combobox/item/radius",
@@ -4401,10 +4304,7 @@
         "combobox/item/font-size",
         "combobox/item/line-height",
         "combobox/item/background/highlight",
-        "combobox/item/background/@",
         "combobox/item/label/highlight",
-        "combobox/item/label/@",
-        "combobox/item/disabled-opacity-disabled",
         "combobox/item/icon-size",
         "combobox/icon-size",
         "combobox/label/padding-x",
@@ -4430,7 +4330,6 @@
         "combobox/chips/shadow",
         "combobox/chips/border-focus",
         "combobox/chips/focus-ring/highlight",
-        "combobox/chips/focus-ring-focus",
         "combobox/chips/border-invalid",
         "combobox/chips/focus-ring-invalid",
         "combobox/chips/padding-x-2",
@@ -4442,8 +4341,6 @@
         "combobox/chip/line-height",
         "combobox/chip/font-weight",
         "combobox/chip/label",
-        "combobox/chip/disabled-opacity",
-        "combobox/disabled-opacity",
         "combobox/content/border-width",
         "combobox/chips/focus-width",
         "combobox/chips/border-width",
@@ -4475,13 +4372,11 @@
         "command/input/wrapper/gap",
         "command/input/wrapper/padding-x",
         "command/icon-size",
-        "command/disabled-opacity",
         "command/input/radius",
         "command/input/padding-y",
         "command/input/font-size",
         "command/input/line-height",
         "command/input/label-placeholder",
-        "command/input/disabled-opacity-disabled",
         "command/empty/padding-y",
         "command/empty/font-size",
         "command/empty/line-height",
@@ -4500,14 +4395,10 @@
         "command/item/padding-y",
         "command/item/font-size",
         "command/item/line-height",
-        "command/item/disabled-opacity-disabled",
         "command/item/background/highlight",
-        "command/item/background-selected",
         "command/item/label/highlight",
-        "command/item/label-selected",
         "command/item/icon-size",
         "command/item/icon",
-        "command/item/label/@",
         "command/shortcut/font-size",
         "command/shortcut/line-height",
         "command/shortcut/label",
@@ -4530,14 +4421,12 @@
         "context-menu/sub/trigger/font-size",
         "context-menu/sub/trigger/line-height",
         "context-menu/sub/trigger/background/highlight",
-        "context-menu/sub/trigger/background-focus",
         "context-menu/sub/trigger/label-focus",
         "context-menu/sub/trigger/padding-left",
         "context-menu/sub/trigger/background/open",
         "context-menu/sub/trigger/label-open",
         "context-menu/sub/trigger/icon-size",
         "context-menu/sub/trigger/icon",
-        "context-menu/sub/trigger/label",
         "context-menu/sub/content/radius",
         "context-menu/sub/content/background",
         "context-menu/sub/content/padding",
@@ -4555,19 +4444,13 @@
         "context-menu/item/font-size",
         "context-menu/item/line-height",
         "context-menu/item/background/highlight",
-        "context-menu/item/background-focus",
         "context-menu/item/label-focus",
-        "context-menu/item/disabled-opacity-disabled",
         "context-menu/item/padding-left",
         "context-menu/item/label/destructive",
-        "context-menu/item/label/@",
         "context-menu/item/background/destructive-highlight",
-        "context-menu/item/background-focus-2",
         "context-menu/item/label/destructive-highlight",
-        "context-menu/item/label-focus-2",
         "context-menu/item/icon-size",
         "context-menu/item/icon",
-        "context-menu/item/label-2",
         "context-menu/checkbox/item/gap",
         "context-menu/checkbox/item/radius",
         "context-menu/checkbox/item/padding-y",
@@ -4576,9 +4459,7 @@
         "context-menu/checkbox/item/font-size",
         "context-menu/checkbox/item/line-height",
         "context-menu/checkbox/item/background/highlight",
-        "context-menu/checkbox/item/background-focus",
         "context-menu/checkbox/item/label-focus",
-        "context-menu/checkbox/item/disabled-opacity-disabled",
         "context-menu/checkbox/item/icon-size",
         "context-menu/icon-size",
         "context-menu/radio/item/gap",
@@ -4589,9 +4470,7 @@
         "context-menu/radio/item/font-size",
         "context-menu/radio/item/line-height",
         "context-menu/radio/item/background/highlight",
-        "context-menu/radio/item/background-focus",
         "context-menu/radio/item/label-focus",
-        "context-menu/radio/item/disabled-opacity-disabled",
         "context-menu/radio/item/icon-size",
         "context-menu/label/padding-x",
         "context-menu/label/padding-y",
@@ -4627,7 +4506,6 @@
         "data-table/padding-x",
         "data-table/padding-y",
         "data-table/row/background/hover",
-        "data-table/background-hover",
         "data-table/label",
         "data-table/container/border",
         "data-table/container/border-width",
@@ -4647,31 +4525,18 @@
         "dialog/content/padding",
         "dialog/content/label",
         "dialog/content/border-width",
-        "dialog/border-width",
         "dialog/content/border",
-        "dialog/border",
         "dialog/close/radius",
-        "dialog/radius",
         "dialog/close/padding",
-        "dialog/padding",
         "dialog/description/label",
-        "dialog/label",
         "dialog/close/background/hover",
-        "dialog/sunken",
         "dialog/close/icon-size",
-        "dialog/size",
         "dialog/header/gap",
-        "dialog/gap",
         "dialog/footer/gap",
-        "dialog/gap-2",
         "dialog/title/font-family",
-        "dialog/font-family",
         "dialog/title/font-size",
-        "dialog/font-size",
         "dialog/title/font-weight",
-        "dialog/font-weight",
         "dialog/description/font-size",
-        "dialog/font-size-2",
         "dialog/content/radius",
         "dialog/content/shadow",
         "dialog/content/background",
@@ -4692,9 +4557,7 @@
         "drawer/overlay/background",
         "drawer/content/background",
         "drawer/handle/radius",
-        "drawer/radius",
         "drawer/handle/background",
-        "drawer/background",
         "drawer/header/gap",
         "drawer/header/padding",
         "drawer/header/gap-2",
@@ -4728,13 +4591,9 @@
         "dropdown-menu/item/radius",
         "dropdown-menu/item/font-size",
         "dropdown-menu/item/background/highlight",
-        "dropdown-menu/item/sunken",
-        "dropdown-menu/item/disabled",
         "dropdown-menu/item/icon",
         "dropdown-menu/item/label/destructive",
-        "dropdown-menu/label",
         "dropdown-menu/separator/background",
-        "dropdown-menu/background",
         "dropdown-menu/separator/margin-y",
         "dropdown-menu/separator/thickness",
         "dropdown-menu/item/disabled-label"
@@ -4780,11 +4639,8 @@
         "field/label-invalid",
         "field/content/gap",
         "field/label/gap",
-        "field/label/disabled-opacity-disabled",
         "field/label/radius",
         "field/label/padding",
-        "field/border-checked",
-        "field/background-checked",
         "field/label/font-size",
         "field/label/line-height",
         "field/label/font-weight",
@@ -4796,10 +4652,7 @@
         "field/separator/font-size",
         "field/separator/line-height",
         "field/separator-content/background",
-        "field/background",
         "field/separator-content/padding-x",
-        "field/padding-x",
-        "field/label",
         "field/gap-2",
         "field/error/font-size",
         "field/error/line-height",
@@ -4867,53 +4720,31 @@
       "keys": [
         "input-group/radius",
         "input-group/border/@",
-        "input-group/shadow",
         "input-group/padding-left",
         "input-group/padding-right",
         "input-group/padding-bottom",
         "input-group/padding-top",
         "input-group/border/focus",
-        "input-group/border-2",
         "input-group/focus-ring/highlight",
-        "input-group/focus-ring/@",
         "input-group/border-invalid",
         "input-group/focus-ring-invalid",
         "input-group/addon/gap",
-        "input-group/gap",
         "input-group/addon/padding-y",
-        "input-group/padding-y",
         "input-group/addon/font-size",
-        "input-group/font-size",
         "input-group/addon/line-height",
-        "input-group/line-height",
         "input-group/addon/font-weight",
-        "input-group/font-weight",
         "input-group/addon/label",
-        "input-group/label",
-        "input-group/addon/disabled-opacity-disabled",
-        "input-group/disabled-opacity-disabled",
         "input-group/addon/icon-size",
-        "input-group/icon-size",
         "input-group/addon/inline/start/padding-left",
-        "input-group/inline/start/padding-left",
         "input-group/addon/inline/end/padding-right",
-        "input-group/inline/end/padding-right",
         "input-group/addon/block/start/padding-x",
-        "input-group/block/start/padding-x",
         "input-group/addon/block/start/padding-top",
-        "input-group/block/start/padding-top",
         "input-group/addon/block/start/padding-top-2",
-        "input-group/block/start/padding-top-2",
         "input-group/addon/block/start/padding-bottom",
-        "input-group/block/start/padding-bottom",
         "input-group/addon/block/end/padding-x",
-        "input-group/block/end/padding-x",
         "input-group/addon/block/end/padding-bottom",
-        "input-group/block/end/padding-bottom",
         "input-group/addon/block/end/padding-bottom-2",
-        "input-group/block/end/padding-bottom-2",
         "input-group/addon/block/end/padding-top",
-        "input-group/block/end/padding-top",
         "input-group/xs/height",
         "input-group/xs/gap",
         "input-group/xs/padding-x",
@@ -4948,23 +4779,16 @@
       "description": "The input otp component.",
       "keys": [
         "input-otp/gap",
-        "input-otp/disabled-opacity",
         "input-otp/slot/border/@",
         "input-otp/slot/font-size",
         "input-otp/slot/line-height",
-        "input-otp/slot/shadow",
         "input-otp/slot/border-invalid",
         "input-otp/slot/border/highlight",
-        "input-otp/slot/border-2",
         "input-otp/slot/focus-ring/highlight",
-        "input-otp/slot/focus-ring/@",
         "input-otp/slot/focus-ring-invalid",
         "input-otp/caret/height",
-        "input-otp/height",
         "input-otp/caret/background",
-        "input-otp/background",
         "input-otp/caret/duration",
-        "input-otp/duration",
         "input-otp/slot/border-width",
         "input-otp/slot/radius",
         "input-otp/slot/focus-width",
@@ -5002,17 +4826,11 @@
         "item/sm/padding-x",
         "item/sm/padding-y",
         "item/media/gap",
-        "item/gap",
         "item/media/icon/size",
-        "item/icon/size",
         "item/media/icon/radius",
-        "item/icon/radius",
         "item/media/icon/background",
-        "item/icon/background",
         "item/media/icon/icon-size",
-        "item/icon/icon-size",
         "item/media/image/radius",
-        "item/image/radius",
         "item/content/gap",
         "item/title/gap",
         "item/title/font-size",
@@ -5046,9 +4864,7 @@
         "kbd/font-weight",
         "kbd/label",
         "kbd/inverse/background",
-        "kbd/background-2",
         "kbd/inverse/label",
-        "kbd/label-2",
         "kbd/group/gap"
       ]
     },
@@ -5073,7 +4889,6 @@
         "marker/line-height",
         "marker/label",
         "marker/line/background",
-        "marker/background",
         "marker/line/thickness"
       ]
     },
@@ -5093,7 +4908,6 @@
         "menubar/trigger/line-height",
         "menubar/trigger/font-weight",
         "menubar/trigger/background/highlight",
-        "menubar/trigger/background-focus",
         "menubar/trigger/label-focus",
         "menubar/trigger/background/open",
         "menubar/trigger/label-open",
@@ -5109,19 +4923,13 @@
         "menubar/item/font-size",
         "menubar/item/line-height",
         "menubar/item/background/highlight",
-        "menubar/item/background-focus",
         "menubar/item/label-focus",
-        "menubar/item/disabled-opacity-disabled",
         "menubar/item/padding-left",
         "menubar/item/label/destructive",
-        "menubar/item/label/@",
         "menubar/item/background/destructive-highlight",
-        "menubar/item/background-focus-2",
         "menubar/item/label/destructive-highlight",
-        "menubar/item/label-focus-2",
         "menubar/item/icon-size",
         "menubar/item/icon",
-        "menubar/item/label-2",
         "menubar/checkbox/item/gap",
         "menubar/checkbox/item/radius",
         "menubar/checkbox/item/padding-y",
@@ -5130,9 +4938,7 @@
         "menubar/checkbox/item/font-size",
         "menubar/checkbox/item/line-height",
         "menubar/checkbox/item/background/highlight",
-        "menubar/checkbox/item/background-focus",
         "menubar/checkbox/item/label-focus",
-        "menubar/checkbox/item/disabled-opacity-disabled",
         "menubar/checkbox/item/icon-size",
         "menubar/icon-size",
         "menubar/radio/item/gap",
@@ -5143,9 +4949,7 @@
         "menubar/radio/item/font-size",
         "menubar/radio/item/line-height",
         "menubar/radio/item/background/highlight",
-        "menubar/radio/item/background-focus",
         "menubar/radio/item/label-focus",
-        "menubar/radio/item/disabled-opacity-disabled",
         "menubar/radio/item/icon-size",
         "menubar/label/padding-x",
         "menubar/label/padding-y",
@@ -5163,7 +4967,6 @@
         "menubar/sub/trigger/font-size",
         "menubar/sub/trigger/line-height",
         "menubar/sub/trigger/background/highlight",
-        "menubar/sub/trigger/background-focus",
         "menubar/sub/trigger/label-focus",
         "menubar/sub/trigger/padding-left",
         "menubar/sub/trigger/background/open",
@@ -5209,9 +5012,7 @@
         "message/font-size",
         "message/line-height",
         "message/content/gap",
-        "message/gap-2",
         "message/header/gap",
-        "message/gap-x",
         "message/author/font-weight",
         "message/time/font-size",
         "message/time/line-height",
@@ -5222,8 +5023,6 @@
       "id": "native-select",
       "description": "The native select component.",
       "keys": [
-        "native-select/wrapper/disabled-opacity",
-        "native-select/disabled-opacity",
         "native-select/radius",
         "native-select/border",
         "native-select/padding-x",
@@ -5231,15 +5030,11 @@
         "native-select/padding-right",
         "native-select/font-size",
         "native-select/line-height",
-        "native-select/shadow",
         "native-select/selection/background",
-        "native-select/background",
         "native-select/selection/label",
-        "native-select/label",
         "native-select/label-placeholder",
         "native-select/height",
         "native-select/sm/padding-y",
-        "native-select/padding-y-2",
         "native-select/border-focus",
         "native-select/focus",
         "native-select/focus-ring-focus",
@@ -5248,7 +5043,6 @@
         "native-select/focus-ring-invalid",
         "native-select/icon-size",
         "native-select/icon/label",
-        "native-select/label-2",
         "native-select/focus-offset",
         "native-select/border-width",
         "native-select/sm/height",
@@ -5268,52 +5062,29 @@
       "keys": [
         "navigation-menu/list/gap",
         "navigation-menu/trigger/radius",
-        "navigation-menu/radius",
         "navigation-menu/trigger/background/@",
-        "navigation-menu/background",
         "navigation-menu/trigger/padding-x",
-        "navigation-menu/padding-x",
         "navigation-menu/trigger/padding-y",
-        "navigation-menu/padding-y",
         "navigation-menu/trigger/font-size",
-        "navigation-menu/font-size",
         "navigation-menu/trigger/line-height",
-        "navigation-menu/line-height",
         "navigation-menu/trigger/font-weight",
-        "navigation-menu/font-weight",
         "navigation-menu/trigger/background/hover",
-        "navigation-menu/background-hover",
         "navigation-menu/trigger/label/hover",
-        "navigation-menu/label-hover",
         "navigation-menu/trigger/background/highlight",
-        "navigation-menu/background-focus",
         "navigation-menu/trigger/label/highlight",
-        "navigation-menu/label-focus",
-        "navigation-menu/trigger/disabled-opacity",
-        "navigation-menu/disabled-opacity-disabled",
         "navigation-menu/trigger/background/open",
-        "navigation-menu/background-open",
         "navigation-menu/trigger/label/open",
-        "navigation-menu/label-open",
         "navigation-menu/trigger/background/open-hover",
-        "navigation-menu/background-open-hover",
         "navigation-menu/trigger/background/open-highlight",
-        "navigation-menu/background-open-focus",
         "navigation-menu/trigger/focus-width",
-        "navigation-menu/focus",
         "navigation-menu/trigger/focus-ring",
-        "navigation-menu/focus-ring-focus",
         "navigation-menu/trigger/focus-ring-offset",
-        "navigation-menu/focus-ring-offset-focus",
         "navigation-menu/duration",
         "navigation-menu/content/padding",
         "navigation-menu/content/padding-right",
         "navigation-menu/content/background",
-        "navigation-menu/background-2",
         "navigation-menu/content/label",
-        "navigation-menu/label",
         "navigation-menu/content/shadow",
-        "navigation-menu/shadow",
         "navigation-menu/viewport/radius",
         "navigation-menu/viewport/background",
         "navigation-menu/viewport/label",
@@ -5326,25 +5097,17 @@
         "navigation-menu/link/background/hover",
         "navigation-menu/link/label-hover",
         "navigation-menu/link/background/highlight",
-        "navigation-menu/link/background-focus",
         "navigation-menu/link/label-focus",
         "navigation-menu/link/background/current",
-        "navigation-menu/link/background/@",
         "navigation-menu/link/focus-width",
-        "navigation-menu/link/focus",
         "navigation-menu/link/edge/current",
-        "navigation-menu/link/selected",
         "navigation-menu/link/label/current",
-        "navigation-menu/link/label/@",
         "navigation-menu/link/icon-size",
         "navigation-menu/link/icon",
-        "navigation-menu/link/label-2",
         "navigation-menu/link/focus-ring-focus",
         "navigation-menu/link/focus-ring-offset-focus",
         "navigation-menu/indicator/background",
-        "navigation-menu/background-3",
         "navigation-menu/indicator/shadow",
-        "navigation-menu/shadow-2",
         "navigation-menu/trigger/focus-offset",
         "navigation-menu/link/focus-offset",
         "navigation-menu/content/radius",
@@ -5363,15 +5126,10 @@
       "keys": [
         "pagination/content/gap",
         "pagination/link/gap",
-        "pagination/gap",
         "pagination/link/padding-x",
-        "pagination/padding-x",
         "pagination/previous/padding-left",
-        "pagination/padding-left",
         "pagination/next/padding-right",
-        "pagination/padding-right",
-        "pagination/ellipsis/icon-size",
-        "pagination/icon-size"
+        "pagination/ellipsis/icon-size"
       ]
     },
     {
@@ -5413,7 +5171,6 @@
         "radio-group/item/label",
         "radio-group/item/shadow",
         "radio-group/item/border-focus",
-        "radio-group/item/disabled-opacity-disabled",
         "radio-group/item/border-invalid",
         "radio-group/item/focus-ring-invalid",
         "radio-group/item/focus",
@@ -5437,11 +5194,8 @@
         "resizable/handle/focus-ring-focus",
         "resizable/handle/focus-ring-offset-focus",
         "resizable/grip/height",
-        "resizable/height",
         "resizable/grip/radius",
-        "resizable/radius",
         "resizable/grip/background",
-        "resizable/background",
         "resizable/focus-offset",
         "resizable/handle/thickness",
         "resizable/grip/border-width",
@@ -5473,9 +5227,7 @@
         "select/trigger/font-family",
         "select/trigger/border-width",
         "select/trigger/focus-width",
-        "select/focus",
         "select/trigger/focus-ring-offset",
-        "select/canvas",
         "select/size",
         "select/content/padding",
         "select/content/label",
@@ -5487,8 +5239,6 @@
         "select/item/radius",
         "select/item/font-size",
         "select/item/background/highlight",
-        "select/item/sunken",
-        "select/item/disabled",
         "select/trigger/background",
         "select/trigger/border/@",
         "select/trigger/border/focus",
@@ -5521,17 +5271,11 @@
         "sheet/content/background",
         "sheet/content/shadow",
         "sheet/close/radius",
-        "sheet/radius",
         "sheet/close/focus-ring/offset-color",
-        "sheet/focus-ring-offset",
         "sheet/close/focus-ring/width",
-        "sheet/focus",
         "sheet/close/focus-ring/color",
-        "sheet/focus-ring-focus",
         "sheet/close/background/hover",
-        "sheet/background-open",
         "sheet/close/icon-size",
-        "sheet/icon-size",
         "sheet/header/gap",
         "sheet/header/padding",
         "sheet/footer/gap",
@@ -5561,15 +5305,12 @@
         "sidebar/gap/duration",
         "sidebar/container/duration",
         "sidebar/menu-button/padding",
-        "sidebar/padding",
         "sidebar/inner/background",
         "sidebar/inner/radius",
         "sidebar/inner/border",
         "sidebar/inner/shadow",
         "sidebar/rail/line/hover",
-        "sidebar/rail/background-hover",
         "sidebar/rail/background/hover",
-        "sidebar/background-hover",
         "sidebar/inset/background",
         "sidebar/inset/radius",
         "sidebar/inset/shadow",
@@ -5599,7 +5340,6 @@
         "sidebar/group/action/label",
         "sidebar/group/action/focus-ring",
         "sidebar/group/action/background/hover",
-        "sidebar/group/action/label-hover",
         "sidebar/group/action/icon-size",
         "sidebar/group/action/focus",
         "sidebar/group/action/focus-ring-focus",
@@ -5607,69 +5347,34 @@
         "sidebar/group/content/font-size",
         "sidebar/group/content/line-height",
         "sidebar/menu/gap",
-        "sidebar/gap",
         "sidebar/menu-button/radius",
-        "sidebar/radius",
         "sidebar/menu-button/font-size",
-        "sidebar/font-size",
         "sidebar/menu-button/line-height",
-        "sidebar/line-height",
-        "sidebar/focus-ring",
         "sidebar/menu-button/padding-right",
-        "sidebar/padding-right",
         "sidebar/menu-button/collapsed-size",
-        "sidebar/size",
         "sidebar/menu-button/background/hover",
-        "sidebar/background-hover-2",
-        "sidebar/label-hover",
         "sidebar/menu-button/background/pressed",
-        "sidebar/background-active",
-        "sidebar/label-active",
-        "sidebar/menu-button/opacity/disabled",
-        "sidebar/disabled-opacity-disabled",
         "sidebar/menu-button/background/current",
-        "sidebar/background-2",
         "sidebar/menu-button/font-weight/current",
-        "sidebar/font-weight",
         "sidebar/menu-button/focus-width",
-        "sidebar/focus",
         "sidebar/menu-button/edge/current",
-        "sidebar/selected",
         "sidebar/menu-button/background/open-hover",
-        "sidebar/background-open-hover",
-        "sidebar/label-open-hover",
         "sidebar/menu-button/icon-size",
-        "sidebar/icon-size",
         "sidebar/menu-button/focus-ring",
-        "sidebar/focus-ring-focus",
         "sidebar/menu-button/focus-ring-offset",
-        "sidebar/focus-ring-offset-focus",
-        "sidebar/default/background/hover",
-        "sidebar/default/label-hover",
         "sidebar/menu-button/outline/background/@",
-        "sidebar/outline/background/@",
         "sidebar/menu-button/outline/background/hover",
-        "sidebar/outline/background/hover",
-        "sidebar/outline/label-hover",
         "sidebar/menu-button/default/height",
-        "sidebar/default/height",
         "sidebar/menu-button/default/font-size",
-        "sidebar/default/font-size",
         "sidebar/menu-button/default/line-height",
-        "sidebar/default/line-height",
         "sidebar/menu-button/sm/font-size",
-        "sidebar/sm/font-size",
         "sidebar/menu-button/sm/line-height",
-        "sidebar/sm/line-height",
         "sidebar/menu-button/lg/font-size",
-        "sidebar/lg/font-size",
         "sidebar/menu-button/lg/line-height",
-        "sidebar/lg/line-height",
         "sidebar/menu/action/radius",
         "sidebar/menu/action/label",
         "sidebar/menu/action/focus-ring",
         "sidebar/menu/action/background/hover",
-        "sidebar/menu/action/label-hover",
         "sidebar/menu/action/icon-size",
         "sidebar/menu/action/focus",
         "sidebar/menu/action/focus-ring-focus",
@@ -5685,7 +5390,6 @@
         "sidebar/menu/skeleton/radius",
         "sidebar/menu/skeleton/padding-x",
         "sidebar/menu/skeleton/text-height",
-        "sidebar/height",
         "sidebar/menu/sub/gap",
         "sidebar/menu/sub/border",
         "sidebar/menu/sub/padding-x",
@@ -5696,19 +5400,13 @@
         "sidebar/menu/sub/button/label",
         "sidebar/menu/sub/button/focus-ring",
         "sidebar/menu/sub/button/background/hover",
-        "sidebar/menu/sub/button/label-hover",
         "sidebar/menu/sub/button/background/pressed",
-        "sidebar/menu/sub/button/background-active",
-        "sidebar/menu/sub/button/label-active",
-        "sidebar/menu/sub/button/disabled-opacity-disabled",
         "sidebar/menu/sub/button/icon-size",
         "sidebar/menu/sub/button/focus",
         "sidebar/menu/sub/button/focus-ring-focus",
         "sidebar/menu/sub/button/focus-ring-offset-focus",
         "sidebar/menu/sub/button/sm/font-size",
-        "sidebar/font-size-2",
         "sidebar/menu/sub/button/sm/line-height",
-        "sidebar/line-height-2",
         "sidebar/menu-button/focus-offset",
         "sidebar/container/padding",
         "sidebar/container/border",
@@ -5745,7 +5443,6 @@
       "id": "slider",
       "description": "The slider component.",
       "keys": [
-        "slider/disabled-opacity-disabled",
         "slider/track/radius",
         "slider/track/background",
         "slider/range/background",
@@ -5753,8 +5450,6 @@
         "slider/thumb/radius",
         "slider/thumb/border",
         "slider/thumb/shadow",
-        "slider/thumb/focus-ring",
-        "slider/thumb/disabled-opacity-disabled",
         "slider/thumb/focus",
         "slider/thumb/focus-ring-focus",
         "slider/thumb/focus-ring-offset-focus",
@@ -5776,18 +5471,10 @@
       "id": "switch",
       "description": "The switch component.",
       "keys": [
-        "switch/height",
-        "switch/width",
         "switch/radius",
-        "switch/padding",
         "switch/focus",
-        "switch/disabled",
         "switch/focus-ring-offset",
-        "switch/canvas",
         "switch/thumb/size",
-        "switch/size",
-        "switch/thumb/travel",
-        "switch/icon",
         "switch/focus-offset",
         "switch/focus-ring",
         "switch/thumb/radius",
@@ -5809,10 +5496,8 @@
         "textarea/padding-y",
         "textarea/font-size",
         "textarea/line-height",
-        "textarea/shadow",
         "textarea/label-placeholder",
         "textarea/border-focus",
-        "textarea/disabled-opacity-disabled",
         "textarea/border-invalid",
         "textarea/focus-ring-invalid",
         "textarea/focus",
@@ -5840,20 +5525,13 @@
         "toast/neutral/border",
         "toast/success/border",
         "toast/success/edge",
-        "toast/success/border-2",
         "toast/danger/border",
         "toast/danger/edge",
-        "toast/danger/border-2",
         "toast/content/gap",
-        "toast/gap-2",
         "toast/title/font-weight",
-        "toast/font-weight",
         "toast/title/font-size",
-        "toast/font-size",
         "toast/description/label",
-        "toast/label-2",
         "toast/description/font-size",
-        "toast/font-size-2",
         "toast/background",
         "toast/radius",
         "toast/shadow"
@@ -5880,13 +5558,8 @@
         "toggle/line-height",
         "toggle/font-weight",
         "toggle/background/hover",
-        "toggle/label-hover",
-        "toggle/border-focus",
-        "toggle/disabled-opacity-disabled",
         "toggle/border-invalid",
-        "toggle/focus-ring-invalid",
         "toggle/background/on",
-        "toggle/label-on",
         "toggle/icon-size",
         "toggle/focus",
         "toggle/focus-ring-focus",
@@ -5894,7 +5567,6 @@
         "toggle/outline/border",
         "toggle/outline/shadow",
         "toggle/outline/background/hover",
-        "toggle/outline/label-hover",
         "toggle/default/padding-x",
         "toggle/sm/height",
         "toggle/sm/padding-x",
@@ -6078,13 +5750,6 @@
       "default": "focus.ring.width"
     },
     {
-      "id": "button/canvas",
-      "component": "button",
-      "description": "Deprecated: use button/focus-ring-offset (OD-243). Canvas of the button.",
-      "default": "color.surface.canvas",
-      "replaced_by": "button/focus-ring-offset"
-    },
-    {
       "id": "button/compact/height",
       "component": "button",
       "description": "Compact height of the button.",
@@ -6217,20 +5882,6 @@
       "default": "focus.ring.width"
     },
     {
-      "id": "input/canvas",
-      "component": "input",
-      "description": "Deprecated: use input/focus-ring-offset (OD-243). Canvas of the input.",
-      "default": "color.surface.canvas",
-      "replaced_by": "input/focus-ring-offset"
-    },
-    {
-      "id": "input/danger",
-      "component": "input",
-      "description": "Deprecated: use input/border/invalid (OD-243). Danger of the input.",
-      "default": "color.status.danger.@",
-      "replaced_by": "input/border/invalid"
-    },
-    {
       "id": "input/focus-offset",
       "component": "input",
       "description": "Gap between the input and its focus ring.",
@@ -6253,34 +5904,6 @@
       "component": "input",
       "description": "Easing of the input's state changes: the feedback easing.",
       "default": "motion.easing.standard"
-    },
-    {
-      "id": "control/checked",
-      "component": "control",
-      "description": "Deprecated: use checkbox/background/checked (OD-243). Fill of a checked checkbox or an on switch.",
-      "default": "color.action.primary.@",
-      "replaced_by": "checkbox/background/checked"
-    },
-    {
-      "id": "control/track",
-      "component": "control",
-      "description": "Deprecated: use switch/track/background/@ (OD-243). Track of an off switch.",
-      "default": "color.border.strong",
-      "replaced_by": "switch/track/background/@"
-    },
-    {
-      "id": "control/thumb",
-      "component": "control",
-      "description": "Deprecated: use switch/thumb/background (OD-243). Switch thumb and checkmark color.",
-      "default": "color.surface.default",
-      "replaced_by": "switch/thumb/background"
-    },
-    {
-      "id": "control/radius",
-      "component": "control",
-      "description": "Deprecated: use checkbox/radius (OD-243). Checkbox corner radius.",
-      "default": "radius.badge",
-      "replaced_by": "checkbox/radius"
     },
     {
       "id": "badge/radius",
@@ -6583,27 +6206,6 @@
       "default": "type.data.font-family"
     },
     {
-      "id": "tabs/indicator",
-      "component": "tabs",
-      "description": "Deprecated: use tabs/trigger/edge/current (OD-243). Active tab indicator.",
-      "default": "color.action.primary.@",
-      "replaced_by": "tabs/trigger/edge/current"
-    },
-    {
-      "id": "tabs/label/@",
-      "component": "tabs",
-      "description": "Deprecated: use tabs/trigger/label (OD-243). Inactive tab label.",
-      "default": "color.text.secondary",
-      "replaced_by": "tabs/trigger/label"
-    },
-    {
-      "id": "tabs/label/active",
-      "component": "tabs",
-      "description": "Deprecated: use tabs/trigger/label (OD-243). Active tab label.",
-      "default": "color.text.primary",
-      "replaced_by": "tabs/trigger/label"
-    },
-    {
       "id": "tabs/list/gap",
       "component": "tabs",
       "description": "Gap between the tab triggers in the list. The triggers carry their own padding, so the gap is the tight step between related controls.",
@@ -6700,20 +6302,6 @@
       "default": "color.border.focus"
     },
     {
-      "id": "tabs/focus",
-      "component": "tabs",
-      "description": "Deprecated: use tabs/trigger/focus-width (OD-243). Focus of the tabs.",
-      "default": "focus.ring.width",
-      "replaced_by": "tabs/trigger/focus-width"
-    },
-    {
-      "id": "tabs/canvas",
-      "component": "tabs",
-      "description": "Deprecated: use tabs/trigger/focus-ring-offset (OD-243). Canvas of the tabs.",
-      "default": "color.surface.canvas",
-      "replaced_by": "tabs/trigger/focus-ring-offset"
-    },
-    {
       "id": "tabs/content/padding-top",
       "component": "tabs",
       "description": "Content padding top of the tabs.",
@@ -6738,13 +6326,6 @@
       "default": "elevation.overlay"
     },
     {
-      "id": "overlay/scrim",
-      "component": "overlay",
-      "description": "Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog.",
-      "default": "color.surface.scrim",
-      "replaced_by": "dialog/overlay/background"
-    },
-    {
       "id": "overlay/item-height",
       "component": "overlay",
       "description": "Height of a menu item.",
@@ -6755,20 +6336,6 @@
       "component": "overlay",
       "description": "The gap between a trigger and the panel it opens: the same for every floating panel.",
       "default": "space.gap.tight"
-    },
-    {
-      "id": "tooltip/background",
-      "component": "overlay",
-      "description": "Deprecated: use tooltip/content/background (OD-243). Tooltip fill.",
-      "default": "color.surface.inverse",
-      "replaced_by": "tooltip/content/background"
-    },
-    {
-      "id": "tooltip/label",
-      "component": "overlay",
-      "description": "Deprecated: use tooltip/content/label (OD-243). Tooltip text.",
-      "default": "color.text.inverse",
-      "replaced_by": "tooltip/content/label"
     },
     {
       "id": "tooltip/content/radius",
@@ -6867,13 +6434,6 @@
       "default": "motion.duration.exit"
     },
     {
-      "id": "accordion/divider",
-      "component": "accordion",
-      "description": "Deprecated: use accordion/item/divider/@ (OD-243). The line between items.",
-      "default": "color.border.default",
-      "replaced_by": "accordion/item/divider/@"
-    },
-    {
       "id": "accordion/trigger/label",
       "component": "accordion",
       "description": "The trigger's text color.",
@@ -6916,13 +6476,6 @@
       "default": "color.surface.canvas"
     },
     {
-      "id": "accordion/trigger/disabled/opacity",
-      "component": "accordion",
-      "description": "Deprecated: use accordion/trigger/disabled/label (OD-297). How faint a disabled trigger is.",
-      "default": "opacity.disabled",
-      "replaced_by": "accordion/trigger/disabled/label"
-    },
-    {
       "id": "accordion/trigger/focus-ring/@",
       "component": "accordion",
       "description": "The trigger's focus ring color, at full strength.",
@@ -6939,27 +6492,6 @@
       "component": "accordion",
       "description": "Gap between the trigger and its focus ring.",
       "default": "focus.ring.offset"
-    },
-    {
-      "id": "accordion/focus-ring/@",
-      "component": "accordion",
-      "description": "Deprecated: use accordion/trigger/focus-ring/@ (OD-243). The focus ring's color.",
-      "default": "color.border.focus",
-      "replaced_by": "accordion/trigger/focus-ring/@"
-    },
-    {
-      "id": "accordion/focus-ring/width",
-      "component": "accordion",
-      "description": "Deprecated: use accordion/trigger/focus-ring/width (OD-243). The focus ring's width.",
-      "default": "focus.ring.width",
-      "replaced_by": "accordion/trigger/focus-ring/width"
-    },
-    {
-      "id": "accordion/disabled/opacity",
-      "component": "accordion",
-      "description": "Deprecated: use accordion/trigger/disabled/label (OD-243). How faint a disabled trigger is.",
-      "default": "opacity.disabled",
-      "replaced_by": "accordion/trigger/disabled/label"
     },
     {
       "id": "accordion/icon/@",
@@ -6990,13 +6522,6 @@
       "component": "accordion",
       "description": "Space below the content.",
       "default": "space.inset.container"
-    },
-    {
-      "id": "accordion/focus-offset",
-      "component": "accordion",
-      "description": "Deprecated: use accordion/trigger/focus-offset (OD-243). Gap between the accordion and its focus ring.",
-      "default": "focus.ring.offset",
-      "replaced_by": "accordion/trigger/focus-offset"
     },
     {
       "id": "accordion/item/divider/@",
@@ -7341,62 +6866,6 @@
       "default": "color.surface.canvas"
     },
     {
-      "id": "attachment/size",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/media/size (OD-243). Size of the attachment.",
-      "default": "size.control.default",
-      "replaced_by": "attachment/media/size"
-    },
-    {
-      "id": "attachment/radius-2",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/media/radius (OD-243). Radius 2 of the attachment.",
-      "default": "radius.badge",
-      "replaced_by": "attachment/media/radius"
-    },
-    {
-      "id": "attachment/background-2",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/media/background (OD-243). Background 2 of the attachment.",
-      "default": "color.surface.sunken",
-      "replaced_by": "attachment/media/background"
-    },
-    {
-      "id": "attachment/icon-size",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/media/icon/size (OD-243). Icon size of the attachment.",
-      "default": "size.icon",
-      "replaced_by": "attachment/media/icon/size"
-    },
-    {
-      "id": "attachment/label",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/meta/label (OD-243). Label of the attachment.",
-      "default": "color.text.muted",
-      "replaced_by": "attachment/meta/label"
-    },
-    {
-      "id": "attachment/font-weight",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/name/font-weight (OD-243). Font weight of the attachment.",
-      "default": "type.label.font-weight",
-      "replaced_by": "attachment/name/font-weight"
-    },
-    {
-      "id": "attachment/font-size-2",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/meta/font-size (OD-243). Font size 2 of the attachment.",
-      "default": "type.caption.font-size",
-      "replaced_by": "attachment/meta/font-size"
-    },
-    {
-      "id": "attachment/line-height-2",
-      "component": "attachment",
-      "description": "Deprecated: use attachment/meta/line-height (OD-243). Line height 2 of the attachment.",
-      "default": "type.caption.line-height",
-      "replaced_by": "attachment/meta/line-height"
-    },
-    {
       "id": "attachment/focus-offset",
       "component": "attachment",
       "description": "Gap between the attachment and its focus ring.",
@@ -7511,20 +6980,6 @@
       "default": "color.text.muted"
     },
     {
-      "id": "avatar/fallback/font-size-2",
-      "component": "avatar",
-      "description": "Deprecated: use avatar/fallback/sm/font-size (OD-243). Fallback font size 2 of the avatar.",
-      "default": "type.caption.font-size",
-      "replaced_by": "avatar/fallback/sm/font-size"
-    },
-    {
-      "id": "avatar/fallback/line-height-2",
-      "component": "avatar",
-      "description": "Deprecated: use avatar/fallback/sm/line-height (OD-243). Fallback line height 2 of the avatar.",
-      "default": "type.caption.line-height",
-      "replaced_by": "avatar/fallback/sm/line-height"
-    },
-    {
       "id": "avatar/fallback/sm/font-size",
       "component": "avatar",
       "description": "Font size of the fallback initials in a small avatar.",
@@ -7555,13 +7010,6 @@
       "default": "color.text.on-action"
     },
     {
-      "id": "avatar/badge/focus-ring",
-      "component": "avatar",
-      "description": "Deprecated: use avatar/badge/ring (OD-243). Badge focus ring of the avatar.",
-      "default": "color.surface.canvas",
-      "replaced_by": "avatar/badge/ring"
-    },
-    {
       "id": "avatar/badge/ring",
       "component": "avatar",
       "description": "Color of the ring that cuts the status badge out of the avatar: the page background, so the badge reads as a separate mark. Not a focus ring.",
@@ -7572,13 +7020,6 @@
       "component": "avatar",
       "description": "Width of the ring that cuts the status badge out of the avatar: a border, so it follows the scheme's border weight.",
       "default": "border-width.default"
-    },
-    {
-      "id": "avatar/group/focus-ring",
-      "component": "avatar",
-      "description": "Deprecated: use avatar/group/ring (OD-243). Group focus ring of the avatar.",
-      "default": "color.surface.canvas",
-      "replaced_by": "avatar/group/ring"
     },
     {
       "id": "avatar/group/count/size",
@@ -7615,13 +7056,6 @@
       "component": "avatar",
       "description": "Group count label of the avatar.",
       "default": "color.text.muted"
-    },
-    {
-      "id": "avatar/group/count/focus-ring",
-      "component": "avatar",
-      "description": "Deprecated: use avatar/group/count/ring (OD-243). Group count focus ring of the avatar.",
-      "default": "color.surface.canvas",
-      "replaced_by": "avatar/group/count/ring"
     },
     {
       "id": "avatar/group/count/icon-size",
@@ -7682,13 +7116,6 @@
       "component": "breadcrumb",
       "description": "List label of the breadcrumb.",
       "default": "color.text.muted"
-    },
-    {
-      "id": "breadcrumb/list/gap-2",
-      "component": "breadcrumb",
-      "description": "Deprecated: use breadcrumb/list/wide/gap (OD-243). List gap 2 of the breadcrumb.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "breadcrumb/list/wide/gap"
     },
     {
       "id": "breadcrumb/list/wide/gap",
@@ -7757,13 +7184,6 @@
       "default": "color.text.primary"
     },
     {
-      "id": "breadcrumb/icon-size",
-      "component": "breadcrumb",
-      "description": "Deprecated: use breadcrumb/ellipsis/icon-size (OD-243). Icon size of the breadcrumb.",
-      "default": "size.icon",
-      "replaced_by": "breadcrumb/ellipsis/icon-size"
-    },
-    {
       "id": "breadcrumb/ellipsis/icon-size",
       "component": "breadcrumb",
       "description": "Size of the ellipsis icon that stands for the hidden steps of the breadcrumb.",
@@ -7776,59 +7196,10 @@
       "default": "size.icon"
     },
     {
-      "id": "bubble/them/background",
-      "component": "bubble",
-      "description": "Deprecated: use bubble/body/them/background (OD-243). Them background of the bubble.",
-      "default": "color.surface.sunken",
-      "replaced_by": "bubble/body/them/background"
-    },
-    {
-      "id": "bubble/them/label",
-      "component": "bubble",
-      "description": "Deprecated: use bubble/body/them/label (OD-243). Them label of the bubble.",
-      "default": "color.text.primary",
-      "replaced_by": "bubble/body/them/label"
-    },
-    {
-      "id": "bubble/me/background",
-      "component": "bubble",
-      "description": "Deprecated: use bubble/body/me/background (OD-243). Me background of the bubble.",
-      "default": "color.action.primary.@",
-      "replaced_by": "bubble/body/me/background"
-    },
-    {
-      "id": "bubble/me/label",
-      "component": "bubble",
-      "description": "Deprecated: use bubble/body/me/label (OD-243). Me label of the bubble.",
-      "default": "color.text.on-action",
-      "replaced_by": "bubble/body/me/label"
-    },
-    {
       "id": "bubble/gap",
       "component": "bubble",
       "description": "Gap of the bubble.",
       "default": "space.gap.tight"
-    },
-    {
-      "id": "bubble/font-size",
-      "component": "bubble",
-      "description": "Deprecated: use bubble/byline/font-size (OD-243). Font size of the bubble.",
-      "default": "type.caption.font-size",
-      "replaced_by": "bubble/byline/font-size"
-    },
-    {
-      "id": "bubble/line-height",
-      "component": "bubble",
-      "description": "Deprecated: use bubble/byline/line-height (OD-243). Line height of the bubble.",
-      "default": "type.caption.line-height",
-      "replaced_by": "bubble/byline/line-height"
-    },
-    {
-      "id": "bubble/label",
-      "component": "bubble",
-      "description": "Deprecated: use bubble/byline/label (OD-243). Label of the bubble.",
-      "default": "color.text.muted",
-      "replaced_by": "bubble/byline/label"
     },
     {
       "id": "bubble/body/radius",
@@ -7999,13 +7370,6 @@
       "default": "space.gap.tight"
     },
     {
-      "id": "calendar/disabled-opacity-disabled",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/nav/disabled/icon (OD-297). Disabled opacity disabled of the calendar.",
-      "default": "opacity.disabled",
-      "replaced_by": "calendar/nav/disabled/icon"
-    },
-    {
       "id": "calendar/gap-3",
       "component": "calendar",
       "description": "Gap 3 of the calendar.",
@@ -8108,66 +7472,10 @@
       "default": "type.body.font-weight"
     },
     {
-      "id": "calendar/background-3",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/range/background (OD-243). Background 3 of the calendar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "calendar/day/range/background"
-    },
-    {
-      "id": "calendar/label-2",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/range/label (OD-243). Label 2 of the calendar.",
-      "default": "color.text.primary",
-      "replaced_by": "calendar/day/range/label"
-    },
-    {
-      "id": "calendar/label-selected",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/selected/label (OD-243). Label selected of the calendar.",
-      "default": "color.text.muted",
-      "replaced_by": "calendar/day/selected/label"
-    },
-    {
-      "id": "calendar/disabled-opacity",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/disabled/label (OD-243). Disabled opacity of the calendar.",
-      "default": "opacity.disabled",
-      "replaced_by": "calendar/day/disabled/label"
-    },
-    {
       "id": "calendar/icon-size",
       "component": "calendar",
       "description": "Icon size of the calendar.",
       "default": "size.icon"
-    },
-    {
-      "id": "calendar/background-4",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/range-ends/background (OD-243). Background 4 of the calendar.",
-      "default": "color.action.primary.@",
-      "replaced_by": "calendar/day/range-ends/background"
-    },
-    {
-      "id": "calendar/label-3",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/range-ends/label (OD-243). Label 3 of the calendar.",
-      "default": "color.text.on-action",
-      "replaced_by": "calendar/day/range-ends/label"
-    },
-    {
-      "id": "calendar/background-selected",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/selected/background (OD-243). Background selected of the calendar.",
-      "default": "color.action.primary.@",
-      "replaced_by": "calendar/day/selected/background"
-    },
-    {
-      "id": "calendar/label-selected-2",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/selected/label (OD-243). Label selected 2 of the calendar.",
-      "default": "color.text.on-action",
-      "replaced_by": "calendar/day/selected/label"
     },
     {
       "id": "calendar/font-size-2",
@@ -8222,13 +7530,6 @@
       "component": "calendar",
       "description": "Label of a selected day: text on the main action's fill.",
       "default": "color.text.on-action"
-    },
-    {
-      "id": "calendar/day/disabled-opacity",
-      "component": "calendar",
-      "description": "Deprecated: use calendar/day/disabled/label (OD-297). How faint a day that cannot be picked is.",
-      "default": "opacity.disabled",
-      "replaced_by": "calendar/day/disabled/label"
     },
     {
       "id": "calendar/day/today/background",
@@ -8315,27 +7616,6 @@
       "default": "type.caption.line-height"
     },
     {
-      "id": "chart/icon",
-      "component": "chart",
-      "description": "Deprecated: use chart/axis/label (OD-243). Icon of the chart.",
-      "default": "color.text.muted",
-      "replaced_by": "chart/axis/label"
-    },
-    {
-      "id": "chart/icon-2",
-      "component": "chart",
-      "description": "Deprecated: use chart/grid/line (OD-243). Icon 2 of the chart.",
-      "default": "color.border.default",
-      "replaced_by": "chart/grid/line"
-    },
-    {
-      "id": "chart/icon-3",
-      "component": "chart",
-      "description": "Deprecated: use chart/track/fill (OD-243). Icon 3 of the chart.",
-      "default": "color.surface.sunken",
-      "replaced_by": "chart/track/fill"
-    },
-    {
       "id": "chart/font-weight",
       "component": "chart",
       "description": "Font weight of the chart.",
@@ -8346,48 +7626,6 @@
       "component": "chart",
       "description": "Gap of the chart.",
       "default": "component-spacing-map.x2"
-    },
-    {
-      "id": "chart/radius",
-      "component": "chart",
-      "description": "Deprecated: use chart/tooltip/radius (OD-243). Radius of the chart.",
-      "default": "radius.surface",
-      "replaced_by": "chart/tooltip/radius"
-    },
-    {
-      "id": "chart/border",
-      "component": "chart",
-      "description": "Deprecated: use chart/tooltip/border (OD-243). Border of the chart.",
-      "default": "color.border.default",
-      "replaced_by": "chart/tooltip/border"
-    },
-    {
-      "id": "chart/background",
-      "component": "chart",
-      "description": "Deprecated: use chart/tooltip/background (OD-243). Background of the chart.",
-      "default": "color.surface.canvas",
-      "replaced_by": "chart/tooltip/background"
-    },
-    {
-      "id": "chart/padding-x",
-      "component": "chart",
-      "description": "Deprecated: use chart/tooltip/padding-x (OD-243). Padding x of the chart.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "chart/tooltip/padding-x"
-    },
-    {
-      "id": "chart/padding-y",
-      "component": "chart",
-      "description": "Deprecated: use chart/tooltip/padding-y (OD-243). Padding y of the chart.",
-      "default": "component-spacing-map.x2",
-      "replaced_by": "chart/tooltip/padding-y"
-    },
-    {
-      "id": "chart/shadow",
-      "component": "chart",
-      "description": "Deprecated: use chart/tooltip/shadow (OD-243). Shadow of the chart.",
-      "default": "elevation.overlay",
-      "replaced_by": "chart/tooltip/shadow"
     },
     {
       "id": "chart/gap-2",
@@ -8406,27 +7644,6 @@
       "component": "chart",
       "description": "Label 2 of the chart.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "chart/gap-3",
-      "component": "chart",
-      "description": "Deprecated: use chart/legend/gap (OD-243). Gap 3 of the chart.",
-      "default": "space.gap.group",
-      "replaced_by": "chart/legend/gap"
-    },
-    {
-      "id": "chart/padding-bottom",
-      "component": "chart",
-      "description": "Deprecated: use chart/legend/padding-bottom (OD-243). Padding bottom of the chart.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "chart/legend/padding-bottom"
-    },
-    {
-      "id": "chart/padding-top",
-      "component": "chart",
-      "description": "Deprecated: use chart/legend/padding-top (OD-243). Padding top of the chart.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "chart/legend/padding-top"
     },
     {
       "id": "chart/grid/line",
@@ -8555,20 +7772,6 @@
       "default": "focus.ring.width"
     },
     {
-      "id": "checkbox/disabled",
-      "component": "checkbox",
-      "description": "Deprecated: use checkbox/disabled-background (OD-297). Disabled of the checkbox.",
-      "default": "opacity.disabled",
-      "replaced_by": "checkbox/disabled-background"
-    },
-    {
-      "id": "checkbox/canvas",
-      "component": "checkbox",
-      "description": "Deprecated: use checkbox/focus-ring-offset (OD-243). Canvas of the checkbox.",
-      "default": "color.surface.canvas",
-      "replaced_by": "checkbox/focus-ring-offset"
-    },
-    {
       "id": "checkbox/focus-offset",
       "component": "checkbox",
       "description": "Gap between the checkbox and its focus ring.",
@@ -8683,27 +7886,6 @@
       "default": "elevation.overlay"
     },
     {
-      "id": "combobox/content/focus-ring",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/content/border (OD-243). Content focus ring of the combobox.",
-      "default": "color.text.primary",
-      "replaced_by": "combobox/content/border"
-    },
-    {
-      "id": "combobox/content/height",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/input/height (OD-243). Content height of the combobox.",
-      "default": "size.control.default",
-      "replaced_by": "combobox/input/height"
-    },
-    {
-      "id": "combobox/content/background-2",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/input/background (OD-243). Content background 2 of the combobox.",
-      "default": "color.border.strong",
-      "replaced_by": "combobox/input/background"
-    },
-    {
       "id": "combobox/content/border-width",
       "component": "combobox",
       "description": "Content border width of the combobox.",
@@ -8770,31 +7952,10 @@
       "default": "color.surface.highlight"
     },
     {
-      "id": "combobox/item/background/@",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/item/background/highlight (OD-243). Item background of the combobox.",
-      "default": "color.surface.sunken",
-      "replaced_by": "combobox/item/background/highlight"
-    },
-    {
       "id": "combobox/item/label/highlight",
       "component": "combobox",
       "description": "Text of the combobox item the pointer or the keyboard is on.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "combobox/item/label/@",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/item/label/highlight (OD-243). Item label of the combobox.",
-      "default": "color.text.primary",
-      "replaced_by": "combobox/item/label/highlight"
-    },
-    {
-      "id": "combobox/item/disabled-opacity-disabled",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/item/disabled/label (OD-297). Item disabled opacity disabled of the combobox.",
-      "default": "opacity.disabled",
-      "replaced_by": "combobox/item/disabled/label"
     },
     {
       "id": "combobox/item/icon-size",
@@ -8953,13 +8114,6 @@
       "default": "color.border.focus"
     },
     {
-      "id": "combobox/chips/focus-ring-focus",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/chips/focus-ring/highlight (OD-243). Chips focus ring focus of the combobox.",
-      "default": "color.border.focus",
-      "replaced_by": "combobox/chips/focus-ring/highlight"
-    },
-    {
       "id": "combobox/chips/border-invalid",
       "component": "combobox",
       "description": "Chips border invalid of the combobox.",
@@ -9062,13 +8216,6 @@
       "default": "color.text.primary"
     },
     {
-      "id": "combobox/chip/disabled-opacity",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/chip/disabled/label (OD-297). Chip disabled opacity of the combobox.",
-      "default": "opacity.disabled",
-      "replaced_by": "combobox/chip/disabled/label"
-    },
-    {
       "id": "combobox/chip/remove/pull",
       "component": "combobox",
       "description": "How far the chip's remove button sits into its padding.",
@@ -9085,13 +8232,6 @@
       "component": "combobox",
       "description": "The chip's remove icon on hover.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "combobox/disabled-opacity",
-      "component": "combobox",
-      "description": "Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox.",
-      "default": "opacity.disabled",
-      "replaced_by": "combobox/chip/remove/label"
     },
     {
       "id": "combobox/input/border",
@@ -9244,24 +8384,10 @@
       "default": "color.text.muted"
     },
     {
-      "id": "command/input/disabled-opacity-disabled",
-      "component": "command",
-      "description": "Deprecated: use command/input/disabled/text (OD-297). Input disabled opacity disabled of the command.",
-      "default": "opacity.disabled",
-      "replaced_by": "command/input/disabled/text"
-    },
-    {
       "id": "command/icon-size",
       "component": "command",
       "description": "Icon size of the command.",
       "default": "size.icon"
-    },
-    {
-      "id": "command/disabled-opacity",
-      "component": "command",
-      "description": "Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command.",
-      "default": "opacity.disabled",
-      "replaced_by": "command/input/wrapper/icon"
     },
     {
       "id": "command/empty/padding-y",
@@ -9378,38 +8504,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "command/item/disabled-opacity-disabled",
-      "component": "command",
-      "description": "Deprecated: use command/item/disabled/label (OD-297). Item disabled opacity disabled of the command.",
-      "default": "opacity.disabled",
-      "replaced_by": "command/item/disabled/label"
-    },
-    {
-      "id": "command/item/background-selected",
-      "component": "command",
-      "description": "Deprecated: use command/item/background/highlight (OD-241). Item background selected of the command.",
-      "default": "color.surface.sunken",
-      "replaced_by": "command/item/background/highlight"
-    },
-    {
-      "id": "command/item/label-selected",
-      "component": "command",
-      "description": "Deprecated: use command/item/label/highlight (OD-243). Item label selected of the command.",
-      "default": "color.text.primary",
-      "replaced_by": "command/item/label/highlight"
-    },
-    {
       "id": "command/item/icon-size",
       "component": "command",
       "description": "Item icon size of the command.",
       "default": "size.icon"
-    },
-    {
-      "id": "command/item/label/@",
-      "component": "command",
-      "description": "Deprecated: use command/item/icon (OD-243). Item label of the command.",
-      "default": "color.text.muted",
-      "replaced_by": "command/item/icon"
     },
     {
       "id": "command/item/label/highlight",
@@ -9490,13 +8588,6 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "context-menu/sub/trigger/background-focus",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/sub/trigger/background/highlight (OD-241). Sub trigger background focus of the context menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "context-menu/sub/trigger/background/highlight"
-    },
-    {
       "id": "context-menu/sub/trigger/label-focus",
       "component": "context-menu",
       "description": "Sub trigger label focus of the context menu.",
@@ -9519,13 +8610,6 @@
       "component": "context-menu",
       "description": "Sub trigger icon size of the context menu.",
       "default": "size.icon"
-    },
-    {
-      "id": "context-menu/sub/trigger/label",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/sub/trigger/icon (OD-243). Sub trigger label of the context menu.",
-      "default": "color.text.muted",
-      "replaced_by": "context-menu/sub/trigger/icon"
     },
     {
       "id": "context-menu/sub/trigger/background/highlight",
@@ -9666,24 +8750,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "context-menu/item/background-focus",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/item/background/highlight (OD-241). Item background focus of the context menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "context-menu/item/background/highlight"
-    },
-    {
       "id": "context-menu/item/label-focus",
       "component": "context-menu",
       "description": "Item label focus of the context menu.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "context-menu/item/disabled-opacity-disabled",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/item/disabled/label (OD-297). Item disabled opacity disabled of the context menu.",
-      "default": "opacity.disabled",
-      "replaced_by": "context-menu/item/disabled/label"
     },
     {
       "id": "context-menu/item/padding-left",
@@ -9698,44 +8768,16 @@
       "default": "color.status.danger.@"
     },
     {
-      "id": "context-menu/item/label/@",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/item/label/destructive (OD-243). Item label of the context menu.",
-      "default": "color.status.danger.@",
-      "replaced_by": "context-menu/item/label/destructive"
-    },
-    {
       "id": "context-menu/item/label/destructive-highlight",
       "component": "context-menu",
       "description": "Item label of a destructive item when highlighted, of the context menu.",
       "default": "color.status.danger.@"
     },
     {
-      "id": "context-menu/item/background-focus-2",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/item/background/destructive-highlight (OD-243). Item background focus 2 of the context menu.",
-      "default": "color.status.danger.@",
-      "replaced_by": "context-menu/item/background/destructive-highlight"
-    },
-    {
-      "id": "context-menu/item/label-focus-2",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/item/label/destructive-highlight (OD-243). Item label focus 2 of the context menu.",
-      "default": "color.status.danger.@",
-      "replaced_by": "context-menu/item/label/destructive-highlight"
-    },
-    {
       "id": "context-menu/item/icon-size",
       "component": "context-menu",
       "description": "Item icon size of the context menu.",
       "default": "size.icon"
-    },
-    {
-      "id": "context-menu/item/label-2",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/item/icon (OD-243). Item label 2 of the context menu.",
-      "default": "color.text.muted",
-      "replaced_by": "context-menu/item/icon"
     },
     {
       "id": "context-menu/item/background/highlight",
@@ -9798,24 +8840,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "context-menu/checkbox/item/background-focus",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/checkbox/item/background/highlight (OD-241). Checkbox item background focus of the context menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "context-menu/checkbox/item/background/highlight"
-    },
-    {
       "id": "context-menu/checkbox/item/label-focus",
       "component": "context-menu",
       "description": "Checkbox item label focus of the context menu.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "context-menu/checkbox/item/disabled-opacity-disabled",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the context menu.",
-      "default": "opacity.disabled",
-      "replaced_by": "context-menu/checkbox/item/disabled/label"
     },
     {
       "id": "context-menu/checkbox/item/icon-size",
@@ -9878,24 +8906,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "context-menu/radio/item/background-focus",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/radio/item/background/highlight (OD-241). Radio item background focus of the context menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "context-menu/radio/item/background/highlight"
-    },
-    {
       "id": "context-menu/radio/item/label-focus",
       "component": "context-menu",
       "description": "Radio item label focus of the context menu.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "context-menu/radio/item/disabled-opacity-disabled",
-      "component": "context-menu",
-      "description": "Deprecated: use context-menu/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the context menu.",
-      "default": "opacity.disabled",
-      "replaced_by": "context-menu/radio/item/disabled/label"
     },
     {
       "id": "context-menu/radio/item/icon-size",
@@ -10048,13 +9062,6 @@
       "default": "component-spacing-map.x1"
     },
     {
-      "id": "data-table/background-hover",
-      "component": "data-table",
-      "description": "Deprecated: use data-table/row/background/hover (OD-241). Background hover of the data table.",
-      "default": "color.surface.sunken",
-      "replaced_by": "data-table/row/background/hover"
-    },
-    {
       "id": "data-table/label",
       "component": "data-table",
       "description": "Label of the data table.",
@@ -10143,97 +9150,6 @@
       "component": "dialog",
       "description": "Fill of the dialog panel: a fill that floats above content.",
       "default": "color.surface.raised"
-    },
-    {
-      "id": "dialog/border-width",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/content/border-width (OD-243). Border width of the dialog.",
-      "default": "border-width.default",
-      "replaced_by": "dialog/content/border-width"
-    },
-    {
-      "id": "dialog/border",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/content/border (OD-243). Border of the dialog.",
-      "default": "color.border.default",
-      "replaced_by": "dialog/content/border"
-    },
-    {
-      "id": "dialog/radius",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/close/radius (OD-243). Radius of the dialog.",
-      "default": "radius.badge",
-      "replaced_by": "dialog/close/radius"
-    },
-    {
-      "id": "dialog/padding",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/close/padding (OD-243). Padding of the dialog.",
-      "default": "component-spacing-map.x1",
-      "replaced_by": "dialog/close/padding"
-    },
-    {
-      "id": "dialog/label",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/description/label (OD-243). Label of the dialog.",
-      "default": "color.text.secondary",
-      "replaced_by": "dialog/description/label"
-    },
-    {
-      "id": "dialog/sunken",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/close/background/hover (OD-241). Sunken of the dialog.",
-      "default": "color.surface.sunken",
-      "replaced_by": "dialog/close/background/hover"
-    },
-    {
-      "id": "dialog/size",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/close/icon-size (OD-243). Size of the dialog.",
-      "default": "size.icon",
-      "replaced_by": "dialog/close/icon-size"
-    },
-    {
-      "id": "dialog/gap",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/header/gap (OD-243). Gap of the dialog.",
-      "default": "space.gap.tight",
-      "replaced_by": "dialog/header/gap"
-    },
-    {
-      "id": "dialog/gap-2",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/footer/gap (OD-243). Gap 2 of the dialog.",
-      "default": "space.gap.default",
-      "replaced_by": "dialog/footer/gap"
-    },
-    {
-      "id": "dialog/font-family",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/title/font-family (OD-243). Font family of the dialog.",
-      "default": "type.heading.font-family",
-      "replaced_by": "dialog/title/font-family"
-    },
-    {
-      "id": "dialog/font-size",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/title/font-size (OD-243). Font size of the dialog.",
-      "default": "type.heading.font-size",
-      "replaced_by": "dialog/title/font-size"
-    },
-    {
-      "id": "dialog/font-weight",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/title/font-weight (OD-243). Font weight of the dialog.",
-      "default": "type.heading.font-weight",
-      "replaced_by": "dialog/title/font-weight"
-    },
-    {
-      "id": "dialog/font-size-2",
-      "component": "dialog",
-      "description": "Deprecated: use dialog/description/font-size (OD-243). Font size 2 of the dialog.",
-      "default": "type.body.font-size",
-      "replaced_by": "dialog/description/font-size"
     },
     {
       "id": "dialog/close/background/hover",
@@ -10386,20 +9302,6 @@
       "default": "elevation.overlay"
     },
     {
-      "id": "drawer/radius",
-      "component": "drawer",
-      "description": "Deprecated: use drawer/handle/radius (OD-243). Radius of the drawer.",
-      "default": "radius.pill",
-      "replaced_by": "drawer/handle/radius"
-    },
-    {
-      "id": "drawer/background",
-      "component": "drawer",
-      "description": "Deprecated: use drawer/handle/background (OD-243). Background of the drawer.",
-      "default": "color.surface.sunken",
-      "replaced_by": "drawer/handle/background"
-    },
-    {
       "id": "drawer/header/gap",
       "component": "drawer",
       "description": "Header gap of the drawer.",
@@ -10544,20 +9446,6 @@
       "default": "type.body.font-size"
     },
     {
-      "id": "dropdown-menu/item/sunken",
-      "component": "dropdown-menu",
-      "description": "Deprecated: use dropdown-menu/item/background/highlight (OD-241). Item sunken of the dropdown menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "dropdown-menu/item/background/highlight"
-    },
-    {
-      "id": "dropdown-menu/item/disabled",
-      "component": "dropdown-menu",
-      "description": "Deprecated: use dropdown-menu/item/disabled-label (OD-297). Item disabled of the dropdown menu.",
-      "default": "opacity.disabled",
-      "replaced_by": "dropdown-menu/item/disabled-label"
-    },
-    {
       "id": "dropdown-menu/item/icon",
       "component": "dropdown-menu",
       "description": "Item icon of the dropdown menu.",
@@ -10574,20 +9462,6 @@
       "component": "dropdown-menu",
       "description": "Item label when destructive, of the dropdown menu.",
       "default": "color.status.danger.@"
-    },
-    {
-      "id": "dropdown-menu/label",
-      "component": "dropdown-menu",
-      "description": "Deprecated: use dropdown-menu/item/label/destructive (OD-241). Label of the dropdown menu.",
-      "default": "color.status.danger.@",
-      "replaced_by": "dropdown-menu/item/label/destructive"
-    },
-    {
-      "id": "dropdown-menu/background",
-      "component": "dropdown-menu",
-      "description": "Deprecated: use dropdown-menu/separator/background (OD-241). Background of the dropdown menu.",
-      "default": "color.border.default",
-      "replaced_by": "dropdown-menu/separator/background"
     },
     {
       "id": "dropdown-menu/separator/background",
@@ -10800,13 +9674,6 @@
       "default": "space.gap.default"
     },
     {
-      "id": "field/label/disabled-opacity-disabled",
-      "component": "field",
-      "description": "Deprecated: use field/label/disabled/text (OD-297). Label disabled opacity disabled of the field.",
-      "default": "opacity.disabled",
-      "replaced_by": "field/label/disabled/text"
-    },
-    {
       "id": "field/label/radius",
       "component": "field",
       "description": "Corner of the field's label, seen on focus: text that can wrap, so it takes the element corner.",
@@ -10837,13 +9704,6 @@
       "default": "type.label.font-weight"
     },
     {
-      "id": "field/label",
-      "component": "field",
-      "description": "Deprecated: use label/label (OD-243). Label of the field.",
-      "default": "color.text.muted",
-      "replaced_by": "label/label"
-    },
-    {
       "id": "field/label/border/checked",
       "component": "field",
       "description": "Border of a choice card (a field label that holds a field) when its checkbox or radio is checked: the edge that marks the choice beside its fill, so it is never color alone.",
@@ -10866,20 +9726,6 @@
       "component": "field",
       "description": "Border width of a choice card (a field label that holds a field): the hairline the scheme draws edges with.",
       "default": "border-width.default"
-    },
-    {
-      "id": "field/border-checked",
-      "component": "field",
-      "description": "Deprecated: use field/label/border/checked (OD-243). Border checked of the field.",
-      "default": "color.action.primary.@",
-      "replaced_by": "field/label/border/checked"
-    },
-    {
-      "id": "field/background-checked",
-      "component": "field",
-      "description": "Deprecated: use field/label/background/checked (OD-243). Background checked of the field.",
-      "default": "color.action.primary.@",
-      "replaced_by": "field/label/background/checked"
     },
     {
       "id": "field/description/font-size",
@@ -10940,20 +9786,6 @@
       "component": "field",
       "description": "How far the field separator pulls into the gaps above and below it, so a separator between fields does not double the group gap.",
       "default": "component-spacing-map.x2"
-    },
-    {
-      "id": "field/background",
-      "component": "field",
-      "description": "Deprecated: use field/separator-content/background (OD-243). Background of the field.",
-      "default": "color.surface.canvas",
-      "replaced_by": "field/separator-content/background"
-    },
-    {
-      "id": "field/padding-x",
-      "component": "field",
-      "description": "Deprecated: use field/separator-content/padding-x (OD-243). Padding x of the field.",
-      "default": "component-spacing-map.x2",
-      "replaced_by": "field/separator-content/padding-x"
     },
     {
       "id": "field/gap-2",
@@ -11136,13 +9968,6 @@
       "default": "color.border.focus"
     },
     {
-      "id": "input-group/shadow",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/border/@ (OD-243). Shadow of the input group.",
-      "default": "elevation.card",
-      "replaced_by": "input-group/border/@"
-    },
-    {
       "id": "input-group/padding-left",
       "component": "input-group",
       "description": "Padding left of the input group.",
@@ -11167,24 +9992,10 @@
       "default": "component-spacing-map.x3"
     },
     {
-      "id": "input-group/border-2",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/border/focus (OD-243). Border 2 of the input group.",
-      "default": "color.border.focus",
-      "replaced_by": "input-group/border/focus"
-    },
-    {
       "id": "input-group/focus-ring/highlight",
       "component": "input-group",
       "description": "Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength.",
       "default": "color.border.focus"
-    },
-    {
-      "id": "input-group/focus-ring/@",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/focus-ring/highlight (OD-243). Focus ring of the input group.",
-      "default": "color.border.focus",
-      "replaced_by": "input-group/focus-ring/highlight"
     },
     {
       "id": "input-group/border-invalid",
@@ -11197,132 +10008,6 @@
       "component": "input-group",
       "description": "Halo of the input group when invalid: the danger tint.",
       "default": "color.status.danger.subtle"
-    },
-    {
-      "id": "input-group/gap",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/gap (OD-243). Gap of the input group.",
-      "default": "space.gap.default",
-      "replaced_by": "input-group/addon/gap"
-    },
-    {
-      "id": "input-group/padding-y",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/padding-y (OD-243). Padding y of the input group.",
-      "default": "component-spacing-map.x2",
-      "replaced_by": "input-group/addon/padding-y"
-    },
-    {
-      "id": "input-group/font-size",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/font-size (OD-243). Font size of the input group.",
-      "default": "type.body.font-size",
-      "replaced_by": "input-group/addon/font-size"
-    },
-    {
-      "id": "input-group/line-height",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/line-height (OD-243). Line height of the input group.",
-      "default": "type.body.line-height",
-      "replaced_by": "input-group/addon/line-height"
-    },
-    {
-      "id": "input-group/font-weight",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/font-weight (OD-243). Font weight of the input group.",
-      "default": "type.label.font-weight",
-      "replaced_by": "input-group/addon/font-weight"
-    },
-    {
-      "id": "input-group/label",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/label (OD-243). Label of the input group.",
-      "default": "color.text.muted",
-      "replaced_by": "input-group/addon/label"
-    },
-    {
-      "id": "input-group/disabled-opacity-disabled",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/disabled/label (OD-243). Disabled opacity disabled of the input group.",
-      "default": "opacity.disabled",
-      "replaced_by": "input-group/addon/disabled/label"
-    },
-    {
-      "id": "input-group/icon-size",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/icon-size (OD-243). Icon size of the input group.",
-      "default": "size.icon",
-      "replaced_by": "input-group/addon/icon-size"
-    },
-    {
-      "id": "input-group/inline/start/padding-left",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/inline/start/padding-left (OD-243). Inline start padding left of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/inline/start/padding-left"
-    },
-    {
-      "id": "input-group/inline/end/padding-right",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/inline/end/padding-right (OD-243). Inline end padding right of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/inline/end/padding-right"
-    },
-    {
-      "id": "input-group/block/start/padding-x",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/start/padding-x (OD-243). Block start padding x of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/block/start/padding-x"
-    },
-    {
-      "id": "input-group/block/start/padding-top",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/start/padding-top (OD-243). Block start padding top of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/block/start/padding-top"
-    },
-    {
-      "id": "input-group/block/start/padding-top-2",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/start/padding-top-2 (OD-243). Block start padding top 2 of the input group.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "input-group/addon/block/start/padding-top-2"
-    },
-    {
-      "id": "input-group/block/start/padding-bottom",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/start/padding-bottom (OD-243). Block start padding bottom of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/block/start/padding-bottom"
-    },
-    {
-      "id": "input-group/block/end/padding-x",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/end/padding-x (OD-243). Block end padding x of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/block/end/padding-x"
-    },
-    {
-      "id": "input-group/block/end/padding-bottom",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/end/padding-bottom (OD-243). Block end padding bottom of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/block/end/padding-bottom"
-    },
-    {
-      "id": "input-group/block/end/padding-bottom-2",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/end/padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "input-group/addon/block/end/padding-bottom-2"
-    },
-    {
-      "id": "input-group/block/end/padding-top",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/block/end/padding-top (OD-243). Block end padding top of the input group.",
-      "default": "space.inset.control-x",
-      "replaced_by": "input-group/addon/block/end/padding-top"
     },
     {
       "id": "input-group/xs/height",
@@ -11449,13 +10134,6 @@
       "component": "input-group",
       "description": "Addon block start padding-x of the input group.",
       "default": "space.inset.control-x"
-    },
-    {
-      "id": "input-group/addon/disabled-opacity-disabled",
-      "component": "input-group",
-      "description": "Deprecated: use input-group/addon/disabled/label (OD-243). Addon disabled-opacity-disabled of the input group.",
-      "default": "opacity.disabled",
-      "replaced_by": "input-group/addon/disabled/label"
     },
     {
       "id": "input-group/addon/font-size",
@@ -11602,13 +10280,6 @@
       "default": "space.gap.default"
     },
     {
-      "id": "input-otp/disabled-opacity",
-      "component": "input-otp",
-      "description": "Deprecated: use input-otp/slot/disabled/text (OD-243). Disabled opacity of the input otp.",
-      "default": "opacity.disabled",
-      "replaced_by": "input-otp/slot/disabled/text"
-    },
-    {
       "id": "input-otp/slot/border/@",
       "component": "input-otp",
       "description": "Slot border of the input otp.",
@@ -11633,37 +10304,16 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "input-otp/slot/shadow",
-      "component": "input-otp",
-      "description": "Deprecated: use input-otp/slot/border/@ (OD-243). Slot shadow of the input otp.",
-      "default": "elevation.card",
-      "replaced_by": "input-otp/slot/border/@"
-    },
-    {
       "id": "input-otp/slot/border-invalid",
       "component": "input-otp",
       "description": "Slot border invalid of the input otp.",
       "default": "color.status.danger.@"
     },
     {
-      "id": "input-otp/slot/border-2",
-      "component": "input-otp",
-      "description": "Deprecated: use input-otp/slot/border/highlight (OD-243). Slot border 2 of the input otp.",
-      "default": "color.border.focus",
-      "replaced_by": "input-otp/slot/border/highlight"
-    },
-    {
       "id": "input-otp/slot/focus-ring/highlight",
       "component": "input-otp",
       "description": "Focus ring of the slot the keyboard is on: full strength.",
       "default": "color.border.focus"
-    },
-    {
-      "id": "input-otp/slot/focus-ring/@",
-      "component": "input-otp",
-      "description": "Deprecated: use input-otp/slot/focus-ring/highlight (OD-243). Slot focus ring of the input otp.",
-      "default": "color.border.focus",
-      "replaced_by": "input-otp/slot/focus-ring/highlight"
     },
     {
       "id": "input-otp/slot/focus-ring-invalid",
@@ -11742,27 +10392,6 @@
       "component": "input-otp",
       "description": "Digit in a slot when the code field is disabled.",
       "default": "color.disabled.text"
-    },
-    {
-      "id": "input-otp/height",
-      "component": "input-otp",
-      "description": "Deprecated: use input-otp/caret/height (OD-243). Height of the input otp.",
-      "default": "size.icon",
-      "replaced_by": "input-otp/caret/height"
-    },
-    {
-      "id": "input-otp/background",
-      "component": "input-otp",
-      "description": "Deprecated: use input-otp/caret/background (OD-243). Background of the input otp.",
-      "default": "color.text.primary",
-      "replaced_by": "input-otp/caret/background"
-    },
-    {
-      "id": "input-otp/duration",
-      "component": "input-otp",
-      "description": "Deprecated: use input-otp/caret/duration (OD-243). Duration of the input otp.",
-      "default": "motion.duration.feedback",
-      "replaced_by": "input-otp/caret/duration"
     },
     {
       "id": "input-otp/caret/width",
@@ -11883,48 +10512,6 @@
       "component": "item",
       "description": "Sm padding y of the item.",
       "default": "component-spacing-map.x3"
-    },
-    {
-      "id": "item/gap",
-      "component": "item",
-      "description": "Deprecated: use item/media/gap (OD-243). Gap of the item.",
-      "default": "space.gap.default",
-      "replaced_by": "item/media/gap"
-    },
-    {
-      "id": "item/icon/size",
-      "component": "item",
-      "description": "Deprecated: use item/media/icon/size (OD-243). Icon size of the item.",
-      "default": "size.control.default",
-      "replaced_by": "item/media/icon/size"
-    },
-    {
-      "id": "item/icon/radius",
-      "component": "item",
-      "description": "Deprecated: use item/media/icon/radius (OD-243). Icon radius of the item.",
-      "default": "radius.badge",
-      "replaced_by": "item/media/icon/radius"
-    },
-    {
-      "id": "item/icon/background",
-      "component": "item",
-      "description": "Deprecated: use item/media/icon/background (OD-243). Icon background of the item.",
-      "default": "color.surface.sunken",
-      "replaced_by": "item/media/icon/background"
-    },
-    {
-      "id": "item/icon/icon-size",
-      "component": "item",
-      "description": "Deprecated: use item/media/icon/icon-size (OD-243). Icon icon size of the item.",
-      "default": "size.icon",
-      "replaced_by": "item/media/icon/icon-size"
-    },
-    {
-      "id": "item/image/radius",
-      "component": "item",
-      "description": "Deprecated: use item/media/image/radius (OD-243). Image radius of the item.",
-      "default": "radius.badge",
-      "replaced_by": "item/media/image/radius"
     },
     {
       "id": "item/content/gap",
@@ -12125,20 +10712,6 @@
       "default": "color.text.muted"
     },
     {
-      "id": "kbd/background-2",
-      "component": "kbd",
-      "description": "Deprecated: use kbd/inverse/background (OD-243). Background 2 of the kbd.",
-      "default": "color.surface.canvas",
-      "replaced_by": "kbd/inverse/background"
-    },
-    {
-      "id": "kbd/label-2",
-      "component": "kbd",
-      "description": "Deprecated: use kbd/inverse/label (OD-243). Label 2 of the kbd.",
-      "default": "color.surface.canvas",
-      "replaced_by": "kbd/inverse/label"
-    },
-    {
       "id": "kbd/group/gap",
       "component": "kbd",
       "description": "Group gap of the kbd.",
@@ -12217,13 +10790,6 @@
       "default": "color.text.muted"
     },
     {
-      "id": "marker/background",
-      "component": "marker",
-      "description": "Deprecated: use marker/line/background (OD-243). Background of the marker.",
-      "default": "color.border.default",
-      "replaced_by": "marker/line/background"
-    },
-    {
       "id": "marker/line/thickness",
       "component": "marker",
       "description": "Thickness of the marker's lines: the weight of every line.",
@@ -12300,13 +10866,6 @@
       "component": "menubar",
       "description": "Trigger font weight of the menubar.",
       "default": "type.label.font-weight"
-    },
-    {
-      "id": "menubar/trigger/background-focus",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/trigger/background/highlight (OD-241). Trigger background focus of the menubar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "menubar/trigger/background/highlight"
     },
     {
       "id": "menubar/trigger/label-focus",
@@ -12417,24 +10976,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "menubar/item/background-focus",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/item/background/highlight (OD-241). Item background focus of the menubar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "menubar/item/background/highlight"
-    },
-    {
       "id": "menubar/item/label-focus",
       "component": "menubar",
       "description": "Item label focus of the menubar.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "menubar/item/disabled-opacity-disabled",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/item/disabled/label (OD-297). Item disabled opacity disabled of the menubar.",
-      "default": "opacity.disabled",
-      "replaced_by": "menubar/item/disabled/label"
     },
     {
       "id": "menubar/item/padding-left",
@@ -12449,44 +10994,16 @@
       "default": "color.status.danger.@"
     },
     {
-      "id": "menubar/item/label/@",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/item/label/destructive (OD-243). Item label of the menubar.",
-      "default": "color.status.danger.@",
-      "replaced_by": "menubar/item/label/destructive"
-    },
-    {
       "id": "menubar/item/label/destructive-highlight",
       "component": "menubar",
       "description": "Item label of a destructive item when highlighted, of the menubar.",
       "default": "color.status.danger.@"
     },
     {
-      "id": "menubar/item/background-focus-2",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/item/background/destructive-highlight (OD-243). Item background focus 2 of the menubar.",
-      "default": "color.status.danger.@",
-      "replaced_by": "menubar/item/background/destructive-highlight"
-    },
-    {
-      "id": "menubar/item/label-focus-2",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/item/label/destructive-highlight (OD-243). Item label focus 2 of the menubar.",
-      "default": "color.status.danger.@",
-      "replaced_by": "menubar/item/label/destructive-highlight"
-    },
-    {
       "id": "menubar/item/icon-size",
       "component": "menubar",
       "description": "Item icon size of the menubar.",
       "default": "size.icon"
-    },
-    {
-      "id": "menubar/item/label-2",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/item/icon (OD-243). Item label 2 of the menubar.",
-      "default": "color.text.muted",
-      "replaced_by": "menubar/item/icon"
     },
     {
       "id": "menubar/item/background/highlight",
@@ -12549,24 +11066,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "menubar/checkbox/item/background-focus",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/checkbox/item/background/highlight (OD-241). Checkbox item background focus of the menubar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "menubar/checkbox/item/background/highlight"
-    },
-    {
       "id": "menubar/checkbox/item/label-focus",
       "component": "menubar",
       "description": "Checkbox item label focus of the menubar.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "menubar/checkbox/item/disabled-opacity-disabled",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the menubar.",
-      "default": "opacity.disabled",
-      "replaced_by": "menubar/checkbox/item/disabled/label"
     },
     {
       "id": "menubar/checkbox/item/icon-size",
@@ -12629,24 +11132,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "menubar/radio/item/background-focus",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/radio/item/background/highlight (OD-241). Radio item background focus of the menubar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "menubar/radio/item/background/highlight"
-    },
-    {
       "id": "menubar/radio/item/label-focus",
       "component": "menubar",
       "description": "Radio item label focus of the menubar.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "menubar/radio/item/disabled-opacity-disabled",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the menubar.",
-      "default": "opacity.disabled",
-      "replaced_by": "menubar/radio/item/disabled/label"
     },
     {
       "id": "menubar/radio/item/icon-size",
@@ -12761,13 +11250,6 @@
       "component": "menubar",
       "description": "Sub trigger line height of the menubar.",
       "default": "type.body.line-height"
-    },
-    {
-      "id": "menubar/sub/trigger/background-focus",
-      "component": "menubar",
-      "description": "Deprecated: use menubar/sub/trigger/background/highlight (OD-241). Sub trigger background focus of the menubar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "menubar/sub/trigger/background/highlight"
     },
     {
       "id": "menubar/sub/trigger/label-focus",
@@ -12938,20 +11420,6 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "message/gap-2",
-      "component": "message",
-      "description": "Deprecated: use message/content/gap (OD-243). Gap 2 of the message.",
-      "default": "space.gap.tight",
-      "replaced_by": "message/content/gap"
-    },
-    {
-      "id": "message/gap-x",
-      "component": "message",
-      "description": "Deprecated: use message/header/gap (OD-243). Gap x of the message.",
-      "default": "space.gap.default",
-      "replaced_by": "message/header/gap"
-    },
-    {
       "id": "message/author/font-weight",
       "component": "message",
       "description": "Author font weight of the message.",
@@ -12986,13 +11454,6 @@
       "component": "message",
       "description": "Gap between the author and the time in the header.",
       "default": "space.gap.default"
-    },
-    {
-      "id": "native-select/disabled-opacity",
-      "component": "native-select",
-      "description": "Deprecated: use native-select/disabled/text (OD-243). Disabled opacity of the native select.",
-      "default": "opacity.disabled",
-      "replaced_by": "native-select/disabled/text"
     },
     {
       "id": "native-select/radius",
@@ -13037,27 +11498,6 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "native-select/shadow",
-      "component": "native-select",
-      "description": "Deprecated: use native-select/border (OD-243). Shadow of the native select.",
-      "default": "elevation.card",
-      "replaced_by": "native-select/border"
-    },
-    {
-      "id": "native-select/background",
-      "component": "native-select",
-      "description": "Deprecated: use native-select/selection/background (OD-243). Background of the native select.",
-      "default": "color.action.primary.@",
-      "replaced_by": "native-select/selection/background"
-    },
-    {
-      "id": "native-select/label",
-      "component": "native-select",
-      "description": "Deprecated: use native-select/selection/label (OD-243). Label of the native select.",
-      "default": "color.text.on-action",
-      "replaced_by": "native-select/selection/label"
-    },
-    {
       "id": "native-select/label-placeholder",
       "component": "native-select",
       "description": "Label placeholder of the native select.",
@@ -13068,13 +11508,6 @@
       "component": "native-select",
       "description": "Height of the native select: the field height, like the input's.",
       "default": "size.control.default"
-    },
-    {
-      "id": "native-select/padding-y-2",
-      "component": "native-select",
-      "description": "Deprecated: use native-select/sm/padding-y (OD-243). Padding y 2 of the native select.",
-      "default": "component-spacing-map.x1",
-      "replaced_by": "native-select/sm/padding-y"
     },
     {
       "id": "native-select/border-focus",
@@ -13119,13 +11552,6 @@
       "default": "size.icon"
     },
     {
-      "id": "native-select/label-2",
-      "component": "native-select",
-      "description": "Deprecated: use native-select/icon/label (OD-243). Label 2 of the native select.",
-      "default": "color.text.muted",
-      "replaced_by": "native-select/icon/label"
-    },
-    {
       "id": "native-select/focus-offset",
       "component": "native-select",
       "description": "Gap between the native select and its focus ring.",
@@ -13154,13 +11580,6 @@
       "component": "native-select",
       "description": "The chevron of a disabled native select.",
       "default": "color.disabled.text"
-    },
-    {
-      "id": "native-select/wrapper/disabled-opacity",
-      "component": "native-select",
-      "description": "Deprecated: use native-select/disabled/text (OD-243). The whole select dims when it can't be used.",
-      "default": "opacity.disabled",
-      "replaced_by": "native-select/disabled/text"
     },
     {
       "id": "native-select/sm/height",
@@ -13229,139 +11648,6 @@
       "default": "space.gap.tight"
     },
     {
-      "id": "navigation-menu/radius",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/radius (OD-243). Radius of the navigation menu.",
-      "default": "radius.control",
-      "replaced_by": "navigation-menu/trigger/radius"
-    },
-    {
-      "id": "navigation-menu/background",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/background/@ (OD-243). Background of the navigation menu.",
-      "default": "color.surface.canvas",
-      "replaced_by": "navigation-menu/trigger/background/@"
-    },
-    {
-      "id": "navigation-menu/padding-x",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/padding-x (OD-243). Padding x of the navigation menu.",
-      "default": "space.inset.container",
-      "replaced_by": "navigation-menu/trigger/padding-x"
-    },
-    {
-      "id": "navigation-menu/padding-y",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/padding-y (OD-243). Padding y of the navigation menu.",
-      "default": "component-spacing-map.x2",
-      "replaced_by": "navigation-menu/trigger/padding-y"
-    },
-    {
-      "id": "navigation-menu/font-size",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/font-size (OD-243). Font size of the navigation menu.",
-      "default": "type.body.font-size",
-      "replaced_by": "navigation-menu/trigger/font-size"
-    },
-    {
-      "id": "navigation-menu/line-height",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/line-height (OD-243). Line height of the navigation menu.",
-      "default": "type.body.line-height",
-      "replaced_by": "navigation-menu/trigger/line-height"
-    },
-    {
-      "id": "navigation-menu/font-weight",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/font-weight (OD-243). Font weight of the navigation menu.",
-      "default": "type.label.font-weight",
-      "replaced_by": "navigation-menu/trigger/font-weight"
-    },
-    {
-      "id": "navigation-menu/background-hover",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/background/hover (OD-241). Background hover of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/trigger/background/hover"
-    },
-    {
-      "id": "navigation-menu/label-hover",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/label/hover (OD-243). Label hover of the navigation menu.",
-      "default": "color.text.primary",
-      "replaced_by": "navigation-menu/trigger/label/hover"
-    },
-    {
-      "id": "navigation-menu/background-focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/background/highlight (OD-241). Background focus of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/trigger/background/highlight"
-    },
-    {
-      "id": "navigation-menu/label-focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/label/highlight (OD-243). Label focus of the navigation menu.",
-      "default": "color.text.primary",
-      "replaced_by": "navigation-menu/trigger/label/highlight"
-    },
-    {
-      "id": "navigation-menu/disabled-opacity-disabled",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-243). Disabled opacity disabled of the navigation menu.",
-      "default": "opacity.disabled",
-      "replaced_by": "navigation-menu/trigger/disabled/label"
-    },
-    {
-      "id": "navigation-menu/background-open",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/background/open (OD-241). Background open of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/trigger/background/open"
-    },
-    {
-      "id": "navigation-menu/label-open",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/label/open (OD-243). Label open of the navigation menu.",
-      "default": "color.text.primary",
-      "replaced_by": "navigation-menu/trigger/label/open"
-    },
-    {
-      "id": "navigation-menu/background-open-hover",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/background/open-hover (OD-241). Background open hover of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/trigger/background/open-hover"
-    },
-    {
-      "id": "navigation-menu/background-open-focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/background/open-highlight (OD-241). Background open focus of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/trigger/background/open-highlight"
-    },
-    {
-      "id": "navigation-menu/focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/focus-width (OD-243). Focus of the navigation menu.",
-      "default": "focus.ring.width",
-      "replaced_by": "navigation-menu/trigger/focus-width"
-    },
-    {
-      "id": "navigation-menu/focus-ring-focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/focus-ring (OD-243). Focus ring focus of the navigation menu.",
-      "default": "color.border.focus",
-      "replaced_by": "navigation-menu/trigger/focus-ring"
-    },
-    {
-      "id": "navigation-menu/focus-ring-offset-focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/focus-ring-offset (OD-243). Focus ring offset focus of the navigation menu.",
-      "default": "color.surface.canvas",
-      "replaced_by": "navigation-menu/trigger/focus-ring-offset"
-    },
-    {
       "id": "navigation-menu/duration",
       "component": "navigation-menu",
       "description": "Duration of the navigation menu.",
@@ -13414,27 +11700,6 @@
       "component": "navigation-menu",
       "description": "Content border width of the navigation menu.",
       "default": "border-width.default"
-    },
-    {
-      "id": "navigation-menu/background-2",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/content/background (OD-243). Background 2 of the navigation menu.",
-      "default": "color.surface.raised",
-      "replaced_by": "navigation-menu/content/background"
-    },
-    {
-      "id": "navigation-menu/label",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/content/label (OD-243). Label of the navigation menu.",
-      "default": "color.text.primary",
-      "replaced_by": "navigation-menu/content/label"
-    },
-    {
-      "id": "navigation-menu/shadow",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/content/shadow (OD-243). Shadow of the navigation menu.",
-      "default": "elevation.card",
-      "replaced_by": "navigation-menu/content/shadow"
     },
     {
       "id": "navigation-menu/viewport/radius",
@@ -13509,24 +11774,10 @@
       "default": "color.text.primary"
     },
     {
-      "id": "navigation-menu/link/background-focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/link/background/highlight (OD-241). Link background focus of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/link/background/highlight"
-    },
-    {
       "id": "navigation-menu/link/label-focus",
       "component": "navigation-menu",
       "description": "Link label focus of the navigation menu.",
       "default": "color.text.primary"
-    },
-    {
-      "id": "navigation-menu/link/background/@",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/link/background/current (OD-241). Link background of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/link/background/current"
     },
     {
       "id": "navigation-menu/link/background/hover",
@@ -13547,44 +11798,16 @@
       "default": "color.surface.selected"
     },
     {
-      "id": "navigation-menu/link/focus",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/link/focus-width (OD-243). Link focus of the navigation menu.",
-      "default": "focus.ring.width",
-      "replaced_by": "navigation-menu/link/focus-width"
-    },
-    {
-      "id": "navigation-menu/link/selected",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/link/edge/current (OD-243). Link selected of the navigation menu.",
-      "default": "color.border.selected",
-      "replaced_by": "navigation-menu/link/edge/current"
-    },
-    {
       "id": "navigation-menu/link/label/current",
       "component": "navigation-menu",
       "description": "Link label when current, of the navigation menu.",
       "default": "color.text.primary"
     },
     {
-      "id": "navigation-menu/link/label/@",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/link/label/current (OD-243). Link label of the navigation menu.",
-      "default": "color.text.primary",
-      "replaced_by": "navigation-menu/link/label/current"
-    },
-    {
       "id": "navigation-menu/link/icon-size",
       "component": "navigation-menu",
       "description": "Link icon size of the navigation menu.",
       "default": "size.icon"
-    },
-    {
-      "id": "navigation-menu/link/label-2",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/link/icon (OD-243). Link label 2 of the navigation menu.",
-      "default": "color.text.muted",
-      "replaced_by": "navigation-menu/link/icon"
     },
     {
       "id": "navigation-menu/link/focus-ring-focus",
@@ -13627,20 +11850,6 @@
       "component": "navigation-menu",
       "description": "Color of an icon in a navigation link: muted, so the icon supports the link's text.",
       "default": "color.text.muted"
-    },
-    {
-      "id": "navigation-menu/background-3",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/indicator/background (OD-243). Background 3 of the navigation menu.",
-      "default": "color.border.default",
-      "replaced_by": "navigation-menu/indicator/background"
-    },
-    {
-      "id": "navigation-menu/shadow-2",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/indicator/shadow (OD-243). Shadow 2 of the navigation menu.",
-      "default": "elevation.overlay",
-      "replaced_by": "navigation-menu/indicator/shadow"
     },
     {
       "id": "navigation-menu/trigger/background/@",
@@ -13733,13 +11942,6 @@
       "default": "color.text.primary"
     },
     {
-      "id": "navigation-menu/trigger/disabled-opacity",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-297). Trigger opacity when disabled, of the navigation menu.",
-      "default": "opacity.disabled",
-      "replaced_by": "navigation-menu/trigger/disabled/label"
-    },
-    {
       "id": "navigation-menu/trigger/focus-width",
       "component": "navigation-menu",
       "description": "Trigger focus ring width, of the navigation menu.",
@@ -13792,41 +11994,6 @@
       "component": "pagination",
       "description": "Content gap of the pagination.",
       "default": "space.gap.tight"
-    },
-    {
-      "id": "pagination/gap",
-      "component": "pagination",
-      "description": "Deprecated: use pagination/link/gap (OD-243). Gap of the pagination.",
-      "default": "space.gap.tight",
-      "replaced_by": "pagination/link/gap"
-    },
-    {
-      "id": "pagination/padding-x",
-      "component": "pagination",
-      "description": "Deprecated: use pagination/link/padding-x (OD-243). Padding x of the pagination.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "pagination/link/padding-x"
-    },
-    {
-      "id": "pagination/padding-left",
-      "component": "pagination",
-      "description": "Deprecated: use pagination/previous/padding-left (OD-243). Padding left of the pagination.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "pagination/previous/padding-left"
-    },
-    {
-      "id": "pagination/padding-right",
-      "component": "pagination",
-      "description": "Deprecated: use pagination/next/padding-right (OD-243). Padding right of the pagination.",
-      "default": "component-spacing-map.x3",
-      "replaced_by": "pagination/next/padding-right"
-    },
-    {
-      "id": "pagination/icon-size",
-      "component": "pagination",
-      "description": "Deprecated: use pagination/ellipsis/icon-size (OD-243). Icon size of the pagination.",
-      "default": "size.icon",
-      "replaced_by": "pagination/ellipsis/icon-size"
     },
     {
       "id": "pagination/ellipsis/icon-size",
@@ -13997,13 +12164,6 @@
       "default": "color.border.focus"
     },
     {
-      "id": "radio-group/item/disabled-opacity-disabled",
-      "component": "radio-group",
-      "description": "Deprecated: use radio-group/item/disabled/background (OD-297). Item disabled opacity disabled of the radio group.",
-      "default": "opacity.disabled",
-      "replaced_by": "radio-group/item/disabled/background"
-    },
-    {
       "id": "radio-group/item/border-invalid",
       "component": "radio-group",
       "description": "Item border invalid of the radio group.",
@@ -14104,27 +12264,6 @@
       "component": "resizable",
       "description": "Thickness of the resizable handle's line between panels: the weight of every line.",
       "default": "border-width.default"
-    },
-    {
-      "id": "resizable/height",
-      "component": "resizable",
-      "description": "Deprecated: use resizable/grip/height (OD-243). Height of the resizable.",
-      "default": "size.icon",
-      "replaced_by": "resizable/grip/height"
-    },
-    {
-      "id": "resizable/radius",
-      "component": "resizable",
-      "description": "Deprecated: use resizable/grip/radius (OD-243). Radius of the resizable.",
-      "default": "radius.badge",
-      "replaced_by": "resizable/grip/radius"
-    },
-    {
-      "id": "resizable/background",
-      "component": "resizable",
-      "description": "Deprecated: use resizable/grip/background (OD-243). Background of the resizable.",
-      "default": "color.border.default",
-      "replaced_by": "resizable/grip/background"
     },
     {
       "id": "resizable/focus-offset",
@@ -14349,20 +12488,6 @@
       "default": "color.disabled.text"
     },
     {
-      "id": "select/focus",
-      "component": "select",
-      "description": "Deprecated: use select/trigger/focus-width (OD-243). Focus of the select.",
-      "default": "focus.ring.width",
-      "replaced_by": "select/trigger/focus-width"
-    },
-    {
-      "id": "select/canvas",
-      "component": "select",
-      "description": "Deprecated: use select/trigger/focus-ring-offset (OD-243). Canvas of the select.",
-      "default": "color.surface.canvas",
-      "replaced_by": "select/trigger/focus-ring-offset"
-    },
-    {
       "id": "select/size",
       "component": "select",
       "description": "Size of the select.",
@@ -14423,20 +12548,6 @@
       "default": "type.body.font-size"
     },
     {
-      "id": "select/item/sunken",
-      "component": "select",
-      "description": "Deprecated: use select/item/background/highlight (OD-241). Item sunken of the select.",
-      "default": "color.surface.sunken",
-      "replaced_by": "select/item/background/highlight"
-    },
-    {
-      "id": "select/item/disabled",
-      "component": "select",
-      "description": "Deprecated: use select/item/disabled-label (OD-297). Item disabled of the select.",
-      "default": "opacity.disabled",
-      "replaced_by": "select/item/disabled-label"
-    },
-    {
       "id": "select/item/background/highlight",
       "component": "select",
       "description": "Item background when highlighted, by the pointer or the keyboard, of the select.",
@@ -14495,48 +12606,6 @@
       "component": "sheet",
       "description": "Width of the sheet panel's edge.",
       "default": "border-width.default"
-    },
-    {
-      "id": "sheet/radius",
-      "component": "sheet",
-      "description": "Deprecated: use sheet/close/radius (OD-243). Radius of the sheet.",
-      "default": "radius.badge",
-      "replaced_by": "sheet/close/radius"
-    },
-    {
-      "id": "sheet/focus-ring-offset",
-      "component": "sheet",
-      "description": "Deprecated: use sheet/close/focus-ring/offset-color (OD-243). Focus ring offset of the sheet.",
-      "default": "color.surface.canvas",
-      "replaced_by": "sheet/close/focus-ring/offset-color"
-    },
-    {
-      "id": "sheet/focus",
-      "component": "sheet",
-      "description": "Deprecated: use sheet/close/focus-ring/width (OD-243). Focus of the sheet.",
-      "default": "focus.ring.width",
-      "replaced_by": "sheet/close/focus-ring/width"
-    },
-    {
-      "id": "sheet/focus-ring-focus",
-      "component": "sheet",
-      "description": "Deprecated: use sheet/close/focus-ring/color (OD-243). Focus ring focus of the sheet.",
-      "default": "color.border.focus",
-      "replaced_by": "sheet/close/focus-ring/color"
-    },
-    {
-      "id": "sheet/background-open",
-      "component": "sheet",
-      "description": "Deprecated: use sheet/close/background/hover (OD-243). Background open of the sheet.",
-      "default": "color.action.secondary.@",
-      "replaced_by": "sheet/close/background/hover"
-    },
-    {
-      "id": "sheet/icon-size",
-      "component": "sheet",
-      "description": "Deprecated: use sheet/close/icon-size (OD-243). Icon size of the sheet.",
-      "default": "size.icon",
-      "replaced_by": "sheet/close/icon-size"
     },
     {
       "id": "sheet/header/gap",
@@ -14689,13 +12758,6 @@
       "default": "motion.duration.feedback"
     },
     {
-      "id": "sidebar/gap",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/content/gap (OD-243). Gap of the sidebar.",
-      "default": "space.gap.default",
-      "replaced_by": "sidebar/content/gap"
-    },
-    {
       "id": "sidebar/container/duration",
       "component": "sidebar",
       "description": "Container duration of the sidebar.",
@@ -14718,13 +12780,6 @@
       "component": "sidebar",
       "description": "Width of the edge between the sidebar and the page.",
       "default": "border-width.default"
-    },
-    {
-      "id": "sidebar/padding",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/padding (OD-243). Padding of the sidebar.",
-      "default": "component-spacing-map.x2",
-      "replaced_by": "sidebar/menu-button/padding"
     },
     {
       "id": "sidebar/inner/background",
@@ -14757,13 +12812,6 @@
       "default": "border-width.default"
     },
     {
-      "id": "sidebar/rail/background-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/rail/line/hover (OD-241). Rail background hover of the sidebar.",
-      "default": "color.border.default",
-      "replaced_by": "sidebar/rail/line/hover"
-    },
-    {
       "id": "sidebar/rail/background/hover",
       "component": "sidebar",
       "description": "Rail background under the pointer, when the sidebar is off canvas.",
@@ -14780,13 +12828,6 @@
       "component": "sidebar",
       "description": "Width of the line the rail shows on the sidebar edge under the pointer: a border.",
       "default": "border-width.default"
-    },
-    {
-      "id": "sidebar/background-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/rail/background/hover (OD-241). Background hover of the sidebar.",
-      "default": "color.surface.default",
-      "replaced_by": "sidebar/rail/background/hover"
     },
     {
       "id": "sidebar/inset/background",
@@ -14975,13 +13016,6 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/group/action/label-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/group/action/label (OD-243). Group action label hover of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/group/action/label"
-    },
-    {
       "id": "sidebar/group/action/icon-size",
       "component": "sidebar",
       "description": "Group action icon size of the sidebar.",
@@ -15052,13 +13086,6 @@
       "component": "sidebar",
       "description": "Menu action focus ring of the sidebar.",
       "default": "color.border.focus"
-    },
-    {
-      "id": "sidebar/menu/action/label-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/action/label (OD-243). Menu action label hover of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/menu/action/label"
     },
     {
       "id": "sidebar/menu/action/icon-size",
@@ -15217,34 +13244,6 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/menu/sub/button/label-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label hover of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/menu/sub/button/label"
-    },
-    {
-      "id": "sidebar/menu/sub/button/background-active",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/sub/button/background/pressed (OD-241). Menu sub button background active of the sidebar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "sidebar/menu/sub/button/background/pressed"
-    },
-    {
-      "id": "sidebar/menu/sub/button/label-active",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/menu/sub/button/label"
-    },
-    {
-      "id": "sidebar/menu/sub/button/disabled-opacity-disabled",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/sub/button/disabled/label (OD-297). Menu sub button disabled opacity disabled of the sidebar.",
-      "default": "opacity.disabled",
-      "replaced_by": "sidebar/menu/sub/button/disabled/label"
-    },
-    {
       "id": "sidebar/menu/sub/button/icon-size",
       "component": "sidebar",
       "description": "Menu sub button icon size of the sidebar.",
@@ -15335,251 +13334,6 @@
       "default": "border-width.default"
     },
     {
-      "id": "sidebar/radius",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/radius (OD-243). Radius of the sidebar.",
-      "default": "radius.control",
-      "replaced_by": "sidebar/menu-button/radius"
-    },
-    {
-      "id": "sidebar/font-size",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/font-size (OD-243). Font size of the sidebar.",
-      "default": "type.body.font-size",
-      "replaced_by": "sidebar/menu-button/font-size"
-    },
-    {
-      "id": "sidebar/line-height",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/line-height (OD-243). Line height of the sidebar.",
-      "default": "type.body.line-height",
-      "replaced_by": "sidebar/menu-button/line-height"
-    },
-    {
-      "id": "sidebar/focus-ring",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring of the sidebar.",
-      "default": "color.border.focus",
-      "replaced_by": "sidebar/menu-button/focus-ring"
-    },
-    {
-      "id": "sidebar/padding-right",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/padding-right (OD-243). Padding right of the sidebar.",
-      "default": "component-spacing-map.x8",
-      "replaced_by": "sidebar/menu-button/padding-right"
-    },
-    {
-      "id": "sidebar/size",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/collapsed-size (OD-243). Size of the sidebar.",
-      "default": "size.control.default",
-      "replaced_by": "sidebar/menu-button/collapsed-size"
-    },
-    {
-      "id": "sidebar/background-hover-2",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/background/hover (OD-241). Background hover 2 of the sidebar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "sidebar/menu-button/background/hover"
-    },
-    {
-      "id": "sidebar/label-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/label (OD-243). Label hover of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/label"
-    },
-    {
-      "id": "sidebar/background-active",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/background/pressed (OD-241). Background active of the sidebar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "sidebar/menu-button/background/pressed"
-    },
-    {
-      "id": "sidebar/label-active",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/label (OD-243). Label active of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/label"
-    },
-    {
-      "id": "sidebar/disabled-opacity-disabled",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/disabled/label (OD-243). Disabled opacity disabled of the sidebar.",
-      "default": "opacity.disabled",
-      "replaced_by": "sidebar/menu-button/disabled/label"
-    },
-    {
-      "id": "sidebar/background-2",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/background/current (OD-241). Background 2 of the sidebar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "sidebar/menu-button/background/current"
-    },
-    {
-      "id": "sidebar/font-weight",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/font-weight/current (OD-243). Font weight of the sidebar.",
-      "default": "type.label.font-weight",
-      "replaced_by": "sidebar/menu-button/font-weight/current"
-    },
-    {
-      "id": "sidebar/focus",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/focus-width (OD-243). Focus of the sidebar.",
-      "default": "focus.ring.width",
-      "replaced_by": "sidebar/menu-button/focus-width"
-    },
-    {
-      "id": "sidebar/selected",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/edge/current (OD-243). Selected of the sidebar.",
-      "default": "color.border.selected",
-      "replaced_by": "sidebar/menu-button/edge/current"
-    },
-    {
-      "id": "sidebar/background-open-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/background/open-hover (OD-243). Background open hover of the sidebar.",
-      "default": "color.surface.sunken",
-      "replaced_by": "sidebar/menu-button/background/open-hover"
-    },
-    {
-      "id": "sidebar/label-open-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/label (OD-243). Label open hover of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/label"
-    },
-    {
-      "id": "sidebar/icon-size",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/icon-size (OD-243). Icon size of the sidebar.",
-      "default": "size.icon",
-      "replaced_by": "sidebar/menu-button/icon-size"
-    },
-    {
-      "id": "sidebar/focus-ring-focus",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring focus of the sidebar.",
-      "default": "color.border.focus",
-      "replaced_by": "sidebar/menu-button/focus-ring"
-    },
-    {
-      "id": "sidebar/focus-ring-offset-focus",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/focus-ring-offset (OD-243). Focus ring offset focus of the sidebar.",
-      "default": "color.surface.canvas",
-      "replaced_by": "sidebar/menu-button/focus-ring-offset"
-    },
-    {
-      "id": "sidebar/default/label-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/label (OD-243). Default label hover of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/label"
-    },
-    {
-      "id": "sidebar/default/height",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/default/height (OD-243). Default height of the sidebar.",
-      "default": "size.control.default",
-      "replaced_by": "sidebar/menu-button/default/height"
-    },
-    {
-      "id": "sidebar/default/font-size",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/default/font-size (OD-243). Default font size of the sidebar.",
-      "default": "type.body.font-size",
-      "replaced_by": "sidebar/menu-button/default/font-size"
-    },
-    {
-      "id": "sidebar/default/line-height",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/default/line-height (OD-243). Default line height of the sidebar.",
-      "default": "type.body.line-height",
-      "replaced_by": "sidebar/menu-button/default/line-height"
-    },
-    {
-      "id": "sidebar/default/background/hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/background/hover (OD-243). Default menu button background under the pointer, of the sidebar.",
-      "default": "color.surface.highlight",
-      "replaced_by": "sidebar/menu-button/background/hover"
-    },
-    {
-      "id": "sidebar/outline/background/@",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/outline/background/@ (OD-243). Outline background of the sidebar.",
-      "default": "color.surface.canvas",
-      "replaced_by": "sidebar/menu-button/outline/background/@"
-    },
-    {
-      "id": "sidebar/outline/background/hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/outline/background/hover (OD-243). Outline menu button background under the pointer, of the sidebar.",
-      "default": "color.surface.highlight",
-      "replaced_by": "sidebar/menu-button/outline/background/hover"
-    },
-    {
-      "id": "sidebar/outline/label-hover",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/label (OD-243). Outline label hover of the sidebar.",
-      "default": "color.text.primary",
-      "replaced_by": "sidebar/label"
-    },
-    {
-      "id": "sidebar/sm/font-size",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/sm/font-size (OD-243). Sm font size of the sidebar.",
-      "default": "type.caption.font-size",
-      "replaced_by": "sidebar/menu-button/sm/font-size"
-    },
-    {
-      "id": "sidebar/sm/line-height",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/sm/line-height (OD-243). Sm line height of the sidebar.",
-      "default": "type.caption.line-height",
-      "replaced_by": "sidebar/menu-button/sm/line-height"
-    },
-    {
-      "id": "sidebar/lg/font-size",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/lg/font-size (OD-243). Lg font size of the sidebar.",
-      "default": "type.body.font-size",
-      "replaced_by": "sidebar/menu-button/lg/font-size"
-    },
-    {
-      "id": "sidebar/lg/line-height",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/lg/line-height (OD-243). Lg line height of the sidebar.",
-      "default": "type.body.line-height",
-      "replaced_by": "sidebar/menu-button/lg/line-height"
-    },
-    {
-      "id": "sidebar/height",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/skeleton/text-height (OD-243). Height of the sidebar.",
-      "default": "size.icon",
-      "replaced_by": "sidebar/menu/skeleton/text-height"
-    },
-    {
-      "id": "sidebar/font-size-2",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/sub/button/sm/font-size (OD-243). Font size 2 of the sidebar.",
-      "default": "type.caption.font-size",
-      "replaced_by": "sidebar/menu/sub/button/sm/font-size"
-    },
-    {
-      "id": "sidebar/line-height-2",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu/sub/button/sm/line-height (OD-243). Line height 2 of the sidebar.",
-      "default": "type.caption.line-height",
-      "replaced_by": "sidebar/menu/sub/button/sm/line-height"
-    },
-    {
       "id": "sidebar/menu-button/background/hover",
       "component": "sidebar",
       "description": "Menu button background under the pointer, of the sidebar.",
@@ -15656,13 +13410,6 @@
       "component": "sidebar",
       "description": "Line height of a large menu button, of the sidebar.",
       "default": "type.body.line-height"
-    },
-    {
-      "id": "sidebar/menu-button/opacity/disabled",
-      "component": "sidebar",
-      "description": "Deprecated: use sidebar/menu-button/disabled/label (OD-297). Opacity of a menu button that cannot be used, of the sidebar.",
-      "default": "opacity.disabled",
-      "replaced_by": "sidebar/menu-button/disabled/label"
     },
     {
       "id": "sidebar/menu-button/focus-width",
@@ -15797,13 +13544,6 @@
       "default": "color.neutral.200"
     },
     {
-      "id": "slider/disabled-opacity-disabled",
-      "component": "slider",
-      "description": "Deprecated: use slider/disabled/range (OD-297). Disabled opacity disabled of the slider.",
-      "default": "opacity.disabled",
-      "replaced_by": "slider/disabled/range"
-    },
-    {
       "id": "slider/track/radius",
       "component": "slider",
       "description": "Track radius of the slider.",
@@ -15844,20 +13584,6 @@
       "component": "slider",
       "description": "Thumb shadow of the slider.",
       "default": "elevation.card"
-    },
-    {
-      "id": "slider/thumb/focus-ring",
-      "component": "slider",
-      "description": "Deprecated: use slider/thumb/focus-ring-focus (OD-243). Thumb focus ring of the slider.",
-      "default": "color.border.focus",
-      "replaced_by": "slider/thumb/focus-ring-focus"
-    },
-    {
-      "id": "slider/thumb/disabled-opacity-disabled",
-      "component": "slider",
-      "description": "Deprecated: use slider/thumb/disabled/background (OD-297). Thumb disabled opacity disabled of the slider.",
-      "default": "opacity.disabled",
-      "replaced_by": "slider/thumb/disabled/background"
     },
     {
       "id": "slider/thumb/focus",
@@ -15926,65 +13652,16 @@
       "default": "size.icon"
     },
     {
-      "id": "switch/height",
-      "component": "switch",
-      "description": "Deprecated: use switch/thumb/size (OD-300). Height of the switch.",
-      "default": "size.icon",
-      "replaced_by": "switch/thumb/size"
-    },
-    {
-      "id": "switch/width",
-      "component": "switch",
-      "description": "Deprecated: use switch/thumb/size (OD-300). Width of the switch.",
-      "default": "size.icon",
-      "replaced_by": "switch/thumb/size"
-    },
-    {
       "id": "switch/radius",
       "component": "switch",
       "description": "Radius of the switch.",
       "default": "radius.pill"
     },
     {
-      "id": "switch/padding",
-      "component": "switch",
-      "description": "Deprecated: use switch/thumb/offset (OD-300). Padding of the switch: the gap between the track's edge and the thumb, on every side.",
-      "default": "component-spacing-map.hairline",
-      "replaced_by": "switch/thumb/offset"
-    },
-    {
       "id": "switch/focus",
       "component": "switch",
       "description": "Focus of the switch.",
       "default": "focus.ring.width"
-    },
-    {
-      "id": "switch/disabled",
-      "component": "switch",
-      "description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",
-      "default": "opacity.disabled",
-      "replaced_by": "switch/disabled-track"
-    },
-    {
-      "id": "switch/canvas",
-      "component": "switch",
-      "description": "Deprecated: use switch/focus-ring-offset (OD-243). Canvas of the switch.",
-      "default": "color.surface.canvas",
-      "replaced_by": "switch/focus-ring-offset"
-    },
-    {
-      "id": "switch/size",
-      "component": "switch",
-      "description": "Deprecated: use switch/thumb/size (OD-243). Size of the switch.",
-      "default": "size.icon",
-      "replaced_by": "switch/thumb/size"
-    },
-    {
-      "id": "switch/icon",
-      "component": "switch",
-      "description": "Deprecated: use switch/thumb/size (OD-243). Icon of the switch.",
-      "default": "size.icon",
-      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/focus-offset",
@@ -16009,13 +13686,6 @@
       "component": "switch",
       "description": "Size of the switch's thumb: the icon size. The track is the thumb plus its offset on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
       "default": "size.icon"
-    },
-    {
-      "id": "switch/thumb/travel",
-      "component": "switch",
-      "description": "Deprecated: use switch/thumb/size (OD-300). How far the thumb moves when the switch turns on: one thumb's width.",
-      "default": "size.icon",
-      "replaced_by": "switch/thumb/size"
     },
     {
       "id": "switch/thumb/radius",
@@ -16096,13 +13766,6 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "textarea/shadow",
-      "component": "textarea",
-      "description": "Deprecated: use textarea/border (OD-243). Shadow of the textarea.",
-      "default": "elevation.card",
-      "replaced_by": "textarea/border"
-    },
-    {
       "id": "textarea/label-placeholder",
       "component": "textarea",
       "description": "Label placeholder of the textarea.",
@@ -16113,13 +13776,6 @@
       "component": "textarea",
       "description": "Border focus of the textarea.",
       "default": "color.border.focus"
-    },
-    {
-      "id": "textarea/disabled-opacity-disabled",
-      "component": "textarea",
-      "description": "Deprecated: use textarea/disabled/text (OD-243). Disabled opacity disabled of the textarea.",
-      "default": "opacity.disabled",
-      "replaced_by": "textarea/disabled/text"
     },
     {
       "id": "textarea/border-invalid",
@@ -16242,13 +13898,6 @@
       "default": "color.border.default"
     },
     {
-      "id": "toast/success/border-2",
-      "component": "toast",
-      "description": "Deprecated: use toast/success/edge (OD-243). Success border 2 of the toast.",
-      "default": "color.status.success.@",
-      "replaced_by": "toast/success/edge"
-    },
-    {
       "id": "toast/success/edge",
       "component": "toast",
       "description": "Color of the edge that marks a success toast, beside its border.",
@@ -16261,52 +13910,10 @@
       "default": "color.border.default"
     },
     {
-      "id": "toast/danger/border-2",
-      "component": "toast",
-      "description": "Deprecated: use toast/danger/edge (OD-243). Danger border 2 of the toast.",
-      "default": "color.status.danger.@",
-      "replaced_by": "toast/danger/edge"
-    },
-    {
       "id": "toast/danger/edge",
       "component": "toast",
       "description": "Color of the edge that marks a danger toast, beside its border.",
       "default": "color.status.danger.@"
-    },
-    {
-      "id": "toast/gap-2",
-      "component": "toast",
-      "description": "Deprecated: use toast/content/gap (OD-243). Gap 2 of the toast.",
-      "default": "space.gap.tight",
-      "replaced_by": "toast/content/gap"
-    },
-    {
-      "id": "toast/font-weight",
-      "component": "toast",
-      "description": "Deprecated: use toast/title/font-weight (OD-243). Font weight of the toast.",
-      "default": "type.label.font-weight",
-      "replaced_by": "toast/title/font-weight"
-    },
-    {
-      "id": "toast/font-size",
-      "component": "toast",
-      "description": "Deprecated: use toast/title/font-size (OD-243). Font size of the toast.",
-      "default": "type.body.font-size",
-      "replaced_by": "toast/title/font-size"
-    },
-    {
-      "id": "toast/label-2",
-      "component": "toast",
-      "description": "Deprecated: use toast/description/label (OD-243). Label 2 of the toast.",
-      "default": "color.text.secondary",
-      "replaced_by": "toast/description/label"
-    },
-    {
-      "id": "toast/font-size-2",
-      "component": "toast",
-      "description": "Deprecated: use toast/description/font-size (OD-243). Font size 2 of the toast.",
-      "default": "type.caption.font-size",
-      "replaced_by": "toast/description/font-size"
     },
     {
       "id": "toast/title/font-weight",
@@ -16417,45 +14024,10 @@
       "default": "type.label.font-weight"
     },
     {
-      "id": "toggle/label-hover",
-      "component": "toggle",
-      "description": "Deprecated: use toggle/label (OD-243). Label hover of the toggle.",
-      "default": "color.text.muted",
-      "replaced_by": "toggle/label"
-    },
-    {
-      "id": "toggle/border-focus",
-      "component": "toggle",
-      "description": "Deprecated: use toggle/focus-ring-focus (OD-243). Border focus of the toggle.",
-      "default": "color.border.focus",
-      "replaced_by": "toggle/focus-ring-focus"
-    },
-    {
-      "id": "toggle/disabled-opacity-disabled",
-      "component": "toggle",
-      "description": "Deprecated: use toggle/disabled/label (OD-297). Disabled opacity disabled of the toggle.",
-      "default": "opacity.disabled",
-      "replaced_by": "toggle/disabled/label"
-    },
-    {
       "id": "toggle/border-invalid",
       "component": "toggle",
       "description": "Border invalid of the toggle.",
       "default": "color.status.danger.@"
-    },
-    {
-      "id": "toggle/focus-ring-invalid",
-      "component": "toggle",
-      "description": "Deprecated: use toggle/border-invalid (OD-243). Focus ring invalid of the toggle.",
-      "default": "color.status.danger.@",
-      "replaced_by": "toggle/border-invalid"
-    },
-    {
-      "id": "toggle/label-on",
-      "component": "toggle",
-      "description": "Deprecated: use toggle/label (OD-243). Label on of the toggle.",
-      "default": "color.text.primary",
-      "replaced_by": "toggle/label"
     },
     {
       "id": "toggle/icon-size",
@@ -16492,13 +14064,6 @@
       "component": "toggle",
       "description": "Outline shadow of the toggle.",
       "default": "elevation.card"
-    },
-    {
-      "id": "toggle/outline/label-hover",
-      "component": "toggle",
-      "description": "Deprecated: use toggle/label (OD-243). Outline label hover of the toggle.",
-      "default": "color.text.primary",
-      "replaced_by": "toggle/label"
     },
     {
       "id": "toggle/outline/background/hover",
@@ -16628,7 +14193,7 @@
     }
   ],
   "semantics": {
-    "description": "What each semantic key is for, written once for every scheme. Each entry says its intent, what to use it for, what not to use it for (and what to use instead) and, where it matters, which fills it may sit on and the contrast it must keep there. Words only; values come from each scheme. The harness checks every rule.",
+    "description": "What each semantic key is for, written once for every scheme. Each entry says its intent, what to use it for, what not to use it for (and what to use instead) and, where it matters, which fills it may sit on and the contrast it must keep there. Words only; values come from each scheme. Every rule is checked.",
     "key_colors": {
       "description": "The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colors that show a theme at a glance.",
       "tokens": [
@@ -17551,7 +15116,7 @@
       }
     ],
     "tones": {
-      "description": "Text pairs with fills by tone (OD-222, OD-227). Every fill states its tone, light or dark, in each brand and mode: a decision, written on the fill as $extensions.open-ds.tone. Two text tokens serve every fill: color.text.on-light (the light mode's body text) on a light fill, color.text.on-dark (white) on a dark one, the same in both modes. Per-fill names (color.text.inverse, color.text.on-action, color.text.on-danger) point at the one their fill's tone picks. color.text.* and the page's own borders and focus ring are the mode's own set, for the page's own surfaces. The harness checks every fill against what sits on it.",
+      "description": "Text pairs with fills by tone. Every fill states its tone, light or dark, in each brand and mode: a decision, written on the fill as $extensions.open-ds.tone. Two text tokens serve every fill: color.text.on-light (the light mode's body text) on a light fill, color.text.on-dark (white) on a dark one, the same in both modes. Per-fill names (color.text.inverse, color.text.on-action, color.text.on-danger) point at the one their fill's tone picks. color.text.* and the page's own borders and focus ring are the mode's own set, for the page's own surfaces. Every fill is checked against what sits on it.",
       "sets": [
         {
           "role": "text.primary",
@@ -17728,7 +15293,7 @@
       ]
     },
     "connections": {
-      "description": "How the tokens of a scope connect (OD-304). comes-from: a token takes its value from another, a scale or a rule. pairs-with: two tokens keep a floor together, such as a fill and its text, or a box and the line it holds. stays-apart: two sets must not look alike, or must keep an order or a distance. The harness checks each one in every brand and mode.",
+      "description": "How the tokens of a scope connect. comes-from: a token takes its value from another, a scale or a rule. pairs-with: two tokens keep a floor together, such as a fill and its text, or a box and the line it holds. stays-apart: two sets must not look alike, or must keep an order or a distance. Each one is checked in every brand and mode.",
       "items": [
         {
           "id": "subtle-from-hue",
@@ -17895,7 +15460,7 @@
           "by": "kind-gap",
           "min_apart": 0.2,
           "says": "The line kinds stay at least 0.2 apart (tight, snug, open), so each kind reads as its own.",
-          "why": "The owner decided steps at least 0.2 apart (OD-221)."
+          "why": "Line heights closer than 0.2 look the same."
         },
         {
           "id": "space-from-base",
@@ -18016,7 +15581,7 @@
       ]
     },
     "neutral": {
-      "description": "The neutral scale (OD-228). Primitives hold the grays below, each a whole ramp in light and dark. color.neutral.<step> is a semantic scale: each scheme or brand points it at one gray, recorded in its theme as neutral { gray, temperature, why, because }. Surfaces, borders, text, the secondary button and disabled read only color.neutral steps, never a gray directly. A scheme keeps only the gray it picked; this list is the menu.",
+      "description": "The neutral scale. Primitives hold the grays below, each a whole ramp in light and dark. color.neutral.<step> is a semantic scale: each scheme or brand points it at one gray, recorded in its theme as neutral { gray, temperature, why, because }. Surfaces, borders, text, the secondary button and disabled read only color.neutral steps, never a gray directly. A scheme keeps only the gray it picked; this list is the menu.",
       "steps": [
         "0",
         "50",
@@ -18064,7 +15629,7 @@
       }
     },
     "variants": {
-      "description": "What the last part of a semantic name means (OD-303), and the step it sits at on its hue scale (OD-304). Every token ending in that part shares the meaning.",
+      "description": "What the last part of a semantic name means, and the step it sits at on its hue scale. Every token ending in that part shares the meaning.",
       "items": [
         {
           "id": "@",
@@ -18085,7 +15650,7 @@
       ]
     },
     "groups": {
-      "description": "What each group of a semantic name means (OD-303). A token takes the meaning of every group in its name.",
+      "description": "What each group of a semantic name means. A token takes the meaning of every group in its name.",
       "items": [
         {
           "id": "color",
@@ -40788,7 +38353,7 @@
     ]
   },
   "anatomy": {
-    "description": "The parts layer (OD-229): the jobs a part does for a person, as the questions it answers. A catalogue component that describes its parts gets an Anatomy reference page.",
+    "description": "The parts layer: the jobs a part does for a person, as the questions it answers. A catalogue component that describes its parts gets an Anatomy reference page.",
     "roles": [
       {
         "id": "containment",
@@ -41560,7 +39125,7 @@
       "title": "Surface corner",
       "scope": "shape",
       "question": "shape.roles",
-      "tokens": ["radius.container", "radius.surface"],
+      "tokens": ["radius.surface"],
       "jobs": [
         {
           "id": "object-or-cell",
@@ -41572,7 +39137,7 @@
         {
           "id": "surface-corner",
           "role": "the surface corner",
-          "tokens": ["radius.container", "radius.surface"],
+          "tokens": ["radius.surface"],
           "jobs": ["object-or-cell"],
           "to": "show whether a surface is an object or a cell",
           "gets": "cards and panels read as separate objects, or tile as one grid"

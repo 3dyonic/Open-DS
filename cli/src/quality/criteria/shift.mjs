@@ -1,6 +1,6 @@
-// Shift per token (OD-298): how far each color moved between base and candidate, as an OKLab
+// Shift per token: how far each color moved between base and candidate, as an OKLab
 // distance, per scheme, brand and mode. Tiers: under shift.pass passes; up to shift.review needs a
-// recorded reason; above needs the owner's approval (harness/quality-approvals.json). Some roles
+// recorded reason; above needs an approval (harness/quality-approvals.json). Some roles
 // (surfaces) have tighter tiers; a chromatic token may turn its hue only a little; a brand key color
 // stays exact unless an adjustment is recorded.
 import { chromaHue, hueDifference, oklabDistance } from "../color.mjs";
@@ -22,7 +22,7 @@ export function tierOf(distance, { pass, review }) {
   return distance < pass ? "pass" : distance <= review ? "review" : "approval";
 }
 
-/** Whether the owner approved a move: an entry for this scheme and token, in this theme or "*", to this value. */
+/** Whether a move is approved: an entry for this scheme and token, in this theme or "*", to this value. */
 export const approved = approvedMove;
 
 const fmt = (n) => n.toFixed(3);
@@ -126,7 +126,7 @@ export function relative(base, candidate, params) {
     measureOf({
       id: "shift.approval-unapproved",
       family: FAMILY,
-      title: `Moves over ΔE ${params.shift.review} (or a role's own limit) that the owner has not approved`,
+      title: `Moves over ΔE ${params.shift.review} (or a role's own limit) with no approval`,
       direction: "down",
       value: unapproved.length,
       details: unapproved.map(line),

@@ -159,14 +159,19 @@ test("an agent is never offered a deprecated key (OD-243)", async () => {
   const { context } = await import("../src/context.mjs");
   const { findToken } = await import("../src/tools.mjs");
   const s = loadScheme("dense-data", roots);
-  const old = new Set(
-    g.component_keys.filter((k) => k.replaced_by).map((k) => k.id),
-  );
+  // The schemes ship no deprecated key, so the fixture marks the keys an agent is offered today.
+  const offered = [
+    ...(context("dense-data", "color.text.primary", roots, g).read_by ?? []),
+    ...findToken(s, g, "navigation menu trigger label hover", 20).results.map((hit) => hit.token),
+  ];
+  const fixture = structuredClone(g);
+  for (const k of fixture.component_keys) if (offered.includes(k.id)) k.replaced_by = "button/label";
+  const old = new Set(fixture.component_keys.filter((k) => k.replaced_by).map((k) => k.id));
   assert.ok(old.size > 0, "the fixture has deprecated keys");
-  const c = context("dense-data", "color.text.primary", roots, g);
+  const c = context("dense-data", "color.text.primary", roots, fixture);
   for (const id of c.read_by ?? [])
     assert.ok(!old.has(id), `read_by offers ${id}`);
-  for (const hit of findToken(s, g, "navigation menu trigger label hover", 20)
+  for (const hit of findToken(s, fixture, "navigation menu trigger label hover", 20)
     .results)
     assert.ok(!old.has(hit.token), `find_token offers ${hit.token}`);
 });

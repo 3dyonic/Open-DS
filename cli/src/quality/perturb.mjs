@@ -1,4 +1,4 @@
-// One change at a time to a stored scheme, for the blast radius (OD-298). Each perturbation names what
+// One change at a time to a stored scheme, for the blast radius. Each perturbation names what
 // it changes and returns a changed copy of the stored file; the caller reloads it with the ref's own
 // loader and compares what moved. Each anchor also says what is recorded as derived from it (derives),
 // apart from the reference chain the change travels along, so a hard-coded copy shows as an orphan
@@ -176,7 +176,7 @@ export function anchorPerturbations(stored, { primaryHue = null, darkCanvas = nu
     });
   }
 
-  // OD-301: the control scale is a record, and the loader generates the heights from it. Move the record's
+  // The control scale is a record, and the loader generates the heights from it. Move the record's
   // default one step; with no record, move the stored pick as before.
   const controlScale = stored.tokens?.semantic?.size?.$extensions?.["open-ds"];
   if (Number.isFinite(controlScale?.default) && Number.isFinite(controlScale?.step))

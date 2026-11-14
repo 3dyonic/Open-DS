@@ -1,7 +1,7 @@
-// The docs and Storybook on open-ds.dev (OD-210). Each has its own people and its own path:
+// The docs and Storybook on open-ds.dev. Each has its own people and its own path:
 // the docs for designers, product teams and agents (why and when), Storybook for developers (see it
 // work, copy it). Both are static builds served next to the site, so links to them are plain <a>,
-// never next/link, and they open in a new tab (OD-216). Local runs point them at their dev servers through the env.
+// never next/link, and they open in a new tab. Local runs point them at their dev servers through the env.
 export const DOCS = (process.env.NEXT_PUBLIC_DOCS_URL ?? "/docs").replace(/\/$/, "");
 export const STORYBOOK = (process.env.NEXT_PUBLIC_STORYBOOK_URL ?? "/storybook").replace(/\/$/, "");
 

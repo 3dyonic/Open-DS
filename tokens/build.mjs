@@ -27,7 +27,7 @@ const dist = join(here, "dist");
 // The values in the schemes are already valid CSS, so only naming and composite transforms run.
 const TRANSFORMS = ["attribute/cti", "name/kebab", "fontFamily/css", "cubicBezier/css", "shadow/css/shorthand"];
 
-// The shadcn mapping lives with the CLI (OD-215), so the docs show exactly what this build writes.
+// The shadcn mapping lives with the CLI, so the docs show exactly what this build writes.
 import { SHADCN, SHADCN_SCALE, spacingUtilities } from "../cli/src/shadcn.mjs";
 import { grammar, loadScheme, schemeIds } from "../cli/src/schemes.mjs";
 export { SHADCN };

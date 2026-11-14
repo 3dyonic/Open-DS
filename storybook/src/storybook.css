@@ -32,7 +32,7 @@ body {
   vertical-align: top;
 }
 
-/* The quiet link to the docs at the end of a component page (OD-210): muted, small, no button. */
+/* The quiet link to the docs at the end of a component page: muted, small, no button. */
 .ods-docslink {
   margin-top: 3rem;
   padding-top: 1rem;
@@ -46,7 +46,7 @@ body {
   text-underline-offset: 2px;
 }
 
-/* OD-216: the Open DS introduction at the top of this Storybook, in the Open DS brand. The colors are
+/* The Open DS introduction at the top of this Storybook, in the Open DS brand. The colors are
    the --od-* variables from .storybook/brand.ts; only this Storybook shows it, so created projects
    never get them. */
 .odg .about {

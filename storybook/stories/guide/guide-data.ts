@@ -25,10 +25,10 @@ function useHtmlScheme() {
   return state;
 }
 
-/** This Storybook shows every Open DS scheme, so its introduction first says what Open DS is (OD-216). */
+/** This Storybook shows every Open DS scheme, so its introduction first says what Open DS is. */
 export const ABOUT_OPEN_DS: { schemes: number } | null = { schemes: Object.keys(SCHEMES).length };
 
-/** The guide's data, the same shape in this Storybook and in a created project's (OD-223). */
+/** The guide's data, the same shape in this Storybook and in a created project's. */
 export function useGuideData(): { scheme: any; grammar: any; key: string; brand: string; mode: "light" | "dark" } {
   const ctx = useContext(SchemeContext);
   const html = useHtmlScheme();

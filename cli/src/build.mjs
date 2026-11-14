@@ -1,4 +1,4 @@
-// The build step (OD-292, ADR-002 step 3): load each scheme, run every scheme rule, and write one
+// The build step (ADR-002 step 3): load each scheme, run every scheme rule, and write one
 // file per scheme with its sha256 hash. A failed rule writes nothing. The built file is the scheme as
 // loadScheme gives it, byte for byte: the stored decisions plus the component defaults, the color
 // scales and the spacing map they generate. build.json beside it holds the hashes and the versions.

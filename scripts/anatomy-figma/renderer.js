@@ -197,7 +197,7 @@ function menu(rows, show, whole) {
       row.strokeAlign = "INSIDE";
       for (const w of ["strokeTopWeight", "strokeBottomWeight", "strokeLeftWeight", "strokeRightWeight"]) num(row, w, "focusWidth");
     }
-    const tone = r.tone === "danger" ? "destructive" : "itemLabel";
+    const tone = r.state === "disabled" ? "disabled" : r.tone === "danger" ? "destructive" : "itemLabel";
     if (r.icon) { const i = svg(r.icon, "iconSize", tone); row.appendChild(i); if (r.marks?.icon) marks.push([r.marks.icon, i, "top"]); }
     const label = text(r.label, "itemFontSize", tone);
     label.name = "Label";
@@ -206,7 +206,6 @@ function menu(rows, show, whole) {
     if (r.marks?.label) marks.push([r.marks.label, label, "top"]);
     if (r.shortcut) { const k = text(r.shortcut, "shortcutSize", "shortcutColor"); k.name = "Shortcut"; row.appendChild(k); if (r.marks?.shortcut) marks.push([r.marks.shortcut, k, "top"]); }
     if (r.chevron) { const ch = svg("chevron-right", "iconSize", "itemLabel"); row.appendChild(ch); if (r.marks?.chevron) marks.push([r.marks.chevron, ch, "top"]); }
-    if (r.state === "disabled") num(row, "opacity", "disabled");
     panel.appendChild(row);
     row.layoutSizingHorizontal = "FILL";
     for (const [k, n] of Object.entries(r.marks ?? {})) if (["row", "focus"].includes(k)) marks.push([n, row, "right"]);

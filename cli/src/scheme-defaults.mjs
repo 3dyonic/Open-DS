@@ -1,4 +1,4 @@
-// A scheme stores only the component values it decides (OD-291, ADR-002 step 2). Every other
+// A scheme stores only the component values it decides (ADR-002 step 2). Every other
 // component key takes the grammar's default and description. withDefaults fills them in, in the
 // grammar's order; withoutDefaults takes out each token that equals its fill exactly. No file access,
 // so the loader, the build and the bundled apps (Storybook) share it.

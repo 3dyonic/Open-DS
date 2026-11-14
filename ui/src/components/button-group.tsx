@@ -12,7 +12,7 @@ import { cn } from "../lib/utils";
 import { Separator } from "./separator";
 
 // The direction the buttons run in. It is layout, not a design variant. Stacked buttons touch, so their
-// hit areas do not grow: one would cover the next (OD-300).
+// hit areas do not grow: one would cover the next.
 const ORIENTATION = {
   horizontal:
     "[&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none",

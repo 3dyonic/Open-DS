@@ -1,13 +1,13 @@
-// Invariants (OD-298): each relation a scheme records, and each minimum relation the owner decided,
+// Invariants: each relation a scheme records, and each minimum relation the gate sets,
 // holds per scheme. Counted as failing checks; a relation a scheme does not have yet is "not present".
-// A failing check the owner approved (harness/quality-approvals.json) is listed, not counted. The dark
+// An approved failing check (harness/quality-approvals.json) is listed, not counted. The dark
 // surface ladder reports, per scheme, a rung the scheme does not define (the floating surface).
 import { RELATION_LIST } from "../relations.mjs";
 import { measureOf, perSchemeOf, splitApproved, sum } from "./measure.mjs";
 
 export const FAMILY = "invariants";
 
-// The failing checks of one relation in one scheme, as flags the owner can approve one by one.
+// The failing checks of one relation in one scheme, as flags that can be approved one by one.
 const flagsOf = (sid, r) =>
   r.checks
     .filter((c) => !c.pass)

@@ -116,11 +116,11 @@ test("checkbox, switch and textarea read the disabled colors", () => {
   assert.equal(key("checkbox/disabled-border").default, "color.disabled.border");
   assert.equal(key("switch/disabled-track").default, "color.disabled.border");
   assert.equal(key("field/label/disabled/text").default, "color.disabled.text");
-  assert.equal(key("checkbox/disabled").replaced_by, "checkbox/disabled-background");
+  assert.equal(key("checkbox/disabled"), undefined);
 });
 
-test("opacity.disabled is a deprecated alias in every scheme, and no live key reads it", () => {
-  for (const id of schemeIds()) assert.ok(loadScheme(id).tokens.semantic.opacity.disabled.$deprecated, id);
+test("opacity.disabled is gone from every scheme, and no key reads it", () => {
+  for (const id of schemeIds()) assert.equal(loadScheme(id).tokens.semantic.opacity?.disabled, undefined, id);
   assert.deepEqual(g.component_keys.filter((k) => !k.replaced_by && k.default === "opacity.disabled").map((k) => k.id), []);
 });
 
@@ -231,8 +231,7 @@ test("the focus ring is focus.ring.width, one step heavier than the default line
     const s = loadScheme(id);
     assert.deepEqual([px(light(s, "border-width.default")), px(light(s, "focus.ring.width"))], want[id], id);
     assert.equal(px(light(s, "focus.ring.offset")), 2, id);
-    assert.equal(s.tokens.semantic["border-width"].focus.$value, "{focus.ring.width}", id);
-    assert.ok(s.tokens.semantic["border-width"].focus.$deprecated, id);
+    assert.equal(s.tokens.semantic["border-width"].focus, undefined, id);
   }
   assert.deepEqual(g.component_keys.filter((k) => !k.replaced_by && /^border-width\.focus/.test(k.default)).map((k) => k.id), []);
 });

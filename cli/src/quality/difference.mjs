@@ -1,4 +1,4 @@
-// The difference check (OD-299): colors that mean different things must look different. Two colors
+// The difference check: colors that mean different things must look different. Two colors
 // are told apart by their OKLab distance, under normal vision and under simulated protanopia,
 // deuteranopia and tritanopia. A pair under the scheme's threshold needs a second cue (an icon, a
 // label, a pattern). The check reads the accent, status and category marks on each surface of the
@@ -8,7 +8,7 @@ import { VISIONS, oklabDistance, simulate } from "./color.mjs";
 import { resolveScheme, themesOf } from "./snapshot.mjs";
 import { hex6 } from "./values.mjs";
 
-/** Where the failing pairs the owner has seen are kept. The count may only go down. */
+/** Where the known failing pairs are kept. The count may only go down. */
 export const DIFFERENCE_BASELINE = "harness/color-difference-baseline.json";
 
 /**
@@ -24,7 +24,7 @@ export function differenceOf(schemes, themeTokens) {
 /** The baseline record of a list of failures: { description, failures: [id] }. */
 export const baselineRecord = (failures) => ({
   description:
-    "OD-299: the color pairs that fail the difference check today (closer than the scheme's color.values.difference threshold, in OKLab, under one vision), kept for the owner. Each needs a second cue or a new color. The list may only go down: the harness check color-difference fails a pair that is not here, and a pair here that passes now. Written by node scripts/od-299-difference.mjs --write-baseline.",
+    "The color pairs that fail the difference check today (closer than the scheme's color.values.difference threshold, in OKLab, under one vision), kept as a baseline. Each needs a second cue or a new color. The list may only go down: the color-difference check fails a pair that is not here, and a pair here that passes now. Written by node scripts/od-299-difference.mjs --write-baseline.",
   failures: [...new Set(failures.map((f) => f.id))].sort(),
 });
 

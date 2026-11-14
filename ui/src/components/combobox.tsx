@@ -88,7 +88,7 @@ function ComboboxInput({
 function ComboboxContent({
   className,
   side = "bottom",
-  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to
   align = "start",
   alignOffset = 0,
   anchor,

@@ -1,4 +1,4 @@
-// Types for scale-map.mjs, for the Storybook guide that imports it (OD-223).
+// Types for scale-map.mjs, for the Storybook guide that imports it.
 export type Lane = "fill" | "edge" | "text";
 export const LANES: readonly { id: Lane; title: string }[];
 export function laneOf(token: string): Lane;

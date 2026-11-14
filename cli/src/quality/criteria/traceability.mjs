@@ -1,4 +1,4 @@
-// Traceability (OD-298): how many semantic values reach an answer, and how many reasons fail to
+// Traceability: how many semantic values reach an answer, and how many reasons fail to
 // explain their value, by the kind of reason they have (reasonOf in cli/src/trace.mjs).
 import { measureOf, perSchemeOf, share, sum } from "./measure.mjs";
 

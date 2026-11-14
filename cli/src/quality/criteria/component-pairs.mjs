@@ -1,4 +1,4 @@
-// Simulated component pairs (OD-298): each foreground-on-background pair a component draws, resolved on
+// Simulated component pairs: each foreground-on-background pair a component draws, resolved on
 // base and candidate per scheme, brand and mode. A pair is flagged when either side moves past the
 // shift tier's pass, when its contrast drops a WCAG level, or when its difference (ΔE foreground
 // against background) falls below componentPairs.minDifference. A level drop or a shrunk difference the
@@ -73,7 +73,7 @@ export function relative(base, candidate, params) {
   const line = (r) => `${r.scheme}/${r.theme} ${pairName(r)}: ${r.before.ratio.toFixed(2)}:1 → ${r.after.ratio.toFixed(2)}:1, ΔE fg/bg ${r.before.difference.toFixed(3)} → ${r.after.difference.toFixed(3)}`;
   const flagged = rows.filter((r) => r.flagged);
   const components = [...new Set(flagged.map((r) => r.component))].sort();
-  // A flag the owner approved stays in the detail and leaves the gated count.
+  // An approved flag stays in the detail and leaves the gated count.
   const pairMeasure = (id, title, hit) => {
     const open = rows.filter((r) => hit(r) && !r.approved[id]);
     const cleared = rows.filter((r) => hit(r) && r.approved[id]);
@@ -88,8 +88,8 @@ export function relative(base, candidate, params) {
     });
   };
   return [
-    pairMeasure(LEVEL_DROPS, "Component pairs whose contrast drops a WCAG level, less the ones the owner approved", (r) => r.levelDrop),
-    pairMeasure(SHRUNK, `Component pairs whose foreground-to-background ΔE fell below ${params.componentPairs.minDifference}, less the ones the owner approved`, (r) => r.shrunk),
+    pairMeasure(LEVEL_DROPS, "Component pairs whose contrast drops a WCAG level, less the approved ones", (r) => r.levelDrop),
+    pairMeasure(SHRUNK, `Component pairs whose foreground-to-background ΔE fell below ${params.componentPairs.minDifference}, less the approved ones`, (r) => r.shrunk),
     measureOf({
       id: "component-pairs.moved",
       family: FAMILY,

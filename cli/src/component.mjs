@@ -1,4 +1,4 @@
-// One component in one design system (OD-185): the reference (what the component and each variant
+// One component in one design system: the reference (what the component and each variant
 // are for, the same in every design system, from the grammar's catalogue) next to this scheme's
 // decisions (whether it carries the component, how it uses each variant, or that it does not).
 // The CLI's component and context commands and the MCP's get_component and get_context use it.
@@ -63,7 +63,7 @@ export function componentGuide(
     family: item.family,
     carried: Boolean(carried),
     why: carried?.why ?? left?.why ?? null,
-    // A left-out component (OD-212): what to use instead, each kept by this scheme, and the answers
+    // A left-out component: what to use instead, each kept by this scheme, and the answers
     // the decision rests on, as the docs and get_inventory give them.
     ...(left && {
       instead: (left.instead ?? []).map((x) => ({
@@ -85,12 +85,12 @@ export function componentGuide(
       : { overview: item.description },
     variants,
     rules,
-    // Its token API (OD-234): every token it reads, what each aliases, and its value in every theme.
+    // Its token API: every token it reads, what each aliases, and its value in every theme.
     tokens: componentApi(scheme, id, roots),
-    // Its gaps (OD-243): where its decision trace breaks. Where a gap stands, the scheme has no answer
+    // Its gaps: where its decision trace breaks. Where a gap stands, the scheme has no answer
     // yet; say so instead of inventing one.
     gaps: componentLedger(scheme, g, roots, id),
-    // Its anatomy is its own tool (OD-229): get_anatomy, or open-ds anatomy. Here only whether the
+    // Its anatomy is its own tool: get_anatomy, or open-ds anatomy. Here only whether the
     // parts people see are described yet.
     anatomy: {
       parts_layer: Boolean(item.anatomy),
@@ -170,7 +170,7 @@ export function componentText(guide) {
   lines.push("", `Anatomy: open-ds anatomy ${guide.scheme} ${guide.component}${guide.anatomy?.parts_layer ? "" : " (its parts layer isn't written yet)"}.`);
   if (guide.gaps?.length) {
     lines.push("", `Gaps (${guide.gaps.length}): where the decision trace breaks. No answer here yet.`);
-    for (const x of guide.gaps) lines.push(`  [${x.kind}] ${x.says}${x.ticket ? ` (${x.ticket})` : ""}`);
+    for (const x of guide.gaps) lines.push(`  [${x.kind}] ${x.says}`);
   }
   if (r.source)
     lines.push(

@@ -1,4 +1,4 @@
-// The color token map (OD-274): one scheme's colors, from the value (the primitive, its meaning) to
+// The color token map: one scheme's colors, from the value (the primitive, its meaning) to
 // the decisions that read it (semantic tokens), the component tokens that show them, the chain of
 // answers behind each decision, and what changes when the value changes. No Node imports, so the docs
 // page runs the same code in the browser.
@@ -130,7 +130,7 @@ export function componentsShowing(index, decision) {
 }
 
 // The answer about the text contrast floor holds for text and for a fill's text, not for a border,
-// a focus ring, a selected edge or a category (OD-273): it stays out of their reasons.
+// a focus ring, a selected edge or a category: it stays out of their reasons.
 const TEXT_FLOOR = "accessibility.definition";
 
 /** The job a decision does (token-measure's jobOf), with the scheme's own values to find its pair. */

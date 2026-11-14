@@ -6,8 +6,6 @@ description: "What each color is for, which fills it may sit on, the status urge
 
 # Token guidance and context on demand
 
-Status: built (OD-159).
-
 ## Why
 
 Agents could find the right situation, but they could not ask a token what it is for. Three gaps:
@@ -21,9 +19,9 @@ Agents could find the right situation, but they could not ask a token what it is
 1. **One source.** Guidance is written once in `schemes/grammar.json` and generated everywhere else.
 2. **Meaning in the grammar, values in the schemes.** `color.status.danger.@` means the same in every scheme.
 3. **Words, never values.** Guidance names keys. Values are resolved on demand.
-4. **Every rule is checked, with no exceptions.** A pair that misses its contrast fails the harness.
+4. **Every rule is checked, with no exceptions.** A pair that misses its contrast fails the checks.
 
-## What was built
+## How it works
 
 ### Guidance in the grammar
 
@@ -42,14 +40,12 @@ Agents could find the right situation, but they could not ask a token what it is
 
 ### The check
 
-`semantics-guidance` in the harness checks four things:
+The `semantics-guidance` check tests four things:
 
 - every color semantic in every scheme has guidance;
 - every key that guidance names exists;
 - every pair keeps its contrast in every brand and mode;
 - the urgency order names real keys.
-
-728 pairs pass today.
 
 ### The gaps, filled in every scheme, light and dark
 
@@ -101,11 +97,6 @@ Measuring the pairs found two real problems:
 
 It returns only that slice: rules, guidance, pairs and resolved values in every theme. It replaces a file router: the answer is built from the source each time, so it is never stale.
 
-## Next
+## Short form and booklets
 
-- Guidance for space, size and type keys, if agents misuse them.
-- Category colors in more components (tags, avatars), when a scheme's inventory needs them.
-
-## Short form and booklets (OD-205)
-
-The context above is the full answer. Since OD-205 `get_context` and `open-ds context` return a short form by default: words, not values, keys by name, ending with the sections an agent can ask for. A created project keeps the same text as files in `context/`, with a router. See [For agents](index.md).
+The context above is the full answer. `get_context` and `open-ds context` return a short form by default: words, not values, keys by name, ending with the sections an agent can ask for. A created project keeps the same text as files in `context/`, with a router. See [For agents](index.md).
