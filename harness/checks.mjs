@@ -469,7 +469,8 @@ export const CHECKS = {
     requires: ["harness/test"],
     slow: true,
     run: (c) => {
-      const r = c.sh("node", ["--test"], { cwd: c.p("harness") });
+      // One self-test runs the whole fast harness (about 13 minutes), past the default 10-minute limit.
+      const r = c.sh("node", ["--test"], { cwd: c.p("harness"), timeout: 1_800_000 });
       return r.code === 0 ? ok("harness tests pass") : bad(tail(r.out));
     },
   },

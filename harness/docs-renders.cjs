@@ -101,7 +101,8 @@ server.listen(0, async () => {
       pages++;
       if (!(await page.locator("text=Left out of Dense data").count()))
         failed.push({ id: "dense-data/carousel", problem: 'no "Left out of Dense data" badge' });
-      if (!(await page.locator(".odv-instead a").count()))
+      // The badge's own text names what to use instead, as links to those component pages.
+      if (!(await page.locator('a[href$="/dense-data/components/table"], a[href$="/dense-data/components/table/"]').count()))
         failed.push({ id: "dense-data/carousel", problem: "no component to use instead" });
       if (!(await page.locator("h2:text('See it live')").count()))
         failed.push({ id: "dense-data/carousel", problem: "not the regular component page" });
