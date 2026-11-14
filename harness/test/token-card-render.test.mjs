@@ -109,6 +109,8 @@ const CASES = [
   ],
   ["motion.easing.enter", ["How does it arrive?", "Specimen · cubic-bezier", "With less motion"]],
   ["motion.easing.exit", ["How does it arrive?", "Specimen · cubic-bezier", "With less motion"]],
+  ["size.icon", ["Can you tell what it is?", "Specimen ·", "Alone as a button?", "Where it sits"]],
+  ["icon.stroke-width", ["Does it match the text weight?", "Specimen ·", "Where it sits"]],
 ];
 
 for (const [id, asks] of CASES)

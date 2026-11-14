@@ -799,7 +799,133 @@ function motionCard(ctx, id) {
   };
 }
 
-const BUILDERS = [typeCard, spacingCard, shapeCard, elevationCard, motionCard];
+// ---------- Icons and sizes ----------
+
+function iconCard(ctx, id) {
+  if (id !== "size.icon" && id !== "icon.stroke-width") return null;
+  const body = {
+    family: ctx.value("type.body.font-family"),
+    size: ctx.px("type.body.font-size"),
+    weight: ctx.value("type.body.font-weight"),
+  };
+  body.line = lineBoxPx(ctx.value("type.body.line-height"), body.size);
+  const iconPx = ctx.px("size.icon");
+  const stroke = Number(ctx.value("icon.stroke-width"));
+  const text = ctx.scheme.samples?.icon_action ?? null;
+  const glyph = ctx.glyph;
+  const draw = glyph && text ? { nodes: glyph.nodes, px: iconPx, stroke, text, ...body } : null;
+  const lack = [
+    ...(glyph ? [] : [missing("No icon glyph is passed to the map.")]),
+    ...(text ? [] : [missing("The scheme has no icon action text.")]),
+  ];
+  const familyName = firstFamily(body.family);
+  if (id === "size.icon") {
+    const fits = iconPx <= body.line;
+    const vs =
+      iconPx === body.size
+        ? "the same size as the text"
+        : iconPx < body.size
+          ? `${fmt(body.size - iconPx)}px under the ${fmt(body.size)}px text`
+          : `${fmt(iconPx - body.size)}px over the ${fmt(body.size)}px text`;
+    const check = measured(ctx, id, "icon-matches-label");
+    const said = check ? (check.pairs[0] ?? check.waits[0] ?? check.off[0] ?? "") : "";
+    const labelLine = Number(/([\d.]+)px label line/.exec(said)?.[1]) || null;
+    const rule = ctx.decisions[id]?.graph?.rules?.[0]?.says?.split(";")[0] ?? null;
+    const rows = [
+      facts(
+        [`${fmt(iconPx)}px icon`, `${fmt(body.line)}px line`],
+        fits ? "Lines up: the icon sits inside one line." : "Taller than the line: lines spread apart.",
+      ),
+      note(`Beside body text: ${vs}, centred on the line.`),
+      labelLine
+        ? facts(
+            [`${fmt(labelLine)}px label line`],
+            check.holds ? "Meets your rule: one label line tall." : "Misses your rule: under one label line.",
+          )
+        : missing("The label line check is not measured."),
+      ...(rule ? [note(`Your rule: ${rule}.`)] : []),
+      ...lack,
+    ];
+    const alone = usageOf(ctx, "icon-alone");
+    const control = "size.control.default";
+    const asButton = (alone?.uses ?? []).some((u) => u.component === "button" && u.variant === "icon");
+    const aloneRows = !alone
+      ? [missing("The scheme has no rule for an icon alone.")]
+      : asButton
+        ? [
+            facts([`${fmt(ctx.px(control))}px hit area`], `From the control height, not the ${fmt(iconPx)}px icon.`),
+            note(`${sentence(alone.use)} ${alone.why ?? ""}`.trim()),
+          ]
+        : [
+            facts(["Never alone"], sentence(alone.use.replace(/^Not used: /, ""))),
+            ...(alone.why ? [note(alone.why)] : []),
+          ];
+    const sizes = ctx.families.find((f) => f.id === "size")?.steps.map((s) => px(s.value)) ?? [];
+    return {
+      swatch: { kind: "icon", nodes: glyph?.nodes ?? null, px: iconPx, stroke },
+      where: null,
+      sections: [
+        {
+          ask: "Can you tell what it is?",
+          rows,
+          specimen: draw && {
+            tag: `Specimen · ${fmt(iconPx)}px icon`,
+            as: `Lucide ${glyph.name} · beside body text, ${familyName} ${fmt(body.size)}px on a ${fmt(body.line)}px line (dashed) · on surface.canvas`,
+            draw: { kind: "icon", ...draw },
+          },
+        },
+        { ask: "Alone as a button?", rows: aloneRows },
+      ],
+      hint: scaleHint(sizes, iconPx, { word: "size", mark: `${fmt(iconPx)}px` }),
+      ...sharesOf(ctx, id),
+    };
+  }
+  const renders = connectionOf(ctx, "stroke-renders");
+  const grid = renders?.grid ?? 24;
+  const floor = renders?.min_px ?? null;
+  const drawn = Math.round(((stroke * iconPx) / grid) * 100) / 100;
+  const definition = answerOf(ctx, "iconography.definition");
+  const rows = [
+    facts(
+      [`${fmt(stroke)} on a ${grid}px grid`, `${fmt(drawn)}px at ${fmt(iconPx)}px`],
+      floor === null
+        ? null
+        : drawn >= floor
+          ? "Thin lines stay whole at this size."
+          : "Thin lines break up at this size.",
+    ),
+    ...(floor === null
+      ? [missing("The grammar names no drawn stroke floor.")]
+      : [
+          note(
+            `${drawn >= floor ? "Floor" : "Floor missed"}: at least ${floor}px drawn. ${fmt(stroke)} × ${fmt(iconPx)} ÷ ${grid} = ${fmt(drawn)}px.`,
+          ),
+        ]),
+    { type: "stem", drawn, family: body.family, size: body.size, weight: body.weight },
+    ...(definition?.why ? [note(`Your answer: ${definition.why}`)] : []),
+    ...lack,
+  ];
+  const strokes = ctx.families.find((f) => f.id === "stroke-width")?.steps.map((s) => Number(s.value)) ?? [];
+  return {
+    swatch: { kind: "icon", nodes: glyph?.nodes ?? null, px: 28, stroke },
+    where: null,
+    sections: [
+      {
+        ask: "Does it match the text weight?",
+        rows,
+        specimen: draw && {
+          tag: `Specimen · ${fmt(stroke)} stroke`,
+          as: `Lucide ${glyph.name} at ${fmt(iconPx)}px · beside body text, weight ${body.weight} · on surface.canvas`,
+          draw: { kind: "stroke", ...draw, zoom: 4, grid },
+        },
+      },
+    ],
+    hint: scaleHint(strokes, stroke, { word: "stroke width", mark: fmt(stroke) }),
+    ...sharesOf(ctx, id),
+  };
+}
+
+const BUILDERS = [typeCard, spacingCard, shapeCard, elevationCard, motionCard, iconCard];
 
 /**
  * The card of one decision in one mode, or null for a token no scope card covers. ctx holds

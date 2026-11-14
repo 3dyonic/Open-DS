@@ -121,3 +121,38 @@ test("a token that points at another is a reference: never shared, and named on 
   assert.match(exit.says, /^A closing layer takes the feedback time/);
 });
 
+test("icons: the icon fits the body line, and the stroke draws at least 1px", () => {
+  assert.deepEqual(said(card(dd, "size.icon"), "Can you tell what it is?").slice(0, 3), [
+    "16px icon",
+    "20px line",
+    "Lines up: the icon sits inside one line.",
+  ]);
+  assert.deepEqual(said(card(dd, "icon.stroke-width"), "Does it match the text weight?").slice(0, 3), [
+    "1.5 on a 24px grid",
+    "1px at 16px",
+    "Thin lines stay whole at this size.",
+  ]);
+});
+
+test("nothing is invented: a scheme with no sentences and no glyph shows the gaps as missing", () => {
+  const scheme = structuredClone(loadScheme("content-first", roots));
+  scheme.samples = {};
+  const bare = tokenMapView({ scheme, grammar: g });
+  const type = card(bare, "type.body.font-size");
+  assert.equal(type.sections[0].specimen, null);
+  assert.ok(type.sections[0].rows.some((r) => r.type === "missing"));
+  const icon = card(bare, "size.icon");
+  assert.equal(icon.sections[0].specimen, null);
+  assert.equal(icon.sections[0].rows.filter((r) => r.type === "missing").length, 2);
+});
+
+test("a group token's own value is keyed and titled without its @, as color is", () => {
+  const scheme = structuredClone(loadScheme("dense-data", roots));
+  scheme.tokens.semantic.size.icon = { "@": scheme.tokens.semantic.size.icon };
+  const map = tokenMapView({ scheme, grammar: g, glyph });
+  assert.equal(map.shared.decisions["size.icon"].id, "size.icon");
+  assert.equal(map.shared.decisions["size.icon"].shorthand.headline, "Small icons.");
+  assert.ok(map.shared.decisions["size.icon"].cards.light);
+  assert.ok(!Object.keys(map.shared.decisions).some((k) => k.endsWith(".@")));
+  assert.ok(map.shared.families.find((f) => f.id === "size").steps[0].decisions.includes("size.icon"));
+});

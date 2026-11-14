@@ -45,6 +45,7 @@ const SCALES = [
   [/^duration\.(.+)$/, "Motion", "duration", "duration", "motion"],
   [/^easing\.(.+)$/, "Motion", "easing", "easing", "motion"],
   [/^opacity\.(.+)$/, "Opacity", "opacity", "opacity", "accessibility"],
+  [/^stroke-width\.(.+)$/, "Size", "stroke-width", "stroke width", "iconography"],
 ];
 
 // A theme pick's why without its pick prefix, which the card shows on its own: "blue.light.600: the focus
@@ -150,7 +151,7 @@ const stepOrder = (a, b) => {
  * other area, the same in both modes. Decisions are keyed by token id; a decision's answers are ids
  * into answers.
  */
-export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "", waiting = {} }) {
+export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "", waiting = {}, glyph = null }) {
   const reasons = reasonsOf(scheme, grammar);
   // A decision without a theme pick says why through its own, its group's or a usage rule's reason
   // (trace.mjs). A grammar trace rule links answers but says no why of the scheme's: none is invented.
@@ -455,6 +456,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
           families: shared.families,
           index: indexes[mode],
           chain: (path) => aliasChain(tokenIndexes[mode], path),
+          glyph,
         },
         id,
       );
