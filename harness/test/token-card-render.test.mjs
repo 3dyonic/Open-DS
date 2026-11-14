@@ -107,6 +107,9 @@ const CASES = [
     "motion.duration.feedback",
     ["Is it fast enough to feel instant?", "Specimen ·", "With less motion", "Where it sits"],
   ],
+  ["layer.sticky", ["What sits in front?", "Specimen · layer 100", "Where in the order?", "1 of 6"]],
+  ["layer.modal", ["What sits in front?", "Specimen · layer 1100", "Where in the order?", "3 of 6"]],
+  ["layer.tooltip", ["What sits in front?", "Nothing covers it.", "Where in the order?", "6 of 6"]],
   ["motion.easing.enter", ["How does it arrive?", "Specimen · cubic-bezier", "With less motion"]],
   ["motion.easing.exit", ["How does it arrive?", "Specimen · cubic-bezier", "With less motion"]],
   ["size.icon", ["Can you tell what it is?", "Specimen ·", "Alone as a button?", "Where it sits"]],
@@ -143,4 +146,18 @@ test("a card shows the token's value in the map's mode: the dark shadow on the d
   const dark = render("content-first", "elevation.overlay", "dark").text;
   assert.ok(light.includes("#1F1B1629") && light.includes("16% shade"));
   assert.ok(dark.includes("#00000080") && dark.includes("50% shade") && !dark.includes("#1F1B1629"));
+});
+
+test("a layer card names its class and the components that use it", () => {
+  const { d, text } = render("dense-data", "layer.modal");
+  inOrder(
+    text,
+    ["layer.modal", "z-index 1100", "class z-modal", "Covers: the dimmed page behind a dialog.", "Covered by: menus."],
+    "layer",
+  );
+  inOrder(
+    text,
+    [`Used by ${d.components.length} components.`, d.components.map((c) => c.component).join(" · ")],
+    "layer",
+  );
 });

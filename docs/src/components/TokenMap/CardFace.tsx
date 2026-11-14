@@ -77,6 +77,10 @@ type Hint = {
 type Note = { token: string; says: string | null; families?: (string | null)[] };
 export type ScopeCard = {
   value?: string | null;
+  // The utility class the code writes for this token, such as z-modal.
+  code?: string | null;
+  // The card names the components that use the token under "Used by".
+  usedNames?: boolean;
   swatch: Draw;
   where: string[] | null;
   sections: Section[];
@@ -159,7 +163,17 @@ function PairChip({ p }: { p: Pair }) {
 }
 
 // The card's head: a swatch of the token, its name, and the step and value it resolves to.
-function CardHead({ d, swatch, value }: { d: Decision; swatch: React.ReactNode; value?: string | null }) {
+function CardHead({
+  d,
+  swatch,
+  value,
+  code,
+}: {
+  d: Decision;
+  swatch: React.ReactNode;
+  value?: string | null;
+  code?: string | null;
+}) {
   return (
     <div className={styles.swatchRow}>
       {swatch}
@@ -168,6 +182,12 @@ function CardHead({ d, swatch, value }: { d: Decision; swatch: React.ReactNode; 
         {d.resolves && (
           <div className={styles.step}>
             {d.resolves.name} · <span className={styles.mono}>{pxOf(value ?? d.resolves.value)}</span>
+            {code && (
+              <>
+                {" "}
+                · class <span className={styles.mono}>{code}</span>
+              </>
+            )}
           </div>
         )}
       </div>
@@ -365,6 +385,14 @@ function Swatch({ s }: { s: Draw }) {
           <span className={styles.swLayer}>
             <i className={styles.swGround} />
             <i className={styles.swLift} style={{ bottom: 11 + 6 * num(s.lift) }} />
+          </span>
+        );
+      case "stack":
+        return (
+          <span className={styles.swStack}>
+            <i />
+            <i />
+            <i />
           </span>
         );
       case "duration":
@@ -626,6 +654,23 @@ function Drawing({ s }: { s: Draw }) {
           />
         </div>
       );
+    case "stack": {
+      // Each layer is drawn with its own number as its z-index, offset so the overlap shows.
+      const layers = s.layers as { token: string | null; z: number; label: string; self?: boolean }[];
+      return (
+        <div className={styles.stack}>
+          {layers.map((l, i) => (
+            <div
+              key={l.label}
+              className={`${styles.stackLayer} ${l.self ? styles.stackSelf : ""}`}
+              style={{ zIndex: l.z, top: i * 22, left: i * 26 }}
+            >
+              {l.label}
+            </div>
+          ))}
+        </div>
+      );
+    }
     case "duration":
       return <DurationBar ms={num(s.ms)} />;
     case "curve":
@@ -821,7 +866,7 @@ function HintTrack({ h }: { h: Hint }) {
 export function ScopeFace({ d, card, theme }: { d: Decision; card: ScopeCard; theme: Theme | null }) {
   return (
     <div className={styles.face} style={theme ? faceStyle(theme) : undefined}>
-      <CardHead d={d} swatch={<Swatch s={card.swatch} />} value={card.value} />
+      <CardHead d={d} swatch={<Swatch s={card.swatch} />} value={card.value} code={card.code} />
       <ShorthandOf d={d} />
       {card.where && <Facts pills={card.where} say={null} />}
       {card.sections.map((s) => (
@@ -903,6 +948,9 @@ export function DecisionCard({
       <div className={styles.used}>
         {/* The count traces the component code; a token read only by a stylesheet counts none. */}
         {used > 0 ? `Used by ${used} component${used === 1 ? "" : "s"}.` : "No component code reads it."}
+        {card?.usedNames && used > 0 && (
+          <div className={styles.usedNames}>{d.components.map((c) => c.component).join(" · ")}</div>
+        )}
       </div>
       {!hasReason(d) && <NoReason />}
       <button

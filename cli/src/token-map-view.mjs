@@ -29,7 +29,9 @@ import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
 import { decidersOf, decisionTree, mappingOf, traceScheme } from "./trace.mjs";
 
-export const AREAS = ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Motion", "Opacity"];
+// Areas are kinds of value, as Size and Spacing share one scope: the stack order is its own kind, though
+// the elevation scope owns it.
+export const AREAS = ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Layer", "Motion", "Opacity"];
 
 // Non-color primitives by id: [pattern, area, scale id, scale label, the grammar scope that sets it].
 const SCALES = [
@@ -42,6 +44,7 @@ const SCALES = [
   [/^radius\.(.+)$/, "Shape", "radius", "corner", "shape"],
   [/^border-width\.(.+)$/, "Shape", "border-width", "line width", "shape"],
   [/^shadow\.(.+)$/, "Elevation", "shadow", "shadow", "elevation"],
+  [/^z-index\.(.+)$/, "Layer", "z-index", "z-index", "elevation"],
   [/^duration\.(.+)$/, "Motion", "duration", "duration", "motion"],
   [/^easing\.(.+)$/, "Motion", "easing", "easing", "motion"],
   [/^opacity\.(.+)$/, "Opacity", "opacity", "opacity", "accessibility"],

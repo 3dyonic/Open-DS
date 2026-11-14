@@ -941,3 +941,54 @@
 .used {
   color: var(--color-text-secondary);
 }
+
+/* The layer order: three layers stacked by their own numbers. */
+.swStack {
+  position: relative;
+  width: 26px;
+  height: 22px;
+}
+.swStack i {
+  position: absolute;
+  width: 16px;
+  height: 12px;
+  border: 1.5px solid var(--color-text-secondary);
+  border-radius: 3px;
+  background: var(--color-surface-default);
+}
+.swStack i:nth-child(2) {
+  left: 5px;
+  top: 5px;
+}
+.swStack i:nth-child(3) {
+  left: 10px;
+  top: 10px;
+  border-color: var(--color-border-selected);
+}
+.stack {
+  position: relative;
+  /* A stacking context of its own, so the layers' numbers order them here and nowhere else. */
+  isolation: isolate;
+  height: 108px;
+}
+.stackLayer {
+  position: absolute;
+  width: 60%;
+  min-height: 52px;
+  padding: 0.35rem 0.5rem;
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-element);
+  background: var(--color-surface-default);
+  color: var(--color-text-secondary);
+}
+.stackSelf {
+  border: 2px solid var(--color-border-selected);
+  background: var(--color-surface-selected);
+  color: var(--color-text-primary);
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+}
+.usedNames {
+  margin-top: 0.15rem;
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  overflow-wrap: anywhere;
+}

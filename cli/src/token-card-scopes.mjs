@@ -662,6 +662,72 @@ function elevationCard(ctx, id) {
   };
 }
 
+// ---------- Layer ----------
+
+// What a layer holds, from its description: "Layer of a dialog, an alert dialog, …" → "a dialog".
+const holds = (description) =>
+  (description ?? "")
+    .replace(/^Layer of /, "")
+    .split(/[,:.]/)[0]
+    .trim() || null;
+
+function layerCard(ctx, id) {
+  if (!/^layer\./.test(id)) return null;
+  const order = Object.keys(ctx.decisions)
+    .filter((k) => /^layer\./.test(k))
+    .map((k) => ({ token: k, value: Number(ctx.value(k)), holds: holds(ctx.decisions[k]?.description) }))
+    .filter((l) => Number.isFinite(l.value))
+    .sort((a, b) => a.value - b.value);
+  const at = order.findIndex((l) => l.token === id);
+  if (at < 0) return null;
+  const [below, self, above] = [order[at - 1] ?? null, order[at], order[at + 1] ?? null];
+  // The name the code writes: Tailwind makes z-<name> from each --z-index-<name> (cli/src/shadcn.mjs).
+  const name = id.replace(/^layer\./, "");
+  const code = Object.keys(ctx.scheme.tokens.semantic.layer ?? {}).includes(name) ? `z-${name}` : null;
+  const cap = (l) => (l?.holds ? capital(l.holds) : null);
+  const rows = [
+    facts(
+      [],
+      `Covers: ${below ? (below.holds ?? below.token) : "the page"}. ${above ? `Covered by: ${above.holds ?? above.token}.` : "Nothing covers it."}`,
+    ),
+  ];
+  const layers = [
+    below
+      ? { token: below.token, z: below.value, label: cap(below) ?? below.token }
+      : { token: null, z: 0, label: "The page" },
+    { token: id, z: self.value, label: id, self: true },
+    above ? { token: above.token, z: above.value, label: cap(above) ?? above.token } : null,
+  ].filter(Boolean);
+  return {
+    code,
+    swatch: { kind: "stack" },
+    where: null,
+    sections: [
+      {
+        ask: "What sits in front?",
+        rows,
+        specimen: {
+          tag: `Specimen · layer ${self.value}`,
+          as: `the layer under it, this layer and the layer over it, stacked by their numbers`,
+          draw: { kind: "stack", layers },
+        },
+      },
+    ],
+    hint: {
+      ...scaleHint(
+        order.map((l) => l.value),
+        self.value,
+        { ask: "Where in the order?", word: "layer", words: ["the back layer", "a middle layer", "the front layer"] },
+      ),
+      // A place in the order, not a distance: the ticks are even.
+      ticks: order.map((_, i) => (i / Math.max(1, order.length - 1)) * 100),
+      at: (at / Math.max(1, order.length - 1)) * 100,
+    },
+    usedNames: true,
+    ...sharesOf(ctx, id),
+  };
+}
+
 // ---------- Motion ----------
 
 // The time each move plays in, as the transition keys pair them: a state change on the feedback
@@ -925,7 +991,7 @@ function iconCard(ctx, id) {
   };
 }
 
-const BUILDERS = [typeCard, spacingCard, shapeCard, elevationCard, motionCard, iconCard];
+const BUILDERS = [typeCard, spacingCard, shapeCard, elevationCard, layerCard, motionCard, iconCard];
 
 /**
  * The card of one decision in one mode, or null for a token no scope card covers. ctx holds

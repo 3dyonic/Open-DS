@@ -156,3 +156,21 @@ test("a group token's own value is keyed and titled without its @, as color is",
   assert.ok(!Object.keys(map.shared.decisions).some((k) => k.endsWith(".@")));
   assert.ok(map.shared.families.find((f) => f.id === "size").steps[0].decisions.includes("size.icon"));
 });
+
+test("layer: the six layers stack in one order, each between the layer under it and the layer over it", () => {
+  const order = ["layer.sticky", "layer.backdrop", "layer.modal", "layer.dropdown", "layer.toast", "layer.tooltip"];
+  for (const map of [cf, dd]) {
+    assert.deepEqual(
+      map.shared.families.find((f) => f.id === "z-index").steps.map((s) => s.decisions[0]),
+      order,
+    );
+    order.forEach((id, i) => {
+      const c = card(map, id);
+      assert.equal(c.code, `z-${id.slice(6)}`);
+      assert.deepEqual([c.hint.n, c.hint.of], [i + 1, 6]);
+      const layers = c.sections[0].specimen.draw.layers.map((l) => l.token);
+      assert.deepEqual(layers, [order[i - 1] ?? null, id, ...(order[i + 1] ? [order[i + 1]] : [])]);
+    });
+  }
+  assert.deepEqual(said(card(cf, "layer.tooltip"), "What sits in front?"), ["Covers: toasts. Nothing covers it."]);
+});
