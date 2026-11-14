@@ -6537,5 +6537,498 @@
         }
       }
     }
+  },
+  "shorthand": {
+    "description": "What each semantic token does for people in this scheme, in a headline and one line. The token map card shows it.",
+    "tokens": {
+      "border-width.default": {
+        "headline": "One thin line.",
+        "line": "Edges stay faint, so the reading leads."
+      },
+      "color.action.danger": {
+        "headline": "This one cannot be undone.",
+        "line": "The red fill is only for the step that deletes or loses work."
+      },
+      "color.action.danger.hover": {
+        "headline": "Still the delete.",
+        "line": "The fill darkens under the pointer, so the risk stays in view."
+      },
+      "color.action.primary": {
+        "headline": "Keep reading.",
+        "line": "One calm fill marks the next step."
+      },
+      "color.action.primary.hover": {
+        "headline": "It answers.",
+        "line": "The fill darkens, so readers know it will respond."
+      },
+      "color.action.secondary": {
+        "headline": "Save it for later.",
+        "line": "A plain fill that never pulls readers off the page."
+      },
+      "color.action.secondary.hover": {
+        "headline": "Still optional.",
+        "line": "A soft change under the pointer, quieter than the main action."
+      },
+      "color.border.default": {
+        "headline": "A faint edge.",
+        "line": "Cards stay apart without lines that pull the eye."
+      },
+      "color.border.focus": {
+        "headline": "You are here.",
+        "line": "Keyboard readers see which link is next."
+      },
+      "color.border.raised": {
+        "headline": "The edge of a layer.",
+        "line": "A menu or dialog stays apart from the page under it."
+      },
+      "color.border.selected": {
+        "headline": "Chosen.",
+        "line": "An edge marks the chosen item, not only its color."
+      },
+      "color.border.strong": {
+        "headline": "Type or press here.",
+        "line": "An edge strong enough to show where the input is."
+      },
+      "color.category.1": {
+        "headline": "The first topic.",
+        "line": "A tag or chart line that means a group, not a state."
+      },
+      "color.category.1.subtle": {
+        "headline": "The first tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.2": {
+        "headline": "The second topic.",
+        "line": "Told apart from the first at a glance."
+      },
+      "color.category.2.subtle": {
+        "headline": "The second tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.3": {
+        "headline": "The third topic.",
+        "line": "Told apart from the others at a glance."
+      },
+      "color.category.3.subtle": {
+        "headline": "The third tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.4": {
+        "headline": "The fourth topic.",
+        "line": "Told apart from the others at a glance."
+      },
+      "color.category.4.subtle": {
+        "headline": "The fourth tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.5": {
+        "headline": "The fifth topic.",
+        "line": "Told apart from the others at a glance."
+      },
+      "color.category.5.subtle": {
+        "headline": "The fifth tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.disabled.border": {
+        "headline": "Not now.",
+        "line": "The edge fades, so people do not try this control."
+      },
+      "color.disabled.surface": {
+        "headline": "Not available.",
+        "line": "A flat fill shows the control is off for now."
+      },
+      "color.disabled.text": {
+        "headline": "Off for now.",
+        "line": "Faded words, still readable, on a control that does nothing yet."
+      },
+      "color.status.danger": {
+        "headline": "Something went wrong.",
+        "line": "Readers see the problem before they read the word."
+      },
+      "color.status.danger.subtle": {
+        "headline": "A problem, held softly.",
+        "line": "The fill marks the message without alarm on every line."
+      },
+      "color.status.info": {
+        "headline": "Worth knowing.",
+        "line": "News that needs no action."
+      },
+      "color.status.info.subtle": {
+        "headline": "A note, held softly.",
+        "line": "The fill sets the message apart from the content."
+      },
+      "color.status.success": {
+        "headline": "Done.",
+        "line": "Readers see the result before they read the word."
+      },
+      "color.status.success.subtle": {
+        "headline": "Done, held softly.",
+        "line": "The fill marks the good news without breaking the calm."
+      },
+      "color.status.warning": {
+        "headline": "Careful.",
+        "line": "People see it before they read the word."
+      },
+      "color.status.warning.subtle": {
+        "headline": "Out of date, softly.",
+        "line": "The fill marks the caution and keeps the words easy to read."
+      },
+      "color.surface.canvas": {
+        "headline": "A warm page.",
+        "line": "A soft ground that is kind to the eye over a long read."
+      },
+      "color.surface.default": {
+        "headline": "Where the reading sits.",
+        "line": "Cards and fields share one clean ground."
+      },
+      "color.surface.floating": {
+        "headline": "Floats over it all.",
+        "line": "Menus, dialogs and toasts sit highest, and their text stays easy to read."
+      },
+      "color.surface.highlight": {
+        "headline": "Under the pointer.",
+        "line": "A soft band shows the item, and the page stays calm."
+      },
+      "color.surface.inverse": {
+        "headline": "A short note on top.",
+        "line": "A dark tip that reads against any page."
+      },
+      "color.surface.pressed": {
+        "headline": "Pressed.",
+        "line": "The item answers the finger with its own change."
+      },
+      "color.surface.raised": {
+        "headline": "On top of the page.",
+        "line": "Cards and panels sit one step above the content."
+      },
+      "color.surface.scrim": {
+        "headline": "Look here first.",
+        "line": "The page dims, so the dialog holds the attention."
+      },
+      "color.surface.selected": {
+        "headline": "Chosen.",
+        "line": "The selected row stands out from the rows around it."
+      },
+      "color.surface.sunken": {
+        "headline": "Set back.",
+        "line": "Wells and headers sit behind the reading."
+      },
+      "color.text.danger-on-dark": {
+        "headline": "The problem, on dark.",
+        "line": "Danger words that read on the dark danger fill."
+      },
+      "color.text.danger-on-light": {
+        "headline": "The problem, on light.",
+        "line": "Danger words that read on the light danger fill."
+      },
+      "color.text.info-on-dark": {
+        "headline": "The note, on dark.",
+        "line": "Info words that read on the dark info fill."
+      },
+      "color.text.info-on-light": {
+        "headline": "The note, on light.",
+        "line": "Info words that read on the light info fill."
+      },
+      "color.text.inverse": {
+        "headline": "Words on the dark tip.",
+        "line": "Text that reads on a tooltip."
+      },
+      "color.text.link": {
+        "headline": "Go there.",
+        "line": "Links stand out from the words around them, but stay calm."
+      },
+      "color.text.muted": {
+        "headline": "A quiet hint.",
+        "line": "Hints step back, so the article leads."
+      },
+      "color.text.on-action": {
+        "headline": "The words on the button.",
+        "line": "The main action's label reads on its fill."
+      },
+      "color.text.on-danger": {
+        "headline": "The words on the delete.",
+        "line": "The label reads on the red fill."
+      },
+      "color.text.on-dark": {
+        "headline": "Words on a dark fill.",
+        "line": "Light text for any dark ground, in either mode."
+      },
+      "color.text.on-light": {
+        "headline": "Words on a light fill.",
+        "line": "Dark text for any light ground, in either mode."
+      },
+      "color.text.primary": {
+        "headline": "The words people came for.",
+        "line": "The article at full strength, warm and dark."
+      },
+      "color.text.secondary": {
+        "headline": "The supporting words.",
+        "line": "Bylines and notes, a step behind the article."
+      },
+      "color.text.success-on-dark": {
+        "headline": "The good news, on dark.",
+        "line": "Success words that read on the dark success fill."
+      },
+      "color.text.success-on-light": {
+        "headline": "The good news, on light.",
+        "line": "Success words that read on the light success fill."
+      },
+      "color.text.warning-on-dark": {
+        "headline": "The caution, on dark.",
+        "line": "Warning words that read on the dark warning fill."
+      },
+      "color.text.warning-on-light": {
+        "headline": "The caution, on light.",
+        "line": "Warning words that read on the light warning fill."
+      },
+      "component-spacing-map.hairline": {
+        "headline": "A tiny nudge.",
+        "line": "Two pixels that line things up by eye."
+      },
+      "component-spacing-map.x1": {
+        "headline": "One step.",
+        "line": "The base step of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x12": {
+        "headline": "Twelve steps.",
+        "line": "Twelve steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x2": {
+        "headline": "Two steps.",
+        "line": "Two steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x3": {
+        "headline": "Three steps.",
+        "line": "Three steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x4": {
+        "headline": "Four steps.",
+        "line": "Four steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x6": {
+        "headline": "Six steps.",
+        "line": "Six steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x8": {
+        "headline": "Eight steps.",
+        "line": "Eight steps of the spacious rhythm inside a component."
+      },
+      "elevation.card": {
+        "headline": "Space, not shadows.",
+        "line": "Cards sit flat; the space around them does the work."
+      },
+      "elevation.overlay": {
+        "headline": "A soft lift.",
+        "line": "Menus and dialogs rise gently above the page."
+      },
+      "focus.ring.offset": {
+        "headline": "A gap around the ring.",
+        "line": "The ring never touches the control, so it reads on any fill."
+      },
+      "focus.ring.width": {
+        "headline": "A ring you can see.",
+        "line": "Focus stands out from every edge around it."
+      },
+      "motion.duration.feedback": {
+        "headline": "A calm answer.",
+        "line": "Controls respond at once, without a jolt."
+      },
+      "motion.duration.panels": {
+        "headline": "Panels arrive calmly.",
+        "line": "Menus and dialogs open at a pace the eye can follow."
+      },
+      "motion.easing.exit": {
+        "headline": "Leave quietly.",
+        "line": "A closing layer slows to a stop, so the page stays calm."
+      },
+      "motion.easing.standard": {
+        "headline": "Change in place.",
+        "line": "Hover, press and toggle start fast and settle."
+      },
+      "radius.badge": {
+        "headline": "Round tags.",
+        "line": "Badges and chips read as soft labels."
+      },
+      "radius.control": {
+        "headline": "Soft controls.",
+        "line": "Buttons and inputs have a friendly, round corner."
+      },
+      "radius.element": {
+        "headline": "Soft items.",
+        "line": "Rows, text areas and media share one round corner."
+      },
+      "radius.option": {
+        "headline": "Corners that nest.",
+        "line": "An option's corner fits inside its menu's corner."
+      },
+      "radius.surface": {
+        "headline": "Round cards.",
+        "line": "Cards and dialogs feel calm and soft."
+      },
+      "size.control.compact": {
+        "headline": "Still a full target.",
+        "line": "Even the small control is easy to tap."
+      },
+      "size.control.default": {
+        "headline": "Easy to tap.",
+        "line": "Buttons and inputs fit a finger on any device."
+      },
+      "size.control.large": {
+        "headline": "Same as the usual.",
+        "line": "One height covers the large case too, so sizes stay few."
+      },
+      "size.hit-area": {
+        "headline": "Sized for a finger.",
+        "line": "Readers on a phone hit what they aim at."
+      },
+      "size.icon": {
+        "headline": "An icon beside a word.",
+        "line": "Icons match the text they sit with."
+      },
+      "size.row": {
+        "headline": "One roomy row.",
+        "line": "Each row is one control tall, easy to tap."
+      },
+      "space.gap.default": {
+        "headline": "Items in a group.",
+        "line": "Each item in a list reads on its own."
+      },
+      "space.gap.group": {
+        "headline": "Between groups.",
+        "line": "A wide gap tells readers one group has ended."
+      },
+      "space.gap.section": {
+        "headline": "A new section.",
+        "line": "A wide pause, like a break between chapters."
+      },
+      "space.gap.tight": {
+        "headline": "These belong together.",
+        "line": "An icon and its word read as one item."
+      },
+      "space.inset.cell-x": {
+        "headline": "Room in a cell.",
+        "line": "Values in a table stay clear of the column lines."
+      },
+      "space.inset.container": {
+        "headline": "Room inside a card.",
+        "line": "Words never crowd the edge."
+      },
+      "space.inset.control-x": {
+        "headline": "Room inside a control.",
+        "line": "The label sits well clear of the edge."
+      },
+      "type.body.font-family": {
+        "headline": "A serif to read.",
+        "line": "Long text in a face made for reading."
+      },
+      "type.body.font-size": {
+        "headline": "Large reading text.",
+        "line": "Long articles read without strain on any device."
+      },
+      "type.body.font-weight": {
+        "headline": "Regular words.",
+        "line": "Body text stays light, so the words lead."
+      },
+      "type.body.line-height": {
+        "headline": "Open lines.",
+        "line": "The eye finds the next line and keeps its place."
+      },
+      "type.caption.font-family": {
+        "headline": "A plain sans for notes.",
+        "line": "Small print in a sans, apart from the article."
+      },
+      "type.caption.font-size": {
+        "headline": "Small print.",
+        "line": "Captions sit below the body text, still readable."
+      },
+      "type.caption.font-weight": {
+        "headline": "Plain small print.",
+        "line": "Captions stay regular, so they do not compete."
+      },
+      "type.caption.line-height": {
+        "headline": "Room in small print.",
+        "line": "Short notes stay easy to follow."
+      },
+      "type.data.font-family": {
+        "headline": "Figures in the reading face.",
+        "line": "Numbers sit in the text, in the same serif."
+      },
+      "type.data.font-size": {
+        "headline": "Figures at reading size.",
+        "line": "Numbers match the article text."
+      },
+      "type.data.font-weight": {
+        "headline": "Plain figures.",
+        "line": "Numbers stay regular, so none looks more urgent."
+      },
+      "type.data.line-height": {
+        "headline": "Open lines.",
+        "line": "Figures keep the same room as the article."
+      },
+      "type.display.font-family": {
+        "headline": "A serif headline.",
+        "line": "The largest words, in the reading face."
+      },
+      "type.display.font-size": {
+        "headline": "The biggest words.",
+        "line": "A large, calm headline that invites a read."
+      },
+      "type.display.font-weight": {
+        "headline": "Strong and clear.",
+        "line": "The display line carries weight."
+      },
+      "type.display.line-height": {
+        "headline": "Tight big lines.",
+        "line": "Large lines sit close, so they read as one."
+      },
+      "type.heading.font-family": {
+        "headline": "Serif headings.",
+        "line": "Sections start in the reading face."
+      },
+      "type.heading.font-size": {
+        "headline": "A section starts.",
+        "line": "Headings guide a long read."
+      },
+      "type.heading.font-weight": {
+        "headline": "Strong headings.",
+        "line": "Weight marks where a section starts."
+      },
+      "type.heading.line-height": {
+        "headline": "Close heading lines.",
+        "line": "A heading that wraps still reads as one."
+      },
+      "type.label.font-family": {
+        "headline": "A plain sans for controls.",
+        "line": "Buttons and fields read apart from the article."
+      },
+      "type.label.font-size": {
+        "headline": "Words on controls.",
+        "line": "Labels large enough to read and tap."
+      },
+      "type.label.font-weight": {
+        "headline": "Labels that stand out.",
+        "line": "Weight sets a label apart from body text."
+      },
+      "type.label.line-height": {
+        "headline": "One line of label.",
+        "line": "A control holds its label on one line."
+      },
+      "type.title.font-family": {
+        "headline": "A serif title.",
+        "line": "Article titles in the reading face."
+      },
+      "type.title.font-size": {
+        "headline": "The article title.",
+        "line": "Large and calm, below the display line."
+      },
+      "type.title.font-weight": {
+        "headline": "A strong title.",
+        "line": "Weight marks what the page is about."
+      },
+      "type.title.line-height": {
+        "headline": "Close title lines.",
+        "line": "A long title still reads as one."
+      }
+    }
   }
 }

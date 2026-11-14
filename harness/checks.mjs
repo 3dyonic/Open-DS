@@ -2378,6 +2378,36 @@ export const CHECKS = {
     },
   },
 
+  "token-shorthand": {
+    requires: ["cli/src/token-card.mjs", "cli/src/token-map-view.mjs"],
+    run: async (c) => {
+      // OD-310: every token map card shows a stored shorthand. Each semantic token the map draws, in every
+      // scheme, brand and mode, has a headline of 40 characters or fewer and a line of 90 or fewer, and no
+      // shorthand names a token the map does not draw.
+      const { shorthandProblems } = await import(pathToFileURL(c.p("cli/src/token-card.mjs")).href);
+      const { tokenMapView } = await import(pathToFileURL(c.p("cli/src/token-map-view.mjs")).href);
+      const g = c.grammar();
+      const gaps = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const s = c.scheme(id);
+        const drawn = new Set();
+        for (const brand of Object.keys(s.tokens.brands)) {
+          const v = tokenMapView({ scheme: s, grammar: g, brand });
+          for (const m of [v.shared, v.modes.light, v.modes.dark]) for (const d of Object.keys(m.decisions)) drawn.add(d);
+        }
+        for (const token of drawn) {
+          n++;
+          for (const p of shorthandProblems(s.shorthand?.tokens?.[token])) gaps.push(`${id} ${token}: ${p}`);
+        }
+        for (const token of Object.keys(s.shorthand?.tokens ?? {})) if (!drawn.has(token)) gaps.push(`${id} ${token}: a shorthand for a token the map does not draw`);
+      }
+      return gaps.length
+        ? bad(`${gaps.length} shorthand gaps; ${gaps.slice(0, 4).join("; ")}. Write them with saveScheme into the scheme's shorthand.tokens.`)
+        : ok(`${n} semantic tokens in ${SCHEMES.length} schemes each have a shorthand within 40 and 90 characters`);
+    },
+  },
+
   // OD-304: the decision graph. Every token of a group that plays roles (color, type) has each link of its
   // chain, as plain data: role, job, property, answer, rule (its slot, its entry's rule or a connection)
   // and value, in every brand and mode.

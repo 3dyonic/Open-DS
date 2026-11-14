@@ -344,3 +344,106 @@
   color: var(--color-status-warning);
   font-weight: var(--type-label-font-weight);
 }
+
+/* The token card: light and dark faces side by side, each in its own mode's surfaces. */
+.faces {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-gap-tight);
+}
+.face {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 0.6rem;
+  color: var(--color-text-primary);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-element);
+}
+.shorthand {
+  font-family: var(--type-display-font-family, inherit);
+  font-weight: var(--type-title-font-weight, 700);
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+.shortLine {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--type-body-font-family, inherit);
+  font-weight: var(--type-body-font-weight, 400);
+  font-size: var(--type-caption-font-size, 0.875rem);
+  color: var(--color-text-secondary);
+}
+.meterRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin-block: 0.3rem;
+}
+.track {
+  position: relative;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+}
+.fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background: var(--color-text-primary);
+}
+.floor {
+  position: absolute;
+  top: -0.25rem;
+  bottom: -0.25rem;
+  width: 2px;
+  background: var(--color-text-primary);
+}
+.pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.pairChip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-element);
+}
+.pairText {
+  font-weight: var(--type-label-font-weight);
+  font-size: var(--type-body-font-size, 1rem);
+  line-height: 1.3;
+}
+.pairOn {
+  font-size: 0.75rem;
+}
+.pairIcon {
+  flex: none;
+}
+.clash {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem;
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-element);
+  background: var(--color-surface-sunken);
+}
+.dots {
+  display: flex;
+  flex: none;
+}
+.dots i {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-surface-default);
+}
+.dots i + i {
+  margin-inline-start: -0.5rem;
+}
