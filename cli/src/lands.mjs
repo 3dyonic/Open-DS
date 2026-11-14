@@ -7,7 +7,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
-import { cssName, flatTokens } from "./tokens.mjs";
+import { cssName, flatTokens, pickByTone } from "./tokens.mjs";
 
 const REF = /\{([^}]+)\}/g;
 const UTIL =
@@ -37,9 +37,11 @@ function buildIndex(scheme, { brand, mode }) {
   };
   add(t.primitive);
   add(t.semantic);
-  add({ component: t.component });
+  // In one brand and mode, a component text takes the pair its fill's tone picks, as the build does.
+  const th1 = brand && mode ? t.brands[brand].theme : null;
+  add({ component: th1 ? pickByTone(t.component, th1, mode) : t.component });
   if (brand && mode) {
-    const th = t.brands[brand].theme;
+    const th = th1;
     add(th.base ?? {}, ["theme"]);
     add(th[mode] ?? {}, ["theme"]);
   } else
