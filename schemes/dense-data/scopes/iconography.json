@@ -99,17 +99,19 @@
     "semantic": {
       "size": {
         "icon": {
-          "$type": "dimension",
-          "$value": "{size.16}",
-          "$description": "Icon size next to text.",
-          "$extensions": {
-            "open-ds": {
-              "why": "16px icons match the small text, so an icon and its label in a toolbar read as one line.",
-              "because": [
-                "iconography.values",
-                "iconography.count",
-                "tasks.q2"
-              ]
+          "@": {
+            "$type": "dimension",
+            "$value": "{size.16}",
+            "$description": "Icon size next to text.",
+            "$extensions": {
+              "open-ds": {
+                "why": "16px icons match the small text, so an icon and its label in a toolbar read as one line.",
+                "because": [
+                  "iconography.values",
+                  "iconography.count",
+                  "tasks.q2"
+                ]
+              }
             }
           }
         }

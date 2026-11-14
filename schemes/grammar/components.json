@@ -1940,7 +1940,7 @@
       "id": "button/icon-size",
       "component": "button",
       "description": "Size of an icon inside a button.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "button/disabled/background",
@@ -2738,7 +2738,7 @@
       "id": "accordion/icon/size",
       "component": "accordion",
       "description": "The chevron's size.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "accordion/icon/duration",
@@ -2972,7 +2972,7 @@
       "id": "alert/icon-size",
       "component": "alert",
       "description": "Icon size of the alert.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "alert/default/background",
@@ -3152,7 +3152,7 @@
       "id": "attachment/media/icon/size",
       "component": "attachment",
       "description": "The file icon's size.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "attachment/media/icon/label",
@@ -3308,7 +3308,7 @@
       "id": "avatar/group/count/icon-size",
       "component": "avatar",
       "description": "Group count icon size of the avatar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "avatar/group/count/ring",
@@ -3434,13 +3434,13 @@
       "id": "breadcrumb/ellipsis/icon-size",
       "component": "breadcrumb",
       "description": "Size of the ellipsis icon that stands for the hidden steps of the breadcrumb.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "breadcrumb/separator/icon-size",
       "component": "breadcrumb",
       "description": "Size of the chevron between the steps of the breadcrumb: an icon next to text.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "bubble/gap",
@@ -3572,7 +3572,7 @@
       "id": "button-group/text/icon-size",
       "component": "button-group",
       "description": "Text icon size of the button group.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "button-group/text/border-width",
@@ -3722,7 +3722,7 @@
       "id": "calendar/icon-size",
       "component": "calendar",
       "description": "Icon size of the calendar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "calendar/font-size-2",
@@ -4004,7 +4004,7 @@
       "id": "checkbox/size",
       "component": "checkbox",
       "description": "Size of the checkbox.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "checkbox/border-width",
@@ -4094,13 +4094,13 @@
       "id": "combobox/trigger/icon-size",
       "component": "combobox",
       "description": "Trigger icon size of the combobox.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "combobox/trigger/icon/icon-size",
       "component": "combobox",
       "description": "Trigger icon icon size of the combobox.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "combobox/trigger/icon/label",
@@ -4208,13 +4208,13 @@
       "id": "combobox/item/icon-size",
       "component": "combobox",
       "description": "Item icon size of the combobox.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "combobox/icon-size",
       "component": "combobox",
       "description": "Icon size of the combobox.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "combobox/label/padding-x",
@@ -4640,7 +4640,7 @@
       "id": "command/icon-size",
       "component": "command",
       "description": "Icon size of the command.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "command/empty/padding-y",
@@ -4760,7 +4760,7 @@
       "id": "command/item/icon-size",
       "component": "command",
       "description": "Item icon size of the command.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "command/item/label/highlight",
@@ -4862,7 +4862,7 @@
       "id": "context-menu/sub/trigger/icon-size",
       "component": "context-menu",
       "description": "Sub trigger icon size of the context menu.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "context-menu/sub/trigger/background/highlight",
@@ -5030,7 +5030,7 @@
       "id": "context-menu/item/icon-size",
       "component": "context-menu",
       "description": "Item icon size of the context menu.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "context-menu/item/background/highlight",
@@ -5102,7 +5102,7 @@
       "id": "context-menu/checkbox/item/icon-size",
       "component": "context-menu",
       "description": "Checkbox item icon size of the context menu.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "context-menu/checkbox/item/background/highlight",
@@ -5114,7 +5114,7 @@
       "id": "context-menu/icon-size",
       "component": "context-menu",
       "description": "Icon size of the context menu.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "context-menu/radio/item/gap",
@@ -5168,7 +5168,7 @@
       "id": "context-menu/radio/item/icon-size",
       "component": "context-menu",
       "description": "Radio item icon size of the context menu.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "context-menu/radio/item/background/highlight",
@@ -5444,7 +5444,7 @@
       "id": "dialog/close/icon-size",
       "component": "dialog",
       "description": "Size of the dialog close icon: an icon next to text.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "dialog/close/focus-ring/width",
@@ -5738,7 +5738,7 @@
       "id": "dropdown-menu/item/icon",
       "component": "dropdown-menu",
       "description": "Item icon of the dropdown menu.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "dropdown-menu/item/background/highlight",
@@ -6338,7 +6338,7 @@
       "id": "input-group/xs/icon-size",
       "component": "input-group",
       "description": "Icon size in a small button inside the field.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "input-group/sm/height",
@@ -6458,7 +6458,7 @@
       "id": "input-group/addon/icon-size",
       "component": "input-group",
       "description": "Addon icon-size of the input group.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "input-group/addon/inline/end/padding-right",
@@ -6704,7 +6704,7 @@
       "id": "input-otp/caret/height",
       "component": "input-otp",
       "description": "Height of the fake caret: the size of an icon next to text.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "input-otp/caret/background",
@@ -6722,7 +6722,7 @@
       "id": "input-otp/separator/icon-size",
       "component": "input-otp",
       "description": "Size of the dash between slot groups: an icon next to text.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "item/radius",
@@ -6932,7 +6932,7 @@
       "id": "item/media/icon/icon-size",
       "component": "item",
       "description": "Size of the icon inside the item's icon media.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "item/media/icon/border-width",
@@ -7304,7 +7304,7 @@
       "id": "menubar/item/icon-size",
       "component": "menubar",
       "description": "Item icon size of the menubar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "menubar/item/background/highlight",
@@ -7376,7 +7376,7 @@
       "id": "menubar/checkbox/item/icon-size",
       "component": "menubar",
       "description": "Checkbox item icon size of the menubar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "menubar/checkbox/item/background/highlight",
@@ -7388,7 +7388,7 @@
       "id": "menubar/icon-size",
       "component": "menubar",
       "description": "Icon size of the menubar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "menubar/radio/item/gap",
@@ -7442,7 +7442,7 @@
       "id": "menubar/radio/item/icon-size",
       "component": "menubar",
       "description": "Radio item icon size of the menubar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "menubar/radio/item/background/highlight",
@@ -7586,7 +7586,7 @@
       "id": "menubar/sub/trigger/icon-size",
       "component": "menubar",
       "description": "Size of the chevron on a menubar sub-trigger: an icon next to text.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "menubar/sub/content/radius",
@@ -7856,7 +7856,7 @@
       "id": "native-select/icon-size",
       "component": "native-select",
       "description": "Icon size of the native select.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "native-select/focus-offset",
@@ -8114,7 +8114,7 @@
       "id": "navigation-menu/link/icon-size",
       "component": "navigation-menu",
       "description": "Link icon size of the navigation menu.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "navigation-menu/link/focus-ring-focus",
@@ -8312,7 +8312,7 @@
       "id": "pagination/ellipsis/icon-size",
       "component": "pagination",
       "description": "Size of the ellipsis icon that stands for the pages not shown.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "pagination/link/gap",
@@ -8450,7 +8450,7 @@
       "id": "radio-group/item/icon-size",
       "component": "radio-group",
       "description": "Item icon size of the radio group.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "radio-group/item/radius",
@@ -8612,7 +8612,7 @@
       "id": "resizable/grip/height",
       "component": "resizable",
       "description": "Height of the resizable grip.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "resizable/grip/background",
@@ -8810,7 +8810,7 @@
       "id": "select/size",
       "component": "select",
       "description": "Size of the select.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "select/content/padding",
@@ -9044,7 +9044,7 @@
       "id": "sheet/close/icon-size",
       "component": "sheet",
       "description": "Size of the sheet close icon: an icon next to text.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "sheet/close/label",
@@ -9308,7 +9308,7 @@
       "id": "sidebar/group/label/icon-size",
       "component": "sidebar",
       "description": "Group label icon size of the sidebar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "sidebar/group/label/focus",
@@ -9356,7 +9356,7 @@
       "id": "sidebar/group/action/icon-size",
       "component": "sidebar",
       "description": "Group action icon size of the sidebar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "sidebar/group/action/focus",
@@ -9428,7 +9428,7 @@
       "id": "sidebar/menu/action/icon-size",
       "component": "sidebar",
       "description": "Menu action icon size of the sidebar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "sidebar/menu/action/focus",
@@ -9524,7 +9524,7 @@
       "id": "sidebar/menu/skeleton/text-height",
       "component": "sidebar",
       "description": "Height of the text bar of a menu skeleton, of the sidebar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "sidebar/menu/sub/gap",
@@ -9584,7 +9584,7 @@
       "id": "sidebar/menu/sub/button/icon-size",
       "component": "sidebar",
       "description": "Menu sub button icon size of the sidebar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "sidebar/menu/sub/button/focus",
@@ -9788,7 +9788,7 @@
       "id": "sidebar/menu-button/icon-size",
       "component": "sidebar",
       "description": "Icon size in a menu button, of the sidebar.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "sidebar/menu-button/outline/background/hover",
@@ -9908,7 +9908,7 @@
       "id": "slider/thumb/icon-size",
       "component": "slider",
       "description": "Thumb icon size of the slider.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "slider/thumb/radius",
@@ -9992,7 +9992,7 @@
       "id": "spinner/icon-size",
       "component": "spinner",
       "description": "Icon size of the spinner.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "switch/radius",
@@ -10028,7 +10028,7 @@
       "id": "switch/thumb/size",
       "component": "switch",
       "description": "Size of the switch's thumb: the icon size. The track is the thumb plus its offset on each side, so the thumb sets the track's height. The thumb slides one track height, so the track is twice its height.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "switch/thumb/radius",
@@ -10382,7 +10382,7 @@
       "id": "toggle/icon-size",
       "component": "toggle",
       "description": "Icon size of the toggle.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "toggle/focus",
@@ -10496,13 +10496,13 @@
       "id": "icon/size",
       "component": "icon",
       "description": "Size of the icon next to text.",
-      "default": "size.icon"
+      "default": "size.icon.@"
     },
     {
       "id": "icon/size-large",
       "component": "icon",
       "description": "Size of the large icon, where the scheme has two sizes.",
-      "default": "size.icon-large",
+      "default": "size.icon.large",
       "created_by": {
         "question": "iconography.count",
         "options": ["two"]
