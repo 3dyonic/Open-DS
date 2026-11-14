@@ -21,9 +21,10 @@ import {
   tokenName,
 } from "./color-map.mjs";
 import { allConnections } from "./decision-graph.mjs";
-import { tokenIndex } from "./lands.mjs";
+import { aliasChain, tokenIndex } from "./lands.mjs";
 import { differenceThreshold } from "./color-steps.mjs";
 import { clashesOf, pairsOf, shorthandOf, weakestContrast } from "./token-card.mjs";
+import { scopeCard } from "./token-card-scopes.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
 import { decidersOf, decisionTree, mappingOf, traceScheme } from "./trace.mjs";
@@ -261,14 +262,15 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         return node?.tier === "semantic" && !node.deprecated;
       });
       if (!users.length) continue;
+      // A group token's own value (size.icon.@) is shown and keyed without its "@", as color does.
       for (const d of users) {
-        if (shared.decisions[d]) continue;
+        if (shared.decisions[tokenName(d)]) continue;
         const pick = pickOf(scheme, brand, "light", d);
         const chain = chainOf(indexes.light, d);
         const parts = d.split(".");
         const group = parts[0] === "component-spacing-map" ? "Component spacing" : groupOf(parts.length > 2 ? d : `x.${parts[0]}`);
-        shared.decisions[d] = {
-          id: d,
+        shared.decisions[tokenName(d)] = {
+          id: tokenName(d),
           group,
           shorthand: shorthandOf(scheme, d),
           resolves: { name: `${label} ${re.exec(n.id)[1].replace("_", ".")}`, value: typeof n.value === "string" ? n.value : JSON.stringify(n.value) },
@@ -290,7 +292,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         step,
         name: `${label} ${step}`,
         value: typeof n.value === "string" ? n.value : JSON.stringify(n.value),
-        decisions: users,
+        decisions: users.map(tokenName),
         checks: [],
       });
     }
@@ -407,6 +409,27 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       families: colorFamilies,
       decisions,
     };
+  }
+
+  // Every decision outside color gets its scope's card in each mode: the same token can look different
+  // in dark (a shadow, a border's contrast), so each mode keeps its own face.
+  for (const [id, d] of Object.entries(shared.decisions)) {
+    const cards = {};
+    for (const mode of ["light", "dark"])
+      cards[mode] = scopeCard(
+        {
+          scheme,
+          grammar,
+          mode,
+          reasons,
+          decisions: { ...modes[mode].decisions, ...shared.decisions },
+          families: shared.families,
+          index: indexes[mode],
+          chain: (path) => aliasChain(tokenIndexes[mode], path),
+        },
+        id,
+      );
+    if (cards.light || cards.dark) d.cards = cards;
   }
 
   // The answers the page quotes, by id, once.

@@ -354,26 +354,83 @@
 .face {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.75rem;
   min-width: 0;
-  padding: 0.6rem;
+  padding: 0.75rem;
   color: var(--color-text-primary);
   border: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-element);
+  /* The card speaks in the scheme's own roles: caption for small text, label for the questions,
+     data for names and numbers, heading for the shorthand. */
+  font-family: var(--type-caption-font-family, inherit);
+  font-size: var(--type-caption-font-size, 0.875rem);
+  line-height: var(--type-caption-line-height, 1.45);
+}
+.tokenName {
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  font-size: var(--type-caption-font-size, 0.875rem);
+  font-weight: var(--type-label-font-weight, 600);
+  overflow-wrap: anywhere;
+}
+.step {
+  color: var(--color-text-secondary);
 }
 .shorthand {
-  font-family: var(--type-display-font-family, inherit);
-  font-weight: var(--type-title-font-weight, 700);
-  font-size: 1.15rem;
-  line-height: 1.25;
+  font-family: var(--type-heading-font-family, inherit);
+  font-size: var(--type-heading-font-size, 1.15rem);
+  font-weight: var(--type-heading-font-weight, 600);
+  line-height: var(--type-heading-line-height, 1.2);
+  text-wrap: balance;
 }
 .shortLine {
   display: block;
-  margin-top: 0.2rem;
-  font-family: var(--type-body-font-family, inherit);
-  font-weight: var(--type-body-font-weight, 400);
+  margin-top: 0.25rem;
+  font-family: var(--type-caption-font-family, inherit);
+  font-weight: var(--type-caption-font-weight, 400);
   font-size: var(--type-caption-font-size, 0.875rem);
+  line-height: var(--type-caption-line-height, 1.45);
   color: var(--color-text-secondary);
+}
+.ask {
+  margin-bottom: 0.4rem;
+  font-family: var(--type-label-font-family, inherit);
+  font-size: var(--type-label-font-size, 1rem);
+  font-weight: var(--type-label-font-weight, 600);
+  line-height: var(--type-label-line-height, 1.4);
+  color: var(--color-text-primary);
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.section > .ask {
+  margin-bottom: 0;
+}
+.note {
+  color: var(--color-text-secondary);
+}
+.missingNote {
+  color: var(--color-text-primary);
+  background: var(--color-status-warning-subtle, var(--color-surface-sunken));
+  border-radius: var(--radius-element);
+  padding: 0.2rem 0.5rem;
+}
+/* Key numbers as small pills, then one short phrase. */
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-text-secondary);
+}
+.facts b {
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  font-weight: var(--type-label-font-weight, 600);
+  color: var(--color-text-primary);
+  background: var(--color-surface-selected);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
 }
 .meterRow {
   display: grid;
@@ -392,7 +449,7 @@
   position: absolute;
   inset: 0 auto 0 0;
   border-radius: 999px;
-  background: var(--color-text-primary);
+  background: var(--color-border-selected);
 }
 .floor {
   position: absolute;
@@ -460,4 +517,427 @@
 }
 .trace b {
   color: var(--color-text-primary);
+}
+
+/* The swatch in a card's head. */
+.sw {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-element);
+  border: var(--border-width-default) solid var(--color-border-default);
+  background: var(--color-surface-canvas);
+  color: var(--color-text-primary);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+  overflow: hidden;
+}
+.swRow,
+.swCol {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.swCol {
+  flex-direction: column;
+  gap: 9px;
+}
+.swRow i,
+.swCol i,
+.swBox i {
+  display: block;
+  background: var(--color-text-secondary);
+  border-radius: 2px;
+}
+.swBox {
+  display: block;
+  padding: 5px;
+  border: 1.5px solid var(--color-text-secondary);
+  border-radius: 4px;
+}
+.swControl {
+  display: block;
+  width: 28px;
+  height: 16px;
+  border: 1.5px solid var(--color-border-selected);
+  border-radius: 4px;
+}
+.swCorner {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 44px;
+  height: 44px;
+  border-top: 3px solid var(--color-border-selected);
+  border-left: 3px solid var(--color-border-selected);
+}
+.swLine {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 21px;
+  border-top-style: solid;
+  border-top-color: var(--color-text-primary);
+}
+.swRing {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+}
+.swLayer {
+  position: absolute;
+  inset: 0;
+}
+.swGround {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 8px;
+  height: 2px;
+  background: var(--color-text-secondary);
+}
+.swLift {
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--color-border-selected);
+}
+.glyph {
+  flex: none;
+  color: var(--color-text-primary);
+}
+
+/* The specimen: the only thing drawn at the token's value, framed and tagged. */
+.spectag {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.15rem 0.6rem;
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  font-weight: var(--type-label-font-weight, 600);
+  color: var(--color-surface-default);
+  background: var(--color-border-selected);
+  border-radius: 6px 6px 0 0;
+}
+.specbox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: -0.35rem;
+  padding: 0.75rem;
+  border: 2px solid var(--color-border-selected);
+  border-radius: 0 10px 10px 10px;
+  background: var(--color-surface-canvas);
+  overflow: hidden;
+}
+.as {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.lead {
+  position: relative;
+  padding-right: 1.5rem;
+}
+.brace {
+  position: absolute;
+  right: 0.25rem;
+  top: 0;
+  height: var(--lh);
+  width: 8px;
+  border: 2px solid var(--color-border-selected);
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+}
+.spec {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+.bar {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--color-text-secondary);
+  opacity: 0.6;
+}
+.groups,
+.grp {
+  display: flex;
+  align-items: center;
+}
+.ico {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  border-radius: 3px;
+  background: var(--color-border-selected);
+}
+.dims {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.sec {
+  display: flex;
+  flex-direction: column;
+}
+.gapMark {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.hair {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: var(--border-width-default) solid var(--color-border-default);
+}
+.box {
+  min-height: 12px;
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-element);
+  background: var(--color-surface-default);
+}
+.nextBox {
+  height: 24px;
+  opacity: 0.6;
+}
+.ctl {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.control {
+  display: flex;
+  align-items: center;
+  padding-inline: 12px;
+  min-width: 96px;
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-default);
+}
+.floorBox {
+  width: 24px;
+  border: 1px dashed var(--color-text-secondary);
+}
+.dimText {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+.rows > span {
+  display: flex;
+  align-items: center;
+  padding-inline: 8px;
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+}
+.lift {
+  padding: 1rem 1.5rem 2rem;
+}
+.layer {
+  height: 64px;
+  border-style: solid;
+}
+.lineBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  max-width: 100%;
+  border-block: 1px dashed var(--color-text-secondary);
+}
+.beside {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.zoom {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.runway {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+  overflow: hidden;
+}
+.runway i {
+  display: block;
+  height: 100%;
+  background: var(--color-border-selected);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.plot {
+  position: relative;
+  width: 240px;
+  height: 120px;
+  margin: 0.25rem 0 0.5rem;
+  color: var(--color-border-selected);
+}
+.curve {
+  display: block;
+  overflow: visible;
+  border: var(--border-width-default) solid var(--color-border-default);
+}
+.guide {
+  stroke: var(--color-text-secondary);
+  stroke-dasharray: 3 3;
+  stroke-width: 1;
+  opacity: 0.7;
+}
+.dotX {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.dotY {
+  display: block;
+}
+.dotY i {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--color-text-primary);
+  transform: translateY(5px);
+}
+.play {
+  align-self: flex-start;
+  padding: 0.2rem 0.6rem;
+  font: inherit;
+  font-weight: var(--type-label-font-weight, 600);
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  pointer-events: all;
+}
+.play:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-border-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Kinds of thing, cases side by side, and the place on a scale. */
+.kinds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.kinds span {
+  padding: 0.1rem 0.5rem;
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+}
+.kinds .kindOn {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-selected);
+  background: var(--color-surface-selected);
+}
+.cases {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.case {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.5rem 0.6rem;
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-element);
+}
+.caseHere {
+  border-color: var(--color-border-selected);
+  background: var(--color-surface-selected);
+}
+.caseTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--type-label-font-family, inherit);
+  font-weight: var(--type-label-font-weight, 600);
+}
+.caseTitle em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+.hintTrack {
+  position: relative;
+  height: 6px;
+  margin: 1.6rem 8px 0.3rem;
+  border-radius: 999px;
+  background: var(--color-border-default);
+}
+.tick {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 12px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--color-text-secondary);
+  opacity: 0.5;
+}
+.mark {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--color-border-selected);
+  border: 2px solid var(--color-surface-default);
+}
+.mark b {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+}
+/* A value two decisions each land on: a calm note, not a warning. */
+.shared {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.6rem;
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-element);
+  background: var(--color-surface-selected);
+}
+.shared p {
+  margin: 0;
+}
+.pairAa {
+  display: flex;
+  flex: none;
+  gap: 4px;
+}
+.pairAa span {
+  padding: 4px 6px;
+  line-height: 1;
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: 6px;
+  background: var(--color-surface-default);
+}
+.used {
+  color: var(--color-text-secondary);
 }
