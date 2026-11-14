@@ -19,6 +19,8 @@ import { booklets } from "./brief.mjs";
 import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
+import { emptyOverlay } from "./overlay.mjs";
+import { buildProject, PROJECT_FILES } from "./project.mjs";
 import { assetRoots, focusedSkills, grammar, loadScheme } from "./schemes.mjs";
 
 const VERSION = JSON.parse(
@@ -83,7 +85,9 @@ function readme(scheme, name, brands) {
     "| `src/styles/index.css` | Tailwind, the built tokens, the theme and the base styles. |",
     "| `stories/` | Storybook stories, with the usage rules next to each component. |",
     "| `docs/` | The Docusaurus docs: reasons, voice, foundations, components, themes. |",
-    "| `scheme.json` | The answer map: every decision with why and because, every usage rule, the voice. |",
+    "| `overlay.json` | Your changes to the source scheme: answers, picks, usage rules and tokens, each with a why and a because. Edit it, then run `npx open-ds build`. |",
+    "| `build/scheme.json` | The answer map that the build joins from the source and your overlay: every decision with why and because, every usage rule, the voice. Do not edit it. |",
+    "| `open-ds.lock` | The versions and hashes the scheme was built from. `npx open-ds upgrade` moves it to a new source. |",
     "| `AGENTS.md`, `context/`, `.claude/skills/` | What a coding agent reads before it writes UI. AGENTS.md holds the rules that always apply; `context/` holds one short booklet per component, color and task, and a router (`index.json`) that says what to load for a file. |",
     "",
     `Themes: ${scheme.themes.map((t) => t.id).join(", ")}.${brands.length > 1 ? ` Set \`data-brand\` on \`<html>\` to pick a brand.` : ""} Add the class \`dark\` for dark mode.`,
@@ -94,6 +98,10 @@ function readme(scheme, name, brands) {
     "npm run why -- typography.definition",
     "npm run when -- destructive action",
     "```",
+    "",
+    "## Change the scheme",
+    "",
+    "Write each change in `overlay.json`, with a why and a because, then run `npx open-ds build`. A changed answer moves no value: the build lists the rules, variants and picks that cite it. Edit each one in the overlay, or add its id to `reviewed`. `npx open-ds build --strict` fails while any item is open.",
     "",
     "## Built on open source",
     "",
@@ -299,7 +307,7 @@ export function createProject(
   }
 
   // The guide: the Introduction and Foundations pages and the docs-page blocks. They read this
-  // project's scheme.json through stories/guide/guide-data.ts, which comes from the project template.
+  // project's build/scheme.json through stories/guide/guide-data.ts, which comes from the project template.
   const guideDir = join(roots.stories, "guide");
   if (existsSync(guideDir))
     for (const f of readdirSync(guideDir).filter(
@@ -322,8 +330,16 @@ export function createProject(
       ),
     );
 
-  // The answer map and the situations the usage rules name.
-  write("scheme.json", json(scheme));
+  // The scheme as layers: an empty overlay the user edits. The build joins it with the source and writes
+  // build/scheme.json, the file every reader reads, and the lockfile.
+  write(PROJECT_FILES.overlay, json(emptyOverlay(scheme)));
+  const built = buildProject(dir, { roots, raised: [], newSource: true });
+  if (!built.ok)
+    throw new Error(
+      `The ${scheme.id} scheme fails its checks: ${[...built.problems, ...built.results.flatMap((r) => r.findings)].slice(0, 5).join("; ")}`,
+    );
+  files.push(...built.written);
+  // The situations the usage rules name.
   write(
     ".open-ds/grammar.json",
     json({
@@ -386,7 +402,8 @@ export function createProject(
       description: `${scheme.name}: a design system built from the Open DS scheme ${scheme.id}.`,
       main: "src/index.ts",
       scripts: {
-        tokens: "node tokens/build.mjs",
+        // The joined scheme first: Storybook, the docs and the agent files read build/scheme.json.
+        tokens: "open-ds build && node tokens/build.mjs",
         typecheck: "npm run tokens && tsc --noEmit",
         storybook: "npm run tokens && storybook dev -p 6006",
         "build-storybook":
@@ -395,8 +412,8 @@ export function createProject(
         "build-docs": "npm run tokens && docusaurus build docs",
         build:
           "npm run typecheck && npm run build-storybook && npm run build-docs",
-        why: `open-ds why ${scheme.id}`,
-        when: `open-ds when ${scheme.id}`,
+        why: "open-ds why .",
+        when: "open-ds when .",
       },
       dependencies: {
         react: "^19.1.1",

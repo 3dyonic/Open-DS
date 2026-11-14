@@ -21,7 +21,9 @@ npx open-ds create my-ds --scheme dense-data
 | `src/components/ui/`              | The scheme's components, built on shadcn/ui and Radix and themed by its tokens.                                                       |
 | `stories/`                        | A Storybook of every component, with the scheme's own content.                                                                        |
 | `docs/`                           | Docusaurus docs: reasons, voice, foundations, components and themes.                                                                  |
-| `scheme.json`                     | Every answer with its why and because, every usage rule and the voice.                                                                |
+| `overlay.json`                    | Your changes to the source scheme: answers, picks, usage rules and tokens, each with a why and a because. Edit it, then `open-ds build`. |
+| `build/scheme.json`               | The scheme the build joins from the source and the overlay: every answer with its why and because, every usage rule and the voice.    |
+| `open-ds.lock`                    | The versions and hashes the scheme was built from.                                                                                    |
 | `AGENTS.md`, `.claude/skills/`    | What a coding agent reads before it writes UI.                                                                                        |
 
 Then `npm install` and `npm run storybook` or `npm run docs`. The code is copied into your project: you own it.

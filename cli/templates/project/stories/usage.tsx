@@ -1,5 +1,5 @@
 // Shows this design system's when-to-use rules for the situations a component serves.
-import scheme from "../scheme.json";
+import scheme from "../build/scheme.json";
 import situations from "../.open-ds/situations.json";
 
 const TITLES: Record<string, string> = Object.fromEntries(

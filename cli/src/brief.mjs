@@ -510,7 +510,7 @@ export function router(scheme, g, components) {
     "src/components/ui/{id}.tsx": [comp("{id}")],
     "stories/{id}.stories.tsx": [comp("{id}"), "tasks/build.md"],
     "tokens/src/**": ["tasks/change.md"],
-    "scheme.json": ["tasks/change.md"],
+    "overlay.json": ["tasks/change.md"],
     "docs/**": ["tasks/write.md"],
     "src/**": ["tasks/build.md"],
   };

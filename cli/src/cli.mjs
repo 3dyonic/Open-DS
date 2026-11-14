@@ -14,6 +14,7 @@ import { build } from "./build.mjs";
 import { traceScheme, traceText, traceToken, untraced, weakReasons } from "./trace.mjs";
 import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
+import { buildProject, isOverlayProject, PROJECT_FILES, projectScheme, readLock } from "./project.mjs";
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import {
@@ -64,6 +65,14 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds gaps <scheme> [<component>] where the decision trace breaks, by kind: keys that hide their
                                        part or state, wrong or borrowed links, a semantic with two
                                        jobs, rules not written, picks with no reason (the gap ledger)
+  open-ds build [--dir .] [--strict]  in a project: join the source and overlay.json, check the result,
+                                       write build/scheme.json and open-ds.lock, and list what the changed
+                                       answers ask you to review; --strict exits 1 while any item is open
+  open-ds upgrade [--dir .] [--keep <id>|all] [--take <id>|all] [--accept] [--from-package <version>]
+                                       in a project: move the source to the installed version; compare the
+                                       old source, the new source and overlay.json; ask on a conflict; run
+                                       the migrations on the overlay; in an older project, write the
+                                       differences from scheme.json as an overlay
   open-ds build [<scheme>] [--out build/schemes]
                                        fill each scheme's defaults, color scales and spacing map; check
                                        it against the schema and its rules (links, contrast, grid); write
@@ -93,6 +102,8 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds mcp [--http] [--port 8787] [--host 127.0.0.1]
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
+
+In a project, "." in place of <scheme> reads the project's build/scheme.json: open-ds why . <id>.
 
 Add --json to list, show, why, when, context, component, scales, spacing, decisions, gaps, anatomy, check, copy, change, token and fit for machine-readable output.`;
 
@@ -328,6 +339,59 @@ export function addComponent(name, dir, roots = assetRoots()) {
   return record;
 }
 
+/** A scheme by id, or the project's built scheme for ".": every reader in a project reads build/scheme.json. */
+function schemeOf(id, dir = process.cwd()) {
+  if (id !== ".") return loadScheme(id);
+  const scheme = projectScheme(dir);
+  if (!scheme)
+    throw new Error(
+      `"." reads a project's ${PROJECT_FILES.built}, and ${dir} has no ${PROJECT_FILES.overlay} and ${PROJECT_FILES.lock}. Name a scheme instead.`,
+    );
+  return scheme;
+}
+
+/** The open review items, grouped by answer. */
+function printReview(review) {
+  for (const group of review.groups) {
+    const open = group.items.filter((i) => i.open);
+    if (!open.length) continue;
+    console.log(`${group.answer}${group.to ? `: ${group.from} → ${group.to}` : ""} (${open.length} open)`);
+    for (const i of open) console.log(`  ${i.id}  ${i.what}`);
+  }
+}
+
+/** What an upgrade did, or what stops it. */
+function printUpgrade(r) {
+  if (r.status === "current") return console.log(`The source is current (${r.to}). Nothing to upgrade.`);
+  console.log(`Source ${r.from} → ${r.to}. Scopes the source changed: ${r.scopes.join(", ") || "none"}.`);
+  if (r.migrations.length) console.log(`Migrations run on ${PROJECT_FILES.overlay}: ${r.migrations.join(", ")}.`);
+  if (r.carried || r.notCarried.length) console.log(`Carried ${r.carried} differences from scheme.json into ${PROJECT_FILES.overlay}.`);
+  for (const n of r.notCarried) console.log(`  not carried: ${n}`);
+  for (const k of r.kept) console.log(`  kept yours: ${k}`);
+  for (const k of r.taken) console.log(`  took the source: ${k}`);
+  if (r.status === "conflicts") {
+    for (const c of r.conflicts)
+      console.log(`✗ ${c.key}\n    yours:      ${JSON.stringify(c.mine)}\n    old source: ${JSON.stringify(c.old)}\n    new source: ${JSON.stringify(c.new)}`);
+    return console.log(
+      `${r.conflicts.length} conflicts; nothing written. For each, run again with --keep <id> (yours stays) or --take <id> (the new source's value applies). --keep all and --take all decide every one.`,
+    );
+  }
+  if (r.status === "opt-in")
+    return console.log(`This scheme has its own id, so its upgrades are opt in. Nothing written. To take these changes, run: open-ds upgrade --accept`);
+  if (r.status === "build-failed") {
+    for (const f of [...r.build.problems, ...r.build.results.flatMap((x) => x.findings)].slice(0, 20)) console.log(`✗ ${f}`);
+    return console.log(`The upgraded scheme fails its checks; nothing written. Fix ${PROJECT_FILES.overlay} or decide the entries above, then run upgrade again.`);
+  }
+  console.log(`Wrote ${PROJECT_FILES.overlay}, ${PROJECT_FILES.built} and ${PROJECT_FILES.lock}.`);
+  if (r.carried) console.log(`scheme.json stays for the files that still read it. Point them at ${PROJECT_FILES.built}, then delete it.`);
+  printReview(r.build.review);
+  console.log(
+    r.build.review.open
+      ? `${r.build.review.open} review items are open. Edit each in ${PROJECT_FILES.overlay}, or add its id to "reviewed".`
+      : "No review items are open.",
+  );
+}
+
 function printWhy(node, depth = 0) {
   const lead = depth === 0 ? "" : `${"  ".repeat(depth)}because: `;
   console.log(`${lead}${node.text} ${node.answer}. ${node.why}`);
@@ -364,6 +428,39 @@ export async function run(argv) {
       }
       await runStdio();
       await new Promise(() => {});
+    }
+    if (cmd === "build" && !args.includes("--out") && isOverlayProject(resolve(flag(args, "--dir", ".")))) {
+      // In a project: the source plus overlay.json, checked, into build/scheme.json and open-ds.lock.
+      const r = buildProject(resolve(flag(args, "--dir", ".")));
+      const findings = [...r.problems, ...r.results.flatMap((x) => x.findings)];
+      const blocked = args.includes("--strict") && r.ok && r.review.open > 0;
+      out({ ok: r.ok && !blocked, problems: r.problems, results: r.results, review: r.review, written: r.written }, () => {
+        for (const f of findings.slice(0, 20)) console.log(`✗ ${f}`);
+        if (!r.ok) return console.log(`${findings.length} problems; nothing written. Fix ${PROJECT_FILES.overlay}, then run: open-ds build`);
+        console.log(`Built ${PROJECT_FILES.built} (${r.scheme.id}) and ${PROJECT_FILES.lock}.`);
+        printReview(r.review);
+        console.log(
+          r.review.open
+            ? `${r.review.open} review items are open. Edit each in ${PROJECT_FILES.overlay}, or add its id to "reviewed".${blocked ? " --strict: exit 1." : ""}`
+            : "No review items are open.",
+        );
+      });
+      return r.ok && !blocked ? 0 : 1;
+    }
+    if (cmd === "upgrade") {
+      const { upgradeProject } = await import("./upgrade.mjs");
+      const choices = (name) => args.flatMap((a, i) => (a === name && args[i + 1] ? [args[i + 1]] : []));
+      const keep = new Set(choices("--keep"));
+      const take = new Set(choices("--take"));
+      const decide = (key) =>
+        keep.has(key) ? "keep" : take.has(key) ? "take" : keep.has("all") ? "keep" : take.has("all") ? "take" : undefined;
+      const r = upgradeProject(resolve(flag(args, "--dir", ".")), {
+        decide,
+        accept: args.includes("--accept"),
+        fromPackage: flag(args, "--from-package", undefined),
+      });
+      out(r, () => printUpgrade(r));
+      return r.status === "upgraded" || r.status === "current" ? 0 : 1;
     }
     if (cmd === "build") {
       const dir = resolve(flag(args, "--out", "build/schemes"));
@@ -457,7 +554,7 @@ export async function run(argv) {
       return 0;
     }
     if (cmd === "show") {
-      const s = loadScheme(args[0] ?? "");
+      const s = schemeOf(args[0] ?? "");
       out(s, () => {
         console.log(
           `${s.name} (${s.id} ${s.version}, ${s.status})\n${s.summary}\n`,
@@ -479,7 +576,7 @@ export async function run(argv) {
     }
     if (cmd === "why") {
       const [id, target] = args;
-      const s = loadScheme(id ?? "");
+      const s = schemeOf(id ?? "");
       if (!target)
         throw new Error(
           "why needs a question id (typography.definition) or a component key (button/primary/background).",
@@ -489,7 +586,7 @@ export async function run(argv) {
         out(answer, () => printWhy(answer));
         return 0;
       }
-      const key = keyInfo(id, target);
+      const key = keyInfo(id === "." ? readLock(process.cwd()).chain[0].scheme : id, target);
       if (key) {
         out(key, () => {
           console.log(
@@ -506,7 +603,7 @@ export async function run(argv) {
     }
     if (cmd === "when") {
       const [id, ...words] = args;
-      const s = loadScheme(id ?? "");
+      const s = schemeOf(id ?? "");
       const rule = when(s, words.join(" "));
       if (!rule)
         throw new Error(
@@ -523,7 +620,7 @@ export async function run(argv) {
     if (cmd === "decisions") {
       const { decisionReference, decisionText } =
         await import("./decisions.mjs");
-      const s = loadScheme(args[0] ?? "");
+      const s = schemeOf(args[0] ?? "");
       const ref = decisionReference(s, grammar());
       const only = args[1] && !args[1].startsWith("--") ? args[1] : null;
       if (
@@ -548,7 +645,7 @@ export async function run(argv) {
     // The Anatomy reference: one engine with the docs page and get_anatomy.
     if (cmd === "anatomy") {
       const { anatomyReference, anatomyText } = await import("./anatomy.mjs");
-      const s = loadScheme(args[0] ?? "");
+      const s = schemeOf(args[0] ?? "");
       const comp = args[1];
       const roots = assetRoots();
       const g = grammar(roots);
@@ -561,7 +658,7 @@ export async function run(argv) {
     // The gap ledger: every place where the decision trace breaks, generated.
     if (cmd === "gaps") {
       const { gapLedger, gapText } = await import("./gaps.mjs");
-      const s = loadScheme(args[0] ?? "");
+      const s = schemeOf(args[0] ?? "");
       const only = args[1] && !args[1].startsWith("--") ? args[1] : null;
       const roots = assetRoots();
       const g = grammar(roots);
@@ -575,7 +672,7 @@ export async function run(argv) {
     if (cmd === "component-spacing-map" || cmd === "spacing") {
       const { spacingGuide, spacingText } = await import("./spacing-map.mjs");
       const { tokenIndex, aliasChain } = await import("./lands.mjs");
-      const s = loadScheme(args[0] ?? "");
+      const s = schemeOf(args[0] ?? "");
       const data = {
         scheme: s.id,
         ...spacingGuide(s, {
@@ -591,7 +688,7 @@ export async function run(argv) {
     if (cmd === "scales") {
       const { scales } = await import("./scale-map.mjs");
       const [id] = args;
-      const data = scales(loadScheme(id ?? ""), {
+      const data = scales(schemeOf(id ?? ""), {
         hints: grammar().scopes.find((x) => x.id === "color")?.hints ?? [],
         brand: flag(args, "--brand", undefined),
         mode: flag(args, "--mode", "light"),
@@ -641,7 +738,7 @@ export async function run(argv) {
           throw new Error(
             "Run this in a project with open-ds.json, or add --scheme <id>.",
           );
-        return { dir, scheme: loadScheme(id) };
+        return { dir, scheme: (!flag(args, "--scheme") && projectScheme(dir)) || loadScheme(id) };
       };
       if (args.includes("--write")) {
         const { dir, scheme } = project();
@@ -707,6 +804,7 @@ export async function run(argv) {
         const id =
           flag(args, "--scheme") ??
           read("open-ds.json")?.scheme ??
+          read(PROJECT_FILES.overlay)?.source?.scheme ??
           read("scheme.json")?.id;
         if (!id)
           throw new Error(
@@ -733,12 +831,14 @@ export async function run(argv) {
           }
         };
         walk("");
-        const result = tools.checkUi(loadScheme(id), g, files);
+        // A project with an overlay checks against its built scheme.
+        const scheme = (!flag(args, "--scheme") && projectScheme(dir)) || loadScheme(id);
+        const result = tools.checkUi(scheme, g, files);
         // context/ must match what the engine prints for this scheme.
         const { contextDrift, projectComponents } = await import("./brief.mjs");
         for (const d of contextDrift(
           dir,
-          loadScheme(id),
+          scheme,
           g,
           projectComponents(dir),
         ))
@@ -766,7 +866,7 @@ export async function run(argv) {
       }
       if (cmd === "copy") {
         const [id, kind, ...text] = args;
-        const result = tools.checkCopy(loadScheme(id ?? ""), g, {
+        const result = tools.checkCopy(schemeOf(id ?? ""), g, {
           kind,
           text: text.join(" "),
         });
@@ -787,7 +887,7 @@ export async function run(argv) {
       }
       if (cmd === "change") {
         const [id, ...more] = args;
-        const s = loadScheme(id ?? "");
+        const s = schemeOf(id ?? "");
         const token = flag(more, "--token");
         const change = token
           ? { token, value: more[more.indexOf("--token") + 2] }
@@ -815,7 +915,7 @@ export async function run(argv) {
       }
       if (cmd === "token") {
         const [id, ...q] = args;
-        const found = tools.findToken(loadScheme(id ?? ""), g, q.join(" "));
+        const found = tools.findToken(schemeOf(id ?? ""), g, q.join(" "));
         out(found, () => {
           for (const r of found.results)
             console.log(`${r.token}  (${r.kind}) ${r.intent}`);

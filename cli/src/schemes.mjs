@@ -90,11 +90,12 @@ export function formatGrammar(value) {
 
 /** Write the grammar. The one way to change schemes/grammar.json. */
 /**
- * The source JSON files not in the one layout (formatGrammar): the grammar and the two schemas. [] when all
+ * The source JSON files not in the one layout (formatGrammar): the grammar and its schemas. [] when all
  * are. Read here, so every read of schemes/ stays in this module.
  */
 export function layoutGaps(roots = assetRoots()) {
-  const files = [join(roots.schemes, "grammar.json"), join(roots.schema, "grammar.schema.json"), join(roots.schema, "scheme.schema.json")];
+  const schemas = ["grammar.schema.json", "scheme.schema.json", "overlay.schema.json"].map((f) => join(roots.schema, f));
+  const files = [join(roots.schemes, "grammar.json"), ...schemas];
   return files.filter((f) => {
     const raw = readFileSync(f, "utf8");
     return formatGrammar(JSON.parse(raw)) !== raw;
@@ -276,4 +277,9 @@ export function focusedSkills(roots = assetRoots()) {
 /** The JSON Schema every loaded scheme matches (schema/scheme.schema.json): for the build's schema rule. */
 export function schemeSchema(roots = assetRoots()) {
   return readJson(join(roots.schema, "scheme.schema.json"));
+}
+
+/** The JSON Schema every overlay matches (schema/overlay.schema.json): checked where an overlay enters a build. */
+export function overlaySchema(roots = assetRoots()) {
+  return readJson(join(roots.schema, "overlay.schema.json"));
 }

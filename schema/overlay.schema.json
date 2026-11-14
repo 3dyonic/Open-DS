@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/3dyonic/Open-DS/schema/overlay.schema.json",
+  "title": "Open DS overlay",
+  "description": "The user's layer on top of a source scheme: changed answers, then changed picks, usage rules and tokens, each with a why and a because. The build joins it with the source. Open DS writes into it only when an upgrade migration renames a path.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source", "answers", "picks", "usage", "tokens", "reviewed"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Relative path to this schema."
+    },
+    "$comment": {
+      "type": "string",
+      "description": "A note for the person who opens the file."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "The id of a new scheme that the user owns. Leave it out to keep the source's id; then upgrades follow the source."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The name of a new scheme that the user owns. Set it with id."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+",
+      "description": "The version of a new scheme that the user owns. Set it with id. The lockfile records it."
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "version"],
+      "description": "The source scheme this overlay changes: a link, not a copy.",
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "The source scheme id.",
+          "examples": ["dense-data"]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+",
+          "description": "The source scheme version the overlay was written against."
+        }
+      }
+    },
+    "answers": {
+      "type": "array",
+      "description": "Changed answers. A changed answer moves no value: it opens a review of what cites it.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "option", "why"],
+        "description": "One changed answer.",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The grammar question id.",
+            "examples": ["shape.values"]
+          },
+          "option": {
+            "type": "string",
+            "description": "The chosen option id of that question."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Why this entry differs from the source, in plain words."
+          },
+          "because": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+\\.[a-z0-9.-]+$"
+            },
+            "description": "The question ids this answer follows from. Leave it out to keep the source's."
+          }
+        }
+      }
+    },
+    "picks": {
+      "type": "array",
+      "description": "Changed theme picks, by brand and mode.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["brand", "mode", "token", "value", "because", "why"],
+        "description": "One changed theme pick.",
+        "properties": {
+          "brand": {
+            "type": "string",
+            "description": "The brand id, such as default."
+          },
+          "mode": {
+            "enum": ["base", "light", "dark"],
+            "description": "The theme mode: base for picks that hold in both modes, or light or dark."
+          },
+          "token": {
+            "type": "string",
+            "pattern": "^theme\\.",
+            "description": "The theme token path.",
+            "examples": ["theme.radius.control"]
+          },
+          "value": {
+            "type": "string",
+            "pattern": "^\\{[^}]+\\}$",
+            "description": "The token reference the pick points at.",
+            "examples": ["{radius.8}"]
+          },
+          "because": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+\\.[a-z0-9.-]+$"
+            },
+            "description": "The question ids this entry follows from. At least one; each must be a question the scheme answers."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Why this entry differs from the source, in plain words."
+          }
+        }
+      }
+    },
+    "usage": {
+      "type": "array",
+      "description": "Changed usage rules, by situation.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["situation", "use", "because", "why"],
+        "description": "One changed usage rule.",
+        "properties": {
+          "situation": {
+            "type": "string",
+            "description": "The grammar situation id.",
+            "examples": ["card"]
+          },
+          "use": {
+            "type": "string",
+            "description": "What to use in this situation."
+          },
+          "not": {
+            "type": "string",
+            "description": "What not to use in this situation."
+          },
+          "example": {
+            "type": "string",
+            "description": "An example of the rule in use."
+          },
+          "because": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+\\.[a-z0-9.-]+$"
+            },
+            "description": "The question ids this entry follows from. At least one; each must be a question the scheme answers."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Why this entry differs from the source, in plain words."
+          }
+        }
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "description": "Changed primitive, semantic or component tokens, by path.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "value", "because", "why"],
+        "description": "One changed token.",
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(primitive|semantic|component)\\.",
+            "description": "The token path, from the tier.",
+            "examples": ["component.button.primary.background.@"]
+          },
+          "value": {
+            "type": ["string", "number"],
+            "description": "The new value: a token reference for a semantic or component token, a raw value for a primitive."
+          },
+          "because": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+\\.[a-z0-9.-]+$"
+            },
+            "description": "The question ids this entry follows from. At least one; each must be a question the scheme answers."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Why this entry differs from the source, in plain words."
+          }
+        }
+      }
+    },
+    "reviewed": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z-]+:.+$"
+      },
+      "description": "Review items the user confirmed as they are, by id, such as usage:hover-feedback."
+    }
+  }
+}

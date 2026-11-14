@@ -5,11 +5,11 @@ import { themes as prismThemes } from "prism-react-renderer";
 import { decisionMenu } from "./src/decisionMenu";
 import composites from "./src/remark/composites.mjs";
 
-// The docs of this design system. The pages in docs/docs come from its scheme (scheme.json).
+// The docs of this design system. The pages in docs/docs come from its scheme (build/scheme.json).
 // The site wears the system: build/docusaurus.css holds its tokens, and build/brand/ (npm run
 // tokens) holds the Open DS mark in the system's own colors, served as the logo and favicon.
 const scheme = JSON.parse(
-  readFileSync(new URL("../scheme.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../build/scheme.json", import.meta.url), "utf8"),
 ) as {
   id: string;
   name: string;
