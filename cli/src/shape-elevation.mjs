@@ -231,17 +231,26 @@ export function relationResults(scheme, g, { brand, mode, index, records = schem
             `dark depth by tone: ${def.depth.raised} ${raised} is ${up ? "lighter than" : lum(raised) === lum(base) ? "the same as" : "darker than"} ${def.depth.base} ${base}; ${def.depth.sunken} ${sunken} is ${down ? "darker" : "lighter"}`,
             def.depth.raised,
           );
+          // A floating layer sits one rung above raised, so it is lighter still.
+          const floating = def.depth.floating ? value(def.depth.floating) : null;
+          if (floating !== null) {
+            const above = lum(floating) > lum(raised);
+            out(above, `dark depth by tone: ${def.depth.floating} ${floating} is ${above ? "lighter than" : "not lighter than"} ${def.depth.raised} ${raised}`, def.depth.floating);
+          }
           if (def.depth.ring) {
             const ring = value(def.depth.ring);
             const solid = typeof ring === "string" && /^#[0-9a-f]{6}$/i.test(ring);
-            const lighter = solid && lum(ring) > lum(raised);
-            out(
-              lighter,
-              solid
-                ? `dark ring: ${def.depth.ring} ${ring} is ${lighter ? "lighter than" : "not lighter than"} ${def.depth.raised} ${raised}, ${contrast(ring, raised)}:1`
-                : `dark ring: ${def.depth.ring} is ${JSON.stringify(ring)}, not a solid color, so its contrast cannot be checked`,
-              def.depth.ring,
-            );
+            // The ring draws the edge of raised and floating layers, so it is lighter than both.
+            for (const [path, fill] of [[def.depth.raised, raised], ...(floating !== null ? [[def.depth.floating, floating]] : [])]) {
+              const lighter = solid && lum(ring) > lum(fill);
+              out(
+                lighter,
+                solid
+                  ? `dark ring: ${def.depth.ring} ${ring} is ${lighter ? "lighter than" : "not lighter than"} ${path} ${fill}, ${contrast(ring, fill)}:1`
+                  : `dark ring: ${def.depth.ring} is ${JSON.stringify(ring)}, not a solid color, so its contrast cannot be checked`,
+                def.depth.ring,
+              );
+            }
           }
         }
         const layer = rec.token;

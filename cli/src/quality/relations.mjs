@@ -4,7 +4,7 @@
 //   minimum   the relations the owner decided, checked where the data records none yet.
 // Each relation reads a scheme's facts (resolved values, scales, answers) and returns its checks. A
 // relation whose tokens a scheme does not have is "not present", never failed. Pure.
-import { lch } from "../ramps.mjs";
+import { contrast, lch } from "../ramps.mjs";
 import { CAP_PX } from "../spacing-map.mjs";
 import { ms, px } from "./values.mjs";
 
@@ -29,6 +29,43 @@ export const TOUCH_FIRST = ["touch", "large"];
 export function ladderOf(g) {
   const c = (g?.semantics?.connections?.items ?? []).find((x) => x.kind === "stays-apart" && x.by === "order");
   return { tokens: c?.tokens ?? [], modes: c?.modes ?? ["light", "dark"] };
+}
+
+/** The scheme's floor for text people must read: 7:1 when the accessibility answer is AAA, else 4.5:1. */
+export const textFloorOf = (answers) => ({ "aaa-text": 7, aaa: 7 }[answers?.["accessibility.definition"]] ?? 4.5);
+/** Muted text keeps AA in every scheme: an AAA scheme lets it sit under 7:1, so it still reads as secondary. */
+export const MUTED_FLOOR = 4.5;
+/** A 1px line stays visible where it meets a surface: the lightest line the light themes ship. */
+export const LINE_FLOOR = 1.15;
+const FLOATING = "color.surface.floating";
+
+/**
+ * What sits on the floating surface in one dark theme keeps its floor: primary and secondary text at the
+ * scheme's text floor, muted text at the AA floor, and the divider and the ring lighter than the fill and
+ * at least the line floor. [] when the theme has no floating surface.
+ */
+export function floatingChecks(theme, values, textFloor) {
+  const hex = (t) => (/^#[0-9a-f]{6}/i.test(values[t] ?? "") ? values[t].slice(0, 7) : null);
+  const fill = hex(FLOATING);
+  if (!fill) return [];
+  const parts = [
+    ["color.text.primary", textFloor, false],
+    ["color.text.secondary", textFloor, false],
+    ["color.text.muted", MUTED_FLOOR, false],
+    ["color.border.default", LINE_FLOOR, true],
+    ["color.border.raised", LINE_FLOOR, true],
+  ];
+  return parts
+    .filter(([t]) => values[t] !== undefined)
+    .map(([t, floor, lighter]) => {
+      const c = hex(t);
+      const ratio = c ? contrast(c, fill) : null;
+      const above = c !== null && lch(c)[0] > lch(fill)[0];
+      const pass = ratio !== null && ratio >= floor && (!lighter || above);
+      const subject = `${theme.brand}: ${t.split(".").slice(-2).join(".")} on floating`;
+      const says = `${subject}: ${ratio === null ? "not a color" : `${ratio.toFixed(2)}:1`}, floor ${floor}:1${lighter ? (above ? ", lighter than the fill" : ", not lighter than the fill") : ""}`;
+      return { subject, tokens: [t, FLOATING], theme: theme.id, themes: [theme.id], pass, says };
+    });
 }
 
 const near = (a, b, tolerance = 0.01) => Math.abs(a - b) <= tolerance;
@@ -152,7 +189,7 @@ const RELATIONS = [
     id: "dark-ladder",
     family: "invariants",
     kind: "minimum",
-    title: "In dark mode the surfaces lighten as they rise: sunken < default < raised < floating",
+    title: "In dark mode the surfaces lighten as they rise: sunken < default < raised < floating; text, dividers and the ring on floating keep their floors",
     links: () => null,
     check: (f) => {
       const { tokens: ladder, modes } = f.ladder;
@@ -168,6 +205,7 @@ const RELATIONS = [
           const subject = `${d.brand}: ${lo.split(".").at(-1)} < ${hi.split(".").at(-1)}`;
           checks.push({ subject, tokens: [lo, hi], theme: d.id, themes: [d.id], pass: a !== null && b !== null && a < b, says: `${subject}: lightness ${a?.toFixed(3)} vs ${b?.toFixed(3)}` });
         }
+        checks.push(...floatingChecks(d, v, textFloorOf(f.answers)));
       }
       const missing = ladder.filter((t) => !present.includes(t));
       return { checks, notPresent: missing };

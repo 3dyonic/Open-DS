@@ -40,8 +40,8 @@ describe("seeded component-pair defects", () => {
     assert.ok(level(ratio(p.after.fg, p.after.bg)) < level(ratio(p.before.fg, p.before.bg)));
   });
 
-  test("level-drop defect 2: dark raised surface lifted to neutral 200 (menus and popovers lose contrast)", async () => {
-    const cand = await seeded(dd((s) => setToken(s, "brands.default.theme.dark.color.surface.raised", "{color.neutral.200}")));
+  test("level-drop defect 2: dark floating surface lifted to neutral 200 (menus and popovers lose contrast)", async () => {
+    const cand = await seeded(dd((s) => setToken(s, "brands.default.theme.dark.color.surface.floating", "{color.neutral.200}")));
     const card = compareSnapshots(base, cand);
     const r = row(card, "component-pairs.level-drops");
     assert.ok(r.candidate > r.base && !r.pass, JSON.stringify(r));
