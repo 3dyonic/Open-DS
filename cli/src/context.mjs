@@ -5,6 +5,8 @@ import { tokenIndex, aliasChain } from "./lands.mjs";
 import { componentGuide } from "./component.mjs";
 import { guidanceFor, guidanceId } from "./guidance.mjs";
 import { sitsOn } from "./tones.mjs";
+import { keyCreated } from "./scheme-defaults.mjs";
+import { layerGuide } from "./shadcn.mjs";
 import {
   assetRoots,
   grammar,
@@ -54,14 +56,18 @@ function task(name, scheme, g, roots) {
         return { id, name: s.name, summary: s.summary, ...s.ai };
       }),
     };
-  if (name === "build")
+  if (name === "build") {
+    const byId = new Map(g.component_keys.map((k) => [k.id, k]));
     return {
       ...base,
       read: "Find the situation and follow its rule. Use only component keys and semantics; check each one's not_for.",
+      // Only the keys this scheme's answers create (created_by).
       components: g.components.map((c) => ({
         id: c.id,
         description: c.description,
-        keys: c.keys,
+        keys: c.keys.filter((id) =>
+          keyCreated(byId.get(id) ?? {}, scheme),
+        ),
       })),
       rules: rules(scheme, g),
       semantics: brief(g),
@@ -71,7 +77,9 @@ function task(name, scheme, g, roots) {
         chain: aliasChain,
         hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
       }),
+      layers: layerGuide(scheme, { index: tokenIndex(scheme), chain: aliasChain }),
     };
+  }
   if (name === "write")
     return {
       ...base,

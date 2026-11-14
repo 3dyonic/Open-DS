@@ -22,6 +22,7 @@ pnpm generate
 | `pnpm harness:full`   | The same, with builds and every test suite                       |
 | `pnpm test`           | The CLI and harness tests                                        |
 | `pnpm test:package`   | The CLI as a user gets it, packed and run in a fresh app         |
+| `pnpm test:tools`     | What agents get from the packed CLI and the MCP host             |
 | `pnpm --dir mcp test` | The MCP server                                                   |
 | `pnpm e2e`            | The local end-to-end run                                         |
 

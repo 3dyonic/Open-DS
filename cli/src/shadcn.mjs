@@ -96,3 +96,21 @@ export function layerUtilities(scheme) {
     .filter((name) => !name.startsWith("$"))
     .map((name) => [`--z-index-${name}`, `var(--layer-${name})`]);
 }
+
+/**
+ * The layer order for agents (get_context build, find_token): each layer token with the Tailwind class
+ * layerUtilities makes for it, its CSS variable, its z-index and what it is for, lowest first. index and
+ * chain resolve the value (lands.mjs).
+ */
+export function layerGuide(scheme, { index, chain }) {
+  return Object.entries(scheme.tokens.semantic.layer ?? {})
+    .filter(([name]) => !name.startsWith("$"))
+    .map(([name, token]) => ({
+      token: `layer.${name}`,
+      utility: `z-${name}`,
+      css: `--layer-${name}`,
+      value: chain(index, `layer.${name}`).value,
+      for: token.$description ?? null,
+    }))
+    .sort((a, b) => a.value - b.value);
+}

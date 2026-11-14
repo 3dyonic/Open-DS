@@ -64,6 +64,12 @@ test("why follows the because chain back to the reasons", () => {
   );
 });
 
+test("keyInfo: a key the answers do not create is absent, and a group's name has no @", () => {
+  assert.equal(keyInfo("dense-data", "icon/size-large"), null);
+  assert.equal(keyInfo("brand-expressive", "icon/size-large").semantic, "size.icon.large");
+  assert.equal(keyInfo("dense-data", "icon/size").semantic, "size.icon");
+});
+
 test("why explains a component key in every theme", () => {
   const k = keyInfo("multi-brand", "button/radius");
   assert.equal(k.semantic, "radius.control");
@@ -423,6 +429,18 @@ test("context: a task, a component key, a situation and nothing", async () => {
   );
   assert.equal(context("content-first", "status-label").kind, "situation");
   assert.equal(context("content-first", "nothing-here"), null);
+});
+
+test("context build: only the keys the answers create, and the layer order with its classes", async () => {
+  const { context } = await import("../src/context.mjs");
+  const iconKeys = (id) => context(id, "build").components.find((c) => c.id === "icon").keys;
+  assert.ok(!iconKeys("dense-data").includes("icon/size-large"));
+  assert.ok(iconKeys("brand-expressive").includes("icon/size-large"));
+  assert.deepEqual(
+    context("dense-data", "build").layers.map((l) => `${l.utility} ${l.value}`),
+    ["z-sticky 100", "z-backdrop 1000", "z-modal 1100", "z-dropdown 1200", "z-toast 1300", "z-tooltip 1400"],
+  );
+  assert.equal(context("dense-data", "icon/size-large"), null);
 });
 
 test("component shows the reference and this scheme's decision for every variant (OD-185)", () => {

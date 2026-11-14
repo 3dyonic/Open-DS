@@ -474,8 +474,13 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       annotations: { readOnlyHint: true },
     },
     async ({ scheme_id, key }) => {
-      scheme(scheme_id);
+      const s = scheme(scheme_id);
       const out = keyInfo(scheme_id, key, roots, g);
+      const made = g.component_keys.find((k) => k.id === key)?.created_by;
+      if (!out && made)
+        throw new Error(
+          `${s.name} has no "${key}": only the answer ${made.options.join(" or ")} to ${made.question} creates it.`,
+        );
       if (!out) throw new Error(`Unknown component key "${key}".`);
       return json(out);
     },

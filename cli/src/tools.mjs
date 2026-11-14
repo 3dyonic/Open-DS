@@ -13,6 +13,9 @@ import { followers } from "./component.mjs";
 import { questions, when } from "./schemes.mjs";
 import { themeTokens } from "./tokens.mjs";
 import { pairsIn, sitsOn } from "./tones.mjs";
+import { keyCreated } from "./scheme-defaults.mjs";
+import { layerGuide } from "./shadcn.mjs";
+import { tokenName } from "./color-map.mjs";
 
 const get = (tree, path) =>
   path
@@ -556,9 +559,10 @@ export function findToken(scheme, g, query, limit = 5) {
     };
   });
   // A component key ranks only when the query names its component (every component has its own keys).
-  // A deprecated key (replaced_by) is never offered; its replacement is.
+  // A deprecated key (replaced_by) is never offered; its replacement is. Nor is a key this scheme's
+  // answers do not create (created_by).
   const keys = g.component_keys
-    .filter((k) => !k.replaced_by)
+    .filter((k) => !k.replaced_by && keyCreated(k, scheme))
     .map((k) => {
       const named = overlap(q, k.component.replace(/-/g, " ")).length > 0;
       const head = named ? overlap(q, k.id.replace(/[/@-]/g, " ")) : [];
@@ -567,7 +571,7 @@ export function findToken(scheme, g, query, limit = 5) {
         token: k.id,
         kind: "component key",
         intent: k.description,
-        reads: k.default,
+        reads: tokenName(k.default),
         score: head.length * 2 + body.length,
         matched: [...new Set([...head, ...body])],
       };
@@ -599,7 +603,21 @@ export function findToken(scheme, g, query, limit = 5) {
       matched: [...new Set([...head, ...body])],
     };
   });
-  const ranked = [...semantic, ...keys, ...spacing]
+  // Layers: the layer order with its Tailwind classes (z-modal), for a part that sits above others.
+  const layers = layerGuide(scheme, { index: tokenIndex(scheme), chain: aliasChain }).map((x) => {
+    const head = overlap(q, x.token.replace(/[.-]/g, " "));
+    const body = overlap(q, `${x.for} layer stack order z-index`);
+    return {
+      token: x.token,
+      kind: "layer",
+      intent: x.for,
+      utility: x.utility,
+      value: x.value,
+      score: head.length * 2 + body.length,
+      matched: [...new Set([...head, ...body])],
+    };
+  });
+  const ranked = [...semantic, ...keys, ...spacing, ...layers]
     .filter((r) => r.score > 0)
     .sort(
       (a, b) =>

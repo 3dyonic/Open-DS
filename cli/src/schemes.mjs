@@ -300,12 +300,16 @@ export function keyInfo(
     g.component_keys.find((k) => k.id === keyId) ??
     g.component_keys.find((k) => k.id === `${keyId}/@`);
   if (!key) return null;
+  const values = valuesFor(schemeId, key.id, roots);
+  // A key an answer creates (created_by) is absent where the scheme gives another answer: no build has it.
+  if (key.created_by && Object.values(values).every((v) => v === undefined)) return null;
   const guidance = guidanceFor(g, key.default);
   return {
     key: key.id,
     description: key.description,
-    semantic: key.default,
-    values: valuesFor(schemeId, key.id, roots),
+    // The name the token map, the CSS and get_component show: a group's own value without its "@".
+    semantic: key.default.replace(/\.@$/, ""),
+    values,
     ...(guidance && { guidance }),
   };
 }
