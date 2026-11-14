@@ -1,7 +1,7 @@
-// This design system's sample content and inventory (scheme.json). Every story shows its own words,
+// This design system's sample content and inventory (build/scheme.json). Every story shows its own words,
 // data and status meanings, and says so when the system does not carry the component.
 import type { ReactNode } from "react";
-import scheme from "../scheme.json";
+import scheme from "../build/scheme.json";
 
 type Status = {
   label: string;

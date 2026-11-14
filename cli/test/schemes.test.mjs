@@ -334,10 +334,14 @@ test("create writes a full design system project", async () => {
     ".storybook/preview.tsx",
     "stories/button.stories.tsx",
     "docs/docs/index.md",
-    "scheme.json",
+    "overlay.json",
+    "open-ds.lock",
+    "build/scheme.json",
     "AGENTS.md",
   ])
     assert.ok(existsSync(join(dir, f)), f);
+  // The scheme is an overlay plus a built file, not a copied scheme.json.
+  assert.ok(!existsSync(join(dir, "scheme.json")));
   const themes = JSON.parse(
     readFileSync(join(dir, "tokens/themes.json"), "utf8"),
   );

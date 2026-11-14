@@ -1,7 +1,7 @@
 // The blocks of every component's docs page. Each reads the component id and situations from the
-// stories' parameters (openDs), and this design system's scheme.json.
+// stories' parameters (openDs), and this design system's build/scheme.json.
 import { useOf } from "@storybook/addon-docs/blocks";
-import scheme from "../scheme.json";
+import scheme from "../build/scheme.json";
 import grammar from "../.open-ds/grammar.json";
 import type { Samples } from "./samples";
 

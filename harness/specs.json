@@ -1023,6 +1023,20 @@
         "product-text-has-no-process",
         "token-api-approved"
       ]
+    },
+    {
+      "id": "OD-311",
+      "title": "ADR-002 steps 4 to 7: the overlay, the lockfile, upgrade, the source split by scope and the package",
+      "in": [
+        "the overlay format, its schema, the review list and the lockfile; create writes these in place of a copied scheme.json"
+      ],
+      "checks": [
+        "overlay-schema-guards",
+        "cli-create-temp",
+        "json-sources-one-layout",
+        "llm-schema-descriptions",
+        "product-text-has-no-process"
+      ]
     }
   ]
 }

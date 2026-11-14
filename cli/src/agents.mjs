@@ -66,7 +66,10 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
         ]
       : []),
     "- `src/components/ui/*`: the components. Each reads only component keys such as `--button-primary-background`. Change a key, not the component.",
-    `- \`${project ? "scheme.json" : ".open-ds/scheme.json"}\`: the full scheme: every answer with why and because, every usage rule, the voice, the tokens.`,
+    `- \`${project ? "build/scheme.json" : ".open-ds/scheme.json"}\`: the full scheme: every answer with why and because, every usage rule, the voice, the tokens.`,
+    ...(project
+      ? ["- `overlay.json`: this project's changes to the source scheme, each with a why and a because. Change the scheme here, then run `npx open-ds build`. Never edit `build/scheme.json`."]
+      : []),
     "- `open-ds.json`: what was installed.",
     "",
     "## Usage rules (when to use what)",
@@ -161,7 +164,7 @@ export function skillSection(scheme, { project = false } = {}) {
     "",
     scheme.summary,
     "",
-    `Read \`AGENTS.md\` for the usage rules and the voice. Read \`${project ? "scheme.json" : ".open-ds/scheme.json"}\` when you need the reason behind a decision.`,
+    `Read \`AGENTS.md\` for the usage rules and the voice. Read \`${project ? "build/scheme.json" : ".open-ds/scheme.json"}\` when you need the reason behind a decision.`,
     "",
   ].join("\n");
 }
@@ -206,7 +209,7 @@ export function agentsCore(scheme, g, { brand, components }) {
     "",
     "## Files",
     "",
-    `- \`tokens/src/\`: the token source; edit, then \`npm run tokens\`. ${optionsRule(g)} \`scheme.json\`: every answer with why.`,
+    `- \`tokens/src/\`: the token source; edit, then \`npm run tokens\`. ${optionsRule(g)} \`build/scheme.json\`: every answer with why; change it through \`overlay.json\`, then \`npx open-ds build\`.`,
     "- `src/components/ui/`: the components; they read only component keys. `stories/`, `docs/`: Storybook and docs.",
     `- \`context/\`: the booklets and the router. Regenerate with \`npx open-ds context --write\`.${brand ? ` Brand: \`data-brand="${brand}"\` on \`<html>\`.` : ""}`,
     "",

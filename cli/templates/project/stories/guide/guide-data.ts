@@ -1,8 +1,8 @@
-// Where the guide (guide.tsx) gets its data in this design system's Storybook: its own scheme.json and
+// Where the guide (guide.tsx) gets its data in this design system's Storybook: its own build/scheme.json and
 // the component reference in .open-ds/grammar.json. Copied by open-ds create.
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import grammar from "../../.open-ds/grammar.json";
-import scheme from "../../scheme.json";
+import scheme from "../../build/scheme.json";
 
 /** This Storybook is one design system's own, so its introduction starts with it, not with Open DS. */
 export const ABOUT_OPEN_DS: { schemes: number } | null = null;

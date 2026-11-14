@@ -2517,7 +2517,7 @@ export const CHECKS = {
       const off = layoutGaps();
       return off.length
         ? bad(`not in the one layout: ${off.join(", ")}. Write them with saveGrammar or formatGrammar from cli/src/schemes.mjs.`)
-        : ok("the grammar and its 2 schemas are in the one layout");
+        : ok("the grammar and its 3 schemas are in the one layout");
     },
   },
 
@@ -2526,7 +2526,7 @@ export const CHECKS = {
     requires: ["schema/scheme.schema.json"],
     run: (c) => {
       const missing = [];
-      for (const f of ["schema/scheme.schema.json", "schema/grammar.schema.json"]) {
+      for (const f of ["schema/scheme.schema.json", "schema/grammar.schema.json", "schema/overlay.schema.json"]) {
         if (!c.has(f)) continue;
         for (const [path, o] of objects(c.json(f))) {
           const isProp = /\.properties\.[^.]+$/.test(path) || /\.\$defs\.[^.]+$/.test(path);
@@ -3066,17 +3066,35 @@ export const CHECKS = {
           "stories/button.stories.tsx",
           "docs/docusaurus.config.ts",
           "docs/docs/index.md",
-          "scheme.json",
+          "overlay.json",
+          "open-ds.lock",
+          "build/scheme.json",
           "AGENTS.md",
           ".github/workflows/ci.yml",
         ];
+        if (existsSync(join(dir, "scheme.json"))) return bad("create still copies scheme.json; it writes overlay.json and build/scheme.json");
         const missing = need.filter((f) => !existsSync(join(dir, f)));
         return missing.length
           ? bad(`create did not write: ${missing.join(", ")}`)
-          : ok("create wrote tokens source and build, components, Storybook, docs, agent files and CI");
+          : ok("create wrote tokens source and build, components, Storybook, docs, the overlay, the lockfile, agent files and CI");
       } finally {
         rmSync(dirname(dir), { recursive: true, force: true });
       }
+    },
+  },
+  // Every scheme's empty overlay passes the overlay schema, and an entry with no because fails it.
+  "overlay-schema-guards": {
+    requires: ["schema/overlay.schema.json", "cli/src/overlay.mjs", "cli/src/project.mjs"],
+    run: async (c) => {
+      const { emptyOverlay } = await import(pathToFileURL(c.p("cli/src/overlay.mjs")).href);
+      const { overlayValidator } = await import(pathToFileURL(c.p("cli/src/project.mjs")).href);
+      const validate = overlayValidator();
+      const wrong = SCHEMES.filter((s) => !validate(emptyOverlay(c.scheme(s))));
+      if (wrong.length) return bad(`the empty overlay fails the schema for: ${wrong.join(", ")}`);
+      const noBecause = { ...emptyOverlay(c.scheme(SCHEMES[0])), usage: [{ situation: "card", use: "x", why: "x" }] };
+      return validate(noBecause)
+        ? bad("the overlay schema accepts a usage entry with no because")
+        : ok(`${SCHEMES.length} empty overlays pass the schema; an entry with no because fails it`);
     },
   },
   "cli-commands": {
