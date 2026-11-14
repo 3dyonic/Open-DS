@@ -345,7 +345,206 @@ function spacingCard(ctx, id) {
   return { swatch, where, sections, hint, ...sharesOf(ctx, id) };
 }
 
-const BUILDERS = [typeCard, spacingCard];
+// ---------- Shape ----------
+
+function shapeCard(ctx, id) {
+  if (/^radius\./.test(id)) return cornerCard(ctx, id);
+  if (id === "border-width.default") return lineCard(ctx, id);
+  if (/^focus\.ring\./.test(id)) return ringCard(ctx, id);
+  return null;
+}
+
+const lineScale = (ctx) => [ctx.px("border-width.default"), ctx.px("focus.ring.width")];
+
+function cornerCard(ctx, id) {
+  const value = ctx.px(id);
+  const relations = grammarRelations(ctx.grammar);
+  // The corners the count answer names, in the order the roles answer lists their kinds.
+  const kindsTokens = relations.get("surface-corner")?.count?.tokens ?? [];
+  const roles = answerOf(ctx, "shape.roles");
+  const words = (roles?.label ?? "")
+    .split(/,\s*|\s+and\s+/)
+    .map((w) => w.trim().toLowerCase())
+    .filter(Boolean);
+  const at = kindsTokens.indexOf(id);
+  const kind = at >= 0 && words.length === kindsTokens.length ? words[at].replace(/s$/, "") : null;
+  const d = ctx.decisions[id];
+  const rows = [];
+  if (kind) {
+    rows.push({ type: "kinds", kinds: words.map((w, i) => ({ word: w, on: i === at })) });
+    const things = (d?.description ?? "").replace(/^Corner of /, "").split(/[:.]/)[0];
+    rows.push(facts([capital(kind)], things ? `${capital(things)} keep this corner.` : null));
+  } else {
+    const record = (ctx.scheme.relations ?? []).find((r) => r.token === id);
+    const rel = record && relations.get(record.relation);
+    if (d?.description) rows.push(facts([], sentence(d.description.split(":")[0])));
+    if (rel?.says) rows.push(note(rel.says));
+  }
+  // An inner corner is the outer corner minus the padding: the scheme's own nesting record, or the
+  // padding the usage puts inside a control.
+  const nest = (ctx.scheme.relations ?? []).find((r) => r.from === id && r.minus);
+  const pad = nest ? nest.minus : kind === "control" ? (usageOf(ctx, "inside-a-control")?.use ?? null) : null;
+  if (pad && Number.isFinite(value) && ctx.px(pad) !== null) {
+    const p = ctx.px(pad);
+    const inner = Math.max(0, value - p);
+    const inside = kind === "container" ? "Options inside" : "What sits inside";
+    rows.push(
+      facts(
+        [`${fmt(value)} − ${fmt(p)} = ${fmt(inner)}px inside`],
+        inner > 0
+          ? `${inside} ${kind === "container" ? "keep" : "keeps"} a parallel curve.`
+          : kind === "container"
+            ? "Options inside meet the edge square."
+            : "The content sits square; the padding is wider.",
+      ),
+      note(`Corner minus padding (${pad.replace(/^component\./, "")}), never under zero.`),
+    );
+  }
+  const box = kind === "control" || kind === "badge" ? "control" : "container";
+  const edge = ctx.value(box === "control" ? "color.border.strong" : "color.border.default");
+  return {
+    swatch: { kind: "corner", px: value },
+    where: null,
+    sections: [
+      {
+        ask: "What kind of thing has this corner?",
+        rows,
+        specimen: {
+          tag: `Specimen · ${pxText(value)} corner`,
+          as: `one ${kind ?? ""} box · on surface.canvas`.replace("  ", " "),
+          draw: {
+            kind: "corner",
+            px: Number.isFinite(value) ? value : 9999,
+            height: box === "control" ? 40 : 96,
+            edge,
+          },
+        },
+      },
+    ],
+    hint: scaleHint(
+      kindsTokens.map((k) => ctx.px(k)),
+      value,
+      { word: "corner", mark: pxText(value) },
+    ),
+    ...sharesOf(ctx, id),
+  };
+}
+
+function lineCard(ctx, id) {
+  const value = ctx.px(id);
+  const rel = grammarRelations(ctx.grammar).get("default-line");
+  const definition = answerOf(ctx, "elevation.definition");
+  const lines = /line/i.test(definition?.option ?? "");
+  const quiet = ctx.decisions["color.border.default"]?.contrast ?? null;
+  const strong = ctx.decisions["color.border.strong"]?.contrast ?? null;
+  const why = definition?.why ? [note(definition.why)] : [];
+  const cases = [
+    {
+      title: "A divider",
+      here: lines,
+      rows: [
+        facts(quiet ? [`${fmt(quiet.ratio)}:1`] : [], "Decorates, so it needs no minimum."),
+        ...(lines ? why : []),
+      ],
+    },
+    {
+      title: "A card edge",
+      here: !lines,
+      rows: [facts([], "Holds a group together; no minimum."), ...(lines ? [] : why)],
+    },
+    {
+      title: "A control's only edge",
+      here: false,
+      rows: strong
+        ? [
+            meter(strong.ratio, rel?.floor ?? strong.floor, 7, `${fmt(strong.ratio)}:1`),
+            facts(
+              [`${fmt(rel?.floor ?? strong.floor)}:1 floor`],
+              `Lowest on ${strong.on.replace(/^color\./, "")}; it ${strong.ratio >= (rel?.floor ?? strong.floor) ? "passes" : "misses"}.`,
+            ),
+            ...(rel?.boundaries ? [note(`${rel.boundaries.length} input and button edges.`)] : []),
+          ]
+        : [missing("No contrast is measured for color.border.strong.")],
+    },
+  ];
+  return {
+    swatch: { kind: "line", px: value },
+    where: null,
+    sections: [
+      {
+        ask: "Where does one region end?",
+        rows: [
+          { type: "cases", cases },
+          note(`Contrast from color.border.default and color.border.strong, ${ctx.mode}.`),
+        ],
+        specimen: {
+          tag: `Specimen · ${fmt(value)}px line`,
+          as: "a divider in color.border.default · a field edge in color.border.strong",
+          draw: {
+            kind: "lines",
+            px: value,
+            divider: ctx.value("color.border.default"),
+            edge: ctx.value("color.border.strong"),
+            corner: ctx.px("radius.control"),
+          },
+        },
+      },
+    ],
+    hint: scaleHint(lineScale(ctx), value, { word: "line", mark: pxText(value) }),
+    ...sharesOf(ctx, id),
+  };
+}
+
+function ringCard(ctx, id) {
+  const width = ctx.px("focus.ring.width");
+  const offset = ctx.px("focus.ring.offset");
+  const line = ctx.px("border-width.default");
+  const corner = ctx.px("radius.control");
+  const value = ctx.px(id);
+  const ring = Number.isFinite(corner) ? corner + offset : null;
+  return {
+    swatch: { kind: "ring", px: width, offset, color: ctx.value("color.border.focus") },
+    where: null,
+    sections: [
+      {
+        ask: "Where is the keyboard?",
+        rows: [
+          facts(
+            [`${fmt(width)}px ring`, `${fmt(offset)}px gap`],
+            width > line
+              ? `One step heavier than the ${fmt(line)}px line.`
+              : `No heavier than the ${fmt(line)}px line.`,
+          ),
+          ...(ring !== null
+            ? [
+                facts(
+                  [`${fmt(corner)} + ${fmt(offset)} = ${fmt(ring)}px ring corner`],
+                  "The ring runs parallel to the control.",
+                ),
+                note("Ring corner is the control corner plus the gap."),
+              ]
+            : []),
+        ],
+        specimen: {
+          tag: `Specimen · ${fmt(width)}px ring, ${fmt(offset)}px gap`,
+          as: "a control with keyboard focus · on surface.canvas",
+          draw: {
+            kind: "ring",
+            px: width,
+            offset,
+            corner: Number.isFinite(corner) ? corner : 9999,
+            color: ctx.value("color.border.focus"),
+            edge: ctx.value("color.border.strong"),
+          },
+        },
+      },
+    ],
+    hint: id === "focus.ring.width" ? scaleHint(lineScale(ctx), value, { word: "line", mark: pxText(value) }) : null,
+    ...sharesOf(ctx, id),
+  };
+}
+
+const BUILDERS = [typeCard, spacingCard, shapeCard];
 
 /**
  * The card of one decision in one mode, or null for a token no scope card covers. ctx holds

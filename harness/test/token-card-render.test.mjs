@@ -97,6 +97,10 @@ const CASES = [
   ["space.gap.section", ["What belongs together?", "Specimen ·", "Where it sits"]],
   ["space.inset.container", ["Does the content sit inside its box?", "Specimen ·", "Where it sits"]],
   ["size.control.default", ["Can you hit it?", "Floor 24px", "Specimen ·", "Where it sits"]],
+  ["radius.control", ["What kind of thing has this corner?", "Specimen ·", "Where it sits"]],
+  ["radius.surface", ["What kind of thing has this corner?", "Specimen ·", "Where it sits"]],
+  ["border-width.default", ["Where does one region end?", "A control's only edge", "Specimen ·", "Where it sits"]],
+  ["focus.ring.width", ["Where is the keyboard?", "ring corner", "Specimen ·", "Where it sits"]],
 ];
 
 for (const [id, asks] of CASES)

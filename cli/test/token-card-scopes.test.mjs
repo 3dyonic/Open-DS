@@ -80,3 +80,17 @@ test("spacing: a gap is measured against the scheme's own floor; a pair with no 
   assert.deepEqual(rows(control, "Can you hit it?")[0], { type: "meter", value: 48, floor: 24, max: 56, text: "48px" });
 });
 
+test("shape: a container's corner nests by its padding, and the ring runs parallel to the control", () => {
+  assert.ok(said(card(cf, "radius.surface"), "What kind of thing has this corner?").includes("12 − 4 = 8px inside"));
+  assert.deepEqual(
+    rows(card(cf, "radius.control"), "What kind of thing has this corner?")[0].kinds.map((k) => k.on),
+    [true, false, false],
+  );
+  assert.ok(said(card(cf, "focus.ring.width"), "Where is the keyboard?").includes("8 + 2 = 10px ring corner"));
+  const cases = rows(card(dd, "border-width.default"), "Where does one region end?")[0].cases;
+  assert.deepEqual(
+    cases.map((c) => c.here),
+    [true, false, false],
+  );
+});
+
