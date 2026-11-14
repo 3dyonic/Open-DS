@@ -103,6 +103,12 @@ const CASES = [
   ["focus.ring.width", ["Where is the keyboard?", "ring corner", "Specimen ·", "Where it sits"]],
   ["elevation.card", ["What sits on top, and how high?", "Is it seen in", "Specimen ·", "Where it sits"]],
   ["elevation.overlay", ["What sits on top, and how high?", "Is it seen in", "Specimen ·", "Where it sits"]],
+  [
+    "motion.duration.feedback",
+    ["Is it fast enough to feel instant?", "Specimen ·", "With less motion", "Where it sits"],
+  ],
+  ["motion.easing.enter", ["How does it arrive?", "Specimen · cubic-bezier", "With less motion"]],
+  ["motion.easing.exit", ["How does it arrive?", "Specimen · cubic-bezier", "With less motion"]],
 ];
 
 for (const [id, asks] of CASES)

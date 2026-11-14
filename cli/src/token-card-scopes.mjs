@@ -662,7 +662,144 @@ function elevationCard(ctx, id) {
   };
 }
 
-const BUILDERS = [typeCard, spacingCard, shapeCard, elevationCard];
+// ---------- Motion ----------
+
+// The time each move plays in, as the transition keys pair them: a state change on the feedback
+// time, a closing layer on the exit time; a layer that appears opens on the panel time.
+const MOVE_TIME = {
+  transition: "motion.duration.feedback",
+  emphasize: "motion.duration.feedback",
+  enter: "motion.duration.panels",
+  exit: "motion.duration.exit",
+  "exit-offscreen": "motion.duration.exit",
+};
+
+// A move as a phrase: "A layer appears: a menu, …" → "a layer that appears".
+const moveWords = (description) => {
+  const head = description.split(":")[0].split(", such as")[0].replace(/\.$/, "");
+  const m = /^An? (\w+) (.+)$/.exec(head);
+  return m && !/^that\b/.test(m[2]) ? `a ${m[1]} that ${m[2]}` : head.charAt(0).toLowerCase() + head.slice(1);
+};
+
+function motionCard(ctx, id) {
+  if (!/^motion\.(duration|easing)\./.test(id)) return null;
+  const f = ctx.grammar.scopes.find((s) => s.id === "motion")?.families;
+  const family = f?.items.find((x) => x.id === familyOf(ctx.scheme, ctx.grammar)) ?? null;
+  const reduced = usageOf(ctx, "reduced-motion");
+  const calm = {
+    ask: "With less motion",
+    rows: reduced
+      ? [facts([], sentence(reduced.use)), ...(reduced.why ? [note(reduced.why)] : [])]
+      : [missing("The scheme has no rule for reduced motion.")],
+  };
+  if (/^motion\.duration\./.test(id)) {
+    const v = ms(ctx.value(id));
+    const limit =
+      family &&
+      (Object.entries(family.max_ms).find(([p]) => p === id)?.[1] ??
+        Object.entries(family.max_ms).find(([p]) => matches(p, id))?.[1]);
+    const top = family ? Math.max(...Object.values(family.max_ms)) : null;
+    const rows =
+      v === null
+        ? [missing("The value is not a duration.")]
+        : limit
+          ? [
+              meter(v, limit, top, `${fmt(v)}ms`),
+              facts(
+                [`${fmt(v)}ms`, `limit ${limit}ms`],
+                v <= limit ? "Ends before you notice a wait." : "Past the limit: it feels slow.",
+              ),
+              note(`Limit ${limit}ms in the ${family.title.toLowerCase()} family.`),
+            ]
+          : [missing("The motion family sets no limit for this duration.")];
+    const steps = ctx.families.find((x) => x.id === "duration")?.steps.map((s) => ms(s.value)) ?? [];
+    return {
+      swatch: { kind: "duration" },
+      where: null,
+      sections: [
+        {
+          ask: "Is it fast enough to feel instant?",
+          rows,
+          specimen:
+            v === null
+              ? null
+              : {
+                  tag: `Specimen · ${fmt(v)}ms`,
+                  as: `a bar that fills in exactly ${fmt(v)}ms, at an even pace · on surface.canvas`,
+                  draw: { kind: "duration", ms: v },
+                },
+        },
+        calm,
+      ],
+      hint: scaleHint(steps, v, {
+        word: "speed",
+        words: ["the shortest speed", "a middle speed", "the longest speed"],
+      }),
+      ...sharesOf(ctx, id),
+    };
+  }
+  const raw = ctx.value(id);
+  const points = Array.isArray(raw)
+    ? raw
+    : (() => {
+        try {
+          return JSON.parse(raw);
+        } catch {
+          return null;
+        }
+      })();
+  const move = f?.moves.find((m) => m.token === id) ?? null;
+  const rows = [];
+  let specimen = null;
+  if (!Array.isArray(points) || points.length !== 4) rows.push(missing("The value is not a cubic Bézier."));
+  else {
+    const kind = curveKind(points);
+    const words =
+      kind === "overshoot"
+        ? "Springs past and settles."
+        : bezierAt(points, 0.5) > 0.5
+          ? "Slows down as it arrives."
+          : "Speeds up as it leaves.";
+    const allowed = move && family ? (family.curves[move.id] ?? []) : [];
+    // A family that allows only a strong ease-out measures at a third of the time; any other at half.
+    const strong = allowed.length === 1 && allowed[0] === "strong-out";
+    const m = strong
+      ? { t: 1 / 3, floor: 0.8, when: "a third of the time" }
+      : { t: 0.5, floor: 0.5, when: "half the time" };
+    const got = bezierAt(points, m.t);
+    if (move && family) {
+      rows.push(
+        facts(
+          [`${pct(got)} done at ${m.when}`, `at least ${pct(m.floor)}`],
+          allowed.includes(kind) ? words : `${words} Not a curve this move allows.`,
+        ),
+        note(
+          `${kind === "overshoot" ? "It passes its target, then settles back." : "It never passes its target."} The ${family.title.toLowerCase()} family's rule for ${moveWords(move.description)}: at least ${pct(m.floor)} of the way at ${m.when}.`,
+        ),
+      );
+    } else
+      rows.push(
+        facts([`${pct(got)} done at ${m.when}`], words),
+        missing("The motion family names no move for this curve."),
+      );
+    const time = MOVE_TIME[move?.id] ?? "motion.duration.feedback";
+    const playMs = ms(ctx.value(time));
+    specimen = {
+      tag: `Specimen · cubic-bezier(${points.join(", ")})`,
+      as: `the dot runs ${fmt(playMs ?? 0)}ms, the ${time} time · dashed lines: ${m.when}, ${pct(m.floor)}`,
+      draw: { kind: "curve", points, ms: playMs, guide: { t: m.t, floor: m.floor } },
+    };
+  }
+  return {
+    swatch: { kind: "curve", points: Array.isArray(points) ? points : null },
+    where: null,
+    sections: [{ ask: "How does it arrive?", rows, specimen }, calm],
+    hint: null,
+    ...sharesOf(ctx, id),
+  };
+}
+
+const BUILDERS = [typeCard, spacingCard, shapeCard, elevationCard, motionCard];
 
 /**
  * The card of one decision in one mode, or null for a token no scope card covers. ctx holds

@@ -296,6 +296,35 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         checks: [],
       });
     }
+    // A semantic token that points at a decision (motion.easing.enter → motion.easing.standard) is on the
+    // map too, on its decision's step, and says which decision it copies.
+    for (const f of families.values())
+      for (const step of f.steps)
+        for (let i = 0; i < step.decisions.length; i++) {
+          const d = step.decisions[i];
+          const readers = [...(indexes.light.readers.get(d) ?? []), ...(indexes.light.readers.get(`${d}.@`) ?? [])];
+          for (const r of readers) {
+            const node = indexes.light.nodes.get(r);
+            if (node?.tier !== "semantic" || node.deprecated || shared.decisions[tokenName(r)]) continue;
+            const chain = chainOf(indexes.light, r);
+            shared.decisions[tokenName(r)] = {
+              ...shared.decisions[d],
+              id: tokenName(r),
+              via: d,
+              shorthand: shorthandOf(scheme, r),
+              why: plainWhy(pickOf(scheme, brand, "light", r)?.why) ?? tracedWhy(r),
+              description: node.description ?? null,
+              answers: chain.answers,
+              direct: chain.direct,
+              mapping: chain.mapping,
+              meaning: chain.meaning,
+              guide: chain.guide,
+              graph: chain.graph,
+              components: componentsOf(indexes.light, r),
+            };
+            step.decisions.push(tokenName(r));
+          }
+        }
     for (const f of families.values()) f.steps.sort(stepOrder);
     shared.families = [...families.values()];
   }

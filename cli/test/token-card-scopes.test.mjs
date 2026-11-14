@@ -101,3 +101,23 @@ test("elevation: the dark face reads the dark shadow, and a flat card says what 
   assert.equal(flat.find((r) => r.type === "cases").cases[0].tag, "Space");
 });
 
+test("motion: a duration meets its family's limit; a curve meets its move's rule", () => {
+  assert.deepEqual(said(card(dd, "motion.duration.feedback"), "Is it fast enough to feel instant?").slice(1, 3), [
+    "120ms",
+    "limit 150ms",
+  ]);
+  assert.deepEqual(said(card(cf, "motion.easing.exit"), "How does it arrive?").slice(0, 2), [
+    "88% done at a third of the time",
+    "at least 80%",
+  ]);
+  assert.equal(card(cf, "motion.easing.enter").sections[0].specimen.draw.ms, 300);
+});
+
+test("a token that points at another is a reference: never shared, and named on the card it points at", () => {
+  assert.equal(cf.shared.decisions["motion.easing.enter"].via, "motion.easing.standard");
+  assert.deepEqual(card(cf, "motion.easing.enter").shared, []);
+  assert.ok(card(cf, "motion.easing.standard").pointsHere.some((n) => n.token === "motion.easing.enter"));
+  const exit = card(cf, "motion.duration.feedback").pointsHere.find((n) => n.token === "motion.duration.exit");
+  assert.match(exit.says, /^A closing layer takes the feedback time/);
+});
+
