@@ -94,3 +94,10 @@ test("shape: a container's corner nests by its padding, and the ring runs parall
   );
 });
 
+test("elevation: the dark face reads the dark shadow, and a flat card says what separates instead", () => {
+  assert.ok(said(card(cf, "elevation.overlay", "dark"), "What sits on top, and how high?").includes("50% shade"));
+  assert.ok(said(card(cf, "elevation.overlay", "light"), "What sits on top, and how high?").includes("16% shade"));
+  const flat = rows(card(cf, "elevation.card"), "What sits on top, and how high?");
+  assert.equal(flat.find((r) => r.type === "cases").cases[0].tag, "Space");
+});
+

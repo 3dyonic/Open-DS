@@ -544,7 +544,125 @@ function ringCard(ctx, id) {
   };
 }
 
-const BUILDERS = [typeCard, spacingCard, shapeCard];
+// ---------- Elevation ----------
+
+// A layer's fill and edge: the component that casts the shadow, its background and its border.
+function layerOf(ctx, id) {
+  const caster = (ctx.index.readers.get(id) ?? []).find((r) =>
+    /^component\.(card|overlay|popover\.content)\.shadow$/.test(r),
+  );
+  const base = caster?.replace(/\.shadow$/, "");
+  const resolve = (part) => {
+    for (const p of [`${base}.${part}`, `${base}.${part}.@`]) {
+      const chain = ctx.chain(p);
+      if (chain.value !== null)
+        return { value: chain.value, token: chain.hops.find((h) => !h.startsWith("component.")) ?? null };
+    }
+    return null;
+  };
+  return base ? { fill: resolve("background"), border: resolve("border") } : { fill: null, border: null };
+}
+
+function elevationCard(ctx, id) {
+  if (!/^elevation\./.test(id)) return null;
+  const rel = grammarRelations(ctx.grammar).get("layer-step");
+  const step = rel?.steps?.[id] ?? null;
+  const n = rel?.steps ? Object.keys(rel.steps).length : null;
+  const roles = answerOf(ctx, "elevation.roles");
+  const values = answerOf(ctx, "elevation.values");
+  const lands = answerOf(ctx, "elevation.lands");
+  const definition = answerOf(ctx, "elevation.definition");
+  const rises = (rel?.by_answer?.options?.[roles?.option] ?? []).includes(id);
+  const sh = shadowParts(ctx.value(id));
+  const canvas = ctx.value("color.surface.canvas");
+  const layer = layerOf(ctx, id);
+  const fill = layer.fill;
+  // A floating layer with no edge of its own is drawn by the ring the dark-shade relation names.
+  const ring = grammarRelations(ctx.grammar).get("dark-shade")?.depth?.ring ?? null;
+  const border = layer.border ?? (rises && ring ? { value: ctx.value(ring), token: ring } : null);
+  const rows = [];
+  if (!sh) rows.push(missing("The shadow value does not read as one shadow."));
+  else {
+    const nums =
+      sh.alpha === 0 ? ["No shadow"] : [`${fmt(sh.y)}px down`, `${fmt(sh.blur)}px blur`, `${sh.alpha}% shade`];
+    const say = rises
+      ? lands?.label
+        ? `${lands.label} float at this height.`
+        : "Floats at this height."
+      : roles?.label
+        ? `Cards stay on the page; ${roles.label.toLowerCase()} rises.`
+        : null;
+    rows.push(facts([...(step && n ? [`Step ${step} of ${n}`] : []), ...nums], say));
+  }
+  if (roles && values) rows.push(note(`${roles.question} ${roles.label}. ${values.question} ${values.label}.`));
+  if (!rises && definition)
+    rows.push({
+      type: "cases",
+      cases: [
+        {
+          title: "What separates cards instead",
+          tag: definition.label,
+          here: true,
+          rows: definition.why ? [note(definition.why)] : [],
+        },
+      ],
+    });
+  const seen = [];
+  const fillRatio = fill?.value && canvas ? contrast(fill.value.slice(0, 7), canvas.slice(0, 7)) : null;
+  if (sh && sh.alpha === 0) {
+    seen.push(
+      facts(["No shade", ...(fillRatio ? [`fill ${fmt(fillRatio)}:1`] : [])], "Nothing lifts it; it sits on the page."),
+      note(`Fill against color.surface.canvas, ${ctx.mode}.`),
+    );
+  } else if (sh) {
+    const shade = canvas ? shadeContrast(sh.color, canvas.slice(0, 7)) : null;
+    seen.push(
+      facts(
+        [...(shade ? [`shade ${fmt(shade)}:1`] : []), ...(fillRatio ? [`fill ${fmt(fillRatio)}:1`] : [])],
+        fillRatio && shade && fillRatio > shade
+          ? "The lighter fill sets it apart, more than the shade."
+          : "The shade sets it apart; the fill matches the page.",
+      ),
+      note(`Deepest shade and fill against color.surface.canvas, ${ctx.mode}.`),
+    );
+  }
+  if (!fill) seen.push(missing("No component fill is found for this layer."));
+  const css = sh ? `${sh.x}px ${sh.y}px ${sh.blur}px ${sh.spread}px ${sh.color}` : "none";
+  return {
+    swatch: { kind: "layer", lift: rises && step ? step : 0 },
+    where: null,
+    sections: [
+      { ask: "What sits on top, and how high?", rows },
+      {
+        ask: `Is it seen in ${ctx.mode}?`,
+        rows: seen,
+        specimen: {
+          tag: sh && sh.alpha > 0 ? `Specimen · ${sh.x}px ${sh.y}px ${sh.blur}px shadow` : "Specimen · no shadow",
+          as: `${rises ? "one floating panel" : "one card"}${fill?.token ? ` in ${fill.token}` : ""}${border?.token ? `, edge ${border.token}` : ""} · on color.surface.canvas`,
+          draw: {
+            kind: "layer",
+            shadow: css,
+            fill: fill?.value ?? null,
+            border: border?.value ?? null,
+            width: ctx.px("border-width.default"),
+            corner: ctx.px("radius.surface"),
+          },
+        },
+      },
+    ],
+    hint:
+      step && n
+        ? scaleHint(Object.values(rel.steps), step, {
+            word: "layer",
+            words: ["the lowest layer on the scale", "a middle layer on the scale", "the highest layer on the scale"],
+            mark: `step ${step}`,
+          })
+        : null,
+    ...sharesOf(ctx, id),
+  };
+}
+
+const BUILDERS = [typeCard, spacingCard, shapeCard, elevationCard];
 
 /**
  * The card of one decision in one mode, or null for a token no scope card covers. ctx holds

@@ -101,6 +101,8 @@ const CASES = [
   ["radius.surface", ["What kind of thing has this corner?", "Specimen ·", "Where it sits"]],
   ["border-width.default", ["Where does one region end?", "A control's only edge", "Specimen ·", "Where it sits"]],
   ["focus.ring.width", ["Where is the keyboard?", "ring corner", "Specimen ·", "Where it sits"]],
+  ["elevation.card", ["What sits on top, and how high?", "Is it seen in", "Specimen ·", "Where it sits"]],
+  ["elevation.overlay", ["What sits on top, and how high?", "Is it seen in", "Specimen ·", "Where it sits"]],
 ];
 
 for (const [id, asks] of CASES)
@@ -127,3 +129,10 @@ for (const [id, asks] of CASES)
         if (d.via) assert.ok(!text.includes("Shared with"), `${label}: a reference shows as shared`);
       }
   });
+
+test("a card shows the token's value in the map's mode: the dark shadow on the dark face", () => {
+  const light = render("content-first", "elevation.overlay", "light").text;
+  const dark = render("content-first", "elevation.overlay", "dark").text;
+  assert.ok(light.includes("#1F1B1629") && light.includes("16% shade"));
+  assert.ok(dark.includes("#00000080") && dark.includes("50% shade") && !dark.includes("#1F1B1629"));
+});
