@@ -161,3 +161,15 @@ test("each theme decides its own base: primitives are steps only, themes and sem
     assert.equal(scheme.tokens.semantic.color.action.primary["@"].$value, "{theme.color.action.primary.@}");
   }
 });
+
+test("every scheme ships the same layer order, and Tailwind gets a z-* class for each layer", () => {
+  const layers = { sticky: 100, backdrop: 1000, modal: 1100, dropdown: 1200, toast: 1300, tooltip: 1400 };
+  for (const s of index.schemes) {
+    const css = read(s.id, "tokens.css");
+    for (const [name, value] of Object.entries(layers)) assert.ok(css.includes(`--layer-${name}: ${value};`), `${s.id}: --layer-${name}`);
+    // The primitive steps resolve to values and never ship.
+    assert.ok(!css.includes("--z-index-"), `${s.id}: a z-index primitive ships in tokens.css`);
+    const theme = read(s.id, "shadcn.css");
+    for (const name of Object.keys(layers)) assert.ok(theme.includes(`--z-index-${name}: var(--layer-${name});`), `${s.id}: z-${name}`);
+  }
+});

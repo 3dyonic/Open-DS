@@ -232,7 +232,9 @@
         "alert-dialog/content/border-width",
         "alert-dialog/content/label",
         "alert-dialog/title/font-family",
-        "alert-dialog/media/margin-bottom"
+        "alert-dialog/media/margin-bottom",
+        "alert-dialog/layer",
+        "alert-dialog/backdrop-layer"
       ]
     },
     {
@@ -564,7 +566,8 @@
         "combobox/chips/halo-width/invalid",
         "combobox/item/disabled/label",
         "combobox/chip/disabled/label",
-        "combobox/chip/disabled/background"
+        "combobox/chip/disabled/background",
+        "combobox/layer"
       ]
     },
     {
@@ -700,7 +703,8 @@
         "context-menu/separator/thickness",
         "context-menu/item/disabled/label",
         "context-menu/checkbox/item/disabled/label",
-        "context-menu/radio/item/disabled/label"
+        "context-menu/radio/item/disabled/label",
+        "context-menu/layer"
       ]
     },
     {
@@ -718,7 +722,8 @@
         "data-table/label",
         "data-table/container/border",
         "data-table/container/border-width",
-        "data-table/container/radius"
+        "data-table/container/radius",
+        "data-table/header/layer"
       ]
     },
     {
@@ -756,7 +761,9 @@
         "dialog/close/focus-ring/width",
         "dialog/close/focus-ring/color",
         "dialog/close/focus-ring-offset-color",
-        "dialog/close/focus-offset"
+        "dialog/close/focus-offset",
+        "dialog/layer",
+        "dialog/backdrop-layer"
       ]
     },
     {
@@ -784,7 +791,9 @@
         "drawer/content/shadow",
         "drawer/title/font-family",
         "drawer/title/font-size",
-        "drawer/title/line-height"
+        "drawer/title/line-height",
+        "drawer/layer",
+        "drawer/backdrop-layer"
       ]
     },
     {
@@ -805,7 +814,8 @@
         "dropdown-menu/separator/background",
         "dropdown-menu/separator/margin-y",
         "dropdown-menu/separator/thickness",
-        "dropdown-menu/item/disabled-label"
+        "dropdown-menu/item/disabled-label",
+        "dropdown-menu/layer"
       ]
     },
     {
@@ -906,7 +916,8 @@
         "hover-card/content/shadow",
         "hover-card/content/border",
         "hover-card/content/border-width",
-        "hover-card/content/duration"
+        "hover-card/content/duration",
+        "hover-card/layer"
       ]
     },
     {
@@ -1198,7 +1209,8 @@
         "menubar/sub/trigger/icon-size",
         "menubar/item/disabled/label",
         "menubar/checkbox/item/disabled/label",
-        "menubar/radio/item/disabled/label"
+        "menubar/radio/item/disabled/label",
+        "menubar/layer"
       ]
     },
     {
@@ -1326,7 +1338,8 @@
         "navigation-menu/viewport/border",
         "navigation-menu/viewport/border-width",
         "navigation-menu/trigger/icon-gap",
-        "navigation-menu/trigger/disabled/label"
+        "navigation-menu/trigger/disabled/label",
+        "navigation-menu/layer"
       ]
     },
     {
@@ -1357,7 +1370,8 @@
         "popover/description/label",
         "popover/content/border",
         "popover/content/border-width",
-        "popover/content/duration"
+        "popover/content/duration",
+        "popover/layer"
       ]
     },
     {
@@ -1463,7 +1477,8 @@
         "select/trigger/disabled/background",
         "select/trigger/disabled/border",
         "select/trigger/disabled/text",
-        "select/item/disabled-label"
+        "select/item/disabled-label",
+        "select/layer"
       ]
     },
     {
@@ -1501,7 +1516,9 @@
         "sheet/content/border-width",
         "sheet/title/font-family",
         "sheet/title/font-size",
-        "sheet/title/line-height"
+        "sheet/title/line-height",
+        "sheet/layer",
+        "sheet/backdrop-layer"
       ]
     },
     {
@@ -1640,7 +1657,8 @@
         "sidebar/menu-button/outline/border/hover",
         "sidebar/menu-button/outline/border-width",
         "sidebar/menu/sub/button/disabled/label",
-        "sidebar/menu-button/disabled/label"
+        "sidebar/menu-button/disabled/label",
+        "sidebar/layer"
       ]
     },
     {
@@ -1743,7 +1761,8 @@
         "toast/description/font-size",
         "toast/background",
         "toast/radius",
-        "toast/shadow"
+        "toast/shadow",
+        "toast/layer"
       ]
     },
     {
@@ -1797,7 +1816,8 @@
         "tooltip/content/padding-y",
         "tooltip/content/font-size",
         "tooltip/content/font-family",
-        "tooltip/content/duration"
+        "tooltip/content/duration",
+        "tooltip/layer"
       ]
     }
   ],
@@ -2595,6 +2615,12 @@
       "default": "motion.duration.panels"
     },
     {
+      "id": "tooltip/layer",
+      "component": "tooltip",
+      "description": "Layer of the tooltip, above every other layer.",
+      "default": "layer.tooltip"
+    },
+    {
       "id": "transition/duration",
       "component": "transition",
       "description": "Duration of feedback transitions.",
@@ -2887,6 +2913,18 @@
       "component": "alert-dialog",
       "description": "Extra gap below the alert dialog media, on top of the header gap.",
       "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "alert-dialog/layer",
+      "component": "alert-dialog",
+      "description": "Layer of the alert dialog, above its dimmed page.",
+      "default": "layer.modal"
+    },
+    {
+      "id": "alert-dialog/backdrop-layer",
+      "component": "alert-dialog",
+      "description": "Layer of the dimmed page behind the alert dialog.",
+      "default": "layer.backdrop"
     },
     {
       "id": "alert/gap-y",
@@ -4485,6 +4523,12 @@
       "default": "color.disabled.surface"
     },
     {
+      "id": "combobox/layer",
+      "component": "combobox",
+      "description": "Layer of the combobox's list, above a dialog it opens in.",
+      "default": "layer.dropdown"
+    },
+    {
       "id": "command/radius",
       "component": "command",
       "description": "Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels.",
@@ -5229,6 +5273,12 @@
       "default": "color.disabled.text"
     },
     {
+      "id": "context-menu/layer",
+      "component": "context-menu",
+      "description": "Layer of the context menu, above a dialog it opens in.",
+      "default": "layer.dropdown"
+    },
+    {
       "id": "data-table/gap",
       "component": "data-table",
       "description": "Gap of the data table.",
@@ -5299,6 +5349,12 @@
       "component": "data-table",
       "description": "Corner of the table frame, of the data table.",
       "default": "radius.surface"
+    },
+    {
+      "id": "data-table/header/layer",
+      "component": "data-table",
+      "description": "Layer of the sticky header, above the rows that scroll under it, of the data table.",
+      "default": "layer.sticky"
     },
     {
       "id": "date-picker/font-weight",
@@ -5475,6 +5531,18 @@
       "default": "space.gap.default"
     },
     {
+      "id": "dialog/layer",
+      "component": "dialog",
+      "description": "Layer of the dialog, above its dimmed page.",
+      "default": "layer.modal"
+    },
+    {
+      "id": "dialog/backdrop-layer",
+      "component": "dialog",
+      "description": "Layer of the dimmed page behind the dialog.",
+      "default": "layer.backdrop"
+    },
+    {
       "id": "drawer/overlay/background",
       "component": "drawer",
       "description": "Overlay background of the drawer.",
@@ -5607,6 +5675,18 @@
       "default": "space.inset.container"
     },
     {
+      "id": "drawer/layer",
+      "component": "drawer",
+      "description": "Layer of the drawer, above its dimmed page.",
+      "default": "layer.modal"
+    },
+    {
+      "id": "drawer/backdrop-layer",
+      "component": "drawer",
+      "description": "Layer of the dimmed page behind the drawer.",
+      "default": "layer.backdrop"
+    },
+    {
       "id": "dropdown-menu/content/padding",
       "component": "dropdown-menu",
       "description": "Content padding of the dropdown menu.",
@@ -5695,6 +5775,12 @@
       "component": "dropdown-menu",
       "description": "Label and icon of a disabled menu item.",
       "default": "color.disabled.text"
+    },
+    {
+      "id": "dropdown-menu/layer",
+      "component": "dropdown-menu",
+      "description": "Layer of the dropdown menu, above a dialog it opens in.",
+      "default": "layer.dropdown"
     },
     {
       "id": "empty/gap",
@@ -6157,6 +6243,12 @@
       "component": "hover-card",
       "description": "How long the hover card takes to open and close: the panel speed, like every floating panel.",
       "default": "motion.duration.panels"
+    },
+    {
+      "id": "hover-card/layer",
+      "component": "hover-card",
+      "description": "Layer of the hover card, above a dialog it opens in.",
+      "default": "layer.dropdown"
     },
     {
       "id": "input-group/radius",
@@ -7575,6 +7667,12 @@
       "default": "color.disabled.text"
     },
     {
+      "id": "menubar/layer",
+      "component": "menubar",
+      "description": "Layer of the menubar's menus, above a dialog they open in.",
+      "default": "layer.dropdown"
+    },
+    {
       "id": "message-scroller/gap",
       "component": "message-scroller",
       "description": "Gap of the message scroller.",
@@ -8199,6 +8297,12 @@
       "default": "color.disabled.text"
     },
     {
+      "id": "navigation-menu/layer",
+      "component": "navigation-menu",
+      "description": "Layer of the navigation menu's panel, above the page.",
+      "default": "layer.dropdown"
+    },
+    {
       "id": "pagination/content/gap",
       "component": "pagination",
       "description": "Content gap of the pagination.",
@@ -8311,6 +8415,12 @@
       "component": "popover",
       "description": "Description label of the popover.",
       "default": "color.text.muted"
+    },
+    {
+      "id": "popover/layer",
+      "component": "popover",
+      "description": "Layer of the popover, above a dialog it opens in.",
+      "default": "layer.dropdown"
     },
     {
       "id": "progress/radius",
@@ -8769,6 +8879,12 @@
       "default": "color.disabled.text"
     },
     {
+      "id": "select/layer",
+      "component": "select",
+      "description": "Layer of the select's list, above a dialog it opens in.",
+      "default": "layer.dropdown"
+    },
+    {
       "id": "separator/background",
       "component": "separator",
       "description": "Background of the separator.",
@@ -8941,6 +9057,18 @@
       "component": "sheet",
       "description": "Padding around the sheet close icon.",
       "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "sheet/layer",
+      "component": "sheet",
+      "description": "Layer of the sheet, above its dimmed page.",
+      "default": "layer.modal"
+    },
+    {
+      "id": "sheet/backdrop-layer",
+      "component": "sheet",
+      "description": "Layer of the dimmed page behind the sheet.",
+      "default": "layer.backdrop"
     },
     {
       "id": "sidebar/wrapper/background",
@@ -9741,6 +9869,12 @@
       "default": "color.disabled.text"
     },
     {
+      "id": "sidebar/layer",
+      "component": "sidebar",
+      "description": "Layer of the sidebar, above the page that scrolls beside it.",
+      "default": "layer.sticky"
+    },
+    {
       "id": "skeleton/radius",
       "component": "skeleton",
       "description": "Radius of the skeleton.",
@@ -10171,6 +10305,12 @@
       "component": "toast",
       "description": "Shadow of the toast, like every floating panel's.",
       "default": "elevation.overlay"
+    },
+    {
+      "id": "toast/layer",
+      "component": "toast",
+      "description": "Layer of the toasts, above dialogs and menus.",
+      "default": "layer.toast"
     },
     {
       "id": "toggle-group/radius",

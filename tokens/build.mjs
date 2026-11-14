@@ -6,7 +6,8 @@
 //                      on :root. Primitives and themes are resolved to values and never ship.
 //   tokens.scoped.css  the same, scoped to [data-scheme="<scheme>"] so many schemes can share a page
 //   theme.css          shadcn's variables and a Tailwind v4 @theme, mapped onto our semantics
-//   shadcn.css         shadcn's radius, shadow and text scale, mapped onto the scheme's tokens
+//   shadcn.css         shadcn's radius, shadow and text scale, mapped onto the scheme's tokens, and the
+//                      named spacing and layer utilities (Tailwind's z-sticky to z-tooltip)
 //   <theme>.tokens.json  the resolved DTCG tokens for one brand and mode
 //   tokens.json        the default theme (first brand, light) as DTCG
 //   content.json       the voice scope's tokens: words for common actions, as DTCG strings
@@ -28,16 +29,17 @@ const dist = join(here, "dist");
 const TRANSFORMS = ["attribute/cti", "name/kebab", "fontFamily/css", "cubicBezier/css", "shadow/css/shorthand"];
 
 // The shadcn mapping lives with the CLI, so the docs show exactly what this build writes.
-import { SHADCN, SHADCN_SCALE, spacingUtilities } from "../cli/src/shadcn.mjs";
+import { SHADCN, SHADCN_SCALE, layerUtilities, spacingUtilities } from "../cli/src/shadcn.mjs";
 import { grammar, loadScheme, schemeIds } from "../cli/src/schemes.mjs";
 export { SHADCN };
 
 export const shadcnCss = (name, scheme) =>
   [
-    `/* ${name}: shadcn/ui's radius, shadow and text scale, mapped onto the scheme's tokens, and the named spacing utilities (gap-section, p-container, gap-map-x6). Generated. */`,
+    `/* ${name}: shadcn/ui's radius, shadow and text scale, mapped onto the scheme's tokens, and the named spacing and layer utilities (gap-section, p-container, gap-map-x6, z-modal). Generated. */`,
     "@theme inline {",
     ...Object.entries(SHADCN_SCALE).map(([k, v]) => `  ${k}: ${v};`),
     ...(scheme ? spacingUtilities(scheme).map(([k, v]) => `  ${k}: ${v};`) : []),
+    ...(scheme ? layerUtilities(scheme).map(([k, v]) => `  ${k}: ${v};`) : []),
     "}",
     "",
   ].join("\n");

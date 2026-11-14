@@ -88,3 +88,11 @@ export function spacingUtilities(scheme) {
     return [`--spacing-${name}`, `var(--${p.join("-")})`];
   });
 }
+
+// Named layer utilities from the scheme's layer order, so code writes z-modal or z-tooltip and follows
+// the scheme. Tailwind v4 makes z-* from every --z-index-* theme variable; its numbered z-0 to z-50 stay.
+export function layerUtilities(scheme) {
+  return Object.keys(scheme.tokens.semantic.layer ?? {})
+    .filter((name) => !name.startsWith("$"))
+    .map((name) => [`--z-index-${name}`, `var(--layer-${name})`]);
+}

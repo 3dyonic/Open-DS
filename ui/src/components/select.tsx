@@ -49,7 +49,7 @@ export function SelectContent({
         position={position}
         sideOffset={position === "popper" ? sideOffset : undefined}
         className={cn(
-          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-50 min-w-[8rem] overflow-hidden p-[var(--select-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
+          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-[var(--select-layer)] min-w-[8rem] overflow-hidden p-[var(--select-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
           "[box-shadow:var(--overlay-shadow)] border-[length:var(--select-content-border-width)] border-[var(--select-content-border)]",
           position === "popper" && "w-[var(--radix-select-trigger-width)]",
           className,

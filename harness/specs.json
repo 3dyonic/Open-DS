@@ -63,7 +63,8 @@
         "shadcn variable mapping",
         "DTCG JSON",
         "component keys read decision tokens; only the circle and capsule shapes read a primitive",
-        "a key ending in -offset holds a length; one ending in -offset-color holds a colour"
+        "a key ending in -offset holds a length; one ending in -offset-color holds a colour",
+        "one layer order in every scheme, sticky < backdrop < modal < dropdown < toast < tooltip, with the same values; components read their layer keys, and only local stacking keeps a number"
       ],
       "checks": [
         "tokens-style-dictionary",
@@ -72,7 +73,10 @@
         "tokens-shadcn-mapping",
         "tokens-component-keys-resolve",
         "component-keys-read-decisions",
-        "offset-keys-name-their-kind"
+        "offset-keys-name-their-kind",
+        "layer-order-kept",
+        "layer-values-shared",
+        "ui-layers-read-keys"
       ]
     },
     {
