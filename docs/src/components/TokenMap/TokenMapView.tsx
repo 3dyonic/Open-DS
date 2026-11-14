@@ -62,7 +62,14 @@ type Decision = {
 };
 type Shorthand = { headline: string; line: string };
 type Contrast = { ratio: number; floor: number; kind: "text" | "non-text"; on: string; against: string | null };
-type Pair = { as: "text" | "icon" | "edge" | "label"; on: string; text: string; ink: string; ground: string; label?: string };
+type Pair = {
+  as: "text" | "icon" | "edge" | "label";
+  on: string;
+  text: string;
+  ink: string;
+  ground: string;
+  label?: string;
+};
 type Clash = { token: string; value: string; distance: number; same: boolean; note: string };
 type Connection = { kind: string; says: string };
 type Graph = {
@@ -72,7 +79,15 @@ type Graph = {
   jobs: string[];
   made: { always: string | null; creates: string[]; shapes: string[] };
   rules: { name: string; says: string; holds: boolean | null }[];
-  connections: { id: string; via?: string; holds: boolean; checks: number; pairs: string[]; off: string[]; waits: string[] }[];
+  connections: {
+    id: string;
+    via?: string;
+    holds: boolean;
+    checks: number;
+    pairs: string[];
+    off: string[];
+    waits: string[];
+  }[];
   value: { name: string; hex: string | null } | null;
   reason: string | null;
 };
@@ -116,7 +131,7 @@ type Load = { state: "loading" } | { state: "error"; message: string } | { state
 const NONE: Path = { area: null, hue: null, step: null, group: null, decision: null };
 // Columns, left to right.
 const X = { area: 0, family: 210, word: 420, group: 850, decision: 1050 };
-const W = { area: 160, family: 160, step: 170, word: 370, group: 160, decision: 370, decisionWide: 730, list: 300 };
+const W = { area: 160, family: 160, step: 170, word: 370, group: 160, decision: 370, list: 300 };
 
 const ratio = (r: number) => `${Math.round(r * 10) / 10}:1`;
 const capital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -127,7 +142,8 @@ const pxOf = (v: string) => {
 };
 
 // A decision has a reason when the scheme records one: its own why, the answers behind it, or a measured fact.
-const hasReason = (d: Decision | undefined) => Boolean(d && (d.graph?.reason || d.why || d.answers.length || d.stepWhy));
+const hasReason = (d: Decision | undefined) =>
+  Boolean(d && (d.graph?.reason || d.why || d.answers.length || d.stepWhy));
 // A value has a reason when some decision that reads it has one.
 const valueHasReason = (model: Model, step: Step) => step.decisions.some((d) => hasReason(model.decisions[d]));
 
@@ -314,14 +330,14 @@ function GroupNode({ data }: NodeProps<Node<GroupData>>) {
   );
 }
 
-// A decision: the card shows what the token is and does from data only. For a color token, light
-// and dark sit side by side, each in its own mode's surfaces. The trace (the answers behind it) opens below.
+// A decision: the card shows what the token is and does from data only. A color token's card wears
+// the surfaces of the mode the map is in. The trace (the answers behind it) opens below.
 type DecisionData = {
   d: Decision;
   selected: boolean;
   answers: Record<string, Answer>;
   connections: Record<string, Connection>;
-  // A color token's card in each mode, with that mode's surfaces; null for a token that is the same in both.
+  // A color token's card in the map's mode, with that mode's surfaces; null for a token that is the same in both.
   modes: { mode: Mode; d: Decision; theme: Theme }[] | null;
 };
 const short = (id: string) => id.replace(/^color\./, "");
@@ -338,10 +354,7 @@ const MarkIcon = ({ color }: { color: string }) => (
 
 function PairChip({ p }: { p: Pair }) {
   return (
-    <div
-      className={styles.pairChip}
-      style={{ background: p.ground, borderColor: p.as === "edge" ? p.ink : undefined }}
-    >
+    <div className={styles.pairChip} style={{ background: p.ground, borderColor: p.as === "edge" ? p.ink : undefined }}>
       {p.as === "icon" ? (
         <div className={styles.swatchRow}>
           <MarkIcon color={p.ink} />
@@ -361,15 +374,14 @@ function PairChip({ p }: { p: Pair }) {
   );
 }
 
-// One mode's face of a card: header, shorthand, the contrast meter, the pairs and the clashes.
-function CardFace({ d, mode, theme }: { d: Decision; mode: Mode | null; theme: Theme | null }) {
+// The card's face in the map's mode: header, shorthand, the contrast meter, the pairs and the clashes.
+function CardFace({ d, theme }: { d: Decision; theme: Theme | null }) {
   const swatch = d.resolves && /^#/.test(d.resolves.value) ? d.resolves.value : null;
   const c = d.contrast;
   const pairs = d.pairs ?? [];
   const clashes = d.clashes ?? [];
   return (
     <div className={styles.face} style={theme ? faceStyle(theme) : undefined}>
-      {mode && <div className={styles.cap}>{mode === "light" ? "Light" : "Dark"}</div>}
       <div className={styles.swatchRow}>
         {swatch && <span className={styles.swatchBig} style={{ background: swatch }} />}
         <div>
@@ -457,15 +469,17 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
         <div className={styles.faces}>
           {data.modes.map((m) => (
             <React.Fragment key={m.mode}>
-              <CardFace d={m.d} mode={m.mode} theme={m.theme} />
+              <CardFace d={m.d} theme={m.theme} />
             </React.Fragment>
           ))}
         </div>
       ) : (
-        <CardFace d={d} mode={null} theme={null} />
+        <CardFace d={d} theme={null} />
       )}
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
-      {used === 0 && !d.via && !(d.guide && d.guide.useFor.length) && <div className={styles.line}>No component uses it.</div>}
+      {used === 0 && !d.via && !(d.guide && d.guide.useFor.length) && (
+        <div className={styles.line}>No component uses it.</div>
+      )}
       {!hasReason(d) && <NoReason />}
       <button
         type="button"
@@ -485,7 +499,8 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
               <div className={styles.cap}>What the name means</div>
               {d.meaning.map((m) => (
                 <div key={m.name} className={styles.qa}>
-                  <b className={styles.mono}>{m.level === "variant" ? `.${m.name}` : m.name}</b> <span className={styles.line}>{m.says}</span>
+                  <b className={styles.mono}>{m.level === "variant" ? `.${m.name}` : m.name}</b>{" "}
+                  <span className={styles.line}>{m.says}</span>
                 </div>
               ))}
             </>
@@ -499,7 +514,9 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
           )}
           {d.graph?.reason && d.why && <div className={styles.line}>Measured: {sentence(d.why)}</div>}
           {d.guide?.intent && <div>{d.guide.intent}</div>}
-          {d.guide && d.guide.useFor.length > 0 && <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>}
+          {d.guide && d.guide.useFor.length > 0 && (
+            <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>
+          )}
           {d.guide?.notFor.map((n) => (
             <div key={n.when} className={styles.line}>
               Not for {n.when.toLowerCase()}: use {n.use}
@@ -510,7 +527,9 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
           ) : (
             <>
               {d.stepWhy && <div>{d.stepWhy}</div>}
-              {d.answers.length > 0 && <div className={styles.cap}>{d.mapping ? "Decided by" : "The answers behind it"}</div>}
+              {d.answers.length > 0 && (
+                <div className={styles.cap}>{d.mapping ? "Decided by" : "The answers behind it"}</div>
+              )}
               <Answers ids={d.answers} answers={data.answers} />
             </>
           )}
@@ -593,7 +612,8 @@ function ColorGraph({
       ))}
       {graph.value && (
         <div className={styles.qa}>
-          <b>Value</b> <span className={styles.mono}>{graph.value.name}</span> {graph.value.hex && <span className={styles.line}>{graph.value.hex}</span>}
+          <b>Value</b> <span className={styles.mono}>{graph.value.name}</span>{" "}
+          {graph.value.hex && <span className={styles.line}>{graph.value.hex}</span>}
         </div>
       )}
     </>
@@ -685,7 +705,16 @@ function whyOf(map: MapFile, model: Model, family: Family, step: Step) {
   return { keyLine: step.brand && palette?.why ? palette.why : null, why, readers: [] as Decision[] };
 }
 
-function build(map: MapFile, model: Model, path: Path, openComp: string | null, toggleComp: (k: string) => void) {
+function build(
+  map: MapFile,
+  model: Model,
+  {
+    path,
+    mode,
+    openComp,
+    toggleComp,
+  }: { path: Path; mode: Mode; openComp: string | null; toggleComp: (k: string) => void },
+) {
   const nodes: Node[] = [];
   const edges: Edge[] = [];
   const at = (x: number, y: number) => ({ x, y });
@@ -775,13 +804,11 @@ function build(map: MapFile, model: Model, path: Path, openComp: string | null, 
       if (path.decision && path.decision !== id) continue;
       const d = model.decisions[id];
       const top = Math.max(dy, cy);
-      // A color card shows light and dark side by side, each from its own mode's map.
-      const modes = map.modes.light.decisions[id]
-        ? (["light", "dark"] as const)
-            .filter((m) => map.modes[m].decisions[id])
-            .map((m) => ({ mode: m, d: map.modes[m].decisions[id], theme: map.modes[m].theme }))
+      // A color card shows the mode the map is in, on that mode's surfaces; the toggle flips it.
+      const modes = map.modes[mode].decisions[id]
+        ? [{ mode, d: map.modes[mode].decisions[id], theme: map.modes[mode].theme }]
         : null;
-      const width = modes && modes.length > 1 ? W.decisionWide : W.decision;
+      const width = W.decision;
       const listX = X.decision + width + 60;
       nodes.push({
         id: `d:${id}`,
@@ -896,8 +923,8 @@ function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: 
   }, [mode]);
 
   const graph = useMemo(
-    () => build(map, model, path, openComp, (k) => setOpenComp((o) => (o === k ? null : k))),
-    [map, model, path, openComp],
+    () => build(map, model, { path, mode, openComp, toggleComp: (k) => setOpenComp((o) => (o === k ? null : k)) }),
+    [map, model, mode, path, openComp],
   );
   useEffect(() => setNodes(graph.nodes), [graph]);
 
