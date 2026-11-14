@@ -243,7 +243,7 @@ function map(util, comp) {
         fill: "icon",
         stroke: "icon",
         ring: "focus-ring",
-        "ring-offset": "focus-ring-offset",
+        "ring-offset": "focus-ring-offset-color",
         outline: "outline",
         placeholder: "placeholder",
       }[m[1]] ?? "border";
@@ -307,7 +307,7 @@ function byPrefix(u, sem) {
   if (pre === "ring-offset")
     return sem.startsWith("border-width")
       ? "focus-ring-offset-width"
-      : "focus-ring-offset";
+      : "focus-ring-offset-color";
   return sem
     .split(".")
     .filter((x) => x !== "@")

@@ -32,7 +32,7 @@ export function TabsTrigger({ className, ...props }: React.ComponentProps<typeof
         "[font-family:var(--tabs-trigger-font-family)] text-[length:var(--tabs-trigger-font-size)] [font-weight:var(--tabs-trigger-font-weight)]",
         // The current tab: the selected fill and an edge, so it is never shown by color alone.
         "data-[state=active]:bg-[var(--tabs-trigger-background-current)] data-[state=active]:border-[var(--tabs-trigger-edge-current)]",
-        "outline-none focus-visible:ring-[length:var(--tabs-trigger-focus-width)] focus-visible:ring-[color:var(--tabs-trigger-focus-ring)] focus-visible:ring-offset-[length:var(--tabs-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--tabs-trigger-focus-ring-offset)]",
+        "outline-none focus-visible:ring-[length:var(--tabs-trigger-focus-width)] focus-visible:ring-[color:var(--tabs-trigger-focus-ring)] focus-visible:ring-offset-[length:var(--tabs-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--tabs-trigger-focus-ring-offset-color)]",
         className,
       )}
       {...props}

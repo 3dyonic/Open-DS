@@ -30,7 +30,7 @@
         "button/gap",
         "button/font-family",
         "button/focus",
-        "button/focus-ring-offset",
+        "button/focus-ring-offset-color",
         "button/secondary/border-width",
         "button/compact/height",
         "button/compact/padding-x",
@@ -58,7 +58,7 @@
         "input/font-family",
         "input/border-width",
         "input/focus",
-        "input/focus-ring-offset",
+        "input/focus-ring-offset-color",
         "input/border/invalid",
         "input/focus-offset",
         "input/duration",
@@ -147,7 +147,7 @@
         "tabs/trigger/font-size",
         "tabs/trigger/font-weight",
         "tabs/trigger/focus-width",
-        "tabs/trigger/focus-ring-offset",
+        "tabs/trigger/focus-ring-offset-color",
         "tabs/content/padding-top",
         "tabs/trigger/focus-offset",
         "tabs/trigger/edge-width",
@@ -200,7 +200,7 @@
         "accordion/icon/duration",
         "accordion/content/font-size",
         "accordion/content/padding-bottom",
-        "accordion/trigger/focus-ring-offset-focus",
+        "accordion/trigger/focus-ring-offset-color",
         "accordion/trigger/focus-offset",
         "accordion/item/divider/width",
         "accordion/trigger/disabled/label"
@@ -275,7 +275,7 @@
         "attachment/background/hover",
         "attachment/focus",
         "attachment/focus-ring-focus",
-        "attachment/focus-ring-offset-focus",
+        "attachment/focus-ring-offset-color",
         "attachment/media/size",
         "attachment/media/radius",
         "attachment/media/background",
@@ -341,7 +341,7 @@
         "breadcrumb/link/easing",
         "breadcrumb/link/focus-ring-focus",
         "breadcrumb/link/focus-width",
-        "breadcrumb/link/focus-ring-offset-focus",
+        "breadcrumb/link/focus-ring-offset-color",
         "breadcrumb/link/focus-offset"
       ]
     },
@@ -400,7 +400,7 @@
         "calendar/border-2",
         "calendar/focus",
         "calendar/focus-ring",
-        "calendar/focus-ring-offset",
+        "calendar/focus-ring-offset-color",
         "calendar/background-2",
         "calendar/height",
         "calendar/padding-right",
@@ -475,7 +475,7 @@
         "checkbox/size",
         "checkbox/border-width",
         "checkbox/focus",
-        "checkbox/focus-ring-offset",
+        "checkbox/focus-ring-offset-color",
         "checkbox/focus-offset",
         "checkbox/focus-ring",
         "checkbox/background/@",
@@ -560,7 +560,7 @@
         "combobox/chip/remove/label",
         "combobox/chip/remove/label-hover",
         "combobox/chips/focus-offset",
-        "combobox/chips/focus-ring-offset",
+        "combobox/chips/focus-ring-offset-color",
         "combobox/chips/halo-width/invalid",
         "combobox/item/disabled/label",
         "combobox/chip/disabled/label",
@@ -755,7 +755,7 @@
         "dialog/close/label",
         "dialog/close/focus-ring/width",
         "dialog/close/focus-ring/color",
-        "dialog/close/focus-ring/offset-color",
+        "dialog/close/focus-ring-offset-color",
         "dialog/close/focus-offset"
       ]
     },
@@ -966,7 +966,7 @@
         "input-group/border-width",
         "input-group/focus-width",
         "input-group/focus-offset",
-        "input-group/focus-ring-offset",
+        "input-group/focus-ring-offset-color",
         "input-group/height",
         "input-group/addon/button/inset",
         "input-group/addon/kbd/inset",
@@ -1005,7 +1005,7 @@
         "input-otp/slot/size",
         "input-otp/separator/icon-size",
         "input-otp/slot/focus-offset",
-        "input-otp/slot/focus-ring-offset",
+        "input-otp/slot/focus-ring-offset-color",
         "input-otp/slot/duration",
         "input-otp/slot/easing",
         "input-otp/slot/background",
@@ -1026,7 +1026,7 @@
         "item/background/hover",
         "item/focus",
         "item/focus-ring-focus",
-        "item/focus-ring-offset-focus",
+        "item/focus-ring-offset-color",
         "item/outline/border",
         "item/muted/background",
         "item/default/gap",
@@ -1209,7 +1209,7 @@
         "message-scroller/radius",
         "message-scroller/focus",
         "message-scroller/focus-ring-focus",
-        "message-scroller/focus-ring-offset-focus",
+        "message-scroller/focus-ring-offset-color",
         "message-scroller/focus-offset"
       ]
     },
@@ -1247,7 +1247,7 @@
         "native-select/border-focus",
         "native-select/focus",
         "native-select/focus-ring-focus",
-        "native-select/focus-ring-offset-focus",
+        "native-select/focus-ring-offset-color",
         "native-select/border-invalid",
         "native-select/focus-ring-invalid",
         "native-select/icon-size",
@@ -1287,7 +1287,7 @@
         "navigation-menu/trigger/background/open-highlight",
         "navigation-menu/trigger/focus-width",
         "navigation-menu/trigger/focus-ring",
-        "navigation-menu/trigger/focus-ring-offset",
+        "navigation-menu/trigger/focus-ring-offset-color",
         "navigation-menu/duration",
         "navigation-menu/content/padding",
         "navigation-menu/content/padding-right",
@@ -1314,7 +1314,7 @@
         "navigation-menu/link/icon-size",
         "navigation-menu/link/icon",
         "navigation-menu/link/focus-ring-focus",
-        "navigation-menu/link/focus-ring-offset-focus",
+        "navigation-menu/link/focus-ring-offset-color",
         "navigation-menu/indicator/background",
         "navigation-menu/indicator/shadow",
         "navigation-menu/trigger/focus-offset",
@@ -1384,7 +1384,7 @@
         "radio-group/item/focus-ring-invalid",
         "radio-group/item/focus",
         "radio-group/item/focus-ring-focus",
-        "radio-group/item/focus-ring-offset-focus",
+        "radio-group/item/focus-ring-offset-color",
         "radio-group/icon",
         "radio-group/item/focus-offset",
         "radio-group/item/border-width",
@@ -1401,7 +1401,7 @@
         "resizable/handle/background",
         "resizable/handle/focus",
         "resizable/handle/focus-ring-focus",
-        "resizable/handle/focus-ring-offset-focus",
+        "resizable/handle/focus-ring-offset-color",
         "resizable/grip/height",
         "resizable/grip/radius",
         "resizable/grip/background",
@@ -1419,7 +1419,7 @@
       "keys": [
         "scroll-area/viewport/focus",
         "scroll-area/viewport/focus-ring-focus",
-        "scroll-area/viewport/focus-ring-offset-focus",
+        "scroll-area/viewport/focus-ring-offset-color",
         "scroll-area/thumb/radius",
         "scroll-area/thumb/background",
         "scroll-area/viewport/focus-offset",
@@ -1436,7 +1436,7 @@
         "select/trigger/font-family",
         "select/trigger/border-width",
         "select/trigger/focus-width",
-        "select/trigger/focus-ring-offset",
+        "select/trigger/focus-ring-offset-color",
         "select/size",
         "select/content/padding",
         "select/content/label",
@@ -1480,7 +1480,7 @@
         "sheet/content/background",
         "sheet/content/shadow",
         "sheet/close/radius",
-        "sheet/close/focus-ring/offset-color",
+        "sheet/close/focus-ring-offset-color",
         "sheet/close/focus-ring/width",
         "sheet/close/focus-ring/color",
         "sheet/close/background/hover",
@@ -1544,7 +1544,7 @@
         "sidebar/group/label/icon-size",
         "sidebar/group/label/focus",
         "sidebar/group/label/focus-ring-focus",
-        "sidebar/group/label/focus-ring-offset-focus",
+        "sidebar/group/label/focus-ring-offset-color",
         "sidebar/group/action/radius",
         "sidebar/group/action/label",
         "sidebar/group/action/focus-ring",
@@ -1552,7 +1552,7 @@
         "sidebar/group/action/icon-size",
         "sidebar/group/action/focus",
         "sidebar/group/action/focus-ring-focus",
-        "sidebar/group/action/focus-ring-offset-focus",
+        "sidebar/group/action/focus-ring-offset-color",
         "sidebar/group/content/font-size",
         "sidebar/group/content/line-height",
         "sidebar/menu/gap",
@@ -1570,7 +1570,7 @@
         "sidebar/menu-button/background/open-hover",
         "sidebar/menu-button/icon-size",
         "sidebar/menu-button/focus-ring",
-        "sidebar/menu-button/focus-ring-offset",
+        "sidebar/menu-button/focus-ring-offset-color",
         "sidebar/menu-button/outline/background/@",
         "sidebar/menu-button/outline/background/hover",
         "sidebar/menu-button/default/height",
@@ -1587,7 +1587,7 @@
         "sidebar/menu/action/icon-size",
         "sidebar/menu/action/focus",
         "sidebar/menu/action/focus-ring-focus",
-        "sidebar/menu/action/focus-ring-offset-focus",
+        "sidebar/menu/action/focus-ring-offset-color",
         "sidebar/menu/badge/radius",
         "sidebar/menu/badge/padding-x",
         "sidebar/menu/badge/font-size",
@@ -1613,7 +1613,7 @@
         "sidebar/menu/sub/button/icon-size",
         "sidebar/menu/sub/button/focus",
         "sidebar/menu/sub/button/focus-ring-focus",
-        "sidebar/menu/sub/button/focus-ring-offset-focus",
+        "sidebar/menu/sub/button/focus-ring-offset-color",
         "sidebar/menu/sub/button/sm/font-size",
         "sidebar/menu/sub/button/sm/line-height",
         "sidebar/menu-button/focus-offset",
@@ -1661,7 +1661,7 @@
         "slider/thumb/shadow",
         "slider/thumb/focus",
         "slider/thumb/focus-ring-focus",
-        "slider/thumb/focus-ring-offset-focus",
+        "slider/thumb/focus-ring-offset-color",
         "slider/thumb/focus-offset",
         "slider/thumb/border-width",
         "slider/thumb/background",
@@ -1682,7 +1682,7 @@
       "keys": [
         "switch/radius",
         "switch/focus",
-        "switch/focus-ring-offset",
+        "switch/focus-ring-offset-color",
         "switch/thumb/size",
         "switch/focus-offset",
         "switch/focus-ring",
@@ -1711,7 +1711,7 @@
         "textarea/focus-ring-invalid",
         "textarea/focus",
         "textarea/focus-ring-focus",
-        "textarea/focus-ring-offset-focus",
+        "textarea/focus-ring-offset-color",
         "textarea/focus-offset",
         "textarea/border-width",
         "textarea/min-height",
@@ -1772,7 +1772,7 @@
         "toggle/icon-size",
         "toggle/focus",
         "toggle/focus-ring-focus",
-        "toggle/focus-ring-offset-focus",
+        "toggle/focus-ring-offset-color",
         "toggle/outline/border",
         "toggle/outline/shadow",
         "toggle/outline/background/hover",
@@ -1983,7 +1983,7 @@
       "default": "focus.ring.offset"
     },
     {
-      "id": "button/focus-ring-offset",
+      "id": "button/focus-ring-offset-color",
       "component": "button",
       "description": "Color of the gap between a button and its focus ring: the canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
@@ -2097,9 +2097,9 @@
       "default": "focus.ring.offset"
     },
     {
-      "id": "input/focus-ring-offset",
+      "id": "input/focus-ring-offset-color",
       "component": "input",
-      "description": "The gap behind the input's focus ring: the page canvas.",
+      "description": "Color of the gap between the input and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -2499,7 +2499,7 @@
       "default": "focus.ring.width"
     },
     {
-      "id": "tabs/trigger/focus-ring-offset",
+      "id": "tabs/trigger/focus-ring-offset-color",
       "component": "tabs",
       "description": "Color of the gap between a tab trigger and its focus ring: the canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
@@ -2679,9 +2679,9 @@
       "default": "radius.element"
     },
     {
-      "id": "accordion/trigger/focus-ring-offset-focus",
+      "id": "accordion/trigger/focus-ring-offset-color",
       "component": "accordion",
-      "description": "Trigger focus ring offset focus of the accordion.",
+      "description": "Color of the gap between the accordion trigger and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -3069,9 +3069,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "attachment/focus-ring-offset-focus",
+      "id": "attachment/focus-ring-offset-color",
       "component": "attachment",
-      "description": "Focus ring offset focus of the attachment.",
+      "description": "Color of the gap between the attachment and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -3369,7 +3369,7 @@
       "default": "focus.ring.width"
     },
     {
-      "id": "breadcrumb/link/focus-ring-offset-focus",
+      "id": "breadcrumb/link/focus-ring-offset-color",
       "component": "breadcrumb",
       "description": "Color of the gap between the breadcrumb link and its focus ring: the page background.",
       "default": "color.surface.canvas"
@@ -3639,9 +3639,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "calendar/focus-ring-offset",
+      "id": "calendar/focus-ring-offset-color",
       "component": "calendar",
-      "description": "Focus ring offset of the calendar.",
+      "description": "Color of the gap between the calendar and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -3993,7 +3993,7 @@
       "default": "color.border.focus"
     },
     {
-      "id": "checkbox/focus-ring-offset",
+      "id": "checkbox/focus-ring-offset-color",
       "component": "checkbox",
       "description": "Color of the gap between the checkbox and its focus ring: the page background, so the ring reads on any fill.",
       "default": "color.surface.canvas"
@@ -4365,9 +4365,9 @@
       "default": "focus.ring.offset"
     },
     {
-      "id": "combobox/chips/focus-ring-offset",
+      "id": "combobox/chips/focus-ring-offset-color",
       "component": "combobox",
-      "description": "The gap behind the chips field's focus ring: the page canvas.",
+      "description": "Color of the gap between the combobox chips and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -5403,7 +5403,7 @@
       "default": "color.border.focus"
     },
     {
-      "id": "dialog/close/focus-ring/offset-color",
+      "id": "dialog/close/focus-ring-offset-color",
       "component": "dialog",
       "description": "Color of the gap between the dialog close button and its focus ring.",
       "default": "color.surface.canvas"
@@ -6441,9 +6441,9 @@
       "default": "focus.ring.offset"
     },
     {
-      "id": "input-group/focus-ring-offset",
+      "id": "input-group/focus-ring-offset-color",
       "component": "input-group",
-      "description": "The gap behind the input group's focus ring: the page canvas.",
+      "description": "Color of the gap between the input group and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -6561,9 +6561,9 @@
       "default": "focus.ring.offset"
     },
     {
-      "id": "input-otp/slot/focus-ring-offset",
+      "id": "input-otp/slot/focus-ring-offset-color",
       "component": "input-otp",
-      "description": "The gap behind the active slot's focus ring: the page canvas.",
+      "description": "Color of the gap between the input otp slot and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -6675,9 +6675,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "item/focus-ring-offset-focus",
+      "id": "item/focus-ring-offset-color",
       "component": "item",
-      "description": "Focus ring offset focus of the item.",
+      "description": "Color of the gap between the item and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -7599,9 +7599,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "message-scroller/focus-ring-offset-focus",
+      "id": "message-scroller/focus-ring-offset-color",
       "component": "message-scroller",
-      "description": "Focus ring offset focus of the message scroller.",
+      "description": "Color of the gap between the message scroller and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -7737,9 +7737,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "native-select/focus-ring-offset-focus",
+      "id": "native-select/focus-ring-offset-color",
       "component": "native-select",
-      "description": "Focus ring offset focus of the native select.",
+      "description": "Color of the gap between the native select and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -8025,9 +8025,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "navigation-menu/link/focus-ring-offset-focus",
+      "id": "navigation-menu/link/focus-ring-offset-color",
       "component": "navigation-menu",
-      "description": "Link focus ring offset focus of the navigation menu.",
+      "description": "Color of the gap between the navigation menu link and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -8163,9 +8163,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "navigation-menu/trigger/focus-ring-offset",
+      "id": "navigation-menu/trigger/focus-ring-offset-color",
       "component": "navigation-menu",
-      "description": "The gap behind the trigger's focus ring: the page canvas.",
+      "description": "Color of the gap between the navigation menu trigger and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -8397,9 +8397,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "radio-group/item/focus-ring-offset-focus",
+      "id": "radio-group/item/focus-ring-offset-color",
       "component": "radio-group",
-      "description": "Item focus ring offset focus of the radio group.",
+      "description": "Color of the gap between the radio group item and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -8463,9 +8463,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "resizable/handle/focus-ring-offset-focus",
+      "id": "resizable/handle/focus-ring-offset-color",
       "component": "resizable",
-      "description": "Handle focus ring offset focus of the resizable.",
+      "description": "Color of the gap between the resizable handle and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -8535,9 +8535,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "scroll-area/viewport/focus-ring-offset-focus",
+      "id": "scroll-area/viewport/focus-ring-offset-color",
       "component": "scroll-area",
-      "description": "Viewport focus ring offset focus of the scroll area.",
+      "description": "Color of the gap between the scroll area viewport and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -8655,9 +8655,9 @@
       "default": "color.text.primary"
     },
     {
-      "id": "select/trigger/focus-ring-offset",
+      "id": "select/trigger/focus-ring-offset-color",
       "component": "select",
-      "description": "The gap behind the select trigger's focus ring: the page canvas.",
+      "description": "Color of the gap between the select trigger and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -8913,7 +8913,7 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sheet/close/focus-ring/offset-color",
+      "id": "sheet/close/focus-ring-offset-color",
       "component": "sheet",
       "description": "Color of the gap between the sheet close button and its focus ring.",
       "default": "color.surface.canvas"
@@ -9195,9 +9195,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/group/label/focus-ring-offset-focus",
+      "id": "sidebar/group/label/focus-ring-offset-color",
       "component": "sidebar",
-      "description": "Group label focus ring offset focus of the sidebar.",
+      "description": "Color of the gap between the sidebar group label and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -9243,9 +9243,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/group/action/focus-ring-offset-focus",
+      "id": "sidebar/group/action/focus-ring-offset-color",
       "component": "sidebar",
-      "description": "Group action focus ring offset focus of the sidebar.",
+      "description": "Color of the gap between the sidebar group action and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -9315,9 +9315,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/menu/action/focus-ring-offset-focus",
+      "id": "sidebar/menu/action/focus-ring-offset-color",
       "component": "sidebar",
-      "description": "Menu action focus ring offset focus of the sidebar.",
+      "description": "Color of the gap between the sidebar menu action and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -9471,9 +9471,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/menu/sub/button/focus-ring-offset-focus",
+      "id": "sidebar/menu/sub/button/focus-ring-offset-color",
       "component": "sidebar",
-      "description": "Menu sub button focus ring offset focus of the sidebar.",
+      "description": "Color of the gap between the sidebar menu sub button and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -9633,7 +9633,7 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/menu-button/focus-ring-offset",
+      "id": "sidebar/menu-button/focus-ring-offset-color",
       "component": "sidebar",
       "description": "Color of the gap between the menu button and its focus ring: the page canvas.",
       "default": "color.surface.canvas"
@@ -9807,9 +9807,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "slider/thumb/focus-ring-offset-focus",
+      "id": "slider/thumb/focus-ring-offset-color",
       "component": "slider",
-      "description": "Thumb focus ring offset focus of the slider.",
+      "description": "Color of the gap between the slider thumb and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -9885,7 +9885,7 @@
       "default": "color.border.focus"
     },
     {
-      "id": "switch/focus-ring-offset",
+      "id": "switch/focus-ring-offset-color",
       "component": "switch",
       "description": "Color of the gap between the switch and its focus ring: the page background, so the ring reads on any fill.",
       "default": "color.surface.canvas"
@@ -10011,9 +10011,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "textarea/focus-ring-offset-focus",
+      "id": "textarea/focus-ring-offset-color",
       "component": "textarea",
-      "description": "Focus ring offset focus of the textarea.",
+      "description": "Color of the gap between the textarea and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -10257,9 +10257,9 @@
       "default": "color.border.focus"
     },
     {
-      "id": "toggle/focus-ring-offset-focus",
+      "id": "toggle/focus-ring-offset-color",
       "component": "toggle",
-      "description": "Focus ring offset focus of the toggle.",
+      "description": "Color of the gap between the toggle and its focus ring: the page canvas, so the ring reads on any fill.",
       "default": "color.surface.canvas"
     },
     {
@@ -10631,7 +10631,7 @@
                         "width": "component.accordion.trigger.focus-ring.width",
                         "offset": "component.accordion.trigger.focus-offset",
                         "radius": "component.accordion.trigger.radius",
-                        "fill": "component.accordion.trigger.focus-ring-offset-focus",
+                        "fill": "component.accordion.trigger.focus-ring-offset-color",
                         "n": 6
                       },
                       "n": 2
@@ -10753,7 +10753,7 @@
                     "component.accordion.trigger.focus-ring",
                     "component.accordion.trigger.focus-ring.width",
                     "component.accordion.trigger.focus-offset",
-                    "component.accordion.trigger.focus-ring-offset-focus",
+                    "component.accordion.trigger.focus-ring-offset-color",
                     "component.accordion.trigger.radius"
                   ]
                 },
@@ -10826,7 +10826,7 @@
                 "component.accordion.trigger.focus-ring",
                 "component.accordion.trigger.focus-ring.width",
                 "component.accordion.trigger.focus-offset",
-                "component.accordion.trigger.focus-ring-offset-focus"
+                "component.accordion.trigger.focus-ring-offset-color"
               ]
             },
             {
@@ -11804,7 +11804,7 @@
                     "width": "component.attachment.focus",
                     "offset": "component.attachment.focus-offset",
                     "radius": "component.attachment.radius",
-                    "fill": "component.attachment.focus-ring-offset-focus",
+                    "fill": "component.attachment.focus-ring-offset-color",
                     "n": 6
                   }
                 }
@@ -11884,7 +11884,7 @@
                 "component.attachment.focus",
                 "component.attachment.focus-ring-focus",
                 "component.attachment.focus-offset",
-                "component.attachment.focus-ring-offset-focus"
+                "component.attachment.focus-ring-offset-color"
               ]
             },
             {
@@ -12856,7 +12856,7 @@
                 "component.breadcrumb.link.focus-ring-focus",
                 "component.breadcrumb.link.focus-width",
                 "component.breadcrumb.link.focus-offset",
-                "component.breadcrumb.link.focus-ring-offset-focus"
+                "component.breadcrumb.link.focus-ring-offset-color"
               ],
               "image": {
                 "tree": {
@@ -12903,7 +12903,7 @@
                         "color": "component.breadcrumb.link.focus-ring-focus",
                         "width": "component.breadcrumb.link.focus-width",
                         "offset": "component.breadcrumb.link.focus-offset",
-                        "fill": "component.breadcrumb.link.focus-ring-offset-focus",
+                        "fill": "component.breadcrumb.link.focus-ring-offset-color",
                         "radius": "radius.control",
                         "n": 6
                       }
@@ -13435,7 +13435,7 @@
                     "width": "component.button.focus",
                     "offset": "component.button.focus-offset",
                     "radius": "component.button.radius",
-                    "fill": "component.button.focus-ring-offset",
+                    "fill": "component.button.focus-ring-offset-color",
                     "n": 4
                   }
                 },
@@ -13534,7 +13534,7 @@
                 "component.button.focus-ring",
                 "component.button.focus",
                 "component.button.focus-offset",
-                "component.button.focus-ring-offset"
+                "component.button.focus-ring-offset-color"
               ]
             },
             {
@@ -13618,7 +13618,7 @@
                 "component.button.focus-ring",
                 "component.button.focus",
                 "component.button.focus-offset",
-                "component.button.focus-ring-offset"
+                "component.button.focus-ring-offset-color"
               ]
             },
             {
@@ -14428,7 +14428,7 @@
                             "width": "component.calendar.focus",
                             "offset": "component.calendar.focus-offset",
                             "radius": "component.calendar.radius",
-                            "fill": "component.calendar.focus-ring-offset",
+                            "fill": "component.calendar.focus-ring-offset-color",
                             "n": 12
                           }
                         },
@@ -14920,7 +14920,7 @@
                     "component.calendar.focus",
                     "component.calendar.focus-ring",
                     "component.calendar.focus-offset",
-                    "component.calendar.focus-ring-offset"
+                    "component.calendar.focus-ring-offset-color"
                   ]
                 }
               ]
@@ -15163,7 +15163,7 @@
                 "component.calendar.focus",
                 "component.calendar.focus-ring",
                 "component.calendar.focus-offset",
-                "component.calendar.focus-ring-offset"
+                "component.calendar.focus-ring-offset-color"
               ]
             }
           ]
@@ -16580,7 +16580,7 @@
                         "width": "component.checkbox.focus",
                         "offset": "component.checkbox.focus-offset",
                         "radius": "component.checkbox.radius",
-                        "fill": "component.checkbox.focus-ring-offset",
+                        "fill": "component.checkbox.focus-ring-offset-color",
                         "n": 4
                       }
                     },
@@ -16669,7 +16669,7 @@
                 "component.checkbox.focus-ring",
                 "component.checkbox.focus",
                 "component.checkbox.focus-offset",
-                "component.checkbox.focus-ring-offset"
+                "component.checkbox.focus-ring-offset-color"
               ]
             },
             {
@@ -16724,7 +16724,7 @@
                 "component.checkbox.focus-ring",
                 "component.checkbox.focus",
                 "component.checkbox.focus-offset",
-                "component.checkbox.focus-ring-offset"
+                "component.checkbox.focus-ring-offset-color"
               ]
             },
             {
@@ -21635,7 +21635,7 @@
                 "component.input.focus",
                 "component.input.border.focus",
                 "component.input.focus-offset",
-                "component.input.focus-ring-offset"
+                "component.input.focus-ring-offset-color"
               ]
             },
             {
@@ -21865,7 +21865,7 @@
                     "width": "component.input-group.focus-width",
                     "offset": "component.input-group.focus-offset",
                     "radius": "component.input-group.radius",
-                    "fill": "component.input-group.focus-ring-offset",
+                    "fill": "component.input-group.focus-ring-offset-color",
                     "n": 4
                   },
                   "children": [
@@ -22120,7 +22120,7 @@
                 "component.input-group.focus-ring.highlight",
                 "component.input-group.border.focus",
                 "component.input-group.focus-offset",
-                "component.input-group.focus-ring-offset"
+                "component.input-group.focus-ring-offset-color"
               ]
             },
             {
@@ -22337,7 +22337,7 @@
                         "width": "component.input-otp.slot.focus-width",
                         "offset": "component.input-otp.slot.focus-offset",
                         "radius": "component.input-otp.slot.radius",
-                        "fill": "component.input-otp.slot.focus-ring-offset",
+                        "fill": "component.input-otp.slot.focus-ring-offset-color",
                         "n": 2
                       }
                     }
@@ -22432,7 +22432,7 @@
                 "component.input-otp.slot.focus-ring.highlight",
                 "component.input-otp.slot.border.highlight",
                 "component.input-otp.slot.focus-offset",
-                "component.input-otp.slot.focus-ring-offset"
+                "component.input-otp.slot.focus-ring-offset-color"
               ]
             },
             {
@@ -23112,7 +23112,7 @@
                     "width": "component.item.focus",
                     "offset": "component.item.focus-offset",
                     "radius": "component.item.radius",
-                    "fill": "component.item.focus-ring-offset-focus",
+                    "fill": "component.item.focus-ring-offset-color",
                     "n": 6
                   },
                   "children": [
@@ -23294,7 +23294,7 @@
                     "component.item.focus",
                     "component.item.focus-ring-focus",
                     "component.item.focus-offset",
-                    "component.item.focus-ring-offset-focus",
+                    "component.item.focus-ring-offset-color",
                     "component.item.border-focus"
                   ]
                 }
@@ -24770,7 +24770,7 @@
                     "component.message-scroller.focus",
                     "component.message-scroller.focus-ring-focus",
                     "component.message-scroller.focus-offset",
-                    "component.message-scroller.focus-ring-offset-focus"
+                    "component.message-scroller.focus-ring-offset-color"
                   ]
                 },
                 {
@@ -24819,7 +24819,7 @@
                 "component.message-scroller.focus",
                 "component.message-scroller.focus-ring-focus",
                 "component.message-scroller.focus-offset",
-                "component.message-scroller.focus-ring-offset-focus"
+                "component.message-scroller.focus-ring-offset-color"
               ],
               "image": {
                 "tree": {
@@ -25036,7 +25036,7 @@
                     "width": "component.native-select.focus",
                     "offset": "component.native-select.focus-offset",
                     "radius": "component.native-select.radius",
-                    "fill": "component.native-select.focus-ring-offset-focus",
+                    "fill": "component.native-select.focus-ring-offset-color",
                     "n": 4
                   },
                   "children": [
@@ -25210,7 +25210,7 @@
                 "component.native-select.focus-ring-focus",
                 "component.native-select.border-focus",
                 "component.native-select.focus-offset",
-                "component.native-select.focus-ring-offset-focus"
+                "component.native-select.focus-ring-offset-color"
               ]
             },
             {
@@ -25856,7 +25856,7 @@
                         "width": "component.navigation-menu.link.focus-width",
                         "offset": "component.navigation-menu.link.focus-offset",
                         "radius": "component.navigation-menu.link.radius",
-                        "fill": "component.navigation-menu.link.focus-ring-offset-focus",
+                        "fill": "component.navigation-menu.link.focus-ring-offset-color",
                         "n": 9
                       }
                     }
@@ -26752,7 +26752,7 @@
                         "width": "component.radio-group.item.focus",
                         "offset": "component.radio-group.item.focus-offset",
                         "radius": "component.radio-group.item.radius",
-                        "fill": "component.radio-group.item.focus-ring-offset-focus",
+                        "fill": "component.radio-group.item.focus-ring-offset-color",
                         "n": 4
                       }
                     },
@@ -26851,7 +26851,7 @@
                     "component.radio-group.item.focus-ring-focus",
                     "component.radio-group.item.focus",
                     "component.radio-group.item.focus-offset",
-                    "component.radio-group.item.focus-ring-offset-focus"
+                    "component.radio-group.item.focus-ring-offset-color"
                   ]
                 },
                 {
@@ -26924,7 +26924,7 @@
                 "component.radio-group.item.focus-ring-focus",
                 "component.radio-group.item.focus",
                 "component.radio-group.item.focus-offset",
-                "component.radio-group.item.focus-ring-offset-focus"
+                "component.radio-group.item.focus-ring-offset-color"
               ]
             },
             {
@@ -26965,7 +26965,7 @@
                             "width": "component.radio-group.item.focus",
                             "offset": "component.radio-group.item.focus-offset",
                             "radius": "component.radio-group.item.radius",
-                            "fill": "component.radio-group.item.focus-ring-offset-focus"
+                            "fill": "component.radio-group.item.focus-ring-offset-color"
                           },
                           "n": 5
                         },
@@ -27196,7 +27196,7 @@
                     "component.resizable.handle.focus",
                     "component.resizable.handle.focus-ring-focus",
                     "component.resizable.focus-offset",
-                    "component.resizable.handle.focus-ring-offset-focus"
+                    "component.resizable.handle.focus-ring-offset-color"
                   ]
                 }
               ]
@@ -27238,7 +27238,7 @@
                 "component.resizable.handle.focus",
                 "component.resizable.handle.focus-ring-focus",
                 "component.resizable.focus-offset",
-                "component.resizable.handle.focus-ring-offset-focus"
+                "component.resizable.handle.focus-ring-offset-color"
               ],
               "image": {
                 "tree": {
@@ -27263,7 +27263,7 @@
                         "color": "component.resizable.handle.focus-ring-focus",
                         "width": "component.resizable.handle.focus",
                         "offset": "component.resizable.focus-offset",
-                        "fill": "component.resizable.handle.focus-ring-offset-focus",
+                        "fill": "component.resizable.handle.focus-ring-offset-color",
                         "n": 3
                       }
                     },
@@ -27484,7 +27484,7 @@
                 "component.scroll-area.viewport.focus",
                 "component.scroll-area.viewport.focus-ring-focus",
                 "component.scroll-area.viewport.focus-offset",
-                "component.scroll-area.viewport.focus-ring-offset-focus"
+                "component.scroll-area.viewport.focus-ring-offset-color"
               ]
             }
           ],
@@ -27511,7 +27511,7 @@
                 "component.scroll-area.viewport.focus",
                 "component.scroll-area.viewport.focus-ring-focus",
                 "component.scroll-area.viewport.focus-offset",
-                "component.scroll-area.viewport.focus-ring-offset-focus"
+                "component.scroll-area.viewport.focus-ring-offset-color"
               ],
               "image": {
                 "tree": {
@@ -27570,7 +27570,7 @@
                     "color": "component.scroll-area.viewport.focus-ring-focus",
                     "width": "component.scroll-area.viewport.focus",
                     "offset": "component.scroll-area.viewport.focus-offset",
-                    "fill": "component.scroll-area.viewport.focus-ring-offset-focus",
+                    "fill": "component.scroll-area.viewport.focus-ring-offset-color",
                     "radius": "radius.surface",
                     "n": 3
                   }
@@ -27988,7 +27988,7 @@
                     "width": "component.select.trigger.focus-width",
                     "offset": "component.select.trigger.focus-offset",
                     "radius": "component.select.trigger.radius",
-                    "fill": "component.select.trigger.focus-ring-offset",
+                    "fill": "component.select.trigger.focus-ring-offset-color",
                     "n": 4
                   }
                 }
@@ -29183,7 +29183,7 @@
                         "component.sidebar.menu-button.focus-ring",
                         "component.sidebar.menu-button.focus-width",
                         "component.sidebar.menu-button.focus-offset",
-                        "component.sidebar.menu-button.focus-ring-offset"
+                        "component.sidebar.menu-button.focus-ring-offset-color"
                       ]
                     },
                     {
@@ -29953,7 +29953,7 @@
                             "width": "component.slider.thumb.focus",
                             "offset": "component.slider.thumb.focus-offset",
                             "radius": "component.slider.thumb.radius",
-                            "fill": "component.slider.thumb.focus-ring-offset-focus",
+                            "fill": "component.slider.thumb.focus-ring-offset-color",
                             "n": 4
                           },
                           "abs": [156, -4]
@@ -30089,7 +30089,7 @@
                 "component.slider.thumb.focus-ring-focus",
                 "component.slider.thumb.focus",
                 "component.slider.thumb.focus-offset",
-                "component.slider.thumb.focus-ring-offset-focus"
+                "component.slider.thumb.focus-ring-offset-color"
               ]
             },
             {
@@ -30153,7 +30153,7 @@
                 "component.slider.thumb.focus-ring-focus",
                 "component.slider.thumb.focus",
                 "component.slider.thumb.focus-offset",
-                "component.slider.thumb.focus-ring-offset-focus"
+                "component.slider.thumb.focus-ring-offset-color"
               ]
             },
             {
@@ -30435,7 +30435,7 @@
                         "width": "component.switch.focus",
                         "offset": "component.switch.focus-offset",
                         "radius": "component.switch.radius",
-                        "fill": "component.switch.focus-ring-offset",
+                        "fill": "component.switch.focus-ring-offset-color",
                         "n": 5
                       }
                     },
@@ -30561,7 +30561,7 @@
                 "component.switch.focus-ring",
                 "component.switch.focus",
                 "component.switch.focus-offset",
-                "component.switch.focus-ring-offset"
+                "component.switch.focus-ring-offset-color"
               ]
             },
             {
@@ -30627,7 +30627,7 @@
                 "component.switch.focus-ring",
                 "component.switch.focus",
                 "component.switch.focus-offset",
-                "component.switch.focus-ring-offset"
+                "component.switch.focus-ring-offset-color"
               ]
             },
             {
@@ -31238,7 +31238,7 @@
                         "color": "component.tabs.trigger.focus-ring",
                         "width": "component.tabs.trigger.focus-width",
                         "offset": "component.tabs.trigger.focus-offset",
-                        "fill": "component.tabs.trigger.focus-ring-offset",
+                        "fill": "component.tabs.trigger.focus-ring-offset-color",
                         "n": 4
                       }
                     }
@@ -31320,7 +31320,7 @@
                     "component.tabs.trigger.focus-ring",
                     "component.tabs.trigger.focus-width",
                     "component.tabs.trigger.focus-offset",
-                    "component.tabs.trigger.focus-ring-offset"
+                    "component.tabs.trigger.focus-ring-offset-color"
                   ]
                 }
               ]
@@ -31386,7 +31386,7 @@
                 "component.tabs.trigger.focus-ring",
                 "component.tabs.trigger.focus-width",
                 "component.tabs.trigger.focus-offset",
-                "component.tabs.trigger.focus-ring-offset"
+                "component.tabs.trigger.focus-ring-offset-color"
               ]
             },
             {
@@ -31533,7 +31533,7 @@
                     "width": "component.textarea.focus",
                     "offset": "component.textarea.focus-offset",
                     "radius": "component.textarea.radius",
-                    "fill": "component.textarea.focus-ring-offset-focus",
+                    "fill": "component.textarea.focus-ring-offset-color",
                     "n": 3
                   },
                   "children": [
@@ -31668,7 +31668,7 @@
                 "component.textarea.focus-ring-focus",
                 "component.textarea.border-focus",
                 "component.textarea.focus-offset",
-                "component.textarea.focus-ring-offset-focus"
+                "component.textarea.focus-ring-offset-color"
               ]
             },
             {
@@ -32286,7 +32286,7 @@
                     "width": "component.toggle.focus",
                     "offset": "component.toggle.focus-offset",
                     "radius": "component.toggle.radius",
-                    "fill": "component.toggle.focus-ring-offset-focus",
+                    "fill": "component.toggle.focus-ring-offset-color",
                     "n": 5
                   }
                 }
@@ -32357,7 +32357,7 @@
                 "component.toggle.focus",
                 "component.toggle.focus-ring-focus",
                 "component.toggle.focus-offset",
-                "component.toggle.focus-ring-offset-focus"
+                "component.toggle.focus-ring-offset-color"
               ]
             },
             {
@@ -32427,7 +32427,7 @@
                 "component.toggle.focus",
                 "component.toggle.focus-ring-focus",
                 "component.toggle.focus-offset",
-                "component.toggle.focus-ring-offset-focus"
+                "component.toggle.focus-ring-offset-color"
               ]
             }
           ]
