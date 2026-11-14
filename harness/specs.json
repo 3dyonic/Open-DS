@@ -1010,6 +1010,19 @@
         "adr-steps-name-tickets",
         "adr-status-matches-tickets"
       ]
+    },
+    {
+      "id": "OD-314",
+      "title": "Clean schemes: no deprecated aliases, no process text in product files, and an approved token API",
+      "in": [
+        "every scheme drops its deprecated aliases; every reader reads the token each alias named",
+        "no ticket key or process word in the product files; the ADR folder and CHANGELOG.md are allowed",
+        "a new component key, component variant or semantic token fails until harness/token-api.json lists it"
+      ],
+      "checks": [
+        "product-text-has-no-process",
+        "token-api-approved"
+      ]
     }
   ]
 }
