@@ -21,7 +21,7 @@ export function SelectTrigger({ className, children, ...props }: React.Component
         "flex w-full items-center justify-between gap-[var(--select-trigger-gap)] h-[var(--select-trigger-height)] px-[var(--select-trigger-padding-x)] rounded-[var(--select-trigger-radius)]",
         "bg-[var(--select-trigger-background)] text-[var(--select-trigger-text)] text-[length:var(--select-trigger-font-size)] [font-family:var(--select-trigger-font-family)]",
         "border-[length:var(--select-trigger-border-width)] border-[var(--select-trigger-border)] data-[placeholder]:text-[var(--select-trigger-placeholder)]",
-        "outline-none focus-visible:ring-[length:var(--select-trigger-focus-width)] focus-visible:ring-[color:var(--select-trigger-border-focus)] focus-visible:ring-offset-[length:var(--select-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--select-trigger-focus-ring-offset)]",
+        "outline-none focus-visible:ring-[length:var(--select-trigger-focus-width)] focus-visible:ring-[color:var(--select-trigger-border-focus)] focus-visible:ring-offset-[length:var(--select-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--select-trigger-focus-ring-offset-color)]",
         "aria-invalid:border-[var(--select-trigger-border-invalid)] disabled:bg-[var(--select-trigger-disabled-background)] disabled:border-[var(--select-trigger-disabled-border)] disabled:text-[var(--select-trigger-disabled-text)]",
         className,
       )}
@@ -49,7 +49,7 @@ export function SelectContent({
         position={position}
         sideOffset={position === "popper" ? sideOffset : undefined}
         className={cn(
-          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-50 min-w-[8rem] overflow-hidden p-[var(--select-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
+          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-[var(--select-layer)] min-w-[8rem] overflow-hidden p-[var(--select-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
           "[box-shadow:var(--overlay-shadow)] border-[length:var(--select-content-border-width)] border-[var(--select-content-border)]",
           position === "popper" && "w-[var(--radix-select-trigger-width)]",
           className,

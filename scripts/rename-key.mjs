@@ -2,7 +2,7 @@
 // links to the semantic whose rule covers that job. The old key stays one minor release as a
 // deprecated alias of the new one, so a project that reads its CSS variable keeps working.
 //
-//   node scripts/rename-key.mjs <old-id> <new-id> [--to <semantic>] [--description "<text>"] [--ticket OD-241]
+//   node scripts/rename-key.mjs <old-id> <new-id> [--to <semantic>] [--description "<text>"]
 //
 // Ids are grammar key ids (dropdown-menu/item/sunken). It edits the grammar, every scheme and the
 // component's source. Run the tokens and docs builds after.
@@ -15,7 +15,8 @@ const args = process.argv.slice(2);
 const opt = (name) => { const i = args.indexOf(`--${name}`); return i < 0 ? null : args.splice(i, 2)[1]; };
 const to = opt("to");
 const description = opt("description");
-const ticket = opt("ticket") ?? "OD-241";
+// Product files carry no ticket keys: the deprecation text names only the replacement.
+opt("ticket");
 const noSource = args.includes("--no-source") && args.splice(args.indexOf("--no-source"), 1);
 const [oldId, newId0] = args;
 // A new id that already names a group (trigger/background when trigger/background/hover exists) is
@@ -72,7 +73,7 @@ if (newId.startsWith(`${oldId}/`)) {
   comp.keys[comp.keys.indexOf(oldId)] = `${oldId}/@`;
   entry.id = `${oldId}/@`;
 }
-entry.description = `Deprecated: use ${newId} (${ticket}). ${entry.description}`;
+entry.description = `Deprecated: use ${newId}. ${entry.description}`;
 saveGrammar(g);
 
 // Schemes: the new token links the semantic; the old one aliases the new one, marked deprecated.
@@ -108,7 +109,7 @@ for (const id of SCHEMES) {
   const home = under ? parent[op.at(-1)] : parent;
   home[under ? "@" : op.at(-1)] = {
     $value: `{${ref(newId)}}`,
-    $description: `Deprecated: use ${tokenPath(newId)} (${ticket}). ${was.$description}`,
+    $description: `Deprecated: use ${tokenPath(newId)}. ${was.$description}`,
     $deprecated: `Use ${tokenPath(newId)}. Removed in the next minor release.`,
   };
   saveScheme(s);

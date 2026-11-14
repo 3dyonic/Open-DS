@@ -17,7 +17,7 @@ export function Checkbox({ className, ...props }: React.ComponentProps<typeof Ch
         // Checked, the fill is the box: its edge steps aside (transparent shows the fill under it).
         "border-[length:var(--checkbox-border-width)] border-[var(--checkbox-border)] data-[state=checked]:border-transparent",
         "data-[state=checked]:bg-[var(--checkbox-background-checked)]",
-        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--checkbox-focus-ring)] disabled:bg-[var(--checkbox-disabled-background)] disabled:border-[var(--checkbox-disabled-border)] disabled:data-[state=checked]:bg-[var(--checkbox-disabled-background)] disabled:data-[state=checked]:border-[var(--checkbox-disabled-border)] focus-visible:ring-offset-[length:var(--checkbox-focus-offset)] focus-visible:ring-offset-[color:var(--checkbox-focus-ring-offset)]",
+        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--checkbox-focus-ring)] disabled:bg-[var(--checkbox-disabled-background)] disabled:border-[var(--checkbox-disabled-border)] disabled:data-[state=checked]:bg-[var(--checkbox-disabled-background)] disabled:data-[state=checked]:border-[var(--checkbox-disabled-border)] focus-visible:ring-offset-[length:var(--checkbox-focus-offset)] focus-visible:ring-offset-[color:var(--checkbox-focus-ring-offset-color)]",
         className,
       )}
       {...props}

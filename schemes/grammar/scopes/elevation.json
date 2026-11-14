@@ -2,8 +2,8 @@
   "id": "elevation",
   "kind": "scope",
   "title": "Elevation",
-  "description": "When something rises above the page, and what separates groups.",
-  "owns": ["elevation"],
+  "description": "When something rises above the page, which layer sits on top, and what separates groups.",
+  "owns": ["elevation", "layer"],
   "lands_in": [
     "alert-dialog",
     "calendar",
@@ -11,6 +11,7 @@
     "chart",
     "combobox",
     "context-menu",
+    "data-table",
     "dialog",
     "drawer",
     "dropdown-menu",
@@ -25,7 +26,8 @@
     "slider",
     "toast",
     "toggle",
-    "toggle-group"
+    "toggle-group",
+    "tooltip"
   ],
   "situations": ["card", "menu-or-dialog"],
   "questions": [
@@ -169,6 +171,26 @@
           "description": "A shadow marks a layer that floats for a while above the page: a menu, a dialog or a toast.",
           "how": "A cast shade under the edge separates the layer from what is under it, even where the two have the same fill.",
           "source": "Material Design, elevation."
+        }
+      ]
+    },
+    {
+      "id": "layer",
+      "title": "Layer order",
+      "description": "Which layer paints on top where two layers overlap: one stack order that every scheme shares.",
+      "tokens": ["layer.*"],
+      "works_by": "the stack order: where two layers overlap, the layer with the higher number paints on top",
+      "jobs": [
+        {
+          "id": "stack",
+          "description": "Each layer sits above every layer it can open over, in one order: sticky < backdrop < modal < dropdown < toast < tooltip.",
+          "how": "Each layer takes its own number, so no two layers tie. The order is the same in every scheme, so a component never needs a number of its own.",
+          "source": "CSS 2.1, Appendix E: within one stacking context, a higher z-index paints above a lower one."
+        },
+        {
+          "id": "nest",
+          "description": "A layer opened from inside another layer shows above it: a menu, a select or a popover opened in a dialog.",
+          "how": "The dropdown layer sits above the modal layer, so a list opened inside a dialog paints over the dialog and is not cut off."
         }
       ]
     }

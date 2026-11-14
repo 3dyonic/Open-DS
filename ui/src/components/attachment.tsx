@@ -29,7 +29,7 @@ function Attachment({
       data-slot="attachment"
       aria-label={`${name}, ${type}, ${size}`}
       className={cn(
-        "flex w-fit max-w-full items-center gap-[var(--attachment-gap)] rounded-[var(--attachment-radius)] border-[length:var(--attachment-border-width)] border-[color:var(--attachment-border)] bg-[color:var(--attachment-background)] px-[var(--attachment-padding-x)] py-[var(--attachment-padding-y)] text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-[length:var(--attachment-focus-offset)] focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
+        "flex w-fit max-w-full items-center gap-[var(--attachment-gap)] rounded-[var(--attachment-radius)] border-[length:var(--attachment-border-width)] border-[color:var(--attachment-border)] bg-[color:var(--attachment-background)] px-[var(--attachment-padding-x)] py-[var(--attachment-padding-y)] text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-[length:var(--attachment-focus-offset)] focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-color)]",
         className,
       )}
       {...props}

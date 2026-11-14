@@ -134,6 +134,7 @@ const PROPERTY = [
   [/^rounded/, "radius"],
   [/^(p|px|py|pt|pb|pl|pr)-$/, "padding"],
   [/^shadow/, "shadow"],
+  [/^-?z-/, "layer"],
 ];
 // Which semantic families can carry a rule for each painted property.
 const FAMILY = {
@@ -464,9 +465,15 @@ function componentGapsNow(scheme, g, roots) {
       const kw = words(key);
       const uses = usages(src, comp, t.css);
       const base = { component: comp, key: t.token, aliases: t.aliases };
-      // 1. The key does not name its part.
+      // 1. The key does not name its part. A layer key paints nothing: it places the whole floating
+      // layer (a dialog, its dimmed page, a menu) in the stack order, so it names its layer, not a part.
       const parts = [
-        ...new Set(uses.map((u) => u.part).filter((p) => p !== "root")),
+        ...new Set(
+          uses
+            .filter((u) => u.property !== "layer")
+            .map((u) => u.part)
+            .filter((p) => p !== "root"),
+        ),
       ];
       if (
         !recipe &&

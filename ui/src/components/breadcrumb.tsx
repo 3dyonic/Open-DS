@@ -52,7 +52,7 @@ function BreadcrumbLink({
       data-slot="breadcrumb-link"
       className={cn(
         "transition-colors duration-[var(--breadcrumb-link-duration)] ease-[var(--breadcrumb-link-easing)] hover:text-[color:var(--breadcrumb-link-label-hover)]",
-        "outline-none focus-visible:ring-[length:var(--breadcrumb-link-focus-width)] focus-visible:ring-[color:var(--breadcrumb-link-focus-ring-focus)] focus-visible:ring-offset-[length:var(--breadcrumb-link-focus-offset)] focus-visible:ring-offset-[color:var(--breadcrumb-link-focus-ring-offset-focus)]",
+        "outline-none focus-visible:ring-[length:var(--breadcrumb-link-focus-width)] focus-visible:ring-[color:var(--breadcrumb-link-focus-ring-focus)] focus-visible:ring-offset-[length:var(--breadcrumb-link-focus-offset)] focus-visible:ring-offset-[color:var(--breadcrumb-link-focus-ring-offset-color)]",
         className,
       )}
       {...props}

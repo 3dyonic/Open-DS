@@ -8,10 +8,13 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ### Breaking
 
+- The gap colour behind a focus ring has one name in every component: `<component>-focus-ring-offset-color`. It replaces `*-focus-ring-offset`, `*-focus-ring-offset-focus` and `*-focus-ring.offset-color` in 31 component keys (OD-328). The values do not change. `--focus-ring-offset` stays the 2px gap.
+- A scheme ships `--icon-size-large` only when it answers two icon sizes; Brand expressive reads the new decision token `size.icon-large` (OD-326).
 - Every scheme drops its 305 deprecated aliases (301 component keys, and `radius.container`, `border-width.focus`, `border-width.focus-offset` and `opacity.disabled`) and the opacity option that only `opacity.disabled` read. Read the token that each alias named in its `$deprecated` note.
 
 ### Added
 
+- One layer order in every scheme, so a menu opened in a dialog, a toast and a tooltip are never hidden (OD-324). Six decision tokens set it: `layer.sticky` (100), `layer.backdrop` (1000), `layer.modal` (1100), `layer.dropdown` (1200), `layer.toast` (1300) and `layer.tooltip` (1400). They read one shared z-index set that the loader adds to every scheme. Each floating component reads its own `--<component>-layer` key; dialogs, alert dialogs, sheets and drawers also read `--<component>-backdrop-layer`, and the sidebar and the data table header read the sticky layer. Tailwind gets the classes `z-sticky`, `z-backdrop`, `z-modal`, `z-dropdown`, `z-toast` and `z-tooltip`; its own `z-0` to `z-50` stay.
 - Two shape radii replace `radius.full` and `radius.999` (OD-286). `radius.round` (50%) makes a circle of a square: avatars, radio dots, thumbs and round buttons. `radius.pill` (`calc(infinity * 1px)`) makes a capsule of any box: tracks, progress, the scroll thumb and pill controls.
 - A usage rule for every foundation token in every scheme: 57 situations, each with what to use, what not to use, and why (OD-286).
 - Foundation pages show each token group as a sample, its tokens with their values, and its rules (OD-287).

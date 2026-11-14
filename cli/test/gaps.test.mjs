@@ -175,3 +175,17 @@ test("an agent is never offered a deprecated key (OD-243)", async () => {
     .results)
     assert.ok(!old.has(hit.token), `find_token offers ${hit.token}`);
 });
+
+test("key-hides-part: a layer key places the whole layer, and a painted key still names its part", async () => {
+  const { usages } = await import("../src/gaps.mjs");
+  const src = `<div data-slot="dialog-content" className="z-[var(--dialog-layer)] bg-[var(--dialog-background)]" />`;
+  assert.equal(usages(src, "dialog", "--dialog-layer")[0].property, "layer");
+  const hides = gaps("dense-data").filter((x) => x.kind === "key-hides-part");
+  assert.ok(!hides.some((x) => /\.(backdrop-)?layer$/.test(x.key)), "no layer key hides a part");
+  // The same content part, painted by a key that does not name it, is still a gap.
+  const { ui } = await fixture("dialog.tsx", (s) => s.replace("bg-[var(--dialog-content-background)]", "bg-[var(--dialog-content-background)] ring-[var(--dialog-layer)]"));
+  assert.ok(
+    componentGaps(fakeScheme("layer"), g, { ...roots, ui }).some((x) => x.kind === "key-hides-part" && x.key === "component.dialog.layer"),
+    "a layer key that paints a ring names no part",
+  );
+});

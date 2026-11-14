@@ -1263,6 +1263,63 @@
         }
       }
     },
+    "shared_primitives": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "tokens"],
+      "description": "Primitives every scheme shares, written once. The loader adds each group to every scheme's tokens.primitive, and saving a scheme leaves them out.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "description": "What the shared primitives are, in one sentence."
+        },
+        "tokens": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["z-index"],
+          "description": "The shared primitive groups, by name.",
+          "properties": {
+            "z-index": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["$description"],
+              "minProperties": 2,
+              "description": "The stack order steps the layer tokens pick from, the same in every scheme.",
+              "properties": {
+                "$description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200,
+                  "description": "What the group holds."
+                }
+              },
+              "patternProperties": {
+                "^[1-9][0-9]{0,5}$": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["$type", "$value"],
+                  "description": "One step. Its name is its value, so z-index.1100 holds 1100.",
+                  "properties": {
+                    "$type": {
+                      "const": "number",
+                      "description": "DTCG type: a plain number."
+                    },
+                    "$value": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 999999,
+                      "description": "The step value: the number its name says."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "anatomy": {
       "type": "object",
       "description": "The parts layer: the roles a part can play, as the questions they answer.",

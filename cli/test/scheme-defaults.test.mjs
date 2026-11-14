@@ -50,3 +50,17 @@ test("a key an answer creates is filled only where the scheme gives that answer"
   // Saving leaves out the fill, as it does for any key.
   assert.equal(at(withoutDefaults(withDefaults(scheme(made), g), g)), undefined);
 });
+
+test("the shared z-index steps join every scheme on load, and no scheme stores them", () => {
+  const shared = g.shared_primitives.tokens["z-index"];
+  for (const id of schemeIds(roots)) {
+    assert.equal(storedScheme(id, roots).tokens.primitive["z-index"], undefined, id);
+    assert.deepEqual(loadScheme(id, roots).tokens.primitive["z-index"], shared, id);
+  }
+  // A group the scheme stores stays, so a check can name it; saving leaves out only the shared copy.
+  const own = { "100": { $type: "number", $value: 5 } };
+  const scheme = { id: "x", tokens: { primitive: { "z-index": own }, component: {} } };
+  assert.deepEqual(withDefaults(scheme, g).tokens.primitive["z-index"], own);
+  const plain = { id: "x", tokens: { primitive: {}, component: {} } };
+  assert.deepEqual(withoutDefaults(withDefaults(plain, g), g).tokens.primitive, {});
+});

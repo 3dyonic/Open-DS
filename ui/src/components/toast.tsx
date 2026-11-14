@@ -72,8 +72,10 @@ export function Toast({ className, tone, title, description, live = true, childr
 }
 
 /** Where toasts appear. Render it once, near the root of the app. */
-export function Toaster(props: ToasterProps) {
-  return <Sonner {...props} />;
+export function Toaster({ style, ...props }: ToasterProps) {
+  // Sonner's own stylesheet sets the toaster's stack order and is not in a cascade layer, so a utility
+  // class loses to it. An inline style wins and puts the toasts on the scheme's toast layer.
+  return <Sonner style={{ zIndex: "var(--toast-layer)", ...style }} {...props} />;
 }
 
 type ToastOptions = { description?: string; duration?: number; id?: string | number };
