@@ -30,6 +30,9 @@
     "icon-matches-label": {
       "content-first": 1,
       "accessible-first": 1
+    },
+    "grays-from-neutral": {
+      "brand-expressive": 2
     }
   }
 }

@@ -3809,31 +3809,31 @@
                 "secondary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.neutral.0}",
+                    "$value": "{color.pink.light.100}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "neutral.0: the secondary action's fill, and its label reads 18.0:1 on it, above the 4.5:1 floor.",
+                        "why": "pink.light.100: a brand tint, so the second action carries the brand; its primary text label reads 15.7:1, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
-                          "accessibility.definition"
-                        ],
-                        "generated": true
+                          "color.roles",
+                          "people.q2"
+                        ]
                       }
                     }
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.neutral.100}",
+                    "$value": "{color.pink.light.200}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
-                        "why": "neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.97:1, above the 4.5:1 floor.",
+                        "why": "pink.light.200: one step past the pink 100 rest fill, so hover reads as a change; its label still reads 12.8:1, above the 4.5:1 floor.",
                         "because": [
                           "color.definition",
-                          "accessibility.definition"
-                        ],
-                        "generated": true
+                          "color.roles",
+                          "people.q2"
+                        ]
                       }
                     }
                   }
@@ -4755,31 +4755,31 @@
                 "secondary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.neutral.50}",
+                    "$value": "{color.pink.dark.100}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "neutral.50: the secondary action's fill, and its label reads 17.12:1 on it, above the 4.5:1 floor.",
+                        "why": "pink.dark.100: in dark mode the secondary fill keeps a deep pink, so it still reads as the brand; its light label holds 15.1:1, above the 4.5:1 floor.",
                         "because": [
                           "color.values",
-                          "accessibility.definition"
-                        ],
-                        "generated": true
+                          "color.roles",
+                          "people.q2"
+                        ]
                       }
                     }
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.neutral.100}",
+                    "$value": "{color.pink.dark.200}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark",
-                        "why": "neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.14:1, above the 4.5:1 floor.",
+                        "why": "pink.dark.200: the dark hover lifts one pink step from the rest fill; the label still holds 11.1:1, above the 4.5:1 floor.",
                         "because": [
                           "color.definition",
-                          "accessibility.definition"
-                        ],
-                        "generated": true
+                          "color.roles",
+                          "people.q2"
+                        ]
                       }
                     }
                   }
