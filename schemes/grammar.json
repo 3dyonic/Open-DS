@@ -2702,13 +2702,7 @@
       "kind": "scope",
       "title": "Accessibility",
       "description": "Floors the system must hold.",
-      "owns": [
-        "size.control",
-        "opacity",
-        "color.border.focus",
-        "focus",
-        "size.hit-area"
-      ],
+      "owns": ["size.control", "color.border.focus", "focus", "size.hit-area"],
       "lands_in": [
         "accordion",
         "alert-dialog",

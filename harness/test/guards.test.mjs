@@ -18,8 +18,8 @@ test("process words: a ticket key, the owner, the harness, a ticket and a pull r
 test("process words: identifiers and the known-shortfall field pass", () => {
   assert.deepEqual(processWords("cli/src/x.mjs", "const ownerOf = (g) => g; // pr-[var(--x)]"), []);
   const scheme = JSON.stringify({ tone: "light", waits: { for: "OD-225", why: "A brand decision." } });
-  assert.deepEqual(processWords("schemes/x.json", scheme), []);
-  assert.equal(processWords("schemes/x.json", JSON.stringify({ why: "Fixed in OD-1." })).length, 1);
+  assert.deepEqual(processWords("fixture/x.json", scheme), []);
+  assert.equal(processWords("fixture/x.json", JSON.stringify({ why: "Fixed in OD-1." })).length, 1);
 });
 
 test("cva variants: every axis and option of every variants block", () => {
