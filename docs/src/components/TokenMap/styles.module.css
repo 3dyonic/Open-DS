@@ -1,4 +1,4 @@
-/* The Token map (OD-274), in the scheme's own tokens: every color, size and corner is a variable the
+/* The Token map, in the scheme's own tokens: every color, size and corner is a variable the
    scheme's CSS sets on this page (src/css/schemes/<scheme>.css). */
 
 .root {
@@ -277,7 +277,7 @@
   pointer-events: all;
 }
 
-/* The left-to-right map (OD-274 v2) */
+/* The left-to-right map */
 .cap {
   font-size: 0.7rem;
   text-transform: uppercase;

@@ -1,7 +1,7 @@
 import React from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-// A scheme's robot (OD-209): a member of the Open DS robot family, painted in Google Stitch in the
+// A scheme's robot: a member of the Open DS robot family, painted in Google Stitch in the
 // family style, doing its scheme's job. Two editions, cut out to transparent WebP in static/robots/:
 // a daytime one (<id>.webp) and a nocturnal one (<id>-dark.webp). The site theme picks the edition.
 export const ROBOT_ALT: Record<string, string> = {

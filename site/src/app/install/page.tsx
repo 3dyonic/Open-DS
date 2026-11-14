@@ -100,7 +100,7 @@ export default function InstallPage() {
     },
   ];
   // How each client connects to the hosted server, with the key as a bearer token. The hosted
-  // server needs a key (open-ds-ops, OD-176); without one, people run it locally.
+  // server needs a key (open-ds-ops); without one, people run it locally.
   const KEY = "<your key>";
   const auth = { Authorization: `Bearer ${KEY}` };
   const keyed: { name: string; code: string }[] = [

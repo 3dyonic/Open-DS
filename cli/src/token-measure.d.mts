@@ -1,4 +1,4 @@
-// Types for token-measure.mjs, for the docs' Token map page that imports it (OD-274).
+// Types for token-measure.mjs, for the docs' Token map page that imports it.
 export interface MeasureLine {
   text: string;
   /** The guideline the line checks, for a tooltip or small text. */

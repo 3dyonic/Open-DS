@@ -1,4 +1,4 @@
-// open-ds compare (OD-298): measure a candidate against a base ref. Each ref is checked out in a
+// open-ds compare: measure a candidate against a base ref. Each ref is checked out in a
 // temporary git worktree, its tokens are built with its own build, and its snapshot is extracted in a
 // child process that loads the schemes with that ref's own code. The comparison itself is pure
 // (scorecard.mjs). The worktrees are removed afterwards, whatever happens.

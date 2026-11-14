@@ -1,5 +1,5 @@
-// The rules every scheme keeps (OD-292, ADR-002 step 3). Each rule takes one scheme and returns what
-// breaks it, so the build, the harness and a user's project run the same rules. No file access.
+// The rules every scheme keeps (ADR-002 step 3). Each rule takes one scheme and returns what
+// breaks it, so the build, the repository checks and a user's project run the same rules. No file access.
 import { contrast } from "./ramps.mjs";
 import { themeTokens } from "./tokens.mjs";
 import { pairsIn } from "./tones.mjs";
@@ -99,7 +99,7 @@ export function spacingOffGrid(scheme) {
 }
 
 /**
- * Each contrast pair the grammar names keeps its ratio in every brand and mode (OD-222). A pair on a fill
+ * Each contrast pair the grammar names keeps its ratio in every brand and mode. A pair on a fill
  * that waits for a recorded fix goes in waiting, not in gaps. { pairs, gaps, waiting }
  */
 export function contrastPairs(scheme, g) {

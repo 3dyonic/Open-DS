@@ -58,8 +58,8 @@ function MenubarTrigger({ className, ...props }: React.ComponentProps<typeof Men
 function MenubarContent({
   className,
   align = "start",
-  alignOffset = 0, // lines up with the bar through its padding key (OD-243)
-  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
+  alignOffset = 0, // lines up with the bar through its padding key
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content>) {
   return (

@@ -96,7 +96,7 @@ export function themeTokens(scheme, brand, mode) {
 
 /**
  * Component keys that name the fill they sit on ($extensions["open-ds"].on) take the text pair its
- * tone picks in this mode: a -on-light or -on-dark key becomes the one that fill's tone calls for (OD-223).
+ * tone picks in this mode: a -on-light or -on-dark key becomes the one that fill's tone calls for.
  */
 function pickByTone(tree, theme, mode) {
   const out = {};

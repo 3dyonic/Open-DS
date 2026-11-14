@@ -2,7 +2,7 @@
  * Switch. Turns a setting on or off with an immediate effect.
  *
  * The track is the thumb plus its offset on each side, and twice as wide as it is tall: the thumb
- * slides one track height (OD-300).
+ * slides one track height.
  *
  * Reads only component keys: --switch-*, --transition-*.
  */

@@ -1,4 +1,4 @@
-// The decision reference (OD-239): every question a scheme answers, by section, with its answer, why,
+// The decision reference: every question a scheme answers, by section, with its answer, why,
 // the earlier answers it came from, and every design decision that cites it directly: a later
 // answer, a usage rule or a component variant. One source for the docs page (Decision reference),
 // the MCP tool get_decision_reference and `open-ds decisions`, so they never disagree.
@@ -26,7 +26,7 @@ const title = (id) => id[0].toUpperCase() + id.slice(1).replace(/-/g, " ");
 // opens with a preposition reads on its own: "Between page sections, use …".
 function ruleText(sit, u) {
   const t = stop(sit.title);
-  // The grammar gives the opening when "For a {title}" does not read (OD-239).
+  // The grammar gives the opening when "For a {title}" does not read.
   const lead = sit.lead
     ? sit.lead
     : /^(between|in|on|at|inside|outside|under|above|below|near|with|within|across|around|after|before|during|for)\b/i.test(
@@ -93,7 +93,7 @@ export function decisionReference(scheme, g) {
             page: inv.has(c.id) ? `components/${c.id}` : null,
             page_title: title(c.id),
           });
-  // The theme picks an answer sets (OD-241, OD-245): each pick names the answers it follows from, so
+  // The theme picks an answer sets: each pick names the answers it follows from, so
   // the reference shows the cascade from the decision's side. The first brand speaks for the scheme.
   const firstBrand = Object.values(scheme.tokens?.brands ?? {})[0];
   const pageOf = (path) =>
@@ -150,7 +150,7 @@ export function decisionReference(scheme, g) {
           line: answerText(b),
         })),
         decided: decided[q.id] ?? { answers: [], rules: [], variants: [], picks: [] },
-        // What the answer must weigh, and how this scheme meets each one (OD-245).
+        // What the answer must weigh, and how this scheme meets each one.
         ...(q.considers && {
           considers: q.considers.map((k) => ({ ...k, how: answer(q.id).considers?.[k.id] ?? null })),
         }),

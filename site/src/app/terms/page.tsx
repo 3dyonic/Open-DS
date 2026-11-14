@@ -1,4 +1,4 @@
-// The terms for the hosted service during the Beta (OD-173), in plain words. The code is MIT; these
+// The terms for the hosted service during the Beta, in plain words. The code is MIT; these
 // terms are about keys and the hosted MCP server.
 import type { Metadata } from "next";
 import Link from "next/link";

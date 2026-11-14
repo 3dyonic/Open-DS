@@ -1,7 +1,7 @@
-// The relations a scheme must keep (OD-298). Two kinds:
+// The relations a scheme must keep. Two kinds:
 //   recorded  relations the scheme's data states: the spacing map's multiplier and rhythm, and the
 //             color scales generated from a recorded key color;
-//   minimum   the relations the owner decided, checked where the data records none yet.
+//   minimum   the relations the gate sets, checked where the data records none yet.
 // Each relation reads a scheme's facts (resolved values, scales, answers) and returns its checks. A
 // relation whose tokens a scheme does not have is "not present", never failed. Pure.
 import { lch } from "../ramps.mjs";
@@ -16,14 +16,14 @@ export const RELATION_TOKENS = [
   "component.dropdown-menu.content.border-width",
 ];
 
-/** Motion caps by family, in ms (owner's decision, OD-298). Any other duration is expressive. */
+/** Motion caps by family, in ms. Any other duration is expressive. */
 export const MOTION_CAPS = { feedback: 150, panels: 300, expressive: 500 };
 /** Hit areas in px: every control, and the default control of a touch-first scheme. */
 export const HIT_AREA = { min: 24, touch: 44 };
 /** Answers to accessibility.values that make a scheme touch-first: a large target is at least a touch one. */
 export const TOUCH_FIRST = ["touch", "large"];
 /**
- * The surface ladder, from the grammar's connections (OD-304): the stays-apart connection by order.
+ * The surface ladder, from the grammar's connections: the stays-apart connection by order.
  * { tokens, modes }: the rungs lowest first, and the modes where each rung is lighter than the one below.
  */
 export function ladderOf(g) {
@@ -103,7 +103,7 @@ const RELATIONS = [
     title: "The focus ring is the default border + 1 step",
     links: () => ({ inputs: ["border-width.default"], outputs: ["focus.ring.width", "border-width.focus"] }),
     check: (f) => {
-      // OD-297 gives the ring its own token, focus.ring.width; older refs name it border-width.focus.
+      // The ring has its own token, focus.ring.width; older refs name it border-width.focus.
       const ring = has(f, ["focus.ring.width"]) ? "focus.ring.width" : "border-width.focus";
       if (!has(f, ["border-width.default", ring])) return null;
       return perTheme(f, (v) => {

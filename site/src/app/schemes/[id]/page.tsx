@@ -252,7 +252,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         </ul>
       </section>
 
-      {/* The docs and Storybook (OD-210): two places, each with its own people and path. */}
+      {/* The docs and Storybook: two places, each with its own people and path. */}
       <section className="grid gap-5 md:grid-cols-2" aria-label={`${s.name} docs and Storybook`}>
         {[
           {

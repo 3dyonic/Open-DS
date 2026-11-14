@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import { useScheme, type Scheme } from "../components/scheme";
 import { Robot } from "../components/Robot";
 
-// The docs home (OD-209): the five schemes as a small marketplace. A stage of their robots, then a
+// The docs home: the five schemes as a small marketplace. A stage of their robots, then a
 // row per scheme with its answers from its tokens, and the ways in: its docs and the command that
 // creates it.
 

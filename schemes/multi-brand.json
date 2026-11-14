@@ -2582,7 +2582,7 @@
           "$description": "The teal hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#0F766E"
               },
@@ -2603,7 +2603,7 @@
           "$description": "The purple hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#6D28D9",
                 "held": {
@@ -2626,7 +2626,7 @@
           "$description": "The orange hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#C2410C"
               },
@@ -2646,13 +2646,13 @@
           "$description": "The green hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#1F7A3A",
                 "adjust": {
                   "100": {
                     "C": 0.008,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 }
               },
@@ -2671,14 +2671,14 @@
           "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#8A5600",
                 "adjust": {
                   "100": {
                     "L": -0.005,
                     "C": 0.013,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 }
               },
@@ -2698,14 +2698,14 @@
           "$description": "The red hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#C42B2B",
                 "adjust": {
                   "100": {
                     "L": -0.03,
                     "C": 0.017,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 }
               },
@@ -2738,14 +2738,14 @@
           "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#083C93",
                 "adjust": {
                   "100": {
                     "L": -0.02,
                     "C": 0.011,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 }
               },
@@ -3895,7 +3895,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },
@@ -4811,7 +4811,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },
@@ -6089,7 +6089,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },
@@ -7026,7 +7026,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },
@@ -8313,7 +8313,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },
@@ -9254,7 +9254,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },

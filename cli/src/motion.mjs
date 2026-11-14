@@ -1,4 +1,4 @@
-// Motion families and move types (OD-297). The grammar's motion scope names two families, productive
+// Motion families and move types. The grammar's motion scope names two families, productive
 // and expressive, picked by one answer; each family limits each duration and allows curve kinds per
 // move type (enter, exit, exit-offscreen, transition, emphasize). This module measures each easing's
 // curve and checks every scheme against its family. No file access: the caller passes the scheme and

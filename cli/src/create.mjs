@@ -219,7 +219,7 @@ export function createProject(
 
   // The scheme's inventory, plus the components those import, and their styles.
   const components = componentsFor(scheme, roots);
-  // The docs' composites draw with ui components the scheme may leave out (OD-284). Those are written
+  // The docs' composites draw with ui components the scheme may leave out. Those are written
   // for the docs too, and the index exports only the scheme's own.
   const written = withImports(
     [...new Set([...components, ...compositeComponents(roots)])],
@@ -298,7 +298,7 @@ export function createProject(
     );
   }
 
-  // The guide (OD-178): the Introduction and Foundations pages and the docs-page blocks. They read this
+  // The guide: the Introduction and Foundations pages and the docs-page blocks. They read this
   // project's scheme.json through stories/guide/guide-data.ts, which comes from the project template.
   const guideDir = join(roots.stories, "guide");
   if (existsSync(guideDir))
@@ -312,7 +312,7 @@ export function createProject(
           `from "./scale-map.mjs"`,
         ),
       );
-  // The scale map (OD-223) the guide reads: the same file the docs, the CLI and the MCP use.
+  // The scale map the guide reads: the same file the docs, the CLI and the MCP use.
   for (const f of ["scale-map.mjs", "scale-map.d.mts"])
     write(
       `stories/guide/${f}`,
@@ -361,7 +361,7 @@ export function createProject(
     "AGENTS.md",
     agentsMd(scheme, g, { brand: defaultBrand, components, project: true }),
   );
-  // The booklets and the router (OD-205): the context engine's short answers, as files.
+  // The booklets and the router: the context engine's short answers, as files.
   for (const [rel, text] of Object.entries(
     booklets(scheme, g, components, roots),
   ))

@@ -1,4 +1,4 @@
-// The Token map page's data (OD-274): one scheme and brand, read left to right. An area (Color,
+// The Token map page's data: one scheme and brand, read left to right. An area (Color,
 // Spacing …) holds scales (a hue, the space scale …); a scale holds the steps that decisions use; a
 // step's decisions sit in semantic groups; a decision lists the components that show it and the
 // decisions that copy it. Everything here comes from the scheme, the grammar and the component code:
@@ -165,12 +165,12 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
     rows.map((id) => ({ id: tokenName(id), label: rowLabel(id), better: betterName(id, componentSource) }));
   const componentsOf = (index, d) =>
     componentsShowing(index, d).map((c) => ({ component: c.component, rows: rowsOf(c.rows) }));
-  // One token index per mode, so the color graph (OD-304) resolves each value once.
+  // One token index per mode, so the color graph resolves each value once.
   const tokenIndexes = Object.fromEntries(["light", "dark"].map((m) => [m, tokenIndex(scheme, { brand, mode: m })]));
   // A color or type token's decision graph, in the order the card reads it: role → jobs → property → answers →
   // rule → connections → value, and the reason sentence the engine writes from those fields.
   // A check that does not hold waits when the scheme records a fix for it, or when the connection's
-  // baseline (waiting, the harness's connections-baseline.json counts) keeps gaps for this scheme.
+  // baseline (waiting, the counts in connections-baseline.json) keeps gaps for this scheme.
   const waits = (n, x) => !x.holds && (!!x.waits || (waiting[n.name]?.[scheme.id] ?? 0) > 0);
   // A hue clash names the other token: "shares the amber hue with color.status.warning".
   const waitText = (n, x, mine) =>
@@ -211,7 +211,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
   const chainOf = (index, d, mode = "light") => {
     const { steps, links } = reasonChain(index, reasons, d);
     const direct = links.filter((l) => l.to === "decision").map((l) => l.from);
-    // OD-303: a mapped token shows the one answer that decides it, its property and the property's jobs.
+    // A mapped token shows the one answer that decides it, its property and the property's jobs.
     // The answers behind that answer belong to the answer, not to this token.
     const entry = mappingOf(grammar, tokenName(d));
     // What the token is for, from the grammar's semantics: its intent, uses and the token to use instead.

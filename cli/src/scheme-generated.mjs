@@ -1,7 +1,7 @@
-// A scheme stores the decisions behind its generated values, not the values (OD-292, ADR-002 step 3b).
+// A scheme stores the decisions behind its generated values, not the values (ADR-002 step 3b).
 // A colored hue stores its key colors and adjustments; withGenerated fills its light and dark scales
-// (OD-223). The component spacing map stores its rhythm and fixed steps; withGenerated fills its steps
-// (OD-235). withoutGenerated takes out each part that equals the generator's output exactly. No file
+//. The component spacing map stores its rhythm and fixed steps; withGenerated fills its steps
+//. withoutGenerated takes out each part that equals the generator's output exactly. No file
 // access, so the loader, the build and the bundled apps (Storybook, the site) share it.
 import { curveOf } from "./color-steps.mjs";
 import { scale, STEPS } from "./ramps.mjs";

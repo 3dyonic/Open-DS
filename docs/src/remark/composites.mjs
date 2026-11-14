@@ -1,4 +1,4 @@
-// A directive in a plain .md page becomes the composite it names (OD-284). A line such as
+// A directive in a plain .md page becomes the composite it names. A line such as
 // ::token-table{component="field"} becomes a block; :label[Left out]{tone="warning"} sits inside text;
 // :::intro{…} … ::: wraps Markdown that stays in the page. This is the extension Docusaurus documents:
 // a remark plugin that gives a short syntax to a component (its admonitions work the same way), with

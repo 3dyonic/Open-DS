@@ -5,7 +5,7 @@
 //
 // Every tool is read-only. Taking, initialising and adding return the exact `npx open-ds …` command
 // and the files it writes; the agent runs it. The five skills are served as prompts.
-// No authentication yet: the hosted server will add a key (OD-145).
+// No authentication yet: the hosted server will add a key.
 
 import { GAP_KINDS, gapLedger } from "./gaps.mjs";
 import { anatomyReference } from "./anatomy.mjs";
@@ -57,7 +57,7 @@ const VERSION = JSON.parse(
 ).version;
 
 // Sent once when an agent connects. Ends with the read-once text that AGENTS.md and context/README.md
-// carry too (OD-205).
+// carry too.
 const INSTRUCTIONS = `Open DS: design systems as answered questions. Every scheme answers the same questions and gives the reason for each answer; tokens, components, usage rules and voice follow from them.
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
 Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component (its gaps say where the scheme has no answer yet; get_gaps lists them for a whole scheme); to explain why a part looks the way it does, or before you change a part, get_anatomy; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales; before you write any spacing, get_component_spacing_map. Before you finish, run check_ui on the files you changed and fix each finding.
@@ -231,7 +231,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
           text: qs[b]?.text,
           answer: qs[b] ? label(s, b) : undefined,
         })),
-        // What this answer decided directly (OD-239): later answers, usage rules, component variants.
+        // What this answer decided directly: later answers, usage rules, component variants.
         decided: decisionReference(s, g)
           .sections.flatMap((x) => x.questions)
           .find((q) => q.id === question_id)?.decided,
@@ -239,7 +239,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     },
   );
 
-  // The decision reference (OD-239): the same data as the docs page Decision reference.
+  // The decision reference: the same data as the docs page Decision reference.
   server.registerTool(
     "get_decision_reference",
     {
@@ -438,7 +438,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         })),
         tokens: scope?.owns ?? [],
         lands_in: scope?.lands_in ?? [],
-        // The outputs that cite the answer or anything that follows from it (OD-185): each variant
+        // The outputs that cite the answer or anything that follows from it: each variant
         // decision in the component scheme, and each usage rule.
         variants: s.inventory.in.flatMap((c) =>
           Object.entries(c.variants ?? {}).flatMap(([axis, vs]) =>
@@ -588,7 +588,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Gaps",
       description:
-        "The gap ledger of one scheme, or one component in it: every place where the decision trace (part, property, state, semantic, rule, pick, value) breaks. Kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, and a theme pick with no reason. Each gap says what is wrong, and the ticket that fixes it where one exists. Where a gap stands, the scheme has no answer: say so instead of inventing one.",
+        "The gap ledger of one scheme, or one component in it: every place where the decision trace (part, property, state, semantic, rule, pick, value) breaks. Kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, and a theme pick with no reason. Each gap says what is wrong. Where a gap stands, the scheme has no answer: say so instead of inventing one.",
       inputSchema: {
         scheme_id: SchemeId,
         component: z.string().optional().describe("A catalogue component id, for example dropdown-menu. Leave out for the whole scheme."),
@@ -608,7 +608,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     },
   );
 
-  // The tools behind the skills (OD-202): each does a step a skill would otherwise judge by eye.
+  // The tools behind the skills: each does a step a skill would otherwise judge by eye.
   server.registerTool(
     "check_ui",
     {

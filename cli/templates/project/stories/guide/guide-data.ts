@@ -7,7 +7,7 @@ import scheme from "../../scheme.json";
 /** This Storybook is one design system's own, so its introduction starts with it, not with Open DS. */
 export const ABOUT_OPEN_DS: { schemes: number } | null = null;
 
-/** The guide's data, the same shape as in the Open DS Storybook (OD-223). */
+/** The guide's data, the same shape as in the Open DS Storybook. */
 export function useGuideData(): {
   scheme: any;
   grammar: any;

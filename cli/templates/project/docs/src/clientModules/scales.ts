@@ -1,4 +1,4 @@
-// The scale view on the color primitives page (OD-223). Light and dark tabs, one choice for every
+// The scale view on the color primitives page. Light and dark tabs, one choice for every
 // color on the page, starting from the docs theme. Pointing at a token row lights up its step, and the
 // other way round.
 const KEY = "odv-scale-mode";
@@ -79,7 +79,7 @@ export function onRouteDidUpdate() {
   setTimeout(arrive, 120);
 }
 
-// Decision reference (OD-239): one section open at a time. Opening one closes the others without
+// Decision reference: one section open at a time. Opening one closes the others without
 // moving the one you clicked: its header stays where it was on screen. A link to a section or a
 // question opens its section, the address follows the open section, and the section menu in the
 // left sidebar marks it. On any other page that menu folds away.

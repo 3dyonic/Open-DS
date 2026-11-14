@@ -96,7 +96,7 @@ export interface DataTableProps<TData> {
   labels?: Partial<DataTableLabels>;
   className?: string;
   /** The empty state when there is no data at all: why it is empty and the one action that fills it
-   * (OD-229, the empty-words rule). Without it, the table says there are no records yet. */
+   * (the empty-words rule). Without it, the table says there are no records yet. */
   empty?: React.ReactNode;
 }
 
@@ -335,7 +335,7 @@ export function DataTable<TData>({
               ))
             ) : (
               <TableRow>
-                {/* The empty state is the Empty pattern, not a muted row (OD-229): why it is empty and the
+                {/* The empty state is the Empty pattern, not a muted row: why it is empty and the
                     one action that fills it. Filters that hide every row are cleared from here. */}
                 <TableCell colSpan={table.getVisibleLeafColumns().length}>
                   {search || filters.length ? (

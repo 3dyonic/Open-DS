@@ -1,4 +1,4 @@
-// Derived against literal (OD-298): where each semantic value comes from. A value is derived when a
+// Derived against literal: where each semantic value comes from. A value is derived when a
 // recorded relation, another semantic, a color scale step or a scale step named for its value gives
 // it; a literal is a raw value someone typed (a hex in place of a step, a font stack, "120ms"). Also
 // the raw hex, px and ms literals in component code that bypass the tokens.

@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-// Decision reference (OD-239): its section menu sits in the left sidebar, under the page's own item.
+// Decision reference: its section menu sits in the left sidebar, under the page's own item.
 // cli/src/docs.mjs writes _decision-menu.json next to the page; this turns the page into a category
 // whose items are the sections, each with its decision count. Docusaurus opens a category on its own
 // page and keeps it closed elsewhere, so the menu shows only where it works.
@@ -27,7 +27,7 @@ const esc = (s: string) =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 
-// Anatomy reference (OD-229): a component's anatomy page sits under the component, not beside it. The
+// Anatomy reference: a component's anatomy page sits under the component, not beside it. The
 // component's page becomes a category whose one item is its Anatomy reference, so the sub-item shows,
 // indented, only when you navigate to that component.
 function nestAnatomy(list: Item[], titles: Map<string, string>): Item[] {

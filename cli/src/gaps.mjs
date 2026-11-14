@@ -1,10 +1,10 @@
-// The gap ledger (OD-243): every place where the decision trace breaks, generated from the code and
+// The gap ledger: every place where the decision trace breaks, generated from the code and
 // the schemes, never written by hand.
 //
 // The trace: part → property → state → semantic → rule (its why) → the pick per brand and mode → value.
 // A component's own token should name its part and its state, and link to the semantic whose written
 // rule covers that job. A gap is a link that is missing or wrong. Fixing a gap makes its count drop;
-// the harness lets the counts only go down (harness/gaps-baseline.json).
+// the counts may only go down (harness/gaps-baseline.json).
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -75,13 +75,6 @@ export const GAP_KINDS = [
     why: "A theme pick without a why cannot be checked against the decision it carries out, so a wrong step looks as good as a right one.",
   },
 ];
-
-// The fix ticket for each kind, where one exists. null means no ticket yet; the ledger says so.
-const TICKET = {
-  "key-hides-state": "OD-241",
-  "two-jobs": "OD-241",
-  "rule-not-written": "OD-241",
-};
 
 // Tailwind variant → state. Variants that are not a state (dark:, sm:, data-[side=…], group-…) are
 // ignored. A disabled variant wins over the others: a disabled control does not change on hover.
@@ -287,7 +280,7 @@ function componentGapsNow(scheme, g, roots) {
   const comps = builtComponents(roots);
   const catalogue = new Set(g.catalogue.items.map((i) => i.id));
   // A token a scope owns by its own name is that scope's shared role, not a component's: size.icon
-  // belongs to iconography, for every icon (OD-285), even though Icon is also a component.
+  // belongs to iconography, for every icon, even though Icon is also a component.
   const scopeOwned = new Set(g.scopes.flatMap((x) => x.owns ?? []));
   const rule = new Map(
     g.semantics.keys.map((k) => [
@@ -558,7 +551,7 @@ function componentGapsNow(scheme, g, roots) {
           kind: "wrong-semantic",
           says: `${t.token} borrows ${t.aliases}, the ${role}'s role, so a change to the ${role} moves the ${comp} too.`,
         });
-      // 3. A surface used as text: text on a fill pairs by the fill's tone (OD-222).
+      // 3. A surface used as text: text on a fill pairs by the fill's tone.
       if (
         /^color\.surface\./.test(t.aliases) &&
         uses.some((u) => u.property === "text" || u.property === "icon")
@@ -655,14 +648,11 @@ export function pickGaps(scheme) {
   return gaps;
 }
 
-/** The whole ledger for one scheme, or one component in it. Each gap carries its kind's ticket. */
+/** The whole ledger for one scheme, or one component in it. */
 export function gapLedger(scheme, g, roots, { component = null } = {}) {
   const gaps = component
     ? componentLedger(scheme, g, roots, component)
-    : [...componentGaps(scheme, g, roots), ...pickGaps(scheme)].map((x) => ({
-        ...x,
-        ticket: TICKET[x.kind] ?? null,
-      }));
+    : [...componentGaps(scheme, g, roots), ...pickGaps(scheme)];
   const counts = Object.fromEntries(
     GAP_KINDS.map((k) => [k.id, gaps.filter((x) => x.kind === k.id).length]),
   );
@@ -681,8 +671,7 @@ export function componentLedger(scheme, g, roots, component) {
           .flat()
           .some(mine) ||
         x.keys?.some(mine),
-    )
-    .map((x) => ({ ...x, ticket: TICKET[x.kind] ?? null }));
+    );
 }
 
 /** The ledger as plain text: the counts, then each kind with its why and its gaps. */
@@ -695,9 +684,8 @@ export function gapText(ledger, { limit = 12 } = {}) {
   for (const k of ledger.kinds) {
     const list = ledger.gaps.filter((x) => x.kind === k.id);
     if (!list.length) continue;
-    const ticket = list[0].ticket;
     lines.push(
-      `${k.title}: ${list.length}${ticket ? ` (${ticket})` : ""}`,
+      `${k.title}: ${list.length}`,
       `  Why it matters: ${k.why}`,
     );
     for (const x of list.slice(0, limit)) lines.push(`  - ${x.says}`);

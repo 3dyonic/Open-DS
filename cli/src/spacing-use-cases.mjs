@@ -1,4 +1,4 @@
-// Spacing by use case and the control scale (OD-294, OD-301). The loader generates the space tokens,
+// Spacing by use case and the control scale. The loader generates the space tokens,
 // the control heights and the row from them.
 //
 // A scheme records its spacing on the space group (semantic.space.$extensions["open-ds"]): for each

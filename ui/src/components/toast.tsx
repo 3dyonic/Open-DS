@@ -4,7 +4,7 @@
  *
  * Call toast("12 alerts exported."), toast.success(...) or toast.danger(...) anywhere, and render
  * <Toaster /> once. The behaviour, stacking, timing, dismissing and announcing politely without taking
- * focus, comes from shadcn/ui's Sonner (MIT); the look is this scheme's (OD-219).
+ * focus, comes from shadcn/ui's Sonner (MIT); the look is this scheme's.
  *
  * Tones: neutral, success, danger. Reads only component keys: --toast-*.
  */

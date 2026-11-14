@@ -1,4 +1,4 @@
-// Color math for the quality gate (OD-298): OKLab, the distance between two colors, color vision
+// Color math for the quality gate: OKLab, the distance between two colors, color vision
 // deficiency simulation and WCAG levels. Pure.
 import { contrast } from "../ramps.mjs";
 

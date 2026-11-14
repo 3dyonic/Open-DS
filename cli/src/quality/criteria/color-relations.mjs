@@ -1,8 +1,8 @@
-// Relations hold (OD-298): what the colors of a scheme keep between base and candidate. No contrast
+// Relations hold: what the colors of a scheme keep between base and candidate. No contrast
 // pair drops a WCAG level, and each keeps a margin above its floor; scale steps and the surface ladder
 // keep their order; rest → hover → pressed keep their sign and stay apart; colors that were distinct
 // stay distinct, also under deuteranopia, protanopia and tritanopia; colors that were shared stay
-// shared. Each flag names its scheme, theme and tokens, so the owner can approve that one flag.
+// shared. Each flag names its scheme, theme and tokens, so an approval can clear that one flag.
 import { VISIONS, oklab, oklabDistance, simulate, wcagLevel } from "../color.mjs";
 import { hex6 } from "../values.mjs";
 import { measuredPairs } from "./accessibility.mjs";

@@ -1,4 +1,4 @@
-// The Figma kit of each scheme (OD-149), from figma/kits.json. A scheme without a kit shows no link.
+// The Figma kit of each scheme, from figma/kits.json. A scheme without a kit shows no link.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 

@@ -1,4 +1,4 @@
-// Short context (OD-205). The context engine's answers, written as short Markdown: words, not
+// Short context. The context engine's answers, written as short Markdown: words, not
 // values; keys by name. Each answer ends with the sections an agent can ask for, their size and the
 // exact call. A created project keeps the same text as files in context/, with a router
 // (context/index.json) that says what to load for a file or a task. The MCP get_context and the CLI
@@ -17,7 +17,7 @@ import { context, TASKS } from "./context.mjs";
 import { builtComponents, componentsFor } from "./components.mjs";
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
 
-/** Size limits in bytes, checked by the harness. A route is the booklets it lists, not AGENTS.md. */
+/** Size limits in bytes. A route is the booklets it lists, not AGENTS.md. */
 export const BUDGET = { agents: 4000, booklet: 3000, route: 8000, page: 3000 };
 
 /** How to use Open DS, read once. One source for the MCP instructions, AGENTS.md and context/README.md. */
@@ -293,7 +293,7 @@ function shortComponent(c, carried) {
     const names = c.keys
       .filter((k) => !/\/hover$/.test(k.key))
       .map((k) => k.key.replace(/\/@$/, ""));
-    // a long API by part (OD-234): its tokens grouped by the part they style; every name is in section keys
+    // a long API by part: its tokens grouped by the part they style; every name is in section keys
     if (names.join(", ").length > 400) {
       const parts = {};
       for (const n of names) {
@@ -377,7 +377,7 @@ function shortTask(t, g) {
   if (t.target === "build") {
     lines.push("", "## Situations");
     // What to use in each situation; what not to use and why are in the paged rules section, so the
-    // booklet stays in its budget with a rule for every foundation token (OD-286).
+    // booklet stays in its budget with a rule for every foundation token.
     lines.push("What not to use, and why: section rules.");
     const order = g.situations.map((x) => x.id);
     const items = t.rules

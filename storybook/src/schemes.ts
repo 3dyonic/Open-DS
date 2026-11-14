@@ -1,13 +1,13 @@
 // The five schemes and the grammar, for the stories. The one module in Storybook that reads
-// schemes/ (OD-289); every other file imports from here.
+// schemes/; every other file imports from here.
 import accessible from "../../schemes/accessible-first.json";
 import expressive from "../../schemes/brand-expressive.json";
 import content from "../../schemes/content-first.json";
 import dense from "../../schemes/dense-data.json";
 import multi from "../../schemes/multi-brand.json";
 import grammarJson from "../../schemes/grammar.json";
-// A scheme file stores only what it decides: the grammar gives the other component values (OD-291), and
-// the color scales and the spacing map come from their recorded rules (OD-292).
+// A scheme file stores only what it decides: the grammar gives the other component values, and
+// the color scales and the spacing map come from their recorded rules.
 import { withDefaults } from "../../cli/src/scheme-defaults.mjs";
 import { withGenerated } from "../../cli/src/scheme-generated.mjs";
 import { withTypeAndSpace } from "../../cli/src/type-space-generated.mjs";

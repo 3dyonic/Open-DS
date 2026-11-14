@@ -1,4 +1,4 @@
-// What component code and CSS decide on their own (OD-298): raw literals that bypass the tokens, motion
+// What component code and CSS decide on their own: raw literals that bypass the tokens, motion
 // that a reduced-motion rule keeps, and the CSS variables the code reads. Pure: files come in as
 // [{ file, text }].
 

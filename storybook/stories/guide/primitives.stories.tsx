@@ -1,4 +1,4 @@
-// The Primitives section (OD-184, OD-195): every raw value, by kind, and what points to it. Its own
+// The Primitives section: every raw value, by kind, and what points to it. Its own
 // section next to Foundations, the same as the docs.
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Primitives } from "./guide";

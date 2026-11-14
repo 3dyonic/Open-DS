@@ -1,4 +1,4 @@
-// The Anatomy reference (OD-229): one component taken apart, generated from its code and its scheme.
+// The Anatomy reference: one component taken apart, generated from its code and its scheme.
 // For each part (a data-slot in the code): the tokens it reads, and for each token the chain from
 // the decision to the value: the semantic and its rule, the theme pick in light and dark with the
 // scheme's reason, what else picks the same step, and the answers it follows from. A part whose value
@@ -197,7 +197,7 @@ export function tokenTrace(scheme, g, roots, path) {
   };
 }
 
-/** The Anatomy reference of one component in one scheme (OD-229): one engine for the docs page,
+/** The Anatomy reference of one component in one scheme: one engine for the docs page,
  * open-ds anatomy and the MCP's get_anatomy. With a parts layer in the catalogue: the roles, every part
  * (its number, need, roles, and whether its value changes by scheme), and the cards that follow each
  * decision from the answer through the rule to the token. Without one: the parts the code's data-slots
@@ -240,7 +240,7 @@ export function anatomyReference(scheme, g, roots, comp) {
     };
   };
   // A card's title can depend on an answer: "Surface and shadow" reads "Surface and edge" in a
-  // scheme with no shadows (OD-267). title_when maps "question=option" to the title.
+  // scheme with no shadows. title_when maps "question=option" to the title.
   const chosen = new Set(scheme.answers.map((a) => `${a.question}=${a.option}`));
   const titleOf = (c) => Object.entries(c.title_when ?? {}).find(([k]) => chosen.has(k))?.[1] ?? c.title;
   return {

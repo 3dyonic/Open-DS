@@ -1,4 +1,4 @@
-// Blast radius (OD-298): one answer or one anchor changes, the scheme is loaded again with its own
+// Blast radius: one answer or one anchor changes, the scheme is loaded again with its own
 // loader, and the tokens that move are compared with what the scheme records as depending on the
 // change (cli/src/quality/blast.mjs). An expected token that does not move is an orphan hard-code; a
 // token that moves with no record is a hidden coupling. An answer that moves no value at all is counted
