@@ -4111,7 +4111,7 @@
       "title": "Icon size",
       "scope": "iconography",
       "question": "iconography.values",
-      "tokens": ["size.icon", "size.icon-large"],
+      "tokens": ["size.icon", "size.icon.large"],
       "rule": "icon size = a size the icon set is drawn for (16, 20 or 24px), at least one label line tall; large icon size = larger than size.icon, where the scheme has two sizes",
       "jobs": [
         {
@@ -4147,7 +4147,7 @@
         {
           "id": "icon-large",
           "role": "the large icon size",
-          "tokens": ["size.icon-large"],
+          "tokens": ["size.icon.large"],
           "jobs": ["lead"],
           "to": "let an icon lead a card, a size above the icon beside text",
           "gets": "the icon that leads a card stands apart from the icons beside words"

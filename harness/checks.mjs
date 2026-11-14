@@ -3795,18 +3795,19 @@ export const CHECKS = {
         // size.icon, read by the large icon key. One size makes neither.
         const two = s.answers.find((a) => a.question === "iconography.count")?.option === "two";
         const large = s.tokens.component.icon?.["size-large"]?.$value;
-        const decided = s.tokens.semantic.size?.["icon-large"];
+        const decided = s.tokens.semantic.size?.icon?.large;
         if (two) {
           const px = (name) => {
-            const ref = String(s.tokens.semantic.size?.[name]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
+            const node = name.split(".").reduce((n, k) => n?.[k], s.tokens.semantic.size);
+            const ref = String((node?.$value ?? node?.["@"]?.$value) ?? "").match(/^\{(.+)\}$/)?.[1];
             const v = String(ref?.split(".").reduce((n, k) => n?.[k], s.tokens.primitive)?.$value ?? "");
             return /^[\d.]+rem$/.test(v) ? parseFloat(v) * 16 : /^[\d.]+px$/.test(v) ? parseFloat(v) : null;
           };
-          if (!decided) gaps.push(`${id}: answers two icon sizes but has no size.icon-large`);
-          else if (!(px("icon-large") > px("icon"))) gaps.push(`${id}: size.icon-large is not larger than size.icon`);
-          if (large !== "{size.icon-large}") gaps.push(`${id}: icon.size-large reads ${large ?? "nothing"}, not {size.icon-large}`);
+          if (!decided) gaps.push(`${id}: answers two icon sizes but has no size.icon.large`);
+          else if (!(px("icon.large") > px("icon"))) gaps.push(`${id}: size.icon.large is not larger than size.icon`);
+          if (large !== "{size.icon.large}") gaps.push(`${id}: icon.size-large reads ${large ?? "nothing"}, not {size.icon.large}`);
         } else {
-          if (decided) gaps.push(`${id}: answers one icon size but has size.icon-large`);
+          if (decided) gaps.push(`${id}: answers one icon size but has size.icon.large`);
           if (large !== undefined) gaps.push(`${id}: answers one icon size but has icon.size-large`);
         }
       }

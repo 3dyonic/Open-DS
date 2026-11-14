@@ -84,16 +84,18 @@
     "semantic": {
       "size": {
         "icon": {
-          "$type": "dimension",
-          "$value": "{size.20}",
-          "$description": "Icon size next to text.",
-          "$extensions": {
-            "open-ds": {
-              "why": "One icon size, 20px, one step larger than the 19px body text it sits beside, so every icon stays easy to see.",
-              "because": [
-                "iconography.count",
-                "iconography.values"
-              ]
+          "@": {
+            "$type": "dimension",
+            "$value": "{size.20}",
+            "$description": "Icon size next to text.",
+            "$extensions": {
+              "open-ds": {
+                "why": "One icon size, 20px, one step larger than the 19px body text it sits beside, so every icon stays easy to see.",
+                "because": [
+                  "iconography.count",
+                  "iconography.values"
+                ]
+              }
             }
           }
         }
