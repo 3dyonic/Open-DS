@@ -361,3 +361,14 @@ test("stored reasons name the sizes, grids and line kinds their tokens have; a p
     { token: "type.caption.line-height", where: "own", says: "the 4px grid: caption snaps to the 2px grid; the open kind: caption lines are snug" },
   ]);
 });
+
+test("a size group has no colour slot rule, and keeps every link", () => {
+  for (const id of SCHEMES) {
+    const scheme = loadScheme(id, roots);
+    const tree = decisionTree(scheme, g, "size.icon.@", { mode: "light" });
+    const rules = tree.filter((n) => n.level === "rule");
+    assert.ok(!rules.some((r) => /step \d+ of its hue/.test(r.says ?? "")), `${id}: ${rules.map((r) => r.says).join("; ")}`);
+    assert.ok(!rules.some((r) => r.holds === false), `${id}: a failed rule`);
+    assert.deepEqual(missingLinks(scheme, g, "size.icon.@", tree), [], id);
+  }
+});
