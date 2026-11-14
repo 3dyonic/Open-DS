@@ -345,7 +345,7 @@
   font-weight: var(--type-label-font-weight);
 }
 
-/* The token card (OD-310): light and dark faces side by side, each in its own mode's surfaces. */
+/* The token card: light and dark faces side by side, each in its own mode's surfaces. */
 .faces {
   display: grid;
   grid-template-columns: 1fr 1fr;

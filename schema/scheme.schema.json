@@ -899,7 +899,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["description", "tokens"],
-      "description": "The shorthand of each semantic token: a headline and one line that say what the token does for people, in this scheme. The token map card shows it above the trace (OD-310). It follows the scheme answers and the token why, and does not repeat the why.",
+      "description": "The shorthand of each semantic token: a headline and one line that say what the token does for people, in this scheme. The token map card shows it above the trace. It follows the scheme answers and the token why, and does not repeat the why.",
       "properties": {
         "description": {
           "type": "string",

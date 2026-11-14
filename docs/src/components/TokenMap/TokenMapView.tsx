@@ -52,7 +52,7 @@ type Decision = {
   // A color token's decision graph: role → jobs → property → answers → rule → connections →
   // value, and the reason sentence the engine writes from those fields.
   graph?: Graph;
-  // The card (OD-310): the stored shorthand, the step and value it resolves to, and for a color token
+  // The card: the stored shorthand, the step and value it resolves to, and for a color token
   // its weakest contrast, its real pairs on real surfaces and the tokens with the same or a near value.
   shorthand?: Shorthand | null;
   resolves?: { name: string; value: string } | null;
@@ -314,7 +314,7 @@ function GroupNode({ data }: NodeProps<Node<GroupData>>) {
   );
 }
 
-// A decision (OD-310): the card shows what the token is and does from data only. For a color token, light
+// A decision: the card shows what the token is and does from data only. For a color token, light
 // and dark sit side by side, each in its own mode's surfaces. The trace (the answers behind it) opens below.
 type DecisionData = {
   d: Decision;

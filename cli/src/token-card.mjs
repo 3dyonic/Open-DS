@@ -1,4 +1,4 @@
-// The token map card (OD-310): what one semantic token shows on its card, from data only. Its stored
+// The token map card: what one semantic token shows on its card, from data only. Its stored
 // shorthand, its contrast on the weakest surface it sits on against its floor, the real pairs it makes
 // on real surfaces with the scheme's own sample texts, and the tokens whose value is the same or near.
 // Pure: the scheme, a color index (color-map.mjs colorIndex) and the threshold are passed in.

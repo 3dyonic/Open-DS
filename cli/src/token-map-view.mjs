@@ -227,7 +227,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       .map((n) => ({ level: n.level, name: n.name, says: n.says }));
     const property = tree.find((n) => n.level === "property");
     const graph = graphOf(tree, tokenName(d));
-    // OD-310: the pairs the engine measures this token in (pairs-with): the surfaces it sits on, or the text on it.
+    // the pairs the engine measures this token in (pairs-with): the surfaces it sits on, or the text on it.
     const sits = tree
       .filter((n) => n.level === "connection" && n.kind === "pairs-with")
       .flatMap((n) => n.checks)
@@ -312,7 +312,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       decisions[tokenName(d)] = {
         id: tokenName(d),
         group: groupOf(d),
-        // OD-310: the card's shorthand, its weakest contrast, its real pairs and its clashes.
+        // the card's shorthand, its weakest contrast, its real pairs and its clashes.
         shorthand: shorthandOf(scheme, d),
         contrast: weakestContrast(index, d, chain.sits),
         pairs: pairsOf(index, d, scheme.samples, chain.sits),
