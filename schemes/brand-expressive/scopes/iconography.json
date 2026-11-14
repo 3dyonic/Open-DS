@@ -139,6 +139,10 @@
     }
   },
   "shorthand": {
+    "icon.stroke-width": {
+      "headline": "A firm line.",
+      "line": "A sturdy stroke carries the brand's bold warmth."
+    },
     "size.icon": {
       "headline": "Icons beside words.",
       "line": "Icons sized to the text they sit with."

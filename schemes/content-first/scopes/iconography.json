@@ -121,6 +121,10 @@
     }
   },
   "shorthand": {
+    "icon.stroke-width": {
+      "headline": "Quiet outlines.",
+      "line": "A thin stroke keeps icons quiet beside the text."
+    },
     "size.icon": {
       "headline": "An icon beside a word.",
       "line": "Icons match the text they sit with."

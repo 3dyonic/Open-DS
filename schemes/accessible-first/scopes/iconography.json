@@ -118,6 +118,10 @@
     }
   },
   "shorthand": {
+    "icon.stroke-width": {
+      "headline": "Bold, clear lines.",
+      "line": "A heavy stroke keeps every icon easy to see."
+    },
     "size.icon": {
       "headline": "Large icons.",
       "line": "Icons are big enough to read beside large text."

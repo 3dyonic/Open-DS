@@ -120,6 +120,10 @@
     }
   },
   "shorthand": {
+    "icon.stroke-width": {
+      "headline": "One line weight.",
+      "line": "Every brand draws icons with the same thin stroke."
+    },
     "size.icon": {
       "headline": "An icon beside a word.",
       "line": "Icons match the text they sit with."

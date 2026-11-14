@@ -21,14 +21,17 @@ import {
   tokenName,
 } from "./color-map.mjs";
 import { allConnections } from "./decision-graph.mjs";
-import { tokenIndex } from "./lands.mjs";
+import { aliasChain, tokenIndex } from "./lands.mjs";
 import { differenceThreshold } from "./color-steps.mjs";
 import { clashesOf, pairsOf, shorthandOf, weakestContrast } from "./token-card.mjs";
+import { scopeCard } from "./token-card-scopes.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { reasonsOf, tokenGraph } from "./token-graph.mjs";
 import { decidersOf, decisionTree, mappingOf, traceScheme } from "./trace.mjs";
 
-export const AREAS = ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Motion", "Opacity"];
+// Areas are kinds of value, as Size and Spacing share one scope: the stack order is its own kind, though
+// the elevation scope owns it.
+export const AREAS = ["Color", "Spacing", "Size", "Type", "Shape", "Elevation", "Layer", "Motion", "Opacity"];
 
 // Non-color primitives by id: [pattern, area, scale id, scale label, the grammar scope that sets it].
 const SCALES = [
@@ -41,9 +44,11 @@ const SCALES = [
   [/^radius\.(.+)$/, "Shape", "radius", "corner", "shape"],
   [/^border-width\.(.+)$/, "Shape", "border-width", "line width", "shape"],
   [/^shadow\.(.+)$/, "Elevation", "shadow", "shadow", "elevation"],
+  [/^z-index\.(.+)$/, "Layer", "z-index", "z-index", "elevation"],
   [/^duration\.(.+)$/, "Motion", "duration", "duration", "motion"],
   [/^easing\.(.+)$/, "Motion", "easing", "easing", "motion"],
   [/^opacity\.(.+)$/, "Opacity", "opacity", "opacity", "accessibility"],
+  [/^stroke-width\.(.+)$/, "Size", "stroke-width", "stroke width", "iconography"],
 ];
 
 // A theme pick's why without its pick prefix, which the card shows on its own: "blue.light.600: the focus
@@ -149,7 +154,7 @@ const stepOrder = (a, b) => {
  * other area, the same in both modes. Decisions are keyed by token id; a decision's answers are ids
  * into answers.
  */
-export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "", waiting = {} }) {
+export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "", waiting = {}, glyph = null }) {
   const reasons = reasonsOf(scheme, grammar);
   // A decision without a theme pick says why through its own, its group's or a usage rule's reason
   // (trace.mjs). A grammar trace rule links answers but says no why of the scheme's: none is invented.
@@ -261,14 +266,15 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         return node?.tier === "semantic" && !node.deprecated;
       });
       if (!users.length) continue;
+      // A group token's own value (size.icon.@) is shown and keyed without its "@", as color does.
       for (const d of users) {
-        if (shared.decisions[d]) continue;
+        if (shared.decisions[tokenName(d)]) continue;
         const pick = pickOf(scheme, brand, "light", d);
         const chain = chainOf(indexes.light, d);
         const parts = d.split(".");
         const group = parts[0] === "component-spacing-map" ? "Component spacing" : groupOf(parts.length > 2 ? d : `x.${parts[0]}`);
-        shared.decisions[d] = {
-          id: d,
+        shared.decisions[tokenName(d)] = {
+          id: tokenName(d),
           group,
           shorthand: shorthandOf(scheme, d),
           resolves: { name: `${label} ${re.exec(n.id)[1].replace("_", ".")}`, value: typeof n.value === "string" ? n.value : JSON.stringify(n.value) },
@@ -290,10 +296,39 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         step,
         name: `${label} ${step}`,
         value: typeof n.value === "string" ? n.value : JSON.stringify(n.value),
-        decisions: users,
+        decisions: users.map(tokenName),
         checks: [],
       });
     }
+    // A semantic token that points at a decision (motion.easing.enter → motion.easing.standard) is on the
+    // map too, on its decision's step, and says which decision it copies.
+    for (const f of families.values())
+      for (const step of f.steps)
+        for (let i = 0; i < step.decisions.length; i++) {
+          const d = step.decisions[i];
+          const readers = [...(indexes.light.readers.get(d) ?? []), ...(indexes.light.readers.get(`${d}.@`) ?? [])];
+          for (const r of readers) {
+            const node = indexes.light.nodes.get(r);
+            if (node?.tier !== "semantic" || node.deprecated || shared.decisions[tokenName(r)]) continue;
+            const chain = chainOf(indexes.light, r);
+            shared.decisions[tokenName(r)] = {
+              ...shared.decisions[d],
+              id: tokenName(r),
+              via: d,
+              shorthand: shorthandOf(scheme, r),
+              why: plainWhy(pickOf(scheme, brand, "light", r)?.why) ?? tracedWhy(r),
+              description: node.description ?? null,
+              answers: chain.answers,
+              direct: chain.direct,
+              mapping: chain.mapping,
+              meaning: chain.meaning,
+              guide: chain.guide,
+              graph: chain.graph,
+              components: componentsOf(indexes.light, r),
+            };
+            step.decisions.push(tokenName(r));
+          }
+        }
     for (const f of families.values()) f.steps.sort(stepOrder);
     shared.families = [...families.values()];
   }
@@ -407,6 +442,28 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       families: colorFamilies,
       decisions,
     };
+  }
+
+  // Every decision outside color gets its scope's card in each mode: the same token can look different
+  // in dark (a shadow, a border's contrast), so each mode keeps its own face.
+  for (const [id, d] of Object.entries(shared.decisions)) {
+    const cards = {};
+    for (const mode of ["light", "dark"])
+      cards[mode] = scopeCard(
+        {
+          scheme,
+          grammar,
+          mode,
+          reasons,
+          decisions: { ...modes[mode].decisions, ...shared.decisions },
+          families: shared.families,
+          index: indexes[mode],
+          chain: (path) => aliasChain(tokenIndexes[mode], path),
+          glyph,
+        },
+        id,
+      );
+    if (cards.light || cards.dark) d.cards = cards;
   }
 
   // The answers the page quotes, by id, once.

@@ -135,6 +135,10 @@
     }
   },
   "shorthand": {
+    "icon.stroke-width": {
+      "headline": "Light lines.",
+      "line": "A thin stroke keeps icons quieter than the dense text."
+    },
     "size.icon": {
       "headline": "Small icons.",
       "line": "Icons match the small text in rows and toolbars."

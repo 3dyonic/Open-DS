@@ -194,12 +194,28 @@ const componentSource = readdirSync(componentDir)
   .join("\n");
 // The color connections that wait for the owner's decision (OD-304): the card shows their gaps as waits.
 const waiting = JSON.parse(readFileSync(join(docs, "..", "harness", "connections-baseline.json"), "utf8")).counts;
+// The icon the icon cards draw: the one the Storybook icon button story draws beside the scheme's
+// icon action text (storybook/stories/tooltip.stories.tsx), Lucide Filter. Its outline is read from the
+// lucide-react the components use; with none, the card says the glyph is missing.
+const glyph = (() => {
+  const file = join(docs, "../ui/node_modules/lucide-react/dist/esm/icons/funnel.mjs");
+  if (!existsSync(file)) return null;
+  const nodes = [...readFileSync(file, "utf8").matchAll(/\[\s*"(path|circle|line|rect|polyline)",\s*\{([^}]*)\}/g)].map(
+    ([, tag, body]) => [
+      tag,
+      Object.fromEntries(
+        [...body.matchAll(/(\w+):\s*"([^"]*)"/g)].filter(([, k]) => k !== "key").map(([, k, v]) => [k, v]),
+      ),
+    ],
+  );
+  return nodes.length ? { name: "Filter", nodes } : null;
+})();
 // { brand: { file, text } }: the file under static/ that holds each brand's map.
 function tokenMapFiles(scheme) {
   const brands = Object.keys(scheme.tokens.brands);
   const out = {};
   for (const b of brands) {
-    const text = JSON.stringify(tokenMapView({ scheme, grammar: g, brand: b, componentSource, waiting })) + "\n";
+    const text = JSON.stringify(tokenMapView({ scheme, grammar: g, brand: b, componentSource, waiting, glyph })) + "\n";
     out[b] = { file: brands.length === 1 ? `token-map/${scheme.id}.json` : `token-map/${scheme.id}/${b}.json`, text };
   }
   return out;

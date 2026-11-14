@@ -166,6 +166,30 @@
     "elevation.overlay": {
       "headline": "Well above the page.",
       "line": "A deep shadow puts menus and dialogs in front."
+    },
+    "layer.backdrop": {
+      "headline": "The page waits.",
+      "line": "The dimmed page behind a dialog says: deal with this first."
+    },
+    "layer.dropdown": {
+      "headline": "Menus open over dialogs.",
+      "line": "A select inside a dialog still shows in full."
+    },
+    "layer.modal": {
+      "headline": "The dialog comes first.",
+      "line": "A dialog sits right above its dimmed page."
+    },
+    "layer.sticky": {
+      "headline": "Stays on top while you scroll.",
+      "line": "The sidebar and table headers stay over the scrolling content."
+    },
+    "layer.toast": {
+      "headline": "Messages show over menus.",
+      "line": "A toast stays readable over an open dialog or menu."
+    },
+    "layer.tooltip": {
+      "headline": "Always in front.",
+      "line": "A tooltip explains what is under the pointer, wherever it sits."
     }
   }
 }
