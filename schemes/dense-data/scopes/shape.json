@@ -1,0 +1,189 @@
+{
+  "description": "The shape scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "shape",
+  "answers": [
+    {
+      "question": "shape.roles",
+      "option": "control-badge-container",
+      "why": "Badges sit in columns and need their own corner.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "shape.count",
+      "option": "three",
+      "why": "Control, badge and container corners differ.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "question": "shape.definition",
+      "option": "fixed",
+      "why": "One brand, one fixed set of corners.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.values",
+      "option": "slightly-rounded",
+      "why": "Small corners keep dense rows straight.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.lands",
+      "option": "controls",
+      "why": "Corners show most on controls in dense rows.",
+      "because": [
+        "content.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "control-corner",
+      "use": "radius.control",
+      "not": "radius.round",
+      "why": "Small corners keep dense rows straight.",
+      "because": [
+        "shape.values"
+      ]
+    },
+    {
+      "situation": "status-shape",
+      "use": "radius.badge (rectangle)",
+      "not": "A pill",
+      "why": "Rectangles line up in a column.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "radius.control",
+      "why": "Options sit square inside the menu. A long list scans as one clean column.",
+      "because": [
+        "tasks.q2",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.surface",
+      "why": "Rows and text areas keep the small control corner, so long lists stay straight.",
+      "because": [
+        "content.q2",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "radius.control",
+      "why": "Cards and menus get a corner just softer than controls. Panels still tile neatly on a busy screen.",
+      "because": [
+        "brand.q1",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A thicker border",
+      "why": "A hairline separates rows and cards without taking room from the data.",
+      "because": [
+        "content.q2",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "focus.ring.offset",
+      "not": "A ring that touches the control",
+      "why": "The gap keeps the ring clear of the control. Keyboard users see which row has focus and act on the right one.",
+      "because": [
+        "people.q2",
+        "outcomes.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "radius": {
+        "control": {
+          "$type": "dimension",
+          "$value": "{theme.radius.control}",
+          "$description": "Corner of buttons and inputs."
+        },
+        "badge": {
+          "$type": "dimension",
+          "$value": "{theme.radius.badge}",
+          "$description": "Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks."
+        },
+        "option": {
+          "$type": "dimension",
+          "$value": "{theme.radius.option}",
+          "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
+        },
+        "element": {
+          "$type": "dimension",
+          "$value": "{theme.radius.element}",
+          "$description": "Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media."
+        },
+        "surface": {
+          "$type": "dimension",
+          "$value": "{theme.radius.surface}",
+          "$description": "Corner of cards, menus and dialogs."
+        }
+      },
+      "border-width": {
+        "default": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 1px default line for dividers and card borders in order to give separation between rows. A thin stroke does this by breaking the surface with the least weight a line can have; as a divider it decorates, so it has no contrast floor. So rows and cards stay apart without taking room from the data, because lines separate groups (elevation.definition) and AA is the floor (accessibility.definition).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "border-width.default": {
+      "headline": "Thin lines, many rows.",
+      "line": "One-pixel lines split dense rows without noise."
+    },
+    "radius.badge": {
+      "headline": "Square marks.",
+      "line": "Badges stay square, so they line up in a column."
+    },
+    "radius.control": {
+      "headline": "Near-square controls.",
+      "line": "A slight round on a small control, nothing more."
+    },
+    "radius.element": {
+      "headline": "Near-square items.",
+      "line": "Rows and fields keep crisp corners."
+    },
+    "radius.option": {
+      "headline": "Square options.",
+      "line": "Options fill the menu edge to edge."
+    },
+    "radius.surface": {
+      "headline": "Slightly round panels.",
+      "line": "Cards and menus keep a small, fixed corner."
+    }
+  }
+}

@@ -1,13 +1,21 @@
-// Reads the grammar and the five schemes from schemes/ at build time.
-import { readFileSync, readdirSync } from "node:fs";
+// Reads the grammar and the five schemes from schemes/ at build time, through the CLI's loader,
+// which reads both layouts: one file per scheme, or a folder split by scope.
+import { readdirSync } from "node:fs";
 import { join } from "node:path";
+import {
+  grammar as loadGrammar,
+  schemeIds as loadSchemeIds,
+  storedScheme,
+} from "../../../cli/src/schemes.mjs";
 // A scheme file stores key colors and the spacing rhythm; the scales and steps come from them.
 import { withGenerated } from "../../../cli/src/scheme-generated.mjs";
 // The type and spacing values come from their records.
 import { withTypeAndSpace } from "../../../cli/src/type-space-generated.mjs";
 
-const dir = join(process.cwd(), "..", "schemes");
-const read = <T>(file: string): T => JSON.parse(readFileSync(join(dir, file), "utf8")) as T;
+// The loader needs only the schemes folder.
+const roots = { schemes: join(process.cwd(), "..", "schemes") } as Parameters<
+  typeof loadGrammar
+>[0];
 
 export interface Option {
   id: string;
@@ -92,18 +100,10 @@ export interface Scheme {
   };
 }
 
-export const grammar = (): Grammar => read<Grammar>("grammar.json");
+export const grammar = (): Grammar => loadGrammar(roots) as Grammar;
 
 /** Every scheme id, in the grammar's scheme_order (the same order as the CLI, docs and Storybook). */
-export const schemeIds = (): string[] => {
-  const order =
-    read<{ scheme_order?: { order: string[] } }>("grammar.json").scheme_order?.order ?? [];
-  const rank = (id: string) => (order.includes(id) ? order.indexOf(id) : order.length);
-  return readdirSync(dir)
-    .filter((f) => f.endsWith(".json") && f !== "grammar.json")
-    .map((f) => f.replace(/\.json$/, ""))
-    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
-};
+export const schemeIds = (): string[] => loadSchemeIds(roots);
 
 /** The components every scheme ships, from ui/src/components. */
 export const uiComponents = (): string[] =>
@@ -112,7 +112,7 @@ export const uiComponents = (): string[] =>
     .map((f) => f.replace(/\.tsx$/, ""));
 
 export const scheme = (id: string): Scheme =>
-  withTypeAndSpace(withGenerated(read<Scheme>(`${id}.json`))) as Scheme;
+  withTypeAndSpace(withGenerated(storedScheme(id, roots))) as Scheme;
 
 export const schemes = (): Scheme[] => schemeIds().map(scheme);
 

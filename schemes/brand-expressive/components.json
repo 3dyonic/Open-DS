@@ -1,0 +1,177 @@
+{
+  "description": "The component values Brand expressive decides, where they differ from the grammar's defaults. The loader joins it with scheme.json.",
+  "tokens": {
+    "component": {
+      "badge": {
+        "success": {
+          "label": {
+            "$value": "{color.text.success-on-light}",
+            "$description": "Success badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.success.subtle"
+              }
+            }
+          }
+        },
+        "warning": {
+          "label": {
+            "$value": "{color.text.warning-on-light}",
+            "$description": "Warning badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.warning.subtle"
+              }
+            }
+          }
+        },
+        "danger": {
+          "label": {
+            "$value": "{color.text.danger-on-light}",
+            "$description": "Danger badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.danger.subtle"
+              }
+            }
+          }
+        },
+        "info": {
+          "label": {
+            "$value": "{color.text.info-on-light}",
+            "$description": "Info badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.info.subtle"
+              }
+            }
+          }
+        }
+      },
+      "card": {
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Card fill: a raised layer, lighter than content in dark."
+        },
+        "border": {
+          "$value": "{color.border.raised}",
+          "$description": "Card edge: the raised ring, a solid lighter step in dark."
+        }
+      },
+      "combobox": {
+        "chips": {
+          "radius": {
+            "$value": "{radius.element}",
+            "$description": "Chips radius of the combobox."
+          },
+          "focus-ring-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Chips focus ring invalid of the combobox."
+          }
+        }
+      },
+      "field": {
+        "label": {
+          "radius": {
+            "$value": "{radius.element}",
+            "$description": "Label radius of the field."
+          }
+        }
+      },
+      "input-group": {
+        "focus-ring-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Focus ring invalid of the input group."
+        }
+      },
+      "input-otp": {
+        "slot": {
+          "focus-ring-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Slot focus ring invalid of the input otp."
+          }
+        }
+      },
+      "native-select": {
+        "focus-ring-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Focus ring invalid of the native select."
+        }
+      },
+      "radio-group": {
+        "item": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Item radius of the radio group."
+          }
+        }
+      },
+      "sidebar": {
+        "group": {
+          "label": {
+            "radius": {
+              "$value": "{radius.element}",
+              "$description": "Group label radius of the sidebar."
+            }
+          }
+        },
+        "menu": {
+          "badge": {
+            "radius": {
+              "$value": "{radius.badge}",
+              "$description": "Menu badge radius of the sidebar."
+            }
+          },
+          "skeleton": {
+            "radius": {
+              "$value": "{radius.element}",
+              "$description": "Menu skeleton radius of the sidebar."
+            }
+          },
+          "sub": {
+            "button": {
+              "radius": {
+                "$value": "{radius.element}",
+                "$description": "Menu sub button radius of the sidebar."
+              }
+            }
+          }
+        },
+        "menu-button": {
+          "radius": {
+            "$value": "{radius.element}",
+            "$description": "Corner of the menu button, of the sidebar."
+          }
+        }
+      },
+      "slider": {
+        "thumb": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Thumb radius of the slider."
+          }
+        }
+      },
+      "switch": {
+        "thumb": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Corner of the switch's thumb: round, as the track is."
+          }
+        }
+      },
+      "textarea": {
+        "focus-ring-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Focus ring invalid of the textarea."
+        }
+      },
+      "icon": {
+        "size-large": {
+          "$value": "{size.28}",
+          "$description": "Size of the large icon, where the scheme has two sizes."
+        }
+      }
+    }
+  }
+}

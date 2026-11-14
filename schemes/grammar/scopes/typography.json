@@ -1,0 +1,218 @@
+{
+  "id": "typography",
+  "kind": "scope",
+  "title": "Typography",
+  "description": "How text is set: roles, sizes and line height.",
+  "owns": ["type"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "chart",
+    "combobox",
+    "command",
+    "context-menu",
+    "date-picker",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "form",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "label",
+    "marker",
+    "menubar",
+    "message",
+    "native-select",
+    "navigation-menu",
+    "popover",
+    "select",
+    "sheet",
+    "sidebar",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "tooltip"
+  ],
+  "situations": [
+    "page-title",
+    "number-in-table",
+    "paragraph",
+    "field-label",
+    "hero-line",
+    "section-heading",
+    "supporting-text",
+    "table-cell",
+    "form-page-title"
+  ],
+  "questions": [
+    {
+      "id": "typography.roles",
+      "method": "roles",
+      "text": "Which text roles does it need?",
+      "description": "The set of text roles. Each role becomes a type decision.",
+      "options": [
+        {
+          "id": "core",
+          "label": "Core: heading, body, label",
+          "creates": [
+            "heading-size",
+            "body-size",
+            "small-text-size",
+            "heading-weight",
+            "text-weight"
+          ]
+        },
+        {
+          "id": "core-data",
+          "label": "Core and data",
+          "creates": [
+            "heading-size",
+            "body-size",
+            "small-text-size",
+            "heading-weight",
+            "text-weight"
+          ]
+        },
+        {
+          "id": "core-editorial",
+          "label": "Core and editorial display",
+          "creates": [
+            "heading-size",
+            "body-size",
+            "small-text-size",
+            "heading-weight",
+            "text-weight"
+          ]
+        },
+        {
+          "id": "core-expressive",
+          "label": "Core and expressive display",
+          "creates": [
+            "heading-size",
+            "body-size",
+            "small-text-size",
+            "heading-weight",
+            "text-weight"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "typography.count",
+      "method": "count",
+      "text": "How many steps does the type scale take?",
+      "description": "Few sizes keep a dense screen calm. More sizes give long pages a clear hierarchy.",
+      "options": [
+        {
+          "id": "few",
+          "label": "Only the steps the screens need",
+          "description": "The scale keeps the few sizes the screens use, and nothing in between.",
+          "creates": []
+        },
+        {
+          "id": "some",
+          "label": "One step per kind of text",
+          "description": "One size each for caption, body, heading, title and display.",
+          "creates": []
+        },
+        {
+          "id": "many",
+          "label": "Fine steps, so pages can set their own rhythm",
+          "description": "Many close sizes, so a page can tune its hierarchy and pace.",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "typography.definition",
+      "method": "definition",
+      "text": "How are sizes and line heights defined?",
+      "description": "A ratio scale with line heights on the grid, a ratio scale with proportional line heights, or fixed steps.",
+      "options": [
+        {
+          "id": "ratio-grid",
+          "label": "A ratio, line heights on the grid",
+          "creates": ["heading-lines", "label-lines", "text-lines"]
+        },
+        {
+          "id": "ratio-proportional",
+          "label": "A ratio, line heights in proportion",
+          "creates": ["heading-lines", "label-lines", "text-lines"]
+        },
+        {
+          "id": "fixed",
+          "label": "Fixed steps",
+          "creates": ["heading-lines", "label-lines", "text-lines"]
+        }
+      ]
+    },
+    {
+      "id": "typography.values",
+      "method": "values",
+      "text": "How large is body text?",
+      "description": "Body size relative to the usual default.",
+      "options": [
+        {
+          "id": "small",
+          "label": "Small",
+          "creates": []
+        },
+        {
+          "id": "regular",
+          "label": "Regular",
+          "creates": []
+        },
+        {
+          "id": "large",
+          "label": "Large",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "typography.lands",
+      "method": "lands",
+      "text": "Where does type do the most work?",
+      "description": "The place where type decisions matter most.",
+      "options": [
+        {
+          "id": "tables-inputs",
+          "label": "Tables and inputs",
+          "creates": []
+        },
+        {
+          "id": "articles",
+          "label": "Articles and long text",
+          "creates": []
+        },
+        {
+          "id": "forms",
+          "label": "Forms and labels",
+          "creates": []
+        },
+        {
+          "id": "headlines",
+          "label": "Headlines and hero",
+          "creates": []
+        }
+      ]
+    }
+  ]
+}

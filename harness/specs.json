@@ -1045,11 +1045,13 @@
       "title": "ADR-002 steps 4 to 7: the overlay, the lockfile, upgrade, the source split by scope and the package",
       "in": [
         "the overlay format, its schema, the review list and the lockfile; create writes these in place of a copied scheme.json",
-        "open-ds upgrade: the three-way compare, migrations on overlays, and the import from old projects"
+        "open-ds upgrade: the three-way compare, migrations on overlays, and the import from old projects",
+        "the source folder split by scope: scheme.json, scopes/<scope>.json, brands/<brand>.json, components.json; the grammar splits the same way; the loader reads both layouts"
       ],
       "checks": [
         "overlay-schema-guards",
         "cli-upgrade-command",
+        "schemes-split-by-scope",
         "cli-create-temp",
         "json-sources-one-layout",
         "llm-schema-descriptions",

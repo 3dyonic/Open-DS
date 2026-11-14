@@ -1,0 +1,242 @@
+{
+  "description": "The accessibility scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "accessibility",
+  "answers": [
+    {
+      "question": "accessibility.roles",
+      "option": "hover-focus-disabled",
+      "why": "Pressed reuses hover; experts do not need more.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "accessibility.count",
+      "option": "color-icon-word",
+      "why": "Many statuses share one table; color alone is not enough.",
+      "because": [
+        "people.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "question": "accessibility.definition",
+      "option": "aa",
+      "why": "AA contrast for every text.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.values",
+      "option": "pointer",
+      "why": "Mouse and keyboard; compact targets are enough.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "question": "accessibility.lands",
+      "option": "dense-tables",
+      "why": "Small text and thin lines in tables need the most care.",
+      "because": [
+        "content.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "keyboard-focus",
+      "use": "button/focus-ring at focus.ring.width",
+      "not": "Removing the outline",
+      "why": "Keyboard users must always see where they are.",
+      "because": [
+        "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
+      ]
+    },
+    {
+      "situation": "smallest-target",
+      "use": "size.control.compact",
+      "not": "Anything smaller",
+      "why": "Compact still fits a mouse. Touch is not this product's input.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "size.control.large",
+      "why": "Buttons and inputs fit a mouse and keep toolbars short.",
+      "because": [
+        "scenarios.q1",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "A taller button for the main action",
+      "why": "It is the same height as the default here. Color and place mark the main action. One height keeps toolbar buttons in line.",
+      "because": [
+        "color.count",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "size.control.default",
+      "why": "A clear or step button fits inside the field, so the field keeps its row height.",
+      "because": [
+        "content.q2",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "color.disabled.*, never opacity",
+      "not": "Hiding the control",
+      "why": "Muted colors keep a disabled control in its place and its label readable. Experts keep their bearings and see the action will come back.",
+      "because": [
+        "human.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "control": {
+          "default": {
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for buttons and inputs in order to make a hit target: the pointer target size, step 0 of the control scale, a 32px hit area above the 24px WCAG 2.5.8 floor. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a mouse and toolbars stay short, because the smallest target is compact, for a pointer (accessibility.values), and experts work at a desk (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          },
+          "compact": {
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for compact controls, such as a clear button inside a field, in order to make a hit target: one 8px step below the 32px default on the control scale, a 24px hit area that is exactly the WCAG 2.5.8 floor at AA, with no margin. Height does this by the rule given for size.control.default, so a small button fits inside a field, and the field keeps its row height, because the smallest target is compact, for a pointer (accessibility.values), and experts use a mouse at a desk (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          },
+          "large": {
+            "$description": "Height of large controls. Not used in this system, so it equals the default.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for large controls in order to make a hit target: the default's step on the control scale and the default's 32px hit area, as the scheme has no hero action. Height does this by the rule given for size.control.default, so toolbar buttons stay in line, and color and place mark the main action, because actions take three emphasis levels with one primary per view (color.count), and the smallest target is compact (accessibility.values).",
+                "because": [
+                  "color.count",
+                  "accessibility.values"
+                ]
+              }
+            }
+          }
+        },
+        "hit-area": {
+          "$type": "dimension",
+          "$value": "{size.24}",
+          "$description": "The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 24px hit area for controls drawn smaller, such as a 16px checkbox, in order to make a hit target at the WCAG 2.5.8 floor. The hit area does this by growing past the drawn box through a pseudo-element, while the control keeps its drawn size and rows in a group stand far enough apart that no two targets overlap. So experts hit a checkbox in a dense row with a mouse on the first try, because the smallest target is compact, for a pointer (accessibility.values), and the layout is compact (spacing.values).",
+              "because": [
+                "accessibility.values",
+                "spacing.values"
+              ]
+            }
+          }
+        }
+      },
+      "focus": {
+        "ring": {
+          "width": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The focus ring's width: one step heavier than the default border, and not a border width.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a 2px focus ring in order to show focus, one step heavier than the 1px default line by the focus relation. A heavier stroke does this by standing out from every border around it. So keyboard users always see which row has focus, because focus has its own look (accessibility.roles) and lines are thin (elevation.definition).",
+                "because": [
+                  "accessibility.roles",
+                  "elevation.definition",
+                  "accessibility.definition"
+                ]
+              }
+            }
+          },
+          "offset": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So keyboard users see the ring on any fill, even a selected row, because focus has its own look (accessibility.roles).",
+                "because": [
+                  "accessibility.roles"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "color": {
+        "border": {
+          "focus": {
+            "$type": "color",
+            "$description": "The keyboard focus ring.",
+            "$value": "{theme.color.border.focus}"
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "color.border.focus": {
+      "headline": "You are here.",
+      "line": "Keyboard users keep their place in a long table."
+    },
+    "focus.ring.offset": {
+      "headline": "A gap around the ring.",
+      "line": "The ring never touches the control, so it reads on any fill."
+    },
+    "focus.ring.width": {
+      "headline": "A clear ring.",
+      "line": "Focus stays visible in a dense table."
+    },
+    "size.control.compact": {
+      "headline": "A small control.",
+      "line": "For filters in a toolbar, sized for a pointer."
+    },
+    "size.control.default": {
+      "headline": "The usual control.",
+      "line": "Small enough to fit many on one screen."
+    },
+    "size.control.large": {
+      "headline": "Same as the usual.",
+      "line": "One height covers the large case too, so sizes stay few."
+    },
+    "size.hit-area": {
+      "headline": "Sized for a pointer.",
+      "line": "Targets fit a mouse, so more fits on one screen."
+    }
+  }
+}

@@ -1,0 +1,2064 @@
+{
+  "$schema": "../schema/scheme.schema.json",
+  "id": "dense-data",
+  "name": "Dense data",
+  "version": "0.1.0",
+  "status": "draft",
+  "summary": "Compact, exact and quiet, for analysts who scan alerts and compare signals all day.",
+  "description": "Dense data is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Compact, exact and quiet, for analysts who scan alerts and compare signals all day.",
+  "ai": {
+    "use_when": "Security operations, threat detection, model monitoring, admin panels and analytics: many records, daily expert users, mouse and keyboard.",
+    "avoid_when": "Public sites, reading products, or first-time visitors on phones.",
+    "example_products": [
+      "Security operations console",
+      "Threat detection",
+      "AI model monitoring",
+      "Analytics dashboard"
+    ]
+  },
+  "scenarios": [
+    {
+      "text": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.",
+      "follows": [
+        "scenarios.q1",
+        "scenarios.q2",
+        "tasks.q1"
+      ]
+    },
+    {
+      "text": "An analyst compares this week's detections with last week's, model by model and column by column.",
+      "follows": [
+        "tasks.q1",
+        "content.q1"
+      ]
+    }
+  ],
+  "voice": {
+    "summary": {
+      "text": "Terse and exact. Say what happened and what to do, in as few words as possible.",
+      "follows": [
+        "voice.values",
+        "people.q1"
+      ]
+    },
+    "principles": [
+      {
+        "text": "Lead with the object, then the state: \"Alert 2041 contained.\"",
+        "follows": [
+          "voice.values",
+          "content.q1"
+        ]
+      },
+      {
+        "text": "Use numbers, not words for numbers.",
+        "follows": [
+          "content.q1"
+        ]
+      },
+      {
+        "text": "One verb per button. No \"please\", no exclamation marks.",
+        "follows": [
+          "voice.definition",
+          "voice.values"
+        ]
+      },
+      {
+        "text": "A button label stays on one line: it never breaks onto two.",
+        "follows": [
+          "voice.values",
+          "voice.definition"
+        ]
+      }
+    ],
+    "words": {
+      "use": [
+        "Investigate",
+        "Filter",
+        "Assign",
+        "Escalated",
+        "Resolved"
+      ],
+      "avoid": [
+        "Oops",
+        "Awesome",
+        "Please",
+        "Simply"
+      ],
+      "follows": [
+        "voice.definition"
+      ]
+    }
+  },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Every action.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "The one commit in a view.",
+              "because": [
+                "color.count",
+                "outcomes.q2"
+              ]
+            },
+            "secondary": {
+              "use": "Alternatives and cancel next to the primary, and the first step of a delete.",
+              "because": [
+                "human.q2",
+                "outcomes.q2"
+              ]
+            },
+            "danger": {
+              "use": "The confirm of a bulk delete. Many records go at once, so the last press must not look like the everyday primary.",
+              "because": [
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Row actions, as compact icon buttons. Never for cancel.",
+              "because": [
+                "tasks.q2",
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Actions outside tables: forms, dialogs, page actions.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "use": "Table rows and toolbars. Compact still fits a mouse.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "use": "Known row and toolbar actions, always with a tooltip.",
+              "because": [
+                "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Controls stay small so more records fit on one screen.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Fast feedback that confirms the pointer.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Always visible: the focus ring at focus.ring.width.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "toggle-group",
+        "why": "Switches a table between views and densities."
+      },
+      {
+        "id": "input",
+        "why": "Search and edit fields."
+      },
+      {
+        "id": "input-group",
+        "why": "Search with an icon and a clear button.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "The search icon before the text.",
+              "because": [
+                "iconography.roles"
+              ]
+            },
+            "inline-end": {
+              "use": "The clear button after the text, for searches people repeat all day.",
+              "because": [
+                "tasks.q2"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "Inputs stay one line high in toolbars and filter bars.",
+              "because": [
+                "content.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Inputs stay one line high in toolbars and filter bars.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "slider",
+        "why": "Narrows a filter to a range of risk scores by dragging."
+      },
+      {
+        "id": "select",
+        "why": "Picks one value in filters and forms."
+      },
+      {
+        "id": "radio-group",
+        "why": "Picks one of two or three options, all visible at once."
+      },
+      {
+        "id": "combobox",
+        "why": "Picks an asset or a user from thousands."
+      },
+      {
+        "id": "checkbox",
+        "why": "Selects rows and filter values."
+      },
+      {
+        "id": "switch",
+        "why": "Settings that apply at once."
+      },
+      {
+        "id": "label",
+        "why": "Names every control."
+      },
+      {
+        "id": "field",
+        "why": "Lays out label, control and error the same way everywhere.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Forms in dialogs and sheets: the label above.",
+              "because": [
+                "tasks.q1"
+              ]
+            },
+            "horizontal": {
+              "use": "Settings and filter panels: switches and short controls with the label beside.",
+              "because": [
+                "content.q2",
+                "spacing.count"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "A desk with a mouse and keyboard: there is no narrow screen to adapt to.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "form",
+        "why": "Keeps validation and errors the same on every record edit."
+      },
+      {
+        "id": "textarea",
+        "why": "Notes on an alert, for the next analyst."
+      },
+      {
+        "id": "calendar",
+        "why": "Date ranges for reports."
+      },
+      {
+        "id": "date-picker",
+        "why": "Picks a date range for reports and filters from a button in the toolbar."
+      },
+      {
+        "id": "table",
+        "why": "The heart of the product: rows of records."
+      },
+      {
+        "id": "data-table",
+        "why": "Analysts scan hundreds of alerts, filter by status and asset group, sort by risk and act on many rows at once."
+      },
+      {
+        "id": "pagination",
+        "why": "Moves through long result sets."
+      },
+      {
+        "id": "badge",
+        "why": "Alert status in rows.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "New and False positive: not triaged yet, or a finished outcome that is not a failure.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "info": {
+              "use": "Investigating: an analyst is on it; news, nothing to act on.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "success": {
+              "use": "Resolved: contained and closed.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "warning": {
+              "use": "Escalated: needs a senior analyst soon, still containable.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "danger": {
+              "use": "Breach confirmed: a real loss.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "chart",
+        "why": "Totals over time on dashboards."
+      },
+      {
+        "id": "command",
+        "why": "Keyboard-first jump to any record or action."
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "Row actions."
+      },
+      {
+        "id": "context-menu",
+        "why": "Right-click on a row, for experts."
+      },
+      {
+        "id": "tabs",
+        "why": "Views of one record."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "On a record's own page, the way back to the list it came from. Not on the queue itself."
+      },
+      {
+        "id": "avatar",
+        "why": "Next to a user's name when assigning an alert or picking a user. Not without the name beside it, and not as decoration."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "Any image or video in a panel, so it keeps its shape while loading. Not for decorative or hero media."
+      },
+      {
+        "id": "sidebar",
+        "why": "App navigation that stays open all shift.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Menu items with no border, quiet beside dense data.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders on every item would compete with the data.",
+              "because": [
+                "content.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every section of the app.",
+              "because": [
+                "tasks.q2"
+              ]
+            },
+            "sm": {
+              "use": "Long secondary lists, at the denser size.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "Rows stay small so the whole navigation fits the screen all shift.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "kbd",
+        "why": "Shows the shortcuts experts learn."
+      },
+      {
+        "id": "alert",
+        "why": "A problem that stays on the page.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Alerts here are for problems that stay on the page; news goes in a toast or a badge.",
+              "because": [
+                "outcomes.q2",
+                "tasks.q2"
+              ]
+            },
+            "destructive": {
+              "use": "A record that was not saved or an action that failed: name the record, then the fix, with an icon.",
+              "because": [
+                "outcomes.q2",
+                "accessibility.count",
+                "voice.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "toast",
+        "why": "Confirms a saved change.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A plain confirmation: Filters cleared.",
+              "because": [
+                "voice.values"
+              ]
+            },
+            "success": {
+              "use": "A short confirmation with the count: 12 alerts exported.",
+              "because": [
+                "voice.values",
+                "tasks.q2"
+              ]
+            },
+            "danger": {
+              "use": "A background failure: name the record, then the fix.",
+              "because": [
+                "voice.values",
+                "voice.lands",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "skeleton",
+        "why": "Rows while a table loads."
+      },
+      {
+        "id": "empty",
+        "why": "An empty table says what to do next.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "No pictures: an empty table needs the reason and the one action that fills it.",
+              "because": [
+                "content.q1",
+                "voice.lands"
+              ]
+            },
+            "icon": {
+              "use": "An outline icon in a small tile beside the reason and the action.",
+              "because": [
+                "iconography.roles",
+                "iconography.definition"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "dialog",
+        "why": "Edit one record without leaving the table."
+      },
+      {
+        "id": "alert-dialog",
+        "why": "Confirms a delete."
+      },
+      {
+        "id": "sheet",
+        "why": "Record details beside the table."
+      },
+      {
+        "id": "popover",
+        "why": "Filters next to the column."
+      },
+      {
+        "id": "tooltip",
+        "why": "Explains an icon button."
+      },
+      {
+        "id": "card",
+        "why": "Dashboard figures."
+      },
+      {
+        "id": "separator",
+        "why": "Groups toolbar actions."
+      },
+      {
+        "id": "scroll-area",
+        "why": "Long tables in fixed panels."
+      },
+      {
+        "id": "resizable",
+        "why": "Experts size the table and detail panes."
+      },
+      {
+        "id": "button-group",
+        "why": "A few toolbar actions that belong together, such as previous and next. Not for unrelated actions or a choice that stays pressed."
+      },
+      {
+        "id": "collapsible",
+        "why": "One block of extra filters or advanced options analysts open when needed. Not for content everyone needs."
+      },
+      {
+        "id": "hover-card",
+        "why": "A quick look at an asset or user on hover, also reachable on click. Never the only way to see it."
+      },
+      {
+        "id": "icon",
+        "why": "Row actions and status, beside their words.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "16px, the size of the small text in rows and toolbars.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Dense data has one icon size.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: outline at a 1.5px stroke.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "Outline icons stay light next to dense text; a shape would add weight to every row.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "Outline icons stay light next to dense text.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "input-otp",
+        "why": "A fixed-length one-time code sent by text or email. Not for passwords or any other value."
+      },
+      {
+        "id": "item",
+        "why": "Short lists such as users or settings, each with a few actions. Not for records analysts compare; those go in a table.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Users and settings in a panel or menu, with no border, quiet beside the data.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders on every row would compete with the data; hairlines between sections do that work.",
+              "because": [
+                "content.q1",
+                "elevation.definition"
+              ]
+            },
+            "muted": {
+              "use": "The current user or setting, with a soft fill so people keep their place.",
+              "because": [
+                "tasks.q1",
+                "human.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Settings and user lists outside the table, at the standard row.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "sm": {
+              "use": "Long lists in a side panel, at the denser size. It still fits a mouse.",
+              "because": [
+                "spacing.count",
+                "accessibility.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "menubar",
+        "why": "Many commands grouped by menu in this desk tool. Not in place of the command palette or row menus."
+      },
+      {
+        "id": "progress",
+        "why": "A known amount of work, such as exporting many alerts. Not for table loads, which use skeletons."
+      },
+      {
+        "id": "spinner",
+        "why": "A wait while the record panel beside the table fetches. Not for table rows, which load with skeletons."
+      },
+      {
+        "id": "toggle",
+        "why": "One mode in the table toolbar that turns on and off. Not for settings saved at once, which use a switch.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "In the table toolbar, with no border; the pressed state shows as a fill, quiet beside the data.",
+              "because": [
+                "content.q1",
+                "tasks.q2"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders on every toggle would compete with the data.",
+              "because": [
+                "content.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "not_used": true,
+              "why": "Toggles sit in the table toolbar, at the smaller size like compact buttons.",
+              "because": [
+                "content.q2"
+              ]
+            },
+            "sm": {
+              "use": "The table toolbar, matching compact buttons. It still fits a mouse.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "Controls stay small so more records fit on one screen.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "accordion",
+        "why": "Optional detail on one record that analysts may skip. Not for fields they use every day, and not in the queue."
+      },
+      {
+        "id": "attachment",
+        "why": "A file added to a note on an alert, with its name, type and size. Not for file uploads in forms."
+      },
+      {
+        "id": "bubble",
+        "why": "A back-and-forth between analysts or with an assistant. Not for notes on an alert, which use a message."
+      },
+      {
+        "id": "marker",
+        "why": "A date or event line in a long thread of notes on an alert. Not for a note someone wrote."
+      },
+      {
+        "id": "message",
+        "why": "Notes on an alert, each shown with its author and time for the next analyst. Not for system status."
+      },
+      {
+        "id": "message-scroller",
+        "why": "A thread of notes on an alert where new ones arrive at the bottom. Not for static lists."
+      }
+    ],
+    "out": [
+      {
+        "id": "carousel",
+        "why": "Slides hide items, and most people never reach the later ones. Dense data's experts want many records on one screen.",
+        "instead": [
+          "table",
+          "card"
+        ],
+        "because": [
+          "content.q2",
+          "people.q1"
+        ]
+      },
+      {
+        "id": "drawer",
+        "why": "A drawer is for phones. Dense data's experts work at a desk with a mouse and keyboard, and the scheme avoids first-time visitors on phones.",
+        "instead": [
+          "sheet",
+          "dialog"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
+      },
+      {
+        "id": "native-select",
+        "why": "Native select is best on phones, and Dense data runs at a desk. Its select already picks one value. A small team keeps fewer parts right.",
+        "instead": [
+          "select",
+          "radio-group"
+        ],
+        "because": [
+          "scenarios.q1",
+          "team.q1",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "navigation-menu",
+        "why": "Navigation menu is for the sections of a website. Dense data avoids public sites, and its app navigation stays open all shift in a sidebar.",
+        "instead": [
+          "sidebar",
+          "tabs"
+        ],
+        "because": [
+          "business.q2",
+          "scenarios.q2"
+        ]
+      }
+    ]
+  },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "content.q1",
+      "voice.values",
+      "voice.definition"
+    ],
+    "screen": "Open alerts",
+    "conversation": {
+      "title": "Notes on ALR-2042",
+      "marker": "Today",
+      "messages": [
+        {
+          "author": "Tier 1 analyst",
+          "time": "09:12",
+          "text": "Prompt injection on llm-inference-02. Risk score 78. Escalated."
+        },
+        {
+          "author": "Senior analyst",
+          "time": "09:20",
+          "text": "On it. Blocking the source IP now."
+        },
+        {
+          "author": "You",
+          "time": "09:24",
+          "text": "Added the request logs.",
+          "mine": true
+        }
+      ],
+      "attachment": {
+        "name": "request-logs-0910.csv",
+        "type": "CSV",
+        "size": "240 KB"
+      }
+    },
+    "actions": {
+      "primary": "Investigate",
+      "secondary": "Export"
+    },
+    "statuses": [
+      {
+        "label": "New",
+        "meaning": "neutral",
+        "why": "Not triaged yet; nothing is confirmed."
+      },
+      {
+        "label": "Investigating",
+        "meaning": "info",
+        "why": "An analyst is on it: news, nothing for you to act on."
+      },
+      {
+        "label": "Escalated",
+        "meaning": "warning",
+        "why": "Needs a senior analyst soon, still containable."
+      },
+      {
+        "label": "Breach confirmed",
+        "meaning": "danger",
+        "why": "Data left or an account was taken over: a real loss."
+      },
+      {
+        "label": "Resolved",
+        "meaning": "success",
+        "why": "Contained and closed."
+      },
+      {
+        "label": "False positive",
+        "meaning": "neutral",
+        "why": "The detection was wrong; a finished outcome, not a failure."
+      }
+    ],
+    "table": {
+      "caption": "Open alerts",
+      "columns": [
+        {
+          "label": "Alert"
+        },
+        {
+          "label": "Asset"
+        },
+        {
+          "label": "Detected"
+        },
+        {
+          "label": "Risk score",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "ALR-2041",
+            "api-gateway-01",
+            "08:30",
+            "92"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2042",
+            "llm-inference-02",
+            "09:10",
+            "78"
+          ],
+          "status": "Escalated"
+        },
+        {
+          "cells": [
+            "ALR-2043",
+            "vpn-edge-03",
+            "09:45",
+            "99"
+          ],
+          "status": "Breach confirmed"
+        },
+        {
+          "cells": [
+            "ALR-2044",
+            "model-registry",
+            "10:20",
+            "31"
+          ],
+          "status": "False positive"
+        },
+        {
+          "cells": [
+            "ALR-2045",
+            "auth-service",
+            "11:00",
+            "64"
+          ],
+          "status": "Investigating"
+        },
+        {
+          "cells": [
+            "ALR-2046",
+            "db-primary",
+            "11:30",
+            "81"
+          ],
+          "status": "Escalated"
+        },
+        {
+          "cells": [
+            "ALR-2047",
+            "build-runner-07",
+            "11:45",
+            "57"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2048",
+            "llm-inference-04",
+            "12:00",
+            "45"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "ALR-2049",
+            "api-gateway-01",
+            "12:15",
+            "70"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2050",
+            "llm-inference-02",
+            "12:30",
+            "97"
+          ],
+          "status": "Breach confirmed"
+        },
+        {
+          "cells": [
+            "ALR-2051",
+            "vpn-edge-03",
+            "12:45",
+            "52"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2052",
+            "model-registry",
+            "13:00",
+            "84"
+          ],
+          "status": "Escalated"
+        },
+        {
+          "cells": [
+            "ALR-2053",
+            "auth-service",
+            "13:15",
+            "28"
+          ],
+          "status": "False positive"
+        },
+        {
+          "cells": [
+            "ALR-2054",
+            "db-primary",
+            "13:30",
+            "49"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "ALR-2055",
+            "build-runner-07",
+            "13:45",
+            "66"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2056",
+            "llm-inference-04",
+            "14:00",
+            "73"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2057",
+            "api-gateway-01",
+            "14:15",
+            "88"
+          ],
+          "status": "Escalated"
+        },
+        {
+          "cells": [
+            "ALR-2058",
+            "llm-inference-02",
+            "14:30",
+            "61"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2059",
+            "vpn-edge-03",
+            "14:45",
+            "55"
+          ],
+          "status": "Investigating"
+        },
+        {
+          "cells": [
+            "ALR-2060",
+            "model-registry",
+            "15:00",
+            "69"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2061",
+            "auth-service",
+            "15:15",
+            "22"
+          ],
+          "status": "False positive"
+        },
+        {
+          "cells": [
+            "ALR-2062",
+            "db-primary",
+            "15:30",
+            "74"
+          ],
+          "status": "Resolved"
+        },
+        {
+          "cells": [
+            "ALR-2063",
+            "build-runner-07",
+            "15:45",
+            "86"
+          ],
+          "status": "Escalated"
+        },
+        {
+          "cells": [
+            "ALR-2064",
+            "llm-inference-04",
+            "16:00",
+            "43"
+          ],
+          "status": "New"
+        }
+      ]
+    },
+    "metrics": [
+      {
+        "label": "Open alerts",
+        "value": "142"
+      },
+      {
+        "label": "Escalated",
+        "value": "7"
+      },
+      {
+        "label": "Model precision",
+        "value": "96.4%"
+      },
+      {
+        "label": "Mean time to contain",
+        "value": "38 min"
+      }
+    ],
+    "field": {
+      "label": "Risk threshold",
+      "placeholder": "0",
+      "hint": "From 0 to 100.",
+      "error": "Threshold must be between 0 and 100.",
+      "invalid": "140",
+      "value": "75"
+    },
+    "checkbox": [
+      "Escalated only",
+      "Assigned to me",
+      "Archived"
+    ],
+    "select": {
+      "label": "Asset group",
+      "options": [
+        "Production",
+        "Staging",
+        "Model endpoints"
+      ],
+      "value": "Model endpoints"
+    },
+    "switches": [
+      "Compact rows",
+      "Live updates",
+      "Sound on escalation"
+    ],
+    "messages": {
+      "success": "12 alerts exported.",
+      "error": {
+        "title": "Alert ALR-2042 not saved.",
+        "description": "Threshold must be between 0 and 100."
+      },
+      "neutral": "Filters cleared."
+    },
+    "confirm": {
+      "trigger": "Dismiss 3 alerts",
+      "title": "Dismiss 3 alerts?",
+      "body": "They leave the queue for good. This cannot be undone.",
+      "confirm": "Dismiss",
+      "cancel": "Keep them",
+      "destroys": true
+    },
+    "card": {
+      "title": "Alert ALR-2043",
+      "description": "llm-inference-02 · prompt injection attempt",
+      "status": "Escalated",
+      "primary": "Investigate",
+      "secondary": "View"
+    },
+    "tabs": [
+      {
+        "label": "Open",
+        "content": "142 open alerts."
+      },
+      {
+        "label": "Escalated",
+        "content": "7 escalated alerts."
+      },
+      {
+        "label": "Resolved",
+        "content": "1,240 resolved this month."
+      }
+    ],
+    "menu": {
+      "trigger": "Actions for alert ALR-2041",
+      "items": [
+        "Assign",
+        "Add note"
+      ],
+      "destructive": "Dismiss"
+    },
+    "icon_action": "Filter",
+    "choices": [
+      {
+        "label": "Email on escalation",
+        "description": "A message when an alert is escalated."
+      },
+      {
+        "label": "Page on breach",
+        "description": "A page to the on-call analyst when a breach is confirmed."
+      }
+    ],
+    "search": {
+      "placeholder": "Search alerts",
+      "query": "llm-inference",
+      "total": "142 alerts",
+      "results": "9 alerts",
+      "none": "No alerts"
+    },
+    "chart": {
+      "series": [
+        "New alerts",
+        "Escalated"
+      ],
+      "ticks": [
+        "08:00",
+        "10:00",
+        "12:00",
+        "14:00",
+        "16:00",
+        "18:00"
+      ],
+      "point": {
+        "label": "12:00",
+        "values": [
+          "38",
+          "6"
+        ]
+      }
+    }
+  },
+  "themes": [
+    {
+      "id": "light",
+      "brand": "default",
+      "mode": "light"
+    },
+    {
+      "id": "dark",
+      "brand": "default",
+      "mode": "dark"
+    }
+  ],
+  "answers": [
+    {
+      "question": "business.q1",
+      "option": "operate",
+      "why": "The product runs daily security operations: alerts, incidents and the assets they touch.",
+      "because": []
+    },
+    {
+      "question": "business.q2",
+      "option": "one",
+      "why": "One internal product, one brand.",
+      "because": []
+    },
+    {
+      "question": "people.q1",
+      "option": "experts",
+      "why": "The same people use it all day, every day.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "people.q2",
+      "option": "aa",
+      "why": "AA is the floor for an internal tool used by trained staff.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "content.q1",
+      "option": "numbers",
+      "why": "Most of the screen is numbers and records.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "content.q2",
+      "option": "a-lot",
+      "why": "Experts want many records on one screen.",
+      "because": [
+        "people.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q1",
+      "option": "compare",
+      "why": "People scan rows and compare values.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q2",
+      "option": "constantly",
+      "why": "The same actions repeat many times an hour.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "human.q1",
+      "option": "place",
+      "why": "Losing your place in a long table costs time and errors.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "human.q2",
+      "option": "learned",
+      "why": "Daily users learn the interface and recognize it.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "outcomes.q1",
+      "option": "time-on-task",
+      "why": "Speed on repeated tasks is the measure.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "outcomes.q2",
+      "option": "wrong-record",
+      "why": "Acting on the wrong row is the costly error.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "brand.q1",
+      "option": "precise",
+      "why": "The interface must feel exact and trustworthy.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "brand.q2",
+      "option": "quiet",
+      "why": "The brand shows only on actions, links, focus and selection.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "brand.q3",
+      "option": "grotesque-mono",
+      "why": "IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+      "because": [
+        "brand.q1",
+        "brand.q2",
+        "content.q1"
+      ],
+      "considers": {
+        "readability": "Plex Sans is a neutral grotesque with open shapes, made for screens; it reads at the small body size dense rows need.",
+        "legibility": "Data, codes and IDs sit in Plex Mono, where each character holds its own fixed cell, so they read character by character.",
+        "scalability": "Plex ships a full range of weights, so every role in the type scale has its own weight without a second sans.",
+        "numerals": "Digits in Plex Mono are all one width, so columns of numbers line up.",
+        "scripts": "Plex Sans covers Latin, Cyrillic and Greek; Hebrew, Arabic and other scripts come as sister families of IBM Plex, drawn to match.",
+        "recognition": "One family with a matching mono gives the product an engineered, consistent voice.",
+        "familiarity": "A grotesque reads as standard and trusted in operations tools.",
+        "personality": "Precise, as the brand answer asks, and quiet, so the brand steps back.",
+        "performance": "Two families; load only the weights the scale uses.",
+        "licensing": "SIL Open Font License: free to embed in apps and on the web.",
+        "fallback": "Falls back to system-ui and ui-monospace, as its tokens say; Plex Mono is its own pair."
+      }
+    },
+    {
+      "question": "scenarios.q1",
+      "option": "desk",
+      "why": "Experts work at a desk with a mouse and keyboard.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "scenarios.q2",
+      "option": "all-day",
+      "why": "The tool stays open for the whole shift.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "team.q1",
+      "option": "small",
+      "why": "A small team keeps the system right.",
+      "because": []
+    },
+    {
+      "question": "team.q2",
+      "option": "monthly",
+      "why": "Features ship every month; the system must keep up.",
+      "because": []
+    }
+  ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "focus.ring.width",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "focus.ring.offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
+    }
+  ],
+  "usage": [],
+  "tokens": {
+    "primitive": {
+      "color": {
+        "$description": "Color options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
+        "slate": {
+          "$type": "color",
+          "$description": "The slate hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "0": {
+              "$value": "#FFFFFF"
+            },
+            "50": {
+              "$value": "#F7F8FA"
+            },
+            "100": {
+              "$value": "#EEF1F5"
+            },
+            "150": {
+              "$value": "#E7EAF0",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (strong-ease), even in contrast. Added so a floating layer sits one step above raised in dark."
+            },
+            "200": {
+              "$value": "#DDE2EA"
+            },
+            "300": {
+              "$value": "#C4CBD6"
+            },
+            "400": {
+              "$value": "#969FAD",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#6B7585"
+            },
+            "600": {
+              "$value": "#535D6D",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#3D4655"
+            },
+            "800": {
+              "$value": "#262D38"
+            },
+            "900": {
+              "$value": "#161B23"
+            },
+            "950": {
+              "$value": "#0D1117"
+            }
+          },
+          "dark": {
+            "0": {
+              "$value": "#0D1117"
+            },
+            "50": {
+              "$value": "#161B23"
+            },
+            "100": {
+              "$value": "#262D38"
+            },
+            "150": {
+              "$value": "#2D3541",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (strong-ease), even in contrast. Added so a floating layer sits one step above raised in dark. Moved 0.015 darker in OKLab lightness, so muted text keeps its 4.5:1 floor on a floating layer, with a 0.1 margin."
+            },
+            "200": {
+              "$value": "#3D4655"
+            },
+            "300": {
+              "$value": "#6B7585"
+            },
+            "400": {
+              "$value": "#969FAD",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#C4CBD6"
+            },
+            "600": {
+              "$value": "#D0D6E0",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#DDE2EA"
+            },
+            "800": {
+              "$value": "#EEF1F5"
+            },
+            "900": {
+              "$value": "#F7F8FA"
+            },
+            "950": {
+              "$value": "#FFFFFF"
+            },
+            "floor": {
+              "$value": "#06090E",
+              "$description": "Derived: step 0 at 0.04 lower OKLab lightness, its hue and chroma kept. Added so a dark well sits below a canvas on 0."
+            }
+          }
+        },
+        "violet": {
+          "$type": "color",
+          "$description": "The violet hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#4B3FD9",
+                "held": {
+                  "50": "order",
+                  "100": "relation",
+                  "200": "order",
+                  "300": "over-limit",
+                  "400": "over-limit"
+                }
+              },
+              "dark": {
+                "key": "#A9A3F6",
+                "held": {
+                  "50": "order",
+                  "100": "over-limit",
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "green": {
+          "$type": "color",
+          "$description": "The green hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#1F7A3A",
+                "adjust": {
+                  "100": {
+                    "C": 0.008,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "relation",
+                  "200": "order",
+                  "300": "over-limit"
+                }
+              },
+              "dark": {
+                "key": "#5CC283",
+                "held": {
+                  "50": "relation",
+                  "100": "relation",
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "amber": {
+          "$type": "color",
+          "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#8A5600",
+                "adjust": {
+                  "100": {
+                    "L": -0.005,
+                    "C": 0.013,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "relation",
+                  "200": "order",
+                  "300": "over-limit"
+                }
+              },
+              "dark": {
+                "key": "#F2B84B",
+                "held": {
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "red": {
+          "$type": "color",
+          "$description": "The red hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#C42B2B",
+                "adjust": {
+                  "100": {
+                    "L": -0.03,
+                    "C": 0.017,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "order",
+                  "300": "over-limit"
+                }
+              },
+              "dark": {
+                "key": "#F28B8B",
+                "held": {
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "black": {
+          "$type": "color",
+          "$description": "See-through black for scrims behind dialogs, light and dark.",
+          "light": {
+            "scrim": {
+              "$value": "#0000008C"
+            }
+          },
+          "dark": {
+            "scrim": {
+              "$value": "#000000B3"
+            }
+          }
+        },
+        "blue": {
+          "$type": "color",
+          "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#083C93",
+                "adjust": {
+                  "100": {
+                    "L": -0.02,
+                    "C": 0.011,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "order",
+                  "200": "order",
+                  "300": "over-limit",
+                  "400": "over-limit"
+                }
+              },
+              "dark": {
+                "key": "#8AB4F8",
+                "held": {
+                  "50": "relation",
+                  "100": "relation",
+                  "800": "relation",
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "space": {
+        "2": {
+          "$type": "dimension",
+          "$value": "0.125rem"
+        },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "12": {
+          "$type": "dimension",
+          "$value": "0.75rem"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "32": {
+          "$type": "dimension",
+          "$value": "2rem"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": "3rem"
+        },
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem."
+      },
+      "size": {
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "32": {
+          "$type": "dimension",
+          "$value": "2rem"
+        },
+        "$description": "Size options for controls, rows and icons."
+      },
+      "radius": {
+        "0": {
+          "$type": "dimension",
+          "$value": "0rem"
+        },
+        "2": {
+          "$type": "dimension",
+          "$value": "0.125rem"
+        },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "$description": "Corner options.",
+        "round": {
+          "$type": "dimension",
+          "$value": "50%",
+          "$description": "A circle of a square: avatars, radio dots, thumbs and round buttons."
+        },
+        "pill": {
+          "$type": "dimension",
+          "$value": "calc(infinity * 1px)",
+          "$description": "A capsule of any box: tracks, progress, the scroll thumb and pill controls."
+        }
+      },
+      "border-width": {
+        "1": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "2": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "$description": "Border width options."
+      },
+      "font": {
+        "size": {
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
+        },
+        "weight": {
+          "400": {
+            "$type": "fontWeight",
+            "$value": 400
+          },
+          "500": {
+            "$type": "fontWeight",
+            "$value": 500
+          },
+          "600": {
+            "$type": "fontWeight",
+            "$value": 600
+          }
+        },
+        "line-height": {
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
+        },
+        "line-box": {
+          "$description": "Line box options: one line's height, in rem. The type scale generates them."
+        },
+        "family": {
+          "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
+          "ibm-plex-sans": {
+            "$type": "fontFamily",
+            "$value": "\"IBM Plex Sans\", system-ui, sans-serif",
+            "$extensions": {
+              "open-ds": {
+                "x_height": 0.516,
+                "why": "IBM Plex Sans's x-height is 0.516 of the em (its metrics: 516 of 1000 units), so 12px text has a 6.2px x-height."
+              }
+            }
+          },
+          "ibm-plex-mono": {
+            "$type": "fontFamily",
+            "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
+          }
+        }
+      },
+      "duration": {
+        "fast": {
+          "$type": "duration",
+          "$value": "120ms",
+          "$description": "Fast: about 120ms, the convention for feedback."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "A standard ease-out: fast at the start, settling slowly, with no overshoot."
+        },
+        "strong-out": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.23,
+            1,
+            0.32,
+            1
+          ],
+          "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
+        }
+      },
+      "shadow": {
+        "$description": "Raw shadows. Elevation semantics point at these.",
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#0D111729",
+            "offsetX": "0px",
+            "offsetY": "8px",
+            "blur": "24px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in light mode."
+        },
+        "overlay-dark": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000080",
+            "offsetX": "0px",
+            "offsetY": "8px",
+            "blur": "24px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in dark mode."
+        }
+      },
+      "stroke-width": {
+        "$description": "Icon stroke width options.",
+        "1_5": {
+          "$type": "number",
+          "$value": 1.5,
+          "$description": "An icon stroke width option, on Lucide's 24px grid."
+        }
+      }
+    },
+    "brands": {
+      "default": {
+        "$ref": "brands/default.json#/tokens/brands/default"
+      }
+    },
+    "semantic": {
+      "space": {
+        "$ref": "scopes/spacing.json#/tokens/semantic/space"
+      },
+      "size": {
+        "$extensions": {
+          "open-ds": {
+            "default": 32,
+            "step": 8,
+            "steps": {
+              "compact": -1,
+              "large": 0
+            },
+            "follows": [
+              "accessibility.values",
+              "spacing.roles"
+            ],
+            "why": "A pointer target sets the 32px default. Compact is one 8px step below it; large equals the default, as the scheme has no hero action. Rows are a decision of their own and stay one control tall."
+          }
+        },
+        "control": {
+          "$ref": "scopes/accessibility.json#/tokens/semantic/size/control"
+        },
+        "row": {
+          "$ref": "scopes/spacing.json#/tokens/semantic/size/row"
+        },
+        "icon": {
+          "$ref": "scopes/iconography.json#/tokens/semantic/size/icon"
+        },
+        "hit-area": {
+          "$ref": "scopes/accessibility.json#/tokens/semantic/size/hit-area"
+        }
+      },
+      "radius": {
+        "$ref": "scopes/shape.json#/tokens/semantic/radius"
+      },
+      "border-width": {
+        "$ref": "scopes/shape.json#/tokens/semantic/border-width"
+      },
+      "focus": {
+        "$ref": "scopes/accessibility.json#/tokens/semantic/focus"
+      },
+      "type": {
+        "$ref": "scopes/typography.json#/tokens/semantic/type"
+      },
+      "motion": {
+        "$ref": "scopes/motion.json#/tokens/semantic/motion"
+      },
+      "color": {
+        "$ref": "scopes/color.json#/tokens/semantic/color"
+      },
+      "elevation": {
+        "$ref": "scopes/elevation.json#/tokens/semantic/elevation"
+      },
+      "component-spacing-map": {
+        "$extensions": {
+          "open-ds": {
+            "rhythm": 1,
+            "fixed": [
+              "x1",
+              "x2"
+            ],
+            "because": [
+              "spacing.values"
+            ],
+            "why": "Compact: more records fit on one screen, so components keep their tightest spacing."
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$ref": "scopes/iconography.json#/tokens/semantic/icon/stroke-width"
+        }
+      }
+    },
+    "component": {
+      "$ref": "components.json#/tokens/component"
+    },
+    "content": {
+      "$ref": "scopes/voice.json#/tokens/content"
+    }
+  },
+  "shorthand": {
+    "description": "What each semantic token does for people in this scheme, in a headline and one line. The token map card shows it.",
+    "tokens": {
+      "component-spacing-map.hairline": {
+        "headline": "A tiny nudge.",
+        "line": "Two pixels that line things up by eye."
+      },
+      "component-spacing-map.x1": {
+        "headline": "One step.",
+        "line": "The base step of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x12": {
+        "headline": "Twelve steps.",
+        "line": "Twelve steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x2": {
+        "headline": "Two steps.",
+        "line": "Two steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x3": {
+        "headline": "Three steps.",
+        "line": "Three steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x4": {
+        "headline": "Four steps.",
+        "line": "Four steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x6": {
+        "headline": "Six steps.",
+        "line": "Six steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x8": {
+        "headline": "Eight steps.",
+        "line": "Eight steps of the compact rhythm inside a component."
+      }
+    }
+  }
+}

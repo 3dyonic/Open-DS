@@ -1,0 +1,373 @@
+{
+  "id": "color",
+  "kind": "scope",
+  "title": "Color",
+  "description": "How color carries action, state and brand.",
+  "owns": ["color"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "chart",
+    "checkbox",
+    "combobox",
+    "command",
+    "context-menu",
+    "data-table",
+    "date-picker",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "form",
+    "hover-card",
+    "icon",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "label",
+    "marker",
+    "menubar",
+    "message",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "popover",
+    "progress",
+    "radio-group",
+    "resizable",
+    "scroll-area",
+    "select",
+    "separator",
+    "sheet",
+    "sidebar",
+    "skeleton",
+    "slider",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "tooltip"
+  ],
+  "situations": [
+    "selected-row",
+    "error-message",
+    "link",
+    "status-label",
+    "commit-action",
+    "alternative-action",
+    "destructive-action"
+  ],
+  "questions": [
+    {
+      "id": "color.roles",
+      "method": "roles",
+      "text": "Which color roles does it need?",
+      "description": "The groups of color decisions.",
+      "options": [
+        {
+          "id": "core",
+          "label": "Brand primary, surface, text and status",
+          "creates": [
+            "page-text",
+            "text-on-fill",
+            "line",
+            "raised-edge",
+            "action-fill",
+            "status-mark",
+            "status-tint",
+            "status-text",
+            "surface-ladder",
+            "inverse-surface"
+          ]
+        },
+        {
+          "id": "core-brand",
+          "label": "Those and brand accents",
+          "creates": [
+            "page-text",
+            "text-on-fill",
+            "line",
+            "raised-edge",
+            "action-fill",
+            "status-mark",
+            "status-tint",
+            "status-text",
+            "surface-ladder",
+            "inverse-surface"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "color.count",
+      "method": "count",
+      "text": "How many emphasis levels do actions need?",
+      "description": "The number of action styles, from primary to quiet.",
+      "options": [
+        {
+          "id": "two",
+          "label": "Two",
+          "creates": []
+        },
+        {
+          "id": "three",
+          "label": "Three",
+          "creates": []
+        },
+        {
+          "id": "four",
+          "label": "Four",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "color.definition",
+      "method": "definition",
+      "text": "How is the palette defined?",
+      "description": "Neutrals and one brand ramp, or a shared base with a ramp per brand.",
+      "options": [
+        {
+          "id": "neutral-brand",
+          "label": "Neutrals and one brand ramp",
+          "creates": ["neutral-step"]
+        },
+        {
+          "id": "ramp-per-brand",
+          "label": "Shared neutrals, a ramp per brand",
+          "creates": ["neutral-step"]
+        }
+      ]
+    },
+    {
+      "id": "color.definition.steps",
+      "method": "definition",
+      "text": "How are the steps of a color scale spaced?",
+      "description": "Every option is contrast-graded: steps 400 apart reach 3:1, 500 apart 4.5:1 and 700 apart 7:1. The option sets how much the lightness curve eases toward the ends. A stronger ease keeps the soft tints and the deep shades closer together and opens the middle steps.",
+      "options": [
+        {
+          "id": "linear",
+          "label": "Linear",
+          "description": "No ease. The same contrast for the same distance in steps, from end to end.",
+          "creates": [],
+          "explain": {
+            "goal": "to make every step equally easy to tell from its neighbor",
+            "how": "The curve gives each step the same contrast gap, from end to end.",
+            "gives": "So no part of the {hue} scale has steps that blur together."
+          }
+        },
+        {
+          "id": "light-ease",
+          "label": "A light ease",
+          "description": "A quarter of the ease. The ends sit a little closer together.",
+          "creates": [],
+          "explain": {
+            "goal": "to keep the soft page tints close together",
+            "how": "The curve holds the ends a little closer and keeps the middle steps nearly even.",
+            "gives": "So backgrounds stay quiet behind long text, and buttons keep a clear {hue}.",
+            "band": "a little wider"
+          }
+        },
+        {
+          "id": "medium-ease",
+          "label": "A medium ease",
+          "description": "A bit less than half of the ease.",
+          "creates": [],
+          "explain": {
+            "goal": "to fit every brand key with one curve",
+            "how": "The curve opens the middle steps a little and keeps the ends close.",
+            "gives": "So each brand gets soft tints for surfaces and open middle steps for fills.",
+            "band": "opened for brand fills"
+          }
+        },
+        {
+          "id": "even-ease",
+          "label": "An even ease",
+          "description": "Half linear, half eased.",
+          "creates": [],
+          "explain": {
+            "goal": "to give brand fills many strong steps",
+            "how": "The curve spreads the middle steps apart and keeps the ends close.",
+            "gives": "So buttons and badges get several rich {hue}s, while backgrounds stay soft and text stays deep.",
+            "band": "spread wider for brand fills"
+          }
+        },
+        {
+          "id": "strong-ease",
+          "label": "A strong ease",
+          "description": "More ease than linear. The middle steps stand furthest apart.",
+          "creates": [],
+          "explain": {
+            "goal": "to make fills in dense tables stand apart",
+            "how": "The curve spreads the middle steps furthest apart and keeps the ends close.",
+            "gives": "So status fills and row highlights stay distinct, while backgrounds stay soft.",
+            "band": "spread widest for fills in tables"
+          }
+        }
+      ]
+    },
+    {
+      "id": "color.values",
+      "method": "values",
+      "text": "How saturated is the palette?",
+      "description": "Overall color intensity.",
+      "options": [
+        {
+          "id": "muted",
+          "label": "Muted",
+          "creates": []
+        },
+        {
+          "id": "balanced",
+          "label": "Balanced",
+          "creates": []
+        },
+        {
+          "id": "vivid",
+          "label": "Vivid",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "color.values.difference",
+      "method": "values",
+      "text": "How far apart must colors that mean different things be?",
+      "description": "The smallest OKLab distance between two accent, status or category colors on a surface. It is checked with normal vision and with simulated red-weak, green-weak and blue-weak vision. A pair under it needs a second cue: an icon, a label or a pattern.",
+      "options": [
+        {
+          "id": "distinct",
+          "label": "Distinct",
+          "description": "Visibly different side by side. Words and icons carry most of the meaning.",
+          "creates": []
+        },
+        {
+          "id": "clear",
+          "label": "Clear",
+          "description": "Different at a glance, about as far apart as the closest status colors of published systems.",
+          "creates": []
+        },
+        {
+          "id": "strong",
+          "label": "Strong",
+          "description": "Different even at small sizes and from a distance.",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "color.lands",
+      "method": "lands",
+      "text": "Where does color carry meaning first?",
+      "description": "The place where color does its most important job.",
+      "options": [
+        {
+          "id": "status",
+          "label": "Status in tables",
+          "creates": []
+        },
+        {
+          "id": "links-actions",
+          "label": "Links and actions",
+          "creates": []
+        },
+        {
+          "id": "brand-moments",
+          "label": "Brand moments",
+          "creates": []
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "what-a-scale-is-for",
+      "when": "Before you change any color.",
+      "do": "A scale is one color in steps, from lightened (50) to darkened (950). The steps are made in OKLCH, a color space built around how the eye sees lightness, and each step mostly moves the color's lightness. The steps aren't evenly spaced in lightness: at the light and dark ends they are tweaked so that each gap means the same, one step more of use. The light tints sit close together, so there is a choice of soft backgrounds; the middle steps step out as fills, borders and buttons; the dark end gives strong text. Colorfulness eases toward the ends. Each scale starts from its own key color at 600 and keeps that hue's natural lightness and contrast: a yellow is light by nature and a blue is dark, so their steps sit around where each hue really is, not at the same values for every hue. So every step still reads as the same color.",
+      "why": "When every step is one step of use, people can pick the right strength for each job, and the screen stays calm and consistent."
+    },
+    {
+      "id": "each-step-has-a-job",
+      "when": "You pick a step for something.",
+      "do": "Use the lightest steps for backgrounds behind text, the middle steps for buttons, borders and focus rings, and the darkest steps for text on light backgrounds. In dark mode the roles swap ends.",
+      "why": "Text must stand out from what is behind it. Each end of the scale gives that for the other end."
+    },
+    {
+      "id": "fix-only-what-is-wrong",
+      "when": "A step looks wrong where it is used.",
+      "do": "Say exactly what is wrong first: too pale, too dull, too close to another color. Then change only that step, and leave the ones that work alone.",
+      "measure": "Every changed step really needed the change.",
+      "why": "A small fix in the right place keeps the family together. Reworking a whole scale for one problem makes new problems."
+    },
+    {
+      "id": "look-at-every-use",
+      "when": "Before you change a step.",
+      "do": "Find everything that uses it, and look at each one in light and dark mode. One step can be a soft background in light mode and a text color in dark mode at the same time.",
+      "why": "A change made for one use moves every other use of that step too."
+    },
+    {
+      "id": "more-color-before-darker",
+      "when": "A step looks washed out or greyish.",
+      "do": "OKLCH gives a step three dials: lightness, colorfulness and hue. Turn colorfulness first. If that is not enough, make it a little darker. Turn the hue last.",
+      "why": "Darkening a pale color makes it grayer, not more colorful. How colorful it is decides whether people recognize it."
+    },
+    {
+      "id": "pale-blue-and-red",
+      "when": "You make a very pale step more colorful.",
+      "do": "Expect blue and red to need a touch of darkening before they can take more color. Green and yellow usually take it as they are.",
+      "why": "Screens can show only so much color in very pale steps, and blue and red run out of room first."
+    },
+    {
+      "id": "colored-text-must-look-colored",
+      "when": "Text is set in a color, like an error message or a status label.",
+      "do": "Make sure it is easy to read and also clearly that color. Text that is readable but looks white has lost its meaning.",
+      "measure": "Status text on dark backgrounds is clearly colored and easy to read, in every scheme.",
+      "why": "The color tells people what kind of message it is before they read a word."
+    },
+    {
+      "id": "change-a-little",
+      "when": "You decide how much to change.",
+      "do": "Change as little as solves the problem. Then compare it with the original side by side, in light and dark mode, and ease it back if it stands out.",
+      "why": "A big change makes the step look like it belongs to another color."
+    },
+    {
+      "id": "fix-it-once",
+      "when": "The same problem shows up in several schemes.",
+      "do": "If the schemes use the same color, fix it once for all of them. Fix one scheme alone only when its color is different.",
+      "why": "The same blue is the same color wherever it is used, so it has the same problem everywhere."
+    },
+    {
+      "id": "same-fix-everywhere-is-a-new-rule",
+      "when": "Every color seems to need the same fix.",
+      "do": "Change how all the scales are made, instead of fixing each color one by one.",
+      "why": "A fix is for an exception. When every color needs it, the rule itself is what needs to change."
+    },
+    {
+      "id": "say-why",
+      "when": "You have changed a step.",
+      "do": "Write down why, in a sentence anyone can follow. \"It looked too pale on dark backgrounds\" is a good reason.",
+      "why": "Whoever comes next can keep the change, adjust it, or undo it on purpose."
+    },
+    {
+      "id": "apart-where-they-meet",
+      "when": "Two colors must never be confused, like the main button and a delete button.",
+      "do": "Decide how different they must be from where they appear together, not from one number for every case.",
+      "why": "Colors side by side need more difference than colors that never meet."
+    }
+  ]
+}

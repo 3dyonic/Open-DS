@@ -1,0 +1,195 @@
+{
+  "id": "components",
+  "kind": "scope",
+  "title": "Components",
+  "description": "Which components the system carries: its inventory, picked from the catalogue.",
+  "owns": ["component"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "carousel",
+    "chart",
+    "checkbox",
+    "combobox",
+    "command",
+    "context-menu",
+    "data-table",
+    "date-picker",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "form",
+    "hover-card",
+    "icon",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "label",
+    "marker",
+    "menubar",
+    "message",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "pagination",
+    "popover",
+    "progress",
+    "radio-group",
+    "resizable",
+    "scroll-area",
+    "select",
+    "separator",
+    "sheet",
+    "sidebar",
+    "skeleton",
+    "slider",
+    "spinner",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "toggle-group",
+    "tooltip"
+  ],
+  "situations": ["missing-component"],
+  "questions": [
+    {
+      "id": "components.roles",
+      "method": "roles",
+      "text": "Which component families does it need?",
+      "description": "The families of the catalogue the inventory draws from. Core is action, form, feedback, overlay, layout and navigation.",
+      "options": [
+        {
+          "id": "core",
+          "label": "Actions, forms, feedback, overlays, layout and navigation"
+        },
+        {
+          "id": "core-data",
+          "label": "Core, plus data"
+        },
+        {
+          "id": "core-content",
+          "label": "Core, plus content and media"
+        },
+        {
+          "id": "core-media",
+          "label": "Core, plus media"
+        }
+      ]
+    },
+    {
+      "id": "components.count",
+      "method": "count",
+      "text": "How far does the inventory reach?",
+      "description": "The size of the inventory, as a word. The inventory follows the needs; the word describes it and sets no limit.",
+      "options": [
+        {
+          "id": "few",
+          "label": "Only what today's screens use",
+          "description": "A component joins when a screen in use needs it, not before."
+        },
+        {
+          "id": "some",
+          "label": "What today's screens use, plus what the next ones will likely need",
+          "description": "Covers the screens in use and the ones the team can see coming, so they find the parts ready."
+        },
+        {
+          "id": "many",
+          "label": "Everything its families offer, ready before it's asked for",
+          "description": "Every component the admitted families hold is there from the start, so teams never wait for one."
+        }
+      ]
+    },
+    {
+      "id": "components.definition",
+      "method": "definition",
+      "text": "How does a component earn its place?",
+      "description": "The rule that admits a component into the inventory.",
+      "options": [
+        {
+          "id": "scenario",
+          "label": "A use scenario needs it"
+        },
+        {
+          "id": "family",
+          "label": "Its family is in the roles, so product teams find it ready"
+        },
+        {
+          "id": "inclusive",
+          "label": "It works for everyone, with any device and assistive technology"
+        },
+        {
+          "id": "brand-moment",
+          "label": "It gives the brand a moment"
+        }
+      ]
+    },
+    {
+      "id": "components.values",
+      "method": "values",
+      "text": "When does a component get another look?",
+      "description": "Variants and sizes per component, as a word.",
+      "options": [
+        {
+          "id": "few",
+          "label": "Only when the meaning changes",
+          "description": "A new variant only for a different meaning, such as the main action or a danger."
+        },
+        {
+          "id": "some",
+          "label": "Also for emphasis and size",
+          "description": "Variants also set how loud a component is and how much room it takes."
+        },
+        {
+          "id": "many",
+          "label": "Also so each brand or page can look its own way",
+          "description": "Variants also let a brand or a page carry its own look on the same component."
+        }
+      ]
+    },
+    {
+      "id": "components.lands",
+      "method": "lands",
+      "text": "Where do components do the most work?",
+      "description": "The screens where the inventory is used most.",
+      "options": [
+        {
+          "id": "tables-forms",
+          "label": "Tables and forms"
+        },
+        {
+          "id": "articles",
+          "label": "Articles"
+        },
+        {
+          "id": "forms",
+          "label": "Forms and steps"
+        },
+        {
+          "id": "sign-up-account",
+          "label": "Sign-up and account pages"
+        },
+        {
+          "id": "campaign-sections",
+          "label": "Campaign sections"
+        }
+      ]
+    }
+  ]
+}

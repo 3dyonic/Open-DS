@@ -1,0 +1,241 @@
+{
+  "description": "The accessibility scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "accessibility",
+  "answers": [
+    {
+      "question": "accessibility.roles",
+      "option": "plus-pressed",
+      "why": "Pressed for touch.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "question": "accessibility.count",
+      "option": "color-word",
+      "why": "Color and word.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.definition",
+      "option": "aa",
+      "why": "AA, checked on every vivid color.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.values",
+      "option": "touch",
+      "why": "Visitors come from social posts on phones.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "question": "accessibility.lands",
+      "option": "brand-color",
+      "why": "Vivid brand color is the hardest to keep readable.",
+      "because": [
+        "color.values"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "keyboard-focus",
+      "use": "button/focus-ring at focus.ring.width",
+      "not": "Removing the outline",
+      "why": "Focus must show on vivid color.",
+      "because": [
+        "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
+      ]
+    },
+    {
+      "situation": "smallest-target",
+      "use": "size.control.default (touch)",
+      "not": "A compact control",
+      "why": "Most visitors arrive on phones, and a compact control is too small for a thumb.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "size.control.compact",
+      "why": "Most visitors arrive on phones, so every control fits a thumb.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "size.control.default",
+      "why": "The sign-up button is the one loud call to action. A bigger button wins the eye and the thumb.",
+      "because": [
+        "tasks.q2",
+        "business.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "A small icon button",
+      "why": "It still fits a thumb and sits inside the pill field.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "color.disabled.*, never opacity",
+      "not": "Hiding the button",
+      "why": "Muted colors keep the layout and the label readable. The vivid color returns when the visitor can sign up.",
+      "because": [
+        "outcomes.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "control": {
+          "default": {
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 52px for buttons and inputs in order to make a hit target: the touch target size, step 0 of the control scale, a 52px hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So every control fits a thumb, because the smallest target is touch size (accessibility.values) and visitors arrive on their phones (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          },
+          "compact": {
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 44px for compact controls, such as a button inside a pill field, in order to make a hit target: one 8px step below the 52px default on the control scale, a 44px hit area that still fits a thumb. Height does this by the rule given for size.control.default, so a button sits inside the pill field and still fits a thumb, because visitors are on the move (scenarios.q1) and the smallest target is touch size (accessibility.values).",
+                "because": [
+                  "scenarios.q1",
+                  "accessibility.values"
+                ]
+              }
+            }
+          },
+          "large": {
+            "$description": "Height of large controls: the one loud call to action.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 60px for the one loud call to action in order to make a hit target: one 8px step above the 52px default on the control scale, a 60px hit area, as sign-up is the scheme's hero action. Height does this by the rule given for size.control.default, so the sign-up button wins the eye and the thumb, because there is one action, sign up (tasks.q2), and visitors are on the move (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "tasks.q2",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          }
+        },
+        "hit-area": {
+          "$type": "dimension",
+          "$value": "{size.44}",
+          "$description": "The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 44px hit area for controls drawn smaller, such as a checkbox, a radio or a switch, in order to make a hit target a fingertip can find: the WCAG 2.5.5 size. The hit area does this by growing past the drawn box through a pseudo-element, and rows in a group stand at least 44px apart, so no two targets overlap. So visitors tap the right control on a phone, because targets are sized for touch (accessibility.values) and the layout leaves room for it (spacing.values).",
+              "because": [
+                "accessibility.values",
+                "spacing.values"
+              ]
+            }
+          }
+        }
+      },
+      "focus": {
+        "ring": {
+          "width": {
+            "$type": "dimension",
+            "$value": "{border-width.3}",
+            "$description": "The focus ring's width: one step heavier than the default border, and not a border width.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a 3px focus ring in order to show focus, one step heavier than the 2px default line by the focus relation. A heavier stroke does this by standing out even from the bold edges around it. So keyboard users see focus on vivid color, because focus has its own look (accessibility.roles) and AA holds on every color (accessibility.definition).",
+                "because": [
+                  "accessibility.roles",
+                  "elevation.definition",
+                  "accessibility.definition"
+                ]
+              }
+            }
+          },
+          "offset": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So visitors see the ring on any brand color, because focus has its own look (accessibility.roles).",
+                "because": [
+                  "accessibility.roles"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "color": {
+        "border": {
+          "focus": {
+            "$type": "color",
+            "$description": "The keyboard focus ring.",
+            "$value": "{theme.color.border.focus}"
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "color.border.focus": {
+      "headline": "You are here.",
+      "line": "The brand color shows keyboard users where they are."
+    },
+    "focus.ring.offset": {
+      "headline": "A gap around the ring.",
+      "line": "The ring never touches the control, so it reads on any fill."
+    },
+    "focus.ring.width": {
+      "headline": "A bold ring.",
+      "line": "Focus stays clear beside vivid color."
+    },
+    "size.control.compact": {
+      "headline": "Still a full target.",
+      "line": "Even the small control fits a thumb."
+    },
+    "size.control.default": {
+      "headline": "Big controls.",
+      "line": "Buttons fit a thumb on the move."
+    },
+    "size.control.large": {
+      "headline": "The one loud button.",
+      "line": "The sign-up call is bigger than every other control."
+    },
+    "size.hit-area": {
+      "headline": "Sized for a thumb.",
+      "line": "People on the move hit what they aim at."
+    }
+  }
+}

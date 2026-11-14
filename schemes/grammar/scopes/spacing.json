@@ -1,0 +1,291 @@
+{
+  "id": "spacing",
+  "kind": "scope",
+  "title": "Spacing",
+  "description": "How space shows what belongs together.",
+  "owns": ["space", "size.row"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "carousel",
+    "chart",
+    "combobox",
+    "command",
+    "context-menu",
+    "data-table",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "form",
+    "hover-card",
+    "icon",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "label",
+    "marker",
+    "menubar",
+    "message",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "pagination",
+    "popover",
+    "radio-group",
+    "select",
+    "sheet",
+    "sidebar",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "toggle-group",
+    "tooltip"
+  ],
+  "situations": [
+    "related-items",
+    "between-sections",
+    "table-row",
+    "parts-of-one-item",
+    "siblings-in-a-row",
+    "between-groups",
+    "inside-a-control",
+    "inside-a-container",
+    "inside-a-cell"
+  ],
+  "questions": [
+    {
+      "id": "spacing.roles",
+      "method": "roles",
+      "text": "Which spacing roles does it need?",
+      "description": "The groups of space decisions.",
+      "options": [
+        {
+          "id": "gap-inset",
+          "label": "Gaps and insets",
+          "creates": [
+            "item-gap",
+            "group-gap",
+            "inset",
+            "container-padding",
+            "component-step"
+          ]
+        },
+        {
+          "id": "gap-inset-row",
+          "label": "Gaps, insets and row heights",
+          "creates": [
+            "item-gap",
+            "group-gap",
+            "inset",
+            "container-padding",
+            "component-step",
+            "row"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spacing.count",
+      "method": "count",
+      "text": "How many densities exist?",
+      "description": "One density for everything, or a second for dense views.",
+      "options": [
+        {
+          "id": "one",
+          "label": "One",
+          "creates": []
+        },
+        {
+          "id": "two",
+          "label": "Two",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "spacing.definition",
+      "method": "definition",
+      "text": "How are spacing steps defined?",
+      "description": "How big the steps between spaces are. Small steps on a 4px grid suit dense screens and shared forms; big, even steps suit reading and big moments.",
+      "options": [
+        {
+          "id": "fine",
+          "label": "Small steps, on a 4px grid",
+          "creates": []
+        },
+        {
+          "id": "coarse",
+          "label": "Big, even steps",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "spacing.values",
+      "method": "values",
+      "text": "How dense is the layout?",
+      "description": "The base density.",
+      "options": [
+        {
+          "id": "compact",
+          "label": "Compact",
+          "creates": []
+        },
+        {
+          "id": "comfortable",
+          "label": "Comfortable",
+          "creates": []
+        },
+        {
+          "id": "spacious",
+          "label": "Spacious",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "spacing.lands",
+      "method": "lands",
+      "text": "Where does spacing matter most?",
+      "description": "The place where space does its most visible work.",
+      "options": [
+        {
+          "id": "rows-cells",
+          "label": "Rows and cells",
+          "creates": []
+        },
+        {
+          "id": "reading",
+          "label": "Between paragraphs",
+          "creates": []
+        },
+        {
+          "id": "fields",
+          "label": "Between fields",
+          "creates": []
+        },
+        {
+          "id": "sections",
+          "label": "Between big sections",
+          "creates": []
+        }
+      ]
+    }
+  ],
+  "use_cases": {
+    "description": "A space token's use case names where the space sits, what it does and which way it runs. Each scheme gives every space token one use case and a multiple of its base. A use case with no reach runs both along a line and between blocks.",
+    "level": {
+      "description": "Where the space sits.",
+      "options": [
+        {
+          "id": "component",
+          "description": "Inside one component: between its parts or around its content."
+        },
+        {
+          "id": "layout",
+          "description": "Between components: the space that arranges them on a screen."
+        }
+      ]
+    },
+    "relation": {
+      "description": "What the space does.",
+      "options": [
+        {
+          "id": "inner",
+          "description": "Between the parts of one thing: a gap."
+        },
+        {
+          "id": "container",
+          "description": "The padding of a box around things: an inset."
+        }
+      ]
+    },
+    "reach": {
+      "description": "Which way the space runs.",
+      "options": [
+        {
+          "id": "inline",
+          "description": "Along one line: parts that sit side by side."
+        },
+        {
+          "id": "section",
+          "description": "Between blocks: parts that stack into sections."
+        }
+      ]
+    }
+  },
+  "jobs": [
+    {
+      "id": "gap",
+      "tokens": ["space.gap.*"],
+      "property": "Distance",
+      "job": "group and separate",
+      "how": "grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one"
+    },
+    {
+      "id": "inset",
+      "tokens": ["space.inset.*"],
+      "property": "Padding",
+      "job": "give content room inside its box",
+      "how": "keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content"
+    },
+    {
+      "id": "control-height",
+      "tokens": ["size.control.*"],
+      "property": "Height",
+      "job": "make a hit target",
+      "how": "setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box"
+    },
+    {
+      "id": "row-height",
+      "tokens": ["size.row"],
+      "property": "Row height",
+      "job": "keep the eye on its row",
+      "how": "making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px)"
+    },
+    {
+      "id": "grow-with-text",
+      "tokens": ["size.control.*", "size.row", "space.inset.*"],
+      "property": "A minimum height",
+      "job": "grow with the text",
+      "how": "letting the box grow when people override text spacing (WCAG 1.4.12), so a label never clips; a fixed height breaks this"
+    }
+  ],
+  "hints": [
+    {
+      "id": "never-a-number",
+      "when": "Before you write any spacing.",
+      "do": "Never write a spacing as a number: not p-6, not gap-1.5, not p-[10px]. Every spacing has a name. Between things and on the page, use a role: gap-tight, gap-default, gap-group, gap-section, p-container, px-control, px-cell. Inside a component of your own, use a step of the component spacing map: gap-map-x2, p-map-x6.",
+      "why": "A number looks right in one scheme and wrong in the next. A name follows the scheme, so the screen keeps its density in every scheme."
+    },
+    {
+      "id": "what-the-map-is",
+      "when": "When you space the inside of a component.",
+      "do": "The component spacing map is the steps components space by. Each step is 4px × its multiplier (x1, x2, x3, x4, x6, x8, x12) × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. A compact scheme has rhythm 1 and a spacious one up to 2, so a dialog's padding (x6) is 24px in one and 48px in the other. The scheme decides which steps hold still: x1 and x2 are the fine spacing inside rows, so lists stay lists in a roomy scheme. The hairline is a fixed 2px nudge. Pick the step nearest the space you want.",
+      "why": "One unit keeps everything on one grid; the rhythm lets each scheme decide how roomy its components are."
+    },
+    {
+      "id": "rhythm-is-the-scheme",
+      "when": "When one component looks too tight or too loose.",
+      "do": "Don't change the rhythm to fix one component. The rhythm is the whole scheme's density. Pick another step for that spacing instead, or ask for a new role if the same spacing repeats across components.",
+      "why": "A rhythm change moves every component in the scheme at once."
+    }
+  ]
+}

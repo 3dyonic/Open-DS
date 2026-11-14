@@ -1,0 +1,614 @@
+{
+  "description": "The typography scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "typography",
+  "answers": [
+    {
+      "question": "typography.roles",
+      "option": "core-editorial",
+      "why": "A lead and a display role open articles.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "typography.count",
+      "option": "many",
+      "why": "Long pages need a clear hierarchy of headings, with fine steps between them.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "typography.definition",
+      "option": "ratio-proportional",
+      "why": "Line height is a ratio, so it grows with the text.",
+      "because": [
+        "tasks.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "question": "typography.values",
+      "option": "large",
+      "why": "Large body text is easy on the eyes.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "typography.lands",
+      "option": "articles",
+      "why": "Type does its work in articles.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.title",
+      "not": "type.display (landing only)",
+      "why": "Display is kept for the landing moment; article titles stay calm.",
+      "because": [
+        "typography.roles"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.body",
+      "not": "A mono font",
+      "why": "Tables are rare and read row by row, so digits never need to line up in columns. A mono font would break the reading voice.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body, at most 65 characters a line",
+      "not": "type.caption",
+      "why": "A large size and short lines make long text easy on the eyes.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label",
+      "not": "type.caption",
+      "why": "Caption is too faint for a label people must read.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "hero-line",
+      "use": "type.display",
+      "not": "type.display on article titles",
+      "why": "On the landing hero only. One big serif line opens the publication. Articles keep calm titles, so the text gets the attention.",
+      "because": [
+        "brand.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "section-heading",
+      "use": "type.heading",
+      "not": "Bold body text",
+      "why": "Clear headings let readers skim a long guide and find their place again.",
+      "because": [
+        "outcomes.q2",
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "supporting-text",
+      "use": "type.caption",
+      "not": "type.body",
+      "why": "Captions use the quiet interface face. Dates and notes never compete with the article.",
+      "because": [
+        "human.q1",
+        "brand.q3"
+      ]
+    },
+    {
+      "situation": "table-cell",
+      "use": "type.data",
+      "not": "A mono font",
+      "why": "It equals body here. Tables are rare and read row by row. Cells use the reading face, so a row reads like a sentence.",
+      "because": [
+        "tasks.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "form-page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "Subscribe and account pages share the calm article title. The brand shows in the serif, not in size.",
+      "because": [
+        "brand.q2",
+        "tasks.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "type": {
+        "$extensions": {
+          "open-ds": {
+            "base": 18,
+            "ratio": 1.12,
+            "steps": {
+              "display": 8,
+              "title": 6,
+              "heading": 4,
+              "body": 0,
+              "label": -1,
+              "caption": -2,
+              "data": 0
+            },
+            "rounding": {
+              "grid": 4,
+              "roles": [
+                "display",
+                "title",
+                "heading"
+              ]
+            },
+            "line-height": {
+              "tight": {
+                "ratio": 1.15,
+                "roles": [
+                  "display",
+                  "title",
+                  "heading"
+                ]
+              },
+              "snug": {
+                "ratio": 1.45,
+                "roles": [
+                  "label",
+                  "caption"
+                ]
+              },
+              "open": {
+                "ratio": 1.65,
+                "roles": [
+                  "body",
+                  "data"
+                ]
+              }
+            },
+            "follows": [
+              "typography.count",
+              "typography.values",
+              "typography.definition"
+            ],
+            "why": "Many fine steps: a large 18px body and a 1.12 ratio, with two steps between the headings, so long pages can set their own hierarchy. Headings sit tight at 1.15, labels and captions snug at 1.45, and body and data open to 1.65 for reading."
+          }
+        },
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.display.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "Display is 44px, eight fine steps above the 18px body (18 × 1.12^8 = 44.6), snapped to the 4px grid as headings are: two steps over the 36px title, kept for the landing moment and the lead that opens an article.",
+                "because": [
+                  "typography.roles",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.15 sets 44px display text on about 51px lines, so a two-line opener reads as one tight block.",
+                "because": [
+                  "typography.definition",
+                  "typography.roles"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 lets the serif display carry the brand on the landing page, since the brand shows in type, not in color.",
+                "because": [
+                  "brand.q2",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.title.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "36px is six fine steps above body and two under the 44px display, so article titles stay large but calm.",
+                "because": [
+                  "typography.roles",
+                  "typography.count"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.15 sets a 36px title on about 41px lines, so a long article title wraps as one unit.",
+                "because": [
+                  "typography.definition"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 makes the serif article title the strongest line on an article page, without the landing-only display size.",
+                "because": [
+                  "typography.roles",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "28px is four fine steps above the 18px body and two under the 36px title, so readers find their place in a long guide.",
+                "because": [
+                  "typography.count",
+                  "outcomes.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.15 keeps a 28px heading on about 32px lines, tighter than the 1.65 body, so it reads as one label for its section.",
+                "because": [
+                  "typography.definition",
+                  "outcomes.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 separates a serif section heading from 400 body text in the same family, so readers spot it while skimming.",
+                "because": [
+                  "typography.count",
+                  "outcomes.q2",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.body.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "18px is the large reading size and step 0 of the scale: every other role is a 1.12 ratio step from it, so long articles stay easy on the eyes.",
+                "because": [
+                  "typography.values",
+                  "outcomes.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.65 gives 18px body text about 30px lines, so the eye finds the next line in a long paragraph.",
+                "because": [
+                  "typography.definition",
+                  "outcomes.q1",
+                  "outcomes.q2"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 is Source Serif 4's regular reading weight, so long text stays even and open across a whole article.",
+                "because": [
+                  "brand.q3",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "16px sets Inter labels one step under the 18px body (18 ÷ 1.12), still large enough for a field label people must read.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "brand.q3",
+                  "people.q2"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.45, the snug ratio between the headings' 1.15 and body's 1.65: a 16px label gets about 23px lines, enough when a label wraps under zoom, without the airy body measure.",
+                "because": [
+                  "typography.definition",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}",
+            "$extensions": {
+              "open-ds": {
+                "why": "600 makes Inter labels firm beside the serif text, so a field label reads clearly where a caption would be too faint.",
+                "because": [
+                  "people.q2",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.caption.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "14px is two steps under the 18px body and one under the 16px label, for Inter captions that sit quietly under the text.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "human.q1",
+                  "brand.q3"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.45, the snug ratio: a 14px caption under a figure or a quote gets about 20px lines, a step tighter than body so it reads as a note to the text, not more text.",
+                "because": [
+                  "typography.definition",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 keeps captions quiet: attention belongs to the article, so secondary notes take the regular weight.",
+                "because": [
+                  "typography.count",
+                  "brand.q3",
+                  "accessibility.definition",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$extensions": {
+              "open-ds": {
+                "why": "18px shares step 0 with body, because numbers sit in running text rather than table columns, so data reads at the reading size.",
+                "because": [
+                  "typography.values",
+                  "typography.roles",
+                  "typography.count",
+                  "brand.q3",
+                  "tasks.q1"
+                ]
+              }
+            }
+          },
+          "line-height": {
+            "$extensions": {
+              "open-ds": {
+                "why": "1.65 matches body text, so a number set inside a paragraph keeps the 30px rhythm of the lines around it.",
+                "because": [
+                  "typography.definition",
+                  "tasks.q1"
+                ]
+              }
+            }
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}",
+            "$extensions": {
+              "open-ds": {
+                "why": "400 matches the reading serif's regular weight; data is rare, and a bolder number would pull attention from the text.",
+                "because": [
+                  "brand.q3",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "$description": "The data text role."
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "type.body.font-family": {
+      "headline": "A serif to read.",
+      "line": "Long text in a face made for reading."
+    },
+    "type.body.font-size": {
+      "headline": "Large reading text.",
+      "line": "Long articles read without strain on any device."
+    },
+    "type.body.font-weight": {
+      "headline": "Regular words.",
+      "line": "Body text stays light, so the words lead."
+    },
+    "type.body.line-height": {
+      "headline": "Open lines.",
+      "line": "The eye finds the next line and keeps its place."
+    },
+    "type.caption.font-family": {
+      "headline": "A plain sans for notes.",
+      "line": "Small print in a sans, apart from the article."
+    },
+    "type.caption.font-size": {
+      "headline": "Small print.",
+      "line": "Captions sit below the body text, still readable."
+    },
+    "type.caption.font-weight": {
+      "headline": "Plain small print.",
+      "line": "Captions stay regular, so they do not compete."
+    },
+    "type.caption.line-height": {
+      "headline": "Room in small print.",
+      "line": "Short notes stay easy to follow."
+    },
+    "type.data.font-family": {
+      "headline": "Figures in the reading face.",
+      "line": "Numbers sit in the text, in the same serif."
+    },
+    "type.data.font-size": {
+      "headline": "Figures at reading size.",
+      "line": "Numbers match the article text."
+    },
+    "type.data.font-weight": {
+      "headline": "Plain figures.",
+      "line": "Numbers stay regular, so none looks more urgent."
+    },
+    "type.data.line-height": {
+      "headline": "Open lines.",
+      "line": "Figures keep the same room as the article."
+    },
+    "type.display.font-family": {
+      "headline": "A serif headline.",
+      "line": "The largest words, in the reading face."
+    },
+    "type.display.font-size": {
+      "headline": "The biggest words.",
+      "line": "A large, calm headline that invites a read."
+    },
+    "type.display.font-weight": {
+      "headline": "Strong and clear.",
+      "line": "The display line carries weight."
+    },
+    "type.display.line-height": {
+      "headline": "Tight big lines.",
+      "line": "Large lines sit close, so they read as one."
+    },
+    "type.heading.font-family": {
+      "headline": "Serif headings.",
+      "line": "Sections start in the reading face."
+    },
+    "type.heading.font-size": {
+      "headline": "A section starts.",
+      "line": "Headings guide a long read."
+    },
+    "type.heading.font-weight": {
+      "headline": "Strong headings.",
+      "line": "Weight marks where a section starts."
+    },
+    "type.heading.line-height": {
+      "headline": "Close heading lines.",
+      "line": "A heading that wraps still reads as one."
+    },
+    "type.label.font-family": {
+      "headline": "A plain sans for controls.",
+      "line": "Buttons and fields read apart from the article."
+    },
+    "type.label.font-size": {
+      "headline": "Words on controls.",
+      "line": "Labels large enough to read and tap."
+    },
+    "type.label.font-weight": {
+      "headline": "Labels that stand out.",
+      "line": "Weight sets a label apart from body text."
+    },
+    "type.label.line-height": {
+      "headline": "One line of label.",
+      "line": "A control holds its label on one line."
+    },
+    "type.title.font-family": {
+      "headline": "A serif title.",
+      "line": "Article titles in the reading face."
+    },
+    "type.title.font-size": {
+      "headline": "The article title.",
+      "line": "Large and calm, below the display line."
+    },
+    "type.title.font-weight": {
+      "headline": "A strong title.",
+      "line": "Weight marks what the page is about."
+    },
+    "type.title.line-height": {
+      "headline": "Close title lines.",
+      "line": "A long title still reads as one."
+    }
+  }
+}

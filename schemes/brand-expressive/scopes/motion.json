@@ -1,0 +1,263 @@
+{
+  "description": "The motion scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "motion",
+  "answers": [
+    {
+      "question": "motion.roles",
+      "option": "expression",
+      "why": "Motion carries personality.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "motion.count",
+      "option": "three",
+      "why": "Fast feedback, moderate panels, relaxed hero.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "question": "motion.definition",
+      "option": "spring",
+      "why": "A spring that overshoots feels alive.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "motion.values",
+      "option": "fast",
+      "why": "Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "motion.lands",
+      "option": "hero",
+      "why": "Motion shows in hero and launch moments.",
+      "because": [
+        "outcomes.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "hover-feedback",
+      "use": "motion.duration.feedback (fast)",
+      "not": "An instant change",
+      "why": "Fast feedback on an ease-out. The brand's spring waits for the moments that deserve it.",
+      "because": [
+        "motion.roles",
+        "motion.values"
+      ]
+    },
+    {
+      "situation": "reduced-motion",
+      "use": "Fades only; nothing moves",
+      "not": "Full motion",
+      "why": "Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "situation": "panel-opens",
+      "use": "motion.duration.panels",
+      "not": "A flat fade",
+      "why": "Panels open on an ease-out at a moderate speed, so menus feel quick and the brand shows in its big moments.",
+      "because": [
+        "brand.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "any-transition",
+      "use": "motion.easing.standard",
+      "not": "A plain ease-out",
+      "why": "An ease-out keeps every menu and button quick. The overshoot is kept for emphasis, where it feels alive and playful.",
+      "because": [
+        "human.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "hero-motion",
+      "use": "motion.duration.hero",
+      "not": "motion.duration.panels",
+      "why": "Hero and launch moments move slowest, so every visitor sees the launch.",
+      "because": [
+        "business.q1",
+        "human.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "motion": {
+        "duration": {
+          "feedback": {
+            "$type": "duration",
+            "$value": "{duration.fast}",
+            "$description": "Hover, press and toggle feedback. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 120ms (fast) for hover, press and toggle feedback in order to answer each tap at once, well inside the expressive limit of 500ms. The duration does this by ending the change before the finger lifts. So visitors feel the brand respond, never lag, because motion carries expression (motion.roles) and feedback feels fast (motion.values).",
+                "because": [
+                  "motion.roles",
+                  "motion.values"
+                ]
+              }
+            }
+          },
+          "panels": {
+            "$type": "duration",
+            "$value": "{duration.moderate}",
+            "$description": "Menus, popovers, dialogs and drawers opening. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 200ms (moderate) for menus, popovers, dialogs and other panels in order to show where a panel comes from, inside the expressive limit of 500ms. The duration does this by giving the eye time to follow the panel from its trigger. So visitors see each menu arrive as part of the brand, because the family is expressive (motion.roles) and there are three speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "duration",
+            "$value": "{motion.duration.feedback}",
+            "$description": "A layer closing: shorter than its open.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the feedback duration, 120ms (fast), for a layer that closes in order to end the exit move faster than the 200ms open. The duration does this by removing what people are done with in fewer frames than it took to arrive. So visitors get back to the page at once, because even an expressive family keeps exits short (motion.roles) and there are three speeds (motion.count).",
+                "because": [
+                  "motion.roles",
+                  "motion.count"
+                ]
+              }
+            }
+          },
+          "hero": {
+            "$type": "duration",
+            "$value": "{duration.relaxed}",
+            "$description": "Hero and launch moments. At most 500ms in an expressive family.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 320ms (relaxed) for hero and launch moments in order to give the slowest move to the moment that matters most, inside the expressive limit of 500ms. The duration does this by holding the change long enough to be seen as an event. So every visitor sees the launch, because motion shows in hero moments (motion.lands) and the family is expressive (motion.roles).",
+                "because": [
+                  "motion.lands",
+                  "motion.roles"
+                ]
+              }
+            }
+          }
+        },
+        "easing": {
+          "standard": {
+            "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "The transition move: a state that changes in place, such as hover, press or toggle.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the standard easing (0.2, 0, 0, 1) for state changes in place in order to do the transition move without the spring. The curve does this by reaching its target early and settling, with no overshoot. So buttons and toggles feel quick and steady, and the bounce stays special, because the spring is for emphasis only (motion.definition) in an expressive family (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          },
+          "enter": {
+            "$type": "cubicBezier",
+            "$value": "{motion.easing.standard}",
+            "$description": "The enter move: a layer that appears.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the transition move's standard easing for a panel that appears in order to do the enter move. The curve does this by spending most of the change in the first frames, so the layer is in place before it slows. So a menu is readable almost as soon as it opens, because an expressive family keeps its spring for emphasis (motion.roles) and enters on an ease-out (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit": {
+            "$type": "cubicBezier",
+            "$value": "{easing.strong-out}",
+            "$description": "The exit move: a layer that closes in place.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the strong-out easing (0.23, 1, 0.32, 1) for a layer that closes in place in order to do the exit move. The curve does this by covering most of the way in the first third of its time, then easing to a stop. So a closed popover is gone before the next tap, because an expressive exit eases out unless the layer leaves the screen (motion.roles), and easing is set per move (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "exit-offscreen": {
+            "$type": "cubicBezier",
+            "$value": "{easing.accelerate}",
+            "$description": "The exit move of a layer that slides off the screen: a sheet or a drawer.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the accelerate easing (0.4, 0, 1, 1) for a drawer or sheet that slides off the screen in order to do the exit move of a layer that leaves the view. The curve does this by starting slow and speeding up, so the panel gathers pace on its way out. So visitors read the drawer as gone, not paused at the edge, because an expressive family accelerates only what leaves the screen (motion.roles) and easing is set per move (motion.definition).",
+                "because": [
+                  "motion.roles",
+                  "motion.definition"
+                ]
+              }
+            }
+          },
+          "emphasize": {
+            "$type": "cubicBezier",
+            "$value": "{easing.spring}",
+            "$description": "The emphasize move: a moment that calls for attention. The only move that overshoots.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use the spring easing (0.34, 1.56, 0.64, 1) for the emphasize move only, in order to celebrate a moment such as a sign-up that worked. The curve does this by passing its target and settling back, so the eye catches the bounce. So the brand's spring is felt where it means something, not on every menu, because easing is a spring (motion.definition) and motion carries expression (motion.roles).",
+                "because": [
+                  "motion.definition",
+                  "motion.roles"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "motion.duration.feedback": {
+      "headline": "A snappy answer.",
+      "line": "Controls spring back at once."
+    },
+    "motion.duration.hero": {
+      "headline": "The big moment.",
+      "line": "A launch move with time to be noticed."
+    },
+    "motion.duration.panels": {
+      "headline": "Panels pop in.",
+      "line": "Menus and dialogs arrive fast and lively."
+    },
+    "motion.easing.emphasize": {
+      "headline": "A little bounce.",
+      "line": "The one move that overshoots, for a moment to remember."
+    },
+    "motion.easing.exit": {
+      "headline": "Leave quickly.",
+      "line": "A closing layer stops fast in place."
+    },
+    "motion.easing.exit-offscreen": {
+      "headline": "Off it goes.",
+      "line": "A sheet speeds up as it leaves the screen."
+    },
+    "motion.easing.standard": {
+      "headline": "Change in place.",
+      "line": "State changes start fast and settle."
+    }
+  }
+}

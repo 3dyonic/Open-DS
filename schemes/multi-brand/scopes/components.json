@@ -1,0 +1,63 @@
+{
+  "description": "The components scope of Multi-brand: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "components",
+  "answers": [
+    {
+      "question": "components.roles",
+      "option": "core-content",
+      "why": "Product teams build sign-up and account forms, plus product pages with questions and faces.",
+      "because": [
+        "content.q1",
+        "team.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "some",
+      "why": "Three product teams find their next parts ready, kept by one platform team.",
+      "because": [
+        "team.q1",
+        "team.q2"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "family",
+      "why": "Product teams find a whole family ready instead of asking one by one.",
+      "because": [
+        "team.q1",
+        "team.q2"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "some",
+      "why": "Variants for emphasis and size let each brand feel present without new components.",
+      "because": [
+        "brand.q2",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "sign-up-account",
+      "why": "Most components sit in sign-up and account pages.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "missing-component",
+      "use": "a component from the inventory with brand tokens",
+      "not": "a component made for one brand",
+      "why": "Brands change primitives, never components; one brand-only part breaks the shared library.",
+      "because": [
+        "brand.q1",
+        "outcomes.q2"
+      ]
+    }
+  ]
+}

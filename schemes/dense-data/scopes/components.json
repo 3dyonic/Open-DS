@@ -1,0 +1,63 @@
+{
+  "description": "The components scope of Dense data: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "components",
+  "answers": [
+    {
+      "question": "components.roles",
+      "option": "core-data",
+      "why": "Records need tables, filters and fast ways to move between them.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "some",
+      "why": "A full operations tool with the parts its next screens will need, still few enough for a small team to keep right.",
+      "because": [
+        "content.q2",
+        "team.q1"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "scenario",
+      "why": "A component joins only when a daily task needs it.",
+      "because": [
+        "scenarios.q1",
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "few",
+      "why": "Repeated screens stay identical when a component changes only with its meaning.",
+      "because": [
+        "brand.q2",
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "tables-forms",
+      "why": "Most work happens in tables and the forms that edit them.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "missing-component",
+      "use": "a component from the inventory, composed (for example a popover with a command list)",
+      "not": "a one-off component built for one screen",
+      "why": "A small team keeps fewer parts right, and experts expect the same parts everywhere.",
+      "because": [
+        "team.q1",
+        "components.definition"
+      ]
+    }
+  ]
+}

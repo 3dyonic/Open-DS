@@ -1,0 +1,146 @@
+{
+  "description": "The voice scope of Accessible first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "voice",
+  "answers": [
+    {
+      "question": "voice.roles",
+      "option": "ui-help",
+      "why": "Hints and help text carry people through each step.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "voice.count",
+      "option": "one",
+      "why": "One plain tone everywhere; no surprises.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "voice.definition",
+      "option": "word-list",
+      "why": "A word list of common words, with terms to avoid.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "voice.values",
+      "option": "plain",
+      "why": "Every sentence is easy to read on the first try.",
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "voice.lands",
+      "option": "forms",
+      "why": "Words decide whether a form gets finished.",
+      "because": [
+        "outcomes.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "button-label",
+      "use": "A common verb that says what happens next",
+      "not": "\"Submit\" or \"Proceed\"",
+      "why": "Common words are understood by the most people.",
+      "because": [
+        "voice.definition",
+        "voice.values"
+      ],
+      "example": "Continue"
+    },
+    {
+      "situation": "error-words",
+      "use": "Say what is wrong, where, and exactly how to fix it",
+      "not": "\"Invalid input\"",
+      "why": "People must be able to fix the error without help.",
+      "because": [
+        "voice.values",
+        "voice.lands"
+      ],
+      "example": "Enter your date of birth. For example, 27 3 1980."
+    },
+    {
+      "situation": "success-words",
+      "use": "Confirm what happened and what comes next",
+      "not": "A confirmation with no next step",
+      "why": "People need to know the task is finished and what happens now.",
+      "because": [
+        "voice.values",
+        "outcomes.q1"
+      ],
+      "example": "We have your application. We will email you within 5 working days."
+    },
+    {
+      "situation": "empty-words",
+      "use": "Explain what will appear here and how to start",
+      "not": "A blank page",
+      "why": "A blank page leaves people unsure if something failed.",
+      "because": [
+        "voice.values"
+      ],
+      "example": "You have no saved applications. Start a new one below."
+    },
+    {
+      "situation": "confirm-words",
+      "use": "Say what will happen in plain words, and offer a way back",
+      "not": "A double negative",
+      "why": "Plain words prevent a choice people did not mean.",
+      "because": [
+        "voice.values",
+        "outcomes.q2"
+      ],
+      "example": "Do you want to cancel your application? Your answers will be deleted."
+    },
+    {
+      "situation": "first-visit",
+      "use": "Say how many steps there are and how long it takes",
+      "not": "Marketing copy",
+      "why": "Knowing the length lowers effort and anxiety.",
+      "because": [
+        "human.q1",
+        "scenarios.q2"
+      ],
+      "example": "This takes about 10 minutes. There are 4 steps."
+    }
+  ],
+  "tokens": {
+    "content": {
+      "$description": "Voice tokens: the words components use for common actions. Text, not CSS.",
+      "action": {
+        "commit": {
+          "$type": "string",
+          "$value": "Continue",
+          "$description": "The label of the action that completes a task."
+        },
+        "cancel": {
+          "$type": "string",
+          "$value": "Go back",
+          "$description": "The label of the way out next to the main action."
+        },
+        "destroy": {
+          "$type": "string",
+          "$value": "Delete",
+          "$description": "The label of an action that deletes data."
+        },
+        "retry": {
+          "$type": "string",
+          "$value": "Try again",
+          "$description": "The label that repeats a failed action."
+        },
+        "empty-action": {
+          "$type": "string",
+          "$value": "Start a new application",
+          "$description": "The label of the action in an empty state."
+        }
+      }
+    }
+  }
+}

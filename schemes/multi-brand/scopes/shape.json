@@ -1,0 +1,191 @@
+{
+  "description": "The shape scope of Multi-brand: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "shape",
+  "answers": [
+    {
+      "question": "shape.roles",
+      "option": "control-badge-container",
+      "why": "Each brand sets three corners.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.count",
+      "option": "two",
+      "why": "Two corner sizes: one for controls and badges, and a larger one for containers, as Aster's 4px and 8px corners show.",
+      "because": [
+        "shape.roles",
+        "shape.values"
+      ]
+    },
+    {
+      "question": "shape.definition",
+      "option": "per-brand",
+      "why": "Each brand sets its own corners.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.values",
+      "option": "rounded",
+      "why": "Rounded by default; each brand sets its own corner.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.lands",
+      "option": "buttons-badges",
+      "why": "Corners are the most visible brand difference.",
+      "because": [
+        "brand.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "control-corner",
+      "use": "radius.control (set by the brand)",
+      "not": "A hard-coded radius",
+      "why": "Each brand sets its own corner through the theme.",
+      "because": [
+        "shape.values",
+        "theming.definition"
+      ]
+    },
+    {
+      "situation": "status-shape",
+      "use": "radius.badge (set by the brand)",
+      "not": "A hard-coded shape",
+      "why": "The brand sets the badge shape.",
+      "because": [
+        "theming.definition"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "A hard-coded radius",
+      "why": "(set by the brand). Each brand sets the option corner, and it nests inside that brand's menu corner.",
+      "because": [
+        "brand.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.control",
+      "why": "(set by the brand). A brand with pill controls would turn a text area into a capsule. The element corner stays sane in every brand.",
+      "because": [
+        "brand.q2",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "A hard-coded radius",
+      "why": "(set by the brand). Each brand sets its own card corner; the role stays shared.",
+      "because": [
+        "theming.definition",
+        "business.q2"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A brand-specific border width",
+      "why": "One thin edge serves every brand. Color carries the brand, not line weight.",
+      "because": [
+        "business.q2",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "focus.ring.offset",
+      "not": "A ring that touches the control",
+      "why": "The gap sits around a ring of focus.ring.width. The ring and its gap stay the same in every brand, so focus shows on any brand color.",
+      "because": [
+        "people.q2",
+        "business.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "radius": {
+        "control": {
+          "$type": "dimension",
+          "$value": "{theme.radius.control}",
+          "$description": "Corner of buttons and inputs."
+        },
+        "badge": {
+          "$type": "dimension",
+          "$value": "{theme.radius.badge}",
+          "$description": "Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks."
+        },
+        "option": {
+          "$type": "dimension",
+          "$value": "{theme.radius.option}",
+          "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
+        },
+        "element": {
+          "$type": "dimension",
+          "$value": "{theme.radius.element}",
+          "$description": "Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media."
+        },
+        "surface": {
+          "$type": "dimension",
+          "$value": "{theme.radius.surface}",
+          "$description": "Corner of cards, menus and dialogs."
+        }
+      },
+      "border-width": {
+        "default": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 1px default line for card borders in every brand in order to give grouping to plans and offers. A thin stroke does this by drawing a shared region with the least weight that still reads, the same in each brand. So color carries each brand, not line weight, because cards separate groups (elevation.definition) and AA holds in every brand (accessibility.definition).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "border-width.default": {
+      "headline": "One thin line.",
+      "line": "Edges stay quiet, so the content leads."
+    },
+    "radius.badge": {
+      "headline": "Small marks.",
+      "line": "Badges keep a small corner in every brand."
+    },
+    "radius.control": {
+      "headline": "The brand's corner.",
+      "line": "Each brand sets how round its buttons are."
+    },
+    "radius.element": {
+      "headline": "Items that grow.",
+      "line": "Rows and fields follow the brand's corner."
+    },
+    "radius.option": {
+      "headline": "Corners that nest.",
+      "line": "Options fit inside the brand's menu corner."
+    },
+    "radius.surface": {
+      "headline": "The brand's panel shape.",
+      "line": "Each brand sets how round its cards are."
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Open DS: every scheme in full
 
-> Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.
+> Generated from the schemes in schemes/. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.
 
 ## Color guidance, for every scheme
 

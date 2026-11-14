@@ -1,0 +1,261 @@
+{
+  "id": "motion",
+  "kind": "scope",
+  "title": "Motion",
+  "description": "What moves, why and how fast.",
+  "owns": ["motion"],
+  "lands_in": [
+    "accordion",
+    "alert-dialog",
+    "breadcrumb",
+    "button",
+    "combobox",
+    "context-menu",
+    "drawer",
+    "hover-card",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "menubar",
+    "native-select",
+    "navigation-menu",
+    "popover",
+    "resizable",
+    "scroll-area",
+    "sheet",
+    "sidebar",
+    "switch",
+    "textarea",
+    "tooltip"
+  ],
+  "situations": [
+    "hover-feedback",
+    "reduced-motion",
+    "panel-opens",
+    "any-transition",
+    "hero-motion"
+  ],
+  "questions": [
+    {
+      "id": "motion.roles",
+      "method": "roles",
+      "text": "What is motion for?",
+      "description": "The jobs motion does.",
+      "options": [
+        {
+          "id": "feedback",
+          "label": "Feedback only",
+          "creates": [
+            "feedback-time",
+            "exit-time",
+            "transition-ease",
+            "enter-ease",
+            "exit-ease"
+          ]
+        },
+        {
+          "id": "feedback-guidance",
+          "label": "Feedback and guidance",
+          "creates": [
+            "feedback-time",
+            "exit-time",
+            "transition-ease",
+            "enter-ease",
+            "exit-ease",
+            "panel-time"
+          ]
+        },
+        {
+          "id": "expression",
+          "label": "Feedback and expression",
+          "creates": [
+            "feedback-time",
+            "exit-time",
+            "transition-ease",
+            "enter-ease",
+            "exit-ease",
+            "panel-time",
+            "emphasize-ease"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "motion.count",
+      "method": "count",
+      "text": "How many speeds exist?",
+      "description": "The number of distinct durations.",
+      "options": [
+        {
+          "id": "one",
+          "label": "One",
+          "creates": []
+        },
+        {
+          "id": "two",
+          "label": "Two",
+          "creates": []
+        },
+        {
+          "id": "three",
+          "label": "Three",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "motion.definition",
+      "method": "definition",
+      "text": "How is easing defined?",
+      "description": "A standard ease-out, or a spring that overshoots.",
+      "options": [
+        {
+          "id": "standard",
+          "label": "Standard ease-out",
+          "creates": []
+        },
+        {
+          "id": "spring",
+          "label": "A spring",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "motion.values",
+      "method": "values",
+      "text": "How fast does feedback feel?",
+      "description": "Speed as a word. The convention behind each word is in the primitives.",
+      "options": [
+        {
+          "id": "fast",
+          "label": "Fast",
+          "creates": []
+        },
+        {
+          "id": "moderate",
+          "label": "Moderate",
+          "creates": []
+        },
+        {
+          "id": "relaxed",
+          "label": "Relaxed",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "motion.lands",
+      "method": "lands",
+      "text": "Where does motion show?",
+      "description": "The place where motion is seen.",
+      "options": [
+        {
+          "id": "state-only",
+          "label": "State changes only",
+          "creates": []
+        },
+        {
+          "id": "state-panels",
+          "label": "State changes and panels",
+          "creates": []
+        },
+        {
+          "id": "hero",
+          "label": "Hero and launch moments",
+          "creates": ["hero-time"]
+        }
+      ]
+    }
+  ],
+  "families": {
+    "description": "Motion comes in two families, set by what motion is for (motion.roles). A productive family serves work: short, plain moves. An expressive family carries the brand: it may move longer, accelerates a layer that leaves the screen, and springs on emphasis only. Each move type has its own easing token, and each duration has a limit in its family.",
+    "question": "motion.roles",
+    "by_option": {
+      "feedback": "productive",
+      "feedback-guidance": "productive",
+      "expression": "expressive"
+    },
+    "moves": [
+      {
+        "id": "enter",
+        "token": "motion.easing.enter",
+        "description": "A layer appears: a menu, a popover, a dialog, a toast."
+      },
+      {
+        "id": "exit",
+        "token": "motion.easing.exit",
+        "description": "A layer closes where it stands."
+      },
+      {
+        "id": "exit-offscreen",
+        "token": "motion.easing.exit-offscreen",
+        "description": "A layer slides off the screen: a sheet or a drawer."
+      },
+      {
+        "id": "transition",
+        "token": "motion.easing.standard",
+        "description": "A state changes in place: hover, press, toggle."
+      },
+      {
+        "id": "emphasize",
+        "token": "motion.easing.emphasize",
+        "description": "A moment that calls for attention, such as a success."
+      }
+    ],
+    "curves": [
+      {
+        "id": "ease-out",
+        "says": "Decelerates: past half its progress at half its time, never past the target."
+      },
+      {
+        "id": "strong-out",
+        "says": "A strong ease-out: at least 80% of its progress at a third of its time, never past the target."
+      },
+      {
+        "id": "accelerate",
+        "says": "Speeds up: under half its progress at half its time, never past the target."
+      },
+      {
+        "id": "overshoot",
+        "says": "Passes its target and settles back: a spring."
+      }
+    ],
+    "items": [
+      {
+        "id": "productive",
+        "title": "Productive",
+        "description": "Motion for work. Feedback ends within 150ms and panels within 300ms; an exit is a strong ease-out of about 150ms, even off the screen. No move overshoots.",
+        "max_ms": {
+          "motion.duration.feedback": 150,
+          "motion.duration.panels": 300,
+          "motion.duration.exit": 150,
+          "motion.duration.*": 300
+        },
+        "curves": {
+          "enter": ["ease-out", "strong-out"],
+          "exit": ["strong-out"],
+          "exit-offscreen": ["strong-out"],
+          "transition": ["ease-out", "strong-out"],
+          "emphasize": ["ease-out", "strong-out"]
+        }
+      },
+      {
+        "id": "expressive",
+        "title": "Expressive",
+        "description": "Motion that carries the brand. Any move may take up to 500ms. An exit eases out, and accelerates only when the layer leaves the screen. Only the emphasize move overshoots.",
+        "max_ms": {
+          "motion.duration.*": 500
+        },
+        "curves": {
+          "enter": ["ease-out", "strong-out"],
+          "exit": ["ease-out", "strong-out"],
+          "exit-offscreen": ["accelerate"],
+          "transition": ["ease-out", "strong-out"],
+          "emphasize": ["overshoot", "ease-out", "strong-out"]
+        }
+      }
+    ]
+  }
+}

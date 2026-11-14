@@ -1,0 +1,199 @@
+{
+  "id": "accessibility",
+  "kind": "scope",
+  "title": "Accessibility",
+  "description": "Floors the system must hold.",
+  "owns": ["size.control", "color.border.focus", "focus", "size.hit-area"],
+  "lands_in": [
+    "accordion",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "breadcrumb",
+    "button",
+    "calendar",
+    "carousel",
+    "checkbox",
+    "combobox",
+    "command",
+    "dialog",
+    "dropdown-menu",
+    "field",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "menubar",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "radio-group",
+    "resizable",
+    "scroll-area",
+    "select",
+    "sheet",
+    "sidebar",
+    "slider",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toggle"
+  ],
+  "situations": [
+    "keyboard-focus",
+    "smallest-target",
+    "most-controls",
+    "main-action",
+    "control-inside-field",
+    "unavailable-control"
+  ],
+  "questions": [
+    {
+      "id": "accessibility.roles",
+      "method": "roles",
+      "text": "Which states get their own visible value?",
+      "description": "States with a distinct look.",
+      "options": [
+        {
+          "id": "hover-focus-disabled",
+          "label": "Hover, focus, disabled",
+          "creates": [
+            "hover",
+            "state",
+            "focus",
+            "disabled",
+            "focus-width",
+            "focus-gap"
+          ]
+        },
+        {
+          "id": "plus-pressed",
+          "label": "Those and pressed",
+          "creates": [
+            "hover",
+            "state",
+            "focus",
+            "disabled",
+            "focus-width",
+            "focus-gap"
+          ]
+        },
+        {
+          "id": "all",
+          "label": "All, including loading",
+          "creates": [
+            "hover",
+            "state",
+            "focus",
+            "disabled",
+            "focus-width",
+            "focus-gap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accessibility.count",
+      "method": "count",
+      "text": "How many signals carry each meaning?",
+      "description": "Whether status relies on color alone or also on icons and words.",
+      "options": [
+        {
+          "id": "color-word",
+          "label": "Two: color and word",
+          "creates": []
+        },
+        {
+          "id": "color-icon-word",
+          "label": "Three: color, icon and word",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "accessibility.definition",
+      "method": "definition",
+      "text": "What contrast floor do we hold?",
+      "description": "Contrast commitment for text.",
+      "options": [
+        {
+          "id": "aa",
+          "label": "AA",
+          "creates": []
+        },
+        {
+          "id": "aaa-text",
+          "label": "AAA for text",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "accessibility.values",
+      "method": "values",
+      "text": "What is the smallest target?",
+      "description": "The smallest clickable size.",
+      "options": [
+        {
+          "id": "pointer",
+          "label": "Compact, for a pointer",
+          "creates": [
+            "control-height",
+            "compact-control",
+            "large-control",
+            "hit-area"
+          ]
+        },
+        {
+          "id": "touch",
+          "label": "Touch size",
+          "creates": [
+            "control-height",
+            "compact-control",
+            "large-control",
+            "hit-area"
+          ]
+        },
+        {
+          "id": "large",
+          "label": "Large",
+          "creates": [
+            "control-height",
+            "compact-control",
+            "large-control",
+            "hit-area"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accessibility.lands",
+      "method": "lands",
+      "text": "Where are the floors hardest to hold?",
+      "description": "The place where accessibility needs the most care.",
+      "options": [
+        {
+          "id": "dense-tables",
+          "label": "Dense tables",
+          "creates": []
+        },
+        {
+          "id": "long-text",
+          "label": "Long text",
+          "creates": []
+        },
+        {
+          "id": "forms",
+          "label": "Forms",
+          "creates": []
+        },
+        {
+          "id": "brand-color",
+          "label": "Brand color",
+          "creates": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,26 +1,36 @@
 // The five schemes and the grammar, for the stories. The one module in Storybook that reads
 // schemes/; every other file imports from here.
-import accessible from "../../schemes/accessible-first.json";
-import expressive from "../../schemes/brand-expressive.json";
-import content from "../../schemes/content-first.json";
-import dense from "../../schemes/dense-data.json";
-import multi from "../../schemes/multi-brand.json";
-import grammarJson from "../../schemes/grammar.json";
-// A scheme file stores only what it decides: the grammar gives the other component values, and
+// The sources are folders split by scope; the CLI's layout module joins each folder back into one object.
+import { joinGrammar, joinScheme } from "../../cli/src/scheme-layout.mjs";
+// A scheme stores only what it decides: the grammar gives the other component values, and
 // the color scales and the spacing map come from their recorded rules.
 import { withDefaults } from "../../cli/src/scheme-defaults.mjs";
 import { withGenerated } from "../../cli/src/scheme-generated.mjs";
 import { withTypeAndSpace } from "../../cli/src/type-space-generated.mjs";
 
+// Every JSON file under schemes/, by its path relative to schemes/: "dense-data/scopes/color.json".
+const SOURCES: Record<string, unknown> = Object.fromEntries(
+  Object.entries(import.meta.glob("../../schemes/**/*.json", { eager: true, import: "default" })).map(
+    ([path, data]) => [path.replace(/^\.\.\/\.\.\/schemes\//, ""), data],
+  ),
+);
+const under = (folder: string) =>
+  Object.fromEntries(
+    Object.entries(SOURCES)
+      .filter(([path]) => path.startsWith(`${folder}/`))
+      .map(([path, data]) => [path.slice(folder.length + 1), data]),
+  );
+
+const grammarJson = joinGrammar({ "grammar.json": SOURCES["grammar.json"], ...Object.fromEntries(Object.entries(under("grammar")).map(([p, d]) => [`grammar/${p}`, d])) });
 export const grammar = grammarJson;
-const full = (s: unknown) => withTypeAndSpace(withGenerated(withDefaults(s, grammarJson)));
+const full = (id: string) => withTypeAndSpace(withGenerated(withDefaults(joinScheme(under(id), grammarJson), grammarJson)));
 
 export const SCHEMES = {
-  "dense-data": full(dense),
-  "content-first": full(content),
-  "accessible-first": full(accessible),
-  "multi-brand": full(multi),
-  "brand-expressive": full(expressive),
+  "dense-data": full("dense-data"),
+  "content-first": full("content-first"),
+  "accessible-first": full("accessible-first"),
+  "multi-brand": full("multi-brand"),
+  "brand-expressive": full("brand-expressive"),
 } as unknown as Record<string, SchemeData>;
 
 type Status = { label: string; meaning: "neutral" | "info" | "success" | "warning" | "danger"; why: string };

@@ -5,11 +5,12 @@ import { test } from "node:test";
 import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import * as UI from "../src/index";
+import { grammar } from "../../cli/src/schemes.mjs";
 
 const here = join(import.meta.dirname, "..");
 const files: string[] = readdirSync(join(here, "src", "components")).filter((f: string) => f.endsWith(".tsx"));
 // A deprecated key (replaced_by) stays only so old code keeps working; no component reads it.
-const keys = JSON.parse(readFileSync(join(here, "..", "schemes", "grammar.json"), "utf8"))
+const keys = grammar()
   .component_keys.filter((k: { replaced_by?: string }) => !k.replaced_by)
   .map(
     // The CSS name drops a base (@): button/primary/background/@ is --button-primary-background.

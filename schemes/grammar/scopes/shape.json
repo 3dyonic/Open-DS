@@ -1,0 +1,392 @@
+{
+  "id": "shape",
+  "kind": "scope",
+  "title": "Shape",
+  "description": "Corners and borders.",
+  "owns": ["radius", "border-width"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "attachment",
+    "avatar",
+    "badge",
+    "breadcrumb",
+    "bubble",
+    "button",
+    "button-group",
+    "calendar",
+    "card",
+    "carousel",
+    "chart",
+    "checkbox",
+    "combobox",
+    "command",
+    "context-menu",
+    "data-table",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "empty",
+    "field",
+    "hover-card",
+    "icon",
+    "input",
+    "input-group",
+    "input-otp",
+    "item",
+    "kbd",
+    "marker",
+    "menubar",
+    "message-scroller",
+    "native-select",
+    "navigation-menu",
+    "popover",
+    "progress",
+    "radio-group",
+    "resizable",
+    "scroll-area",
+    "select",
+    "separator",
+    "sheet",
+    "sidebar",
+    "skeleton",
+    "slider",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toast",
+    "toggle",
+    "toggle-group",
+    "tooltip"
+  ],
+  "situations": [
+    "control-corner",
+    "status-shape",
+    "option-in-list",
+    "growing-element",
+    "surface-corner",
+    "edges-and-dividers",
+    "focus-gap"
+  ],
+  "questions": [
+    {
+      "id": "shape.roles",
+      "method": "roles",
+      "text": "Which shape roles does it need?",
+      "description": "The elements that get their own corner.",
+      "options": [
+        {
+          "id": "control-container",
+          "label": "Controls and containers",
+          "creates": [
+            "control-corner",
+            "surface-corner",
+            "option-corner",
+            "element-corner"
+          ]
+        },
+        {
+          "id": "control-badge-container",
+          "label": "Controls, badges and containers",
+          "creates": [
+            "control-corner",
+            "surface-corner",
+            "option-corner",
+            "element-corner",
+            "badge-corner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shape.count",
+      "method": "count",
+      "text": "How many corner sizes exist?",
+      "description": "How many different corners appear.",
+      "options": [
+        {
+          "id": "two",
+          "label": "Two",
+          "creates": []
+        },
+        {
+          "id": "three",
+          "label": "Three",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "shape.definition",
+      "method": "definition",
+      "text": "How are corners set?",
+      "description": "One fixed set for the product, or a set per brand.",
+      "options": [
+        {
+          "id": "fixed",
+          "label": "Fixed for the product",
+          "creates": []
+        },
+        {
+          "id": "per-brand",
+          "label": "Set by each brand",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "shape.values",
+      "method": "values",
+      "text": "What should control corners say?",
+      "description": "The corner of buttons and inputs.",
+      "options": [
+        {
+          "id": "sharp",
+          "label": "Sharp",
+          "creates": []
+        },
+        {
+          "id": "slightly-rounded",
+          "label": "Slightly rounded",
+          "creates": []
+        },
+        {
+          "id": "rounded",
+          "label": "Rounded",
+          "creates": []
+        },
+        {
+          "id": "pill",
+          "label": "Pill",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "shape.lands",
+      "method": "lands",
+      "text": "Where does shape show most?",
+      "description": "The place where corners are seen most.",
+      "options": [
+        {
+          "id": "controls",
+          "label": "Controls in dense rows",
+          "creates": []
+        },
+        {
+          "id": "controls-cards",
+          "label": "Controls and cards",
+          "creates": []
+        },
+        {
+          "id": "buttons-badges",
+          "label": "Buttons and badges",
+          "creates": []
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "id": "corner",
+      "title": "Corner",
+      "description": "The radius of a box's corners.",
+      "tokens": ["radius.*"],
+      "works_by": "the curvature of the edge",
+      "jobs": [
+        {
+          "id": "role",
+          "description": "A corner helps say what a thing is: a control, a status or a container.",
+          "how": "Each kind keeps one corner, so people learn it. Shape is a second cue: pair it with size, color or words.",
+          "source": "Material Design, the shape README: shapes identify components."
+        },
+        {
+          "id": "tone",
+          "description": "A corner carries the brand's feel. Sharp for precise, soft for calm and a pill for playful is brand convention, not research.",
+          "how": "People prefer curved outlines, and sharp angles can read as a threat; the brand picks a curve for its feel.",
+          "source": "Bar and Neta 2006, Humans prefer curved visual objects, Psychological Science 17(8). The three labels are brand convention."
+        },
+        {
+          "id": "objects",
+          "description": "A corner decides whether touching shapes read as separate objects (rounded) or as cells of one grid (square). A corner does not group: a shared fill or border groups.",
+          "how": "A rounded corner breaks the outline, so touching shapes read apart; square corners meet and tile into one grid.",
+          "source": "Palmer and Rock 1994, uniform connectedness; Wagemans et al. 2012. Grouping is common region (Palmer 1992), a job of fill and border."
+        },
+        {
+          "id": "density",
+          "description": "Square corners align in dense rows; a large corner needs room, because the padding must be at least the radius.",
+          "how": "A small curve keeps long straight edges that line up; a large curve cuts into the content box.",
+          "source": "Cloud Four, The math behind nesting rounded corners."
+        },
+        {
+          "id": "nesting",
+          "description": "An inner corner is the outer corner minus the padding, never under zero, so the shapes read as one family.",
+          "how": "The inner curve follows the outer curve at the padding's distance, so the two edges stay concentric.",
+          "source": "Cloud Four, The math behind nesting rounded corners; Apple's concentric corners."
+        },
+        {
+          "id": "concentric",
+          "description": "The focus ring's corner is the control's corner plus the ring's offset, so the ring runs parallel to the control.",
+          "how": "The same nesting rule, applied outward: the outer curve is the inner curve plus the gap.",
+          "source": "Cloud Four, The math behind nesting rounded corners, applied outward."
+        }
+      ]
+    },
+    {
+      "id": "line",
+      "title": "Line width",
+      "description": "The weight of the default border and divider. Its contrast lives in the color tokens.",
+      "tokens": ["border-width.default"],
+      "works_by": "the weight and contrast of a stroke",
+      "jobs": [
+        {
+          "id": "separation",
+          "description": "A divider tells the eye where one region ends and the next starts. It decorates, so it has no contrast floor; space can often do the job instead.",
+          "how": "A stroke between two regions breaks the surface, and its weight sets how strong the break reads.",
+          "source": "WCAG 2.2, 1.4.11 Non-text Contrast: decoration is exempt."
+        },
+        {
+          "id": "grouping",
+          "description": "A border around a region groups what it holds.",
+          "how": "A closed stroke draws a shared region, and the eye takes what is inside as one group.",
+          "source": "Palmer 1992, common region."
+        },
+        {
+          "id": "boundary",
+          "description": "Where the edge is the only sign that a control exists, the line must be seen: 3:1 against the colors next to it.",
+          "how": "A stroke around the control marks its edge; its color sets the contrast and its weight how easy the edge is to find.",
+          "source": "WCAG 2.2, 1.4.11 Non-text Contrast (AA): 3:1."
+        }
+      ]
+    },
+    {
+      "id": "focus-ring",
+      "title": "Focus ring",
+      "description": "The ring around the control that has keyboard focus, and the gap between them.",
+      "tokens": ["focus.ring.width", "focus.ring.offset"],
+      "works_by": "a heavier stroke with a gap",
+      "jobs": [
+        {
+          "id": "focus",
+          "description": "The ring shows where the keyboard is, on any surface.",
+          "how": "A stroke one step heavier than the default line stands out from every border. The gap shows the page color between ring and control, so with two colors one keeps 3:1 against any fill.",
+          "source": "WCAG 2.2, 2.4.7 and 2.4.13; W3C technique C40, two-color focus indicator."
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "control-corner",
+      "tokens": ["radius.control"],
+      "check": "decided",
+      "follows": ["shape.values", "brand.q1", "content.q2"],
+      "jobs": ["role", "tone", "density"],
+      "says": "A decision: the corner answer says how controls look, the brand's feel sets the tone, and the density answer says how much room a corner gets."
+    },
+    {
+      "id": "surface-corner",
+      "tokens": ["radius.surface"],
+      "check": "decided",
+      "follows": ["shape.roles", "shape.count", "brand.q1"],
+      "jobs": ["objects", "tone"],
+      "count": {
+        "question": "shape.count",
+        "tokens": ["radius.control", "radius.badge", "radius.surface"],
+        "options": {
+          "two": 2,
+          "three": 3
+        }
+      },
+      "says": "A decision: the roles and count answers give containers their own corner, and the brand's feel sets its size. Control, badge and surface make as many sizes as the count answer names."
+    },
+    {
+      "id": "option-nests",
+      "kind": "comes-from",
+      "tokens": ["radius.option"],
+      "check": "minus",
+      "follows": ["shape.roles", "shape.count", "brand.q1", "spacing.values"],
+      "jobs": ["nesting"],
+      "says": "Derived: the surface corner minus the panel's padding, never under zero, so an option's corner stays concentric with its menu's."
+    },
+    {
+      "id": "element-box",
+      "kind": "comes-from",
+      "tokens": ["radius.element"],
+      "check": "equal-unless-pill",
+      "follows": ["shape.values", "brand.q1", "content.q2"],
+      "jobs": ["objects", "role"],
+      "says": "Derived: the control corner, or the box corner when the control corner is a pill, because a box that grows cannot stay a pill."
+    },
+    {
+      "id": "badge-corner",
+      "kind": "comes-from",
+      "tokens": ["radius.badge"],
+      "check": "equal-or-own",
+      "own_when": {
+        "question": "shape.roles",
+        "options": ["control-badge-container"]
+      },
+      "follows": ["shape.roles", "shape.values", "brand.q1"],
+      "jobs": ["role"],
+      "says": "Derived: the control corner, unless the roles answer gives badges a corner of their own."
+    },
+    {
+      "id": "default-line",
+      "tokens": ["border-width.default"],
+      "check": "decided",
+      "follows": ["elevation.definition", "accessibility.definition"],
+      "jobs": ["separation", "grouping", "boundary"],
+      "boundaries": [
+        "component.input.border.@",
+        "component.input-group.border.@",
+        "component.input-otp.slot.border.@",
+        "component.native-select.border",
+        "component.select.trigger.border.@",
+        "component.textarea.border",
+        "component.combobox.chips.border",
+        "component.combobox.input.border",
+        "component.button.secondary.border",
+        "component.toggle.outline.border",
+        "component.sidebar.menu-button.outline.border.@",
+        "component.item.outline.clickable.border"
+      ],
+      "floor": 3,
+      "says": "A decision: the layering answer says whether lines separate groups, and the contrast floor says how heavy a line must be to be seen. The edge rule: a line that is the only cue that you can click or type is a boundary and needs 3:1. Importance picks its strength, and the same importance gets the same line, so every boundary reads color.border.strong. A line that is not the only cue stays faint, and quiet says why for each.",
+      "quiet": [
+        {
+          "token": "component.tabs.list.border",
+          "why": "Each tab's label is the cue that it can be clicked. The line under the list only separates the tabs from the panel."
+        },
+        {
+          "token": "component.item.outline.border",
+          "why": "A static item cannot be clicked. Its edge only groups the item's content."
+        }
+      ]
+    },
+    {
+      "id": "focus-heavier",
+      "kind": "comes-from",
+      "tokens": ["focus.ring.width"],
+      "check": "next-step",
+      "follows": [
+        "accessibility.roles",
+        "elevation.definition",
+        "accessibility.definition"
+      ],
+      "jobs": ["focus"],
+      "says": "Derived: one step heavier than the default line, so the ring stands out from every border. Focus is a state with its own look (accessibility.roles)."
+    },
+    {
+      "id": "focus-gap",
+      "tokens": ["focus.ring.offset"],
+      "check": "fixed",
+      "equals": "2px",
+      "follows": ["accessibility.roles"],
+      "jobs": ["focus"],
+      "says": "Fixed: a 2px gap between the control and its ring in every scheme. The gap is for contrast, not style: it shows the page color between ring and control, so one of the two colors keeps 3:1 on any fill (W3C technique C40)."
+    }
+  ]
+}

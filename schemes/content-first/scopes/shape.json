@@ -1,0 +1,185 @@
+{
+  "description": "The shape scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "shape",
+  "answers": [
+    {
+      "question": "shape.roles",
+      "option": "control-badge-container",
+      "why": "Pill badges differ from controls.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.count",
+      "option": "three",
+      "why": "Control, badge and container corners differ.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "question": "shape.definition",
+      "option": "fixed",
+      "why": "One brand, one set of corners.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.values",
+      "option": "rounded",
+      "why": "Rounded corners feel friendly.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.lands",
+      "option": "controls-cards",
+      "why": "Corners show on buttons and article cards.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "control-corner",
+      "use": "radius.control (rounded)",
+      "not": "Sharp corners",
+      "why": "Rounded corners match the warm reading tone. Sharp corners feel technical next to long text.",
+      "because": [
+        "shape.values"
+      ]
+    },
+    {
+      "situation": "status-shape",
+      "use": "radius.badge (pill)",
+      "not": "A rectangle",
+      "why": "Pills sit softly next to text.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "radius.control",
+      "why": "The option corner nests inside the menu corner. Soft, even curves keep the warm tone.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.surface",
+      "why": "Text areas and list items share the control corner, so a form reads as one family.",
+      "because": [
+        "brand.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "radius.control",
+      "why": "Softer corners on cards and menus feel warm, like good paper.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A heavy rule",
+      "why": "A thin edge stays quiet beside long text. The words carry the page, not the lines.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "focus.ring.offset",
+      "not": "A ring that touches the control",
+      "why": "The ring stands clear of the control, so readers see focus on any fill.",
+      "because": [
+        "people.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "radius": {
+        "control": {
+          "$type": "dimension",
+          "$value": "{theme.radius.control}",
+          "$description": "Corner of buttons and inputs."
+        },
+        "badge": {
+          "$type": "dimension",
+          "$value": "{theme.radius.badge}",
+          "$description": "Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks."
+        },
+        "option": {
+          "$type": "dimension",
+          "$value": "{theme.radius.option}",
+          "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
+        },
+        "element": {
+          "$type": "dimension",
+          "$value": "{theme.radius.element}",
+          "$description": "Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media."
+        },
+        "surface": {
+          "$type": "dimension",
+          "$value": "{theme.radius.surface}",
+          "$description": "Corner of cards, menus and dialogs."
+        }
+      },
+      "border-width": {
+        "default": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 1px default line for card and panel borders in order to give grouping where space alone does not, not separation: space separates groups here. A thin stroke does this by drawing a shared region with the least weight that still reads. So the lines stay quiet beside long text, because space separates groups (elevation.definition) and AA is the floor (accessibility.definition).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "border-width.default": {
+      "headline": "One thin line.",
+      "line": "Edges stay faint, so the reading leads."
+    },
+    "radius.badge": {
+      "headline": "Round tags.",
+      "line": "Badges and chips read as soft labels."
+    },
+    "radius.control": {
+      "headline": "Soft controls.",
+      "line": "Buttons and inputs have a friendly, round corner."
+    },
+    "radius.element": {
+      "headline": "Soft items.",
+      "line": "Rows, text areas and media share one round corner."
+    },
+    "radius.option": {
+      "headline": "Corners that nest.",
+      "line": "An option's corner fits inside its menu's corner."
+    },
+    "radius.surface": {
+      "headline": "Round cards.",
+      "line": "Cards and dialogs feel calm and soft."
+    }
+  }
+}

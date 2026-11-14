@@ -1,0 +1,153 @@
+{
+  "id": "iconography",
+  "kind": "scope",
+  "title": "Iconography",
+  "description": "When icons appear and how they look.",
+  "owns": ["size.icon", "icon.stroke-width"],
+  "lands_in": [
+    "accordion",
+    "alert",
+    "attachment",
+    "avatar",
+    "breadcrumb",
+    "button",
+    "button-group",
+    "calendar",
+    "checkbox",
+    "combobox",
+    "command",
+    "context-menu",
+    "dialog",
+    "dropdown-menu",
+    "icon",
+    "input-group",
+    "input-otp",
+    "item",
+    "menubar",
+    "native-select",
+    "navigation-menu",
+    "pagination",
+    "radio-group",
+    "resizable",
+    "select",
+    "sheet",
+    "sidebar",
+    "slider",
+    "spinner",
+    "switch",
+    "toggle"
+  ],
+  "situations": ["icon-alone", "row-action", "icon-beside-text"],
+  "questions": [
+    {
+      "id": "iconography.roles",
+      "method": "roles",
+      "text": "What do icons do?",
+      "description": "The jobs icons carry.",
+      "options": [
+        {
+          "id": "actions-status",
+          "label": "Actions and status",
+          "creates": ["icon", "icon-stroke"]
+        },
+        {
+          "id": "actions-status-nav",
+          "label": "Actions, status and navigation",
+          "creates": ["icon", "icon-stroke"]
+        },
+        {
+          "id": "decoration-too",
+          "label": "Those and decoration",
+          "creates": ["icon", "icon-stroke"]
+        }
+      ]
+    },
+    {
+      "id": "iconography.count",
+      "method": "count",
+      "text": "How many icon sizes exist?",
+      "description": "The number of icon sizes.",
+      "options": [
+        {
+          "id": "one",
+          "label": "One",
+          "creates": []
+        },
+        {
+          "id": "two",
+          "label": "Two",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "iconography.definition",
+      "method": "definition",
+      "text": "What icon style and stroke?",
+      "description": "Open DS draws every icon with one open-source set, Lucide, which draws in lines. The style sets how heavy the line is, or whether the icon sits in a contained shape; the answer names the stroke width.",
+      "options": [
+        {
+          "id": "outline",
+          "label": "Outline",
+          "creates": []
+        },
+        {
+          "id": "bold",
+          "label": "Bold stroke",
+          "creates": []
+        },
+        {
+          "id": "contained",
+          "label": "Contained",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "iconography.values",
+      "method": "values",
+      "text": "How big are icons next to text?",
+      "description": "Icon size relative to text.",
+      "options": [
+        {
+          "id": "match-text",
+          "label": "Match the text",
+          "creates": []
+        },
+        {
+          "id": "larger",
+          "label": "Larger than the text",
+          "creates": []
+        }
+      ]
+    },
+    {
+      "id": "iconography.lands",
+      "method": "lands",
+      "text": "Where do icons work hardest?",
+      "description": "The place where icons are seen most.",
+      "options": [
+        {
+          "id": "toolbars-rows",
+          "label": "Toolbars and rows",
+          "creates": []
+        },
+        {
+          "id": "status",
+          "label": "Status and messages",
+          "creates": []
+        },
+        {
+          "id": "navigation",
+          "label": "Navigation",
+          "creates": []
+        },
+        {
+          "id": "buttons",
+          "label": "Buttons and calls to action",
+          "creates": []
+        }
+      ]
+    }
+  ]
+}

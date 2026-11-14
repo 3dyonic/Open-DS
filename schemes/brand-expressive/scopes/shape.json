@@ -1,0 +1,190 @@
+{
+  "description": "The shape scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "shape",
+  "answers": [
+    {
+      "question": "shape.roles",
+      "option": "control-container",
+      "why": "Pills everywhere; badges share the control corner.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.count",
+      "option": "two",
+      "why": "Pill controls and large container corners.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "question": "shape.definition",
+      "option": "fixed",
+      "why": "One brand, one set of corners.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.values",
+      "option": "pill",
+      "why": "Pill controls feel playful.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.lands",
+      "option": "buttons-badges",
+      "why": "Pill buttons are the signature shape.",
+      "because": [
+        "brand.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "control-corner",
+      "use": "radius.control (pill)",
+      "not": "Sharp corners",
+      "why": "Pills match the brand's round, playful shapes. Sharp corners would feel corporate.",
+      "because": [
+        "shape.values"
+      ]
+    },
+    {
+      "situation": "status-shape",
+      "use": "radius.badge (pill)",
+      "not": "A rectangle",
+      "why": "Pills match the controls.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "situation": "option-in-list",
+      "use": "radius.option",
+      "not": "radius.control",
+      "why": "Round options nest inside the round menu, so a menu feels as playful as the buttons.",
+      "because": [
+        "brand.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "growing-element",
+      "use": "radius.element",
+      "not": "radius.control",
+      "why": "A pill corner breaks when a text area grows to many lines. The element corner stays round at any height.",
+      "because": [
+        "brand.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "surface-corner",
+      "use": "radius.surface",
+      "not": "Small corners",
+      "why": "Big round corners make cards feel like friendly objects.",
+      "because": [
+        "brand.q1",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "edges-and-dividers",
+      "use": "border-width.default",
+      "not": "A hairline",
+      "why": "A bold edge matches the bold type and vivid color.",
+      "because": [
+        "brand.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "situation": "focus-gap",
+      "use": "focus.ring.offset",
+      "not": "A ring that touches the control",
+      "why": "The gap keeps the ring visible on vivid fills.",
+      "because": [
+        "people.q2",
+        "color.values"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "radius": {
+        "control": {
+          "$type": "dimension",
+          "$value": "{theme.radius.control}",
+          "$description": "Corner of buttons and inputs."
+        },
+        "badge": {
+          "$type": "dimension",
+          "$value": "{theme.radius.badge}",
+          "$description": "Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks."
+        },
+        "option": {
+          "$type": "dimension",
+          "$value": "{theme.radius.option}",
+          "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
+        },
+        "element": {
+          "$type": "dimension",
+          "$value": "{theme.radius.element}",
+          "$description": "Corner of an element that holds content and can grow past one line: a list item, an accordion row, a text area, a calendar, an attachment, a skeleton or media."
+        },
+        "surface": {
+          "$type": "dimension",
+          "$value": "{theme.radius.surface}",
+          "$description": "Corner of cards, menus and dialogs."
+        }
+      },
+      "border-width": {
+        "default": {
+          "$type": "dimension",
+          "$value": "{border-width.2}",
+          "$description": "Every border.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 2px default line for card borders in order to give grouping in a bold tone. A heavier stroke does this by drawing a shared region with the weight of the bold type beside it. So each card holds its offer next to vivid color, because cards separate groups (elevation.definition), AA holds on every color (accessibility.definition) and the brand is bold (brand.q1).",
+              "because": [
+                "elevation.definition",
+                "accessibility.definition",
+                "brand.q1"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "border-width.default": {
+      "headline": "A bold line.",
+      "line": "Two-pixel edges that hold their own beside vivid color."
+    },
+    "radius.badge": {
+      "headline": "Pill tags.",
+      "line": "Badges and chips are fully round."
+    },
+    "radius.control": {
+      "headline": "Pill buttons.",
+      "line": "Fully round controls that feel friendly to press."
+    },
+    "radius.element": {
+      "headline": "Round items.",
+      "line": "Rows and media keep a generous corner."
+    },
+    "radius.option": {
+      "headline": "Round options.",
+      "line": "Options nest inside the round menu."
+    },
+    "radius.surface": {
+      "headline": "Big round cards.",
+      "line": "Cards and dialogs feel soft and bold."
+    }
+  }
+}

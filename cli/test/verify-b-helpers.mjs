@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { extractRef } from "../src/quality/extract.mjs";
+import { storedScheme } from "../src/schemes.mjs";
 import { compareSnapshots } from "../src/quality/scorecard.mjs";
 import { DEFAULT_PARAMS, paramsFrom } from "../src/quality/params.mjs";
 
@@ -20,8 +21,9 @@ export function sandbox() {
 
 export const drop = (root) => rmSync(root, { recursive: true, force: true });
 
+// An edited scheme goes in a single file, which the loader reads in place of the scheme's folder.
 export const schemePath = (root, id) => join(root, "schemes", `${id}.json`);
-export const readScheme = (root, id) => JSON.parse(readFileSync(schemePath(root, id), "utf8"));
+export const readScheme = (root, id) => storedScheme(id, { schemes: join(root, "schemes") });
 
 /** Read a value at a dotted path (array of keys). */
 export function get(obj, path) {
@@ -41,7 +43,7 @@ export const snap = (root, ids) => extractRef({ root, css: false, blast: false, 
  * then restore the original files. `mutate` gets an object { [id]: parsedScheme }.
  */
 export async function withEdits(root, ids, mutate) {
-  const originals = Object.fromEntries(ids.map((id) => [id, readFileSync(schemePath(root, id), "utf8")]));
+  const originals = Object.fromEntries(ids.map((id) => [id, JSON.stringify(readScheme(root, id))]));
   const approvals = join(root, "harness", "quality-approvals.json");
   const approvalsText = readFileSync(approvals, "utf8");
   const schemes = Object.fromEntries(ids.map((id) => [id, JSON.parse(originals[id])]));
@@ -50,7 +52,7 @@ export async function withEdits(root, ids, mutate) {
     for (const id of ids) writeFileSync(schemePath(root, id), JSON.stringify(schemes[id], null, 2));
     return await snap(root, ids);
   } finally {
-    for (const id of ids) writeFileSync(schemePath(root, id), originals[id]);
+    for (const id of ids) rmSync(schemePath(root, id), { force: true });
     writeFileSync(approvals, approvalsText);
   }
 }

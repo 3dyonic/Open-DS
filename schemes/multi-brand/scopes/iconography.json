@@ -1,0 +1,126 @@
+{
+  "description": "The iconography scope of Multi-brand: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "iconography",
+  "answers": [
+    {
+      "question": "iconography.roles",
+      "option": "actions-status-nav",
+      "why": "Icons for actions, status and navigation.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "iconography.count",
+      "option": "one",
+      "why": "One size next to text.",
+      "because": [
+        "iconography.values"
+      ]
+    },
+    {
+      "question": "iconography.definition",
+      "option": "outline",
+      "why": "One outline set for every brand, at a 1.5px stroke.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "iconography.values",
+      "option": "match-text",
+      "why": "Icons match the text.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "iconography.lands",
+      "option": "navigation",
+      "why": "Icons help most in navigation.",
+      "because": [
+        "people.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "icon-alone",
+      "use": "Not used: always add a word; a popover explains a fee",
+      "not": "An icon button with a hover hint",
+      "why": "On touch screens hover hints never show; a word says what will happen.",
+      "because": [
+        "accessibility.values",
+        "iconography.roles"
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Button ghost with a word",
+      "not": "An icon alone",
+      "why": "A word says what will happen.",
+      "because": [
+        "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
+      ]
+    },
+    {
+      "situation": "icon-beside-text",
+      "use": "size.icon and icon.stroke-width",
+      "not": "A brand-specific icon set",
+      "why": "One icon set and size serve every brand; only the color changes.",
+      "because": [
+        "business.q2",
+        "brand.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.16}",
+          "$description": "Icon size next to text.",
+          "$extensions": {
+            "open-ds": {
+              "why": "16px matches the 16px body text an icon sits beside, so one icon size serves every brand and every label.",
+              "because": [
+                "iconography.values",
+                "iconography.count"
+              ]
+            }
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$type": "number",
+          "$value": "{stroke-width.1_5}",
+          "$description": "The line weight of every icon, on Lucide's 24px grid.",
+          "$extensions": {
+            "open-ds": {
+              "why": "A stroke width of 1.5px draws the one outline set every brand shares; brands change the icon color, never its weight.",
+              "because": [
+                "iconography.definition",
+                "business.q2"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.icon": {
+      "headline": "An icon beside a word.",
+      "line": "Icons match the text they sit with."
+    }
+  }
+}

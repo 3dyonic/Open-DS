@@ -1,0 +1,59 @@
+{
+  "description": "The theming scope of Multi-brand: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "theming",
+  "answers": [
+    {
+      "question": "theming.roles",
+      "option": "mode-brand",
+      "why": "Brand and mode both change.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.count",
+      "option": "several",
+      "why": "Three brands in light and dark: six themes.",
+      "because": [
+        "business.q2",
+        "theming.values"
+      ]
+    },
+    {
+      "question": "theming.definition",
+      "option": "brand-modes",
+      "why": "Brands are theme modes over shared semantics.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.values",
+      "option": "light-dark",
+      "why": "Light and dark ship for every brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.lands",
+      "option": "colors-type-shape",
+      "why": "A brand switch changes colors, fonts and corners.",
+      "because": [
+        "theming.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "dark-mode",
+      "use": "The dark mode of the active brand",
+      "not": "One dark theme for all brands",
+      "why": "Every brand ships light and dark.",
+      "because": [
+        "theming.values",
+        "theming.definition"
+      ]
+    }
+  ]
+}

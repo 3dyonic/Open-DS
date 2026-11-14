@@ -1,0 +1,333 @@
+{
+  "description": "The spacing scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "spacing",
+  "answers": [
+    {
+      "question": "spacing.roles",
+      "option": "gap-inset",
+      "why": "Few tables; no row role needed.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "spacing.count",
+      "option": "one",
+      "why": "One generous density.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.definition",
+      "option": "coarse",
+      "why": "Big, even steps make big moments.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "spacing.values",
+      "option": "spacious",
+      "why": "Big space makes big moments.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.lands",
+      "option": "sections",
+      "why": "Space works between big sections.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "related-items",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Air keeps big type readable.",
+      "because": [
+        "spacing.values"
+      ]
+    },
+    {
+      "situation": "between-sections",
+      "use": "space.gap.section and a color block",
+      "not": "A thin line",
+      "why": "Big space and color make each section a moment.",
+      "because": [
+        "elevation.definition"
+      ]
+    },
+    {
+      "situation": "table-row",
+      "use": "size.row (comfortable)",
+      "not": "A compact row",
+      "why": "Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm.",
+      "because": [
+        "spacing.values"
+      ]
+    },
+    {
+      "situation": "parts-of-one-item",
+      "use": "space.gap.tight",
+      "not": "space.gap.default",
+      "why": "An icon and its word sit close, so a call to action reads as one bold unit.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "siblings-in-a-row",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Air between items keeps big type readable.",
+      "because": [
+        "human.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "between-groups",
+      "use": "space.gap.group",
+      "not": "space.gap.default",
+      "why": "Big gaps give each group its own moment inside a section.",
+      "because": [
+        "human.q1",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "inside-a-control",
+      "use": "space.inset.control-x",
+      "not": "Padding set by eye",
+      "why": "Wide padding makes pill buttons bold and easy to hit with a thumb.",
+      "because": [
+        "brand.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-container",
+      "use": "space.inset.container",
+      "not": "Text that touches the card edge",
+      "why": "Generous padding lets each card hold its moment.",
+      "because": [
+        "human.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-cell",
+      "use": "space.inset.cell-x",
+      "not": "Narrow cell padding",
+      "why": "Tables are rare, so cells keep the page's airy rhythm.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "space": {
+        "$extensions": {
+          "open-ds": {
+            "use-cases": {
+              "gap.tight": {
+                "level": "component",
+                "relation": "inner",
+                "reach": "inline",
+                "multiple": 1
+              },
+              "gap.default": {
+                "level": "component",
+                "relation": "inner",
+                "multiple": 2
+              },
+              "gap.group": {
+                "level": "layout",
+                "relation": "inner",
+                "multiple": 5
+              },
+              "gap.section": {
+                "level": "layout",
+                "relation": "inner",
+                "reach": "section",
+                "multiple": 8
+              },
+              "inset.control-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 3.5
+              },
+              "inset.cell-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 2
+              },
+              "inset.container": {
+                "level": "layout",
+                "relation": "container",
+                "multiple": 4
+              }
+            },
+            "follows": [
+              "spacing.definition",
+              "spacing.values"
+            ],
+            "why": "Big, even steps give an 8px base. Spacious density opens the layout gaps wide, five and eight steps, so big moments have room."
+          }
+        },
+        "gap": {
+          "tight": {
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 8px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 8px), the smallest of the big even steps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So a call to action reads as one bold unit, because steps are big and even (spacing.definition) and the content is images and campaigns (content.q1).",
+                "because": [
+                  "spacing.definition",
+                  "content.q1"
+                ]
+              }
+            }
+          },
+          "default": {
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by the rule given for space.gap.tight, so air between items keeps big type readable, because the layout is spacious (spacing.values) and delight is the point (human.q1).",
+                "because": [
+                  "spacing.values",
+                  "human.q1"
+                ]
+              }
+            }
+          },
+          "group": {
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 40px for the group gap between groups inside a section in order to group and separate: five base steps (5 × 8px), two and a half default gaps. Distance does this by the rule given for space.gap.tight, so each group has its own moment inside a section, because the layout is spacious (spacing.values) and each section holds one big idea (content.q2).",
+                "because": [
+                  "spacing.values",
+                  "content.q2"
+                ]
+              }
+            }
+          },
+          "section": {
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 64px for the section gap between big sections in order to group and separate: eight base steps (8 × 8px), four default gaps. Distance does this by the rule given for space.gap.tight, so each section, with its color block, is a moment of its own, because space works between big sections (spacing.lands) and the layout is spacious (spacing.values).",
+                "because": [
+                  "spacing.lands",
+                  "spacing.values"
+                ]
+              }
+            }
+          }
+        },
+        "inset": {
+          "control-x": {
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 28px for the inline padding inside controls in order to give content room inside its box: three and a half base steps (3.5 × 8px), wider than a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So pill buttons look bold and are easy to hit with a thumb, because the brand is bold (brand.q1) and visitors are on the move (scenarios.q1).",
+                "because": [
+                  "spacing.values",
+                  "spacing.roles",
+                  "spacing.definition",
+                  "spacing.lands",
+                  "brand.q1",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          },
+          "container": {
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for the padding inside cards and dialogs in order to give content room inside its box: four base steps (4 × 8px), twice the default gap. Padding does this by the rule given for space.inset.control-x, so each card holds its moment, because delight is the point (human.q1) and the brand is bold (brand.q1).",
+                "because": [
+                  "spacing.values",
+                  "spacing.roles",
+                  "spacing.definition",
+                  "spacing.lands",
+                  "human.q1",
+                  "brand.q1"
+                ]
+              }
+            }
+          },
+          "cell-x": {
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by the rule given for space.inset.control-x, so the rare table keeps the page's airy rhythm, because the content is images and campaigns, with few tables (content.q1), and the layout is spacious (spacing.values).",
+                "because": [
+                  "content.q1",
+                  "spacing.values"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "size": {
+        "row": {
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 52px for one table row in order to keep the eye on its row: by inheritance, as the scheme has no row role and a row holds controls, so size.row takes size.control.default, one 52px control tall. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So the rare table keeps the brand's airy rhythm, because spacing has gaps and insets only (spacing.roles) and the smallest target is touch size (accessibility.values).",
+              "because": [
+                "spacing.roles",
+                "accessibility.values"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.row": {
+      "headline": "One roomy row.",
+      "line": "Each row is one control tall, easy to tap."
+    },
+    "space.gap.default": {
+      "headline": "Items in a group.",
+      "line": "Each item has room to stand out."
+    },
+    "space.gap.group": {
+      "headline": "Between groups.",
+      "line": "A wide gap lets each group make its point."
+    },
+    "space.gap.section": {
+      "headline": "A new section.",
+      "line": "A big pause between the parts of a launch page."
+    },
+    "space.gap.tight": {
+      "headline": "These belong together.",
+      "line": "An icon and its word read as one item."
+    },
+    "space.inset.cell-x": {
+      "headline": "Room in a cell.",
+      "line": "Values in a table stay clear of the column lines."
+    },
+    "space.inset.container": {
+      "headline": "Room inside a card.",
+      "line": "Big padding lets images and words breathe."
+    },
+    "space.inset.control-x": {
+      "headline": "Room inside a control.",
+      "line": "Wide padding gives pill buttons their shape."
+    }
+  }
+}

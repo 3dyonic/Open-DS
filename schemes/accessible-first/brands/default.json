@@ -1,0 +1,2206 @@
+{
+  "description": "The default brand of Accessible first: its theme picks in each mode. The loader joins it with scheme.json.",
+  "tokens": {
+    "brands": {
+      "default": {
+        "label": "Accessible first",
+        "description": "The single brand: strong blue on true neutral, high contrast everywhere.",
+        "theme": {
+          "$description": "The Accessible first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses teal, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are blue, teal, green, amber, gray: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral gray.",
+          "base": {
+            "radius": {
+              "control": {
+                "$type": "dimension",
+                "$value": "{radius.6}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.6: We use a 6px corner for buttons and inputs in order to mark their role as controls in a calm, clear tone, by brand convention. A slight radius does this by softening the edge while the box keeps a clear rectangle. So every field and button reads plainly as something to use, because the brand is calm and clear (brand.q1) and corners are slightly rounded (shape.values).",
+                    "because": [
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
+                    ]
+                  }
+                }
+              },
+              "badge": {
+                "$type": "dimension",
+                "$value": "{radius.4}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.4: We use a 4px corner for badges and checkboxes in order to give marks a role of their own, apart from the 6px controls. The smallest radius does this by keeping a clear rectangle around a word or a check. So a status never looks like a pill button, because badges get their own corner (shape.roles) and the brand is clear (brand.q1).",
+                    "because": [
+                      "shape.roles",
+                      "shape.values",
+                      "brand.q1"
+                    ]
+                  }
+                }
+              },
+              "option": {
+                "$type": "dimension",
+                "$value": "{radius.4}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.4: We use a 4px corner for menu options in order to keep nesting by the relation: the 8px surface corner minus the panel's 4px padding. The inner radius does this by following the outer curve at the padding's distance. So an option's curve runs parallel to its menu's curve, because surfaces take 8px (shape.roles, brand.q1) and the panel's padding is 4px (spacing.values).",
+                    "because": [
+                      "shape.roles",
+                      "shape.count",
+                      "brand.q1",
+                      "spacing.values"
+                    ]
+                  }
+                }
+              },
+              "element": {
+                "$type": "dimension",
+                "$value": "{radius.6}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.6: We use the 6px control corner for boxes that grow in order to keep their role, as objects of one family, by inheritance from the control corner. The same radius does this by giving a text area or a list row the curve of the fields beside it. So people see one family of boxes on a form, because the control corner is slight, not a pill (shape.values), and the brand is clear (brand.q1).",
+                    "because": [
+                      "shape.values",
+                      "brand.q1",
+                      "content.q2"
+                    ]
+                  }
+                }
+              },
+              "surface": {
+                "$type": "dimension",
+                "$value": "{radius.8}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.8: We use an 8px corner for cards, menus and dialogs in order to make each card read as a separate object, in a calm tone by brand convention. The largest radius does this by breaking the outline with a curve wider than the 6px controls inside it. So a step card reads as one object that holds its fields, because containers get their own corner (shape.roles, shape.count) and the brand is calm and clear (brand.q1).",
+                    "because": [
+                      "shape.roles",
+                      "shape.count",
+                      "brand.q1"
+                    ]
+                  }
+                }
+              }
+            },
+            "type": {
+              "display": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for display text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "title": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for title text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "heading": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "body": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for body text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "label": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "caption": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for caption text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "data": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              }
+            },
+            "color": {
+              "text": {
+                "on-light": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.900}",
+                  "$description": "Text on any light fill, in either mode: the light mode's body text.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.900: the text for every light fill, 18.42:1 on surface.default, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "on-dark": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.0}",
+                  "$description": "Text on any dark fill, in either mode: white.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.0: the text for every dark fill, 7.26:1 on action.primary, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "info-on-light": {
+                  "$type": "color",
+                  "$value": "{color.teal.light.800}",
+                  "$description": "info text on a light info fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "teal.light.800: info text on its own tint, 12.76:1 on status.info.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "info-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.teal.light.100}",
+                  "$description": "info text on a dark info fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "teal.light.100: info text on its own tint, 12.32:1 on status.info.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "success-on-light": {
+                  "$type": "color",
+                  "$value": "{color.green.light.800}",
+                  "$description": "success text on a light success fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "success-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.green.light.100}",
+                  "$description": "success text on a dark success fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "green.light.100: success text on its own tint, 13.1:1 on status.success.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "warning-on-light": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.800}",
+                  "$description": "warning text on a light warning fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "warning-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.100}",
+                  "$description": "warning text on a dark warning fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "amber.light.100: warning text on its own tint, 12.37:1 on status.warning.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "danger-on-light": {
+                  "$type": "color",
+                  "$value": "{color.red.light.800}",
+                  "$description": "danger text on a light danger fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "danger-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.red.light.100}",
+                  "$description": "danger text on a dark danger fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "red.light.100: danger text on its own tint, 12.25:1 on status.danger.subtle, above the 7:1 floor.",
+                      "because": [
+                        "color.lands",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "light": {
+            "color": {
+              "neutral": {
+                "0": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.0: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "50": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.50: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "100": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.100: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "150": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "because": [
+                        "color.definition"
+                      ],
+                      "why": "gray.light.150: We use the step between 100 and 200 of the gray ramp in light, in order to keep one step set on every ramp in both modes. The step does this by sitting even in contrast between its neighbours, on the scheme's linear step curve. So light and dark offer the same steps, because the gray ramp sets the steps (color.definition)."
+                    }
+                  }
+                },
+                "200": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.200: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "300": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.300}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.300: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "400": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.400}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.400: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "500": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.500: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "600": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.600: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "700": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.700: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "800": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.800}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.800: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "900": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.900: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "950": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.950}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.light.950: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.neutral.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.50, under content: 1.07:1 from surface.default, so cards and panels stand forward.",
+                      "because": [
+                        "elevation.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.neutral.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.0: the base for content; body text reads 18.42:1 on it, above the 7:1 floor.",
+                      "because": [
+                        "elevation.roles",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.0, the same as content (surface.default): a menu stands out by its edge alone, not by its fill.",
+                      "because": [
+                        "elevation.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "floating": {
+                  "$type": "color",
+                  "$value": "{color.neutral.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.0: We use white, as raised, for menus, dialogs, sheets and toasts in light, in order to keep a floating layer as plain as the content it covers. The fill does this by staying white while its edge sets it off the page. So people see what floats without a tint of its own, because the roles answer names the layers that rise (elevation.roles).",
+                      "because": [
+                        "elevation.roles"
+                      ]
+                    }
+                  }
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.100, a step below content (1.17:1 on surface.default), so table headers and wells read as recessed.",
+                      "because": [
+                        "elevation.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "highlight": {
+                  "$type": "color",
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+                      "because": [
+                        "accessibility.roles",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: every state, including loading, gets its own value.",
+                      "because": [
+                        "accessibility.roles",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "blue.light.100: a tint of the brand, 1.18:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.neutral.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.900: the reverse of content for short messages; its text reads, 18.42:1 on surface.inverse, above the 7:1 floor.",
+                      "because": [
+                        "elevation.roles",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.light.scrim}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+                      "because": [
+                        "elevation.lands"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.neutral.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.900: the strongest text step, 18.42:1 on surface.default, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.neutral.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.700: supporting text, 12.63:1 on surface.default, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: We use the quietest readable gray for hints and captions in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.0:1 on surface.default and 6.54:1 on the canvas. The canvas pair falls under 7:1 by a recorded exception: AA for muted text, as neutral.600 would read 1.34:1 from secondary and no longer look secondary. So a hint reads as a hint and every line you must read keeps AAA, because the floor is AAA for text you must read (accessibility.definition) and the neutral ramp sets the steps (color.definition).",
+                      "because": [
+                        "accessibility.definition",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.text.on-dark}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-dark: the text its fill's tone picks, 18.42:1 on surface.inverse, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.text.on-dark}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-dark: the text its fill's tone picks, 7.26:1 on action.primary, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.light.700: a link, set apart by its hue, 10.5:1 on surface.default, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.text.on-dark}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-dark: the text its fill's tone picks, 8.55:1 on action.danger, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.36:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: We use the default line's step for the edge of menus, dialogs and other raised layers, in order to give separation between a layer and what lies under it. The ring does this by a 1px line, 1.45:1 on surface.raised, the layer's only edge, as nothing here casts a shadow. So people see where a menu ends on any page, because raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ]
+                    }
+                  }
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: the edge of a control people must find, 7.0:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.light.600: the focus ring, so the keyboard's place is never lost, 7.26:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.light.600: the edge beside a selected fill, so selection is never color alone, 7.26:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "blue.light.600: brand blue marks the main action, with AAA white text (7.26:1).",
+                        "because": [
+                          "color.values",
+                          "accessibility.definition",
+                          "color.count",
+                          "color.definition",
+                          "color.lands"
+                        ]
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "blue.light.700: one step from the primary action (blue.light.600), so the pointer shows; its label still reads 10.5:1, above the 7:1 floor.",
+                        "because": [
+                          "color.definition",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.neutral.0}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "neutral.0: the secondary action's fill, and its label reads 18.42:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.values",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.neutral.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.74:1, above the 7:1 floor.",
+                        "because": [
+                          "color.definition",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "red.light.700: the danger action's fill, and its label reads 8.55:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.values",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.light.800}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "red.light.800: one step from the danger action (red.light.700), so the pointer shows; its label still reads 12.7:1, above the 7:1 floor.",
+                        "because": [
+                          "color.definition",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    },
+                    "$description": "One step from the danger fill, so the pointer shows."
+                  }
+                }
+              },
+              "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "teal.light.600: info reads as text and icons, 7.95:1 on surface.default, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "teal.light.100: the soft info fill behind a message, and its text reads 12.76:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.light.600: success marks icons and edges, 5.38:1 on surface.default, over 3:1; its text uses success-on-light, which reads at the floor.",
+                        "because": [
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "green.light.100: the soft success fill behind a message, and its text reads 10.79:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.light.600: warning marks icons and edges, 6.16:1 on surface.default, over 3:1; its text uses warning-on-light, which reads at the floor.",
+                        "because": [
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "amber.light.100: the soft warning fill behind a message, and its text reads 11.09:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "red.light.700: danger reads as text and icons, 8.55:1 on surface.default, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "red.light.100: the soft danger fill behind a message, and its text reads 9.9:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.26:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.light.100: category 1's tag fill is the 100 step of the blue its 600 dot uses, so tint and dot name one category. Text.primary reads 15.61:1 on the blue tint, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "color.count"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "teal.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.95:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "teal.light.100: category 2's tag fill is the 100 step of the teal its 600 dot uses, so tint and dot name one category. Text.primary reads 15.61:1 on the teal tint, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "color.count"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 16.13:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.49:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.neutral.500}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 7.0:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.neutral.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.74:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: 7.0:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              }
+            },
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.none: We use no shadow for cards in order to keep them at the page's height: the scale gives no layer a step here. The missing shade does this by leaving the card flat, framed by a strong line. So the page stays easy to read at high zoom, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
+                    "because": [
+                      "elevation.roles",
+                      "elevation.values"
+                    ]
+                  }
+                }
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.none}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.none: We use no shadow for menus and dialogs in order to show their height without a cast shade: the scale gives no layer a step here. The missing shade does this by leaving the layer to its border and the dimmed page behind it. So a dialog stands out at any zoom with no blur to read through, because nothing rises (elevation.roles) and there are no shadows (elevation.values).",
+                    "because": [
+                      "elevation.roles",
+                      "elevation.values"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "dark": {
+            "color": {
+              "neutral": {
+                "0": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.0: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "50": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.50: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "100": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.100: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "150": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "because": [
+                        "color.definition"
+                      ],
+                      "why": "gray.dark.150: We use the step between 100 and 200 of the gray ramp for the raised surface in dark, in order to put a layer one step above the one below it. The step does this by its place on the scheme's linear curve, which spaces the dark steps by contrast. So text and lines on it keep their contrast, because the gray ramp sets the steps (color.definition)."
+                    }
+                  }
+                },
+                "200": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.200: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "300": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.300}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.300: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "400": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.400}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.400: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "500": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.500: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "600": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.600: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "700": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.700: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "800": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.800}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.800: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "900": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.900: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "950": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.950}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "gray.dark.950: the scheme's neutral is gray. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.neutral.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.0, under content: 1.24:1 from surface.default, so cards and panels stand forward.",
+                      "because": [
+                        "elevation.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.100: We use the step above the page for content in dark in order to leave a darker step free for wells, as the gray's two darkest steps are too close to tell apart. The fill does this by moving content one step up: sunken reads 1.16:1 below it and raised 1.12:1 above it. So people tell wells and menus from content, and body text still reads 14.85:1, because dark ships as standard (theming.values), text keeps the AAA floor (accessibility.definition) and depth reads from tone and lines (elevation.definition).",
+                      "because": [
+                        "theming.values",
+                        "accessibility.definition",
+                        "elevation.definition"
+                      ]
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.150: We use one step lighter than content for parts that rise inside the page in dark, in order to show height by tone, 1.12:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. Menus, dialogs and other floating layers take the next step up (surface.floating). So people see what rises inside the page by its tone, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+                      "because": [
+                        "theming.values",
+                        "elevation.roles",
+                        "elevation.definition"
+                      ]
+                    }
+                  }
+                },
+                "floating": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.200: We use one step lighter than raised for menus, dialogs, sheets and toasts in dark, in order to show that they float above everything else, 1.12:1 on surface.raised. The lighter fill does this by the dark-mode depth rule, and keeps what sits on it readable: body text reads 11.79:1, muted text 6.09:1, and dividers and the ring stay lighter at 1.8:1. So people read a menu as well as the page under it, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+                      "because": [
+                        "theming.values",
+                        "elevation.roles"
+                      ]
+                    }
+                  }
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.neutral.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.50: We use one step darker than content for table headers and wells in dark, in order to show depth by tone, 1.16:1 on surface.default. The darker fill does this by the depth rule turned downward: what sits lower is darker. So a well reads as recessed and never as a raised card, because dark ships as standard (theming.values) and depth reads from tone and lines (elevation.definition).",
+                      "because": [
+                        "theming.values",
+                        "elevation.definition"
+                      ]
+                    }
+                  }
+                },
+                "highlight": {
+                  "$type": "color",
+                  "$value": "{color.neutral.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on the surfaces it meets: 1.16:1 on surface.default, 1.3:1 on surface.raised and 1.46:1 on surface.floating. The fill does this by stepping darker, as raised and floating layers took the lighter step; muted text still reads 8.89:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+                      "because": [
+                        "accessibility.roles",
+                        "color.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
+                },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.200: We use the floating layer's step for a pressed sidebar item in dark in order to show a press as a change of its own, apart from the hover band and from the page. The fill does this by stepping lighter while the hover band steps darker: 1.46:1 from the highlight, 1.26:1 from content and 1.57:1 from the canvas, which keeps the darkest step. A pressed item never sits on a floating layer, so sharing that step hides nothing. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+                      "because": [
+                        "theming.values",
+                        "accessibility.roles",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "blue.dark.100: a tint of the brand, 1.04:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.neutral.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.900: the reverse of content for short messages; its text reads, 17.2:1 on surface.inverse, above the 7:1 floor.",
+                      "because": [
+                        "elevation.roles",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.dark.scrim}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+                      "because": [
+                        "elevation.lands"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.neutral.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.900: the strongest text step, 14.85:1 on surface.default, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.neutral.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.700: supporting text, 10.95:1 on surface.default, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.neutral.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.67:1 on surface.default and 6.09:1 on surface.floating, the lightest surface it meets. Floating layers fall under 7:1 by the recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).",
+                      "because": [
+                        "accessibility.definition",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.text.on-light}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-light: the text its fill's tone picks, 17.2:1 on surface.inverse, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.text.on-light}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-light: the text its fill's tone picks, 8.74:1 on action.primary, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.dark.700: a link, set apart by its hue, 9.33:1 on surface.default, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.text.on-light}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-light: the text its fill's tone picks, 7.76:1 on action.danger, above the 7:1 floor.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.neutral.300}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.300: We use the step above the floating surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest 1.8:1, on surface.floating. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values).",
+                      "because": [
+                        "elevation.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.neutral.300}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.300: We use the step above the floating surface for a 1px ring around raised and floating layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 2.02:1 on surface.raised and 1.8:1 on surface.floating (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "because": [
+                        "theming.values",
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ]
+                    }
+                  }
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.neutral.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading 7.67:1 on surface.default and 6.09:1 on surface.floating, where neutral.500 gave only 4.17:1 on the floating layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of 3:1 with room to spare (accessibility.definition) and dark ships as standard (theming.values).",
+                      "because": [
+                        "accessibility.definition",
+                        "theming.values"
+                      ]
+                    }
+                  }
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at 7:1 where focus moves through menus and dialogs. The ring does this by reading 9.33:1 on surface.default and 7.41:1 on surface.floating, where the key step (blue.dark.600) gave 6.0:1 on the floating layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition).",
+                      "because": [
+                        "accessibility.roles",
+                        "accessibility.definition",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.dark.600: the edge beside a selected fill, so selection is never color alone, 7.55:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "blue.dark.600: brand blue marks the main action, with AAA dark text (8.74:1).",
+                        "because": [
+                          "color.values",
+                          "accessibility.definition",
+                          "color.count",
+                          "color.definition",
+                          "color.lands"
+                        ]
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "blue.dark.700: one step from the primary action (blue.dark.600), so the pointer shows; its label still reads 10.8:1, above the 7:1 floor.",
+                        "because": [
+                          "color.definition",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.neutral.50}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "neutral.50: the secondary action's fill, and its label reads 17.2:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.values",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.neutral.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.85:1, above the 7:1 floor.",
+                        "because": [
+                          "color.definition",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "red.dark.600: the danger action's fill, and its label reads 7.76:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.values",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light",
+                        "why": "red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.92:1, above the 7:1 floor.",
+                        "because": [
+                          "color.definition",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    },
+                    "$description": "One step from the danger fill, so the pointer shows."
+                  }
+                }
+              },
+              "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "teal.dark.600: info reads as text and icons, 8.82:1 on surface.default, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "teal.dark.100: the soft info fill behind a message, and its text reads 12.32:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.dark.600: success reads as text and icons, 7.2:1 on surface.default, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "green.dark.100: the soft success fill behind a message, and its text reads 13.1:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.dark.600: warning reads as text and icons, 8.89:1 on surface.default, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "amber.dark.100: the soft warning fill behind a message, and its text reads 12.37:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.900}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at 7:1 in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading 12.39:1 on surface.default and 9.84:1 on surface.floating. Below it, the key (red.dark.600) gives 5.32:1 and red.dark.700 6.8:1 on the floating layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands).",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ]
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark",
+                        "why": "red.dark.100: the soft danger fill behind a message, and its text reads 12.25:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.lands",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.55:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.dark.100: in dark, category 1's tag fill moves to the dark blue ramp's 100 step under its dark 600 dot, so the light pairing of tint and dot holds. Text.primary reads 14.23:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "color.count"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "teal.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.82:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "teal.dark.100: in dark, category 2's tag fill moves to the dark teal ramp's 100 step under its dark 600 dot, so the light pairing of tint and dot holds. Text.primary reads 13.57:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "color.count"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.2:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 13.96:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.89:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 13.74:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.neutral.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 10.95:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.roles"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.neutral.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.85:1 on it, above the 7:1 floor.",
+                        "because": [
+                          "color.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
+                      }
+                    }
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: 5.24:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
+                }
+              }
+            },
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.none: We use the light pick for the dark card elevation in order to keep the height it sets, and the step does this by the same means, so the dark card elevation and the light pick never differ, because the step reads the same in dark (theming.values).",
+                    "because": [
+                      "theming.values"
+                    ]
+                  }
+                }
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.none}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.none: We use the light pick for the dark overlay elevation in order to keep the height it sets, and the step does this by the same means, so the dark overlay elevation and the light pick never differ, because the step reads the same in dark (theming.values).",
+                    "because": [
+                      "theming.values"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "neutral": {
+            "gray": "gray",
+            "temperature": "pure",
+            "why": "A pure gray adds no hue that could lower contrast or carry a meaning.",
+            "because": [
+              "color.values",
+              "color.definition"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

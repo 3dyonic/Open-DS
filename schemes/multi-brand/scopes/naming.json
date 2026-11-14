@@ -1,0 +1,58 @@
+{
+  "description": "The naming scope of Multi-brand: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "naming",
+  "answers": [
+    {
+      "question": "naming.roles",
+      "option": "tokens-keys",
+      "why": "Components get their own keys, shared by every brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "naming.count",
+      "option": "three",
+      "why": "Primitives, semantics and component keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.definition",
+      "option": "by-role",
+      "why": "Role names stay the same in every brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "naming.values",
+      "option": "kebab-paths",
+      "why": "Lowercase paths read the same everywhere.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.lands",
+      "option": "keys",
+      "why": "Components never change; brand primitives do.",
+      "because": [
+        "business.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "missing-token",
+      "use": "The closest semantic token, then ask for a new one",
+      "not": "A raw value or a brand primitive in the component",
+      "why": "A raw value shows the same in every brand, so it breaks the theme.",
+      "because": [
+        "naming.lands",
+        "theming.definition"
+      ]
+    }
+  ]
+}

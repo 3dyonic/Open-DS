@@ -1,0 +1,57 @@
+{
+  "description": "The theming scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "theming",
+  "answers": [
+    {
+      "question": "theming.roles",
+      "option": "mode",
+      "why": "One brand, so only the mode changes.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.count",
+      "option": "two",
+      "why": "Light and dark.",
+      "because": [
+        "theming.values"
+      ]
+    },
+    {
+      "question": "theming.definition",
+      "option": "single",
+      "why": "One publication, one brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.values",
+      "option": "light-dark",
+      "why": "Light and dark ship as standard; dark helps night reading.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "question": "theming.lands",
+      "option": "colors",
+      "why": "Only colors change.",
+      "because": [
+        "theming.roles"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "dark-mode",
+      "use": "The dark semantic mode",
+      "not": "Inverting images",
+      "why": "Only semantic colors change; the reading layout stays.",
+      "because": [
+        "theming.values"
+      ]
+    }
+  ]
+}

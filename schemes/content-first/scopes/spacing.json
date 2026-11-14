@@ -1,0 +1,332 @@
+{
+  "description": "The spacing scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "spacing",
+  "answers": [
+    {
+      "question": "spacing.roles",
+      "option": "gap-inset",
+      "why": "No dense tables, so no row role.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "spacing.count",
+      "option": "one",
+      "why": "One calm density.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.definition",
+      "option": "coarse",
+      "why": "Big, even steps suit long reading.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "spacing.values",
+      "option": "spacious",
+      "why": "Room around the text helps reading.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "spacing.lands",
+      "option": "reading",
+      "why": "Space is spent between paragraphs and sections.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "related-items",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Text needs air even inside a group.",
+      "because": [
+        "spacing.values"
+      ]
+    },
+    {
+      "situation": "between-sections",
+      "use": "space.gap.section, no line",
+      "not": "A divider line",
+      "why": "Space alone separates sections; lines add noise.",
+      "because": [
+        "elevation.definition"
+      ]
+    },
+    {
+      "situation": "table-row",
+      "use": "size.row (comfortable)",
+      "not": "A compact row",
+      "why": "Rows are read, not scanned.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "parts-of-one-item",
+      "use": "space.gap.tight",
+      "not": "space.gap.default",
+      "why": "An icon and its word sit close. Readers who visit now and then see one item, not two.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "siblings-in-a-row",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Items in a list need air, so each one reads on its own.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "between-groups",
+      "use": "space.gap.group",
+      "not": "space.gap.default",
+      "why": "A clear step between groups gives the reader a place to pause.",
+      "because": [
+        "tasks.q1",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-control",
+      "use": "space.inset.control-x",
+      "not": "Padding set by eye",
+      "why": "Wide padding gives each rare action room, so a button feels as calm as the text.",
+      "because": [
+        "tasks.q2",
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-container",
+      "use": "space.inset.container",
+      "not": "Text that touches the card edge",
+      "why": "Generous padding frames each card like a page in a magazine.",
+      "because": [
+        "brand.q1",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "inside-a-cell",
+      "use": "space.inset.cell-x",
+      "not": "Narrow cell padding",
+      "why": "Rows are read, not scanned. Cells get room like text does.",
+      "because": [
+        "tasks.q1"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "space": {
+        "$extensions": {
+          "open-ds": {
+            "use-cases": {
+              "gap.tight": {
+                "level": "component",
+                "relation": "inner",
+                "reach": "inline",
+                "multiple": 1
+              },
+              "gap.default": {
+                "level": "component",
+                "relation": "inner",
+                "multiple": 2
+              },
+              "gap.group": {
+                "level": "layout",
+                "relation": "inner",
+                "multiple": 4
+              },
+              "gap.section": {
+                "level": "layout",
+                "relation": "inner",
+                "reach": "section",
+                "multiple": 8
+              },
+              "inset.control-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 2.5
+              },
+              "inset.cell-x": {
+                "level": "component",
+                "relation": "container",
+                "reach": "inline",
+                "multiple": 2
+              },
+              "inset.container": {
+                "level": "layout",
+                "relation": "container",
+                "multiple": 3
+              }
+            },
+            "follows": [
+              "spacing.definition",
+              "spacing.values"
+            ],
+            "why": "Big, even steps give an 8px base. Spacious density doubles each gap: tight, default, group and section are 1, 2, 4 and 8 steps."
+          }
+        },
+        "gap": {
+          "tight": {
+            "$description": "Between things that belong together.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 8px for the tight gap between the parts of one item, such as an icon and its word, in order to group and separate: one base step (1 × 8px), the smallest of the big even steps. Distance does this by grouping what is near and separating what is far, as the eye reads proximity (Gestalt), so a gap between groups stays clearly larger than a gap inside one. So occasional readers see one item, not two, because steps are big and even (spacing.definition) and visitors see the interface fresh each time (human.q2).",
+                "because": [
+                  "spacing.definition",
+                  "human.q2"
+                ]
+              }
+            }
+          },
+          "default": {
+            "$description": "Between items in one group.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the default gap between the items of one group in order to group and separate: two base steps (2 × 8px), twice the tight gap. Distance does this by the rule given for space.gap.tight, so each item in a list reads on its own, because the layout is spacious (spacing.values) and reading comfort is the measure (outcomes.q1).",
+                "because": [
+                  "spacing.values",
+                  "outcomes.q1"
+                ]
+              }
+            }
+          },
+          "group": {
+            "$description": "Between groups.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 32px for the group gap between groups in a layout in order to group and separate: four base steps (4 × 8px), twice the default gap. Distance does this by the rule given for space.gap.tight, so the reader gets a place to pause between groups, because the layout is spacious (spacing.values) and people read from start to end (tasks.q1).",
+                "because": [
+                  "spacing.values",
+                  "tasks.q1"
+                ]
+              }
+            }
+          },
+          "section": {
+            "$description": "Between page sections.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 64px for the section gap between page sections in order to group and separate: eight base steps (8 × 8px), twice the group gap. Distance does this by the rule given for space.gap.tight, so space alone separates sections, with no line to add noise, because the layout is spacious (spacing.values) and space is spent between paragraphs and sections (spacing.lands).",
+                "because": [
+                  "spacing.values",
+                  "spacing.lands"
+                ]
+              }
+            }
+          }
+        },
+        "inset": {
+          "control-x": {
+            "$description": "Horizontal padding inside controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 20px for the inline padding inside controls in order to give content room inside its box: two and a half base steps (2.5 × 8px), wider than a table cell. Padding does this by keeping content off the edge of its box, so the content reads as part of that box, and by setting the size of the box with the content. So each rare action has room and a button feels as calm as the text, because actions are rare (tasks.q2) and the brand is warm (brand.q1).",
+                "because": [
+                  "spacing.values",
+                  "spacing.roles",
+                  "spacing.definition",
+                  "spacing.lands",
+                  "tasks.q2",
+                  "brand.q1"
+                ]
+              }
+            }
+          },
+          "container": {
+            "$description": "Padding inside cards and dialogs.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 24px for the padding inside cards and dialogs in order to give content room inside its box: three base steps (3 × 8px), half again the default gap. Padding does this by the rule given for space.inset.control-x, so each card is framed like a page in a magazine, because the brand is warm (brand.q1) and reading comfort is the measure (outcomes.q1).",
+                "because": [
+                  "spacing.values",
+                  "spacing.roles",
+                  "spacing.definition",
+                  "spacing.lands",
+                  "brand.q1",
+                  "outcomes.q1"
+                ]
+              }
+            }
+          },
+          "cell-x": {
+            "$description": "Horizontal padding inside table cells.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 16px for the inline padding inside table cells in order to give content room inside its box: two base steps (2 × 8px), the same as the default gap. Padding does this by the rule given for space.inset.control-x, so cells get room like text does, and each row reads one by one, because people read from start to end (tasks.q1) and the layout is spacious (spacing.values).",
+                "because": [
+                  "tasks.q1",
+                  "spacing.values"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "size": {
+        "row": {
+          "$description": "Height of one table row.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 48px for one table row in order to keep the eye on its row: by inheritance, as the scheme has no row role and a row holds controls, so size.row takes size.control.default, one 48px control tall. Row height does this by making each row a band the eye follows across, and a hit target when the row is clickable (WCAG 2.5.8: 24px). So a control fits in its row, and each row reads one by one, because spacing has gaps and insets only (spacing.roles) and the smallest target is touch size (accessibility.values).",
+              "because": [
+                "spacing.roles",
+                "accessibility.values"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "size.row": {
+      "headline": "One roomy row.",
+      "line": "Each row is one control tall, easy to tap."
+    },
+    "space.gap.default": {
+      "headline": "Items in a group.",
+      "line": "Each item in a list reads on its own."
+    },
+    "space.gap.group": {
+      "headline": "Between groups.",
+      "line": "A wide gap tells readers one group has ended."
+    },
+    "space.gap.section": {
+      "headline": "A new section.",
+      "line": "A wide pause, like a break between chapters."
+    },
+    "space.gap.tight": {
+      "headline": "These belong together.",
+      "line": "An icon and its word read as one item."
+    },
+    "space.inset.cell-x": {
+      "headline": "Room in a cell.",
+      "line": "Values in a table stay clear of the column lines."
+    },
+    "space.inset.container": {
+      "headline": "Room inside a card.",
+      "line": "Words never crowd the edge."
+    },
+    "space.inset.control-x": {
+      "headline": "Room inside a control.",
+      "line": "The label sits well clear of the edge."
+    }
+  }
+}

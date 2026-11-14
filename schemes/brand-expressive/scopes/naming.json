@@ -1,0 +1,57 @@
+{
+  "description": "The naming scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "naming",
+  "answers": [
+    {
+      "question": "naming.roles",
+      "option": "tokens-keys",
+      "why": "Components get their own keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.count",
+      "option": "three",
+      "why": "Primitives, semantics and component keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.definition",
+      "option": "by-role",
+      "why": "Role names survive each campaign.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.values",
+      "option": "kebab-paths",
+      "why": "Lowercase paths read the same everywhere.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.lands",
+      "option": "keys",
+      "why": "Campaigns change primitives, never components.",
+      "because": [
+        "team.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "missing-token",
+      "use": "The closest semantic token, then ask for a new one",
+      "not": "A raw value in the component",
+      "why": "The next campaign changes primitives; raw values would stay behind.",
+      "because": [
+        "naming.lands"
+      ]
+    }
+  ]
+}

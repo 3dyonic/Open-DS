@@ -1,0 +1,144 @@
+{
+  "description": "The voice scope of Brand expressive: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "voice",
+  "answers": [
+    {
+      "question": "voice.roles",
+      "option": "ui-marketing",
+      "why": "Headlines carry the campaign.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "voice.count",
+      "option": "per-moment",
+      "why": "Playful in headlines, plain in errors.",
+      "because": [
+        "outcomes.q2"
+      ]
+    },
+    {
+      "question": "voice.definition",
+      "option": "principles",
+      "why": "Principles and examples guide each campaign's writers.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "voice.values",
+      "option": "playful",
+      "why": "Big words, few of them.",
+      "because": [
+        "brand.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "voice.lands",
+      "option": "headlines",
+      "why": "Words work hardest in headlines and buttons.",
+      "because": [
+        "outcomes.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "button-label",
+      "use": "A short verb that moves: Join, Try, Go",
+      "not": "\"Learn more\"",
+      "why": "Big moments need verbs with energy.",
+      "because": [
+        "voice.values",
+        "voice.lands"
+      ],
+      "example": "Join the drop"
+    },
+    {
+      "situation": "error-words",
+      "use": "Plain first, a light touch after",
+      "not": "A joke before the fix",
+      "why": "Playful copy must never hide what went wrong.",
+      "because": [
+        "voice.count"
+      ],
+      "example": "That email doesn't look right. Check it and try again."
+    },
+    {
+      "situation": "success-words",
+      "use": "Celebrate, briefly",
+      "not": "A long thank-you",
+      "why": "A short celebration is remembered.",
+      "because": [
+        "voice.values",
+        "outcomes.q1"
+      ],
+      "example": "You're on the list. See you at launch."
+    },
+    {
+      "situation": "empty-words",
+      "use": "Playful, with a clear next step",
+      "not": "A dead end",
+      "why": "Playful words still need a way forward.",
+      "because": [
+        "voice.values"
+      ],
+      "example": "Nothing here yet. Go find something you love."
+    },
+    {
+      "situation": "confirm-words",
+      "use": "Plain. No jokes when something is lost.",
+      "not": "Playful copy",
+      "why": "Loss is never the moment for a joke.",
+      "because": [
+        "voice.count"
+      ],
+      "example": "Remove this from your list? You can add it back later."
+    },
+    {
+      "situation": "first-visit",
+      "use": "One bold line and one button",
+      "not": "A paragraph of copy",
+      "why": "Visitors from a social post give a few seconds.",
+      "because": [
+        "scenarios.q2",
+        "voice.values"
+      ],
+      "example": "The drop is coming. Be first."
+    }
+  ],
+  "tokens": {
+    "content": {
+      "$description": "Voice tokens: the words components use for common actions. Text, not CSS.",
+      "action": {
+        "commit": {
+          "$type": "string",
+          "$value": "Go",
+          "$description": "The label of the action that completes a task."
+        },
+        "cancel": {
+          "$type": "string",
+          "$value": "Not now",
+          "$description": "The label of the way out next to the main action."
+        },
+        "destroy": {
+          "$type": "string",
+          "$value": "Remove",
+          "$description": "The label of an action that deletes data."
+        },
+        "retry": {
+          "$type": "string",
+          "$value": "Try again",
+          "$description": "The label that repeats a failed action."
+        },
+        "empty-action": {
+          "$type": "string",
+          "$value": "Explore the drop",
+          "$description": "The label of the action in an empty state."
+        }
+      }
+    }
+  }
+}

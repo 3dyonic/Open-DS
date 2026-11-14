@@ -1,0 +1,241 @@
+{
+  "description": "The accessibility scope of Content first: its answers, its usage rules and the semantic tokens it owns. The loader joins it with scheme.json.",
+  "scope": "accessibility",
+  "answers": [
+    {
+      "question": "accessibility.roles",
+      "option": "plus-pressed",
+      "why": "Pressed gets its own value for touch.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "question": "accessibility.count",
+      "option": "color-word",
+      "why": "Status is rare; color and a word are enough.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.definition",
+      "option": "aa",
+      "why": "AA contrast, with large text helping further.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.values",
+      "option": "touch",
+      "why": "Readers are often on phones.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "question": "accessibility.lands",
+      "option": "long-text",
+      "why": "Long text needs steady contrast and line length.",
+      "because": [
+        "content.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "keyboard-focus",
+      "use": "button/focus-ring at focus.ring.width",
+      "not": "Removing the outline",
+      "why": "Keyboard users must always see where they are.",
+      "because": [
+        "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
+      ]
+    },
+    {
+      "situation": "smallest-target",
+      "use": "size.control.default (touch)",
+      "not": "A compact control",
+      "why": "Many readers are on phones.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "situation": "most-controls",
+      "use": "size.control.default",
+      "not": "size.control.compact",
+      "why": "Readers on phones get a full touch target on every control.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "main-action",
+      "use": "size.control.large",
+      "not": "A taller button for the main action",
+      "why": "It is the same height as the default here. Actions are rare and calm. Color marks the main one; a bigger button would shout over the text.",
+      "because": [
+        "tasks.q2",
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "control-inside-field",
+      "use": "size.control.compact",
+      "not": "size.control.default",
+      "why": "A clear or show button must fit inside the field around it.",
+      "because": [
+        "content.q1",
+        "scenarios.q1"
+      ]
+    },
+    {
+      "situation": "unavailable-control",
+      "use": "color.disabled.*, never opacity",
+      "not": "Hiding the control",
+      "why": "Muted colors keep the control in place and its label readable. Hiding it would move the page and lose the reader's place.",
+      "because": [
+        "outcomes.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "semantic": {
+      "size": {
+        "control": {
+          "default": {
+            "$description": "Height of buttons and inputs, and the smallest target.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 48px for buttons and inputs in order to make a hit target: the touch target size, step 0 of the control scale, a 48px hit area. Height does this by setting the hit area a finger or a pointer must hit; WCAG measures the hit area, not the drawn box (2.5.8: 24px at AA; 2.5.5: 44px at AAA), and padding or a label can make it larger than the box. So readers on phones get a full touch target on every control, because the smallest target is touch size (accessibility.values) and readers arrive on any device (scenarios.q1).",
+                "because": [
+                  "accessibility.values",
+                  "scenarios.q1"
+                ]
+              }
+            }
+          },
+          "compact": {
+            "$description": "Height of compact controls.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 44px for compact controls, such as a clear or show button inside a field, in order to make a hit target: one 4px step below the 48px default on the control scale, and a 44px box that is the touch-size hit area on its own. Height does this by the rule given for size.control.default, so a small button fits inside the field around it, because the content is long-form text (content.q1) and the smallest target is touch size (accessibility.values).",
+                "because": [
+                  "content.q1",
+                  "accessibility.values"
+                ]
+              }
+            }
+          },
+          "large": {
+            "$description": "Height of large controls. Not used in this system, so it equals the default.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use 48px for large controls in order to make a hit target: the default's step on the control scale and the default's 48px hit area, as the scheme has no hero action. Height does this by the rule given for size.control.default, so a main action never shouts over the text, and color marks it, because actions are rare (tasks.q2) and attention belongs on the content (human.q1).",
+                "because": [
+                  "accessibility.values",
+                  "tasks.q2",
+                  "human.q1"
+                ]
+              }
+            }
+          }
+        },
+        "hit-area": {
+          "$type": "dimension",
+          "$value": "{size.44}",
+          "$description": "The least hit area of a control. A control drawn smaller keeps its size; its hit area grows past it, never into a neighbour.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use a 44px hit area for controls drawn smaller, such as a checkbox, a radio or a switch, in order to make a hit target a fingertip can find: the WCAG 2.5.5 size. The hit area does this by growing past the drawn box through a pseudo-element, and rows in a group stand at least 44px apart, so no two targets overlap. So readers tap the right control on a phone, because targets are sized for touch (accessibility.values) and the layout leaves room for it (spacing.values).",
+              "because": [
+                "accessibility.values",
+                "spacing.values"
+              ]
+            }
+          }
+        }
+      },
+      "focus": {
+        "ring": {
+          "width": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The focus ring's width: one step heavier than the default border, and not a border width.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a 2px focus ring in order to show focus, one step heavier than the 1px default line by the focus relation. A heavier stroke does this by standing out from the thin edges around it. So readers who use a keyboard always see where they are, because focus has its own look (accessibility.roles) and lines are thin (elevation.definition).",
+                "because": [
+                  "accessibility.roles",
+                  "elevation.definition",
+                  "accessibility.definition"
+                ]
+              }
+            }
+          },
+          "offset": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill.",
+            "$extensions": {
+              "open-ds": {
+                "why": "We use a fixed 2px focus offset in order to keep focus visible by contrast, not for style. The gap does this by showing the page color between ring and control, so one of the two colors keeps enough contrast against any fill (W3C technique C40). So readers see the ring on any fill, even a filled button, because focus has its own look (accessibility.roles).",
+                "because": [
+                  "accessibility.roles"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "color": {
+        "border": {
+          "focus": {
+            "$type": "color",
+            "$description": "The keyboard focus ring.",
+            "$value": "{theme.color.border.focus}"
+          }
+        }
+      }
+    }
+  },
+  "shorthand": {
+    "color.border.focus": {
+      "headline": "You are here.",
+      "line": "Keyboard readers see which link is next."
+    },
+    "focus.ring.offset": {
+      "headline": "A gap around the ring.",
+      "line": "The ring never touches the control, so it reads on any fill."
+    },
+    "focus.ring.width": {
+      "headline": "A ring you can see.",
+      "line": "Focus stands out from every edge around it."
+    },
+    "size.control.compact": {
+      "headline": "Still a full target.",
+      "line": "Even the small control is easy to tap."
+    },
+    "size.control.default": {
+      "headline": "Easy to tap.",
+      "line": "Buttons and inputs fit a finger on any device."
+    },
+    "size.control.large": {
+      "headline": "Same as the usual.",
+      "line": "One height covers the large case too, so sizes stay few."
+    },
+    "size.hit-area": {
+      "headline": "Sized for a finger.",
+      "line": "Readers on a phone hit what they aim at."
+    }
+  }
+}

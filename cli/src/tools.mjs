@@ -401,7 +401,7 @@ export function planChange(scheme, g, change) {
       to: { option: opt.id, label: opt.label },
       same: answer?.option === opt.id,
       edits: [
-        `In schemes/${scheme.id}.json, set the answer to ${change.question} to "${opt.id}" and write a new why.`,
+        `In the ${scheme.id} source (schemes/${scheme.id}/), set the answer to ${change.question} to "${opt.id}" and write a new why.`,
         ...f.map(
           (x) =>
             `Review the answer to ${x} (${label(x)}): it follows from this one.`,
@@ -493,7 +493,7 @@ export function planChange(scheme, g, change) {
       from: prim.$value,
       to: change.value,
       edits: [
-        `In schemes/${scheme.id}.json, set tokens.primitive.${change.token} to ${change.value}, then rebuild the tokens.`,
+        `In schemes/${scheme.id}/scheme.json, set tokens.primitive.${change.token} to ${change.value}, then rebuild the tokens.`,
         ...pairs
           .filter((p) => !p.pass)
           .map(

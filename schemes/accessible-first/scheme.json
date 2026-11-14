@@ -1,0 +1,1890 @@
+{
+  "$schema": "../schema/scheme.schema.json",
+  "id": "accessible-first",
+  "name": "Accessible first",
+  "version": "0.1.0",
+  "status": "draft",
+  "summary": "Large text, large targets and AAA contrast for the text you must read, so everyone can finish the task.",
+  "description": "Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast for the text you must read, so everyone can finish the task.",
+  "ai": {
+    "use_when": "Public services, health, government and any product that must work for everyone.",
+    "avoid_when": "Dense expert tools where screen space matters more than size.",
+    "example_products": [
+      "Benefits application",
+      "Health booking",
+      "Public form",
+      "Council services"
+    ]
+  },
+  "scenarios": [
+    {
+      "text": "A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.",
+      "follows": [
+        "scenarios.q1",
+        "people.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "text": "A person with a tremor completes a form on a tablet.",
+      "follows": [
+        "scenarios.q1",
+        "scenarios.q2",
+        "tasks.q1"
+      ]
+    }
+  ],
+  "voice": {
+    "summary": {
+      "text": "Plain and direct. Every sentence is easy to read on the first try.",
+      "follows": [
+        "voice.values",
+        "people.q1"
+      ]
+    },
+    "principles": [
+      {
+        "text": "Use common words. Explain any term you must use.",
+        "follows": [
+          "voice.definition",
+          "people.q1"
+        ]
+      },
+      {
+        "text": "One idea per sentence. Put the action first.",
+        "follows": [
+          "human.q1"
+        ]
+      },
+      {
+        "text": "Never blame the person.",
+        "follows": [
+          "voice.values"
+        ]
+      },
+      {
+        "text": "A button label stays on one line: it never breaks onto two.",
+        "follows": [
+          "voice.values",
+          "voice.definition"
+        ]
+      }
+    ],
+    "words": {
+      "use": [
+        "Continue",
+        "Change",
+        "Start",
+        "You"
+      ],
+      "avoid": [
+        "Invalid",
+        "Utilise",
+        "Submit",
+        "Error code"
+      ],
+      "follows": [
+        "voice.definition"
+      ]
+    }
+  },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Every action, with a large target.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "The one next step on a page.",
+              "because": [
+                "color.count"
+              ]
+            },
+            "secondary": {
+              "use": "Every other action, always with a word: alternatives, row actions, and the first step of a delete.",
+              "because": [
+                "human.q2",
+                "outcomes.q2"
+              ]
+            },
+            "danger": {
+              "use": "The confirm of a delete, always with the verb and an icon, so color is never the only cue.",
+              "because": [
+                "outcomes.q2",
+                "people.q2"
+              ]
+            },
+            "ghost": {
+              "not_used": true,
+              "why": "Every action looks like a button people can find.",
+              "because": [
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Icons alone are guesswork: always add a word.",
+              "because": [
+                "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "The default size is already large for motor needs; a bigger one adds nothing.",
+              "because": [
+                "accessibility.values"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback that is easy to follow.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Seen by everyone: the focus ring with an offset.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "not_used": true,
+              "why": "Keep it enabled and explain on press: nobody is left out, and nobody remembers the interface from last time.",
+              "because": [
+                "people.q2",
+                "human.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "input",
+        "why": "Text answers."
+      },
+      {
+        "id": "textarea",
+        "why": "Longer answers."
+      },
+      {
+        "id": "label",
+        "why": "Names every control."
+      },
+      {
+        "id": "field",
+        "why": "Label, hint and error in the same place on every question.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Every question: the label above the field, always visible.",
+              "because": [
+                "people.q2",
+                "tasks.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Labels stay above the field, visible while typing and in the same place on any screen.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "One layout on every device, so people meet the same form every time.",
+              "because": [
+                "human.q2",
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "checkbox",
+        "why": "Many choices, each with a large target."
+      },
+      {
+        "id": "radio-group",
+        "why": "One choice from a short, visible list."
+      },
+      {
+        "id": "native-select",
+        "why": "A browser select that every assistive technology understands."
+      },
+      {
+        "id": "alert",
+        "why": "Errors and important notes that stay on the page.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Important notes that stay on the page while people answer.",
+              "because": [
+                "outcomes.q1",
+                "human.q1"
+              ]
+            },
+            "destructive": {
+              "use": "Errors, with what went wrong, where, and exactly how to fix it, next to the field.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2",
+                "voice.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "progress",
+        "why": "Shows how far through the steps a person is."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "Shows where a person is in the service."
+      },
+      {
+        "id": "card",
+        "why": "Groups a summary before submitting."
+      },
+      {
+        "id": "separator",
+        "why": "Breaks between groups of questions."
+      },
+      {
+        "id": "dialog",
+        "why": "Only to confirm leaving with unsaved answers."
+      },
+      {
+        "id": "collapsible",
+        "why": "Optional help a person can open."
+      },
+      {
+        "id": "spinner",
+        "why": "Says that the page is working."
+      },
+      {
+        "id": "badge",
+        "why": "A status label with an icon and a word, in a clear rectangle. Not color alone, and not a pill.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A waiting state, such as an application saved to resume later, with an icon and a word.",
+              "because": [
+                "accessibility.count",
+                "scenarios.q2"
+              ]
+            },
+            "info": {
+              "not_used": true,
+              "why": "Neutral covers news with nothing to do: one clear way to do each thing.",
+              "because": [
+                "components.values"
+              ]
+            },
+            "success": {
+              "use": "A finished task, with a filled icon and a word.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q1"
+              ]
+            },
+            "warning": {
+              "use": "A risk people can still fix before they finish, with an icon and a word.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            },
+            "danger": {
+              "use": "A failure that blocks the task, with a filled icon and a word; an alert says how to fix it.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "button-group",
+        "why": "A few related buttons, each with a word, and at most one primary. Not unrelated actions, and never icon-only."
+      },
+      {
+        "id": "calendar",
+        "why": "Dates near today, such as a health appointment. Not a date people know by heart, like a birth date."
+      },
+      {
+        "id": "combobox",
+        "why": "A long closed list, such as countries or addresses, with a label and a hint. Not a short list people can see."
+      },
+      {
+        "id": "date-picker",
+        "why": "A date near today, such as a health appointment. Not a birth date or other known date."
+      },
+      {
+        "id": "empty",
+        "why": "An empty list, saying what will appear and how to start. Not while loading, and never a blank page.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "The brand stays out of the way: words say what will appear and how to start.",
+              "because": [
+                "brand.q2",
+                "human.q1"
+              ]
+            },
+            "icon": {
+              "use": "A filled icon in a tile, beside words that say what will appear here and how to start.",
+              "because": [
+                "iconography.definition",
+                "voice.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "form",
+        "why": "Every form that checks answers, with the error next to the field. Not errors shown by color alone."
+      },
+      {
+        "id": "input-group",
+        "why": "A value with a unit or currency, with the label still above the field. Not for separate fields.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "A currency sign before the amount, with the label still above the field.",
+              "because": [
+                "people.q2",
+                "tasks.q1"
+              ]
+            },
+            "inline-end": {
+              "use": "A unit after the value, as a word people can read, with the label still above the field.",
+              "because": [
+                "people.q2",
+                "iconography.roles"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "The label stays above the field, outside it, always visible.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Hints and errors sit in the field layout, in the same place on every question.",
+              "because": [
+                "people.q2",
+                "voice.roles"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "input-otp",
+        "why": "A short code sent by text or email, typed or pasted. Not passwords or values of any length."
+      },
+      {
+        "id": "item",
+        "why": "A list such as saved applications, each with worded secondary buttons. Not records compared cell by cell.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "A row with no border is hard to see at high zoom; borders do the work.",
+              "because": [
+                "elevation.definition",
+                "elevation.values"
+              ]
+            },
+            "outline": {
+              "use": "Each saved application, with a strong border that separates it at any zoom.",
+              "because": [
+                "elevation.definition",
+                "elevation.values"
+              ]
+            },
+            "muted": {
+              "not_used": true,
+              "why": "A fill alone marks a row by color; status goes in a badge with an icon and a word.",
+              "because": [
+                "accessibility.count"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values",
+                "spacing.count"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "navigation-menu",
+        "why": "The main sections of a public service site. Not inside the steps of a form."
+      },
+      {
+        "id": "pagination",
+        "why": "A long list or table split across pages, with large targets. Not for the steps of a form."
+      },
+      {
+        "id": "scroll-area",
+        "why": "A fixed-height list or panel inside a page that still works at 200% zoom. Not the whole page."
+      },
+      {
+        "id": "tabs",
+        "why": "Related views of one application, such as answers and documents. Not the steps of a form."
+      },
+      {
+        "id": "toggle",
+        "why": "Turning a mode on and off, with a word on the button. Not a form answer or a one-off action.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Every action looks like a control people can find, so the toggle keeps its border.",
+              "because": [
+                "human.q2",
+                "elevation.definition"
+              ]
+            },
+            "outline": {
+              "use": "Every toggle, with a strong border and a word, so it reads as a control at any zoom.",
+              "because": [
+                "elevation.definition",
+                "iconography.roles"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every toggle. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "The default size is already large for motor needs; a bigger one adds nothing.",
+              "because": [
+                "accessibility.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "toggle-group",
+        "why": "Switching a view between a few options, each with a word. Not a form answer, which uses a radio group."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "An image in a step card that must not stretch or jump while it loads. Not for text content."
+      },
+      {
+        "id": "attachment",
+        "why": "A file people open or download from a conversation. Not for uploading documents in a form, which uses a file input."
+      },
+      {
+        "id": "avatar",
+        "why": "Beside a name, to show who is signed in. Not the only way to tell people apart; words come first."
+      },
+      {
+        "id": "bubble",
+        "why": "A back-and-forth conversation, in large text with strong contrast. Not for comments or long text."
+      },
+      {
+        "id": "chart",
+        "why": "A relationship in a set of numbers, with the numbers also as a table. Not decoration, and never color alone."
+      },
+      {
+        "id": "marker",
+        "why": "Dividing a long conversation into days, in plain words. Not a message someone wrote."
+      },
+      {
+        "id": "message",
+        "why": "Conversations or comments, each with author and time. Not system status, which an alert carries."
+      },
+      {
+        "id": "message-scroller",
+        "why": "A live conversation where new messages arrive at the bottom. Not a static list, and no motion when less is asked."
+      },
+      {
+        "id": "table",
+        "why": "A summary like the steps of an application, with large rows and numbers in body text. Not compact rows or small fonts."
+      },
+      {
+        "id": "icon",
+        "why": "Status and messages, always beside a word.",
+        "variants": {
+          "size": {
+            "default": {
+              "use": "Larger than the text beside it, so it is easy to see.",
+              "because": [
+                "iconography.count",
+                "iconography.values"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Accessible first has one icon size, already larger than the text.",
+              "because": [
+                "iconography.count"
+              ]
+            }
+          },
+          "variant": {
+            "plain": {
+              "use": "Every icon: a bold 2px stroke, easy to see.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-tint": {
+              "not_used": true,
+              "why": "A bold stroke carries the icon; a shape adds nothing people need.",
+              "because": [
+                "iconography.definition"
+              ]
+            },
+            "contained-solid": {
+              "not_used": true,
+              "why": "A bold stroke carries the icon.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "out": [
+      {
+        "id": "accordion",
+        "why": "Optional help here is a single section a person can open. Accessible first keeps one clear way to do each thing, so a stack of sections adds a second way.",
+        "instead": [
+          "collapsible"
+        ],
+        "because": [
+          "components.values",
+          "components.count"
+        ]
+      },
+      {
+        "id": "alert-dialog",
+        "why": "A destructive action here is a secondary button, then a confirm page. The dialog is kept only to confirm leaving with unsaved answers.",
+        "instead": [
+          "button",
+          "dialog"
+        ],
+        "because": [
+          "outcomes.q2",
+          "elevation.lands"
+        ]
+      },
+      {
+        "id": "carousel",
+        "why": "People must finish the form, and a carousel suits content where missing some is fine. Content people must see does not belong in slides.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "tasks.q1",
+          "outcomes.q1"
+        ]
+      },
+      {
+        "id": "command",
+        "why": "Command is for expert users who jump anywhere by typing. Here people do this once or twice a year and nobody remembers the interface.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "tasks.q2",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "context-menu",
+        "why": "Context menus are for power users. Here nobody remembers the interface, and every action looks like a button people can find.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "human.q2",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "data-table",
+        "why": "Data table is for finding and acting on many records, often in bulk. Accessible first avoids dense expert tools, and its one density has no compact mode.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "spacing.count",
+          "components.count"
+        ]
+      },
+      {
+        "id": "drawer",
+        "why": "Only dialogs separate from the page here, with a dimmed page and a border. A sliding panel adds a second layer the scheme does not use.",
+        "instead": [
+          "dialog",
+          "collapsible"
+        ],
+        "because": [
+          "elevation.lands",
+          "components.values"
+        ]
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "Every action here looks like a button people can find. Row actions are a secondary button with a word, not a menu.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "human.q2",
+          "components.values"
+        ]
+      },
+      {
+        "id": "hover-card",
+        "why": "Touch screens have no hover, and public services are used on any device. A person with a tremor completes a form on a tablet.",
+        "instead": [
+          "collapsible"
+        ],
+        "because": [
+          "scenarios.q1",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "kbd",
+        "why": "Kbd tells people the shortcut for an action. Here people do this once or twice a year, and nobody remembers the interface from last time.",
+        "instead": [
+          "label"
+        ],
+        "because": [
+          "tasks.q2",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "menubar",
+        "why": "Menubar is for dense desktop-style tools. Accessible first avoids dense expert tools, and nobody remembers the interface from last time.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "human.q2",
+          "components.count"
+        ]
+      },
+      {
+        "id": "popover",
+        "why": "Optional help here sits in a section a person can open, in the page. One clear way to do each thing leaves no room for a floating panel too.",
+        "instead": [
+          "collapsible"
+        ],
+        "because": [
+          "components.values",
+          "elevation.lands"
+        ]
+      },
+      {
+        "id": "resizable",
+        "why": "Resizing means dragging panels in desktop tools. The scheme avoids widgets that need drag or precise pointing, and avoids dense expert tools.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.definition",
+          "accessibility.values"
+        ]
+      },
+      {
+        "id": "select",
+        "why": "A component joins only when it works with any assistive technology. The native select covers the same choice and every assistive technology understands it.",
+        "instead": [
+          "native-select",
+          "radio-group"
+        ],
+        "because": [
+          "components.definition",
+          "components.values"
+        ]
+      },
+      {
+        "id": "sheet",
+        "why": "Only dialogs separate from the page here, with a dimmed page and a border. A panel sliding in from an edge adds a layer the scheme does not use.",
+        "instead": [
+          "dialog",
+          "collapsible"
+        ],
+        "because": [
+          "elevation.lands",
+          "components.values"
+        ]
+      },
+      {
+        "id": "sidebar",
+        "why": "Sidebar is for apps people move around all session. Here people do this once or twice a year, and breadcrumb shows where they are.",
+        "instead": [
+          "breadcrumb",
+          "progress"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.lands"
+        ]
+      },
+      {
+        "id": "skeleton",
+        "why": "Spinner already says the page is working. Accessible first keeps one clear way to do each thing, so a second loading state is not added.",
+        "instead": [
+          "spinner"
+        ],
+        "because": [
+          "components.values",
+          "components.count"
+        ]
+      },
+      {
+        "id": "slider",
+        "why": "The scheme avoids widgets that need drag or precise pointing. A person with a tremor completes a form here, and an exact answer is typed.",
+        "instead": [
+          "input",
+          "radio-group"
+        ],
+        "because": [
+          "components.definition",
+          "accessibility.values"
+        ]
+      },
+      {
+        "id": "switch",
+        "why": "Components do their work in forms and steps, where a choice waits for the form. The catalogue gives that case to the checkbox.",
+        "instead": [
+          "checkbox"
+        ],
+        "because": [
+          "components.lands",
+          "content.q1"
+        ]
+      },
+      {
+        "id": "toast",
+        "why": "A toast goes away. Here errors and important notes stay on the page, because people must know what went wrong and where.",
+        "instead": [
+          "alert"
+        ],
+        "because": [
+          "outcomes.q2",
+          "accessibility.count"
+        ]
+      },
+      {
+        "id": "tooltip",
+        "why": "Icons never stand alone here, so no control needs a hover hint. Touch screens never hover, and optional help sits in a section a person can open.",
+        "instead": [
+          "collapsible",
+          "label"
+        ],
+        "because": [
+          "iconography.roles",
+          "scenarios.q1"
+        ]
+      }
+    ]
+  },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "content.q1",
+      "tasks.q1",
+      "voice.values"
+    ],
+    "screen": "Apply for support with housing costs",
+    "conversation": {
+      "title": "Messages about your application",
+      "marker": "Monday 3 November",
+      "messages": [
+        {
+          "author": "Housing support team",
+          "time": "10:02",
+          "text": "We need a copy of your rent agreement to continue."
+        },
+        {
+          "author": "You",
+          "time": "10:30",
+          "text": "I have attached it.",
+          "mine": true
+        },
+        {
+          "author": "Housing support team",
+          "time": "11:15",
+          "text": "Thank you. We will reply within 5 working days."
+        }
+      ],
+      "attachment": {
+        "name": "rent-agreement.pdf",
+        "type": "PDF",
+        "size": "380 KB"
+      }
+    },
+    "actions": {
+      "primary": "Continue",
+      "secondary": "Save and come back later"
+    },
+    "statuses": [
+      {
+        "label": "Not started",
+        "meaning": "neutral",
+        "why": "Nothing has happened yet."
+      },
+      {
+        "label": "Completed",
+        "meaning": "success",
+        "why": "This step is done."
+      },
+      {
+        "label": "Check your answers",
+        "meaning": "warning",
+        "why": "Something needs a second look before you continue."
+      },
+      {
+        "label": "Upload failed",
+        "meaning": "danger",
+        "why": "The file did not reach us and must be sent again."
+      }
+    ],
+    "table": {
+      "caption": "Your application",
+      "columns": [
+        {
+          "label": "Step"
+        },
+        {
+          "label": "Questions",
+          "numeric": true
+        },
+        {
+          "label": "Time it takes"
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "About you",
+            "6",
+            "About 2 minutes"
+          ],
+          "status": "Completed"
+        },
+        {
+          "cells": [
+            "Your home",
+            "8",
+            "About 3 minutes"
+          ],
+          "status": "Check your answers"
+        },
+        {
+          "cells": [
+            "Your money",
+            "10",
+            "About 4 minutes"
+          ],
+          "status": "Not started"
+        },
+        {
+          "cells": [
+            "Your documents",
+            "3",
+            "About 5 minutes"
+          ],
+          "status": "Upload failed"
+        },
+        {
+          "cells": [
+            "Check and send",
+            "1",
+            "About 2 minutes"
+          ],
+          "status": "Not started"
+        }
+      ]
+    },
+    "metrics": [
+      {
+        "label": "Steps done",
+        "value": "2 of 4"
+      },
+      {
+        "label": "Documents sent",
+        "value": "3"
+      },
+      {
+        "label": "Time left to apply",
+        "value": "12 days"
+      },
+      {
+        "label": "Time this takes",
+        "value": "About 10 minutes"
+      }
+    ],
+    "field": {
+      "label": "Date of birth",
+      "placeholder": "",
+      "hint": "For example, 27 3 1980.",
+      "error": "Enter your date of birth. For example, 27 3 1980.",
+      "invalid": "27/3",
+      "value": "27 3 1980"
+    },
+    "checkbox": [
+      "I have read the guidance",
+      "Someone is helping me fill in this form",
+      "Contact me by text message"
+    ],
+    "select": {
+      "label": "How should we contact you?",
+      "options": [
+        "By email",
+        "By text message",
+        "By post"
+      ],
+      "value": "By text message"
+    },
+    "switches": [
+      "Show help on every question",
+      "Remind me by text message",
+      "Send me a copy of my answers"
+    ],
+    "messages": {
+      "success": "Your answers are saved. You can come back later.",
+      "error": {
+        "title": "We could not get your document.",
+        "description": "Choose the file again, then select Continue."
+      },
+      "neutral": "You have not sent any documents yet."
+    },
+    "confirm": {
+      "trigger": "Cancel application",
+      "title": "Do you want to cancel your application?",
+      "body": "Your answers will be deleted.",
+      "confirm": "Yes, cancel it",
+      "cancel": "No, go back",
+      "destroys": true
+    },
+    "card": {
+      "title": "Step 2 of 4: Your home",
+      "description": "About 3 minutes. You will need your rent agreement.",
+      "status": "Not started",
+      "primary": "Start this step",
+      "secondary": "Change earlier answers"
+    },
+    "tabs": [
+      {
+        "label": "Your answers",
+        "content": "You have answered 6 of 8 questions."
+      },
+      {
+        "label": "Documents",
+        "content": "You have sent 3 documents."
+      },
+      {
+        "label": "Help",
+        "content": "Someone can help you fill in this form."
+      }
+    ],
+    "menu": {
+      "trigger": "Options for this step",
+      "items": [
+        "Change your answers",
+        "Print this step"
+      ],
+      "destructive": "Delete your answers"
+    },
+    "icon_action": "Get help with this question",
+    "choices": [
+      {
+        "label": "By email",
+        "description": "We send updates to your email address."
+      },
+      {
+        "label": "By text message",
+        "description": "We send a short text to your phone."
+      }
+    ],
+    "search": {
+      "placeholder": "Search the guidance",
+      "query": "rent",
+      "total": "24 pages",
+      "results": "3 pages",
+      "none": "No pages found"
+    },
+    "chart": {
+      "series": [
+        "Rent",
+        "Bills"
+      ],
+      "ticks": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov"
+      ],
+      "point": {
+        "label": "Aug",
+        "values": [
+          "420.00",
+          "85.00"
+        ]
+      }
+    }
+  },
+  "themes": [
+    {
+      "id": "light",
+      "brand": "default",
+      "mode": "light"
+    },
+    {
+      "id": "dark",
+      "brand": "default",
+      "mode": "dark"
+    }
+  ],
+  "answers": [
+    {
+      "question": "business.q1",
+      "option": "serve-public",
+      "why": "A public service everyone must be able to use.",
+      "because": []
+    },
+    {
+      "question": "business.q2",
+      "option": "one",
+      "why": "One service, one brand.",
+      "because": []
+    },
+    {
+      "question": "people.q1",
+      "option": "everyone",
+      "why": "Everyone, including people with low vision, motor and cognitive needs.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "people.q2",
+      "option": "aaa",
+      "why": "AAA where it applies; nobody is left out.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "content.q1",
+      "option": "forms",
+      "why": "Most screens are forms and steps.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "content.q2",
+      "option": "one-idea",
+      "why": "One question per screen lowers effort.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "tasks.q1",
+      "option": "complete",
+      "why": "People must finish the form.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q2",
+      "option": "rarely",
+      "why": "People do this once or twice a year.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "human.q1",
+      "option": "effort",
+      "why": "Low effort to understand each step.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "human.q2",
+      "option": "fresh",
+      "why": "Nobody remembers the interface from last time.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "outcomes.q1",
+      "option": "completion",
+      "why": "Completion without errors is the measure.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "outcomes.q2",
+      "option": "failed-task",
+      "why": "A failed form can cost someone a benefit.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "brand.q1",
+      "option": "calm-clear",
+      "why": "Calm and clear, never clever.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "brand.q2",
+      "option": "quiet",
+      "why": "The brand stays out of the way.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "brand.q3",
+      "option": "hyperlegible",
+      "why": "Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+      "because": [
+        "brand.q1",
+        "people.q2",
+        "content.q1"
+      ],
+      "considers": {
+        "readability": "Atkinson Hyperlegible was designed by the Braille Institute for readers with low vision.",
+        "legibility": "Its letters are drawn to stay apart: I, l and 1, 0 and O, b and d don't look alike.",
+        "scalability": "Regular and bold carry the hierarchy; size does the rest, so every role stays readable.",
+        "numerals": "Its digits are drawn to be told apart; figures line up when columns align to the right.",
+        "scripts": "Latin, with accents for many languages; other scripts need a face chosen for the same legibility.",
+        "recognition": "Accessibility is the brand promise, and the face says it.",
+        "familiarity": "A plain, open sans feels familiar and calm in forms and steps.",
+        "personality": "Calm and clear, never clever, as the brand answer asks.",
+        "performance": "One family, two weights: the lightest load of all five schemes.",
+        "licensing": "SIL Open Font License: free to embed in apps and on the web.",
+        "fallback": "Falls back to Verdana, a wide, legible system face, as its token says; no second face is needed."
+      }
+    },
+    {
+      "question": "scenarios.q1",
+      "option": "anywhere",
+      "why": "Public services are used on any device, with any assistive technology.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "scenarios.q2",
+      "option": "one-sitting",
+      "why": "An application is finished in one sitting, or saved and resumed.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "team.q1",
+      "option": "platform",
+      "why": "A platform team serves many services.",
+      "because": []
+    },
+    {
+      "question": "team.q2",
+      "option": "stable",
+      "why": "Changes are rare and tested.",
+      "because": []
+    }
+  ],
+  "relations": [
+    {
+      "token": "radius.control",
+      "relation": "control-corner"
+    },
+    {
+      "token": "radius.surface",
+      "relation": "surface-corner"
+    },
+    {
+      "token": "radius.option",
+      "relation": "option-nests",
+      "from": "radius.surface",
+      "minus": "component.dropdown-menu.content.padding"
+    },
+    {
+      "token": "radius.element",
+      "relation": "element-box",
+      "from": "radius.control"
+    },
+    {
+      "token": "radius.badge",
+      "relation": "badge-corner",
+      "from": "radius.control"
+    },
+    {
+      "token": "border-width.default",
+      "relation": "default-line"
+    },
+    {
+      "token": "focus.ring.width",
+      "relation": "focus-heavier",
+      "from": "border-width.default"
+    },
+    {
+      "token": "focus.ring.offset",
+      "relation": "focus-gap"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "layer-step"
+    },
+    {
+      "token": "elevation.card",
+      "relation": "dark-shade",
+      "on": "color.surface.canvas"
+    },
+    {
+      "token": "elevation.overlay",
+      "relation": "dark-shade",
+      "on": "color.surface.default"
+    }
+  ],
+  "usage": [],
+  "tokens": {
+    "primitive": {
+      "color": {
+        "$description": "Color options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
+        "gray": {
+          "$type": "color",
+          "$description": "The gray hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "0": {
+              "$value": "#FFFFFF"
+            },
+            "50": {
+              "$value": "#F7F7F7"
+            },
+            "100": {
+              "$value": "#EDEDED"
+            },
+            "150": {
+              "$value": "#E1E1E1",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (linear), even in contrast. Added so a floating layer sits one step above raised in dark."
+            },
+            "200": {
+              "$value": "#D6D6D6"
+            },
+            "300": {
+              "$value": "#949494"
+            },
+            "400": {
+              "$value": "#767676",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#595959"
+            },
+            "600": {
+              "$value": "#464646",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#333333"
+            },
+            "800": {
+              "$value": "#222222"
+            },
+            "900": {
+              "$value": "#141414"
+            },
+            "950": {
+              "$value": "#0A0A0A"
+            }
+          },
+          "dark": {
+            "0": {
+              "$value": "#0A0A0A"
+            },
+            "50": {
+              "$value": "#141414"
+            },
+            "100": {
+              "$value": "#222222"
+            },
+            "150": {
+              "$value": "#2B2B2B",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (linear), even in contrast. Added so a floating layer sits one step above raised in dark."
+            },
+            "200": {
+              "$value": "#333333"
+            },
+            "300": {
+              "$value": "#595959"
+            },
+            "400": {
+              "$value": "#767676",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#949494"
+            },
+            "600": {
+              "$value": "#B4B4B4",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#D6D6D6"
+            },
+            "800": {
+              "$value": "#EDEDED"
+            },
+            "900": {
+              "$value": "#F7F7F7"
+            },
+            "950": {
+              "$value": "#FFFFFF"
+            }
+          }
+        },
+        "blue": {
+          "$type": "color",
+          "$description": "The blue hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#0B4FC0"
+              },
+              "dark": {
+                "key": "#8AB4F8"
+              }
+            }
+          }
+        },
+        "green": {
+          "$type": "color",
+          "$description": "The green hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#1F7A3A",
+                "adjust": {
+                  "100": {
+                    "C": 0.008,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "relation"
+                }
+              },
+              "dark": {
+                "key": "#5CC283"
+              }
+            }
+          }
+        },
+        "amber": {
+          "$type": "color",
+          "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#8A5600",
+                "adjust": {
+                  "100": {
+                    "L": -0.005,
+                    "C": 0.013,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "relation",
+                  "600": "relation",
+                  "800": "relation",
+                  "900": "order",
+                  "950": "order"
+                }
+              },
+              "dark": {
+                "key": "#F2B84B",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        },
+        "red": {
+          "$type": "color",
+          "$description": "The red hue: a light ramp, a dark ramp and its base value.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#C42B2B",
+                "adjust": {
+                  "100": {
+                    "L": -0.03,
+                    "C": 0.017,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "50": "order",
+                  "100": "relation",
+                  "700": "relation",
+                  "800": "relation",
+                  "900": "order",
+                  "950": "order"
+                }
+              },
+              "dark": {
+                "key": "#F28B8B"
+              }
+            }
+          }
+        },
+        "black": {
+          "$type": "color",
+          "$description": "See-through black for scrims behind dialogs, light and dark.",
+          "light": {
+            "scrim": {
+              "$value": "#0000008C"
+            }
+          },
+          "dark": {
+            "scrim": {
+              "$value": "#000000B3"
+            }
+          }
+        },
+        "teal": {
+          "$type": "color",
+          "$description": "Teal ramp for the info status and categories. Same values as the multi-brand teal ramp: borrowed, not invented.",
+          "$extensions": {
+            "open-ds": {
+              "generated": true,
+              "light": {
+                "key": "#0B5B55",
+                "adjust": {
+                  "100": {
+                    "C": 0.023,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
+                  }
+                },
+                "held": {
+                  "800": "relation",
+                  "900": "order",
+                  "950": "order"
+                }
+              },
+              "dark": {
+                "key": "#7FCFC6",
+                "held": {
+                  "900": "relation",
+                  "950": "relation"
+                }
+              }
+            }
+          }
+        }
+      },
+      "space": {
+        "2": {
+          "$type": "dimension",
+          "$value": "0.125rem"
+        },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "12": {
+          "$type": "dimension",
+          "$value": "0.75rem"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "28": {
+          "$type": "dimension",
+          "$value": "1.75rem"
+        },
+        "32": {
+          "$type": "dimension",
+          "$value": "2rem"
+        },
+        "44": {
+          "$type": "dimension",
+          "$value": "2.75rem"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": "3rem"
+        },
+        "56": {
+          "$type": "dimension",
+          "$value": "3.5rem"
+        },
+        "64": {
+          "$type": "dimension",
+          "$value": "4rem"
+        },
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem."
+      },
+      "size": {
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "44": {
+          "$type": "dimension",
+          "$value": "2.75rem"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": "3rem"
+        },
+        "52": {
+          "$type": "dimension",
+          "$value": "3.25rem"
+        },
+        "$description": "Size options for controls, rows and icons."
+      },
+      "radius": {
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "6": {
+          "$type": "dimension",
+          "$value": "0.375rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "$description": "Corner options.",
+        "round": {
+          "$type": "dimension",
+          "$value": "50%",
+          "$description": "A circle of a square: avatars, radio dots, thumbs and round buttons."
+        },
+        "pill": {
+          "$type": "dimension",
+          "$value": "calc(infinity * 1px)",
+          "$description": "A capsule of any box: tracks, progress, the scroll thumb and pill controls."
+        }
+      },
+      "border-width": {
+        "2": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "3": {
+          "$type": "dimension",
+          "$value": "3px"
+        },
+        "$description": "Border width options."
+      },
+      "font": {
+        "size": {
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
+        },
+        "weight": {
+          "400": {
+            "$type": "fontWeight",
+            "$value": 400
+          },
+          "700": {
+            "$type": "fontWeight",
+            "$value": 700
+          }
+        },
+        "line-height": {
+          "$description": "Line height options: ratios of the text size. The type scale generates them."
+        },
+        "family": {
+          "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
+          "atkinson-hyperlegible": {
+            "$type": "fontFamily",
+            "$value": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
+          }
+        }
+      },
+      "duration": {
+        "moderate": {
+          "$type": "duration",
+          "$value": "150ms",
+          "$description": "Moderate: a calm, easy-to-follow speed, about 150ms."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "A standard ease-out: fast at the start, settling slowly, with no overshoot."
+        },
+        "strong-out": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.23,
+            1,
+            0.32,
+            1
+          ],
+          "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
+        }
+      },
+      "shadow": {
+        "$description": "Raw shadows. Elevation semantics point at these.",
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
+        }
+      },
+      "stroke-width": {
+        "2": {
+          "$type": "number",
+          "$value": 2,
+          "$description": "An icon stroke width option, on Lucide's 24px grid."
+        },
+        "$description": "Icon stroke width options."
+      }
+    },
+    "brands": {
+      "default": {
+        "$ref": "brands/default.json#/tokens/brands/default"
+      }
+    },
+    "semantic": {
+      "space": {
+        "$ref": "scopes/spacing.json#/tokens/semantic/space"
+      },
+      "size": {
+        "$extensions": {
+          "open-ds": {
+            "default": 52,
+            "step": 4,
+            "steps": {
+              "compact": -1,
+              "large": 0
+            },
+            "follows": [
+              "accessibility.values",
+              "spacing.roles"
+            ],
+            "why": "A large target sets the 52px default. The step is 4px, so compact stays at the 48px large target size; large equals the default, as every control is already large. Rows are a decision of their own and stay one control tall."
+          }
+        },
+        "control": {
+          "$ref": "scopes/accessibility.json#/tokens/semantic/size/control"
+        },
+        "row": {
+          "$ref": "scopes/spacing.json#/tokens/semantic/size/row"
+        },
+        "icon": {
+          "$ref": "scopes/iconography.json#/tokens/semantic/size/icon"
+        },
+        "hit-area": {
+          "$ref": "scopes/accessibility.json#/tokens/semantic/size/hit-area"
+        }
+      },
+      "radius": {
+        "$ref": "scopes/shape.json#/tokens/semantic/radius"
+      },
+      "border-width": {
+        "$ref": "scopes/shape.json#/tokens/semantic/border-width"
+      },
+      "focus": {
+        "$ref": "scopes/accessibility.json#/tokens/semantic/focus"
+      },
+      "type": {
+        "$ref": "scopes/typography.json#/tokens/semantic/type"
+      },
+      "motion": {
+        "$ref": "scopes/motion.json#/tokens/semantic/motion"
+      },
+      "color": {
+        "$ref": "scopes/color.json#/tokens/semantic/color"
+      },
+      "elevation": {
+        "$ref": "scopes/elevation.json#/tokens/semantic/elevation"
+      },
+      "component-spacing-map": {
+        "$extensions": {
+          "open-ds": {
+            "rhythm": 1.75,
+            "fixed": [
+              "x1",
+              "x2"
+            ],
+            "because": [
+              "spacing.values",
+              "people.q2"
+            ],
+            "why": "Spacious: space lowers effort and mis-taps, so components get the most room short of the brand scheme; rows stay tight."
+          }
+        }
+      },
+      "icon": {
+        "stroke-width": {
+          "$ref": "scopes/iconography.json#/tokens/semantic/icon/stroke-width"
+        }
+      }
+    },
+    "component": {
+      "$ref": "components.json#/tokens/component"
+    },
+    "content": {
+      "$ref": "scopes/voice.json#/tokens/content"
+    }
+  },
+  "shorthand": {
+    "description": "What each semantic token does for people in this scheme, in a headline and one line. The token map card shows it.",
+    "tokens": {
+      "component-spacing-map.hairline": {
+        "headline": "A tiny nudge.",
+        "line": "Two pixels that line things up by eye."
+      },
+      "component-spacing-map.x1": {
+        "headline": "One step.",
+        "line": "The base step of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x12": {
+        "headline": "Twelve steps.",
+        "line": "Twelve steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x2": {
+        "headline": "Two steps.",
+        "line": "Two steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x3": {
+        "headline": "Three steps.",
+        "line": "Three steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x4": {
+        "headline": "Four steps.",
+        "line": "Four steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x6": {
+        "headline": "Six steps.",
+        "line": "Six steps of the spacious rhythm inside a component."
+      },
+      "component-spacing-map.x8": {
+        "headline": "Eight steps.",
+        "line": "Eight steps of the spacious rhythm inside a component."
+      }
+    }
+  }
+}

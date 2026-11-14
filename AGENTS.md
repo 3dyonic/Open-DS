@@ -10,7 +10,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 
 | Folder       | What it holds                                                                                               | Check                        |
 | ------------ | ----------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `schemes/`   | `grammar.json` and the five scheme files. The source of truth.                                              | `pnpm harness`               |
+| `schemes/`   | The grammar and the five schemes, each a folder split by scope. The source of truth.                        | `pnpm harness`               |
 | `schema/`    | JSON Schemas (draft 2020-12) for the grammar and the schemes.                                               | `pnpm harness`               |
 | `tokens/`    | Style Dictionary build: CSS (each brand, light and dark), shadcn and Tailwind theme, DTCG JSON.             | `pnpm --dir tokens test`     |
 | `ui/`        | Components on Radix and Tailwind v4 that read only component keys; shadcn registry.                         | `pnpm --dir ui test`         |
@@ -25,7 +25,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 
 ## Rules
 
-1. Change a scheme in `schemes/*.json`, then run `pnpm generate` and `node scripts/build-llms.mjs`. Git keeps `llms.txt` and `llms-full.txt`. Git does not keep the other generated files: the docs pages, the token build and `ui/registry.json`.
+1. Change a scheme only with `saveScheme` (a folder in `schemes/`), then run `pnpm generate` and `node scripts/build-llms.mjs`. Git keeps `llms.txt` and `llms-full.txt`. Git does not keep the other generated files: the docs pages, the token build and `ui/registry.json`.
 2. Every JSON object gets a `description` (or `why`) written for an agent. Every schema property gets a `description`.
 3. Scope answers are words ("fast", "compact"), never raw values. Values live in tokens.
 4. Components read only component keys and semantic variables. No raw colors.
