@@ -8,6 +8,8 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ### Breaking
 
+- The gap colour behind a focus ring has one name in every component: `<component>-focus-ring-offset-color`. It replaces `*-focus-ring-offset`, `*-focus-ring-offset-focus` and `*-focus-ring.offset-color` in 31 component keys (OD-328). The values do not change. `--focus-ring-offset` stays the 2px gap.
+- A scheme ships `--icon-size-large` only when it answers two icon sizes; Brand expressive reads the new decision token `size.icon-large` (OD-326).
 - Every scheme drops its 305 deprecated aliases (301 component keys, and `radius.container`, `border-width.focus`, `border-width.focus-offset` and `opacity.disabled`) and the opacity option that only `opacity.disabled` read. Read the token that each alias named in its `$deprecated` note.
 
 ### Added

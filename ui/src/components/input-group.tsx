@@ -32,7 +32,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
         "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-[var(--input-group-padding-top)]",
 
         // Focus state.
-        "has-[[data-slot=input-group-control]:focus-visible]:border-[color:var(--input-group-border-focus)] has-[[data-slot=input-group-control]:focus-visible]:ring-[length:var(--input-group-focus-width)] has-[[data-slot=input-group-control]:focus-visible]:ring-offset-[length:var(--input-group-focus-offset)] has-[[data-slot=input-group-control]:focus-visible]:ring-offset-[color:var(--input-group-focus-ring-offset)] has-[[data-slot=input-group-control]:focus-visible]:ring-[color:var(--input-group-focus-ring-highlight)]",
+        "has-[[data-slot=input-group-control]:focus-visible]:border-[color:var(--input-group-border-focus)] has-[[data-slot=input-group-control]:focus-visible]:ring-[length:var(--input-group-focus-width)] has-[[data-slot=input-group-control]:focus-visible]:ring-offset-[length:var(--input-group-focus-offset)] has-[[data-slot=input-group-control]:focus-visible]:ring-offset-[color:var(--input-group-focus-ring-offset-color)] has-[[data-slot=input-group-control]:focus-visible]:ring-[color:var(--input-group-focus-ring-highlight)]",
 
         // Disabled state: the disabled roles, like the input.
         "has-[[data-slot=input-group-control]:disabled]:bg-[color:var(--input-group-disabled-background)] has-[[data-slot=input-group-control]:disabled]:border-[color:var(--input-group-disabled-border)]",

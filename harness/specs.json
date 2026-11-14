@@ -62,7 +62,8 @@
         "CSS light and dark per scheme",
         "shadcn variable mapping",
         "DTCG JSON",
-        "component keys read decision tokens; only the circle and capsule shapes read a primitive"
+        "component keys read decision tokens; only the circle and capsule shapes read a primitive",
+        "a key ending in -offset holds a length; one ending in -offset-color holds a colour"
       ],
       "checks": [
         "tokens-style-dictionary",
@@ -70,7 +71,8 @@
         "tokens-light-dark",
         "tokens-shadcn-mapping",
         "tokens-component-keys-resolve",
-        "component-keys-read-decisions"
+        "component-keys-read-decisions",
+        "offset-keys-name-their-kind"
       ]
     },
     {

@@ -3057,6 +3057,27 @@ export const CHECKS = {
     },
   },
 
+  "offset-keys-name-their-kind": {
+    requires: ["schemes"],
+    run: (c) => {
+      // One name, one meaning: a key ending in -offset is the gap (a length); one ending in
+      // -offset-color is the fill that shows through that gap (a colour).
+      const wrong = [];
+      for (const s of SCHEMES) {
+        for (const [key, tok] of Object.entries(flatten(c.scheme(s).tokens.component))) {
+          const ref = typeof tok.$value === "string" ? tok.$value.match(/^\{([^}]+)\}$/)?.[1] : null;
+          if (!ref) continue;
+          const isColor = ref.startsWith("color.");
+          if (/-offset-color$/.test(key) && !isColor) wrong.push(`${s}: ${key} is named a colour but reads ${ref}`);
+          else if (/(^|[.-])offset$/.test(key) && isColor) wrong.push(`${s}: ${key} is named a gap but reads the colour ${ref}`);
+        }
+      }
+      return wrong.length
+        ? bad(`${wrong.slice(0, 6).join("; ")}. Name a gap colour *-offset-color`)
+        : ok("every *-offset key holds a length and every *-offset-color key a colour");
+    },
+  },
+
   // Components
   "ui-components": {
     requires: ["ui/package.json"],
